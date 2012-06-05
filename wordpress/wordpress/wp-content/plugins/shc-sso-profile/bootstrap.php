@@ -22,32 +22,26 @@ if ( ! defined('SHCSSO_VERSION'))
     define('SHCSSO_FILE', SHCSSO_PATH . pathinfo(__FILE__, PATHINFO_BASENAME));
     define('SHCSSO_OPTION_PREFIX', 'shcsso_');
 
-    // Do not register the autoloader more then once.
-    // There's potential for the bootstrap to be loaded more then once.
-    if ( ! defined('SHCSSP_AUTOLOAD'))
-    {
-        define('SHCSSO_AUTOLOAD', TRUE);
+    // Register an autoloader function.
+    spl_autoload_register(function($class) {
+        // Transform the class name into a path
+        $file = str_replace('_', '/', strtolower($class)) . '.php';
 
-        spl_autoload_register(function($class) {
-            // Transform the class name into a path
-            $file = str_replace('_', '/', strtolower($class));
+        // Prepend classes path
+        $path = SHCSSO_PATH . 'classes' . DIRECTORY_SEPARATOR . $file;
 
-            // Prepend classes path
-            $path = SHCSSO_PATH . 'classes' . DIRECTORY_SEPARATOR . $file;
+        if (is_file($path))
+        {
+            // Load the class file
+            require $path;
 
-            if (is_file($path))
-            {
-                // Load the class file
-                require $path;
+            // Class has been found
+            return TRUE;
+        }
 
-                // Class has been found
-                return TRUE;
-            }
-
-            // Class is not in the filesystem
-            return FALSE;
-        });
-    }
+        // Class is not in the filesystem
+        return FALSE;
+    });
 
     add_action('init', array('Shcsso_Plugin', 'init'));
     register_activation_hook(SHCSSO_FILE, array('Shcsso_Plugin', 'install'));

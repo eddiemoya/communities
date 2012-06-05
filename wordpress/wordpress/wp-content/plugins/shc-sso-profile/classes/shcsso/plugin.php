@@ -35,7 +35,7 @@ class Shcsso_Plugin {
         {
             foreach ($init_classes['init'] as $class)
             {
-                self::factory($class);
+                call_user_func(array($class, 'execute'));
             }
 
             self::log('Loaded [' . implode(', ', $init_classes['init']) . '] on "init" hook.', self::INFO);
@@ -44,7 +44,7 @@ class Shcsso_Plugin {
 
     public static function config($file)
     {
-        if ( ! array_key_exists(self::$configs, $file))
+        if ( ! array_key_exists($file, self::$configs))
         {
             $path = SHCSSO_PATH.'config/' . $file . '.php';
 
@@ -81,7 +81,11 @@ class Shcsso_Plugin {
 
             if ($config !== FALSE AND is_array($option))
             {
-                $option = array_merge_recursive($config, $option);
+                $option = array_merge($config, $option);
+            }
+            elseif ($config !== FALSE AND $option === FALSE)
+            {
+                $option = $config;
             }
 
             return $option;
@@ -90,7 +94,7 @@ class Shcsso_Plugin {
         {
             if ($config !== FALSE AND is_array($value))
             {
-                $value = array_merge_recursive($config, $value);
+                $value = array_merge($config, $value);
             }
 
             return update_option(SHCSSO_OPTION_PREFIX . $name, $value);
@@ -146,6 +150,34 @@ class Shcsso_Plugin {
         }
 
         self::log('Uninstalled Shc Sso and Profile plugin.', self::INFO);
+    }
+
+    public static function view($view, array $params = array())
+    {
+        // Import the view variables to local namespace
+        extract($params, EXTR_SKIP);
+
+        // Capture the view output
+        ob_start();
+
+        try
+        {
+            $file = SHCSSO_PATH . 'views/' . $view . '.php';
+
+            // Load the view within the current scope
+            include $file;
+        }
+        catch (Exception $e)
+        {
+            // Delete the output buffer
+            ob_end_clean();
+
+            // Re-throw the exception
+            throw $e;
+        }
+
+        // Get the captured output and close the buffer
+        return ob_get_clean();
     }
 
 }
