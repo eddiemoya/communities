@@ -71,4 +71,12 @@ class Shcsso_Plugin {
         error_log(date('Y-m-d H:i:s') . ' --- ' . ucfirst($type) . ': ' . $message);
     }
 
+    public static function install()
+    {
+    }
+
+    public static function uninstall()
+    {
+    }
+
 }
