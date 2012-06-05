@@ -1,0 +1,200 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: google-sitemap-plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-03 16:23+0200\n"
+"PO-Revision-Date: 2012-04-03 16:28+0200\n"
+"Last-Translator: BWS <zos@bestwebsoft.com>\n"
+"Language-Team: bestwebsoft.com <plugin@bestwebsoft.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: google-sitemap-plugin.php:86
+msgid "Activated plugins"
+msgstr "Активированные плагины"
+
+#: google-sitemap-plugin.php:88
+#: google-sitemap-plugin.php:96
+#: google-sitemap-plugin.php:104
+msgid "Read more"
+msgstr "Подробнее..."
+
+#: google-sitemap-plugin.php:88
+#: google-sitemap-plugin.php:511
+msgid "Settings"
+msgstr "Настройки"
+
+#: google-sitemap-plugin.php:94
+msgid "Installed plugins"
+msgstr "Установленные плагины"
+
+#: google-sitemap-plugin.php:102
+msgid "Recommended plugins"
+msgstr "Рекомендованные к установке плагины"
+
+#: google-sitemap-plugin.php:104
+msgid "Download"
+msgstr "Скачать"
+
+#: google-sitemap-plugin.php:104
+#, php-format
+msgid "Install %s"
+msgstr "Установлено %s"
+
+#: google-sitemap-plugin.php:104
+msgid "Install now from wordpress.org"
+msgstr "Установить с wordpress.org"
+
+#: google-sitemap-plugin.php:106
+msgid "If you have any questions, please contact us via plugin@bestwebsoft.com or fill in our contact form on our site"
+msgstr "Если у вас есть какие-то впросы, обращайтесь на plugin@bestwebsoft.com или заполните контактную форму на нашем сайте"
+
+#: google-sitemap-plugin.php:117
+msgid "BWS Plugins"
+msgstr "Плагины BWS"
+
+#: google-sitemap-plugin.php:118
+msgid "Google Sitemap Options"
+msgstr "Опции карты сайта Google"
+
+#: google-sitemap-plugin.php:118
+msgid "Google Sitemap"
+msgstr "Карта сайта Google"
+
+#: google-sitemap-plugin.php:216
+#: google-sitemap-plugin.php:237
+msgid "Your sitemap file was created in the root directory of the site. "
+msgstr "Карта сайта для вашего сайта создана в корне основной директории."
+
+#: google-sitemap-plugin.php:222
+msgid "Options saved."
+msgstr "Опции сохранены."
+
+#: google-sitemap-plugin.php:228
+msgid "Google Sitemap options"
+msgstr "Опции карты сайта Google"
+
+#: google-sitemap-plugin.php:233
+msgid "The sitemap file is already exists. If you want to change it for a new sitemap file check the necessary box below. In other case all actions will be performed over an existing file."
+msgstr "Карта сайта уже существует. Если вы хотите изменить ее на новую карту сайта, выберите соответствующее действие внизу. Все остальные действия перезапишут существующий файл."
+
+#: google-sitemap-plugin.php:240
+msgid "If you don't want to add this file automatically you may go through"
+msgstr "Если вы не хотите добавить файл карты сайта автоматически в Google webmaster tools, Вы можете сделать это через"
+
+#: google-sitemap-plugin.php:240
+msgid "this"
+msgstr "эту"
+
+#: google-sitemap-plugin.php:240
+msgid "link, sign in, select necessary site, select 'Sitemaps' and type in necessary field"
+msgstr "ссылку, залогиниться, выбрать сайт, выбрать 'Sitemaps' и заполнить обязательное поле"
+
+#: google-sitemap-plugin.php:242
+msgid "This hosting doesn't support CURL, so you can't add sitemap file automatically"
+msgstr "Ваш хостинг не поддерживает CURL, поэтому вы не можете добавить карту сайта в Google аккаунт автоматически."
+
+#: google-sitemap-plugin.php:251
+msgid "I want to create new sitemap file"
+msgstr "Я хочу создать новую карту сайта"
+
+#: google-sitemap-plugin.php:256
+msgid "I want to add sitemap file path in robots.txt"
+msgstr "Я хочу добавить карту сайта в robots.txt"
+
+#: google-sitemap-plugin.php:260
+msgid "Please choose the necessary post types in order to add the links to them in the sitemap:"
+msgstr "Пожалуйста, выберите те типы постов, ссылки  на которые будут добавлены в карту сайта:"
+
+#: google-sitemap-plugin.php:273
+msgid "Type here your login and password from google webmaster tools account to add or delete site and sitemap file automatically or to get information about this site in google webmaster tools."
+msgstr "Введите сюда свой логин и пароль для Google аккаунта, чтобы иметь возможность добавлять или удалять сайт и карту сайта автоматически в ваш аккаунт или же получить информацию об этом сайте из  Google webmaster tools"
+
+#: google-sitemap-plugin.php:277
+msgid "Settings for remote work with google webmaster tools"
+msgstr "Настройки для удаленной работы с google webmaster tools"
+
+#: google-sitemap-plugin.php:279
+msgid "Login"
+msgstr "Логин"
+
+#: google-sitemap-plugin.php:280
+msgid "Password"
+msgstr "Пароль"
+
+#: google-sitemap-plugin.php:281
+msgid "I want to add this site to the google webmaster tools"
+msgstr "Я хочу добавить этот сайт в Google webmaster tools"
+
+#: google-sitemap-plugin.php:282
+msgid "I want to delete this site from google webmaster tools"
+msgstr "Я хочу удалить этот сайт из Google webmaster tools"
+
+#: google-sitemap-plugin.php:283
+msgid "I want to get info about this site in google webmaster tools"
+msgstr "Я хочу получить информацию об этом сайте из Google webmaster tools"
+
+#: google-sitemap-plugin.php:290
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: google-sitemap-plugin.php:325
+msgid "You must enter login and password"
+msgstr "Вы должны ввести логин и пароль"
+
+#: google-sitemap-plugin.php:328
+msgid "You must choose at least one action"
+msgstr "Вы должны выбрать одно из действий"
+
+#: google-sitemap-plugin.php:358
+msgid "Login and password don\\'t match, try again, please"
+msgstr "Логин и пароль введены неправильно, попробуйте еще раз"
+
+#: google-sitemap-plugin.php:417
+msgid "Info about this site in google webmaster tools"
+msgstr "Я хочу получить информацию об этом сайте из Google webmaster tools"
+
+#: google-sitemap-plugin.php:419
+msgid "This site is not added to the google webmaster tools account"
+msgstr "Я хочу добавить этот сайт в Google webmaster tools"
+
+#: google-sitemap-plugin.php:440
+msgid "Site url: "
+msgstr "Урл сайта:"
+
+#: google-sitemap-plugin.php:441
+msgid "Site verification: "
+msgstr "Верификация сайта:"
+
+#: google-sitemap-plugin.php:443
+msgid "verificated"
+msgstr "верифицровано"
+
+#: google-sitemap-plugin.php:445
+msgid "non verificated"
+msgstr "не верефицирован"
+
+#: google-sitemap-plugin.php:446
+msgid "Sitemap file: "
+msgstr "Файл карты сайта:"
+
+#: google-sitemap-plugin.php:448
+msgid "added"
+msgstr "добавлен"
+
+#: google-sitemap-plugin.php:450
+msgid "not added"
+msgstr "не добавлен"
+
+#~ msgid "Install Now"
+#~ msgstr "Установить сейчас"
+
+#~ msgid "Update"
+#~ msgstr "Сохранить"
