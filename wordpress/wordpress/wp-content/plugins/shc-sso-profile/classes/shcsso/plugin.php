@@ -61,11 +61,52 @@ class Shcsso_Plugin {
         return self::$configs[$file];
     }
 
-    public static function log($message, $type = NULL)
+    public static function option($name, array $value = NULL)
+    {
+        // First let's see if a config file of the same name
+        // has any content or exists
+        try
+        {
+            $config = self::config($name);
+        }
+        catch(\Exception $e)
+        {
+            $config = FALSE;
+        }
+
+        if ($value === NULL)
+        {
+            // Trying to get a value from the options table.
+            $option = get_option(SHCSSO_OPTION_PREFIX . $name);
+
+            if ($config !== FALSE AND is_array($option))
+            {
+                $option = array_merge_recursive($config, $option);
+            }
+
+            return $option;
+        }
+        else
+        {
+            if ($config !== FALSE AND is_array($value))
+            {
+                $value = array_merge_recursive($config, $value);
+            }
+
+            return update_option(SHCSSO_OPTION_PREFIX . $name, $value);
+        }
+    }
+
+    public static function log($message, $type = NULL, array $params = NULL)
     {
         if ($type === NULL)
         {
             $type = self::ERROR;
+        }
+
+        if ( ! empty($params))
+        {
+            $message = str_replace(array_keys($params), $params, $message);
         }
 
         error_log(date('Y-m-d H:i:s') . ' --- ' . ucfirst($type) . ': ' . $message);
@@ -73,10 +114,38 @@ class Shcsso_Plugin {
 
     public static function install()
     {
+        // First get the current version that's installed for this plugin.
+        $current_version = self::option('version');
+
+        if ($current_version != '' AND $current_version != SHCSSO_VERSION)
+        {
+            Shcsso_Migration::upgrade($current_version, SHCSSO_VERSION);
+
+            self::log('Upgrade Shc Sso and Profile plugin from version ":current" to ":version".', self::INFO, array(
+                ':current'  => $current_version,
+                ':version'  => SHCSSO_VERSION,
+            ));
+        }
+        else
+        {
+            Shcsso_Migration::up();
+
+            self::log('Installed Shc Sso and Profile plugin.', self::INFO);
+        }
+
+        self::option('version', SHCSSO_VERSION);
     }
 
     public static function uninstall()
     {
+        Shcsso_Migration::down();
+
+        foreach (array('version', 'settings') as $option)
+        {
+            delete_option($option);
+        }
+
+        self::log('Uninstalled Shc Sso and Profile plugin.', self::INFO);
     }
 
 }

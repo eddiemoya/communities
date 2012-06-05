@@ -19,7 +19,8 @@ if ( ! defined('SHCSSO_VERSION'))
 {
     define('SHCSSO_VERSION', '0.1.0');
     define('SHCSSO_PATH', WP_PLUGIN_DIR . '/shc-sso-profile/');
-    define('SHCSSO_FILE', SHCSSO_PATH.pathinfo(__FILE__, PATHINFO_BASENAME));
+    define('SHCSSO_FILE', SHCSSO_PATH . pathinfo(__FILE__, PATHINFO_BASENAME));
+    define('SHCSSO_OPTION_PREFIX', 'shcsso_');
 
     // Do not register the autoloader more then once.
     // There's potential for the bootstrap to be loaded more then once.
