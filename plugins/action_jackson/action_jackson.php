@@ -9,17 +9,20 @@
 
 	//include base definitions
 	//include('globals/USERACTIONS.constants.php');
-	@define('USERACTIONS_BASE_DIR', 'userActions/');
+	@define('ACTIONJACSON_BASE_DIR', 'action_jackson/');
 
-	@define('USERACTIONS_ACTIONS_DIR', 'base/');
-	@define('USERACTIONS_INSTANCES_DIR', 'controllers/instances/');
-	@define('USERACTIONS_VIEWS_DIR', 'views/');
+	@define('ACTIONJACSON_ACTIONS_DIR', 'base/');
+	@define('ACTIONJACSON_INSTANCES_DIR', 'controllers/instances/');
+	@define('ACTIONJACSON_VIEWS_DIR', 'views/');
 	
 	//include(USERACTIONS_ACTIONS_DIR.'UserActionsViews.actions.php');
 	//include(USERACTIONS_ACTIONS_DIR.'UserActionsAdmin.actions.php');
-	include('base/UserActionQuery.php');
+	include('base/action_jackson_query.php');
 
-    $uaQuery = new UserActionQuery();
+    $ajQuery = new ActionJacksonQuery();
+
+    $ajQuery->getUserActions(1, 'posts', 'ID');
+
 //
 //        public function updateUserAction($actionId,
 //                                        $objId=0,
@@ -27,10 +30,4 @@
 //                                        $objSubType='',
 //                                        $action='') {
 
-    $uaQuery->updateUserAction(
-        8,
-        12,
-        'term',
-        'something',
-        'downvote'
-    );
+    //$uaQuery->updateUserAction(4, 12, 'term', 'something', 'downvote');
