@@ -3,5 +3,6 @@
 return array(
     'init'  => array(
         'Shcsso_Hooks_Settings',
+        'Shcsso_Hooks_Router',
     ),
 );

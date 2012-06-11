@@ -220,13 +220,13 @@ class Shcsso_Service_Auth {
 
         $response = curl_exec($ch);
 
-		// Get the response information
-		$code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        // Get the response information
+        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
-		if ( ! $response)
-		{
-			$error = curl_error($ch);
-		}
+        if ( ! $response)
+        {
+            $error = curl_error($ch);
+        }
 
         curl_close($ch);
 
@@ -259,7 +259,7 @@ class Shcsso_Service_Auth {
                 return $user;
             }
             else {
-                throw new \Exception('Failed to validate ticket ["'.$post['ticket'].'"]');
+                throw new \Exception('Failed to validate ticket ["'.$ticket.'"]');
             }
         }
         else {
