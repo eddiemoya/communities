@@ -29,7 +29,10 @@ class Shcsso_Hooks_Settings {
         add_settings_field('environment', __('Environment'), array(self::controller(), 'environment'), 'shcsso-settings', SHCSSO_OPTION_PREFIX . 'main_settings');
         add_settings_section(SHCSSO_OPTION_PREFIX . 'sso_settings', __('SSO Settings'), array(self::controller(), 'sso_section'), 'shcsso-settings');
         add_settings_field('sso_site_id', __('Source Site ID'), array(self::controller(), 'sso_site_id'), 'shcsso-settings', SHCSSO_OPTION_PREFIX . 'sso_settings');
+        add_settings_field('sso_role', __('User Role'), array(self::controller(), 'sso_role'), 'shcsso-settings', SHCSSO_OPTION_PREFIX . 'sso_settings');
         add_settings_section(SHCSSO_OPTION_PREFIX . 'profile_settings', __('Profile Settings'), array(self::controller(), 'profile_section'), 'shcsso-settings');
+        add_settings_field('profile_site_id', __('Profile Site ID'), array(self::controller(), 'profile_site_id'), 'shcsso-settings', SHCSSO_OPTION_PREFIX . 'profile_settings');
+        add_settings_field('profile_key', __('Profile Key'), array(self::controller(), 'profile_key'), 'shcsso-settings', SHCSSO_OPTION_PREFIX . 'profile_settings');
     }
 
     public static function controller()

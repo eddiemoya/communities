@@ -7,6 +7,11 @@
  */
 class Shcsso_Controller_Sso {
 
+    public function __construct()
+    {
+        $this->settings = Shcsso_Plugin::option('settings');
+    }
+
     public function check()
     {
     }
@@ -14,7 +19,7 @@ class Shcsso_Controller_Sso {
     public function login()
     {
         $auth = new Shcsso_Service_Auth();
-        $auth->callback('http://communities/sso/receive');
+        $auth->callback(site_url('sso/receive'));
         $auth->endpoint('https://sso.shld.net/');
 
         $params = array(
@@ -41,6 +46,10 @@ class Shcsso_Controller_Sso {
 
     public function logout()
     {
+        $auth = new Shcsso_Service_Auth();
+        $auth->callback(site_url('sso/receive'))
+            ->endpoint()
+            ->action('shcLogout');
     }
 
     public function receive()
@@ -55,21 +64,26 @@ class Shcsso_Controller_Sso {
         $password = (isset($_GET['password']) AND ! empty($_GET['password'])) ? $_GET['password'] :
             ((isset($_POST['logonPassword']) AND ! empty($_POST['logonPassword'])) ? $_POST['logonPassword'] : NULL);
 
-        if ($wp_user = get_user_by('email', $email))
-        {
-            wp_authenticate($username, $password);
-        }
-        else
+        $wp_user = get_user_by('email', $email);
+
+        if ( ! $wp_user)
         {
             // New user here.
-            wp_insert_user(array(
+            $user_id = wp_insert_user(array(
                 'user_pass'     => $password,
                 'user_email'    => $email,
                 'user_login'    => $username,
             ));
 
-            wp_authenticate($username, $password);
+            if ( ! is_wp_error($user_id))
+            {
+                $wp_user = get_user_by('id', $user_id);
+            }
         }
+
+        wp_set_current_user($wp_user->ID, $wp_user->user_login);
+        wp_set_auth_cookie($wp_user->ID);
+        do_action('wp_login', $wp_user->user_login);
 
         $refferer = site_url($_SERVER['REQUEST_URI']);
         $redirect = ( ! isset($_GET['redirect_url'])) ? home_url() : $_GET['redirect_url'];
