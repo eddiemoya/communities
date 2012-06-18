@@ -14,9 +14,26 @@ class Shcsso_Service_Profile {
     protected $_post = array();
     protected $_options = array();
     protected $_action;
+    protected $_method = 'GET';
 
-    public function __construct()
+    public function __construct($environment = 'production')
     {
+        $config = Shcsso_Plugin::config('profile');
+
+        if (isset($config[$environment]))
+        {
+            foreach ($config[$environment]) as $key => $value)
+            {
+                $this->$key($value);
+            }
+        }
+
+        $settings = Shcsso_Plugin::option('settings');
+
+        $this->site_id( (int) $settings['profile_site_id'])
+            ->key($settings['profile_key']);
+
+        unset($settings, $config);
     }
 
     public function digital_signature()
@@ -86,6 +103,18 @@ class Shcsso_Service_Profile {
         return $this;
     }
 
+    public function key($key = NULL)
+    {
+        if ($key === NULL)
+        {
+            return $this->_key;
+        }
+
+        $this->_key = $key;
+
+        return $this;
+    }
+
     public function site_id($site_id = NULL)
     {
         if ($site_id === NULL)
@@ -116,6 +145,18 @@ class Shcsso_Service_Profile {
         return $this;
     }
 
+    public function method($method = NULL)
+    {
+        if ($method === NULL)
+        {
+            return $this->_method;
+        }
+
+        $this->_method = $method;
+
+        return $this;
+    }
+
     public function execute()
     {
         $url = $this->endpoint(NULL, $this->action());
@@ -132,6 +173,7 @@ class Shcsso_Service_Profile {
             CURLOPT_SSL_VERIFYHOST  => 0,
             CURLOPT_SSL_VERIFYPEER  => 0,
             CURLOPT_USERAGENT       => $_SERVER['HTTP_USER_AGENT'],
+            CURLOPT_CUSTOMREQUEST   => $this->method(),
         );
 
         if ($this->post())
@@ -163,6 +205,12 @@ class Shcsso_Service_Profile {
         }
 
         return $response;
+    }
+
+    public function get($id = NULL)
+    {
+        $this->query('id', $id)
+            ->action('user');
     }
 
 }

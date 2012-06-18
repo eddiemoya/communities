@@ -5,5 +5,5 @@ return array(
     'sso_site_id'       => 41,
     'sso_role'          => 'subscriber',
     'profile_site_id'   => 41,
-    'profile_key'       => '',
+    'profile_key'       => 'YWCHJTDwxjHlZXro3NggLiWKu_I',
 );

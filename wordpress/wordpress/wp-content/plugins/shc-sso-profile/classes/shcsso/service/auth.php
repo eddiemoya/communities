@@ -13,14 +13,32 @@ class Shcsso_Service_Auth {
     protected $_callback;
     protected $_endpoint= 'https://sso.shld.net/';
     protected $_site_id = 41;
+    protected $_role = 'subscriber';
     protected $_query = array();
     protected $_post = array();
     protected $_options = array();
     protected $_action;
 
-    public function __construct()
+    public function __construct($environment = 'production')
     {
         $this->_default_callback = 'http://'.$_SERVER['HTTP_HOST'].'/';
+
+        $config = Shcsso_Plugin::config('sso');
+
+        if (isset($config[$environment]))
+        {
+            foreach ($config[$environment]) as $key => $value)
+            {
+                $this->$key($value);
+            }
+        }
+
+        $settings = Shcsso_Plugin::option('settings');
+
+        $this->site_id( (int) $settings['sso_site_id'])
+            ->role($settings['sso_role']);
+
+        unset($settings, $config);
     }
 
     public function query($query = NULL, $value = NULL)
@@ -93,6 +111,17 @@ class Shcsso_Service_Auth {
         return $this;
     }
 
+    public function role($role = NULL)
+    {
+        if ($role === NULL)
+        {
+            return $this->_role;
+        }
+
+        $this->_role = (string) $role;
+
+        return $this;
+    }
 
     public function endpoint($endpoint = NULL, $action = NULL)
     {
@@ -133,11 +162,11 @@ class Shcsso_Service_Auth {
         $this->callback($callback);
 
         $this->query(array(
-            'username'  => $username,
-            'password'  => $password,
-            'service'   => $this->callback(),
-            'renew'     => 'true',
-            'sourceSiteid'  => 1,
+            'loginId'       => $username,
+            'logonPassword' => $password,
+            'service'       => $this->callback() . '?password=' . urlencode($password),
+            'renew'         => 'true',
+            'sourceSiteid'  => $this->site_id(),
         ))->action('shcLogin');
 
         return $this;
@@ -148,11 +177,7 @@ class Shcsso_Service_Auth {
         $this->callback($callback);
 
         $this->query(array(
-            'sourceSiteid'  => 1,
             'service'       => $this->callback(),
-            'loginId'       => $username,
-            'logonPassword' => $password,
-            'zipcode'       => $zipcode,
         ))->action('logout');
 
         return $this;
@@ -163,7 +188,7 @@ class Shcsso_Service_Auth {
         $this->callback($callback);
 
         $this->query(array(
-            'sourceSiteid'  => 1,
+            'sourceSiteid'  => $this->site_id(),
             'service'       => $this->callback(),
             'loginId'       => $username,
             'logonPassword' => $password,

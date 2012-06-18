@@ -16,11 +16,10 @@ class Shcsso_Controller_Sso {
     {
     }
 
-    public function login()
+    public function register()
     {
-        $auth = new Shcsso_Service_Auth();
+        $auth = new Shcsso_Service_Auth($this->settings['environment']);
         $auth->callback(site_url('sso/receive'));
-        $auth->endpoint('https://sso.shld.net/');
 
         $params = array(
             'auth'      => $auth,
@@ -29,16 +28,27 @@ class Shcsso_Controller_Sso {
 
         if ( ! empty($_POST))
         {
-            $auth->action('shcLogin');
-            $auth->query(array(
-                'loginId'       => $_POST['loginId'],
-                'logonPassword' => $_POST['logonPassword'],
-                'sourceSiteId'  => $_POST['sourceSiteId'],
-                'service'       => $_POST['service'].'?password='.$_POST['logonPassword'],
-                'renew'         => 'true',
-            ));
+            $auth->register($_POST['loginId'], $_POST['logonPassword'])
+                ->redirect();
+        }
 
-            $auth->redirect();
+        echo Shcsso_Plugin::view('register/form', $params);
+    }
+
+    public function login()
+    {
+        $auth = new Shcsso_Service_Auth($this->settings['environment']);
+        $auth->callback(site_url('sso/receive'));
+
+        $params = array(
+            'auth'      => $auth,
+            'action'    => NULL,
+        );
+
+        if ( ! empty($_POST))
+        {
+            $auth->login($_POST['loginId'], $_POST['logonPassword'], $_POST['zipcode'])
+                ->redirect();
         }
 
         echo Shcsso_Plugin::view('login/form', $params);
@@ -47,22 +57,50 @@ class Shcsso_Controller_Sso {
     public function logout()
     {
         $auth = new Shcsso_Service_Auth();
-        $auth->callback(site_url('sso/receive'))
-            ->endpoint()
-            ->action('shcLogout');
+        $auth->callback(site_url('sso/receive_logout'))
+            ->logout()
+            ->redirect();
+    }
+
+    public function receive_logout()
+    {
+        wp_logout();
+
+        $refferer = site_url($_SERVER['REQUEST_URI']);
+        $redirect = home_url();
+
+        header('Refferer: ' . $refferer);
+        header('Location: ' . $redirect);
+
+        die;
     }
 
     public function receive()
     {
-        $auth = new Shcsso_Service_Auth();
-        $auth->endpoint('https://sso.shld.net/');
+        $auth = new Shcsso_Service_Auth($this->settings['environment']);
         $auth->callback(site_url($_SERVER['REQUEST_URI']));
-        $user = $auth->receive($_POST['ticket']);
+
+        try
+        {
+            // Validate the ticket and get the user.
+            // If any exception is thrown here it's because the ticket
+            // is invalid OR the SSO is not responding.
+            $user = $auth->receive($_POST['ticket']);
+        }
+        catch(\Exception $e)
+        {
+            //handle error here.
+        }
 
         $email = $user->authenticationSuccess->user;
+
+        // Split the email to get a "username" for wordpress.
         $username = preg_replace('/@.*?$/', '', $email);
-        $password = (isset($_GET['password']) AND ! empty($_GET['password'])) ? $_GET['password'] :
-            ((isset($_POST['logonPassword']) AND ! empty($_POST['logonPassword'])) ? $_POST['logonPassword'] : NULL);
+
+        // Get the password from the request.
+        $password = (isset($_GET['password']) AND ! empty($_GET['password']))
+            ? $_GET['password'] : ((isset($_POST['logonPassword']) AND ! empty($_POST['logonPassword'])) 
+                ? $_POST['logonPassword'] : NULL);
 
         $wp_user = get_user_by('email', $email);
 
@@ -88,10 +126,10 @@ class Shcsso_Controller_Sso {
         $refferer = site_url($_SERVER['REQUEST_URI']);
         $redirect = ( ! isset($_GET['redirect_url'])) ? home_url() : $_GET['redirect_url'];
 
-        exit;
-
         header('Refferer: ' . $refferer);
         header('Location: ' . $redirect);
+
+        die;
     }
 
 }
