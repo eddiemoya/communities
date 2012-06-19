@@ -11,6 +11,7 @@ class Shcsso_Service_Auth {
 
     protected $_default_callback;
     protected $_callback;
+    protected $_error;
     protected $_endpoint= 'https://sso.shld.net/';
     protected $_site_id = 41;
     protected $_role = 'subscriber';
@@ -95,6 +96,18 @@ class Shcsso_Service_Auth {
         }
 
         $this->_action = $action;
+
+        return $this;
+    }
+
+    public function error($error = NULL)
+    {
+        if ($error === NULL)
+        {
+            return $this->_error;
+        }
+
+        $this->_error = $error;
 
         return $this;
     }
@@ -280,11 +293,13 @@ class Shcsso_Service_Auth {
             $xml = new \SimpleXmlElement($xml);
             $user = $xml->children('http://www.yale.edu/tp/cas');
 
-            if (isset($user->authenticationSuccess)) {
+            if (isset($user->authenticationSuccess) AND ! isset($_POST['errorCode'])) {
                 return $user;
             }
             else {
-                throw new \Exception('Failed to validate ticket ["'.$ticket.'"]');
+                $error = Shcsso_Plugin::config('errors')[$_POST['errorCode']];
+                $this->error($error);
+                throw new \Exception('Failed to validate ticket ["'.$ticket.'"] with the error ["'.$error.'"]');
             }
         }
         else {
