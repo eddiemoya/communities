@@ -98,9 +98,6 @@ class Shcsso_Controller_Sso {
         $username = preg_replace('/@.*?$/', '', $email);
 
         // Get the password from the request.
-        $password = (isset($_GET['password']) AND ! empty($_GET['password']))
-            ? $_GET['password'] : ((isset($_POST['logonPassword']) AND ! empty($_POST['logonPassword'])) 
-                ? $_POST['logonPassword'] : NULL);
 
         $wp_user = get_user_by('email', $email);
 
@@ -108,7 +105,7 @@ class Shcsso_Controller_Sso {
         {
             // New user here.
             $user_id = wp_insert_user(array(
-                'user_pass'     => $password,
+                'user_pass'     => $this->random(),
                 'user_email'    => $email,
                 'user_login'    => $username,
             ));
@@ -130,6 +127,67 @@ class Shcsso_Controller_Sso {
         header('Location: ' . $redirect);
 
         die;
+    }
+
+    public function random($type = NULL, $length = 8)
+    {
+        if ($type === NULL)
+        {
+            // Default is to generate an alphanumeric string
+            $type = 'alnum';
+        }
+
+        switch ($type)
+        {
+            case 'alnum':
+                $pool = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            break;
+            case 'alpha':
+                $pool = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            break;
+            case 'hexdec':
+                $pool = '0123456789abcdef';
+            break;
+            case 'numeric':
+                $pool = '0123456789';
+            break;
+            case 'nozero':
+                $pool = '123456789';
+            break;
+            case 'distinct':
+                $pool = '2345679ACDEFHJKLMNPRSTUVWXYZ';
+            break;
+        }
+
+        // Split the pool into an array of characters
+        $pool = str_split($pool, 1);
+
+        // Largest pool key
+        $max = count($pool) - 1;
+
+        $str = '';
+        for ($i = 0; $i < $length; $i++)
+        {
+            // Select a random character from the pool and add it to the string
+            $str .= $pool[mt_rand(0, $max)];
+        }
+
+        // Make sure alnum strings contain at least one letter and one digit
+        if ($type === 'alnum' AND $length > 1)
+        {
+            if (ctype_alpha($str))
+            {
+                // Add a random digit
+                $str[mt_rand(0, $length - 1)] = chr(mt_rand(48, 57));
+            }
+            elseif (ctype_digit($str))
+            {
+                // Add a random letter
+                $str[mt_rand(0, $length - 1)] = chr(mt_rand(65, 90));
+            }
+        }
+
+        return $str;
     }
 
 }
