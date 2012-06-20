@@ -108,6 +108,7 @@ class Shcsso_Controller_Sso {
                 'user_pass'     => $this->random(),
                 'user_email'    => $email,
                 'user_login'    => $username,
+                'user_role'     => $this->settings['role'],
             ));
 
             if ( ! is_wp_error($user_id))
