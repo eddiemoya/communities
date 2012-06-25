@@ -24,6 +24,8 @@
                 Throw new Exception('You need to pass an object ID!');
             }
 
+            $this->_getUserAction($userId, $action, $objId, $objType);
+
             $result = $this->_addPostAction($objId, $objType, $action, $objSubtype);
             if(isset($result) && $result > 0) {
                 $args = array(
@@ -60,28 +62,7 @@
             }
         }
 
-//        public function getUserActions($object_type, $object_type_id_key_name, $user_id=1, $user_action_id=null, $action_type=null, $object_id=null, $object_subtype=null, $page=1, $limit=10) {
-        public function getUserActions($asdf, $qwer) {
-            $asdf['join'] .= '
-                            JOIN
-                                wp_user_actions ua
-                            JOIN
-                                wp_post_actions pa
-                                    ON
-                                        ua.object_id=pa.post_action_id';
-
-//            $asdf['where'] .= ' AND pa.action_type="upvote"';
-            $asdf['fields'] .= ', ua.*, pa.*';
-//            $asdf['distinct'] = 'DISTINCT(wp_posts.ID)';
-
-            return $asdf;
-
-            global $ua_wp_query;
-
-            wp_reset_query();
-
-            $ua_wp_query = new WP_Query('numpost='.$limit.'&paged='.$page);
-
+        public function getUserActions($object_id, $user_id, $page=1, $limit=10) {
             if(
                 ((isset($objId) && is_int($objId) && $objId > 0 ) && (!isset($objType) || is_null($objType) || $objType == ''))
                 ||
@@ -107,22 +88,20 @@
             $argCount = count($args);
 
             $query = 'SELECT
-                            ua.*, pa.*
+                            ua.*
                         FROM
                             '.$this->_wpdb->prefix.'user_actions ua
-                        JOIN
-                            '.$this->_wpdb->prefix.'post_actions pa
-                                ON
-                                    ua.object_id=pa.post_action_id
                         WHERE ';
 
             foreach($args as $key=>$arg) {
                 if(!is_null($arg) && !empty($arg)) {
                     $arg = is_string($arg) ? '"'.$arg.'"' : $arg;
 
-                    $tableAlias = ($key == 'user_id') ? 'ua' : 'pa';
-
-                    $query .= ($i < ($argCount - 1)) ? $tableAlias.'.'.$key.'='.$arg.' AND ' : $tableAlias.'.'.$key.'='.$arg;
+                    if(is_array($arg)) {
+                        $query .= ($i < ($argCount - 1)) ? $key.' IN ('.implode(',', $arg).') AND ' : $key.' IN ('.implode(',', $arg).')';
+                    } else {
+                        $query .= ($i < ($argCount - 1)) ? $key.'='.$arg.' AND ' : $key.'='.$arg;
+                    }
 
                     $i++;
                 }
@@ -130,39 +109,14 @@
 
             $query .= ' LIMIT '.$startLimit.','.$limit;
 
-            $results = $this->_wpdb->get_results($query);
-
-            if($object_type == 'posts') {
-                foreach($results as $key=>$result) {
-                    foreach($wp_query->posts as $post) {
-                        if($post->ID == $result->object_id) {
-                            echo 'mathec<br/>';
-                            $post->actions[] = $result;
-                        }
-                    }
-                }
-            } elseif($object_type == 'term') {
-                $terms = get_terms($object_subtype);
-                foreach($results as $key=>$result) {
-                    foreach($terms as $term) {
-                        if($term->term_id == $result->object_id) {
-                            $term->actions[] = $result;
-                        }
-                    }
-                }
-
-                return $terms;
-            }
+            return $this->_wpdb->get_results($query);
         }
 
-        public function getPostAction($object_type, $object_id, $post_action_id=null, $object_sub_type=null, $action_type=null, $limit=10, $page=1) {
-            global $wp_query;
-
-            $wp_query = new WP_Query('numpost='.$limit.'&paged='.$page);
-
+        public function getPostAction($object_type, $object_id, $object_sub_type=null, $post_action_id=null, $action_type=null, $limit=10, $page=1, $limited=true) {
             $args = get_defined_vars();
 
             unset($args['limit']);
+            unset($args['limited']);
             unset($args['object_type_id_key_name']);
             unset($args['page']);
             unset($args['wp_query']);
@@ -183,13 +137,17 @@
                 if(!is_null($arg) && !empty($arg)) {
                     $arg = is_string($arg) ? '"'.$arg.'"' : $arg;
 
-                    $query .= ($i < ($argCount - 1)) ? $key.'='.$arg.' AND ' : $key.'='.$arg;
+                    if(is_array($arg)) {
+                        $query .= ($i < ($argCount - 1)) ? $key.' IN ('.implode(',', $arg).') AND ' : $key.' IN ('.implode(',', $arg).')';
+                    } else {
+                        $query .= ($i < ($argCount - 1)) ? $key.'='.$arg.' AND ' : $key.'='.$arg;
+                    }
 
                     $i++;
                 }
             }
 
-            $query .= ' LIMIT '.$startLimit.','.$limit;
+            $query .= $limited === true ? ' LIMIT '.$startLimit.','.$limit : '';
 
             return $this->_wpdb->get_results($query);
         }
@@ -230,6 +188,39 @@
             $formats = $this->_buildFormats($args);
 
             return $this->_wpdb->update($this->_wpdb->prefix.'post_actions', $args, array('post_action_id' => $actionId), $formats, array('%d'));
+        }
+
+        private function _getUserAction($user_action_id, $action_type, $object_id, $object_type) {
+            $args = get_defined_vars();
+
+            $query = 'SELECT
+                            ua.*, pa.*
+                        FROM
+                            '.$this->_wpdb->prefix.'user_actions ua
+                        JOIN
+                            '.$this->_wpdb->prefix.'post_actions pa
+                                ON
+                                    ua.object_id=pa.post_action_id
+                        WHERE ';
+
+            $args = $this->_unsetNulls($args);
+
+            foreach($args as $key=>$arg) {
+                if(!is_null($arg) && !empty($arg)) {
+                    $arg = is_string($arg) ? '"'.$arg.'"' : $arg;
+
+                    $tableAlias = ($key == 'user_id') ? 'ua' : 'pa';
+
+                    $query .= ($i < ($argCount - 1)) ? $tableAlias.'.'.$key.'='.$arg.' AND ' : $tableAlias.'.'.$key.'='.$arg;
+
+                    $i++;
+                }
+            }
+
+            echo $query;
+            exit;
+
+            return $this->_wpdb->get_results($query);
         }
 
         private function _unsetNulls($args) {
