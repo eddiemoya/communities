@@ -10,4 +10,4 @@ return array(
     'qa'            => array(
         'endpoint'  => 'http://151.149.119.44:8180/universalservices/v3/',
     ),
-)
+);

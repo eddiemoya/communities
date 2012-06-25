@@ -23,7 +23,7 @@ class Shcsso_Service_Profile {
 
         if (isset($config[$environment]))
         {
-            foreach ($config[$environment]) as $key => $value)
+            foreach ($config[$environment] as $key => $value)
             {
                 $this->$key($value);
             }
