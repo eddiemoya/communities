@@ -2,7 +2,7 @@ set(:user) { "sfrohm" }
 
 set(:domain) { "uxdev" }
 set(:application) { "uxwordpress" }
-set(:repository) { "git@git301p.prod.ch3.s.com:communities.git" }
+set(:repository) { "ssh://git@uxdev/home/git/repos/communities.git" }
 
 ##### APPLICATION #####
 role :web, "#{domain}"  # Your HTTP server, Apache/etc
