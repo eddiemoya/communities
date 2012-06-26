@@ -270,7 +270,7 @@ class Shcsso_Service_Auth {
 
         if (isset($error))
         {
-            throw new \Exception('Error fetching remote '.$url.' [ status '.$code.' ] '.$error);
+            throw new Exception('Error fetching remote '.$url.' [ status '.$code.' ] '.$error);
         }
 
         return $response;
@@ -300,11 +300,11 @@ class Shcsso_Service_Auth {
                 $error = Shcsso_Plugin::config('errors');
                 $error = $error[$_POST['errorCode']];
                 $this->error($error);
-                throw new \Exception('Failed to validate ticket ["'.$ticket.'"] with the error ["'.$error.'"]');
+                throw new Exception('Failed to validate ticket ["'.$ticket.'"] with the error ["'.$error.'"]');
             }
         }
         else {
-            throw new \Exception('Invalid or no response given for SSO validate request. ['.$error.']');
+            throw new Exception('Invalid or no response given for SSO validate request. ['.$error.']');
         }
     }
 
