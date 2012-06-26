@@ -1,22 +1,33 @@
-set :application, "set your application name here"
-set :repository,  "set your repository location here"
+require 'capistrano/ext/multistage'
+load 'deploy'
 
-set :scm, :subversion
-# Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
+##### SOURCE CONTROL #####
+set :scm, :git
 
-role :web, "your web-server here"                          # Your HTTP server, Apache/etc
-role :app, "your app-server here"                          # This may be the same as your `Web` server
-role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
-role :db,  "your slave db-server here"
+##### DEPLOYMENT #####
+set :deploy_via, :remote_cache
+set :use_sudo, false
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
+namespace :deploy do
 
-# If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+  desc "A macro-task that updates the code and fixes the symlink."
+  task :default do
+    transaction do
+      update_code
+      symlink
+    end
+  end
+
+  task :update_code, :except => { :no_release => true } do
+    on_rollback { run "rm -rf #{release_path}; true" }
+    strategy.deploy!
+  end
+
+  task :after_deploy do
+    cleanup
+  end
+
+  task :after_symlink do
+    move_wp_content
+  end
+end
