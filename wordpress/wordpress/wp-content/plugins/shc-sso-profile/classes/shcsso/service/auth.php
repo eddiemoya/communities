@@ -28,7 +28,7 @@ class Shcsso_Service_Auth {
 
         if (isset($config[$environment]))
         {
-            foreach ($config[$environment]) as $key => $value)
+            foreach ($config[$environment] as $key => $value)
             {
                 $this->$key($value);
             }
@@ -177,7 +177,7 @@ class Shcsso_Service_Auth {
         $this->query(array(
             'loginId'       => $username,
             'logonPassword' => $password,
-            'service'       => $this->callback() . '?password=' . urlencode($password),
+            'service'       => $this->callback(),
             'renew'         => 'true',
             'sourceSiteid'  => $this->site_id(),
         ))->action('shcLogin');
@@ -293,11 +293,12 @@ class Shcsso_Service_Auth {
             $xml = new \SimpleXmlElement($xml);
             $user = $xml->children('http://www.yale.edu/tp/cas');
 
-            if (isset($user->authenticationSuccess) AND ! isset($_POST['errorCode'])) {
+            if (isset($user->authenticationSuccess) AND (! isset($_POST['errorCode']) OR empty($_POST['errorCode']))) {
                 return $user;
             }
             else {
-                $error = Shcsso_Plugin::config('errors')[$_POST['errorCode']];
+                $error = Shcsso_Plugin::config('errors');
+                $error = $error[$_POST['errorCode']];
                 $this->error($error);
                 throw new \Exception('Failed to validate ticket ["'.$ticket.'"] with the error ["'.$error.'"]');
             }

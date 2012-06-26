@@ -12,10 +12,6 @@ class Shcsso_Controller_Sso {
         $this->settings = Shcsso_Plugin::option('settings');
     }
 
-    public function check()
-    {
-    }
-
     public function register()
     {
         $auth = new Shcsso_Service_Auth($this->settings['environment']);
