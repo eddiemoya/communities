@@ -1,4 +1,4 @@
-set(:user) { "deployer" }
+set(:user) { "sfrohm" }
 
 set(:domain) { "uxdev" }
 set(:application) { "uxwordpress" }
