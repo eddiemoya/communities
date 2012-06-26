@@ -1,4 +1,4 @@
-set(:user) { "sfrohm" }
+set(:user) { "stateadm" }
 
 set(:domain) { "uxdev" }
 set(:application) { "uxwordpress" }
