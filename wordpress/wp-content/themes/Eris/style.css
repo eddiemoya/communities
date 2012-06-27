@@ -2,7 +2,7 @@
 Theme Name: Eris
 Theme URI: http://ewww.sears.com/communities
 Description: The flexible 960 grid developed for Sears Communites and Kmart communities
-Author: Carl Albrecht-Beuhler and Captain Timothy Steele
+Author: Carl Albrecht-Buehler and Captain Timothy Steele
 Version: 1.0
  */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -160,6 +160,136 @@ legend {
 .span12 {
   width: 100%; }
 
+.span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
+.span6 + .span3 + .span3 + .span6 + [class*="span"],
+.span4 + .span4 + .span4 + .span4 + [class*="span"] {
+  margin-left: 2.127660638297872%; }
+
+.span3 .span3 {
+  width: 18.18182727272727%;
+  margin-left: 9.090913636363636%; }
+
+.span3 .span4 {
+  width: 27.272740909090906%;
+  margin-left: 9.090913636363636%; }
+
+.span3 .span6 {
+  width: 45.454568181818175%;
+  margin-left: 9.090913636363636%; }
+
+.span3 .span8 {
+  width: 63.63639545454545%;
+  margin-left: 9.090913636363636%; }
+
+.span3 .span9 {
+  width: 72.72730909090909%;
+  margin-left: 9.090913636363636%; }
+
+.span3 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
+.span3 .span6 + .span3 + .span3 + .span6 + [class*="span"],
+.span3 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
+  margin-left: 9.090913636363636%; }
+
+.span4 .span3 {
+  width: 20.00001%;
+  margin-left: 6.66667%; }
+
+.span4 .span4 {
+  width: 28.88890333333333%;
+  margin-left: 6.66667%; }
+
+.span4 .span6 {
+  width: 46.66669%;
+  margin-left: 6.66667%; }
+
+.span4 .span8 {
+  width: 64.44447666666666%;
+  margin-left: 6.66667%; }
+
+.span4 .span9 {
+  width: 73.33337%;
+  margin-left: 6.66667%; }
+
+.span4 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
+.span4 .span6 + .span3 + .span3 + .span6 + [class*="span"],
+.span4 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
+  margin-left: 6.66667%; }
+
+.span6 .span3 {
+  width: 21.73914130434782%;
+  margin-left: 4.347828260869565%; }
+
+.span6 .span4 {
+  width: 30.434797826086953%;
+  margin-left: 4.347828260869565%; }
+
+.span6 .span6 {
+  width: 47.82611086956521%;
+  margin-left: 4.347828260869565%; }
+
+.span6 .span8 {
+  width: 65.21742391304346%;
+  margin-left: 4.347828260869565%; }
+
+.span6 .span9 {
+  width: 73.91308043478261%;
+  margin-left: 4.347828260869565%; }
+
+.span6 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
+.span6 .span6 + .span3 + .span3 + .span6 + [class*="span"],
+.span6 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
+  margin-left: 4.347828260869565%; }
+
+.span8 .span3 {
+  width: 22.580656451612903%;
+  margin-left: 3.225808064516129%; }
+
+.span8 .span4 {
+  width: 31.182811290322576%;
+  margin-left: 3.225808064516129%; }
+
+.span8 .span6 {
+  width: 48.387120967741936%;
+  margin-left: 3.225808064516129%; }
+
+.span8 .span8 {
+  width: 65.59143064516128%;
+  margin-left: 3.225808064516129%; }
+
+.span8 .span9 {
+  width: 74.19358548387096%;
+  margin-left: 3.225808064516129%; }
+
+.span8 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
+.span8 .span6 + .span3 + .span3 + .span6 + [class*="span"],
+.span8 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
+  margin-left: 3.225808064516129%; }
+
+.span9 .span3 {
+  width: 22.85715428571428%;
+  margin-left: 2.857144285714286%; }
+
+.span9 .span4 {
+  width: 31.42858714285714%;
+  margin-left: 2.857144285714286%; }
+
+.span9 .span6 {
+  width: 48.571452857142845%;
+  margin-left: 2.857144285714286%; }
+
+.span9 .span8 {
+  width: 65.71431857142856%;
+  margin-left: 2.857144285714286%; }
+
+.span9 .span9 {
+  width: 74.2857514285714%;
+  margin-left: 2.857144285714286%; }
+
+.span9 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
+.span9 .span6 + .span3 + .span3 + .span6 + [class*="span"],
+.span9 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
+  margin-left: 2.857144285714286%; }
+
 [class*="span"]:first-child,
 .span3 + .span3 + .span3 + .span3 + [class*="span"],
 .span3 + .span3 + .span6 + [class*="span"],
@@ -172,263 +302,6 @@ legend {
 .span9 + .span3 + [class*="span"],
 .span12 + [class*="span"] {
   margin-left: 0px; }
-
-.span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
-.span6 + .span3 + .span3 + .span6 + [class*="span"],
-.span4 + .span4 + .span4 + .span4 + [class*="span"] {
-  margin-left: 2.127660638297872%; }
-
-.span1 {
-  width: 6.382978723404255%; }
-
-.span2 {
-  width: 14.893617127659574%; }
-
-.span3 {
-  width: 23.404255531914895%; }
-
-.span4 {
-  width: 31.914893936170213%; }
-
-.span5 {
-  width: 40.42553234042553%; }
-
-.span6 {
-  width: 48.93617074468085%; }
-
-.span7 {
-  width: 57.446809148936175%; }
-
-.span8 {
-  width: 65.95744755319149%; }
-
-.span9 {
-  width: 74.4680859574468%; }
-
-.span10 {
-  width: 82.97872436170213%; }
-
-.span11 {
-  width: 91.48936276595745%; }
-
-.span12 {
-  width: 100.00000117021277%; }
-
-.span12 .span3 .span3, .span3 .span3 {
-  width: 18.18182727272727%;
-  margin-left: 9.090913636363636%; }
-  .span12 .span3 .span3:first-child, .span3 .span3:first-child {
-    margin-left: 0; }
-
-.span12 .span3 .span4, .span3 .span4 {
-  width: 27.272740909090906%;
-  margin-left: 9.090913636363636%; }
-  .span12 .span3 .span4:first-child, .span3 .span4:first-child {
-    margin-left: 0; }
-
-.span12 .span3 .span6, .span3 .span6 {
-  width: 45.454568181818175%;
-  margin-left: 9.090913636363636%; }
-  .span12 .span3 .span6:first-child, .span3 .span6:first-child {
-    margin-left: 0; }
-
-.span12 .span3 .span8, .span3 .span8 {
-  width: 63.63639545454545%;
-  margin-left: 9.090913636363636%; }
-  .span12 .span3 .span8:first-child, .span3 .span8:first-child {
-    margin-left: 0; }
-
-.span12 .span3 .span9, .span3 .span9 {
-  width: 72.72730909090909%;
-  margin-left: 9.090913636363636%; }
-  .span12 .span3 .span9:first-child, .span3 .span9:first-child {
-    margin-left: 0; }
-
-.span12 .span3 .span12, .span3 .span12 {
-  width: 100.00004999999999%;
-  margin-left: 9.090913636363636%; }
-  .span12 .span3 .span12:first-child, .span3 .span12:first-child {
-    margin-left: 0; }
-
-.span12 .span4 .span3, .span4 .span3 {
-  width: 20.00001%;
-  margin-left: 6.66667%; }
-  .span12 .span4 .span3:first-child, .span4 .span3:first-child {
-    margin-left: 0; }
-
-.span12 .span4 .span4, .span4 .span4 {
-  width: 28.88890333333333%;
-  margin-left: 6.66667%; }
-  .span12 .span4 .span4:first-child, .span4 .span4:first-child {
-    margin-left: 0; }
-
-.span12 .span4 .span6, .span4 .span6 {
-  width: 46.66669%;
-  margin-left: 6.66667%; }
-  .span12 .span4 .span6:first-child, .span4 .span6:first-child {
-    margin-left: 0; }
-
-.span12 .span4 .span8, .span4 .span8 {
-  width: 64.44447666666666%;
-  margin-left: 6.66667%; }
-  .span12 .span4 .span8:first-child, .span4 .span8:first-child {
-    margin-left: 0; }
-
-.span12 .span4 .span9, .span4 .span9 {
-  width: 73.33337%;
-  margin-left: 6.66667%; }
-  .span12 .span4 .span9:first-child, .span4 .span9:first-child {
-    margin-left: 0; }
-
-.span12 .span4 .span12, .span4 .span12 {
-  width: 100.00005%;
-  margin-left: 6.66667%; }
-  .span12 .span4 .span12:first-child, .span4 .span12:first-child {
-    margin-left: 0; }
-
-.span12 .span6 .span3, .span6 .span3 {
-  width: 21.73914130434782%;
-  margin-left: 4.347828260869565%; }
-  .span12 .span6 .span3:first-child, .span6 .span3:first-child {
-    margin-left: 0; }
-
-.span12 .span6 .span4, .span6 .span4 {
-  width: 30.434797826086953%;
-  margin-left: 4.347828260869565%; }
-  .span12 .span6 .span4:first-child, .span6 .span4:first-child {
-    margin-left: 0; }
-
-.span12 .span6 .span6, .span6 .span6 {
-  width: 47.82611086956521%;
-  margin-left: 4.347828260869565%; }
-  .span12 .span6 .span6:first-child, .span6 .span6:first-child {
-    margin-left: 0; }
-
-.span12 .span6 .span8, .span6 .span8 {
-  width: 65.21742391304346%;
-  margin-left: 4.347828260869565%; }
-  .span12 .span6 .span8:first-child, .span6 .span8:first-child {
-    margin-left: 0; }
-
-.span12 .span6 .span9, .span6 .span9 {
-  width: 73.91308043478261%;
-  margin-left: 4.347828260869565%; }
-  .span12 .span6 .span9:first-child, .span6 .span9:first-child {
-    margin-left: 0; }
-
-.span12 .span6 .span12, .span6 .span12 {
-  width: 100.00004999999999%;
-  margin-left: 4.347828260869565%; }
-  .span12 .span6 .span12:first-child, .span6 .span12:first-child {
-    margin-left: 0; }
-
-.span12 .span8 .span3, .span8 .span3 {
-  width: 22.580656451612903%;
-  margin-left: 3.225808064516129%; }
-  .span12 .span8 .span3:first-child, .span8 .span3:first-child {
-    margin-left: 0; }
-
-.span12 .span8 .span4, .span8 .span4 {
-  width: 31.182811290322576%;
-  margin-left: 3.225808064516129%; }
-  .span12 .span8 .span4:first-child, .span8 .span4:first-child {
-    margin-left: 0; }
-
-.span12 .span8 .span6, .span8 .span6 {
-  width: 48.387120967741936%;
-  margin-left: 3.225808064516129%; }
-  .span12 .span8 .span6:first-child, .span8 .span6:first-child {
-    margin-left: 0; }
-
-.span12 .span8 .span8, .span8 .span8 {
-  width: 65.59143064516128%;
-  margin-left: 3.225808064516129%; }
-  .span12 .span8 .span8:first-child, .span8 .span8:first-child {
-    margin-left: 0; }
-
-.span12 .span8 .span9, .span8 .span9 {
-  width: 74.19358548387096%;
-  margin-left: 3.225808064516129%; }
-  .span12 .span8 .span9:first-child, .span8 .span9:first-child {
-    margin-left: 0; }
-
-.span12 .span8 .span12, .span8 .span12 {
-  width: 100.00004999999999%;
-  margin-left: 3.225808064516129%; }
-  .span12 .span8 .span12:first-child, .span8 .span12:first-child {
-    margin-left: 0; }
-
-.span12 .span9 .span3, .span9 .span3 {
-  width: 22.85715428571428%;
-  margin-left: 2.857144285714286%; }
-  .span12 .span9 .span3:first-child, .span9 .span3:first-child {
-    margin-left: 0; }
-
-.span12 .span9 .span4, .span9 .span4 {
-  width: 31.42858714285714%;
-  margin-left: 2.857144285714286%; }
-  .span12 .span9 .span4:first-child, .span9 .span4:first-child {
-    margin-left: 0; }
-
-.span12 .span9 .span6, .span9 .span6 {
-  width: 48.571452857142845%;
-  margin-left: 2.857144285714286%; }
-  .span12 .span9 .span6:first-child, .span9 .span6:first-child {
-    margin-left: 0; }
-
-.span12 .span9 .span8, .span9 .span8 {
-  width: 65.71431857142856%;
-  margin-left: 2.857144285714286%; }
-  .span12 .span9 .span8:first-child, .span9 .span8:first-child {
-    margin-left: 0; }
-
-.span12 .span9 .span9, .span9 .span9 {
-  width: 74.2857514285714%;
-  margin-left: 2.857144285714286%; }
-  .span12 .span9 .span9:first-child, .span9 .span9:first-child {
-    margin-left: 0; }
-
-.span12 .span9 .span12, .span9 .span12 {
-  width: 100.00004999999999%;
-  margin-left: 2.857144285714286%; }
-  .span12 .span9 .span12:first-child, .span9 .span12:first-child {
-    margin-left: 0; }
-
-.span12 .span12 .span3, .span12 .span3 {
-  width: 23.404267021276592%;
-  margin-left: 2.127660638297872%; }
-  .span12 .span12 .span3:first-child, .span12 .span3:first-child {
-    margin-left: 0; }
-
-.span12 .span12 .span4, .span12 .span4 {
-  width: 31.91490957446808%;
-  margin-left: 2.127660638297872%; }
-  .span12 .span12 .span4:first-child, .span12 .span4:first-child {
-    margin-left: 0; }
-
-.span12 .span12 .span6, .span12 .span6 {
-  width: 48.93619468085106%;
-  margin-left: 2.127660638297872%; }
-  .span12 .span12 .span6:first-child, .span12 .span6:first-child {
-    margin-left: 0; }
-
-.span12 .span12 .span8, .span12 .span8 {
-  width: 65.95747978723404%;
-  margin-left: 2.127660638297872%; }
-  .span12 .span12 .span8:first-child, .span12 .span8:first-child {
-    margin-left: 0; }
-
-.span12 .span12 .span9, .span12 .span9 {
-  width: 74.46812234042552%;
-  margin-left: 2.127660638297872%; }
-  .span12 .span12 .span9:first-child, .span12 .span9:first-child {
-    margin-left: 0; }
-
-.span12 .span12 .span12, .span12 .span12 {
-  width: 100.00004999999999%;
-  margin-left: 2.127660638297872%; }
-  .span12 .span12 .span12:first-child, .span12 .span12:first-child {
-    margin-left: 0; }
 
 .bullets {
   margin: 1em 0;
