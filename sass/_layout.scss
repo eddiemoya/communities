@@ -1,0 +1,84 @@
+.clearfix:before, .clearfix:after { 
+  content: ""; 
+  display: table; 
+}
+
+.clearfix:after { 
+  clear: both; 
+}
+
+.clearfix { 
+  *zoom: 1; 
+}
+
+.body {
+  width:#{$grid-width}px;
+  margin:0px auto;
+}
+
+// McGriddles Stuff
+
+[class*="span"] {
+  display:block;
+  float:left;
+  width:100%;
+  margin-left:percentage( $margin-width / $grid-width );
+}
+
+@for $i from 1 through ( $column-count ) {
+  .span#{$i} {
+    $width: floor( grid-width( $i, $margin-width ) );
+    $span-widths: append($span-widths, $width);
+    width: percentage( $width/$grid-width );
+  }
+}
+
+[class*="span"]:first-child,
+.span3 + .span3 + .span3 + .span3 + [class*="span"],
+.span3 + .span3 + .span6 + [class*="span"],
+.span3 + .span9 + [class*="span"],
+.span4 + .span4 + .span4 + [class*="span"],
+.span4 + .span8 + [class*="span"],
+.span6 + .span3 + .span3 + [class*="span"],
+.span6 + .span6 + [class*="span"],
+.span8 + .span4 + [class*="span"],
+.span9 + .span3 + [class*="span"],
+.span12 + [class*="span"] {
+  margin-left:0px;
+}
+
+.span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
+.span6 + .span3 + .span3 + .span6 + [class*="span"],
+.span4 + .span4 + .span4 + .span4 + [class*="span"] {
+  margin-left: percentage( $margin-width / $grid-width );
+}
+
+@for $i from 1 through ( $column-count) {
+  .span#{$i} {
+    width: percentage(((60 * $i) + (($i - 1) * 20.000001))/$grid-width);
+  }
+}
+
+@for $c from 1 through length($column-bases) {
+  $container: nth($column-bases, $c);
+    @for $s from 1 through length($column-bases) {
+      $span: nth($column-bases, $s);
+      $selector: ".span#{$container} .span#{$span}";
+      .span12 #{$selector}, #{$selector} {
+        // calculate the margin
+        $margin: percentage( $margin-width / nth($span-widths, $container) );
+        $proportion:      $span / $column-count;
+        $proportionate:   $proportion * $container;
+      
+        width: grid-width( $proportionate, $margin );
+        margin-left: $margin;
+        &:first-child {
+          margin-left: 0;
+        }
+    }
+  }
+}
+
+
+.content-display {}
+.dropzone {}
