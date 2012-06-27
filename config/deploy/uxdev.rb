@@ -1,7 +1,7 @@
-set(:user) { "deployer" }
+set(:user) { "stateadm" }
 
 set(:domain) { "uxdev" }
-set(:application) { "uxwordpress" }
+set(:application) { "communities" }
 set(:repository) { "ssh://git@uxdev/home/git/repos/communities.git" }
 
 ##### APPLICATION #####
@@ -14,7 +14,7 @@ set (:deploy_to) { "/usr/share/apps/communities" }
 set (:app_loc) { "/appl/communities/www/wp-content" }
 
 set :move_wp_content do
-  run "rm -rf #{app_loc}/plugins/* && #{app_loc}/themes/*"
+  run "rm -rf #{app_loc}/plugins/* && rm -rf #{app_loc}/themes/*"
   run "cp -R #{deploy_to}/current/wordpress/wp-content/plugins/* #{app_loc}/plugins"
   run "cp -R #{deploy_to}/current/wordpress/wp-content/themes/* #{app_loc}/themes"
 end
