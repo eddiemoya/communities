@@ -1,4 +1,6 @@
+.DS_Store
 etc/wordpress/develop.php
 etc/nginx/wordpress/develop.conf
 wordpress/wordpress/wp-config.php
 wordpress/wp-content/themes/.sass-cache/
+wordpress/wp-config.php
