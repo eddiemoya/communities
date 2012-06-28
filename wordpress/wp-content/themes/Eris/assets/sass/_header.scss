@@ -1,0 +1,4 @@
+#headernav {
+  @include background-image(linear-gradient(#fff, #aaa));
+  @include border-radius(3px);
+}
