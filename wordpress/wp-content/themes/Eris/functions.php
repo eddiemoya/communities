@@ -97,8 +97,8 @@ function enqueue_scripts() {
             'absurl'            => admin_url( 'admin-ajax.php'),
             'template_dir_uri'  => get_template_directory_uri(),
             'home_url'          => get_home_url(),
-            'cart_quantity'     => get_cart_object()->item_count,
-            'cart_link'         => cart_checkout_link(false),
+            #'cart_quantity'     => get_cart_object()->item_count,
+            #'cart_link'         => cart_checkout_link(false),
          );
         
         //This condition is just an example, here we only needed to track omniture on category archives.
