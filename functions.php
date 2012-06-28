@@ -358,7 +358,7 @@ function loop($template = 'post'){
 
             the_post();
 
-            get_template_part('templates/'.$template);
+            get_template_part('parts/'.$template);
         }    
     }
 

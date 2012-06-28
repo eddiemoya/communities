@@ -4,8 +4,8 @@
  * @subpackage White Label
  */
 
-get_template_part('templates/header.php');
+get_template_part('parts/header.php');
 
 loop();
 
-get_template_part('templates/footer.php');
+get_template_part('parts/footer.php');

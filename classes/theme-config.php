@@ -10,7 +10,7 @@
  *
  * @author emoya1
  */
-class theme-config {
+class theme_config {
 //put your code here
 }
 ?>
