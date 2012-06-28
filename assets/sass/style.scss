@@ -2,12 +2,14 @@
 Theme Name: Eris
 Theme URI: http://ewww.sears.com/communities
 Description: The flexible 960 grid developed for Sears Communites and Kmart communities
-Author: Carl Albrecht-Buehler and Captain Timothy Steele
+Author: Carl Albrecht-Buehler and Captain Timothy Steele (A.K.A Timmahh!!)
 Version: 1.0
  */
+@import 'compass/css3';
 @import 'config';
 @import 'functions';
 @import 'reset';
 @import 'layout';
 @import 'presentation';
+@import 'header';
 @import 'print';

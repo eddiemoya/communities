@@ -1,3 +1,27 @@
+// SITE-WIDE TAG STYLES
+html, body {
+  height: 100%;
+  text-align: left;
+  background: $lightest-color;
+  margin: 0;
+  padding: 0;
+  font-family: $basefont;
+  line-height: 1.4;
+  color: $bodycopy-color;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:visited {
+    color: $link-color;
+  }
+}
+// END SITE-WIDE TAG STYLES
+
 .bullets {
   margin: 1em 0; 
   padding: 0 0 0 40px; 
@@ -11,10 +35,7 @@ ul.bullets {
   list-style-type:disc;
 }
 
-/*
- * AUTHORIZATION FORM
- */
-
+// AUTHORIZATION FORM
 .authorization-form {
   border:solid 1px black;
   font: .8125em/1.25em Arial,Helvetica, san-serif;
