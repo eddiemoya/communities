@@ -4,11 +4,11 @@
  * @subpackage White Label
  */
 
-get_header();
+get_template_part('templates/header.php');
 
-loop();
+get_template_part('templates/post.php');
 
 if (is_single()) 
     { comments_template('templates/comments.php'); }
 
-get_footer();
+get_template_part('templates/footer.php');
