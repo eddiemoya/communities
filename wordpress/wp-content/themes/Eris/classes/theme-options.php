@@ -5,6 +5,8 @@
  * 
  * @package Bolts
  * @since 1.0
+ * 
+ * @todo Clean this the fuck up - would be great to have this be more abstract, so that new object would create whole knew options pages.
  */
 class Theme_Options {
 	
