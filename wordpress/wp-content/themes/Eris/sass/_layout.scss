@@ -17,22 +17,43 @@
 }
 
 // McGriddles Stuff
-
 [class*="span"] {
   display:block;
   float:left;
   width:100%;
-  margin-left:percentage( $margin-width / $grid-width );
+  margin-left:$margin-width-pct;
 }
 
+// set up the basic columns
 @for $i from 1 through ( $column-count ) {
+  $width: floor( grid-width( $i, $margin-width ) );
+  $span-widths: append( $span-widths, $width );
   .span#{$i} {
-    $width: floor( grid-width( $i, $margin-width ) );
-    $span-widths: append($span-widths, $width);
-    width: percentage( $width/$grid-width );
+    width: percentage( $width / $grid-width );
   }
 }
 
+// adjust the necessary classes
+@include margin-adjust;
+
+// create specialized rules that adjust widths and
+// margins nested inside the $column-bases columns
+@for $c from 1 through length( $column-bases ) {
+  $container:         nth( $column-bases, $c );
+  $margin:            percentage( $margin-width / nth( $span-widths, $container ) );
+  @for $s from 1 through length( $column-bases ) {
+    $span:            nth( $column-bases, $s );
+    $proportionate:   ( $span / $column-count ) * $container;
+    $selector:        ".span#{$container} .span#{$span}";
+    #{$selector} {
+      width: grid-width( $proportionate, $margin );
+      margin-left: $margin;
+    }
+  }
+  @include margin-adjust( ".span#{$container} ", $margin );
+}
+
+// zero out the leftmost columns' left margin
 [class*="span"]:first-child,
 .span3 + .span3 + .span3 + .span3 + [class*="span"],
 .span3 + .span3 + .span6 + [class*="span"],
@@ -46,39 +67,6 @@
 .span12 + [class*="span"] {
   margin-left:0px;
 }
-
-.span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
-.span6 + .span3 + .span3 + .span6 + [class*="span"],
-.span4 + .span4 + .span4 + .span4 + [class*="span"] {
-  margin-left: percentage( $margin-width / $grid-width );
-}
-
-@for $i from 1 through ( $column-count) {
-  .span#{$i} {
-    width: percentage(((60 * $i) + (($i - 1) * 20.000001))/$grid-width);
-  }
-}
-
-@for $c from 1 through length($column-bases) {
-  $container: nth($column-bases, $c);
-    @for $s from 1 through length($column-bases) {
-      $span: nth($column-bases, $s);
-      $selector: ".span#{$container} .span#{$span}";
-      .span12 #{$selector}, #{$selector} {
-        // calculate the margin
-        $margin: percentage( $margin-width / nth($span-widths, $container) );
-        $proportion:      $span / $column-count;
-        $proportionate:   $proportion * $container;
-      
-        width: grid-width( $proportionate, $margin );
-        margin-left: $margin;
-        &:first-child {
-          margin-left: 0;
-        }
-    }
-  }
-}
-
 
 .content-display {}
 .dropzone {}

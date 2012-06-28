@@ -1,3 +1,5 @@
 etc/wordpress/develop.php
 etc/nginx/wordpress/develop.conf
 wordpress/wp-config.php
+wordpress/wordpress/wp-config.php
+wordpress/wp-content/themes/.sass-cache/

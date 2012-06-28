@@ -1,3 +1,13 @@
+// functions
 @function grid-width( $number-columns, $margin-width ) {
   @return ( $number-columns * ($margin-width * 3) ) + ( ($number-columns - 1) * $margin-width );
+}
+
+// mixins
+@mixin margin-adjust( $class: "", $margin: $margin-width-pct ) {
+  #{$class}.span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
+  #{$class}.span6 + .span3 + .span3 + .span6 + [class*="span"],
+  #{$class}.span4 + .span4 + .span4 + .span4 + [class*="span"] {
+    margin-left: $margin;
+  }
 }
