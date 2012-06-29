@@ -110,7 +110,7 @@ function enqueue_scripts() {
         wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', array(), '1.7.1');
         wp_enqueue_script('jquery');    
         
-        wp_register_script('shcproducts', get_template_directory_uri() . '/assets/scripts/shcproducts.js', array('jquery'), '1.0');
+        wp_register_script('shcproducts', get_template_directory_uri() . '/assets/js/shcproducts.js', array('jquery'), '1.0');
         wp_enqueue_script('shcproducts');
         wp_localize_script('shcproducts', 'ajaxdata', $data);
         
