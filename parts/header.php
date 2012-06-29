@@ -53,6 +53,16 @@
                 <?php wp_nav_menu( array( 'theme_location' => 'main-navigation', 'menu_id' => 'main-nav') ); ?>
             </div>
             
+            <nav id="headernav">
+                <ul>
+                <li style="float: right"><a href="#">Customer Care</a></li>
+                  <li><a href="#">Categories</a></li>
+                  <li><a href="#">Q&amp;A's</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">Buying Guides</a></li>
+                </ul>
+            </nav>
+            
             <!-- #page -->
             <div id="page">
                 

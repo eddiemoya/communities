@@ -1,24 +1,24 @@
 /*
-Syntax error: File to import not found or unreadable: compass/css3.
+Syntax error: File to import not found or unreadable: navigation.
               Load paths:
                 /Library/WebServer/Documents/communities/wordpress/wp-content/themes
+                /Library/WebServer/Documents/communities/wordpress/wp-content/themes/sass
+                /Users/tsteel5/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.12.1/frameworks/blueprint/stylesheets
+                /Users/tsteel5/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.12.1/frameworks/compass/stylesheets
+                Compass::SpriteImporter
                 /Library/WebServer/Documents/communities/wordpress/wp-content/themes/Eris/assets/sass
-        on line 8 of Eris/assets/sass/style.scss
+        on line 17 of Eris/assets/sass/style.scss
 
-3: Theme URI: http://ewww.sears.com/communities
-4: Description: The flexible 960 grid developed for Sears Communites and Kmart communities
-5: Author: Carl Albrecht-Buehler and Captain Timothy Steele (A.K.A Timmahh!!)
-6: Version: 1.0
-7:  */
-8: @import 'compass/css3';
-9: @import 'config';
-10: @import 'functions';
-11: @import 'reset';
-12: @import 'layout';
-13: @import 'presentation';
+12: @import 'functions';
+13: @import 'reset';
+14: @import 'layout';
+15: @import 'presentation';
+16: @import 'header';
+17: @import 'navigation';
+18: @import 'print';
 
 Backtrace:
-Eris/assets/sass/style.scss:8
+Eris/assets/sass/style.scss:17
 /Users/tsteel5/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.16/lib/sass/tree/import_node.rb:64:in `rescue in import'
 /Users/tsteel5/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.16/lib/sass/tree/import_node.rb:42:in `import'
 /Users/tsteel5/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.16/lib/sass/tree/import_node.rb:25:in `imported_file'
@@ -66,4 +66,4 @@ Eris/assets/sass/style.scss:8
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: compass/css3.\A               Load paths:\A                 /Library/WebServer/Documents/communities/wordpress/wp-content/themes\A                 /Library/WebServer/Documents/communities/wordpress/wp-content/themes/Eris/assets/sass\A         on line 8 of Eris/assets/sass/style.scss\A \A 3: Theme URI: http://ewww.sears.com/communities\A 4: Description: The flexible 960 grid developed for Sears Communites and Kmart communities\A 5: Author: Carl Albrecht-Buehler and Captain Timothy Steele (A.K.A Timmahh!!)\A 6: Version: 1.0\A 7:  */\A 8: @import 'compass/css3';\A 9: @import 'config';\A 10: @import 'functions';\A 11: @import 'reset';\A 12: @import 'layout';\A 13: @import 'presentation';"; }
+  content: "Syntax error: File to import not found or unreadable: navigation.\A               Load paths:\A                 /Library/WebServer/Documents/communities/wordpress/wp-content/themes\A                 /Library/WebServer/Documents/communities/wordpress/wp-content/themes/sass\A                 /Users/tsteel5/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.12.1/frameworks/blueprint/stylesheets\A                 /Users/tsteel5/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.12.1/frameworks/compass/stylesheets\A                 Compass::SpriteImporter\A                 /Library/WebServer/Documents/communities/wordpress/wp-content/themes/Eris/assets/sass\A         on line 17 of Eris/assets/sass/style.scss\A \A 12: @import 'functions';\A 13: @import 'reset';\A 14: @import 'layout';\A 15: @import 'presentation';\A 16: @import 'header';\A 17: @import 'navigation';\A 18: @import 'print';"; }
