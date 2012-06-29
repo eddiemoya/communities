@@ -309,7 +309,7 @@ html, body {
   background: white;
   margin: 0;
   padding: 0;
-  font-family: Helvetica, Arial, Verdana, sans-serif;
+  font-family: Helvetica, Verdana, Arial, sans-serif;
   line-height: 1.4;
   color: #555555; }
 
@@ -368,17 +368,44 @@ ul.bullets {
   text-align: left; }
 
 #headernav {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #aaaaaa));
-  background-image: -webkit-linear-gradient(#ffffff, #aaaaaa);
-  background-image: -moz-linear-gradient(#ffffff, #aaaaaa);
-  background-image: -o-linear-gradient(#ffffff, #aaaaaa);
-  background-image: -ms-linear-gradient(#ffffff, #aaaaaa);
-  background-image: linear-gradient(#ffffff, #aaaaaa);
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  border-radius: 3px; }
+  width: 95%;
+  margin: 0 auto;
+  border: 1px solid #cccccc;
+  border-bottom: 0;
+  font-size: 75%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #e8e7e5));
+  background-image: -webkit-linear-gradient(#ffffff, #e8e7e5);
+  background-image: -moz-linear-gradient(#ffffff, #e8e7e5);
+  background-image: -o-linear-gradient(#ffffff, #e8e7e5);
+  background-image: -ms-linear-gradient(#ffffff, #e8e7e5);
+  background-image: linear-gradient(#ffffff, #e8e7e5);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  *zoom: 1; }
+  #headernav:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    clear: both;
+    overflow: hidden;
+    visibility: hidden; }
+  #headernav li {
+    float: left;
+    border-right: 1px solid #cccccc; }
+    #headernav li a {
+      display: block;
+      border-right: 1px solid white;
+      padding: .5em 30px;
+      font-weight: bold; }
+    #headernav li:first-child {
+      border-left: 1px solid #cccccc;
+      border-right: 0; }
+      #headernav li:first-child a {
+        border-left: 1px solid white;
+        border-right: 0; }
 
 @media print {
   * {
