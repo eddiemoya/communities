@@ -22,23 +22,8 @@
   </head>
 
 	<body <?php body_class(); ?>> 
+		<?php get_template_part('parts/ribbon'); ?>
 		
-		
-		<?php
-			$options = get_option("theme_options");
-		?>
-		<nav id="ribbon">
-			<ul>
-				<li class="ribbon-icon" id="ribbon_shop-your-way"><a href="http://www.shopyourway.com" title="Shop Your Way" rel="external">Shop Your Way</a></li>
-				<!-- IF SEARS -->
-				<li class="ribbon-icon" id="ribbon_kmart"><a href="http://www.kmart.com?intcmp=xsite_Sears" title="Kmart" rel="external">Kmart</a></li>
-				<!-- IF KMART -->
-				<li class="ribbon-icon" id="ribbon_sears"><a href="http://www.sears.com?intcmp=xsite_Kmart" title="Sears" rel="external">Sears</a></li>
-				<li class="ribbon-icon" id="ribbon_shop-your-way-rewards"><a href="http://www.shopyourwayrewards.com" title="Shop Your Way Rewards" rel="external">Shop Your Way Rewards</a></li>
-				<li class="ribbon-icon" id="ribbon_my-gofer"><a href="http://www.mygofer.com?intcmp=xsite_Sears" title="myGofer" rel="external">myGofer</a></li>
-				<li class="ribbon-icon" id="ribbon_craftsman"><a href="http://www.craftsman.com?intcmp=xsite_Sears" title="myGofer" rel="external">myGofer</a></li>
-			</ul>
-		</nav>
         
         <!-- SHC Header from SHC Header-Footer Plugin -->
         <div id="shc_header">
