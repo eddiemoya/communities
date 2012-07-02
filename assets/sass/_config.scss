@@ -1,19 +1,23 @@
 // Image Path
-$img: "/img/";
+$img: "/wp-content/themes/Eris/assets/img/";
 
 // Fonts
 $basefont: Helvetica, Verdana, Arial, sans-serif;
 
 // Colors
-$link-color:        #067bb5;
-$bodycopy-color:    #555555;
-$decorative-color:  #cccccc;
-$lightest-color:    white;
+$link-color:            #067bb5;
+$secondary-link-color:  #666666;
+$bodycopy-color:        #555555;
+$decorative-color:      #cccccc;
+$lightest-color:        white;
+$darkest-color:         black;
+$button-color-1:        #6698cd;
+$button-color-2:        #1c539c;
 
 // Scaffolding
-$grid-width: 940;
-$margin-width: 20;
-$margin-width-pct: percentage( $margin-width / $grid-width );
+$grid-width:        940;
+$margin-width:      20;
+$margin-width-pct:  percentage( $margin-width / $grid-width );
 
 $column-names:  ( 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 );
 $column-count:  length( $column-names );

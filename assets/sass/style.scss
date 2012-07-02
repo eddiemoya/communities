@@ -1,7 +1,7 @@
 /* 
 Theme Name: Eris
 Theme URI: http://ewww.sears.com/communities
-Description: The flexible 960 grid developed for Sears Communites and Kmart communities
+Description: The flexible 960 grid developed for Sears Communites and Kmart Communities sites
 Author: Carl Albrecht-Buehler and Captain Timothy "Heartbreaker Widowmaker" Steele
 Version: 1.0
  */
@@ -15,5 +15,5 @@ Version: 1.0
 @import 'header';
 @import 'layout';
 @import 'presentation';
-//@import 'navigation';
+@import 'navigation';
 @import 'print';
