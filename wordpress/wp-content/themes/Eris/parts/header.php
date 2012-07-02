@@ -51,7 +51,7 @@
             <!-- #page -->
             <div id="page">
                 
-                <?php do_action('content-before'); ?>
+                <?php //do_action('content-before'); ?>
                 
                 <div id="subheader">
                     <?php /* Subheaders */ ?>
