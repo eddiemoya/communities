@@ -8,7 +8,7 @@
 		<li class="ribbon-icon" id="ribbon_kenmore"><a href="http://www.kenmore.com?intcmp=xsite_<?php echo ucfirst(theme_option("brand")); ?>" title="Kenmore" rel="external">Kenmore</a></li>
 		<li class="ribbon-icon" id="ribbon_parts-direct"><a href="http://www.searspartsdirect.com?intcmp=xsite_<?php echo ucfirst(theme_option("brand")); ?>" title="PartsDirect" rel="external">PartsDirect</a></li>
 		<li class="ribbon-icon" id="ribbon_lands-end"><a href="http://www.landsend.com?intcmp=xsite_<?php echo ucfirst(theme_option("brand")); ?>" title="Lands' End" rel="external">Lands&rsquo; End</a></li>
-		<li class="ribbon-icon" id="ribbon_sears-home-services"><a href="http://www.searshomeservices.com?intcmp=xsite_<?php echo ucfirst(theme_option("brand")); ?>" title="Sears Home Services" rel="external">Sears Home Services</a></li>
+		<li class="ribbon-icon" id="ribbon_sears-outlet"><a href="http://www.searshomeservices.com?intcmp=xsite_<?php echo ucfirst(theme_option("brand")); ?>" title="Sears Home Services" rel="external">Sears Home Services</a></li>
 		<li class="ribbon-icon" id="ribbon_see-all"><a href="http://www.<?php echo theme_option("brand"); ?>.com/shc/s/nb_10153_12605_NB_see+it+all?storeId=10153&vName=see+it+all&catalogInd=NB&catalogId=12605&expCheckout=&orderEmail=&langId=" title="See All" rel="external">See All</a></li>
 	</ul>
 </nav>

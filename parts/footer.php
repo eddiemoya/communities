@@ -11,7 +11,7 @@
                     <div class="nav-next"><?php previous_posts_link(__('Newer posts <span class="meta-nav">&raquo;</span>')); ?></div>
                 </div>
                 
-                <?php do_action('content-after'); ?>
+                <?php //do_action('content-after'); ?>
                 <?php get_sidebar(); ?>
             </div><!-- #page -->
             
