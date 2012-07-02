@@ -1,8 +1,8 @@
 /* 
 Theme Name: Eris
 Theme URI: http://ewww.sears.com/communities
-Description: The flexible 960 grid developed for Sears Communites and Kmart Communities Sites
-Author: Carl Albrecht-Buehler and Captain Timothy Steele (A.K.A Timmahh!!)
+Description: The flexible 960 grid developed for Sears Communites and Kmart Communities sites
+Author: Carl Albrecht-Buehler and Captain Timothy "Heartbreaker Widowmaker" Steele
 Version: 1.0
  */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -122,6 +122,78 @@ legend {
   *margin-left: -7px;
   /* Correct alignment IE6/7 */
   white-space: normal;
+}
+
+#ribbon {
+  background-color: #e7e7e7;
+  height: 1.6em;
+  width: 100%;
+}
+#ribbon > ul {
+  padding-top: .1em;
+  text-align: center;
+}
+#ribbon > ul > li {
+  border-left: dotted 1px #666666;
+  display: inline;
+  height: .9375em;
+  padding: 0 .375em 0 .625em;
+}
+#ribbon > ul > li a {
+  display: inline-block;
+  height: 15px;
+  line-height: 16px;
+  text-indent: -999999em;
+}
+#ribbon > ul > li:first-child {
+  border-left: none;
+}
+#ribbon .ribbon-icon a {
+  background: transparent url(assets/img/sprite_ribbon.png) no-repeat;
+}
+#ribbon #ribbon_shop-your-way a {
+  background-position: 0px -30px;
+  width: 59px;
+}
+#ribbon #ribbon_sears a {
+  background-position: 0px 0px;
+  width: 41px;
+}
+#ribbon #ribbon_kmart a {
+  background-position: 0px -15px;
+  width: 44px;
+}
+#ribbon #ribbon_shop-your-way-rewards a {
+  background-position: 0px -45px;
+  width: 67px;
+}
+#ribbon #ribbon_my-gofer a {
+  background-position: 0px -60px;
+  width: 49px;
+}
+#ribbon #ribbon_craftsman a {
+  background-position: 0px -75px;
+  width: 62px;
+}
+#ribbon #ribbon_kenmore a {
+  background-position: 0px -90px;
+  width: 49px;
+}
+#ribbon #ribbon_parts-direct a {
+  background-position: 0px -105px;
+  width: 53px;
+}
+#ribbon #ribbon_lands-end a {
+  background-position: 0px -120px;
+  width: 65px;
+}
+#ribbon #ribbon_sears-outlet a {
+  background-position: 0px -135px;
+  width: 59px;
+}
+#ribbon #ribbon_see-all a {
+  background-position: 0px -150px;
+  width: 32px;
 }
 
 .clearfix:before, .clearfix:after {

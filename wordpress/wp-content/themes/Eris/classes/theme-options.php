@@ -305,16 +305,15 @@ class Theme_Options {
             'desc'    => 'Blog Settings',
             'type'    => 'heading'
         );
-		$this->settings['blog_brand_shop_style'] = array(
+		$this->settings['brand'] = array(
 			'section' => 'general',
 			'title'   => __( 'Blog Brand Shop Style' ),
 			'desc'    => __( 'Select from the available brand shop styles for the <b>blog</b>' ),
 			'type'    => 'radio',
-			'std'     => 'kmf_blog_style',
+			'std'     => 'sears',
 			'choices' => array(
-				'kmf_blog_style' => 'Kmart Fashion',
-				'ss_blog_style' => 'Style Sip',
-                'suwyg_blog_style' => 'SUWYG ',
+				'sears' => 'Sears',
+				'kmart' => 'Kmart'
 			)
 		);
         
@@ -556,5 +555,9 @@ function theme_option( $option ) {
 		return $options[$option];
 	else
 		return false;
+}
+
+function get_sister() {
+	return (theme_option("brand") == "sears")? "kmart":"sears";
 }
 ?>
