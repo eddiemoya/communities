@@ -1,9 +1,8 @@
 .DS_Store
 etc/wordpress/develop.php
 etc/nginx/wordpress/develop.conf
-wordpress/wp-config.php
-wordpress/wordpress/wp-config.php
 wordpress/wp-content/themes/.sass-cache/
 wordpress/wp-content/themes/Eris/.sass-cache/
 wordpress/wp-content/themes/Eris/assets/.sass-cache/
 /nbproject/private/
+wordpress/wp-config.php

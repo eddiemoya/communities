@@ -584,13 +584,27 @@ ul.bullets {
   background-position: right 5px;
 }
 #header_nav li.right_button {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #6698cd), color-stop(100%, #1c539c));
+  background-image: -webkit-linear-gradient(#6698cd, #1c539c);
+  background-image: -moz-linear-gradient(#6698cd, #1c539c);
+  background-image: -o-linear-gradient(#6698cd, #1c539c);
+  background-image: -ms-linear-gradient(#6698cd, #1c539c);
+  background-image: linear-gradient(#6698cd, #1c539c);
+  -webkit-border-radius: 0px 4px 4px 0px;
+  -moz-border-radius: 0px 4px 4px 0px;
+  -ms-border-radius: 0px 4px 4px 0px;
+  -o-border-radius: 0px 4px 4px 0px;
+  border-radius: 0px 4px 4px 0px;
   float: right;
   border-left: 1px solid #cccccc;
   border-right: 0;
 }
 #header_nav li.right_button a {
-  border-left: 1px solid white;
   border-right: 0;
+  color: white;
+}
+#header_nav li.right_button ul li a {
+  color: #666666;
 }
 #header_nav li:hover ul {
   left: 0;
@@ -621,18 +635,18 @@ ul.bullets {
   border-right: 0;
   border-top: 1px solid #cccccc;
   float: none;
-  width: 100%;
+  width: auto;
 }
 #header_nav ul li:first-child {
   border-top: 0;
 }
 #header_nav ul li a {
-  white-space: nowrap;
   border-right: 0;
   color: #666666;
   font-weight: normal;
   text-align: left;
-  padding-left: 1.5em;
+  padding-left: 1em;
+  padding-right: .3em;
 }
 
 @media print {
