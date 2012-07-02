@@ -196,6 +196,67 @@ legend {
     background-position: 0px -150px;
     width: 32px; }
 
+/* line 1, assets/sass/_header.scss */
+#header {
+  margin: 0 auto;
+  padding-top: 1.3125em;
+  width: 960px; }
+  /* line 5, assets/sass/_header.scss */
+  #header #logo {
+    display: block;
+    margin-top: .75em; }
+  /* line 9, assets/sass/_header.scss */
+  #header form {
+    margin-top: .75em;
+    position: relative; }
+  /* line 15, assets/sass/_header.scss */
+  #header aside > ul > li {
+    margin-bottom: .35em; }
+  /* line 18, assets/sass/_header.scss */
+  #header aside ul li {
+    text-align: right; }
+  /* line 21, assets/sass/_header.scss */
+  #header aside ul li ul li {
+    border-left: solid 1px #666666;
+    display: inline-block;
+    font-size: .75em;
+    padding: 0 .4em 0 .8em; }
+  /* line 27, assets/sass/_header.scss */
+  #header aside ul li ul li:first-child {
+    border: none; }
+
+/* line 35, assets/sass/_header.scss */
+#header.kmart form #input_search {
+  border: solid 5px #e02334; }
+/* line 38, assets/sass/_header.scss */
+#header.kmart form #button_search {
+  background: transparent url(assets/img/kmart/background_button.gif) repeat-x 0px 0px;
+  border: 0; }
+
+/* line 46, assets/sass/_header.scss */
+#header.sears form {
+  border: solid 3px #3a81cf; }
+  /* line 48, assets/sass/_header.scss */
+  #header.sears form #input_search {
+    border: none;
+    height: 1.25em;
+    padding: .125em 0;
+    margin-right: 11%;
+    width: 89%; }
+  /* line 55, assets/sass/_header.scss */
+  #header.sears form #button_search {
+    background: transparent url(assets/img/sears/background_button.gif) repeat-x 0px 0px;
+    border: 0;
+    color: #ffffff;
+    font-size: .75em;
+    height: 2em;
+    padding-bottom: .25em;
+    position: absolute;
+    right: 0px;
+    text-transform: uppercase;
+    top: 0px;
+    width: 3.33em; }
+
 /* line 1, assets/sass/_layout.scss */
 .clearfix:before, .clearfix:after {
   content: "";
@@ -479,50 +540,50 @@ ol.bullets {
 ul.bullets {
   list-style-type: disc; }
 
-/* line 39, assets/sass/_presentation.scss */
+/* line 38, assets/sass/_presentation.scss */
+.bold {
+  font-weight: 700; }
+
+/* line 43, assets/sass/_presentation.scss */
 .authorization-form {
   border: solid 1px black;
   font: 0.8125em/1.25em Arial, Helvetica, san-serif;
   padding: 1.55em; }
-  /* line 43, assets/sass/_presentation.scss */
+  /* line 47, assets/sass/_presentation.scss */
   .authorization-form h1 {
     color: #8F8F8F;
     font-size: 1.45em;
     line-height: 1em;
     margin-bottom: 1.05em; }
-  /* line 51, assets/sass/_presentation.scss */
+  /* line 55, assets/sass/_presentation.scss */
   .authorization-form .form-fields > li dd {
     float: left;
     width: 65%; }
-  /* line 55, assets/sass/_presentation.scss */
+  /* line 59, assets/sass/_presentation.scss */
   .authorization-form .form-fields > li dt {
     float: left;
     min-width: 5.5em;
     width: 25%; }
-  /* line 60, assets/sass/_presentation.scss */
+  /* line 64, assets/sass/_presentation.scss */
   .authorization-form .form-fields > li label {
     display: block;
     padding-right: .85em;
     text-align: right; }
-  /* line 65, assets/sass/_presentation.scss */
+  /* line 69, assets/sass/_presentation.scss */
   .authorization-form .form-fields > li input[type="text"], .authorization-form .form-fields > li input[type="password"] {
     border: solid 1px #A0C7D7;
     color: #363636;
     height: 1.84em;
     padding: .25em;
     width: 95%; }
-  /* line 74, assets/sass/_presentation.scss */
+  /* line 78, assets/sass/_presentation.scss */
   .authorization-form .form-fields > li input[type="text"][shc\:link="true"], .authorization-form .form-fields > li input[type="password"][shc\:link="true"] {
     width: 60%; }
-  /* line 77, assets/sass/_presentation.scss */
+  /* line 81, assets/sass/_presentation.scss */
   .authorization-form .form-fields > li input + a {
     color: #049DD5;
     font-size: .85em;
     text-decoration: none; }
-
-/* line 90, assets/sass/_presentation.scss */
-.drop-zone_25 .authorization-form .form-fields label {
-  text-align: left; }
 
 @media print {
   /* line 2, assets/sass/_print.scss */
