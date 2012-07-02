@@ -1,23 +1,41 @@
 <?php
-	class FitStudioAdminActions {
+	class ActionJacksonAdmin {
 		public $views;
 		
 		public function __construct() {
-			$this->views = new FitStudioViewActions();
+//			$this->views = new FitStudioViewActions();
 			
 			add_action('admin_menu', array(&$this, 'initializeSideMenu'));
-			add_action('admin_init', array(&$this, 'setOptions'));
+//			add_action('admin_init', array(&$this, 'setOptions'));
 		}
 		
 		public function initializeSideMenu() {
-			add_options_page('UserActions', 'User Actions', 'manage_options', 'manage-fitstudio-hf', array(&$this, 'createForm'));
+//			add_menu_page('UserActions', 'User Actions', 'manage_options', 'manage-fitstudio-hf', array(&$this, 'createDropdown'));
+            add_menu_page('User Action :: Home', 'User Actions', 5, 'home', array(&$this, 'createDropdown'));
+            add_submenu_page('home', 'User Actions :: Questions', 'Questions', 5, 'questions', array(&$this, 'createQuestionLists'));
 		}
 		
-		public function createForm() {
-			$data = array('me' => 'sebastian');
-			
-			$this->views->openView('form', $data);
-		}
+        public function createDropdown() {
+                  echo '
+                      <div class="wrap">
+                          <h2>User Actions Area</h2>
+
+                      </div>
+                  ';
+      		}
+
+        public function createQuestionLists() {
+            $ajQuery = new ActionJacksonQuery();
+
+            echo '
+                <div class="wrap">
+                    <h2>Questions</h2>
+                </div>
+            ';
+
+            $wp_list_table = _get_list_table('WP_Posts_List_Table');
+            $wp_list_table->display();
+        }
 		
 		public function setOptions() {
   			register_setting('fitStudioOptions', 'fitStudioOptions-apiKey');
@@ -64,4 +82,3 @@
 			$this->views->openField('fields/section', $data);
 		}		
 	}
-?>
