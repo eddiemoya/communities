@@ -35,6 +35,10 @@ ul.bullets {
   list-style-type:disc;
 }
 
+.bold {
+  font-weight:700;
+}
+
 // AUTHORIZATION FORM
 .authorization-form {
   border:solid 1px black;
@@ -81,15 +85,5 @@ ul.bullets {
       }
     }
     
-  }
-}
-
-.drop-zone_25 {
-  .authorization-form {
-    .form-fields{
-      label {
-        text-align:left;
-      }
-    }
   }
 }
