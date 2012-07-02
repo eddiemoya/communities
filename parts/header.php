@@ -40,7 +40,23 @@
             
             <nav>
                 <ul id="header_nav" class="clearfix">
-                  <li class="right_button"><a href="#">Customer Care</a></li>
+                  <li class="right_button">
+                    <a href="#">Customer Care</a>
+                    <ul>
+                      <li><a href="#">Repairs, Maintenance &amp; Parts</a></li>
+                      <li><a href="#">Product Issues &amp; Questions</a></li>
+                      <li><a href="#">Protection Agreements</a></li>
+                      <li><a href="#">In-Store Issues &amp; Orders</a></li>
+                      <li><a href="#">Marketplace Orders</a></li>
+                      <li><a href="#">Online Orders</a></li>
+                      <li><a href="#">Shop Your Way Rewards</a></li>
+                      <li><a href="#">Auto</a></li>
+                      <li><a href="#">Home Improvement</a></li>
+                      <li><a href="#">Corporate News &amp; Press</a></li>
+                      <li><a href="#">Credit</a></li>
+                      <li><a href="#">Optical, Photo &amp; Other Sears Businesses</a></li>
+                    </ul>
+                  </li>
                   <li>
                     <a href="#"><span>Categories</span></a>
                     <ul>
