@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
@@ -78,13 +77,43 @@
                 <?php wp_nav_menu( array( 'theme_location' => 'main-navigation', 'menu_id' => 'main-nav') ); ?>
             </div>
             
-            <nav id="headernav">
-                <ul>
-                <li style="float: right"><a href="#">Customer Care</a></li>
-                  <li><a href="#">Categories</a></li>
-                  <li><a href="#">Q&amp;A's</a></li>
-                  <li><a href="#">Blog</a></li>
-                  <li><a href="#">Buying Guides</a></li>
+            <nav>
+                <ul id="header_nav" class="clearfix">
+                  <li class="right_button">
+                    <a href="#">Customer Care</a>
+                  </li>
+                  <li>
+                    <a href="#"><span>Categories</span></a>
+                    <ul>
+                      <li><a href="#">Item 1</a></li>
+                      <li><a href="#">Item 2</a></li>
+                      <li><a href="#">Item 3</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#"><span>Q&amp;A's</span></a>
+                    <ul>
+                      <li><a href="#">Item 4</a></li>
+                      <li><a href="#">Item 5</a></li>
+                      <li><a href="#">Item 6</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#"><span>Blog</span></a>
+                    <ul>
+                      <li><a href="#">Item 7</a></li>
+                      <li><a href="#">Item 8</a></li>
+                      <li><a href="#">Item 9</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#"><span>Buying Guides</span></a>
+                    <ul>
+                      <li><a href="#">Item a</a></li>
+                      <li><a href="#">Item b</a></li>
+                      <li><a href="#">Item c</a></li>
+                    </ul>
+                  </li>
                 </ul>
             </nav>
             
