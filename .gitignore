@@ -4,3 +4,5 @@ wordpress/wp-config.php
 wordpress/wordpress/wp-config.php
 wordpress/wp-content/themes/.sass-cache/
 /nbproject/private/
+*/.DS_Store
+*wp-config.php
