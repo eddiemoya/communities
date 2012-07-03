@@ -1,7 +1,7 @@
 <div id="post-<?php the_ID(); ?>" <?php post_class('post'); ?>>
     
     <div class="post-thumbnail">
-        <?php if(had_post_thumbnail()) { get_post_thumbnail(); } ?>
+        <?php if(has_post_thumbnail()) { get_post_thumbnail(); } ?>
     </div>
 
     

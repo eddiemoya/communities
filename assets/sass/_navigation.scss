@@ -1,0 +1,80 @@
+$nav-sprite-offset: 5px;
+$nav-sprite-period: 37px;
+#header_nav {
+  width: 95%;
+  margin: 0 auto;
+  border: 1px solid $decorative-color;
+  border-bottom: 0;
+  font-size: percentage( 12/16 );
+  @include background-image( linear-gradient( $lightest-color, lighten( $darkest-color, percentage( 235/255 ) ) ) );
+  @include border-radius( 5px );
+  li {
+    float: left;
+    position: relative;
+    border-right: 1px solid $decorative-color;
+    width: percentage( 1/7 );
+    a {
+      display: block;
+      border-right: 1px solid $lightest-color;
+      padding: .5em 0;
+      font-weight: bold;
+      text-align: center;
+      span {
+        background-image: url('#{$img}sprite-nav.png');
+        background-repeat: no-repeat;
+        padding-right: 9px;
+      }
+      @include sprite-position("span", right, $nav-sprite-offset );
+    }
+    &.right_button {
+      @include background-image( linear-gradient( $button-color-1, $button-color-2 ) );
+      @include border-radius( 0px 4px 4px 0px );
+      float: right;
+      border-left: 1px solid $decorative-color;
+      border-right: 0;
+      a {
+        border-right: 0;
+        color: $lightest-color;
+      }
+      ul li a {
+        color: $secondary-link-color;
+      }
+    }
+    // Hover reveals dropdown menu
+    &:hover { 
+      ul {
+        left: 0;
+      }
+    }
+  }
+  // Styling for dropdown menu
+  ul {
+    @include background-image( linear-gradient( $lightest-color, $lightest-color 30%, $lightest-color 70%, lighten( $darkest-color, percentage( 235/255 ) ) ) );
+    @include box-shadow( lighten( $darkest-color, 66 ) 2px 2px 8px );
+    @include border-radius( 5px );
+    width: 100%;
+    border: 1px solid $decorative-color;
+    border-top: 0;
+    list-style:none;
+    position:absolute;
+    left: -9999px;
+    li {
+      border-right: 0;
+      border-top: 1px solid $decorative-color;
+      float: none;
+      width: auto;
+      &:first-child {
+        border-top: 0;
+      }
+      a {
+        //white-space: nowrap;
+        border-right: 0;
+        color: $secondary-link-color;
+        font-weight: normal;
+        text-align: left;
+        padding-left: 1em;
+        padding-right: .3em;
+      }
+    }
+  }
+}
