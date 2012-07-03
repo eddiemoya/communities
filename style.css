@@ -452,7 +452,7 @@ html, body {
   padding: 0;
   font-family: Helvetica, Verdana, Arial, sans-serif;
   line-height: 1.4;
-  color: #555555;
+  color: 1;
 }
 
 a {
@@ -547,15 +547,10 @@ ul.bullets {
 #header_nav {
   width: 95%;
   margin: 0 auto;
-  border: 1px solid #cccccc;
-  border-bottom: 0;
+  border-left: 1px solid #cccccc;
   font-size: 75%;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #ebebeb));
-  background-image: -webkit-linear-gradient(#ffffff, #ebebeb);
-  background-image: -moz-linear-gradient(#ffffff, #ebebeb);
-  background-image: -o-linear-gradient(#ffffff, #ebebeb);
-  background-image: -ms-linear-gradient(#ffffff, #ebebeb);
-  background-image: linear-gradient(#ffffff, #ebebeb);
+  background: #e4e0df url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
+  background-repeat: repeat-x;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -567,6 +562,7 @@ ul.bullets {
   position: relative;
   border-right: 1px solid #cccccc;
   width: 14.285714285714285%;
+  padding: 1px 0;
 }
 #header_nav li a {
   display: block;
@@ -584,17 +580,13 @@ ul.bullets {
   background-position: right 5px;
 }
 #header_nav li.right_button {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #6698cd), color-stop(100%, #1c539c));
-  background-image: -webkit-linear-gradient(#6698cd, #1c539c);
-  background-image: -moz-linear-gradient(#6698cd, #1c539c);
-  background-image: -o-linear-gradient(#6698cd, #1c539c);
-  background-image: -ms-linear-gradient(#6698cd, #1c539c);
-  background-image: linear-gradient(#6698cd, #1c539c);
   -webkit-border-radius: 0px 4px 4px 0px;
   -moz-border-radius: 0px 4px 4px 0px;
   -ms-border-radius: 0px 4px 4px 0px;
   -o-border-radius: 0px 4px 4px 0px;
   border-radius: 0px 4px 4px 0px;
+  background: #1a519b url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
+  background-repeat: repeat-x;
   float: right;
   border-left: 1px solid #cccccc;
   border-right: 0;
@@ -606,16 +598,13 @@ ul.bullets {
 #header_nav li.right_button ul li a {
   color: #666666;
 }
+#header_nav li.right_button {
+  background-position: left -161px;
+}
 #header_nav li:hover ul {
   left: 0;
 }
 #header_nav ul {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(30%, #ffffff), color-stop(70%, #ffffff), color-stop(100%, #ebebeb));
-  background-image: -webkit-linear-gradient(#ffffff, #ffffff 30%, #ffffff 70%, #ebebeb);
-  background-image: -moz-linear-gradient(#ffffff, #ffffff 30%, #ffffff 70%, #ebebeb);
-  background-image: -o-linear-gradient(#ffffff, #ffffff 30%, #ffffff 70%, #ebebeb);
-  background-image: -ms-linear-gradient(#ffffff, #ffffff 30%, #ffffff 70%, #ebebeb);
-  background-image: linear-gradient(#ffffff, #ffffff 30%, #ffffff 70%, #ebebeb);
   -webkit-box-shadow: #a8a8a8 2px 2px 8px;
   -moz-box-shadow: #a8a8a8 2px 2px 8px;
   box-shadow: #a8a8a8 2px 2px 8px;
@@ -625,6 +614,8 @@ ul.bullets {
   -o-border-radius: 5px;
   border-radius: 5px;
   width: 100%;
+  background: white url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
+  background-repeat: no-repeat no-repeat;
   border: 1px solid #cccccc;
   border-top: 0;
   position: absolute;
@@ -646,6 +637,13 @@ ul.bullets {
   text-align: left;
   padding-left: 1em;
   padding-right: .3em;
+}
+#header_nav ul {
+  background-position: left -160px;
+}
+
+#header_nav {
+  background-position: left -80px;
 }
 
 @media print {
