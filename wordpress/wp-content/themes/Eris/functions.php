@@ -107,12 +107,15 @@ function enqueue_scripts() {
         
        /* Scripts */
         wp_deregister_script('jquery'); 
-        wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', array(), '1.7.1');
+        wp_register_script('jquery', get_template_directory_uri() . '/assets/js/vendor/jquery-1.7.2.min.js', array(), '1.7.2');
+				wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.5.3.min.js', array(), '2.5.3');
         wp_enqueue_script('jquery');    
-        
-        wp_register_script('shcproducts', get_template_directory_uri() . '/assets/js/shcproducts.js', array('jquery'), '1.0');
-        wp_enqueue_script('shcproducts');
-        wp_localize_script('shcproducts', 'ajaxdata', $data);
+        wp_enqueue_script('modernizr');    
+				
+				
+       	//wp_register_script('shcproducts', get_template_directory_uri() . '/assets/js/shcproducts.js', array('jquery'), '1.0');
+        //wp_enqueue_script('shcproducts');
+        //wp_localize_script('shcproducts', 'ajaxdata', $data);
         
         /* Styles */
         wp_register_style('main-styles', get_stylesheet_uri());
