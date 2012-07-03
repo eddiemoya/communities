@@ -15,7 +15,7 @@
     <meta name="description" content="<?php bloginfo('description'); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/favicon.ico" />
+    <!--<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/favicon.ico" /> -->
     
     <?php wp_head(); ?>
       
@@ -26,7 +26,7 @@
 		 
 		<?php get_template_part('parts/ribbon'); ?>
 		
-    <div id="persistent-header">
+    <div id="persistent-header" shc:widget="persistr">
     	
     	<?php get_template_part('parts/head'); ?>
     	

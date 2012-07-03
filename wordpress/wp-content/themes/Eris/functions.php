@@ -109,8 +109,10 @@ function enqueue_scripts() {
         wp_deregister_script('jquery'); 
         wp_register_script('jquery', get_template_directory_uri() . '/assets/js/vendor/jquery-1.7.2.min.js', array(), '1.7.2');
 				wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.5.3.min.js', array(), '2.5.3');
+				wp_register_script('shcJSL', get_template_directory_uri() . '/assets/js/shc-jsl.js', array(), '1.0');
         wp_enqueue_script('jquery');    
-        wp_enqueue_script('modernizr');    
+        wp_enqueue_script('modernizr');
+        wp_enqueue_script('shcJSL');    
 				
 				
        	//wp_register_script('shcproducts', get_template_directory_uri() . '/assets/js/shcproducts.js', array('jquery'), '1.0');
