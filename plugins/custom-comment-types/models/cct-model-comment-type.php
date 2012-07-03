@@ -24,12 +24,12 @@ class CCT_Model_Comment_Type {
          if (!empty($args)) {
             $args = (object) $args;
 
-            $this->comment_type     = $comment_type;
-            $this->labels           = $args->labels;
-            $this->parent_domain    = $args->parent_domain;
-            $this->parent_type      = $args->parent_type;
-            $this->capability       = $args->capability;
-            $this->menu_position    = $args->menu_position;
+            $this->comment_type = $comment_type;
+            $this->labels = $args->labels;
+            $this->parent_domain = $args->parent_domain;
+            $this->parent_type = $args->parent_type;
+            $this->capability = $args->capability;
+            $this->menu_position = $args->menu_position;
         } else {
             $this->get_settings($comment_type);
         }
