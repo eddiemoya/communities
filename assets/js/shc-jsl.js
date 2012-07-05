@@ -107,7 +107,7 @@ shcJSL.widgets.persistr = function(element) {
 	var persisted;	// (HTMLObject) the persisted element
 	
 	persisted = element;
-	offset = $(element).offset().top;
+	offsetTop = $(element).offset().top;
 	
 	$(window).scroll(function(event) {
 		var yScroll;	// (Int) Current position of the top of the page via scroll
@@ -115,14 +115,14 @@ shcJSL.widgets.persistr = function(element) {
 		yScroll = $(this).scrollTop();
 		
 		if (yScroll >= offsetTop) {
-			console.log("POSITION TO FIX"); 
-			console.log('YSCROLL: ' + yScroll);
-			console.log("OFFSETTOP: " + offsetTop);
+			// console.log("POSITION TO FIX"); 
+			// console.log('YSCROLL: ' + yScroll);
+			// console.log("OFFSETTOP: " + offsetTop);
 			$(element).css("position","fixed")
 		} else {
-			console.log("POSITION FROM FIXED"); 
-			console.log('YSCROLL: ' + yScroll);
-			console.log("OFFSETTOP: " + offsetTop);
+			// console.log("POSITION FROM FIXED"); 
+			// console.log('YSCROLL: ' + yScroll);
+			// console.log("OFFSETTOP: " + offsetTop);
 			$(element).css("position","relative");
 		}
 	});

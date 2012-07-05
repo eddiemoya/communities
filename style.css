@@ -508,6 +508,21 @@ legend {
   margin-left: 0px;
 }
 
+<<<<<<< HEAD
+=======
+/* line 73, assets/sass/_layout.scss */
+#container {
+  margin: 0 auto;
+  position: relative;
+  width: 960px; }
+
+/* line 79, assets/sass/_layout.scss */
+#persistent-header {
+  background-color: #ffffff;
+  top: 0px; }
+
+/* line 5, assets/sass/_presentation.scss */
+>>>>>>> 2e949b070ceacd215851e4f199e0893d044b5812
 html, body {
   height: 100%;
   text-align: left;

@@ -17,38 +17,40 @@
     <!--<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/favicon.ico" /> -->
 
     <?php wp_head(); ?>
+      
+  </head>
 
-</head>
+  <body <?php body_class(); ?>>
+      <?php do_action('content-top'); ?>
 
-<body <?php body_class(); ?>>
-    <?php do_action('content-top'); ?>
+      <?php get_template_part('parts/ribbon'); ?>
 
-    <?php get_template_part('parts/ribbon'); ?>
+      <div id="container">
 
-    <div id="persistent-header" shc:widget="persistr">
+          <div id="persistent-header" shc:widget="persistr">
 
-        <?php get_template_part('parts/head'); ?>
+              <?php get_template_part('parts/head'); ?>
 
-        <?php get_template_part('parts/navigation'); ?>
+              <?php get_template_part('parts/navigation'); ?>
 
-    </div>    
+          </div>    
 
-    <!-- #page-wrapper -->
-    <div id="page_wrapper">
+          <!-- #page-wrapper -->
+          <div id="page_wrapper">
 
-        <div id="wp_header">
-            <a href="<?php echo site_url(''); ?>" id="logo"></a>
-            <?php wp_nav_menu( array( 'theme_location' => 'main-navigation', 'menu_id' => 'main-nav') ); ?>
-        </div>
+              <div id="wp_header">
+                  <a href="<?php echo site_url(''); ?>" id="logo"></a>
+                  <?php wp_nav_menu( array( 'theme_location' => 'main-navigation', 'menu_id' => 'main-nav') ); ?>
+              </div>
 
-        <!-- #page -->
-        <div id="page">
+              <!-- #page -->
+              <div id="page">
 
-            <?php //do_action('content-before'); ?>
+                  <?php //do_action('content-before'); ?>
 
-            <div id="subheader">
-                <?php /* Subheaders */ ?>
-            </div>
+                  <div id="subheader">
+                      <?php /* Subheaders */ ?>
+                  </div>
 
-            <!-- #content -->
-            <div id="content">
+                  <!-- #content -->
+                  <div id="content">
