@@ -32,9 +32,6 @@ a {
 .left {
   float: left;
 }
-.clearfix {
-  @include legacy-pie-clearfix;
-}
 
 .bullets {
   margin: 1em 0; 

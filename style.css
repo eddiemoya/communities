@@ -538,18 +538,6 @@ a:visited {
   float: left;
 }
 
-.clearfix {
-  *zoom: 1;
-}
-.clearfix:after {
-  content: "\0020";
-  display: block;
-  height: 0;
-  clear: both;
-  overflow: hidden;
-  visibility: hidden;
-}
-
 .bullets {
   margin: 1em 0;
   padding: 0 0 0 40px;
