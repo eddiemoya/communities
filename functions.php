@@ -370,12 +370,78 @@ function loop($template = 'post'){
     wp_reset_query();
 
 }
-    
-    
-    
-    
-    
-    
+
+
+
+/**
+ * Custom Post Types 
+ */
+function register_questions_type() {
+    $labels = array(
+        'name' => _x('Questions', 'post type general name'),
+        'singular_name' => _x('Questions', 'post type singular name'),
+        'add_new' => _x('Add New', 'question'),
+        'add_new_item' => __('Add New Question'),
+        'edit_item' => __('Edit Question'),
+        'new_item' => __('New Question'),
+        'all_items' => __('All Questions'),
+        'view_item' => __('View Question'),
+        'search_items' => __('Search Questions'),
+        'not_found' => __('No questions found'),
+        'not_found_in_trash' => __('No questions found in Trash'),
+        'parent_item_colon' => '',
+        'menu_name' => 'Questions'
+    );
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'query_var' => false,
+        'rewrite' => false,
+        'capability_type' => 'post',
+        'has_archive' => false,
+        'hierarchical' => false,
+        'menu_position' => null,
+        'supports' => array('title', 'editor', 'author', 'comments'),
+        'menu_icon' => get_template_directory_uri() . '/assets/img/admin/questions_admin_icon.gif'
+    );
+    register_post_type('question', $args);
+}
+
+add_action('init', 'register_questions_type');
+
+
+
+function register_answers() {
+    $args = array(
+        'labels' => array(
+            'name' => _x('Answers', 'post type general name'),
+            'singular_name' => _x('Answer', 'post type singular name'),
+            'add_new' => _x('Add New', 'answer'),
+            'add_new_item' => __('Add New Answer'),
+            'edit_item' => __('Edit Answer'),
+            'new_item' => __('New Answer'),
+            'all_items' => __('All Answers'),
+            'view_item' => __('View Answers'),
+            'search_items' => __('Search Answers'),
+            'not_found' => __('No answers found'),
+            'not_found_in_trash' => __('No answers found in Trash'),
+            'parent_item_colon' => 'Question:',
+            'menu_name' => 'Answer'
+        ),
+        'parent_domain' => 'post',
+        'parent_type' => 'question',
+        'capability' => 'administrator',
+        'menu_position' => 28
+    );
+
+    register_comment_type('answer', $args);
+}
+
+add_action('init', 'register_answers');
+
 
 
 
