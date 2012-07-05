@@ -23,7 +23,7 @@ class CCT_Controller_Comment_Types {
     public function init(){
         
         add_action( 'admin_menu',  array(__CLASS__, 'add_menus')  );
-        add_action( 'admin_menu', array(__CLASS__, 'filter_builtin_comments') );
+        add_action( 'admin_menu', array(__CLASS__, 'edit_comment_types') );
     }
     
     /**
@@ -71,7 +71,7 @@ class CCT_Controller_Comment_Types {
     }
     
    
-   public function filter_builtin_comments() {
+   public function edit_comment_types() {
        global $menu;
        $menu[25][2] = 'edit-comments.php?comment_type=comment';
    }
