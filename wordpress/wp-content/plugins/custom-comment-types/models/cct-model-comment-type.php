@@ -61,8 +61,8 @@ class CCT_Model_Comment_Type {
             return $commentdata;
         
         //Lets check to make sure this comment was made on on the correct post type
-        if($parent->post_type == $this->parent_type) 
-            $commentdata['comment_type'] = $this->comment_type;
+        //if($parent->post_type == $this->parent_type) 
+        $commentdata['comment_type'] = $this->comment_type;
         
         
         return $commentdata;  
