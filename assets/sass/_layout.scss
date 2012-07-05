@@ -69,3 +69,14 @@
 
 .content-display {}
 .dropzone {}
+
+#container {
+  margin:0 auto;
+  position:relative;
+  width:960px;
+}
+
+#persistent-header {
+  background-color:#ffffff;
+  top:0px;
+}

@@ -26,13 +26,15 @@
 		 
 		<?php get_template_part('parts/ribbon'); ?>
 		
-    <div id="persistent-header" shc:widget="persistr">
-    	
-    	<?php get_template_part('parts/head'); ?>
-    	
-    	<?php get_template_part('parts/navigation'); ?>
-    	
-    </div>    
+		<div id="container">
+		
+	    <div id="persistent-header" shc:widget="persistr">
+	    	
+	    	<?php get_template_part('parts/head'); ?>
+	    	
+	    	<?php get_template_part('parts/navigation'); ?>
+	    	
+	    </div>    
     
         <!-- #page-wrapper -->
         <div id="page_wrapper">
