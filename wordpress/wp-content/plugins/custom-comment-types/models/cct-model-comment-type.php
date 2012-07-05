@@ -54,7 +54,7 @@ class CCT_Model_Comment_Type {
         $parent = get_post($commentdata['comment_parent']);
         
         //Allow developers to apply custom logic to determine when their CCTs are applied - should return boolean
-        $custom_logic = apply_filters('cct_logic_' . $this->comment_type, true, $commentdata, $parent);
+        $custom_logic = apply_filters('cct_condition_' . $this->comment_type, true, (object)$commentdata, $parent);
         
         //Lets test the outcome of any custom logic - if is false, return $commentdata unchanged.
         if(!$custom_logic)

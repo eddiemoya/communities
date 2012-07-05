@@ -1,4 +1,3 @@
-<?php the_post(); ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class('post'); ?>>
     
     <div class="post-thumbnail">
@@ -48,6 +47,5 @@
             <?php endif; ?>
 
         <?php endif; ?>
-    </div>
-    
+    </div>  
 </div>
