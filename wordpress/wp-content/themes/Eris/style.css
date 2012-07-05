@@ -196,6 +196,70 @@ legend {
   width: 32px;
 }
 
+/**
+ *   @author Tim Steele
+ */
+#header {
+  margin: 0 auto;
+  padding: 1.3125em 0 .8em;
+  width: 960px;
+}
+#header #logo {
+  display: block;
+  margin-top: .75em;
+}
+#header form {
+  margin-top: .75em;
+  position: relative;
+}
+#header aside > ul > li {
+  margin-bottom: .35em;
+}
+#header aside ul li {
+  text-align: right;
+}
+#header aside ul li ul li {
+  border-left: solid 1px #666666;
+  display: inline-block;
+  font-size: .75em;
+  padding: 0 .4em 0 .8em;
+}
+#header aside ul li ul li:first-child {
+  border: none;
+}
+
+#header.kmart form #input_search {
+  border: solid 5px #e02334;
+}
+#header.kmart form #button_search {
+  background: transparent url(assets/img/kmart/background_button.gif) repeat-x 0px 0px;
+  border: 0;
+}
+
+#header.sears form {
+  border: solid 3px #3a81cf;
+}
+#header.sears form #input_search {
+  border: none;
+  height: 1.25em;
+  padding: .125em 0;
+  margin-right: 11%;
+  width: 89%;
+}
+#header.sears form #button_search {
+  background: #ca4019 url(assets/img/sears/background_button.gif) repeat-x 0px 0px;
+  border: 0;
+  color: #ffffff;
+  font-size: .75em;
+  height: 2em;
+  padding-bottom: .25em;
+  position: absolute;
+  right: 0px;
+  text-transform: uppercase;
+  top: 0px;
+  width: 3.33em;
+}
+
 .clearfix:before, .clearfix:after {
   content: "";
   display: table;
@@ -499,6 +563,10 @@ ul.bullets {
   list-style-type: disc;
 }
 
+.bold {
+  font-weight: 700;
+}
+
 .authorization-form {
   border: solid 1px black;
   font: 0.8125em/1.25em Arial, Helvetica, san-serif;
@@ -540,12 +608,12 @@ ul.bullets {
   text-decoration: none;
 }
 
-.drop-zone_25 .authorization-form .form-fields label {
-  text-align: left;
+#navigation {
+  width: 960px;
+  margin: 0 auto;
 }
 
 #header_nav {
-  width: 95%;
   margin: 0 auto;
   border-left: 1px solid #cccccc;
   font-size: 75%;
