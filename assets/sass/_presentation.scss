@@ -10,17 +10,17 @@ html, body {
   padding: 0;
   font-family: $basefont;
   line-height: 1.4;
-  color: $bodycopy-color;
+  color: sears( body);
 }
 
 a {
-  color: $link-color;
+  color: sears( link );
   text-decoration: none;
   &:hover {
     text-decoration: underline;
   }
   &:visited {
-    color: $link-color;
+    color: sears( link );
   }
 }
 // END SITE-WIDE TAG STYLES
@@ -31,9 +31,6 @@ a {
 }
 .left {
   float: left;
-}
-.clearfix {
-  @include legacy-pie-clearfix;
 }
 
 .bullets {
