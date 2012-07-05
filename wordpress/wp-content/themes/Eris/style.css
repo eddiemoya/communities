@@ -508,6 +508,17 @@ legend {
 .span12 + [class*="span"] {
   margin-left: 0px; }
 
+/* line 73, assets/sass/_layout.scss */
+#container {
+  margin: 0 auto;
+  position: relative;
+  width: 960px; }
+
+/* line 79, assets/sass/_layout.scss */
+#persistent-header {
+  background-color: #ffffff;
+  top: 0px; }
+
 /* line 5, assets/sass/_presentation.scss */
 html, body {
   height: 100%;
