@@ -444,8 +444,11 @@ add_action('init', 'register_answers');
 
 
 
+add_filter('cct_condition_answers', 'set_answers_comment_type');
 
+function set_answers_comment_type($set_type, $comment, $parent){
+    
 
-
+}
 
 
