@@ -1,3 +1,6 @@
+// @author Carl Albrecht-Buehler
+// @author Tim Steele
+
 // SITE-WIDE TAG STYLES
 html, body {
   height: 100%;
@@ -48,6 +51,10 @@ ul.bullets {
 // END CONVENIENCE CLASSES
 
 
+.bold {
+  font-weight:700;
+}
+
 // AUTHORIZATION FORM
 .authorization-form {
   border:solid 1px black;
@@ -94,15 +101,5 @@ ul.bullets {
       }
     }
     
-  }
-}
-
-.drop-zone_25 {
-  .authorization-form {
-    .form-fields{
-      label {
-        text-align:left;
-      }
-    }
   }
 }

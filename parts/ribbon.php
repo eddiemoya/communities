@@ -1,3 +1,8 @@
+<?php
+/**
+ * @author Tim Steele
+ */
+?>
 <nav id="ribbon">
 	<ul>
 		<li class="ribbon-icon" id="ribbon_shop-your-way"><a href="http://www.shopyourway.com" title="Shop Your Way" rel="external">Shop Your Way </a></li>

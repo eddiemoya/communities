@@ -1,8 +1,14 @@
+// @author Carl Albrecht-Buehler
+
 $nav-sprite-offset: 5px;
 $nav-sprite-period: 40px;
 $arrow-height: 3px;
+#navigation {
+  width:960px;
+  margin:0 auto;
+}
 #header_nav {
-  width: 95%;
+  //width: 95%;
   margin: 0 auto;
   border-left: 1px solid sears( decorative );
   font-size: percentage( 12/16 );
