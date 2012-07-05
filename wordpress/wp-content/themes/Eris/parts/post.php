@@ -24,7 +24,8 @@
     
     
     <div class="post-content">
-        <?php (!is_singular()) ? the_excerpt() : the_content(); ?>
+        <?php //(!is_singular()) ? the_excerpt() : 
+        echo get_the_content(); ?>
     </div>
     
 

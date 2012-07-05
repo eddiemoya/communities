@@ -12,7 +12,7 @@
                 </div>
                 
                 <?php //do_action('content-after'); ?>
-                <?php get_sidebar(); ?>
+                <?php //get_sidebar(); ?>
             </div><!-- #page -->
             
             <div id="wp_footer">
@@ -26,6 +26,8 @@
             </div>
             
         </div> <!-- #page_wrapper -->
+        
+      </div>
         
     </body>
 </html>

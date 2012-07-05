@@ -1,6 +1,9 @@
+/**
+ *   @author Tim Steele
+ */
 #header {
   margin:0 auto;
-  padding-top:1.3125em;
+  padding:1.3125em 0 .8em;
   width:960px;
   #logo {
     display:block;
@@ -53,7 +56,7 @@
       width:89%;
     }
     #button_search {
-      background:transparent url(assets/img/sears/background_button.gif) repeat-x 0px 0px;
+      background:#ca4019 url(assets/img/sears/background_button.gif) repeat-x 0px 0px;
       border:0;
       color:#ffffff;
       font-size:.75em;
