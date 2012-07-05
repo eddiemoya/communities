@@ -1,27 +1,26 @@
-/**
- * @author Carl Albrecht-Buehler
- */
+// @author Carl Albrecht-Buehler
 
 $nav-sprite-offset: 5px;
-$nav-sprite-period: 37px;
+$nav-sprite-period: 40px;
+$arrow-height: 3px;
 #navigation {
   width:960px;
   margin:0 auto;
 }
-
 #header_nav {
   //width: 95%;
   margin: 0 auto;
-  border: 1px solid $decorative-color;
-  border-bottom: 0;
+  border-left: 1px solid sears( decorative );
   font-size: percentage( 12/16 );
-  @include background-image( linear-gradient( $lightest-color, lighten( $darkest-color, percentage( 235/255 ) ) ) );
+  background: $nav-color url('#{$img}sprite-nav.png');
+  background-repeat: repeat-x;
   @include border-radius( 5px );
   li {
     float: left;
     position: relative;
-    border-right: 1px solid $decorative-color;
+    border-right: 1px solid sears( decorative );
     width: percentage( 1/7 );
+    padding: 1px 0;
     a {
       display: block;
       border-right: 1px solid $lightest-color;
@@ -36,19 +35,21 @@ $nav-sprite-period: 37px;
       @include sprite-position("span", right, $nav-sprite-offset );
     }
     &.right_button {
-      @include background-image( linear-gradient( $button-color-1, $button-color-2 ) );
       @include border-radius( 0px 4px 4px 0px );
+      background: sears( button ) url('#{$img}sprite-nav.png');
+      background-repeat: repeat-x;
       float: right;
-      border-left: 1px solid $decorative-color;
+      border-left: 1px solid sears( decorative );
       border-right: 0;
       a {
         border-right: 0;
         color: $lightest-color;
       }
       ul li a {
-        color: $secondary-link-color;
+        color: sears( secondary-link );
       }
     }
+    @include sprite-position("&.right_button", left, ( $nav-sprite-period * ( -4 ) ) - 1 );
     // Hover reveals dropdown menu
     &:hover { 
       ul {
@@ -58,27 +59,26 @@ $nav-sprite-period: 37px;
   }
   // Styling for dropdown menu
   ul {
-    @include background-image( linear-gradient( $lightest-color, $lightest-color 30%, $lightest-color 70%, lighten( $darkest-color, percentage( 235/255 ) ) ) );
     @include box-shadow( lighten( $darkest-color, 66 ) 2px 2px 8px );
     @include border-radius( 5px );
     width: 100%;
-    border: 1px solid $decorative-color;
+    background: $lightest-color url('#{$img}sprite-nav.png');
+    background-repeat: no-repeat no-repeat;
+    border: 1px solid sears( decorative );
     border-top: 0;
-    list-style:none;
-    position:absolute;
+    position: absolute;
     left: -9999px;
     li {
       border-right: 0;
-      border-top: 1px solid $decorative-color;
+      border-top: 1px solid sears( decorative );
       float: none;
       width: auto;
       &:first-child {
         border-top: 0;
       }
       a {
-        //white-space: nowrap;
         border-right: 0;
-        color: $secondary-link-color;
+        color: sears( secondary-link );
         font-weight: normal;
         text-align: left;
         padding-left: 1em;
@@ -86,4 +86,6 @@ $nav-sprite-period: 37px;
       }
     }
   }
+  @include sprite-position("ul", left, ( $nav-sprite-period * ( -4 ) ) );
 }
+@include sprite-position("#header_nav", left, ( $nav-sprite-period * ( -2 ) ) );
