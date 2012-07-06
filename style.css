@@ -228,23 +228,41 @@ legend {
   border: none;
 }
 
-#header.kmart form #input_search {
+#header.kmart form {
   border: solid 5px #e02334;
+}
+#header.kmart form #input_search {
+  background: transparent url(assets/img/kmart/icon_search-bar-magnifying-glass_28x28.gif) no-repeat 0px 0px;
+  border: none;
+  height: 1.25em;
+  padding: .25em 0 .25em 1.7em;
+  margin-right: 9%;
+  width: 84%;
 }
 #header.kmart form #button_search {
   background: transparent url(assets/img/kmart/background_button.gif) repeat-x 0px 0px;
-  border: 0;
+  border: solid #e02334;
+  border-width: 0 0 0 5px;
+  font-size: .75em;
+  height: 2.5em;
+  padding-bottom: .25em;
+  position: absolute;
+  right: 0px;
+  text-transform: uppercase;
+  top: 0px;
+  width: 3.33em;
 }
 
 #header.sears form {
   border: solid 3px #3a81cf;
 }
 #header.sears form #input_search {
+  background: transparent url(assets/img/sears/icon_search-bar-magnifying-glass_24x24.gif) no-repeat 0px 0px;
   border: none;
   height: 1.25em;
-  padding: .125em 0;
+  padding: .125em 0 .125em 1.5em;
   margin-right: 11%;
-  width: 89%;
+  width: 82%;
 }
 #header.sears form #button_search {
   background: #ca4019 url(assets/img/sears/background_button.gif) repeat-x 0px 0px;
@@ -541,6 +559,28 @@ a:visited {
   color: #067bb5;
 }
 
+.kmart a {
+  color: #980017;
+  text-decoration: none;
+}
+.kmart a:hover {
+  text-decoration: underline;
+}
+.kmart a:visited {
+  color: #980017;
+}
+
+.sears a {
+  color: #067bb5;
+  text-decoration: none;
+}
+.sears a:hover {
+  text-decoration: underline;
+}
+.sears a:visited {
+  color: #067bb5;
+}
+
 .right {
   float: right;
 }
@@ -564,47 +604,6 @@ ul.bullets {
 
 .bold {
   font-weight: 700;
-}
-
-.authorization-form {
-  border: solid 1px black;
-  font: 0.8125em/1.25em Arial, Helvetica, san-serif;
-  padding: 1.55em;
-}
-.authorization-form h1 {
-  color: #8F8F8F;
-  font-size: 1.45em;
-  line-height: 1em;
-  margin-bottom: 1.05em;
-}
-.authorization-form .form-fields > li dd {
-  float: left;
-  width: 65%;
-}
-.authorization-form .form-fields > li dt {
-  float: left;
-  min-width: 5.5em;
-  width: 25%;
-}
-.authorization-form .form-fields > li label {
-  display: block;
-  padding-right: .85em;
-  text-align: right;
-}
-.authorization-form .form-fields > li input[type="text"], .authorization-form .form-fields > li input[type="password"] {
-  border: solid 1px #A0C7D7;
-  color: #363636;
-  height: 1.84em;
-  padding: .25em;
-  width: 95%;
-}
-.authorization-form .form-fields > li input[type="text"][shc\:link="true"], .authorization-form .form-fields > li input[type="password"][shc\:link="true"] {
-  width: 60%;
-}
-.authorization-form .form-fields > li input + a {
-  color: #049DD5;
-  font-size: .85em;
-  text-decoration: none;
 }
 
 .dropmenu li {
