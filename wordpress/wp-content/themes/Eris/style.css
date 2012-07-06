@@ -752,8 +752,14 @@ ul.bullets {
 #footer_nav.dropmenu li a span {
   background-position: right -240px;
 }
+#footer_nav.dropmenu li:hover {
+  background-image: url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
+}
 #footer_nav.dropmenu li:hover ul {
   bottom: 100%;
+}
+#footer_nav.dropmenu li:hover {
+  background-position: left -400px;
 }
 #footer_nav.dropmenu li:first-child {
   border-left: 0;
