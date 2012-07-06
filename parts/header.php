@@ -10,8 +10,8 @@
     
     <meta charset="<?php bloginfo('charset'); ?>" />
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-    <!--[if lt IE 7]> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> <![endif]-->
-		<!--[if IE 8]> <meta http-equiv="X-UA-Compatible" content="IE=8" > <![endif]-->
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+		<meta http-equiv="X-UA-Compatible" content="IE=8" >
     <meta name="description" content="<?php bloginfo('description'); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
