@@ -333,7 +333,7 @@ legend {
 .span12 {
   width: 100%; }
 
-/* line 10, assets/sass/_functions.scss */
+/* line 17, assets/sass/_functions.scss */
 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
 .span6 + .span3 + .span3 + .span6 + [class*="span"],
 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
@@ -364,7 +364,7 @@ legend {
   width: 72.72727272727273%;
   margin-left: 9.090909090909092%; }
 
-/* line 10, assets/sass/_functions.scss */
+/* line 17, assets/sass/_functions.scss */
 .span3 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
 .span3 .span6 + .span3 + .span3 + .span6 + [class*="span"],
 .span3 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
@@ -395,7 +395,7 @@ legend {
   width: 73.33333333333333%;
   margin-left: 6.666666666666667%; }
 
-/* line 10, assets/sass/_functions.scss */
+/* line 17, assets/sass/_functions.scss */
 .span4 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
 .span4 .span6 + .span3 + .span3 + .span6 + [class*="span"],
 .span4 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
@@ -426,7 +426,7 @@ legend {
   width: 73.91304347826086%;
   margin-left: 4.347826086956522%; }
 
-/* line 10, assets/sass/_functions.scss */
+/* line 17, assets/sass/_functions.scss */
 .span6 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
 .span6 .span6 + .span3 + .span3 + .span6 + [class*="span"],
 .span6 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
@@ -457,7 +457,7 @@ legend {
   width: 74.19354838709677%;
   margin-left: 3.225806451612903%; }
 
-/* line 10, assets/sass/_functions.scss */
+/* line 17, assets/sass/_functions.scss */
 .span8 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
 .span8 .span6 + .span3 + .span3 + .span6 + [class*="span"],
 .span8 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
@@ -488,7 +488,7 @@ legend {
   width: 74.28571428571428%;
   margin-left: 2.857142857142857%; }
 
-/* line 10, assets/sass/_functions.scss */
+/* line 17, assets/sass/_functions.scss */
 .span9 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
 .span9 .span6 + .span3 + .span3 + .span6 + [class*="span"],
 .span9 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
@@ -528,7 +528,7 @@ html, body {
   padding: 0;
   font-family: Helvetica, Verdana, Arial, sans-serif;
   line-height: 1.4;
-  color: #555555; }
+  color: 1; }
 
 /* line 16, assets/sass/_presentation.scss */
 a {
@@ -549,135 +549,112 @@ a {
 .left {
   float: left; }
 
-/* line 35, assets/sass/_presentation.scss */
-.clearfix {
-  *zoom: 1; }
-  /* line 22, /Users/tsteel5/.rvm/gems/ruby-1.9.2-p290/gems/compass-0.12.1/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
-  .clearfix:after {
-    content: "\0020";
-    display: block;
-    height: 0;
-    clear: both;
-    overflow: hidden;
-    visibility: hidden; }
-
-/* line 39, assets/sass/_presentation.scss */
+/* line 36, assets/sass/_presentation.scss */
 .bullets {
   margin: 1em 0;
   padding: 0 0 0 40px; }
 
-/* line 44, assets/sass/_presentation.scss */
+/* line 41, assets/sass/_presentation.scss */
 ol.bullets {
   list-style-type: decimal; }
 
-/* line 48, assets/sass/_presentation.scss */
+/* line 45, assets/sass/_presentation.scss */
 ul.bullets {
   list-style-type: disc; }
 
-/* line 54, assets/sass/_presentation.scss */
+/* line 51, assets/sass/_presentation.scss */
 .bold {
   font-weight: 700; }
 
-/* line 59, assets/sass/_presentation.scss */
+/* line 56, assets/sass/_presentation.scss */
 .authorization-form {
   border: solid 1px black;
   font: 0.8125em/1.25em Arial, Helvetica, san-serif;
   padding: 1.55em; }
-  /* line 63, assets/sass/_presentation.scss */
+  /* line 60, assets/sass/_presentation.scss */
   .authorization-form h1 {
     color: #8F8F8F;
     font-size: 1.45em;
     line-height: 1em;
     margin-bottom: 1.05em; }
-  /* line 71, assets/sass/_presentation.scss */
+  /* line 68, assets/sass/_presentation.scss */
   .authorization-form .form-fields > li dd {
     float: left;
     width: 65%; }
-  /* line 75, assets/sass/_presentation.scss */
+  /* line 72, assets/sass/_presentation.scss */
   .authorization-form .form-fields > li dt {
     float: left;
     min-width: 5.5em;
     width: 25%; }
-  /* line 80, assets/sass/_presentation.scss */
+  /* line 77, assets/sass/_presentation.scss */
   .authorization-form .form-fields > li label {
     display: block;
     padding-right: .85em;
     text-align: right; }
-  /* line 85, assets/sass/_presentation.scss */
+  /* line 82, assets/sass/_presentation.scss */
   .authorization-form .form-fields > li input[type="text"], .authorization-form .form-fields > li input[type="password"] {
     border: solid 1px #A0C7D7;
     color: #363636;
     height: 1.84em;
     padding: .25em;
     width: 95%; }
-  /* line 94, assets/sass/_presentation.scss */
+  /* line 91, assets/sass/_presentation.scss */
   .authorization-form .form-fields > li input[type="text"][shc\:link="true"], .authorization-form .form-fields > li input[type="password"][shc\:link="true"] {
     width: 60%; }
-  /* line 97, assets/sass/_presentation.scss */
+  /* line 94, assets/sass/_presentation.scss */
   .authorization-form .form-fields > li input + a {
     color: #049DD5;
     font-size: .85em;
     text-decoration: none; }
 
-/**
- * @author Carl Albrecht-Buehler
- */
-/* line 7, assets/sass/_navigation.scss */
+/* line 6, assets/sass/_navigation.scss */
 #navigation {
   width: 960px;
   margin: 0 auto; }
 
-/* line 12, assets/sass/_navigation.scss */
+/* line 10, assets/sass/_navigation.scss */
 #header_nav {
   margin: 0 auto;
-  border: 1px solid #cccccc;
-  border-bottom: 0;
+  border-left: 1px solid #cccccc;
   font-size: 75%;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #ebebeb));
-  background-image: -webkit-linear-gradient(#ffffff, #ebebeb);
-  background-image: -moz-linear-gradient(#ffffff, #ebebeb);
-  background-image: -o-linear-gradient(#ffffff, #ebebeb);
-  background-image: -ms-linear-gradient(#ffffff, #ebebeb);
-  background-image: linear-gradient(#ffffff, #ebebeb);
+  background: #e4e0df url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
+  background-repeat: repeat-x;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px; }
-  /* line 20, assets/sass/_navigation.scss */
+  /* line 18, assets/sass/_navigation.scss */
   #header_nav li {
     float: left;
     position: relative;
     border-right: 1px solid #cccccc;
-    width: 14.285714285714285%; }
-    /* line 25, assets/sass/_navigation.scss */
+    width: 14.285714285714285%;
+    padding: 1px 0; }
+    /* line 24, assets/sass/_navigation.scss */
     #header_nav li a {
       display: block;
       border-right: 1px solid white;
       padding: .5em 0;
       font-weight: bold;
       text-align: center; }
-      /* line 31, assets/sass/_navigation.scss */
+      /* line 30, assets/sass/_navigation.scss */
       #header_nav li a span {
         background-image: url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
         background-repeat: no-repeat;
         padding-right: 9px; }
-      /* line 16, assets/sass/_functions.scss */
+      /* line 23, assets/sass/_functions.scss */
       #header_nav li a span {
         background-position: right 5px; }
-    /* line 38, assets/sass/_navigation.scss */
+    /* line 37, assets/sass/_navigation.scss */
     #header_nav li.right_button {
-      background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #6698cd), color-stop(100%, #1c539c));
-      background-image: -webkit-linear-gradient(#6698cd, #1c539c);
-      background-image: -moz-linear-gradient(#6698cd, #1c539c);
-      background-image: -o-linear-gradient(#6698cd, #1c539c);
-      background-image: -ms-linear-gradient(#6698cd, #1c539c);
-      background-image: linear-gradient(#6698cd, #1c539c);
       -webkit-border-radius: 0px 4px 4px 0px;
       -moz-border-radius: 0px 4px 4px 0px;
       -ms-border-radius: 0px 4px 4px 0px;
       -o-border-radius: 0px 4px 4px 0px;
       border-radius: 0px 4px 4px 0px;
+      background: #1a519b url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
+      background-repeat: repeat-x;
       float: right;
       border-left: 1px solid #cccccc;
       border-right: 0; }
@@ -688,17 +665,14 @@ ul.bullets {
       /* line 48, assets/sass/_navigation.scss */
       #header_nav li.right_button ul li a {
         color: #666666; }
-    /* line 54, assets/sass/_navigation.scss */
+    /* line 23, assets/sass/_functions.scss */
+    #header_nav li.right_button {
+      background-position: left -161px; }
+    /* line 55, assets/sass/_navigation.scss */
     #header_nav li:hover ul {
       left: 0; }
-  /* line 60, assets/sass/_navigation.scss */
+  /* line 61, assets/sass/_navigation.scss */
   #header_nav ul {
-    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(30%, #ffffff), color-stop(70%, #ffffff), color-stop(100%, #ebebeb));
-    background-image: -webkit-linear-gradient(#ffffff, #ffffff 30%, #ffffff 70%, #ebebeb);
-    background-image: -moz-linear-gradient(#ffffff, #ffffff 30%, #ffffff 70%, #ebebeb);
-    background-image: -o-linear-gradient(#ffffff, #ffffff 30%, #ffffff 70%, #ebebeb);
-    background-image: -ms-linear-gradient(#ffffff, #ffffff 30%, #ffffff 70%, #ebebeb);
-    background-image: linear-gradient(#ffffff, #ffffff 30%, #ffffff 70%, #ebebeb);
     -webkit-box-shadow: #a8a8a8 2px 2px 8px;
     -moz-box-shadow: #a8a8a8 2px 2px 8px;
     box-shadow: #a8a8a8 2px 2px 8px;
@@ -708,21 +682,22 @@ ul.bullets {
     -o-border-radius: 5px;
     border-radius: 5px;
     width: 100%;
+    background: white url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
+    background-repeat: no-repeat no-repeat;
     border: 1px solid #cccccc;
     border-top: 0;
-    list-style: none;
     position: absolute;
     left: -9999px; }
-    /* line 70, assets/sass/_navigation.scss */
+    /* line 71, assets/sass/_navigation.scss */
     #header_nav ul li {
       border-right: 0;
       border-top: 1px solid #cccccc;
       float: none;
       width: auto; }
-      /* line 75, assets/sass/_navigation.scss */
+      /* line 76, assets/sass/_navigation.scss */
       #header_nav ul li:first-child {
         border-top: 0; }
-      /* line 78, assets/sass/_navigation.scss */
+      /* line 79, assets/sass/_navigation.scss */
       #header_nav ul li a {
         border-right: 0;
         color: #666666;
@@ -730,6 +705,13 @@ ul.bullets {
         text-align: left;
         padding-left: 1em;
         padding-right: .3em; }
+  /* line 23, assets/sass/_functions.scss */
+  #header_nav ul {
+    background-position: left -160px; }
+
+/* line 23, assets/sass/_functions.scss */
+#header_nav {
+  background-position: left -80px; }
 
 @media print {
   /* line 2, assets/sass/_print.scss */
