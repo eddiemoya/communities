@@ -228,25 +228,43 @@ legend {
   #header aside ul li ul li:first-child {
     border: none; }
 
-/* line 38, assets/sass/_header.scss */
-#header.kmart form #input_search {
+/* line 37, assets/sass/_header.scss */
+#header.kmart form {
   border: solid 5px #e02334; }
-/* line 41, assets/sass/_header.scss */
-#header.kmart form #button_search {
-  background: transparent url(assets/img/kmart/background_button.gif) repeat-x 0px 0px;
-  border: 0; }
-
-/* line 49, assets/sass/_header.scss */
-#header.sears form {
-  border: solid 3px #3a81cf; }
-  /* line 51, assets/sass/_header.scss */
-  #header.sears form #input_search {
+  /* line 39, assets/sass/_header.scss */
+  #header.kmart form #input_search {
+    background: transparent url(assets/img/kmart/icon_search-bar-magnifying-glass_28x28.gif) no-repeat 0px 0px;
     border: none;
     height: 1.25em;
-    padding: .125em 0;
+    padding: .25em 0 .25em 1.7em;
+    margin-right: 9%;
+    width: 84%; }
+  /* line 47, assets/sass/_header.scss */
+  #header.kmart form #button_search {
+    background: transparent url(assets/img/kmart/background_button.gif) repeat-x 0px 0px;
+    border: solid #e02334;
+    border-width: 0 0 0 5px;
+    font-size: .75em;
+    height: 2.5em;
+    padding-bottom: .25em;
+    position: absolute;
+    right: 0px;
+    text-transform: uppercase;
+    top: 0px;
+    width: 3.33em; }
+
+/* line 64, assets/sass/_header.scss */
+#header.sears form {
+  border: solid 3px #3a81cf; }
+  /* line 66, assets/sass/_header.scss */
+  #header.sears form #input_search {
+    background: transparent url(assets/img/sears/icon_search-bar-magnifying-glass_24x24.gif) no-repeat 0px 0px;
+    border: none;
+    height: 1.25em;
+    padding: .125em 0 .125em 1.5em;
     margin-right: 11%;
-    width: 89%; }
-  /* line 58, assets/sass/_header.scss */
+    width: 82%; }
+  /* line 74, assets/sass/_header.scss */
   #header.sears form #button_search {
     background: #ca4019 url(assets/img/sears/background_button.gif) repeat-x 0px 0px;
     border: 0;
@@ -541,71 +559,52 @@ a {
   a:visited {
     color: #067bb5; }
 
-/* line 29, assets/sass/_presentation.scss */
+/* line 27, assets/sass/_presentation.scss */
+.kmart a {
+  color: #980017;
+  text-decoration: none; }
+  /* line 30, assets/sass/_presentation.scss */
+  .kmart a:hover {
+    text-decoration: underline; }
+  /* line 33, assets/sass/_presentation.scss */
+  .kmart a:visited {
+    color: #980017; }
+
+/* line 38, assets/sass/_presentation.scss */
+.sears a {
+  color: #067bb5;
+  text-decoration: none; }
+  /* line 41, assets/sass/_presentation.scss */
+  .sears a:hover {
+    text-decoration: underline; }
+  /* line 44, assets/sass/_presentation.scss */
+  .sears a:visited {
+    color: #067bb5; }
+
+/* line 51, assets/sass/_presentation.scss */
 .right {
   float: right; }
 
-/* line 32, assets/sass/_presentation.scss */
+/* line 54, assets/sass/_presentation.scss */
 .left {
   float: left; }
 
-/* line 36, assets/sass/_presentation.scss */
+/* line 58, assets/sass/_presentation.scss */
 .bullets {
   margin: 1em 0;
   padding: 0 0 0 40px; }
 
-/* line 41, assets/sass/_presentation.scss */
+/* line 63, assets/sass/_presentation.scss */
 ol.bullets {
   list-style-type: decimal; }
 
-/* line 45, assets/sass/_presentation.scss */
+/* line 67, assets/sass/_presentation.scss */
 ul.bullets {
   list-style-type: disc; }
 
-/* line 51, assets/sass/_presentation.scss */
+/* line 71, assets/sass/_presentation.scss */
 .bold {
   font-weight: 700; }
-
-/* line 56, assets/sass/_presentation.scss */
-.authorization-form {
-  border: solid 1px black;
-  font: 0.8125em/1.25em Arial, Helvetica, san-serif;
-  padding: 1.55em; }
-  /* line 60, assets/sass/_presentation.scss */
-  .authorization-form h1 {
-    color: #8F8F8F;
-    font-size: 1.45em;
-    line-height: 1em;
-    margin-bottom: 1.05em; }
-  /* line 68, assets/sass/_presentation.scss */
-  .authorization-form .form-fields > li dd {
-    float: left;
-    width: 65%; }
-  /* line 72, assets/sass/_presentation.scss */
-  .authorization-form .form-fields > li dt {
-    float: left;
-    min-width: 5.5em;
-    width: 25%; }
-  /* line 77, assets/sass/_presentation.scss */
-  .authorization-form .form-fields > li label {
-    display: block;
-    padding-right: .85em;
-    text-align: right; }
-  /* line 82, assets/sass/_presentation.scss */
-  .authorization-form .form-fields > li input[type="text"], .authorization-form .form-fields > li input[type="password"] {
-    border: solid 1px #A0C7D7;
-    color: #363636;
-    height: 1.84em;
-    padding: .25em;
-    width: 95%; }
-  /* line 91, assets/sass/_presentation.scss */
-  .authorization-form .form-fields > li input[type="text"][shc\:link="true"], .authorization-form .form-fields > li input[type="password"][shc\:link="true"] {
-    width: 60%; }
-  /* line 94, assets/sass/_presentation.scss */
-  .authorization-form .form-fields > li input + a {
-    color: #049DD5;
-    font-size: .85em;
-    text-decoration: none; }
 
 /* line 6, assets/sass/_navigation.scss */
 #navigation {
