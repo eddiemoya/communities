@@ -3,82 +3,24 @@
 		public $views;
 		
 		public function __construct() {
-//			$this->views = new FitStudioViewActions();
+			$this->views = new ActionJacksonViews();
 			
-			add_action('admin_menu', array(&$this, 'initializeSideMenu'));
+			add_action('admin_menu', array(&$this, 'initialize'));
 //			add_action('admin_init', array(&$this, 'setOptions'));
 		}
 		
-		public function initializeSideMenu() {
-//			add_menu_page('UserActions', 'User Actions', 'manage_options', 'manage-fitstudio-hf', array(&$this, 'createDropdown'));
-            add_menu_page('User Action :: Home', 'User Actions', 5, 'home', array(&$this, 'createDropdown'));
-            add_submenu_page('home', 'User Actions :: Questions', 'Questions', 5, 'questions', array(&$this, 'createQuestionLists'));
+		public function initialize() {
+            $pluginfolder = get_bloginfo('url') . '/' . PLUGINDIR . '/' . dirname(plugin_basename(__FILE__));
+            wp_enqueue_script('jquery');
+            wp_enqueue_script('jquery-ui-core');
+            wp_enqueue_script('jquery-ui-datepicker', $pluginfolder . '/jquery.ui.datepicker.min.js', array('jquery', 'jquery-ui-core') );
+            wp_enqueue_style('jquery.ui.theme', $pluginfolder . '/smoothness/jquery-ui-1.8.12.custom.css');
+
+            add_menu_page('User Action :: Home', 'User Actions', 5, 'home', array(&$this, 'showLanding'));
+            add_submenu_page('home', 'User Actions :: Questions', 'Questions', 5, 'questions');
 		}
 		
-        public function createDropdown() {
-                  echo '
-                      <div class="wrap">
-                          <h2>User Actions Area</h2>
-
-                      </div>
-                  ';
-      		}
-
-        public function createQuestionLists() {
-            $ajQuery = new ActionJacksonQuery();
-
-            echo '
-                <div class="wrap">
-                    <h2>Questions</h2>
-                </div>
-            ';
-
-            $wp_list_table = _get_list_table('WP_Posts_List_Table');
-            $wp_list_table->display();
+        public function showLanding() {
+            $this->views->openView('form');
         }
-		
-		public function setOptions() {
-  			register_setting('fitStudioOptions', 'fitStudioOptions-apiKey');
-  			register_setting('fitStudioOptions', 'fitStudioOptions-visibility');
-  			register_setting('fitStudioOptions', 'fitStudioOptions-apiUrl');
-  			register_setting('fitStudioOptions', 'fitStudioOptions-siteSection');
-  			
-	  		add_settings_section('infoSection', 'Use this plugin to turn on the header/footer for FitStudio', array(&$this,'printVisibility'), 'manage-fitstudio-hf');
-			add_settings_field('apiUrl', '', array(&$this,'printApiUrl'), 'manage-fitstudio-hf', 'infoSection');
-			add_settings_field('apiKey', '', array(&$this,'printApiKey'), 'manage-fitstudio-hf', 'infoSection');
-			add_settings_field('toggleVisibility', '', array(&$this,'printVisibilityToggle'), 'manage-fitstudio-hf', 'infoSection');
-			add_settings_field('siteSection', '', array(&$this,'printSiteSection'), 'manage-fitstudio-hf', 'infoSection');
-		}
-		
-		public function getOption($name) {
-			return get_option($name);
-		}
-		
-		public function printVisibility() {
-			$this->views->openField();
-		}
-		
-		public function printApiKey() {
-			$data = array('value' => $this->getOption('fitStudioOptions-apiKey'));
-			
-			$this->views->openField('fields/keys', $data);
-		}
-		
-		public function printVisibilityToggle() {
-			$data = array('value' => $this->getOption('fitStudioOptions-visibility'));
-			
-			$this->views->openField('fields/visibility', $data);
-		}
-		
-		public function printApiUrl() {
-			$data = array('value' => $this->getOption('fitStudioOptions-apiUrl'));
-			
-			$this->views->openField('fields/url', $data);
-		}
-		
-		public function printSiteSection() {
-			$data = array('value' => $this->getOption('fitStudioOptions-siteSection'));
-			
-			$this->views->openField('fields/section', $data);
-		}		
 	}

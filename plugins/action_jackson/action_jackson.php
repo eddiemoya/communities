@@ -9,15 +9,17 @@
 
 	//include base definitions
 	//include('globals/USERACTIONS.constants.php');
-	@define('ACTIONJACSON_BASE_DIR', 'action_jackson/');
 
-	@define('ACTIONJACSON_ACTIONS_DIR', 'base/');
-	@define('ACTIONJACSON_INSTANCES_DIR', 'controllers/instances/');
-	@define('ACTIONJACSON_VIEWS_DIR', 'views/');
+	@define('ACTIONJACSON_BASE_DIR', dirname(__FILE__).'/');
 
-	//include(USERACTIONS_ACTIONS_DIR.'UserActionsViews.actions.php');
+	@define('ACTIONJACSON_ACTIONS_DIR', ACTIONJACSON_BASE_DIR.'base/');
+	@define('ACTIONJACSON_INSTANCES_DIR', ACTIONJACSON_BASE_DIR.'controllers/instances/');
+	@define('ACTIONJACSON_VIEWS_DIR', ACTIONJACSON_BASE_DIR.'views/');
+
+	include('base/action_jackson_views.php');
 	include('base/action_jackson_admin.php');
 	include('base/action_jackson_query.php');
+
     include('models/post_action.php');
     include('models/user_action.php');
 
@@ -114,3 +116,16 @@
 
     add_filter('pre_user_query', 'asdf');
 
+    function my_admin_footer() {
+        ?>
+        <script type="text/javascript">
+        jQuery(document).ready(function(){
+            console.log('hiot')
+            jQuery('.datepicker').datepicker({
+                dateFormat : 'yy-mm-dd'
+            });
+        });
+        </script>
+        <?php
+    }
+    add_action('admin_footer', 'my_admin_footer');
