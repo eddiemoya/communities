@@ -5,6 +5,8 @@
  */
 get_template_part('parts/header');
 
-get_template_part('parts/product');
+loop();
+
+comments_template('/parts/answers.php');
 
 get_template_part('parts/footer');

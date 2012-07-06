@@ -14,7 +14,7 @@ class CCT_Model_Comment_Type {
     var $parent_type;
     var $capability = 'administrator';
     var $moderation_queue;
-    var $icon_url;
+    var $menu_icon;
     var $menu_position = '28';
     public $notice_color = '';
     
@@ -30,6 +30,7 @@ class CCT_Model_Comment_Type {
             $this->parent_type = $args->parent_type;
             $this->capability = $args->capability;
             $this->menu_position = $args->menu_position;
+            $this->menu_icon = $args->menu_icon;
         } else {
             $this->get_settings($comment_type);
         }
@@ -54,7 +55,8 @@ class CCT_Model_Comment_Type {
         $parent = get_post($commentdata['comment_parent']);
         
         //Allow developers to apply custom logic to determine when their CCTs are applied - should return boolean
-        $custom_logic = apply_filters('cct_condition_' . $this->comment_type, true, (object)$commentdata, $parent);
+        $filter_args = array(true, $this, $commentdata, $parent);
+        $custom_logic = apply_filters_ref_array("cct_condition_{$this->comment_type}", $filter_args);
         
         //Lets test the outcome of any custom logic - if is false, return $commentdata unchanged.
         if(!$custom_logic)
