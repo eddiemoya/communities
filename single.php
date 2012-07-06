@@ -3,12 +3,10 @@
  * @package WordPress
  * @subpackage White Label
  */
-
 get_template_part('parts/header');
 
-get_template_part('parts/post');
+loop(); 
 
-if (is_single()) 
-    { comments_template('parts/comments'); }
+comments_template('/parts/comments.php');
 
 get_template_part('parts/footer');
