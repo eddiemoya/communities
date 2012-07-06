@@ -9,9 +9,9 @@ $lightest-color:    white;
 $darkest-color:     black;
 $nav-color:         #e4e0df;
 // List of special, site-branded colors 
-$color-types:       ( link,     secondary-link, bodycopy, decorative, button );
-$sears-colors:      ( #067bb5,  #666666,        #555555,  #cccccc,    #1a519b );
-$kmart-colors:      ( #067bb5,  #666666,        #555555,  #cccccc,    #6698cd );
+$color-types:       ( link,     secondary-link, bodycopy, decorative, button,   footer );
+$sears-colors:      ( #067bb5,  #666666,        #555555,  #cccccc,    #1a519b,  #dedbde );
+$kmart-colors:      ( #067bb5,  #666666,        #555555,  #cccccc,    #6698cd,  #dedbde );
 
 // Scaffolding
 $grid-width:        940;

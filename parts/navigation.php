@@ -7,7 +7,7 @@
   );
 ?>
 <nav id="navigation">
-  <ul id="header_nav" class="clearfix">
+  <ul id="header_nav" class="dropmenu clearfix">
     <li class="right_button">
       <a href="#">Customer Care</a>
     </li>
