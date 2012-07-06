@@ -15,9 +15,6 @@
         <li><a href="#">Item 1</a></li>
         <li><a href="#">Item 2</a></li>
         <li><a href="#">Item 3</a></li>
-        <?php if ($nav_item != "Categories"): ?>
-        <li><a href="#">All <?php echo htmlentities( $nav_item ); ?><?php if ( $nav_item == "Blog" ) { echo " Posts"; } ?></a></li>
-        <?php endif; ?>
       </ul>
     </li>
     <?php endforeach; ?>
