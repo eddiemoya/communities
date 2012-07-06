@@ -64,7 +64,7 @@ class CCT_Controller_Comment_Types {
                     $type->capability, 
                     $type->comment_type . '-page', 
                     array($type, 'custom_comment_page') ,
-                    '', 
+                    $type->menu_icon, 
                     $type->menu_position
             );
         } 

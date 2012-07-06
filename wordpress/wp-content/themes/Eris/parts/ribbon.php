@@ -6,7 +6,7 @@
 <nav id="ribbon">
 	<ul>
 		<li class="ribbon-icon" id="ribbon_shop-your-way"><a href="http://www.shopyourway.com" title="Shop Your Way" rel="external">Shop Your Way </a></li>
-		<li class="ribbon-icon" id="ribbon_<?php echo get_sister() ?>"><a href="http://www.<?php echo get_sister() ?>.com?intcmp=xsite_<?php echo ucfirst(theme_option("brand")); ?>" title="<?php echo ucfirst(get_sister()); ?>" rel="external"><?php echo ucfirst(get_sister()); ?></a></li>
+		<li class="ribbon-icon" id="ribbon_<?php echo get_sister() ?>"><a href="http://www.<?php echo get_sister(); ?>.com?intcmp=xsite_<?php echo ucfirst(theme_option("brand")); ?>" title="<?php echo ucfirst(get_sister()); ?>" rel="external"><?php echo ucfirst(get_sister()); ?></a></li>
 		<li class="ribbon-icon" id="ribbon_shop-your-way-rewards"><a href="http://www.shopyourwayrewards.com" title="Shop Your Way Rewards" rel="external">Shop Your Way Rewards</a></li>
 		<li class="ribbon-icon" id="ribbon_my-gofer"><a href="http://www.mygofer.com?intcmp=xsite_<?php echo ucfirst(theme_option("brand")); ?>" title="myGofer" rel="external">myGofer</a></li>
 		<li class="ribbon-icon" id="ribbon_craftsman"><a href="http://www.craftsman.com?intcmp=xsite_<?php echo ucfirst(theme_option("brand")); ?>" title="Craftsman" rel="external">Craftsman</a></li>
