@@ -3,14 +3,11 @@
  * @package WordPress
  * @subpackage White Label
  */
+get_template_part('parts/header');
 
-	get_template_part('parts/header');
+loop();
 
-	loop();
+//Wont show up on archive pages.
+comments_template('/parts/answers.php');
 
-	if (is_single()) 
-    { comments_template('parts/comments.php'); }
-
-	get_template_part('parts/footer');
-	
-?>
+get_template_part('parts/footer');

@@ -158,10 +158,10 @@ function denqueue_scripts() {
  */
 function add_menu_class_first_last($output) {
   $output = preg_replace('/class="menu-item/', 'class="first-menu-item menu-item', $output, 1);
-  $output = substr_replace($output, 'class="last-menu-item menu-item last-child', strripos($output, 'class="menu-item'), strlen('class="menu-item'));
+  //$output = substr_replace($output, 'class="last-menu-item menu-item last-child', strripos($output, 'class="menu-item'), strlen('class="menu-item'));
   return $output;
 }
-add_filter('wp_nav_menu', 'add_menu_class_first_last');
+//add_filter('wp_nav_menu', 'add_menu_class_first_last');
 
 
 /**
@@ -343,7 +343,11 @@ function custom_rewrite_rules( $rules ) {
  * END Rewrite Rules and Permalinks *
  ************************************/
 
-
+function print_pre($r){
+    echo '<pre>';
+    print_r($r);
+    echo '</pre>';
+}
 
 /**
  * General use loop function. Allows for a template to be selected. Currently 
@@ -370,8 +374,6 @@ function loop($template = 'post'){
     wp_reset_query();
 
 }
-
-
 
 /**
  * Custom Post Types 
@@ -412,43 +414,94 @@ function register_questions_type() {
 
 add_action('init', 'register_questions_type');
 
-
-
-function register_answers() {
-    $args = array(
-        'labels' => array(
-            'name' => _x('Answers', 'post type general name'),
-            'singular_name' => _x('Answer', 'post type singular name'),
-            'add_new' => _x('Add New', 'answer'),
-            'add_new_item' => __('Add New Answer'),
-            'edit_item' => __('Edit Answer'),
-            'new_item' => __('New Answer'),
-            'all_items' => __('All Answers'),
-            'view_item' => __('View Answers'),
-            'search_items' => __('Search Answers'),
-            'not_found' => __('No answers found'),
-            'not_found_in_trash' => __('No answers found in Trash'),
-            'parent_item_colon' => 'Question:',
-            'menu_name' => 'Answer'
-        ),
-        'parent_domain' => 'post',
-        'parent_type' => 'question',
-        'capability' => 'administrator',
-        'menu_position' => 28
-    );
-
-    register_comment_type('answer', $args);
-}
-
-add_action('init', 'register_answers');
-
-
-
-add_filter('cct_condition_answers', 'set_answers_comment_type');
-
-function set_answers_comment_type($set_type, $comment, $parent){
+/**
+ * Custom Comment Types 
+ */
+if (class_exists(CCT_Controller_Comment_Types)) {
     
+    /**
+     * 
+     */
+    function register_flags() {
+        $args = array(
+            'labels' => array(
+                'name' => _x('Flags', 'post type general name'),
+                'singular_name' => _x('Flag', 'post type singular name'),
+                'add_new' => _x('Add New', 'flag'),
+                'add_new_item' => __('Add New Flag'),
+                'edit_item' => __('Edit Flag'),
+                'new_item' => __('New Flag'),
+                'all_items' => __('All Flags'),
+                'view_item' => __('View Flags'),
+                'search_items' => __('Search Flags'),
+                'not_found' => __('No flags found'),
+                'not_found_in_trash' => __('No flags found in Trash'),
+                'parent_item_colon' => 'Flag:',
+                'menu_name' => 'Flag'
+            ),
+            'parent_domain' => 'post',
+            'parent_type' => 'question',
+            'capability' => 'administrator',
+            'menu_icon' => get_template_directory_uri() . '/assets/img/admin/flags_admin_icon.gif',
+            'menu_position' => 28
+        );
+
+        CCT_Controller_Comment_Types::register_comment_type('flag', $args);
+    }
+
+    add_action('init', 'register_flags', 10);
+
+    /**
+     * 
+     */
+    function register_answers() {
+        $args = array(
+            'labels' => array(
+                'name' => _x('Answers', 'post type general name'),
+                'singular_name' => _x('Answer', 'post type singular name'),
+                'add_new' => _x('Add New', 'answer'),
+                'add_new_item' => __('Add New Answer'),
+                'edit_item' => __('Edit Answer'),
+                'new_item' => __('New Answer'),
+                'all_items' => __('All Answers'),
+                'view_item' => __('View Answers'),
+                'search_items' => __('Search Answers'),
+                'not_found' => __('No answers found'),
+                'not_found_in_trash' => __('No answers found in Trash'),
+                'parent_item_colon' => 'Question:',
+                'menu_name' => 'Answer'
+            ),
+            'parent_domain' => 'post',
+            'parent_type' => 'question',
+            'capability' => 'administrator',
+            'menu_position' => 29
+        );
+
+        CCT_Controller_Comment_Types::register_comment_type('answer', $args);
+    }
+
+    add_action('init', 'register_answers', 11);
 
 }
 
+
+/**
+ *
+ * @param type $is_answer
+ * @param type $comment_type
+ * @param type $comment_data
+ * @param type $parent
+ * @return boolean 
+ */
+
+function set_answers_comment_type($is_answer, $comment_type, $comment_data, $parent){
+    
+    $is_answer = false;
+    if($parent->post_type == 'question'){
+        $is_answer = true;
+    }
+   
+    return $is_answer;
+}
+add_filter('cct_condition_answer', 'set_answers_comment_type', 10, 4);
 

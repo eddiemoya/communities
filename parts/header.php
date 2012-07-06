@@ -14,7 +14,7 @@
     <meta name="description" content="<?php bloginfo('description'); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/images/favicon.ico" /> -->
+    <!--<link rel="shortcut icon" href="<?php //echo get_template_directory_uri(); ?>/images/favicon.ico" /> -->
 
     <?php wp_head(); ?>
       
@@ -32,6 +32,26 @@
               <?php get_template_part('parts/head'); ?>
 
               <?php get_template_part('parts/navigation'); ?>
+              
+              <?php 
+              /**
+               * @Tim & @Carl: Un-comment the  line  below and look at how it works in the admin
+               * 
+               * Appearance > Menus
+               * 
+               * Add items via drag and drop, use Screen Options tab to enable all the extra fields for menu items.
+               * It seems it would be a lot simpler than creating them manually as in parts/navigation.
+               * 
+               * Let me know what you think.
+               */
+              
+              /*
+               wp_nav_menu( array( 
+                   'menu' => 'test', 
+                   'menu_class' => 'clearfix', 
+                   'menu_id' => 'header_nav', 
+                   'container_id' => 'navigation')); */
+              ?>
 
           </div>    
 
@@ -40,7 +60,7 @@
 
               <div id="wp_header">
                   <a href="<?php echo site_url(''); ?>" id="logo"></a>
-                  <?php wp_nav_menu( array( 'theme_location' => 'main-navigation', 'menu_id' => 'main-nav') ); ?>
+                  <?php //wp_nav_menu( array( 'theme_location' => 'main-navigation', 'menu_id' => 'main-nav', 'container_id' => 'header_nav', 'container', 'container_class' => 'menu-{menu slug}-container cleafix') ); ?>
               </div>
 
               <!-- #page -->
