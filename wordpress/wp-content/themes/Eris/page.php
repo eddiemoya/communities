@@ -5,6 +5,6 @@
  */
 get_template_part('parts/header');
 
-get_template_part('parts/post');
+loop();
 
 get_template_part('parts/footer');
