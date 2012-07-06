@@ -130,10 +130,12 @@ $arrow-height: 3px;
       @include sprite-position("span", right, ( $nav-sprite-period * ( -3 ) ) );
     }
     &:hover {
+      background-image: url('#{$img}sprite-nav.png');
       ul {
         bottom: 100%;
       }
     }
+    @include sprite-position("&:hover", left, ( $nav-sprite-period * ( -5 ) ) );
     &:first-child {
       border-left: 0;
     }
