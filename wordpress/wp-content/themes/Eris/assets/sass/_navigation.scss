@@ -23,16 +23,12 @@ $arrow-height: 3px;
   }
   // Styling for drop menu
   ul {
-    @include box-shadow( lighten( $darkest-color, 66 ) 2px 2px 8px );
-    @include border-radius( 5px );
     width: 100%;
-    border: 1px solid sears( decorative );
     position: absolute;
     left: -9999px;
     z-index: 100;
     li {
       border-right: 0;
-      border-top: 1px solid sears( decorative );
       float: none;
       width: 100%;
       &:first-child {
@@ -57,11 +53,11 @@ $arrow-height: 3px;
 
 // Modify dropmenu for the header
 #header_nav.dropmenu {
+  @include border-radius( 5px );
   border-left: 1px solid sears( decorative );
   font-size: percentage( 12/16 );
   background: $nav-color url('#{$img}sprite-nav.png');
   background-repeat: repeat-x;
-  @include border-radius( 5px );
   ul {
     background: $lightest-color url('#{$img}sprite-nav.png');
     background-repeat: repeat-x;
@@ -73,7 +69,8 @@ $arrow-height: 3px;
     padding: 1px 0;
     a {
       border-right: 1px solid $lightest-color;
-      padding: .5em 0;
+      padding-top: .5em;
+      padding-bottom: .5em;
       span {
         background-image: url('#{$img}sprite-nav.png');
         background-repeat: no-repeat;
@@ -84,7 +81,6 @@ $arrow-height: 3px;
     &.right_button {
       @include border-radius( 0px 4px 4px 0px );
       background: sears( button ) url('#{$img}sprite-nav.png');
-      background-repeat: repeat-x;
       float: right;
       border-left: 1px solid sears( decorative );
       border-right: 0;
@@ -92,11 +88,20 @@ $arrow-height: 3px;
         border-right: 0;
         color: $lightest-color;
       }
-      ul li a {
-        color: sears( secondary-link );
-      }
     }
     @include sprite-position("&.right_button", left, ( $nav-sprite-period * ( -2 ) ) - 1 );
+  }
+  ul {
+    @include box-shadow( lighten( $darkest-color, 66 ) 2px 2px 8px );
+    @include border-radius( 5px );
+    border: 1px solid sears( decorative );
+    li {
+      border-top: 1px solid sears( decorative );
+      width: 100%;
+      a {
+        border-right: 0;
+      }
+    }
   }
 }
 @include sprite-position("#header_nav.dropmenu", left, ( $nav-sprite-period * ( -1 ) ) );
@@ -106,29 +111,41 @@ $arrow-height: 3px;
   background: sears( footer ) url('#{$img}sprite-nav.png');
   background-repeat: repeat-x;
   font-size: percentage( 12/16 );
+  @include border-radius( 5px );
   ul {
-    background: $lightest-color url('#{$img}sprite-nav.png');
-    background-repeat: repeat-x;
+    background: sears( footer_fly );
   }
-  @include sprite-position("ul", left, bottom );
   li {
-    width: percentage( 1/6 );
+    $remainder: 33/940;
+    width: percentage( 1 / ( 6 + $remainder ) );
+    border-left: 1px solid $lightest-color;
     a {
+      padding-top: .5em;
+      padding-bottom: .5em;
       span {
         background-image: url('#{$img}sprite-nav.png');
         background-repeat: no-repeat;
-        padding-right: 14px;
+        padding-right: 16px;
       }
       @include sprite-position("span", right, ( $nav-sprite-period * ( -3 ) ) );
     }
-  }
-  &:hover {
-    ul {
-      bottom: 100%;
+    &:hover {
+      ul {
+        bottom: 100%;
+      }
+    }
+    &:first-child {
+      border-left: 0;
     }
   }
-  ul li {
-    width: 100%;
+  ul {
+    @include border-radius( 5px );
+    border: 1px solid sears( decorative );
+    border-bottom: 0;
+    li {
+      width: 100%;
+      border-left: 0;
+    }
   }
 }
 
