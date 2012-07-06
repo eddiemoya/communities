@@ -11,8 +11,8 @@
                     <div class="nav-next"><?php previous_posts_link(__('Newer posts <span class="meta-nav">&raquo;</span>')); ?></div>
                 </div>
                 
-                <?php do_action('content-after'); ?>
-                <?php get_sidebar(); ?>
+                <?php //do_action('content-after'); ?>
+                <?php //get_sidebar(); ?>
             </div><!-- #page -->
             
             <div id="wp_footer">
@@ -26,6 +26,8 @@
             </div>
             
         </div> <!-- #page_wrapper -->
+        
+      </div>
         
     </body>
 </html>

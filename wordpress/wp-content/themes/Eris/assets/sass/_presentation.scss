@@ -1,3 +1,6 @@
+// @author Carl Albrecht-Buehler
+// @author Tim Steele
+
 // SITE-WIDE TAG STYLES
 html, body {
   height: 100%;
@@ -7,20 +10,28 @@ html, body {
   padding: 0;
   font-family: $basefont;
   line-height: 1.4;
-  color: $bodycopy-color;
+  color: sears( body);
 }
 
 a {
-  color: $link-color;
+  color: sears( link );
   text-decoration: none;
   &:hover {
     text-decoration: underline;
   }
   &:visited {
-    color: $link-color;
+    color: sears( link );
   }
 }
 // END SITE-WIDE TAG STYLES
+
+// CONVENIENCE CLASSES
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
 
 .bullets {
   margin: 1em 0; 
@@ -33,6 +44,12 @@ ol.bullets {
 
 ul.bullets {
   list-style-type:disc;
+}
+// END CONVENIENCE CLASSES
+
+
+.bold {
+  font-weight:700;
 }
 
 // AUTHORIZATION FORM
@@ -81,15 +98,5 @@ ul.bullets {
       }
     }
     
-  }
-}
-
-.drop-zone_25 {
-  .authorization-form {
-    .form-fields{
-      label {
-        text-align:left;
-      }
-    }
   }
 }

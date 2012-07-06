@@ -3,11 +3,29 @@
   @return ( $number-columns * ($margin-width * 3) ) + ( ($number-columns - 1) * $margin-width );
 }
 
+@function sears( $lookups, $types: $color-types, $colors: $sears-colors ) {
+  @return lookup( $lookups, $types, $colors );
+}
+@function kmart( $lookups, $types: $color-types, $colors: $kmart-colors ) {
+  @return lookup( $lookups, $types, $colors );
+}
+
 // Mixins
 @mixin margin-adjust( $class: "", $margin: $margin-width-pct ) {
   #{$class}.span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
   #{$class}.span6 + .span3 + .span3 + .span6 + [class*="span"],
   #{$class}.span4 + .span4 + .span4 + .span4 + [class*="span"] {
     margin-left: $margin;
+  }
+}
+
+@mixin sprite-position( $selector, $x-pos: left, $y-pos: top, $rollover-x: 0, $rollover-y: 0 ) {
+  #{$selector}{
+    background-position: $x-pos $y-pos;
+    @if $rollover-x != 0 and $rollover-y != 0 {
+      &:hover {
+        background-position: $rollover-x $rollover-y;
+      } 
+    }
   }
 }

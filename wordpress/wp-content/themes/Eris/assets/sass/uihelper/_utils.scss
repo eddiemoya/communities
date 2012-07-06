@@ -1,0 +1,113 @@
+
+// Set of Boolean functions to test against types available in Sass
+// Note: Single element lists are treated as their member's type.
+@function is_list($val) {
+  @return if( type-of($val) == list, true, false );
+}
+@function is_number($val) {
+  @return if( type-of($val) == number, true, false );
+}
+@function is_string($val) {
+  @return if( type-of($val) == string, true, false );
+}
+@function is_bool($val) {
+  @return if( type-of($val) == bool, true, false );
+}
+@function is_color($val) {
+  @return if( type-of($val) == color, true, false );
+}
+
+// Concatenate $str to the $base-str $repeat-count times
+@function repeat-concat($base-str, $str, $repeat-count) {
+  $return-str: $base-str;
+  @for $i from 1 through $repeat-count {
+    $return-str: "#{$return-str}#{$str}";
+  }
+  @return $return-str;
+}
+
+// Repeat $value $size times in a list.
+// repeat-into-list(10, 3) => (10, 10, 10)
+@function repeat-into-list($value, $size) {
+  $list: ();
+  @for $i from 1 through $size {
+    $list: join($list, $value);
+  }
+  @return $list;
+}
+
+
+@function listify-padding($size, $padding) {
+  // Treat padding as a scalar and repeat it into a list of same size as number of columns
+  @if is_number($padding) {  
+    @return repeat-into-list($padding, $size);
+  } @else if (length($padding) == $size) {
+    @return $padding;
+  }
+  @warn "Incorrect length of $padding";
+  @return ();
+}
+
+// A workaround to get hash table-like functionality into Sass.
+// Pass a single key or list of keys, find that set in $all-keys,
+// and return the corresponding values from $all-values.
+// lookup((c,b), (a,b,c,d), (1,2,3,4)) => (3,2)
+@function lookup($lookup-keys, $all-keys, $all-values) {
+  $index: 1 !default;
+  $value: 1 !default;
+  $returned-list: ();
+  @each $lookup in $lookup-keys {
+    @if index($all-keys, $lookup) {
+      $index: index($all-keys, $lookup);
+      $value: nth($all-values, $index);
+    }
+    @if is_list($lookup-keys) {
+      $returned-list: append($returned-list, $value);
+    }
+    @else {
+      $returned-list: $value;
+    }
+  }
+  @return $returned-list;
+}
+
+
+// Recompute widths by adding margin and padding.
+// the margin value to use will always be the last member
+// of the returned list. the padding value to use will be
+// the first member after the list of column widths.
+// add-spacing((25, 25, 25), 1, 2) => (23, 23, 1, 1, 1, 1, 1, 1, 2, 2)
+// add-spacing((25, 25, 25), (1, 2, 3), 4) => (23, 21, 19, 1, 1, 2, 2, 3, 3, 4, 4)
+@function add-spacing($column-widths, $padding: 0, $margin: 0) {
+  $column-cnt: length($column-widths);
+  $padding-list: listify-padding($column-cnt, $padding);
+  
+  // column widths get returned even if there are no paddings or margins
+  $padded-column-widths: $column-widths;
+  // add margin to the returned list. it will be used as margin-left, so skip the first column.
+  @if $margin > 0 {
+    @for $i from 1 through $column-cnt - 1 {
+      $padded-column-widths: append($padded-column-widths, $margin);
+    }
+  }
+  // add padding to the column widths by subtracting the padding twice from each
+  // column, then add the padding value twice to the list.
+  $padded-column-widths: ();
+  @for $i from 1 through $column-cnt {
+    $padding-factor: nth($padding-list, $i) * 2;
+    $adjusted-width: nth($column-widths, $i) - ($padding-factor);
+    $padded-column-widths: append($padded-column-widths, $adjusted-width);
+  }
+  @each $next-padding in $padding-list {
+    // Add it twice
+    $padded-column-widths: append($padded-column-widths, $next-padding);
+    $padded-column-widths: append($padded-column-widths, $next-padding);
+  }
+  // the list was reset at the outset. add margins back in, if they are needed.
+  @if $margin > 0 {
+    @for $i from 1 through $column-cnt - 1 {
+      $padded-column-widths: append($padded-column-widths, $margin);
+    }
+  }
+  @return $padded-column-widths;
+}
