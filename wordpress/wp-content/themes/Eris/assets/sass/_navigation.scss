@@ -145,8 +145,16 @@ $arrow-height: 3px;
     border: 1px solid sears( decorative );
     border-bottom: 0;
     li {
+      font-size: 90%;
       width: 100%;
       border-left: 0;
+      &:hover {
+        background: none;
+      }
+    }
+    a:hover {
+      color: sears( footer-subnav-hover );
+      text-decoration: none;
     }
   }
 }

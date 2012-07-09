@@ -774,8 +774,16 @@ ul.bullets {
   border-bottom: 0;
 }
 #footer_nav.dropmenu ul li {
+  font-size: 90%;
   width: 100%;
   border-left: 0;
+}
+#footer_nav.dropmenu ul li:hover {
+  background: none;
+}
+#footer_nav.dropmenu ul a:hover {
+  color: #55a3c8;
+  text-decoration: none;
 }
 
 #footer_nav.dropmenu {
