@@ -54,9 +54,10 @@
               /*
                wp_nav_menu( array( 
                    'menu' => 'test', 
-                   'menu_class' => 'clearfix', 
+                   'menu_class' => 'clearfix dropmenu', 
                    'menu_id' => 'header_nav', 
-                   'container_id' => 'navigation')); */
+                   'container_id' => 'navigation'));
+              */
               ?>
 
           </div>    
