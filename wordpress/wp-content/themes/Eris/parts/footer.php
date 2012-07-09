@@ -20,6 +20,7 @@
                 <div id="shc_footer">
                     <?php do_action('content-bottom'); ?>
                 </div>
+                <?php get_template_part('parts/footer_navigation'); ?>
 
                 <?php wp_footer(); ?>
 

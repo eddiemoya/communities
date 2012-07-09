@@ -23,6 +23,28 @@ a {
     color: sears( link );
   }
 }
+
+.kmart a {
+  color: kmart( link );
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:visited {
+    color: kmart( link );
+  }
+}
+
+.sears a {
+  color: sears( link );
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+  &:visited {
+    color: sears( link );
+  }
+}
 // END SITE-WIDE TAG STYLES
 
 // CONVENIENCE CLASSES
@@ -45,58 +67,7 @@ ol.bullets {
 ul.bullets {
   list-style-type:disc;
 }
-// END CONVENIENCE CLASSES
-
 
 .bold {
   font-weight:700;
-}
-
-// AUTHORIZATION FORM
-.authorization-form {
-  border:solid 1px black;
-  font: .8125em/1.25em Arial,Helvetica, san-serif;
-  padding:1.55em;
-  h1 {
-    color:#8F8F8F;
-    font-size:1.45em;
-    line-height:1em;
-    margin-bottom:1.05em;
-  }
-  .form-fields {
-    & > li {
-      dd {
-        float:left;
-        width:65%;
-      }
-      dt {
-        float:left;
-        min-width:5.5em;
-        width:25%;
-      }
-      label {
-        display:block;
-        padding-right:.85em;
-        text-align:right;
-      }
-      input[type="text"], input[type="password"] {
-        //float:left;
-        border:solid 1px #A0C7D7;
-        color:#363636;
-        height:1.84em;
-        //min-width:15.7em;
-        padding:.25em;
-        width:95%;
-      }
-      input[type="text"][shc\:link="true"], input[type="password"][shc\:link="true"] {
-        width:60%;
-      }
-      input + a {
-        color:#049DD5;
-        font-size:.85em;
-        text-decoration:none;
-      }
-    }
-    
-  }
 }

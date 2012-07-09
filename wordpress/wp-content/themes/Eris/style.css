@@ -228,23 +228,41 @@ legend {
   border: none;
 }
 
-#header.kmart form #input_search {
+#header.kmart form {
   border: solid 5px #e02334;
+}
+#header.kmart form #input_search {
+  background: transparent url(assets/img/kmart/icon_search-bar-magnifying-glass_28x28.gif) no-repeat 0px 0px;
+  border: none;
+  height: 1.25em;
+  padding: .25em 0 .25em 1.7em;
+  margin-right: 9%;
+  width: 84%;
 }
 #header.kmart form #button_search {
   background: transparent url(assets/img/kmart/background_button.gif) repeat-x 0px 0px;
-  border: 0;
+  border: solid #e02334;
+  border-width: 0 0 0 5px;
+  font-size: .75em;
+  height: 2.5em;
+  padding-bottom: .25em;
+  position: absolute;
+  right: 0px;
+  text-transform: uppercase;
+  top: 0px;
+  width: 3.33em;
 }
 
 #header.sears form {
   border: solid 3px #3a81cf;
 }
 #header.sears form #input_search {
+  background: transparent url(assets/img/sears/icon_search-bar-magnifying-glass_24x24.gif) no-repeat 0px 0px;
   border: none;
   height: 1.25em;
-  padding: .125em 0;
+  padding: .125em 0 .125em 1.5em;
   margin-right: 11%;
-  width: 89%;
+  width: 82%;
 }
 #header.sears form #button_search {
   background: #ca4019 url(assets/img/sears/background_button.gif) repeat-x 0px 0px;
@@ -508,21 +526,17 @@ legend {
   margin-left: 0px;
 }
 
-<<<<<<< HEAD
-=======
-/* line 73, assets/sass/_layout.scss */
 #container {
   margin: 0 auto;
   position: relative;
-  width: 960px; }
+  width: 960px;
+}
 
-/* line 79, assets/sass/_layout.scss */
 #persistent-header {
   background-color: #ffffff;
-  top: 0px; }
+  top: 0px;
+}
 
-/* line 5, assets/sass/_presentation.scss */
->>>>>>> 2e949b070ceacd215851e4f199e0893d044b5812
 html, body {
   height: 100%;
   text-align: left;
@@ -542,6 +556,28 @@ a:hover {
   text-decoration: underline;
 }
 a:visited {
+  color: #067bb5;
+}
+
+.kmart a {
+  color: #980017;
+  text-decoration: none;
+}
+.kmart a:hover {
+  text-decoration: underline;
+}
+.kmart a:visited {
+  color: #980017;
+}
+
+.sears a {
+  color: #067bb5;
+  text-decoration: none;
+}
+.sears a:hover {
+  text-decoration: underline;
+}
+.sears a:visited {
   color: #067bb5;
 }
 
@@ -570,45 +606,39 @@ ul.bullets {
   font-weight: 700;
 }
 
-.authorization-form {
-  border: solid 1px black;
-  font: 0.8125em/1.25em Arial, Helvetica, san-serif;
-  padding: 1.55em;
-}
-.authorization-form h1 {
-  color: #8F8F8F;
-  font-size: 1.45em;
-  line-height: 1em;
-  margin-bottom: 1.05em;
-}
-.authorization-form .form-fields > li dd {
+.dropmenu li {
   float: left;
-  width: 65%;
+  position: relative;
 }
-.authorization-form .form-fields > li dt {
-  float: left;
-  min-width: 5.5em;
-  width: 25%;
-}
-.authorization-form .form-fields > li label {
+.dropmenu li a {
   display: block;
-  padding-right: .85em;
-  text-align: right;
+  font-weight: bold;
+  text-align: center;
 }
-.authorization-form .form-fields > li input[type="text"], .authorization-form .form-fields > li input[type="password"] {
-  border: solid 1px #A0C7D7;
-  color: #363636;
-  height: 1.84em;
-  padding: .25em;
-  width: 95%;
+.dropmenu li:hover ul {
+  left: 0;
 }
-.authorization-form .form-fields > li input[type="text"][shc\:link="true"], .authorization-form .form-fields > li input[type="password"][shc\:link="true"] {
-  width: 60%;
+.dropmenu ul {
+  width: 100%;
+  position: absolute;
+  left: -9999px;
+  z-index: 100;
 }
-.authorization-form .form-fields > li input + a {
-  color: #049DD5;
-  font-size: .85em;
-  text-decoration: none;
+.dropmenu ul li {
+  border-right: 0;
+  float: none;
+  width: 100%;
+}
+.dropmenu ul li:first-child {
+  border-top: 0;
+}
+.dropmenu ul li a {
+  border-right: 0;
+  color: #666666;
+  font-weight: normal;
+  text-align: left;
+  padding-left: 1em;
+  padding-right: .3em;
 }
 
 #navigation {
@@ -616,66 +646,61 @@ ul.bullets {
   margin: 0 auto;
 }
 
-#header_nav {
-  margin: 0 auto;
-  border-left: 1px solid #cccccc;
-  font-size: 75%;
-  background: #e4e0df url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
-  background-repeat: repeat-x;
+#header_nav.dropmenu {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px;
+  border-left: 1px solid #cccccc;
+  font-size: 75%;
+  background: #e4e0df url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
+  background-repeat: repeat-x;
 }
-#header_nav li {
-  float: left;
-  position: relative;
+#header_nav.dropmenu ul {
+  background: white url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
+  background-repeat: repeat-x;
+}
+#header_nav.dropmenu ul {
+  background-position: left bottom;
+}
+#header_nav.dropmenu li {
   border-right: 1px solid #cccccc;
   width: 14.285714285714285%;
   padding: 1px 0;
 }
-#header_nav li a {
-  display: block;
+#header_nav.dropmenu li a {
   border-right: 1px solid white;
-  padding: .5em 0;
-  font-weight: bold;
-  text-align: center;
+  padding-top: .5em;
+  padding-bottom: .5em;
 }
-#header_nav li a span {
+#header_nav.dropmenu li a span {
   background-image: url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
   background-repeat: no-repeat;
   padding-right: 9px;
 }
-#header_nav li a span {
+#header_nav.dropmenu li a span {
   background-position: right 5px;
 }
-#header_nav li.right_button {
+#header_nav.dropmenu li.right_button {
   -webkit-border-radius: 0px 4px 4px 0px;
   -moz-border-radius: 0px 4px 4px 0px;
   -ms-border-radius: 0px 4px 4px 0px;
   -o-border-radius: 0px 4px 4px 0px;
   border-radius: 0px 4px 4px 0px;
   background: #1a519b url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
-  background-repeat: repeat-x;
   float: right;
   border-left: 1px solid #cccccc;
   border-right: 0;
 }
-#header_nav li.right_button a {
+#header_nav.dropmenu li.right_button a {
   border-right: 0;
   color: white;
 }
-#header_nav li.right_button ul li a {
-  color: #666666;
-}
-#header_nav li.right_button {
+#header_nav.dropmenu li.right_button {
   background-position: left -161px;
 }
-#header_nav li:hover ul {
-  left: 0;
-}
-#header_nav ul {
+#header_nav.dropmenu ul {
   -webkit-box-shadow: #a8a8a8 2px 2px 8px;
   -moz-box-shadow: #a8a8a8 2px 2px 8px;
   box-shadow: #a8a8a8 2px 2px 8px;
@@ -684,37 +709,85 @@ ul.bullets {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px;
-  width: 100%;
-  background: white url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
-  background-repeat: no-repeat no-repeat;
   border: 1px solid #cccccc;
-  border-top: 0;
-  position: absolute;
-  left: -9999px;
 }
-#header_nav ul li {
-  border-right: 0;
+#header_nav.dropmenu ul li {
   border-top: 1px solid #cccccc;
-  float: none;
-  width: auto;
+  width: 100%;
 }
-#header_nav ul li:first-child {
-  border-top: 0;
-}
-#header_nav ul li a {
+#header_nav.dropmenu ul li a {
   border-right: 0;
-  color: #666666;
-  font-weight: normal;
-  text-align: left;
-  padding-left: 1em;
-  padding-right: .3em;
-}
-#header_nav ul {
-  background-position: left -160px;
 }
 
-#header_nav {
+#header_nav.dropmenu {
   background-position: left -80px;
+}
+
+#footer_nav.dropmenu {
+  background: #dedbde url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
+  background-repeat: repeat-x;
+  font-size: 75%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+#footer_nav.dropmenu ul {
+  background: #eeeeee;
+}
+#footer_nav.dropmenu li {
+  width: 16.56971619954169%;
+  border-left: 1px solid white;
+}
+#footer_nav.dropmenu li a {
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+#footer_nav.dropmenu li a span {
+  background-image: url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
+  background-repeat: no-repeat;
+  padding-right: 16px;
+}
+#footer_nav.dropmenu li a span {
+  background-position: right -240px;
+}
+#footer_nav.dropmenu li:hover {
+  background-image: url("/wp-content/themes/Eris/assets/img/sprite-nav.png");
+}
+#footer_nav.dropmenu li:hover ul {
+  bottom: 100%;
+}
+#footer_nav.dropmenu li:hover {
+  background-position: left -400px;
+}
+#footer_nav.dropmenu li:first-child {
+  border-left: 0;
+}
+#footer_nav.dropmenu ul {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  border-bottom: 0;
+}
+#footer_nav.dropmenu ul li {
+  font-size: 90%;
+  width: 100%;
+  border-left: 0;
+}
+#footer_nav.dropmenu ul li:hover {
+  background: none;
+}
+#footer_nav.dropmenu ul a:hover {
+  color: #55a3c8;
+  text-decoration: none;
+}
+
+#footer_nav.dropmenu {
+  background-position: left -320px;
 }
 
 @media print {
