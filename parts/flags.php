@@ -9,7 +9,7 @@
     </div>
 
     <ol class="commentlist">
-        <?php wp_list_comments(array('type' => 'answer')); ?>
+        <?php wp_list_comments(array('type' => 'flag')); ?>
     </ol>
 
     <div class="navigation">
@@ -36,7 +36,7 @@
 
     <div id="respond">
 
-        <h3><?php comment_form_title(__('Answer this Question'), __('Answer %s')); ?></h3>
+        <h3><?php comment_form_title(__('Flag This'), __('Flag %s')); ?></h3>
 
         <div id="cancel-comment-reply">
             <small><?php cancel_comment_reply_link() ?></small>
@@ -57,7 +57,7 @@
     ?>
         <p>
 
-        <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php?comment_type=answer" method="post" id="commentform">
+        <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php?comment_type=flag" method="post" id="commentform">
 
             <?php if (!is_user_logged_in()){ ?>
             <p><input type="text" name="author" id="author" value="<?php echo esc_attr(); ?>" size="22" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?> />
@@ -73,7 +73,7 @@
             <p><textarea name="comment" id="comment" cols="58" rows="10" tabindex="4"></textarea></p>
 
             <p>
-                <input name="submit" type="submit" id="submit" tabindex="5" value="<?php esc_attr_e('Answer Question'); ?>" />
+                <input name="submit" type="submit" id="submit" tabindex="5" value="<?php esc_attr_e('Flag This'); ?>" />
     <?php comment_id_fields(); ?>
             </p>
 
@@ -82,5 +82,4 @@
         </form>
 
 <?php } // comments_open()
-
 

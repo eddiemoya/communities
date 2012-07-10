@@ -51,13 +51,17 @@
                * Let me know what you think.
                */
               
-              /*
-               wp_nav_menu( array( 
-                   'menu' => 'test', 
+              
+               wp_nav_menu( array(
+                   'theme_location' => 'main-mavigation',
+                   'menu' => '',
                    'menu_class' => 'clearfix dropmenu', 
                    'menu_id' => 'header_nav', 
-                   'container_id' => 'navigation'));
-              */
+                   'container_id' => 'navigation',
+                   'fallback_cb' => 'wp_list_pages'
+                 
+                   ));
+              
               ?>
 
           </div>    
