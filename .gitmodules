@@ -1,0 +1,3 @@
+[submodule "wordpress/wp-content/plugins/wp-dropzones"]
+	path = wordpress/wp-content/plugins/wp-dropzones
+	url = git@github.com:eddiemoya/WP-Dropzones.git
