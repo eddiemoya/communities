@@ -1,0 +1,12 @@
+[submodule "wordpress/wp-content/plugins/wp-dropzones"]
+	path = wordpress/wp-content/plugins/wp-dropzones
+	url = git@github.com:eddiemoya/WP-Dropzones.git
+[submodule "wordpress/wp-content/plugins/meet-team"]
+	path = wordpress/wp-content/plugins/meet-team
+	url = git@github.com:harryoh87/meet-team-widget.git
+[submodule "wordpress/wp-content/plugins/comment-types"]
+	path = wordpress/wp-content/plugins/comment-types
+	url = git@github.com:eddiemoya/Custom-Comment-Types.git
+[submodule "wordpress/wp-content/plugins/action-jackson"]
+	path = wordpress/wp-content/plugins/action-jackson
+	url = git@github.com:eddiemoya/Action-Jackson.git
