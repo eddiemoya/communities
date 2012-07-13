@@ -3,3 +3,22 @@ etc/nginx/wordpress/develop.conf
 wordpress/wordpress/wp-config.php
 /wordpress/wp-content/themes/.sass-cache/
 *DS_Store*
+
+#Wordpress Specific Ignores (github recommended)
+.htaccess
+wp-*.php
+xmlrpc.php
+wp-admin/
+wp-includes/
+wp-content/uploads/
+wp-content/blogs.dir/
+wp-content/upgrade/*
+wp-content/backup-db/*
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+wp-content/cache/*
+wp-content/cache/supercache/*
+sitemap.xml
+sitemap.xml.gz
+readme.html
+license.txt
