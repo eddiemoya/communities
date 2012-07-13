@@ -23,19 +23,14 @@ $arrow-height: 3px;
   }
   // Styling for drop menu
   ul {
-    width: 100%;
+    width: 99%;
     position: absolute;
     left: -9999px;
     z-index: 100;
     li {
-      border-right: 0;
       float: none;
       width: 100%;
-      &:first-child {
-        border-top: 0;
-      }
       a {
-        border-right: 0;
         color: sears( secondary-link );
         font-weight: normal;
         text-align: left;
@@ -62,7 +57,7 @@ $arrow-height: 3px;
     background: $lightest-color url('#{$img}sprite-nav.png');
     background-repeat: repeat-x;
   }
-  @include sprite-position("ul", left, bottom );
+  @include sprite-position( "ul", left, bottom );
   li {
     border-right: 1px solid sears( decorative );
     width: percentage( 1/7 );
@@ -76,7 +71,7 @@ $arrow-height: 3px;
         background-repeat: no-repeat;
         padding-right: 9px;
       }
-      @include sprite-position("span", right, $nav-sprite-offset );
+      @include sprite-position( "span", right, $nav-sprite-offset );
     }
     &.right_button {
       @include border-radius( 0px 4px 4px 0px );
@@ -89,22 +84,27 @@ $arrow-height: 3px;
         color: $lightest-color;
       }
     }
-    @include sprite-position("&.right_button", left, ( $nav-sprite-period * ( -2 ) ) - 1 );
+    @include sprite-position( "&.right_button", left, ( $nav-sprite-period * ( -2 ) ) - 1 );
   }
+  // Modifications to hovering menu for header
   ul {
     @include box-shadow( lighten( $darkest-color, 66 ) 2px 2px 8px );
     @include border-radius( 5px );
     border: 1px solid sears( decorative );
     li {
       border-top: 1px solid sears( decorative );
+      border-right: 0;
       width: 100%;
+      &:first-child {
+        border-top: 0;
+      }
       a {
         border-right: 0;
       }
     }
   }
 }
-@include sprite-position("#header_nav.dropmenu", left, ( $nav-sprite-period * ( -1 ) ) );
+@include sprite-position( "#header_nav.dropmenu", left, ( $nav-sprite-period * ( -1 ) ) );
 
 // Modify dropmenu for the footer
 #footer_nav.dropmenu {
@@ -116,8 +116,8 @@ $arrow-height: 3px;
     background: sears( footer_fly );
   }
   li {
-    $remainder: 33/940;
-    width: percentage( 1 / ( 6 + $remainder ) );
+    $divisor: ( $grid-width - ( $footer-item-count - 1) ) / $footer-item-count;
+    width: percentage( $divisor / $grid-width );
     border-left: 1px solid $lightest-color;
     a {
       padding-top: .5em;
@@ -127,19 +127,22 @@ $arrow-height: 3px;
         background-repeat: no-repeat;
         padding-right: 16px;
       }
-      @include sprite-position("span", right, ( $nav-sprite-period * ( -3 ) ) );
+      @include sprite-position( "span", right, ( $nav-sprite-period * ( -3 ) ) );
     }
+    // Give the footer item a different background and 
+    // make it appear at the top of the menu bar ("drop-up")
     &:hover {
       background-image: url('#{$img}sprite-nav.png');
       ul {
         bottom: 100%;
       }
     }
-    @include sprite-position("&:hover", left, ( $nav-sprite-period * ( -5 ) ) );
+    @include sprite-position( "&:hover", left, ( $nav-sprite-period * ( -5 ) ) );
     &:first-child {
       border-left: 0;
     }
   }
+  // Modifications to hovering menu for footer
   ul {
     @include border-radius( 5px );
     border: 1px solid sears( decorative );
@@ -159,5 +162,5 @@ $arrow-height: 3px;
   }
 }
 
-@include sprite-position("#footer_nav.dropmenu", left, ( $nav-sprite-period * ( -4 ) ) );
+@include sprite-position( "#footer_nav.dropmenu", left, ( $nav-sprite-period * ( -4 ) ) );
 

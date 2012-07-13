@@ -21,6 +21,7 @@
                     <?php do_action('content-bottom'); ?>
                 </div>
                 <?php get_template_part('parts/footer_navigation'); ?>
+                <?php get_template_part('parts/footer_anterior'); ?>
 
                 <?php wp_footer(); ?>
 
