@@ -1,7 +1,7 @@
 <?php
-/**
- * @author Carl Albrecht-Buehler 
- */
+  # @author Carl Albrecht-Buehler 
+  # Create an array of all the Sears footer links
+  # Scraped from Sears.com July 9, 2012
   $a_navigation = array(
     "Accounts & Orders" => array(
       "Access My Account" => "https://www.sears.com/shc/s/UserAccountView?storeId=10153&amp;catalogId=12605&amp;langId=-1",
@@ -37,10 +37,18 @@
       "Children's Privacy Policy" => "http://www.sears.com/shc/s/nb_10153_12605_NB_CSchildprivacy",
       "License Info" => "http://www.sears.com/shc/s/nb_10153_12605_NB_License Information",
       "Payment Methods" => "javascript:popUpWin('http://www.sears.com/shc/s/nb_10153_12605_NB_PaymentMethod',770,500);",
-      "Price Match Policy" => "http://www.sears.com/shc/s/nb_10153_12605_NB_CSpricematch?adCell=WF&adCell=WF",
+      "Price Match Policy" => "http://www.sears.com/shc/s/nb_10153_12605_NB_CSpricematch?adCell=WF&amp;adCell=WF",
       "Privacy Policy" => "http://www.sears.com/shc/s/nb_10153_12605_NB_CSprivacy"
     ), 
-    "More Sears Sites" => array()
+    "More Sears Sites" => array(
+      "Manage My Life" => "http://www.managemylife.com/?sid=MMLxSearsxFooterxInspiration",
+      "Sears Commercial" => "http://www.searscommercial.com",
+      "Sears Home Services" => "http://services.sears.com",
+      "Sears International" => "http://www.sears.com/international",
+      "Sears Optical" => "http://www.searsoptical.com/webapp/wcs/stores/servlet/GenContent|-1|11251|10051|/searsopticalus/home/searsushomepage1?intcmp=xsite_Sears",
+      "Sears Portrait Studio" => "http://www.searsportrait.com/?intcmp=xsite_Sears",
+      "See More" => "http://www.sears.com/shc/s/nb_10153_12605_NB_see+it+all?storeId=10153&amp;vName=see+it+all&amp;catalogInd=NB&amp;catalogId=12605"
+    )
   );
 ?>
 <nav id="footer_navigation">
@@ -51,7 +59,7 @@
       <?php if ( !empty( $a_subnav ) ): ?>
       <ul>
       <?php foreach ( $a_subnav as $subnav => $nav_url ): ?>
-        <li><a href="<?php echo $nav_url ?>"><?php echo htmlentities( $subnav, ENT_QUOTES ); ?></a></li>
+        <li><a href="<?php echo $nav_url ?>" rel="nofollow"><?php echo htmlentities( $subnav, ENT_QUOTES ); ?></a></li>
       <?php endforeach; ?>
       </ul>
       <?php endif; ?>

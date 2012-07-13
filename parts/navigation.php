@@ -1,7 +1,5 @@
 <?php
-/**
- * @author Carl Albrecht-Buehler 
- */
+  # @author Carl Albrecht-Buehler 
   $a_navigation = array(
     "Categories", "Q&A's", "Blog Posts", "Buying Guides"
   );
