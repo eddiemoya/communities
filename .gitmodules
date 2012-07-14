@@ -16,6 +16,3 @@
 [submodule "wordpress/wp-content/plugins/posts-widget"]
 	path = wordpress/wp-content/plugins/posts-widget
 	url = git@github.com:eddiemoya/Posts-Widget.git
-[submodule "wordpress/wp-content/plugins/posts-widget-2"]
-	path = wordpress/wp-content/plugins/posts-widget-2
-	url = git@github.com:eddiemoya/Posts-Widget.git
