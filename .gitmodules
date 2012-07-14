@@ -13,3 +13,6 @@
 [submodule "wordpress/wp-content/plugins/posts-widget"]
 	path = wordpress/wp-content/plugins/posts-widget
 	url = git@github.com:eddiemoya/Posts-Widget.git
+[submodule "wordpress/wp-content/plugins/action_jackson"]
+	path = wordpress/wp-content/plugins/action_jackson
+	url = git@github.com:eddiemoya/Action-Jackson.git
