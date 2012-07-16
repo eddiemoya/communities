@@ -1,0 +1,48 @@
+#network_verify_result {
+	border: 1px solid #aaa;
+	background-color: #eee;
+	padding: 10px;
+	float: left;
+}
+
+#network_verify_result h5 {
+	margin: 0 0 0.5em 0;
+}
+
+#network_verify_result li {
+	margin: 1px; padding: 5px;
+}
+
+#network_verify_result .success, 
+.network_success {	
+	background-color: #cfc; 
+}
+
+#network_verify_result .warning, 
+.network_warning {
+	background-color: yellow;
+}
+
+#network_verify_result .error,   
+.network_error {
+	background-color: red; color: white;
+}
+
+#network_verify_result .error code, 
+.network_error code {
+	color: black;
+}
+
+.network_success, 
+.network_warning, 
+.network_error {
+	padding: 10px;
+	width: 95%;
+	-moz-box-shadow: 5px 5px 2px #aaa;
+	-webkit-box-shadow: 5px 5px 2px #aaa;
+	box-shadow: 5px 5px 2px #aaa;
+}
+
+.form-table .network-uri-th {
+	padding-bottom: 0;
+}
