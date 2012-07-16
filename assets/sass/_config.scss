@@ -9,9 +9,9 @@ $lightest-color:    white;
 $darkest-color:     black;
 $nav-color:         #e4e0df;
 // List of special, site-branded colors
-$color-types:       ( link,     secondary-link, bodycopy, decorative, button,   footer,   footer_fly, footer-subnav-hover );
-$sears-colors:      ( #067bb5,  #666666,        #555555,  #cccccc,    #1a519b,  #dedbde,  #eeeeee,    #55a3c8 );
-$kmart-colors:      ( #980017,  #666666,        #555555,  #cccccc,    #6698cd,  #dedbde,  #eeeeee,    #55a3c8 );
+$color-types:       ( link,     secondary-link, bodycopy, decorative, button,   footer,   footer-hover, footer_fly, footer-subnav-hover );
+$sears-colors:      ( #067bb5,  #666666,        #555555,  #cccccc,    #1a519b,  #dedbde,  #eeeeee,      #eeeeee,    #55a3c8 );
+$kmart-colors:      ( #980017,  #666666,        #555555,  #cccccc,    #6698cd,  #f3f0ec,  #7c0505,      #eeeeee,    #55a3c8 );
 
 // Scaffolding
 $grid-width:        940;
@@ -25,4 +25,5 @@ $column-bases:      ( 3, 4, 6, 8, 9 );
 $span-widths:       ();
 
 
-$footer-item-count: 6;
+$footer-count-sears: 6;
+$footer-count-kmart: 5;
