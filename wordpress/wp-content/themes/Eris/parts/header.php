@@ -49,7 +49,7 @@
                * It seems it would be a lot simpler than creating them manually as in parts/navigation.
                * 
                * Let me know what you think.
-               */
+              
               
               
                wp_nav_menu( array(
@@ -61,27 +61,20 @@
                    'fallback_cb' => 'wp_list_pages'
                  
                    ));
-              
+               */
               ?>
 
           </div>    
-
-          <!-- #page-wrapper -->
-          <div id="page_wrapper">
-
-              <div id="wp_header">
-                  <a href="<?php echo site_url(''); ?>" id="logo"></a>
+					
+					<!-- #content -->
+					<section id="content">
+					
                   <?php //wp_nav_menu( array( 'theme_location' => 'main-navigation', 'menu_id' => 'main-nav', 'container_id' => 'header_nav', 'container', 'container_class' => 'menu-{menu slug}-container cleafix') ); ?>
-              </div>
 
-              <!-- #page -->
-              <div id="page">
 
                   <?php //do_action('content-before'); ?>
 
-                  <div id="subheader">
-                      <?php /* Subheaders */ ?>
-                  </div>
+                  <?php /* Subheaders */ ?>
 
                   <!-- #content -->
                   <div id="content">
