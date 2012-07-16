@@ -39,7 +39,7 @@
       "Payment Methods" => "javascript:popUpWin('http://www.sears.com/shc/s/nb_10153_12605_NB_PaymentMethod',770,500);",
       "Price Match Policy" => "http://www.sears.com/shc/s/nb_10153_12605_NB_CSpricematch?adCell=WF&amp;adCell=WF",
       "Privacy Policy" => "http://www.sears.com/shc/s/nb_10153_12605_NB_CSprivacy"
-    ), 
+    ),
     "More Sears Sites" => array(
       "Manage My Life" => "http://www.managemylife.com/?sid=MMLxSearsxFooterxInspiration",
       "Sears Commercial" => "http://www.searscommercial.com",

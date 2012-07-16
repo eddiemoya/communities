@@ -20,8 +20,16 @@
                 <div id="shc_footer">
                     <?php do_action('content-bottom'); ?>
                 </div>
-                <?php get_template_part('parts/footer_navigation'); ?>
-                <?php get_template_part('parts/footer_anterior'); ?>
+                <?php
+                  if (theme_option("brand") == "kmart") {
+                    get_template_part('parts/footer_navigation_kmart');
+                    get_template_part('parts/footer_anterior_kmart');
+                  }
+                  else {
+                    get_template_part('parts/footer_navigation');
+                    get_template_part('parts/footer_anterior');
+                  }
+                  ?>
 
                 <?php wp_footer(); ?>
 

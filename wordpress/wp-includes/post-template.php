@@ -403,6 +403,9 @@ function get_body_class( $class = '' ) {
 
 	$classes = array();
 
+	if ( theme_option("brand") )
+		$classes[] = theme_option("brand");
+
 	if ( is_rtl() )
 		$classes[] = 'rtl';
 
