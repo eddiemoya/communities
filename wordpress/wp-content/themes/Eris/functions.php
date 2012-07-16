@@ -443,7 +443,8 @@ if (class_exists(CCT_Controller_Comment_Types)) {
             'parent_type' => 'question',
             'capability' => 'administrator',
             'menu_icon' => get_template_directory_uri() . '/assets/img/admin/flags_admin_icon.gif',
-            'menu_position' => 28
+            'menu_position' => 28,
+            'template' => get_template_directory_uri() . '/parts/flags.php'
         );
 
         CCT_Controller_Comment_Types::register_comment_type('flag', $args);
@@ -474,7 +475,8 @@ if (class_exists(CCT_Controller_Comment_Types)) {
             'parent_domain' => 'post',
             'parent_type' => 'question',
             'capability' => 'administrator',
-            'menu_position' => 29
+            'menu_position' => 29,
+            'template' => get_template_directory_uri() . '/parts/flags.php'
         );
 
         CCT_Controller_Comment_Types::register_comment_type('answer', $args);
@@ -497,7 +499,7 @@ if (class_exists(CCT_Controller_Comment_Types)) {
 function set_answers_comment_type($is_answer, $comment_type, $comment_data, $parent){
     
     $is_answer = false;
-    if($parent->post_type == 'question'){
+    if($_POST['comment_type'] == 'answer' && is_user_logged_in()){
         $is_answer = true;
     }
    
@@ -505,3 +507,13 @@ function set_answers_comment_type($is_answer, $comment_type, $comment_data, $par
 }
 add_filter('cct_condition_answer', 'set_answers_comment_type', 10, 4);
 
+function set_flags_comment_type($is_flag, $comment_type, $comment_data, $parent){
+    
+    $is_flag = false;
+    if($_POST['comment_type'] == 'flag' && is_user_logged_in()){
+        $is_flag = true;
+    }
+   
+    return $is_flag;
+}
+add_filter('cct_condition_answer', 'set_flags_comment_type', 10, 4);
