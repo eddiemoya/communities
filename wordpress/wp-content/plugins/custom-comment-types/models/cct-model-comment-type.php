@@ -16,6 +16,7 @@ class CCT_Model_Comment_Type {
     var $moderation_queue;
     var $menu_icon;
     var $menu_position = '28';
+    var $template;
     public $notice_color = '';
     
 
@@ -31,6 +32,7 @@ class CCT_Model_Comment_Type {
             $this->capability = $args->capability;
             $this->menu_position = $args->menu_position;
             $this->menu_icon = $args->menu_icon;
+            $this->template = $args->form_template;
         } else {
             $this->get_settings($comment_type);
         }

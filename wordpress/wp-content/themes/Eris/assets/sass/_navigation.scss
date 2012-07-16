@@ -1,83 +1,36 @@
 // @author Carl Albrecht-Buehler
 
 $nav-sprite-offset: 5px;
-$nav-sprite-period: 40px;
+$nav-sprite-period: 80px;
 $arrow-height: 3px;
-#navigation {
-  width:960px;
-  margin:0 auto;
-}
-#header_nav {
-  //width: 95%;
-  margin: 0 auto;
-  border-left: 1px solid sears( decorative );
-  font-size: percentage( 12/16 );
-  background: $nav-color url('#{$img}sprite-nav.png');
-  background-repeat: repeat-x;
-  @include border-radius( 5px );
+
+// General class for creating a dropdown or "dropup" menu
+.dropmenu {
   li {
     float: left;
     position: relative;
-    border-right: 1px solid sears( decorative );
-    width: percentage( 1/7 );
-    padding: 1px 0;
     a {
       display: block;
-      border-right: 1px solid $lightest-color;
-      padding: .5em 0;
       font-weight: bold;
       text-align: center;
-      span {
-        background-image: url('#{$img}sprite-nav.png');
-        background-repeat: no-repeat;
-        padding-right: 9px;
-      }
-      @include sprite-position("span", right, $nav-sprite-offset );
     }
-    &.right_button {
-      @include border-radius( 0px 4px 4px 0px );
-      background: sears( button ) url('#{$img}sprite-nav.png');
-      background-repeat: repeat-x;
-      float: right;
-      border-left: 1px solid sears( decorative );
-      border-right: 0;
-      a {
-        border-right: 0;
-        color: $lightest-color;
-      }
-      ul li a {
-        color: sears( secondary-link );
-      }
-    }
-    @include sprite-position("&.right_button", left, ( $nav-sprite-period * ( -4 ) ) - 1 );
-    // Hover reveals dropdown menu
+    // Hover reveals drop menu
     &:hover { 
       ul {
         left: 0;
       }
     }
   }
-  // Styling for dropdown menu
+  // Styling for drop menu
   ul {
-    @include box-shadow( lighten( $darkest-color, 66 ) 2px 2px 8px );
-    @include border-radius( 5px );
-    width: 100%;
-    background: $lightest-color url('#{$img}sprite-nav.png');
-    background-repeat: no-repeat no-repeat;
-    border: 1px solid sears( decorative );
-    border-top: 0;
+    width: 99%;
     position: absolute;
     left: -9999px;
+    z-index: 100;
     li {
-      border-right: 0;
-      border-top: 1px solid sears( decorative );
       float: none;
-      width: auto;
-      &:first-child {
-        border-top: 0;
-      }
+      width: 100%;
       a {
-        border-right: 0;
         color: sears( secondary-link );
         font-weight: normal;
         text-align: left;
@@ -86,6 +39,128 @@ $arrow-height: 3px;
       }
     }
   }
-  @include sprite-position("ul", left, ( $nav-sprite-period * ( -4 ) ) );
 }
-@include sprite-position("#header_nav", left, ( $nav-sprite-period * ( -2 ) ) );
+
+#navigation {
+  width:960px;
+  margin:0 auto;
+}
+
+// Modify dropmenu for the header
+#header_nav.dropmenu {
+  @include border-radius( 5px );
+  border-left: 1px solid sears( decorative );
+  font-size: percentage( 12/16 );
+  background: $nav-color url('#{$img}sprite-nav.png');
+  background-repeat: repeat-x;
+  ul {
+    background: $lightest-color url('#{$img}sprite-nav.png');
+    background-repeat: repeat-x;
+  }
+  @include sprite-position( "ul", left, bottom );
+  li {
+    border-right: 1px solid sears( decorative );
+    width: percentage( 1/7 );
+    padding: 1px 0;
+    a {
+      border-right: 1px solid $lightest-color;
+      padding-top: .5em;
+      padding-bottom: .5em;
+      span {
+        background-image: url('#{$img}sprite-nav.png');
+        background-repeat: no-repeat;
+        padding-right: 9px;
+      }
+      @include sprite-position( "span", right, $nav-sprite-offset );
+    }
+    &.right_button {
+      @include border-radius( 0px 4px 4px 0px );
+      background: sears( button ) url('#{$img}sprite-nav.png');
+      float: right;
+      border-left: 1px solid sears( decorative );
+      border-right: 0;
+      a {
+        border-right: 0;
+        color: $lightest-color;
+      }
+    }
+    @include sprite-position( "&.right_button", left, ( $nav-sprite-period * ( -2 ) ) - 1 );
+  }
+  // Modifications to hovering menu for header
+  ul {
+    @include box-shadow( lighten( $darkest-color, 66 ) 2px 2px 8px );
+    @include border-radius( 5px );
+    border: 1px solid sears( decorative );
+    li {
+      border-top: 1px solid sears( decorative );
+      border-right: 0;
+      width: 100%;
+      &:first-child {
+        border-top: 0;
+      }
+      a {
+        border-right: 0;
+      }
+    }
+  }
+}
+@include sprite-position( "#header_nav.dropmenu", left, ( $nav-sprite-period * ( -1 ) ) );
+
+// Modify dropmenu for the footer
+#footer_nav.dropmenu {
+  background: sears( footer ) url('#{$img}sprite-nav.png');
+  background-repeat: repeat-x;
+  font-size: percentage( 12/16 );
+  @include border-radius( 5px );
+  ul {
+    background: sears( footer_fly );
+  }
+  li {
+    $divisor: ( $grid-width - ( $footer-item-count - 1) ) / $footer-item-count;
+    width: percentage( $divisor / $grid-width );
+    border-left: 1px solid $lightest-color;
+    a {
+      padding-top: .5em;
+      padding-bottom: .5em;
+      span {
+        background-image: url('#{$img}sprite-nav.png');
+        background-repeat: no-repeat;
+        padding-right: 16px;
+      }
+      @include sprite-position( "span", right, ( $nav-sprite-period * ( -3 ) ) );
+    }
+    // Give the footer item a different background and 
+    // make it appear at the top of the menu bar ("drop-up")
+    &:hover {
+      background-image: url('#{$img}sprite-nav.png');
+      ul {
+        bottom: 100%;
+      }
+    }
+    @include sprite-position( "&:hover", left, ( $nav-sprite-period * ( -5 ) ) );
+    &:first-child {
+      border-left: 0;
+    }
+  }
+  // Modifications to hovering menu for footer
+  ul {
+    @include border-radius( 5px );
+    border: 1px solid sears( decorative );
+    border-bottom: 0;
+    li {
+      font-size: 90%;
+      width: 100%;
+      border-left: 0;
+      &:hover {
+        background: none;
+      }
+    }
+    a:hover {
+      color: sears( footer-subnav-hover );
+      text-decoration: none;
+    }
+  }
+}
+
+@include sprite-position( "#footer_nav.dropmenu", left, ( $nav-sprite-period * ( -4 ) ) );
+
