@@ -19,3 +19,6 @@
 [submodule "Action-Jackson"]
 	path = Action-Jackson
 	url = git@github.com:eddiemoya/Action-Jackson.git
+[submodule "action_jackson"]
+	path = action_jackson
+	url = https://github.com/eddiemoya/Action-Jackson.git
