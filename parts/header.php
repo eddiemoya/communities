@@ -67,14 +67,11 @@
           </div>    
 					
 					<!-- #content -->
-					<section id="content">
+					<section id="content" class="clearfix">
 					
-                  <?php //wp_nav_menu( array( 'theme_location' => 'main-navigation', 'menu_id' => 'main-nav', 'container_id' => 'header_nav', 'container', 'container_class' => 'menu-{menu slug}-container cleafix') ); ?>
+	          <?php //wp_nav_menu( array( 'theme_location' => 'main-navigation', 'menu_id' => 'main-nav', 'container_id' => 'header_nav', 'container', 'container_class' => 'menu-{menu slug}-container cleafix') ); ?>
+	
+	          <?php //do_action('content-before'); ?>
+	
+	          <?php /* Subheaders */ ?>
 
-
-                  <?php //do_action('content-before'); ?>
-
-                  <?php /* Subheaders */ ?>
-
-                  <!-- #content -->
-                  <div id="content">
