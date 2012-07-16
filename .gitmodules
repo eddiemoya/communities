@@ -16,3 +16,6 @@
 [submodule "wordpress/wp-content/plugins/action_jackson"]
 	path = wordpress/wp-content/plugins/action_jackson
 	url = git@github.com:eddiemoya/Action-Jackson.git
+[submodule "Action-Jackson"]
+	path = Action-Jackson
+	url = git@github.com:eddiemoya/Action-Jackson.git
