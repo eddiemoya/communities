@@ -4,7 +4,7 @@ Plugin URI: http://wordpress.org/extend/plugins/media-categories-2
 Description:  Allows users to assign categories to media with a clean and simplified, filterable category meta box and use shortcodes to display category galleries
 Version: 1.3
 Author: Eddie Moya
-Author URL: http://eddiemoya.com
+Author URI: http://eddiemoya.com
 */
 
 define(WMB_PATH, WP_PLUGIN_DIR . '/widgets-metabox/');
