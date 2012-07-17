@@ -7,9 +7,6 @@
 [submodule "cct"]
 	path = wordpress/wp-content/plugins/comment-types
 	url = git@github.com:eddiemoya/Custom-Comment-Types.git
-[submodule "sso"]
-	path = wordpress/wp-content/plugins/shc-sso-profile
-	url = git@github.com:eddiemoya/dans-plugin.git
 [submodule "wordpress/wp-content/plugins/posts-widget"]
 	path = wordpress/wp-content/plugins/posts-widget
 	url = git@github.com:eddiemoya/Posts-Widget.git
@@ -22,3 +19,6 @@
 [submodule "action_jackson"]
 	path = action_jackson
 	url = https://github.com/eddiemoya/Action-Jackson.git
+[submodule "sso"]
+	path = wordpress/wp-content/plugins/shc-sso-profile
+	url = https://github.com/eddiemoya/dans-plugin

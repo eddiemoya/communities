@@ -36,6 +36,9 @@ $arrow-height: 3px;
         text-align: left;
         padding-left: 1em;
         padding-right: .3em;
+        &:visited {
+          color: sears( secondary-link );
+        }
       }
     }
   }
@@ -66,6 +69,7 @@ $arrow-height: 3px;
       border-right: 1px solid $lightest-color;
       padding-top: .5em;
       padding-bottom: .5em;
+      color: sears( link );
       span {
         background-image: url('#{$img}sprite-nav.png');
         background-repeat: no-repeat;
@@ -108,17 +112,7 @@ $arrow-height: 3px;
 
 // Modify dropmenu for the footer
 #footer_nav.dropmenu {
-  background: sears( footer ) url('#{$img}sprite-nav.png');
-  background-repeat: repeat-x;
-  font-size: percentage( 12/16 );
-  @include border-radius( 5px );
-  ul {
-    background: sears( footer_fly );
-  }
   li {
-    $divisor: ( $grid-width - ( $footer-item-count - 1) ) / $footer-item-count;
-    width: percentage( $divisor / $grid-width );
-    border-left: 1px solid $lightest-color;
     a {
       padding-top: .5em;
       padding-bottom: .5em;
@@ -129,38 +123,120 @@ $arrow-height: 3px;
       }
       @include sprite-position( "span", right, ( $nav-sprite-period * ( -3 ) ) );
     }
-    // Give the footer item a different background and 
-    // make it appear at the top of the menu bar ("drop-up")
+    // Make the footer item appear above the footer bar ("drop-up")
     &:hover {
-      background-image: url('#{$img}sprite-nav.png');
       ul {
         bottom: 100%;
+      }
+    }
+  }
+  // Modifications to hovering menu for footer
+  ul {
+    li {
+      &:hover {
+        background: none;
+      }
+    }
+  }
+}
+
+// Modify footer for Sears
+.sears #footer_nav.dropmenu {
+  background: sears( footer ) url('#{$img}sprite-nav.png');
+  background-repeat: repeat-x;
+  font-size: percentage( 12/16 );
+  @include border-radius( 5px );
+  ul {
+    background: sears( footer_fly );
+  }
+  li {
+    $divisor: ( $grid-width - ( $footer-count-sears - 1 ) ) / $footer-count-sears;
+    width: percentage( $divisor / $grid-width );
+    border-left: 1px solid $lightest-color;
+    // Give the footer item a different background and 
+    // make it appear above the footer bar ("drop-up")
+    &:hover {
+      background-image: url('#{$img}sprite-nav.png');
+      // adjust for the first item's rounded corners
+      &:first-child {
+        @include border-radius( 0 0 0 5px );
       }
     }
     @include sprite-position( "&:hover", left, ( $nav-sprite-period * ( -5 ) ) );
     &:first-child {
       border-left: 0;
     }
+    
+    // adjust for the last item's rounded corners
+    $last_item: repeat-concat( "", "+ li", ( $footer-count-sears - 1 ) );
+    #{$last_item}:hover {
+      @include border-radius( 0 0 5px 0 );
+    }
   }
   // Modifications to hovering menu for footer
   ul {
-    @include border-radius( 5px );
+    @include border-radius( 5px 5px 0 0);
     border: 1px solid sears( decorative );
     border-bottom: 0;
     li {
-      font-size: 90%;
       width: 100%;
+      font-size: 90%;
       border-left: 0;
       &:hover {
         background: none;
       }
-    }
-    a:hover {
-      color: sears( footer-subnav-hover );
-      text-decoration: none;
+      a:hover {
+        color: sears( footer-subnav-hover );
+        text-decoration: none;
+      }
     }
   }
 }
 
-@include sprite-position( "#footer_nav.dropmenu", left, ( $nav-sprite-period * ( -4 ) ) );
+@include sprite-position( ".sears #footer_nav.dropmenu", left, ( $nav-sprite-period * ( -4 ) ) );
 
+// Modify footer for Kmart
+.kmart #footer_nav.dropmenu {
+  background: kmart( footer );
+  ul {
+    background: kmart( footer );
+  }
+  li {
+    $divisor: ( $grid-width - ( $footer-count-kmart - 1 ) ) / $footer-count-kmart;
+    width: percentage( $divisor / $grid-width );
+    border-left: 1px solid $lightest-color;
+    font-size: percentage( 14/16 );
+    font-family: 'Trebuchet MS', $basefont;
+    // Give the footer item a different background and 
+    // make it appear above the footer bar ("drop-up")
+    &:hover {
+      background: kmart( footer-hover );
+      a {
+        color: kmart( footer );
+      }
+      ul li a {
+        color: kmart( link );
+      }
+    }
+    &:first-child {
+      border-left: 0;
+    }
+  }
+  // Modifications to hovering menu for footer
+  ul {
+    border: 1px solid kmart( footer-hover );
+    @include border-radius( 5px 5px 0 0 );
+    border-bottom: 0;
+    li {
+      width: 100%;
+      font-size: percentage( 12/16 );
+      border-left: 0;
+      &:hover {
+        background: none;
+      }
+      a {
+        color: kmart( link );
+      }
+    }
+  }
+}
