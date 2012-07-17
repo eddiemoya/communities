@@ -512,13 +512,16 @@ legend {
   background-color: #ffffff;
   top: 0px; }
 
+#content {
+  padding: 1em .625em; }
+
 html, body {
   height: 100%;
   text-align: left;
   background: white;
   margin: 0;
   padding: 0;
-  font-family: Helvetica, Verdana, Arial, sans-serif;
+  font-family: Helvetica, Arial, Verdana, sans-serif;
   line-height: 1.4;
   color: 1; }
 
@@ -575,6 +578,54 @@ ul.bullets {
 .addthis_button_tweet iframe {
   width: 56px !important;
   min-width: 56px !important; }
+
+/*
+ * FEATURED
+ */
+.content-container .content-headline {
+  font-size: 1.25em;
+  font-weight: bold; }
+
+.content-container .content-header {
+  border: solid #dddcdc;
+  border-width: 1px 0px;
+  color: #666666;
+  font-weight: bold;
+  padding: .625em; }
+  .content-container .content-header h3 {
+    font-size: 1.25em; }
+  .content-container .content-header h4 {
+    font-size: .6875em; }
+
+.content-container .content-body {
+  padding: .625em; }
+  .content-container .content-body .content-details {
+    padding-bottom: .625em; }
+    .content-container .content-body .content-details .content-category {
+      font-size: .8125em;
+      font-weight: bold;
+      float: left; }
+    .content-container .content-body .content-details .content-date {
+      color: #999999;
+      font-size: .6875em;
+      float: right; }
+  .content-container .content-body .content-comments {
+    color: #333333;
+    font-size: .75em;
+    margin-top: .8125em; }
+    .content-container .content-body .content-comments li {
+      border-left: solid 1px #999999;
+      float: left;
+      padding: 0em .3125em; }
+    .content-container .content-body .content-comments > li:first-child {
+      border-left: none; }
+
+.featured-question.content-container .category-image {
+  background: transparent url(assets/img/category-image.jpg) no-repeat 0px 0px;
+  float: left;
+  height: 6.25em;
+  margin: 0 .625em .625em 0;
+  width: 6.25em; }
 
 .dropmenu li {
   float: left;
