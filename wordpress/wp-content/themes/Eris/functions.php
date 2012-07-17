@@ -45,6 +45,8 @@ if (function_exists('register_sidebar')) {
         'description' => 'Footer of every post',
         'before_widget' => '<span class="widget %2$s" id="%1$s">',
         'after_widget' => '</span>',
+        'before_title' => '<h3 class="widgettitle">',
+        'after_title' => '</h3>'
     ));
     
 }
@@ -227,10 +229,10 @@ function custom_primary_query($query_string) {
      * If this is a category other than 'articles', 
      * set the post type to 'shcproduct' show 12 per page.
      */
-    if (isset($query_string['category_name']) && $query_string['category_name'] != 'articles') {
-        $query_string['post_type'] = 'shcproduct';
-        $query_string['posts_per_page'] = '12';
-    }
+//    if (isset($query_string['category_name']) && $query_string['category_name'] != 'articles') {
+//        $query_string['post_type'] = 'shcproduct';
+//        $query_string['posts_per_page'] = '12';
+//    }
 
     /**
      * If this is a archive of the 'facebook_gallery' custom taxonomy,
@@ -246,7 +248,7 @@ function custom_primary_query($query_string) {
 
     return $query_string;
 }
-add_filter('request', 'custom_primary_query');
+//add_filter('request', 'custom_primary_query');
 
 /******************************************
  * END  Content, Class, and Query Filters *
