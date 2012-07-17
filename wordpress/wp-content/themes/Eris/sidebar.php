@@ -1,7 +1,7 @@
 <div id="sidebar_right">
     
     <ul class="widgets">
-        <?php if ( !dynamic_sidebar('Right Sidebar') ) : ?> 
+        <?php if ( !dynamic_sidebar('Sidebar') ) : ?> 
 
         <? endif; ?>
     </ul>
