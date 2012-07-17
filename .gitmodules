@@ -10,15 +10,9 @@
 [submodule "sso"]
 	path = wordpress/wp-content/plugins/shc-sso-profile
 	url = git@github.com:eddiemoya/dans-plugin.git
-[submodule "wordpress/wp-content/plugins/posts-widget"]
+[submodule "posts-widget"]
 	path = wordpress/wp-content/plugins/posts-widget
 	url = git@github.com:eddiemoya/Posts-Widget.git
-[submodule "wordpress/wp-content/plugins/action_jackson"]
+[submodule "actionjackson"]
 	path = wordpress/wp-content/plugins/action_jackson
 	url = git@github.com:eddiemoya/Action-Jackson.git
-[submodule "Action-Jackson"]
-	path = Action-Jackson
-	url = git@github.com:eddiemoya/Action-Jackson.git
-[submodule "action_jackson"]
-	path = action_jackson
-	url = https://github.com/eddiemoya/Action-Jackson.git
