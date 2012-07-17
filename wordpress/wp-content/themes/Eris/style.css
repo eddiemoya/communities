@@ -278,102 +278,108 @@ legend {
   width: 3.33em;
 }
 
-#footer_anterior {
+ul.footer_anterior {
   font-size: 75%;
   margin-top: 1em;
 }
-#footer_anterior > * {
+ul.footer_anterior > * {
   width: 8.102%;
   float: left;
 }
-#footer_anterior > * + * {
+ul.footer_anterior > * + * {
   width: 17.057%;
   float: left;
   margin-left: 1.066%;
 }
-#footer_anterior > * + * + * {
+ul.footer_anterior > * + * + * {
   width: 7.889%;
   float: left;
   margin-left: 1.066%;
 }
-#footer_anterior > * + * + * + * {
+ul.footer_anterior > * + * + * + * {
   width: 7.889%;
   float: left;
   margin-left: 1.066%;
 }
-#footer_anterior > * + * + * + * + * {
+ul.footer_anterior > * + * + * + * + * {
   width: 7.889%;
   float: left;
   margin-left: 1.066%;
 }
-#footer_anterior > * + * + * + * + * + * {
+ul.footer_anterior > * + * + * + * + * + * {
   width: 7.889%;
   float: left;
   margin-left: 1.066%;
 }
-#footer_anterior > * + * + * + * + * + * + * {
+ul.footer_anterior > * + * + * + * + * + * + * {
   width: 7.889%;
   float: left;
   margin-left: 1.066%;
 }
-#footer_anterior > * + * + * + * + * + * + * + * {
+ul.footer_anterior > * + * + * + * + * + * + * + * {
   width: 7.889%;
   float: left;
   margin-left: 1.066%;
 }
-#footer_anterior > * + * + * + * + * + * + * + * + * {
+ul.footer_anterior > * + * + * + * + * + * + * + * + * {
   width: 7.889%;
   float: left;
   margin-left: 1.066%;
 }
-#footer_anterior > * + * + * + * + * + * + * + * + * + * {
+ul.footer_anterior > * + * + * + * + * + * + * + * + * + * {
   width: 1.705%;
   float: left;
   margin-left: 1.066%;
 }
-#footer_anterior > * + * + * + * + * + * + * + * + * + * + * {
+ul.footer_anterior > * + * + * + * + * + * + * + * + * + * + * {
   width: 1.705%;
   float: left;
   margin-left: 1.066%;
 }
-#footer_anterior > * + * + * + * + * + * + * + * + * + * + * + * {
+ul.footer_anterior > * + * + * + * + * + * + * + * + * + * + * + * {
   width: 1.705%;
   float: left;
   margin-left: 1.066%;
 }
-#footer_anterior > * + * + * + * + * + * + * + * + * + * + * + * + * {
+ul.footer_anterior > * + * + * + * + * + * + * + * + * + * + * + * + * {
   width: 1.710999999999972%;
   float: left;
   margin-left: 1.066%;
 }
-#footer_anterior .icon {
+ul.footer_anterior .icon {
   background-image: url("/wp-content/themes/Eris/assets/img/sprite-footer.png");
   background-repeat: no-repeat;
 }
-#footer_anterior .icon a {
+ul.footer_anterior .icon a {
   display: inline-block;
   height: 15px;
   line-height: 16px;
   text-indent: -999999em;
 }
-#footer_anterior .acc.icon a {
+ul.footer_anterior .acc.icon a {
   height: 30px;
   line-height: 31px;
 }
-#footer_anterior .acc {
+ul.footer_anterior .acc {
   background-position: left top;
 }
-#footer_anterior .fb {
+ul.footer_anterior .fb {
   background-position: -120px top;
 }
-#footer_anterior .twtr {
+ul.footer_anterior .twtr {
   background-position: -160px top;
 }
-#footer_anterior .yt {
+ul.footer_anterior .yt {
   background-position: -200px top;
 }
-#footer_anterior .smb {
+ul.footer_anterior .smb {
   background-position: -240px top;
+}
+
+.kmart .footer_anterior p {
+  font-size: 62.5%;
+  margin-top: .5em;
+  text-align: center;
 }
 
 .clearfix:before, .clearfix:after {
