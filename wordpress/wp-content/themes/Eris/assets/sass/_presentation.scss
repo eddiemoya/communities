@@ -93,6 +93,7 @@ ul.bullets {
 .content-container .content-headline {
   font-size:1.25em;
   font-weight:bold;
+  margin:0;
 }
 
 .content-container .content-header {
@@ -111,6 +112,12 @@ ul.bullets {
 
 .content-container .content-body {
   padding:.625em;
+  p {
+    color:#333333;
+    font-size:.8125em;
+    line-height:1.7em;
+    margin-bottom:1em; 
+  }
   .content-details {
     padding-bottom:.625em;
     .content-category {
