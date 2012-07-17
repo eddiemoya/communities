@@ -565,6 +565,17 @@ ul.bullets {
 .bold {
   font-weight: 700; }
 
+/*
+ * SHARE
+ */
+.addthis_button_facebook_like iframe {
+  width: 49px !important;
+  min-width: 49px !important; }
+
+.addthis_button_tweet iframe {
+  width: 56px !important;
+  min-width: 56px !important; }
+
 .dropmenu li {
   float: left;
   position: relative; }
