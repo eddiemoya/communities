@@ -79,6 +79,10 @@ img {
   vertical-align: middle;
 }
 
+img, object, embed {
+  max-width: 100%;
+}
+
 sub, sup {
   font-size: 75%;
   line-height: 0;
@@ -641,6 +645,11 @@ ul.footer_anterior .smb {
   top: 0px;
 }
 
+#content {
+  width: 940px;
+  margin: 0 10px;
+}
+
 html, body {
   height: 100%;
   text-align: left;
@@ -708,6 +717,83 @@ ul.bullets {
 
 .bold {
   font-weight: 700;
+}
+
+.badge img {
+  display: block;
+  margin: 0 auto;
+}
+.badge h4 {
+  background: #bcdaf3 url("/wp-content/themes/Eris/assets/img/sprite-user.png") repeat-x left bottom;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: .5em 0;
+  -webkit-border-radius: 0 0 10px 10px;
+  -moz-border-radius: 0 0 10px 10px;
+  -ms-border-radius: 0 0 10px 10px;
+  -o-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
+}
+.badge .badgebottom {
+  background: url("/wp-content/themes/Eris/assets/img/sprite-user.png") no-repeat center top;
+}
+
+.featured_members {
+  font-size: 75%;
+}
+.featured_members h2, .featured_members h4 a, .featured_members address {
+  font-weight: bold;
+}
+.featured_members h2 {
+  font-size: 112.5%;
+  margin: 1em 0;
+}
+.featured_members address {
+  display: block;
+}
+.featured_members .span4 .member {
+  border-right: 1px solid #cccccc;
+}
+.featured_members .span4 .member > * {
+  width: 50%;
+  float: left;
+}
+.featured_members .span4 .member > * + * {
+  width: 45%;
+  float: left;
+  margin-left: 5%;
+}
+.featured_members .span4 .member .stats {
+  width: 100%;
+}
+.featured_members .span4 + .span4 + .span4 .member {
+  border-right: 0;
+}
+
+.span4.featured_members {
+  border-left: 1px solid #cccccc;
+}
+.span4.featured_members .span4 {
+  float: none;
+  width: 100%;
+  margin-left: 0;
+  margin-bottom: 1em;
+}
+.span4.featured_members .span4 .member {
+  border-right: 0;
+}
+.span4.featured_members .span4 .member > * {
+  width: 26.666%;
+  float: left;
+}
+.span4.featured_members .span4 .member > * + * {
+  width: 70.001%;
+  float: left;
+  margin-left: 3.333%;
+}
+.span4.featured_members .span4 .member article ul, .span4.featured_members .span4 .member h5 {
+  display: none;
 }
 
 .dropmenu li {
