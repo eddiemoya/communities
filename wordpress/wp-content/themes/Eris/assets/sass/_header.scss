@@ -37,7 +37,7 @@
   form {
     border:solid 5px #e02334;
     #input_search {
-      background:transparent url(assets/img/kmart/icon_search-bar-magnifying-glass_28x28.gif) no-repeat 0px 0px;
+      background:transparent url(#{$img}kmart/icon_search-bar-magnifying-glass_28x28.gif) no-repeat 0px 0px;
       border:none;
       height:1.25em;
       padding:.25em 0 .25em 1.7em;
@@ -45,7 +45,7 @@
       width:84%;
     }
     #button_search {
-      background:transparent url(assets/img/kmart/background_button.gif) repeat-x 0px 0px;
+      background:transparent url(#{$img}kmart/background_button.gif) repeat-x 0px 0px;
       border:solid #e02334;
       border-width:0 0 0 5px;
       font-size:.75em;
@@ -53,9 +53,9 @@
       padding-bottom:.25em;
       position:absolute;
       right:0px;
-      text-transform:uppercase;
       top:0px;
       width:3.33em;
+      @extend .upcase;
     }
   }
 }
@@ -64,7 +64,7 @@
   form {
     border:solid 3px #3a81cf;
     #input_search {
-      background:transparent url(assets/img/sears/icon_search-bar-magnifying-glass_24x24.gif) no-repeat 0px 0px;
+      background:transparent url(#{$img}sears/icon_search-bar-magnifying-glass_24x24.gif) no-repeat 0px 0px;
       border:none;
       height:1.25em;
       padding:.125em 0 .125em 1.5em;
@@ -72,17 +72,17 @@
       width:82%;
     }
     #button_search {
-      background:#ca4019 url(assets/img/sears/background_button.gif) repeat-x 0px 0px;
+      background:#ca4019 url(#{$img}sears/background_button.gif) repeat-x 0px 0px;
       border:0;
-      color:#ffffff;
+      color:$lightest-color;
       font-size:.75em;
       height:2em;
       padding-bottom:.25em;
       position:absolute;
       right:0px;
-      text-transform:uppercase;
       top:0px;
       width:3.33em;
+      @extend .upcase;
     }
   }
 }
