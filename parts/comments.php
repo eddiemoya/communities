@@ -1,7 +1,7 @@
 <?php
 
 
-custom_comment_form();
+//custom_comment_form();
 
 
 ?>

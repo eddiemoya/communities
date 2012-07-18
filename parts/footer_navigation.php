@@ -6,7 +6,7 @@
     "Accounts & Orders" => array(
       "Access My Account" => "https://www.sears.com/shc/s/UserAccountView?storeId=10153&amp;catalogId=12605&amp;langId=-1",
       "Check Gift Card Balance" => "http://www.sears.com/shc/s/nb_10153_12605_NB_gclanding",
-      "Order Status" => "javascript:fnShowLoginModal('TrackOrderStatus','http://www.sears.com/shc/s/TrackOrderStatus?langId=-1&amp;storeId=10153&amp;catalogId=12605&amp;sso_in_param=fromLink%3DorderStatus&amp;adCell=WF')",
+      "Order Status" => "http://www.sears.com/shc/s/TrackOrderStatus?langId=-1&amp;storeId=10153&amp;catalogId=12605&amp;sso_in_param=fromLink%3DorderStatus&amp;adCell=WF",
       "Order Status" => "http://www.sears.com/shc/s/dap_10153_12605_DAP_International Order Tracking?adCell=WF&amp;adCell=WF",
       "Check My Rewards Points" => "https://www.sears.com/shc/s/FetchMembershipDetails?storeId=10153&amp;catalogId=12605&amp;langId=-1",
       "Pay Sears Credit Card Bill" => "https://www.citibank.com/us/cards/srs/index.jsp?BAC=SearsMemberOffers",
@@ -36,10 +36,10 @@
       "California Privacy Policy" => "http://www.sears.com/shc/s/nb_10153_12605_NB_CScaliforniaprivacy",
       "Children's Privacy Policy" => "http://www.sears.com/shc/s/nb_10153_12605_NB_CSchildprivacy",
       "License Info" => "http://www.sears.com/shc/s/nb_10153_12605_NB_License Information",
-      "Payment Methods" => "javascript:popUpWin('http://www.sears.com/shc/s/nb_10153_12605_NB_PaymentMethod',770,500);",
+      "Payment Methods" => "http://www.sears.com/shc/s/nb_10153_12605_NB_PaymentMethod",
       "Price Match Policy" => "http://www.sears.com/shc/s/nb_10153_12605_NB_CSpricematch?adCell=WF&amp;adCell=WF",
       "Privacy Policy" => "http://www.sears.com/shc/s/nb_10153_12605_NB_CSprivacy"
-    ), 
+    ),
     "More Sears Sites" => array(
       "Manage My Life" => "http://www.managemylife.com/?sid=MMLxSearsxFooterxInspiration",
       "Sears Commercial" => "http://www.searscommercial.com",
