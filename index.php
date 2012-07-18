@@ -8,6 +8,6 @@ get_template_part('parts/header');
 loop();
 
 //Wont show up on archive pages.
-comments_template('/parts/answers.php');
-
+//comments_template('/parts/answers.php');
+get_sidebar();
 get_template_part('parts/footer');

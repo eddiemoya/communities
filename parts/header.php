@@ -74,4 +74,3 @@
 	          <?php //do_action('content-before'); ?>
 	
 	          <?php /* Subheaders */ ?>
-
