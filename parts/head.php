@@ -11,8 +11,10 @@
 	
 	<div class="<?php echo (theme_option("brand") == "sears")? "span5":"span6"; ?>">
 		<form id="search">
-			<input type="text" class="input_text icon_search" name="search" id="input_search" />
-			<button type="submit" id="button_search">Go</button>
+			<div>
+				<input type="text" class="input_text icon_search" name="search" id="input_search" />
+				<button type="submit" id="button_search">Go</button>
+			</div>
 		</form>
 	</div>
 	
