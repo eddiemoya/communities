@@ -71,3 +71,67 @@ ul.bullets {
 .bold {
   font-weight:700;
 }
+
+// COMMONLY USED ELEMENTS
+.badge {
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+  h4 {
+    background: #bcdaf3 url('#{$img}sprite-user.png') repeat-x left bottom;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: .5em 0;
+    @include border-radius( 0 0 10px 10px );
+  }
+  .badgebottom {
+    background: url('#{$img}sprite-user.png') no-repeat center top;
+  }
+}
+
+// FEATURED COMMUNITY MEMBERS
+.featured_members {
+  font-size: percentage( 12/16 );
+  h2, h4 a, address {
+    font-weight: bold;
+  }
+  h2 {
+    font-size: percentage( 18/16 );
+    margin: 1em 0;
+  }
+  address {
+    display: block;
+  }
+  .span4 {
+    .member {
+      border-right: 1px solid sears( decorative );
+      @include col_layout( (100, 90), 10 );
+      .stats {
+        //clear: left;
+        width: 100%;
+      }
+    }
+    & + .span4 + .span4 .member {
+      border-right: 0;
+    }
+  }
+}
+
+.span4.featured_members {
+  border-left: 1px solid sears( decorative );
+  .span4 {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 1em;
+    .member {
+      border-right: 0;
+      @include col_layout( (80, 210), 10 );
+      article ul, h5 {
+        display: none;
+      }
+    }
+  }
+}

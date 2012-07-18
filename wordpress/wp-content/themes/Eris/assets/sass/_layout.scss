@@ -80,3 +80,8 @@
   background-color:#ffffff;
   top:0px;
 }
+
+#content {
+  width: #{$grid-width}px;
+  margin: 0 10px;
+}
