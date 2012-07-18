@@ -72,6 +72,37 @@ ul.bullets {
   font-weight:700;
 }
 
+.faint {
+  color:#666666;
+}
+
+.upcase {
+  text-transform: uppercase;
+}
+
+.downcase {
+  text-transform: lowercase;
+}
+
+// COMMONLY USED ELEMENTS
+.badge {
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+  h4 {
+    background: #bcdaf3 url('#{$img}sprite-user.png') repeat-x left bottom;
+    color: $lightest-color;
+    text-align: center;
+    padding: .5em 0;
+    @extend .bold;
+    @include border-radius( 0 0 10px 10px );
+  }
+  .badge-tail {
+    background: url('#{$img}sprite-user.png') no-repeat center top;
+  }
+}
+
 /*
  * GLOBAL ELEMENTS
  */
@@ -114,16 +145,15 @@ form {
 
 .content-container .content-headline {
   font-size:1.25em;
-  font-weight:bold;
-  margin:0;
+  @extend .bold;
 }
 
 .content-container .content-header {
   border:solid #dddcdc;
   border-width:1px 0px;
-  color:#666666;
-  font-weight:bold;
   padding:.625em;
+  @extend .bold;
+  @extend .faint;
   h3 {
     font-size:1.25em;
   }
@@ -144,8 +174,8 @@ form {
     padding-bottom:.625em;
     .content-category {
       font-size:.8125em;
-      font-weight:bold;
       float:left;
+      @extend .bold;
     }
     .content-date {
       color:#999999;
@@ -168,9 +198,64 @@ form {
   }
 }
 
+// FEATURED COMMUNITY MEMBERS
+.featured-members {
+  h4 a, address {
+    @extend .bold;
+  }
+  h5, p {
+    @extend .faint;
+  }
+  address {
+    display: block;
+  }
+  .span4 {
+    .member {
+      font-size: percentage( 12/16 );
+      border-right: 1px solid sears( decorative );
+      @include col_layout( (100, 90), 10 );
+      .stats {
+        //clear: left;
+        width: 100%;
+      }
+    }
+    & + .span4 + .span4 .member {
+      border-right: 0;
+    }
+  }
+}
+
+.span8.featured-members.content-container {
+  .content-header {
+    border: 0;
+    color: $darkest-color;
+    padding: inherit 0;
+  }
+  .content-body {
+    padding: 0;
+  }
+}
+
+.span4.featured-members {
+  .span4 {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 1em;
+    .member {
+      border-right: 0;
+      @include col_layout( (80, 210), 10 );
+      article ul, h5 {
+        //display: none;
+      }
+    }
+  }
+}
+
+// FEATURED QUESTION
 .featured-question.content-container {
   .category-image {
-    background:transparent url(assets/img/category-image.jpg) no-repeat 0px 0px;
+    background:transparent url(#{$img}category-image.jpg) no-repeat 0px 0px;
     float:left;
     height:6.25em;
     margin:0 .625em .625em 0;

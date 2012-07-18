@@ -67,6 +67,9 @@ img {
   -ms-interpolation-mode: bicubic;
   vertical-align: middle; }
 
+img, object, embed {
+  max-width: 100%; }
+
 sub, sup {
   font-size: 75%;
   line-height: 0;
@@ -187,14 +190,14 @@ legend {
 #header.kmart form {
   border: solid 5px #e02334; }
   #header.kmart form #input_search {
-    background: transparent url(assets/img/kmart/icon_search-bar-magnifying-glass_28x28.gif) no-repeat 0px 0px;
+    background: transparent url(/wp-content/themes/Eris/assets/img/kmart/icon_search-bar-magnifying-glass_28x28.gif) no-repeat 0px 0px;
     border: none;
     height: 1.25em;
     padding: .25em 0 .25em 1.7em;
     margin-right: 9%;
     width: 84%; }
   #header.kmart form #button_search {
-    background: transparent url(assets/img/kmart/background_button.gif) repeat-x 0px 0px;
+    background: transparent url(/wp-content/themes/Eris/assets/img/kmart/background_button.gif) repeat-x 0px 0px;
     border: solid #e02334;
     border-width: 0 0 0 5px;
     font-size: .75em;
@@ -202,29 +205,27 @@ legend {
     padding-bottom: .25em;
     position: absolute;
     right: 0px;
-    text-transform: uppercase;
     top: 0px;
     width: 3.33em; }
 
 #header.sears form {
   border: solid 3px #3a81cf; }
   #header.sears form #input_search {
-    background: transparent url(assets/img/sears/icon_search-bar-magnifying-glass_24x24.gif) no-repeat 0px 0px;
+    background: transparent url(/wp-content/themes/Eris/assets/img/sears/icon_search-bar-magnifying-glass_24x24.gif) no-repeat 0px 0px;
     border: none;
     height: 1.25em;
     padding: .125em 0 .125em 1.5em;
     margin-right: 11%;
     width: 82%; }
   #header.sears form #button_search {
-    background: #ca4019 url(assets/img/sears/background_button.gif) repeat-x 0px 0px;
+    background: #ca4019 url(/wp-content/themes/Eris/assets/img/sears/background_button.gif) repeat-x 0px 0px;
     border: 0;
-    color: #ffffff;
+    color: white;
     font-size: .75em;
     height: 2em;
     padding-bottom: .25em;
     position: absolute;
     right: 0px;
-    text-transform: uppercase;
     top: 0px;
     width: 3.33em; }
 
@@ -574,8 +575,33 @@ ol.bullets {
 ul.bullets {
   list-style-type: disc; }
 
-.bold {
+.bold, .badge h4, .content-container .content-headline, .content-container .content-header, .content-container .content-body .content-details .content-category, .featured-members h4 a, .featured-members address {
   font-weight: 700; }
+
+.faint, .content-container .content-header, .featured-members h5, .featured-members p {
+  color: #666666; }
+
+.upcase, #header.kmart form #button_search, #header.sears form #button_search {
+  text-transform: uppercase; }
+
+.downcase {
+  text-transform: lowercase; }
+
+.badge img {
+  display: block;
+  margin: 0 auto; }
+.badge h4 {
+  background: #bcdaf3 url("/wp-content/themes/Eris/assets/img/sprite-user.png") repeat-x left bottom;
+  color: white;
+  text-align: center;
+  padding: .5em 0;
+  -webkit-border-radius: 0 0 10px 10px;
+  -moz-border-radius: 0 0 10px 10px;
+  -ms-border-radius: 0 0 10px 10px;
+  -o-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px; }
+.badge .badge-tail {
+  background: url("/wp-content/themes/Eris/assets/img/sprite-user.png") no-repeat center top; }
 
 /*
  * GLOBAL ELEMENTS
@@ -590,15 +616,11 @@ ul.bullets {
  * FEATURED
  */
 .content-container .content-headline {
-  font-size: 1.25em;
-  font-weight: bold;
-  margin: 0; }
+  font-size: 1.25em; }
 
 .content-container .content-header {
   border: solid #dddcdc;
   border-width: 1px 0px;
-  color: #666666;
-  font-weight: bold;
   padding: .625em; }
   .content-container .content-header h3 {
     font-size: 1.25em; }
@@ -616,7 +638,6 @@ ul.bullets {
     padding-bottom: .625em; }
     .content-container .content-body .content-details .content-category {
       font-size: .8125em;
-      font-weight: bold;
       float: left; }
     .content-container .content-body .content-details .content-date {
       color: #999999;
@@ -633,8 +654,47 @@ ul.bullets {
     .content-container .content-body .content-comments > li:first-child {
       border-left: none; }
 
+.featured-members address {
+  display: block; }
+.featured-members .span4 .member {
+  font-size: 75%;
+  border-right: 1px solid #cccccc; }
+  .featured-members .span4 .member > * {
+    width: 50%;
+    float: left; }
+  .featured-members .span4 .member > * + * {
+    width: 45%;
+    float: left;
+    margin-left: 5%; }
+  .featured-members .span4 .member .stats {
+    width: 100%; }
+.featured-members .span4 + .span4 + .span4 .member {
+  border-right: 0; }
+
+.span8.featured-members.content-container .content-header {
+  border: 0;
+  color: black;
+  padding: inherit 0; }
+.span8.featured-members.content-container .content-body {
+  padding: 0; }
+
+.span4.featured-members .span4 {
+  float: none;
+  width: 100%;
+  margin-left: 0;
+  margin-bottom: 1em; }
+  .span4.featured-members .span4 .member {
+    border-right: 0; }
+    .span4.featured-members .span4 .member > * {
+      width: 26.666%;
+      float: left; }
+    .span4.featured-members .span4 .member > * + * {
+      width: 70.001%;
+      float: left;
+      margin-left: 3.333%; }
+
 .featured-question.content-container .category-image {
-  background: transparent url(assets/img/category-image.jpg) no-repeat 0px 0px;
+  background: transparent url(/wp-content/themes/Eris/assets/img/category-image.jpg) no-repeat 0px 0px;
   float: left;
   height: 6.25em;
   margin: 0 .625em .625em 0;
