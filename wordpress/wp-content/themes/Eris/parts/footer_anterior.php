@@ -1,7 +1,7 @@
 <?php
 # @author Carl Albrecht-Buehler
 ?>
-<ul id="footer_anterior">
+<ul class="footer_anterior">
   <li class="acc icon">
     <a href="http://www.bbb.org/chicago/business-reviews/department-stores/sears-holdingscorporation-in-hoffman-estates-il-5305#bbblogo" rel="nofollow" title="Better Business Bureau">
       Better Business Bureau

@@ -20,7 +20,7 @@
 }
 
 @mixin sprite-position( $selector, $x-pos: left, $y-pos: top, $rollover-x: 0, $rollover-y: 0 ) {
-  #{$selector}{
+  #{$selector} {
     background-position: $x-pos $y-pos;
     @if $rollover-x != 0 and $rollover-y != 0 {
       &:hover {

@@ -1,12 +1,7 @@
-#footer_anterior {
+ul.footer_anterior {
   font-size: percentage( 12/16 );
   margin-top: 1em;
   @include col-layout( ( 76, 160, 74, 74, 74, 74, 74, 74, 74, 16, 16, 16, 16 ), 10);
-
-//  li {
-//    float: left;
-//    margin-left: 10px;
-//  }
   .icon {
     background-image: url('#{$img}sprite-footer.png');
     background-repeat: no-repeat;
@@ -19,8 +14,6 @@
     }
   }
   .acc.icon {
-//    width: 73px;
-//    margin-left: 0;
     a {
       height:30px;
       line-height:31px;
@@ -31,4 +24,12 @@
   @include sprite-position(".twtr", -160px, top );
   @include sprite-position(".yt", -200px, top );
   @include sprite-position(".smb", -240px, top );
+}
+
+.kmart .footer_anterior {
+  p {
+    font-size: percentage( 10/16 );
+    margin-top: .5em;
+    text-align: center;
+  }
 }
