@@ -1,41 +1,68 @@
-<section class="<?php echo is_widget()->span; ?>">
+<article class="content-container featured-post">
 
-    <article class="content-container featured-post">
+    <?php if (is_widget()->show_title && !empty(is_widget()->widget_title)) : ?>
 
-        <?php if(is_widget()->show_title) : ?>
-        
-            <header class="content-header">
-                <h3><?php is_widget()->widget_title; ?></h3>
-            </header>
-        
+        <header class="content-header">
+            <h3><?php echo is_widget()->widget_title; ?></h3>
+        </header>
+
+    <?php endif; ?>
+
+    <section class="content-body clearfix">
+
+        <?php if (is_widget()->show_thumbnail && has_post_thumbnail()) : ?>
+            <div class="featured-image span6">
+                <?php the_post_thumbnail(); ?>
+            </div>
         <?php endif; ?>
 
-        <section class="content-body clearfix">
+        <div class="featured-post span6">
 
-            <?php ?>
-                <div class="featured-image span6">
-                    <img src="http://comm.local/wp-content/uploads/2012/07/blogmodule.jpg">
-                </div>
-            <?php ?>
-
-            <div class="featured-post span6">
-
+            <?php if (is_widget()->show_category || is_widget()->show_date) : ?>
                 <div class="content-details clearfix">
-                    <span class="content-category"><a href="#" title="Kittens">Kittens</a></span>
-                    <time class="content-date" datetime="2012-06-16">June 12, 2012</time>
+
+                    <?php if (is_widget()->show_category) : ?>
+                        <span class="content-category">
+                            <a href="#" title="Kittens">
+                                <?php 
+                                    $c = get_the_category(); 
+                                    echo $c[0]->cat_name; 
+                                ?>
+                            </a>
+                        </span>
+                    <?php endif; ?>
+
+                    <?php// if (is_widget()->show_date) : ?>
+                        <time class="content-date" datetime="<?php the_time('Y-m-d'); ?>">
+                            <?php the_time('F j, Y'); ?>
+                        </time>
+                    <?php// endif; ?>
+
                 </div>
+            <?php endif; ?>
 
-                <p class="content-headline"><a href="#">Nusquam copiosae accusata quo ad, in mei eius neglege ntur, vel lucilius sententiae et.  Ne vim mazim menandri effi ciendi.  Ludico virtute elabora ret vis in.</a></p>
+            <?php if (is_widget()->show_title) : ?>
+                <p class="content-headline">
+                    <a href="">
+                        <?php the_title(); ?>
+                    </a>
+                </p>
+            <?php endif; ?>
 
-                <p class="content-byline">By: Loren Ipsum</p>
+            <p class="content-byline">By: <?php echo get_the_author(); ?> </p>
 
-                <p class="content-comments">4 comments</p>
+            <?php if (is_widget()->show_comment_count): ?>
+                <p class="content-comments"><?php comments_number(); ?></p>
+            <?php endif; ?>
+                
+            <?php  if(is_widget()->show_content) : ?>
+                <p class="content-excerpt">
+                    <?php the_excerpt(); ?>
+                    <a href="#" title="Read More">Read more</a>
+                <p>
+            <?php endif; ?>
+        </div>
 
-                <p class="content-excerpt">Lorem ipsum dolor sit amet, sit senserit similique cotidieque ex, libris postea copora nam.  Sea vidit pro. et, sit senserit similique... <a href="#" title="Read More">Read more</a><p>
-            </div>
+    </section>
 
-        </section>
-
-    </article>
-
-</section>
+</article>
