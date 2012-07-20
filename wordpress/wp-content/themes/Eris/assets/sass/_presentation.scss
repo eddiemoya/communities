@@ -122,6 +122,7 @@ ul.bullets {
 
 .content-container .content-headline {
   font-size:1.25em;
+	line-height: 1.25em;
   @extend .bold;
 }
 
@@ -167,6 +168,9 @@ ul.bullets {
       border-left:none;
     }
   }
+	.share-full {
+		margin-top: 10px;
+	}
 }
 
 // FEATURED COMMUNITY MEMBERS
@@ -232,4 +236,15 @@ ul.bullets {
     margin:0 .625em .625em 0;
     width:6.25em;
   }
+}
+
+// FEATURED BLOG POST
+.content-container.featured-post {
+	.content-excerpt, .content-byline {
+		font-size:.75em
+	}
+}
+.span4 .content-container.featured-post .span6 {
+	width: 100%;
+	margin-left: 0;
 }
