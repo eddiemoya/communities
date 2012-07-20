@@ -83,6 +83,21 @@ ul.bullets {
 .downcase {
   text-transform: lowercase;
 }
+/*
+ * SPRITES
+ */
+
+#header.sears form #button_search, #header.sears form #input_search,
+.sears_button
+{
+  background-image:url(assets/img/sears/sprite_global.png);
+}
+
+#header.kmart form #button_search, #header.kmart form #input_search
+.kmart_button
+{
+  background-image:url(assets/img/kmart/sprite_global.png);
+}
 
 // COMMONLY USED ELEMENTS
 .badge {
@@ -104,16 +119,66 @@ ul.bullets {
 }
 
 /*
- * SHARE
+ * GLOBAL ELEMENTS
  */
 
-.addthis_button_facebook_like iframe {
-  width:49px !important;
-  min-width:49px !important;
+/*
+ * form elements
+ */
+.input_text {
+  /*
+   * Do not set padding for left/right to 0.
+   * IE8 no like this.
+   */
+  padding:.3125em .01em;
+  border:solid 1px #cccccc;
+  height:1.25em;
 }
-.addthis_button_tweet iframe {
-  width:56px !important;
-  min-width:56px !important;
+
+.sears_button, .kmart_button {
+  border-left:solid #ff9e6c;
+  border-right:solid #cc6f35;
+  border-width:0px 1px;
+  color:#ffffff;
+  cursor:pointer;
+  font-size:.875em;
+  font-weight:bold;
+  height:2.25em;
+  padding:0em 1.5em;
+  position:relative;
+  text-shadow:1px 1px #666666;
+  top:-1px;
+  @include border-radius( 5px );
+}
+
+.sears_button {
+  background-position:0px -88px;
+}
+
+.kmart_button {}
+
+form {
+  // #input_search {
+      // background:transparent url(assets/img/kmart/icon_search-bar-magnifying-glass_28x28.gif) no-repeat 0px 0px;
+      // border:none;
+      // height:1.25em;
+      // padding:.25em 0 .25em 1.7em;
+      // margin-right:9%;
+      // width:84%;
+    // }
+    // #button_search {
+      // background:transparent url(assets/img/kmart/background_button.gif) repeat-x 0px 0px;
+      // border:solid #e02334;
+      // border-width:0 0 0 5px;
+      // font-size:.75em;
+      // height:2.5em;
+      // padding-bottom:.25em;
+      // position:absolute;
+      // right:0px;
+      // text-transform:uppercase;
+      // top:0px;
+      // width:3.33em;
+    // }
 }
 
 /*
@@ -173,6 +238,9 @@ ul.bullets {
       border-left:none;
     }
   }
+	.share-full {
+		margin-top: 10px;
+	}
 }
 
 // FEATURED COMMUNITY MEMBERS
@@ -239,3 +307,37 @@ ul.bullets {
     width:6.25em;
   }
 }
+<<<<<<< HEAD
+=======
+
+// FEATURED BLOG POST
+.content-container.featured-post {
+	.content-excerpt, .content-byline {
+		font-size:.75em
+	}
+}
+.span4 .content-container.featured-post .span6 {
+	width: 100%;
+	margin-left: 0;
+}
+
+/*
+ * POST A QUESTION
+ */
+
+.content-container.post-your-question {
+  form {
+    margin-top:.75em;
+    .state_post-your-question {
+      .input_text {
+        width:83%;
+      }
+    }
+    .input_text {
+    }
+    #button_search {
+
+    }
+  }
+}
+>>>>>>> 5ec87f3ffc31762638b4cd889ad640e2a5b5458b
