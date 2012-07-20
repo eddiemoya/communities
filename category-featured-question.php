@@ -25,10 +25,10 @@ loop();
 					<time class="content-date" datetime="2012-06-16">June 12, 2012</time>
 				</div>
 				
-				<p class="content-headline">
+				<h6 class="content-headline">
 					Q:
 					<a href="#" title="Lorem ipsum dolor sit amet, ut pri congue viven scaevola. Primis verear honestatis vel no, habeo prima delicata te pro. Quodsi omnesque iracundia et ius, munere viderer?">Lorem ipsum dolor sit amet, ut pri congue viven scaevola. Primis verear honestatis vel no, habeo prima delicata te pro. Quodsi omnesque iracundia et ius, munere viderer?</a>
-				</p>
+				</h6>
 				
 				<ul class="content-comments">
 					<li>8 answers</li>
@@ -58,10 +58,10 @@ loop();
 					
 				</div>
 				
-				<p class="content-headline">
+				<h6 class="content-headline">
 					Q:
 					<a href="#" title="Lorem ipsum dolor sit amet, ut pri congue viven scaevola. Primis verear honestatis vel no, habeo prima delicata te pro. Quodsi omnesque iracundia et ius, munere viderer?">Lorem ipsum dolor sit amet, ut pri congue viven scaevola. Primis verear honestatis vel no, habeo prima delicata te pro. Quodsi omnesque iracundia et ius, munere viderer?</a>
-				</p>
+				</h6>
 				
 				<ul class="content-comments">
 					<li>8 answers</li>
@@ -91,10 +91,10 @@ loop();
 					
 				</div>
 				
-				<p class="content-headline">
+				<h6 class="content-headline">
 					Q:
 					<a href="#" title="Lorem ipsum dolor sit amet, ut pri congue viven scaevola. Primis verear honestatis vel no, habeo prima delicata te pro. Quodsi omnesque iracundia et ius, munere viderer?">Lorem ipsum dolor sit amet, ut pri congue viven scaevola. Primis verear honestatis vel no, habeo prima delicata te pro. Quodsi omnesque iracundia et ius, munere viderer?</a>
-				</p>
+				</h6>
 				
 				<ul class="content-comments">
 					<li>8 answers</li>
@@ -119,10 +119,10 @@ loop();
 					<time class="content-date" datetime="2012-06-16">June 12, 2012</time>
 				</div>
 				
-				<p class="content-headline">
+				<h6 class="content-headline">
 					Q:
 					<a href="#" title="Lorem ipsum dolor sit amet, ut pri congue viven scaevola. Primis verear honestatis vel no, habeo prima delicata te pro. Quodsi omnesque iracundia et ius, munere viderer?">Lorem ipsum dolor sit amet, ut pri congue viven scaevola. Primis verear honestatis vel no, habeo prima delicata te pro. Quodsi omnesque iracundia et ius, munere viderer?</a>
-				</p>
+				</h6>
 				
 				<ul class="content-comments">
 					<li>8 answers</li>
