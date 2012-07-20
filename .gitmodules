@@ -18,4 +18,4 @@
 	url = git@github.com:eddiemoya/Action-Jackson.git
 [submodule "wordpress/wp-content/plugins/user-taxonomies"]
 	path = wordpress/wp-content/plugins/user-taxonomies
-	url = git@github.com/dasfisch/User-Taxonomies.git
+	url = git@github.com:dasfisch/User-Taxonomies.git
