@@ -13,18 +13,9 @@
 [submodule "wordpress/wp-content/plugins/shc-sso-profile"]
 	path = wordpress/wp-content/plugins/shc-sso-profile
 	url = git@github.com:eddiemoya/dans-plugin.git
-<<<<<<< HEAD
 [submodule "wordpress/wp-content/plugins/action_jackson"]
 	path = wordpress/wp-content/plugins/action_jackson
 	url = git@github.com:eddiemoya/Action-Jackson.git
-[submodule "User-Taxonomies"]
-	path = User-Taxonomies
-	url = https://github.com/dasfisch/User-Taxonomies.git
 [submodule "wordpress/wp-content/plugins/user-taxonomies"]
 	path = wordpress/wp-content/plugins/user-taxonomies
-	url = https://github.com/dasfisch/User-Taxonomies.git
-=======
-[submodule "wordpress/wp-content/plugins/communities-user-taxonomies"]
-	path = wordpress/wp-content/plugins/communities-user-taxonomies
-	url = git@github.com:dasfisch/User-Taxonomies.git
->>>>>>> 5ec87f3ffc31762638b4cd889ad640e2a5b5458b
+	url = git@github.com/dasfisch/User-Taxonomies.git
