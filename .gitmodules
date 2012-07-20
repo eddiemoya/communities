@@ -13,3 +13,6 @@
 [submodule "wordpress/wp-content/plugins/shc-sso-profile"]
 	path = wordpress/wp-content/plugins/shc-sso-profile
 	url = git@github.com:eddiemoya/dans-plugin.git
+[submodule "wordpress/wp-content/plugins/action_jackson"]
+	path = wordpress/wp-content/plugins/action_jackson
+	url = git@github.com:eddiemoya/Action-Jackson.git
