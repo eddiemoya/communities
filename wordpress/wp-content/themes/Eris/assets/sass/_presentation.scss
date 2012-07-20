@@ -85,22 +85,61 @@ ul.bullets {
 }
 
 // COMMONLY USED ELEMENTS
+.member {
+  .info {
+    font-size: percentage( 12/16 );
+    h4, address {
+      @extend .bold;
+    }
+    h5, p {
+      @extend .faint;
+    }
+    address {
+      display: block;
+      @extend .bold;
+    }
+  }
+}
+
 .badge {
   img {
     display: block;
     margin: 0 auto;
   }
   h4 {
-    background: #bcdaf3 url('#{$img}sprite-user.png') repeat-x left bottom;
-    color: $lightest-color;
-    text-align: center;
     padding: .5em 0;
+    word-wrap: break-word;
+    letter-spacing:-.05em;
+  }
+  h4, address {
+    font-size: percentage( 12/16 );
     @extend .bold;
-    @include border-radius( 0 0 10px 10px );
   }
-  .badge-tail {
-    background: url('#{$img}sprite-user.png') no-repeat center top;
+  &.labeled{
+    h4 {
+      background: #bcdaf3 url('#{$img}sprite-user.png') repeat-x left bottom;
+      text-align: center;
+      @include border-radius( 0 0 10px 10px );
+    }
+    h4, h4 a {
+      color: $lightest-color;
+    }
+    .badge-tail {
+      background: url('#{$img}sprite-user.png') no-repeat center top;
+    }
   }
+}
+
+.span4 .span4 .badge h4 {
+  font-size: percentage( 10/16 );
+}
+
+.exerpt {
+  @extend .faint;
+}
+
+.flag {
+  float: right;
 }
 
 /*
@@ -171,23 +210,16 @@ ul.bullets {
 
 // FEATURED COMMUNITY MEMBERS
 .featured-members {
-  h4 a, address {
-    @extend .bold;
-  }
-  h5, p {
-    @extend .faint;
-  }
-  address {
-    display: block;
-  }
   .span4 {
     .member {
-      font-size: percentage( 12/16 );
       border-right: 1px solid sears( decorative );
       @include col_layout( (100, 90), 10 );
-      .stats {
-        //clear: left;
+      .content-comments {
         width: 100%;
+        li {
+          float: none;
+          border: 0;
+        }
       }
     }
     & + .span4 + .span4 .member {
@@ -207,17 +239,19 @@ ul.bullets {
   }
 }
 
-.span4.featured-members {
-  .span4 {
-    float: none;
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 1em;
-    .member {
-      border-right: 0;
-      @include col_layout( (80, 210), 10 );
-      article ul, h5 {
-        //display: none;
+.span3, .span4, .span6 {
+  .featured-members {
+    .span4 {
+      float: none;
+      width: 100%;
+      margin-left: 0;
+      margin-bottom: 1em;
+      .member {
+        border-right: 0;
+        @include col_layout( (80, 210), 10 );
+        // article ul, h5 {
+        // display: none;
+        // }
       }
     }
   }
@@ -231,5 +265,67 @@ ul.bullets {
     height:6.25em;
     margin:0 .625em .625em 0;
     width:6.25em;
+  }
+}
+
+// RESULT LIST
+.result-list {
+  margin-top: 1em;
+  border: 1px solid sears( decorative );
+  @include border-radius( 5px );
+  .content-header {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .lone-result {
+    padding-top: .75em;
+    margin-top: .5em;
+    border-top: 1px solid sears( decorative );
+    &:first-child {
+      margin-top: 0;
+      border-top: 0;
+    }
+  }
+  .content-header {
+    border-top: 0;
+    font-size: percentage( 12/16 );
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+  }
+}
+
+.member .info .content-comments {
+  font-size: 100%;
+  li {
+    float: none;
+    border: 0;
+    margin-top: 0;
+  }
+}
+
+// POST VIEWING
+.post {
+  .content-date {
+    display: block;
+    float: right;
+    font-size:.6875em;
+    @extend .faint;
+  }
+  hgroup {
+    @extend .bold;
+  }
+  h3 {
+    font-size: 90%;
+  }
+  h2 {
+    margin-top: .5em;
+  }
+  article {
+    margin-top: .5em;
+  }
+  .post-actions {
+    margin-top: .5em;
+    font-size: percentage( 13/16 );
   }
 }
