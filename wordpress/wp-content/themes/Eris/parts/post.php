@@ -1,60 +1,41 @@
-<div id="post-<?php the_ID(); ?>" <?php post_class('post'); ?>>
-    
-    <?php //print_pre(is_widget());?>
-    
-    <?php if(has_post_thumbnail()) : ?>
-        <div class="post-thumbnail">
-            <?php get_post_thumbnail(); ?> 
-        </div>
-    <?php endif; ?>
+<section class="<?php echo is_widget()->span; ?>">
 
-   
-    <h2 class="post-title">
-        <a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
-            <?php the_title(); ?>
-        </a>
-    </h2>
- 
-    <!-- Display the post meta date (November 16th, 2009 format) and a link to other posts by this posts author. -->
-    <div class="post-meta">
-        <?php if(!is_widget()) : ?>
-        <span class="post-author">
-            by: <?php the_author_posts_link(); ?> 
-        </span>
-        <?php endif; ?>
+    <article class="content-container featured-post">
+
+        <?php if(is_widget()->show_title) : ?>
         
-        <?php if(!is_widget() || is_widget()->show_date) : ?>
-        <span class="post-time">
-             on <?php the_time('F jS, Y'); ?> | <?php the_time('g:i a'); ?>
-        </span>
-        <?php endif; ?>
-    </div>
-    
-    <?php if(!is_widget() || is_widget()->show_content) : ?>
-    <div class="post-content">
-        <?php //(!is_singular()) ? the_excerpt() : 
-        echo get_the_content(); ?>
-    </div>
-    <?php endif; ?>
-    
-
-    <div class="post-footer">
+            <header class="content-header">
+                <h3><?php is_widget()->widget_title; ?></h3>
+            </header>
         
-        <!-- Optional widget section in the post footer-->
-        <?php if (!dynamic_sidebar('Post Footer')) : ?>
-
-            <span class="permalink">
-                <a href="<?php the_permalink(); ?>">Permalink</a>
-            </span>
-
-            <?php if (!is_single() && (!is_widget() || is_widget()->show_comment_count)): ?>
-
-                <span class="comments-link">
-                    <?php comments_popup_link('Comments(0)', 'Comments(1)', 'Comments(%)'); ?>
-                </span>
-
-            <?php endif; ?>
-
         <?php endif; ?>
-    </div>  
-</div>
+
+        <section class="content-body clearfix">
+
+            <?php ?>
+                <div class="featured-image span6">
+                    <img src="http://comm.local/wp-content/uploads/2012/07/blogmodule.jpg">
+                </div>
+            <?php ?>
+
+            <div class="featured-post span6">
+
+                <div class="content-details clearfix">
+                    <span class="content-category"><a href="#" title="Kittens">Kittens</a></span>
+                    <time class="content-date" datetime="2012-06-16">June 12, 2012</time>
+                </div>
+
+                <p class="content-headline"><a href="#">Nusquam copiosae accusata quo ad, in mei eius neglege ntur, vel lucilius sententiae et.  Ne vim mazim menandri effi ciendi.  Ludico virtute elabora ret vis in.</a></p>
+
+                <p class="content-byline">By: Loren Ipsum</p>
+
+                <p class="content-comments">4 comments</p>
+
+                <p class="content-excerpt">Lorem ipsum dolor sit amet, sit senserit similique cotidieque ex, libris postea copora nam.  Sea vidit pro. et, sit senserit similique... <a href="#" title="Read More">Read more</a><p>
+            </div>
+
+        </section>
+
+    </article>
+
+</section>
