@@ -28,7 +28,7 @@
   $i = 0;
   while ( $i < 3 ):
 ?>
-        <li class="member clearfix">
+        <li class="member lone-result clearfix">
           <div class="span2 badge labeled">
             <img src="<?php echo get_template_directory_uri() ?>/assets/img/zzexpert.jpg" alt="Team Player" title="Team Player" />
             <h4><a href="#">Title</a></h4>
@@ -71,7 +71,7 @@
   $i = 0;
   while ( $i < 3 ):
 ?>
-        <li class="post clearfix">
+        <li class="post lone-result clearfix">
           <div class="span2 badge">
             <img src="<?php echo get_template_directory_uri() ?>/assets/img/zzexpert.jpg" alt="Team Player" title="Team Player" />
             <h4><a href="#">screenname</a></h4>

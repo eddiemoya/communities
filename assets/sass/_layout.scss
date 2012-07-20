@@ -82,6 +82,5 @@
 }
 
 #content {
-  //width: #{$grid-width}px;
-  padding:1em .625em;
+  padding:1em ( $margin-width-pct / 2);
 }
