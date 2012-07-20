@@ -1,22 +1,16 @@
-<section class="<?php echo is_widget()->span; ?>">
+WIDGET::<section class="span8">
 
     <article class="content-container featured-post">
 
-        <?php if(is_widget()->show_title) : ?>
-        
-            <header class="content-header">
-                <h3><?php is_widget()->widget_title; ?></h3>
-            </header>
-        
-        <?php endif; ?>
+        <header class="content-header">
+            <h3>Featured Blog Post</h3>
+        </header>
 
         <section class="content-body clearfix">
 
-            <?php ?>
-                <div class="featured-image span6">
-                    <img src="http://comm.local/wp-content/uploads/2012/07/blogmodule.jpg">
-                </div>
-            <?php ?>
+            <div class="featured-image span6">
+                <img src="http://comm.local/wp-content/uploads/2012/07/blogmodule.jpg">
+            </div>
 
             <div class="featured-post span6">
 
