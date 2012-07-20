@@ -1,4 +1,4 @@
-<section class="span8">
+WIDGET::<section class="span8">
 
     <article class="content-container featured-post">
 
