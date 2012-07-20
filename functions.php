@@ -518,3 +518,10 @@ function set_flags_comment_type($is_flag, $comment_type, $comment_data, $parent)
     return $is_flag;
 }
 add_filter('cct_condition_answer', 'set_flags_comment_type', 10, 4);
+
+
+if(!function_exists('is_widget')){
+    function is_widget(){
+        return false;
+    }
+}
