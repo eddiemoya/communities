@@ -64,6 +64,7 @@
 .span8 + .span4 + [class*="span"],
 .span9 + .span3 + [class*="span"],
 .span12 + [class*="span"] {
+  clear:left;
   margin-left:0px;
 }
 
@@ -83,4 +84,8 @@
 
 #content {
   padding:1em ( $margin-width-pct / 2);
+}
+
+.input_text {
+  border:solid 1px #cccccc;
 }

@@ -16,3 +16,6 @@
 [submodule "wordpress/wp-content/plugins/action_jackson"]
 	path = wordpress/wp-content/plugins/action_jackson
 	url = git@github.com:eddiemoya/Action-Jackson.git
+[submodule "wordpress/wp-content/plugins/user-taxonomies"]
+	path = wordpress/wp-content/plugins/user-taxonomies
+	url = git@github.com/dasfisch/User-Taxonomies.git

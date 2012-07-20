@@ -4,8 +4,9 @@
  * @subpackage White Label
  */
 
-get_template_part('templates/header');
+get_template_part('parts/header');
 
-loop();
+loop('post', 'widget');
 
-get_template_part('templates/footer');
+get_template_part('parts/footer');
+?>

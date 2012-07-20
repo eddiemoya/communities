@@ -6,9 +6,6 @@ etc/nginx/wordpress/develop.conf
 /nbproject/private/
 *wp-config.php
 *.DS_Store
-wordpress/wp-config.php
-/wordpress/wp-content/uploads/
-wordpress/wordpress/wp-config.php
 /wordpress/wp-content/themes/.sass-cache/
 *DS_Store*
 
@@ -18,7 +15,6 @@ wp-*.php
 xmlrpc.php
 wp-admin/
 wp-includes/
-wp-content/uploads/
 wp-content/blogs.dir/
 wp-content/upgrade/*
 wp-content/backup-db/*
@@ -30,3 +26,6 @@ sitemap.xml
 sitemap.xml.gz
 readme.html
 license.txt
+
+!*/wp-config.php
+!*/uploads/*
