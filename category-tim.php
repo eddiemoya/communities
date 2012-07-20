@@ -19,8 +19,8 @@ loop();
 				
 				<form>
 					<div class="state_post-your-question">
-						<input type="text" class="input_text" name="post-question" />
-						<button type="<?php echo theme_option("brand"); ?>_button">Next</button>
+						<input type="text" class="input_text" name="post-question" value=""/>
+						<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Next</button>
 					</div>
 				</form>
 				

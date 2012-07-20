@@ -49,15 +49,75 @@ $arrow-height: 3px;
   margin:0 auto;
 }
 
+.sears {
+  #header_nav.dropmenu {
+    background: $nav-color url('#{$img}sears/sprite_navigation.png');
+    ul {
+      background: $lightest-color url('#{$img}sears/sprite_navigation.png');
+    }
+    li {
+      a {
+        color: sears( link );
+        span {
+          background-image: url('#{$img}sears/sprite_navigation.png');
+        }
+      }
+      &.right_button {
+        background: sears( button ) url('#{$img}sears/sprite_navigation.png');
+      }
+    }
+  }
+  #footer_nav.dropmenu {
+    background: sears( footer ) url('#{$img}sears/sprite_navigation.png');
+    li {
+      &:hover {
+        background-image: url('#{$img}sears/sprite_navigation.png');
+      }
+      a {
+        span {
+          background-image: url('#{$img}sears/sprite_navigation.png');
+        }
+      }
+    }
+  }
+}
+
+.kmart {
+  #header_nav.dropmenu {
+      background: $nav-color url('#{$img}kmart/sprite_navigation.png');
+    ul {
+      background: $lightest-color url('#{$img}kmart/sprite_navigation.png');
+    }
+    li {
+      a {
+        color: #333333;
+        span {
+          background-image: url('#{$img}kmart/sprite_navigation.png');
+        }
+      }
+      &.right_button {
+        background: sears( button ) url('#{$img}kmart/sprite_navigation.png');
+      }
+    }
+  }
+  #footer_nav.dropmenu {
+    li {
+      a {
+        span {
+          background-image: url('#{$img}kmart/sprite_navigation.png');
+        }
+      }
+    }
+  }
+}
+
 // Modify dropmenu for the header
-#header_nav.dropmenu {
+.sears #header_nav.dropmenu, .kmart #header_nav.dropmenu {
   @include border-radius( 5px );
   border-left: 1px solid sears( decorative );
   font-size: percentage( 12/16 );
-  background: $nav-color url('#{$img}sprite-nav.png');
   background-repeat: repeat-x;
   ul {
-    background: $lightest-color url('#{$img}sprite-nav.png');
     background-repeat: repeat-x;
   }
   @include sprite-position( "ul", left, bottom );
@@ -69,9 +129,7 @@ $arrow-height: 3px;
       border-right: 1px solid $lightest-color;
       padding-top: .5em;
       padding-bottom: .5em;
-      color: sears( link );
       span {
-        background-image: url('#{$img}sprite-nav.png');
         background-repeat: no-repeat;
         padding-right: 9px;
       }
@@ -79,7 +137,6 @@ $arrow-height: 3px;
     }
     &.right_button {
       @include border-radius( 0px 4px 4px 0px );
-      background: sears( button ) url('#{$img}sprite-nav.png');
       float: right;
       border-left: 1px solid sears( decorative );
       border-right: 0;
@@ -108,7 +165,7 @@ $arrow-height: 3px;
     }
   }
 }
-@include sprite-position( "#header_nav.dropmenu", left, ( $nav-sprite-period * ( -1 ) ) );
+@include sprite-position( ".sears #header_nav.dropmenu, .kmart #header_nav.dropmenu", left, ( $nav-sprite-period * ( -1 ) ) );
 
 // Modify dropmenu for the footer
 #footer_nav.dropmenu {
@@ -117,7 +174,6 @@ $arrow-height: 3px;
       padding-top: .5em;
       padding-bottom: .5em;
       span {
-        background-image: url('#{$img}sprite-nav.png');
         background-repeat: no-repeat;
         padding-right: 16px;
       }
@@ -142,7 +198,6 @@ $arrow-height: 3px;
 
 // Modify footer for Sears
 .sears #footer_nav.dropmenu {
-  background: sears( footer ) url('#{$img}sprite-nav.png');
   background-repeat: repeat-x;
   font-size: percentage( 12/16 );
   @include border-radius( 5px );
@@ -156,7 +211,6 @@ $arrow-height: 3px;
     // Give the footer item a different background and 
     // make it appear above the footer bar ("drop-up")
     &:hover {
-      background-image: url('#{$img}sprite-nav.png');
       // adjust for the first item's rounded corners
       &:first-child {
         @include border-radius( 0 0 0 5px );
