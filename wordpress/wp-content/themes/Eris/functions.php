@@ -26,7 +26,7 @@ add_editor_style('assets/css/editor-style.css');
 /**
  * Add image sizes so that WordPress will generate them when an image is uploaded.
  */
-add_image_size('custom-image-size', array(100, 100));
+//add_image_size('custom-image-size', array(100, 100));
 
 /**
  * Register Widgetized Areas 
@@ -35,7 +35,7 @@ if (function_exists('register_sidebar')) {
     register_sidebar(array(
         'name' => 'Sidebar',
         'description' => 'Sidebar',
-        'before_widget' => '<div class="widget %2$s $span" id="%1$s">',
+        'before_widget' => '<div class="widget %2$s" id="%1$s">',
         'after_widget' => '</div>',
         'before_title' => '<h3 class="widgettitle">',
         'after_title' => '</h3>'
@@ -43,7 +43,7 @@ if (function_exists('register_sidebar')) {
     register_sidebar(array(
         'name' => 'Post Footer',
         'description' => 'Footer of every post',
-        'before_widget' => '<span class="widget %2$s $span" id="%1$s">',
+        'before_widget' => '<span class="widget %2$s" id="%1$s">',
         'after_widget' => '</span>',
         'before_title' => '<h3 class="widgettitle">',
         'after_title' => '</h3>'
