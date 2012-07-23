@@ -110,8 +110,10 @@ function enqueue_scripts() {
        /* Scripts */
         wp_deregister_script('jquery'); 
         wp_register_script('jquery', get_template_directory_uri() . '/assets/js/vendor/jquery-1.7.2.min.js', array(), '1.7.2');
-				wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.5.3.min.js', array(), '2.5.3');
-				wp_register_script('shcJSL', get_template_directory_uri() . '/assets/js/shc-jsl.js', array(), '1.0');
+
+        /* @todo: Does modernizr not require jQuery as a dependancy? */
+		wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.5.3.min.js', array(), '2.5.3');
+		wp_register_script('shcJSL', get_template_directory_uri() . '/assets/js/shc-jsl.js', array(), '1.0');
         wp_enqueue_script('jquery');    
         wp_enqueue_script('modernizr');
         wp_enqueue_script('shcJSL');    
@@ -126,6 +128,18 @@ function enqueue_scripts() {
         wp_enqueue_style( 'main-styles');
         
     }
+}
+
+/**
+ * Return a template instead of outputing it.
+ *
+ * Intended for use in placing json_encoded templates in the header
+ * via wp_localize_script();
+ */
+function return_template_part($template){
+    ob_start();
+        get_template_part($template);
+    return ob_get_clean();
 }
 
 function enqueue_styles() {  
