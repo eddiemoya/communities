@@ -6,7 +6,6 @@
 
 get_template_part('parts/header');
 
-loop('post', 'widget');
+loop('question');
 
 get_template_part('parts/footer');
-?>
