@@ -361,14 +361,16 @@ function print_pre($r){
  * @param type $template [optional] Template part to be used in the loop.
  */
 
-function loop($template = 'post', $specialization = null){
+function loop($template = 'post', $special = null){
     global $wp_query;
 
+    $template = (isset($special)) ? $template.'-'.$special : $template;
+    //echo $template;
     if (have_posts()) { 
         while (have_posts()) {
             
             the_post();
-            get_template_part('parts/'.$template, $specialization);
+            get_template_part('parts/'.$template);
         }    
     }
 
