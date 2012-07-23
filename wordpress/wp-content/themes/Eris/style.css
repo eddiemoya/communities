@@ -127,7 +127,7 @@ legend {
     #ribbon > ul > li:first-child {
       border-left: none; }
   #ribbon .ribbon-icon a {
-    background: transparent url(assets/img/sprite_ribbon.png) no-repeat; }
+    background: transparent url(/wp-content/themes/Eris/assets/img/sprite_ribbon.png) no-repeat; }
   #ribbon #ribbon_shop-your-way a {
     background-position: 0px -30px;
     width: 59px; }
@@ -526,6 +526,22 @@ ul.footer_anterior {
 
 .input_text {
   border: solid 1px #cccccc; }
+
+#test > :nth-child(1) {
+  width: 23.554%;
+  float: left; }
+#test > :nth-child(2) {
+  width: 23.554%;
+  float: left;
+  margin-left: 1.927%; }
+#test > :nth-child(3) {
+  width: 23.554%;
+  float: left;
+  margin-left: 1.927%; }
+#test > :nth-child(4) {
+  width: 23.556999999999984%;
+  float: left;
+  margin-left: 1.927%; }
 
 html, body {
   height: 100%;
