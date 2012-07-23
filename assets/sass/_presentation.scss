@@ -188,9 +188,9 @@ form {
 
 .content-container .content-headline {
   font-size:1.25em;
-  @extend .bold;
+  font-weight:bold;
+  margin:0;
 }
-
 .content-container .content-header {
   border:solid #dddcdc;
   border-width:1px 0px;
@@ -239,6 +239,9 @@ form {
       border-left:none;
     }
   }
+	.share-full {
+		margin-top: 10px;
+	}
 }
 
 // FEATURED COMMUNITY MEMBERS
@@ -304,6 +307,17 @@ form {
     margin:0 .625em .625em 0;
     width:6.25em;
   }
+}
+
+// FEATURED BLOG POST
+.content-container.featured-post {
+	.content-excerpt, .content-byline {
+		font-size:.75em
+	}
+}
+.span4 .content-container.featured-post .span6 {
+	width: 100%;
+	margin-left: 0;
 }
 
 /*
