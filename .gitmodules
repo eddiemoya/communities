@@ -19,3 +19,6 @@
 [submodule "wordpress/wp-content/plugins/user-taxonomies"]
 	path = wordpress/wp-content/plugins/user-taxonomies
 	url = git@github.com:dasfisch/User-Taxonomies.git
+[submodule "wordpress/wp-content/plugins/media-categories-2"]
+	path = wordpress/wp-content/plugins/media-categories-2
+	url = git@github.com:eddiemoya/Media-Categories.git
