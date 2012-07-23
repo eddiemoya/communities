@@ -141,18 +141,6 @@ function return_template_part($template){
         get_template_part($template);
     return ob_get_clean();
 }
-
-function enqueue_styles() {  
-    wp_dequeue_style('shcp-front-style');
-    wp_dequeue_style('shcp-front-kmart'); 
-    wp_dequeue_style('shcp-front-sears'); 
-}
-
-function denqueue_scripts() {
-    wp_dequeue_script('sears-products-front-scripts');
-    wp_dequeue_script('sears-products-overlay-scripts');
-}
-
 /***********************************
  * END Enqueue Scripts and Styles  *
  ***********************************/
