@@ -4,18 +4,15 @@ etc/nginx/wordpress/develop.conf
 *.sass-cache
 *.sass-cache/
 /nbproject/private/
-*wp-config.php
 *.DS_Store
-wordpress/wp-config.php
-/wordpress/wp-content/uploads/
-wordpress/wordpress/wp-config.php
 /wordpress/wp-content/themes/.sass-cache/
 *DS_Store*
 
 #Wordpress Specific Ignores (github recommended)
-.htaccess
-wp-*.php
+wordpress/.htaccess
+wordpress/wp-*.php
 xmlrpc.php
+<<<<<<< HEAD
 wp-admin/
 wp-includes/
 wp-content/uploads/
@@ -31,3 +28,21 @@ sitemap.xml.gz
 readme.html
 license.txt
 wp-config.bu.php
+=======
+wordpress/wp-admin/
+wordpress/wp-includes/
+wordpress/wp-content/blogs.dir/
+wordpress/wp-content/upgrade/*
+wordpress/wp-content/backup-db/*
+wordpress/wp-content/advanced-cache.php
+wordpress/wp-content/wp-cache-config.php
+wordpress/wp-content/cache/*
+wordpress/wp-content/cache/supercache/*
+wordpress/sitemap.xml
+wordpress/sitemap.xml.gz
+wordpress/readme.html
+wordpress/license.txt
+
+!*/wp-config.php
+!*/uploads/*
+>>>>>>> 2228de49d28e7b587e256aea5c94aef7d590e721
