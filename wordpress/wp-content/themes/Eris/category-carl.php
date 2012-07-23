@@ -10,79 +10,15 @@
 
 ?>
   
-  <section class="span3">
-    <div style="border:1px solid black;">&nbsp;</div>
-  </section>
-  <section class="span3">
-    <div style="border:1px solid black;">&nbsp;</div>
-  </section>
-  <section class="span3">
-    <div style="border:1px solid black;">&nbsp;</div>
-  </section>
-  <section class="span3">
-    <div style="border:1px solid black;">&nbsp;</div>
-  </section>
-  <section class="span12">
-    <div style="border:1px solid black;">&nbsp;</div>
-  </section>
   <section class="span8">
-    
-    <section class="span6">
-      <div style="border:1px solid red;">&nbsp;</div>
-    </section>
-    <section class="span6">
-      <div style="border:1px solid red;">&nbsp;</div>
-    </section>
-    
-    <section class="span3">
-      <div style="border:1px solid black;">&nbsp;</div>
-    </section>
-    <section class="span3">
-      <div style="border:1px solid black;">&nbsp;</div>
-    </section>
-    <section class="span3">
-      <div style="border:1px solid black;">&nbsp;</div>
-    </section>
-    <section class="span3">
-      <div style="border:1px solid black;">&nbsp;</div>
-    </section>
-    
-  </section>
-  <section class="span4">
-    <div style="border:1px solid black;">&nbsp;</div>
-  </section>
-  
-  <section class="span9">
-    <div style="border:1px solid black;">&nbsp;</div>
-  </section>
-  <section class="span3">
-    <div style="border:1px solid black;">&nbsp;</div>
-  </section>
-  
-  <section id="test">
-    <div style="background: orange;">&nbsp;</div>
-    <div style="background: orange;">&nbsp;</div>
-    <div style="background: orange;">&nbsp;</div>
-    <div style="background: orange;">&nbsp;</div>
-  </section>
-  
-  <section class="span8">
-    <section class="span12 content-container result-list">
-      <header class="content-header">
-        <form method="post" action="<?php echo (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"]==”on”) ? "https://" : "http://" . $_SERVER["SERVER_NAME"] . $_SERVER['REQUEST_URI']; ?>">
-          <label for="sort-results">Sort By</label>
-          <select id="sort-results">
-            <option value="">Select a category</option>
-            <option value="1">Cat 1</option>
-            <option value="2">Cat 2</option>
-          </select>
-          <input type="submit" value="submit" name="submit" />
-        </form>
-      </header>
+    <section class="span12 content-container featured-qstn-columns">
+      <hgroup class="content-header">
+        <h3>Featured Questions</h3>
+      </hgroup>
       <ol class="content-body">
 <?php
   $i = 0;
-  while ( $i < 3 ):
+  while ( $i < 2 ):
 ?>
         <li class="member clearfix">
           <div class="span2 badge labeled">
@@ -101,52 +37,6 @@
                 <li>4 comments</li>
               </ul>
             </article>
-          </div>
-        </li>
-<?php
-  $i++;
-  endwhile;
-?>
-      </ol>
-    </section>
-    
-    <section class="span12 content-container result-list">
-      <header class="content-header">
-        <form method="post" action="<?php echo (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"]==”on”) ? "https://" : "http://" . $_SERVER["SERVER_NAME"] . $_SERVER['REQUEST_URI']; ?>">
-          <label for="sort-results">Sort By</label>
-          <select id="sort-results">
-            <option value="">Select a category</option>
-            <option value="1">Cat 1</option>
-            <option value="2">Cat 2</option>
-          </select>
-          <input type="submit" value="submit" name="submit" />
-        </form>
-      </header>
-      <ol class="content-body">
-<?php
-  $i = 0;
-  while ( $i < 3 ):
-?>
-        <li class="post clearfix">
-          <div class="span2 badge">
-            <img src="<?php echo get_template_directory_uri() ?>/assets/img/zzexpert.jpg" alt="Team Player" title="Team Player" />
-            <h4><a href="#">screenname</a></h4>
-            <address>Chicago, IL</address>
-          </div>
-          <div class="span10">
-            <time class="content-date" datetime="<?php echo date( "Y-m-d" ); ?>" pubdate="pubdate"><?php echo date( "F n, Y g:ia" ); ?></time>
-            <hgroup>
-              <h3 class="content-category"><a href="#">Post's Category</a></h3>
-              <h2 class="content-headline"><a href="#">Post's Title</a></h2>
-            </hgroup>
-            <article>
-              <p class="exerpt">This is the excerpt or description</p>
-              <p class="content-comments">x answers | y replies | z comments</p>
-            </article>
-            <section class="post-actions">
-              <div class="flag"><a href="#"><img src="<?php echo get_template_directory_uri() ?>/assets/img/icon-flag.png" alt="Flag this post" title="Flag this post" /></a></div>
-              <div class="share"><a href="#">Share</a></div>
-            </section>
           </div>
         </li>
 <?php
