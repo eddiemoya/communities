@@ -70,6 +70,7 @@ add_action( 'init', 'register_menus' );
  * Include Theme Options page. Based on (lookup credit)
  */
 get_template_part('classes/theme-options');
+get_template_part('classes/section-front');
 
 
 
@@ -84,15 +85,10 @@ get_template_part('classes/theme-options');
  ********************************************************/
 add_action('wp_enqueue_scripts', 'enqueue_scripts');
 add_action('wp_print_styles', 'enqueue_styles');
-add_action('wp_print_scripts', 'denqueue_scripts');
 
 function enqueue_scripts() {
-    
-    wp_dequeue_script('sears-products-front-scripts');
-    wp_dequeue_script('sears-products-overlay-scripts');
         
     if (!is_admin()) { // do not enqueue on admin pages
-        
         
         //Set up array to be passed to the shcproducts js file.
         $data = array(
@@ -197,12 +193,15 @@ function filter_body_class($classes) {
     
     if (is_page())
         $classes[] = 'page-' .get_queried_object()->post_name;
+
+     if ('section' == get_post_type())
+        $classes[] = 'section';
     
     // Example custom taxonomy usage - remove if not needed.
-    if(is_tax('facebook_gallery')){
-        $classes[] = 'facebook-gallery';
-        $classes[] = 'testgallery';
-    }
+    // if(is_tax('facebook_gallery')){
+    //     $classes[] = 'facebook-gallery';
+    //     $classes[] = 'testgallery';
+    // }
     
     return $classes;
 }
@@ -226,16 +225,28 @@ add_filter('body_class', 'filter_body_class');
  * @return modified WP_Query object
  */
 function custom_primary_query($query_string) {
+    global $wp_query;
 
     /**
      * If this is a category other than 'articles', 
      * set the post type to 'shcproduct' show 12 per page.
      */
-//    if (isset($query_string['category_name']) && $query_string['category_name'] != 'articles') {
-//        $query_string['post_type'] = 'shcproduct';
-//        $query_string['posts_per_page'] = '12';
-//    }
+   // if (isset($query_string['category_name'])) {
+   //      $section = new WP_Query(array(
+   //          'posts_per_page' => 1,
+   //          'category_name' => $query_string['category_name'],
+   //          'post_type' => 'section'
+   //          ));
+   //      if($section->found_posts > 0){
+   //          unset($query_string['category_name']);
+   //          $query_string['p'] = $section->post->ID;
 
+
+   //      }
+
+
+   // }
+//print_pre($query_string);
     /**
      * If this is a archive of the 'facebook_gallery' custom taxonomy,
      * set the post type to 'facebook_images and show them all at once. 
@@ -250,7 +261,7 @@ function custom_primary_query($query_string) {
 
     return $query_string;
 }
-//add_filter('request', 'custom_primary_query');
+add_filter('request', 'custom_primary_query');
 
 /******************************************
  * END  Content, Class, and Query Filters *
@@ -330,15 +341,8 @@ function flush_custom_rules(){
 function custom_rewrite_rules( $rules ) {
     
     $newrules = array();
-    
-    /**
-     *  Turns 'birthday-gifts' slug into its own category base
-     *  this allows pagination to work, but not feeds with this permastructure. 
-     */
-    $newrules['birthday-gifts/(.+?)/page/?([0-9]{1,})/?$'] = 'index.php?category_name=$matches[1]&paged=$matches[2]';     
-    $newrules['birthday-gifts/(.+?)/?$'] = 'index.php?category_name=$matches[1]';
-    
-    return $newrules + $rules;
+
+    return $rules;
 }
 //add_filter( 'rewrite_rules_array','custom_rewrite_rules' );
 
@@ -353,6 +357,11 @@ function print_pre($r){
     echo '</pre>';
 }
 
+
+// add_action('init', 'rewrites');
+// function rewrites(){
+
+// }
 /**
  * General use loop function. Allows for a template to be selected. Currently 
  * defaults to product template because that is used by our themes most often.
@@ -362,7 +371,6 @@ function print_pre($r){
  * @global type $wp_query
  * @param type $template [optional] Template part to be used in the loop.
  */
-
 function loop($template = 'post', $special = null){
     global $wp_query;
 
@@ -410,14 +418,15 @@ function register_questions_type() {
         'capability_type' => 'post',
         'has_archive' => false,
         'hierarchical' => false,
-        'menu_position' => null,
+        'menu_position' => 8,
         'supports' => array('title', 'editor', 'author', 'comments'),
-        'menu_icon' => get_template_directory_uri() . '/assets/img/admin/questions_admin_icon.gif'
+        'menu_icon' => get_template_directory_uri() . '/assets/img/admin/questions_admin_icon.gif',
+        'taxonomies' => array('category', 'post_tag')
     );
     register_post_type('question', $args);
 }
-
 add_action('init', 'register_questions_type');
+
 
 /**
  * Custom Comment Types 
