@@ -135,6 +135,27 @@ ul.bullets {
   height:1.25em;
 }
 
+.required:after, .optional:after {
+  color: #999999;
+  font-size:.7857em;
+}
+
+.required:after {
+  content: " Required";
+}
+
+.optional:after {
+  content: " Optional";
+}
+
+.form-fields {
+  label {
+    display:block;
+    font-size:.875em;
+    font-weight:bold;
+  }
+}
+
 .sears_button, .kmart_button {
   border-left:solid #ff9e6c;
   border-right:solid #cc6f35;
@@ -158,27 +179,7 @@ ul.bullets {
 .kmart_button {}
 
 form {
-  // #input_search {
-      // background:transparent url(assets/img/kmart/icon_search-bar-magnifying-glass_28x28.gif) no-repeat 0px 0px;
-      // border:none;
-      // height:1.25em;
-      // padding:.25em 0 .25em 1.7em;
-      // margin-right:9%;
-      // width:84%;
-    // }
-    // #button_search {
-      // background:transparent url(assets/img/kmart/background_button.gif) repeat-x 0px 0px;
-      // border:solid #e02334;
-      // border-width:0 0 0 5px;
-      // font-size:.75em;
-      // height:2.5em;
-      // padding-bottom:.25em;
-      // position:absolute;
-      // right:0px;
-      // text-transform:uppercase;
-      // top:0px;
-      // width:3.33em;
-    // }
+
 }
 
 /*
