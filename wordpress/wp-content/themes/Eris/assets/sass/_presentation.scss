@@ -430,3 +430,21 @@ form {
     }
   }
 }
+
+/*
+ * SUB-NAVIGATION WIDGET
+ */
+	.subcat-selector-container {
+		width: 240px;
+		height: 34px;
+		overflow: hidden;
+		background: url("assets/img/dropdown-arrow.png");
+	}
+	.subcat-selector {
+		background: transparent;
+		width: 268px;
+		padding: 5px;
+		font-size: 14px;
+		border: 1px solid #ccc;
+		height: 34px; 
+	} 
