@@ -527,22 +527,6 @@ ul.footer_anterior {
 .input_text {
   border: solid 1px #cccccc; }
 
-#test > :nth-child(1) {
-  width: 23.554%;
-  float: left; }
-#test > :nth-child(2) {
-  width: 23.554%;
-  float: left;
-  margin-left: 1.927%; }
-#test > :nth-child(3) {
-  width: 23.554%;
-  float: left;
-  margin-left: 1.927%; }
-#test > :nth-child(4) {
-  width: 23.556999999999984%;
-  float: left;
-  margin-left: 1.927%; }
-
 html, body {
   height: 100%;
   text-align: left;
