@@ -10,6 +10,62 @@
 
 ?>
   
+  <section class="span3">
+    <div style="border:1px solid black;">&nbsp;</div>
+  </section>
+  <section class="span3">
+    <div style="border:1px solid black;">&nbsp;</div>
+  </section>
+  <section class="span3">
+    <div style="border:1px solid black;">&nbsp;</div>
+  </section>
+  <section class="span3">
+    <div style="border:1px solid black;">&nbsp;</div>
+  </section>
+  <section class="span12">
+    <div style="border:1px solid black;">&nbsp;</div>
+  </section>
+  <section class="span8">
+    
+    <section class="span6">
+      <div style="border:1px solid red;">&nbsp;</div>
+    </section>
+    <section class="span6">
+      <div style="border:1px solid red;">&nbsp;</div>
+    </section>
+    
+    <section class="span3">
+      <div style="border:1px solid black;">&nbsp;</div>
+    </section>
+    <section class="span3">
+      <div style="border:1px solid black;">&nbsp;</div>
+    </section>
+    <section class="span3">
+      <div style="border:1px solid black;">&nbsp;</div>
+    </section>
+    <section class="span3">
+      <div style="border:1px solid black;">&nbsp;</div>
+    </section>
+    
+  </section>
+  <section class="span4">
+    <div style="border:1px solid black;">&nbsp;</div>
+  </section>
+  
+  <section class="span9">
+    <div style="border:1px solid black;">&nbsp;</div>
+  </section>
+  <section class="span3">
+    <div style="border:1px solid black;">&nbsp;</div>
+  </section>
+  
+  <section id="test">
+    <div style="background: orange;">&nbsp;</div>
+    <div style="background: orange;">&nbsp;</div>
+    <div style="background: orange;">&nbsp;</div>
+    <div style="background: orange;">&nbsp;</div>
+  </section>
+  
   <section class="span8">
     <section class="span12 content-container result-list">
       <header class="content-header">

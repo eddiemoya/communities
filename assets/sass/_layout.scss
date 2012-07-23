@@ -89,3 +89,8 @@
 .input_text {
   border:solid 1px #cccccc;
 }
+
+
+#test {
+  @include col_layout( ( 220, 220, 220, 220 ), 18, $strategy:"css3")
+}

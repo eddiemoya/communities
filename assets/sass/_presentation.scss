@@ -90,13 +90,13 @@ ul.bullets {
 #header.sears form #button_search, #header.sears form #input_search,
 .sears_button
 {
-  background-image:url(#{$img}sears/sprite_global.png);
+  background-image:url(#{$sears-img}sprite_global.png);
 }
 
 #header.kmart form #button_search, #header.kmart form #input_search
 .kmart_button
 {
-  background-image:url(#{$img}kmart/sprite_global.png);
+  background-image:url(#{$kmart-img}sprite_global.png);
 }
 
 // COMMONLY USED ELEMENTS
@@ -223,7 +223,7 @@ ul.bullets {
 
 form {
   // #input_search {
-      // background:transparent url(#{$img}kmart/icon_search-bar-magnifying-glass_28x28.gif) no-repeat 0px 0px;
+      // background:transparent url(#{$kmart-img}icon_search-bar-magnifying-glass_28x28.gif) no-repeat 0px 0px;
       // border:none;
       // height:1.25em;
       // padding:.25em 0 .25em 1.7em;
@@ -231,7 +231,7 @@ form {
       // width:84%;
     // }
     // #button_search {
-      // background:transparent url(#{$img}kmart/background_button.gif) repeat-x 0px 0px;
+      // background:transparent url(#{$kmart-img}background_button.gif) repeat-x 0px 0px;
       // border:solid #e02334;
       // border-width:0 0 0 5px;
       // font-size:.75em;
