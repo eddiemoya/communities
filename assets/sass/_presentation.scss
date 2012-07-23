@@ -222,27 +222,7 @@ ul.bullets {
 .kmart_button {}
 
 form {
-  // #input_search {
-      // background:transparent url(#{$kmart-img}icon_search-bar-magnifying-glass_28x28.gif) no-repeat 0px 0px;
-      // border:none;
-      // height:1.25em;
-      // padding:.25em 0 .25em 1.7em;
-      // margin-right:9%;
-      // width:84%;
-    // }
-    // #button_search {
-      // background:transparent url(#{$kmart-img}background_button.gif) repeat-x 0px 0px;
-      // border:solid #e02334;
-      // border-width:0 0 0 5px;
-      // font-size:.75em;
-      // height:2.5em;
-      // padding-bottom:.25em;
-      // position:absolute;
-      // right:0px;
-      // text-transform:uppercase;
-      // top:0px;
-      // width:3.33em;
-    // }
+  
 }
 
 /*
@@ -365,6 +345,22 @@ form {
     height:6.25em;
     margin:0 .625em .625em 0;
     width:6.25em;
+  }
+  &.columns {
+    .content-body {
+      $column-width: nth($span-widths, 4 );
+      @include col_layout( ( $column-width, $column-width ), 10 );
+    }
+    .featured:nth-child(odd) .column {
+      border-right: 1px solid sears( decorative );
+      padding-right: 10px;
+    }
+    .content-date {
+      float: none;
+    }
+    .content-headline {
+      font-size: 90%;
+    }
   }
 }
 

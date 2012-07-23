@@ -775,6 +775,20 @@ ul.bullets {
   height: 6.25em;
   margin: 0 .625em .625em 0;
   width: 6.25em; }
+.featured-question.content-container.columns .content-body > * {
+  width: 49.18%;
+  float: left; }
+.featured-question.content-container.columns .content-body > * + * {
+  width: 49.181000000000004%;
+  float: left;
+  margin-left: 1.639%; }
+.featured-question.content-container.columns .featured:nth-child(odd) .column {
+  border-right: 1px solid #cccccc;
+  padding-right: 10px; }
+.featured-question.content-container.columns .content-date {
+  float: none; }
+.featured-question.content-container.columns .content-headline {
+  font-size: 90%; }
 
 .result-list {
   margin-top: 1em;
