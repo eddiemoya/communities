@@ -1,8 +1,10 @@
-// Image Path
-$img: "/wp-content/themes/Eris/assets/img/";
+// Paths
+$img:               "/wp-content/themes/Eris/assets/img/";
+$sears-img:         "#{$img}sears/";
+$kmart-img:         "#{$img}kmart/";
 
 // Fonts
-$basefont: Helvetica, Arial, Verdana, sans-serif;
+$basefont:          Helvetica, Arial, Verdana, sans-serif;
 
 // Colors
 $lightest-color:    white;
