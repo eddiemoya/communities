@@ -46,7 +46,7 @@
 
             <?php if (is_widget()->show_title) : ?>
                 <p class="content-headline">
-                    <a href="">
+                    <a href="<?php the_permalink(); ?>">
                         <?php the_title(); ?>
                     </a>
                 </p>
