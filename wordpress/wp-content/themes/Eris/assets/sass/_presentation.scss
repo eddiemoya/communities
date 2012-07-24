@@ -505,3 +505,20 @@ form {}
     }
   }
 }
+
+// subnav widget
+.widget_communities_menu_widget {
+	font-size: 15px;
+	.subnav-items .menu-item {
+		padding: 5px 0;
+	}
+	.subcat-selector-container {
+		font-size: 14px;
+		margin-top: 15px;
+		color: #666666;
+		select {
+			margin-left: 10px;
+			color: #000000;
+		}
+	}
+}

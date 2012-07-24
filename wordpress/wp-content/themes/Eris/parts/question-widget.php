@@ -37,11 +37,9 @@
                         </span>
                     <?php endif; ?>
 
-                    <?php// if (is_widget()->show_date) : ?>
                         <time class="content-date" datetime="<?php the_time('Y-m-d'); ?>">
                             <?php the_time('F j, Y'); ?>
                         </time>
-                    <?php// endif; ?>
 
                 </div>
             <?php endif; ?>
