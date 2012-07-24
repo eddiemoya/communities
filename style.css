@@ -911,6 +911,24 @@ ul.bullets {
     margin-left: 10px;
     color: #000000; }
 
+.content-body.content-list .content-item {
+  margin-bottom: 10px;
+  float: left;
+  clear: both; }
+  .content-body.content-list .content-item .post-title {
+    line-height: 1.2em; }
+  .content-body.content-list .content-item .byline, .content-body.content-list .content-item .comments-count, .content-body.content-list .content-item .post-date {
+    font-size: .7em;
+    line-height: 1.4em;
+    color: #999; }
+  .content-body.content-list .content-item p {
+    margin-bottom: 0; }
+.content-body.content-list .more-link {
+  font-size: .8em;
+  margin-top: 15px;
+  float: left;
+  clear: both; }
+
 .dropmenu li {
   float: left;
   position: relative; }
