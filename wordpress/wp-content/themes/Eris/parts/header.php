@@ -25,7 +25,7 @@
   <body <?php body_class(); ?>>
       <?php do_action('content-top'); ?>
 
-      <?php get_template_part('parts/ribbon'); ?>
+      <?php wp_nav_menu( array('menu' => theme_option("brand").'-ribbon'))?>
 
       <div id="container">
 
