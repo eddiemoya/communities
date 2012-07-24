@@ -84,7 +84,7 @@ get_template_part('classes/section-front');
  * Enqueue Scripts and Styles (remove uneccessary ones) *
  ********************************************************/
 add_action('wp_enqueue_scripts', 'enqueue_scripts');
-add_action('wp_print_styles', 'enqueue_styles');
+//add_action('wp_print_styles', 'enqueue_styles');
 
 function enqueue_scripts() {
         

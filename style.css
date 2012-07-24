@@ -899,6 +899,18 @@ ul.bullets {
 .form_login .form-fields > li p, .form_register .form-fields > li p {
   margin-bottom: 0; }
 
+.widget_communities_menu_widget {
+  font-size: 15px; }
+  .widget_communities_menu_widget .subnav-items .menu-item {
+    padding: 5px 0; }
+  .widget_communities_menu_widget .subcat-selector-container {
+    font-size: 14px;
+    margin-top: 15px;
+    color: #666666; }
+    .widget_communities_menu_widget .subcat-selector-container select {
+      margin-left: 10px;
+      color: #000000; }
+
 .dropmenu li {
   float: left;
   position: relative; }

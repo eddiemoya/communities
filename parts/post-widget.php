@@ -37,18 +37,16 @@
                         </span>
                     <?php endif; ?>
 
-                    <?php// if (is_widget()->show_date) : ?>
                         <time class="content-date" datetime="<?php the_time('Y-m-d'); ?>">
                             <?php the_time('F j, Y'); ?>
                         </time>
-                    <?php// endif; ?>
 
                 </div>
             <?php endif; ?>
 
             <?php if (is_widget()->show_title) : ?>
                 <p class="content-headline">
-                    <a href="">
+                    <a href="<?php the_permalink(); ?>">
                         <?php the_title(); ?>
                     </a>
                 </p>
