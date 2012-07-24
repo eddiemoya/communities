@@ -22,7 +22,7 @@
     }
   }
   .ribbon-icon a {
-    background:transparent url(assets/img/sprite_ribbon.png) no-repeat;
+    background:transparent url(#{$img}sprite_ribbon.png) no-repeat;
   }
   #ribbon_shop-your-way {
     a {
