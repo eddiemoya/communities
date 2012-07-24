@@ -22,7 +22,7 @@
           <?php foreach($nav_items as $item) : ?>
 
         
-            <li><a href="<?php echo get_category_link($item->term_id); ?>"><?php echo $item->name; ?></a></li>
+            <li><a href="<?php echo get_category_link($item->term_id); ?>?post_type=<?php echo $item->post_type; ?>"><?php echo $item->name; ?></a></li>
 
           <?php endforeach; ?>
           <?php if ($nav_label != "Categories"): ?>
@@ -46,8 +46,6 @@
  *  Usage:
  *  list_terms_by_post_type('post_tag','custom_post_type_name');
  **/
-
-
 function list_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
   //get a list of all post of your type
   $args = array(

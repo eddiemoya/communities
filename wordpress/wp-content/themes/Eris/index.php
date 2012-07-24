@@ -6,9 +6,11 @@
 get_template_part('parts/header');
 loop();
 
-//get_template_part('parts/subnav-widget');
 
 //Wont show up on archive pages.
 //comments_template('/parts/answers.php');
-get_sidebar();
+//get_sidebar();
 get_template_part('parts/footer');
+
+// FUNCTIONING TEMPLATE - PLEASE DONT COMMIT ANY TINKERINGS
+
