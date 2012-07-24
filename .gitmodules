@@ -34,3 +34,6 @@
 [submodule "wordpress/wp-content/plugins/communities-content-blurb"]
 	path = wordpress/wp-content/plugins/communities-content-blurb
 	url = git@github.com:eddiemoya/communities-content-blurb.git
+[submodule "wordpress/wp-content/plugins/communities-post-a-question"]
+	path = wordpress/wp-content/plugins/communities-post-a-question
+	url = git@github.com:eddiemoya/communities-post-a-question.git
