@@ -326,25 +326,6 @@ function flush_custom_rules(){
 //add_action( 'wp_loaded','flush_custom_rules' );
 
 
-/**
- * Example Only - uncomment filter below to activate - modify as needed.
- * 
- * Do not call this function directly, add it to the rewrite_rules_array filter
- * 
- * Adds new regex to the rewrite rules.
- * 
- * @author Eddie Moya
- * 
- * @param array $rules
- * @return array
- */
-function custom_rewrite_rules( $rules ) {
-    
-    $newrules = array();
-
-    return $rules;
-}
-//add_filter( 'rewrite_rules_array','custom_rewrite_rules' );
 
 
 /************************************
