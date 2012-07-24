@@ -373,23 +373,23 @@ ul.footer_anterior {
 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
   margin-left: 2.128%; }
 
-.span3 .span3 {
+.span3 > .span3 {
   width: 18.182%;
   margin-left: 9.091%; }
 
-.span3 .span4 {
+.span3 > .span4 {
   width: 27.273%;
   margin-left: 9.091%; }
 
-.span3 .span6 {
+.span3 > .span6 {
   width: 45.455%;
   margin-left: 9.091%; }
 
-.span3 .span8 {
+.span3 > .span8 {
   width: 63.636%;
   margin-left: 9.091%; }
 
-.span3 .span9 {
+.span3 > .span9 {
   width: 72.727%;
   margin-left: 9.091%; }
 
@@ -398,23 +398,23 @@ ul.footer_anterior {
 .span3 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
   margin-left: 9.091%; }
 
-.span4 .span3 {
+.span4 > .span3 {
   width: 20%;
   margin-left: 6.667%; }
 
-.span4 .span4 {
+.span4 > .span4 {
   width: 28.889%;
   margin-left: 6.667%; }
 
-.span4 .span6 {
+.span4 > .span6 {
   width: 46.667%;
   margin-left: 6.667%; }
 
-.span4 .span8 {
+.span4 > .span8 {
   width: 64.444%;
   margin-left: 6.667%; }
 
-.span4 .span9 {
+.span4 > .span9 {
   width: 73.333%;
   margin-left: 6.667%; }
 
@@ -423,23 +423,23 @@ ul.footer_anterior {
 .span4 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
   margin-left: 6.667%; }
 
-.span6 .span3 {
+.span6 > .span3 {
   width: 21.739%;
   margin-left: 4.348%; }
 
-.span6 .span4 {
+.span6 > .span4 {
   width: 30.435%;
   margin-left: 4.348%; }
 
-.span6 .span6 {
+.span6 > .span6 {
   width: 47.826%;
   margin-left: 4.348%; }
 
-.span6 .span8 {
+.span6 > .span8 {
   width: 65.217%;
   margin-left: 4.348%; }
 
-.span6 .span9 {
+.span6 > .span9 {
   width: 73.913%;
   margin-left: 4.348%; }
 
@@ -448,23 +448,23 @@ ul.footer_anterior {
 .span6 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
   margin-left: 4.348%; }
 
-.span8 .span3 {
+.span8 > .span3 {
   width: 22.581%;
   margin-left: 3.226%; }
 
-.span8 .span4 {
+.span8 > .span4 {
   width: 31.183%;
   margin-left: 3.226%; }
 
-.span8 .span6 {
+.span8 > .span6 {
   width: 48.387%;
   margin-left: 3.226%; }
 
-.span8 .span8 {
+.span8 > .span8 {
   width: 65.591%;
   margin-left: 3.226%; }
 
-.span8 .span9 {
+.span8 > .span9 {
   width: 74.194%;
   margin-left: 3.226%; }
 
@@ -473,23 +473,23 @@ ul.footer_anterior {
 .span8 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
   margin-left: 3.226%; }
 
-.span9 .span3 {
+.span9 > .span3 {
   width: 22.857%;
   margin-left: 2.857%; }
 
-.span9 .span4 {
+.span9 > .span4 {
   width: 31.429%;
   margin-left: 2.857%; }
 
-.span9 .span6 {
+.span9 > .span6 {
   width: 48.571%;
   margin-left: 2.857%; }
 
-.span9 .span8 {
+.span9 > .span8 {
   width: 65.714%;
   margin-left: 2.857%; }
 
-.span9 .span9 {
+.span9 > .span9 {
   width: 74.286%;
   margin-left: 2.857%; }
 
@@ -884,6 +884,20 @@ ul.bullets {
     color: #666666;
     font-size: 1.25em;
     margin-bottom: .30em; }
+
+/*
+ * LOGIN/REGISTER/FORGOT PASSWORD
+ */
+.form_login .input_text, .form_register .input_text {
+  width: 100%; }
+.form_login label, .form_login a, .form_register label, .form_register a {
+  line-height: 32px; }
+.form_login label, .form_register label {
+  text-align: right; }
+.form_login .forgot, .form_register .forgot {
+  font-size: .6875em; }
+.form_login .form-fields > li p, .form_register .form-fields > li p {
+  margin-bottom: 0; }
 
 .widget_communities_menu_widget .subnav-items {
   font-size: .80em; }

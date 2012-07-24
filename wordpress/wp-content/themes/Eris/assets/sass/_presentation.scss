@@ -506,6 +506,28 @@ form {}
   }
 }
 
+/*
+ * LOGIN/REGISTER/FORGOT PASSWORD
+ */
+
+.form_login, .form_register {
+  .input_text {
+    width:100%;
+  }
+  label, a {
+    line-height:32px;
+  }
+  label {
+    text-align:right;
+  }
+  .forgot {
+    font-size: .6875em;
+  }
+  .form-fields > li p {
+    margin-bottom:0;
+  }
+}
+
 // subnav widget
 .widget_communities_menu_widget {
 	.subnav-items {
