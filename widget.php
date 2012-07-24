@@ -1,3 +1,3 @@
 
-This is a fucking widget
+This is a fucking widget /widget.php
 
