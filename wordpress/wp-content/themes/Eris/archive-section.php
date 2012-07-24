@@ -14,3 +14,5 @@ if(function_exists('display_dropzones')){
 }
 
 get_template_part('parts/footer');
+
+// FUNCTIONING TEMPLATE - NO TINKERING
