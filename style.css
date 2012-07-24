@@ -885,17 +885,17 @@ ul.bullets {
     font-size: 1.25em;
     margin-bottom: .30em; }
 
-.widget_communities_menu_widget {
-  font-size: 15px; }
+.widget_communities_menu_widget .subnav-items {
+  font-size: .80em; }
   .widget_communities_menu_widget .subnav-items .menu-item {
-    padding: 5px 0; }
-  .widget_communities_menu_widget .subcat-selector-container {
-    font-size: 14px;
-    margin-top: 15px;
-    color: #666666; }
-    .widget_communities_menu_widget .subcat-selector-container select {
-      margin-left: 10px;
-      color: #000000; }
+    padding: 6px 0; }
+.widget_communities_menu_widget .subcat-selector-container {
+  font-size: .75em;
+  margin-top: 15px;
+  color: #666666; }
+  .widget_communities_menu_widget .subcat-selector-container select {
+    margin-left: 10px;
+    color: #000000; }
 
 .dropmenu li {
   float: left;
