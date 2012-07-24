@@ -49,9 +49,6 @@
                * It seems it would be a lot simpler than creating them manually as in parts/navigation.
                * 
                * Let me know what you think.
-              
-              
-              
                wp_nav_menu( array(
                    'theme_location' => 'main-mavigation',
                    'menu' => '',
