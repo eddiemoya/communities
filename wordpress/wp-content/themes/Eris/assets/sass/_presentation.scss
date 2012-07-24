@@ -546,3 +546,29 @@ form {}
 		}
 	}
 } 
+
+// content list widget
+.content-body.content-list {
+	.content-item {
+		margin-bottom: 10px;
+		float: left;
+		clear: both;
+		.post-title {
+			line-height: 1.2em;
+		}
+		.byline, .comments-count, .post-date {
+			font-size: .7em;
+			line-height: 1.4em;
+			color: #999;
+		}
+		p {
+			margin-bottom: 0;
+		}
+	}
+	.more-link {
+		font-size: .8em;
+		margin-top: 15px;
+		float: left;
+		clear:both;
+	}
+}
