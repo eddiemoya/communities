@@ -15,12 +15,31 @@ loop();
 			
 			<section class="content-body clearfix">
 				
-				<h6 class="content-headline">Post your question</h6>
+				<h6 class="content-headline">Sign in</h6>
 				
-				<form>
-					<div class="state_post-your-question">
-						<input type="text" class="input_text" name="post-question" value=""/>
-						<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Next</button>
+				<form class="form_login">
+					<ul class="form-fields">
+						
+						<li>
+							
+							<dl>
+								<dt class="span2"><label for="email">Email:</label></dt>
+								<dd class="span10"><input type="text" name="email" class="input_text" id="email" /></dd>
+							</dl>
+							
+							<label for="email">Email:</label>
+							<input type="text" name="email" class="input_text" id="email" />
+						</li>
+						
+						<li>
+							<label for="password">Password:</label>
+							<input type="password" name="password" class="input_text input_password" id="password" />
+							<a href="#" title="Forgot your password?">Forgot?</a>
+						</li>
+						
+					</ul>
+					<div>
+						<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Sign in</button>
 					</div>
 				</form>
 				
