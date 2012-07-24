@@ -103,6 +103,7 @@ ul.bullets {
 .member {
   .info {
     font-size: percentage( 12/16 );
+    word-wrap: break-word;
     h4, address {
       @extend .bold;
     }
@@ -288,6 +289,13 @@ form {
 	}
 }
 
+.span4, .span3 {
+  .content-container .content-body .content-comments li {
+    border-left: 0;
+    float: none;
+  }
+}
+
 // FEATURED COMMUNITY MEMBERS
 .featured-members {
   .span4 {
@@ -308,31 +316,20 @@ form {
   }
 }
 
-.span8.featured-members.content-container {
-  .content-header {
-    border: 0;
-    color: $darkest-color;
-    padding: inherit 0;
-  }
-  .content-body {
-    padding: 0;
-  }
-}
+// Alternate selector for below class. Use if override for more scenarios is required.
+// Also, more like these would have to be created on a per-widget basis if development is asked to create more override states.
+//.span3 .featured-members, .span4 .featured-members, .span6 .featured-members, 
+//.span3.featured-members, .span4.featured-members, .span6.featured-members, .span8.featured-members
 
-.span3, .span4, .span6 {
-  .featured-members {
-    .span4 {
-      float: none;
-      width: 100%;
-      margin-left: 0;
-      margin-bottom: 1em;
-      .member {
-        border-right: 0;
-        @include col_layout( (80, 210), 10 );
-        // article ul, h5 {
-        // display: none;
-        // }
-      }
+.span3 .featured-members, .span4 .featured-members, .span6 .featured-members {
+  .span4 {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 1em;
+    .member {
+      border-right: 0;
+      @include col_layout( (80, 210), 10 );
     }
   }
 }
@@ -358,7 +355,6 @@ form {
           margin-left: nth( $calculated-widths, 3 );
         }
       }
-      //@include col_layout( ( $column-width, $column-width ), 10 );
     }
     .featured:nth-child(odd) .column {
       border-right: 1px solid sears( decorative );
@@ -369,6 +365,23 @@ form {
     }
     .content-headline {
       font-size: 90%;
+    }
+  }
+}
+
+.span4, .span3 {
+  .featured-question.content-container.columns .content-body > * {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+.span4, .span3 {
+  .featured-question.content-container.columns .featured {
+    margin-bottom: .75em;
+    &:nth-child(odd) .column {
+      border-right: 0;
+      padding-right: 0;
     }
   }
 }
