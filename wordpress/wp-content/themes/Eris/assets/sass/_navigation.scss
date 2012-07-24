@@ -51,31 +51,31 @@ $arrow-height: 3px;
 
 .sears {
   #header_nav.dropmenu {
-    background: $nav-color url('#{$img}sears/sprite_navigation.png');
+    background: $nav-color url('#{$sears-img}sprite_navigation.png');
     ul {
-      background: $lightest-color url('#{$img}sears/sprite_navigation.png');
+      background: $lightest-color url('#{$sears-img}sprite_navigation.png');
     }
     li {
       a {
         color: sears( link );
         span {
-          background-image: url('#{$img}sears/sprite_navigation.png');
+          background-image: url('#{$sears-img}sprite_navigation.png');
         }
       }
       &.right_button {
-        background: sears( button ) url('#{$img}sears/sprite_navigation.png');
+        background: sears( button ) url('#{$sears-img}sprite_navigation.png');
       }
     }
   }
   #footer_nav.dropmenu {
-    background: sears( footer ) url('#{$img}sears/sprite_navigation.png');
+    background: sears( footer ) url('#{$sears-img}sprite_navigation.png');
     li {
       &:hover {
-        background-image: url('#{$img}sears/sprite_navigation.png');
+        background-image: url('#{$sears-img}sprite_navigation.png');
       }
       a {
         span {
-          background-image: url('#{$img}sears/sprite_navigation.png');
+          background-image: url('#{$sears-img}sprite_navigation.png');
         }
       }
     }
@@ -84,19 +84,19 @@ $arrow-height: 3px;
 
 .kmart {
   #header_nav.dropmenu {
-      background: $nav-color url('#{$img}kmart/sprite_navigation.png');
+      background: $nav-color url('#{$kmart-img}sprite_navigation.png');
     ul {
-      background: $lightest-color url('#{$img}kmart/sprite_navigation.png');
+      background: $lightest-color url('#{$kmart-img}sprite_navigation.png');
     }
     li {
       a {
         color: #333333;
         span {
-          background-image: url('#{$img}kmart/sprite_navigation.png');
+          background-image: url('#{$kmart-img}sprite_navigation.png');
         }
       }
       &.right_button {
-        background: sears( button ) url('#{$img}kmart/sprite_navigation.png');
+        background: sears( button ) url('#{$kmart-img}sprite_navigation.png');
       }
     }
   }
@@ -104,7 +104,7 @@ $arrow-height: 3px;
     li {
       a {
         span {
-          background-image: url('#{$img}kmart/sprite_navigation.png');
+          background-image: url('#{$kmart-img}sprite_navigation.png');
         }
       }
     }

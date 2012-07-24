@@ -90,13 +90,13 @@ ul.bullets {
 #header.sears form #button_search, #header.sears form #input_search,
 .sears_button
 {
-  background-image:url(#{$img}sears/sprite_global.png);
+  background-image:url(#{$sears-img}sprite_global.png);
 }
 
 #header.kmart form #button_search, #header.kmart form #input_search
 .kmart_button
 {
-  background-image:url(#{$img}kmart/sprite_global.png);
+  background-image:url(#{$kmart-img}sprite_global.png);
 }
 
 // COMMONLY USED ELEMENTS
@@ -222,27 +222,7 @@ ul.bullets {
 .kmart_button {}
 
 form {
-  // #input_search {
-      // background:transparent url(#{$img}kmart/icon_search-bar-magnifying-glass_28x28.gif) no-repeat 0px 0px;
-      // border:none;
-      // height:1.25em;
-      // padding:.25em 0 .25em 1.7em;
-      // margin-right:9%;
-      // width:84%;
-    // }
-    // #button_search {
-      // background:transparent url(#{$img}kmart/background_button.gif) repeat-x 0px 0px;
-      // border:solid #e02334;
-      // border-width:0 0 0 5px;
-      // font-size:.75em;
-      // height:2.5em;
-      // padding-bottom:.25em;
-      // position:absolute;
-      // right:0px;
-      // text-transform:uppercase;
-      // top:0px;
-      // width:3.33em;
-    // }
+  
 }
 
 /*
@@ -366,6 +346,22 @@ form {
     margin:0 .625em .625em 0;
     width:6.25em;
   }
+  &.columns {
+    .content-body {
+      $column-width: nth($span-widths, 4 );
+      @include col_layout( ( $column-width, $column-width ), 10 );
+    }
+    .featured:nth-child(odd) .column {
+      border-right: 1px solid sears( decorative );
+      padding-right: 10px;
+    }
+    .content-date {
+      float: none;
+    }
+    .content-headline {
+      font-size: 90%;
+    }
+  }
 }
 
 // RESULT LIST
@@ -434,3 +430,21 @@ form {
     }
   }
 }
+
+/*
+ * SUB-NAVIGATION WIDGET
+ */
+	.subcat-selector-container {
+		width: 240px;
+		height: 34px;
+		overflow: hidden;
+		background: url("assets/img/dropdown-arrow.png");
+	}
+	.subcat-selector {
+		background: transparent;
+		width: 268px;
+		padding: 5px;
+		font-size: 14px;
+		border: 1px solid #ccc;
+		height: 34px; 
+	} 

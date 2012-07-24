@@ -19,13 +19,13 @@
 define('DB_NAME', 'communities');
 
 /** MySQL database username */
-define('DB_USER', 'communities_dba');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'password1');
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
-define('DB_HOST', '10.98.0.164');
+define('DB_HOST', '127.0.0.1:3306');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
