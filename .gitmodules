@@ -25,3 +25,6 @@
 [submodule "wordpress/wp-content/plugins/image-widget"]
 	path = wordpress/wp-content/plugins/image-widget
 	url = git@github.com:eddiemoya/Yet-Another-Image-Widget.git
+[submodule "wordpress/wp-content/plugins/communities-menu-widget"]
+	path = wordpress/wp-content/plugins/communities-menu-widget
+	url = git@github.com:eddiemoya/communities-menu-widget.git
