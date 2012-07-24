@@ -370,6 +370,38 @@ function loop($template = 'post', $special = null){
 }
 
 /**
+ * Similar to the loop() function but dynamically figures out the post type
+ * partial it should use.
+ * 
+ * @author Eddie Moya
+ * 
+ * @global type $wp_query
+ * @param type $special [optional] Template part to be used in the loop.
+ */
+function loop_by_type($special = null){
+    global $wp_query;
+   // print_pre($wp_query);
+    
+    
+    //echo $template;
+    if (have_posts()) { 
+        while (have_posts()) {
+            
+            
+            //echo 'TEMPALTE:'.$template;
+            the_post();
+     
+            $template = (isset($special)) ? $wp_query->post->post_type.'-'.$special : $template;
+            //print_pre(get_post_type());
+            get_template_part('parts/'.$template);
+        }    
+    }
+
+    wp_reset_query();
+
+}
+
+/**
  * Custom Post Types 
  */
 function register_questions_type() {
