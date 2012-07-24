@@ -83,6 +83,10 @@ ul.bullets {
 .downcase {
   text-transform: lowercase;
 }
+
+.background_light-gray {
+  background-color:#f3f3f3;
+}
 /*
  * SPRITES
  */
@@ -199,6 +203,30 @@ ul.bullets {
   height:1.25em;
 }
 
+.required:after, .optional:after {
+  color: #999999;
+  font-size:.7857em;
+}
+
+.required:after {
+  content: " Required";
+}
+
+.optional:after {
+  content: " Optional";
+}
+
+.form-fields {
+  & > li {
+    margin-bottom:1.35em;
+  }
+  label {
+    display:block;
+    font-size:.875em;
+    font-weight:bold;
+  }
+}
+
 .sears_button, .kmart_button {
   border-left:solid #ff9e6c;
   border-right:solid #cc6f35;
@@ -207,7 +235,7 @@ ul.bullets {
   cursor:pointer;
   font-size:.875em;
   font-weight:bold;
-  height:2.25em;
+  height:32px;
   padding:0em 1.5em;
   position:relative;
   text-shadow:1px 1px #666666;
@@ -215,15 +243,27 @@ ul.bullets {
   @include border-radius( 5px );
 }
 
+.sears_button.azure, .kmart_button.azure {
+  border-color:#60768b;
+  color:#366392;
+  text-shadow:none;
+}
+
 .sears_button {
   background-position:0px -88px;
 }
 
-.kmart_button {}
-
-form {
-  
+.sears_button.azure {
+  background-position:0px -140px;
 }
+
+.kmart_button {
+  background-position:0px -96px;
+}
+
+
+
+form {}
 
 /*
  * FEATURED
@@ -423,10 +463,23 @@ form {
         width:83%;
       }
     }
-    .input_text {
+    .state_post-question-details {
+      .input_text {
+        width:98%;
+      }
+      .input_textarea {
+        width:98%;
+      }
     }
-    #button_search {
-
+    .state_confirm-post {
+      .confirmation {
+        padding:.625em;
+      }
+      .content-headline {
+        color:#666666;
+        font-size:1.25em;
+        margin-bottom:.30em;
+      }
     }
   }
 }
