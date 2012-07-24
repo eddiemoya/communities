@@ -6,7 +6,14 @@
     "Q&A's" => list_terms_by_post_type('category', 'question'), 
     "Blog Posts" => list_terms_by_post_type(), 
     "Buying Guides" => list_terms_by_post_type('category', 'guides')
-  );//print_pre($a_navigation); ?>
+  );//print_pre($a_navigation); 
+  $post_types = array(
+    "Categories" => 'category', 
+    "Q&A's" => 'question', 
+    "Blog Posts" => 'post', 
+    "Buying Guides" => 'guides'
+  );
+  ?>
 
 
 
@@ -22,7 +29,13 @@
           <?php foreach($nav_items as $item) : ?>
 
         
-            <li><a href="<?php echo get_category_link($item->term_id); ?>?post_type=<?php echo $item->post_type; ?>"><?php echo $item->name; ?></a></li>
+            <li><a href="
+                <?php 
+                $post_type = ("category" != $post_types[$nav_label]) ? "?post_type=".$post_types[$nav_label] : '' ;
+                echo get_category_link($item->term_id) . $post_type; ?>">
+                <?php echo $item->name; ?>
+            </a>
+          </li>
 
           <?php endforeach; ?>
           <?php if ($nav_label != "Categories"): ?>
