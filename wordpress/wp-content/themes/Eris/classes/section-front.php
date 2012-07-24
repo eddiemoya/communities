@@ -16,7 +16,7 @@ class Section_Front{
 
 		add_action( 'init', 					array(__CLASS__, 'register_sections_type') );
 		add_action( 'save_post', 				array(__CLASS__, 'save_section') );
-		add_action( 'wp_loaded',		array(__CLASS__, 'flush_custom_rules' ) );
+		add_action( 'wp_loaded',				array(__CLASS__, 'flush_custom_rules' ) );
 		add_filter( 'category_rewrite_rules',	array(__CLASS__, 'section_rewrite_rules') );
 
 	}
