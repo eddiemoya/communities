@@ -1,2 +1,1 @@
-<?php loop('post', 'widget');
-
+<?php loop_by_type('widget');
