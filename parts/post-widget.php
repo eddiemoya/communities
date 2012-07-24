@@ -14,10 +14,14 @@
         <?php if (is_widget()->show_thumbnail && has_post_thumbnail()) : ?>
             <div class="featured-image span6">
                 <?php the_post_thumbnail(); ?>
+                <?php $featured_post_span = 'span6'; ?>
             </div>
+        <?php else :?>
+            <?php $featured_post_span = 'span12';?>
         <?php endif; ?>
 
-        <div class="featured-post span6">
+
+        <div class="featured-post <?php echo $featured_post_span; ?>">
 
             <?php if (is_widget()->show_category || is_widget()->show_date) : ?>
                 <div class="content-details clearfix">

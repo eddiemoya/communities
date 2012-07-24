@@ -6,7 +6,7 @@
 get_template_part('parts/header');
 loop();
 
-get_template_part('parts/subnav-widget');
+//get_template_part('parts/subnav-widget');
 
 //Wont show up on archive pages.
 //comments_template('/parts/answers.php');
