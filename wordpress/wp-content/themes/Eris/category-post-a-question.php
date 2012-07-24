@@ -105,8 +105,4 @@ loop();
 	</section>
 <?php
 get_template_part('parts/footer');
-
 ?>
-
-
-Tim: Does category-tim  (post form) need to be a widget to be placed within dropzones?

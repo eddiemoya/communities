@@ -12,6 +12,7 @@ etc/nginx/wordpress/develop.conf
 wordpress/.htaccess
 wordpress/wp-*.php
 xmlrpc.php
+wordpress/wp-config.bu.php
 wordpress/wp-admin/
 wordpress/wp-includes/
 wordpress/wp-content/blogs.dir/

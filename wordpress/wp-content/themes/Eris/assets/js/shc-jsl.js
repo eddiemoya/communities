@@ -136,6 +136,6 @@ shcJSL.widgets.persistr = function(element) {
 */
 jQuery(window).load(
 	function() {
-		shcJSL.widgets.activate();
+		//shcJSL.widgets.activate();
 	}
 )
