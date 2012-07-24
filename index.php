@@ -13,3 +13,4 @@ loop();
 get_template_part('parts/footer');
 
 // FUNCTIONING TEMPLATE - PLEASE DONT COMMIT ANY TINKERINGS
+
