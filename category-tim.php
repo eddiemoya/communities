@@ -9,7 +9,7 @@ get_template_part('parts/header');
 loop();
 ?>
 
-	<section style="width:480px;" class="clearfix">
+	<section class="clearfix span8">
 		
 		<article class="content-container post-your-question span12">
 			<section class="content-body clearfix">
@@ -58,12 +58,14 @@ loop();
 						</dl>
 					</li>
 				</ul>
+<<<<<<< HEAD
+=======
 				
 			</section>
 		</article>
 		
 		
-				<article class="content-container post-your-question span12">
+		<article class="content-container post-your-question span12">
 			<section class="content-body clearfix">
 				
 				<h6 class="content-headline">Register</h6>
@@ -126,6 +128,111 @@ loop();
 									<p>
 										By clicking &quot;Register&quot;, I agree to the <a href="#" title="Terms of Use">Terms of Use</a> and <a href="#" title="Privacy Policy">Privacy Policy</a>.
 									</p>
+								</dd>
+							</dl>
+						</li>
+						
+					</ul>
+				</form>
+>>>>>>> c021b511cc6399fa730e530ce379b7b52ecf8fb9
+				
+				<ul>
+					<li class="clearfix">
+						<dl>
+							<dd class="span3">&nbsp;</dd>
+							<dd class="span9">
+								<p class="bold">
+									Existing Customer? <a href="#" title="Sign In">Sign In</a>
+								</p>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+				
+			</section>
+		</article>
+		
+		
+				<article class="content-container post-your-question span12">
+			<section class="content-body clearfix">
+				
+<<<<<<< HEAD
+				<h6 class="content-headline">Register</h6>
+				
+				<form class="form_register">
+=======
+				<h6 class="content-headline">Forgot Password</h6>
+				
+				<p>
+					Please verify the email address this account and press continue.
+				</p>
+				
+				<form class="form_login">
+>>>>>>> c021b511cc6399fa730e530ce379b7b52ecf8fb9
+					<ul class="form-fields">
+						
+						<li>
+							<dl class="clearfix">
+								<dt class="span3"><label for="login_email">Email:</label></dt>
+								<dd class="span9"><input type="text" name="login_email" class="input_text" id="login_email" /></dd>
+							</dl>
+						</li>
+						
+<<<<<<< HEAD
+						<li>
+							<dl class="clearfix">
+								<dt class="span3"><label for="login_confirm-email">Confirm Email:</label></dt>
+								<dd class="span9"><input type="text" name="login_confirm-email" class="input_text" id="login_confirm-email" /></dd>
+							</dl>
+						</li>
+						
+						<li>
+							<dl class="clearfix">
+								<dt class="span3"><label for="login_password">Password:</label></dt>
+								<dd class="span9"><input type="password" name="login_password" class="input_text input_password" id="login_password" /></dd>
+							</dl>
+						</li>
+						
+						<li>
+							<dl class="clearfix">
+								<dt class="span3"><label for="login_zip-code">ZIP Code:</label></dt>
+								<dd class="span9"><input type="password" name="login_password" class="input_text input_password" id="login_zip-code" /></dd>
+							</dl>
+						</li>
+						
+						<li class="clearfix">
+							<dl>
+								<dd class="span3">&nbsp;</dd>
+								<dd class="span9">
+									<p>
+										<input type="checkbox" name="offers" id="offers" value="True" class="input_checkbox" /> I would like to receive offers, updates and sale alerts from Sears
+									</p>
+								</dd>
+							</dl>
+						</li>
+						
+						<li class="clearfix">
+							<dl>
+								<dd class="span3">&nbsp;</dd>
+								<dd class="span9">
+									<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Register</button>
+								</dd>
+							</dl>
+						</li>
+						
+=======
+>>>>>>> c021b511cc6399fa730e530ce379b7b52ecf8fb9
+						<li class="clearfix">
+							<dl>
+								<dd class="span3">&nbsp;</dd>
+								<dd class="span9">
+<<<<<<< HEAD
+									<p>
+										By clicking &quot;Register&quot;, I agree to the <a href="#" title="Terms of Use">Terms of Use</a> and <a href="#" title="Privacy Policy">Privacy Policy</a>.
+									</p>
+=======
+									<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Continue</button>
+>>>>>>> c021b511cc6399fa730e530ce379b7b52ecf8fb9
 								</dd>
 							</dl>
 						</li>
