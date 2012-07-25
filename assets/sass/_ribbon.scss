@@ -1,5 +1,5 @@
-#ribbon {
-  background-color:#e7e7e7;
+.menu-sears-ribbon-container, .menu-kmart-ribbon-container {
+	background-color:#e7e7e7;
   height:1.6em;
   width:100%;
   & > ul {
@@ -21,70 +21,70 @@
       border-left:none;
     }
   }
-  .ribbon-icon a {
+  .menu-item a {
     background:transparent url(#{$img}sprite_ribbon.png) no-repeat;
   }
-  #ribbon_shop-your-way {
+  .ribbon_shop-your-way {
     a {
       background-position:0px -30px;
       width:59px;
     }
   }
-  #ribbon_sears {
+  .ribbon_sears {
     a {
       background-position:0px 0px;
       width:41px;
     }
   }
-  #ribbon_kmart {
+  .ribbon_kmart {
     a {
       background-position:0px -15px;
       width:44px;
     }
   }
-  #ribbon_shop-your-way-rewards {
+  .ribbon_shop-your-way-rewards {
     a {
       background-position:0px -45px;
       width:67px;
     }
   }
-  #ribbon_my-gofer {
+  .ribbon_my-gofer {
     a {
       background-position:0px -60px;
       width:49px;
     }
   }
-  #ribbon_craftsman {
+  .ribbon_craftsman {
     a {
       background-position:0px -75px;
       width:62px;
     }
   }
-  #ribbon_kenmore {
+  .ribbon_kenmore {
     a {
       background-position:0px -90px;
       width:49px;
     }
   }
-  #ribbon_parts-direct {
+  .ribbon_parts-direct {
     a {
       background-position:0px -105px;
       width:53px;
     }
   }
-  #ribbon_lands-end {
+  .ribbon_lands-end {
     a {
       background-position:0px -120px;
       width:65px;
     }
   }
-  #ribbon_sears-outlet {
+  .ribbon_sears-outlet {
     a {
       background-position:0px -135px;
       width:59px;
     }
   }
-  #ribbon_see-all {
+  .ribbon_see-all {
     a {
       background-position:0px -150px;
       width:32px;
