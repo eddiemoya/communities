@@ -1,8 +1,12 @@
 <?php
 /**
- * @author Tim Steele
+ * @author Tim Steele & Jason Corradino
  */
+ 
+ 
 ?>
+
+<!--
 <nav id="ribbon">
 	<ul>
 		<li class="ribbon-icon" id="ribbon_shop-your-way"><a href="http://www.shopyourway.com" title="Shop Your Way" rel="external">Shop Your Way </a></li>
@@ -17,3 +21,4 @@
 		<li class="ribbon-icon" id="ribbon_see-all"><a href="http://www.<?php echo theme_option("brand"); ?>.com/shc/s/nb_10153_12605_NB_see+it+all?storeId=10153&vName=see+it+all&catalogInd=NB&catalogId=12605&expCheckout=&orderEmail=&langId=" title="See All" rel="external">See All</a></li>
 	</ul>
 </nav>
+-->
