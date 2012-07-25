@@ -107,58 +107,58 @@ legend {
   /* Correct alignment IE6/7 */
   white-space: normal; }
 
-#ribbon {
+.menu-sears-ribbon-container, .menu-kmart-ribbon-container {
   background-color: #e7e7e7;
   height: 1.6em;
   width: 100%; }
-  #ribbon > ul {
+  .menu-sears-ribbon-container > ul, .menu-kmart-ribbon-container > ul {
     padding-top: .1em;
     text-align: center; }
-    #ribbon > ul > li {
+    .menu-sears-ribbon-container > ul > li, .menu-kmart-ribbon-container > ul > li {
       border-left: dotted 1px #666666;
       display: inline;
       height: .9375em;
       padding: 0 .375em 0 .625em; }
-      #ribbon > ul > li a {
+      .menu-sears-ribbon-container > ul > li a, .menu-kmart-ribbon-container > ul > li a {
         display: inline-block;
         height: 15px;
         line-height: 16px;
         text-indent: -999999em; }
-    #ribbon > ul > li:first-child {
+    .menu-sears-ribbon-container > ul > li:first-child, .menu-kmart-ribbon-container > ul > li:first-child {
       border-left: none; }
-  #ribbon .ribbon-icon a {
+  .menu-sears-ribbon-container .menu-item a, .menu-kmart-ribbon-container .menu-item a {
     background: transparent url(/wp-content/themes/Eris/assets/img/sprite_ribbon.png) no-repeat; }
-  #ribbon #ribbon_shop-your-way a {
+  .menu-sears-ribbon-container .ribbon_shop-your-way a, .menu-kmart-ribbon-container .ribbon_shop-your-way a {
     background-position: 0px -30px;
     width: 59px; }
-  #ribbon #ribbon_sears a {
+  .menu-sears-ribbon-container .ribbon_sears a, .menu-kmart-ribbon-container .ribbon_sears a {
     background-position: 0px 0px;
     width: 41px; }
-  #ribbon #ribbon_kmart a {
+  .menu-sears-ribbon-container .ribbon_kmart a, .menu-kmart-ribbon-container .ribbon_kmart a {
     background-position: 0px -15px;
     width: 44px; }
-  #ribbon #ribbon_shop-your-way-rewards a {
+  .menu-sears-ribbon-container .ribbon_shop-your-way-rewards a, .menu-kmart-ribbon-container .ribbon_shop-your-way-rewards a {
     background-position: 0px -45px;
     width: 67px; }
-  #ribbon #ribbon_my-gofer a {
+  .menu-sears-ribbon-container .ribbon_my-gofer a, .menu-kmart-ribbon-container .ribbon_my-gofer a {
     background-position: 0px -60px;
     width: 49px; }
-  #ribbon #ribbon_craftsman a {
+  .menu-sears-ribbon-container .ribbon_craftsman a, .menu-kmart-ribbon-container .ribbon_craftsman a {
     background-position: 0px -75px;
     width: 62px; }
-  #ribbon #ribbon_kenmore a {
+  .menu-sears-ribbon-container .ribbon_kenmore a, .menu-kmart-ribbon-container .ribbon_kenmore a {
     background-position: 0px -90px;
     width: 49px; }
-  #ribbon #ribbon_parts-direct a {
+  .menu-sears-ribbon-container .ribbon_parts-direct a, .menu-kmart-ribbon-container .ribbon_parts-direct a {
     background-position: 0px -105px;
     width: 53px; }
-  #ribbon #ribbon_lands-end a {
+  .menu-sears-ribbon-container .ribbon_lands-end a, .menu-kmart-ribbon-container .ribbon_lands-end a {
     background-position: 0px -120px;
     width: 65px; }
-  #ribbon #ribbon_sears-outlet a {
+  .menu-sears-ribbon-container .ribbon_sears-outlet a, .menu-kmart-ribbon-container .ribbon_sears-outlet a {
     background-position: 0px -135px;
     width: 59px; }
-  #ribbon #ribbon_see-all a {
+  .menu-sears-ribbon-container .ribbon_see-all a, .menu-kmart-ribbon-container .ribbon_see-all a {
     background-position: 0px -150px;
     width: 32px; }
 
@@ -373,23 +373,23 @@ ul.footer_anterior {
 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
   margin-left: 2.127659574468085%; }
 
-.span3 .span3 {
+.span3 > .span3 {
   width: 18.18181818181818%;
   margin-left: 9.090909090909092%; }
 
-.span3 .span4 {
+.span3 > .span4 {
   width: 27.272727272727273%;
   margin-left: 9.090909090909092%; }
 
-.span3 .span6 {
+.span3 > .span6 {
   width: 45.45454545454545%;
   margin-left: 9.090909090909092%; }
 
-.span3 .span8 {
+.span3 > .span8 {
   width: 63.63636363636364%;
   margin-left: 9.090909090909092%; }
 
-.span3 .span9 {
+.span3 > .span9 {
   width: 72.72727272727273%;
   margin-left: 9.090909090909092%; }
 
@@ -398,23 +398,23 @@ ul.footer_anterior {
 .span3 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
   margin-left: 9.090909090909092%; }
 
-.span4 .span3 {
+.span4 > .span3 {
   width: 20%;
   margin-left: 6.666666666666667%; }
 
-.span4 .span4 {
+.span4 > .span4 {
   width: 28.888888888888886%;
   margin-left: 6.666666666666667%; }
 
-.span4 .span6 {
+.span4 > .span6 {
   width: 46.666666666666664%;
   margin-left: 6.666666666666667%; }
 
-.span4 .span8 {
+.span4 > .span8 {
   width: 64.44444444444444%;
   margin-left: 6.666666666666667%; }
 
-.span4 .span9 {
+.span4 > .span9 {
   width: 73.33333333333333%;
   margin-left: 6.666666666666667%; }
 
@@ -423,23 +423,23 @@ ul.footer_anterior {
 .span4 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
   margin-left: 6.666666666666667%; }
 
-.span6 .span3 {
+.span6 > .span3 {
   width: 21.73913043478261%;
   margin-left: 4.347826086956522%; }
 
-.span6 .span4 {
+.span6 > .span4 {
   width: 30.43478260869565%;
   margin-left: 4.347826086956522%; }
 
-.span6 .span6 {
+.span6 > .span6 {
   width: 47.826086956521735%;
   margin-left: 4.347826086956522%; }
 
-.span6 .span8 {
+.span6 > .span8 {
   width: 65.21739130434783%;
   margin-left: 4.347826086956522%; }
 
-.span6 .span9 {
+.span6 > .span9 {
   width: 73.91304347826086%;
   margin-left: 4.347826086956522%; }
 
@@ -448,23 +448,23 @@ ul.footer_anterior {
 .span6 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
   margin-left: 4.347826086956522%; }
 
-.span8 .span3 {
+.span8 > .span3 {
   width: 22.58064516129032%;
   margin-left: 3.225806451612903%; }
 
-.span8 .span4 {
+.span8 > .span4 {
   width: 31.182795698924725%;
   margin-left: 3.225806451612903%; }
 
-.span8 .span6 {
+.span8 > .span6 {
   width: 48.38709677419354%;
   margin-left: 3.225806451612903%; }
 
-.span8 .span8 {
+.span8 > .span8 {
   width: 65.59139784946235%;
   margin-left: 3.225806451612903%; }
 
-.span8 .span9 {
+.span8 > .span9 {
   width: 74.19354838709677%;
   margin-left: 3.225806451612903%; }
 
@@ -473,23 +473,23 @@ ul.footer_anterior {
 .span8 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
   margin-left: 3.225806451612903%; }
 
-.span9 .span3 {
+.span9 > .span3 {
   width: 22.857142857142858%;
   margin-left: 2.857142857142857%; }
 
-.span9 .span4 {
+.span9 > .span4 {
   width: 31.42857142857143%;
   margin-left: 2.857142857142857%; }
 
-.span9 .span6 {
+.span9 > .span6 {
   width: 48.57142857142857%;
   margin-left: 2.857142857142857%; }
 
-.span9 .span8 {
+.span9 > .span8 {
   width: 65.71428571428572%;
   margin-left: 2.857142857142857%; }
 
-.span9 .span9 {
+.span9 > .span9 {
   width: 74.28571428571428%;
   margin-left: 2.857142857142857%; }
 
@@ -885,17 +885,31 @@ ul.bullets {
     font-size: 1.25em;
     margin-bottom: .30em; }
 
-.widget_communities_menu_widget {
-  font-size: 15px; }
+/*
+ * LOGIN/REGISTER/FORGOT PASSWORD
+ */
+.form_login .input_text, .form_register .input_text {
+  width: 100%; }
+.form_login label, .form_login a, .form_register label, .form_register a {
+  line-height: 32px; }
+.form_login label, .form_register label {
+  text-align: right; }
+.form_login .forgot, .form_register .forgot {
+  font-size: .6875em; }
+.form_login .form-fields > li p, .form_register .form-fields > li p {
+  margin-bottom: 0; }
+
+.widget_communities_menu_widget .subnav-items {
+  font-size: .80em; }
   .widget_communities_menu_widget .subnav-items .menu-item {
-    padding: 5px 0; }
-  .widget_communities_menu_widget .subcat-selector-container {
-    font-size: 14px;
-    margin-top: 15px;
-    color: #666666; }
-    .widget_communities_menu_widget .subcat-selector-container select {
-      margin-left: 10px;
-      color: #000000; }
+    padding: 6px 0; }
+.widget_communities_menu_widget .subcat-selector-container {
+  font-size: .75em;
+  margin-top: 15px;
+  color: #666666; }
+  .widget_communities_menu_widget .subcat-selector-container select {
+    margin-left: 10px;
+    color: #000000; }
 
 .profile .tabs li {
   float: left;
@@ -937,6 +951,24 @@ ul.bullets {
     padding: .6em .5em; }
   .profile nav.bar li:first-child {
     margin-left: 0; }
+
+.content-body.content-list .content-item {
+  margin-bottom: 10px;
+  float: left;
+  clear: both; }
+  .content-body.content-list .content-item .post-title {
+    line-height: 1.2em; }
+  .content-body.content-list .content-item .byline, .content-body.content-list .content-item .comments-count, .content-body.content-list .content-item .post-date {
+    font-size: .7em;
+    line-height: 1.4em;
+    color: #999; }
+  .content-body.content-list .content-item p {
+    margin-bottom: 0; }
+.content-body.content-list .more-link {
+  font-size: .8em;
+  margin-top: 15px;
+  float: left;
+  clear: both; }
 
 .dropmenu li {
   float: left;

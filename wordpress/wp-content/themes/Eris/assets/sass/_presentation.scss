@@ -506,14 +506,38 @@ form {}
   }
 }
 
+/*
+ * LOGIN/REGISTER/FORGOT PASSWORD
+ */
+
+.form_login, .form_register {
+  .input_text {
+    width:100%;
+  }
+  label, a {
+    line-height:32px;
+  }
+  label {
+    text-align:right;
+  }
+  .forgot {
+    font-size: .6875em;
+  }
+  .form-fields > li p {
+    margin-bottom:0;
+  }
+}
+
 // subnav widget
 .widget_communities_menu_widget {
-	font-size: 15px;
-	.subnav-items .menu-item {
-		padding: 5px 0;
+	.subnav-items {
+		font-size: .80em;
+		.menu-item {
+			padding: 6px 0;
+		}
 	}
 	.subcat-selector-container {
-		font-size: 14px;
+		font-size: .75em;
 		margin-top: 15px;
 		color: #666666;
 		select {
@@ -564,4 +588,30 @@ $tab-padding: "1em .5em .6em .5em";
       margin-left: 0;
     }
   }
+} 
+
+// content list widget
+.content-body.content-list {
+	.content-item {
+		margin-bottom: 10px;
+		float: left;
+		clear: both;
+		.post-title {
+			line-height: 1.2em;
+		}
+		.byline, .comments-count, .post-date {
+			font-size: .7em;
+			line-height: 1.4em;
+			color: #999;
+		}
+		p {
+			margin-bottom: 0;
+		}
+	}
+	.more-link {
+		font-size: .8em;
+		margin-top: 15px;
+		float: left;
+		clear:both;
+	}
 }
