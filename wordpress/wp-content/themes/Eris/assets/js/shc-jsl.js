@@ -35,13 +35,149 @@ if (!shcJSL) shcJSL = $S = {};
 		[1.1] ARRAY
 		-----------
 	*/
-	// Remove an entry from an array:
-	// e.x.: [array].remove([entry])
+	
+	/*
+	 * Added Array.remove([entry]) functionality to Array
+	 */
 
 Array.prototype.remove = function(e) {
 	var t, _ref;
   if ((t = this.indexOf(e)) > -1) {return ([].splice.apply(this, [t, t - t + 1].concat(_ref = [])), _ref);}
 };
+
+/*
+ * Add Array.map(callback, [thisArg]) functionality to
+ * IE8 - which does not support Array.map() natively.
+ * 
+ * NOTE: pulled from Mozilla Developer Network (MDN)
+ * https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/map
+ */
+if (!Array.prototype.map) {
+  Array.prototype.map = function(callback, thisArg) {
+    var T, A, k;
+    if (this == null) {
+      throw new TypeError(" this is null or not defined");
+    }
+    var O = Object(this);
+    var len = O.length >>> 0;
+    if ({}.toString.call(callback) != "[object Function]") {
+      throw new TypeError(callback + " is not a function");
+    }
+    if (thisArg) {
+      T = thisArg;
+    }
+    A = new Array(len);
+    k = 0;
+    while(k < len) {
+      var kValue, mappedValue;
+      if (k in O) {
+        kValue = O[ k ];
+        mappedValue = callback.call(T, kValue, k, O);
+				A[ k ] = mappedValue;
+      }
+      k++;
+    }
+    return A;
+  };      
+}
+
+shcJSL.methods = {
+	test: function(a) {
+		console.log(a);
+		alert('tacos');
+	}
+}
+
+shcJSL.get = function(element) {
+	var collection; // (Array) array of objects with shcJSL.methods.
+	var getID;			// (Method) method to get element by ID.
+	var getTags;		// (Method) method to get elements by tag name.
+	
+	getID = function(id) {
+		/**
+		 * @param id: ID of element
+		 */
+		return document.getElementById(id)
+	}
+	getTags = function(tag) {
+			/**
+	 		 * @param tag name of element
+	 		 */
+	 		return document.getElementsByTagName(tag);
+	}
+
+	// Declare collection as an array
+	collection = [];
+	
+	// Take the element(s) and turn it into a true array
+	if (typeof element == "string") {
+		if (element[0] == "#") {	// Selector is an ID
+			collection.push(getID(element.slice(1)));
+		// Need to add in class selector at some point.
+		} else {	// Selector is an element OR not a valid selector
+			collection = collection.concat([].slice.call(getTags(element)));
+		}
+	} else if (typeof element == "object") {
+		// element is an HTMLObject
+	 	collection.push(element);
+	}
+	
+	// Bind methods from shcJSL.methods to the output Array
+	// Use a function call for the body of 'FOR' loop instead of
+	// braces.
+	for (var method in shcJSL.methods)(
+		function(n,m) {
+			// Create a new scope
+			// n/m are key/value of the method object (n = method name, m = method)
+			collection[n] = function(x) {
+				collection.map(m,x);
+				return collection;
+			}
+		}(method, shcJSL.methods[method]))
+		
+		return collection;
+}
+
+fruits ={};
+fruits.get = function(css){ //dom utility
+	
+	
+	
+ //a couple of node harvesters, using id and tag name...
+   function el(id){ return document.getElementById(id);}
+   function tags(elm){return document.getElementsByTagName(elm);}
+
+ //collect output:
+ 	console.log(typeof css);
+ 
+   if(css[0]=="#"){//id
+      out.push(el(css.slice(1)));
+   } else if (typeof css == "object") {
+   		out.push(css);
+   }
+   else{//tags
+      out=out.concat([].slice.call(tags(css)));
+   };//end if id or tagName
+  
+ //define some methods for the utility:
+    var meths={
+        hide:function(a){a.style.display="none";},
+        show:function(a){a.style.display="";},
+        remove:function(a){a.parentNode.removeChild(a);},
+        color:function(a){a.style.color=this||a.style.color;},
+        size:function(a){a.style.fontSize=this||a.style.fontSize;}
+    };//end meths
+
+ //bind the methods to the collection array:
+    for(var method in shcJSL.methods)
+    (function(n,m){
+       out[n]=function(x){out.map(m,x); return out;}
+    }(method, shcJSL.methods[method]));//next method
+
+  return out;
+}//end X dom utility
+
+
 
 /*
 	[2.0] WIDGETS
@@ -102,7 +238,7 @@ shcJSL.widgets.activate = function(event, parent, selector) {
  * @param element: 
  */
 
-shcJSL.widgets.persistr = function(element) {
+shcJSL.gizmos.persistr = function(element) {
 	var offsetTop;	// (Int) pixel difference from the top of the page
 	var persisted;	// (HTMLObject) the persisted element
 	
@@ -115,14 +251,8 @@ shcJSL.widgets.persistr = function(element) {
 		yScroll = $(this).scrollTop();
 		
 		if (yScroll >= offsetTop) {
-			// console.log("POSITION TO FIX"); 
-			// console.log('YSCROLL: ' + yScroll);
-			// console.log("OFFSETTOP: " + offsetTop);
 			$(element).css("position","fixed")
 		} else {
-			// console.log("POSITION FROM FIXED"); 
-			// console.log('YSCROLL: ' + yScroll);
-			// console.log("OFFSETTOP: " + offsetTop);
 			$(element).css("position","relative");
 		}
 	});
@@ -136,6 +266,6 @@ shcJSL.widgets.persistr = function(element) {
 */
 jQuery(window).load(
 	function() {
-		//shcJSL.widgets.activate();
+		shcJSL.gizmos.activate();
 	}
 )

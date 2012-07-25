@@ -29,7 +29,7 @@
 
       <div id="container">
 
-          <div id="persistent-header" shc:widget="persistr">
+          <div id="persistent-header" shc:gizmo="persistr">
 
               <?php get_template_part('parts/head'); ?>
 
