@@ -522,3 +522,46 @@ form {}
 		}
 	}
 }
+
+// PROFILE
+$tab-padding: "1em .5em .6em .5em";
+.profile {
+  .tabs {
+    li {
+      float: left;
+      min-width: percentage( ( nth( $span-widths, 2 ) ) / $grid-width );
+      margin-left: $margin-width-pct;
+      border: solid sears( decorative );
+      border-width: 1px 1px 0 1px;
+      text-align: center;
+      font-size: percentage( 12/16 );
+      @include border-radius( 5px 5px 0 0);
+      background: $nav-color url('#{$sears-img}sprite_navigation.png');
+    }
+    a {
+      display: block;
+      padding: #{$tab-padding};
+    }
+    @include sprite-position( "li", left, ( $nav-sprite-period * ( -1 ) - 1 ) );
+    .active {
+      position: relative;
+      top: 1px;
+      background: $lightest-color;
+      padding: #{$tab-padding};
+    }
+  }
+  nav.bar {
+    border-bottom: 1px solid sears( decorative );
+    border-top: 1px solid sears( decorative );
+    @include background-image(linear-gradient(white, #f4f4f4));
+    li {
+      float: left;
+      margin-left: $margin-width-pct;
+      font-size: percentage( 15/16 );
+      padding: .6em .5em;
+    }
+    li:first-child {
+      margin-left: 0;
+    }
+  }
+}
