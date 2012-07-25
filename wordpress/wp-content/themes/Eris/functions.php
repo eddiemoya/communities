@@ -69,8 +69,12 @@ add_action( 'init', 'register_menus' );
 /**
  * Include Theme Options page. Based on (lookup credit)
  */
+//Classes
 get_template_part('classes/theme-options');
 get_template_part('classes/section-front');
+
+//Function
+get_template_part('functions/ajax-callbacks');
 
 
 
@@ -92,7 +96,7 @@ function enqueue_scripts() {
         
         //Set up array to be passed to the shcproducts js file.
         $data = array(
-            'absurl'            => admin_url( 'admin-ajax.php'),
+            'ajaxurl'            => admin_url( 'admin-ajax.php'),
             'template_dir_uri'  => get_template_directory_uri(),
             'home_url'          => get_home_url(),
             #'cart_quantity'     => get_cart_object()->item_count,
@@ -112,9 +116,12 @@ function enqueue_scripts() {
 		wp_register_script('shcJSL', get_template_directory_uri() . '/assets/js/shc-jsl.js', array(), '1.0');
         wp_enqueue_script('jquery');    
         wp_enqueue_script('modernizr');
-        wp_enqueue_script('shcJSL');    
+        wp_enqueue_script('shcJSL');  
+
+        wp_register_script('ajaxrequests', get_template_directory_uri() . '/assets/js/ajax-requests.js', array('jquery'), '1.2');
+        wp_enqueue_script('ajaxrequests');   
 				
-				
+		wp_localize_script('jquery', 'ajaxdata', $data);		
        	//wp_register_script('shcproducts', get_template_directory_uri() . '/assets/js/shcproducts.js', array('jquery'), '1.0');
         //wp_enqueue_script('shcproducts');
         //wp_localize_script('shcproducts', 'ajaxdata', $data);
@@ -551,3 +558,59 @@ add_filter('cct_condition_answer', 'set_flags_comment_type', 10, 4);
 //        return false;
 //    }
 //}
+
+/**
+ * Process attempts to post a question from the front end of the site.
+ *
+ * @author Eddie Moya
+ */
+function process_front_end_question(){
+
+    //If step 1 - return that we should move on to step 2.
+    if( wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-1' )){
+
+        //If user is logged in - step 2
+        if(is_user_logged_in()) {
+            return "2";
+
+        } else {
+            /**
+             * Kick off login modal SSO login crazyness here
+             */
+            echo "USER NOT LOGGED IN, TRYING TO POST, WTF, LOGIN MODAL DUDE!";
+            return "1";
+        }
+    }
+
+    //If step 2, add the post and move to step 3
+    if(wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in()) {
+
+        $raw_content = $_POST['more-details'];
+
+        $title =  wp_kses($_POST['your-question'], array(), array());
+        $content = wpautop(wp_kses($_POST['more-details'], array(), array()));
+
+        $category = (isset($_POST['category'])) ?  absint((int)$_POST['category'])  : '' ;
+        $category = (isset($_POST['sub-category'])) ? absint((int)$_POST['sub-category']) : $category; 
+        print_pre($category);
+        if(!empty($title) && !empty($content) && !empty($category)) {
+            $post = array(
+                'post_title'    => $title,
+                'post_content'  => $content,
+                'post_category' => array($category),
+                'post_status'   => 'publish',           
+                'post_type'     => 'question'
+            );
+        } else {
+            //Need to handle so that it reloads with the users previous content
+            return "2";
+        }
+
+        wp_insert_post($post); 
+        do_action('wp_insert_post', 'wp_insert_post'); 
+        return "3";
+    }
+
+    //Neither step has been taken, were on step 1
+    return "1";
+}
