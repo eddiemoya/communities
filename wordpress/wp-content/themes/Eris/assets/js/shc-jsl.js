@@ -138,47 +138,6 @@ shcJSL.get = function(element) {
 		return collection;
 }
 
-fruits ={};
-fruits.get = function(css){ //dom utility
-	
-	
-	
- //a couple of node harvesters, using id and tag name...
-   function el(id){ return document.getElementById(id);}
-   function tags(elm){return document.getElementsByTagName(elm);}
-
- //collect output:
- 	console.log(typeof css);
- 
-   if(css[0]=="#"){//id
-      out.push(el(css.slice(1)));
-   } else if (typeof css == "object") {
-   		out.push(css);
-   }
-   else{//tags
-      out=out.concat([].slice.call(tags(css)));
-   };//end if id or tagName
-  
- //define some methods for the utility:
-    var meths={
-        hide:function(a){a.style.display="none";},
-        show:function(a){a.style.display="";},
-        remove:function(a){a.parentNode.removeChild(a);},
-        color:function(a){a.style.color=this||a.style.color;},
-        size:function(a){a.style.fontSize=this||a.style.fontSize;}
-    };//end meths
-
- //bind the methods to the collection array:
-    for(var method in shcJSL.methods)
-    (function(n,m){
-       out[n]=function(x){out.map(m,x); return out;}
-    }(method, shcJSL.methods[method]));//next method
-
-  return out;
-}//end X dom utility
-
-
-
 /*
 	[2.0] WIDGETS
 	-------------
@@ -188,7 +147,7 @@ fruits.get = function(css){ //dom utility
 	ex. shcJSL.widgets.modal = { <modal object> }
 */
 
-shcJSL.widgets = new Object();
+shcJSL.gizmos = new Object();
 
 /*
  * shcJSL.widgets.activate Arguments
@@ -203,15 +162,14 @@ shcJSL.widgets = new Object();
  * 		set then the script defaults to the body element.
  * 
  * 	selector:
- * 		This is the jQuery selector string for finding the widgets to activate.
+ * 		This is the jQuery selector string for finding the gizmos to activate.
  */
-shcJSL.widgets.activate = function(event, parent, selector) {
+shcJSL.gizmos.activate = function(event, parent, selector) {
 	var Parent;		// (HTMLObject) parent argument, or if null, the body element
 	var Selector;	// (String) selector arguement or default jQuery selector based on attribute
 	
 	Parent = parent || $('body').get(0);
-	Selector = selector || "*[shc\\:widget]";
-	
+	Selector = selector || "*[shc\\:gizmo]";	
 	$.each(
 		$(Parent).find(Selector),	// Array of elements matching selector inside parent
 		function(index, value) {
@@ -223,7 +181,7 @@ shcJSL.widgets.activate = function(event, parent, selector) {
 				// If the the widget has 'shc:name' attribute, assign the
 				// JavaScript object [shc:widget] to the global variable
 				// that is [shc:name]
-					($(this).attr("shc:name") != undefined)? window[$(this).attr("shc:name")] = new shcJSL.widgets[$(this).attr(attribute)](this):new shcJSL.widgets[$(this).attr(attribute)](this);
+					($(this).attr("shc:name") != undefined)? window[$(this).attr("shc:name")] = new shcJSL.gizmos[$(this).attr(attribute)](this):new shcJSL.gizmos[$(this).attr(attribute)](this);
 				
 				// If it can not create the object, error out gracefully
 				// and log the error, the widget that failed and the
@@ -251,9 +209,9 @@ shcJSL.gizmos.persistr = function(element) {
 		yScroll = $(this).scrollTop();
 		
 		if (yScroll >= offsetTop) {
-			$(element).css("position","fixed")
+			$(element).addClass("persist");
 		} else {
-			$(element).css("position","relative");
+			$(element).removeClass("persist");
 		}
 	});
 	
