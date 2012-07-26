@@ -3,6 +3,7 @@
  * @package WordPress
  * @subpackage White Label
  */
+echo (__FILE__);
 get_template_part('parts/header');
 loop();
 

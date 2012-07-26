@@ -1,5 +1,4 @@
 <!-- NOT IN USE - FOR DEV PURPOSES ONLY -->
-
 <article class="content-container span4">
 
     <header class="content-header">
