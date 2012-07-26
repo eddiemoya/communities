@@ -179,7 +179,7 @@ ul.bullets {
   }
 }
 
-.exerpt {
+.excerpt {
   @extend .faint;
 }
 
@@ -471,6 +471,27 @@ form {}
 .span4 .content-container.featured-post .span6 {
 	width: 100%;
 	margin-left: 0;
+}
+
+// RECENT ACTIVITY
+.recent-activity {
+  li {
+    margin-top: 1em;
+    border-top: 1px solid sears( decorative );
+    padding-top: .75em;
+    padding-bottom: .75em;
+    font-size: percentage( 12/16 );
+    &:first-child {
+      border-top: 0;
+    }
+  }
+  time {
+    float: right;
+    @extend .faint;
+  }
+  .excerpt {
+    margin-left: 2em;
+  }
 }
 
 /*

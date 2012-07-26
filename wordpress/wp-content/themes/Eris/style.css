@@ -580,7 +580,7 @@ ul.bullets {
 .bold, .member .info h4, .member .info address, .badge h4, .badge address, .post hgroup, .content-container .content-header, .content-container .content-body .content-details .content-category {
   font-weight: 700; }
 
-.faint, .member .info h5, .member .info p, .post .content-date, .exerpt, .content-container .content-header {
+.faint, .member .info h5, .member .info p, .post .content-date, .excerpt, .content-container .content-header, .recent-activity time {
   color: #666666; }
 
 .upcase {
@@ -866,6 +866,19 @@ ul.bullets {
 .span4 .content-container.featured-post .span6 {
   width: 100%;
   margin-left: 0; }
+
+.recent-activity li {
+  margin-top: 1em;
+  border-top: 1px solid #cccccc;
+  padding-top: .75em;
+  padding-bottom: .75em;
+  font-size: 75%; }
+  .recent-activity li:first-child {
+    border-top: 0; }
+.recent-activity time {
+  float: right; }
+.recent-activity .excerpt {
+  margin-left: 2em; }
 
 /*
  * POST A QUESTION

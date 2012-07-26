@@ -28,7 +28,7 @@
               <address>Chicago, IL</address>
             </div>
             <div class="span8 info content-details">
-              <time class="content-date" datetime="<?php echo date( "Y-m-d" ); ?>" pubdate="pubdate"><?php echo date( "F n, Y g:ia" ); ?></time>
+              <time class="content-date" datetime="<?php echo date( "Y-m-d" ); ?>" pubdate="pubdate"><?php echo date( "F jS, Y g:ia" ); ?></time>
               <h4 class="content-headline"><a href="#">Post's Title</a></h4>
               <ul class="content-comments">
                 <li>x answers</li>
