@@ -179,7 +179,7 @@ ul.bullets {
   }
 }
 
-.exerpt {
+.excerpt {
   @extend .faint;
 }
 
@@ -473,6 +473,52 @@ form {}
 	margin-left: 0;
 }
 
+// RECENT ACTIVITY
+.recent-activity {
+  li {
+    margin-top: 1em;
+    border-top: 1px solid sears( decorative );
+    padding-top: .75em;
+    padding-bottom: .75em;
+    font-size: percentage( 12/16 );
+    line-height: 1.7;
+    &:first-child {
+      margin-top: 0;
+      border-top: 0;
+    }
+  }
+  time {
+    float: right;
+    @extend .faint;
+  }
+  h3 { 
+    a {
+      font-weight: bold;
+    }
+    & > * {
+      display: block;
+    }
+  }
+  .excerpt {
+    padding: .3em 1em;
+    color: $darkest-color;
+    background: lighten( sears( decorative ), 15 );
+    // create quotes around a comment
+    &:before {
+      content: "\201C";
+    }
+    &:after {
+      content: "\201D";
+    }
+  }
+}
+
+.span6, .span4, .span3 {
+  h3 > * {
+    display: inline;
+  }
+}
+
 /*
  * POST A QUESTION
  */
@@ -545,6 +591,49 @@ form {}
 			color: #000000;
 		}
 	}
+}
+
+// PROFILE
+$tab-padding: "1em .5em .6em .5em";
+.profile {
+  .tabs {
+    li {
+      float: left;
+      min-width: percentage( ( nth( $span-widths, 2 ) ) / $grid-width );
+      margin-left: $margin-width-pct;
+      border: solid sears( decorative );
+      border-width: 1px 1px 0 1px;
+      text-align: center;
+      font-size: percentage( 12/16 );
+      @include border-radius( 5px 5px 0 0);
+      background: $nav-color url('#{$sears-img}sprite_navigation.png');
+    }
+    a {
+      display: block;
+      padding: #{$tab-padding};
+    }
+    @include sprite-position( "li", left, ( $nav-sprite-period * ( -1 ) - 1 ) );
+    .active {
+      position: relative;
+      top: 1px;
+      background: $lightest-color;
+      padding: #{$tab-padding};
+    }
+  }
+  nav.bar {
+    border-bottom: 1px solid sears( decorative );
+    border-top: 1px solid sears( decorative );
+    @include background-image(linear-gradient(white, #f4f4f4));
+    li {
+      float: left;
+      margin-left: $margin-width-pct;
+      font-size: percentage( 15/16 );
+      padding: .6em .5em;
+    }
+    li:first-child {
+      margin-left: 0;
+    }
+  }
 } 
 
 // content list widget
