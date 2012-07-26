@@ -1,4 +1,5 @@
 .DS_Store
+.settings/*
 etc/wordpress/develop.php
 etc/nginx/wordpress/develop.conf
 *.sass-cache
@@ -29,3 +30,7 @@ wordpress/license.txt
 
 !*/wp-config.php
 !*/uploads/*
+.projects
+.project
+.buildpath
+

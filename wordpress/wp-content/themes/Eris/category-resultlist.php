@@ -84,7 +84,7 @@
               <h2 class="content-headline"><a href="#">Post's Title</a></h2>
             </hgroup>
             <article>
-              <p class="exerpt">This is the excerpt or description</p>
+              <p class="excerpt">This is the excerpt or description</p>
               <p class="content-comments">x answers | y replies | z comments</p>
             </article>
             <section class="post-actions">
