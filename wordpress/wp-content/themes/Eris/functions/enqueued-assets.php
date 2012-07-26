@@ -38,7 +38,7 @@ function enqueue_scripts() {
         wp_enqueue_script('shcJSL');
 				
 				wp_register_script('authentic8r', get_template_directory_uri() . '/assets/js/json/authentic8r.js', array(), '1.0');
-				wp_register_script('moodle', get_template_directory_uri() . '/assets/js/widgets/jquery.moodle.js', array(), '1.0');
+				wp_register_script('moodle', get_template_directory_uri() . '/assets/js/widgets/shcJSL.moodle.js', array(), '1.0');
 				wp_enqueue_script('authentic8r');
 				wp_enqueue_script('moodle');  
 
