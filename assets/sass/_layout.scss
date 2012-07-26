@@ -80,6 +80,20 @@
 #persistent-header {
   background-color:#ffffff;
   top:0px;
+  position:relative;
+}
+
+#persistent-header.persist {
+  position:fixed;
+  /*
+   * This is a Googol, as in 100 0's, as in, don't make a bigger z-index than this
+   * or I will turn this into a googolplexian - 100 x 100 x 100 0's.
+   */
+  z-index:10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+  #header.sears form #button_search {
+    height:2.1em;
+  }
+  
 }
 
 #content {
