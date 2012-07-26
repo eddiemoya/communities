@@ -5,6 +5,9 @@
 
         <header class="content-header">
             <h3><?php echo is_widget()->widget_title; ?></h3>
+            <?php if(is_widget()->show_subtitle) : ?>
+                <h4><?php echo is_widget()->widget_subtitle; ?></h4>
+            <?php endif; ?>
         </header>
 
     <?php endif; ?>

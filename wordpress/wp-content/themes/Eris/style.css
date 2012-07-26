@@ -519,7 +519,18 @@ ul.footer_anterior {
 
 #persistent-header {
   background-color: #ffffff;
-  top: 0px; }
+  top: 0px;
+  position: relative; }
+
+#persistent-header.persist {
+  position: fixed;
+  /*
+   * This is a Googol, as in 100 0's, as in, don't make a bigger z-index than this
+   * or I will turn this into a googolplexian - 100 x 100 x 100 0's.
+   */
+  z-index: 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000; }
+  #persistent-header.persist #header.sears form #button_search {
+    height: 2.1em; }
 
 #content {
   padding: 1em 1.063829787234043%; }
@@ -599,7 +610,7 @@ ul.bullets {
 .sears_button {
   background-image: url(/wp-content/themes/Eris/assets/img/sears/sprite_global.png); }
 
-#header.kmart form #button_search, #header.kmart form #input_search
+#header.kmart form #button_search, #header.kmart form #input_search,
 .kmart_button {
   background-image: url(/wp-content/themes/Eris/assets/img/kmart/sprite_global.png); }
 
@@ -1201,6 +1212,106 @@ ul.bullets {
         background: none; }
       .kmart #footer_nav.dropmenu ul li a {
         color: #980017; }
+
+.shc_overlay {
+  height: 100%;
+  position: fixed;
+  /* Offsets */
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999; }
+
+.android .shc_overlay {
+  position: absolute; }
+
+.shc_modal {
+  position: absolute;
+  z-index: 10000; }
+
+.shc_modal_container > header {
+  position: relative; }
+
+.close-button {
+  position: absolute;
+  /* Offsets */
+  top: .25em;
+  right: .5em;
+  font-family: Verdana, sans-serif; }
+
+#myappl_flyout .close-button {
+  top: 0.3em;
+  right: 0.9em; }
+
+#myappl_flyout .lev1 {
+  width: 98%; }
+
+.shc_overlay {
+  background: rgba(154, 154, 155, 0.5);
+  -pie-background: rgba(154, 154, 155, 0.5); }
+
+.shc_modal {
+  background: rgba(81, 81, 81, 0.6);
+  padding: .75em;
+  -pie-background: rgba(81, 81, 81, 0.6);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px; }
+  .shc_modal .loading {
+    height: 100%;
+    min-height: 3em;
+    min-width: 3em;
+    text-align: center;
+    width: 100%; }
+
+.shc_modal_container {
+  background: #ffffff;
+  height: 100%;
+  width: 100%;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px; }
+  .shc_modal_container header {
+    background: #e8e8e8;
+    padding: 0px 10px;
+    -webkit-border-radius: 10px 10px 0px 0px;
+    -moz-border-radius: 10px 10px 0px 0px;
+    -ms-border-radius: 10px 10px 0px 0px;
+    -o-border-radius: 10px 10px 0px 0px;
+    border-radius: 10px 10px 0px 0px; }
+    .shc_modal_container header h1 {
+      text-transform: lowercase;
+      font-size: 112.5%;
+      color: #60605b;
+      line-height: 193.75%; }
+  .shc_modal_container .content-display {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    *zoom: 1; }
+    .shc_modal_container .content-display:after {
+      content: "\0020";
+      display: block;
+      height: 0;
+      clear: both;
+      overflow: hidden;
+      visibility: hidden; }
+  .shc_modal_container form {
+    margin: 1.625em 0;
+    padding: 0 1.25em; }
+
+.close-button {
+  height: 13px;
+  width: 12px;
+  color: #60605B !important; }
 
 @media print {
   * {

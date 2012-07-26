@@ -1,7 +1,14 @@
 <?php 
+/**
+ *
+ */
 class Section_Front{
 
+	/**
+	 * 
+	 */
 	var $post_types = array('section', 'pages');
+
 	/**
 	 * 
 	 */
@@ -17,7 +24,7 @@ class Section_Front{
 		add_action( 'init', 					array(__CLASS__, 'register_sections_type') );
 		add_action( 'save_post', 				array(__CLASS__, 'save_section') );
 		add_action( 'wp_loaded',				array(__CLASS__, 'flush_custom_rules' ) );
-		add_filter( 'category_rewrite_rules',	array(__CLASS__, 'section_rewrite_rules') );
+		add_filter( 'rewrite_rules_array',	array(__CLASS__, 'section_rewrite_rules') );
 
 	}
 
@@ -66,26 +73,20 @@ class Section_Front{
 	 *
 	 */
 	public function section_rewrite_rules( $rules ) {
-	    $newrules = array();
-	    $rule_sets = get_option('section_rewrite_rules', array());
-
-	     foreach($rule_sets as $set){
-	         $newrules = $newrules + $set;
-	     }
-	    return $newrules + $rules;
+	    $section_rules = get_option('section_rewrite_rules', array());
+	    $rules = $section_rules + $rules;
+	    return  $rules;
 	}
 
-
+	/**
+	 * 
+	 */
 	public function flush_custom_rules(){
-		$newrules = array();
 		$rules = get_option( 'rewrite_rules' );
-	    $rule_sets = get_option('section_rewrite_rules', array());
+	    $section_rules = get_option('section_rewrite_rules', array());
 
-	    foreach($rule_sets as $set){
-	         $newrules = $newrules + $set;
-	    }
-
-	    foreach($newrules as $regex => $querystring){
+	    //@todo: use in_array or array_search, or some more performant array function
+	    foreach($section_rules as $regex => $querystring){
 			if ( ! isset( $rules[$regex] ) ) {
 				global $wp_rewrite;
 			   	$wp_rewrite->flush_rules();
@@ -105,23 +106,67 @@ class Section_Front{
 	    if ( !current_user_can( 'edit_post', $post_id ) )
 	        return;
 
-	    //delete_option('section_rewrite_rules');
-	    $rules = get_option('section_rewrite_rules', array());
 	    $categories = $_POST['post_category'];
 
-	    $cats = array();
-	    foreach($categories as $i => $cat_id){
-	        $cat = get_category($cat_id);
+	    self::rewrite_all_the_terms($_POST['post_category']);
+	}
+ 
+	/**
+	 *
+	 */
+	function rewrite_all_the_terms($new_categories){
+		global $wp_rewrite;
+		$categorized_sections = self::get_terms_by_post_type('category', 'section');
 
-	        $rules[$cat_id] =array(
-	        	$cat->taxonomy . '/' . $cat->slug .'/?$/page/?([0-9]{1,})/?$' => 'index.php?posts_per_page=1&post_type='.$_POST['post_type'].'&category_name='.$cat->slug,
-	            $cat->taxonomy . '/' . $cat->slug .'/?$' => 'index.php?posts_per_page=1&post_type='.$_POST['post_type'].'&category_name='.$cat->slug,
-	        );
+	    foreach($categorized_sections as $cat){
+	
+	    	//echo "<pre>";print_r($cat);echo "</pre>";
+	    	$rules[$cat->taxonomy . '/' . $cat->slug .'/?$'] = 'index.php?posts_per_page=1&post_type='.$_POST['post_type'].'&category_name='.$cat->slug;
+
+	        // $rules[$cat_id] =array(
+	        // $cat->taxonomy . '/' . $cat->slug .'/?$/page/?([0-9]{1,})/?$' => 'index.php?posts_per_page=1&post_type='.$_POST['post_type'].'&category_name='.$cat->slug,
+	        // $cat->taxonomy . '/' . $cat->slug .'/?$' => 'index.php?posts_per_page=1&post_type='.$_POST['post_type'].'&category_name='.$cat->slug,
+
 	    }
-	    unset($rules[0]);
+	    //echo "<pre>";print_r($rules);echo "</pre>";
+	    // unset($rules[0]);
 	    update_option('section_rewrite_rules', $rules);
 
-	   	//$wp_rewrite->flush_rules();
+	   	$wp_rewrite->flush_rules();
+	}
+
+	/**
+	 *  Function to get terms only if they have posts by post type
+	 *  @param $taxonomy (string) taxonomy name eg: 'post_tag','category'(default),'custom taxonomy'
+	 *  @param $post_type (string) post type name eg: 'post'(default),'page','custom post type'
+	 *
+	 *
+	 *  Usage:
+	 *  list_terms_by_post_type('post_tag','custom_post_type_name');
+	 **/
+	function get_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
+	  //get a list of all post of your type
+		$args = array(
+			'posts_per_page' => -1,
+			'post_type' => $post_type
+		);
+		$terms= array();
+		$posts = get_posts($args);
+			foreach($posts as $p){
+			//get all terms of your taxonomy for each type
+			$ts = wp_get_object_terms($p->ID,$taxonomy); 
+				foreach ( $ts as $t ) {
+					if (!in_array($t,$terms)){ //only add this term if its not there yet
+					//$t->cat_name = ''
+					$terms[] = $t;
+					}
+				}
+			}
+
+
+		wp_reset_postdata();
+
+		return $terms; 
 	}
 
 }
