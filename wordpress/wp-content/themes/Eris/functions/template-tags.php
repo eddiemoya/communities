@@ -13,6 +13,7 @@ function loop($template = 'post', $special = null){
 
     $template = (isset($special)) ? $template.'-'.$special : $template;
     //echo $template;
+
     if (have_posts()) { 
         while (have_posts()) {
             
