@@ -9,11 +9,27 @@
 * @version [1.0: 2012-07-24]
 * - Initial script release
 */
+shcJSL.gizmos.bulletin['shcJSL.moodle.js'] = true;
 
+console.log(shcJSL.gizmos.bulletin);
 
-console.log(jQuery);
+shcJSL.methods.moodleTest = function(target) {
+	var target = target;
+	this.bunk = function(target) {
+		alert(target.nodeName)
+	}
+	
+	alert(target.id);
+	console.log("THIS");
+	console.log(this);
+	return this;
+}
 
-shcJSL.moodle = function () {
+shcJSL.methods.moodle = function(target, options) {
+	//var options;	// (Object) Settings for the moodle widget.
+	console.log("OPTIONS");
+	console.log(options);
+
 	var assess	// Function, find distances from center
   var center; // Function for centering modal
   var container; // Container for the modal contents
@@ -29,8 +45,10 @@ shcJSL.moodle = function () {
   $(modal).append(container);
 
 	defaults	= {
-		xButton: true,
-		exitFromOverlay: true
+		clickOverlayToClose: true,
+		closeButton: true,
+		height: 'auto',
+		width: 'auto'
 	};
 	
 	assess = function(element) {

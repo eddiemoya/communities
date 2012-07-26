@@ -81,12 +81,7 @@ if (!Array.prototype.map) {
   };      
 }
 
-shcJSL.methods = {
-	test: function(a) {
-		console.log(a);
-		alert('tacos');
-	}
-}
+shcJSL.methods = {}
 
 shcJSL.get = function(element) {
 	var collection; // (Array) array of objects with shcJSL.methods.
@@ -190,6 +185,14 @@ shcJSL.gizmos.activate = function(event, parent, selector) {
 		} // END $.each function
 	) // END $.each
 }
+
+/**
+ * @author Tim Steele
+ * @description:
+ * This object keeps track of what gizmos have been loaded 
+ * into the page. 
+ */
+shcJSL.gizmos.bulletin = {}
 
 /**
  * @author Tim Steele
