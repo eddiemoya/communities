@@ -8,28 +8,16 @@
  *
  * Look carefully at all the possible aruguments - http://codex.wordpress.org/Custom_Headers
  * @tutorial http://codex.wordpress.org/Function_Reference/add_theme_support
- *
- * add_theme_support('custom-background');
- * add_theme_support('custom-header');
  */
 add_theme_support('post-thumbnails'); // a.k.a "Featured Images"
-
+// add_theme_support('custom-background');
+// add_theme_support('custom-header'); // Look carefully at all the possible aruguments - http://codex.wordpress.org/Custom_Headers
 
 /**
  * Allows us to apply styles to the TinyMCE editor in the admin - to make it
- * look the way the content will look on the front end as they type.
- * 
- * add_editor_style('assets/css/editor-style.css');
+ * look the way the content will look on the front end as they type. 
  */
-
-
-
-/**
- * Add image sizes so that WordPress will generate them when an image is uploaded.
- *
- * add_image_size('custom-image-size', array(100, 100));
- */
-
+add_editor_style('assets/css/editor-style.css');
 
 //Classes
 get_template_part('classes/theme-options');
