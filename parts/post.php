@@ -1,6 +1,6 @@
 <!-- NOT ACTUALLY BEING USED RIGHT NOW - JUST A PLACEHOLDER BASED ON THE POST-WIDGET.PHP MARKUP -->
 <article class="content-container featured-post">
-
+    <?php if(function_exists('is_widget')) : ?>
     <?php if (is_widget()->show_title && !empty(is_widget()->widget_title)) : ?>
 
         <header class="content-header">
@@ -65,5 +65,5 @@
         </div>
 
     </section>
-
+<?php endif; ?>
 </article>

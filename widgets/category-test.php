@@ -1,5 +1,5 @@
 This is an category query.<br />
-
+<?php if(function_exists('is_widget')) : ?>
 <?php 
 //print_pre($query);
 if(is_widget()) {
@@ -35,6 +35,6 @@ if(is_widget()->show_share) {
     echo "This widget is set to display share icons.<br />";
     echo "SHARE STYLE:" . is_widget()->share_style;
 }
-
+endif;
 loop();
 
