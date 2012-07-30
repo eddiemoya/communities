@@ -3,7 +3,6 @@
  * @package WordPress
  * @subpackage White Label
  */
-
 get_template_part('parts/header');
 //print_pre($wp_query->query);
 //print_pre(get_queried_object());

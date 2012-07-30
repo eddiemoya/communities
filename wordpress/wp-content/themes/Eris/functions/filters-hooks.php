@@ -88,3 +88,69 @@ add_filter('request', 'custom_primary_query');
 /******************************************
  * END  Content, Class, and Query Filters *
  ******************************************/
+add_filter( 'widget_form_callback', 'widget_form_extend', 10, 2);
+add_filter( 'dynamic_sidebar_params', 'dynamic_sidebar_params' );
+add_filter( 'widget_update_callback', 'widget_update', 10, 2 );
+
+
+
+function widget_form_extend( $instance, $widget ) {
+
+    if(get_class($widget) == 'WP_Widget_Links'){
+
+        if(!isset($instance['classes'])){
+            $instance['classes'] = null;
+
+            $row .= "<p>\n";
+            $row .= "\t<label for='widget-{$widget->id_base}-{$widget->number}-sub-title'>Sub Title:</label>\n";
+            $row .= "\t<input type='text' name='widget-{$widget->id_base}[{$widget->number}][sub-title]' id='widget-{$widget->id_base}-{$widget->number}-sub-title' class='widefat' value='{$instance['sub-title']}'/>\n";
+            $row .= "</p>\n";
+
+            echo $row;
+        }
+    }
+    return $instance;
+}
+
+
+
+
+
+function dynamic_sidebar_params( $params ) {
+    global $wp_registered_widgets;
+    $widget_id  = $params[0]['widget_id'];
+    $widget_obj = $wp_registered_widgets[$widget_id];
+    $widget_opt = get_option($widget_obj['callback'][0]->option_name);
+    $widget_num = $widget_obj['params'][0]['number'];
+
+    $opts = $widget_opt[$widget_num];
+
+
+    //Links Widget (built-in)
+    if($widget_obj['name'] == 'Links'){
+        $params[0]['after_title'] = 
+        "\n\t<h4>".$opts['sub-title']
+        ."</h4>".$params[0]['after_title']
+        ."\n\t<section class='content-body clearfix'>";
+
+        $params[0]['after_widget'] = 
+            '</section>'
+            .$params[0]['after_widget'];    
+    }
+    return $params;
+}
+
+
+
+function widget_update( $instance, $new_instance ) {
+    $instance['sub-title'] = $new_instance['sub-title'];
+    return $instance;
+}
+
+
+
+
+
+
+
+
