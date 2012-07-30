@@ -28,17 +28,18 @@ function enqueue_scripts() {
         
        /* Scripts */
         wp_deregister_script('jquery'); 
-        wp_register_script('jquery', get_template_directory_uri() . '/assets/js/vendor/jquery-1.7.2.min.js', array(), '1.7.2');
+        wp_register_script('jquery',    get_template_directory_uri() . '/assets/js/vendor/jquery-1.7.2.min.js', array(), '1.7.2');
+        wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.5.3.min.js', array(), '2.5.3');
+        wp_register_script('shcJSL',    get_template_directory_uri() . '/assets/js/shc-jsl.js', array(), '1.0');
 
         /* @todo: Does modernizr not require jQuery as a dependancy? */
-				wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.5.3.min.js', array(), '2.5.3');
-				wp_register_script('shcJSL', get_template_directory_uri() . '/assets/js/shc-jsl.js', array(), '1.0');
+
         wp_enqueue_script('jquery');    
         wp_enqueue_script('modernizr');
         wp_enqueue_script('shcJSL');
 				
 				wp_register_script('authentic8r', get_template_directory_uri() . '/assets/js/json/authentic8r.js', array(), '1.0');
-				wp_register_script('moodle', get_template_directory_uri() . '/assets/js/widgets/jquery.moodle.js', array(), '1.0');
+				wp_register_script('moodle', get_template_directory_uri() . '/assets/js/widgets/shcJSL.moodle.js', array(), '1.0');
 				wp_enqueue_script('authentic8r');
 				wp_enqueue_script('moodle');  
 

@@ -1,5 +1,7 @@
 <?php
 
+//include('/Library/WebServer/Documents/communities/public_html/wp-content/plugins/posts-widget/widgets/post-widgets.php');
+
 /**
  * Add support for various useful WordPress features.
  * Options second parameter offers additional specificity.
@@ -26,7 +28,7 @@ get_template_part('classes/section-front');
 //Function
 get_template_part('functions/ajax-callbacks');
 get_template_part('functions/enqueued-assets');
-get_template_part('functions/filter-hooks');
+get_template_part('functions/filters-hooks');
 get_template_part('functions/menus');
 get_template_part('functions/post-types');
 get_template_part('functions/sidebar-declarations');

@@ -1,0 +1,16 @@
+.content-container .breadcrumbs {
+  border-top: 1px solid #d5d5d5;
+  padding: 15px 0px;
+}
+
+.content-container .single {
+  border-top: 1px solid #d5d5d5;
+  margin-left: 0px;
+  padding-left:$margin-width-pct;
+  padding-top: 15px;
+
+  h2 {
+    color: #3a81ce;
+    font-size: 24px;
+  }
+}
