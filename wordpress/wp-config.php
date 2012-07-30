@@ -22,6 +22,7 @@ define('DB_NAME', 'communities');
 //define('DB_USER', 'communities_dba');
 define('DB_USER', 'root');
 
+
 /** MySQL database password */
 //define('DB_PASSWORD', 'password1');
 define('DB_PASSWORD', 'n3uraxis');
@@ -30,11 +31,12 @@ define('DB_PASSWORD', 'n3uraxis');
 //define('DB_HOST', '10.98.0.164');
 define('DB_HOST', '127.0.0.1:3306');
 
+
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
 
 /** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
+//define('DB_COLLATE', '');
 
 /**#@+
  * Authentication Unique Keys and Salts.
