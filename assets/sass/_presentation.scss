@@ -661,3 +661,37 @@ $tab-padding: "1em .5em .6em .5em";
 		clear:both;
 	}
 }
+
+/*
+* Activity buttons
+*/
+.actions {
+  float: left;
+  overflow: hidden;
+
+  .action {
+    color: #6f6f6f;
+    float: left;
+    overflow: hidden;
+
+    a {
+      display: block;
+      float: left;
+    }
+
+    .upvote {
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      -ms-border-radius: 2px;
+      -o-border-radius: 2px;
+      background-color: #fff;
+      background: $nav-color url('#{$sears-img}sprite_navigation.png');
+      background-position: right center;
+      border: 1px solid #d6d6d6;
+      display: block;
+      height: 19px;
+      padding: 1px 12px;
+      width: 19px;
+    }
+  }
+}
