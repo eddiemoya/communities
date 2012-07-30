@@ -17,11 +17,11 @@
  * The Moodle object and modal window object
  * 
  * @var MOODLE (Object) Moodle object for Moodle specific methods, properties
- * @var MOODLE.moodle (Object) The modal window object
+ * @var MOODLE.modal (Object) The modal window object
  * @var $Moodle (Object) a variation on the Moodle modal window object. 
  */
 MOODLE = {}
-MOODLE.moodle = $Moodle = function() {
+MOODLE.modal = $Moodle = function(element, options) {
 	/**
 	 * PRIVATE VARIABLES
 	 *
@@ -38,6 +38,7 @@ MOODLE.moodle = $Moodle = function() {
 	var self 	= this;
 	var toggleLoading;
 	var toggleOverlay;
+	
 	/**
 	 * gears
 	 * 
@@ -47,8 +48,8 @@ MOODLE.moodle = $Moodle = function() {
 	 */
 	gears = {
 		overlay: shcJSL.createNewElement('div','overlay', {id:'moodle_overlay'}),
-	  modal: $("<section class='modal-window' id='moodle_window'></section>"),
-	  container: $("<div class='modal-container' id='moodle_container'></div>")
+	  modal: shcJSL.createNewElement('section','modal-window', {id:'moodle_window'}),
+	  container: shcJSL.createNewElement('div','modal-container',{id:'moodle_container'})
 	}
 	
 	/**
@@ -142,36 +143,26 @@ MOODLE.moodle = $Moodle = function() {
 	 */
 	
 	toggleOverlay = function() {
-		//(jQuery(gears.overlay, document.body).size() > 0)? (console.log("CONTAINED")):(console.log("NOT CONTAINED"));
-		console.log(gears.overlay);
-		console.log(gears.test);
 		(jQuery.contains(document.documentElement, gears.overlay))? jQuery(gears.overlay).remove():jQuery('body').append(gears.overlay);
 	}
 	
+	/**
+	 * toggleLoading
+	 * 
+	 * Toggles the modal window loading screen
+	 * 
+	 * @access Private
+	 * @author Tim Steele
+	 * @since 1.0
+	 */
+	toggleLoading = function() {
+		if (($(container).children()).length != 0) $(container).children().detach()
+		$(container).append("<section class='loading'></section>");
+	}
 	
 	this.test = function() {
 		toggleOverlay();
 	}
-	// this.overlay = {
-		// on	: function() {$('body').append(overlay); return self.overlay;},
-		// off	: function() { $(overlay).remove(); return self.overlay;}
-	// };
-// 	
-	// this.loading = function() {
-		// // CHANGE TO USE ATTACH/DETACH
-		// if (($(container).children()).length == 0) {
-			// $(container).append("<section class='loading'></section>");
-		// } else {
-			// $(container).children().detach()
-			// $(container).append("<section class='loading'></section>");
-		// }
-		// //$(container).html("<section class='loading'></section>");
-		// return self;
-	// }
-	
-	
-	
-	
 	
 	/*
 	 * PUBLIC METHODS
@@ -186,8 +177,21 @@ MOODLE.moodle = $Moodle = function() {
 	 * @author Tim Steele
 	 * @since 1.0
 	 */
-	this.create = function() {
-		
+	this.create = function(element, options,state) {
+		toggleOverlay();
+		// if ($(modal).parents().is($('body').get(0))) {
+			// $(window).trigger("resize");
+			// if (options) settings = $.extend({},defaults,options);
+		// } else {
+			// self.overlay.on();
+			// $('body').append(modal.hide()); $(center()).show();
+			// if (options) settings = $.extend({},defaults,options);
+			// //$(window).bind("resize", center);
+// 			
+			// // Apply event for firing when content is loaded
+			// $(modal).bind('update', $b.activate)
+			// $(modal).bind('update', $w.activate)
+		// }
 	}
 	
 	/**
@@ -228,11 +232,13 @@ MOODLE.moodle = $Moodle = function() {
 	 */
 	init = function() {
 		// Attach the modal container to the modal window
-		// $(modal).append(container);
+		$(gears.modal).append(gears.container);
+		$(gears.modal).trigger('moodle-init');
 	}
 	
 	// When the object is first created, call init once
-	init()
+	init();
+	return self;
 }
 
 shcJSL.methods.moodle = function(target, options) {
@@ -240,18 +246,22 @@ shcJSL.methods.moodle = function(target, options) {
 	
 	if (this.constructor == String) {
 		method = this.toString();
-	}
-	else if (this.constructor == Object) {
+	} else if (this.constructor == Object) {
 		method = this.action.toString();
+	} else if (this.constructor == Window) {
+		method = new String("create");
+	} else {
+		// Something broke
+		return;
 	}
 	
-	if (this.constructor == Window) {
-		method = new String("create");
-	}
+	($Moodle instanceof MOODLE.modal)? $Moodle[method](target, options):($Moodle = new $Moodle())[method](target,options)
 		
 	// if (method === ("create" || "destroy")) {
 		// eval(capture)();
 	// }
+	
+	return;
 	
 	//var options;	// (Object) Settings for the moodle widget.
 	var assess;
