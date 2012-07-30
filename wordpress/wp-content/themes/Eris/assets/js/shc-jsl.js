@@ -134,6 +134,26 @@ shcJSL.get = function(element) {
 }
 
 /*
+	[2.0] SEARS METHODS
+	-------------------
+	
+*/
+
+shcJSL.createNewElement = function(e, c, a) {
+	var newElement; // New element that will be created;
+	
+	newElement = document.createElement(e);
+	if (c != null) newElement.className = c;
+	if (typeof a != 'undefined' && typeof a == 'object') {
+		for (var i in a) {
+			newElement.setAttribute(i, a[i]);
+		}
+	}
+	return newElement;
+}
+
+
+/*
 	[2.0] WIDGETS
 	-------------
 	Creating and activating widgets on page.
