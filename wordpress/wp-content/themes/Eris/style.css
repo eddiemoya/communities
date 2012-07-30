@@ -981,7 +981,6 @@ ul.bullets {
   background-image: -webkit-linear-gradient(#ffffff, #f4f4f4);
   background-image: -moz-linear-gradient(#ffffff, #f4f4f4);
   background-image: -o-linear-gradient(#ffffff, #f4f4f4);
-  background-image: -ms-linear-gradient(#ffffff, #f4f4f4);
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;
@@ -1370,3 +1369,11 @@ ul.bullets {
 
   h2, h3 {
     page-break-after: avoid; } }
+.content-container .breadcrumbs {
+  border-top: 1px solid #d5d5d5; }
+
+.content-container .single {
+  border-top: 1px solid #d5d5d5; }
+  .content-container .single h2 {
+    color: #3a81ce;
+    font-size: 24px; }

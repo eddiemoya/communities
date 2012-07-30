@@ -12,14 +12,13 @@ function loop($template = 'post', $special = null){
     global $wp_query;
 
     $template = (isset($special)) ? $template.'-'.$special : $template;
-    //echo $template;
 
-    if (have_posts()) { 
+    if (have_posts()) {
         while (have_posts()) {
-            
+
             the_post();
             get_template_part('parts/'.$template);
-        }    
+        }
     }
 
     wp_reset_query();
