@@ -37,3 +37,15 @@
 [submodule "wordpress/wp-content/plugins/communities-post-a-question"]
 	path = wordpress/wp-content/plugins/communities-post-a-question
 	url = git@github.com:eddiemoya/communities-post-a-question.git
+[submodule "wordpress/wp-content/plugins/user-taxonomy-base-plugin"]
+	path = wordpress/wp-content/plugins/user-taxonomy-base-plugin
+	url = git@github.com:eddiemoya/User-Taxonomy-2.git
+[submodule "wordpress/wp-content/plugins/user-meta-taxonomy-3"]
+	path = wordpress/wp-content/plugins/user-meta-taxonomy-3
+	url = git@github.com:eddiemoya/User-Meta-Taxonomy--3-.git
+[submodule "wordpress/wp-content/plugins/user-titles"]
+	path = wordpress/wp-content/plugins/user-titles
+	url = git@github.com:eddiemoya/User-Titles.git
+[submodule "wordpress/wp-content/plugins/recent-activities-widget"]
+	path = wordpress/wp-content/plugins/recent-activities-widget
+	url = git@github.com:eddiemoya/Recent-Activities-Widget.git
