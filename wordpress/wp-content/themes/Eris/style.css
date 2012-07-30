@@ -524,11 +524,7 @@ ul.footer_anterior {
 
 #persistent-header.persist {
   position: fixed;
-  /*
-   * This is a Googol, as in 100 0's, as in, don't make a bigger z-index than this
-   * or I will turn this into a googolplexian - 100 x 100 x 100 0's.
-   */
-  z-index: 10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000; }
+  z-index: 1000000; }
   #persistent-header.persist #header.sears form #button_search {
     height: 2.1em; }
 
@@ -726,6 +722,9 @@ ul.bullets {
 
 .kmart_button {
   background-position: 0px -96px; }
+
+.kmart_button.azure {
+  background-position: 0px -148px; }
 
 /*
  * FEATURED
@@ -1227,7 +1226,7 @@ ul.bullets {
       .kmart #footer_nav.dropmenu ul li a {
         color: #980017; }
 
-.shc_overlay {
+#moodle_overlay {
   height: 100%;
   position: fixed;
   /* Offsets */
@@ -1236,16 +1235,16 @@ ul.bullets {
   bottom: 0;
   left: 0;
   width: 100%;
-  z-index: 9999; }
+  z-index: 1000001; }
 
-.android .shc_overlay {
+.android #moodle_overlay {
   position: absolute; }
 
-.shc_modal {
+#moodle_window {
   position: absolute;
-  z-index: 10000; }
+  z-index: 1000002; }
 
-.shc_modal_container > header {
+#moodle_container > header {
   position: relative; }
 
 .close-button {
@@ -1255,34 +1254,37 @@ ul.bullets {
   right: .5em;
   font-family: Verdana, sans-serif; }
 
-#myappl_flyout .close-button {
-  top: 0.3em;
-  right: 0.9em; }
+#moodle_overlay {
+  background: rgba(0, 0, 0, 0.5); }
 
-#myappl_flyout .lev1 {
-  width: 98%; }
+.no-rgba #moodle_overlay {
+  background: transparent url(/wp-content/themes/Eris/assets/img/background_overlay_no-rgba.png) repeat 0px 0px; }
 
-.shc_overlay {
-  background: rgba(154, 154, 155, 0.5);
-  -pie-background: rgba(154, 154, 155, 0.5); }
-
-.shc_modal {
-  background: rgba(81, 81, 81, 0.6);
+#moodle_window {
+  background: rgba(143, 199, 252, 0.3);
   padding: .75em;
-  -pie-background: rgba(81, 81, 81, 0.6);
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
   -o-border-radius: 20px;
   border-radius: 20px; }
-  .shc_modal .loading {
+  #moodle_window .loading {
     height: 100%;
     min-height: 3em;
     min-width: 3em;
     text-align: center;
     width: 100%; }
 
-.shc_modal_container {
+.sears .loading {
+  background: transparent url(/wp-content/themes/Eris/assets/img/sears/background_loading.gif) no-repeat center center; }
+
+.kmart .loading {
+  background: transparent url(/wp-content/themes/Eris/assets/img/kmart/background_loading.gif) no-repeat center center; }
+
+.no-rgba #moodle_window {
+  background: transparent url(/wp-content/themes/Eris/assets/img/background_modal-border_no-rgba.png) repeat 0px 0px; }
+
+#moodle_container {
   background: #ffffff;
   height: 100%;
   width: 100%;
@@ -1291,36 +1293,6 @@ ul.bullets {
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
   border-radius: 10px; }
-  .shc_modal_container header {
-    background: #e8e8e8;
-    padding: 0px 10px;
-    -webkit-border-radius: 10px 10px 0px 0px;
-    -moz-border-radius: 10px 10px 0px 0px;
-    -ms-border-radius: 10px 10px 0px 0px;
-    -o-border-radius: 10px 10px 0px 0px;
-    border-radius: 10px 10px 0px 0px; }
-    .shc_modal_container header h1 {
-      text-transform: lowercase;
-      font-size: 112.5%;
-      color: #60605b;
-      line-height: 193.75%; }
-  .shc_modal_container .content-display {
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-    border-radius: 10px;
-    *zoom: 1; }
-    .shc_modal_container .content-display:after {
-      content: "\0020";
-      display: block;
-      height: 0;
-      clear: both;
-      overflow: hidden;
-      visibility: hidden; }
-  .shc_modal_container form {
-    margin: 1.625em 0;
-    padding: 0 1.25em; }
 
 .close-button {
   height: 13px;
