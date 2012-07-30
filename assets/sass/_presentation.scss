@@ -187,6 +187,12 @@ ul.bullets {
   float: right;
 }
 
+.thread {
+  li {
+    
+  }
+}
+
 /*
  * GLOBAL ELEMENTS
  */
@@ -505,17 +511,16 @@ form {}
     background: lighten( sears( decorative ), 15 );
     // create quotes around a comment
     &:before {
+      // left quote
       content: "\201C";
     }
     &:after {
+      // right quote
       content: "\201D";
     }
   }
-}
-
-.span6, .span4, .span3 {
-  h3 > * {
-    display: inline;
+  .category {
+    font-size: 90%;
   }
 }
 
