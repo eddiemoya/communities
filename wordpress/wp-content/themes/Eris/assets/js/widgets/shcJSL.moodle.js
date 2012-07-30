@@ -38,6 +38,7 @@ MOODLE.moodle = $Moodle = function() {
 	var self 	= this;
 	var toggleLoading;
 	var toggleOverlay;
+	
 	/**
 	 * gears
 	 * 
@@ -47,8 +48,8 @@ MOODLE.moodle = $Moodle = function() {
 	 */
 	gears = {
 		overlay: shcJSL.createNewElement('div','overlay', {id:'moodle_overlay'}),
-	  modal: $("<section class='modal-window' id='moodle_window'></section>"),
-	  container: $("<div class='modal-container' id='moodle_container'></div>")
+	  modal: shcJSL.createNewElement('section','modal-window', {id:'moodle_window'}),
+	  container: shcJSL.createNewElement('div','modal-container',{id:'moodle_container'})
 	}
 	
 	/**
@@ -142,36 +143,26 @@ MOODLE.moodle = $Moodle = function() {
 	 */
 	
 	toggleOverlay = function() {
-		//(jQuery(gears.overlay, document.body).size() > 0)? (console.log("CONTAINED")):(console.log("NOT CONTAINED"));
-		console.log(gears.overlay);
-		console.log(gears.test);
 		(jQuery.contains(document.documentElement, gears.overlay))? jQuery(gears.overlay).remove():jQuery('body').append(gears.overlay);
 	}
 	
+	/**
+	 * toggleLoading
+	 * 
+	 * Toggles the modal window loading screen
+	 * 
+	 * @access Private
+	 * @author Tim Steele
+	 * @since 1.0
+	 */
+	toggleLoading = function() {
+		if (($(container).children()).length != 0) $(container).children().detach()
+		$(container).append("<section class='loading'></section>");
+	}
 	
 	this.test = function() {
 		toggleOverlay();
 	}
-	// this.overlay = {
-		// on	: function() {$('body').append(overlay); return self.overlay;},
-		// off	: function() { $(overlay).remove(); return self.overlay;}
-	// };
-// 	
-	// this.loading = function() {
-		// // CHANGE TO USE ATTACH/DETACH
-		// if (($(container).children()).length == 0) {
-			// $(container).append("<section class='loading'></section>");
-		// } else {
-			// $(container).children().detach()
-			// $(container).append("<section class='loading'></section>");
-		// }
-		// //$(container).html("<section class='loading'></section>");
-		// return self;
-	// }
-	
-	
-	
-	
 	
 	/*
 	 * PUBLIC METHODS
@@ -187,7 +178,18 @@ MOODLE.moodle = $Moodle = function() {
 	 * @since 1.0
 	 */
 	this.create = function() {
-		
+		if ($(modal).parents().is($('body').get(0))) {
+			$(window).trigger("resize");
+			if (options) settings = $.extend({},defaults,options);
+		} else {
+			self.overlay.on();
+			$('body').append(modal.hide()); $(center()).show();
+			if (options) settings = $.extend({},defaults,options);
+			//$(window).bind("resize", center);
+			
+			// Apply event for firing when content is loaded
+			$(modal).bind('update', $b.activate)
+			$(modal).bind('update', $w.activate)
 	}
 	
 	/**
