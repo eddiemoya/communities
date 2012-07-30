@@ -1008,6 +1008,33 @@ ul.bullets {
   float: left;
   clear: both; }
 
+/*
+* Activity buttons
+*/
+.actions {
+  float: left;
+  overflow: hidden; }
+  .actions .action {
+    color: #6f6f6f;
+    float: left;
+    overflow: hidden; }
+    .actions .action a {
+      display: block;
+      float: left; }
+    .actions .action .upvote {
+      -webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+      -ms-border-radius: 2px;
+      -o-border-radius: 2px;
+      background-color: #fff;
+      background: #e4e0df url("/wp-content/themes/Eris/assets/img/sears/sprite_navigation.png");
+      background-position: right center;
+      border: 1px solid #d6d6d6;
+      display: block;
+      height: 19px;
+      padding: 1px 12px;
+      width: 19px; }
+
 .dropmenu li {
   float: left;
   position: relative; }
@@ -1333,9 +1360,66 @@ ul.bullets {
 
 .content-container .single {
   border-top: 1px solid #d5d5d5;
+  color: #666;
+  margin-bottom: 25px;
   margin-left: 0px;
   padding-left: 2.127659574468085%;
   padding-top: 15px; }
-  .content-container .single h2 {
+  .content-container .single .top {
+    margin-bottom: 10px; }
+    .content-container .single .top .date {
+      color: #ccc;
+      float: right;
+      font-size: 14px; }
+  .content-container .single .content h2 {
     color: #3a81ce;
-    font-size: 24px; }
+    font-size: 24px;
+    margin-bottom: 10px; }
+  .content-container .single .content p {
+    font-size: 14px;
+    margin-bottom: 25px; }
+  .content-container .single .comments .commentForm {
+    margin-bottom: 20px; }
+    .content-container .single .comments .commentForm textarea {
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      -o-border-radius: 4px;
+      border: 1px solid #d6d6d6;
+      margin-bottom: 15px;
+      width: 100%; }
+    .content-container .single .comments .commentForm .top .leaveComment {
+      color: #067BB5;
+      float: right; }
+      .content-container .single .comments .commentForm .top .leaveComment .smaller {
+        bottom: 2px;
+        font-size: 8px;
+        position: relative; }
+  .content-container .single .comments .allComments {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border: 1px solid #d6d6d6;
+    padding: 15px;
+    width: 96%; }
+    .content-container .single .comments .allComments .comment {
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      -o-border-radius: 4px;
+      border: 1px solid #d6d6d6;
+      overflow: hidden;
+      padding: 15px;
+      width: 94.5%; }
+      .content-container .single .comments .allComments .comment .rightSide {
+        float: left;
+        margin-right: 9%;
+        width: 15%; }
+        .content-container .single .comments .allComments .comment .rightSide .userImage {
+          border: 1px solid #000;
+          height: 100px;
+          width: 100%; }
+      .content-container .single .comments .allComments .comment .leftSide {
+        float: left;
+        width: 76%; }

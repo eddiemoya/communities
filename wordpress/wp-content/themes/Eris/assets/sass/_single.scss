@@ -5,12 +5,101 @@
 
 .content-container .single {
   border-top: 1px solid #d5d5d5;
+  color: #666;
+  margin-bottom: 25px;
   margin-left: 0px;
   padding-left:$margin-width-pct;
   padding-top: 15px;
 
-  h2 {
-    color: #3a81ce;
-    font-size: 24px;
+  .top {
+    margin-bottom: 10px;
+
+    .date {
+      color: #ccc;
+      float: right;
+      font-size: 14px;
+    }
+  }
+
+  .content {
+    h2 {
+      color: #3a81ce;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+  }
+
+  .comments {
+    .commentForm {
+      margin-bottom: 20px;
+
+      textarea {
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+        border: 1px solid #d6d6d6;
+        margin-bottom: 15px;
+        width: 100%;
+      }
+
+      .top {
+        .leaveComment {
+          color: #067BB5;
+          float: right;
+
+          .smaller {
+            bottom: 2px;
+            font-size: 8px;
+            position: relative;
+          }
+        }
+      }
+    }
+
+    .allComments {
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      -o-border-radius: 4px;
+      border: 1px solid #d6d6d6;
+      padding: 15px;
+      width: 96%;
+
+      .comment {
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+        border: 1px solid #d6d6d6;
+        overflow: hidden;
+        padding: 15px;
+        width: 94.5%;
+
+        .rightSide {
+          float: left;
+          margin-right: 9%;
+          width: 15%;
+
+          .userImage {
+            border: 1px solid #000;
+            height: 100px;
+            width: 100%;
+          }
+        }
+
+        .leftSide {
+          float: left;
+          width: 76%;
+
+
+        }
+      }
+    }
   }
 }
