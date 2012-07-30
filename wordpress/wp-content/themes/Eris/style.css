@@ -902,9 +902,8 @@ ul.bullets {
     content: "\201C"; }
   .recent-activity .excerpt:after {
     content: "\201D"; }
-
-.span6 h3 > *, .span4 h3 > *, .span3 h3 > * {
-  display: inline; }
+.recent-activity .category {
+  font-size: 90%; }
 
 /*
  * POST A QUESTION
