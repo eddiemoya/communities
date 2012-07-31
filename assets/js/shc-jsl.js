@@ -81,12 +81,7 @@ if (!Array.prototype.map) {
   };      
 }
 
-shcJSL.methods = {
-	test: function(a) {
-		console.log(a);
-		alert('tacos');
-	}
-}
+shcJSL.methods = {}
 
 shcJSL.get = function(element) {
 	var collection; // (Array) array of objects with shcJSL.methods.
@@ -137,6 +132,26 @@ shcJSL.get = function(element) {
 		
 		return collection;
 }
+
+/*
+	[2.0] SEARS METHODS
+	-------------------
+	
+*/
+
+shcJSL.createNewElement = function(e, c, a) {
+	var newElement; // New element that will be created;
+	
+	newElement = document.createElement(e);
+	if (c != null) newElement.className = c;
+	if (typeof a != 'undefined' && typeof a == 'object') {
+		for (var i in a) {
+			newElement.setAttribute(i, a[i]);
+		}
+	}
+	return newElement;
+}
+
 
 /*
 	[2.0] WIDGETS
@@ -193,6 +208,14 @@ shcJSL.gizmos.activate = function(event, parent, selector) {
 
 /**
  * @author Tim Steele
+ * @description:
+ * This object keeps track of what gizmos have been loaded 
+ * into the page. 
+ */
+shcJSL.gizmos.bulletin = {}
+
+/**
+ * @author Tim Steele
  * @param element: 
  */
 
@@ -210,8 +233,10 @@ shcJSL.gizmos.persistr = function(element) {
 		
 		if (yScroll >= offsetTop) {
 			$(element).addClass("persist");
+			$("#container").css("padding-top",$(element).outerHeight())
 		} else {
 			$(element).removeClass("persist");
+			$("#container").css("padding-top",0)
 		}
 	});
 	

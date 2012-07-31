@@ -5,7 +5,7 @@
  */
 get_template_part('parts/header');
 
-loop(); 
+loop('question');
 
 //comments_template('/parts/comments.php');
 
