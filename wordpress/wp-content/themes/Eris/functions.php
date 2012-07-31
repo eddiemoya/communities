@@ -1,5 +1,7 @@
 <?php
 
+//include('/Library/WebServer/Documents/communities/public_html/wp-content/plugins/posts-widget/widgets/post-widgets.php');
+
 /**
  * Add support for various useful WordPress features.
  * Options second parameter offers additional specificity.

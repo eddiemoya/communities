@@ -1,4 +1,3 @@
-
 <article class="content-container span12">
     <div class="breadcrumbs">
         Breadcrumbs
@@ -12,7 +11,6 @@
         <div class="top">
             <a href="<?php get_category_link($categories[0]->term_id); ?>"><?php echo $categories[0]->name; ?></a>
             <span class="date"><?php echo the_date(); ?></span>
-
         </div>
         <div class="content">
             <h2><?php echo the_title(); ?></h2>
@@ -39,5 +37,4 @@
             ?>
         </div>
     </div>
-
 </article>

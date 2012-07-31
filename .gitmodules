@@ -28,9 +28,6 @@
 [submodule "wordpress/wp-content/plugins/communities-menu-widget"]
 	path = wordpress/wp-content/plugins/communities-menu-widget
 	url = git@github.com:eddiemoya/communities-menu-widget.git
-[submodule "wordpress/wp-content/plugins/simple-ldap"]
-	path = wordpress/wp-content/plugins/simple-ldap
-	url = git@github.com:eddiemoya/dans-ldap.git
 [submodule "wordpress/wp-content/plugins/communities-content-blurb"]
 	path = wordpress/wp-content/plugins/communities-content-blurb
 	url = git@github.com:eddiemoya/communities-content-blurb.git
@@ -49,3 +46,8 @@
 [submodule "wordpress/wp-content/plugins/recent-activities-widget"]
 	path = wordpress/wp-content/plugins/recent-activities-widget
 	url = git@github.com:eddiemoya/Recent-Activities-Widget.git
+
+
+[submodule "wordpress/wp-content/plugins/simple-ldap-login"]
+	path = wordpress/wp-content/plugins/simple-ldap-login
+	url = git@github.com:eddiemoya/dans-ldap.git
