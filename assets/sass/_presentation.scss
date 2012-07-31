@@ -579,6 +579,42 @@ form {}
     margin-bottom:0;
   }
 }
+fieldset#use_your_account_from {
+    border-top: 1px solid sears( decorative );
+  legend {
+    text-align: center;
+    padding: 1em;
+  }
+}
+.login_options {
+  text-align: center;
+  line-height: 2.5;
+  width: 15em;
+  margin: 0 auto;
+  a {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url('#{$img}sprite-social.png');
+    background-repeat: no-repeat;
+    text-indent: -9999em;
+    margin-left: 1.3em;
+    &:first-child, &:first-child + a, &:first-child + a + a {
+      margin-left: 0;
+    }
+  }
+  .facebook {
+    width: 213px;
+    height: 32px;
+  }
+  .yahoo {
+    width: 28px;
+  }
+  $social-links: ("facebook", "yahoo", "google", "twitter", "myspace", "aol", "hint", "openid" );
+  @for $s from 2 through length( $social-links ) {
+    @include sprite-position(".#{nth($social-links, $s)}", ( $soc-sprite-offset * ( -1 ) - ( $soc-sprite-period * ( $s - 2 ) ) ) );
+  }
+}
 
 // subnav widget
 .widget_communities_menu_widget {

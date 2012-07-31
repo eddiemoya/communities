@@ -938,6 +938,47 @@ ul.bullets {
 .form_login .form-fields > li p, .form_register .form-fields > li p {
   margin-bottom: 0; }
 
+fieldset#use_your_account_from {
+  border-top: 1px solid #cccccc; }
+  fieldset#use_your_account_from legend {
+    text-align: center;
+    padding: 1em; }
+
+.login_options {
+  text-align: center;
+  line-height: 2.5;
+  width: 15em;
+  margin: 0 auto; }
+  .login_options a {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("/wp-content/themes/Eris/assets/img/sprite-social.png");
+    background-repeat: no-repeat;
+    text-indent: -9999em;
+    margin-left: 1.3em; }
+    .login_options a:first-child, .login_options a:first-child + a, .login_options a:first-child + a + a {
+      margin-left: 0; }
+  .login_options .facebook {
+    width: 213px;
+    height: 32px; }
+  .login_options .yahoo {
+    width: 28px; }
+  .login_options .yahoo {
+    background-position: -225px top; }
+  .login_options .google {
+    background-position: -275px top; }
+  .login_options .twitter {
+    background-position: -325px top; }
+  .login_options .myspace {
+    background-position: -375px top; }
+  .login_options .aol {
+    background-position: -425px top; }
+  .login_options .hint {
+    background-position: -475px top; }
+  .login_options .openid {
+    background-position: -525px top; }
+
 .widget_communities_menu_widget .subnav-items {
   font-size: .80em; }
   .widget_communities_menu_widget .subnav-items .menu-item {
