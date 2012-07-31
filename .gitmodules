@@ -48,3 +48,6 @@
 	url = git@github.com:eddiemoya/Recent-Activities-Widget.git
 
 
+[submodule "wordpress/wp-content/plugins/simple-ldap-login"]
+	path = wordpress/wp-content/plugins/simple-ldap-login
+	url = git@github.com:eddiemoya/dans-ldap.git
