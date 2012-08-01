@@ -15,6 +15,8 @@
 
         </div>
         <div class="content">
+
+            <!-- Note to FED: No need to 'echo' the_content() or the_title(), they echo themselves out. -->
             <h2><?php echo the_title(); ?></h2>
             <p><?php echo the_content(); ?></p>
             <p class="by">By <?php the_author_link(); ?></p>
@@ -35,7 +37,9 @@
                 comments_template('/parts/commentForm.php');
 
                 //get_template_part('../parts/comments.php');
-                include('/Users/dasfisch/communities/wordpress/wp-content/themes/Eris/parts/comments.php');
+
+                //No! Bad Sebastian!... No!
+                //include('/Users/dasfisch/communities/wordpress/wp-content/themes/Eris/parts/comments.php');
             ?>
         </div>
     </div>
