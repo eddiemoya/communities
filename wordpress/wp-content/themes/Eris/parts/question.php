@@ -30,10 +30,10 @@
         </div>
         <div class="comments">
             <?php
-                comments_template('/parts/commentForm.php');
+                comments_template('/parts/answers.php');
 
                 //get_template_part('../parts/comments.php');
-                include('/Users/dasfisch/communities/wordpress/wp-content/themes/Eris/parts/comments.php');
+                //include('/Users/dasfisch/communities/wordpress/wp-content/themes/Eris/parts/comments.php');
             ?>
         </div>
     </div>
