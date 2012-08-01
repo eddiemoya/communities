@@ -1,15 +1,47 @@
 <!--/Users/emoya1/Public/Projects/comm/wordpress/wp-content/themes/Eris/parts/post-widget.php -->
-<article class="content-container featured-post">
+<article class="content-container featured-question">
     <?php if(function_exists('is_widget')) : ?>
     <?php if (is_widget()->show_title && !empty(is_widget()->widget_title)) : ?>
 
         <header class="content-header">
             <h3><?php echo is_widget()->widget_title; ?></h3>
+            <?php if(is_widget()->show_subtitle) : ?>
+                <h4><?php echo is_widget()->widget_subtitle; ?></h4>
+            <?php endif; ?>
         </header>
 
     <?php endif; ?>
 
     <section class="content-body clearfix">
+
+        <?php if (is_widget()->show_category || is_widget()->show_date) : ?>
+            <div class="content-details clearfix">
+
+                <?php if (is_widget()->show_category) : ?>
+                    <span class="content-category">
+                        <a href="#" title="Kittens">
+                            <?php 
+                                $c = get_the_category(); 
+                                echo $c[0]->cat_name; 
+                            ?>
+                        </a>
+                    </span>
+                <?php endif; ?>
+
+                    <time class="content-date" datetime="<?php the_time('Y-m-d'); ?>">
+                        <?php the_time('F j, Y'); ?>
+                    </time>
+            </div>
+        <?php endif; ?>
+
+        <?php if (is_widget()->show_title) : ?>
+            <p class="content-headline">
+                <a href="<?php the_permalink(); ?>">
+                    <?php the_title(); ?>
+                </a>
+            </p>
+        <?php endif; ?>
+
 
         <?php if (is_widget()->show_thumbnail && has_post_thumbnail()) : ?>
             <div class="featured-image span6">
@@ -23,34 +55,9 @@
 
         <div class="featured-post <?php echo $featured_post_span; ?>">
 
-            <?php if (is_widget()->show_category || is_widget()->show_date) : ?>
-                <div class="content-details clearfix">
 
-                    <?php if (is_widget()->show_category) : ?>
-                        <span class="content-category">
-                            <a href="#" title="Kittens">
-                                <?php 
-                                    $c = get_the_category(); 
-                                    echo $c[0]->cat_name; 
-                                ?>
-                            </a>
-                        </span>
-                    <?php endif; ?>
 
-                        <time class="content-date" datetime="<?php the_time('Y-m-d'); ?>">
-                            <?php the_time('F j, Y'); ?>
-                        </time>
 
-                </div>
-            <?php endif; ?>
-
-            <?php if (is_widget()->show_title) : ?>
-                <p class="content-headline">
-                    <a href="<?php the_permalink(); ?>">
-                        <?php the_title(); ?>
-                    </a>
-                </p>
-            <?php endif; ?>
 
             <p class="content-byline">By: <?php echo get_the_author(); ?> </p>
 
