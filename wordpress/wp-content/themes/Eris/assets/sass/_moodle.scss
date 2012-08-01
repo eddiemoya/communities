@@ -2,7 +2,7 @@
 // LAYOUT
 // ==============================
  
-  .shc_overlay {
+  #moodle_overlay {
     height:100%;
     position:fixed;
     /* Offsets */
@@ -11,21 +11,21 @@
       bottom:0;
       left:0;
     width:100%;
-    z-index:9999;
+    z-index:1000001;
   } 
   
-  .android .shc_overlay {
+  .android #moodle_overlay {
     // Fix for 'jumpy' window when absolute positioned
     // element appears higher z-index than fixed position.
     position:absolute;
   }
   
-  .shc_modal {
+  #moodle_window {
     position:absolute;
-    z-index: 10000;
+    z-index: 1000002;
   }
   
-  .shc_modal_container {
+  #moodle_container {
     & > header {
       position:relative;
     }
@@ -38,31 +38,24 @@
       right:.5em;
       font-family: Verdana, sans-serif;
   }
-  #myappl_flyout .close-button {
-      top:0.3em;
-      right:0.9em;
-  }
-  
-  #myappl_flyout .lev1 {
-    width: 98%;
-  }
 
 // ==============================
 // PRESENTATION
 // ==============================
 
-  .shc_overlay {
-    background:rgba(154,154,155,.5);
-    -pie-background:rgba(154,154,155,.5);
+  #moodle_overlay {
+    background:rgba(0,0,0,.5);
   }
   
-  .shc_modal {
-    background:rgba(81,81,81,.6);
+  .no-rgba #moodle_overlay {
+    background:transparent url(#{$img}background_overlay_no-rgba.png) repeat 0px 0px;
+  }
+  
+  #moodle_window {
+    background:rgba(143,199,252,.3);
     padding:.75em;
-    -pie-background:rgba(81,81,81,.6);
     @include border-radius(20px);
     .loading {
-      //background:transparent url(  #{$csspath}loading_ffffff-29a3dd.gif) no-repeat center center;
       height:100%;
       min-height:3em;
       min-width:3em;
@@ -71,30 +64,23 @@
     }
   }
   
-  .shc_modal_container {
+  .sears .loading {
+      background:transparent url(#{$sears-img}background_loading.gif) no-repeat center center;
+  }
+  
+  .kmart .loading {
+      background:transparent url(#{$kmart-img}background_loading.gif) no-repeat center center;
+  }
+  
+  .no-rgba #moodle_window {
+    background:transparent url(#{$img}background_modal-border_no-rgba.png) repeat 0px 0px;
+  }
+  
+  #moodle_container {
     background:#ffffff;
     height:100%;
     width:100%;
     @include border-radius(10px);
-    header {
-      background:#e8e8e8;
-      padding:0px 10px;
-      @include border-radius(10px 10px 0px 0px);
-      h1 {
-        text-transform:lowercase;
-        font-size:112.5%;
-        color:#60605b;
-        line-height:193.75%;
-      }
-    }
-    .content-display {
-      @include border-radius(10px);
-      @include legacy-pie-clearfix;
-    }
-    form {
-      margin:1.625em 0;
-      padding:0 1.25em;
-    }
   }
   
   .close-button {

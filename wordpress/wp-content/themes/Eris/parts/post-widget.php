@@ -1,6 +1,7 @@
 <!--/Users/emoya1/Public/Projects/comm/wordpress/wp-content/themes/Eris/parts/post-widget.php -->
 <article class="content-container featured-post">
-
+    <?php //echo "<pre>";print_r(is_widget());echo "</pre>";?>
+    <?php if(function_exists('is_widget')) : ?>
     <?php if (is_widget()->show_title && !empty(is_widget()->widget_title)) : ?>
 
         <header class="content-header">
@@ -70,5 +71,5 @@
         </div>
 
     </section>
-
+<?php endif; ?>
 </article>

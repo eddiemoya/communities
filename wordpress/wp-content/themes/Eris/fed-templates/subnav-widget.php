@@ -1,7 +1,7 @@
 <!-- NOT IN USE - FOR DEV PURPOSES ONLY -->
 
 <article class="content-container subnav-widget span4">
-
+    <?php if(function_exists('is_widget')) : ?>
     <?php if (is_widget()->show_title && !empty(is_widget()->widget_title) || true) : ?>
 
         <header class="content-header">
@@ -52,5 +52,5 @@
         </div>
 
     </section>
-
+    <?php endif; ?>
 </article>
