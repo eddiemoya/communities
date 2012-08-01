@@ -1,68 +1,47 @@
-<!-- NOT ACTUALLY BEING USED RIGHT NOW - JUST A PLACEHOLDER BASED ON THE POST-WIDGET.PHP MARKUP -->
-<article class="content-container featured-post">
-    <?php if (is_widget()->show_title && !empty(is_widget()->widget_title)) : ?>
 
-        <header class="content-header">
-            <h3><?php echo is_widget()->widget_title; ?></h3>
-        </header>
+<article class="content-container span12">
+    <div class="breadcrumbs">
+        Breadcrumbs
+    </div>
+    <div class="single span8">
+        <?php
+            $i = 0;
 
-    <?php endif; ?>
+            $categories = get_the_category($post->ID);
+        ?>
+        <div class="top">
+            <a href="<?php get_category_link($categories[0]->term_id); ?>"><?php echo $categories[0]->name; ?></a>
+            <span class="date"><?php echo the_date(); ?></span>
 
-    <section class="content-body clearfix">
-
-        <?php if (is_widget()->show_thumbnail && has_post_thumbnail()) : ?>
-            <div class="featured-image span6">
-                <?php the_post_thumbnail(); ?>
-            </div>
-        <?php endif; ?>
-
-        <div class="featured-post span6">
-
-            <?php if (is_widget()->show_category || is_widget()->show_date) : ?>
-                <div class="content-details clearfix">
-
-                    <?php if (is_widget()->show_category) : ?>
-                        <span class="content-category">
-                            <a href="#" title="Kittens">
-                                <?php 
-                                    $c = get_the_category(); 
-                                    echo $c[0]->cat_name; 
-                                ?>
-                            </a>
-                        </span>
-                    <?php endif; ?>
-
-                    <?php// if (is_widget()->show_date) : ?>
-                        <time class="content-date" datetime="<?php the_time('Y-m-d'); ?>">
-                            <?php the_time('F j, Y'); ?>
-                        </time>
-                    <?php// endif; ?>
-
-                </div>
-            <?php endif; ?>
-
-            <?php if (is_widget()->show_title) : ?>
-                <p class="content-headline">
-                    <a href="">
-                        <?php the_title(); ?>
-                    </a>
-                </p>
-            <?php endif; ?>
-
-            <p class="content-byline">By: <?php echo get_the_author(); ?> </p>
-
-            <?php if (is_widget()->show_comment_count): ?>
-                <p class="content-comments"><?php comments_number(); ?></p>
-            <?php endif; ?>
-                
-            <?php  if(is_widget()->show_content) : ?>
-                <p class="content-excerpt">
-                    <?php the_excerpt(); ?>
-                    <a href="#" title="Read More">Read more</a>
-                <p>
-            <?php endif; ?>
         </div>
+        <div class="content">
 
-    </section>
+            <!-- Note to FED: No need to 'echo' the_content() or the_title(), they echo themselves out. -->
+            <h2><?php echo the_title(); ?></h2>
+            <p><?php echo the_content(); ?></p>
+            <p class="by">By <?php the_author_link(); ?></p>
+            <p class="tags">Tags:
+                <?php
+                    $posttags = get_the_tags();
+                    if ($posttags) {
+                        foreach($posttags as $tag) {
+                            echo '<a href="'.get_bloginfo('siteurl').'">'.$tag->name.'</a> ';
+                        }
+                    }
+                ?>
+            </p>
+            <!-- Insert social here -->
+        </div>
+        <div class="comments">
+            <?php
+                comments_template('/parts/commentForm.php');
+
+                //get_template_part('../parts/comments.php');
+
+                //No! Bad Sebastian!... No!
+                //include('/Users/dasfisch/communities/wordpress/wp-content/themes/Eris/parts/comments.php');
+            ?>
+        </div>
+    </div>
 
 </article>

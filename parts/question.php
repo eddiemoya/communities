@@ -1,4 +1,3 @@
-<!--/Users/emoya1/Public/Projects/comm/wordpress/wp-content/themes/Eris/parts/post-widget.php -->
 <article class="content-container span12">
     <div class="breadcrumbs">
         Breadcrumbs
@@ -9,17 +8,20 @@
 
             $categories = get_the_category($post->ID);
         ?>
-        <a href="<?php get_category_link($categories[0]->term_id); ?>"><?php echo $categories[0]->name; ?></a>
-        <h2><?php echo the_title(); ?></h2>
+        <div class="top">
+            <a href="<?php get_category_link($categories[0]->term_id); ?>"><?php echo $categories[0]->name; ?></a>
+            <span class="date"><?php echo the_date(); ?></span>
+        </div>
         <div class="content">
+            <h2><?php echo the_title(); ?></h2>
             <p><?php echo the_content(); ?></p>
-            <p class="by">By <?php the_author(); ?></p>
+            <p class="by">By <?php the_author_link(); ?></p>
             <p class="tags">Tags:
                 <?php
                     $posttags = get_the_tags();
                     if ($posttags) {
                         foreach($posttags as $tag) {
-                            echo '<a href="'.bloginfo().'">'.$tag->name.'</a>';
+                            echo '<a href="'.get_bloginfo('siteurl').'">'.$tag->name.'</a> ';
                         }
                     }
                 ?>
@@ -27,8 +29,12 @@
             <!-- Insert social here -->
         </div>
         <div class="comments">
-            GETTING COMMENTS
-            <?php comments_template('/parts/comments.php'); ?>
+            <?php
+                comments_template('/parts/answers.php');
+
+                //get_template_part('../parts/comments.php');
+                //include('/Users/dasfisch/communities/wordpress/wp-content/themes/Eris/parts/comments.php');
+            ?>
         </div>
     </div>
 </article>
