@@ -1,4 +1,4 @@
-This is an category query.<br />
+<!-- This is an category query.<br />
 <?php if(function_exists('is_widget')) : ?>
 <?php 
 //print_pre($query);
@@ -38,3 +38,4 @@ if(is_widget()->show_share) {
 endif;
 loop();
 
+ -->
