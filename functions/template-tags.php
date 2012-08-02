@@ -124,6 +124,91 @@ function process_front_end_question(){
     return "1";
 }
 
+
+
+/**
+ * @author Eddie Moya
+ * @since 1.0
+ * 
+ * Retreives the entire post object of the a single image that is categorized
+ * with the category ID that is passed or the current category if none is passed.
+ * 
+ * = Usage =
+ *  * Kmart Fashion Lookbook
+ * 
+ * @param int $category_id [optional] A category ID, defaults to the current category ID.
+ * @param bool $echo [depricated since 1.1] Can't echo the entire post object.
+ * 
+ * @return object
+ */
+function get_category_image($category_id = null, $echo = false, $args = array()){
+    
+    $category_id = (empty($category_id)) ? get_query_var('cat') : $category_id;
+    $img_args = array(
+        'numberposts' => 1,
+        'post_type' => 'attachment',
+        'tax_query' => array (
+            'relation' => 'AND',
+            array(
+                'taxonomy' => 'category',
+                'field' => 'id',
+                'terms' => $category_id,
+                'include_children' => false,
+                'operator' => 'IN'
+            ),
+            array(
+                'taxonomy' => 'category',
+                'field' => 'slug',
+                'terms' => 'thumbnails',
+                'operator' => 'NOT IN'
+            )
+         )
+    );
+    
+    $image = get_posts(array_merge($img_args, $args));
+    
+    if(isset($image[0])){
+        $image = $image[0];
+    
+    if ($echo ) { echo $image; }
+
+    else { return $image; }
+    } else return false;
+}
+
+
+
+/**
+ * @author Eddie Moya
+ * @since 1.0
+ * 
+ * Gets the url of the first categorized image for a particular category.
+ * 
+ * @param int $category_id [optional] If set, it will use the given id to search for an image. If not set, it will use the current category from get_query_var('cat)
+ * @param bool $echo [optional] If true, the url is echoed out, if false, it is returned. Default: true/
+ * @return string The url of the image. 
+ */
+function get_category_image_url($category_id = null, $echo = true, $thumb = false){
+    
+    $category_id = (empty($category_id)) ? get_query_var('cat') : $category_id;
+
+    $image = get_category_image($category_id, false);
+
+    if($image){
+        
+        if (!$thumb) {
+            $image_url = wp_get_attachment_url($image->ID);
+        } else {
+            $image_url = wp_get_attachment_thumb_url($image->ID);
+        }
+
+        if ($echo ) echo $image_url;
+        else { return $image_url; }
+        
+    } else return false;
+}
+    
+
 function print_pre($r){
     echo '<pre>';
     print_r($r);
