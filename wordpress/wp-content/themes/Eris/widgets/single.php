@@ -1,1 +1,1 @@
-This is a single post query in a widget
+<?php loop_by_type('widget');
