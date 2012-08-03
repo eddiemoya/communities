@@ -64,7 +64,7 @@ loop();
 		</article>
 			
 			
-		<article class="content-container register span12" id="join">
+		<article class="content-container register span12 hide" id="join">
 			
 			<section class="content-body clearfix">
 				
@@ -195,6 +195,3 @@ loop();
 get_template_part('parts/footer');
 
 ?>
-
-
-Tim: Does category-tim  (post form) need to be a widget to be placed within dropzones?
