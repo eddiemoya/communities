@@ -6,7 +6,9 @@
 
     get_template_part('parts/header');
 
-    loop();
+
+  loop();
+
 
     $current_tab = "About Me";
     // $current_tab = "Community Activity";
