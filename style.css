@@ -577,6 +577,9 @@ a {
 .left {
   float: left; }
 
+.hide {
+  display: none; }
+
 .bullets {
   margin: 1em 0;
   padding: 0 0 0 40px; }
@@ -1388,8 +1391,8 @@ fieldset#use_your_account_from {
 .close-button {
   position: absolute;
   /* Offsets */
-  top: .25em;
-  right: .5em;
+  top: 20px;
+  right: 20px;
   font-family: Verdana, sans-serif; }
 
 #moodle_overlay {
