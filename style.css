@@ -231,6 +231,9 @@ legend {
     top: 0px;
     width: 3.33em; }
 
+#footer {
+  padding-bottom: 1.5em; }
+
 ul.footer_anterior {
   font-size: 75%;
   margin-top: 1em; }
@@ -1235,7 +1238,7 @@ fieldset#use_your_account_from {
     padding-right: 16px; }
   #footer_nav.dropmenu li a span {
     background-position: right -240px; }
-#footer_nav.dropmenu li:hover ul {
+#footer_nav.dropmenu li ul {
   bottom: 100%; }
 #footer_nav.dropmenu ul li:hover {
   background: none; }

@@ -178,10 +178,8 @@ $arrow-height: 3px;
       @include sprite-position( "span", right, ( $nav-sprite-period * ( -3 ) ) );
     }
     // Make the footer item appear above the footer bar ("drop-up")
-    &:hover {
-      ul {
-        bottom: 100%;
-      }
+    ul {
+      bottom: 100%;
     }
   }
   // Modifications to hovering menu for footer
