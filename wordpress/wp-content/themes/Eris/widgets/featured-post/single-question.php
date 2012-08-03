@@ -1,68 +1,41 @@
-<article class="content-container featured-question">
-    <?php if(function_exists('is_widget')) : ?>
-        <?php if (is_widget()->show_title && !empty(is_widget()->widget_title)) : ?>
 
-            <header class="content-header">
-                <h3><?php echo is_widget()->widget_title; ?></h3>
-                <?php if(is_widget()->show_subtitle) : ?>
-                    <h4><?php echo is_widget()->widget_subtitle; ?></h4>
-                <?php endif; ?>
-            </header>
+<?php get_template_part('parts/header', 'widget') ;?>
+    <?php $c = get_the_category(); ?>
+    <?php if (is_widget()->show_category || is_widget()->show_date) : ?>
 
-        <?php endif; ?>
-
-        <section class="content-body clearfix">
-
-
-            <?php if (have_posts()) { while (have_posts()) { the_post(); ?>
-
-                <?php if (is_widget()->show_category || is_widget()->show_date) : ?>
-
-
-                    <div class="content-details clearfix">
-
-                        <?php if (is_widget()->show_category) : ?>
-                            <span class="content-category">
-                                <a href="#" title="Kittens">
-                                    <?php 
-                                        $c = get_the_category(); 
-                                        echo $c[0]->cat_name; 
-                                    ?>
-                                </a>
-                            </span>
-                        <?php endif; //show category; ?>
-
-
-                        <time class="content-date" datetime="<?php the_time('Y-m-d'); ?>">
-                            <?php the_time('F j, Y'); ?>
-                        </time>
-
-                    </div>
-                <?php endif; //show category or show date ?>
-
-
-
-                <div class="category-image">
-                    <?php //get_category_image_url($c[0]->term_id, true, true); ?>
-                </div>
-
-
-
-                <h6 class="content-headline">
-                    <a href="<?php the_permalink(); ?>">
-                        Q:
-                        <?php the_title(); ?>
+        <div class="content-details clearfix">
+            <?php if (is_widget()->show_category) : ?>
+                <span class="content-category">
+                    <a href="#" title="Kittens">
+                        <?php echo $c[0]->cat_name; ?>
                     </a>
-                </h6>
+                </span>
+            <?php endif; //show category; ?>
+
+            <time class="content-date" datetime="<?php the_time('Y-m-d'); ?>">
+                <?php the_time('F j, Y'); ?>
+            </time>
+        </div>
+
+    <?php endif; //show category or show date ?>
 
 
-                <ul class="content-comments">
-                    <li><?php comments_number(); ?></li>
-                </ul>
+    <?php if (is_widget()->show_thumbnail) : ?>
+        <div class="category-image">
+            <img src="<?php echo get_category_image_url($c[0]->term_id, true, true); ?>" />
+        </div>
+    <?php endif; ?>
 
-            <?php }}  // end loop ?>
+    <h6 class="content-headline">
+        <a href="<?php the_permalink(); ?>">
+            Q:
+            <?php the_title(); ?>
+        </a>
+    </h6>
 
 
-        </section><!-- content-body -->
-    <?php endif; //if function exists is_widget ?>
-</article> 
+    <ul class="content-comments">
+        <li><?php comments_number(); ?></li>
+    </ul>
+
+<?php get_template_part('parts/footer', 'widget') ;?>
