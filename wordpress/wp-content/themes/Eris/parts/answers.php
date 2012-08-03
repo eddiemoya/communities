@@ -56,7 +56,7 @@
     }
     ?>
         <p>
-
+        <!--  The action is set with a GET variable 'comment_type' set to 'answer. -->
         <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php?comment_type=answer" method="post" id="commentform">
 
             <?php if (!is_user_logged_in()){ ?>
@@ -74,7 +74,9 @@
 
             <p>
                 <input name="submit" type="submit" id="submit" tabindex="5" value="<?php esc_attr_e('Answer Question'); ?>" />
-    <?php comment_id_fields(); ?>
+                <input name='comment_type='
+                <?php comment_id_fields(); ?>
+
             </p>
 
     <?php do_action('comment_form', $post->ID); ?>

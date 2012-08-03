@@ -187,6 +187,12 @@ ul.bullets {
   float: right;
 }
 
+.thread {
+  li {
+    
+  }
+}
+
 /*
  * GLOBAL ELEMENTS
  */
@@ -505,20 +511,20 @@ form {}
   .excerpt {
     padding: .3em 1em;
     color: $darkest-color;
-    background: lighten( sears( decorative ), 15 );
+    background: sears( content-focus );
     // create quotes around a comment
     &:before {
+      // left quote
       content: "\201C";
     }
     &:after {
+      // right quote
       content: "\201D";
     }
   }
-}
-
-.span6, .span4, .span3 {
-  h3 > * {
-    display: inline;
+  .category {
+    font-size: 90%;
+    padding-top: .2em;
   }
 }
 
@@ -576,6 +582,42 @@ form {}
     margin-bottom:0;
   }
 }
+fieldset#use_your_account_from {
+    border-top: 1px solid sears( decorative );
+  legend {
+    text-align: center;
+    padding: 1em;
+  }
+}
+.login_options {
+  text-align: center;
+  line-height: 2.5;
+  width: 15em;
+  margin: 0 auto;
+  a {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url('#{$img}sprite-social.png');
+    background-repeat: no-repeat;
+    text-indent: -9999em;
+    margin-left: 1.3em;
+    &:first-child, &:first-child + a, &:first-child + a + a {
+      margin-left: 0;
+    }
+  }
+  .facebook {
+    width: 213px;
+    height: 32px;
+  }
+  .yahoo {
+    width: 28px;
+  }
+  $social-links: ("facebook", "yahoo", "google", "twitter", "myspace", "aol", "hint", "openid" );
+  @for $s from 2 through length( $social-links ) {
+    @include sprite-position(".#{nth($social-links, $s)}", ( $soc-sprite-offset * ( -1 ) - ( $soc-sprite-period * ( $s - 2 ) ) ) );
+  }
+}
 
 // subnav widget
 .widget_communities_menu_widget {
@@ -597,12 +639,15 @@ form {}
 }
 
 // PROFILE
-$tab-padding: "1em .5em .6em .5em";
+$tab-padding: "1em 0 .6em 0";
 .profile {
   .tabs {
+    border-bottom: 1px solid sears( decorative );
+    position: relative;
+    top: 1px;
     li {
       float: left;
-      min-width: percentage( ( nth( $span-widths, 2 ) ) / $grid-width );
+      min-width: percentage( ( nth( $span-widths, 3 ) ) / $grid-width );
       margin-left: $margin-width-pct;
       border: solid sears( decorative );
       border-width: 1px 1px 0 1px;
@@ -635,6 +680,42 @@ $tab-padding: "1em .5em .6em .5em";
     }
     li:first-child {
       margin-left: 0;
+    }
+  }
+  .personal_info {
+    margin-top: 1em;
+    dt, dd {
+      float: left;
+      padding: 1em 0 .5em 0;
+      border-top: 1px solid sears(decorative);
+      font-size: percentage( 13/16 );
+    }
+    dt {
+      width: 30%;
+      margin-left: 2%;
+      @extend .bold;
+      &:first-child, &:first-child + dd {
+        border-top: 0;
+      }
+    }
+    dd {
+      width: 64%;
+      padding-left: 2%;
+    }
+    .info h4 {
+      margin-top: 1em;
+    }
+    .badge {
+      text-align: center;
+      a {
+        font-size: percentage( 12/16 );
+        @extend .bold;
+      }
+    }
+    .vitals {
+      margin-top: 1em;
+      min-height: 12em;
+      background: sears( content-focus );
     }
   }
 } 
