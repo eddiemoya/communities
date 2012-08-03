@@ -584,7 +584,7 @@ ol.bullets {
 ul.bullets {
   list-style-type: disc; }
 
-.bold, .member .info h4, .member .info address, .badge h4, .badge address, .post hgroup, .content-container .content-header, .content-container .content-body .content-details .content-category {
+.bold, .member .info h4, .member .info address, .badge h4, .badge address, .post hgroup, .content-container .content-header, .content-container .content-body .content-details .content-category, .profile .personal_info dt, .profile .personal_info .badge a {
   font-weight: 700; }
 
 .faint, .member .info h5, .member .info p, .post .content-date, .excerpt, .content-container .content-header, .recent-activity time {
@@ -990,30 +990,34 @@ fieldset#use_your_account_from {
     margin-left: 10px;
     color: #000000; }
 
-.profile .tabs li {
-  float: left;
-  min-width: 14.893617021276595%;
-  margin-left: 2.127659574468085%;
-  border: solid #cccccc;
-  border-width: 1px 1px 0 1px;
-  text-align: center;
-  font-size: 75%;
-  -webkit-border-radius: 5px 5px 0 0;
-  -moz-border-radius: 5px 5px 0 0;
-  -ms-border-radius: 5px 5px 0 0;
-  -o-border-radius: 5px 5px 0 0;
-  border-radius: 5px 5px 0 0;
-  background: #e4e0df url("/wp-content/themes/Eris/assets/img/sears/sprite_navigation.png"); }
-.profile .tabs a {
-  display: block;
-  padding: 1em .5em .6em .5em; }
-.profile .tabs li {
-  background-position: left -81px; }
-.profile .tabs .active {
+.profile .tabs {
+  border-bottom: 1px solid #cccccc;
   position: relative;
-  top: 1px;
-  background: white;
-  padding: 1em .5em .6em .5em; }
+  top: 1px; }
+  .profile .tabs li {
+    float: left;
+    min-width: 23.404255319148938%;
+    margin-left: 2.127659574468085%;
+    border: solid #cccccc;
+    border-width: 1px 1px 0 1px;
+    text-align: center;
+    font-size: 75%;
+    -webkit-border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -ms-border-radius: 5px 5px 0 0;
+    -o-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+    background: #e4e0df url("/wp-content/themes/Eris/assets/img/sears/sprite_navigation.png"); }
+  .profile .tabs a {
+    display: block;
+    padding: 1em 0 .6em 0; }
+  .profile .tabs li {
+    background-position: left -81px; }
+  .profile .tabs .active {
+    position: relative;
+    top: 1px;
+    background: white;
+    padding: 1em 0 .6em 0; }
 .profile nav.bar {
   border-bottom: 1px solid #cccccc;
   border-top: 1px solid #cccccc;
@@ -1030,6 +1034,31 @@ fieldset#use_your_account_from {
     padding: .6em .5em; }
   .profile nav.bar li:first-child {
     margin-left: 0; }
+.profile .personal_info {
+  margin-top: 1em; }
+  .profile .personal_info dt, .profile .personal_info dd {
+    float: left;
+    padding: 1em 0 .5em 0;
+    border-top: 1px solid #cccccc;
+    font-size: 81.25%; }
+  .profile .personal_info dt {
+    width: 30%;
+    margin-left: 2%; }
+    .profile .personal_info dt:first-child, .profile .personal_info dt:first-child + dd {
+      border-top: 0; }
+  .profile .personal_info dd {
+    width: 64%;
+    padding-left: 2%; }
+  .profile .personal_info .info h4 {
+    margin-top: 1em; }
+  .profile .personal_info .badge {
+    text-align: center; }
+    .profile .personal_info .badge a {
+      font-size: 75%; }
+  .profile .personal_info .vitals {
+    margin-top: 1em;
+    min-height: 12em;
+    background: #f2f2f2; }
 
 .content-body.content-list .content-item {
   margin-bottom: 10px;
