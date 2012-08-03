@@ -152,7 +152,24 @@ shcJSL.createNewElement = function(e, c, a) {
 	return newElement;
 }
 
+shcJSL.preloadImages = function(html) {
+	if (html) {
+		var image = new Image(); // Dummy new image object;
+		
+		jQuery.each($(html).find('img'), function() {
+			image.src = this.src;
+		})
+		
+		return html;
+	} else return false;
+}
 
+shcJSL.renderHTML = function(parent, html) {
+	if ((parent && html) && typeof html == 'string') {
+		parent.innerHTML = html;
+	}
+	return parent;
+}
 /*
 	[2.0] WIDGETS
 	-------------
@@ -218,7 +235,6 @@ shcJSL.gizmos.bulletin = {}
  * @author Tim Steele
  * @param element: 
  */
-
 shcJSL.gizmos.persistr = function(element) {
 	var offsetTop;	// (Int) pixel difference from the top of the page
 	var persisted;	// (HTMLObject) the persisted element
