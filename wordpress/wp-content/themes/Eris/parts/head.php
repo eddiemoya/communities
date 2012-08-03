@@ -26,8 +26,8 @@
 			<li>
 				
 				<ul>
-					<li id="header_login"><a href="#" title="Login" class="bold">Login</a></li>
-					<li id="header_join"><a href="#" title="Sign Up: Join the Community" class="bold">Join the community</a></li>
+					<li id="header_login"><a href="/wp-content/themes/Eris/assets/ajax/login.html" title="Login" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480}}">Login</a></li>
+					<li id="header_join"><a href="#" title="Sign Up: Join the Community" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:'join', method:'local'}}">Join the community</a></li>
 				</ul>
 				
 			</li>

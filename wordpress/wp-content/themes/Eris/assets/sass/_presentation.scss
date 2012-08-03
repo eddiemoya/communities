@@ -55,6 +55,10 @@ a {
   float: left;
 }
 
+.hide {
+  display:none;
+}
+
 .bullets {
   margin: 1em 0; 
   padding: 0 0 0 40px; 
@@ -563,6 +567,10 @@ form {}
 /*
  * LOGIN/REGISTER/FORGOT PASSWORD
  */
+#moodle_container .sign-in, body > .sign-in,
+#moodle_container .register, body > .register {
+  padding:20px;
+}
 
 .form_login, .form_register {
   .input_text {

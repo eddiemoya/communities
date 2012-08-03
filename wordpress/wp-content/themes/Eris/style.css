@@ -577,6 +577,9 @@ a {
 .left {
   float: left; }
 
+.hide {
+  display: none; }
+
 .bullets {
   margin: 1em 0;
   padding: 0 0 0 40px; }
@@ -928,6 +931,10 @@ ul.bullets {
 /*
  * LOGIN/REGISTER/FORGOT PASSWORD
  */
+#moodle_container .sign-in, body > .sign-in,
+#moodle_container .register, body > .register {
+  padding: 20px; }
+
 .form_login .input_text, .form_register .input_text {
   width: 100%; }
 .form_login label, .form_login a, .form_register label, .form_register a {
@@ -1384,8 +1391,8 @@ fieldset#use_your_account_from {
 .close-button {
   position: absolute;
   /* Offsets */
-  top: .25em;
-  right: .5em;
+  top: 20px;
+  right: 20px;
   font-family: Verdana, sans-serif; }
 
 #moodle_overlay {
@@ -1409,14 +1416,23 @@ fieldset#use_your_account_from {
     text-align: center;
     width: 100%; }
 
+.sears #moodle_window {
+  background: rgba(143, 199, 252, 0.3); }
+
+.kmart #moodle_window {
+  background: rgba(253, 190, 81, 0.3); }
+
 .sears .loading {
   background: transparent url(/wp-content/themes/Eris/assets/img/sears/background_loading.gif) no-repeat center center; }
 
 .kmart .loading {
   background: transparent url(/wp-content/themes/Eris/assets/img/kmart/background_loading.gif) no-repeat center center; }
 
-.no-rgba #moodle_window {
-  background: transparent url(/wp-content/themes/Eris/assets/img/background_modal-border_no-rgba.png) repeat 0px 0px; }
+.no-rgba .sears #moodle_window {
+  background: transparent url(/wp-content/themes/Eris/assets/img/sears/background_modal-border_no-rgba.png) repeat 0px 0px; }
+
+.no-rgba .kmart #moodle_window {
+  background: transparent url(/wp-content/themes/Eris/assets/img/kmart/background_modal-border_no-rgba.png) repeat 0px 0px; }
 
 #moodle_container {
   background: #ffffff;
@@ -1428,10 +1444,18 @@ fieldset#use_your_account_from {
   -o-border-radius: 10px;
   border-radius: 10px; }
 
-.close-button {
-  height: 13px;
-  width: 12px;
-  color: #60605B !important; }
+#moodle_container .close-button {
+  background: transparent url(/wp-content/themes/Eris/assets/img/modal_close-button.png) no-repeat 0px 0px;
+  height: 8px;
+  width: 35px; }
+
+.moodle_transit {
+  left: -99999em;
+  opacity: 0;
+  position: absolute;
+  top: -99999em;
+  visibility: hidden;
+  max-width: 940px; }
 
 .content-container .breadcrumbs {
   border-top: 1px solid #d5d5d5;
