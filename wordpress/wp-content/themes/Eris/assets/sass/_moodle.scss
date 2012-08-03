@@ -96,9 +96,9 @@
   }
   
   #moodle_container .close-button {
-    height:13px;
-    width:12px;
-    color:#60605B !important;
+    background:transparent url(#{$img}modal_close-button.png) no-repeat 0px 0px;
+    height:8px;
+    width:35px;
   }
   
   .moodle_transit {

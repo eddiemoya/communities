@@ -564,6 +564,10 @@ form {}
 /*
  * LOGIN/REGISTER/FORGOT PASSWORD
  */
+#moodle_container .sign-in, body > .sign-in,
+#moodle_container .register, body > .register {
+  padding:20px;
+}
 
 .form_login, .form_register {
   .input_text {
