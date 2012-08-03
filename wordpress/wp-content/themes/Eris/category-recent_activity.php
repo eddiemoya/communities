@@ -8,7 +8,8 @@
 
   loop();
   
-  $self_lookup = true;
+  $current_tab = "About Me";
+  $current_nav = "1";
   
   $seconds_in_day = 24 * 60 * 60;
   
@@ -62,7 +63,7 @@
   $a_actions_taken = array( 1, 2, 3, 4, 5 );
 ?>
 
-  <section class="span<?php echo ( $self_lookup ? "12" : "8" ); ?> profile">
+  <section class="span8 profile">
 
     <?php include('parts/profile_nav.php'); ?>
   
@@ -119,6 +120,8 @@
       </ol>
     </section>
 
+  </section>
+
 <?php
   $is_widget = true;
 
@@ -131,57 +134,48 @@
   }
 ?>
 
-    <section class="span4">
-      <section class="content-container recent-activity">
-        <?php echo $header; ?>
-        <ol class="content-body result clearfix">
-          <?php
-            foreach ( $activities as $activity ):
-              # logic for showing the badge
-              $a_start = array();
-              $badge = '';
-              if ( $is_widget ) {
-                $a_start[] = '<a href="#">' . $activity["author"] . '</a>';
-                $badge = '<div class="badge span3"><img src="' . get_template_directory_uri() . '/assets/img/zzexpert.jpg" alt="Team Player" title="Team Player" /></div>';
-              }
-            
-              # logic for showing the action.
-              $a_start[] = in_array( $current_nav, array( 1 ) ) ? $actions[ $activity["action"] ] . ' this:' : NULL;
-              $start = !empty( $a_start ) ? '<span>' . implode( $a_start, ' ' ) . '</span>' : '';
-            
-              # logic for showing an excerpt of the body
-              $excerpt = '';
-              if ( ( in_array( $current_nav, array( 1, 3, 4, 5, 6 ) ) ) && ( in_array( $activity["action"], array( 2, 3, 5 ) ) ) ) {
-                $excerpt = '<article class="excerpt">';
-                $excerpt .= strlen( $activity["excerpt"] ) > 180 ? substr( $activity["excerpt"], 0, 180 ) . "&#8230;" : $activity["excerpt"];
-                $excerpt .= '</article>';
-              }
-          ?>
-          <li class="clearfix">
-            <?php echo $badge; ?>
-            <div<?php echo $container_class; ?>>
-              <h3>
-                <?php echo $start; ?>
-                <time class="content-date" datetime="<?php echo date( "Y-m-d", $activity["date"] ); ?>" pubdate="pubdate"><?php echo date( "F j, Y g:ia", $activity["date"] ); ?></time>
-                <a href="#" class="category"><?php echo $categories[ $activity["category"] ]; ?></a>
-                <a href="#"><?php echo $activity["title"]; ?></a>
-              </h3>
-              <?php echo $excerpt; ?>
-            </div>
-          </li>
-          <? endforeach; ?>
-        </ol>
-      </section>
-    </section>
-    
-  </section>
-  
-  <?php if ( !$self_lookup ): ?>
   <section class="span4">
-    <!-- Widgets Go Here -->
-    <div style="border: 1px solid black">&nbsp;</div>
+    <section class="content-container recent-activity">
+      <?php echo $header; ?>
+      <ol class="content-body result clearfix">
+        <?php
+          foreach ( $activities as $activity ):
+            # logic for showing the badge
+            $a_start = array();
+            $badge = '';
+            if ( $is_widget ) {
+              $a_start[] = '<a href="#">' . $activity["author"] . '</a>';
+              $badge = '<div class="badge span3"><img src="' . get_template_directory_uri() . '/assets/img/zzexpert.jpg" alt="Team Player" title="Team Player" /></div>';
+            }
+          
+            # logic for showing the action.
+            $a_start[] = in_array( $current_nav, array( 1 ) ) ? $actions[ $activity["action"] ] . ' this:' : NULL;
+            $start = !empty( $a_start ) ? '<span>' . implode( $a_start, ' ' ) . '</span>' : '';
+          
+            # logic for showing an excerpt of the body
+            $excerpt = '';
+            if ( ( in_array( $current_nav, array( 1, 3, 4, 5, 6 ) ) ) && ( in_array( $activity["action"], array( 2, 3, 5 ) ) ) ) {
+              $excerpt = '<article class="excerpt">';
+              $excerpt .= strlen( $activity["excerpt"] ) > 180 ? substr( $activity["excerpt"], 0, 180 ) . "&#8230;" : $activity["excerpt"];
+              $excerpt .= '</article>';
+            }
+        ?>
+        <li class="clearfix">
+          <?php echo $badge; ?>
+          <div<?php echo $container_class; ?>>
+            <h3>
+              <?php echo $start; ?>
+              <time class="content-date" datetime="<?php echo date( "Y-m-d", $activity["date"] ); ?>" pubdate="pubdate"><?php echo date( "F j, Y g:ia", $activity["date"] ); ?></time>
+              <a href="#" class="category"><?php echo $categories[ $activity["category"] ]; ?></a>
+              <a href="#"><?php echo $activity["title"]; ?></a>
+            </h3>
+            <?php echo $excerpt; ?>
+          </div>
+        </li>
+        <? endforeach; ?>
+      </ol>
+    </section>
   </section>
-  <?php endif; ?>
 
 <?php
   get_template_part('parts/footer');

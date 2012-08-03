@@ -1,7 +1,4 @@
 <?php
-
-  $current_tab = "Community Activity";
-  $current_nav = "1";
   
   $a_tabs = array(
     "Community Activity" => "#",
@@ -44,6 +41,7 @@
   );
   
 ?>
+
 <nav class="clearfix">
   <ul class="tabs clearfix">
     <?php
@@ -58,19 +56,22 @@
     ?>
   </ul>
 </nav>
-<nav class="bar clearfix">
-  <ul class="clearfix">
-    <?php
-    foreach ( $a_navigation as $lone_nav_id => $lone_nav ) {
-      if ( in_array($lone_nav_id, $a_actions_taken) ) {
-        if ( $lone_nav_id == $current_nav ) {
-          echo '<li class="active">' . $lone_nav["type"] . '</li>';
-        }
-        else {
-          echo '<li><a href="' . $lone_nav["url"] . '">' . $lone_nav["type"] . '</a></li>';
+
+<?php if ( $current_tab != "About Me" ): ?>
+  <nav class="bar clearfix">
+    <ul class="clearfix">
+      <?php
+      foreach ( $a_navigation as $lone_nav_id => $lone_nav ) {
+        if ( in_array($lone_nav_id, $a_actions_taken) ) {
+          if ( $lone_nav_id == $current_nav ) {
+            echo '<li class="active">' . $lone_nav["type"] . '</li>';
+          }
+          else {
+            echo '<li><a href="' . $lone_nav["url"] . '">' . $lone_nav["type"] . '</a></li>';
+          }
         }
       }
-    }
-    ?>
-  </ul>
-</nav> 
+      ?>
+    </ul>
+  </nav> 
+<?php endif; ?>
