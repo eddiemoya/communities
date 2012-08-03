@@ -13,7 +13,7 @@
             <span class="date"><?php echo the_date(); ?></span>
         </div>
         <div class="content">
-            <h2><?php echo the_title(); ?></h2>
+            <h2><a href="<?php the_permalink(); ?>"><?php echo the_title(); ?></a></h2>
             <p><?php echo the_content(); ?></p>
             <p class="by">By <?php the_author_link(); ?></p>
             <p class="tags">Tags:
