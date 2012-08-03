@@ -12,9 +12,9 @@ $args = array(
     "paged" => get_query_var("paged")
 );
 query_posts($args);
-while (have_posts()) : the_post();
-print_pre($post);
-endwhile;
+//while (have_posts()) : the_post();
+loop('question');
+//endwhile;
 ?>
 
 <?php
