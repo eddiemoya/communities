@@ -64,7 +64,7 @@ loop();
 		</article>
 			
 			
-		<article class="content-container post-your-question span12">
+		<article class="content-container post-your-question span12" id="join">
 			
 			<section class="content-body clearfix">
 				

@@ -1302,14 +1302,23 @@ ul.bullets {
     text-align: center;
     width: 100%; }
 
+.sears #moodle_window {
+  background: rgba(143, 199, 252, 0.3); }
+
+.kmart #moodle_window {
+  background: rgba(253, 190, 81, 0.3); }
+
 .sears .loading {
   background: transparent url(/wp-content/themes/Eris/assets/img/sears/background_loading.gif) no-repeat center center; }
 
 .kmart .loading {
   background: transparent url(/wp-content/themes/Eris/assets/img/kmart/background_loading.gif) no-repeat center center; }
 
-.no-rgba #moodle_window {
-  background: transparent url(/wp-content/themes/Eris/assets/img/background_modal-border_no-rgba.png) repeat 0px 0px; }
+.no-rgba .sears #moodle_window {
+  background: transparent url(/wp-content/themes/Eris/assets/img/sears/background_modal-border_no-rgba.png) repeat 0px 0px; }
+
+.no-rgba .kmart #moodle_window {
+  background: transparent url(/wp-content/themes/Eris/assets/img/kmart/background_modal-border_no-rgba.png) repeat 0px 0px; }
 
 #moodle_container {
   background: #ffffff;
@@ -1321,10 +1330,18 @@ ul.bullets {
   -o-border-radius: 10px;
   border-radius: 10px; }
 
-.close-button {
+#moodle_container .close-button {
   height: 13px;
   width: 12px;
   color: #60605B !important; }
+
+.moodle_transit {
+  left: -99999em;
+  opacity: 0;
+  position: absolute;
+  top: -99999em;
+  visibility: hidden;
+  max-width: 940px; }
 
 .content-container .breadcrumbs {
   border-top: 1px solid #d5d5d5;
