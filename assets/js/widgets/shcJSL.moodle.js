@@ -67,7 +67,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 	 * @param width (String/Integer) The width of the modal window, or auto
 	 */
 	defaults = {
-		clickOverlayToClose: true,
+		clickOverlayToClose: false,
 		height: 'auto',
 		method: 'ajax',
 		width: 'auto'
@@ -278,12 +278,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 					url: settings.target
 				}).success(function(data, status, xhr) {
 					var htmlObject;	// New HTMLObject created the the AJAX response string
-					
-					// console.log("SUCCESS");
-					// console.log("DATA: "); console.log(data);
-					// console.log("TEXT: "); console.log(text);
-					// console.log("XHR: "); console.log(xhr);
-					
+
 					htmlObject = shcJSL.preloadImages(shcJSL.renderHTML(shcJSL.createNewElement("div"), data)).firstChild;
 					compose(htmlObject, [status, xhr])
 				}).error(function(xhr, status, message) {
@@ -310,52 +305,35 @@ MOODLE.modal = $Moodle = function(element, options) {
 			if (settings.width && settings.width != 'auto') if (!(isNaN(settings.width))) $(content).css('width', settings.width);
 			if (settings.height && settings.height != 'auto') if (!(isNaN(settings.height))) $(content).css('height', settings.width);
 			
-			$(document.body).append($(content).toggleClass('moodle_transit'));
+			$(document.body).append($(content).toggleClass('moodle_transit').css('opacity','0'));
 			window.scrollTo(0,0);
 			
-			
-		}
-		
-		return;
-		
-						
-		$($('body').get(0)).append(
-			$($$.preloadImages(thread.html)).
-			toggleClass('transit').
-			css("opacity","0")
-		);
-		window.scrollTo(0,0)
-		$(modal).animate({ 
-			// Animate style parameters
-				height:$(thread.html).outerHeight(),
-				left:(assess(thread.html).left > 0)? assess(thread.html).left -12 : 12,
-				top:(assess(thread.html).top > 0)? assess(thread.html).top - 12 : 12,
-				width:$(thread.html).outerWidth()
-			},{
+			$(gears.modal).animate({
+				height:$(content).outerHeight(),
+				left:(getPosition(content).left > 12)? getPosition(content).left -12:12,
+				top:(getPosition(content).top > 12)? getPosition(content).top - 12:12,
+				width:$(content).outerWidth()
+			}, {
 				complete: function() {
-					$(container).children().detach();
-					$(container).append(thread.html);
+					$(gears.container).children().detach();
+					$(gears.container).append(content);
 					
-					// Settings updater
-					// if (opts && opts.settings) {};
-					// if (settings.clickToClose == true) $(background).bind('click', self.close);
-					if (settings.xButton !== false) {
-					  $(container).find(".content-display").append($("<a href='#' class='close-button'>x</a>").bind('click', function(event) {Modal.close(); event.preventDefault();}))
-					}
-					$(modal).trigger('update', modal);
+					// SET UP CLOSE BUTTON
+					$(gears.container).append(shcJSL.createNewElement("a","close-button",{href:'#'}))
+					if (settings.clickOverlayToClose) $(gears.overlay).bind('click',self.destroy);
+					$(document).keyup(function(e){if (e.keyCode == 27) self.destroy();})
 					
-					$(thread.html).toggleClass("transit").animate({
+					$(gears.modal).trigger('moodle-update', gears.modal);
+					
+					$(content).toggleClass("moodle_transit").animate({
 						opacity:100
 					},{
-						complete:function() {
-							$(modal).css("height","auto");
-						},
-						duration:500
-					});
+						duration:750
+					}) // End content animate
 				},
 				duration:500
-			}
-		)
+			}) // END animate
+		}
 	}
 	
 	/**

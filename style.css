@@ -926,6 +926,10 @@ ul.bullets {
 /*
  * LOGIN/REGISTER/FORGOT PASSWORD
  */
+#moodle_container .sign-in, body > .sign-in,
+#moodle_container .register, body > .register {
+  padding: 20px; }
+
 .form_login .input_text, .form_register .input_text {
   width: 100%; }
 .form_login label, .form_login a, .form_register label, .form_register a {
@@ -1025,7 +1029,6 @@ fieldset#use_your_account_from {
   background-image: -webkit-linear-gradient(#ffffff, #f4f4f4);
   background-image: -moz-linear-gradient(#ffffff, #f4f4f4);
   background-image: -o-linear-gradient(#ffffff, #f4f4f4);
-  background-image: -ms-linear-gradient(#ffffff, #f4f4f4);
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;
@@ -1402,9 +1405,9 @@ fieldset#use_your_account_from {
   border-radius: 10px; }
 
 #moodle_container .close-button {
-  height: 13px;
-  width: 12px;
-  color: #60605B !important; }
+  background: transparent url(/wp-content/themes/Eris/assets/img/modal_close-button.png) no-repeat 0px 0px;
+  height: 8px;
+  width: 35px; }
 
 .moodle_transit {
   left: -99999em;
