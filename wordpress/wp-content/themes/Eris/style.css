@@ -710,6 +710,7 @@ ul.bullets {
   border-radius: 5px; }
 
 .sears_button.azure, .kmart_button.azure {
+  background-image: url("/wp-content/themes/Eris/assets/img/sears//sprite_global.png");
   border-color: #60768b;
   color: #366392;
   text-shadow: none; }
@@ -717,14 +718,12 @@ ul.bullets {
 .sears_button {
   background-position: 0px -88px; }
 
-.sears_button.azure {
+.sears_button.azure,
+.kmart_button.azure {
   background-position: 0px -140px; }
 
 .kmart_button {
   background-position: 0px -96px; }
-
-.kmart_button.azure {
-  background-position: 0px -148px; }
 
 /*
  * FEATURED
@@ -1007,32 +1006,67 @@ ul.bullets {
   float: left;
   clear: both; }
 
-/*
-* Activity buttons
-*/
 .actions {
   float: left;
-  overflow: hidden; }
+  overflow: hidden;
+  width: 100%; }
+  .actions .reply {
+    display: block;
+    float: left; }
   .actions .action {
     color: #6f6f6f;
-    float: left;
+    float: right;
+    margin-right: 15px;
     overflow: hidden; }
-    .actions .action a {
-      display: block;
-      float: left; }
-    .actions .action .upvote {
+    .actions .action .button {
+      background-color: #fff;
+      background-image: url("/wp-content/themes/Eris/assets/img/activity_icons/bg-gradient.png");
+      background-repeat: repeat-x;
       -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
       -ms-border-radius: 2px;
       -o-border-radius: 2px;
-      background-color: #fff;
-      background: #e4e0df url("/wp-content/themes/Eris/assets/img/sears/sprite_navigation.png");
-      background-position: right center;
       border: 1px solid #d6d6d6;
-      display: block;
+      cursor: pointer;
+      float: left;
       height: 19px;
-      padding: 1px 12px;
-      width: 19px; }
+      margin-right: 3px;
+      overflow: hidden;
+      padding: 1px 7px; }
+      .actions .action .button span {
+        float: left; }
+      .actions .action .button .text {
+        color: #4d76a2;
+        font-size: 13px;
+        margin-right: 6px;
+        position: relative;
+        top: 1px; }
+      .actions .action .button .actionIcon {
+        background-position: right center;
+        background-repeat: no-repeat;
+        height: 19px;
+        width: 15px; }
+      .actions .action .button .upvote {
+        background-image: url("/wp-content/themes/Eris/assets/img/activity_icons/thumb-up.png"); }
+      .actions .action .button .upvote.active {
+        background-image: #e4e0df url("/wp-content/themes/Eris/assets/img/sears/activity_icons/thumb-up-active.png"); }
+      .actions .action .button .downvote {
+        background-image: url("/wp-content/themes/Eris/assets/img/activity_icons/thumb-down.png"); }
+      .actions .action .button .downvote.active {
+        background-image: #e4e0df url("/wp-content/themes/Eris/assets/img/sears/activity_icons/thumb-down-active.png"); }
+      .actions .action .button .flag {
+        background-image: url("/wp-content/themes/Eris/assets/img/activity_icons/flag.png"); }
+      .actions .action .button .flag.active {
+        background-image: #e4e0df url("/wp-content/themes/Eris/assets/img/sears/activity_icons/flag-active.png"); }
+    .actions .action .count {
+      float: left;
+      font-size: 12px;
+      position: relative;
+      top: 2px; }
+  .actions .action.further {
+    margin-right: 25px; }
+  .actions .action.last {
+    margin-right: 0px; }
 
 .dropmenu li {
   float: left;
@@ -1330,6 +1364,12 @@ ul.bullets {
   border-top: 1px solid #d5d5d5;
   padding: 15px 0px; }
 
+.sears .content-container .single .content h2 {
+  color: #067bb5; }
+
+.kmart .content-container .single .content h2 {
+  color: #980017; }
+
 .content-container .single {
   border-top: 1px solid #d5d5d5;
   color: #666;
@@ -1344,7 +1384,6 @@ ul.bullets {
       float: right;
       font-size: 14px; }
   .content-container .single .content h2 {
-    color: #3a81ce;
     font-size: 24px;
     margin-bottom: 10px; }
   .content-container .single .content p {
@@ -1373,25 +1412,34 @@ ul.bullets {
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
     border: 1px solid #d6d6d6;
-    padding: 15px;
+    overflow: hidden;
+    padding: 20px 18px;
     width: 96%; }
-    .content-container .single .comments .allComments .comment {
+    .content-container .single .comments .allComments .comment,
+    .content-container .single .comments .allComments .children {
+      margin-bottom: 25px;
+      overflow: hidden;
+      width: 100%; }
+      .content-container .single .comments .allComments .comment .rightSide,
+      .content-container .single .comments .allComments .children .rightSide {
+        float: left;
+        margin-right: 7%;
+        width: 15%; }
+        .content-container .single .comments .allComments .comment .rightSide .userImage,
+        .content-container .single .comments .allComments .children .rightSide .userImage {
+          border: 1px solid #000;
+          height: 100px;
+          width: 100%; }
+      .content-container .single .comments .allComments .comment .leftSide,
+      .content-container .single .comments .allComments .children .leftSide {
+        float: left;
+        width: 78%; }
+    .content-container .single .comments .allComments .children {
       -webkit-border-radius: 4px;
       -moz-border-radius: 4px;
       -ms-border-radius: 4px;
       -o-border-radius: 4px;
       border: 1px solid #d6d6d6;
-      overflow: hidden;
-      padding: 15px;
-      width: 94.5%; }
-      .content-container .single .comments .allComments .comment .rightSide {
-        float: left;
-        margin-right: 9%;
-        width: 15%; }
-        .content-container .single .comments .allComments .comment .rightSide .userImage {
-          border: 1px solid #000;
-          height: 100px;
-          width: 100%; }
-      .content-container .single .comments .allComments .comment .leftSide {
-        float: left;
-        width: 76%; }
+      float: right;
+      padding: 20px 18px;
+      width: 85%; }
