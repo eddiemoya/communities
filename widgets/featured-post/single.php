@@ -1,0 +1,1 @@
+<?php loop_by_type('widget');
