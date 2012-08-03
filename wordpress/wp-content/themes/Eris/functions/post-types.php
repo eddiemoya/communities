@@ -30,6 +30,7 @@ function register_questions_type() {
         'with_front'    => true,
         'feeds'         => true,
         'paged'         => true,
+        'ep_mask'       => array()
 
     );
     $args = array(
