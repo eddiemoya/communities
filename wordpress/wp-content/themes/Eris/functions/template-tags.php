@@ -155,12 +155,6 @@ function get_category_image($category_id = null, $echo = false, $args = array())
                 'terms' => $category_id,
                 'include_children' => false,
                 'operator' => 'IN'
-            ),
-            array(
-                'taxonomy' => 'category',
-                'field' => 'slug',
-                'terms' => 'thumbnails',
-                'operator' => 'NOT IN'
             )
          )
     );
@@ -207,7 +201,7 @@ function get_category_image_url($category_id = null, $echo = true, $thumb = fals
         
     } else return false;
 }
-    
+
 
 function print_pre($r){
     echo '<pre>';
