@@ -3,6 +3,22 @@
   padding: 15px 0px;
 }
 
+.sears .content-container .single {
+  .content {
+    h2 {
+      color: sears(link);
+    }
+  }
+}
+
+.kmart .content-container .single {
+  .content {
+    h2 {
+      color: kmart(link);
+    }
+  }
+}
+
 .content-container .single {
   border-top: 1px solid #d5d5d5;
   color: #666;
@@ -23,7 +39,6 @@
 
   .content {
     h2 {
-      color: #3a81ce;
       font-size: 24px;
       margin-bottom: 10px;
     }
@@ -68,22 +83,19 @@
       -ms-border-radius: 4px;
       -o-border-radius: 4px;
       border: 1px solid #d6d6d6;
-      padding: 15px;
+      overflow: hidden;
+      padding: 20px 18px;
       width: 96%;
 
-      .comment {
-        -webkit-border-radius: 4px;
-        -moz-border-radius: 4px;
-        -ms-border-radius: 4px;
-        -o-border-radius: 4px;
-        border: 1px solid #d6d6d6;
+      .comment,
+      .children {
+        margin-bottom: 25px;
         overflow: hidden;
-        padding: 15px;
-        width: 94.5%;
+        width: 100%;
 
         .rightSide {
           float: left;
-          margin-right: 9%;
+          margin-right: 7%;
           width: 15%;
 
           .userImage {
@@ -95,10 +107,19 @@
 
         .leftSide {
           float: left;
-          width: 76%;
-
-
+          width: 78%;
         }
+      }
+
+      .children {
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+        border: 1px solid #d6d6d6;
+        float: right;
+        padding: 20px 18px;
+        width: 85%;
       }
     }
   }
