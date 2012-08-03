@@ -1,7 +1,5 @@
 <?php
 
-  //$current_tab = "Community Activity";
-  //$current_nav = "1";
   
   $a_tabs = array(
     "Community Activity" => $url_no_qs . '?post-type=recent',
@@ -44,6 +42,9 @@
   );
   
 ?>
+
+<?php if($profile_type == 'myprofile'): ?>
+
 <nav class="clearfix">
   <ul class="tabs clearfix">
     <?php
@@ -58,6 +59,9 @@
     ?>
   </ul>
 </nav>
+
+<?php endif;?>
+
 
 <nav class="bar clearfix">
   <ul class="clearfix">
@@ -84,3 +88,6 @@
     ?>
   </ul>
 </nav> 
+
+
+
