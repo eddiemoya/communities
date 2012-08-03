@@ -31,7 +31,7 @@
       "author" => "Dick",
       "title" => "Has anyone seen my keys?",
       "excerpt" => "Yes.",
-      "date" => time() - ( 3 * $seconds_in_day ),
+      "date" => strtotime('-3 day')//date('m-d-Y H:i:s', strtotime('-1 day'))//time() - ( 3 * $seconds_in_day ),
     ),
     "3" => array(
       "action" => "3",

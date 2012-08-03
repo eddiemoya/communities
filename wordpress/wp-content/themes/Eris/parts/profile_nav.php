@@ -1,45 +1,45 @@
 <?php
 
-  $current_tab = "Community Activity";
-  $current_nav = "1";
+  //$current_tab = "Community Activity";
+  //$current_nav = "1";
   
   $a_tabs = array(
-    "Community Activity" => "#",
-    "About Me" => "#",
+    "Community Activity" => $url_no_qs . '?post-type=recent',
+    "About Me" => $url_no_qs . '?post-type=aboutme',
   );
   
   $a_navigation = array(
-    "1" => array(
-      "type" => "Recent Activity",
-      "url" => "#"
+    "recent" => array(
+      "name" => "Recent Activity",
+      "url" => $url_no_qs . '?post-type=recent'
     ),
-    "2" => array(
-      "type" => "Questions",
-      "url" => "#"
+    "question" => array(
+      "name" => "Questions",
+      "url" => $url_no_qs . '?post-type=question'
     ),
-    "7" => array(
-      "type" => "Posts",
-      "url" => "#"
+    "posts" => array(
+      "name" => "Posts",
+      "url" => $url_no_qs . '?post-type=posts'
     ),
-    "8" => array(
-      "type" => "Buying Guides",
-      "url" => "#"
+    "guides" => array(
+      "name" => "Buying Guides",
+      "url" => $url_no_qs . '?post-type=guides'
     ),
-    "3" => array(
-      "type" => "Answers",
-      "url" => "#"
+    "answer" => array(
+      "name" => "Answers",
+      "url" => $url_no_qs . '?post-type=answer'
     ),
-    "4" => array(
-      "type" => "Comments",
-      "url" => "#"
+    "comment" => array(
+      "name" => "Comments",
+      "url" => $url_no_qs . '?post-type=comment'
     ),
-    "5" => array(
-      "type" => "Follows",
-      "url" => "#"
+   "follow" => array(
+      "name" => "Follows",
+      "url" => $url_no_qs . '?post-type=follow'
     ),
-    "6" => array(
-      "type" => "Helpful Votes",
-      "url" => "#"
+    "votes" => array(
+      "name" => "Helpful Votes",
+      "url" => $url_no_qs . '?post-type=votes'
     )
   );
   
@@ -58,18 +58,28 @@
     ?>
   </ul>
 </nav>
+
 <nav class="bar clearfix">
   <ul class="clearfix">
     <?php
-    foreach ( $a_navigation as $lone_nav_id => $lone_nav ) {
-      if ( in_array($lone_nav_id, $a_actions_taken) ) {
-        if ( $lone_nav_id == $current_nav ) {
-          echo '<li class="active">' . $lone_nav["type"] . '</li>';
-        }
-        else {
-          echo '<li><a href="' . $lone_nav["url"] . '">' . $lone_nav["type"] . '</a></li>';
-        }
-      }
+    if($current_tab == 'Community Activity') {
+    	
+	    foreach ($a_navigation as $lone_nav_id => $lone_nav) {
+	    	
+	     if ( in_array($lone_nav_id, $available_tabs) ) {
+	     	
+	        if ( $lone_nav_id == $current_nav ) {
+	        	
+	          echo '<li class="active">' . $lone_nav["name"] . '</li>';
+	        }
+	        
+	        else {
+	        	
+	          echo '<li><a href="' . $lone_nav["url"] . '">' . $lone_nav["name"] . '</a></li>';
+	          
+	        }
+	      }
+	    }
     }
     ?>
   </ul>
