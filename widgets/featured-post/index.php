@@ -1,18 +1,5 @@
 <!--/Users/emoya1/Public/Projects/comm/wordpress/wp-content/themes/Eris/widgets/parts/category.php -->
-<article class="content-container featured-question columns">
-    <?php if(function_exists('is_widget')) : ?>
-	    <?php if (is_widget()->show_title && !empty(is_widget()->widget_title)) : ?>
-
-	        <header class="content-header">
-	            <h3><?php echo is_widget()->widget_title; ?></h3>
-	            <?php if(is_widget()->show_subtitle) : ?>
-	                <h4><?php echo is_widget()->widget_subtitle; ?></h4>
-	            <?php endif; ?>
-	        </header>
-
-	    <?php endif; ?>
-
-    	<ol class="content-body clearfix">
+<?php get_template_part('parts/header', 'widget') ;?>
 
 
 		<?php if (have_posts()) { while (have_posts()) { the_post(); ?>
@@ -21,9 +8,9 @@
 	        	<section class="column clearfix">
 	        		<div class="span4 badge">
 	        			<!-- user image -->
-	        			<img src="<?php echo get_template_directory_uri() ?>/assets/img/zzexpert.jpg" alt="Team Player" title="Team Player" />
+	        			<img src="<?php echo get_template_directory_uri()  //get author meta user thumbnail ?>/assets/img/zzexpert.jpg" alt="Team Player" title="Team Player" />
 	        			<h4><a href="<?php the_author_link(); ?>"><?php the_author(); ?></a></h4>
-	        			<address>Chicago, IL</address>
+	        			<address><?php echo 'Chicago, IL'; //get author meta for user location?></address>
 	        		</div>
 
 	        		<div class="span8 info content-details">
@@ -43,6 +30,5 @@
 
 
 		<?php }} ?>
-	<?php endif; //if is widget ?>
-	</ol>
-</article> 
+
+<?php get_template_part('parts/footer', 'widget') ;?>
