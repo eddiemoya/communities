@@ -35,7 +35,7 @@ if(is_user_logged_in() && ($profile_user->data->ID == $current_user->data->ID)){
 //Available Tabs
 switch($profile_type) {
 	
-	case 'myprofile':
+	case 'myprofile' || 'member':
 		
 		$available_tabs = array('recent',
 								'question',
@@ -46,17 +46,6 @@ switch($profile_type) {
 								);
 	break;
 	
-	case 'member':
-		
-		$available_tabs = array('recent',
-								'question',
-								'answer',
-								'comment',
-								'follow',
-								'votes'
-								);
-		
-	break;
 	
 	case 'expert':
 		
@@ -65,7 +54,9 @@ switch($profile_type) {
 								'answer',
 								'comment',
 								'follow',
-								'votes'
+								'votes',
+								'guides',
+								'posts'
 								);
 		
 	break;

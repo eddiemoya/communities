@@ -1,4 +1,9 @@
 <?php
+/*
+ * Template Name: Login
+ */
+
+
 /**
  * @package WordPress
  * @subpackage White Label

@@ -1,4 +1,8 @@
 <?php
+/*
+ * Template Name: Forgot Password
+ */
+
 /**
  * @package WordPress
  * @subpackage White Label
