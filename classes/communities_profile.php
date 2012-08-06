@@ -26,6 +26,8 @@ class User_Profile {
 	
 	public $total_results;
 	
+	public $next_page;
+	
 	
 	public function __construct($user_id = false) {
 		
@@ -57,6 +59,8 @@ class User_Profile {
 		
 		$this->num_pages = round(($this->total_results / $this->posts_per_page), 0, PHP_ROUND_HALF_UP);
 		$this->offset = $row;
+		
+		$this->next_page = ($this->page != $this->num_pages) ? ($this->page + 1) : null;
 		
 		//$this->limit = ' LIMIT ' . $row .','. $this->posts_per_page;
 		
