@@ -51,7 +51,7 @@ $arrow-height: 3px;
   #header_nav.dropmenu {
     background: $nav-color url('#{$sears-img}sprite_navigation.png');
     ul {
-      background: $lightest-color url('#{$sears-img}sprite_navigation.png');
+      background: $lightest-color url('#{$img}sprite-menu.png');
     }
     li {
       a {
@@ -82,9 +82,9 @@ $arrow-height: 3px;
 
 .kmart {
   #header_nav.dropmenu {
-      background: $nav-color url('#{$kmart-img}sprite_navigation.png');
+    background: $nav-color url('#{$kmart-img}sprite_navigation.png');
     ul {
-      background: $lightest-color url('#{$kmart-img}sprite_navigation.png');
+      background: $lightest-color url('#{$img}sprite-menu.png');
     }
     li {
       a {
