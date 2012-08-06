@@ -4,7 +4,7 @@
     <a class="addthis_button_facebook_like"></a>
     <a class="addthis_button_tweet"></a>
     <a class="addthis_button_email"><img src="<?php echo get_template_directory_uri() ?>/assets/img/email.png" /></a>
-    <a class="addthis_button_www.shopyourway.com" addthis:url="http://www.sears.com" addthis:title="ShopYourWay this"><img src="<?php echo get_template_directory_uri() ?>/assets/img/shopyourway_large.png"></a>
+    <a class="addthis_button_www.shopyourway.com" addthis:url="http://www.sears.com" addthis:title="ShopYourWay this"><img src="<?php echo get_template_directory_uri() ?>/assets/img/shopyourway_large.png" /></a>
 </div>
 
 <div class="addthis_toolbox">
