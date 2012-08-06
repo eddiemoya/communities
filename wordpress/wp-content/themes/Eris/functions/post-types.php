@@ -72,6 +72,13 @@ function register_buying_guides_type() {
         'parent_item_colon' => '',
         'menu_name' => 'Buying Guides'
     );
+	$rewrite = array(
+        'slug'          => 'guides',
+        'with_front'    => true,
+        'feeds'         => true,
+        'paged'         => true,
+        'ep_mask'       => array()
+    );
     $args = array(
         'labels' => $labels,
         'public' => true,
@@ -80,6 +87,7 @@ function register_buying_guides_type() {
         'show_in_menu' => true,
         'query_var' => false,
         'rewrite' => false,
+		'rewrite' => $rewrite,
         'capability_type' => 'post',
         'has_archive' => true,
         'hierarchical' => false,
