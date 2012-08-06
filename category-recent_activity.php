@@ -8,6 +8,9 @@
 
   loop();
   
+  $actions = new ActionJacksonQuery();
+  $stuff = $actions->getUserActions($user_id);
+  
   $current_tab = "About Me";
   $current_nav = "1";
   
@@ -78,6 +81,7 @@
     $container_class = ' class="span9"';
   }
 ?>
+
 
     <section class="content-container recent-activity">
       <?php echo $header; ?>

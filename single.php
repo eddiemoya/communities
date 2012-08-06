@@ -7,7 +7,5 @@ get_template_part('parts/header');
 
 loop('question');
 
-//comments_template('/parts/comments.php');
-
 //get_sidebar();
 get_template_part('parts/footer');
