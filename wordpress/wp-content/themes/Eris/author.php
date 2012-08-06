@@ -35,7 +35,7 @@ if(is_user_logged_in() && ($profile_user->data->ID == $current_user->data->ID)){
 //Available Tabs
 switch($profile_type) {
 	
-	case 'myprofile':
+	case 'myprofile' || 'member':
 		
 		$available_tabs = array('recent',
 								'question',
@@ -46,17 +46,6 @@ switch($profile_type) {
 								);
 	break;
 	
-	case 'member':
-		
-		$available_tabs = array('recent',
-								'question',
-								'answer',
-								'comment',
-								'follow',
-								'votes'
-								);
-		
-	break;
 	
 	case 'expert':
 		
@@ -65,7 +54,9 @@ switch($profile_type) {
 								'answer',
 								'comment',
 								'follow',
-								'votes'
+								'votes',
+								'guides',
+								'posts'
 								);
 		
 	break;
@@ -111,6 +102,7 @@ if(isset($_GET['post-type'])) {
 			$activities = $user_activities->get_user_comments_by_type($type)
 											->comments;
 											
+																										
 			include('parts/profile-comments.php');
 		}
 		
@@ -132,6 +124,11 @@ if(isset($_GET['post-type'])) {
 		if($type == 'recent') {
 			
 			include('parts/profile-recent.php');
+		}
+		
+		if($type == 'aboutme') {
+			
+			include('parts/profile-aboutme.php');
 		}
 	
         
@@ -159,7 +156,8 @@ if(isset($_GET['post-type'])) {
        
 	 </ol>
 	 </section>
-	 
+	 	<input type="hidden" name="next-page" value="<?php echo (($user_activities->num_pages > 1) ?  $user_activities->num_pages : null); ?>" />
+	 	<a href="#">More</a>
 	 </section>
 <?php 
 	get_template_part('parts/footer');
