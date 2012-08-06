@@ -34,8 +34,8 @@
   .close-button {
     position:absolute;
     /* Offsets */
-      top:.25em;
-      right:.5em;
+      top:20px;
+      right:20px;
       font-family: Verdana, sans-serif;
   }
 
@@ -64,16 +64,28 @@
     }
   }
   
+  .sears #moodle_window {
+    background:rgba(143,199,252,.3);
+  }
+  
+  .kmart #moodle_window {
+    background:rgba(253,190,81,.3);
+  }
+  
   .sears .loading {
-      background:transparent url(#{$sears-img}background_loading.gif) no-repeat center center;
+    background:transparent url(#{$sears-img}background_loading.gif) no-repeat center center;
   }
   
   .kmart .loading {
-      background:transparent url(#{$kmart-img}background_loading.gif) no-repeat center center;
+    background:transparent url(#{$kmart-img}background_loading.gif) no-repeat center center;
   }
   
-  .no-rgba #moodle_window {
-    background:transparent url(#{$img}background_modal-border_no-rgba.png) repeat 0px 0px;
+  .no-rgba .sears #moodle_window {
+    background:transparent url(#{$sears-img}background_modal-border_no-rgba.png) repeat 0px 0px;
+  }
+  
+  .no-rgba .kmart #moodle_window {
+    background:transparent url(#{$kmart-img}background_modal-border_no-rgba.png) repeat 0px 0px;
   }
   
   #moodle_container {
@@ -83,8 +95,17 @@
     @include border-radius(10px);
   }
   
-  .close-button {
-    height:13px;
-    width:12px;
-    color:#60605B !important;
+  #moodle_container .close-button {
+    background:transparent url(#{$img}modal_close-button.png) no-repeat 0px 0px;
+    height:8px;
+    width:35px;
+  }
+  
+  .moodle_transit {
+    left:-99999em;
+    opacity:0;
+    position:absolute;
+    top:-99999em;
+    visibility: hidden;
+    max-width:940px;
   }

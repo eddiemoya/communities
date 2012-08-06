@@ -577,6 +577,9 @@ a {
 .left {
   float: left; }
 
+.hide {
+  display: none; }
+
 .bullets {
   margin: 1em 0;
   padding: 0 0 0 40px; }
@@ -713,6 +716,7 @@ ul.bullets {
   border-radius: 5px; }
 
 .sears_button.azure, .kmart_button.azure {
+  background-image: url("/wp-content/themes/Eris/assets/img/sears//sprite_global.png");
   border-color: #60768b;
   color: #366392;
   text-shadow: none; }
@@ -720,14 +724,12 @@ ul.bullets {
 .sears_button {
   background-position: 0px -88px; }
 
-.sears_button.azure {
+.sears_button.azure,
+.kmart_button.azure {
   background-position: 0px -140px; }
 
 .kmart_button {
   background-position: 0px -96px; }
-
-.kmart_button.azure {
-  background-position: 0px -148px; }
 
 /*
  * FEATURED
@@ -929,6 +931,10 @@ ul.bullets {
 /*
  * LOGIN/REGISTER/FORGOT PASSWORD
  */
+#moodle_container .sign-in, body > .sign-in,
+#moodle_container .register, body > .register {
+  padding: 20px; }
+
 .form_login .input_text, .form_register .input_text {
   width: 100%; }
 .form_login label, .form_login a, .form_register label, .form_register a {
@@ -1028,7 +1034,6 @@ fieldset#use_your_account_from {
   background-image: -webkit-linear-gradient(#ffffff, #f4f4f4);
   background-image: -moz-linear-gradient(#ffffff, #f4f4f4);
   background-image: -o-linear-gradient(#ffffff, #f4f4f4);
-  background-image: -ms-linear-gradient(#ffffff, #f4f4f4);
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;
@@ -1081,32 +1086,67 @@ fieldset#use_your_account_from {
   float: left;
   clear: both; }
 
-/*
-* Activity buttons
-*/
 .actions {
   float: left;
-  overflow: hidden; }
+  overflow: hidden;
+  width: 100%; }
+  .actions .reply {
+    display: block;
+    float: left; }
   .actions .action {
     color: #6f6f6f;
-    float: left;
+    float: right;
+    margin-right: 15px;
     overflow: hidden; }
-    .actions .action a {
-      display: block;
-      float: left; }
-    .actions .action .upvote {
+    .actions .action .button {
+      background-color: #fff;
+      background-image: url("/wp-content/themes/Eris/assets/img/activity_icons/bg-gradient.png");
+      background-repeat: repeat-x;
       -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
       -ms-border-radius: 2px;
       -o-border-radius: 2px;
-      background-color: #fff;
-      background: #e4e0df url("/wp-content/themes/Eris/assets/img/sears/sprite_navigation.png");
-      background-position: right center;
       border: 1px solid #d6d6d6;
-      display: block;
+      cursor: pointer;
+      float: left;
       height: 19px;
-      padding: 1px 12px;
-      width: 19px; }
+      margin-right: 3px;
+      overflow: hidden;
+      padding: 1px 7px; }
+      .actions .action .button span {
+        float: left; }
+      .actions .action .button .text {
+        color: #4d76a2;
+        font-size: 13px;
+        margin-right: 6px;
+        position: relative;
+        top: 1px; }
+      .actions .action .button .actionIcon {
+        background-position: right center;
+        background-repeat: no-repeat;
+        height: 19px;
+        width: 15px; }
+      .actions .action .button .upvote {
+        background-image: url("/wp-content/themes/Eris/assets/img/activity_icons/thumb-up.png"); }
+      .actions .action .button .upvote.active {
+        background-image: #e4e0df url("/wp-content/themes/Eris/assets/img/sears/activity_icons/thumb-up-active.png"); }
+      .actions .action .button .downvote {
+        background-image: url("/wp-content/themes/Eris/assets/img/activity_icons/thumb-down.png"); }
+      .actions .action .button .downvote.active {
+        background-image: #e4e0df url("/wp-content/themes/Eris/assets/img/sears/activity_icons/thumb-down-active.png"); }
+      .actions .action .button .flag {
+        background-image: url("/wp-content/themes/Eris/assets/img/activity_icons/flag.png"); }
+      .actions .action .button .flag.active {
+        background-image: #e4e0df url("/wp-content/themes/Eris/assets/img/sears/activity_icons/flag-active.png"); }
+    .actions .action .count {
+      float: left;
+      font-size: 12px;
+      position: relative;
+      top: 2px; }
+  .actions .action.further {
+    margin-right: 25px; }
+  .actions .action.last {
+    margin-right: 0px; }
 
 .dropmenu li {
   float: left;
@@ -1351,8 +1391,8 @@ fieldset#use_your_account_from {
 .close-button {
   position: absolute;
   /* Offsets */
-  top: .25em;
-  right: .5em;
+  top: 20px;
+  right: 20px;
   font-family: Verdana, sans-serif; }
 
 #moodle_overlay {
@@ -1376,14 +1416,23 @@ fieldset#use_your_account_from {
     text-align: center;
     width: 100%; }
 
+.sears #moodle_window {
+  background: rgba(143, 199, 252, 0.3); }
+
+.kmart #moodle_window {
+  background: rgba(253, 190, 81, 0.3); }
+
 .sears .loading {
   background: transparent url(/wp-content/themes/Eris/assets/img/sears/background_loading.gif) no-repeat center center; }
 
 .kmart .loading {
   background: transparent url(/wp-content/themes/Eris/assets/img/kmart/background_loading.gif) no-repeat center center; }
 
-.no-rgba #moodle_window {
-  background: transparent url(/wp-content/themes/Eris/assets/img/background_modal-border_no-rgba.png) repeat 0px 0px; }
+.no-rgba .sears #moodle_window {
+  background: transparent url(/wp-content/themes/Eris/assets/img/sears/background_modal-border_no-rgba.png) repeat 0px 0px; }
+
+.no-rgba .kmart #moodle_window {
+  background: transparent url(/wp-content/themes/Eris/assets/img/kmart/background_modal-border_no-rgba.png) repeat 0px 0px; }
 
 #moodle_container {
   background: #ffffff;
@@ -1395,14 +1444,28 @@ fieldset#use_your_account_from {
   -o-border-radius: 10px;
   border-radius: 10px; }
 
-.close-button {
-  height: 13px;
-  width: 12px;
-  color: #60605B !important; }
+#moodle_container .close-button {
+  background: transparent url(/wp-content/themes/Eris/assets/img/modal_close-button.png) no-repeat 0px 0px;
+  height: 8px;
+  width: 35px; }
+
+.moodle_transit {
+  left: -99999em;
+  opacity: 0;
+  position: absolute;
+  top: -99999em;
+  visibility: hidden;
+  max-width: 940px; }
 
 .content-container .breadcrumbs {
   border-top: 1px solid #d5d5d5;
   padding: 15px 0px; }
+
+.sears .content-container .single .content h2 {
+  color: #067bb5; }
+
+.kmart .content-container .single .content h2 {
+  color: #980017; }
 
 .content-container .single {
   border-top: 1px solid #d5d5d5;
@@ -1418,7 +1481,6 @@ fieldset#use_your_account_from {
       float: right;
       font-size: 14px; }
   .content-container .single .content h2 {
-    color: #3a81ce;
     font-size: 24px;
     margin-bottom: 10px; }
   .content-container .single .content p {
@@ -1447,28 +1509,37 @@ fieldset#use_your_account_from {
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
     border: 1px solid #d6d6d6;
-    padding: 15px;
+    overflow: hidden;
+    padding: 20px 18px;
     width: 96%; }
-    .content-container .single .comments .allComments .comment {
+    .content-container .single .comments .allComments .comment,
+    .content-container .single .comments .allComments .children {
+      margin-bottom: 25px;
+      overflow: hidden;
+      width: 100%; }
+      .content-container .single .comments .allComments .comment .rightSide,
+      .content-container .single .comments .allComments .children .rightSide {
+        float: left;
+        margin-right: 7%;
+        width: 15%; }
+        .content-container .single .comments .allComments .comment .rightSide .userImage,
+        .content-container .single .comments .allComments .children .rightSide .userImage {
+          border: 1px solid #000;
+          height: 100px;
+          width: 100%; }
+      .content-container .single .comments .allComments .comment .leftSide,
+      .content-container .single .comments .allComments .children .leftSide {
+        float: left;
+        width: 78%; }
+    .content-container .single .comments .allComments .children {
       -webkit-border-radius: 4px;
       -moz-border-radius: 4px;
       -ms-border-radius: 4px;
       -o-border-radius: 4px;
       border: 1px solid #d6d6d6;
-      overflow: hidden;
-      padding: 15px;
-      width: 94.5%; }
-      .content-container .single .comments .allComments .comment .rightSide {
-        float: left;
-        margin-right: 9%;
-        width: 15%; }
-        .content-container .single .comments .allComments .comment .rightSide .userImage {
-          border: 1px solid #000;
-          height: 100px;
-          width: 100%; }
-      .content-container .single .comments .allComments .comment .leftSide {
-        float: left;
-        width: 76%; }
+      float: right;
+      padding: 20px 18px;
+      width: 85%; }
 
 .addthis_button_facebook_like iframe {
   width: 49px !important;
