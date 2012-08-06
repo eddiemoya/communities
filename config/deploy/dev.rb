@@ -3,7 +3,9 @@ set(:user) { "stateadm" }
 
 set(:domain) { "uxint" }
 set(:application) { "communities" }
-set(:repository) { "ssh://git@uxdev/home/git/repos/communities.git" }
+set(:repository) { "git@github.com:dasfisch/communities.git" }
+set(:git_enable_submodules) { 1 }
+
 
 ##### APPLICATION #####
 role :web, "#{domain}"  # Your HTTP server, Apache/etc
@@ -11,7 +13,7 @@ role :app, "#{domain}"  # This may be the same as your `Web` server
 role :db, domain, :primary => true
 
 set (:branch) { "development" }
-set (:deploy_to) { "/usr/share/apps/communities" }
+set (:deploy_to) { "/home/stateadm/communities" }
 set (:app_loc) { "/appl/communities/www/wp-content" }
 
 set :move_wp_content do
