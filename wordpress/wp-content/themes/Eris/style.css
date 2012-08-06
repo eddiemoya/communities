@@ -1035,6 +1035,7 @@ fieldset#use_your_account_from {
   background-image: -webkit-linear-gradient(#ffffff, #f4f4f4);
   background-image: -moz-linear-gradient(#ffffff, #f4f4f4);
   background-image: -o-linear-gradient(#ffffff, #f4f4f4);
+  background-image: -ms-linear-gradient(#ffffff, #f4f4f4);
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;
@@ -1179,35 +1180,29 @@ fieldset#use_your_account_from {
   width: 960px;
   margin: 0 auto; }
 
-.sears #header_nav.dropmenu {
-  background: #e4e0df url("/wp-content/themes/Eris/assets/img/sears/sprite_navigation.png"); }
-  .sears #header_nav.dropmenu ul {
-    background: white url("/wp-content/themes/Eris/assets/img/sprite-menu.png"); }
-  .sears #header_nav.dropmenu li a {
-    color: #067bb5; }
-    .sears #header_nav.dropmenu li a span {
-      background-image: url("/wp-content/themes/Eris/assets/img/sears/sprite_navigation.png"); }
-  .sears #header_nav.dropmenu li.right_button {
-    background: #1a519b url("/wp-content/themes/Eris/assets/img/sears/sprite_navigation.png"); }
-.sears #footer_nav.dropmenu {
-  background: #dedbde url("/wp-content/themes/Eris/assets/img/sears/sprite_navigation.png"); }
-  .sears #footer_nav.dropmenu li:hover {
-    background-image: url("/wp-content/themes/Eris/assets/img/sears/sprite_navigation.png"); }
-  .sears #footer_nav.dropmenu li a span {
-    background-image: url("/wp-content/themes/Eris/assets/img/sears/sprite_navigation.png"); }
+.shdrbg, .sears #header_nav.dropmenu, .sears #header_nav.dropmenu li a span, .sears #header_nav.dropmenu li.right_button, .sears #footer_nav.dropmenu, .sears #footer_nav.dropmenu li:hover, .sears #footer_nav.dropmenu li a span {
+  background-image: url("/wp-content/themes/Eris/assets/img/sears/sprite_navigation.png"); }
 
-.kmart #header_nav.dropmenu {
-  background: #e4e0df url("/wp-content/themes/Eris/assets/img/kmart/sprite_navigation.png"); }
-  .kmart #header_nav.dropmenu ul {
-    background: white url("/wp-content/themes/Eris/assets/img/sprite-menu.png"); }
-  .kmart #header_nav.dropmenu li a {
-    color: #333333; }
-    .kmart #header_nav.dropmenu li a span {
-      background-image: url("/wp-content/themes/Eris/assets/img/kmart/sprite_navigation.png"); }
-  .kmart #header_nav.dropmenu li.right_button {
-    background: #1a519b url("/wp-content/themes/Eris/assets/img/kmart/sprite_navigation.png"); }
-.kmart #footer_nav.dropmenu li a span {
+.khdrbg, .kmart #header_nav.dropmenu, .kmart #header_nav.dropmenu li a span, .kmart #header_nav.dropmenu li.right_button, .kmart #footer_nav.dropmenu li a span {
   background-image: url("/wp-content/themes/Eris/assets/img/kmart/sprite_navigation.png"); }
+
+.sears #header_nav.dropmenu, .kmart #header_nav.dropmenu {
+  background-color: #e4e0df; }
+
+.sears #header_nav.dropmenu ul, .kmart #header_nav.dropmenu ul {
+  background: white url("/wp-content/themes/Eris/assets/img/sprite-menu.png"); }
+
+.sears #header_nav.dropmenu li a {
+  color: #067bb5; }
+.sears #header_nav.dropmenu li.right_button {
+  background-color: #1a519b; }
+.sears #footer_nav.dropmenu {
+  background-color: #dedbde; }
+
+.kmart #header_nav.dropmenu li a {
+  color: #333333; }
+.kmart #header_nav.dropmenu li.right_button {
+  background-color: #e02334; }
 
 .sears #header_nav.dropmenu, .kmart #header_nav.dropmenu {
   -webkit-border-radius: 5px;
@@ -1500,7 +1495,7 @@ fieldset#use_your_account_from {
       -o-border-radius: 4px;
       border: 1px solid #d6d6d6;
       margin-bottom: 15px;
-      width: 100%; }
+      width: 99%; }
     .content-container .single .comments .commentForm .top .leaveComment {
       color: #067BB5;
       float: right; }
@@ -1516,7 +1511,7 @@ fieldset#use_your_account_from {
     border: 1px solid #d6d6d6;
     overflow: hidden;
     padding: 20px 18px;
-    width: 96%; }
+    width: 94%; }
     .content-container .single .comments .allComments .comment,
     .content-container .single .comments .allComments .children {
       margin-bottom: 25px;

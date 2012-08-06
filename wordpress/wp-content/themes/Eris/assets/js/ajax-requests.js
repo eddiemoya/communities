@@ -22,4 +22,27 @@ jQuery(document).ready(function($) {
 			}
 		});
  	});
+
+
+ 	$('li#header_login a').bind('click', function(e){
+ 		e.preventDefault();
+		var data = {
+			action		: 'get_template_ajax',
+			template	: 'page-login'
+		};
+
+		jQuery.ajax({
+			url  : ajaxdata.ajaxurl,
+			type: 'POST',
+			data : data,
+			success:function(xhr, message, status){
+				console.log(xhr);
+				console.log(message);
+				console.log(status)
+
+			}
+		});
+ 	});
  });
+
+
