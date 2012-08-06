@@ -93,7 +93,7 @@ if(isset($_GET['post-type'])) {
 ?>
 	 <section class="content-container recent-activity">
 	 
-	 	   <ol class="content-body result clearfix">
+	 	   <ol class="content-body result clearfix" id="profile-results">
 	 	   
         <?php
       	//Comments
@@ -156,8 +156,7 @@ if(isset($_GET['post-type'])) {
        
 	 </ol>
 	 </section>
-	 	<input type="hidden" name="next-page" value="<?php echo (($user_activities->num_pages > 1) ?  $user_activities->num_pages : null); ?>" />
-	 	<a href="#">More</a>
+	 	
 	 </section>
 <?php 
 	get_template_part('parts/footer');
