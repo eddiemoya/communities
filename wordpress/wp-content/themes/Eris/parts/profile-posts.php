@@ -2,8 +2,6 @@
 //var_dump($activities);
 
 foreach($activities as $activity):
-
-//$excerpt = '<article class="excerpt">' . (strlen( $activity->comment_content ) > 180 ? substr( $activity->comment_content, 0, 180 ) . "&#8230;" : $activity->comment_content) . '</article>';
             
 ?>
 	 <li class="clearfix">
@@ -18,4 +16,15 @@ foreach($activities as $activity):
 	          </div>
 	        </li>
  <?php endforeach; ?>
+ 
+ 	<input type="hidden" id="next-page" value="<?php echo $user_activities->next_page; ?>" />
+ 	
+ 	<?php if(! is_ajax()):?>
+	 	<input type="hidden" id="type" value="<?php echo $type;?>" />
+	 	<input type="hidden" id="uid" value="<?php echo $profile_user->data->ID; ?>" />
+ 	<?php endif;?>
+ 	
+ 	<?php if($user_activities->next_page):?>
+	 	<a href="" id="page-more">More...</a>
+ 	<?php endif;?>
       
