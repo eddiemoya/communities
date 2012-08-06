@@ -47,33 +47,50 @@ $arrow-height: 3px;
   margin:0 auto;
 }
 
+// Consolidate what the headers have in common
+
+// Sears Header Background
+.shdrbg {
+  background-image: url('#{$sears-img}sprite_navigation.png');
+}
+// Kmart Header Background
+.khdrbg {
+  background-image: url('#{$kmart-img}sprite_navigation.png');
+}
+
+.sears #header_nav.dropmenu, .kmart #header_nav.dropmenu {
+  background-color: $nav-color;
+}
+.sears #header_nav.dropmenu ul, .kmart #header_nav.dropmenu ul {
+  background: $lightest-color url('#{$img}sprite-menu.png');
+}
+
 .sears {
   #header_nav.dropmenu {
-    background: $nav-color url('#{$sears-img}sprite_navigation.png');
-    ul {
-      background: $lightest-color url('#{$img}sprite-menu.png');
-    }
+    @extend .shdrbg;
     li {
       a {
         color: sears( link );
         span {
-          background-image: url('#{$sears-img}sprite_navigation.png');
+          @extend .shdrbg;
         }
       }
       &.right_button {
-        background: sears( button ) url('#{$sears-img}sprite_navigation.png');
+        background-color: sears( button );
+        @extend .shdrbg;
       }
     }
   }
   #footer_nav.dropmenu {
-    background: sears( footer ) url('#{$sears-img}sprite_navigation.png');
+    background-color: sears( footer );
+    @extend .shdrbg;
     li {
       &:hover {
-        background-image: url('#{$sears-img}sprite_navigation.png');
+        @extend .shdrbg;
       }
       a {
         span {
-          background-image: url('#{$sears-img}sprite_navigation.png');
+          @extend .shdrbg;
         }
       }
     }
@@ -82,19 +99,17 @@ $arrow-height: 3px;
 
 .kmart {
   #header_nav.dropmenu {
-    background: $nav-color url('#{$kmart-img}sprite_navigation.png');
-    ul {
-      background: $lightest-color url('#{$img}sprite-menu.png');
-    }
+    @extend .khdrbg;
     li {
       a {
         color: #333333;
         span {
-          background-image: url('#{$kmart-img}sprite_navigation.png');
+          @extend .khdrbg;
         }
       }
       &.right_button {
-        background: sears( button ) url('#{$kmart-img}sprite_navigation.png');
+        background-color: kmart( button );
+        @extend .khdrbg;
       }
     }
   }
@@ -102,7 +117,7 @@ $arrow-height: 3px;
     li {
       a {
         span {
-          background-image: url('#{$kmart-img}sprite_navigation.png');
+          @extend .khdrbg;
         }
       }
     }
@@ -204,8 +219,7 @@ $arrow-height: 3px;
     $divisor: ( $grid-width - ( $footer-count-sears - 1 ) ) / $footer-count-sears;
     width: percentage( $divisor / $grid-width );
     border-left: 1px solid $lightest-color;
-    // Give the footer item a different background and 
-    // make it appear above the footer bar ("drop-up")
+    // Give the footer item a different background
     &:hover {
       // adjust for the first item's rounded corners
       &:first-child {
