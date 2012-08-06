@@ -179,10 +179,6 @@ MOODLE.modal = $Moodle = function(element, options) {
 		return self;
 	}
 	
-	error = function(xhr, status, message) {
-		$(gears.container).html("<h1>Sh!t</h1><p>Cats broke the interwebz</p>");
-	}
-	
 	/*
 	 * PUBLIC METHODS
 	 */
@@ -246,6 +242,8 @@ MOODLE.modal = $Moodle = function(element, options) {
 	 */
 	this.update = function(element, options) {
 		var compose; // Function to draw out the modal window
+		var error;	// Function to create the error message
+		
 		/*
 		 * argumentOptions, elementOptions and settings are the three ways which
 		 * define the final settings for the modal window. 'settings' is a clone of the default
@@ -299,7 +297,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 					htmlObject = shcJSL.preloadImages(shcJSL.renderHTML(shcJSL.createNewElement("div"), data)).firstChild;
 					compose(htmlObject, [status, xhr])
 				}).error(function(xhr, status, message) {
-					error(xhr, status, message)
+					error(message, xhr, status)
 					// console.log("ERROR");
 					// console.log("DATA: "); console.log(data);
 					// console.log("TEXT: "); console.log(text);
@@ -309,10 +307,11 @@ MOODLE.modal = $Moodle = function(element, options) {
 		}
 		
 		if (String(settings.method).toLowerCase() === 'local') {
-			try {
+			if (document.getElementById(settings.target)) {
 				compose(document.getElementById(settings.target));
-			} catch(e) {
-				console.log(e);
+			}
+			else {
+				error("ID not found.")
 			}
 		}
 		
@@ -340,7 +339,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 					
 					$(document).bind('keyup', {data:settings}, escapeModal)
 					
-					$(window).trigger('moodle-update');
+					$(gears.modal).trigger('moodle-update', gears.modal);
 					
 					$(content).toggleClass("moodle_transit").animate({
 						opacity:100
@@ -350,6 +349,16 @@ MOODLE.modal = $Moodle = function(element, options) {
 				},
 				duration:500
 			}) // END animate
+		} // END compose
+		
+		function error(message, xhr, status) {
+			var oops; // Error HTMLObject
+
+			oops = "<article class='span12 content-container' id='moodle_error'><section class='content-body clearfix'><h6 class='content-headline'>Oops!</h6><p>The modal window has encountered a problem.</p>";
+			if (message) oops += "<p>" + ((xhr)? xhr.status:"") + " " + message + "</p>";
+			oops += "</section></article>";
+			oops = $(oops);
+			compose(oops);
 		}
 	}
 	
@@ -376,6 +385,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 		$(gears.modal).remove();
 		$(window).unbind("resize", centerModal);
 		$(document).unbind('keyup',escapeModal);
+		$(gears.modal).unbind('moodle-update', shcJSL.gizmos.activate);
 		$(window).trigger("moodle-close");
 		toggleLoading();
 		toggleOverlay();

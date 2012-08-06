@@ -2,11 +2,14 @@
 /*
  * Template Name: Register
  */
-
+$origin = (isset($_GET['origin'])) ? $_GET['origin'] : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_permalink($post->ID));
+$error = (isset($_GET['error'])) ? $_GET['error'] : false;
 /**
  * @package WordPress
  * @subpackage White Label
  */
+
+if(! is_ajax()):
 
 get_template_part('parts/header'); ?>
 	<section class="span8">
@@ -14,10 +17,11 @@ get_template_part('parts/header'); ?>
 		<article class="content-container post-your-question span12">
 			
 			<section class="content-body clearfix">
+	<?php endif;?>
 				
 				<h6 class="content-headline">Register</h6>
 				
-				<form class="form_register">
+				<form class="form_register" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>">
             <ul class="form-fields">
                 
                 <li>
@@ -48,6 +52,7 @@ get_template_part('parts/header'); ?>
                     </dl>
                 </li>
                 
+                <?php if(! is_ajax()):?>
                 <li class="clearfix">
                     <dl>
                         <dd class="span3">&nbsp;</dd>
@@ -105,5 +110,10 @@ get_template_part('parts/header'); ?>
 	<section class="span4">
 		Tim: is this empty section needed for anything?
 	</section>
-<?php get_template_part('parts/footer'); ?>
+<?php get_template_part('parts/footer'); 
+
+endif;
+?>
+
+
 
