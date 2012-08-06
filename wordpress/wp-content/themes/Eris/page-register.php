@@ -1,4 +1,8 @@
 <?php
+/*
+ * Template Name: Register
+ */
+
 /**
  * @package WordPress
  * @subpackage White Label

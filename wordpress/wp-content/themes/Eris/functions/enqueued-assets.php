@@ -45,7 +45,7 @@ function enqueue_scripts() {
 
         wp_register_script('ajaxrequests', get_template_directory_uri() . '/assets/js/ajax-requests.js', array('jquery'), '1.2');
         wp_enqueue_script('ajaxrequests');   
-				
+			
 		wp_localize_script('jquery', 'ajaxdata', $data);		
        	//wp_register_script('shcproducts', get_template_directory_uri() . '/assets/js/shcproducts.js', array('jquery'), '1.0');
         //wp_enqueue_script('shcproducts');
@@ -54,6 +54,13 @@ function enqueue_scripts() {
         /* Styles */
         wp_register_style('main-styles', get_stylesheet_uri());
         wp_enqueue_style( 'main-styles');
+        
+        //Enqueue profile ajax only for author template
+        if(is_author()) {
+        	
+        	wp_register_script('profile-ajax', get_template_directory_uri() . '/assets/js/profile-ajax.js', array('jquery'), '1.0');
+        	wp_enqueue_script('profile-ajax');
+        }
         
     }
 }

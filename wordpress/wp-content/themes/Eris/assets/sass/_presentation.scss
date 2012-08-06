@@ -55,6 +55,10 @@ a {
   float: left;
 }
 
+.hide {
+  display:none;
+}
+
 .bullets {
   margin: 1em 0; 
   padding: 0 0 0 40px; 
@@ -251,6 +255,7 @@ ul.bullets {
 }
 
 .sears_button.azure, .kmart_button.azure {
+  background-image: url('#{$sears-img}/sprite_global.png');
   border-color:#60768b;
   color:#366392;
   text-shadow:none;
@@ -260,7 +265,8 @@ ul.bullets {
   background-position:0px -88px;
 }
 
-.sears_button.azure {
+.sears_button.azure,
+.kmart_button.azure {
   background-position:0px -140px;
 }
 
@@ -268,9 +274,6 @@ ul.bullets {
   background-position:0px -96px;
 }
 
-.kmart_button.azure {
-  background-position:0px -148px;
-}
 
 
 form {}
@@ -305,7 +308,7 @@ form {}
     color:#333333;
     font-size:.8125em;
     line-height:1.7em;
-    margin-bottom:1em; 
+    margin-bottom:1em;
   }
   .content-details {
     padding-bottom:.625em;
@@ -367,7 +370,7 @@ form {}
 
 // Alternate selector for below class. Use if override for more scenarios is required.
 // Also, more like these would have to be created on a per-widget basis if development is asked to create more override states.
-//.span3 .featured-members, .span4 .featured-members, .span6 .featured-members, 
+//.span3 .featured-members, .span4 .featured-members, .span6 .featured-members,
 //.span3.featured-members, .span4.featured-members, .span6.featured-members, .span8.featured-members
 
 .span3 .featured-members, .span4 .featured-members, .span6 .featured-members {
@@ -392,7 +395,7 @@ form {}
     margin:0 .625em .625em 0;
     width:6.25em;
   }
-  
+
   $column-width: nth( $span-widths, 4 );
   $calculated-widths: ratioize( ($column-width, $column-width, 10) );
   &.columns {
@@ -500,7 +503,7 @@ form {}
     float: right;
     @extend .faint;
   }
-  h3 { 
+  h3 {
     a {
       font-weight: bold;
     }
@@ -564,6 +567,10 @@ form {}
 /*
  * LOGIN/REGISTER/FORGOT PASSWORD
  */
+#moodle_container .sign-in, body > .sign-in,
+#moodle_container .register, body > .register {
+  padding:20px;
+}
 
 .form_login, .form_register {
   .input_text {
@@ -682,6 +689,7 @@ $tab-padding: "1em 0 .6em 0";
       margin-left: 0;
     }
   }
+
   .personal_info {
     margin-top: 1em;
     dt, dd {
@@ -746,36 +754,97 @@ $tab-padding: "1em 0 .6em 0";
 	}
 }
 
-/*
-* Activity buttons
-*/
+//Activity buttons
+
 .actions {
   float: left;
   overflow: hidden;
+  width: 100%;
+
+  .reply {
+    display: block;
+    float: left;
+  }
 
   .action {
     color: #6f6f6f;
-    float: left;
+    float: right;
+    margin-right: 15px;
     overflow: hidden;
 
-    a {
-      display: block;
-      float: left;
-    }
-
-    .upvote {
+    .button {
+      background-color: #fff;
+      background-image: url('#{$img}activity_icons/bg-gradient.png');
+      background-repeat: repeat-x;
       -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
       -ms-border-radius: 2px;
       -o-border-radius: 2px;
-      background-color: #fff;
-      background: $nav-color url('#{$sears-img}sprite_navigation.png');
-      background-position: right center;
       border: 1px solid #d6d6d6;
-      display: block;
+      cursor: pointer;
+      float: left;
       height: 19px;
-      padding: 1px 12px;
-      width: 19px;
+      margin-right: 3px;
+      overflow: hidden;
+      padding: 1px 7px;
+
+      span {
+        float: left;
+      }
+
+      .text {
+        color: #4d76a2;
+        font-size: 13px;
+        margin-right: 6px;
+        position: relative;
+        top: 1px;
+      }
+
+      .actionIcon {
+        background-position: right center;
+        background-repeat: no-repeat;
+        height: 19px;
+        width: 15px;
+      }
+
+      .upvote {
+        background-image: url('#{$img}activity_icons/thumb-up.png');
+      }
+
+      .upvote.active {
+        background-image: $nav-color url('#{$sears-img}activity_icons/thumb-up-active.png');
+      }
+
+      .downvote {
+        background-image: url('#{$img}activity_icons/thumb-down.png');
+      }
+
+      .downvote.active {
+        background-image: $nav-color url('#{$sears-img}activity_icons/thumb-down-active.png');
+      }
+
+      .flag {
+        background-image: url('#{$img}activity_icons/flag.png');
+      }
+
+      .flag.active {
+        background-image: $nav-color url('#{$sears-img}activity_icons/flag-active.png');
+      }
     }
+
+    .count {
+      float: left;
+      font-size: 12px;
+      position: relative;
+      top: 2px;
+    }
+  }
+
+  .action.further {
+    margin-right: 25px;
+  }
+
+  .action.last {
+    margin-right: 0px;
   }
 }
