@@ -22,7 +22,7 @@ get_template_part('parts/header'); ?>
 	<?php endif;?>
 				<h6 class="content-headline">Sign in</h6>
 				
-				<form class="form_login" action="<?php echo '?ssologin&origin=' . $origin;?>">
+				<form class="form_login" method="post" action="<?php echo '?ssologin&origin=' . $origin;?>">
 	        <ul class="form-fields">
 	            
 	            <li>

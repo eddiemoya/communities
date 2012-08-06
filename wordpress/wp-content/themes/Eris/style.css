@@ -1182,7 +1182,7 @@ fieldset#use_your_account_from {
 .sears #header_nav.dropmenu {
   background: #e4e0df url("/wp-content/themes/Eris/assets/img/sears/sprite_navigation.png"); }
   .sears #header_nav.dropmenu ul {
-    background: white url("/wp-content/themes/Eris/assets/img/sears/sprite_navigation.png"); }
+    background: white url("/wp-content/themes/Eris/assets/img/sprite-menu.png"); }
   .sears #header_nav.dropmenu li a {
     color: #067bb5; }
     .sears #header_nav.dropmenu li a span {
@@ -1199,7 +1199,7 @@ fieldset#use_your_account_from {
 .kmart #header_nav.dropmenu {
   background: #e4e0df url("/wp-content/themes/Eris/assets/img/kmart/sprite_navigation.png"); }
   .kmart #header_nav.dropmenu ul {
-    background: white url("/wp-content/themes/Eris/assets/img/kmart/sprite_navigation.png"); }
+    background: white url("/wp-content/themes/Eris/assets/img/sprite-menu.png"); }
   .kmart #header_nav.dropmenu li a {
     color: #333333; }
     .kmart #header_nav.dropmenu li a span {
