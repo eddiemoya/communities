@@ -290,6 +290,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 			if (settings.target && (settings.target != 'undefined' || settings.target != '')) {
 				jQuery.ajax({
 					dataType: 'html',
+					type: "GET",
 					url: settings.target
 				}).success(function(data, status, xhr) {
 					var htmlObject;	// New HTMLObject created the the AJAX response string
@@ -298,10 +299,6 @@ MOODLE.modal = $Moodle = function(element, options) {
 					compose(htmlObject, [status, xhr])
 				}).error(function(xhr, status, message) {
 					error(message, xhr, status)
-					// console.log("ERROR");
-					// console.log("DATA: "); console.log(data);
-					// console.log("TEXT: "); console.log(text);
-					// console.log("XHR: "); console.log(xhr);
 				})
 			} // END if settings.target
 		}
@@ -316,39 +313,52 @@ MOODLE.modal = $Moodle = function(element, options) {
 		}
 		
 		function compose(content, data) {
+			console.log("CONTENT:"); 
+			console.log(content);
+			console.log("DATA:"); 
+			console.log(data);
+			if (typeof content == "#text") {alert("BALLS");}
 			if (settings.width && settings.width != 'auto') if (!(isNaN(settings.width))) $(content).css('width', settings.width);
 			if (settings.height && settings.height != 'auto') if (!(isNaN(settings.height))) $(content).css('height', settings.width);
 			
 			$(document.body).append($(content).show().toggleClass('moodle_transit').css('opacity','0'));
 			window.scrollTo(0,0);
-			
-			$(gears.modal).animate({
-				height:$(content).outerHeight(),
-				left:(getPosition(content).left > 12)? getPosition(content).left -12:12,
-				top:(getPosition(content).top > 12)? getPosition(content).top - 12:12,
-				width:$(content).outerWidth()
-			}, {
-				complete: function() {
-					$(gears.container).children().detach();
-					$(gears.container).append(content);
-					
-					// SET UP CLOSE BUTTON
-					$(gears.container).append($(shcJSL.createNewElement("a","close-button",{href:'#'})).bind('click', {data:settings}, self.destroy))
-					if (settings.clickOverlayToClose) $(gears.overlay).bind('click', {data:settings},self.destroy);
-					else $(gears.overlay).unbind('click',self.destroy);
-					
-					$(document).bind('keyup', {data:settings}, escapeModal)
-					
-					$(gears.modal).trigger('moodle-update', gears.modal);
-					
-					$(content).toggleClass("moodle_transit").animate({
-						opacity:100
-					},{
-						duration:750
-					}) // End content animate
-				},
-				duration:500
-			}) // END animate
+			try {
+				$(gears.modal).animate({
+					height:$(content).outerHeight(),
+					left:(getPosition(content).left > 12)? getPosition(content).left -12:12,
+					top:(getPosition(content).top > 12)? getPosition(content).top - 12:12,
+					width:$(content).outerWidth()
+				}, {
+					complete: function() {
+						$(gears.container).children().detach();
+						$(gears.container).append(content);
+						
+						// SET UP CLOSE BUTTON
+						$(gears.container).append($(shcJSL.createNewElement("a","close-button",{href:'#'})).bind('click', {data:settings}, self.destroy))
+						if (settings.clickOverlayToClose) $(gears.overlay).bind('click', {data:settings},self.destroy);
+						else $(gears.overlay).unbind('click',self.destroy);
+						
+						$(document).bind('keyup', {data:settings}, escapeModal)
+						
+						$(gears.modal).trigger('moodle-update', gears.modal);
+						
+						$(content).toggleClass("moodle_transit").animate({
+							opacity:100
+						},{
+							duration:750
+						}) // End content animate
+					},
+					duration:500
+				}) // END animate
+			} catch(e) {
+				console.log(e)
+				$(gears.container).children().detach();
+				$(gears.container).append(content);
+				
+				// SET UP CLOSE BUTTON
+				$(gears.container).append($(shcJSL.createNewElement("a","close-button",{href:'#'})).bind('click', {data:settings}, self.destroy))
+			}
 		} // END compose
 		
 		function error(message, xhr, status) {
