@@ -3,8 +3,8 @@
  * Template Name: Login
  */
 
-$origin = (isset($_GET['origin'])) ? urldecode($_GET['origin']) : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_permalink($post->ID));
-$error = (isset($_GET['error'])) ? urldecode($_GET['error']) : false;
+// $origin = (isset($_GET['origin'])) ? urldecode($_GET['origin']) : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_permalink($post->ID));
+// $error = (isset($_GET['error'])) ? urldecode($_GET['error']) : false;
 
 /**
  * @package WordPress
