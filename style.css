@@ -547,14 +547,6 @@ html, body {
   line-height: 1.4;
   color: 1; }
 
-a {
-  color: #067bb5;
-  text-decoration: none; }
-  a:hover {
-    text-decoration: underline; }
-  a:visited {
-    color: #067bb5; }
-
 .kmart a {
   color: #980017;
   text-decoration: none; }
@@ -605,9 +597,6 @@ ul.bullets {
 .background_light-gray {
   background-color: #f3f3f3; }
 
-/*
- * SPRITES
- */
 #header.sears form #button_search, #header.sears form #input_search,
 .sears_button {
   background-image: url(/wp-content/themes/Eris/assets/img/sears/sprite_global.png); }
@@ -700,14 +689,14 @@ ul.bullets {
   border-left: solid #ff9e6c;
   border-right: solid #cc6f35;
   border-width: 0px 1px;
-  color: #ffffff;
+  color: white;
   cursor: pointer;
   font-size: .875em;
   font-weight: bold;
   height: 32px;
   padding: 0em 1.5em;
   position: relative;
-  text-shadow: 1px 1px #666666;
+  text-shadow: 1px 1px 1;
   top: -1px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -731,9 +720,6 @@ ul.bullets {
 .kmart_button {
   background-position: 0px -96px; }
 
-/*
- * FEATURED
- */
 .content-container .content-headline {
   font-size: 1.25em;
   font-weight: bold;
@@ -761,7 +747,7 @@ ul.bullets {
       font-size: .8125em;
       float: left; }
     .content-container .content-body .content-details .content-date {
-      color: #999999;
+      color: 1;
       font-size: .6875em;
       float: right; }
   .content-container .content-body .content-comments {
@@ -932,8 +918,7 @@ ul.bullets {
  * LOGIN/REGISTER/FORGOT PASSWORD
  */
 #moodle_container .sign-in, body > .sign-in,
-#moodle_container .register, body > .register,
-#moodle_container .forgot-password, body > .forgot-password {
+#moodle_container .register, body > .register {
   padding: 20px; }
 
 .form_login .input_text, .form_register .input_text {
@@ -1088,67 +1073,85 @@ fieldset#use_your_account_from {
   float: left;
   clear: both; }
 
+.allComments .expert {
+  background: #e6e6e6; }
+
+.actbg, .action .upvote, .action .upvote.active, .action .downvote, .action .downvote.active, .action .flag, .action .flag.active, .action .button {
+  background-image: url("/wp-content/themes/Eris/assets/img/sprite-actions.png");
+  background-repeat: no-repeat; }
+
+.actionIcon {
+  height: 19px;
+  width: 15px; }
+
+.reply {
+  display: block;
+  float: left; }
+
 .actions {
-  float: left;
-  overflow: hidden;
   width: 100%; }
-  .actions .reply {
-    display: block;
-    float: left; }
-  .actions .action {
-    color: #6f6f6f;
-    float: right;
-    margin-right: 15px;
-    overflow: hidden; }
-    .actions .action .button {
-      background-color: #fff;
-      background-image: url("/wp-content/themes/Eris/assets/img/activity_icons/bg-gradient.png");
-      background-repeat: repeat-x;
-      -webkit-border-radius: 2px;
-      -moz-border-radius: 2px;
-      -ms-border-radius: 2px;
-      -o-border-radius: 2px;
-      border: 1px solid #d6d6d6;
-      cursor: pointer;
-      float: left;
-      height: 19px;
-      margin-right: 3px;
-      overflow: hidden;
-      padding: 1px 7px; }
-      .actions .action .button span {
-        float: left; }
-      .actions .action .button .text {
-        color: #4d76a2;
-        font-size: 13px;
-        margin-right: 6px;
-        position: relative;
-        top: 1px; }
-      .actions .action .button .actionIcon {
-        background-position: right center;
-        background-repeat: no-repeat;
-        height: 19px;
-        width: 15px; }
-      .actions .action .button .upvote {
-        background-image: url("/wp-content/themes/Eris/assets/img/activity_icons/thumb-up.png"); }
-      .actions .action .button .upvote.active {
-        background-image: #e4e0df url("/wp-content/themes/Eris/assets/img/sears/activity_icons/thumb-up-active.png"); }
-      .actions .action .button .downvote {
-        background-image: url("/wp-content/themes/Eris/assets/img/activity_icons/thumb-down.png"); }
-      .actions .action .button .downvote.active {
-        background-image: #e4e0df url("/wp-content/themes/Eris/assets/img/sears/activity_icons/thumb-down-active.png"); }
-      .actions .action .button .flag {
-        background-image: url("/wp-content/themes/Eris/assets/img/activity_icons/flag.png"); }
-      .actions .action .button .flag.active {
-        background-image: #e4e0df url("/wp-content/themes/Eris/assets/img/sears/activity_icons/flag-active.png"); }
-    .actions .action .count {
-      float: left;
-      font-size: 12px;
+
+.action {
+  color: #6f6f6f;
+  float: right;
+  margin-right: 15px;
+  overflow: hidden; }
+  .action .upvote.active {
+    background-color: #e4e0df; }
+  .action .upvote {
+    background-position: right top; }
+  .action .upvote.active {
+    background-position: right -40px; }
+  .action .downvote.active {
+    background-color: #e4e0df; }
+  .action .downvote {
+    background-position: right -80px; }
+  .action .downvote.active {
+    background-position: right -120px; }
+  .action .flag {
+    width: 19px; }
+    .action .flag.active {
+      background-color: #e4e0df; }
+  .action .flag {
+    background-position: right -160px; }
+  .action .flag.active {
+    background-position: right -200px; }
+  .action .button {
+    background-color: white;
+    background-repeat: repeat-x;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    border: 1px solid #d6d6d6;
+    cursor: pointer;
+    float: left;
+    height: 19px;
+    margin-right: 3px;
+    overflow: hidden;
+    padding: 1px 7px; }
+    .action .button span {
+      float: left; }
+    .action .button .text {
+      color: #4d76a2;
+      font-size: 13px;
+      margin-right: 6px;
       position: relative;
-      top: 2px; }
-  .actions .action.further {
-    margin-right: 25px; }
-  .actions .action.last {
-    margin-right: 0px; }
+      top: 1px; }
+  .action .button {
+    background-position: right bottom; }
+  .action .count {
+    float: left;
+    font-size: 12px;
+    position: relative;
+    top: 2px; }
+
+.action.further {
+  margin-right: 25px; }
+
+.action.last {
+  margin-right: 0px; }
 
 .dropmenu li {
   float: left;
