@@ -1,7 +1,7 @@
 #adding line to test stuff
 set(:user) { "stateadm" }
 
-set(:domain) { "uxdev" }
+set(:domain) { "uxint" }
 set(:application) { "communities" }
 set(:repository) { "ssh://git@uxdev/home/git/repos/communities.git" }
 
