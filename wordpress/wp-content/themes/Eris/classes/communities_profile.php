@@ -57,7 +57,9 @@ class User_Profile {
 		}
 		
 		
-		$this->num_pages = round(($this->total_results / $this->posts_per_page), 0, PHP_ROUND_HALF_UP);
+		$this->num_pages = ceil(($this->total_results / $this->posts_per_page));
+		/*echo $this->num_pages;
+		exit;*/
 		$this->offset = $row;
 		
 		$this->next_page = ($this->page != $this->num_pages) ? ($this->page + 1) : null;
@@ -83,7 +85,7 @@ class User_Profile {
 						'orderby'		=> 'date'
 						);
 						
-		//Sets total_results			
+		//Sets total_results		
 		$this->get_post_count($args);
 		
 		//Sets num_pages and offset
@@ -113,7 +115,13 @@ class User_Profile {
 	
 	private function get_post_count($args) {
 		
+		$args['posts_per_page'] = -1;	
 		$this->total_results = count(get_posts($args));
+		
+		
+		/*echo '<pre>';
+		var_dump(get_posts($args));
+		exit;*/
 	}
 	
 	
@@ -166,6 +174,9 @@ class User_Profile {
 		$args['count'] = 1;
 		
 		$count = get_comments($args);
+		
+		/*var_dump(get_comments($args));
+		exit;*/
 		
 		$this->total_results = $count;
 		

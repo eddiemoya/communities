@@ -10,6 +10,7 @@ $error = (isset($_GET['error'])) ? urldecode($_GET['error']) : false;
  * @package WordPress
  * @subpackage White Label
  */
+ob_start();
 
 if(! is_ajax()):
 
@@ -82,7 +83,9 @@ get_template_part('parts/header'); ?>
 get_template_part('parts/footer');
 
 endif;
+$output = ob_get_clean();
 
+echo $output;
 ?>
 
 

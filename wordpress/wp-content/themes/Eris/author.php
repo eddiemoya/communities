@@ -1,6 +1,6 @@
 <?
-error_reporting(E_ALL);
-ini_set('display_errors', true);
+/*error_reporting(E_ALL);
+ini_set('display_errors', true);*/
 
 //User_Profile class
 require_once 'classes/communities_profile.php';
@@ -109,8 +109,12 @@ if(isset($_GET['post-type'])) {
 		//Posts
 		if($type == 'posts' || $type == 'guides' || $type == 'question') {
 			
+			
 			$activities = $user_activities->get_user_posts_by_type($type)
 											->posts;
+											
+			/*echo $user_activities->total_results;
+			exit;*/
 											
 			include('parts/profile-posts.php');
 		}
@@ -127,6 +131,12 @@ if(isset($_GET['post-type'])) {
 		}
 		
 		if($type == 'aboutme') {
+			
+			if(class_exists('SSO_Profile')) {
+				
+				$sso_profile = new SSO_Profile();
+				$user_profile = $sso_profile->get(get_user_sso_guid($profile_user->data->ID));
+			}
 			
 			include('parts/profile-aboutme.php');
 		}
@@ -155,6 +165,7 @@ if(isset($_GET['post-type'])) {
         ?>
        
 	 </ol>
+	 
 	 </section>
 	 	
 	 </section>
