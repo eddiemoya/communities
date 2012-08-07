@@ -1,4 +1,5 @@
 require 'capistrano/ext/multistage'
+require 'capistrano/deepmodules'
 load 'deploy'
 
 ##### SOURCE CONTROL #####
