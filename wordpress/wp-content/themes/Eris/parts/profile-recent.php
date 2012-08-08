@@ -2,3 +2,48 @@
 echo '<pre>';
 var_dump($activities);
 exit;
+
+$activities_text = array('question' 	=> 'Asked this: ',
+							'answer'	=> 'Answered this: ',
+							''			=> 'Commented this: ',
+							'comment'	=> 'Commented this: ',
+							'post'		=> 'Posted this: ',
+							'guide'		=> 'Posted this: ');
+							
+$action_text = array('follow' => 'Followed this: ',
+						'upvote' => 'Liked this: ');
+
+foreach($activities as $activity):
+
+	$activity_text = (array_key_exists($activity->action, $action_text)) ? $action_text[$activity->action] : $activities_text[$this->type];
+	
+	$excerpt = '<article class="excerpt">' . (strlen( $activity->content ) > 180 ? substr( $activity->content, 0, 180 ) . "&#8230;" : $activity->comment_content) . '</article>';
+	            
+?>
+	 <li class="clearfix">
+	          <?php //echo $badge; ?>
+	          <div>
+	            <h3>
+	            
+	              <span><?php echo $activity_text; ?></span>
+	              <time class="content-date" datetime="<?php echo date( "Y-m-d", strtotime($activity->date)); ?>" pubdate="pubdate"><?php echo date( "F j, Y g:ia", strtotime($activity->date)); ?></time>
+	              <a href="#" class="category"><?php echo (in_array($activity->type, array('', 'comment', 'answer'))) ? (count($activity->post->category)) ? $activity->post->category[0]->cat_name : 'Uncategorized' : (count($activity->category)) ? $activity->category[0]->cat_name : 'Uncategorized' ;?></a>
+	              <a href="<?php echo ?><?php echo get_permalink($activity->post->ID);?>"><?php echo $activity->post->post_title; ?></a>
+	            </h3>
+	            <?php echo $excerpt; ?>
+	          </div>
+	        </li>
+ <?php endforeach; ?>
+ 
+ <input type="hidden" id="next-page" value="<?php echo $user_activities->next_page; ?>" />
+ 	
+ 	<?php if(! is_ajax()):?>
+	 	<input type="hidden" id="type" value="<?php echo $type;?>" />
+	 	<input type="hidden" id="uid" value="<?php echo $profile_user->data->ID; ?>" />
+ 	<?php endif;?>
+ 	
+ 	<?php if($user_activities->next_page):?>
+	 	<a href="" id="page-more">More...</a>
+ 	<?php endif;?>
+      
+      

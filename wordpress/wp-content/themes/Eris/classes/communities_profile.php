@@ -8,11 +8,11 @@ class User_Profile {
 	
 	protected $user_id;
 	
-	protected $post_types = array('post',
+	public $post_types = array('post',
 								'question',
 							  	'guide');
 	
-	protected $comment_types = array('',
+	public $comment_types = array('',
 									'answer',
 									'comment');
 	
@@ -183,6 +183,8 @@ class User_Profile {
 		exit;*/
 		
 		$this->activities = $wpdb->get_results($q);
+		
+		$this->set_activities_attributes();
 		
 		
 		return $this;
