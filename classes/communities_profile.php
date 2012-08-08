@@ -8,6 +8,14 @@ class User_Profile {
 	
 	protected $user_id;
 	
+	protected $post_types = array('post',
+								'question',
+							  	'guide');
+	
+	protected $comment_types = array('',
+									'answer',
+									'comment');
+	
 	public $posts = null;
 	
 	public $comments = null;
@@ -193,18 +201,33 @@ class User_Profile {
 	
 	private function set_activities_attributes() {
 		
-		$post_types = array('', 'comment', 'answer');
-		
-		
 		if(count($this->activities)) {
 			
-			foreach($this->activities as $activity) {
+			foreach($this->activities as $key => $activity) {
 				
-				if(in_array($activity->type, $post_types)) {
+				//If is a comment
+				if(in_array($activity->type, $this->comment_types)) {
 					
 					//set post property on comment
+					$this->activities[$key]->post = get_post($activity->parent);
+					
+					//If post property is an object, get post category and add 
+					//category property to object
+					if(is_object($this->activities[$key]->post)) {
+						
+						$this->activities[$key]->post->category = $this->get_post_categories($activity->parent);
+					}
+						
 					
 				}
+				
+				//If is a post
+				if(in_array($activity->type, $this->post_types)) {
+					
+					$this->activities[$key]->category = $this->get_post_categories($activity->ID);
+					
+				}
+				
 			}
 		}
 	}
@@ -260,6 +283,12 @@ class User_Profile {
 				$post->categories = $this->get_post_categories($comment->comment_post_ID);
 				
 				$this->comments[$key]->post = $post;
+				
+					//Set category property on post object
+					if(is_object($this->comments[$key]->post)) {
+						
+						$this->comments[$key]->post->category = $this->get_post_categories($comment->comment_post_ID);
+					}
 				
 				unset($post);
 			}
