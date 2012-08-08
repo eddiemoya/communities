@@ -27,8 +27,8 @@ foreach($activities as $activity):
 	            
 	              <span><?php echo $activity_text; ?></span>
 	              <time class="content-date" datetime="<?php echo date( "Y-m-d", strtotime($activity->date)); ?>" pubdate="pubdate"><?php echo date( "F j, Y g:ia", strtotime($activity->date)); ?></time>
-	              <a href="#" class="category"><?php echo (in_array($activity->type, array('', 'comment', 'answer'))) ? (count($activity->post->category)) ? $activity->post->category[0]->cat_name : 'Uncategorized' : (count($activity->category)) ? $activity->category[0]->cat_name : 'Uncategorized' ;?></a>
-	              <a href="<?php echo ?><?php echo get_permalink($activity->post->ID);?>"><?php echo $activity->post->post_title; ?></a>
+	              <a href="#" class="category"><?php echo (in_array($activity->type, $user_activities->comment_types)) ? (count($activity->post->category)) ? $activity->post->category[0]->cat_name : 'Uncategorized' : (count($activity->category)) ? $activity->category[0]->cat_name : 'Uncategorized' ;?></a>
+	              <a href="<?php echo (in_array($activity->type, $user_activities->comment_types)) ? get_permalink($activity->post->ID) : get_permalink($activity->ID) ;?>"><?php (in_array($activity->type, $user_activities->comment_types)) ? $activity->post->post_title : $activity->title;?></a>
 	            </h3>
 	            <?php echo $excerpt; ?>
 	          </div>
