@@ -42,7 +42,7 @@ switch($profile_type) {
 								'answer',
 								'comment',
 								'follow',
-								'votes'
+								'upvote'
 								);
 	break;
 	
@@ -54,7 +54,7 @@ switch($profile_type) {
 								'answer',
 								'comment',
 								'follow',
-								'votes',
+								'upvote',
 								'guides',
 								'posts'
 								);
@@ -113,16 +113,17 @@ if(isset($_GET['post-type'])) {
 			$activities = $user_activities->get_user_posts_by_type($type)
 											->posts;
 											
-			/*echo $user_activities->total_results;
-			exit;*/
 											
 			include('parts/profile-posts.php');
 		}
 		
 		//Actions
-		if($type == 'follow' || $type == 'votes') {
+		if($type == 'follow' || $type == 'upvote') {
 			
-			include('parts/profile-actions.php');
+			$activities = $user_activities->get_actions($type)
+											->activities;
+			
+			include('parts/profile-recent.php');
 		}
 		
 		if($type == 'recent') {

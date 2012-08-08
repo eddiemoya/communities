@@ -35,9 +35,9 @@
       "name" => "Follows",
       "url" => $url_no_qs . '?post-type=follow'
     ),
-    "votes" => array(
+    "upvote" => array(
       "name" => "Helpful Votes",
-      "url" => $url_no_qs . '?post-type=votes'
+      "url" => $url_no_qs . '?post-type=upvote'
     )
   );
   

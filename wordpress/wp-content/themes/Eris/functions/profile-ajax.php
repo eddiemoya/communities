@@ -67,6 +67,10 @@ function profile_paginate() {
 		
 		if($type == 'recent') {
 			
+			$activities = $user_activities->page($page)
+											->get_recent_activities()
+											->activities;
+											
 			include(get_template_directory() . '/parts/profile-recent.php');
 		}
 		
