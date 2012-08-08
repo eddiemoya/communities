@@ -130,6 +130,7 @@ class User_Profile {
 				p.post_date as date,
 				p.post_type as type,
 				p.post_excerpt as action,
+				p.post_title as title,
 				p.post_content as content
 				
 				FROM {$wpdb->posts} as p
@@ -147,6 +148,7 @@ class User_Profile {
 				c.comment_date,
 				c.comment_type,
 				c.comment_karma,
+				c.comment_author_url,
 				c.comment_content
 				
 				FROM {$wpdb->comments} as c
@@ -164,6 +166,7 @@ class User_Profile {
 				p.post_date as date, 
 				p.post_type as type,
 				pa.action_type as action,
+				p.post_title as
 				p.post_content as content
 				
 				FROM {$wpdb->posts} p
