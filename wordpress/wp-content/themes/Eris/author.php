@@ -127,6 +127,9 @@ if(isset($_GET['post-type'])) {
 		
 		if($type == 'recent') {
 			
+			$activities = $user_activities->get_recent_activities()
+											->activities;
+			
 			include('parts/profile-recent.php');
 		}
 		
