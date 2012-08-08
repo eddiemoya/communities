@@ -60,9 +60,13 @@ function profile_paginate() {
 		}
 		
 		//Actions
-		if($type == 'follow' || $type == 'votes') {
+		if($type == 'follow' || $type == 'upvote') {
 			
-			include(get_template_directory() . '/parts/profile-actions.php');
+			$activities = $user_activities->page($page)
+											->get_actions($type)
+											->activities;
+			
+			include(get_template_directory() . '/parts/profile-recent.php');
 		}
 		
 		if($type == 'recent') {
