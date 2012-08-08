@@ -11,6 +11,7 @@ header("Content-Type: text/html; charset=UTF-8");
  * @package WordPress
  * @subpackage White Label
  */
+ob_start();
 
 if(! is_ajax()):
 
@@ -96,6 +97,3 @@ get_template_part('parts/footer');
 
 endif;
 ?>
-<script type="text/javascript">
-	
-</script>
