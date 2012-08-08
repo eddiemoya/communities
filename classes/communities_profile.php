@@ -166,7 +166,7 @@ class User_Profile {
 				p.post_date as date, 
 				p.post_type as type,
 				pa.action_type as action,
-				p.post_title as
+				p.post_title as title,
 				p.post_content as content
 				
 				FROM {$wpdb->posts} p
@@ -180,17 +180,105 @@ class User_Profile {
 				AND ua.user_id = {$this->user_id}
 				)
 				
+				UNION ALL
+
+				(SELECT c.comment_ID,
+				c.comment_post_ID,
+				c.user_id, 
+				c.comment_date, 
+				c.comment_type, 
+				c.comment_karma,
+				c.comment_author_url,
+				c.comment_content 
+				
+				FROM {$wpdb->comments} c 
+				LEFT JOIN {$wpdb->prefix}post_actions pa 
+				ON c.comment_ID = pa.object_id 
+				LEFT JOIN {$wpdb->prefix}user_actions ua 
+				ON pa.post_action_id = ua.object_id 
+				WHERE pa.object_subtype IN ('answer', 'comment', '' ) 
+				AND pa.action_type IN ('upvote', 'follow') 
+				AND c.comment_approved = 1 AND ua.user_id = 1 
+				
+				)
+				
 				ORDER BY date DESC" . $this->limit;
 		
 		/*echo $q;
 		exit;*/
 		
+		
+		
 		$this->activities = $wpdb->get_results($q);
 		
 		$this->set_activities_attributes();
 		
+		$this->next_page = (count($this->activities) < $this->posts_per_page) ? null : ($this->page + 1);
+		
 		
 		return $this;
+	}
+	
+	public function get_actions($type) {
+		
+		global $wpdb;
+		
+		$this->paginate();
+		
+		$q = "(SELECT DISTINCT
+				p.ID as ID,  
+				p.post_parent as parent,
+				p.post_author as author,
+				p.post_date as date, 
+				p.post_type as type,
+				pa.action_type as action,
+				p.post_title as title,
+				p.post_content as content
+				
+				FROM {$wpdb->posts} p
+				LEFT JOIN {$wpdb->prefix}post_actions pa
+				ON p.ID = pa.object_id
+				LEFT JOIN {$wpdb->prefix}user_actions ua
+				ON pa.post_action_id = ua.object_id
+				WHERE pa.object_subtype IN ('question', 'guide', 'post')
+				AND pa.action_type = '{$type}'
+				AND p.post_status='publish'
+				AND ua.user_id = {$this->user_id}
+				)
+				
+				UNION ALL
+
+				(SELECT c.comment_ID,
+				c.comment_post_ID,
+				c.user_id, 
+				c.comment_date, 
+				c.comment_type, 
+				c.comment_karma,
+				c.comment_author_url,
+				c.comment_content 
+				
+				FROM {$wpdb->comments} c 
+				LEFT JOIN {$wpdb->prefix}post_actions pa 
+				ON c.comment_ID = pa.object_id 
+				LEFT JOIN {$wpdb->prefix}user_actions ua 
+				ON pa.post_action_id = ua.object_id 
+				WHERE pa.object_subtype IN ('answer', 'comment', '' ) 
+				AND pa.action_type = '{$type}'
+				AND c.comment_approved = 1 AND ua.user_id = 1 
+				
+				)
+				
+				ORDER BY date DESC" . $this->limit;
+		
+		$this->activities = $wpdb->get_results($q);
+		
+		$this->set_activities_attributes();
+		
+		$this->next_page = (count($this->activities) < $this->posts_per_page) ? null : ($this->page + 1);
+		
+		
+		return $this;
+	
 	}
 	
 	private function set_post_categories() {
