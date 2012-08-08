@@ -1020,7 +1020,6 @@ fieldset#use_your_account_from {
   background-image: -webkit-linear-gradient(#ffffff, #f4f4f4);
   background-image: -moz-linear-gradient(#ffffff, #f4f4f4);
   background-image: -o-linear-gradient(#ffffff, #f4f4f4);
-  background-image: -ms-linear-gradient(#ffffff, #f4f4f4);
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;
@@ -1619,3 +1618,63 @@ fieldset#use_your_account_from {
   position: absolute;
   left: 14px;
   top: 4px; }
+
+#login-open-id.open-id {
+  border-top: solid 1px #cccccc;
+  position: relative; }
+  #login-open-id.open-id p {
+    font-size: 17px;
+    margin: 2em 0 0px;
+    text-align: center; }
+  #login-open-id.open-id .or {
+    background: #ffffff;
+    font-size: 13px;
+    font-weight: bold;
+    left: 48%;
+    position: absolute;
+    text-align: center;
+    top: -8px;
+    width: 37px; }
+
+.open-id-services {
+  margin: 0px auto;
+  text-align: center;
+  width: 214px; }
+
+.open-id_service {
+  display: inline-block;
+  margin: 8px 7px; }
+
+.open-id_service a {
+  background: transparent url(/wp-content/themes/Eris/assets/img/sprite_open-id-services.png) no-repeat 0px 0px;
+  display: block;
+  text-indent: -9999em; }
+
+.open-id_facebook a {
+  height: 33px;
+  width: 214px; }
+
+.open-id_yahoo a {
+  background-position: 0px -43px;
+  height: 16px;
+  width: 27px; }
+
+.open-id_google a {
+  background-position: 0px -71px;
+  height: 16px;
+  width: 16px; }
+
+.open-id_aol a {
+  background-position: 0px -166px;
+  height: 16px;
+  width: 15px; }
+
+.open-id_myspace a {
+  background-position: 0px -129px;
+  height: 16px;
+  width: 16px; }
+
+.open-id_twitter a {
+  background-position: 0px -101px;
+  height: 16px;
+  width: 16px; }

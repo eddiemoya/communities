@@ -17,7 +17,7 @@ if(! is_ajax()):
 get_template_part('parts/header'); ?>
 	<section class="span8">
 <?php endif;?>		
-<article class="content-container post-your-question span12">
+<article class="content-container sign-in span12">
 	
 	<section class="content-body clearfix">
 
@@ -68,6 +68,19 @@ get_template_part('parts/header'); ?>
       </li>
     </ul>
 		
+		<section id="login-open-id" class="open-id" shc:gizmo="openID">
+			<span class="or">OR</span>
+			<p>use your account from</p>
+			<ul class="open-id-services clearfix">
+				<li class="open-id_service open-id_facebook"><a href="#" shc:gizmo:options="{openID:{service:'facebook'}}">Facebook</a></li>
+				<li class="open-id_service open-id_yahoo"><a href="#" shc:gizmo:options="{openID:{service:'yahoo'}}">Yahoo!</a></li>
+				<li class="open-id_service open-id_google"><a href="#" shc:gizmo:options="{openID:{service:'google'}}">Google</a></li>
+				<li class="open-id_service open-id_aol"><a href="#" shc:gizmo:options="{openID:{service:'aol'}}">AOL</a></li>
+				<li class="open-id_service open-id_myspace"><a href="#" shc:gizmo:options="{openID:{service:'myspace'}}">MySpace</a></li>
+				<li class="open-id_service open-id_twitter"><a href="#" shc:gizmo:options="{openID:{service:'twitter'}}">Twitter</a></li>
+			</ul>
+		</section>
+		
 	</section>
 
 </article>
@@ -82,5 +95,7 @@ get_template_part('parts/header'); ?>
 get_template_part('parts/footer');
 
 endif;
-
 ?>
+<script type="text/javascript">
+	
+</script>
