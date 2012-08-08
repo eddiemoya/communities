@@ -10,18 +10,7 @@ html, body {
   padding: 0;
   font-family: $basefont;
   line-height: 1.4;
-  color: sears( body);
-}
-
-a {
-  color: sears( link );
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-  &:visited {
-    color: sears( link );
-  }
+  color: sears( body );
 }
 
 .kmart a {
@@ -77,7 +66,7 @@ ul.bullets {
 }
 
 .faint {
-  color:#666666;
+  color: sears( secondary-link );
 }
 
 .upcase {
@@ -91,10 +80,9 @@ ul.bullets {
 .background_light-gray {
   background-color:#f3f3f3;
 }
-/*
- * SPRITES
- */
 
+
+// SPRITES
 #header.sears form #button_search, #header.sears form #input_search,
 .sears_button
 {
@@ -139,9 +127,9 @@ ul.bullets {
     font-size: percentage( 12/16 );
     @extend .bold;
   }
-  &.labeled{
+  &.labeled {
     h4 {
-      background: #bcdaf3 url('#{$img}sprite-user.png') repeat-x left bottom;
+      background: sears( badge ) url('#{$img}sprite-user.png') repeat-x left bottom;
       text-align: center;
       @include border-radius( 0 0 10px 10px );
     }
@@ -191,12 +179,6 @@ ul.bullets {
   float: right;
 }
 
-.thread {
-  li {
-    
-  }
-}
-
 /*
  * GLOBAL ELEMENTS
  */
@@ -210,7 +192,7 @@ ul.bullets {
    * IE8 no like this.
    */
   padding:.3125em .01em;
-  border:solid 1px #cccccc;
+  border:solid 1px sears( decorative );
   height:1.25em;
 }
 
@@ -242,14 +224,14 @@ ul.bullets {
   border-left:solid #ff9e6c;
   border-right:solid #cc6f35;
   border-width:0px 1px;
-  color:#ffffff;
+  color: $lightest-color;
   cursor:pointer;
   font-size:.875em;
   font-weight:bold;
   height:32px;
   padding:0em 1.5em;
   position:relative;
-  text-shadow:1px 1px #666666;
+  text-shadow:1px 1px sears( sec-dec);
   top:-1px;
   @include border-radius( 5px );
 }
@@ -278,10 +260,7 @@ ul.bullets {
 
 form {}
 
-/*
- * FEATURED
- */
-
+// FEATURED
 .content-container .content-headline {
   font-size:1.25em;
   font-weight:bold;
@@ -318,7 +297,7 @@ form {}
       @extend .bold;
     }
     .content-date {
-      color:#999999;
+      color: sears( sec-dec );
       font-size:.6875em;
       float:right;
     }
@@ -353,7 +332,7 @@ form {}
   .span4 {
     .member {
       border-right: 1px solid sears( decorative );
-      @include col_layout( (100, 90), 10 );
+      @include col_layout( ( 100, 90 ), 10 );
       .content-comments {
         width: 100%;
         li {
@@ -568,8 +547,7 @@ form {}
  * LOGIN/REGISTER/FORGOT PASSWORD
  */
 #moodle_container .sign-in, body > .sign-in,
-#moodle_container .register, body > .register,
-#moodle_container .forgot-password, body > .forgot-password, {
+#moodle_container .register, body > .register {
   padding:20px;
 }
 
@@ -755,97 +733,119 @@ $tab-padding: "1em 0 .6em 0";
 	}
 }
 
-//Activity buttons
+
+
+// Threaded Discussion
+.allComments {
+  .expert {
+    background: lighten( sears( decorative ), 10 );
+  }
+}
+
+// Activity buttons
+
+// Consolidate the background image
+.actbg {
+  background-image: url('#{$img}sprite-actions.png');
+  background-repeat: no-repeat;
+}
+
+// A base class for the button
+.actionIcon {
+  height: 19px;
+  width: 15px;
+}  
+
+.reply {
+  display: block;
+  float: left;
+}
 
 .actions {
-  float: left;
-  overflow: hidden;
   width: 100%;
+}
 
-  .reply {
-    display: block;
+.action {
+  color: #6f6f6f;
+  float: right;
+  margin-right: 15px;
+  overflow: hidden;
+  
+  // individual buttons
+  .upvote {
+    @extend .actbg;
+    &.active {
+      background-color: $nav-color;
+      @extend .actbg;
+    }
+  }
+  @include sprite-position( ".upvote", right, top );
+  @include sprite-position( ".upvote.active", right, ( $act-sprite-period * -1 ) );
+  
+  .downvote {
+    @extend .actbg;
+    &.active {
+      background-color: $nav-color;
+      @extend .actbg;
+    }
+  }
+  @include sprite-position( ".downvote", right, ( $act-sprite-period * -1 ) * 2 );
+  @include sprite-position( ".downvote.active", right, ( $act-sprite-period * -1 ) * 3 );
+  
+  .flag {
+    width: 19px;
+    @extend .actbg;
+    &.active {
+      background-color: $nav-color;
+      @extend .actbg;
+    }
+  }
+  @include sprite-position( ".flag", right, ( $act-sprite-period * -1 ) * 4 );
+  @include sprite-position( ".flag.active", right, ( $act-sprite-period * -1 ) * 5 );
+  
+
+  .button {
+    background-color: $lightest-color;
+    background-repeat: repeat-x;
+    @include border-radius( 2px );
+    border: 1px solid #d6d6d6;
+    cursor: pointer;
     float: left;
-  }
-
-  .action {
-    color: #6f6f6f;
-    float: right;
-    margin-right: 15px;
+    height: 19px;
+    margin-right: 3px;
     overflow: hidden;
-
-    .button {
-      background-color: #fff;
-      background-image: url('#{$img}activity_icons/bg-gradient.png');
-      background-repeat: repeat-x;
-      -webkit-border-radius: 2px;
-      -moz-border-radius: 2px;
-      -ms-border-radius: 2px;
-      -o-border-radius: 2px;
-      border: 1px solid #d6d6d6;
-      cursor: pointer;
+    padding: 1px 7px;
+    @extend .actbg;
+    
+    span {
       float: left;
-      height: 19px;
-      margin-right: 3px;
-      overflow: hidden;
-      padding: 1px 7px;
-
-      span {
-        float: left;
-      }
-
-      .text {
-        color: #4d76a2;
-        font-size: 13px;
-        margin-right: 6px;
-        position: relative;
-        top: 1px;
-      }
-
-      .actionIcon {
-        background-position: right center;
-        background-repeat: no-repeat;
-        height: 19px;
-        width: 15px;
-      }
-
-      .upvote {
-        background-image: url('#{$img}activity_icons/thumb-up.png');
-      }
-
-      .upvote.active {
-        background-image: $nav-color url('#{$sears-img}activity_icons/thumb-up-active.png');
-      }
-
-      .downvote {
-        background-image: url('#{$img}activity_icons/thumb-down.png');
-      }
-
-      .downvote.active {
-        background-image: $nav-color url('#{$sears-img}activity_icons/thumb-down-active.png');
-      }
-
-      .flag {
-        background-image: url('#{$img}activity_icons/flag.png');
-      }
-
-      .flag.active {
-        background-image: $nav-color url('#{$sears-img}activity_icons/flag-active.png');
-      }
     }
 
-    .count {
-      float: left;
-      font-size: 12px;
+    .text {
+      color: #4d76a2;
+      font-size: 13px;
+      margin-right: 6px;
       position: relative;
-      top: 2px;
+      top: 1px;
     }
+    
+    
   }
+  
+  @include sprite-position( ".button", right, bottom );
+  
+  .count {
+    float: left;
+    font-size: 12px;
+    position: relative;
+    top: 2px;
+  }
+}
 
-  .action.further {
-    margin-right: 25px;
-  }
+.action.further {
+  margin-right: 25px;
+}
 
-  .action.last {
-    margin-right: 0px;
-  }
+.action.last {
+  margin-right: 0px;
 }

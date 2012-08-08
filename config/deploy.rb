@@ -6,11 +6,11 @@ load 'deploy'
 set :scm, :git
 
 ##### DEPLOYMENT #####
-set :deploy_via, :remote_cache
+#set :deploy_via, :remote_cache
 set :use_sudo, false
 
-namespace :deploy do
 
+namespace :deploy do
   desc "A macro-task that updates the code and fixes the symlink."
   task :default do
     transaction do
