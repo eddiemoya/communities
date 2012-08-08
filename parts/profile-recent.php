@@ -1,2 +1,4 @@
 <?php
-echo 'This is recent';
+echo '<pre>';
+var_dump($activities);
+exit;
