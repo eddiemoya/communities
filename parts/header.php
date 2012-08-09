@@ -34,32 +34,6 @@
               <?php get_template_part('parts/head'); ?>
 
               <?php get_template_part('parts/navigation'); ?>
-              
-              <?php
-              /**
-							 * @Eddie: Uncomment your mom.
-							 */
-               
-              /**
-               * @Tim & @Carl: Un-comment the  line  below and look at how it works in the admin
-               * 
-               * Appearance > Menus
-               * 
-               * Add items via drag and drop, use Screen Options tab to enable all the extra fields for menu items.
-               * It seems it would be a lot simpler than creating them manually as in parts/navigation.
-               * 
-               * Let me know what you think.
-               wp_nav_menu( array(
-                   'theme_location' => 'main-mavigation',
-                   'menu' => '',
-                   'menu_class' => 'clearfix dropmenu', 
-                   'menu_id' => 'header_nav', 
-                   'container_id' => 'navigation',
-                   'fallback_cb' => 'wp_list_pages'
-                 
-                   ));
-               */
-              ?>
 
           </div>    
 					
