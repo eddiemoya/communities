@@ -1,11 +1,10 @@
 <?php
-header("Content-Type: text/html; charset=UTF-8");
 /*
  * Template Name: Login
  */
 
-// $origin = (isset($_GET['origin'])) ? urldecode($_GET['origin']) : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_permalink($post->ID));
-// $error = (isset($_GET['error'])) ? urldecode($_GET['error']) : false;
+$origin = (isset($_GET['origin'])) ? urldecode($_GET['origin']) : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_permalink($post->ID));
+$error = (isset($_GET['error'])) ? urldecode($_GET['error']) : false;
 
 /**
  * @package WordPress
@@ -69,16 +68,14 @@ get_template_part('parts/header'); ?>
       </li>
     </ul>
 		
-		<section id="login-open-id" class="open-id" shc:gizmo="openID">
+		<section id="login-open-id" class="open-id" shc:gizmo="openID" shc:gizmo:options="{openID:{test:'test'}}">
 			<span class="or">OR</span>
 			<p>use your account from</p>
 			<ul class="open-id-services clearfix">
-				<li class="open-id_service open-id_facebook"><a href="#" shc:gizmo:options="{openID:{service:'facebook'}}">Facebook</a></li>
-				<li class="open-id_service open-id_yahoo"><a href="#" shc:gizmo:options="{openID:{service:'yahoo'}}">Yahoo!</a></li>
-				<li class="open-id_service open-id_google"><a href="#" shc:gizmo:options="{openID:{service:'google'}}">Google</a></li>
-				<li class="open-id_service open-id_aol"><a href="#" shc:gizmo:options="{openID:{service:'aol'}}">AOL</a></li>
-				<li class="open-id_service open-id_myspace"><a href="#" shc:gizmo:options="{openID:{service:'myspace'}}">MySpace</a></li>
-				<li class="open-id_service open-id_twitter"><a href="#" shc:gizmo:options="{openID:{service:'twitter'}}">Twitter</a></li>
+				<li class="open-id_service open-id_facebook"><a href="#" shc:openID="facebook">Facebook</a></li>
+				<li class="open-id_service open-id_yahoo"><a href="#" shc:openID="yahoo">Yahoo!</a></li>
+				<li class="open-id_service open-id_google"><a href="#" shc:openID="google">Google</a></li>
+				<li class="open-id_service open-id_twitter"><a href="#" shc:openID="twitter">Twitter</a></li>
 			</ul>
 		</section>
 		

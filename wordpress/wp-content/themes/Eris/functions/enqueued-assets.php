@@ -33,7 +33,7 @@ function enqueue_scripts() {
         wp_register_script('shcJSL',    get_template_directory_uri() . '/assets/js/shc-jsl.js', array(), '1.0');
         wp_register_script('moodle', get_template_directory_uri() . '/assets/js/widgets/shcJSL.moodle.js', array(), '1.0');
         wp_register_script('ajaxrequests', get_template_directory_uri() . '/assets/js/ajax-requests.js', array('jquery'), '1.2');
-        wp_register_script('openID', get_template_directory_uri() . '/assets/js/open-id/oid.php', array(), '1.0');
+        wp_register_script('openID', get_template_directory_uri() . '/assets/js/widgets/shcJSL.openID.js', array(), '1.0');
 
         wp_enqueue_script('jquery');    
         wp_enqueue_script('modernizr');
