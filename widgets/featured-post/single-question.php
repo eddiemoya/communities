@@ -6,7 +6,7 @@
         <div class="content-details clearfix">
             <?php if (is_widget()->show_category) : ?>
                 <span class="content-category">
-                    <a href="#" title="Kittens">
+                    <a href="<?php get_category_link(get_query_var($c[0]->term->id); ?>" title="<?php echo $c[0]->cat_name; ?>">
                         <?php echo $c[0]->cat_name; ?>
                     </a>
                 </span>
