@@ -72,6 +72,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 		clickOverlayToClose: false,
 		height: 'auto',
 		method: 'ajax',
+		type: 'GET',
 		width: 'auto'
 	}
 	
@@ -193,8 +194,6 @@ MOODLE.modal = $Moodle = function(element, options) {
 	 * @since 1.0
 	 */
 	this.create = function(element, options) {
-		//console.log("ELEMENT: "); console.log(element);
-		//console.log("OPTIONS: "); console.log(options);
 		if (jQuery.contains(document.body, gears.modal)) {
 			/*
 			 * Modal window is already opened.
@@ -240,7 +239,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 	 * @todo Add support for methods: variable, on-page element
 	 * @todo Add ability to close modal by clicking on overlay
 	 */
-	this.update = function(element, options) {
+	this.update = function(element, options) {	
 		var compose; // Function to draw out the modal window
 		var error;	// Function to create the error message
 		
@@ -276,7 +275,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 		 */ 
 		elementOptions = ($(element).attr("shc:gizmo:options") != 'undefined')? (((eval('(' + $(element).attr("shc:gizmo:options") + ')')).moodle)?(eval('(' + $(element).attr("shc:gizmo:options") + ')')).moodle:{}):{};
 		// Make a clone of the default settings, as we don't actually want to change the defaults
-		settings = jQuery.extend(true, {}, defaults);
+		settings = jQuery.extend(true, {data:{}}, defaults);
  		
  		// By the power of JavaScript combine all three objects to form 'settings'
  		jQuery.extend(true, settings, elementOptions, argumentOptions)
@@ -290,23 +289,23 @@ MOODLE.modal = $Moodle = function(element, options) {
 			if (settings.target && (settings.target != 'undefined' || settings.target != '')) {
 				jQuery.ajax({
 					dataType: 'html',
+					data: settings.data,
+					type: settings.type,
 					url: settings.target
 				}).success(function(data, status, xhr) {
 					var htmlObject;	// New HTMLObject created the the AJAX response string
-
-					htmlObject = shcJSL.preloadImages(shcJSL.renderHTML(shcJSL.createNewElement("div"), data)).firstChild;
+					
+					// Convert the string into an HTML element
+					htmlObject = shcJSL.first(shcJSL.preloadImages(shcJSL.renderHTML(shcJSL.createNewElement("div"), data)));
 					compose(htmlObject, [status, xhr])
 				}).error(function(xhr, status, message) {
 					error(message, xhr, status)
-					// console.log("ERROR");
-					// console.log("DATA: "); console.log(data);
-					// console.log("TEXT: "); console.log(text);
-					// console.log("XHR: "); console.log(xhr);
 				})
 			} // END if settings.target
 		}
 		
 		if (String(settings.method).toLowerCase() === 'local') {
+			// Check to see if the object exists on page.
 			if (document.getElementById(settings.target)) {
 				compose(document.getElementById(settings.target));
 			}
@@ -316,12 +315,17 @@ MOODLE.modal = $Moodle = function(element, options) {
 		}
 		
 		function compose(content, data) {
+			// If height and width exists not as 'auto' and is a valid number
+			// set the height and width
 			if (settings.width && settings.width != 'auto') if (!(isNaN(settings.width))) $(content).css('width', settings.width);
 			if (settings.height && settings.height != 'auto') if (!(isNaN(settings.height))) $(content).css('height', settings.width);
 			
+			// Attach the 'mooodle_transit' class to the element, and turn opacity to zero
+			// and then append it to the body so you can get the element's dimensions
 			$(document.body).append($(content).show().toggleClass('moodle_transit').css('opacity','0'));
+			// Scroll to the top of the page, where the modal window is
 			window.scrollTo(0,0);
-			
+			// Animate the modal window to the height/width of the element
 			$(gears.modal).animate({
 				height:$(content).outerHeight(),
 				left:(getPosition(content).left > 12)? getPosition(content).left -12:12,
@@ -329,18 +333,26 @@ MOODLE.modal = $Moodle = function(element, options) {
 				width:$(content).outerWidth()
 			}, {
 				complete: function() {
+					// Remove all current elements of the modal container and
+					// append the new content
 					$(gears.container).children().detach();
 					$(gears.container).append(content);
 					
-					// SET UP CLOSE BUTTON
+					// Create and attach the close button, set it to close the modal
 					$(gears.container).append($(shcJSL.createNewElement("a","close-button",{href:'#'})).bind('click', {data:settings}, self.destroy))
+					// User's can click on the overlay to close the modal if 
+					// clickOverlayToClose is set to true.
 					if (settings.clickOverlayToClose) $(gears.overlay).bind('click', {data:settings},self.destroy);
+					// Otherwise don't let them close the overlay when it is clicked
 					else $(gears.overlay).unbind('click',self.destroy);
 					
+					// Escape key closes modal
 					$(document).bind('keyup', {data:settings}, escapeModal)
 					
+					// Trigger the moodle-update event
 					$(gears.modal).trigger('moodle-update', gears.modal);
 					
+					// Make the modal content visible
 					$(content).toggleClass("moodle_transit").animate({
 						opacity:100
 					},{
@@ -351,6 +363,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 			}) // END animate
 		} // END compose
 		
+		// If an error occurs during the modal window process
 		function error(message, xhr, status) {
 			var oops; // Error HTMLObject
 
@@ -373,21 +386,31 @@ MOODLE.modal = $Moodle = function(element, options) {
 	 */
 	
 	this.destroy = function(event) {
+		// The modal settings/data
 		settings = event.data.data;
 		
+		// If the modal window had a local on page element
+		// return that element to the page
 		if (String(settings.method).toLowerCase() == 'local') {
 			try {$(document.body).append($("#"+settings.target).hide())} 
 			catch(error) {}
 		}
 		
+		// turn on the loading screen
 		toggleLoading();
-				
+		// Remove the modal window
 		$(gears.modal).remove();
+		// Remove the resize event
 		$(window).unbind("resize", centerModal);
+		// Remove the 'escape key to close' event
 		$(document).unbind('keyup',escapeModal);
+		// Remove the moodle update triggers gizmos event
 		$(gears.modal).unbind('moodle-update', shcJSL.gizmos.activate);
+		// Trigger the moodle-close event
 		$(window).trigger("moodle-close");
+		// Turn off loading
 		toggleLoading();
+		// Turn off the Overlay
 		toggleOverlay();
 	}
 	

@@ -8,8 +8,7 @@
 
   loop();
   
-  $actions = new ActionJacksonQuery();
-  $stuff = $actions->getUserActions($user_id);
+ 
   
   $current_tab = "About Me";
   $current_nav = "1";
