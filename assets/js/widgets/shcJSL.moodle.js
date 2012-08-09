@@ -273,7 +273,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 		 * empty object ({}), otherwise set elementOptions to be moodle property of
 		 * the shc:gizmo:options attribute/JSON object.
 		 */ 
-		elementOptions = ($(element).attr("shc:gizmo:options") != 'undefined')? (((eval('(' + $(element).attr("shc:gizmo:options") + ')')).moodle)?(eval('(' + $(element).attr("shc:gizmo:options") + ')')).moodle:{}):{};
+		elementOptions = ($(element).attr("shc:gizmo:options") != undefined)? (((eval('(' + $(element).attr("shc:gizmo:options") + ')')).moodle)?(eval('(' + $(element).attr("shc:gizmo:options") + ')')).moodle:{}):{};
 		// Make a clone of the default settings, as we don't actually want to change the defaults
 		settings = jQuery.extend(true, {data:{}}, defaults);
  		
@@ -286,7 +286,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 			// check the actual element for a URL
 			if (!settings.target) settings.target = $(element).attr("href");
 			// Make sure we have a URL to send the AJAX request
-			if (settings.target && (settings.target != 'undefined' || settings.target != '')) {
+			if (settings.target && (settings.target != undefined || settings.target != '')) {
 				jQuery.ajax({
 					dataType: 'html',
 					data: settings.data,

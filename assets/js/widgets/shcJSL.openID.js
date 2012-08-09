@@ -10,21 +10,55 @@
 */
 
 shcJSL.methods.openID = function(target, options) {
-	var method;	// (String) Method to use with the modal window [open|update|close]
+	var configs;	// Configurations for openID
+	var element;	// Element for openID
+	var getOptions; // (Function) Get optional parameters for the service
+	var options;	// Element options for openID
+	var services;	// OpenID service URLs
 	
-	if (this.constructor == String) {
-		method = this.toString();
-	} else if (this.constructor == Object) {
-		if (this.action) method = this.action.toString();
-		else method = new String("create");
-	} else if (this.constructor == Window) {
-		method = new String("create");
-	} else {
-		// Something broke
-		return;
+	element = target;
+	options = this;
+
+	configs = {
+		tokenURL: (window['OID'] != undefined && window['OID'].token_url != undefined)? window['OID'].token_url:'',
+		ssoURL: 'https://sears-qa.rpxnow.com'
 	}
 	
-	($Moodle instanceof MOODLE.modal)? $Moodle[method](target, this):($Moodle = new $Moodle())[method](target,this)
+	services = {
+		facebook: {	// Needs ? for tokenURL
+			url: '/facebook/connect_start',
+			options: ["publish_stream","offline_access","user_activities","friends_activities","user_birthday","friends_birthday","user_events","friends_events","user_interests","friends_interests","user_likes","friends_likes","email","user_location","friends_location","user_hometown","friends_hometown"]
+		}, // END facebook
+		yahoo: {	// Needs & for tokenURL
+			url: '/openid/start?openid_identifier=http://me.yahoo.com'
+		}, // END Yahoo!
+		google: {	// Neds & for tokenURL
+			url: '/openid/start?openid_identifier=https://www.google.com/accounts/o8/id'
+		}, // END Google
+		twitter: {	// Needs ? for tokenURL
+			url: '/twitter/start'
+		}
+	}
+	
+	$.each($(element).find("*[shc\\:openID]"), function(key, value) {
+		var service; // Service the user is using for open ID
+		var url; // Pop up URL
+		
+		service = $(value).attr("shc:openid");
+		url = configs.ssoURL + services[service].url;
+		if (configs.tokenURL != '')(url.indexOf("?") == -1)? url = url + "?token_url=" + escape(configs.tokenURL):url = url + "&token_url=" + escape(configs.tokenURL);
+		if (services[service].options) url = url + "&ext-perm=" + services[service].options.join();
+		
+		$(value).bind('click',function() {
+			var height; // New window height
+			var width; // New window width
+			
+			height = 600;
+			width = 600;
+			console.log(url);
+			mywindow = window.open(url, 'Login', 'resizable=0,height=' + height + ',width=' + width + ',left=' + ((screen.width/2) - (width/2)) + ',top=' + ((screen.height/2) - (height-2)))
+		});		
+	})
 }
 
 shcJSL.gizmos.bulletin['shcJSL.openID.js'] = true;
@@ -40,9 +74,7 @@ shcJSL.gizmos.bulletin['shcJSL.openID.js'] = true;
 	 */
 if (shcJSL && shcJSL.gizmos)  {
 	shcJSL.gizmos.openID = function(element) {
-		$(element).bind('click',function(event) {
-			shcJSL.get(element).openID();
-			event.preventDefault();
-		});
+		options = ($(element).attr("shc:gizmo:options") != undefined)? (((eval('(' + $(element).attr("shc:gizmo:options") + ')')).openID)?(eval('(' + $(element).attr("shc:gizmo:options") + ')')).openID:{}):{};
+		shcJSL.get(element).openID(options);
 	}
 }
