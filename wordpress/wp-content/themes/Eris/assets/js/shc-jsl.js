@@ -170,6 +170,14 @@ shcJSL.renderHTML = function(parent, html) {
 	}
 	return parent;
 }
+
+shcJSL.first = function(element) {
+	var firstChild = element.firstChild;
+	while (firstChild.nodeName == "#text") {
+		firstChild = firstChild.nextSibling;
+	}
+	return firstChild;
+}
 /*
 	[2.0] WIDGETS
 	-------------

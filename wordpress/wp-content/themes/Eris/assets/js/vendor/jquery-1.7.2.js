@@ -6723,7 +6723,6 @@ if ( document.defaultView && document.defaultView.getComputedStyle ) {
 			style = elem.style;
 
 		name = name.replace( rupper, "-$1" ).toLowerCase();
-
 		if ( (defaultView = elem.ownerDocument.defaultView) &&
 				(computedStyle = defaultView.getComputedStyle( elem, null )) ) {
 

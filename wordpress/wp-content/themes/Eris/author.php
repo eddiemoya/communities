@@ -1,6 +1,6 @@
 <?
-error_reporting(E_ALL);
-ini_set('display_errors', true);
+/*error_reporting(E_ALL);
+ini_set('display_errors', true);*/
 
 //User_Profile class
 require_once 'classes/communities_profile.php';
@@ -42,7 +42,7 @@ switch($profile_type) {
 								'answer',
 								'comment',
 								'follow',
-								'votes'
+								'upvote'
 								);
 	break;
 	
@@ -54,7 +54,7 @@ switch($profile_type) {
 								'answer',
 								'comment',
 								'follow',
-								'votes',
+								'upvote',
 								'guides',
 								'posts'
 								);
@@ -109,24 +109,38 @@ if(isset($_GET['post-type'])) {
 		//Posts
 		if($type == 'posts' || $type == 'guides' || $type == 'question') {
 			
+			
 			$activities = $user_activities->get_user_posts_by_type($type)
 											->posts;
+											
 											
 			include('parts/profile-posts.php');
 		}
 		
 		//Actions
-		if($type == 'follow' || $type == 'votes') {
+		if($type == 'follow' || $type == 'upvote') {
 			
-			include('parts/profile-actions.php');
+			$activities = $user_activities->get_actions($type)
+											->activities;
+			
+			include('parts/profile-recent.php');
 		}
 		
 		if($type == 'recent') {
+			
+			$activities = $user_activities->get_recent_activities()
+											->activities;
 			
 			include('parts/profile-recent.php');
 		}
 		
 		if($type == 'aboutme') {
+			
+			if(class_exists('SSO_Profile')) {
+				
+				$sso_profile = new SSO_Profile();
+				$user_profile = $sso_profile->get(get_user_sso_guid($profile_user->data->ID));
+			}
 			
 			include('parts/profile-aboutme.php');
 		}
@@ -155,6 +169,7 @@ if(isset($_GET['post-type'])) {
         ?>
        
 	 </ol>
+	 
 	 </section>
 	 	
 	 </section>
