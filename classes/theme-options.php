@@ -317,106 +317,10 @@ class Theme_Options {
 			)
 		);
         
-        $this->settings['blog_subheader_url'] = array(
-            'title'   => __( 'Sub-Header URL:' ),
-            'desc'    => __( 'The URL that the Sub-header image link should point to.' ),
-            'std'     => 'http://www.kmart.com/fashion',
-            'type'    => 'text',
-            'section' => 'general'
-        );
-        $this->settings['blog_sign_me_up_url'] = array(
-            'title'   => __( '"Sign Me Up" URL:' ),
-            'desc'    => __( 'The URL that the "Sign Me Up" link should point to.' ),
-            'std'     => 'https://spc.gc.epsilon.com/minipref.aspx?REG_CD=2197&OPT_CD=KF ',
-            'type'    => 'text',
-            'section' => 'general'
-        );
-        
-        $this->settings['general_lookbook_heading'] = array(
-            'section' => 'general',
-            'title'   => '', // Not used for headings.
-            'desc'    => 'Lookbook Settings',
-            'type'    => 'heading'
-        );
-		
-		$this->settings['enable_lookbooks'] = array(
-			'section' => 'general',
-			'title'   => __( 'Lookbooks' ),
-			'desc'    => __( 'Enable' ),
-			'type'    => 'checkbox',
-			'std'     => 1 // Set to 1 to be checked by default, 0 to be unchecked by default.
-		);
+ 
 		
 
-        $lookbooks = get_categories('parent='.  get_category_by_slug('lookbook')->term_id . '&hide_empty=0&exclude='.get_category_by_slug('thumbnails')->term_id);
-
-        foreach((array) $lookbooks as $lookbook){
-            $this->settings[$lookbook->slug . '_lookbook_heading'] = array(
-                'section' => 'lookbooks',
-                'title'   => '', // Not used for headings.
-                'desc'    => $lookbook->name,
-                'type'    => 'heading'
-            );
-
-            $this->settings[$lookbook->slug . '_lookbook_return_text'] = array(
-                'title'   => __( 'Return Text:' ),
-                'desc'    => __( 'The text that the "Return to..." should show for the "' . $lookbook->name . '" lookbook.' ),
-                'std'     => 'Return to',
-                'type'    => 'text',
-                'section' => 'lookbooks'
-            );
-            $this->settings[$lookbook->slug . '_lookbook_return_url'] = array(
-                'title'   => __( 'Return Link URL:' ),
-                'desc'    => __( 'The URL that the "Return to..." should point to for the "' . $lookbook->name . '" lookbook.' ),
-                'std'     => 'http://fashion.kmart.com/',
-                'type'    => 'text',
-                'section' => 'lookbooks'
-            );
-            
-            $this->settings[$lookbook->slug . '_lookbook_brand_shop_style'] = array(
-                'section' => 'lookbooks',
-                'title'   => __( 'Brand Shop Style:' ),
-                'desc'    => __( 'Select from the available brand shop styles for the "' . $lookbook->name . '" lookbook.' ),
-                'type'    => 'radio',
-                'std'     => 'kmflb_style',
-                'choices' => array(
-                    'kmflb_style' => 'Kmart Fashion',
-                    'sslb_style' => 'Style Sip'
-                )
-            );
-            
-        }
-		
-        /* Lookbooks
-		===========================================*/
-        
-/*       
-//		$this->settings['example_heading'] = array(
-//			'section' => 'general',
-//			'title'   => '', // Not used for headings.
-//			'desc'    => 'Example Heading',
-//			'type'    => 'heading'
-//		);    
-//		$this->settings['example_textarea'] = array(
-//			'title'   => __( 'Example Textarea Input' ),
-//			'desc'    => __( 'This is a description for the textarea input.' ),
-//			'std'     => 'Default value',
-//			'type'    => 'textarea',
-//			'section' => 'general'
-//		);	
-//		$this->settings['example_select'] = array(
-//			'section' => 'general',
-//			'title'   => __( 'Example Select' ),
-//			'desc'    => __( 'This is a description for the drop-down.' ),
-//			'type'    => 'select',
-//			'std'     => '',
-//			'choices' => array(
-//				'choice1' => 'Other Choice 1',
-//				'choice2' => 'Other Choice 2',
-//				'choice3' => 'Other Choice 3'
-//			)
-//		);*/
-		
+     
 		/* Appearance
 		===========================================*/
 /*	
