@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* 
 Theme Name: Eris
 Theme URI: http://ewww.sears.com/communities
@@ -1072,9 +1073,11 @@ fieldset#use_your_account_from {
   float: left;
   clear: both; }
 
-.allComments .expert {
-  background: #e6e6e6; }
-
+/*.allComments {
+  .expert {
+    background: lighten( sears( decorative ), 10 );
+  }
+}*/
 .actbg, .action .upvote, .action .upvote.active, .action .downvote, .action .downvote.active, .action .flag, .action .flag.active, .action .button {
   background-image: url("/wp-content/themes/Eris/assets/img/sprite-actions.png");
   background-repeat: no-repeat; }
@@ -1151,6 +1154,33 @@ fieldset#use_your_account_from {
 
 .action.last {
   margin-right: 0px; }
+
+.infoBubble {
+  background-color: transparent;
+  padding: 7px;
+  position: absolute;
+  width: 200px;
+  z-index: 1000; }
+  .infoBubble .arrowLeft {
+    background-color: transparent;
+    border-color: #ffffff #a0c7ff #ffffff #ffffff;
+    border-style: solid;
+    border-width: 20px;
+    width: 0px;
+    height: 0px; }
+  .infoBubble .arrowLeftBorder {
+    background-color: transparent;
+    border-color: transparent #ffffff transparent transparent;
+    border-style: solid;
+    border-width: 18px;
+    width: 0px;
+    height: 0px;
+    position: relative;
+    left: 4px;
+    top: -38px; }
+  .infoBubble ​
+  .info {
+    color: #000; }
 
 .dropmenu li {
   float: left;

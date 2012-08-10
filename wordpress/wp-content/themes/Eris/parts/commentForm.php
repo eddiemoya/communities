@@ -3,7 +3,7 @@
 
     $args = array(
         'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
-        'comment_field'        => '<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>',
+        'comment_field'        => '<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" shc:gizmo="tooltip" shc:gizmo:options="{tooltip:{events:\'click\'}}"></textarea>',
         'must_log_in'          => null,
         'logged_in_as'         => null,
         'comment_notes_before' => null,
@@ -39,6 +39,8 @@
 
                             echo apply_filters( 'comment_form_field_comment', $args['comment_field'] );
                             echo $args['comment_notes_after'];
+
+                            comments_template('/parts/tooltip.php');
                         ?>
                             <p class="form-submit">
                                 <button type="submit" id="<?php echo esc_attr( $args['id_submit'] ); ?>" class="<?php echo theme_option("brand"); ?>_button"><?php echo esc_attr( $args['label_submit'] ); ?></button>
