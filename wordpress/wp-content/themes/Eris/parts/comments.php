@@ -38,33 +38,18 @@
                 <article>
                     <?php echo $comment->comment_content; ?>
                 </article>
-                <form class="actions clearfix" action="" id="comment-<?php echo $comment->comment_ID; ?>">
+                <form class="actions clearfix" id="comment-<?php echo $comment->comment_ID; ?>" method="post" action="">
                     <div class="reply">
                         <a href="#">Reply</a>
                     </div>
-                    <input type="button" name="button1" value="Flag" id="flag-<?php echo $comment->comment_ID; ?>" class="flag" />
-                    <label class="metainfo" for="downvote-<?php echo $comment->comment_ID; ?>">(0)</label>
-                    <input type="button" name="button1" value="Down Vote" id="downvote-<?php echo $comment->comment_ID; ?>" class="downvote" />
-                    <label class="metainfo" for="upvote-<?php echo $comment->comment_ID; ?>">(0)</label>
-                    <input type="button" name="button1" value="Up Vote" id="upvote-<?php echo $comment->comment_ID; ?>" class="upvote" />
-                    <span class="text">Helpful</span>
-                    
-                    <!-- <div class="button">
-                                            <a href="#" class="action flag">Flag</a>
-                                        </div>
-                                        <label class="metainfo" for="Down Votes">(0)</label>
-                                        <div class="button">
-                                            <a href="#" class="action downvote">Down vote</a>
-                                        </div>
-                                        <label class="metainfo" for="Up Votes">(0)</label>
-                                        <div class="button helpful">
-                                            <span class="text">Helpful</span>
-                                            <a href="#" class="action upvote">Up vote</a>
-                                        </div> -->
+                    <button type="button" name="button1" value="flag" id="flag-comment-<?php echo $comment->comment_ID; ?>" class="flag">Flag</button>
+                    <label class="metainfo" for="downvote-comment-<?php echo $comment->comment_ID; ?>">(0)</label>
+                    <button type="button" name="button1" value="Down Vote" id="downvote-comment-<?php echo $comment->comment_ID; ?>" class="downvote">Down Vote</button>
+                    <label class="metainfo" for="upvote-comment-<?php echo $comment->comment_ID; ?>">(0)</label>
+                    <button type="button" name="button1" value="Helpful" id="upvote-comment-<?php echo $comment->comment_ID; ?>" class="upvote"> Helpful</button>
                 </form>
-                
             </div>
-            <!-- Begin Children 
+            <!-- Begin Children
             <ol class="children">
                  <li class="comment clearfix<?php echo $container_class; ?>">
                      <div class="span2 badge<?php echo $badge_class; ?>">
@@ -77,34 +62,26 @@
                          <article>
                              <?php echo $comment->comment_content; ?>
                          </article>
-                         <div class="actions clearfix">
+                         <form class="actions clearfix" action="" id="comment-<?php echo $comment->comment_ID; ?>">
                              <div class="reply">
                                  <a href="#">Reply</a>
                              </div>
-                             <div class="button">
-                                 <a href="#" class="action flag">Flag</a>
-                             </div>
-                             <span class="metainfo">(0)</span>
-                             <div class="button">
-                                 <a href="#" class="action downvote">Down vote</a>
-                             </div>
-                             <span class="metainfo">(0)</span>
-                             <div class="button helpful">
-                                 <span class="text">Helpful</span>
-                                 <a href="#" class="action upvote">Up vote</a>
-                             </div>
-                         </div>
+                             <input type="button" name="button1" value="Flag" id="flag-comment-<?php echo $comment->comment_ID; ?>" class="flag" />
+                             <label class="metainfo" for="downvote-comment-<?php echo $comment->comment_ID; ?>">(0)</label>
+                             <input type="button" name="button1" value="Down Vote" id="downvote-comment-<?php echo $comment->comment_ID; ?>" class="downvote" />
+                             <label class="metainfo" for="upvote-comment-<?php echo $comment->comment_ID; ?>">(0)</label>
+                             <input type="button" name="button1" value="Up Vote" id="upvote-comment-<?php echo $comment->comment_ID; ?>" class="upvote" />
+                             <span class="text">Helpful</span>
+                         </form>
                      </div>
                  </li>
-            </ol>-->
+            </ol> -->
         </li>
-
 <?php
         }
 ?>
 </ol>
 <?php
-
     }
     # No Comments.
     else {
@@ -114,5 +91,3 @@
 </section>
 <?php
     }
-
-?>
