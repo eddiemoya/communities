@@ -143,7 +143,7 @@ if(isset($_GET['post-type'])) {
 			if(class_exists('SSO_Profile')) {
 				
 				$sso_profile = new SSO_Profile();
-				$user_profile = $sso_profile->get(get_user_sso_guid($profile_user->data->ID));
+				//$user_profile = $sso_profile->get(get_user_sso_guid($profile_user->data->ID));
 			}
 			
 			include('parts/profile-aboutme.php');

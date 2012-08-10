@@ -138,6 +138,8 @@ ul.bullets {
     }
     .badge-tail {
       background: url('#{$img}sprite-user.png') no-repeat center top;
+      height: 10px;
+      overflow: hidden;
     }
   }
 }
@@ -731,123 +733,6 @@ $tab-padding: "1em 0 .6em 0";
 		float: left;
 		clear:both;
 	}
-}
-
-
-
-// Threaded Discussion
-/*.allComments {
-  .expert {
-    background: lighten( sears( decorative ), 10 );
-  }
-}*/
-
-// Activity buttons
-
-// Consolidate the background image
-.actbg {
-  background-image: url('#{$img}sprite-actions.png');
-  background-repeat: no-repeat;
-}
-
-// A base class for the button
-.actionIcon {
-  height: 19px;
-  width: 15px;
-}  
-
-.reply {
-  display: block;
-  float: left;
-}
-
-.actions {
-  width: 100%;
-}
-
-.action {
-  color: #6f6f6f;
-  float: right;
-  margin-right: 15px;
-  overflow: hidden;
-  
-  // individual buttons
-  .upvote {
-    @extend .actbg;
-    &.active {
-      background-color: $nav-color;
-      @extend .actbg;
-    }
-  }
-  @include sprite-position( ".upvote", right, top );
-  @include sprite-position( ".upvote.active", right, ( $act-sprite-period * -1 ) );
-  
-  .downvote {
-    @extend .actbg;
-    &.active {
-      background-color: $nav-color;
-      @extend .actbg;
-    }
-  }
-  @include sprite-position( ".downvote", right, ( $act-sprite-period * -1 ) * 2 );
-  @include sprite-position( ".downvote.active", right, ( $act-sprite-period * -1 ) * 3 );
-  
-  .flag {
-    width: 19px;
-    @extend .actbg;
-    &.active {
-      background-color: $nav-color;
-      @extend .actbg;
-    }
-  }
-  @include sprite-position( ".flag", right, ( $act-sprite-period * -1 ) * 4 );
-  @include sprite-position( ".flag.active", right, ( $act-sprite-period * -1 ) * 5 );
-  
-
-  .button {
-    background-color: $lightest-color;
-    background-repeat: repeat-x;
-    @include border-radius( 2px );
-    border: 1px solid #d6d6d6;
-    cursor: pointer;
-    float: left;
-    height: 19px;
-    margin-right: 3px;
-    overflow: hidden;
-    padding: 1px 7px;
-    @extend .actbg;
-    
-    span {
-      float: left;
-    }
-
-    .text {
-      color: #4d76a2;
-      font-size: 13px;
-      margin-right: 6px;
-      position: relative;
-      top: 1px;
-    }
-    
-    
-  }
-  
-  @include sprite-position( ".button", right, bottom );
-  
-  .count {
-    float: left;
-    font-size: 12px;
-    position: relative;
-    top: 2px;
-  }
-}
-
-.action.further {
-  margin-right: 25px;
-}
-
-.action.last {
-  margin-right: 0px;
 }
 
 .infoBubble {
