@@ -8,7 +8,7 @@ get_template_part('parts/header');
 ?>
 
 <section class="span8">
-    <? loop(); ?>
+<? loop('question'); ?>
 </section>
 
 <section class="span4">
