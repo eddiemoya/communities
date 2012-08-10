@@ -6,7 +6,7 @@
 <header id="header" class="<?php echo theme_option("brand"); ?> clearfix">
 	
 	<div class="<?php echo (theme_option("brand") == "sears")? "span4":"span3"; ?>">
-		<a href="<?php echo site_url(''); ?>" id="logo" class="invisible"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/<?php echo ucfirst(theme_option("brand")); ?>/logo.png" /></a>
+		<a href="<?php echo site_url(''); ?>" id="logo" class="invisible"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/<?php echo theme_option("brand"); ?>/logo.png" /></a>
 	</div>
 	
 	<div class="<?php echo (theme_option("brand") == "sears")? "span5":"span6"; ?>">
@@ -36,7 +36,7 @@
 				
 				<ul>
 					<li id="header_feedback"><a href="#" title="Feedback">Feedback</a></li>
-					<li id="header_shopping">Go Shopping: <a href="http://www.<?php echo ucfirst(theme_option("brand")); ?>.com" title="<?php echo ucfirst(theme_option("brand")); ?>" rel="external" title="<?php echo ucfirst(theme_option("brand")); ?>" class="bold"><?php echo ucfirst(theme_option("brand")); ?></a></li>
+					<li id="header_shopping">Go Shopping: <a href="http://www.<?php echo theme_option("brand"); ?>.com" title="<?php echo theme_option("brand"); ?>" rel="external" title="<?php echo theme_option("brand"); ?>" class="bold"><?php echo theme_option("brand"); ?></a></li>
 				</ul>
 				
 			</li>

@@ -2,8 +2,12 @@
 /*
  * Template Name: Register
  */
+
+//If origin param is set use it, otherwise if HTTP_REFERER is set, use it; otherwise use current page
 $origin = (isset($_GET['origin'])) ? $_GET['origin'] : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_permalink($post->ID));
-$error = (isset($_GET['error'])) ? $_GET['error'] : false;
+
+//If error is set
+$error = (isset($_GET['error'])) ? urldecode($_GET['error']) : false;
 /**
  * @package WordPress
  * @subpackage White Label

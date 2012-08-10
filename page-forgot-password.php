@@ -28,7 +28,6 @@ if(! empty($_POST)) {
 			
 			$response = $profile->authorize_reset($_POST['new_password'], $_POST['auth_token']);
 			
-			var_dump($response);
 		}
 	
 	}
@@ -41,7 +40,7 @@ if(! empty($_POST)) {
 
 get_template_part('parts/header'); ?>
 	<section class="span8">
-		<?php echo $response['message'];?>
+		<?php //echo $response['message'];?>
 		<article class="content-container post-your-question span12">
 			<section class="content-body clearfix">
 				
