@@ -61,7 +61,7 @@ get_template_part('parts/header'); ?>
           <dd class="span3">&nbsp;</dd>
           <dd class="span9">
             <p class="bold">
-              New Customer? <a href="#" title="Sign Up">Register Now</a>
+              New Customer? <a href="#" title="Sign Up" id="test">Register Now</a>
             </p>
           </dd>
         </dl>
@@ -88,6 +88,12 @@ get_template_part('parts/header'); ?>
 
 	<section class="span4">
 	</section>
+	
+	<script type="text/javascript">
+		$("#test").bind('click', function() {
+			var test = window.open('/wp-content/themes/Eris/assets/ajax/refresh.html','refresh','height=300,width=300');
+		})
+	</script>
 	
 <?php
 get_template_part('parts/footer');
