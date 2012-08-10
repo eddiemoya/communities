@@ -1,4 +1,4 @@
-<ol class="allComments">
+<div class="allComments">
 <?php
     $comments = get_comments(array('post_id' => $post->ID));
 
@@ -20,7 +20,7 @@
 ';
             }
 ?>
-            <li class="comment<?php echo $container_class; ?>">
+            <div class="comment<?php echo $container_class; ?>">
                 <div class="span2 badge<?php echo $badge_class; ?>">
                     <img src="<?php echo get_template_directory_uri() ?>/assets/img/zzexpert.jpg" alt="Team Player" title="Team Player" />
                     <?php echo $badge_titling; ?>
@@ -55,8 +55,8 @@
                     </div>
                 </div>
                 <!-- Begin Children -->
-                <ol class="children">
-                     <li class="comment<?php echo $container_class; ?>">
+                <div class="children">
+                     <div class="comment<?php echo $container_class; ?>">
                          <div class="span2 badge<?php echo $badge_class; ?>">
                              <img src="<?php echo get_template_directory_uri() ?>/assets/img/zzexpert.jpg" alt="Team Player" title="Team Player" />
                              <?php echo $badge_titling; ?>
@@ -90,9 +90,9 @@
                                  <!-- HIDE THIS SOMEHOW; <?php //comments_template('/parts/commentForm.php'); ?> -->
                              </div>
                          </div>
-                     </li>
-                </ol>
-            </li>
+                     </div>
+                </div>
+            </div>
 
 <?php
         }
@@ -100,4 +100,4 @@
         echo 'none';
     }
 ?>
-</ol>
+</div>
