@@ -208,3 +208,8 @@ function print_pre($r){
     print_r($r);
     echo '</pre>';
 }
+
+function get_partial( $partial, $variables = array() ) {
+    extract( $variables );
+    @include get_template_directory() . '/' . $partial . '.php';
+}
