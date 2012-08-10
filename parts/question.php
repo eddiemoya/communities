@@ -1,38 +1,29 @@
-<article class="content-container span12">
-    <div class="breadcrumbs">
-        Breadcrumbs
+<?php
+    $i = 0;
+    $categories = get_the_category( $post->ID );
+?>
+<article class="post-n-comments">
+    <header class="section-header">
+        Question
+    </header>
+    <div class="span2 badge">
+        <img src="<?php echo get_template_directory_uri() ?>/assets/img/zzexpert.jpg" alt="Team Player" title="Team Player" />
+        <h4><a href="#"><?php the_author_link(); ?></a></h4>
+        <address>Chicago, IL</address>
     </div>
-    <div class="single span8">
-        <?php
-            $i = 0;
-
-            $categories = get_the_category($post->ID);
-        ?>
-        <div class="top">
-            <a href="<?php get_category_link($categories[0]->term_id); ?>"><?php echo $categories[0]->name; ?></a>
-            <span class="date"><?php echo the_date(); ?></span>
-        </div>
-        <div class="content">
-            <h2><a href="<?php the_permalink(); ?>"><?php echo the_title(); ?></a></h2>
-            <p><?php echo the_content(); ?></p>
-            <p class="by">By <?php the_author_link(); ?></p>
-            <p class="tags">Tags:
-                <?php
-                    $posttags = get_the_tags();
-                    if ($posttags) {
-                        foreach($posttags as $tag) {
-                            echo '<a href="'.get_bloginfo('siteurl').'">'.$tag->name.'</a> ';
-                        }
-                    }
-                ?>
-            </p>
-            <!-- Insert social here -->
-        </div>
-        <div class="comments">
-            <?php
-                comments_template('/parts/commentForm.php');
-                comments_template('/parts/comments.php');
-            ?>
-        </div>
+    <div class="span10 info content-details">
+        <time datetime="<?php echo date( "Y-m-d" ); ?>" pubdate="pubdate"><?php echo the_date(); ?></time>
+        <h2><?php the_title(); ?></h2>
+        <?php the_content(); ?>
+        <ul class="actions">
+            <li>Follow</li>
+            <li>Share</li>
+            <li>Flag</li>
+        </ul>
     </div>
+    
+    <?php
+        comments_template('/parts/commentForm.php');
+        comments_template('/parts/comments.php');
+    ?>
 </article>

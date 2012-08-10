@@ -18,11 +18,12 @@
 
     $args = wp_parse_args( $args, apply_filters( 'comment_form_defaults', $defaults ) );
 
-    if ( comments_open() ) : ?>
+    if ( comments_open() ) :
+        $comment_type = get_post_type( $post->ID ) == 'question' ? 'an answer' : 'a comment';
+?>
     <div class="commentForm" xmlns="http://www.w3.org/1999/html">
-            <div class="top">
-                <span class="commentTotal"><?php comments_number( '', '1 comment', '% comments' ); ?></span>
-                <span class="leaveComment">Leave a comment <span class="smaller">&#9660;</span></span>
+            <div class="top clearfix">
+                <span class="leaveComment">Leave <?php echo $comment_type; ?> <span class="smaller">&#9660;</span></span>
             </div>
             <?php
                 if ( get_option( 'comment_registration' ) && !is_user_logged_in() ) :
@@ -49,6 +50,12 @@
                     </form>
                 <?php endif; ?>
         </div><!-- #respond -->
+        <script>
+            $(".commentForm form").hide();
+            $(".leaveComment").click(function () {
+              $(".commentForm form").slideToggle("slow");
+            });
+        </script>
     <?php
         do_action( 'comment_form_after' );
     else :
