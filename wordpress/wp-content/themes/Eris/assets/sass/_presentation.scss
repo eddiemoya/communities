@@ -731,6 +731,40 @@ $tab-padding: "1em 0 .6em 0";
 	}
 }
 
+.infoBubble {
+  background-color: transparent;
+  padding: 7px;
+  position: absolute;
+  width: 200px;
+  z-index: 1000;
+
+  .arrowLeft {
+    background-color: transparent;
+    border-color: #ffffff #a0c7ff #ffffff #ffffff;
+    border-style: solid;
+    border-width: 20px;
+    width: 0px;
+    height: 0px;
+  }
+
+  .arrowLeftBorder {
+    background-color: transparent;
+    border-color: transparent #ffffff transparent transparent;
+    border-style: solid;
+    border-width: 18px;
+    width: 0px;
+    height: 0px;
+    position: relative;
+    left: 4px;
+    top: -38px;
+  }
+  ​
+
+  .info {
+    color: #000;
+  }
+}
+
 // Threaded Discussion
 .commentForm {
   margin-bottom: 20px;
