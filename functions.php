@@ -33,4 +33,5 @@ get_template_part('functions/menus');
 get_template_part('functions/post-types');
 get_template_part('functions/sidebar-declarations');
 get_template_part('functions/template-tags');
+get_template_part('functions/profile');
 get_template_part('functions/profile-ajax');
