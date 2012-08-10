@@ -42,8 +42,15 @@ foreach($activities as $activity):
 	 	<input type="hidden" id="uid" value="<?php echo $profile_user->data->ID; ?>" />
  	<?php endif;?>
  	
+ 	<noscript>
+ 		<?php if($user_activities->prev_page):?>
+ 			<a href="<?php echo $url_no_qs . '?post-type=' . $type . '&page=' . $user_activities->prev_page; ?>" id="page-prev">&lt; Previous</a>
+ 		<?php endif;?>
+ 		&nbsp;&nbsp;
+ 	</noscript>
+ 	
  	<?php if($user_activities->next_page):?>
-	 	<a href="" id="page-more">More...</a>
+	 	<a href="<?php echo $url_no_qs . '?post-type=' . $type . '&page=' . $user_activities->next_page; ?>" id="page-more">More &gt;</a>
  	<?php endif;?>
       
       

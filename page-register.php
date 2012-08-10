@@ -30,8 +30,8 @@ get_template_part('parts/header'); ?>
                 
                 <li>
                     <dl class="clearfix">
-                        <dt class="span3"><label for="login_email">Email:</label></dt>
-                        <dd class="span9"><input type="text" name="login_email" class="input_text" id="login_email" /></dd>
+                        <dt class="span3"><label for="loginId">Email:</label></dt>
+                        <dd class="span9"><input type="text" name="loginId" class="input_text" id="loginId" /></dd>
                     </dl>
                 </li>
                 
@@ -44,15 +44,15 @@ get_template_part('parts/header'); ?>
                 
                 <li>
                     <dl class="clearfix">
-                        <dt class="span3"><label for="login_password">Password:</label></dt>
-                        <dd class="span9"><input type="password" name="login_password" class="input_text input_password" id="login_password" /></dd>
+                        <dt class="span3"><label for="logonPassword">Password:</label></dt>
+                        <dd class="span9"><input type="password" name="logonPassword" class="input_text input_password" id="logonPassword" /></dd>
                     </dl>
                 </li>
                 
                 <li>
                     <dl class="clearfix">
-                        <dt class="span3"><label for="login_zip-code">ZIP Code:</label></dt>
-                        <dd class="span9"><input type="password" name="login_password" class="input_text input_password" id="login_zip-code" /></dd>
+                        <dt class="span3"><label for="zipcode">ZIP Code:</label></dt>
+                        <dd class="span9"><input type="password" name="zipcode" class="input_text input_password" id="zipcode" /></dd>
                     </dl>
                 </li>
                 

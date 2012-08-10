@@ -1,44 +1,101 @@
 <?php
+/**
+ * Gets posts (posts, guides, questions) and comments (answer, comment) for a user.
+ * 
+ * @author Dan Crimmins [dcrimmi@searshc.com]
+ *
+ */
 class User_Profile {
 	
-	const ANSWER_TYPE = 'answer';
-	const QUESTION_TYPE = 'question';
-	const BLOG_POST_TYPE = 'blog_post';
-	const BUYING_GUIDE_TYPE = 'buying_guide';
-	
+	/**
+	 * User's wordpress user_id
+	 * @var int
+	 */
 	protected $user_id;
 	
+	/**
+	 * Array of post types
+	 * @var array
+	 */
 	public $post_types = array('post',
 								'question',
-							  	'guide');
+							  	'guides');
 	
+	/**
+	 * Array of comment types
+	 * @var array
+	 */
 	public $comment_types = array('',
 									'answer',
 									'comment');
 	
+	/**
+	 * Holds array of post objects
+	 * @var array
+	 */
 	public $posts = null;
 	
+	/**
+	 * Holds array of comment objects 
+	 * @var array
+	 */
 	public $comments = null;
 	
+	/**
+	 * Holds array of activities objects
+	 * (posts, comments, and actions)
+	 * @var array
+	 */
 	public $activities = null;
+	
+	/**
+	 * 
+	 * @var unknown_type
+	 */
 	
 	public $experts;
 	
+	/**
+	 * Posts per page 
+	 * 
+	 * @var int
+	 */
 	private $posts_per_page = 5;
 	
-	public $num_pages;
-	
+	/**
+	 * Pagination offset
+	 * @var int
+	 */
 	private $offset = 0;
 	
+	/**
+	 * Pagination page
+	 * @var int
+	 */
 	private $page = 1;
 	
+	/**
+	 * SQL LIMIT string
+	 * @var string
+	 */
 	private $limit;
 	
-	public $total_results;
-	
+	/**
+	 * Next page 
+	 * @var int
+	 */
 	public $next_page;
 	
+	/**
+	 * Previous Page 
+	 * @var int
+	 */
+	public $prev_page;
 	
+	/**
+	 * Constructor
+	 * @param int $user_id
+	 */
 	public function __construct($user_id = false) {
 		
 		 if(! $user_id) die('You must supply a user ID to constructor of User_Profile.'); 
@@ -48,6 +105,11 @@ class User_Profile {
 		 $this->set_experts($this->get_experts());
 	}
 	
+	/**
+	 * Sets page property
+	 * @param int $page_num
+	 * @return object - instance of this object
+	 */
 	public function page($page_num) {
 		
 		$this->page = $page_num;
@@ -55,7 +117,11 @@ class User_Profile {
 		return $this;
 	}
 	
-	
+	/**
+	 * Sets offset and limit properties
+	 * @param void
+	 * @return object
+	 */
 	private function paginate() {
 		
 		//Calculate the offset
@@ -66,18 +132,18 @@ class User_Profile {
 			$row = $row + $this->posts_per_page;
 		}
 		
-		
-		//$this->num_pages = ceil(($this->total_results / $this->posts_per_page));
-		/*echo $this->num_pages;
-		exit;*/
 		$this->offset = $row;
-		
-		//$this->next_page = ($this->page != $this->num_pages) ? ($this->page + 1) : null;
 		
 		$this->limit = ' LIMIT ' . $row .','. $this->posts_per_page;
 		
 		return $this;
 	}
+	
+	/**
+	 * Sets posts_per_page
+	 * @param int $num
+	 * @return object
+	 */
 	
 	public function posts_per_page($num) {
 		
@@ -86,6 +152,11 @@ class User_Profile {
 		return $this;
 	}
 	
+	/**
+	 * Gets user posts by type, sets posts property
+	 * @param string $post_type
+	 * @return object
+	 */
 	public function get_user_posts_by_type($post_type = 'post' ) {
 		
 		$args = 	array('author'			=> $this->user_id,
@@ -97,18 +168,14 @@ class User_Profile {
 						'paged'				=> $this->page
 						);
 						
-		//Sets total_results		
-		//$this->get_post_count($args);
 		
 		//Sets num_pages and offset
 		$this->paginate();
-		
-		//$args['posts_per_page'] = $this->posts_per_page;
-		//$args['paged'] = $this->page;		
 						
 		$this->posts = get_posts($args);
 		
 		$this->next_page = (count($this->posts) < $this->posts_per_page) ? null : ($this->page + 1);
+		$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
 		
 		//Get and add categories property to each post
 		$this->set_post_categories();
@@ -116,6 +183,12 @@ class User_Profile {
 		return $this;
 	}
 	
+	/**
+	 * Gets user's recent activities (posts,comments,actions).
+	 * Sets activities property
+	 * 
+	 * @return object
+	 */
 	public function get_recent_activities() {
 		
 		global $wpdb;
@@ -134,7 +207,7 @@ class User_Profile {
 				p.post_content as content
 				
 				FROM {$wpdb->posts} as p
-				WHERE p.post_type IN ('question', 'guide', 'post')
+				WHERE p.post_type IN ('question', 'guides', 'post')
 				AND p.post_status='publish'
 				AND p.post_author = {$this->user_id}
 				)
@@ -174,7 +247,7 @@ class User_Profile {
 				ON p.ID = pa.object_id
 				LEFT JOIN {$wpdb->prefix}user_actions ua
 				ON pa.post_action_id = ua.object_id
-				WHERE pa.object_subtype IN ('question', 'guide', 'post')
+				WHERE pa.object_subtype IN ('question', 'guides', 'post')
 				AND pa.action_type IN ('upvote', 'follow')
 				AND p.post_status='publish'
 				AND ua.user_id = {$this->user_id}
@@ -198,15 +271,9 @@ class User_Profile {
 				ON pa.post_action_id = ua.object_id 
 				WHERE pa.object_subtype IN ('answer', 'comment', '' ) 
 				AND pa.action_type IN ('upvote', 'follow') 
-				AND c.comment_approved = 1 AND ua.user_id = 1 
-				
-				)
+				AND c.comment_approved = 1 AND ua.user_id = 1 )
 				
 				ORDER BY date DESC" . $this->limit;
-		
-		/*echo $q;
-		exit;*/
-		
 		
 		
 		$this->activities = $wpdb->get_results($q);
@@ -214,11 +281,17 @@ class User_Profile {
 		$this->set_activities_attributes();
 		
 		$this->next_page = (count($this->activities) < $this->posts_per_page) ? null : ($this->page + 1);
-		
+		$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
 		
 		return $this;
 	}
 	
+	/**
+	 * Gets user's actions by action type
+	 * 
+	 * @param string $type
+	 * @return object
+	 */
 	public function get_actions($type) {
 		
 		global $wpdb;
@@ -240,11 +313,10 @@ class User_Profile {
 				ON p.ID = pa.object_id
 				LEFT JOIN {$wpdb->prefix}user_actions ua
 				ON pa.post_action_id = ua.object_id
-				WHERE pa.object_subtype IN ('question', 'guide', 'post')
+				WHERE pa.object_subtype IN ('question', 'guides', 'post')
 				AND pa.action_type = '{$type}'
 				AND p.post_status='publish'
-				AND ua.user_id = {$this->user_id}
-				)
+				AND ua.user_id = {$this->user_id})
 				
 				UNION ALL
 
@@ -264,9 +336,7 @@ class User_Profile {
 				ON pa.post_action_id = ua.object_id 
 				WHERE pa.object_subtype IN ('answer', 'comment', '' ) 
 				AND pa.action_type = '{$type}'
-				AND c.comment_approved = 1 AND ua.user_id = 1 
-				
-				)
+				AND c.comment_approved = 1 AND ua.user_id = 1)
 				
 				ORDER BY date DESC" . $this->limit;
 		
@@ -275,11 +345,17 @@ class User_Profile {
 		$this->set_activities_attributes();
 		
 		$this->next_page = (count($this->activities) < $this->posts_per_page) ? null : ($this->page + 1);
-		
+		$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
 		
 		return $this;
 	
 	}
+	
+	/**
+	 * Gets and adds category object to posts property array.
+	 * 
+	 * @return void
+	 */
 	
 	private function set_post_categories() {
 		
@@ -292,6 +368,11 @@ class User_Profile {
 		}
 	}
 	
+	/**
+	 * Sets comments and posts on activities property array.
+	 * 
+	 * @return void
+	 */
 	private function set_activities_attributes() {
 		
 		if(count($this->activities)) {
@@ -325,18 +406,12 @@ class User_Profile {
 		}
 	}
 	
-	private function get_post_count($args) {
-		
-		$args['posts_per_page'] = -1;	
-		$this->total_results = count(get_posts($args));
-		
-		
-		/*echo '<pre>';
-		var_dump(get_posts($args));
-		exit;*/
-	}
 	
-	
+	/**
+	 * Gets user comments by type. Sets comments property.
+	 * 
+	 * @param string $type
+	 */
 	public function get_user_comments_by_type($type = '') {
 		
 	     $args = array(	'type'				=> $type,
@@ -346,18 +421,15 @@ class User_Profile {
 						'orderby'			=> 'comment_date',
 	     				'number'			=> $this->posts_per_page
 						);
-
-			//Sets total
-			//$this->get_total_comments($args);
 			
 			$this->paginate();
 			
-			//$args['number'] = $this->posts_per_page;
 			$args['offset'] = $this->offset;
 						
 			$this->comments = get_comments($args);
 			
 			$this->next_page = (count($this->comments) < $this->posts_per_page) ? null : ($this->page + 1);
+			$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
 			
 			$this->get_comment_post();
 			
@@ -365,6 +437,11 @@ class User_Profile {
 			
 	}
 	
+	/**
+	 * Gets and sets comments property on each post object in posts property.
+	 * 
+	 * @return void
+	 */
 	private function get_comment_post() {
 		
 		if(count($this->comments)) {
@@ -389,20 +466,11 @@ class User_Profile {
 		
 	}
 	
-
-	private function get_total_comments($args) {
-		
-		$args['count'] = 1;
-		
-		$count = get_comments($args);
-		
-		/*var_dump(get_comments($args));
-		exit;*/
-		
-		$this->total_results = $count;
-		
-	}
-	
+	/**
+	 * Sets categories objects on each post object in posts property.
+	 * 
+	 * @param int $id -- Post ID
+	 */
 	private function get_post_categories($id) {
 				
 		$cat_ids = wp_get_post_categories($id);
@@ -416,6 +484,12 @@ class User_Profile {
 	}
 	
 	
+	/**
+	 * 
+	 * Gets expert user objects
+	 * 
+	 * @return array - an array of user objects
+	 */
 	public function get_experts() {
 		
 		global $wpdb;
@@ -427,6 +501,11 @@ class User_Profile {
 		
 	}
 	
+	/**
+	 * Sets experts property with csv of expert user ids
+	 * 
+	 * @param array $experts -- an array of user objects
+	 */
 	private function set_experts($experts) {
 		
 		if(count($experts)) {
