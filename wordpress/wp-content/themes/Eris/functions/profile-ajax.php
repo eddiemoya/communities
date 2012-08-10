@@ -30,8 +30,8 @@ function profile_paginate() {
 	$type = $_POST['type'];
 	$page = $_POST['page'];
 	
-	//User_Profile class
-	require_once get_template_directory_uri() . '/classes/communities_profile.php';
+	
+	require_once get_template_directory() . '/classes/communities_profile.php';
 	
 	//User Profile object
 	$user_activities = new User_Profile($uid);
@@ -46,7 +46,7 @@ function profile_paginate() {
 											->comments;
 											
 																										
-			include(get_template_directory_uri() . '/parts/profile-comments.php');
+			include(get_template_directory() . '/parts/profile-comments.php');
 		}
 		
 		//Posts
@@ -56,18 +56,26 @@ function profile_paginate() {
 											->get_user_posts_by_type($type)
 											->posts;
 											
-			include(get_template_directory_uri() . '/parts/profile-posts.php');
+			include(get_template_directory() . '/parts/profile-posts.php');
 		}
 		
 		//Actions
-		if($type == 'follow' || $type == 'votes') {
+		if($type == 'follow' || $type == 'upvote') {
 			
-			include(get_template_directory_uri() . '/parts/profile-actions.php');
+			$activities = $user_activities->page($page)
+											->get_actions($type)
+											->activities;
+			
+			include(get_template_directory() . '/parts/profile-recent.php');
 		}
 		
 		if($type == 'recent') {
 			
-			include(get_template_directory_uri() . '/parts/profile-recent.php');
+			$activities = $user_activities->page($page)
+											->get_recent_activities()
+											->activities;
+											
+			include(get_template_directory() . '/parts/profile-recent.php');
 		}
 		
 	$output = ob_get_clean();

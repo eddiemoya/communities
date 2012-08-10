@@ -1,6 +1,4 @@
 <?
-error_reporting(E_ALL);
-ini_set('display_errors', true);
 
 //User_Profile class
 require_once 'classes/communities_profile.php';
@@ -18,6 +16,8 @@ $profile_user = get_userdata(get_query_var('author'));
 $user_activities = new User_Profile($profile_user->data->ID);
 
 
+//No JS pagination, set page
+$page = (isset($_GET['p'])) ? $_GET['p'] : 1;
 
 //Set profile_type
 if(is_user_logged_in() && ($profile_user->data->ID == $current_user->data->ID)){
@@ -42,7 +42,7 @@ switch($profile_type) {
 								'answer',
 								'comment',
 								'follow',
-								'votes'
+								'upvote'
 								);
 	break;
 	
@@ -54,7 +54,7 @@ switch($profile_type) {
 								'answer',
 								'comment',
 								'follow',
-								'votes',
+								'upvote',
 								'guides',
 								'posts'
 								);
@@ -99,7 +99,8 @@ if(isset($_GET['post-type'])) {
       	//Comments
 		if($type == 'answer' || $type == 'comment') {
 			
-			$activities = $user_activities->get_user_comments_by_type($type)
+			$activities = $user_activities->page($page)
+											->get_user_comments_by_type($type)
 											->comments;
 											
 																										
@@ -109,52 +110,50 @@ if(isset($_GET['post-type'])) {
 		//Posts
 		if($type == 'posts' || $type == 'guides' || $type == 'question') {
 			
-			$activities = $user_activities->get_user_posts_by_type($type)
+			
+			$activities = $user_activities->page($page)
+											->get_user_posts_by_type($type)
 											->posts;
+											
 											
 			include('parts/profile-posts.php');
 		}
 		
 		//Actions
-		if($type == 'follow' || $type == 'votes') {
+		if($type == 'follow' || $type == 'upvote') {
 			
-			include('parts/profile-actions.php');
+			$activities = $user_activities->page($page)
+											->get_actions($type)
+											->activities;
+			
+			include('parts/profile-recent.php');
 		}
 		
 		if($type == 'recent') {
+			
+			$activities = $user_activities->page($page)
+											->get_recent_activities()
+											->activities;
 			
 			include('parts/profile-recent.php');
 		}
 		
 		if($type == 'aboutme') {
 			
+			if(class_exists('SSO_Profile')) {
+				
+				$sso_profile = new SSO_Profile();
+				$user_profile = $sso_profile->get(get_user_sso_guid($profile_user->data->ID));
+			}
+			
 			include('parts/profile-aboutme.php');
 		}
 	
-        
-          /*foreach ( $activities as $activity ):
-            # logic for showing the badge
-            $a_start = array();
-            $badge = '';
-            /*if ( $is_widget ) {
-              $a_start[] = '<a href="#">' . $activity["author"] . '</a>';
-              $badge = '<div class="badge span3"><img src="' . get_template_directory_uri() . '/assets/img/zzexpert.jpg" alt="Team Player" title="Team Player" /></div>';
-            }
-          
-            # logic for showing the action.
-            $a_start[] = in_array( $current_nav, array('recent') ) ? $actions[ $activity["action"] ] . ' this:' : NULL;
-            $start = !empty( $a_start ) ? '<span>' . implode( $a_start, ' ' ) . '</span>' : '';
-          
-            # logic for showing an excerpt of the body
-            $excerpt = '';
-            if ( ( in_array( $current_nav, array( 1, 3, 4, 5, 6 ) ) ) && ( in_array( $activity["action"], array( 2, 3, 5 ) ) ) ) {
-              $excerpt = '<article class="excerpt">';
-              $excerpt .= strlen( $activity["excerpt"] ) > 180 ? substr( $activity["excerpt"], 0, 180 ) . "&#8230;" : $activity["excerpt"];
-              $excerpt .= '</article>';
-            }*/
+       
         ?>
        
 	 </ol>
+	 
 	 </section>
 	 	
 	 </section>

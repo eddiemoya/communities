@@ -1,0 +1,8 @@
+
+https://signin.shld.net/facebook/connect_start?token_url=https%3A//www.sears.com/shc/s/FacebookConnectReg%3FstoreId%3D10153%26catalogId%3D12605%26langId%3D-1%26shcapiBypassSSO%3Dtrue%26fbOpenIDLogonFlow%3Dtrue%26fromPage%3DModalLogon%26display%3Dpopup%26target_URL%3Dhttp%253A//www.sears.com/%26fromOIDProvider%3DFacebookConnect&ext_perm=publish_stream,offline_access,user_activities,friends_activities,user_birthday,friends_birthday,user_events,friends_events,user_interests,friends_interests,user_likes,friends_likes,email,user_location,friends_location,user_hometown,friends_hometown 
+
+
+https://signin.shld.net/facebook/connect_start?token_url=https://www.sears.com/shc/s/FacebookConnectReg?
+
+
+https://signin.shld.net/twitter/start?token_url=https://www.sears.com/shc/s/FacebookConnectReg?storeId=10153&catalogId=12605&langId=-1&shcapiBypassSSO=true&fbOpenIDLogonFlow=true&fromPage=ModalLogon&display=popup&target_URL=http%3A//www.sears.com/&fromOIDProvider=Twitter

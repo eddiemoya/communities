@@ -2,7 +2,11 @@
     /**
     * @package WordPress
     * @subpackage Eris
-    */
+    */ 
+
+// !!! Add conditional check to make sure that this page
+// is only rendered when profile_type = 'myprofile'
+
 
     get_template_part('parts/header');
 
