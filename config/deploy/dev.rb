@@ -19,7 +19,7 @@ set (:app_loc) { "/appl/communities/www/wp-content" }
 set :deploy_via, :remote_cache
 
 set :move_wp_content do
-  #run "rm -rf #{app_loc}/plugins/* && rm -rf #{app_loc}/themes/*"
-  #run "cp -R #{deploy_to}/current/wordpress/wp-content/plugins/* #{app_loc}/plugins"
-  #run "cp -R #{deploy_to}/current/wordpress/wp-content/themes/* #{app_loc}/themes"
+  run "rm -rf #{app_loc}/plugins/* && rm -rf #{app_loc}/themes/*"
+  run "cp -R #{deploy_to}/current/wordpress/wp-content/plugins/* #{app_loc}/plugins"
+  run "cp -R #{deploy_to}/current/wordpress/wp-content/themes/* #{app_loc}/themes"
 end
