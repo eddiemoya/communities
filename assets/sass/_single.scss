@@ -1,4 +1,3 @@
-
 .sears .post-n-comments h2, .sears .leaveComment {
   color: sears(link);
 }
@@ -19,7 +18,6 @@
   border-bottom: 1px solid sears( decorative );
 }
 
-// Threaded Discussion
 .post-n-comments {
   color: #666;
   header {
@@ -46,131 +44,4 @@
       margin-bottom: 25px;
     }
   }
-}
-
-.commentForm {
-  margin-bottom: 20px;
-
-  textarea {
-    @include border-radius( 4px );
-    border: 1px solid #d6d6d6;
-    margin-bottom: 15px;
-    width: 99%;
-  }
-  
-  .leaveComment {
-    float: right;
-    cursor: pointer;
-
-    .smaller {
-      bottom: 2px;
-      font-size: 8px;
-      position: relative;
-    }
-  }
-}
-
-.comments-header {
-  margin-bottom: 1em;
-  h3 {
-    font-size: percentage( 18/16 );
-  }
-  h4 {
-    margin-left: 2em;
-    color: $darkest-color;
-  }
-  > * {
-    display: inline-block;
-  }
-}
-#allComments {
-  @include border-radius( 4px );
-  border: 1px solid #d6d6d6;
-  border-bottom: 0;
-
-  .comment {
-    padding: .75em 2%;
-    background: $lightest-color;
-    border-top: 1px solid #d6d6d6;
-    border-bottom: 1px solid #d6d6d6;
-    @include border-radius( 4px );
-    &.expert {
-      background: lighten( sears( decorative ), 15 );
-    }
-    &:first-child {
-      border-top: 0;
-    }
-    time {
-      font-size: 13px;
-    }
-    article {
-      font-size: 13px;
-      margin: 1em 0;
-    }
-  }
-
-  .children {
-    clear: both;
-    float: right;
-    width: 85%;
-    border: 1px solid #d6d6d6;
-    @include border-radius( 4px );
-  }
-}
-
-// Activity buttons
-.actions {
-  margin-top: .6em;
-  .button {
-    float: right;
-  }
-  input[type="button"] {
-    cursor: pointer;
-    border: 1px solid #d6d6d6;
-    background: $lightest-color url('#{$img}sprite-actions.png') no-repeat;
-    display: inline-block;
-    float: right;
-    text-indent: -999em;
-    width: 2em;
-    margin-left: 1em;
-    @include border-radius( 2px );
-    @include box-shadow(sears( secondary-link ) 1px 2px 4px);
-    @extend .actbg;
-  }
-  .text {
-    display: block;
-    float: right;
-    color: #4d76a2;
-    font-size: 13px;
-    position: relative;
-    top: 5px;
-    left: 3.75em;
-    cursor: pointer;
-  }
-}
-
-.reply {
-  float: left;
-}
-
-@include sprite-position( "input[type=\"button\"].flag", center, (( $act-sprite-period * -1 ) * 4) + 2 );
-@include sprite-position( "input[type=\"button\"].flag.active", center, (( $act-sprite-period * -1 ) * 5) + 2 );
-
-@include sprite-position( "input[type=\"button\"].downvote", center, (( $act-sprite-period * -1 ) * 2) + 2 );
-@include sprite-position( "input[type=\"button\"].downvotee.active", center, (( $act-sprite-period * -1 ) * 3) + 2 );
-
-input[type="button"].upvote {
-  width: 70px;
-  margin-left: 0;
-}
-@include sprite-position( "input[type=\"button\"].upvote", 48px, 2px );
-@include sprite-position( "input[type=\"button\"].upvote.active", right, ( $act-sprite-period * -1 ) + 2 );
-
-.metainfo {
-  display: block;
-  float: right;
-  font-size: 13px;
-  position: relative;
-  top: 2px;
-  margin-left: .5em;
 }

@@ -27,6 +27,14 @@
   }
 }
 
+.sears .addthis_toolbox .share_menu_links_text .share_button {
+  color: sears( link );
+}
+.kmart .addthis_toolbox .share_menu_links_text .share_button {
+  color: kmart( link );
+}
+
+
 // The "Share" text
 .addthis_toolbox .share_menu_links_text .share_button {
   padding: 6px 12px 6px 12px;
