@@ -10,7 +10,7 @@ jQuery(document).ready(function($) {
 			action		: 'get_subcategories_ajax',
 			category_id	: $('option', this).filter(':selected').val()
 		};
-		select = $(this);
+		var select = $(this);
 
 		$('#sub-category', select.parent()).remove();
 
@@ -19,28 +19,59 @@ jQuery(document).ready(function($) {
 			type: 'POST',
 			data : data,
 			success:function(results){
-				select.after(results);
+				select.after($(results));
 			}
 		});
  	});
 
- 	$('#new_question_step_1').bind('submit', function(e){
+ 	/**
+ 	 * Super massively awesome jquery that, matched with the somewhat 
+ 	 * lamer widgets/results-list/archive.php template, and the ajax-callbacks.php 
+ 	 * template, allows the posts widget to filter via ajax.
+ 	 */ 
+ 	$('.results-list').on('submit', function(e){
+ 		e.preventDefault();
+
 		var data = {
-			action		: 'get_subcategories_ajax',
-			category_id	: $('option', this).filter(':selected').val()
+			action		: 'get_posts_ajax',
+			template 	: 'results-list',
+			category	: $('option', this).filter(':selected').val()
 		};
-		select = $(this);
+
+		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
+
+		container = $(this).closest('.results-list');
 
 		jQuery.ajax({
 			url  : ajaxdata.ajaxurl,
 			type: 'POST',
 			data : data,
 			success:function(results){
-				$('#sub-category', select.parent()).remove();
-				select.after(results);
+
+				$('.content-body', container).empty();
+				$('.content-body', container).append($(results));
 			}
 		});
  	});
+
+
+ 	// $('#new_question_step_1').bind('submit', function(e){
+		// var data = {
+		// 	action		: 'get_subcategories_ajax',
+		// 	category_id	: $('option', this).filter(':selected').val()
+		// };
+		// select = $(this);
+
+		// jQuery.ajax({
+		// 	url  : ajaxdata.ajaxurl,
+		// 	type: 'POST',
+		// 	data : data,
+		// 	success:function(results){
+		// 		$('#sub-category', select.parent()).remove();
+		// 		select.after(results);
+		// 	}
+		// });
+ 	// });
 
  	/**
  	 * Not actually in use - just an example for testing purposes
