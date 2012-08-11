@@ -1,5 +1,3 @@
-#set :git_enable_submodules, 1
-
 #adding line to test stuff
 set(:user) { "stateadm" }
 
@@ -17,11 +15,11 @@ role :db, domain, :primary => true
 
 set (:branch) { "development" }
 set (:deploy_to) { "/opt/stateapps/communities" }
-#set (:deploy_to) { "/home/sfrohm/communities" }
 set (:app_loc) { "/appl/communities/www/wp-content" }
+set :deploy_via, :remote_cache
 
 set :move_wp_content do
-  #run "rm -rf #{app_loc}/plugins/* && rm -rf #{app_loc}/themes/*"
-  #run "cp -R #{deploy_to}/current/wordpress/wp-content/plugins/* #{app_loc}/plugins"
-  #run "cp -R #{deploy_to}/current/wordpress/wp-content/themes/* #{app_loc}/themes"
+  run "rm -rf #{app_loc}/plugins/* && rm -rf #{app_loc}/themes/*"
+  run "cp -R #{deploy_to}/current/wordpress/wp-content/plugins/* #{app_loc}/plugins"
+  run "cp -R #{deploy_to}/current/wordpress/wp-content/themes/* #{app_loc}/themes"
 end

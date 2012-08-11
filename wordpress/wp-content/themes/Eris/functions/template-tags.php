@@ -209,6 +209,7 @@ function print_pre($r){
     echo '</pre>';
 }
 
+
 /**
  *  Function to get terms only if they have posts by post type
  *  @param $taxonomy (string) taxonomy name eg: 'post_tag','category'(default),'custom taxonomy'
@@ -243,4 +244,11 @@ function list_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
     wp_reset_postdata();
 
     return $terms; 
+}
+
+
+function get_partial( $partial, $variables = array() ) {
+    extract( $variables );
+    @include get_template_directory() . '/' . $partial . '.php';
+
 }

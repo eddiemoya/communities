@@ -16,7 +16,7 @@ more = function(event) {
 			jQuery('#next-page').remove();
 			jQuery('#page-more').remove();
 			
-			jQuery("#profile-results").append(html);
+			jQuery('#profile-results').append(html);
 			
 			jQuery('#page-more').bind('click',more)
 		}

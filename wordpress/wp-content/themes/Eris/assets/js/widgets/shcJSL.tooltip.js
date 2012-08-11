@@ -12,59 +12,163 @@
 */
 
 /**
- * MOODLE, MOODLE.moodle
- * 
- * The Moodle object and modal window object
- * 
- * @var MOODLE (Object) Moodle object for Moodle specific methods, properties
- * @var MOODLE.modal (Object) The modal window object
- * @var $Moodle (Object) a variation on the Moodle modal window object. 
+ * TOOLTIP, TOOLTIP.tooltip
+ *
+ * The Tooltip class
+ *
+ * @var TOOLTIP (Object) Tooltip object for Tooltip specific methods, properties
+ * @var MOODLE.modal (Object) The actual tooltip
+ * @var $Moodle (Object) a variation on the Tooltip.
  */
 TOOLTIP = {}
+/**
+ *
+ * @type {Function}
+ * @var element (Object) tooltip base element on page
+ * @var options (Object) options regarding the construction of the tooltip
+ */
 TOOLTIP.tooltip = $tooltip = function(element, options) {
     var _this = this;
 
-    _this.init = function() {
-        console.log('logging');
+    _this.element = {};
+    _this.position = {};
+    _this.options = {
+        closer: {
+            initialized: true
+        },
+        events: {
+            click: {
+                callback: _this._click(),
+                name: 'click',
+                preventDefault: false
+            },
+            mouseover: {
+                callback: _this._mouseOver,
+                name: 'mouseover',
+                preventDefault: false
+            },
+            mouseout: {
+                callback: _this._mouseOut(),
+                name: 'mouseout',
+                preventDefault: false
+            },
+        },
+        position: {
+            bottom: 0,
+            left: 0,
+            right: 0,
+            top: 0
+        }
     };
 
-    _this.init();
+    _this.init = function(element, options) {
+        try {
+            _this.element = (typeof(element) === 'jQuery') ? element : null;
+        } catch(e) {
+            console.log('The element is not a jQuery Object! Bailing!');
+
+            return false;
+        }
+
+        //_this.options = //array merge options to defaults
+    };
+
+    _this.addListener = function() {
+        var callback = function() {};
+        var name = '';
+
+        for(var i in _this.options.events) {
+            callback = _this.options.events[0].callback();
+            name = _this.options.events[0].name;
+
+            jQuery(_this.element).on(name, callback);
+        }
+    };
+
+    _this.click = function() {
+
+
+        _this._preventDefault(_this.options.events.preventDefault);
+    }
+
+    _this._mouseOver = function() {
+        _this._preventDefault(_this.options.events.preventDefault);
+    }
+
+    _this._mouseOut = function() {
+
+
+        _this._preventDefault(_this.options.events.preventDefault);
+    }
+
+    /**
+     *
+     */
+    _this.getPosition = function() {
+        var position =
+
+        _this._preventDefault(_this.options.events.preventDefault);
+    };
+
+    _this._getHeight = function() {
+
+    };
+
+    _this._getWidth = function() {
+
+    };
+
+    /**
+     * Decides if default functionality of element's listener should happen
+     *
+     * @param prevent boolean
+     * @private
+     *
+     * @void
+     */
+    _this._preventDefault = function(prevent) {
+        if(prevent === true) {
+            jQuery(_this.element).preventDefault();
+        }
+    }
+
+    _this.init(element, options);
 };
 
-shcJSL.methods.tooltip = function(target, options) {
-	var method;	// (String) Method to use with the modal window [open|update|close]
-	
-	if (this.constructor == String) {
-		method = this.toString();
-	} else if (this.constructor == Object) {
-		if (this.action) method = this.action.toString();
-		else method = new String("create");
-	} else if (this.constructor == Window) {
-		method = new String("create");
-	} else {
-		// Something broke
-		return;
-	}
-	
-	($tooltip instanceof TOOLTIP.tooltip)? $Moodle[method](target, this) : ($tooltip = new $tooltip())[method](target,this)
-}
+/**
+ * Controller -
+ * @param target
+ * @param options = this instance
+ */
+shcJSL.methods.tooltip = function(element, options) {
 
-shcJSL.gizmos.bulletin['shcJSL.tooltip.js'] = true;
+
+    var elementOptions = ($(element).attr("shc:gizmo:options") != undefined)? (((eval('(' + $(element).attr("shc:gizmo:options") + ')')).tooltip)?(eval('(' + $(element).attr("shc:gizmo:options") + ')')).tooltip:{}):{};
+
+    console.log(elementOptions);
+
+    var tooltip = ($tooltip instanceof TOOLTIP.tooltip) ? $tooltip : new $tooltip();
+
+    $(element).bind(elementOptions.events, function() {
+        var method = elementOptions.events;
+
+        tooltip[method]();
+    });
+};
+
+//Initialize a tooltip
 
 /**
-	 * Event Assigner
-	 * 
-	 * Assigns the click event for moodle to the element
-	 * 
-	 * @access Public
-	 * @author Tim Steele
-	 * @since 1.0
-	 */
+ * Instantiater
+ *
+ * @access Public
+ * @author Tim Steele
+ * @since 1.0
+ */
+
+shcJSL.gizmos.bulletin['shcJSL.tooltip.js'] = true;
 if (shcJSL && shcJSL.gizmos)  {
-	shcJSL.gizmos.tooltip = function(element) {
-		$(element).bind('click',function(event) {
-			shcJSL.get(element).tooltip();
-			event.preventDefault();
-		});
-	}
+	shcJSL.gizmos.tooltip = function(element, options) {
+        shcJSL.get(element).tooltip();
+	};
 }

@@ -1,4 +1,6 @@
 <?
+/*error_reporting(E_ALL);
+ini_set('display_errors', true);*/
 
 //User_Profile class
 require_once 'classes/communities_profile.php';
@@ -17,7 +19,7 @@ $user_activities = new User_Profile($profile_user->data->ID);
 
 
 //No JS pagination, set page
-$page = (isset($_GET['p'])) ? $_GET['p'] : 1;
+$page = (isset($_GET['page'])) ? $_GET['page'] : 1;
 
 //Set profile_type
 if(is_user_logged_in() && ($profile_user->data->ID == $current_user->data->ID)){
@@ -143,7 +145,15 @@ if(isset($_GET['post-type'])) {
 			if(class_exists('SSO_Profile')) {
 				
 				$sso_profile = new SSO_Profile();
-				//$user_profile = $sso_profile->get(get_user_sso_guid($profile_user->data->ID));
+				
+				/*echo $profile_user->data->ID;
+				exit;*/
+				$guid = get_user_sso_guid($profile_user->data->ID);
+
+				if($guid){
+					
+					$user_profile = $sso_profile->get(get_user_sso_guid($profile_user->data->ID));
+				}
 			}
 			
 			include('parts/profile-aboutme.php');
