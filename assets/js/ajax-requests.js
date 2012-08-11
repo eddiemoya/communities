@@ -12,12 +12,13 @@ jQuery(document).ready(function($) {
 		};
 		select = $(this);
 
+		$('#sub-category', select.parent()).remove();
+
 		jQuery.ajax({
 			url  : ajaxdata.ajaxurl,
 			type: 'POST',
 			data : data,
 			success:function(results){
-				$('#sub-category', select.parent()).remove();
 				select.after(results);
 			}
 		});
