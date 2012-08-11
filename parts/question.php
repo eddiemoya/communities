@@ -15,11 +15,11 @@
         <time datetime="<?php echo date( "Y-m-d" ); ?>" pubdate="pubdate"><?php echo the_date(); ?></time>
         <h2><?php the_title(); ?></h2>
         <?php the_content(); ?>
-        <ul class="actions">
-            <li>Follow</li>
-            <li>Share</li>
-            <li>Flag</li>
-        </ul>
+        <form class="actions clearfix" method="post" action="">
+            <button type="button" name="button1" value="flag" id="flag-comment-<?php echo $comment->comment_ID; ?>" class="flag">Flag</button>
+            <button type="button" name="button1" value="Follow" id="flag-comment-<?php echo $comment->comment_ID; ?>" class="follow">Follow</button>
+            <?php get_partial( 'parts/share' ); ?>
+        </form>
     </div>
     
     <?php
