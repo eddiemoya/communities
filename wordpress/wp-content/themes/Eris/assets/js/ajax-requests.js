@@ -5,44 +5,96 @@ jQuery(document).ready(function($) {
 	 
 	 * @author Eddie Moya
 	 */
- 	$('.post-your-question select#category').bind('change', function(e){
+ 	$('.post-your-question select#category, select#sort-results').bind('change', function(e){
 		var data = {
 			action		: 'get_subcategories_ajax',
 			category_id	: $('option', this).filter(':selected').val()
 		};
-		select = $(this);
+		var select = $(this);
+
+		$('#sub-category', select.parent()).remove();
 
 		jQuery.ajax({
 			url  : ajaxdata.ajaxurl,
 			type: 'POST',
 			data : data,
 			success:function(results){
-				$('.post-your-question select#sub-category').remove();
-				select.after(results);
+				select.after($(results));
 			}
 		});
  	});
 
-
- 	$('li#header_login a').bind('click', function(e){
+ 	/**
+ 	 * Super massively awesome jquery that, matched with the somewhat 
+ 	 * lamer widgets/results-list/archive.php template, and the ajax-callbacks.php 
+ 	 * template, allows the posts widget to filter via ajax.
+ 	 */ 
+ 	$('.results-list').on('submit', function(e){
  		e.preventDefault();
+
 		var data = {
-			action		: 'get_template_ajax',
-			template	: 'page-login'
+			action		: 'get_posts_ajax',
+			template 	: 'results-list',
+			category	: $('option', this).filter(':selected').val()
 		};
+
+		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
+
+		container = $(this).closest('.results-list');
 
 		jQuery.ajax({
 			url  : ajaxdata.ajaxurl,
 			type: 'POST',
 			data : data,
-			success:function(xhr, message, status){
-				console.log(xhr);
-				console.log(message);
-				console.log(status)
+			success:function(results){
 
+				$('.content-body', container).empty();
+				$('.content-body', container).append($(results));
 			}
 		});
  	});
+
+
+ 	// $('#new_question_step_1').bind('submit', function(e){
+		// var data = {
+		// 	action		: 'get_subcategories_ajax',
+		// 	category_id	: $('option', this).filter(':selected').val()
+		// };
+		// select = $(this);
+
+		// jQuery.ajax({
+		// 	url  : ajaxdata.ajaxurl,
+		// 	type: 'POST',
+		// 	data : data,
+		// 	success:function(results){
+		// 		$('#sub-category', select.parent()).remove();
+		// 		select.after(results);
+		// 	}
+		// });
+ 	// });
+
+ 	/**
+ 	 * Not actually in use - just an example for testing purposes
+ 	 */
+ 	// $('li#header_login a').bind('click', function(e){
+ 	// 	e.preventDefault();
+		// var data = {
+		// 	action		: 'get_template_ajax',
+		// 	template	: 'page-login'
+		// };
+
+		// jQuery.ajax({
+		// 	url  : ajaxdata.ajaxurl,
+		// 	type: 'POST',
+		// 	data : data,
+		// 	success:function(xhr, message, status){
+		// 		console.log(xhr);
+		// 		console.log(message);
+		// 		console.log(status)
+
+		// 	}
+		// });
+ 	// });
  });
 
 

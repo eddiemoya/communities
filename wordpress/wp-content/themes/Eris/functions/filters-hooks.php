@@ -67,23 +67,22 @@ add_filter('body_class', 'filter_body_class');
  * @param WP_Query $query_string
  * @return modified WP_Query object
  */
-function custom_primary_query($query_string) {
-    global $wp_query;
-    /**
-     * If this is a archive of the 'facebook_gallery' custom taxonomy,
-     * set the post type to 'facebook_images and show them all at once. 
-     * 
-     * Remove when not needed.
-     */
-    /*
-    if (isset($query_string['facebook_gallery'])) {
-        $query_string['post_type'] = 'facebook_images';
-        $query_string['posts_per_page'] = '-1';
-    }*/
+function custom_primary_query($query = '') {
 
-    return $query_string;
+    /**
+     * This is being used for the results list widget.
+     */
+    if ($query->query_vars['is_widget']['widget_name']== 'results-list' && $_REQUEST['widget'] == 'results-list') {
+
+        $category = (isset($_REQUEST['filter-sub-category'])) ? $_REQUEST['filter-sub-category'] : $_REQUEST['filter-category'];
+
+        unset($query->query_vars['cat']);
+        $query->set('cat', $category);
+        $query->set('category__in', array($category));
+    }
+    //return $query;
 }
-add_filter('request', 'custom_primary_query');
+add_action('pre_get_posts', 'custom_primary_query');
 
 /******************************************
  * END  Content, Class, and Query Filters *
@@ -124,8 +123,7 @@ function dynamic_sidebar_params( $params ) {
     $widget_num = $widget_obj['params'][0]['number'];
 
     $opts = $widget_opt[$widget_num];
-
-
+    
     //Links Widget (built-in)
     if($widget_obj['name'] == 'Links'){
         $params[0]['after_title'] = 

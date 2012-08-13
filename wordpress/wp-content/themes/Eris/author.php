@@ -19,7 +19,7 @@ $user_activities = new User_Profile($profile_user->data->ID);
 
 
 //No JS pagination, set page
-$page = (isset($_GET['p'])) ? $_GET['p'] : 1;
+$page = (isset($_GET['page'])) ? $_GET['page'] : 1;
 
 //Set profile_type
 if(is_user_logged_in() && ($profile_user->data->ID == $current_user->data->ID)){
