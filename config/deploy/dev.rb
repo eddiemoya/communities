@@ -1,7 +1,7 @@
 #adding line to test stuff
 set(:user) { "stateadm" }
 
-set(:domain) { "uxint" }
+set(:domain) { "uxdev" }
 set(:application) { "communities" }
 set(:repository) { "git@github.com:dasfisch/communities.git" }
 
@@ -14,7 +14,7 @@ role :app, "#{domain}"  # This may be the same as your `Web` server
 role :db, domain, :primary => true
 
 set (:branch) { "development" }
-set (:deploy_to) { "/opt/stateapps/communities" }
+set (:deploy_to) { "/opt/stateadm/communities" }
 set (:app_loc) { "/appl/communities/www/wp-content" }
 set :deploy_via, :remote_cache
 
