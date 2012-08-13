@@ -1020,7 +1020,6 @@ fieldset#use_your_account_from {
   background-image: -webkit-linear-gradient(#ffffff, #f4f4f4);
   background-image: -moz-linear-gradient(#ffffff, #f4f4f4);
   background-image: -o-linear-gradient(#ffffff, #f4f4f4);
-  background-image: -ms-linear-gradient(#ffffff, #f4f4f4);
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;
@@ -1083,7 +1082,7 @@ fieldset#use_your_account_from {
     background-color: transparent;
     border-color: #ffffff #a0c7ff #ffffff #ffffff;
     border-style: solid;
-    border-width: 20px;
+    border-width: 10px 10px 10px 0px;
     width: 0px;
     height: 0px; }
   .infoBubble .arrowLeftBorder {
