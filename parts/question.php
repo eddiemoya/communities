@@ -1,6 +1,9 @@
 <?php
     $i = 0;
     $categories = get_the_category( $post->ID );
+    $badge_options = array(
+        "user_id" => $post->post_author
+    );
 ?>
 <section class="span8">
     <article class="post-n-comments">
@@ -34,4 +37,3 @@
     //get_sidebar();
 ?>
 </section>
-
