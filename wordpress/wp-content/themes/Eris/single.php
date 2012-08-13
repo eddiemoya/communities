@@ -5,15 +5,6 @@
  */
 get_template_part('parts/header');
 
-?>
+loop('post');
 
-<section class="span8">
-    <? loop(); ?>
-</section>
-
-<section class="span4">
-    Sidebar
-</section>
-<?
-//get_sidebar();
 get_template_part('parts/footer');

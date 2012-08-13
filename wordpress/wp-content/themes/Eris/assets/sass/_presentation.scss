@@ -742,7 +742,7 @@ $tab-padding: "1em 0 .6em 0";
     background-color: transparent;
     border-color: #ffffff #a0c7ff #ffffff #ffffff;
     border-style: solid;
-    border-width: 20px;
+    border-width: 10px 10px 10px 0px;
     width: 0px;
     height: 0px;
   }
@@ -751,12 +751,12 @@ $tab-padding: "1em 0 .6em 0";
     background-color: transparent;
     border-color: transparent #ffffff transparent transparent;
     border-style: solid;
-    border-width: 18px;
+    border-width: 8px 8px 8px 0px;
     width: 0px;
     height: 0px;
     position: relative;
-    left: 4px;
-    top: -38px;
+    left: 2px;
+    top: -18px;
   }
   ​
 
@@ -854,6 +854,9 @@ $tab-padding: "1em 0 .6em 0";
     font-size: 12px;
     @include border-radius( 2px );
     @include box-shadow(sears( secondary-link ) 1px 2px 4px);
+    &:first-letter {
+      @extend .upcase
+    }
   }
   .addthis_toolbox {
     float: left;

@@ -589,7 +589,7 @@ ul.bullets {
 .faint, .member .info h5, .member .info p, .post .content-date, .excerpt, .content-container .content-header, .recent-activity time {
   color: #666666; }
 
-.upcase {
+.upcase, .actions button:first-letter {
   text-transform: uppercase; }
 
 .downcase {
@@ -1020,7 +1020,6 @@ fieldset#use_your_account_from {
   background-image: -webkit-linear-gradient(#ffffff, #f4f4f4);
   background-image: -moz-linear-gradient(#ffffff, #f4f4f4);
   background-image: -o-linear-gradient(#ffffff, #f4f4f4);
-  background-image: -ms-linear-gradient(#ffffff, #f4f4f4);
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;
@@ -1083,19 +1082,19 @@ fieldset#use_your_account_from {
     background-color: transparent;
     border-color: #ffffff #a0c7ff #ffffff #ffffff;
     border-style: solid;
-    border-width: 20px;
+    border-width: 10px 10px 10px 0px;
     width: 0px;
     height: 0px; }
   .infoBubble .arrowLeftBorder {
     background-color: transparent;
     border-color: transparent #ffffff transparent transparent;
     border-style: solid;
-    border-width: 18px;
+    border-width: 8px 8px 8px 0px;
     width: 0px;
     height: 0px;
     position: relative;
-    left: 4px;
-    top: -38px; }
+    left: 2px;
+    top: -18px; }
   .infoBubble ​
   .info {
     color: #000; }
