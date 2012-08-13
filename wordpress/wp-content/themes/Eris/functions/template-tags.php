@@ -7,6 +7,8 @@
  * 
  * @global type $wp_query
  * @param type $template [optional] Template part to be used in the loop.
+ *
+ * @return void.
  */
 function loop($template = 'post', $special = null){
     global $wp_query;
@@ -32,6 +34,8 @@ function loop($template = 'post', $special = null){
  * 
  * @global type $wp_query
  * @param type $special [optional] Template part to be used in the loop.
+ *
+ * @return void.
  */
 function loop_by_type($special = null){
     global $wp_query;
@@ -62,6 +66,11 @@ function loop_by_type($special = null){
  *
  * Intended for use in placing json_encoded templates in the header
  * via wp_localize_script();
+ *
+ * @author Eddie Moya
+ * @param $template (string) Relative path/filename of the template to be returned
+ *
+ * @return (string) Contents of included template.
  */
 function return_template_part($template){
     ob_start();
@@ -73,6 +82,7 @@ function return_template_part($template){
  * Process attempts to post a question from the front end of the site.
  *
  * @author Eddie Moya
+ * @return (integer). The number of the step which should be rendered on any given page view.
  */
 function process_front_end_question(){
 
@@ -132,9 +142,6 @@ function process_front_end_question(){
  * 
  * Retreives the entire post object of the a single image that is categorized
  * with the category ID that is passed or the current category if none is passed.
- * 
- * = Usage =
- *  * Kmart Fashion Lookbook
  * 
  * @param int $category_id [optional] A category ID, defaults to the current category ID.
  * @param bool $echo [depricated since 1.1] Can't echo the entire post object.
@@ -215,9 +222,10 @@ function print_pre($r){
  *  @param $taxonomy (string) taxonomy name eg: 'post_tag','category'(default),'custom taxonomy'
  *  @param $post_type (string) post type name eg: 'post'(default),'page','custom post type'
  *
- *
  *  Usage:
  *  list_terms_by_post_type('post_tag','custom_post_type_name');
+ *
+ * @return (array) Terms found to have posts of the provided post type.
  **/
 function list_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
 
@@ -246,9 +254,39 @@ function list_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
     return $terms; 
 }
 
-
+/**
+ * Includes partial while passing a set of variables into the included templates
+ * scope.
+ *
+ * @author Carl Albueirgiebt-Buusrybfeler
+ *
+ * @param $partial (string) [required] The filename or relative path to the intended partial template.
+ * @param $varialbes (array) [optional] Associative array of values to be passed into the templates scope. The keys will become the variable names.
+ *
+ * @return void.
+ */
 function get_partial( $partial, $variables = array() ) {
     extract( $variables );
     @include get_template_directory() . '/' . $partial . '.php';
-
 }
+
+
+/**
+ * Detects AJAX request, returns true, else returns false
+ * 
+ * @author Dan Crimmins
+ * @return bool
+ */
+function is_ajax() {
+
+    if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+        
+        return true;
+    }
+    
+    return false;
+}
+
+
+
+
