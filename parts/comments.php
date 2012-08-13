@@ -36,10 +36,9 @@
                     <label class="metainfo" for="downvote-comment-<?php echo $comment->comment_ID; ?>">(0)</label>
                     <button type="button" name="button1" value="down vote" title="Down vote this <?php echo $comment_type?>" id="downvote-comment-<?php echo $comment->comment_ID; ?>" class="downvote">down vote</button>
                     <label class="metainfo" for="upvote-comment-<?php echo $comment->comment_ID; ?>">(0)</label>
-                    <button type="button" name="button1" value="helpful" title="Up vote this <?php echo $comment_type?>" id="upvote-comment-<?php echo $comment->comment_ID; ?>" class="upvote"> helpful</button>
+                    <button type="button" name="button1" value="helpful" title="Up vote this <?php echo $comment_type?>" id="upvote-comment-<?php echo $comment->comment_ID; ?>" class="upvote">helpful</button>
                 </form>
             </div>
-            <!-- Begin Children
             <ol class="children">
                  <li class="comment clearfix<?php echo $container_class; ?>">
                      <?php get_partial( 'parts/badge', $badge_options ); ?>
@@ -52,16 +51,15 @@
                              <div class="reply">
                                  <a href="#">Reply</a>
                              </div>
-                             <button type="button" name="button1" value="flag" id="flag-comment-<?php echo $comment->comment_ID; ?>" class="flag">flag</button>
+                             <button type="button" name="button1" value="flag" title="Flag this <?php echo $comment_type?>" id="flag-comment-<?php echo $comment->comment_ID; ?>" class="flag">flag</button>
                              <label class="metainfo" for="downvote-comment-<?php echo $comment->comment_ID; ?>">(0)</label>
-                             <button type="button" name="button1" value="down vote" id="downvote-comment-<?php echo $comment->comment_ID; ?>" class="downvote">down vote</button>
+                             <button type="button" name="button1" value="down vote" title="Down vote this <?php echo $comment_type?>" id="downvote-comment-<?php echo $comment->comment_ID; ?>" class="downvote">down vote</button>
                              <label class="metainfo" for="upvote-comment-<?php echo $comment->comment_ID; ?>">(0)</label>
-                             <button type="button" name="button1" value="helpful" id="upvote-comment-<?php echo $comment->comment_ID; ?>" class="upvote"> helpful</button>
-                             <span class="text">Helpful</span>
+                             <button type="button" name="button1" value="helpful" title="Up vote this <?php echo $comment_type?>" id="upvote-comment-<?php echo $comment->comment_ID; ?>" class="upvote">helpful</button>
                          </form>
                      </div>
                  </li>
-            </ol> -->
+            </ol>
         </li>
 <?php
         }
