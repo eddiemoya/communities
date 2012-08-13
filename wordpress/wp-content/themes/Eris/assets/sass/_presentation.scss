@@ -854,6 +854,9 @@ $tab-padding: "1em 0 .6em 0";
     font-size: 12px;
     @include border-radius( 2px );
     @include box-shadow(sears( secondary-link ) 1px 2px 4px);
+    &:first-letter {
+      @extend .upcase
+    }
   }
   .addthis_toolbox {
     float: left;

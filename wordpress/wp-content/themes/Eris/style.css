@@ -589,7 +589,7 @@ ul.bullets {
 .faint, .member .info h5, .member .info p, .post .content-date, .excerpt, .content-container .content-header, .recent-activity time {
   color: #666666; }
 
-.upcase {
+.upcase, .actions button:first-letter {
   text-transform: uppercase; }
 
 .downcase {
