@@ -79,6 +79,23 @@ function return_template_part($template){
 }
 
 /**
+ * Checks if user has a screen name set. If so, returns true, else false
+ * 
+ * @author Dan Crimmins
+ * @param int $user_id - WP User ID
+ * @return bool
+ */
+function has_screen_name($user_id) {
+	
+	if(get_user_meta($user_id, 'profile_screen_name', true)) {
+		
+		return true;
+	}
+	
+		return false;
+}
+
+/**
  * Process attempts to post a question from the front end of the site.
  *
  * @author Eddie Moya
