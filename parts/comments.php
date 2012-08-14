@@ -12,7 +12,7 @@
 <ol id="allComments">
 <?php
         foreach($comments as $comment) {
-            
+            $comment_date = strtotime( $comment->comment_date );
             $badge_options = array(
                 "user_id" => $comment->user_id
             );
@@ -24,7 +24,7 @@
         <li class="comment clearfix<?php echo $container_class; ?>">
             <?php get_partial( 'parts/badge', $badge_options ); ?>
             <div class="span10">
-                <time class="content-date" datetime="<?php echo date( "Y-m-d" ); ?>" pubdate="pubdate"><?php echo date( "F n, Y g:ia" ); ?></time>
+                <time class="content-date" datetime="<?php echo date( "Y-m-d", $comment_date ); ?>" pubdate="pubdate"><?php echo date( "F n, Y g:ia", $comment_date ); ?></time>
                 <article>
                     <?php echo $comment->comment_content; ?>
                 </article>
@@ -43,7 +43,7 @@
                  <li class="comment clearfix<?php echo $container_class; ?>">
                      <?php get_partial( 'parts/badge', $badge_options ); ?>
                      <div class="span10">
-                         <time class="content-date" datetime="<?php echo date( "Y-m-d" ); ?>" pubdate="pubdate"><?php echo date( "F n, Y g:ia" ); ?></time>
+                         <time class="content-date" datetime="<?php echo date( "Y-m-d", $comment_date ); ?>" pubdate="pubdate"><?php echo date( "F n, Y g:ia", $comment_date ); ?></time>
                          <article>
                              <?php echo $comment->comment_content; ?>
                          </article>
