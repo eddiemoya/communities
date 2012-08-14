@@ -39,7 +39,7 @@ function enqueue_scripts() {
         wp_enqueue_script('jquery');    
         wp_enqueue_script('modernizr');
         wp_enqueue_script('shcJSL');
-				wp_enqueue_script('moodle');  
+		wp_enqueue_script('moodle');  
         wp_enqueue_script('ajaxrequests');   
         wp_enqueue_script('openID');
         wp_enqueue_script('tooltip');
@@ -49,6 +49,7 @@ function enqueue_scripts() {
         /* Styles */
         wp_register_style('main-styles', get_stylesheet_uri());
         wp_enqueue_style( 'main-styles');
+
         
         //Enqueue profile ajax only for author template
         if(is_author()) {
