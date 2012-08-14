@@ -11,10 +11,12 @@ get_currentuserinfo();
 
 					<div class="state_post-question-details">
 						<ul class="form-fields">
+							<?php if(! has_screen_name($current_user->ID)):?>
 							<li>
 								<label for="screen-name" class="required">Screen Name</label>
 								<input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo $current_user->user_login; ?>" required/>
 							</li>
+							<?php endif;?>
 							<li>
 								<label for="your-question" class="required">Your Question</label>
 								<textarea name="your-question" id="your-question" class="input_textarea" required><?php 
