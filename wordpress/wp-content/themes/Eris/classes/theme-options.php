@@ -28,9 +28,6 @@ class Theme_Options {
 		$this->get_settings();
 		$this->sections['general']      = __( 'General Settings' );
         
-        if($options['enable_lookbooks']){
-            $this->sections['lookbooks']      = __( 'Lookbooks' );
-        }
 //		$this->sections['appearance']   = __( 'Appearance' );
 //		$this->sections['reset']        = __( 'Reset to Defaults' );
 //		$this->sections['help']        = __( 'Help' );
@@ -423,7 +420,7 @@ class Theme_Options {
 	*/
 	public function styles() {
 		
-		wp_register_style( 'theme-admin', get_bloginfo( 'stylesheet_directory' ) . '/assets/styles/theme-options.css' );
+		wp_register_style( 'theme-admin', get_bloginfo( 'stylesheet_directory' ) . '/assets/css/theme-options.css' );
 		wp_enqueue_style( 'theme-admin' );
 		
 	}
