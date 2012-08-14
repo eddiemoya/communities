@@ -35,7 +35,10 @@ function filter_body_class($classes) {
      * Modify Styles pages on theme options. This example is from Kmart Fashion
      */
     $options = get_option('theme_options');
-    $classes[] = $options['blog_brand_shop_style'];
+    
+    if(isset($options['blog_brand_shop_style'])){
+        $classes[] = $options['blog_brand_shop_style'];
+    }
     
     if (is_category())
         $classes[] = get_queried_object()->category_nicename;
@@ -72,13 +75,15 @@ function custom_primary_query($query = '') {
     /**
      * This is being used for the results list widget.
      */
-    if ($query->query_vars['is_widget']['widget_name']== 'results-list' && $_REQUEST['widget'] == 'results-list') {
+    if(isset($query->query_vars['is_widget'])){
+        if ($query->query_vars['is_widget']['widget_name']== 'results-list' && $_REQUEST['widget'] == 'results-list') {
 
-        $category = (isset($_REQUEST['filter-sub-category'])) ? $_REQUEST['filter-sub-category'] : $_REQUEST['filter-category'];
+            $category = (isset($_REQUEST['filter-sub-category'])) ? $_REQUEST['filter-sub-category'] : $_REQUEST['filter-category'];
 
-        unset($query->query_vars['cat']);
-        $query->set('cat', $category);
-        $query->set('category__in', array($category));
+            unset($query->query_vars['cat']);
+            $query->set('cat', $category);
+            $query->set('category__in', array($category));
+        }
     }
     //return $query;
 }
