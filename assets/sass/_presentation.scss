@@ -809,14 +809,10 @@ $tab-padding: "1em 0 .6em 0";
   .comment {
     padding: .75em 2%;
     background: $lightest-color;
-    border-top: 1px solid #d6d6d6;
     border-bottom: 1px solid #d6d6d6;
     @include border-radius( 4px );
     &.expert {
       background: lighten( sears( decorative ), 15 );
-    }
-    &:first-child {
-      border-top: 0;
     }
     time {
       font-size: 13px;
@@ -832,6 +828,7 @@ $tab-padding: "1em 0 .6em 0";
     float: right;
     width: 85%;
     border: 1px solid #d6d6d6;
+    border-bottom: 0;
     @include border-radius( 4px );
   }
 }

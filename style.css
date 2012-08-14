@@ -185,6 +185,9 @@ legend {
     display: inline-block;
     font-size: .75em;
     padding: 0 .4em 0 .8em; }
+    #header aside ul li ul li img {
+      vertical-align: bottom;
+      margin-right: .5em; }
   #header aside ul li ul li:first-child {
     border: none; }
 
@@ -1020,6 +1023,7 @@ fieldset#use_your_account_from {
   background-image: -webkit-linear-gradient(#ffffff, #f4f4f4);
   background-image: -moz-linear-gradient(#ffffff, #f4f4f4);
   background-image: -o-linear-gradient(#ffffff, #f4f4f4);
+  background-image: -ms-linear-gradient(#ffffff, #f4f4f4);
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;
@@ -1139,7 +1143,6 @@ fieldset#use_your_account_from {
   #allComments .comment {
     padding: .75em 2%;
     background: white;
-    border-top: 1px solid #d6d6d6;
     border-bottom: 1px solid #d6d6d6;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -1148,8 +1151,6 @@ fieldset#use_your_account_from {
     border-radius: 4px; }
     #allComments .comment.expert {
       background: #f2f2f2; }
-    #allComments .comment:first-child {
-      border-top: 0; }
     #allComments .comment time {
       font-size: 13px; }
     #allComments .comment article {
@@ -1160,6 +1161,7 @@ fieldset#use_your_account_from {
     float: right;
     width: 85%;
     border: 1px solid #d6d6d6;
+    border-bottom: 0;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;

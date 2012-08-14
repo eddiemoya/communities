@@ -106,6 +106,27 @@ loop();
 			</article>
 			<!-- END MANUAL LIST WIDGET -->
 			
+			<!-- MANUAL LIST WIDGET -->
+			<article class="content-container manual-list span12">
+			
+				<header class="content-header">
+					<h3>Related Stories</h3>
+				</header>
+		
+				<section class="content-body clearfix">
+					
+					<ul>
+						<li><a href="#" title="The Hobbit">The Hobbit</a></li>
+						<li><a href="#" title="The Two Towers">Lord of the Rings on Wikipedia</a></li>
+						<li><a href="http://www.lordoftherings.net/" title="Lord of the Rings Official Site">Lord of the Rings Official Site</a></li>
+						<li><a href="http://www.imdb.com/title/tt0120737/" title="Lord of Rings on IMDB">IMDB &ndash; Lord of the Rings: Fellowship of the Ring</a></li>
+					</ul>
+					
+				</section>
+		
+			</article>
+			<!-- END MANUAL LIST WIDGET -->
+			
 		</section>
 		
 	</section>
