@@ -79,6 +79,23 @@ function return_template_part($template){
 }
 
 /**
+ * Checks if user has a screen name set. If so, returns true, else false
+ * 
+ * @author Dan Crimmins
+ * @param int $user_id - WP User ID
+ * @return bool
+ */
+function has_screen_name($user_id) {
+	
+	if(get_user_meta($user_id, 'profile_screen_name', true)) {
+		
+		return true;
+	}
+	
+		return false;
+}
+
+/**
  * Process attempts to post a question from the front end of the site.
  *
  * @author Eddie Moya
@@ -285,6 +302,21 @@ function is_ajax() {
     }
     
     return false;
+}
+
+
+/**
+ * @author Dan Crimmins
+ */
+function get_user_sso_guid($user_id) {
+    
+        global $wpdb;
+        $usermeta = $wpdb->prefix . 'usermeta';
+        
+        $user_query = "SELECT meta_value FROM " . $usermeta ." WHERE meta_key = 'sso_guid' AND user_id = " . $user_id;
+        $sso_guid = $wpdb->get_var($user_query);
+        
+        return $sso_guid;
 }
 
 
