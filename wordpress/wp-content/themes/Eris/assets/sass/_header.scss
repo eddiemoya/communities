@@ -26,6 +26,10 @@
       display:inline-block;
       font-size:.75em;
       padding:0 .4em 0 .8em;
+      img {
+        vertical-align: bottom;
+        margin-right: .5em;
+      }
     }
     ul li ul li:first-child {
       border:none;
