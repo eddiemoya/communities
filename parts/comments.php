@@ -15,6 +15,7 @@
 <?php
         foreach($comments as $comment) {
             $comment_date = strtotime( $comment->comment_date );
+            $container_class = '';
             $badge_options = array(
                 "user_id" => $comment->user_id
             );
@@ -41,27 +42,27 @@
                     <button type="button" name="button1" value="helpful" title="Up vote this <?php echo $comment_type?>" id="upvote-comment-<?php echo $comment->comment_ID; ?>" class="upvote">helpful</button>
                 </form>
             </div>
-            <ol class="children">
-                 <li class="comment clearfix<?php echo $container_class; ?>">
-                     <?php get_partial( 'parts/badge', $badge_options ); ?>
-                     <div class="span10">
-                         <time class="content-date" datetime="<?php echo date( "Y-m-d", $comment_date ); ?>" pubdate="pubdate"><?php echo date( "F n, Y g:ia", $comment_date ); ?></time>
-                         <article>
-                             <?php echo $comment->comment_content; ?>
-                         </article>
-                         <form class="actions clearfix" action="" id="comment-<?php echo $comment->comment_ID; ?>">
-                             <div class="reply">
-                                 <a href="#">Reply</a>
-                             </div>
-                             <button type="button" name="button1" value="flag" title="Flag this <?php echo $comment_type?>" id="flag-comment-<?php echo $comment->comment_ID; ?>" class="flag">flag</button>
-                             <label class="metainfo" for="downvote-comment-<?php echo $comment->comment_ID; ?>">(0)</label>
-                             <button type="button" name="button1" value="down vote" title="Down vote this <?php echo $comment_type?>" id="downvote-comment-<?php echo $comment->comment_ID; ?>" class="downvote">down vote</button>
-                             <label class="metainfo" for="upvote-comment-<?php echo $comment->comment_ID; ?>">(0)</label>
-                             <button type="button" name="button1" value="helpful" title="Up vote this <?php echo $comment_type?>" id="upvote-comment-<?php echo $comment->comment_ID; ?>" class="upvote">helpful</button>
-                         </form>
-                     </div>
-                 </li>
-            </ol>
+            <!-- <ol class="children">
+                             <li class="comment clearfix<?php echo $container_class; ?>">
+                                 <?php get_partial( 'parts/badge', $badge_options ); ?>
+                                 <div class="span10">
+                                     <time class="content-date" datetime="<?php echo date( "Y-m-d", $comment_date ); ?>" pubdate="pubdate"><?php echo date( "F n, Y g:ia", $comment_date ); ?></time>
+                                     <article>
+                                         <?php echo $comment->comment_content; ?>
+                                     </article>
+                                     <form class="actions clearfix" action="" id="comment-<?php echo $comment->comment_ID; ?>">
+                                         <div class="reply">
+                                             <a href="#">Reply</a>
+                                         </div>
+                                         <button type="button" name="button1" value="flag" title="Flag this <?php echo $comment_type?>" id="flag-comment-<?php echo $comment->comment_ID; ?>" class="flag">flag</button>
+                                         <label class="metainfo" for="downvote-comment-<?php echo $comment->comment_ID; ?>">(0)</label>
+                                         <button type="button" name="button1" value="down vote" title="Down vote this <?php echo $comment_type?>" id="downvote-comment-<?php echo $comment->comment_ID; ?>" class="downvote">down vote</button>
+                                         <label class="metainfo" for="upvote-comment-<?php echo $comment->comment_ID; ?>">(0)</label>
+                                         <button type="button" name="button1" value="helpful" title="Up vote this <?php echo $comment_type?>" id="upvote-comment-<?php echo $comment->comment_ID; ?>" class="upvote">helpful</button>
+                                     </form>
+                                 </div>
+                             </li>
+                        </ol> -->
         </li>
 <?php
         }
