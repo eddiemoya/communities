@@ -16,7 +16,7 @@
     # Default state: Show the user's screenname
     if ( $display_name ) {
         $badge_titling = '
-    <h4><a href="#">' . $user->display_name . '</a></h4>
+    <h4><a href="' . site_url('') . '/author/' . $user->user_nicename . '">' . $user->user_nicename . '</a></h4>
 ';
     }
     # Create the address
@@ -32,11 +32,12 @@
     if ( ( isset( $titling ) ) && ( $titling == true ) ) {
         $a_classes[] = 'labeled';
         $badge_titling = '
-    <h4><a href="#">' . $user->roles[0] . '</a></h4>
+    <h4><a href="' . site_url('') . '/author/' . $user->user_nicename . '"">' . $user->roles[0] . '</a></h4>
     <div class="badge-tail">&nbsp;</div>
 ';
         if ( $display_name ) {
-            $badge_titling .= '<h5><a href="#">' . $user->display_name . '</a></h5>
+            $badge_titling .= '
+    <h5><a href="' . site_url('') . '/author/' . $user->user_nicename . '">' . $user->user_nicename . '</a></h5>
 ';
         }
     }
@@ -44,7 +45,7 @@
     # Put it all together
 ?>
 <div class="<?php echo implode( $a_classes, ' ' ); ?>">
-    <img src="<?php echo get_template_directory_uri() ?>/assets/img/zzexpert.jpg" alt="Team Player" title="Team Player" />
+    <a href="<?php echo site_url(''); ?>/author/<?php echo $current_user->user_nicename; ?>"><img src="<?php echo get_template_directory_uri() ?>/assets/img/zzexpert.jpg" alt="<?php echo $user->user_nicename; ?>" title="<?php echo $user->user_nicename; ?>" /></a>
     <?php echo $badge_titling; ?>
     <?php echo $city_state; ?>
 </div>
