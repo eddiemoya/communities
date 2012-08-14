@@ -2,10 +2,10 @@
 
   # @author Carl Albrecht-Buehler 
   $a_navigation = array(
-    "Categories" => get_categories(), 
-    "Q&A's" => list_terms_by_post_type('category', 'question'), 
-    "Blog Posts" => list_terms_by_post_type(), 
-    "Buying Guides" => list_terms_by_post_type('category', 'guides')
+    "Categories" => get_categories(array('parent' => 0, 'hide_empty' => false)), 
+    "Q&A's" => get_categories(), 
+    "Blog Posts" => get_categories(), 
+    "Buying Guides" => get_categories()
   );//print_pre($a_navigation); 
   $post_types = array(
     "Categories" => 'category', 
