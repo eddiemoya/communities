@@ -1080,6 +1080,7 @@ fieldset#use_your_account_from {
   background-color: transparent;
   padding: 7px;
   position: absolute;
+  left: 12em;
   width: 200px;
   z-index: 1000; }
   .infoBubble .arrowLeft {
