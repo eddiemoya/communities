@@ -41,7 +41,7 @@ if(! empty($_POST)) {
 get_template_part('parts/header'); ?>
 	<section class="span8">
 		<?php //echo $response['message'];?>
-		<article class="content-container post-your-question span12">
+		<article class="content-container forgot-password span12">
 			<section class="content-body clearfix">
 				
 				<h6 class="content-headline"><?php echo (isset($_GET['auth_token'])) ? 'Enter New Password' : 'Forgot Password'?></h6>
