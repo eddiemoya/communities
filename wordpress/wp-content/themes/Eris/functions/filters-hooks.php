@@ -75,7 +75,7 @@ function custom_primary_query($query = '') {
     /**
      * This is being used for the results list widget.
      */
-    if(isset($query->query_vars['is_widget'])){
+    if(isset($query->query_vars['is_widget']) && isset($_REQUEST['widget'])){
         if ($query->query_vars['is_widget']['widget_name']== 'results-list' && $_REQUEST['widget'] == 'results-list') {
 
             $category = (isset($_REQUEST['filter-sub-category'])) ? $_REQUEST['filter-sub-category'] : $_REQUEST['filter-category'];
@@ -106,10 +106,12 @@ function widget_form_extend( $instance, $widget ) {
 
         if(!isset($instance['classes'])){
             $instance['classes'] = null;
-
+            $row = '';
             $row .= "<p>\n";
             $row .= "\t<label for='widget-{$widget->id_base}-{$widget->number}-sub-title'>Sub Title:</label>\n";
-            $row .= "\t<input type='text' name='widget-{$widget->id_base}[{$widget->number}][sub-title]' id='widget-{$widget->id_base}-{$widget->number}-sub-title' class='widefat' value='{$instance['sub-title']}'/>\n";
+            if(isset($instance['sub-title'])){
+                $row .= "\t<input type='text' name='widget-{$widget->id_base}[{$widget->number}][sub-title]' id='widget-{$widget->id_base}-{$widget->number}-sub-title' class='widefat' value='{$instance['sub-title']}'/>\n";
+            }
             $row .= "</p>\n";
 
             echo $row;
