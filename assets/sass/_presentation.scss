@@ -731,37 +731,46 @@ $tab-padding: "1em 0 .6em 0";
 	}
 }
 
-.infoBubble {
-  background-color: transparent;
-  padding: 7px;
+.tooltip {
+  display: none;
   position: absolute;
   width: 200px;
   z-index: 1000;
 
-  .arrowLeft {
-    background-color: transparent;
-    border-color: #ffffff #a0c7ff #ffffff #ffffff;
-    border-style: solid;
-    border-width: 10px 10px 10px 0px;
-    width: 0px;
-    height: 0px;
+  .arrow {
+    left: -10px;
+    position: absolute;
+    top: 40px;
+
+    .arrowLeft {
+      background-color: transparent;
+      border-color: #ffffff #a0c7ff #ffffff #ffffff;
+      border-style: solid;
+      border-width: 10px 10px 10px 0px;
+      width: 0px;
+      height: 0px;
+    }
+
+    .arrowLeftBorder {
+      background-color: transparent;
+      border-color: transparent #ffffff transparent transparent;
+      border-style: solid;
+      border-width: 9px 9px 9px 0px;
+      width: 0px;
+      height: 0px;
+      position: relative;
+      left: 2px;
+      top: -19px;
+    }
   }
 
-  .arrowLeftBorder {
-    background-color: transparent;
-    border-color: transparent #ffffff transparent transparent;
-    border-style: solid;
-    border-width: 8px 8px 8px 0px;
-    width: 0px;
-    height: 0px;
-    position: relative;
-    left: 2px;
-    top: -18px;
-  }
-  ​
-
-  .info {
+  .middle {
+    @include border-radius( 4px );
+    background-color: #fff;
+    border: 1px solid #A0C7FF;
     color: #000;
+    float: left;
+    padding: 7px;
   }
 }
 
