@@ -1,7 +1,6 @@
 <?php
     $i = 0;
     $categories = get_the_category( $post->ID );
-    echo __FILE__;
 ?>    
 <article class="post-n-comments">
     <header class="section-header">
