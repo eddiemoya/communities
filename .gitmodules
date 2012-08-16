@@ -49,3 +49,9 @@
 [submodule "wordpress/wp-content/plugins/simple-ldap-login"]
 	path = wordpress/wp-content/plugins/simple-ldap-login
 	url = git@github.com:eddiemoya/dans-ldap.git
+[submodule "wordpress/wp-content/plugins/user-photo"]
+	path = wordpress/wp-content/plugins/user-photo
+	url = https://github.com/owlandfox/user-photo.git
+[submodule "wordpress/wp-content/plugins/front-end-users"]
+	path = wordpress/wp-content/plugins/front-end-users
+	url = https://github.com/WPoets/front-end-users.git
