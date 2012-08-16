@@ -22,7 +22,7 @@
   color: #666;
   header {
     margin-bottom: 1em;
-    & + .span2.badge {
+    & + .span2.badge, & + .span2.crest {
       margin-left: 0;
     }
   }

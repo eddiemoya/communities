@@ -6,15 +6,27 @@ get_currentuserinfo();
 				
 				<h6 class="content-headline">Post your question</h6>
 				
+				<?php if($data['errors']):?>
+					
+					<?php foreach($data['errors'] as $error):?>
+					
+						<div><?php echo $error;?></div>
+						
+					<?php endforeach;?>
+					
+				<?php endif;?>
+				
 				<form id="new_question" name="new_question" method="post" action="">
 					<?php wp_nonce_field('front-end-post_question-step-2'); ?>
 
 					<div class="state_post-question-details">
 						<ul class="form-fields">
+							<?php if(! has_screen_name($current_user->ID)):?>
 							<li>
 								<label for="screen-name" class="required">Screen Name</label>
 								<input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo $current_user->user_login; ?>" required/>
 							</li>
+							<?php endif;?>
 							<li>
 								<label for="your-question" class="required">Your Question</label>
 								<textarea name="your-question" id="your-question" class="input_textarea" required><?php 
