@@ -12,15 +12,7 @@
         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
         <p><?php the_content(); ?></p>
         <p class="by">By <?php the_author_link(); ?></p>
-        <p class="tags">Tags:
-            <?php
-                $posttags = get_the_tags();
-                if ( $posttags ) {
-                    foreach( $posttags as $tag ) {
-                        echo '<a href="'.get_bloginfo('siteurl').'">'.$tag->name.'</a> ';
-                    }
-                }
-            ?>
+        <p class="tags">Tags: <?php the_tags('',''); ?>
         </p>
         <!-- Insert social here -->
     </div>
