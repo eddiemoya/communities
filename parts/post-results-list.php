@@ -4,7 +4,6 @@
     $crest_options = array(
         "user_id" => $post->post_author
     );
-    $post_date = strtotime( $post->post_date );
 ?>
 
 <li class="post lone-result clearfix">
@@ -13,7 +12,7 @@
 
     <div class="span10">
 
-        <time class="content-date" datetime="<?php echo date( "Y-m-d", $post_date ); ?>" pubdate="pubdate"><?php echo date( "F n, Y g:ia", $post_date ); ?></time>
+        <time class="content-date" datetime="<?php echo the_time( "Y-m-d"); ?>" pubdate="pubdate"><?php the_time("F n, Y g:ia"); ?></time>
 
         <hgroup>
             <h3 class="content-category">
