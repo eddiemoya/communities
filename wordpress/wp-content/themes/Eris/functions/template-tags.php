@@ -275,7 +275,7 @@ function list_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
  * Includes partial while passing a set of variables into the included templates
  * scope.
  *
- * @author Carl Albueirgiebt-Buusrybfeler
+ * @author Eddie Moya & Carl Albrecht-Buehler
  *
  * @param $partial (string) [required] The filename or relative path to the intended partial template.
  * @param $varialbes (array) [optional] Associative array of values to be passed into the templates scope. The keys will become the variable names.
@@ -285,6 +285,21 @@ function list_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
 function get_partial( $partial, $variables = array() ) {
     extract( $variables );
     @include get_template_directory() . '/' . $partial . '.php';
+}
+
+/**
+ * Return a partial instead of outputting it.
+ *
+ *
+ * @author Eddie Moya & Carl Albrecht-Buehler
+ * @param $template (string) Relative path/filename of the template to be returned
+ *
+ * @return (string) Contents of included partial.
+ */
+function return_partial( $partial, $variables = array() ){
+    ob_start();
+        get_partial( $partial, $variables );
+    return ob_get_clean();
 }
 
 

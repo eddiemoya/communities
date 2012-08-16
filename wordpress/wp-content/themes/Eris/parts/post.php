@@ -1,13 +1,13 @@
 <?php
     $i = 0;
-    $categories = get_the_category( $post->ID );
+    $categories = get_the_category( $post->ID );®
 ?>    
 <article class="post-n-comments">
     <header class="section-header">
         Breadcrumbs
     </header>
     <div class="content">
-        <time class="date" pubdate="pubdate"><?php echo the_date(); ?></time>
+        <time class="date" datetime="<?php echo the_time( "Y-m-d"); ?>" pubdate="pubdate"><?php the_time("F n, Y g:ia"); ?></time>
         <a href="<?php echo get_category_link($categories[0]->term_id); ?>" class="category"><?php echo $categories[0]->name; ?></a>
         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
         <p><?php the_content(); ?></p>

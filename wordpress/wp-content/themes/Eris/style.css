@@ -586,7 +586,7 @@ ol.bullets {
 ul.bullets {
   list-style-type: disc; }
 
-.bold, .member .info h4, .member .info address, .badge h4, .badge address, .post hgroup, .content-container .content-header, .content-container .content-body .content-details .content-category, .profile .personal_info dt, .profile .personal_info .badge a, .sears .post-n-comments h2, .kmart .post-n-comments h2 {
+.bold, .member .info h4, .member .info address, .badge h4, .badge address, .crest h4, .crest address, .post hgroup, .content-container .content-header, .content-container .content-body .content-details .content-category, .profile .personal_info dt, .profile .personal_info .badge a, .profile .personal_info .crest a, .sears .post-n-comments h2, .kmart .post-n-comments h2 {
   font-weight: 700; }
 
 .faint, .member .info h5, .member .info p, .post .content-date, .excerpt, .content-container .content-header, .recent-activity time {
@@ -639,7 +639,34 @@ ul.bullets {
   height: 10px;
   overflow: hidden; }
 
+.crest img {
+  display: block;
+  margin: 0 auto; }
+.crest h4 {
+  padding: .5em 0;
+  word-wrap: break-word;
+  letter-spacing: -0.05em; }
+.crest h4, .crest address {
+  font-size: 75%; }
+.crest.labeled h4 {
+  background: #bcdaf3 url("/wp-content/themes/Eris/assets/img/sprite-user.png") repeat-x left bottom;
+  text-align: center;
+  -webkit-border-radius: 0 0 10px 10px;
+  -moz-border-radius: 0 0 10px 10px;
+  -ms-border-radius: 0 0 10px 10px;
+  -o-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px; }
+.crest.labeled h4, .crest.labeled h4 a {
+  color: white; }
+.crest.labeled .tail {
+  background: url("/wp-content/themes/Eris/assets/img/sprite-user.png") no-repeat center top;
+  height: 10px;
+  overflow: hidden; }
+
 .span4 .span4 .badge h4 {
+  font-size: 62.5%; }
+
+.span4 .span4 .crest h4 {
   font-size: 62.5%; }
 
 .post .content-date {
@@ -1049,9 +1076,9 @@ fieldset#use_your_account_from {
     padding-left: 2%; }
   .profile .personal_info .info h4 {
     margin-top: 1em; }
-  .profile .personal_info .badge {
+  .profile .personal_info .badge, .profile .personal_info .crest {
     text-align: center; }
-    .profile .personal_info .badge a {
+    .profile .personal_info .badge a, .profile .personal_info .crest a {
       font-size: 75%; }
   .profile .personal_info .vitals {
     margin-top: 1em;
@@ -1563,7 +1590,7 @@ button.follow {
   color: #666; }
   .post-n-comments header {
     margin-bottom: 1em; }
-    .post-n-comments header + .span2.badge {
+    .post-n-comments header + .span2.badge, .post-n-comments header + .span2.crest {
       margin-left: 0; }
   .post-n-comments .date {
     color: #ccc;
