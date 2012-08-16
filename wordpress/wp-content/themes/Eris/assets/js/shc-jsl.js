@@ -180,6 +180,7 @@ shcJSL.first = function(element) {
 }
 
 shcJSL.cookie = function(value, secs) {
+	
 	//Set cookie name
 	cookie_name = 'login-post-data';
 	
@@ -286,7 +287,7 @@ shcJSL.gizmos.form = function(element) {
 		alert('CHECKING')
 		if (OID != undefined) {
 			formdata = jQuery(element).serialize();
-			shcJSL.cookie(formdata, 120)
+			shcJSL.cookie(formdata, 120);
 			shcJSL.get(document).moodle({width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}});
 			event.preventDefault();
 		}
