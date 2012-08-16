@@ -74,7 +74,7 @@ class Section_Front{
 	 */
 	public function section_rewrite_rules( $rules ) {
 	    $section_rules = get_option('section_rewrite_rules', array());
-	    $rules = $section_rules + $rules;
+	    $rules = (array)$section_rules + (array)$rules;
 	    return  $rules;
 	}
 
@@ -86,7 +86,7 @@ class Section_Front{
 	    $section_rules = get_option('section_rewrite_rules', array());
 
 	    //@todo: use in_array or array_search, or some more performant array function
-	    foreach($section_rules as $regex => $querystring){
+	    foreach((array)$section_rules as $regex => $querystring){
 			if ( ! isset( $rules[$regex] ) ) {
 				global $wp_rewrite;
 			   	$wp_rewrite->flush_rules();

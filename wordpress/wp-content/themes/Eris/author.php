@@ -37,15 +37,21 @@ if(is_user_logged_in() && ($profile_user->data->ID == $current_user->data->ID)){
 //Available Tabs
 switch($profile_type) {
 	
-	case 'myprofile' || 'member':
+	case 'myprofile':
 		
 		$available_tabs = array('recent',
 								'question',
 								'answer',
 								'comment',
 								'follow',
-								'upvote'
-								);
+								'upvote');
+	break;
+	
+	case 'member':
+		
+		$available_tabs = array('question',
+								'answer',
+								'comment');
 	break;
 	
 	
@@ -58,8 +64,7 @@ switch($profile_type) {
 								'follow',
 								'upvote',
 								'guides',
-								'posts'
-								);
+								'posts');
 		
 	break;
 	
@@ -72,6 +77,7 @@ if(isset($_GET['post-type'])) {
 	$type = $_GET['post-type'];
 	$current_tab = ($_GET['post-type'] == 'aboutme') ? 'About Me' : 'Community Activity';
 	$current_nav = $_GET['post-type'];
+	$container_class = ($_GET['post-type'] == 'aboutme') ? '' : ' recent-activity';
 	
 } else {
 	//Recent Activities
@@ -79,13 +85,14 @@ if(isset($_GET['post-type'])) {
 	//$data = $user_activities;
 	$type = 'recent';
 	$current_tab = 'Community Activity';
-	$current_nav = 'recent';	
+	$current_nav = 'recent';
+	$container_class = ' recent-activity';	
 }
 
 
 
 ?>
- <section class="span<?php echo ($profile_type == 'myprofile' ? "12" : "8" ); ?> profile">
+<section class="span<?php echo ($profile_type == 'myprofile' ? "12" : "8" ); ?> profile">
 
     <?php include('parts/profile_nav.php'); ?>
 
@@ -93,9 +100,9 @@ if(isset($_GET['post-type'])) {
 
 
 ?>
-	 <section class="content-container recent-activity">
-	 
-	 	   <ol class="content-body result clearfix" id="profile-results">
+    <section class="content-container<?php echo $container_class; ?>">
+
+        <ol class="content-body result clearfix" id="profile-results">
 	 	   
         <?php
       	//Comments
