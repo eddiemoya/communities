@@ -37,15 +37,21 @@ if(is_user_logged_in() && ($profile_user->data->ID == $current_user->data->ID)){
 //Available Tabs
 switch($profile_type) {
 	
-	case 'myprofile' || 'member':
+	case 'myprofile':
 		
 		$available_tabs = array('recent',
 								'question',
 								'answer',
 								'comment',
 								'follow',
-								'upvote'
-								);
+								'upvote');
+	break;
+	
+	case 'member':
+		
+		$available_tabs = array('question',
+								'answer',
+								'comment');
 	break;
 	
 	
@@ -58,8 +64,7 @@ switch($profile_type) {
 								'follow',
 								'upvote',
 								'guides',
-								'posts'
-								);
+								'posts');
 		
 	break;
 	
