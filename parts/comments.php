@@ -14,8 +14,9 @@
 <ol id="allComments">
 <?php
         foreach($comments as $comment) {
-            $comment_date = strtotime( $comment->comment_date );
+            
             $container_class = '';
+            $comment_date = strtotime( $comment->comment_date );
             
             $crest_options = array(
                 "user_id"   => $comment->user_id
@@ -32,30 +33,30 @@
                 "options"   => array( "reply", "flag", "upvote", "downvote" )
             );
 ?>
-        <li class="comment clearfix<?php echo $container_class; ?>">
-            
-            <?php get_partial( 'parts/crest', $crest_options ); ?>
-            
-            <div class="span10">
-                <time class="content-date" datetime="<?php echo date( "Y-m-d", $comment_date ); ?>" pubdate="pubdate"><?php echo date( "F j, Y g:ia", $comment_date ); ?></time>
-                <article>
-                    <?php echo $comment->comment_content; ?>
-                </article>
-                <?php get_partial( 'parts/forms/post-n-comment-actions', $comment_actions ); ?>
-            </div>
-            <!-- <ol class="children">
-                 <li class="comment clearfix<?php echo $container_class; ?>">
-                     <?php get_partial( 'parts/crest', $crest_options ); ?>
-                     <div class="span10">
-                         <time class="content-date" datetime="<?php echo date( "Y-m-d", $comment_date ); ?>" pubdate="pubdate"><?php echo date( "F j, Y g:ia", $comment_date ); ?></time>
-                         <article>
-                             <?php echo $comment->comment_content; ?>
-                         </article>
-                         <?php get_partial( 'parts/forms/post-n-comment-actions', $comment_actions ); ?>
-                     </div>
-                 </li>
-            </ol> -->
-        </li>
+    <li class="comment clearfix<?php echo $container_class; ?>">
+        
+        <?php get_partial( 'parts/crest', $crest_options ); ?>
+        
+        <div class="span10">
+            <time class="content-date" datetime="<?php echo date( "Y-m-d", $comment_date ); ?>" pubdate="pubdate"><?php echo date( "F j, Y g:ia", $comment_date ); ?></time>
+            <article>
+                <?php echo $comment->comment_content; ?>
+            </article>
+            <?php get_partial( 'parts/forms/post-n-comment-actions', $comment_actions ); ?>
+        </div>
+        <!-- <ol class="children">
+             <li class="comment clearfix<?php echo $container_class; ?>">
+                 <?php get_partial( 'parts/crest', $crest_options ); ?>
+                 <div class="span10">
+                     <time class="content-date" datetime="<?php echo date( "Y-m-d", $comment_date ); ?>" pubdate="pubdate"><?php echo date( "F j, Y g:ia", $comment_date ); ?></time>
+                     <article>
+                         <?php echo $comment->comment_content; ?>
+                     </article>
+                     <?php get_partial( 'parts/forms/post-n-comment-actions', $comment_actions ); ?>
+                 </div>
+             </li>
+        </ol> -->
+    </li>
 <?php
         }
 ?>
