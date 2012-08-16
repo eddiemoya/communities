@@ -1063,7 +1063,7 @@ fieldset#use_your_account_from {
   margin-top: 1em; }
   .profile .personal_info dt, .profile .personal_info dd {
     float: left;
-    padding: 1em 0 .5em 0;
+    padding: 1em 0;
     border-top: 1px solid #cccccc;
     font-size: 81.25%; }
   .profile .personal_info dt {
@@ -1082,7 +1082,6 @@ fieldset#use_your_account_from {
       font-size: 75%; }
   .profile .personal_info .vitals {
     margin-top: 1em;
-    min-height: 12em;
     background: #f2f2f2; }
 
 .content-body.content-list .content-item {

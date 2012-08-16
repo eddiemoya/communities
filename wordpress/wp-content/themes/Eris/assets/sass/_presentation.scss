@@ -113,8 +113,9 @@ ul.bullets {
   }
 }
 
-// Deprecating in favor of .crest
+// CREST - the assembly of a user's image, title, name and address
 .badge {
+  // Deprecating in favor of .crest
   img {
     display: block;
     margin: 0 auto;
@@ -692,7 +693,7 @@ $tab-padding: "1em 0 .6em 0";
   nav.bar {
     border-bottom: 1px solid sears( decorative );
     border-top: 1px solid sears( decorative );
-    @include background-image(linear-gradient(white, #f4f4f4));
+    @include background-image( linear-gradient( white, #f4f4f4 ) );
     li {
       float: left;
       margin-left: $margin-width-pct;
@@ -708,7 +709,7 @@ $tab-padding: "1em 0 .6em 0";
     margin-top: 1em;
     dt, dd {
       float: left;
-      padding: 1em 0 .5em 0;
+      padding: 1em 0;
       border-top: 1px solid sears(decorative);
       font-size: percentage( 13/16 );
     }
@@ -736,7 +737,6 @@ $tab-padding: "1em 0 .6em 0";
     }
     .vitals {
       margin-top: 1em;
-      min-height: 12em;
       background: sears( content-focus );
     }
   }
