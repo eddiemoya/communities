@@ -113,6 +113,7 @@ ul.bullets {
   }
 }
 
+// Deprecating in favor of .crest
 .badge {
   img {
     display: block;
@@ -144,7 +145,43 @@ ul.bullets {
   }
 }
 
+// Handles the display of user's images, names, titles and addresses (their crest)
+.crest {
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+  h4 {
+    padding: .5em 0;
+    word-wrap: break-word;
+    letter-spacing:-.05em;
+  }
+  h4, address {
+    font-size: percentage( 12/16 );
+    @extend .bold;
+  }
+  &.labeled {
+    h4 {
+      background: sears( badge ) url('#{$img}sprite-user.png') repeat-x left bottom;
+      text-align: center;
+      @include border-radius( 0 0 10px 10px );
+    }
+    h4, h4 a {
+      color: $lightest-color;
+    }
+    .tail {
+      background: url('#{$img}sprite-user.png') no-repeat center top;
+      height: 10px;
+      overflow: hidden;
+    }
+  }
+}
+
 .span4 .span4 .badge h4 {
+  font-size: percentage( 10/16 );
+}
+
+.span4 .span4 .crest h4 {
   font-size: percentage( 10/16 );
 }
 
@@ -690,7 +727,7 @@ $tab-padding: "1em 0 .6em 0";
     .info h4 {
       margin-top: 1em;
     }
-    .badge {
+    .badge, .crest {
       text-align: center;
       a {
         font-size: percentage( 12/16 );

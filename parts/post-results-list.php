@@ -1,18 +1,19 @@
-<?php 
-$c = get_the_category(); 
-$cat = $c[0];
+<?php
+    $c = get_the_category();
+    $cat = $c[0];
+    $crest_options = array(
+        "user_id" => $post->post_author
+    );
+    $post_date = strtotime( $post->post_date );
 ?>
+
 <li class="post lone-result clearfix">
 
-    <div class="span2 badge">
-        <img src="<?php echo get_template_directory_uri() ?>/assets/img/zzexpert.jpg" alt="Team Player" title="Team Player" />
-        <h4><a href="#"><?php the_author(); ?></a></h4>
-        <address>Chicago, IL</address>
-    </div>
+    <?php get_partial( 'parts/crest', $crest_options ); ?>
 
     <div class="span10">
 
-        <time class="content-date" datetime="<?php echo date( "Y-m-d" ); ?>" pubdate="pubdate"><?php echo date( "F n, Y g:ia" ); ?></time>
+        <time class="content-date" datetime="<?php echo date( "Y-m-d", $post_date ); ?>" pubdate="pubdate"><?php echo date( "F n, Y g:ia", $post_date ); ?></time>
 
         <hgroup>
             <h3 class="content-category">
@@ -30,7 +31,7 @@ $cat = $c[0];
 
         <section class="post-actions">
             <div class="flag"><a href="#"><img src="<?php echo get_template_directory_uri() ?>/assets/img/icon-flag.png" alt="Flag this post" title="Flag this post" /></a></div>
-            <div class="share"><a href="#">Share</a></div>
+            <?php get_partial( 'parts/share' ); ?>
         </section>
 
     </div>
