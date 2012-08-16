@@ -2,7 +2,17 @@
 				
 				<h6 class="content-headline">Post your question</h6>
 				
-				<form id="new_question_step_1" name="new_question_step_1" method="post" action="">
+				<?php if($data['errors']):?>
+					
+					<?php foreach($data['errors'] as $error):?>
+					
+						<div><?php echo $error;?></div>
+						
+					<?php endforeach;?>
+					
+				<?php endif;?>
+				
+				<form id="new_question_step_1" name="new_question_step_1" method="post" action="" shc:gizmo="form" shc:gizmo:options="{form:{requireLogIn:true, checkForRequired: true}}">
 					<?php wp_nonce_field('front-end-post_question-step-1'); ?>
 
 					<div class="state_post-your-question">

@@ -178,6 +178,17 @@ shcJSL.first = function(element) {
 	}
 	return firstChild;
 }
+
+shcJSL.cookie = function(value, secs) {
+	//Set cookie name
+	cookie_name = 'login-post-data';
+	
+	//Set expire date/time
+	dt = new Date();
+	dt.setTime((dt.getTime() + secs));
+	
+	document.cookie = cookie_name + '=' + value + '; ' + 'expires=' + dt;
+}
 /*
 	[2.0] WIDGETS
 	-------------
@@ -217,7 +228,7 @@ shcJSL.gizmos.activate = function(event, parent, selector) {
 							
 			// Remove the selector code to get attribute
 			(Selector.toString().indexOf("\\") != -1)? attribute = ((Selector.split("\\")[0]) + (Selector.split("\\")[1])).replace(/(\*?\[)|(\])/g, '').toString():attribute = Selector.toString().replace(/(\*?\[)|(\])/g, '').toString();
-			//try {
+			try {
 				// If the the widget has 'shc:name' attribute, assign the
 				// JavaScript object [shc:widget] to the global variable
 				// that is [shc:name]
@@ -226,7 +237,7 @@ shcJSL.gizmos.activate = function(event, parent, selector) {
 				// If it can not create the object, error out gracefully
 				// and log the error, the widget that failed and the
 				// error message
-			//} catch(error) {console.log("Failed to instantiate widget " + attribute + "[" + $(this).attr(attribute) + "] - " + error);}
+			} catch(error) {console.log("Failed to instantiate widget " + attribute + "[" + $(this).attr(attribute) + "] - " + error);}
 		} // END $.each function
 	) // END $.each
 }
@@ -264,6 +275,30 @@ shcJSL.gizmos.persistr = function(element) {
 		}
 	});
 	
+}
+
+shcJSL.gizmos.form = function(element) {
+	
+	formOptions = (eval('(' + $(element).attr("shc:gizmo:options") + ')')).form;
+	
+	// PRIVATE METHODS
+	checkForLoggedIn = function(event) {
+		alert('CHECKING')
+		if (OID != undefined) {
+			formdata = jQuery(element).serialize();
+			shcJSL.cookie(formdata, 120)
+			shcJSL.get(document).moodle({width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}});
+			event.preventDefault();
+		}
+	}
+	
+	checkForRequired = function(event) {
+		
+	}
+	
+	if (formOptions.requireLogIn == true) {
+		$(element).bind('submit',checkForLoggedIn)
+	}
 }
 
 /*
