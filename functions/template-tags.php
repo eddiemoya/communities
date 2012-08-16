@@ -283,8 +283,14 @@ function list_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
  * @return void.
  */
 function get_partial( $partial, $variables = array() ) {
+
+    if(is_object($variables)){
+        $variables = get_object_vars($variables);
+    }
+    
     extract( $variables );
-    @include get_template_directory() . '/' . $partial . '.php';
+
+    include get_template_directory() . '/' . $partial . '.php';
 }
 
 /**
