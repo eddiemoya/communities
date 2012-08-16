@@ -1078,8 +1078,7 @@ fieldset#use_your_account_from {
   z-index: 1000; }
   .tooltip .arrow {
     left: -10px;
-    position: absolute;
-    top: 40px; }
+    position: absolute; }
     .tooltip .arrow .arrowLeft {
       background-color: transparent;
       border-color: #ffffff #a0c7ff #ffffff #ffffff;

@@ -3,7 +3,7 @@
 
     $args = array(
         'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
-        'comment_field'        => '<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>',
+        'comment_field'        => '<textarea id="comment" name="comment" cols="45" rows="8" shc:gizmo="tooltip" shc:gizmo:options="{tooltip:{events:[\'click\'],displayData:\'shower\'}}" aria-required="true"></textarea>',
         'must_log_in'          => null,
         'logged_in_as'         => null,
         'comment_notes_before' => null,
@@ -43,7 +43,7 @@
                         ?>
                             <p class="form-submit">
                                 <input type="submit" id="<?php echo esc_attr( $args['id_submit'] ); ?>" class="<?php echo theme_option("brand"); ?>_button" value="<?php echo esc_attr( $args['label_submit'] ); ?>" />
-                                <input type="submit" shc:gizmo="tooltip" shc:gizmo:options="{tooltip:{events:['mouseover','mouseout']}}" class="<?php echo theme_option("brand"); ?>_button azure" value="Cancel" />
+                                <input type="submit" shc:gizmo="tooltip" shc:gizmo:options="{tooltip:{events:['click'],displayData:'shower'}}" class="<?php echo theme_option("brand"); ?>_button azure" value="Cancel" />
                                 <?php comment_id_fields( $post_id ); ?>
                             </p>
                         <?php do_action( 'comment_form', $post_id ); ?>
@@ -56,6 +56,7 @@
               $(".commentForm form").slideToggle("slow");
             });
         </script>
+        <p class="hidden" id="shower">Hello</p>
     <?php
         do_action( 'comment_form_after' );
     else :
