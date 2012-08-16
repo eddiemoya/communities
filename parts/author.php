@@ -1,6 +1,6 @@
         <?php 
         	$last_post = get_posts(array('numberposts'=>1, 'author' => $data->ID)); 
-        	$last_post_date = strtotime($last_post[0]->post_date);
+        	$last_post_date = (isset($last_post[0])) ? strtotime($last_post[0]->post_date): '0';
         ?>
         <li class="member lone-result clearfix">
           <div class="span2 badge labeled">
