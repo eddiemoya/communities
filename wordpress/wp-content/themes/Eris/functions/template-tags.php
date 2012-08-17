@@ -95,6 +95,9 @@ function has_screen_name($user_id) {
 		return false;
 }
 
+
+
+
 /**
  * Process attempts to post a question from the front end of the site.
  *
@@ -102,53 +105,126 @@ function has_screen_name($user_id) {
  * @return (integer). The number of the step which should be rendered on any given page view.
  */
 function process_front_end_question(){
-
+	
     //If step 1 - return that we should move on to step 2.
     if( wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-1' )){
 
         //If user is logged in - step 2
-        if(is_user_logged_in()) {
-            return "2";
-
+        if(is_user_logged_in() && ! empty($_POST['post-question'])) {
+        	
+        	return array('step'		=> '2',
+        				'errors'	=> null);
+        	
+            
         } else {
             /**
              * Kick off login modal SSO login crazyness here 
              */
-            return "1";
+            return array('step'		=> '1',
+        				'errors'	=> array('Please enter a question.'));
         }
     }
 
     //If step 2, add the post and move to step 3
     if(wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in()) {
-
-        $raw_content = $_POST['more-details'];
-
-        $title =  wp_kses($_POST['your-question'], array(), array());
-        $content = wpautop(wp_kses($_POST['more-details'], array(), array()));
-
-        $category = (isset($_POST['category'])) ?  absint((int)$_POST['category'])  : '' ;
-        $category = (isset($_POST['sub-category'])) ? absint((int)$_POST['sub-category']) : $category; 
-
-        if(!empty($title) && !empty($content) && !empty($category)) {
-            $post = array(
-                'post_title'    => $title,
-                'post_content'  => $content,
-                'post_category' => array($category),
-                'post_status'   => 'publish',           
-                'post_type'     => 'question'
-            );
-        } else {
-            //Need to handle so that it reloads with the users previous content
-            return "2";
-        }
-
-        wp_insert_post($post); 
-        do_action('wp_insert_post', 'wp_insert_post'); 
-        return "3";
+		
+    	global $current_user;
+		get_currentuserinfo();
+		
+		$valid = true;
+    	$errors = array();
+    	
+    	if(empty($_POST['your-question'])) {
+    		
+    		$errors['your-question'] = 'Please enter a question.';
+    	}
+    	
+    	//If a screen name is required...
+    	if(isset($_POST['screen-name'])) {
+    		 
+    		 //Illegal chars for screen name
+    		 $bad_chars = array('~', '!', '@', '#', '$', '%', 
+    								'^', '&', '*', '(', ')', '+', '=',
+    								':', ';', '"', '<', '>', '\'', '?',
+    								'`', '/', '\\', ' ');
+    		 
+    		 	//Test screen name min / max length
+    			if(strlen(trim($_POST['screen-name'])) < 2 || strlen(trim($_POST['screen-name'])) > 18) {
+    				
+    				$valid = false;
+    				
+    				$errors['screen-name'] = 'Screen name is required to be between 2-18 characters, and can only contain letters, numbers, dashes, underscores, and periods.';
+    			}
+    				
+    				//Test for illegal chars
+    				if(strpos($_POST['screen-name'], $bad_chars ) !== false) {
+    					
+    					$valid = false;
+    				}
+    				
+	    				//If everything is valid, attempt to set screen name
+	    				if($valid) {
+	    				
+	    					$sso_guid = get_user_sso_guid($current_user->ID);
+	    					
+	    					$profile = new SSO_Profile;
+	    					
+	    					$response = $profile->update($sso_guid, array('email' => $current_user->user_email ,
+	    																 'screen_name' => $_POST['screen-name']));
+	    					
+	    						//Check for error
+	    						if(isset($response['code'])) {
+	    							
+	    							$valid = false;
+	    							
+	    							$errors['screen-name'] = $response['message'];
+	    							
+	    						} else {
+	    							
+	    							//Add user meta for screen name
+	    							update_user_meta($current_user->ID, 'profile_screen_name', $_POST['screen-name']);
+	    							
+	    							//Update user's nicename to screen name
+	    							wp_insert_user(array('ID'				=> $current_user->ID,
+		 								 				'user_nicename' 	=> $_POST['screen-name']));
+	    						}
+	    				}
+    	}
+    	
+	    	//If valid, insert question
+	    	if($valid) {
+	    		
+		        $raw_content = $_POST['more-details'];
+		
+		        $title =  wp_kses($_POST['your-question'], array(), array());
+		        $content = wpautop(wp_kses($_POST['more-details'], array(), array()));
+		
+		        $category = (isset($_POST['category'])) ?  absint((int)$_POST['category'])  : '' ;
+		        $category = (isset($_POST['sub-category'])) ? absint((int)$_POST['sub-category']) : $category; 
+		
+		        
+		            $post = array(
+		                'post_title'    => $title,
+		                'post_content'  => $content,
+		                'post_category' => array($category),
+		                'post_status'   => 'publish',           
+		                'post_type'     => 'question'
+		            );
+		
+		        wp_insert_post($post); 
+		        do_action('wp_insert_post', 'wp_insert_post'); 
+		        
+		        return array('errors' => null, 'step' => '3');
+		        
+	    } else {
+	    	
+	    	return array('errors' => $errors, 'step' => '2');
+	    }
+    
     }
 
     //Neither step has been taken, were on step 1
-    return "1";
+    return array('errors' => null, 'step' => '1');
 }
 
 
@@ -275,7 +351,7 @@ function list_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
  * Includes partial while passing a set of variables into the included templates
  * scope.
  *
- * @author Carl Albueirgiebt-Buusrybfeler
+ * @author Eddie Moya & Carl Albrecht-Buehler
  *
  * @param $partial (string) [required] The filename or relative path to the intended partial template.
  * @param $varialbes (array) [optional] Associative array of values to be passed into the templates scope. The keys will become the variable names.
@@ -283,8 +359,29 @@ function list_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
  * @return void.
  */
 function get_partial( $partial, $variables = array() ) {
+
+    if(is_object($variables)){
+        $variables = get_object_vars($variables);
+    }
+    
     extract( $variables );
-    @include get_template_directory() . '/' . $partial . '.php';
+
+    include get_template_directory() . '/' . $partial . '.php';
+}
+
+/**
+ * Return a partial instead of outputting it.
+ *
+ *
+ * @author Eddie Moya & Carl Albrecht-Buehler
+ * @param $template (string) Relative path/filename of the template to be returned
+ *
+ * @return (string) Contents of included partial.
+ */
+function return_partial( $partial, $variables = array() ){
+    ob_start();
+        get_partial( $partial, $variables );
+    return ob_get_clean();
 }
 
 

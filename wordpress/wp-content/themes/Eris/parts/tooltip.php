@@ -1,7 +1,8 @@
-<div class="infoBubble">
-    <div class="arrowLeft"></div>
-    <div class="arrowLeftBorder"></div>
+<div class="tooltip" id="tooltip">
+    <div class="arrow">
+        <div class="arrowLeft"></div>
+        <div class="arrowLeftBorder"></div>
+    </div>
     <div class="middle">
-        <!-- content goes here -->
     </div>
 </div>

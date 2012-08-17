@@ -113,7 +113,9 @@ ul.bullets {
   }
 }
 
+// CREST - the assembly of a user's image, title, name and address
 .badge {
+  // Deprecating in favor of .crest
   img {
     display: block;
     margin: 0 auto;
@@ -144,7 +146,43 @@ ul.bullets {
   }
 }
 
+// Handles the display of user's images, names, titles and addresses (their crest)
+.crest {
+  img {
+    display: block;
+    margin: 0 auto;
+  }
+  h4 {
+    padding: .5em 0;
+    word-wrap: break-word;
+    letter-spacing:-.05em;
+  }
+  h4, address {
+    font-size: percentage( 12/16 );
+    @extend .bold;
+  }
+  &.labeled {
+    h4 {
+      background: sears( badge ) url('#{$img}sprite-user.png') repeat-x left bottom;
+      text-align: center;
+      @include border-radius( 0 0 10px 10px );
+    }
+    h4, h4 a {
+      color: $lightest-color;
+    }
+    .tail {
+      background: url('#{$img}sprite-user.png') no-repeat center top;
+      height: 10px;
+      overflow: hidden;
+    }
+  }
+}
+
 .span4 .span4 .badge h4 {
+  font-size: percentage( 10/16 );
+}
+
+.span4 .span4 .crest h4 {
   font-size: percentage( 10/16 );
 }
 
@@ -655,7 +693,7 @@ $tab-padding: "1em 0 .6em 0";
   nav.bar {
     border-bottom: 1px solid sears( decorative );
     border-top: 1px solid sears( decorative );
-    @include background-image(linear-gradient(white, #f4f4f4));
+    @include background-image( linear-gradient( white, #f4f4f4 ) );
     li {
       float: left;
       margin-left: $margin-width-pct;
@@ -671,7 +709,7 @@ $tab-padding: "1em 0 .6em 0";
     margin-top: 1em;
     dt, dd {
       float: left;
-      padding: 1em 0 .5em 0;
+      padding: 1em 0;
       border-top: 1px solid sears(decorative);
       font-size: percentage( 13/16 );
     }
@@ -690,7 +728,7 @@ $tab-padding: "1em 0 .6em 0";
     .info h4 {
       margin-top: 1em;
     }
-    .badge {
+    .badge, .crest {
       text-align: center;
       a {
         font-size: percentage( 12/16 );
@@ -699,7 +737,6 @@ $tab-padding: "1em 0 .6em 0";
     }
     .vitals {
       margin-top: 1em;
-      min-height: 12em;
       background: sears( content-focus );
     }
   }
@@ -731,38 +768,46 @@ $tab-padding: "1em 0 .6em 0";
 	}
 }
 
-.infoBubble {
-  background-color: transparent;
-  padding: 7px;
+.tooltip {
+  display: none;
   position: absolute;
   left: 12em;
   width: 200px;
   z-index: 1000;
 
-  .arrowLeft {
-    background-color: transparent;
-    border-color: #ffffff #a0c7ff #ffffff #ffffff;
-    border-style: solid;
-    border-width: 10px 10px 10px 0px;
-    width: 0px;
-    height: 0px;
+  .arrow {
+    left: -10px;
+    position: absolute;
+
+    .arrowLeft {
+      background-color: transparent;
+      border-color: #ffffff #a0c7ff #ffffff #ffffff;
+      border-style: solid;
+      border-width: 10px 10px 10px 0px;
+      width: 0px;
+      height: 0px;
+    }
+
+    .arrowLeftBorder {
+      background-color: transparent;
+      border-color: transparent #ffffff transparent transparent;
+      border-style: solid;
+      border-width: 9px 9px 9px 0px;
+      width: 0px;
+      height: 0px;
+      position: relative;
+      left: 2px;
+      top: -19px;
+    }
   }
 
-  .arrowLeftBorder {
-    background-color: transparent;
-    border-color: transparent #ffffff transparent transparent;
-    border-style: solid;
-    border-width: 8px 8px 8px 0px;
-    width: 0px;
-    height: 0px;
-    position: relative;
-    left: 2px;
-    top: -18px;
-  }
-  ​
-
-  .info {
+  .middle {
+    @include border-radius( 4px );
+    background-color: #fff;
+    border: 1px solid #A0C7FF;
     color: #000;
+    float: left;
+    padding: 7px;
   }
 }
 

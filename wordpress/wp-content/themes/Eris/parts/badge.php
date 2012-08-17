@@ -44,8 +44,9 @@
     
     # Put it all together
 ?>
+
 <div class="<?php echo implode( $a_classes, ' ' ); ?>">
     <a href="<?php echo site_url(''); ?>/author/<?php echo $current_user->user_nicename; ?>"><img src="<?php echo get_template_directory_uri() ?>/assets/img/zzexpert.jpg" alt="<?php echo $user->user_nicename; ?>" title="<?php echo $user->user_nicename; ?>" /></a>
     <?php echo $badge_titling; ?>
-    <?php echo $city_state; ?>
+    <?php echo $address; ?>
 </div>

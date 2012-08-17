@@ -8,8 +8,8 @@
 
 			// Check if either category or sub-category have been passed as get or post variables.
 			if( isset($_REQUEST['filter-category']) || isset($_REQUEST['filter-sub-category']) ) {
-				$category = absint($_REQUEST['filter-category']);
-				$subcategory = absint($_REQUEST['filter-sub-category']);
+				$category = (isset($_REQUEST['filter-category'])) ? absint($_REQUEST['filter-category']) : '';
+				$subcategory = (isset($_REQUEST['filter-sub-category'])) ? absint($_REQUEST['filter-sub-category']) : '';
 
 			//If not..
 			} else {
