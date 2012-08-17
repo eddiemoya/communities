@@ -12,7 +12,17 @@ foreach($activities as $activity):
 	              <a href="<?php  echo (count($activity->categories)) ? get_term_link($activity->categories[0]) : null;?>" class="category"><?php echo (count($activity->categories)) ? $activity->categories[0]->cat_name : 'Uncategorized'; ?></a>
 	              <a href="<?php echo get_permalink($activity->ID);?>"><?php echo $activity->post_title; ?></a>
 	            </h3>
-	            <?php //echo $excerpt; ?>
+	            <?php 
+	            	//Expert answers
+	            	if($type == 'question'):
+	            		 
+	            		//expert answers are an array of comment objects
+	            		foreach($activity->expert_answers as $answer):
+	            ?>
+	            	<!-- Some HTML for expert answers -->
+	           
+	            <?php endforeach;
+	            		endif;?>
 	          </div>
 	        </li>
  <?php endforeach; ?>
