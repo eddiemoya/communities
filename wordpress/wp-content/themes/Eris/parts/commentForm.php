@@ -15,6 +15,9 @@
         'cancel_reply_link'    => null,
         'label_submit'         => __( 'Post' ),
     );
+    
+    if(!isset($defaults))
+        $defaults = array();
 
     $args = wp_parse_args( $args, apply_filters( 'comment_form_defaults', $defaults ) );
 
