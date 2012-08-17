@@ -16,6 +16,10 @@ foreach($activities as $activity):
 	            	//Expert answers
 	            	if($type == 'question'):
 	            		 
+	            		echo '<pre>';
+	            		var_dump($activity->expert_answers);
+	            		echo '</pre>';
+	            		
 	            		//expert answers are an array of comment objects
 	            		foreach($activity->expert_answers as $answer):
 	            ?>
