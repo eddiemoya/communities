@@ -100,11 +100,6 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         _this.options = jQuery.extend(true, _this.options, options);
 
         _this.setTooltip();
-
-        _this.setOffset(_this.actedObj);
-        _this.setPosition(_this.actedObj);
-        _this.setHeight(_this.actedObj);
-        _this.setWidth(_this.actedObj);
     };
 
     _this.addListener = function() {
@@ -207,9 +202,17 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         var leftPosition = 0;
         var topPosition = 0;
 
-        var data = jQuery('#' + _this.options.displayData).clone().removeClass('.hidden');
+        var data = jQuery('#' + _this.options.displayData).clone().removeClass('hidden');
 
         jQuery(_this.tooltip.element).children('.middle').html(data);
+
+        /**
+         * The position/dimensional info needs to be set here, in case elements with tooltips are hidden, etc.
+         */
+        _this.setHeight(_this.actedObj);
+        _this.setOffset(_this.actedObj);
+        _this.setPosition(_this.actedObj);
+        _this.setWidth(_this.actedObj);
 
         _this.setHeight(_this.tooltip);
         _this.setOffset(_this.tooltip);
