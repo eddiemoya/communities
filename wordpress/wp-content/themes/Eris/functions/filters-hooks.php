@@ -36,8 +36,8 @@ function filter_body_class($classes) {
      */
     $options = get_option('theme_options');
     
-    if(isset($options['blog_brand_shop_style'])){
-        $classes[] = $options['blog_brand_shop_style'];
+    if(isset($options['brand'])){
+        $classes[] = $options['brand'];
     }
     
     if (is_category())
