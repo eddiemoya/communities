@@ -1,6 +1,4 @@
-<?
-/*error_reporting(E_ALL);
-ini_set('display_errors', true);*/
+<?php
 
 //User_Profile class
 require_once 'classes/communities_profile.php';
@@ -34,8 +32,9 @@ if(is_user_logged_in() && ($profile_user->data->ID == $current_user->data->ID)){
 	
 }
 
+
 //Available Tabs
-switch($profile_type) {
+/*switch($profile_type) {
 	
 	case 'myprofile':
 		
@@ -69,7 +68,18 @@ switch($profile_type) {
 	break;
 	
 	
+}*/
+
+if($profile_type != 'myprofile') {
+	
+	//Remove recent tab
+	unset($user_activities->nav[0]);
+	
 }
+
+
+
+$available_tabs = $user_activities->nav;
 
 
 if(isset($_GET['post-type'])) {
@@ -80,13 +90,14 @@ if(isset($_GET['post-type'])) {
 	$container_class = ($_GET['post-type'] == 'aboutme') ? '' : ' recent-activity';
 	
 } else {
-	//Recent Activities
 	
-	//$data = $user_activities;
-	$type = 'recent';
+	$default = (isset($available_tabs[0])) ? $available_tabs[0] : $available_tabs[1]; 
+	
+	$type = $default;
 	$current_tab = 'Community Activity';
-	$current_nav = 'recent';
+	$current_nav = $default;
 	$container_class = ' recent-activity';	
+	
 }
 
 
@@ -108,6 +119,9 @@ if(isset($_GET['post-type'])) {
       	//Comments
 		if($type == 'answer' || $type == 'comment') {
 			
+			/*echo 'Comments stuff';
+			exit;*/
+			
 			$activities = $user_activities->page($page)
 											->get_user_comments_by_type($type)
 											->comments;
@@ -117,12 +131,27 @@ if(isset($_GET['post-type'])) {
 		}
 		
 		//Posts
-		if($type == 'posts' || $type == 'guides' || $type == 'question') {
+		if($type == 'post' || $type == 'guides' || $type == 'question') {
 			
 			
-			$activities = $user_activities->page($page)
-											->get_user_posts_by_type($type)
-											->posts;
+			if($type == 'question') {
+				
+				$activities = $user_activities->page($page)
+												->get_user_posts_by_type($type)
+												->get_expert_answers()
+												->posts;
+												
+					/*echo '<pre>';
+					var_dump($activities);
+					exit;*/					
+			
+			} else {
+				
+				$activities = $user_activities->page($page)
+												->get_user_posts_by_type($type)
+												->posts;
+											
+			}
 											
 											
 			include('parts/profile-posts.php');

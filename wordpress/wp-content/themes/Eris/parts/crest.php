@@ -46,7 +46,7 @@
 ?>
 
 <div class="<?php echo implode( $a_classes, ' ' ); ?>">
-    <a href="<?php echo site_url(''); ?>/author/<?php echo $current_user->user_nicename; ?>"><img src="<?php echo get_template_directory_uri() ?>/assets/img/zzexpert.jpg" alt="<?php echo $user->user_nicename; ?>" title="<?php echo $user->user_nicename; ?>" /></a>
+    <a href="<?php echo get_author_posts_url( $user_id ); ?>>"><img src="<?php echo get_template_directory_uri() ?>/assets/img/zzexpert.jpg" alt="<?php echo $user->user_nicename; ?>" title="<?php echo $user->user_nicename; ?>" /></a>
     <?php echo $crest_titling; ?>
     <?php echo $address; ?>
 </div>

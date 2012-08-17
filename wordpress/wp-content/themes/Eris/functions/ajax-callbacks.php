@@ -106,9 +106,28 @@ function profile_paginate() {
         //Posts
         if($type == 'posts' || $type == 'guides' || $type == 'question') {
             
-            $activities = $user_activities->page($page)
+            /*$activities = $user_activities->page($page)
                                             ->get_user_posts_by_type($type)
-                                            ->posts;
+                                            ->posts;*/
+        	
+	        if($type == 'question') {
+					
+					$activities = $user_activities->page($page)
+													->get_user_posts_by_type($type)
+													->get_expert_answers()
+													->posts;
+													
+						/*echo '<pre>';
+						var_dump($activities);
+						exit;*/							
+				
+				} else {
+					
+					$activities = $user_activities->page($page)
+													->get_user_posts_by_type($type)
+													->posts;
+												
+				}
                                             
             include(get_template_directory() . '/parts/profile-posts.php');
         }
