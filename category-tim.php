@@ -1,12 +1,3 @@
-<style type="text/css">
-		.tim, .single {}
-			
-			.tim #content, .single #content {}
-			
-					.tim #content > section.span12, .single #content > section.span12 {
-						border-top:solid 1px #d5d5d5;
-					}
-	</style>
 <?php
 /**
  * @package WordPress
@@ -18,13 +9,54 @@ get_template_part('parts/header');
 loop();
 ?>
 
+	<style type="text/css">
+		.tim, .single {}
+			
+			.tim #content, .single #content {}
+			
+					.tim #content > section.span12, .single #content > section.span12 {
+						border-top:solid 1px #d5d5d5;
+					}
+					
+					.tim #content > section.span12 > section[class*="span"] > [class*="span"]:first-child,
+					.tim #content > section.span12 > section[class*="span"] > [class*="span"]:first-child header,
+					.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child, 
+					.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child header {
+						border-top:none;
+					}
+			
+			.blog-post {}
+			
+				.blog-post .article-data {
+					margin-top:.625em;
+				}
+				
+				.blog-post .article-data cite {
+					float:left;
+					font-size:.8125em;
+					font-weight:bold;
+				}
+				
+				.blog-post .article-data time {
+					color:#d5d5d5;
+					float:right;
+					font-size:.6875em;
+					line-height:1.5em;
+				}
+				
+				.blog-post h1 {
+					font-size:1.25em;
+					font-weight:bold;
+				}
+	</style>
+
 	<section class="span12">
 		
 		<section class="span8">
 			
 			<!-- BREADCRUMB WIDGET -->
 			<nav class="span12 breadcrumb">
-				<ul>
+				<ul class="clearfix">
 					<li><a href="#" title="The Fellowship of the Ring">The Fellowship of the Ring</a></li>
 					<li><a href="#" title="The Old Forest">The Old Forest</a></li>
 				</ul>
@@ -34,7 +66,7 @@ loop();
 			<!-- ARTICLE CONTENT AREA -->
 			<article class="content-container blog-post span12">
 				
-				<section class="article-data">
+				<section class="article-data clearfix">
 					<cite><a href="#" title="Fantasy">Fantasy</a></cite>
 					<time pubdate datetime="1954-07-24">July 24, 1954</time>
 				</section>
