@@ -15,9 +15,9 @@
       "name" => "Questions",
       "url" => $url_no_qs . '?post-type=question'
     ),
-    "posts" => array(
+    "post" => array(
       "name" => "Posts",
-      "url" => $url_no_qs . '?post-type=posts'
+      "url" => $url_no_qs . '?post-type=post'
     ),
     "guides" => array(
       "name" => "Buying Guides",
@@ -87,7 +87,8 @@
     }
     ?>
   </ul>
-</nav> 
+</nav>
+
 
 
 

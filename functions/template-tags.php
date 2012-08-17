@@ -354,7 +354,7 @@ function list_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
  * @author Eddie Moya & Carl Albrecht-Buehler
  *
  * @param $partial (string) [required] The filename or relative path to the intended partial template.
- * @param $varialbes (array) [optional] Associative array of values to be passed into the templates scope. The keys will become the variable names.
+ * @param $variables (array) [optional] Associative array of values to be passed into the templates scope. The keys will become the variable names.
  *
  * @return void.
  */
@@ -374,7 +374,8 @@ function get_partial( $partial, $variables = array() ) {
  *
  *
  * @author Eddie Moya & Carl Albrecht-Buehler
- * @param $template (string) Relative path/filename of the template to be returned
+ * @param $partial (string) [required] The filename or relative path to the intended partial template.
+ * @param $variables (array) [optional] Associative array of values to be passed into the templates scope. The keys will become the variable names.
  *
  * @return (string) Contents of included partial.
  */
@@ -382,6 +383,59 @@ function return_partial( $partial, $variables = array() ){
     ob_start();
         get_partial( $partial, $variables );
     return ob_get_clean();
+}
+
+/**
+ * Return a user's screen name (user_nicename).
+ *
+ *
+ * @author Carl Albrecht-Buehler
+ * @param $user_id (integer) [required] ID of the user whose screen name you want to look up.
+ *
+ * @return (string) User's screen name (user_nicename).
+ */
+function return_screenname( $user_id ) {
+    $user_info = get_userdata( $user_id );
+    return $user_info->user_nicename;
+}
+
+/**
+ * Echo a user's screen name (user_nicename).
+ *
+ *
+ * @author Carl Albrecht-Buehler
+ * @param $user_id (integer) [required] ID of the user whose screen name you want to look up.
+ *
+ * @return void.
+ */
+function get_screenname( $user_id ) {
+    echo return_screenname( $user_id );
+}
+
+/**
+ * Return a user's screen name (user_nicename) formatted into an HTML anchor.
+ *
+ *
+ * @author Carl Albrecht-Buehler
+ * @param $user_id (integer) [required] ID of the user whose screen name you want to look up.
+ *
+ * @return (string) User's screen name (user_nicename) formatted into an HTML anchor..
+ */
+function return_screenname_link( $user_id ) {
+    return '<a href="' . get_author_posts_url( $user_id ) . '">' . return_screenname( $user_id ) . '</a>';
+}
+
+/**
+ * Echo a user's screen name (user_nicename) formatted as an HTML anchor.
+ *
+ *
+ * @author Carl Albrecht-Buehler
+ * @param $user_id (integer) [required] ID of the user whose screen name you want to look up.
+ *
+ * @return void.
+ */
+function get_screenname_link( $user_id ) {
+    echo return_screenname_link( $user_id );
 }
 
 

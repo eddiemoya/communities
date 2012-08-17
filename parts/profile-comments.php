@@ -1,6 +1,5 @@
 <?php
 
-//var_dump($activities); 
 
 foreach($activities as $activity):
 
