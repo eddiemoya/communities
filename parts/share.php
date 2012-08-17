@@ -1,5 +1,11 @@
+<?php
+    # OPTIONS
+    # $version =              NULL (default) or long - whether to display the long form with links on the page,
+    #                                                   or short with icons hidden in a rollover.
+?>
+
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
-<?php if ( $version == 'long' ): ?>
+<?php if ( isset($version) && $version == 'long' ): ?>
 <div class="addthis_toolbox addthis_default_style">
     <a class="addthis_button_facebook_like"></a>
     <a class="addthis_button_tweet"></a>

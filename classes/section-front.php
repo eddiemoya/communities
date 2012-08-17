@@ -74,7 +74,7 @@ class Section_Front{
 	 */
 	public function section_rewrite_rules( $rules ) {
 	    $section_rules = get_option('section_rewrite_rules', array());
-	    $rules = $section_rules + $rules;
+	    $rules = (array)$section_rules + (array)$rules;
 	    return  $rules;
 	}
 
@@ -86,7 +86,7 @@ class Section_Front{
 	    $section_rules = get_option('section_rewrite_rules', array());
 
 	    //@todo: use in_array or array_search, or some more performant array function
-	    foreach($section_rules as $regex => $querystring){
+	    foreach((array)$section_rules as $regex => $querystring){
 			if ( ! isset( $rules[$regex] ) ) {
 				global $wp_rewrite;
 			   	$wp_rewrite->flush_rules();
@@ -100,15 +100,17 @@ class Section_Front{
 	public function save_section( $post_id ){
 		global $wp_rewrite;
 
-	    if('section' != $_POST['post_type'])
-	        return;
+		if(isset($_POST['post_type'])){
+		    if('section' != $_POST['post_type'])
+		        return;
 
-	    if ( !current_user_can( 'edit_post', $post_id ) )
-	        return;
+		    if ( !current_user_can( 'edit_post', $post_id ) )
+		        return;
 
-	    $categories = $_POST['post_category'];
+		    $categories = $_POST['post_category'];
 
-	    self::rewrite_all_the_terms($_POST['post_category']);
+		    self::rewrite_all_the_terms($_POST['post_category']);
+		}
 	}
  
 	/**
@@ -118,7 +120,8 @@ class Section_Front{
 		global $wp_rewrite;
 		$categorized_sections = self::get_terms_by_post_type('category', 'section');
 
-	    foreach($categorized_sections as $cat){
+		$rules = array();
+	    foreach((array)$categorized_sections as $cat){
 	
 	    	//echo "<pre>";print_r($cat);echo "</pre>";
 	    	$rules[$cat->taxonomy . '/' . $cat->slug .'/?$'] = 'index.php?posts_per_page=1&post_type='.$_POST['post_type'].'&category_name='.$cat->slug;
@@ -136,13 +139,13 @@ class Section_Front{
 	}
 
 	/**
-	 *  Function to get terms only if they have posts by post type
+	 *  Function to get terms only if they have posts by post type.
+	 *
 	 *  @param $taxonomy (string) taxonomy name eg: 'post_tag','category'(default),'custom taxonomy'
 	 *  @param $post_type (string) post type name eg: 'post'(default),'page','custom post type'
 	 *
-	 *
 	 *  Usage:
-	 *  list_terms_by_post_type('post_tag','custom_post_type_name');
+	 *  get_terms_by_post_type('post_tag','custom_post_type_name');
 	 **/
 	function get_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
 	  //get a list of all post of your type

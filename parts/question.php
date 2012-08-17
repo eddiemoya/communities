@@ -1,25 +1,27 @@
 <?php
     $i = 0;
     $categories = get_the_category( $post->ID );
-    $badge_options = array(
+    $crest_options = array(
         "user_id" => $post->post_author
     );
+    $post_actions = array(
+        "id"        => $post->ID,
+        "type"      => $post->post_type,
+        "options"   => array( "follow", "flag", "share" )
+    );
+    $post_date = strtotime( $post->post_date );
 ?>
 <section class="span8">
     <article class="post-n-comments">
         <header class="section-header">
             Question
         </header>
-        <?php get_partial( 'parts/badge', $badge_options ); ?>
+        <?php get_partial( 'parts/crest', $crest_options ); ?>
         <div class="span10 info content-details">
-            <time datetime="<?php echo date( "Y-m-d" ); ?>" pubdate="pubdate"><?php echo the_date(); ?></time>
+            <time class="content-date" datetime="<?php echo date( "Y-m-d", $post_date ); ?>" pubdate="pubdate"><?php echo date( "F j, Y g:ia", $post_date ); ?></time>
             <h2><?php the_title(); ?></h2>
             <?php the_content(); ?>
-            <form class="actions clearfix" method="post" action="">
-                <button type="button" name="button1" value="flag" title="Flag this question" id="flag-comment-<?php echo $comment->comment_ID; ?>" class="flag">flag</button>
-                <button type="button" name="button1" value="follow" title="Follow this question" id="follow-comment-<?php echo $comment->comment_ID; ?>" class="follow">follow</button>
-                <?php get_partial( 'parts/share' ); ?>
-            </form>
+            <?php get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); ?>
         </div>
     
         <?php

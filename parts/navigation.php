@@ -39,7 +39,7 @@
 
           <?php endforeach; ?>
           <?php if ($nav_label != "Categories"): ?>
-            <li><a href="#">All <?php echo htmlentities( $nav_label ); ?><?php if ( $nav_item == "Blog" ) { echo " Posts"; } ?></a></li>
+            <li><a href="#">All <?php echo htmlentities( $nav_label ); ?><?php if ( $item == "Blog" ) { echo " Posts"; } ?></a></li>
           <?php endif; ?>
         </ul>
       </li>
