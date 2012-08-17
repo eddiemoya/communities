@@ -25,6 +25,10 @@ get_template_part('parts/header'); ?>
 				
 				<h6 class="content-headline">Register</h6>
 				
+				<?php if($error):?>
+					<div><?php echo $error;?></div>
+				<?php endif;?>
+				
 				<form class="form_register" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>">
             <ul class="form-fields">
                 
@@ -52,7 +56,7 @@ get_template_part('parts/header'); ?>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="zipcode">ZIP Code:</label></dt>
-                        <dd class="span9"><input type="password" name="zipcode" class="input_text input_password" id="zipcode" /></dd>
+                        <dd class="span9"><input type="text" name="zipcode" class="input_text input_password" id="zipcode" /></dd>
                     </dl>
                 </li>
                 

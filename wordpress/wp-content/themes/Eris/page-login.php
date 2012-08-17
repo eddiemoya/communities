@@ -36,7 +36,7 @@ get_template_part('parts/header'); ?>
           <li>
               <dl class="clearfix">
                   <dt class="span3"><label for="logonPassword">Password:</label></dt>
-                  <dd class="span8"><input type="text" name="logonPassword" class="input_text input_password" id="password" /></dd>
+                  <dd class="span8"><input type="password" name="logonPassword" class="input_text input_password" id="password" /></dd>
                   <dd class="span1"><a href="#" title="Forgot your password?" class="forgot">Forgot?</a></dd>
               </dl>
           </li>

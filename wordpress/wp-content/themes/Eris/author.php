@@ -143,7 +143,7 @@ if(isset($_GET['post-type'])) {
 												
 					/*echo '<pre>';
 					var_dump($activities);
-					exit;*/							
+					exit;*/					
 			
 			} else {
 				

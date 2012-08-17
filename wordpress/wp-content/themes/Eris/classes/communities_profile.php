@@ -7,7 +7,7 @@
  */
 class User_Profile {
 	
-	const EXPERT_ROLE = 'community-expert';
+	const EXPERT_ROLE = 'communityexpert';
 	/**
 	 * User's wordpress user_id
 	 * @var int
@@ -119,6 +119,8 @@ class User_Profile {
 		 $this->set_experts($this->get_experts());
 		 
 		 $this->set_nav();
+		 
+		
 	}
 	
 	/**
@@ -533,7 +535,7 @@ class User_Profile {
 		
 		global $wpdb;
 		
-		$q = "SELECT user_id FROM {$wpdb->usermeta} WHERE $wpdb->usermeta.meta_key = 'wp_capabilities' AND $wpdb->usermeta.meta_value = '" . self::EXPERT_ROLE . "'";
+		$q = "SELECT user_id FROM {$wpdb->usermeta} WHERE $wpdb->usermeta.meta_key = 'wp_capabilities' AND $wpdb->usermeta.meta_value LIKE '%" . self::EXPERT_ROLE . "%'";
 		$experts = $wpdb->get_results($q);
 		
 		return $experts;
