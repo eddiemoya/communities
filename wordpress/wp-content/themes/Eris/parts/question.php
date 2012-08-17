@@ -6,7 +6,7 @@
     );
     $post_actions = array(
         "id"        => $post->ID,
-        "type"      => $post->type,
+        "type"      => $post->post_type,
         "options"   => array( "follow", "flag", "share" )
     );
     $post_date = strtotime( $post->post_date );

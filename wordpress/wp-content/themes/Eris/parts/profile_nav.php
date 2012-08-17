@@ -62,7 +62,7 @@
 
 <?php endif;?>
 
-
+<?php if($profile_type != 'myprofile'): ?>
 <nav class="bar clearfix">
   <ul class="clearfix">
     <?php
@@ -87,7 +87,8 @@
     }
     ?>
   </ul>
-</nav> 
+</nav>
+<?php endif;?>
 
 
 
