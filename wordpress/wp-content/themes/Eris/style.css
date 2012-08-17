@@ -1049,7 +1049,6 @@ fieldset#use_your_account_from {
   background-image: -webkit-linear-gradient(#ffffff, #f4f4f4);
   background-image: -moz-linear-gradient(#ffffff, #f4f4f4);
   background-image: -o-linear-gradient(#ffffff, #f4f4f4);
-  background-image: -ms-linear-gradient(#ffffff, #f4f4f4);
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;
@@ -1271,6 +1270,9 @@ button.follow {
   position: relative;
   top: 2px;
   margin-left: .5em; }
+
+.hidden {
+  display: none; }
 
 .dropmenu li {
   float: left;
