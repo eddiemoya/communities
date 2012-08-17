@@ -897,3 +897,35 @@ button.follow {
   top: 2px;
   margin-left: .5em;
 }
+
+/**
+ * @author Tim Steele
+ * 
+ * Styles for the breadcrumb widget. Mainly used on the single pages, i.e.
+ * blog, buying guide, question.
+ */
+.breadcrumb {
+  border:solid #d5d5d5;
+  border-width:1px 0px;
+  padding:1em 0;
+  li {
+    float:left;
+    font-size:.8125em;
+    font-weight:bold;
+    padding-right:.375em;
+  }
+  li:before {
+    content: " > ";
+  }
+  li:first-child:before {
+    content: "";
+  }
+}
+
+.kmart .breadcrumb li:before {
+  color:kmart( link );
+}
+      
+.sears .breadcrumb li:before {
+  color:sears( link );
+}
