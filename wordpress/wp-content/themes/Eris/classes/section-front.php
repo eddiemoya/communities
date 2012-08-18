@@ -61,7 +61,7 @@ class Section_Front{
 	        'capability_type' 	=> 'page',
 	        'has_archive' 		=> false,
 	        'hierarchical' 		=> false,
-	        'menu_position'	 	=> 9,
+	        'menu_position'	 	=> 3,
 	        'supports' 			=> array('title', 'page-attributes'),
 	        'taxonomies' 		=> array('category'),
 	        'rewrite' 			=> false,
