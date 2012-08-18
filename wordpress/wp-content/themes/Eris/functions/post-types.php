@@ -46,7 +46,7 @@ function register_questions_type() {
         'has_archive'   => false,
         'hierarchical'  => false,
         'menu_position' => 6,
-        'supports'      => array('title', 'editor', 'author', 'comments'),
+        'supports'      => array('title', 'editor', 'author', 'comments', 'thumbnail'),
         'menu_icon'     => get_template_directory_uri() . '/assets/img/admin/questions_admin_icon.gif',
         'taxonomies'    => array('category', 'post_tag')
     );
@@ -92,9 +92,9 @@ function register_buying_guides_type() {
         'has_archive' => true,
         'hierarchical' => false,
         'menu_position' => 7,
-        'supports' => array('title', 'editor', 'author', 'comments'),
+        'supports' => array('title', 'editor', 'author', 'comments', 'thumbnail'),
         //'menu_icon' => get_template_directory_uri() . '/assets/img/admin/questions_admin_icon.gif',
         'taxonomies' => array('category', 'post_tag')
     );
-    register_post_type('buying-guides', $args);
+    register_post_type('guides', $args);
 }
