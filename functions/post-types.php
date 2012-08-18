@@ -96,5 +96,5 @@ function register_buying_guides_type() {
         //'menu_icon' => get_template_directory_uri() . '/assets/img/admin/questions_admin_icon.gif',
         'taxonomies' => array('category', 'post_tag')
     );
-    register_post_type('guides', $args);
+    register_post_type('buying-guide', $args);
 }
