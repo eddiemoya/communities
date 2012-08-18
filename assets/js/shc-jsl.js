@@ -133,6 +133,67 @@ shcJSL.get = function(element) {
 		return collection;
 }
 
+/**
+ * @author Tim Steele
+ * C.R.U.D. Cookie Handler
+ */
+
+shcJSL.cookies = function(cookie) {
+	var bakery;				// (Object) methods to be used on cookies
+	var cookies = [];	// (Array) contains the cookie object
+	var defaults;			// Default settings for the cookie
+	var getTimes;			// (Function) get the time for the cookie expiration
+	var settings;			// Settings for the cookie
+	
+	bakery = {
+		bake: function(cookie) {
+			var params = this;
+			settings = $.extend({}, params);
+			document.cookie = cookie + "=" + ((settings.value)? settings.value:'undefined') + ((settings.expiration)? ("; expires=" + getTimes(settings.expiration)):"") + "; path=" + ((settings.path)? settings.path:"/");
+		},
+		serve: function(cookie) {
+			if (cookie) {
+				cookie = cookie + "=";
+			}
+			$Cookies = document.cookie.split(';');
+			for (var i=0;i < $Cookies.length;i++) {
+				$cookie = $Cookies[i];
+				while ($cookie.charAt(0) == ' ') $cookie = $cookie.substring(1, $cookie.length);
+				if ($cookie.indexOf(cookie) == 0) return $cookie.substring(cookie.length, $cookie.length);
+			}
+			return null;
+		},
+		eat: function(cookie) {
+			bakery.bake.call({expiration:'-1m'}, cookie)
+		}
+	}
+	
+	function getTimes(time) {
+		var timeEquations; // Equiations for figuring out time values
+		timeEquations = {
+			m: function(n) {return (n*60*1000);},
+			h: function(n) {return (n*60*60*1000);},
+			d: function(n) {return (n*24*60*60*1000);},
+			y: function(n) {return (n*365*24*60*60*1000);}
+		}
+		var date = new Date();
+				date.setTime(date.getTime() + (timeEquations[time.match(/([mhdy])$/)[0]](time.match(/^(-?\d+)/)[0])));
+		return date.toGMTString();
+	}
+	cookies.push(cookie);
+	for (var action in bakery)(
+		function(n,m) {
+			cookies[n] = function(x) {
+				cookies.map(m,x);
+				return cookies;
+			}
+		}(action, bakery[action])
+	)
+	
+	return cookies;
+}
+
+
 /*
 	[2.0] SEARS METHODS
 	-------------------
@@ -177,18 +238,6 @@ shcJSL.first = function(element) {
 		firstChild = firstChild.nextSibling;
 	}
 	return firstChild;
-}
-
-shcJSL.cookie = function(value, secs) {
-	
-	//Set cookie name
-	cookie_name = 'login-post-data';
-	
-	//Set expire date/time
-	dt = new Date();
-	dt.setTime((dt.getTime() + secs));
-	
-	document.cookie = cookie_name + '=' + value + '; ' + 'expires=' + dt;
 }
 /*
 	[2.0] WIDGETS

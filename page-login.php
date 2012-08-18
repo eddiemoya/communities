@@ -36,7 +36,7 @@ get_template_part('parts/header'); ?>
           <li>
               <dl class="clearfix">
                   <dt class="span3"><label for="logonPassword">Password:</label></dt>
-                  <dd class="span8"><input type="text" name="logonPassword" class="input_text input_password" id="password" /></dd>
+                  <dd class="span8"><input type="password" name="logonPassword" class="input_text input_password" id="password" /></dd>
                   <dd class="span1"><a href="#" title="Forgot your password?" class="forgot">Forgot?</a></dd>
               </dl>
           </li>
@@ -61,14 +61,14 @@ get_template_part('parts/header'); ?>
           <dd class="span3">&nbsp;</dd>
           <dd class="span9">
             <p class="bold">
-              New Customer? <a href="#" title="Sign Up" id="test">Register Now</a>
+              New Customer? <a href="#" title="Sign Up">Register Now</a>
             </p>
           </dd>
         </dl>
       </li>
     </ul>
 		
-		<section id="login-open-id" class="open-id" shc:gizmo="openID" shc:gizmo:options="{openID:{test:'test'}}">
+		<section id="login-open-id" class="open-id" shc:gizmo="openID">
 			<span class="or">OR</span>
 			<p>use your account from</p>
 			<ul class="open-id-services clearfix">
@@ -88,12 +88,6 @@ get_template_part('parts/header'); ?>
 
 	<section class="span4">
 	</section>
-	
-	<script type="text/javascript">
-		$("#test").bind('click', function() {
-			var test = window.open('/wp-content/themes/Eris/assets/ajax/refresh.html','refresh','height=300,width=300');
-		})
-	</script>
 	
 <?php
 get_template_part('parts/footer');

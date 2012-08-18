@@ -7,6 +7,7 @@
  */
 class User_Profile {
 	
+	const EXPERT_ROLE = 'communityexpert';
 	/**
 	 * User's wordpress user_id
 	 * @var int
@@ -17,8 +18,8 @@ class User_Profile {
 	 * Array of post types
 	 * @var array
 	 */
-	public $post_types = array('post',
-								'question',
+	public $post_types = array('question',
+								'post',
 							  	'guides');
 	
 	/**
@@ -28,6 +29,13 @@ class User_Profile {
 	public $comment_types = array('',
 									'answer',
 									'comment');
+	
+	/**
+	 * Array of action types
+	 * @var array
+	 */
+	public $action_types = array('follow',
+									'upvote');
 	
 	/**
 	 * Holds array of post objects
@@ -93,6 +101,12 @@ class User_Profile {
 	public $prev_page;
 	
 	/**
+	 * Array of navigation, based on user's activity
+	 * @var array
+	 */
+	public $nav;
+	
+	/**
 	 * Constructor
 	 * @param int $user_id
 	 */
@@ -103,6 +117,10 @@ class User_Profile {
 		 $this->user_id = $user_id;
 		
 		 $this->set_experts($this->get_experts());
+		 
+		 $this->set_nav();
+		 
+		
 	}
 	
 	/**
@@ -134,7 +152,7 @@ class User_Profile {
 		
 		$this->offset = $row;
 		
-		$this->limit = ' LIMIT ' . $row .','. $this->posts_per_page;
+		$this->limit = ' LIMIT ' . $row . ',' . $this->posts_per_page;
 		
 		return $this;
 	}
@@ -165,8 +183,7 @@ class User_Profile {
 						'order'				=> 'DESC',
 						'orderby'			=> 'date',
 						'posts_per_page'	=> $this->posts_per_page,
-						'paged'				=> $this->page
-						);
+						'paged'				=> $this->page);
 						
 		
 		//Sets num_pages and offset
@@ -340,6 +357,7 @@ class User_Profile {
 				
 				ORDER BY date DESC" . $this->limit;
 		
+		
 		$this->activities = $wpdb->get_results($q);
 		
 		$this->set_activities_attributes();
@@ -349,6 +367,29 @@ class User_Profile {
 		
 		return $this;
 	
+	}
+	
+	public function get_expert_answers() {
+		
+		foreach($this->posts as $key=>$post) {
+			
+			$answers = $this->get_experts_answers($post->ID);
+			
+			$this->posts[$key]->expert_answers = $answers;
+			
+			unset($answers);
+		}
+		
+		return $this;
+	}
+	
+	private function get_experts_answers($post_id) {
+		
+		global $wpdb;
+		
+		$q = "SELECT * FROM {$wpdb->comments} WHERE comment_post_id = {$post_id} AND comment_type = 'answer' AND user_id IN ({$this->experts})";
+		
+		return $wpdb->get_results($q);
 	}
 	
 	/**
@@ -494,7 +535,7 @@ class User_Profile {
 		
 		global $wpdb;
 		
-		$q = "SELECT user_id FROM {$wpdb->usermeta} WHERE $wpdb->usermeta.meta_key = 'wp_capabilities' AND $wpdb->usermeta.meta_value LIKE '%administrator%'";
+		$q = "SELECT user_id FROM {$wpdb->usermeta} WHERE $wpdb->usermeta.meta_key = 'wp_capabilities' AND $wpdb->usermeta.meta_value LIKE '%" . self::EXPERT_ROLE . "%'";
 		$experts = $wpdb->get_results($q);
 		
 		return $experts;
@@ -517,6 +558,172 @@ class User_Profile {
 			
 			$this->experts = implode(',', $expert_ids);
 		}
+	}
+	
+	private function set_nav() {
+		
+	 	
+		//Posts
+		foreach($this->post_types as $type) {
+			
+			if($this->has_post_count($type)) {
+				
+				$this->nav[] = $type;
+			}
+		}
+		
+		//Comments
+		foreach($this->comment_types as $type) {
+			
+			if($this->has_comment_count($type)) {
+			
+				$this->nav[] = $type;
+			}
+		}
+		
+			//If there's blank and comment, remove blank
+		 	if(in_array('', $this->nav) && in_array('comment', $this->nav)) {
+		 		
+		 		//Find blank
+		 		$i = array_search('', $this->nav);
+		 		unset($this->nav[$i]);
+		 		
+		 	} else if(in_array('', $this->nav) && ! in_array('comment', $this->nav)) { 
+		 		//If there's blank and NOT comment, replace blank with comment
+		 		
+		 		$i = array_search('', $this->nav);
+		 		$this->nav[$i] = 'comment';
+		 		
+		 	}
+		 	
+		 		
+		
+		//Actions
+		foreach($this->action_types as $type) {
+			
+			if($this->has_action_count($type)) {
+				
+				$this->nav[] = $type;
+			}
+		}
+		
+			if(count($this->nav)) {
+				
+				array_unshift($this->nav, 'recent');
+			}
+			
+			/*echo '<pre>';
+			var_dump($this->nav);
+			exit;*/
+			
+	}
+	
+	private function has_post_count($type) {
+		
+		$args =  array('author'				=> $this->user_id,
+						'post_status'		=> 'publish',
+						'post_type'			=> $type,
+						'order'				=> 'DESC',
+						'orderby'			=> 'date',
+						'posts_per_page'	=> $this->posts_per_page,
+						'paged'				=> $this->page);
+		
+		if(count(get_posts($args))) {
+			
+			return true;
+			
+		} else {
+			
+			return false;
+		}
+		
+		
+	}
+	
+	private function has_comment_count($type) {
+		
+		$args = array(	'type'				=> $type,
+					 	'status'			=> 'approve',
+						'user_id'			=> $this->user_id,
+						'order'				=> 'DESC',
+						'orderby'			=> 'comment_date',
+	     				'number'			=> $this->posts_per_page
+						);
+						
+						
+			if(count(get_comments($args))) {
+				
+				return true;
+				
+			} else {
+				
+				return false;
+			}
+						
+	}
+	
+	private function has_action_count($type = false) {
+		
+		global $wpdb;
+		
+		//$type = (! $type) ? implode($this->action_types, ',') : $type;
+		
+		$q = "(SELECT DISTINCT
+				p.ID as ID,  
+				p.post_parent as parent,
+				p.post_author as author,
+				p.post_date as date, 
+				p.post_type as type,
+				pa.action_type as action,
+				p.post_title as title,
+				p.post_content as content
+				
+				FROM {$wpdb->posts} p
+				LEFT JOIN {$wpdb->prefix}post_actions pa
+				ON p.ID = pa.object_id
+				LEFT JOIN {$wpdb->prefix}user_actions ua
+				ON pa.post_action_id = ua.object_id
+				WHERE pa.object_subtype IN ('question', 'guides', 'post')
+				AND pa.action_type  = '{$type}'
+				AND p.post_status='publish'
+				AND ua.user_id = {$this->user_id})
+				
+				UNION ALL
+
+				(SELECT c.comment_ID,
+				c.comment_post_ID,
+				c.user_id, 
+				c.comment_date, 
+				c.comment_type, 
+				c.comment_karma,
+				c.comment_author_url,
+				c.comment_content 
+				
+				FROM {$wpdb->comments} c 
+				LEFT JOIN {$wpdb->prefix}post_actions pa 
+				ON c.comment_ID = pa.object_id 
+				LEFT JOIN {$wpdb->prefix}user_actions ua 
+				ON pa.post_action_id = ua.object_id 
+				WHERE pa.object_subtype IN ('answer', 'comment', '' ) 
+				AND pa.action_type = '{$type}'
+				AND c.comment_approved = 1 AND ua.user_id = 1)
+				
+				ORDER BY date DESC LIMIT 0,1";
+		
+				
+				/*echo '<pre>';
+				var_dump($wpdb->get_results($q));
+				exit;*/
+				
+				if(count($wpdb->get_results($q))) {
+					
+					return true;
+					
+				} else {
+					
+					return false;
+				}	
+		
 	}
 	
 }
