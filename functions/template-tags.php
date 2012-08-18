@@ -320,7 +320,7 @@ function print_pre($r){
  *
  * @return (array) Terms found to have posts of the provided post type.
  **/
-function list_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
+function get_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
 
     //get a list of all post of your type
     $args = array(
