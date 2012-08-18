@@ -15,9 +15,9 @@
       "name" => "Questions",
       "url" => $url_no_qs . '?post-type=question'
     ),
-    "posts" => array(
+    "post" => array(
       "name" => "Posts",
-      "url" => $url_no_qs . '?post-type=posts'
+      "url" => $url_no_qs . '?post-type=post'
     ),
     "guides" => array(
       "name" => "Buying Guides",
@@ -62,7 +62,7 @@
 
 <?php endif;?>
 
-<?php if($profile_type != 'myprofile'): ?>
+
 <nav class="bar clearfix">
   <ul class="clearfix">
     <?php
@@ -88,7 +88,7 @@
     ?>
   </ul>
 </nav>
-<?php endif;?>
+
 
 
 
