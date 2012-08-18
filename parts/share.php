@@ -5,7 +5,7 @@
 ?>
 
 <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
-<?php if ( isset($version) && $version == 'long' ): ?>
+<?php if ( (isset($version) && $version == 'long') || (!empty(is_widget()) && is_widget()->share_style == 'long') : ?>
 <div class="addthis_toolbox addthis_default_style">
     <a class="addthis_button_facebook_like"></a>
     <a class="addthis_button_tweet"></a>
