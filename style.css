@@ -749,6 +749,34 @@ ul.bullets {
 .kmart_button {
   background-position: 0px -96px; }
 
+.error-message {
+  display: none; }
+
+.error input[type="text"] {
+  border: solid 1px #ff0000; }
+.error .error-message {
+  background-color: #e41e13;
+  color: #ffffff;
+  display: block;
+  float: left;
+  font-weight: bold;
+  margin: 10px 0px 0px;
+  padding: .25em 1em;
+  position: relative;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px; }
+  .error .error-message .error-pointer {
+    background: transparent url(/wp-content/themes/Eris/assets/img/error_pointer-arrow.png) no-repeat 0px 0px;
+    height: 9px;
+    display: block;
+    left: 15px;
+    position: absolute;
+    top: -9px;
+    width: 19px; }
+
 .content-container .content-headline {
   font-size: 1.25em;
   font-weight: bold;
@@ -765,11 +793,6 @@ ul.bullets {
 
 .content-container .content-body {
   padding: .625em; }
-  .content-container .content-body p {
-    color: #333333;
-    font-size: .8125em;
-    line-height: 1.7em;
-    margin-bottom: 1em; }
   .content-container .content-body .content-details {
     padding-bottom: .625em; }
     .content-container .content-body .content-details .content-category {
@@ -791,6 +814,12 @@ ul.bullets {
       border-left: none; }
   .content-container .content-body .share-full {
     margin-top: 10px; }
+
+.content-body p {
+  color: #333333;
+  font-size: .8125em;
+  line-height: 1.7em;
+  margin-bottom: 1em; }
 
 .span4 .content-container .content-body .content-comments li, .span3 .content-container .content-body .content-comments li {
   border-left: 0;
@@ -1049,7 +1078,6 @@ fieldset#use_your_account_from {
   background-image: -webkit-linear-gradient(#ffffff, #f4f4f4);
   background-image: -moz-linear-gradient(#ffffff, #f4f4f4);
   background-image: -o-linear-gradient(#ffffff, #f4f4f4);
-  background-image: -ms-linear-gradient(#ffffff, #f4f4f4);
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;
