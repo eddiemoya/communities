@@ -292,7 +292,35 @@ ul.bullets {
   background-position:0px -96px;
 }
 
+.error-message {
+  display:none;
+}
 
+.error {
+  input[type="text"] {
+    border:solid 1px #ff0000;
+  }
+  .error-message {
+    background-color:#e41e13;
+    color:#ffffff;
+    display:block;
+    float:left;
+    font-weight:bold;
+    margin:10px 0px 0px;
+    padding:.25em 1em;
+    position:relative;
+    @include border-radius( 5px );
+    .error-pointer {
+      background:transparent url(#{$img}error_pointer-arrow.png) no-repeat 0px 0px;
+      height:9px;
+      display:block;
+      left:15px;
+      position:absolute;
+      top:-9px;
+      width:19px;
+    }
+  }
+}
 
 form {}
 
@@ -319,12 +347,7 @@ form {}
 
 .content-container .content-body {
   padding:.625em;
-  p {
-    color:#333333;
-    font-size:.8125em;
-    line-height:1.7em;
-    margin-bottom:1em;
-  }
+ 
   .content-details {
     padding-bottom:.625em;
     .content-category {
@@ -354,6 +377,15 @@ form {}
 	.share-full {
 		margin-top: 10px;
 	}
+}
+
+.content-body {
+  p {
+    color:#333333;
+    font-size:.8125em;
+    line-height:1.7em;
+    margin-bottom:1em;
+  }
 }
 
 .span4, .span3 {
