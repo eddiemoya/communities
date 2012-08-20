@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: User Photo
+Plugin Name: User Photo - Custom
 Plugin URI: http://wordpress.org/extend/plugins/user-photo/
 Description: Allows users to associate photos with their accounts by accessing their "Your Profile" page. Uploaded images are resized to fit the dimensions specified on the options page; a thumbnail image is also generated. New template tags introduced are: <code>userphoto_the_author_photo</code>, <code>userphoto_the_author_thumbnail</code>, <code>userphoto_comment_author_photo</code>, and <code>userphoto_comment_author_thumbnail</code>. Uploaded images may be moderated by administrators.
-Version: 0.9.5.2
-Author: <a href="http://weston.ruter.net/">Weston Ruter</a>
+Version: 0.9.5.2-Sears
+Author: <a href="http://weston.ruter.net/">Weston Ruter</a>, Jason Corradino, Carl Albrecht-Buehler
 
 Original code by Weston Ruter <http://weston.ruter.net> at Shepherd Interactive <http://shepherd-interactive.com>.
 Continued development and maintenance by Dave Wagner (cptnwinky) <http://dev.dave-wagner.com/> and Ryan Hellyer (ryanhellyer)
@@ -151,9 +151,11 @@ function userphoto__get_userphoto($user_id, $photoSize, $before, $after, $attrib
 		}
 		else return '';
 
+        $cachebuster = get_user_meta($user_id, "userphoto_cachebuster");
+
 		$img = '';
 		$img .= $before;
-		$img .= '<img src="' . htmlspecialchars($src) . '"';
+		$img .= '<img src="' . htmlspecialchars($src) . "?" . $cachebuster[0] . '"';
 		if(empty($attributes['alt']))
 			$img .= ' alt="' . htmlspecialchars($userdata->display_name) . '"';
 		if(empty($attributes['width']) && !empty($width))
@@ -169,6 +171,7 @@ function userphoto__get_userphoto($user_id, $photoSize, $before, $after, $attrib
 		}
 		$img .= ' />';
 		$img .= $after;
+		
 		return $img;
 	}
 	//else if(is_array($failureAttributes)){
@@ -468,6 +471,7 @@ function userphoto_profile_update($userID){
 						update_usermeta($userID, "userphoto_thumb_file", $thumbfile);
 						update_usermeta($userID, "userphoto_thumb_width", $thumbinfo[0]);
 						update_usermeta($userID, "userphoto_thumb_height", $thumbinfo[1]);
+						update_usermeta($userID, "userphoto_cachebuster", time());
 						
 						//Delete old thumbnail if it has a different filename (extension)
 						if($oldimagefile != $imagefile)
@@ -662,6 +666,24 @@ function userphoto_display_selector_fieldset(){
 }
 add_action('show_user_profile', 'userphoto_display_selector_fieldset');
 add_action('edit_user_profile', 'userphoto_display_selector_fieldset');
+
+function userphoto_display_selector_fieldset_frontend() {
+    
+    global $current_user;
+    global $userphoto_error;
+
+    $isSelf = $current_user->ID;
+    
+    if($userphoto_error): ?>
+        <p id='userphoto-upload-error'><strong>Upload error:</strong> <?php echo $profileuser->userphoto_error ?></p>
+    <?php endif; ?>
+    
+    <p id='userphoto_image_file_control'>
+        <label><?php echo _e("Upload image file:", 'user-photo') ?></label>
+        <input type="file" name="userphoto_image_file" id="userphoto_image_file" />
+    </p>
+    <?php
+}
 
 /***** ADMIN ******************************************/
 
