@@ -1,8 +1,6 @@
 <?php
-    $comments = get_comments(array('post_id' => $post->ID));
-    
     $comment_type = get_post_type( $post->ID ) == 'question' ? 'answer' : 'comment';
-    
+
     if ( isset( $comments ) && !empty( $comments ) ) {
 
 ?>
@@ -29,8 +27,10 @@
             
             $comment_actions = array(
                 "id"        => $comment->comment_ID,
-                "type"      => $comment_type,
-                "options"   => array( "reply", "flag", "upvote", "downvote" )
+                "type"      => 'comments',
+                "sub_type"      => $post->post_type,
+                "options"   => array( "reply", "flag", "upvote", "downvote" ),
+                'actions'   => $comment->actions
             );
 ?>
     <li class="comment clearfix<?php echo $container_class; ?>">
