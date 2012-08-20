@@ -61,7 +61,7 @@ get_template_part('parts/header'); ?>
           <dd class="span3">&nbsp;</dd>
           <dd class="span9">
             <p class="bold">
-              New Customer? <a href="#" title="Sign Up">Register Now</a>
+              New Customer? <a href="/register/" title="Sign Up" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-register'}}}">Register Now</a>
             </p>
           </dd>
         </dl>

@@ -12,9 +12,9 @@
 					
 				<?php endif;?>
 				
-				<form id="new_question_step_1" name="new_question_step_1" method="post" action="" shc:gizmo="form" shc:gizmo:options="{form:{requireLogIn:true, checkForRequired: true}}">
+				<form id="new_question_step_1" name="new_question_step_1" method="post" action="" shc:gizmo="transFormer" shc:gizmo:options="{form:{requireLogIn:true}}">
 					<?php wp_nonce_field('front-end-post_question-step-1'); ?>
-
+					
 					<div class="state_post-your-question">
 						<input type="text" class="input_text" name="post-question" id="post-question" value=""/>
 						<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Next</button>
