@@ -6,8 +6,7 @@ require_once 'classes/communities_profile.php';
 get_template_part('parts/header');
 
 //Current page's url, with querystring params removed
-$url_no_qs = get_site_url() . ((strpos($_SERVER['REQUEST_URI'], '?') !== false) ? substr($_SERVER['REQUEST_URI'], null, strpos($_SERVER['REQUEST_URI'], '?')): $_SERVER['REQUEST_URI']);
-
+$url_no_qs = get_author_posts_url( $user_id ) . str_replace("author_name=", "", $wp->query_string) . "/";
 
 //Current User data
 $profile_user = get_userdata(get_query_var('author'));
