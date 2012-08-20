@@ -2,9 +2,6 @@
 global $current_user;
 get_currentuserinfo();
 ?>
-			<section class="content-body clearfix">
-				
-				<h6 class="content-headline">Post your question</h6>
 				
 				<?php if($data['errors']):?>
 					
@@ -71,5 +68,3 @@ get_currentuserinfo();
 						</ul>
 					</div>
 				</form>
-				
-			</section>

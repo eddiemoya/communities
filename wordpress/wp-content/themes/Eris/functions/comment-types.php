@@ -22,7 +22,7 @@ if (class_exists(CCT_Controller_Comment_Types)) {
                 'not_found' => __('No flags found'),
                 'not_found_in_trash' => __('No flags found in Trash'),
                 'parent_item_colon' => 'Flag:',
-                'menu_name' => 'Flag'
+                'menu_name' => 'Flags'
             ),
             'parent_domain' => 'post',
             'parent_type' => 'question',
@@ -55,7 +55,7 @@ if (class_exists(CCT_Controller_Comment_Types)) {
                 'not_found' => __('No answers found'),
                 'not_found_in_trash' => __('No answers found in Trash'),
                 'parent_item_colon' => 'Question:',
-                'menu_name' => 'Answer'
+                'menu_name' => 'Answers'
             ),
             'parent_domain' => 'post',
             'parent_type' => 'question',
