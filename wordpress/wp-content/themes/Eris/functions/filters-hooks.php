@@ -222,7 +222,7 @@ function template_check(){
 
     if(is_category() && $pt == 'question'){
             $templates = array();
-            $templates[] = $pt . '-archive.php';
+            $templates[] = 'archive-'.$pt.'.php';
             $templates[] = "archive.php";
             include( get_query_template($template_name, $templates));
             exit;

@@ -27,8 +27,8 @@ function register_questions_type() {
         'menu_name'     => 'Questions'
     );
     $rewrite = array(
-        'slug'          => 'question',
-        'with_front'    => true,
+        'slug'          => 'questions',
+        'with_front'    => false,
         'feeds'         => true,
         'paged'         => true,
         'ep_mask'       => array()
@@ -43,7 +43,7 @@ function register_questions_type() {
         'query_var'     => false,
         'rewrite'       => $rewrite,
         'capability_type' => 'post',
-        'has_archive'   => false,
+        'has_archive'   => true,
         'hierarchical'  => false,
         'menu_position' => 6,
         'supports'      => array('title', 'editor', 'author', 'comments', 'thumbnail'),
@@ -74,20 +74,19 @@ function register_buying_guides_type() {
     );
 	$rewrite = array(
         'slug'          => 'guides',
-        'with_front'    => true,
+        'with_front'    => false,
         'feeds'         => true,
         'paged'         => true,
         'ep_mask'       => array()
     );
     $args = array(
-        'labels' => $labels,
-        'public' => true,
+        'labels'        => $labels,
+        'public'        => true,
         'publicly_queryable' => true,
-        'show_ui' => true,
-        'show_in_menu' => true,
-        'query_var' => false,
-        'rewrite' => false,
-		'rewrite' => $rewrite,
+        'show_ui'       => true,
+        'show_in_menu'  => true,
+        'query_var'     => false,
+		'rewrite'         => $rewrite,
         'capability_type' => 'post',
         'has_archive' => true,
         'hierarchical' => false,
@@ -96,5 +95,5 @@ function register_buying_guides_type() {
         //'menu_icon' => get_template_directory_uri() . '/assets/img/admin/questions_admin_icon.gif',
         'taxonomies' => array('category', 'post_tag')
     );
-    register_post_type('buying-guide', $args);
+    register_post_type('guide', $args);
 }
