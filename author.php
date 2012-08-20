@@ -113,7 +113,7 @@ if(isset($_GET['post-type'])) {
 ?>
     <section class="content-container<?php echo $container_class; ?>">
 
-        <ol class="content-body result clearfix" id="profile-results">
+       
 	 	   
         <?php
       	//Comments
@@ -199,6 +199,14 @@ if(isset($_GET['post-type'])) {
         ?>
        
 	 </ol>
+	 <script type="text/javascript">
+    	 $(document).ready(function() {
+              $(".expert-answers").hide();
+              $(".answers-toggle").on('click', function () {
+                $(this).next(".expert-answers").slideToggle("fast");
+              });
+          });
+      </script>
 	 
 	 </section>
 	 	
