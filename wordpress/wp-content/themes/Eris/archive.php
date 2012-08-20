@@ -1,6 +1,8 @@
 <?php get_template_part('parts/header'); ?>
 
-<?php //$data = process_front_end_question(); ?>
+<?php loop('post');
+
+//$data = process_front_end_question(); ?>
 <!-- 
 <ul class="span8 widget_dropzone_widget dropzone">
 	<article class="span12 widget_post_a_question content-container widget post-your-question">
