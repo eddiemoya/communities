@@ -220,7 +220,7 @@ add_filter('template_redirect', 'template_check');
 function template_check(){
     $pt = get_query_var('post_type');
 
-    if(is_category() && !empty($pt)){
+    if(is_category() && $pt == 'question'){
             $templates = array();
             $templates[] = $pt . '-archive.php';
             $templates[] = "archive.php";
