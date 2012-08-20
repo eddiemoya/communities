@@ -848,8 +848,8 @@ function userphoto_resize_image($filename, $newFilename, $maxdimension, &$error)
 	if(!$newFilename)
 		$newFilename = $filename;
 	$userphoto_jpeg_compression = (int)get_option( 'userphoto_jpeg_compression' );
-	#if(empty($userphoto_jpeg_compression))
-	#	$userphoto_jpeg_compression = USERPHOTO_DEFAULT_JPEG_COMPRESSION;
+	if(empty($userphoto_jpeg_compression))
+		$userphoto_jpeg_compression = USERPHOTO_DEFAULT_JPEG_COMPRESSION;
 	
 	$info = getimagesize($filename);
 	if(!$info || !$info[0] || !$info[1]){
@@ -904,7 +904,7 @@ function userphoto_resize_image($filename, $newFilename, $maxdimension, &$error)
 		}
 
 		$imageresized = imagecreatetruecolor( $image_new_width, $image_new_height);
-		@ imagecopyresampled( $imageresized, $image, 0, 0, 0, 0, $image_new_width, $image_new_height, $info[0], $info[1] );
+		imagecopyresampled( $imageresized, $image, 0, 0, 0, 0, $image_new_width, $image_new_height, $info[0], $info[1] );
 
 		// move the thumbnail to its final destination
 		if ( $info[2] == IMAGETYPE_GIF ) {
