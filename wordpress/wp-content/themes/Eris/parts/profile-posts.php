@@ -1,6 +1,8 @@
+
+ <ol class="content-body result clearfix" id="profile-results">
+
 <?php
 //var_dump($activities);
-
 foreach($activities as $activity):
             
 ?>
@@ -36,21 +38,25 @@ foreach($activities as $activity):
 </li>
 <?php endforeach; ?>
  
-<input type="hidden" id="next-page" value="<?php echo $user_activities->next_page; ?>" />
 
-<?php if(! is_ajax()):?>
-    <input type="hidden" id="type" value="<?php echo $type;?>" />
-    <input type="hidden" id="uid" value="<?php echo $profile_user->data->ID; ?>" />
-<?php endif;?>
+ </ol>
+ 
+ 	<input type="hidden" id="next-page" value="<?php echo $user_activities->next_page; ?>" />
+ 	
+ 	<?php if(! is_ajax()):?>
+	 	<input type="hidden" id="type" value="<?php echo $type;?>" />
+	 	<input type="hidden" id="uid" value="<?php echo $profile_user->data->ID; ?>" />
+ 	<?php endif;?>
+ 	
+ 	<noscript>
+ 		<?php if($user_activities->prev_page):?>
+ 			<a href="<?php echo $url_no_qs . '?post-type=' . $type . '&page=' . $user_activities->prev_page; ?>" id="page-prev">&lt; Previous</a>
+ 		<?php endif;?>
+ 		&nbsp;&nbsp;
+ 	</noscript>
+ 	
+ 	<?php if($user_activities->next_page):?>
+	 	<a href="<?php echo $url_no_qs . '?post-type=' . $type . '&page=' . $user_activities->next_page; ?>" id="page-more">More &gt;</a>
+ 	<?php endif;?>
 
-<noscript>
-    <?php if($user_activities->prev_page):?>
-        <a href="<?php echo $url_no_qs . '?post-type=' . $type . '&page=' . $user_activities->prev_page; ?>" id="page-prev">&lt; Previous</a>
-    <?php endif;?>
-    &nbsp;&nbsp;
-</noscript>
-
-<?php if($user_activities->next_page):?>
-    <a href="<?php echo $url_no_qs . '?post-type=' . $type . '&page=' . $user_activities->next_page; ?>" id="page-more">More &gt;</a>
-<?php endif;?>
       
