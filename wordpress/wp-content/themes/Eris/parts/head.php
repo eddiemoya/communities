@@ -26,7 +26,7 @@
 				    <?php if ( is_user_logged_in() ): ?>
 				        <li>
 				            <a href="<?php echo site_url(''); ?>/author/<?php echo $current_user->user_nicename; ?>" title="View your profile" class="bold">
-				                <?php echo userphoto_thumbnail($current_user->ID, '', '', array(), get_template_directory_uri().'/assets/img/icon_avatar.png'); ?>
+				                <?php echo current_user_profile_thumbnail(); ?>
 				                <?php echo $current_user->user_nicename; ?>
 				            </a>
 				        </li>
