@@ -199,6 +199,14 @@ if(isset($_GET['post-type'])) {
         ?>
        
 	 </ol>
+	 <script type="text/javascript">
+    	 $(document).ready(function() {
+              $(".expert-answers").hide();
+              $(".answers-toggle").on('click', function () {
+                $(this).next(".expert-answers").slideToggle("fast");
+              });
+          });
+      </script>
 	 
 	 </section>
 	 	
