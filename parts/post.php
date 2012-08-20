@@ -13,7 +13,7 @@
         <p><?php the_content(); ?></p>
         <p class="by">By <?php get_screenname_link( $post->post_author ); ?></p>
         <?php if ( get_the_tags() ): ?>
-            <p class="tags">Tags: <?php the_tags('',''); ?></p>
+            <p class="tags">Tags: <?php the_tags('',', ', ''); ?></p>
         <?php endif; ?>
         <?php get_partial( 'parts/share', array( "version" => "long" ) ); ?>
     </div>
