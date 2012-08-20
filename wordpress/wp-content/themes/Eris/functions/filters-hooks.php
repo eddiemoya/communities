@@ -231,6 +231,12 @@ function template_check(){
 }
 
 
+add_action('init', 'catch_cookies');
+function catch_cookies(){
+    //echo "<pre>";print_r($_COOKIE);echo "</pre>";
+}
+
+
 
 
 
