@@ -191,7 +191,7 @@ class User_Profile {
 						
 		$this->posts = get_posts($args);
 		
-		$this->next_page = (count($this->posts) < $this->posts_per_page) ? null : ($this->page + 1);
+		$this->next_page = (count($this->posts) < $this->posts_per_page) ? null : ($this->page + 1);	
 		$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
 		
 		//Get and add categories property to each post
@@ -263,8 +263,9 @@ class User_Profile {
 				LEFT JOIN {$wpdb->prefix}post_actions pa
 				ON p.ID = pa.object_id
 				LEFT JOIN {$wpdb->prefix}user_actions ua
-				ON pa.post_action_id = ua.object_id
-				WHERE pa.object_subtype IN ('question', 'guides', 'post')
+				ON pa.post_action_id = ua.action_id
+				WHERE pa.object_type = 'posts'
+				AND pa.object_subtype IN ('question', 'guides', 'post')
 				AND pa.action_type IN ('upvote', 'follow')
 				AND p.post_status='publish'
 				AND ua.user_id = {$this->user_id}
@@ -277,7 +278,7 @@ class User_Profile {
 				c.user_id, 
 				c.comment_date, 
 				c.comment_type, 
-				c.comment_karma,
+				pa.action_type,
 				c.comment_author_url,
 				c.comment_content 
 				
@@ -285,15 +286,19 @@ class User_Profile {
 				LEFT JOIN {$wpdb->prefix}post_actions pa 
 				ON c.comment_ID = pa.object_id 
 				LEFT JOIN {$wpdb->prefix}user_actions ua 
-				ON pa.post_action_id = ua.object_id 
-				WHERE pa.object_subtype IN ('answer', 'comment', '' ) 
+				ON pa.post_action_id = ua.action_id 
+				WHERE pa.object_type = 'comments'
 				AND pa.action_type IN ('upvote', 'follow') 
 				AND c.comment_approved = 1 AND ua.user_id = 1 )
 				
 				ORDER BY date DESC" . $this->limit;
 		
+		/*echo $q;
+		exit;*/
+		
 		
 		$this->activities = $wpdb->get_results($q);
+		
 		
 		$this->set_activities_attributes();
 		
@@ -329,7 +334,7 @@ class User_Profile {
 				LEFT JOIN {$wpdb->prefix}post_actions pa
 				ON p.ID = pa.object_id
 				LEFT JOIN {$wpdb->prefix}user_actions ua
-				ON pa.post_action_id = ua.object_id
+				ON pa.post_action_id = ua.action_id
 				WHERE pa.object_subtype IN ('question', 'guides', 'post')
 				AND pa.action_type = '{$type}'
 				AND p.post_status='publish'
@@ -350,7 +355,7 @@ class User_Profile {
 				LEFT JOIN {$wpdb->prefix}post_actions pa 
 				ON c.comment_ID = pa.object_id 
 				LEFT JOIN {$wpdb->prefix}user_actions ua 
-				ON pa.post_action_id = ua.object_id 
+				ON pa.post_action_id = ua.action_id 
 				WHERE pa.object_subtype IN ('answer', 'comment', '' ) 
 				AND pa.action_type = '{$type}'
 				AND c.comment_approved = 1 AND ua.user_id = 1)
@@ -682,7 +687,7 @@ class User_Profile {
 				LEFT JOIN {$wpdb->prefix}post_actions pa
 				ON p.ID = pa.object_id
 				LEFT JOIN {$wpdb->prefix}user_actions ua
-				ON pa.post_action_id = ua.object_id
+				ON pa.post_action_id = ua.action_id
 				WHERE pa.object_subtype IN ('question', 'guides', 'post')
 				AND pa.action_type  = '{$type}'
 				AND p.post_status='publish'
@@ -703,7 +708,7 @@ class User_Profile {
 				LEFT JOIN {$wpdb->prefix}post_actions pa 
 				ON c.comment_ID = pa.object_id 
 				LEFT JOIN {$wpdb->prefix}user_actions ua 
-				ON pa.post_action_id = ua.object_id 
+				ON pa.post_action_id = ua.action_id 
 				WHERE pa.object_subtype IN ('answer', 'comment', '' ) 
 				AND pa.action_type = '{$type}'
 				AND c.comment_approved = 1 AND ua.user_id = 1)

@@ -1,6 +1,8 @@
+
+ <ol class="content-body result clearfix" id="profile-results">
+
 <?php
 //var_dump($activities);
-
 foreach($activities as $activity):
             
 ?>
@@ -30,6 +32,8 @@ foreach($activities as $activity):
 	          </div>
 	        </li>
  <?php endforeach; ?>
+ 
+ </ol>
  
  	<input type="hidden" id="next-page" value="<?php echo $user_activities->next_page; ?>" />
  	
