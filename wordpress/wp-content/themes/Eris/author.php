@@ -32,42 +32,7 @@ if(is_user_logged_in() && ($profile_user->data->ID == $current_user->data->ID)){
 }
 
 
-//Available Tabs
-/*switch($profile_type) {
-	
-	case 'myprofile':
-		
-		$available_tabs = array('recent',
-								'question',
-								'answer',
-								'comment',
-								'follow',
-								'upvote');
-	break;
-	
-	case 'member':
-		
-		$available_tabs = array('question',
-								'answer',
-								'comment');
-	break;
-	
-	
-	case 'expert':
-		
-		$available_tabs = array('recent',
-								'question',
-								'answer',
-								'comment',
-								'follow',
-								'upvote',
-								'guides',
-								'posts');
-		
-	break;
-	
-	
-}*/
+
 
 if($profile_type != 'myprofile') {
 	
@@ -197,7 +162,7 @@ if(isset($_GET['post-type'])) {
        
         ?>
        
-	 </ol>
+	 
 	 <script type="text/javascript">
     	 $(document).ready(function() {
               $(".expert-answers").hide();
