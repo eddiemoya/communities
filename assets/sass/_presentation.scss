@@ -914,7 +914,7 @@ $tab-padding: "1em 0 .6em 0";
 @include sprite-position( 'button.flag.active', center, (( $act-sprite-period * -1 ) * 5) + 2 );
 
 @include sprite-position( 'button.downvote', center, (( $act-sprite-period * -1 ) * 2) + 2 );
-@include sprite-position( 'button.downvotee.active', center, (( $act-sprite-period * -1 ) * 3) + 2 );
+@include sprite-position( 'button.downvote.active', center, (( $act-sprite-period * -1 ) * 3) + 2 );
 
 button.upvote {
   width: auto;
@@ -943,6 +943,34 @@ button.follow {
   margin-left: .5em;
 }
 
-.hidden {
-  display: none;
+/**
+ * @author Tim Steele
+ * 
+ * Styles for the breadcrumb widget. Mainly used on the single pages, i.e.
+ * blog, buying guide, question.
+ */
+.breadcrumb {
+  border:solid #d5d5d5;
+  border-width:1px 0px;
+  padding:1em 0;
+  li {
+    float:left;
+    font-size:.8125em;
+    font-weight:bold;
+    padding-right:.375em;
+  }
+  li:before {
+    content: " > ";
+  }
+  li:first-child:before {
+    content: "";
+  }
+}
+
+.kmart .breadcrumb li:before {
+  color:kmart( link );
+}
+      
+.sears .breadcrumb li:before {
+  color:sears( link );
 }
