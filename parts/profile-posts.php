@@ -20,9 +20,11 @@ foreach($activities as $activity):
 <?php
             // expert answers are an array of comment objects
             foreach($activity->expert_answers as $answer):
-                //get_partial( 'parts/crest', array( "user_id" => $answer->user_id, "titling" => true ));
 ?>
+    <?php get_partial( 'parts/crest', array( "user_id" => $answer->user_id, "titling" => true, "width" => "span1" ) ); ?>
+    <div class="span11">
     <?php echo $answer->comment_content; ?>
+    </div>
 
 <?php
             endforeach;
