@@ -1,4 +1,3 @@
-<!-- NOT IN USE - FOR DEV PURPOSES ONLY -->
     <header class="content-header">
         <h3>
             Related Articles

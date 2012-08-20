@@ -43,7 +43,7 @@
                     echo $args['must_log_in'];
                     do_action( 'comment_form_must_log_in_after' );
                 else : ?>
-                    <form action="<?php echo site_url( '/wp-comments-post.php' ); ?>" method="post" id="<?php echo esc_attr( $args['id_form'] ); ?>">
+                    <form action="<?php echo site_url( '/wp-comments-post.php' ); ?>?comment_type=answer" method="post" id="<?php echo esc_attr( $args['id_form'] ); ?>">
                         <?php
                             do_action( 'comment_form_top' );
 
