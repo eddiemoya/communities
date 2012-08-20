@@ -7,35 +7,35 @@ if (class_exists(CCT_Controller_Comment_Types)) {
     /**
      * 
      */
-    function register_flags() {
-        $args = array(
-            'labels' => array(
-                'name' => _x('Flags', 'post type general name'),
-                'singular_name' => _x('Flag', 'post type singular name'),
-                'add_new' => _x('Add New', 'flag'),
-                'add_new_item' => __('Add New Flag'),
-                'edit_item' => __('Edit Flag'),
-                'new_item' => __('New Flag'),
-                'all_items' => __('All Flags'),
-                'view_item' => __('View Flags'),
-                'search_items' => __('Search Flags'),
-                'not_found' => __('No flags found'),
-                'not_found_in_trash' => __('No flags found in Trash'),
-                'parent_item_colon' => 'Flag:',
-                'menu_name' => 'Flags'
-            ),
-            'parent_domain' => 'post',
-            'parent_type' => 'question',
-            'capability' => 'administrator',
-            'menu_icon' => get_template_directory_uri() . '/assets/img/admin/flags_admin_icon.gif',
-            'menu_position' => 8,
-            'template' => get_template_directory_uri() . '/parts/flags.php'
-        );
+    // function register_flags() {
+    //     $args = array(
+    //         'labels' => array(
+    //             'name' => _x('Flags', 'post type general name'),
+    //             'singular_name' => _x('Flag', 'post type singular name'),
+    //             'add_new' => _x('Add New', 'flag'),
+    //             'add_new_item' => __('Add New Flag'),
+    //             'edit_item' => __('Edit Flag'),
+    //             'new_item' => __('New Flag'),
+    //             'all_items' => __('All Flags'),
+    //             'view_item' => __('View Flags'),
+    //             'search_items' => __('Search Flags'),
+    //             'not_found' => __('No flags found'),
+    //             'not_found_in_trash' => __('No flags found in Trash'),
+    //             'parent_item_colon' => 'Flag:',
+    //             'menu_name' => 'Flags'
+    //         ),
+    //         'parent_domain' => 'post',
+    //         'parent_type' => 'question',
+    //         'capability' => 'administrator',
+    //         'menu_icon' => get_template_directory_uri() . '/assets/img/admin/flags_admin_icon.gif',
+    //         'menu_position' => 8,
+    //         'template' => get_template_directory_uri() . '/parts/flags.php'
+    //     );
 
-        CCT_Controller_Comment_Types::register_comment_type('flag', $args);
-    }
+    //     CCT_Controller_Comment_Types::register_comment_type('flag', $args);
+    // }
 
-    add_action('init', 'register_flags', 10);
+    // add_action('init', 'register_flags', 10);
 
     /**
      * 
@@ -84,7 +84,7 @@ if (class_exists(CCT_Controller_Comment_Types)) {
 function set_answers_comment_type($is_answer, $comment_type, $comment_data, $parent){
     
     $is_answer = false;
-    if($_POST['comment_type'] == 'answer' && is_user_logged_in()){
+    if($_REQUEST['comment_type'] == 'answer'){
         $is_answer = true;
     }
    
@@ -95,10 +95,10 @@ add_filter('cct_condition_answer', 'set_answers_comment_type', 10, 4);
 function set_flags_comment_type($is_flag, $comment_type, $comment_data, $parent){
     
     $is_flag = false;
-    if($_POST['comment_type'] == 'flag' && is_user_logged_in()){
+    if($_REQUEST['comment_type'] == 'flag'){
         $is_flag = true;
     }
    
     return $is_flag;
 }
-add_filter('cct_condition_answer', 'set_flags_comment_type', 10, 4);
+//add_filter('cct_condition_answer', 'set_flags_comment_type', 10, 4);
