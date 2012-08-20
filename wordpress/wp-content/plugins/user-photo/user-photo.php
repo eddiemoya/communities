@@ -851,7 +851,7 @@ function userphoto_resize_image($filename, $newFilename, $maxdimension, &$error)
 	#if(empty($userphoto_jpeg_compression))
 	#	$userphoto_jpeg_compression = USERPHOTO_DEFAULT_JPEG_COMPRESSION;
 	
-	$info = @getimagesize($filename);
+	$info = getimagesize($filename);
 	if(!$info || !$info[0] || !$info[1]){
 		$error = __("Unable to get image dimensions.", 'user-photo');
 	}
