@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: User Photo - Custom
+Plugin Name: User Photo
 Plugin URI: http://wordpress.org/extend/plugins/user-photo/
 Description: Allows users to associate photos with their accounts by accessing their "Your Profile" page. Uploaded images are resized to fit the dimensions specified on the options page; a thumbnail image is also generated. New template tags introduced are: <code>userphoto_the_author_photo</code>, <code>userphoto_the_author_thumbnail</code>, <code>userphoto_comment_author_photo</code>, and <code>userphoto_comment_author_thumbnail</code>. Uploaded images may be moderated by administrators.
-Version: 0.9.5.2-Sears
-Author: <a href="http://weston.ruter.net/">Weston Ruter</a>, Jason Corradino, Carl Albrecht-Buehler
+Version: 0.9.5.2
+Author: <a href="http://weston.ruter.net/">Weston Ruter</a>
 
 Original code by Weston Ruter <http://weston.ruter.net> at Shepherd Interactive <http://shepherd-interactive.com>.
 Continued development and maintenance by Dave Wagner (cptnwinky) <http://dev.dave-wagner.com/> and Ryan Hellyer (ryanhellyer)
@@ -121,7 +121,11 @@ function userphoto__get_userphoto($user_id, $photoSize, $before, $after, $attrib
 	global $userphoto_prevent_override_avatar;
 	//Note: when we move to a global default user photo, we can always enter into the following conditional
 	if($user_id && ($userdata = get_userdata($user_id))){
-		if($image_file = ($photoSize == USERPHOTO_FULL_SIZE ? $userdata->userphoto_image_file : $userdata->userphoto_thumb_file))
+	    
+	    $cache_buster = get_user_meta($user_id, "userphoto_cachebuster", true);
+	    
+		if(($userdata->userphoto_approvalstatus == USERPHOTO_APPROVED) &&
+		    $image_file = ($photoSize == USERPHOTO_FULL_SIZE ? $userdata->userphoto_image_file : $userdata->userphoto_thumb_file))
 		{
 			$width = $photoSize == USERPHOTO_FULL_SIZE ? $userdata->userphoto_image_width : $userdata->userphoto_thumb_width;
 			$height = $photoSize == USERPHOTO_FULL_SIZE ? $userdata->userphoto_image_height : $userdata->userphoto_thumb_height;
@@ -148,20 +152,20 @@ function userphoto__get_userphoto($user_id, $photoSize, $before, $after, $attrib
 			$src = str_replace('&amp;', '&', $matches[2]);
 			if(preg_match('{class=([\'"])(.+?)\1}', $img, $matches))
 				$attributes['class'] .= ' ' . $matches[2];
+				
+			$src .= $cache_buster;
 		}
 		else return '';
-
-        $cachebuster = get_user_meta($user_id, "userphoto_cachebuster");
-
+        
 		$img = '';
 		$img .= $before;
-		$img .= '<img src="' . htmlspecialchars($src) . "?" . $cachebuster[0] . '"';
+		$img .= '<img src="' . htmlspecialchars($src) . '"';
 		if(empty($attributes['alt']))
 			$img .= ' alt="' . htmlspecialchars($userdata->display_name) . '"';
-        // if(empty($attributes['width']) && !empty($width))
-        //  $img .= ' width="' . htmlspecialchars($width) . '"';
-        // if(empty($attributes['height']) && !empty($height))
-        //  $img .= ' height="' . htmlspecialchars($height) . '"';
+		if(empty($attributes['width']) && !empty($width))
+			$img .= ' width="' . htmlspecialchars($width) . '"';
+		if(empty($attributes['height']) && !empty($height))
+			$img .= ' height="' . htmlspecialchars($height) . '"';
 		if(empty($attributes['class']))
 			$img .= ' class="photo"';
 		if(!empty($attributes)){
@@ -171,7 +175,6 @@ function userphoto__get_userphoto($user_id, $photoSize, $before, $after, $attrib
 		}
 		$img .= ' />';
 		$img .= $after;
-		
 		return $img;
 	}
 	//else if(is_array($failureAttributes)){
@@ -352,8 +355,6 @@ function userphoto_profile_update($userID){
 	else {
 		#Upload the file
 		if(isset($_FILES['userphoto_image_file']) && @$_FILES['userphoto_image_file']['name']){
-		    
-		    print_pre($_FILES);
 			
 			#Upload error
 			$error = '';
@@ -398,21 +399,21 @@ function userphoto_profile_update($userID){
 			$thumbinfo = null;
 			if(!$error){
 				$userphoto_maximum_dimension = get_option( 'userphoto_maximum_dimension' );
-				if(empty($userphoto_maximum_dimension))
-					$userphoto_maximum_dimension = USERPHOTO_DEFAULT_MAX_DIMENSION;
+				#if(empty($userphoto_maximum_dimension))
+				#	$userphoto_maximum_dimension = USERPHOTO_DEFAULT_MAX_DIMENSION;
 				
 				$imageinfo = getimagesize($tmppath);
 				if(!$imageinfo || !$imageinfo[0] || !$imageinfo[1])
-					$error = __("Unable to get image dimensions. (1)", 'user-photo');
+					$error = __("Unable to get image dimensions.", 'user-photo');
 				else if($imageinfo[0] > $userphoto_maximum_dimension || $imageinfo[1] > $userphoto_maximum_dimension){
 					if(userphoto_resize_image($tmppath, null, $userphoto_maximum_dimension, $error))
 						$imageinfo = getimagesize($tmppath);
 				}
 				
-				else if($imageinfo[0] > $userphoto_maximum_dimension)
-					$error = sprintf(__("The uploaded image had a width of %d pixels. The max width is %d.", 'user-photo'), $imageinfo[0], $userphoto_maximum_dimension);
-				else if($imageinfo[0] > $userphoto_maximum_dimension)
-					$error = sprintf(__("The uploaded image had a height of %d pixels. The max height is %d.", 'user-photo'), $imageinfo[1], $userphoto_maximum_dimension);
+				//else if($imageinfo[0] > $userphoto_maximum_dimension)
+				//	$error = sprintf(__("The uploaded image had a width of %d pixels. The max width is %d.", 'user-photo'), $imageinfo[0], $userphoto_maximum_dimension);
+				//else if($imageinfo[0] > $userphoto_maximum_dimension)
+				//	$error = sprintf(__("The uploaded image had a height of %d pixels. The max height is %d.", 'user-photo'), $imageinfo[1], $userphoto_maximum_dimension);
 			}
 			
 			if(!$error){
@@ -590,7 +591,6 @@ function userphoto_display_selector_fieldset(){
 		<fieldset id='userphoto'>
 		<legend><?php echo $isSelf ? _e("Your Photo", 'user-photo') : _e("User Photo", 'user-photo') ?></legend>
 	<?php else: ?>
-	    eijneign
 		<table class='form-table' id="userphoto">
 			<tr>
 				<th>
@@ -851,12 +851,11 @@ function userphoto_resize_image($filename, $newFilename, $maxdimension, &$error)
 	if(!$newFilename)
 		$newFilename = $filename;
 	$userphoto_jpeg_compression = (int)get_option( 'userphoto_jpeg_compression' );
-	if(empty($userphoto_jpeg_compression))
-		$userphoto_jpeg_compression = USERPHOTO_DEFAULT_JPEG_COMPRESSION;
-	
-	$info = getimagesize($filename);
+	#if(empty($userphoto_jpeg_compression))
+	#	$userphoto_jpeg_compression = USERPHOTO_DEFAULT_JPEG_COMPRESSION;
+	$info = @getimagesize($filename);
 	if(!$info || !$info[0] || !$info[1]){
-		$error = __("Unable to get image dimensions. (2)", 'user-photo');
+		$error = __("Unable to get image dimensions.", 'user-photo');
 	}
 	//From WordPress image.php line 22
 	else if (
@@ -907,7 +906,7 @@ function userphoto_resize_image($filename, $newFilename, $maxdimension, &$error)
 		}
 
 		$imageresized = imagecreatetruecolor( $image_new_width, $image_new_height);
-		imagecopyresampled( $imageresized, $image, 0, 0, 0, 0, $image_new_width, $image_new_height, $info[0], $info[1] );
+		@ imagecopyresampled( $imageresized, $image, 0, 0, 0, 0, $image_new_width, $image_new_height, $info[0], $info[1] );
 
 		// move the thumbnail to its final destination
 		if ( $info[2] == IMAGETYPE_GIF ) {
