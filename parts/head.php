@@ -11,7 +11,7 @@
 	</div>
 	
 	<div class="<?php echo (theme_option("brand") == "sears")? "span5":"span6"; ?>">
-		<form method="get" action="/" id="search">
+		<form method="get" action="<?php echo home_url( '/' )?>" id="search">
 			<div>
 				<input type="text" class="input_text icon_search" name="s" id="input_search" />
 				<button type="submit" id="button_search">Go</button>
