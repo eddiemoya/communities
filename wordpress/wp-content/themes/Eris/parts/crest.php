@@ -16,7 +16,7 @@
     # Default state: Show the user's screenname
     if ( $display_name ) {
         $crest_titling = '
-    <h4><a href="' . site_url('') . '/author/' . $user->user_nicename . '">' . $user->user_nicename . '</a></h4>
+    <h4>' . return_screenname_link( $user_id ) . '</h4>
 ';
     }
     # Create the address
@@ -32,12 +32,12 @@
     if ( ( isset( $titling ) ) && ( $titling == true ) ) {
         $a_classes[] = 'labeled';
         $crest_titling = '
-    <h4><a href="' . site_url('') . '/author/' . $user->user_nicename . '"">' . $user->roles[0] . '</a></h4>
+    <h4><a href="' . get_author_posts_url( $user_id ) . '">' . $user->roles[0] . '</a></h4>
     <div class="tail">&nbsp;</div>
 ';
         if ( $display_name ) {
             $crest_titling .= '
-    <h5><a href="' . site_url('') . '/author/' . $user->user_nicename . '">' . $user->user_nicename . '</a></h5>
+    <h5>' . return_screenname_link( $user_id ) . '</h5>
 ';
         }
     }
@@ -46,7 +46,10 @@
 ?>
 
 <div class="<?php echo implode( $a_classes, ' ' ); ?>">
-    <a href="<?php echo get_author_posts_url( $user_id ); ?>>"><img src="<?php echo get_template_directory_uri() ?>/assets/img/zzexpert.jpg" alt="<?php echo $user->user_nicename; ?>" title="<?php echo $user->user_nicename; ?>" /></a>
+    <a href="<?php echo get_author_posts_url( $user_id ); ?>">
+        <?php echo userphoto($user_id, '', '', array(),get_template_directory_uri() . '/assets/img/avatar.jpg'); ?>
+        
+    </a>
     <?php echo $crest_titling; ?>
     <?php echo $address; ?>
 </div>
