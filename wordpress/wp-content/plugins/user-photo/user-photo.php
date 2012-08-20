@@ -158,10 +158,10 @@ function userphoto__get_userphoto($user_id, $photoSize, $before, $after, $attrib
 		$img .= '<img src="' . htmlspecialchars($src) . "?" . $cachebuster[0] . '"';
 		if(empty($attributes['alt']))
 			$img .= ' alt="' . htmlspecialchars($userdata->display_name) . '"';
-		if(empty($attributes['width']) && !empty($width))
-			$img .= ' width="' . htmlspecialchars($width) . '"';
-		if(empty($attributes['height']) && !empty($height))
-			$img .= ' height="' . htmlspecialchars($height) . '"';
+        // if(empty($attributes['width']) && !empty($width))
+        //  $img .= ' width="' . htmlspecialchars($width) . '"';
+        // if(empty($attributes['height']) && !empty($height))
+        //  $img .= ' height="' . htmlspecialchars($height) . '"';
 		if(empty($attributes['class']))
 			$img .= ' class="photo"';
 		if(!empty($attributes)){
@@ -399,7 +399,7 @@ function userphoto_profile_update($userID){
 				#if(empty($userphoto_maximum_dimension))
 				#	$userphoto_maximum_dimension = USERPHOTO_DEFAULT_MAX_DIMENSION;
 				
-				$imageinfo = getimagesize($tmppath);
+				# $imageinfo = getimagesize($tmppath);
 				if(!$imageinfo || !$imageinfo[0] || !$imageinfo[1])
 					$error = __("Unable to get image dimensions.", 'user-photo');
 				else if($imageinfo[0] > $userphoto_maximum_dimension || $imageinfo[1] > $userphoto_maximum_dimension){
