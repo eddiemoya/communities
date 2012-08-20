@@ -315,7 +315,6 @@ function userphoto_thumbnail($user, $before = '', $after = '', $attributes = arr
 
 
 function userphoto_profile_update($userID){
-    echo true;
 	global $userphoto_validtypes;
 	global $userphoto_validextensions;
 	global $current_user;
