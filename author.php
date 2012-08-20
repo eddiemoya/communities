@@ -198,8 +198,6 @@ if(isset($_GET['post-type'])) {
        
         ?>
        
-<<<<<<< HEAD
-=======
 	 </ol>
 	 <script type="text/javascript">
     	 $(document).ready(function() {
@@ -209,7 +207,6 @@ if(isset($_GET['post-type'])) {
               });
           });
       </script>
->>>>>>> 1cf3c9482e4c33196b5071420bfe23c3d36cbefd
 	 
 	 </section>
 	 	
