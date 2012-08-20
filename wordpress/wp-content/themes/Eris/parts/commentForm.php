@@ -68,8 +68,8 @@
                   $(".commentForm form").slideToggle("slow");
                 });
             </script>
-            <p class="hidden" id="shower">Hello</p>
-            <p class="hidden" id="shower2">asdf</p>
+            <p class="hide" id="shower">Hello</p>
+            <p class="hide" id="shower2">asdf</p>
         <?php
             do_action( 'comment_form_after' );
         else :
