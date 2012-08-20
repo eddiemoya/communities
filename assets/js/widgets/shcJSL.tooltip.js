@@ -22,7 +22,7 @@
  */
 var tooltipOpen = false;
 
-TOOLTIP = {}
+TOOLTIP = {};
 /**
  *
  * @type {Function}

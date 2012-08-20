@@ -1,8 +1,8 @@
 <?php
     $comments = get_comments(array('post_id' => $post->ID));
-    
+
     $comment_type = get_post_type( $post->ID ) == 'question' ? 'answer' : 'comment';
-    
+
     if ( isset( $comments ) && !empty( $comments ) ) {
 
 ?>
@@ -14,7 +14,6 @@
 <ol id="allComments">
 <?php
         foreach($comments as $comment) {
-            
             $container_class = '';
             $comment_date = strtotime( $comment->comment_date );
             
@@ -29,8 +28,10 @@
             
             $comment_actions = array(
                 "id"        => $comment->comment_ID,
-                "type"      => $comment_type,
-                "options"   => array( "reply", "flag", "upvote", "downvote" )
+                "type"      => 'comments',
+                "sub_type"      => $comment_type,
+                "options"   => array( "reply", "flag", "upvote", "downvote" ),
+                'actions'   => $comment->actions
             );
 ?>
     <li class="comment clearfix<?php echo $container_class; ?>">
@@ -42,7 +43,16 @@
             <article>
                 <?php echo $comment->comment_content; ?>
             </article>
-            <?php get_partial( 'parts/forms/post-n-comment-actions', $comment_actions ); ?>
+            <?php
+                /**
+                * Ensure plugin is active before displaying anything
+                */
+                if(is_plugin_active('action_jackson/action_jackson.php')) {
+                    get_partial( 'parts/forms/post-n-comment-actions', $comment_actions );
+                } else {
+                    echo 'not active';
+                }
+            ?>
         </div>
         <!-- <ol class="children">
              <li class="comment clearfix<?php echo $container_class; ?>">

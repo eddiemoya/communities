@@ -1240,7 +1240,7 @@ button.flag.active {
 button.downvote {
   background-position: center -78px; }
 
-button.downvotee.active {
+button.downvote.active {
   background-position: center -118px; }
 
 button.upvote {
