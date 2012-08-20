@@ -28,8 +28,8 @@
             
             $comment_actions = array(
                 "id"        => $comment->comment_ID,
-                "type"      => $comment_type,
-                "sub_type"      => $post->post_type,
+                "type"      => 'comments',
+                "sub_type"      => $comment_type,
                 "options"   => array( "reply", "flag", "upvote", "downvote" ),
                 'actions'   => $comment->actions
             );
@@ -43,7 +43,16 @@
             <article>
                 <?php echo $comment->comment_content; ?>
             </article>
-            <?php get_partial( 'parts/forms/post-n-comment-actions', $comment_actions ); ?>
+            <?php
+                /**
+                * Ensure plugin is active before displaying anything
+                */
+                if(is_plugin_active('action_jackson/action_jackson.php')) {
+                    get_partial( 'parts/forms/post-n-comment-actions', $comment_actions );
+                } else {
+                    echo 'not active';
+                }
+            ?>
         </div>
         <!-- <ol class="children">
              <li class="comment clearfix<?php echo $container_class; ?>">
