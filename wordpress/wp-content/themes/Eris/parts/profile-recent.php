@@ -23,7 +23,7 @@ foreach($activities as $activity):
 	            
 ?>
 	 <li class="clearfix">
-	          <?php //echo $badge; ?>
+	          
 	          <div>
 	            <h3>
 	            
