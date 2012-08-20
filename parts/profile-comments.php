@@ -1,6 +1,6 @@
+
+<ol class="content-body result clearfix" id="profile-results">
 <?php
-
-
 foreach($activities as $activity):
 
 $excerpt = '<article class="excerpt">' . (strlen( $activity->comment_content ) > 180 ? substr( $activity->comment_content, 0, 180 ) . "&#8230;" : $activity->comment_content) . '</article>';
@@ -19,6 +19,8 @@ $excerpt = '<article class="excerpt">' . (strlen( $activity->comment_content ) >
 	          </div>
 	        </li>
  <?php endforeach; ?>
+ 
+ </ol>
  
  <input type="hidden" id="next-page" value="<?php echo $user_activities->next_page; ?>" />
  	
