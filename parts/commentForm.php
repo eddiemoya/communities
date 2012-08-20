@@ -64,12 +64,13 @@
                             <?php do_action( 'comment_form', $post->ID ); ?>
                         </form>
                     <?php endif; ?>
-            <script>
+            <script type="text/javascript">
                 $(".commentForm form").hide();
                 $(".leaveComment").click(function () {
                   $(".commentForm form").slideToggle("slow");
                 });
             </script>
+
             <p class="hide" id="shower">Hello</p>
             <p class="hide" id="shower2">asdf</p>
         <?php
