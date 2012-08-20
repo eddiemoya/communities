@@ -396,10 +396,10 @@ function userphoto_profile_update($userID){
 			$thumbinfo = null;
 			if(!$error){
 				$userphoto_maximum_dimension = get_option( 'userphoto_maximum_dimension' );
-				#if(empty($userphoto_maximum_dimension))
-				#	$userphoto_maximum_dimension = USERPHOTO_DEFAULT_MAX_DIMENSION;
+				if(empty($userphoto_maximum_dimension))
+					$userphoto_maximum_dimension = USERPHOTO_DEFAULT_MAX_DIMENSION;
 				
-				# $imageinfo = getimagesize($tmppath);
+				$imageinfo = getimagesize($tmppath);
 				if(!$imageinfo || !$imageinfo[0] || !$imageinfo[1])
 					$error = __("Unable to get image dimensions.", 'user-photo');
 				else if($imageinfo[0] > $userphoto_maximum_dimension || $imageinfo[1] > $userphoto_maximum_dimension){
@@ -407,10 +407,10 @@ function userphoto_profile_update($userID){
 						$imageinfo = getimagesize($tmppath);
 				}
 				
-				//else if($imageinfo[0] > $userphoto_maximum_dimension)
-				//	$error = sprintf(__("The uploaded image had a width of %d pixels. The max width is %d.", 'user-photo'), $imageinfo[0], $userphoto_maximum_dimension);
-				//else if($imageinfo[0] > $userphoto_maximum_dimension)
-				//	$error = sprintf(__("The uploaded image had a height of %d pixels. The max height is %d.", 'user-photo'), $imageinfo[1], $userphoto_maximum_dimension);
+				else if($imageinfo[0] > $userphoto_maximum_dimension)
+					$error = sprintf(__("The uploaded image had a width of %d pixels. The max width is %d.", 'user-photo'), $imageinfo[0], $userphoto_maximum_dimension);
+				else if($imageinfo[0] > $userphoto_maximum_dimension)
+					$error = sprintf(__("The uploaded image had a height of %d pixels. The max height is %d.", 'user-photo'), $imageinfo[1], $userphoto_maximum_dimension);
 			}
 			
 			if(!$error){
