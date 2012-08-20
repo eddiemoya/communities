@@ -239,6 +239,35 @@ shcJSL.first = function(element) {
 	}
 	return firstChild;
 }
+
+shcJSL.formDataToJSON = function(form) {
+	var cereal; // Serialized string of the form
+	var jason;	// (String) Our JSON object
+	var scrub;	// (Function) Function to clean up values for JSON
+	var values; // (Array) values pulled from the serialized string
+	
+	cereal = $(form).serialize();
+	
+	values = cereal.split("&"); 
+	
+	jason = "{";
+	if (values.length > 0) {
+		for (var i=0;i<values.length;i++) {
+			jason += values[i].replace(/^(.*)=(.*)?/,"'$1':'$2',")
+		}
+	}
+	jason = jason.substr(0,jason.length -1) + "}";
+	
+	jason = scrub(jason);
+		
+	function scrub(string) {
+		string = string.replace(/\+/g, " ");
+		string = unescape(string);
+		return string;
+	}
+	
+	return jason;
+}
 /*
 	[2.0] WIDGETS
 	-------------
@@ -282,8 +311,7 @@ shcJSL.gizmos.activate = function(event, parent, selector) {
 				// If the the widget has 'shc:name' attribute, assign the
 				// JavaScript object [shc:widget] to the global variable
 				// that is [shc:name]
-					($(this).attr("shc:name") != undefined)? window[$(this).attr("shc:name")] = new shcJSL.gizmos[$(this).attr(attribute)](this):new shcJSL.gizmos[$(this).attr(attribute)](this);
-				
+				($(this).attr("shc:name") != undefined)? window[$(this).attr("shc:name")] = new shcJSL.gizmos[$(this).attr(attribute)](this):new shcJSL.gizmos[$(this).attr(attribute)](this);
 				// If it can not create the object, error out gracefully
 				// and log the error, the widget that failed and the
 				// error message
@@ -325,30 +353,6 @@ shcJSL.gizmos.persistr = function(element) {
 		}
 	});
 	
-}
-
-shcJSL.gizmos.form = function(element) {
-	
-	formOptions = (eval('(' + $(element).attr("shc:gizmo:options") + ')')).form;
-	
-	// PRIVATE METHODS
-	checkForLoggedIn = function(event) {
-		alert('CHECKING')
-		if (OID != undefined) {
-			formdata = jQuery(element).serialize();
-			shcJSL.cookie(formdata, 120);
-			shcJSL.get(document).moodle({width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}});
-			event.preventDefault();
-		}
-	}
-	
-	checkForRequired = function(event) {
-		
-	}
-	
-	if (formOptions.requireLogIn == true) {
-		$(element).bind('submit',checkForLoggedIn)
-	}
 }
 
 /*

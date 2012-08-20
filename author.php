@@ -6,7 +6,9 @@ require_once 'classes/communities_profile.php';
 get_template_part('parts/header');
 
 //Current page's url, with querystring params removed
-$url_no_qs = get_site_url() . ((strpos($_SERVER['REQUEST_URI'], '?') !== false) ? substr($_SERVER['REQUEST_URI'], null, strpos($_SERVER['REQUEST_URI'], '?')): $_SERVER['REQUEST_URI']);
+$path= $_SERVER['REQUEST_URI'];
+$path = explode("?",$path);
+$url_no_qs = get_bloginfo("siteurl") . $path[0];
 
 
 //Current User data
@@ -198,8 +200,6 @@ if(isset($_GET['post-type'])) {
        
         ?>
        
-<<<<<<< HEAD
-=======
 	 </ol>
 	 <script type="text/javascript">
     	 $(document).ready(function() {
@@ -209,7 +209,6 @@ if(isset($_GET['post-type'])) {
               });
           });
       </script>
->>>>>>> 1cf3c9482e4c33196b5071420bfe23c3d36cbefd
 	 
 	 </section>
 	 	
