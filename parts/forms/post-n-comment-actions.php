@@ -25,7 +25,7 @@
                     break;
             }
 
-            if(isset($action->user) && get_class($action->user) === 'UserAction') {
+            if(isset($action->user) && !is_string($action->user) && get_class($action->user) === 'UserAction') {
                 if(is_user_logged_in()) {
                     if($current_user->id == $action->user->userId) {
                         switch($action->action) {
