@@ -355,29 +355,6 @@ shcJSL.gizmos.persistr = function(element) {
 	
 }
 
-// shcJSL.gizmos.form = function(element) {
-// 	
-	// formOptions = (eval('(' + $(element).attr("shc:gizmo:options") + ')')).form;
-// 	
-	// // PRIVATE METHODS
-	// checkForLoggedIn = function(event) {
-		// if (OID != undefined) {
-			// formdata = jQuery(element).serialize();
-			// shcJSL.cookie(formdata, 120);
-			// shcJSL.get(document).moodle({width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}});
-			// event.preventDefault();
-		// }
-	// }
-// 	
-	// checkForRequired = function(event) {
-// 		
-	// }
-// 	
-	// if (formOptions.requireLogIn == true) {
-		// $(element).bind('submit',checkForLoggedIn)
-	// }
-// }
-
 /*
 	[3.0] ONLOAD EVENTS
 	-------------------
