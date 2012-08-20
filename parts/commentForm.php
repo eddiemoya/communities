@@ -62,13 +62,13 @@
                             <?php do_action( 'comment_form', $post->ID ); ?>
                         </form>
                     <?php endif; ?>
-            <script>
+            <script type="text/javascript">
                 $(".commentForm form").hide();
                 $(".leaveComment").click(function () {
                   $(".commentForm form").slideToggle("slow");
                 });
             </script>
-            <p class="hidden" id="shower">Hello</p>
+            <p class="hidden" id="shower">Hello, there</p>
             <p class="hidden" id="shower2">asdf</p>
         <?php
             do_action( 'comment_form_after' );

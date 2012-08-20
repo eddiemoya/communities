@@ -8,9 +8,9 @@
 <section class="profile">
 
     <section class="personal_info clearfix">
-    
-    	<?php if($profile_type == 'myprofile'):?>
-    	
+
+        <?php if($profile_type == 'myprofile'):?>
+
         <div class="span3 badge">
             <img src="<?php echo get_template_directory_uri() ?>/assets/img/zzexpert.jpg" alt="Team Player" title="Team Player" />
             <a href="#">Upload a photo</a>
@@ -29,11 +29,11 @@
             <dd><time datetime="<?php echo (isset($user_profile['dob']) && ! empty($user_profile['dob'])) ? date( "Y-m-d", strtotime($user_profile["dob"])) : ''; ?>" pubdate="pubdate"><?php echo (isset($user_profile['dob']) && ! empty($user_profile['dob'])) ? date( "F j, Y", strtotime($user_profile["dob"])) : 'n/a'; ?></time></dd>
         </dl>
         
-         <?php else:?>
-    		<div class="span12 info">
-    			You do not have permission to view this page.
-    		</div>
-   		 <?php endif;?>
+        <?php else:?>
+            <div class="span12 info">
+                You do not have permission to view this page.
+            </div>
+        <?php endif;?>
     </section>
     
 </section>
