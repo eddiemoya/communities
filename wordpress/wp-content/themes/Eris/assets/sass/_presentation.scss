@@ -704,7 +704,16 @@ $tab-padding: "1em 0 .6em 0";
       margin-left: 0;
     }
   }
-
+  
+  .answers-toggle {
+    display: block;
+    margin-left: 2em;
+    cursor: pointer;
+    @extend .bold;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
   .personal_info {
     margin-top: 1em;
     dt, dd {
@@ -740,7 +749,14 @@ $tab-padding: "1em 0 .6em 0";
       background: sears( content-focus );
     }
   }
-} 
+}
+
+.kmart .answers-toggle {
+  color: kmart( link );
+}
+.sears .answers-toggle {
+  color: sears( link );
+}
 
 // content list widget
 .content-body.content-list {

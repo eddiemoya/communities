@@ -101,7 +101,7 @@ get_template_part('parts/header'); ?>
                     <dd class="span3">&nbsp;</dd>
                     <dd class="span9">
                         <p class="bold">
-                            Existing Customer? <a href="#" title="Sign In">Sign In</a>
+                            Existing Customer? <a href="/login/" title="Sign In" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">Sign In</a>
                         </p>
                     </dd>
                 </dl>
