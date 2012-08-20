@@ -85,6 +85,10 @@ function custom_primary_query($query = '') {
             $query->set('category__in', array($category));
         }
     }
+
+    // if(!empty($query->query_vars['category_name']) && !empty($query->query_vars['post_type']) ){
+    //     $query->is_category = false;
+    // }
     //return $query;
 }
 add_action('pre_get_posts', 'custom_primary_query');
@@ -208,6 +212,23 @@ function sanitize_title_with_dots_and_dashes($title, $raw_title = '', $context =
 }
 remove_filter('sanitize_title', 'sanitize_title_with_dashes');
 add_filter('sanitize_title', 'sanitize_title_with_dots_and_dashes', 10, 3);
+
+
+
+
+add_filter('template_redirect', 'template_check');
+function template_check(){
+    $pt = get_query_var('post_type');
+
+    if(is_category() && $pt == 'question'){
+            $templates = array();
+            $templates[] = $pt . '-archive.php';
+            $templates[] = "archive.php";
+            include( get_query_template($template_name, $templates));
+            exit;
+    }
+    
+}
 
 
 
