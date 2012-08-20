@@ -352,6 +352,8 @@ function userphoto_profile_update($userID){
 	else {
 		#Upload the file
 		if(isset($_FILES['userphoto_image_file']) && @$_FILES['userphoto_image_file']['name']){
+		    
+		    print_pre($_FILES);
 			
 			#Upload error
 			$error = '';
@@ -588,6 +590,7 @@ function userphoto_display_selector_fieldset(){
 		<fieldset id='userphoto'>
 		<legend><?php echo $isSelf ? _e("Your Photo", 'user-photo') : _e("User Photo", 'user-photo') ?></legend>
 	<?php else: ?>
+	    eijneign
 		<table class='form-table' id="userphoto">
 			<tr>
 				<th>
