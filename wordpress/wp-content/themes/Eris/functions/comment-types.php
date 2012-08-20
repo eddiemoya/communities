@@ -28,7 +28,7 @@ if (class_exists(CCT_Controller_Comment_Types)) {
             'parent_type' => 'question',
             'capability' => 'administrator',
             'menu_icon' => get_template_directory_uri() . '/assets/img/admin/flags_admin_icon.gif',
-            'menu_position' => 9,
+            'menu_position' => 8,
             'template' => get_template_directory_uri() . '/parts/flags.php'
         );
 
@@ -60,7 +60,7 @@ if (class_exists(CCT_Controller_Comment_Types)) {
             'parent_domain' => 'post',
             'parent_type' => 'question',
             'capability' => 'administrator',
-            'menu_position' => 8,
+            'menu_position' => 9,
             'template' => get_template_directory_uri() . '/parts/flags.php'
         );
 

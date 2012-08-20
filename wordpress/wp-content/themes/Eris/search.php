@@ -6,6 +6,6 @@
 
 get_template_part('parts/header');
 
-loop();
+get_template_part('widgets/results-list/archive');
 
 get_template_part('parts/footer');

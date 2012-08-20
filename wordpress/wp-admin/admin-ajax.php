@@ -45,6 +45,7 @@ if ( ! is_user_logged_in() ) {
 	if ( !empty( $_REQUEST['action'] ) )
 		do_action( 'wp_ajax_nopriv_' . $_REQUEST['action'] );
 
+    echo 'wp_ajax_nopriv_'.$_REQUEST['action'];
 	die('-1');
 }
 

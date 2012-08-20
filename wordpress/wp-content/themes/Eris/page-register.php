@@ -17,11 +17,11 @@ if(! is_ajax()):
 
 get_template_part('parts/header'); ?>
 	<section class="span8">
-			
-		<article class="content-container post-your-question span12">
+		<?php endif;?>		
+		<article class="content-container register span12">
 			
 			<section class="content-body clearfix">
-	<?php endif;?>
+
 				
 				<h6 class="content-headline">Register</h6>
 				
@@ -60,7 +60,7 @@ get_template_part('parts/header'); ?>
                     </dl>
                 </li>
                 
-                <?php if(! is_ajax()):?>
+                
                 <li class="clearfix">
                     <dl>
                         <dd class="span3">&nbsp;</dd>
@@ -108,16 +108,23 @@ get_template_part('parts/header'); ?>
             </li>
         </ul>
 				
+				<section id="login-open-id" class="open-id" shc:gizmo="openID">
+					<span class="or">OR</span>
+					<p>use your account from</p>
+					<ul class="open-id-services clearfix">
+						<li class="open-id_service open-id_facebook"><a href="#" shc:openID="facebook">Facebook</a></li>
+						<li class="open-id_service open-id_yahoo"><a href="#" shc:openID="yahoo">Yahoo!</a></li>
+						<li class="open-id_service open-id_google"><a href="#" shc:openID="google">Google</a></li>
+						<li class="open-id_service open-id_twitter"><a href="#" shc:openID="twitter">Twitter</a></li>
+					</ul>
+				</section>
+				
 			</section>
 		</article>
 		
-		
+		<?php if(! is_ajax()):?>
 	</section>
 
-
-	<section class="span4">
-		Tim: is this empty section needed for anything?
-	</section>
 <?php get_template_part('parts/footer'); 
 
 endif;

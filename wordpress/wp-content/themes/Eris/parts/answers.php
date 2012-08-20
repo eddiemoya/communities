@@ -57,7 +57,7 @@
     ?>
         <p>
         <!--  The action is set with a GET variable 'comment_type' set to 'answer. -->
-        <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php?comment_type=answer" method="post" id="commentform">
+        <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
 
             <?php if (!is_user_logged_in()){ ?>
             <p><input type="text" name="author" id="author" value="<?php echo esc_attr(); ?>" size="22" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?> />

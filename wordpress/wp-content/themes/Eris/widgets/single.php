@@ -1,1 +1,1 @@
-<?php //loop_by_type('widget');
+<?php loop_by_type('results-list');
