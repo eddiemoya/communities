@@ -401,7 +401,7 @@ function userphoto_profile_update($userID){
 				
 				$imageinfo = getimagesize($tmppath);
 				if(!$imageinfo || !$imageinfo[0] || !$imageinfo[1])
-					$error = __("Unable to get image dimensions.", 'user-photo');
+					$error = __("Unable to get image dimensions. (1)", 'user-photo');
 				else if($imageinfo[0] > $userphoto_maximum_dimension || $imageinfo[1] > $userphoto_maximum_dimension){
 					if(userphoto_resize_image($tmppath, null, $userphoto_maximum_dimension, $error))
 						$imageinfo = getimagesize($tmppath);
@@ -853,7 +853,7 @@ function userphoto_resize_image($filename, $newFilename, $maxdimension, &$error)
 	
 	$info = getimagesize($filename);
 	if(!$info || !$info[0] || !$info[1]){
-		$error = __("Unable to get image dimensions.", 'user-photo');
+		$error = __("Unable to get image dimensions. (2)", 'user-photo');
 	}
 	//From WordPress image.php line 22
 	else if (
