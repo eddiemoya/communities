@@ -35,3 +35,8 @@ get_template_part('functions/comment-types');
 get_template_part('functions/sidebar-declarations');
 get_template_part('functions/template-tags');
 get_template_part('functions/rewrite-rules');
+
+// watch for a userphoto change, and apply before pageload
+if ($_FILES["userphoto_image_file"]["name"] != "") {
+    userphoto_profile_update(wp_get_current_user()->ID);
+}
