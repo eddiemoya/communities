@@ -1,4 +1,6 @@
 <?php
+    $comments = get_comments(array('post_id' => $post->ID));
+
     $comment_type = get_post_type( $post->ID ) == 'question' ? 'answer' : 'comment';
 
     if ( isset( $comments ) && !empty( $comments ) ) {
@@ -12,7 +14,6 @@
 <ol id="allComments">
 <?php
         foreach($comments as $comment) {
-            
             $container_class = '';
             $comment_date = strtotime( $comment->comment_date );
             
@@ -27,7 +28,7 @@
             
             $comment_actions = array(
                 "id"        => $comment->comment_ID,
-                "type"      => 'comments',
+                "type"      => $comment_type,
                 "sub_type"      => $post->post_type,
                 "options"   => array( "reply", "flag", "upvote", "downvote" ),
                 'actions'   => $comment->actions
