@@ -113,7 +113,7 @@ if(isset($_GET['post-type'])) {
 ?>
     <section class="content-container<?php echo $container_class; ?>">
 
-        <ol class="content-body result clearfix" id="profile-results">
+       
 	 	   
         <?php
       	//Comments
@@ -198,6 +198,8 @@ if(isset($_GET['post-type'])) {
        
         ?>
        
+<<<<<<< HEAD
+=======
 	 </ol>
 	 <script type="text/javascript">
     	 $(document).ready(function() {
@@ -207,6 +209,7 @@ if(isset($_GET['post-type'])) {
               });
           });
       </script>
+>>>>>>> 1cf3c9482e4c33196b5071420bfe23c3d36cbefd
 	 
 	 </section>
 	 	
