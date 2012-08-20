@@ -674,8 +674,6 @@ class User_Profile {
 		
 		global $wpdb;
 		
-		//$type = (! $type) ? implode($this->action_types, ',') : $type;
-		
 		$q = "(SELECT DISTINCT
 				p.ID as ID,  
 				p.post_parent as parent,
@@ -691,19 +689,21 @@ class User_Profile {
 				ON p.ID = pa.object_id
 				LEFT JOIN {$wpdb->prefix}user_actions ua
 				ON pa.post_action_id = ua.action_id
-				WHERE pa.object_subtype IN ('question', 'guides', 'post')
-				AND pa.action_type  = '{$type}'
+				WHERE pa.object_type = 'posts'
+				AND pa.object_subtype IN ('question', 'guides', 'post')
+				AND pa.action_type = '{$type}'
 				AND p.post_status='publish'
-				AND ua.user_id = {$this->user_id})
+				AND ua.user_id = {$this->user_id}
+				)
 				
 				UNION ALL
 
-				(SELECT c.comment_ID,
+				(SELECT DISTINCT c.comment_ID,
 				c.comment_post_ID,
 				c.user_id, 
 				c.comment_date, 
 				c.comment_type, 
-				c.comment_karma,
+				pa.action_type,
 				c.comment_author_url,
 				c.comment_content 
 				
@@ -712,9 +712,9 @@ class User_Profile {
 				ON c.comment_ID = pa.object_id 
 				LEFT JOIN {$wpdb->prefix}user_actions ua 
 				ON pa.post_action_id = ua.action_id 
-				WHERE pa.object_subtype IN ('answer', 'comment', '' ) 
+				WHERE pa.object_type = 'comments'
 				AND pa.action_type = '{$type}'
-				AND c.comment_approved = 1 AND ua.user_id = 1)
+				AND c.comment_approved = 1 AND ua.user_id = 1 )
 				
 				ORDER BY date DESC LIMIT 0,1";
 		
