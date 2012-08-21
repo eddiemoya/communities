@@ -1,4 +1,8 @@
 <?php
+    global $excerptLength;
+
+    $excerptLength = 140;
+
     $c = get_the_category();
     $cat = $c[0];
     $crest_options = array(

@@ -41,14 +41,15 @@ if($profile_type != 'myprofile') {
 	
 }
 
+/*var_dump($user_activities->nav);
+exit;*/
 
-
-$available_tabs = $user_activities->nav;
+$available_tabs = empty( $user_activities->nav ) ? array() : $user_activities->nav;
 
 
 if(isset($_GET['post-type'])) {
 	
-	$type = $_GET['post-type'];
+	$type = empty($_GET['post-type']) ? null : $_GET['post-type'];
 	$current_tab = ($_GET['post-type'] == 'aboutme') ? 'About Me' : 'Community Activity';
 	$current_nav = $_GET['post-type'];
 	$container_class = ($_GET['post-type'] == 'aboutme') ? '' : ' recent-activity';
@@ -81,7 +82,7 @@ if(isset($_GET['post-type'])) {
 	 	   
         <?php
       	//Comments
-		if($type == 'answer' || $type == 'comment') {
+		if($type == 'answer' || $type == 'comment' || $type == '') {
 			
 			
 			$activities = $user_activities->page($page)
@@ -160,15 +161,21 @@ if(isset($_GET['post-type'])) {
        
         ?>
        
-	 
-	 <script type="text/javascript">
-    	 $(document).ready(function() {
-              $(".expert-answers").hide();
-              $(".answers-toggle").on('click', function () {
-                $(this).next(".expert-answers").slideToggle("fast");
-              });
-          });
-      </script>
+	 </ol>
+     <script type="text/javascript">
+     $(document).ready(function() {
+         $(".expert-answers").hide();
+         $(".answers-toggle").on('click', function () {
+             $(this).next(".expert-answers").slideToggle("fast");
+         });
+         $('.upload-photo button').hide();
+         $('.upload-photo #userphoto_image_file').hide();
+         $(".upload-photo label").on('click', function () {
+             $(".upload-photo button").show();
+             $(".upload-photo #userphoto_image_file").show();
+         });
+     });
+     </script>
 	 
 	 </section>
 	 	

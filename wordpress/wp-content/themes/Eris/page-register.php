@@ -7,7 +7,7 @@
 $origin = (isset($_GET['origin'])) ? $_GET['origin'] : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_permalink($post->ID));
 
 //If error is set
-$error = (isset($_GET['error'])) ? urldecode($_GET['error']) : false;
+$error = (isset($_GET['err'])) ? urldecode($_GET['err']) : false;
 /**
  * @package WordPress
  * @subpackage White Label

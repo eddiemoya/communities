@@ -123,9 +123,7 @@ function userphoto__get_userphoto($user_id, $photoSize, $before, $after, $attrib
 	if($user_id && ($userdata = get_userdata($user_id))){
 	    
 	    $cache_buster = get_user_meta($user_id, "userphoto_cachebuster", true);
-	    
-		if(($userdata->userphoto_approvalstatus == USERPHOTO_APPROVED) &&
-		    $image_file = ($photoSize == USERPHOTO_FULL_SIZE ? $userdata->userphoto_image_file : $userdata->userphoto_thumb_file))
+		if($image_file = ($photoSize == USERPHOTO_FULL_SIZE ? $userdata->userphoto_image_file : $userdata->userphoto_thumb_file))
 		{
 			$width = $photoSize == USERPHOTO_FULL_SIZE ? $userdata->userphoto_image_width : $userdata->userphoto_thumb_width;
 			$height = $photoSize == USERPHOTO_FULL_SIZE ? $userdata->userphoto_image_height : $userdata->userphoto_thumb_height;
@@ -159,18 +157,20 @@ function userphoto__get_userphoto($user_id, $photoSize, $before, $after, $attrib
         
 		$img = '';
 		$img .= $before;
-		$img .= '<img src="' . htmlspecialchars($src) . '"';
+		$img .= '<img src="' . htmlspecialchars($src) . "?" . $cache_buster . '"';
+		
 		if(empty($attributes['alt']))
 			$img .= ' alt="' . htmlspecialchars($userdata->display_name) . '"';
-		if(empty($attributes['width']) && !empty($width))
+		if(empty($attributes['width']) && !empty($width) && $attributes["size"] != "none")
 			$img .= ' width="' . htmlspecialchars($width) . '"';
-		if(empty($attributes['height']) && !empty($height))
+		if(empty($attributes['height']) && !empty($height) && $attributes["size"] != "none")
 			$img .= ' height="' . htmlspecialchars($height) . '"';
 		if(empty($attributes['class']))
 			$img .= ' class="photo"';
 		if(!empty($attributes)){
 			foreach($attributes as $name => $value){
-				$img .= " $name=\"" . htmlspecialchars($value) . '"';
+			    if ($name != "size")
+				    $img .= " $name=\"" . htmlspecialchars($value) . '"';
 			}
 		}
 		$img .= ' />';
@@ -402,12 +402,12 @@ function userphoto_profile_update($userID){
 				#if(empty($userphoto_maximum_dimension))
 				#	$userphoto_maximum_dimension = USERPHOTO_DEFAULT_MAX_DIMENSION;
 				
-				$imageinfo = getimagesize($tmppath);
+				$imageinfo = @getimagesize($tmppath);
 				if(!$imageinfo || !$imageinfo[0] || !$imageinfo[1])
 					$error = __("Unable to get image dimensions.", 'user-photo');
 				else if($imageinfo[0] > $userphoto_maximum_dimension || $imageinfo[1] > $userphoto_maximum_dimension){
 					if(userphoto_resize_image($tmppath, null, $userphoto_maximum_dimension, $error))
-						$imageinfo = getimagesize($tmppath);
+						$imageinfo = @getimagesize($tmppath);
 				}
 				
 				//else if($imageinfo[0] > $userphoto_maximum_dimension)
@@ -451,7 +451,7 @@ function userphoto_profile_update($userID){
 							copy($imagepath, $thumbpath);
 							chmod($thumbpath, 0666);
 						}
-						$thumbinfo = getimagesize($thumbpath);
+						$thumbinfo = @getimagesize($thumbpath);
 						
 						#Update usermeta
 						if($current_user->user_level <= get_option('userphoto_level_moderated') ){
@@ -681,10 +681,10 @@ function userphoto_display_selector_fieldset_frontend() {
         <p id='userphoto-upload-error'><strong>Upload error:</strong> <?php echo $profileuser->userphoto_error ?></p>
     <?php endif; ?>
     
-    <p id='userphoto_image_file_control'>
-        <label><?php echo _e("Upload image file:", 'user-photo') ?></label>
-        <input type="file" name="userphoto_image_file" id="userphoto_image_file" />
-    </p>
+
+    <label for="userphoto_image_file"><?php echo _e("Upload an avatar", 'user-photo') ?></label>
+    <input type="file" name="userphoto_image_file" id="userphoto_image_file" />
+
     <?php
 }
 

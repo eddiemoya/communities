@@ -8,7 +8,7 @@ $alinks = array(
   $terms = array(
     "question"  => get_terms_by_post_type('category', 'question'),
     "post"    => get_terms_by_post_type('category', 'post'),
-    "guide" => get_terms_by_post_type('category', 'buying-guide'),
+    "guide" => get_terms_by_post_type('category', 'guide'),
   );
 
   $labels = array (
@@ -39,10 +39,14 @@ $alinks = array(
             <ul>
                 <?php foreach($terms[$post_type] as $term) : ?>
                     <?php if($term->parent == 0) :?>
-                        <li><a href="<?php echo esc_url( get_category_link($term->term_id) ); ?>"><?php echo $term->name; ?></a></li>
+                    <li>
+                        <a href="<?php echo esc_url( get_category_link($term->term_id) ); ?>?post_type=<?php echo $post_type; ?>">
+                            <?php echo $term->name; ?>
+                        </a>
+                    </li>
                     <?php endif; ?>
                 <?php endforeach; ?>
-                <li> <a href="<?php echo $alinks[$post_type]; ?>"><?php echo $label; ?></a></li>
+                <li> <a href="<?php echo $alinks[$post_type]; ?>">All <?php echo $label; ?></a></li>
             </ul>
         </li>
         <?php endforeach;?>

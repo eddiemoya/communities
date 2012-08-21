@@ -6,7 +6,6 @@
 add_action('init', 'register_questions_type');
 add_action('init', 'register_buying_guides_type');
 
-
 /** 
  * @author Eddie Moya
  */
@@ -32,7 +31,6 @@ function register_questions_type() {
         'feeds'         => true,
         'paged'         => true,
         'ep_mask'       => array()
-
     );
     $args = array(
         'labels'        => $labels,
@@ -41,10 +39,10 @@ function register_questions_type() {
         'show_ui'       => true,
         'show_in_menu'  => true,
         'query_var'     => false,
-        'rewrite'       => $rewrite,
+        'rewrite'         => $rewrite,
         'capability_type' => 'post',
-        'has_archive'   => true,
-        'hierarchical'  => false,
+        'has_archive' => true,
+        'hierarchical' => false,
         'menu_position' => 6,
         'supports'      => array('title', 'editor', 'author', 'comments', 'thumbnail'),
         'menu_icon'     => get_template_directory_uri() . '/assets/img/admin/questions_admin_icon.gif',
@@ -99,19 +97,57 @@ function register_buying_guides_type() {
 }
 
 
+
+
+
+
+function new_excerpt_more($excerpt) {
+    global $excerptLength;
+
+    if(!isset($excerptLength) || $excerptLength <= 0) {
+        return $excerpt;
+    }
+
+    if(strlen($excerpt) > $excerptLength) {
+	    return $excerpt.'... <a class="moretag" href="'. get_permalink($post->ID) . '">See More</a>';
+    }
+
+    return $excerpt;
+}
+add_filter('get_the_excerpt', 'new_excerpt_more');
+
+function custom_excerpt_length($excerpt) {
+    if(!isset($excerptLength) || $excerptLength <= 0 || (isset($excerpt) && $excerpt != '')) {
+        return $excerpt;
+    }
+
+    global $excerptLength, $post;
+
+    if(strlen($post->post_content) > $excerptLength) {
+        $words = explode(' ', $post->post_content);
+
+        $curTotal = 0;
+        $i = 0;
+        $newExcerpt = '';
+
+        do {
+            $newExcerpt .= $words[$i].' ';
+
+            $curTotal += strlen($words[$i]);
+            $i++;
+
+        } while($curTotal <= $excerptLength);
+
+        $newExcerpt = substr($newExcerpt, 0, -1);
+    }
+
+	return $newExcerpt;
+}
+add_filter( 'get_the_excerpt', 'custom_excerpt_length', 9);
+
 // add_action( 'registered_post_type', 'redefine_posts' );
 // function redefine_posts() {
 //     global $wp_post_types;
 //     $wp_post_types['page']->menu_position = 4;
 //     echo "<pre>";print_r($wp_post_types['page']->menu_position);echo "</pre>";
 // }
-
-
-
-
-
-
-
-
-
-
