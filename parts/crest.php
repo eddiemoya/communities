@@ -47,7 +47,7 @@
 
 <div class="<?php echo implode( $a_classes, ' ' ); ?>">
     <a href="<?php echo get_author_posts_url( $user_id ); ?>">
-        <?php echo current_user_profile_photo(); ?>
+        <?php echo profile_photo($user_id); ?>
     </a>
     <?php echo $crest_titling; ?>
     <?php echo $address; ?>
