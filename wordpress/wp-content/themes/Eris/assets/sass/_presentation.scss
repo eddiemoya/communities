@@ -179,11 +179,11 @@ ul.bullets {
 }
 
 .span4 .span4 .badge h4 {
-  font-size: percentage( 10/16 );
+  font-size: 10px;
 }
 
 .span4 .span4 .crest h4 {
-  font-size: percentage( 10/16 );
+  font-size: 10px;
 }
 
 .post {
@@ -773,7 +773,6 @@ $tab-padding: "1em 0 .6em 0";
       text-align: center;
       a {
         font-size: percentage( 12/16 );
-        @extend .bold;
       }
     }
     .vitals {
@@ -781,13 +780,26 @@ $tab-padding: "1em 0 .6em 0";
       background: sears( content-focus );
     }
   }
+  .upload-photo {
+    label, input, button {
+      display: inline-block;
+      cursor: pointer;
+      margin: .5em;
+    }
+  }
 }
 
-.kmart .answers-toggle {
-  color: kmart( link );
+.kmart {
+  .answers-toggle, .upload-photo label {
+    color: kmart( link );
+    @extend .bold;
+  }
 }
-.sears .answers-toggle {
-  color: sears( link );
+.sears {
+  .answers-toggle, .upload-photo label {
+    color: sears( link );
+    @extend .bold;
+  }
 }
 
 // content list widget
@@ -905,9 +917,6 @@ $tab-padding: "1em 0 .6em 0";
     background: $lightest-color;
     border-bottom: 1px solid #d6d6d6;
     @include border-radius( 4px );
-    &.expert {
-      background: lighten( sears( decorative ), 15 );
-    }
     time {
       font-size: 13px;
     }
@@ -925,6 +934,9 @@ $tab-padding: "1em 0 .6em 0";
     border-bottom: 0;
     @include border-radius( 4px );
   }
+}
+.expert {
+  background: lighten( sears( decorative ), 15 );
 }
 
 // Activity buttons
