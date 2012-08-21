@@ -585,7 +585,7 @@ ol.bullets {
 ul.bullets {
   list-style-type: disc; }
 
-.bold, .member .info h4, .member .info address, .badge h4, .badge address, .crest h4, .crest address, .post hgroup, .content-container .content-header, .content-container .content-body .content-details .content-category, .profile .answers-toggle, .profile .personal_info dt, .profile .personal_info .badge a, .profile .personal_info .crest a, .sears .post-n-comments h2, .kmart .post-n-comments h2 {
+.bold, .member .info h4, .member .info address, .badge h4, .badge address, .crest h4, .crest address, .post hgroup, .content-container .content-header, .content-container .content-body .content-details .content-category, .profile .answers-toggle, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, .sears .post-n-comments h2, .kmart .post-n-comments h2 {
   font-weight: 700; }
 
 .faint, .member .info h5, .member .info p, .post .content-date, .excerpt, .content-container .content-header, .recent-activity time {
@@ -663,10 +663,10 @@ ul.bullets {
   overflow: hidden; }
 
 .span4 .span4 .badge h4 {
-  font-size: 62.5%; }
+  font-size: 10px; }
 
 .span4 .span4 .crest h4 {
-  font-size: 62.5%; }
+  font-size: 10px; }
 
 .post .content-date {
   display: block;
@@ -1078,6 +1078,7 @@ fieldset#use_your_account_from {
   background-image: -webkit-linear-gradient(#ffffff, #f4f4f4);
   background-image: -moz-linear-gradient(#ffffff, #f4f4f4);
   background-image: -o-linear-gradient(#ffffff, #f4f4f4);
+  background-image: -ms-linear-gradient(#ffffff, #f4f4f4);
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;
@@ -1116,11 +1117,15 @@ fieldset#use_your_account_from {
   .profile .personal_info .vitals {
     margin-top: 1em;
     background: #f2f2f2; }
+.profile .upload-photo label, .profile .upload-photo input, .profile .upload-photo button {
+  display: inline-block;
+  cursor: pointer;
+  margin: .5em; }
 
-.kmart .answers-toggle {
+.kmart .answers-toggle, .kmart .upload-photo label {
   color: #980017; }
 
-.sears .answers-toggle {
+.sears .answers-toggle, .sears .upload-photo label {
   color: #067bb5; }
 
 .content-body.content-list .content-item {
@@ -1225,8 +1230,6 @@ fieldset#use_your_account_from {
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
     border-radius: 4px; }
-    #allComments .comment.expert {
-      background: #f2f2f2; }
     #allComments .comment time {
       font-size: 13px; }
     #allComments .comment article {
@@ -1243,6 +1246,9 @@ fieldset#use_your_account_from {
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
     border-radius: 4px; }
+
+.expert {
+  background: #f2f2f2; }
 
 .actions {
   margin: .5em 0; }

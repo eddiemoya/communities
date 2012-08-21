@@ -19,13 +19,13 @@ foreach($activities as $activity):
         if( $type == 'question' && !empty( $activity->expert_answers ) ):
 ?>
     <span class="answers-toggle">Expert Answers (<?php echo count($activity->expert_answers) ?>)</span>
-    <div class="expert-answers">
+    <div class="expert-answers expert">
 <?php
             // expert answers are an array of comment objects
             foreach($activity->expert_answers as $answer):
 ?>
-    <?php get_partial( 'parts/crest', array( "user_id" => $answer->user_id, "titling" => true, "width" => "span1" ) ); ?>
-    <div class="span11">
+    <?php get_partial( 'parts/crest', array( "user_id" => $answer->user_id, "titling" => true ) ); ?>
+    <div class="span10">
     <?php echo $answer->comment_content; ?>
     </div>
 
