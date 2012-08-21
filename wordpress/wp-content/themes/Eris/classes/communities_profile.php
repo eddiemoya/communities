@@ -104,7 +104,7 @@ class User_Profile {
 	 * Array of navigation, based on user's activity
 	 * @var array
 	 */
-	public $nav;
+	public $nav = array();
 	
 	/**
 	 * Constructor

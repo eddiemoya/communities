@@ -98,6 +98,49 @@ function register_buying_guides_type() {
     register_post_type('guide', $args);
 }
 
+function new_excerpt_more($excerpt) {
+    global $excerptLength;
+
+    if(!isset($excerptLength) || $excerptLength <= 0) {
+        return $excerpt;
+    }
+
+    if(strlen($excerpt) > $excerptLength) {
+	    return $excerpt.'... <a class="moretag" href="'. get_permalink($post->ID) . '">See More</a>';
+    }
+
+    return $excerpt;
+}
+add_filter('get_the_excerpt', 'new_excerpt_more');
+
+function custom_excerpt_length( $excerpt ) {
+    global $excerptLength, $post;
+
+    if(!isset($excerptLength) || $excerptLength <= 0) {
+        return $excerpt;
+    }
+
+    if(strlen($post->post_content) > $excerptLength) {
+        $words = explode(' ', $post->post_content);
+
+        $curTotal = 0;
+        $i = 0;
+        $newExcerpt = '';
+
+        do {
+            $newExcerpt .= $words[$i].' ';
+
+            $curTotal += strlen($words[$i]);
+            $i++;
+
+        } while($curTotal <= $excerptLength);
+
+        $newExcerpt = substr($newExcerpt, 0, -1);
+    }
+
+	return $newExcerpt;
+}
+add_filter( 'get_the_excerpt', 'custom_excerpt_length', 9);
 
 // add_action( 'registered_post_type', 'redefine_posts' );
 // function redefine_posts() {
@@ -105,13 +148,3 @@ function register_buying_guides_type() {
 //     $wp_post_types['page']->menu_position = 4;
 //     echo "<pre>";print_r($wp_post_types['page']->menu_position);echo "</pre>";
 // }
-
-
-
-
-
-
-
-
-
-
