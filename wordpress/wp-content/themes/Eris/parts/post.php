@@ -3,9 +3,9 @@
     $categories = get_the_category( $post->ID );
 ?>    
 <article class="post-n-comments">
-    <header class="section-header">
+ <!--   <header class="section-header">
         Breadcrumbs
-    </header>
+    </header> -->
     <div class="content">
         <time class="date" datetime="<?php echo the_time( "Y-m-d"); ?>" pubdate="pubdate"><?php the_time("F j, Y g:ia"); ?></time>
         <a href="<?php echo get_category_link($categories[0]->term_id); ?>" class="category"><?php echo $categories[0]->name; ?></a>
