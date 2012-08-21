@@ -1,4 +1,4 @@
-<header class="content-header">
+<header class="content-header result-list">
 	<form method="post" action="">
 		<label for="sort-results">Sort By</label>
 			<?php 
