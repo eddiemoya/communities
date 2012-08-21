@@ -746,6 +746,12 @@ $tab-padding: "1em 0 .6em 0";
       text-decoration: underline;
     }
   }
+  .expert-answers {
+    padding: 1em 3%;
+    &.span2 {
+      margin-left: 0;
+    }
+  }
   .personal_info {
     margin-top: 1em;
     dt, dd {
@@ -786,6 +792,9 @@ $tab-padding: "1em 0 .6em 0";
       cursor: pointer;
       margin: .5em;
     }
+  }
+  .no-activity {
+    margin: 2em;
   }
 }
 

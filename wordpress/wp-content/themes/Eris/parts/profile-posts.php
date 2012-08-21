@@ -16,10 +16,10 @@ foreach($activities as $activity):
     </h3>
 <?php 
         // Expert answers
-        if( $type == 'question' && !empty( $activity->expert_answers ) ):
+        if( $type == 'question' && !empty( $activity->expert_answers ) && $profile_type == 'myprofile' ):
 ?>
     <span class="answers-toggle">Expert Answers (<?php echo count($activity->expert_answers) ?>)</span>
-    <div class="expert-answers expert">
+    <div class="expert-answers expert clearfix">
 <?php
             // expert answers are an array of comment objects
             foreach($activity->expert_answers as $answer):
