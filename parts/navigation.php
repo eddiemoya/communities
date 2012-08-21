@@ -1,48 +1,53 @@
 <?php
-  # @author Carl Albrecht-Buehler 
-  $a_navigation = array(
-    "Categories"    => get_categories(array('parent' => 0, 'hide_empty' => true, 'depth' => 1)), 
-    "Q&A's"         => get_terms_by_post_type('category', 'question'),
-    "Blog Posts"    => get_terms_by_post_type('category', 'post'),
-    "Buying Guides" => get_terms_by_post_type('category', 'buying-guide'),
-  );//print_pre($a_navigation); 
-  $post_types = array(
-    "Categories" => 'category', 
-    "Q&A's" => 'question', 
-    "Blog Posts" => 'post', 
-    "Buying Guides" => 'guide'
+$alinks = array(
+    'post' => site_url('posts'),
+    'question' => get_post_type_archive_link('question'),
+    'guide' => get_post_type_archive_link('guide')
+    );
+
+  $terms = array(
+    "question"  => get_terms_by_post_type('category', 'question'),
+    "post"    => get_terms_by_post_type('category', 'post'),
+    "guide" => get_terms_by_post_type('category', 'buying-guide'),
   );
-  ?>
 
+  $labels = array (
+    'question' => "Q&A's",
+    'post' => 'Blog Posts',
+    'guide' => 'Buying Guides'
+    );
 
+?>
 
 <nav id="navigation">
-  <ul id="header_nav" class="dropmenu clearfix">
-    <li class="right_button">
-      <a href="#">Customer Care</a>
-    </li>
-     <?php foreach ( $a_navigation as $nav_label => $nav_items ): ?>
-      <li>
-        <a href="#"><span><?php echo htmlentities( $nav_label ); ?></span></a>
-        <ul>
-          <?php foreach($nav_items as $item) : ?>
+    <ul id="header_nav" class="dropmenu clearfix">
 
-            <?php if($item->parent == 0) : ?>
-                <li><a href="
-                    <?php 
-                    $post_type = ("category" != $post_types[$nav_label]) ? "?post_type=".$post_types[$nav_label] : '' ;
-                    echo get_category_link($item->term_id) . $post_type; ?>">
-                    <?php echo $item->name; ?>
-                </a>
-              </li>
-          <?php endif; ?>
+        <li class="right_button">
+            <a href="<?php echo '#'; ?>">Customer Care</a>
+        </li>
 
-          <?php endforeach; ?>
-          <?php if ($nav_label != "Categories"): ?>
-            <li><a href="#">All <?php echo htmlentities( $nav_label ); ?><?php if ( $item == "Blog" ) { echo " Posts"; } ?></a></li>
-          <?php endif; ?>
-        </ul>
-      </li>
-      <?php endforeach; ?>
-  </ul>
+        <li>
+            <a href="<?php echo site_url(); ?>"><span>Categories</span></a>
+            <ul>
+                <?php wp_list_categories(array('parent' => 0, 'hide_empty' => true, 'depth' => 1, 'title_li'=>'')); ?>
+            </ul>
+        </li>
+
+        <?php foreach($labels as $post_type => $label) : ?>
+        <li>
+            <a href="<?php echo $alinks[$post_type]; ?>"><?php echo $label; ?></a>
+            <ul>
+                <?php foreach($terms[$post_type] as $term) : ?>
+                    <?php if($term->parent == 0) :?>
+                        <li><a href="<?php echo esc_url( get_category_link($term->term_id) ); ?>"><?php echo $term->name; ?></a></li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                <li> <a href="<?php echo $alinks[$post_type]; ?>"><?php echo $label; ?></a></li>
+            </ul>
+        </li>
+        <?php endforeach;?>
+    </ul>
 </nav>
+
+
+
