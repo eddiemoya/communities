@@ -46,7 +46,7 @@ $alinks = array(
                     </li>
                     <?php endif; ?>
                 <?php endforeach; ?>
-                <li> <a href="<?php echo $alinks[$post_type]; ?>"><?php echo $label; ?></a></li>
+                <li> <a href="<?php echo $alinks[$post_type]; ?>">All <?php echo $label; ?></a></li>
             </ul>
         </li>
         <?php endforeach;?>
