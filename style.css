@@ -1093,6 +1093,10 @@ fieldset#use_your_account_from {
   cursor: pointer; }
   .profile .answers-toggle:hover {
     text-decoration: underline; }
+.profile .expert-answers {
+  padding: 1em 3%; }
+  .profile .expert-answers.span2 {
+    margin-left: 0; }
 .profile .personal_info {
   margin-top: 1em; }
   .profile .personal_info dt, .profile .personal_info dd {
@@ -1121,6 +1125,8 @@ fieldset#use_your_account_from {
   display: inline-block;
   cursor: pointer;
   margin: .5em; }
+.profile .no-activity {
+  margin: 2em; }
 
 .kmart .answers-toggle, .kmart .upload-photo label {
   color: #980017; }

@@ -4,20 +4,24 @@ if ($_FILES["userphoto_image_file"]["name"] != "") {
     userphoto_profile_update(wp_get_current_user()->ID);
 }
 
-function profile_photo($user) {
-    return userphoto($user, '', '', array(), get_template_directory_uri().'/assets/img/avatar.jpg');
+function profile_photo($user, $attributes = array()) {
+    $attributes["size"] = $attributes["size"] ? $attributes["size"] : "none";
+    return userphoto($user, '', '', $attributes, get_template_directory_uri().'/assets/img/avatar.jpg');
 }
 
-function profile_thumbnail($user) {
-    return userphoto_thumbnail($user, '', '', array(), get_template_directory_uri().'/assets/img/icon_avatar.png');
+function profile_thumbnail($user, $attributes = array()) {
+    $attributes["size"] = $attributes["size"] ? $attributes["size"] : "none";
+    return userphoto_thumbnail($user, '', '', $attributes, get_template_directory_uri().'/assets/img/icon_avatar.png');
 }
 
-function current_user_profile_photo() {
+function current_user_profile_photo($attributes = array()) {
     $currentUser = wp_get_current_user()->ID;
-    return userphoto($currentUser, '', '', array(), get_template_directory_uri().'/assets/img/avatar.jpg');
+    $attributes["size"] = $attributes["size"] ? $attributes["size"] : "none";
+    return userphoto($currentUser, '', '', $attributes, get_template_directory_uri().'/assets/img/avatar.jpg');
 }
 
-function current_user_profile_thumbnail() {
+function current_user_profile_thumbnail($attributes = array()) {
     $currentUser = wp_get_current_user()->ID;
-    return userphoto_thumbnail($currentUser, '', '', array(), get_template_directory_uri().'/assets/img/icon_avatar.png');
+    $attributes["size"] = $attributes["size"] ? $attributes["size"] : "none";
+    return userphoto_thumbnail($currentUser, '', '', $attributes, get_template_directory_uri().'/assets/img/icon_avatar.png');
 }

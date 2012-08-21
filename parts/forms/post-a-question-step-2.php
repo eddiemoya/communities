@@ -21,7 +21,7 @@ get_currentuserinfo();
 							<?php if(! has_screen_name($current_user->ID)):?>
 							<li>
 								<label for="screen-name" class="required">Screen Name</label>
-								<input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo $current_user->user_login; ?>" required/>
+								<input type="text" class="input_text" name="screen-name" id="screen-name" value="" required/>
 							</li>
 							<?php endif;?>
 							<li>
