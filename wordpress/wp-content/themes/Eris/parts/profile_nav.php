@@ -15,14 +15,20 @@
             "name" => "Questions",
             "url" => $url_no_qs . '?post-type=question'
         ),
+        "" => array(
+            "name" => "Comments",
+            "url" => $url_no_qs . '?post-type='
+        ),
+         "comment" => array(
+            "name" => "Comments",
+            "url" => $url_no_qs . '?post-type=comment'
+        ),
+        
         "answer" => array(
             "name" => "Answers",
             "url" => $url_no_qs . '?post-type=answer'
         ),
-        "comment" => array(
-            "name" => "Comments",
-            "url" => $url_no_qs . '?post-type=comment'
-        ),
+       
         "follow" => array(
             "name" => "Follows",
             "url" => $url_no_qs . '?post-type=follow'
