@@ -6,10 +6,7 @@ require_once 'classes/communities_profile.php';
 get_template_part('parts/header');
 
 //Current page's url, with querystring params removed
-$path= $_SERVER['REQUEST_URI'];
-$path = explode("?",$path);
-$url_no_qs = get_bloginfo("siteurl") . $path[0];
-
+$url_no_qs = get_author_posts_url( $user_id ) . str_replace("author_name=", "", $wp->query_string) . "/";
 
 //Current User data
 $profile_user = get_userdata(get_query_var('author'));
@@ -35,42 +32,7 @@ if(is_user_logged_in() && ($profile_user->data->ID == $current_user->data->ID)){
 }
 
 
-//Available Tabs
-/*switch($profile_type) {
-	
-	case 'myprofile':
-		
-		$available_tabs = array('recent',
-								'question',
-								'answer',
-								'comment',
-								'follow',
-								'upvote');
-	break;
-	
-	case 'member':
-		
-		$available_tabs = array('question',
-								'answer',
-								'comment');
-	break;
-	
-	
-	case 'expert':
-		
-		$available_tabs = array('recent',
-								'question',
-								'answer',
-								'comment',
-								'follow',
-								'upvote',
-								'guides',
-								'posts');
-		
-	break;
-	
-	
-}*/
+
 
 if($profile_type != 'myprofile') {
 	
@@ -121,8 +83,6 @@ if(isset($_GET['post-type'])) {
       	//Comments
 		if($type == 'answer' || $type == 'comment') {
 			
-			/*echo 'Comments stuff';
-			exit;*/
 			
 			$activities = $user_activities->page($page)
 											->get_user_comments_by_type($type)
@@ -200,7 +160,7 @@ if(isset($_GET['post-type'])) {
        
         ?>
        
-	 </ol>
+	 
 	 <script type="text/javascript">
     	 $(document).ready(function() {
               $(".expert-answers").hide();
