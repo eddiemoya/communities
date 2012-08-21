@@ -83,8 +83,6 @@ if(isset($_GET['post-type'])) {
       	//Comments
 		if($type == 'answer' || $type == 'comment') {
 			
-			/*echo 'Comments stuff';
-			exit;*/
 			
 			$activities = $user_activities->page($page)
 											->get_user_comments_by_type($type)
