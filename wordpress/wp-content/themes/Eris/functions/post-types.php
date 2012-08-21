@@ -97,3 +97,21 @@ function register_buying_guides_type() {
     );
     register_post_type('guide', $args);
 }
+
+
+// add_action( 'registered_post_type', 'redefine_posts' );
+// function redefine_posts() {
+//     global $wp_post_types;
+//     $wp_post_types['page']->menu_position = 4;
+//     echo "<pre>";print_r($wp_post_types['page']->menu_position);echo "</pre>";
+// }
+
+
+
+
+
+
+
+
+
+
