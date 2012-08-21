@@ -59,10 +59,9 @@
     ?>
   </ul>
 </nav>
-
 <?php endif;?>
 
-
+<?php if( $_REQUEST['post-type'] != 'aboutme' ): ?>
 <nav class="bar clearfix">
   <ul class="clearfix">
     <?php
@@ -88,7 +87,4 @@
     ?>
   </ul>
 </nav>
-
-
-
-
+<?php endif;?>
