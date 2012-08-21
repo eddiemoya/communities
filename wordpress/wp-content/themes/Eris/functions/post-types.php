@@ -98,3 +98,22 @@ function register_buying_guides_type() {
     );
     register_post_type('buying-guide', $args);
 }
+
+function new_excerpt_more($more) {
+    global $post;
+	return '... <a class="moretag" href="'. get_permalink($post->ID) . '">Read more</a>';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
+function custom_excerpt_length( $excerpt ) {
+    global $excerptLength;
+
+    if(strlen($excerpt) > $excerptLength) {
+        $words = explode(' ', $excerpt);
+
+        
+    }
+
+	return $excerpt;
+}
+add_filter( 'the_excerpt', 'custom_excerpt_length');
