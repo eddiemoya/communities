@@ -116,7 +116,7 @@ add_filter('get_the_excerpt', 'new_excerpt_more');
 function custom_excerpt_length( $excerpt ) {
     global $excerptLength, $post;
 
-    if(!isset($excerptLength) || $excerptLength <= 0) {
+    if(!isset($excerptLength) || $excerptLength <= 0 || (isset($excerpt) && $excerpt != '')) {
         return $excerpt;
     }
 
