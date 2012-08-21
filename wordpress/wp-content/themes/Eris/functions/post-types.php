@@ -106,7 +106,7 @@ function new_excerpt_more($excerpt) {
     }
 
     if(strlen($excerpt) > $excerptLength) {
-	    return $excerpt.'... <a class="moretag" href="'. get_permalink($post->ID) . '">Read more</a>';
+	    return $excerpt.'... <a class="moretag" href="'. get_permalink($post->ID) . '">See More</a>';
     }
 
     return $excerpt;
