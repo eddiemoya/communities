@@ -681,10 +681,10 @@ function userphoto_display_selector_fieldset_frontend() {
         <p id='userphoto-upload-error'><strong>Upload error:</strong> <?php echo $profileuser->userphoto_error ?></p>
     <?php endif; ?>
     
-    <p id='userphoto_image_file_control'>
-        <label><?php echo _e("Upload image file:", 'user-photo') ?></label>
-        <input type="file" name="userphoto_image_file" id="userphoto_image_file" />
-    </p>
+
+    <label for="userphoto_image_file"><?php echo _e("Upload an avatar", 'user-photo') ?></label>
+    <input type="file" name="userphoto_image_file" id="userphoto_image_file" />
+
     <?php
 }
 
