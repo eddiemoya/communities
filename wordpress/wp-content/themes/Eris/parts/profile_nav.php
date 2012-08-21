@@ -59,9 +59,9 @@
     ?>
   </ul>
 </nav>
-<?php endif;?>
+<?php endif; ?>
 
-<?php if( $_REQUEST['post-type'] != 'aboutme' ): ?>
+<?php if( $_REQUEST['post-type'] != 'aboutme' && !empty( $available_tabs ) ): ?>
 <nav class="bar clearfix">
   <ul class="clearfix">
     <?php
@@ -87,4 +87,10 @@
     ?>
   </ul>
 </nav>
-<?php endif;?>
+<?php endif; ?>
+
+<?php if( empty( $available_tabs ) ): ?>
+    <section class="no-activity">
+        Get out there and show us what you're all about!
+    </section>
+<?php endif; ?>

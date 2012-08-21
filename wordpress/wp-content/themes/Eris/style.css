@@ -1121,6 +1121,8 @@ fieldset#use_your_account_from {
   display: inline-block;
   cursor: pointer;
   margin: .5em; }
+.profile .no-activity {
+  margin: 2em; }
 
 .kmart .answers-toggle, .kmart .upload-photo label {
   color: #980017; }
