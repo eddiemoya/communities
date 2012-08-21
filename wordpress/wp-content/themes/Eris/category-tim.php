@@ -44,10 +44,25 @@ loop();
 					line-height:1.5em;
 				}
 				
+				.blog-post.content-container .content-header {
+					border:none;
+					padding:0px;
+				}
+				
 				.blog-post h1 {
 					font-size:1.25em;
 					font-weight:bold;
 				}
+				
+				.blog-post.content-container .content-body {
+					padding:0px;
+				}
+				
+					.blog-post.content-container .content-body p {
+						font-size:1em;
+					}
+				
+				
 	</style>
 
 	<section class="span12">
@@ -71,26 +86,28 @@ loop();
 					<time pubdate datetime="1954-07-24">July 24, 1954</time>
 				</section>
 				
-				<hgroup>
-					<h1>Chapter 6 The Old Forest</h1>
-				</hgroup>
-				
-				<p>
-					Frodo woke suddenly. It was still dark in the room. Merry was standing there with a candle in one hand, and banging on the door with the other. &quot;All right! What is it?&quot; said Frodo, still shaken and bewildered.
-				</p>
-				<p>
-					&quot;What is it!&quot; cried Merry. &quot;It is time to get up. It is half past four and very foggy. Come on! Sam is already getting breakfast ready. Even Pippin is up. I am just going to saddle the ponies, and fetch the one that is to be the baggage&ndash;carrier. Wake that sluggard Fatty! At least he must get up and see us off.&quot;
-				</p>
-				<p>
-					Soon after six o&rsquo;clock the five hobbits were ready to start. Fatty Bolger was still yawning. They stole quietly out of the house. Merry went in front leading a laden pony, and took his way along a path that went through a spinney behind the house, and then cut across several fields. The leaves of trees were glistening, and every twig was dripping; the grass was grey with cold dew. Everything was still, and far&ndash;away noises seemed near and clear: fowls chattering in a yard, someone closing a door of a distant house.
-				</p>
-				<p>
-					In their shed they found the ponies; sturdy little beasts of the kind loved by hobbits, not speedy, but good for a long day&rsquo;s work. They mounted, and soon they were riding off into the mist, which seemed to open reluctantly before them and close forbiddingly behind them. After riding for about an hour, slowly and without talking, they saw the Hedge looming suddenly ahead. It was tall and netted over with silver cobwebs. &quot;How are you going to get through this?&quot; asked Fredegar. &quot;Follow me!&quot; said Merry, &quot;and you will see.&quot; He turned to the left along the Hedge, and soon they came to a point where it bent inwards, running along the lip of a hollow. A cutting had been made, at some distance from the Hedge, and went sloping gently down into the ground. It had walls of brick at the sides, which rose steadily, until suddenly they arched over and formed a tunnel that dived deep under the Hedge and came out in the hollow on the other side.
-				</p>
-				<p>
-					Here Fatty Bolger halted. &quot;Good&ndash;bye, Frodo!&quot; he said. &quot;I wish you were not going into the Forest. I only hope you will not need rescuing before the day is out. But good luck to you. today and every day!&quot;
-				</p>
-				
+				<header class="content-header">
+					<hgroup>
+						<h1>Chapter 6 The Old Forest</h1>
+					</hgroup>
+				</header>
+				<section class="content-body clearfix">
+					<p>
+						Frodo woke suddenly. It was still dark in the room. Merry was standing there with a candle in one hand, and banging on the door with the other. &quot;All right! What is it?&quot; said Frodo, still shaken and bewildered.
+					</p>
+					<p>
+						&quot;What is it!&quot; cried Merry. &quot;It is time to get up. It is half past four and very foggy. Come on! Sam is already getting breakfast ready. Even Pippin is up. I am just going to saddle the ponies, and fetch the one that is to be the baggage&ndash;carrier. Wake that sluggard Fatty! At least he must get up and see us off.&quot;
+					</p>
+					<p>
+						Soon after six o&rsquo;clock the five hobbits were ready to start. Fatty Bolger was still yawning. They stole quietly out of the house. Merry went in front leading a laden pony, and took his way along a path that went through a spinney behind the house, and then cut across several fields. The leaves of trees were glistening, and every twig was dripping; the grass was grey with cold dew. Everything was still, and far&ndash;away noises seemed near and clear: fowls chattering in a yard, someone closing a door of a distant house.
+					</p>
+					<p>
+						In their shed they found the ponies; sturdy little beasts of the kind loved by hobbits, not speedy, but good for a long day&rsquo;s work. They mounted, and soon they were riding off into the mist, which seemed to open reluctantly before them and close forbiddingly behind them. After riding for about an hour, slowly and without talking, they saw the Hedge looming suddenly ahead. It was tall and netted over with silver cobwebs. &quot;How are you going to get through this?&quot; asked Fredegar. &quot;Follow me!&quot; said Merry, &quot;and you will see.&quot; He turned to the left along the Hedge, and soon they came to a point where it bent inwards, running along the lip of a hollow. A cutting had been made, at some distance from the Hedge, and went sloping gently down into the ground. It had walls of brick at the sides, which rose steadily, until suddenly they arched over and formed a tunnel that dived deep under the Hedge and came out in the hollow on the other side.
+					</p>
+					<p>
+						Here Fatty Bolger halted. &quot;Good&ndash;bye, Frodo!&quot; he said. &quot;I wish you were not going into the Forest. I only hope you will not need rescuing before the day is out. But good luck to you. today and every day!&quot;
+					</p>
+				</section>
 			</article>
 			<!-- END ARTICLE CONTENT -->
 			
