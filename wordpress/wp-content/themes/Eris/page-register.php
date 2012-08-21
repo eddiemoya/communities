@@ -29,34 +29,38 @@ get_template_part('parts/header'); ?>
 					<div><?php echo $error;?></div>
 				<?php endif;?>
 				
-				<form class="form_register" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>">
+				<form class="form_register" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>" shc:gizmo="transFormer">
             <ul class="form-fields">
                 
-                <li>
+                <li class="error">
                     <dl class="clearfix">
                         <dt class="span3"><label for="loginId">Email:</label></dt>
-                        <dd class="span9"><input type="text" name="loginId" class="input_text" id="loginId" /></dd>
+                        <dd class="span9"><input type="text" name="loginId" class="input_text" id="loginId" shc:gizmo:form="{required:true}" /></dd>
+                        
                     </dl>
+                    							
                 </li>
                 
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="login_confirm-email">Confirm Email:</label></dt>
-                        <dd class="span9"><input type="text" name="login_confirm-email" class="input_text" id="login_confirm-email" /></dd>
+                        <dd class="span9">
+                        	<input type="text" name="login_confirm-email" class="input_text" id="login_confirm-email" shc:gizmo:form="{required:true}" />
+                        </dd>
                     </dl>
                 </li>
                 
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="logonPassword">Password:</label></dt>
-                        <dd class="span9"><input type="password" name="logonPassword" class="input_text input_password" id="logonPassword" /></dd>
+                        <dd class="span9"><input type="password" name="logonPassword" class="input_text input_password" id="logonPassword" shc:gizmo:form="{required:true}" /></dd>
                     </dl>
                 </li>
                 
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="zipcode">ZIP Code:</label></dt>
-                        <dd class="span9"><input type="text" name="zipcode" class="input_text input_password" id="zipcode" /></dd>
+                        <dd class="span9"><input type="text" name="zipcode" class="input_text input_password" id="zipcode" shc:gizmo:form="{required:true}" /></dd>
                     </dl>
                 </li>
                 
