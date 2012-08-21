@@ -404,12 +404,12 @@ function userphoto_profile_update($userID){
 				#if(empty($userphoto_maximum_dimension))
 				#	$userphoto_maximum_dimension = USERPHOTO_DEFAULT_MAX_DIMENSION;
 				
-				$imageinfo = getimagesize($tmppath);
+				$imageinfo = @getimagesize($tmppath);
 				if(!$imageinfo || !$imageinfo[0] || !$imageinfo[1])
 					$error = __("Unable to get image dimensions.", 'user-photo');
 				else if($imageinfo[0] > $userphoto_maximum_dimension || $imageinfo[1] > $userphoto_maximum_dimension){
 					if(userphoto_resize_image($tmppath, null, $userphoto_maximum_dimension, $error))
-						$imageinfo = getimagesize($tmppath);
+						$imageinfo = @getimagesize($tmppath);
 				}
 				
 				//else if($imageinfo[0] > $userphoto_maximum_dimension)
@@ -453,7 +453,7 @@ function userphoto_profile_update($userID){
 							copy($imagepath, $thumbpath);
 							chmod($thumbpath, 0666);
 						}
-						$thumbinfo = getimagesize($thumbpath);
+						$thumbinfo = @getimagesize($thumbpath);
 						
 						#Update usermeta
 						if($current_user->user_level <= get_option('userphoto_level_moderated') ){
