@@ -1,6 +1,6 @@
 <?php 
 
-add_action('rewrite_rules_array', 'posts_endpint');
+add_action('rewrite_rules_array', 'posts_endpoint');
 
 
 function posts_endpoint($rules){
