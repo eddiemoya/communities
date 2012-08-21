@@ -8,7 +8,7 @@ $alinks = array(
   $terms = array(
     "question"  => get_terms_by_post_type('category', 'question'),
     "post"    => get_terms_by_post_type('category', 'post'),
-    "guide" => get_terms_by_post_type('category', 'buying-guide'),
+    "guide" => get_terms_by_post_type('category', 'guide'),
   );
 
   $labels = array (
