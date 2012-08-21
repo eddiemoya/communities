@@ -1,9 +1,15 @@
 <?php 
 
-add_action('init', 'add_tags');
+add_action('rewrite_rules_array', 'posts_endpint');
 
 
-function add_tags(){
-	//add_rewrite_tag('%is_widget%','([0-9]{1,})');
+function posts_endpoint($rules){
+
+	$newrules = array();
+      
+	$newrules['posts/?$'] = 'index.php?post_type=post';
+    
+	return $newrules + $rules;
+
 }
 
