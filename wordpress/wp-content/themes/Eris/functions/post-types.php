@@ -108,10 +108,24 @@ add_filter('excerpt_more', 'new_excerpt_more');
 function custom_excerpt_length( $excerpt ) {
     global $excerptLength;
 
+    if(!isset($excerptLength) || $excerptLength <= 0) {
+        return $excerpt;
+    }
+
     if(strlen($excerpt) > $excerptLength) {
         $words = explode(' ', $excerpt);
 
-        
+        $curTotal = 0;
+        $i = 0;
+
+        do {
+            $excerpt .= $words[$i].' ';
+
+            $curTotal += strlen($words[$i]);
+            $i++;
+        } while($curTotal <= $excerptLength);
+
+        $excerpt = substr($excerpt, 0, -1);
     }
 
 	return $excerpt;
