@@ -102,10 +102,10 @@ class User_Profile {
 	
 	/**
 	 * Array of navigation, based on user's activity
-	 * @var arrayt
+	 * @var array
 	 */
 	public $nav = array();
-
+	
 	/**
 	 * Constructor
 	 * @param int $user_id
@@ -590,7 +590,7 @@ class User_Profile {
 		}
 		
 			//If there's blank and comment, remove blank
-		 	if(in_array('', $this->nav) && in_array('comment', $this->nav)) {
+		 	/*if(in_array('', $this->nav) && in_array('comment', $this->nav)) {
 		 		
 		 		//Find blank
 		 		$i = array_search('', $this->nav);
@@ -602,7 +602,7 @@ class User_Profile {
 		 		$i = array_search('', $this->nav);
 		 		$this->nav[$i] = 'comment';
 		 		
-		 	}
+		 	}*/
 		 	
 		 		
 		

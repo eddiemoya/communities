@@ -47,8 +47,7 @@
 
 <div class="<?php echo implode( $a_classes, ' ' ); ?>">
     <a href="<?php echo get_author_posts_url( $user_id ); ?>">
-        <?php echo userphoto($user_id, '', '', array(),get_template_directory_uri() . '/assets/img/avatar.jpg'); ?>
-        
+        <?php echo current_user_profile_photo(); ?>
     </a>
     <?php echo $crest_titling; ?>
     <?php echo $address; ?>

@@ -6,7 +6,6 @@
 add_action('init', 'register_questions_type');
 add_action('init', 'register_buying_guides_type');
 
-
 /** 
  * @author Eddie Moya
  */
@@ -32,7 +31,6 @@ function register_questions_type() {
         'feeds'         => true,
         'paged'         => true,
         'ep_mask'       => array()
-
     );
     $args = array(
         'labels'        => $labels,
@@ -41,10 +39,10 @@ function register_questions_type() {
         'show_ui'       => true,
         'show_in_menu'  => true,
         'query_var'     => false,
-        'rewrite'       => $rewrite,
+        'rewrite'         => $rewrite,
         'capability_type' => 'post',
-        'has_archive'   => true,
-        'hierarchical'  => false,
+        'has_archive' => true,
+        'hierarchical' => false,
         'menu_position' => 6,
         'supports'      => array('title', 'editor', 'author', 'comments', 'thumbnail'),
         'menu_icon'     => get_template_directory_uri() . '/assets/img/admin/questions_admin_icon.gif',
@@ -97,6 +95,11 @@ function register_buying_guides_type() {
     );
     register_post_type('guide', $args);
 }
+
+
+
+
+
 
 function new_excerpt_more($excerpt) {
     global $excerptLength;

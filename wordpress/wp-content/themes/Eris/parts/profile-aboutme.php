@@ -16,7 +16,7 @@
         <?php if($profile_type == 'myprofile'):?>
 
         <div class="span3 badge">
-            <?php echo userphoto(wp_get_current_user()->ID);?>
+            <?php echo current_user_profile_photo(); ?>
             
             <form enctype="multipart/form-data" method="post" class="upload-photo">
             <?php userphoto_display_selector_fieldset_frontend(); ?>
