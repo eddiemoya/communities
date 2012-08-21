@@ -289,7 +289,7 @@ class User_Profile {
 				ON pa.post_action_id = ua.action_id 
 				WHERE pa.object_type = 'comments'
 				AND pa.action_type IN ('upvote', 'follow') 
-				AND c.comment_approved = 1 AND ua.user_id = 1 )
+				AND c.comment_approved = 1 AND ua.user_id = {$this->user_id} )
 				
 				ORDER BY date DESC" . $this->limit;
 		
@@ -360,7 +360,7 @@ class User_Profile {
 				ON pa.post_action_id = ua.action_id 
 				WHERE pa.object_type = 'comments'
 				AND pa.action_type IN ('upvote', 'follow') 
-				AND c.comment_approved = 1 AND ua.user_id = 1 )
+				AND c.comment_approved = 1 AND ua.user_id = {$this->user_id})
 				
 				ORDER BY date DESC" . $this->limit;
 		
@@ -714,7 +714,7 @@ class User_Profile {
 				ON pa.post_action_id = ua.action_id 
 				WHERE pa.object_type = 'comments'
 				AND pa.action_type = '{$type}'
-				AND c.comment_approved = 1 AND ua.user_id = 1 )
+				AND c.comment_approved = 1 AND ua.user_id = {$this->user_id})
 				
 				ORDER BY date DESC LIMIT 0,1";
 		
