@@ -123,9 +123,7 @@ function userphoto__get_userphoto($user_id, $photoSize, $before, $after, $attrib
 	if($user_id && ($userdata = get_userdata($user_id))){
 	    
 	    $cache_buster = get_user_meta($user_id, "userphoto_cachebuster", true);
-	    
-		if(($userdata->userphoto_approvalstatus == USERPHOTO_APPROVED) &&
-		    $image_file = ($photoSize == USERPHOTO_FULL_SIZE ? $userdata->userphoto_image_file : $userdata->userphoto_thumb_file))
+		if($image_file = ($photoSize == USERPHOTO_FULL_SIZE ? $userdata->userphoto_image_file : $userdata->userphoto_thumb_file))
 		{
 			$width = $photoSize == USERPHOTO_FULL_SIZE ? $userdata->userphoto_image_width : $userdata->userphoto_thumb_width;
 			$height = $photoSize == USERPHOTO_FULL_SIZE ? $userdata->userphoto_image_height : $userdata->userphoto_thumb_height;
