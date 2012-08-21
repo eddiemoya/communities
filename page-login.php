@@ -23,6 +23,12 @@ get_template_part('parts/header'); ?>
 
 		<h6 class="content-headline">Sign in</h6>
 		
+		<?php if(isset($_GET['err'])):?>
+		
+			<div><?php echo urldecode($_GET['err']);?></div>
+			
+		<?php endif;?>
+		
 		<form class="form_login" method="post" action="<?php echo '?ssologin&origin=' . $origin;?>">
       <ul class="form-fields">
           

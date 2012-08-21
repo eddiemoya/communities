@@ -1,5 +1,7 @@
 
-<ol class="content-body result clearfix" id="profile-results">
+<?php if(! is_ajax()):?>
+ <ol class="content-body result clearfix" id="profile-results">
+ <?php endif;?>
 <?php
 /*echo '<pre>';
 var_dump($activities);
@@ -23,7 +25,7 @@ foreach($activities as $activity):
 	            
 ?>
 	 <li class="clearfix">
-	          <?php //echo $badge; ?>
+	          
 	          <div>
 	            <h3>
 	            
@@ -37,7 +39,9 @@ foreach($activities as $activity):
 	        </li>
  <?php endforeach; ?>
  
+<?php if(! is_ajax()):?>
  </ol>
+<?php endif;?>
  
  <input type="hidden" id="next-page" value="<?php echo $user_activities->next_page; ?>" />
  	

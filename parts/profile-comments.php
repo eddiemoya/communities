@@ -1,5 +1,8 @@
 
-<ol class="content-body result clearfix" id="profile-results">
+<?php if(! is_ajax()):?>
+ <ol class="content-body result clearfix" id="profile-results">
+ <?php endif;?>
+
 <?php
 foreach($activities as $activity):
 
@@ -20,7 +23,9 @@ $excerpt = '<article class="excerpt">' . (strlen( $activity->comment_content ) >
 	        </li>
  <?php endforeach; ?>
  
+ <?php if(! is_ajax()):?>
  </ol>
+<?php endif;?>
  
  <input type="hidden" id="next-page" value="<?php echo $user_activities->next_page; ?>" />
  	

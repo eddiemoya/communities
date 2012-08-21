@@ -11,7 +11,7 @@
 	</div>
 	
 	<div class="<?php echo (theme_option("brand") == "sears")? "span5":"span6"; ?>">
-		<form method="get" action="/" id="search">
+		<form method="get" action="<?php echo home_url( '/' )?>" id="search">
 			<div>
 				<input type="text" class="input_text icon_search" name="s" id="input_search" />
 				<button type="submit" id="button_search">Go</button>
@@ -30,7 +30,9 @@
 				                <?php echo $current_user->user_nicename; ?>
 				            </a>
 				        </li>
-    					<li><a href="<?php echo wp_logout_url( get_permalink() ); ?>" title="Logout" class="bold">Logout</a></li>
+				        <li><?php sso_logout_link('Logout');?> </li>
+				        
+    					<!-- <li><a href="<?php //echo wp_logout_url( get_permalink() ); ?>" title="Logout" class="bold">Logout</a></li> -->
 				    <?php else: ?>
     					<li><a href="/login/" title="Login" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">Login</a></li>
 							<li><a href="#" title="Sign Up: Join the Community" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-register'}}}">Join the community</a></li>
