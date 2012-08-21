@@ -6,7 +6,6 @@
 add_action('init', 'register_questions_type');
 add_action('init', 'register_buying_guides_type');
 
-
 /** 
  * @author Eddie Moya
  */
