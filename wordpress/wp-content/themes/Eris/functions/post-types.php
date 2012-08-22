@@ -140,6 +140,7 @@ function custom_excerpt_length($excerpt) {
 }
 add_filter( 'get_the_excerpt', 'custom_excerpt_length', 9);
 
+
 // add_action( 'registered_post_type', 'redefine_posts' );
 // function redefine_posts() {
 //     global $wp_post_types;
