@@ -257,14 +257,6 @@ shcJSL.formDataToJSON = function(form) {
 		}
 	}
 	
-	function test(match, p1, p2, offset, string) {
-		console.log("MATCH: " + match);
-		console.log("VALUE 1: " + p1);
-		console.log("Value 2: " + p2);
-		console.log("OFFSET: " + offset);
-		console.log("STRING: " + string)
-	}
-	
 	jason = jason.substr(0,jason.length -1) + "}";
 	
 	function scrub(match, key, value, offset, string) {

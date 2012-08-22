@@ -15,8 +15,27 @@
  * TransFormer object
  */
 TRANSfORMER = {}
-TRANSfORMER.transFormer = $TransFormer = function(element, options) {
-
+TRANSfORMER.transFormer = $TransFormer = function(form) {
+	var error; // (Function) generate the error message
+	var transformer; // The form object
+	var fields = [];	// (Array) Array of all the form fields
+	var self = this;
+	this.verify;	// (Function) Verify that the form is valid for submission
+	var valid;	// (Boolean) Whether the form is currently valid for submission or not
+	
+	transformer = form;
+	
+	
+	
+	// fields = fields.concat(
+		// [].slice.call(document.getElementsByTagName("input")),
+		// [].slice.call(document.getElementsByTagName("select")),
+		// [].slice.call(document.getElementsByTagName("textarea"))
+	// );
+	
+	fields = transformer.elements;
+	
+	//console.log(fields);
 }
 
 shcJSL.methods.transFormer = function(target, options) {
@@ -38,8 +57,8 @@ shcJSL.methods.transFormer = function(target, options) {
 		}
 	}
 	
-	
-	
+	//transformers[form.id] = new $TransFormer(form);
+		
 	figs = ($(form).attr("shc:gizmo:options") != undefined)? (((eval('(' + $(form).attr("shc:gizmo:options") + ')')).form)?(eval('(' + $(form).attr("shc:gizmo:options") + ')')).form:{}):{};
 	
 	if (figs.requireLogIn === true) {
