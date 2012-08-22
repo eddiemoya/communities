@@ -63,7 +63,7 @@ function register_buying_guides_type() {
         'edit_item' => __('Edit Guide'),
         'new_item' => __('New Guide'),
         'all_items' => __('All Guides'),
-        'view_item' => __('View Guides'),
+        'view_item' => __('View Guide'),
         'search_items' => __('Search Guides'),
         'not_found' => __('No buying guides found'),
         'not_found_in_trash' => __('No buying guides found in Trash'),
