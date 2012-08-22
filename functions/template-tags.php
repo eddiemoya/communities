@@ -106,12 +106,14 @@ function has_screen_name($user_id) {
  */
 function process_front_end_question(){
 	
+	
     //If step 1 - return that we should move on to step 2.
-    if( wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-1' )){
+    if( wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-1' ) || (isset($_POST['new_question_step_1']))){
 
         //If user is logged in - step 2
         if(is_user_logged_in() && ! empty($_POST['post-question'])) {
-        	
+			
+			
         	return array('step'		=> '2',
         				'errors'	=> null);
         	
@@ -126,7 +128,7 @@ function process_front_end_question(){
     }
 
     //If step 2, add the post and move to step 3
-    if(wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in()) {
+    if((wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in())) {
 		
     	global $current_user;
 		get_currentuserinfo();
@@ -157,9 +159,15 @@ function process_front_end_question(){
     			}
     				
     				//Test for illegal chars
-    				if(strpos($_POST['screen-name'], $bad_chars ) !== false) {
+    				foreach($bad_chars as $char){
     					
-    					$valid = false;
+	    				if(strpos($_POST['screen-name'], $char ) !== false) {
+	    					
+	    					$valid = false;
+	    					$errors['screen-name'] = 'Screen name is required to be between 2-18 characters, and can only contain letters, numbers, dashes, underscores, and periods.';
+	    					
+	    					break;
+	    				}
     				}
     				
 	    				//If everything is valid, attempt to set screen name
@@ -185,8 +193,12 @@ function process_front_end_question(){
 	    							update_user_meta($current_user->ID, 'profile_screen_name', $_POST['screen-name']);
 	    							
 	    							//Update user's nicename to screen name
-	    							wp_insert_user(array('ID'				=> $current_user->ID,
-		 								 				'user_nicename' 	=> $_POST['screen-name']));
+	    							/*wp_update_user(array('ID'				=> $current_user->ID,
+		 								 				'user_nicename' 	=> $_POST['screen-name']));*/
+	    							if(! update_user_nicename($current_user->ID, $_POST['screen-name'])) 
+	    							
+	    									$valid = false;
+	    									$errors['screen-name'] = 'Problem setting user nicename.';
 	    						}
 	    				}
     	}
@@ -470,6 +482,17 @@ function get_user_sso_guid($user_id) {
         return $sso_guid;
 }
 
+function update_user_nicename($uid, $name) {
+	
+	global $wpdb;
+	$user = $wpdb->base_prefix . 'users';
+	
+		$update = $wpdb->update($user, 
+								array('user_nicename' => $name),
+								array('ID' => $uid));
+						
+		return ($update) ? true : false;
+}
 
 
 
