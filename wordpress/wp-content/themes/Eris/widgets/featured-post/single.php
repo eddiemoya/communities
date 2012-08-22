@@ -2,10 +2,19 @@
 
 	<?php the_post(); ?>
 
-    <?php if (is_widget()->show_thumbnail && has_post_thumbnail()) : ?>
-        <div class="featured-image span6">
+    <?php if (is_widget()->show_thumbnail && has_post_thumbnail()) :
+        $widget_span = is_widget()->span;
+        $widget_span = str_replace("span", "", $widget_span);
+        if ($widget_span <= 6) :
+            $featured_img_span = "span12";
+            $featured_post_span = "span12";
+        else:
+            $featured_img_span = "span6";
+            $featured_post_span = "span6";
+        endif;
+    ?>
+        <div class="featured-image <?php echo $featured_img_span; ?>">
             <?php the_post_thumbnail(); ?>
-            <?php $featured_post_span = 'span6'; ?>
         </div>
     <?php else :?>
         <?php $featured_post_span = 'span12';?>
@@ -13,7 +22,6 @@
 
 
     <div class="featured-post <?php echo $featured_post_span; ?>">
-
 
         <?php if (is_widget()->show_category || is_widget()->show_date) : ?>
             <div class="content-details clearfix">
