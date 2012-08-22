@@ -27,13 +27,13 @@ get_currentuserinfo();
 							<li>
 								<label for="your-question" class="required">Your Question</label>
 								<textarea name="your-question" id="your-question" class="input_textarea" required><?php 
-									echo esc_textarea( ($_POST['post-question']) ? $_POST['post-question'] : $_POST['your-question'] ); 
+									echo esc_textarea(stripslashes( ($_POST['post-question'] ) ? $_POST['post-question'] : $_POST['your-question'] )); 
 								?></textarea>
 							</li>
 							<li>
 								<label for="more-details" class="optional">Add More Details</label>
 								<textarea name="more-details" id="more-details" class="input_textarea"><?php 
-									echo esc_textarea( $_POST['more-details'] ); 
+									echo esc_textarea(stripslashes( $_POST['more-details'] )); 
 								?></textarea>
 							</li>
 							<li>
