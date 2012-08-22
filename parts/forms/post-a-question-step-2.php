@@ -48,15 +48,6 @@ get_currentuserinfo();
 										'name' => 'category',
 										'id' => 'category'
 									));
-									wp_dropdown_categories(array(
-										'depth'=> 1,
-										'child_of' => get_queried_object()->term_id,
-										'hierarchical' => true,
-										'hide_if_empty' => true,
-										'class' => 'input_select',
-										'name' => 'sub-category',
-										'id' => 'sub-category'
-									));
 									?>
 							</li>
 
