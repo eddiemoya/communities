@@ -46,10 +46,11 @@
 
 	<?php if(!dynamic_sidebar('Posts Content Area')) : ?> 
 			<!-- <article class="span12 widget_featured-post content-container widget featured-post"> -->
-			<?php the_widget('Featured_Posts_Widget', $fp1_instance, $sidebar_args ) ?>
-			<?php the_widget('Featured_Posts_Widget', $fp2_instance, $sidebar_args ) ?>
+		<article class="span12 widget_result-list content-container widget result-list">
+			<?php get_template_part('widgets/results-list/archive'); ?>
+		</article> 
 		
-		</article>
+		<!-- </article> -->
 	<?php endif; ?> 
 
 

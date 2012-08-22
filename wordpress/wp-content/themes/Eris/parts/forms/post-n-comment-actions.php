@@ -68,10 +68,10 @@
             $buttons[] = '<button type="button" shc:gizmo="actions" name="button1" value="follow" title="Follow this ' . $type . '" id="follow-question-' . $id . '" class="follow" shc:gizmo="actions" shc:gizmo:options="{actions:{post:{id:'.$id.',name:\'follow\',sub_type:\''.$sub_type.'\',type:\''.$type.'\'}}}">'.$acts['follow']['myaction'].'</button>';
         }
         if ( in_array( "share", $options ) ) {
-            $buttons[] = return_partial( 'parts/share' );
+            $buttons[] = return_partial( 'parts/share', array( "url" => $url ) );
         }
         if ( in_array( "flag", $options ) ) {
-            $buttons[] = '<button type="button" name="button1" value="flag" title="Flag this ' . $type . '" id="flag-comment-' . $id . '" class="flag'.$myActionFollow.'">flag</button>';
+            $buttons[] = '<button type="button" name="button1" value="flag" title="Flag this ' . $type . '" id="flag-comment-' . $id . '" class="flag">flag</button>';
         }
         if ( in_array( "downvote", $options ) ) {
             $buttons[] = '<label class="metainfo" for="downvote-comment-' . $id . '">('.$downvoteTotal.')</label><button shc:gizmo="actions" shc:gizmo:options="{actions:{post:{id:'.$id.',name:\'downvote\',sub_type:\''.$sub_type.'\',type:\''.$type.'\'}}}" type="button" name="button1" value="down vote" title="Down vote this ' . $type . '" id="downvote-comment-' . $id . '" class="downvote'.$myActionDownvote.'">down vote</button>';
