@@ -23,10 +23,11 @@ define(CCT_VIEWS,           CCT_PATH . 'views/');
 define(CCT_LIBRARY,         CCT_PATH . 'library/');
 define(CCT_ASSETS,          CCT_PATH . 'assets/');
 
+
 require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
 require_once(ABSPATH . 'wp-admin/includes/class-wp-comments-list-table.php');
 
-
+include (CCT_PATH			. 'functions.php');
 include (CCT_LIBRARY        . 'custom-comment-list-table.php');
 include (CCT_CONTROLLERS    . 'cct-controller-plugin-settings.php');
 include (CCT_CONTROLLERS    . 'cct-controller-comment-types.php');
