@@ -237,6 +237,28 @@ function catch_cookies(){
 }
 
 
+// add_filter('widgetpress_widget_classname', 'featured_guide_class_filter');
+// function featured_guide_class_filter($classname){
+//     if($classname == 'featured-guide') {
+//         $classname = 'featured-post';
+//     }
+//     return $classname;
+// }
+
+// add_filter('widgetpress_pre_add_classes', 'featured_question_class_filter');
+// function featured_question_class_filter($params){
+//     global $wp_registered_widgets;
+
+//     $widget_id  = $params[0]['widget_id'];
+//     $widget_obj = $wp_registered_widgets[$widget_id];
+//     $widget_opt = get_option($widget_obj['callback'][0]->option_name);
+//     $widget_num = $widget_obj['params'][0]['number'];
+//     $widget = $widget_opt[$widget_num];
+
+//     echo "<pre>";print_r($widget_obj);echo "</pre>";
+
+//     return $params;
+//}
 
 
 
