@@ -26,16 +26,5 @@
         </ul>
     </li>
 </ul>
-<!-- <div class="addthis_toolbox">
-    <div class="share_menu_links_text">
-        <span class="share_button">Share</span>
-    </div>
-    <div class="share_menu_links">
-        <a class="addthis_button_email"<?php echo $add_url; ?>>Email</a>
-        <a class="addthis_button_twitter"<?php echo $add_url; ?>>Twitter</a>
-        <a class="addthis_button_facebook"<?php echo $add_url; ?>>Facebook</a>
-        <a class="addthis_button_shopyourway" addthis:title="ShopYourWay this"<?php echo $add_url; ?>><img src="<?php echo get_template_directory_uri() ?>/assets/img/shopyourway_small.jpg" />ShopYourWay</a>
-    </div>
-</div> -->
 <?php endif; ?>
 <script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/assets/js/addthis.js"></script>

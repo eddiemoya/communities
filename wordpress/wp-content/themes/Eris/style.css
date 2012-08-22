@@ -1248,6 +1248,7 @@ fieldset#use_your_account_from {
     clear: both;
     float: right;
     width: 85%;
+    margin-top: .5em;
     border: 1px solid #d6d6d6;
     border-bottom: 0;
     -webkit-border-radius: 4px;
