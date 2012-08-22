@@ -1,7 +1,4 @@
 <?php
-/*
- * Template Name: Login
- */
 
 $origin = (isset($_GET['origin'])) ? urldecode($_GET['origin']) : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_permalink($post->ID));
 $error = (isset($_GET['err'])) ? urldecode($_GET['err']) : false;

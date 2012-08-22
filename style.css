@@ -887,7 +887,7 @@ ul.bullets {
     border-right: 0;
     padding-right: 0; }
 
-.result-list {
+.results-list {
   margin-top: 1em;
   border: 1px solid #cccccc;
   -webkit-border-radius: 5px;
@@ -895,18 +895,18 @@ ul.bullets {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px; }
-  .result-list .content-header {
+  .results-list .content-header {
     width: 95%;
     margin-left: auto;
     margin-right: auto; }
-  .result-list .lone-result {
+  .results-list .lone-result {
     padding-top: .75em;
     margin-top: .5em;
     border-top: 1px solid #cccccc; }
-    .result-list .lone-result:first-child {
+    .results-list .lone-result:first-child {
       margin-top: 0;
       border-top: 0; }
-  .result-list .content-header {
+  .results-list .content-header {
     border-top: 0;
     font-size: 75%;
     padding-top: 1.5em;
@@ -1072,6 +1072,7 @@ fieldset#use_your_account_from {
     background: white;
     padding: 1em 0 .6em 0; }
 .profile nav.bar {
+  clear: left;
   border-bottom: 1px solid #cccccc;
   border-top: 1px solid #cccccc;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #f4f4f4));
@@ -1086,6 +1087,8 @@ fieldset#use_your_account_from {
     padding: .6em .5em; }
   .profile nav.bar li:first-child {
     margin-left: 0; }
+.profile .profile-summary {
+  margin-bottom: 1em; }
 .profile .answers-toggle {
   display: block;
   margin-left: 2em;
@@ -1244,6 +1247,7 @@ fieldset#use_your_account_from {
     clear: both;
     float: right;
     width: 85%;
+    margin-top: .5em;
     border: 1px solid #d6d6d6;
     border-bottom: 0;
     -webkit-border-radius: 4px;
@@ -1726,9 +1730,8 @@ button.follow {
   -ms-border-radius: 5px 5px 0px 0px;
   -o-border-radius: 5px 5px 0px 0px;
   border-radius: 5px 5px 0px 0px; }
-
-.addthis_toolbox .share_menu_links_text .share_button.active {
-  background-color: #eee; }
+  .addthis_toolbox .share_menu_links_text .share_button.active {
+    background-color: #eee; }
 
 .addthis_toolbox .share_menu_links {
   display: none;
@@ -1774,6 +1777,44 @@ button.follow {
   position: absolute;
   left: 14px;
   top: 4px; }
+
+.addthis.dropmenu li {
+  -webkit-border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 5px 5px 0px 0px;
+  -ms-border-radius: 5px 5px 0px 0px;
+  -o-border-radius: 5px 5px 0px 0px;
+  border-radius: 5px 5px 0px 0px; }
+  .addthis.dropmenu li:hover {
+    background-color: #eee; }
+  .addthis.dropmenu li a {
+    display: inline; }
+  .addthis.dropmenu li ul li {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px; }
+.addthis.dropmenu .sharebutton {
+  padding: 6px 12px 6px 12px;
+  cursor: pointer; }
+.addthis.dropmenu .sharemenulinks {
+  background: #fff;
+  width: 136px;
+  padding: 1px;
+  border: 3px solid #eee;
+  -webkit-border-radius: 0px 5px 5px 5px;
+  -moz-border-radius: 0px 5px 5px 5px;
+  -ms-border-radius: 0px 5px 5px 5px;
+  -o-border-radius: 0px 5px 5px 5px;
+  border-radius: 0px 5px 5px 5px; }
+.addthis.dropmenu .at16nc {
+  float: left; }
+
+.kmart .sharebutton {
+  color: #980017; }
+
+.sears .sharebutton {
+  color: #067bb5; }
 
 #login-open-id.open-id {
   border-top: solid 1px #cccccc;

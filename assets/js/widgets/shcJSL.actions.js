@@ -79,19 +79,18 @@ ACTIONS.actions = $actions = function(element, options) {
             jQuery(_this.action.element).html(text);
         } else {
             var curId = jQuery(_this.action.element).attr('id');
+            var curValue = jQuery('label[for="' + curId + '"]').html();
 
-            console.log(curId);
+            curValue = curValue.replace(/[^0-9]/g, '');
 
             if(data === 'activated') {
-                console.log(jQuery('label[for="' + curId + '"]').html());
+                currentTotal = parseInt(curValue) + 1;
 
-                currentTotal = parseInt(jQuery('label[for="' + curId + '"]').html()) + 1;
-
-                jQuery('label[for="' + curId + '"]').html(currentTotal);
+                jQuery('label[for="' + curId + '"]').html("(" + currentTotal + ')');
             } else if(data === 'deactivated') {
-                currentTotal = parseInt(jQuery('label[for="' + curId + '"]').html()) - 1;
+                currentTotal = parseInt(curValue) - 1;
 
-                jQuery('label[for="' + curId + '"]').html(currentTotal);
+                jQuery('label[for="' + curId + '"]').html('(' + currentTotal + ')');
             }
         }
     };

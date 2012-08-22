@@ -49,8 +49,18 @@
   
 ?>
 
-<?php if( $profile_type == 'myprofile' ): ?>
+<?php
+    if( $profile_type != 'myprofile' && $_REQUEST['post-type'] != 'aboutme' ):
+?>
+<div class="profile-summary clearfix">
+<?
+    get_partial( 'parts/crest', array( "user_id" => wp_get_current_user()->ID, "titling" => true, "show_name" => false, "width" => 'span2' ) );
+?>
+    <div class="span10 info"><h2><?php echo wp_get_current_user()->user_nicename; ?></h2></div>
+</div>
+<?php endif; ?>
 
+<?php if( $profile_type == 'myprofile' ): ?>
 <nav class="clearfix">
   <ul class="tabs clearfix">
     <?php
@@ -65,7 +75,6 @@
     ?>
   </ul>
 </nav>
-
 <?php endif; ?>
 
 <?php if( $_REQUEST['post-type'] != 'aboutme' && !empty( $available_tabs ) ): ?>
