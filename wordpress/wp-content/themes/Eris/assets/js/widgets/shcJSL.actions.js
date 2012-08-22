@@ -56,7 +56,14 @@ ACTIONS.actions = $actions = function(element, options) {
             ajaxurl + '?action=add_user_action',
             post,
             function(data) {
-                jQuery(_this.action.element).addClass('active');
+                data = eval(data);
+                console.log(data);
+
+                if(data === 'activated') {
+                    jQuery(_this.action.element).addClass('active');
+                } else if(data === 'deactivated') {
+                    jQuery(_this.action.element).removeClass('active');
+                }
             }
         );
     };
