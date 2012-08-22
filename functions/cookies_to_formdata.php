@@ -6,7 +6,10 @@ function formdata_cookie_check() {
 		
 		if(is_user_logged_in()) {
 			
-			$formdata = json_decode(stripslashes(str_replace("'", "\"", $_COOKIE['form-data'])), true);
+			$formdata = json_decode(urldecode(stripslashes(str_replace("'", "\"", $_COOKIE['form-data']))), true);
+			
+			/*var_dump($formdata);
+			exit;*/
 			
 			//Post a question form
 			if(array_key_exists('new_question_step_1', $formdata)) {
@@ -32,6 +35,11 @@ function formdata_cookie_check() {
 		
 		
 	}
+}
+
+function detect_question_submit_step_3() {
+	
+	
 }
 
 add_action('init', 'formdata_cookie_check');
