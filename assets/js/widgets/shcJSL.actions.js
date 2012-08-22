@@ -82,7 +82,7 @@ ACTIONS.actions = $actions = function(element, options) {
             var curValue = jQuery('label[for="' + curId + '"]').html();
 
             curValue = curValue.replace(/[^0-9]/g, '');
-            
+
             if(data === 'activated') {
                 currentTotal = parseInt(curValue) + 1;
 
