@@ -214,8 +214,9 @@ function process_front_end_question(){
 		        $category = (isset($_POST['category'])) ?  absint((int)$_POST['category'])  : '' ;
 		        $category = (isset($_POST['sub-category'])) ? absint((int)$_POST['sub-category']) : $category; 
 		
-		        
-		            $post = array(
+		       	
+
+		       		$post = array(
 		                'post_title'    => $title,
 		                'post_content'  => $content,
 		                'post_category' => array($category),
@@ -225,6 +226,9 @@ function process_front_end_question(){
 		
 		        wp_insert_post($post); 
 		        do_action('wp_insert_post', 'wp_insert_post'); 
+		        
+		        	
+		       	
 		        
 		        return array('errors' => null, 'step' => '3');
 		        
