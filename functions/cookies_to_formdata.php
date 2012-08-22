@@ -23,6 +23,8 @@ function formdata_cookie_check() {
 					
 			}
 			
+			//Enter more forms here...
+			
 			//Delete cookie
 			setcookie('form-data', '0', time() - 6000, '/');
 		

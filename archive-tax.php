@@ -12,8 +12,8 @@
 	    'after_title' => '</h3></header>'
 	);
 	$fp1_instance = array(
-		'widget_title' => 'Buying Guides',
-		'widget_subtitle' => 'Find out more and get the most out of every purchase.',
+		'widget_title' => 'The Community Blog',
+		'widget_subtitle' => 'Find out more. About whatever interests you.',
 		'show_title' => true,
 		'show_subtitle' => true,
 		'show_comment_count' => 'on',
@@ -25,7 +25,7 @@
 		'filter-by' => 'manual',
 		'widget_name' => 'featured-post',
 		'limit' => 1,
-		'post__in_1' => 648
+		'post__in_1' => 518
 	);
 	$fp2_instance = array(
 		'show_comment_count' => 'on',
@@ -37,7 +37,7 @@
 		'filter-by' => 'manual',
 		'widget_name' => 'featured-post',
 		'limit' => 1,
-		'post__in_1' => 553
+		'post__in_1' => 607
 	);
 
  ?>
@@ -46,11 +46,13 @@
 
 	<?php if(!dynamic_sidebar('Posts Content Area')) : ?> 
 			<!-- <article class="span12 widget_featured-post content-container widget featured-post"> -->
-			<?php the_widget('Featured_Posts_Widget', $fp1_instance, $sidebar_args ) ?>
-			<?php the_widget('Featured_Posts_Widget', $fp2_instance, $sidebar_args ) ?>
+		<article class="span12 widget_result-list content-container widget result-list">
+			<?php get_template_part('widgets/results-list/archive'); ?>
+		</article> 
 		
-		</article>
+		<!-- </article> -->
 	<?php endif; ?> 
+
 
 </ul>
 
@@ -58,13 +60,13 @@
 	<?php 
 		if(!dynamic_sidebar('Posts Sidebar')){
 	
-			$instance = array('title' => 'About', 'text' => '<p><strong>Buying Guides</strong> give you the inside scoop on all types of products. use them to make the best purchase every single time.</p>');
+			$instance = array('title' => 'About', 'text' => '<p><strong>The Community Blog</strong> is a place where you can discover countless posts about the things that interest you. So go ahead...</p><p><strong>Explode. Comment. Repeat.</strong></p>');
 			the_widget('Content_Blurb', $instance, $sidebar_args);
 
-			$instance = array('nav_menu' => $nav_menus[6]->term_id, 'title' => 'First Time Here?', 'sub-title' => "Here's our best stuff");
+			$instance = array('nav_menu' => $nav_menus[4]->term_id, 'title' => 'First Time Here?', 'sub-title' => "Here's our best stuff");
 			the_widget('Communities_Menu_Widget', $instance, $sidebar_args);
 
-			$instance = array('nav_menu' => $nav_menus[7]->term_id, 'title' => 'Related Stories');
+			$instance = array('nav_menu' => $nav_menus[5]->term_id, 'title' => 'Related Stories');
 			the_widget('Communities_Menu_Widget', $instance, $sidebar_args);
 
 		 }
