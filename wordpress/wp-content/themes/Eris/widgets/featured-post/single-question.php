@@ -39,4 +39,8 @@
         <li><?php custom_comment_count('answer'); ?> answers</li>
     </ul>
 
+    <section class="post-actions">
+        <?php //get_partial( 'parts/share' ); ?>
+    </section>
+
 <?php get_template_part('parts/footer', 'widget') ;?>
