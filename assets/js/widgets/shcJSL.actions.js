@@ -57,15 +57,43 @@ ACTIONS.actions = $actions = function(element, options) {
             post,
             function(data) {
                 data = eval(data);
-                console.log(data);
 
                 if(data === 'activated') {
                     jQuery(_this.action.element).addClass('active');
                 } else if(data === 'deactivated') {
                     jQuery(_this.action.element).removeClass('active');
                 }
+
+                _this._resetActionTotal(data);
             }
         );
+    };
+
+    _this._resetActionTotal = function(data) {
+        var action = _this.options.post.name;
+        var currentTotal = '';
+
+        if(action == 'follow') {
+            var text = jQuery(_this.action.element).html() === 'followed' ? 'follow' : 'followed';
+
+            jQuery(_this.action.element).html(text);
+        } else {
+            var curId = jQuery(_this.action.element).attr('id');
+
+            console.log(curId);
+
+            if(data === 'activated') {
+                console.log(jQuery('label[for="' + curId + '"]').html());
+
+                currentTotal = parseInt(jQuery('label[for="' + curId + '"]').html()) + 1;
+
+                jQuery('label[for="' + curId + '"]').html(currentTotal);
+            } else if(data === 'deactivated') {
+                currentTotal = parseInt(jQuery('label[for="' + curId + '"]').html()) - 1;
+
+                jQuery('label[for="' + curId + '"]').html(currentTotal);
+            }
+        }
     };
 
     _this.init(element, options);
