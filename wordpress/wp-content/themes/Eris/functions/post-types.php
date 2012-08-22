@@ -6,7 +6,7 @@
 add_action('init', 'register_questions_type');
 add_action('init', 'register_buying_guides_type');
 
-/** 
+/**
  * @author Eddie Moya
  */
 function register_questions_type() {
@@ -51,7 +51,7 @@ function register_questions_type() {
     register_post_type('question', $args);
 }
 
-/** 
+/**
  * @author Jason Corradino
  */
 function register_buying_guides_type() {
@@ -96,11 +96,6 @@ function register_buying_guides_type() {
     register_post_type('guide', $args);
 }
 
-
-
-
-
-
 function new_excerpt_more($excerpt) {
     global $excerptLength;
 
@@ -117,11 +112,11 @@ function new_excerpt_more($excerpt) {
 add_filter('get_the_excerpt', 'new_excerpt_more');
 
 function custom_excerpt_length($excerpt) {
+    global $excerptLength, $post;
+
     if(!isset($excerptLength) || $excerptLength <= 0 || (isset($excerpt) && $excerpt != '')) {
         return $excerpt;
     }
-
-    global $excerptLength, $post;
 
     if(strlen($post->post_content) > $excerptLength) {
         $words = explode(' ', $post->post_content);
