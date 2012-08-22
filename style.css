@@ -1807,6 +1807,8 @@ button.follow {
   -ms-border-radius: 0px 5px 5px 5px;
   -o-border-radius: 0px 5px 5px 5px;
   border-radius: 0px 5px 5px 5px; }
+.addthis.dropmenu .at16nc {
+  float: left; }
 
 .kmart .sharebutton {
   color: #980017; }
