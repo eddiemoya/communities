@@ -21,7 +21,14 @@ set (:app_loc) { "/appl/wordpress/www/comm_new/community/wp-content" }
 
 set :copy_strategy, :checkout
 set :deploy_via, :copy
-#set :deploy_via, :remote_cache
+
+set :branch do
+  default_tag = `git tag`.split("\n").last
+
+  tag = Capistrano::CLI.ui.ask "Tag to deploy (make sure to push the tag first): [#{default_tag}] "
+  tag = default_tag if tag.empty?
+  tag
+end
 
 set :move_wp_content do
   run "rm -rf #{app_loc}/plugins/* && rm -rf #{app_loc}/themes/*"
