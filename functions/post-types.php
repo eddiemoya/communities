@@ -116,12 +116,12 @@ function new_excerpt_more($excerpt) {
 }
 add_filter('get_the_excerpt', 'new_excerpt_more');
 
-function custom_excerpt_length( $excerpt ) {
-    global $excerptLength, $post;
-
-    if(!isset($excerptLength) || $excerptLength <= 0) {
+function custom_excerpt_length($excerpt) {
+    if(!isset($excerptLength) || $excerptLength <= 0 || (isset($excerpt) && $excerpt != '')) {
         return $excerpt;
     }
+
+    global $excerptLength, $post;
 
     if(strlen($post->post_content) > $excerptLength) {
         $words = explode(' ', $post->post_content);
