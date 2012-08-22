@@ -216,17 +216,21 @@ add_filter('sanitize_title', 'sanitize_title_with_dots_and_dashes', 10, 3);
 
 
 
-add_filter('template_redirect', 'template_check');
+add_action('template_redirect', 'template_check');
 function template_check(){
     $pt = get_query_var('post_type');
 
-    if(is_category() && $pt == 'question'){
-            $templates = array();
-            $templates[] = 'archive-'.$pt.'.php';
-            $templates[] = "archive.php";
-            include( get_query_template($template_name, $templates));
-            exit;
-    }
+    if(!is_widget() && (is_category() || is_post_type_archive(array('guide', 'question')) || $pt == 'post' )){
+
+        $templates = array();
+        $templates[] = 'archive-'.$pt.'.php';
+        $templates[] = "archive.php";
+        $template = get_query_template($template_name, $templates);
+        //echo "<pre>";print_r($template);echo "</pre>";
+        include( $template );
+        exit;
+        
+    } 
     
 }
 
