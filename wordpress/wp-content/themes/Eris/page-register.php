@@ -57,7 +57,7 @@ get_template_part('parts/header'); ?>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="zipcode">ZIP Code:</label></dt>
-                        <dd class="span9"><input type="text" name="zipcode" class="input_text input_password" id="zipcode" shc:gizmo:form="{required:true}" /></dd>
+                        <dd class="span9"><input type="text" name="zipcode" class="input_text input_password" id="zipcode" shc:gizmo:form="{required:true, validate: '(^\d{5})(-\d{4})?$'}" /></dd>
                     </dl>
                 </li>
                 
