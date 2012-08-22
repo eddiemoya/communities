@@ -70,9 +70,6 @@
                   $(".commentForm form").slideToggle("slow");
                 });
             </script>
-
-            <p class="hide" id="shower">Hello</p>
-            <p class="hide" id="shower2">asdf</p>
         <?php
             do_action( 'comment_form_after' );
         else :
