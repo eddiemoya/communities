@@ -72,6 +72,10 @@
             <p>
         <?php endif; //is_widget_show_content ?>
 
+        <section class="post-actions">
+            <?php get_partial( 'parts/share' ); ?>
+        </section>
+
     </div> <!-- featured-post -->
 
 <?php get_template_part('parts/footer', 'widget') ;?>

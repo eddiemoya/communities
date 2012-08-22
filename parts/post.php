@@ -15,7 +15,7 @@
         <?php if ( get_the_tags() ): ?>
             <p class="tags">Tags: <?php the_tags('',', ', ''); ?></p>
         <?php endif; ?>
-        <?php get_partial( 'parts/share', array( "version" => "long" ) ); ?>
+        <?php get_partial( 'parts/share', array( "version" => "long", "url" => get_permalink( $post->ID ) ) ); ?>
     </div>
 
     <?php
