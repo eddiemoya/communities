@@ -486,7 +486,7 @@ form {}
 }
 
 // RESULT LIST
-.result-list {
+.results-list {
   margin-top: 1em;
   border: 1px solid sears( decorative );
   @include border-radius( 5px );
@@ -723,6 +723,7 @@ $tab-padding: "1em 0 .6em 0";
     }
   }
   nav.bar {
+    clear: left;
     border-bottom: 1px solid sears( decorative );
     border-top: 1px solid sears( decorative );
     @include background-image( linear-gradient( white, #f4f4f4 ) );
@@ -736,13 +737,15 @@ $tab-padding: "1em 0 .6em 0";
       margin-left: 0;
     }
   }
-  
+  .profile-summary {
+    margin-bottom: 1em;
+  }
   .answers-toggle {
     display: block;
     margin-left: 2em;
     cursor: pointer;
     @extend .bold;
-    &:hover{
+    &:hover {
       text-decoration: underline;
     }
   }

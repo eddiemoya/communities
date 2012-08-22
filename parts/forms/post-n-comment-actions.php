@@ -65,7 +65,7 @@
             $buttons[] = '<button type="button" shc:gizmo="actions" name="button1" value="follow" title="Follow this ' . $type . '" id="follow-question-' . $id . '" class="follow'.$myActionFollow.'" shc:gizmo="actions" shc:gizmo:options="{actions:{post:{id:'.$id.',name:\'follow\',sub_type:\''.$sub_type.'\',type:\''.$type.'\'}}}">follow</button>';
         }
         if ( in_array( "share", $options ) ) {
-            $buttons[] = return_partial( 'parts/share' );
+            $buttons[] = return_partial( 'parts/share', array( "url" => $url ) );
         }
         if ( in_array( "flag", $options ) ) {
             $buttons[] = '<button type="button" name="button1" value="flag" title="Flag this ' . $type . '" id="flag-comment-' . $id . '" class="flag'.$myActionFollow.'">flag</button>';

@@ -40,10 +40,9 @@
   padding: 6px 12px 6px 12px;
   cursor: pointer;
   @include border-radius( 5px 5px 0px 0px );
-}
-
-.addthis_toolbox .share_menu_links_text .share_button.active {
-  background-color: #eee;
+  &.active {
+    background-color: #eee;
+  }
 }
 
 // List of links - hidden when not hovered
@@ -93,4 +92,37 @@
   position: absolute;
   left: 14px;
   top: 4px;
+}
+
+.addthis.dropmenu {
+  li{
+    @include border-radius( 5px 5px 0px 0px );
+    &:hover {
+      background-color: #eee;
+    }
+    a {
+      display: inline;
+    }
+    ul li {
+      @include border-radius( 5px );
+    }
+  }
+  .sharebutton {
+    padding: 6px 12px 6px 12px;
+    cursor: pointer;
+  }
+  .sharemenulinks  {
+    background: #fff;
+    width: 136px;
+    padding: 1px;
+    border: 3px solid #eee;
+    @include border-radius( 0px 5px 5px 5px );
+  }
+}
+
+.kmart .sharebutton {
+  color: kmart( link );
+}
+.sears .sharebutton {
+  color: sears( link );
 }

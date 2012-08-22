@@ -7,7 +7,8 @@
     $post_actions = array(
         "id"        => $post->ID,
         "type"      => $post->post_type,
-        "options"   => array( "follow", "flag", "share" )
+        "options"   => array( "follow", "flag", "share" ),
+        "url"       => get_permalink( $post->ID )
     );
     $post_date = strtotime( $post->post_date );
 ?>
