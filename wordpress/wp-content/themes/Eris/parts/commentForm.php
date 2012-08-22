@@ -57,7 +57,7 @@
                             ?>
                                 <p class="form-submit">
                                     <input type="submit" id="<?php echo esc_attr( $args['id_submit'] ); ?>" class="<?php echo theme_option("brand"); ?>_button" value="<?php echo esc_attr( $args['label_submit'] ); ?>" />
-                                    <input type="submit" shc:gizmo="tooltip" shc:gizmo:options="{tooltip:{events:['click'],displayData:'shower2'}}" class="<?php echo theme_option("brand"); ?>_button azure" value="Cancel" />
+                                    <input type="submit" onclick="jQuery('#commentform').slideUp();" shc:gizmo="tooltip" shc:gizmo:options="{tooltip:{events:['click'],displayData:'shower2'}}" class="<?php echo theme_option("brand"); ?>_button azure" value="Cancel" />
                                     <?php comment_id_fields( $post->ID ); ?>
                                 </p>
                                 <input type='hidden' name='comment_type' value='<?php echo $comment_type; ?>' />
