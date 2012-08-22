@@ -16,7 +16,7 @@ function get_custom_comment_count($type, $post_id = null, $args = array()){
 		'count' => true
 	);
 
-	$comment_count = get_comments($arguments+$args);
+	$comment_count = get_comments(array_merge($arguments, $args));
 	return $comment_count;
 }
 
