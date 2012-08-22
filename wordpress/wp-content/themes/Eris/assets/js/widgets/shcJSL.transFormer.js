@@ -32,7 +32,7 @@ shcJSL.methods.transFormer = function(target, options) {
 	checkForLogin = function() {
 		if (OID != undefined) {
 			var data = shcJSL.formDataToJSON(form);
-			(form.id)? shcJSL.cookies("form-data").bake({value: "{'" + form.id + "':" + data + "}"}):shcJSL.cookies("form-data").bake({value:data});
+			(form.id)? shcJSL.cookies("form-data").bake({value: '{"' + form.id + '":' + data + '}'}):shcJSL.cookies("form-data").bake({value:data});
 			shcJSL.get(document).moodle({width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}});
 			return false;
 		}

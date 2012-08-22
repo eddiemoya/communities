@@ -1,7 +1,4 @@
 <?php
-/*
- * Template Name: Register
- */
 
 //If origin param is set use it, otherwise if HTTP_REFERER is set, use it; otherwise use current page
 $origin = (isset($_GET['origin'])) ? $_GET['origin'] : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_permalink($post->ID));
@@ -32,7 +29,7 @@ get_template_part('parts/header'); ?>
 				<form class="form_register" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>" shc:gizmo="transFormer">
             <ul class="form-fields">
                 
-                <li class="error">
+                <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="loginId">Email:</label></dt>
                         <dd class="span9"><input type="text" name="loginId" class="input_text" id="loginId" shc:gizmo:form="{required:true}" /></dd>

@@ -253,19 +253,28 @@ shcJSL.formDataToJSON = function(form) {
 	jason = "{";
 	if (values.length > 0) {
 		for (var i=0;i<values.length;i++) {
-			jason += values[i].replace(/^(.*)=(.*)?/,"'$1':'$2',")
+			jason += values[i].replace(/^(.*)=(.*)?/,scrub)
 		}
 	}
-	jason = jason.substr(0,jason.length -1) + "}";
 	
-	jason = scrub(jason);
-		
-	function scrub(string) {
-		string = string.replace(/\+/g, " ");
-		string = unescape(string);
-		return string;
+	function test(match, p1, p2, offset, string) {
+		console.log("MATCH: " + match);
+		console.log("VALUE 1: " + p1);
+		console.log("Value 2: " + p2);
+		console.log("OFFSET: " + offset);
+		console.log("STRING: " + string)
 	}
 	
+	jason = jason.substr(0,jason.length -1) + "}";
+	
+	function scrub(match, key, value, offset, string) {
+		key = key.replace(/\+/g, " ");
+		value = value.replace(/\+/g, " ");
+		json = '"' + escape(key) + '":"' + escape(value) + '",';
+		return json;
+	}
+	
+	console.log(jason);
 	return jason;
 }
 /*
