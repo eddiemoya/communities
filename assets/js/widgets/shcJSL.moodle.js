@@ -263,7 +263,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 		 * If options exist and is not the window object, then set argumentOptions to
 		 * equal options, otherwise set argumentOptions to an empty object.
 		 */
-		(options)? (options.constructor == Window)? argumentOptions = {}: argumentOptions = options:argumentOptions = {}; 
+		(options)? (options == window)? argumentOptions = {}: argumentOptions = options:argumentOptions = {}; 
 		/*
 		 * This is a bit confusing looking, but simple:
 		 * If the element contains the attribute 'shc:gizmo:option' attribute
