@@ -8,6 +8,12 @@
     $crest_options = array(
         "user_id" => $post->post_author
     );
+    $post_actions = array(
+        "id"        => $post->ID,
+        "type"      => $post->post_type,
+        "options"   => array( "flag", "share" ),
+        "url"       => get_permalink( $post->ID )
+    );
 ?>
 
 <li class="post lone-result clearfix">
@@ -31,11 +37,8 @@
             <p class="excerpt"><?php the_excerpt(); ?></p>
             <p class="content-comments">x answers | y replies | <?php comments_number(); ?></p>
         </article>
-
-        <section class="post-actions">
-            <div class="flag"><a href="#"><img src="<?php echo get_template_directory_uri() ?>/assets/img/icon-flag.png" alt="Flag this post" title="Flag this post" /></a></div>
-            <?php get_partial( 'parts/share' ); ?>
-        </section>
+        
+        <?php get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); ?>
 
     </div>
 </li>
