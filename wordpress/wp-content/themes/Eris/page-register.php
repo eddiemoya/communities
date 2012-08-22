@@ -1,7 +1,4 @@
 <?php
-/*
- * Template Name: Register
- */
 
 //If origin param is set use it, otherwise if HTTP_REFERER is set, use it; otherwise use current page
 $origin = (isset($_GET['origin'])) ? $_GET['origin'] : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_permalink($post->ID));

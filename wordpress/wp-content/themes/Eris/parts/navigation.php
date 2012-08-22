@@ -23,7 +23,7 @@ $alinks = array(
     <ul id="header_nav" class="dropmenu clearfix">
 
         <li class="right_button">
-            <a href="<?php echo '#'; ?>">Customer Care</a>
+            <a href="<?php echo get_permalink( get_page_by_path( 'customer-care' ) ); ?>">Customer Care</a>
         </li>
 
         <li>
