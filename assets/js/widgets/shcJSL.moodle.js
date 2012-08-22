@@ -442,11 +442,11 @@ shcJSL.methods.moodle = function(target, options) {
 	} else if (this.constructor == Object) {
 		if (this.action) method = this.action.toString();
 		else method = new String("create");
-	} else if (this.constructor == Window) {
+	} else if (this == window) {
 		method = new String("create");
 	} else {
 		// Something broke
-		return;
+		return false;
 	}
 	
 	($Moodle instanceof MOODLE.modal)? $Moodle[method](target, this):($Moodle = new $Moodle())[method](target,this)
