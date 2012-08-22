@@ -25,7 +25,7 @@
 		'filter-by' => 'manual',
 		'widget_name' => 'featured-post',
 		'limit' => 1,
-		'post__in_1' => 648
+		'post__in_1' => 518
 	);
 	$fp2_instance = array(
 		'show_comment_count' => 'on',
@@ -37,7 +37,7 @@
 		'filter-by' => 'manual',
 		'widget_name' => 'featured-post',
 		'limit' => 1,
-		'post__in_1' => 553
+		'post__in_1' => 607
 	);
 
  ?>
