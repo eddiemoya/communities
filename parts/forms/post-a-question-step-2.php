@@ -21,7 +21,7 @@ get_currentuserinfo();
 							<?php if(! has_screen_name($current_user->ID)):?>
 							<li>
 								<label for="screen-name" class="required">Screen Name</label>
-								<input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo $current_user->user_login; ?>" required/>
+								<input type="text" class="input_text" name="screen-name" id="screen-name" value="" required/>
 							</li>
 							<?php endif;?>
 							<li>
@@ -47,15 +47,6 @@ get_currentuserinfo();
 										'class' => 'input_select',
 										'name' => 'category',
 										'id' => 'category'
-									));
-									wp_dropdown_categories(array(
-										'depth'=> 1,
-										'child_of' => get_queried_object()->term_id,
-										'hierarchical' => true,
-										'hide_if_empty' => true,
-										'class' => 'input_select',
-										'name' => 'sub-category',
-										'id' => 'sub-category'
 									));
 									?>
 							</li>

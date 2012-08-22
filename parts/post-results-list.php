@@ -8,12 +8,17 @@
     $crest_options = array(
         "user_id" => $post->post_author
     );
+
     $post_actions = array(
         "id"        => $post->ID,
         "type"      => $post->post_type,
         "options"   => array( "flag", "share" ),
         "url"       => get_permalink( $post->ID )
     );
+
+    $answer_count = (function_exists('get_custom_comment_count')) ? get_custom_comment_count('answer') : '';
+    $comment_count = (function_exists('get_custom_comment_count')) ? get_custom_comment_count('comment') : '';
+
 ?>
 
 <li class="post lone-result clearfix">
@@ -35,7 +40,7 @@
 
         <article>
             <p class="excerpt"><?php the_excerpt(); ?></p>
-            <p class="content-comments">x answers | y replies | <?php comments_number(); ?></p>
+            <p class="content-comments"><?php echo $answer_count; ?> answers | <?php comments_number('0 replies', '1 reply', '% replies'); ?> | <?php echo $comment_count; ?> comments</p>
         </article>
         
         <?php get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); ?>

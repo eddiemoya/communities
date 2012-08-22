@@ -36,3 +36,4 @@ get_template_part('functions/sidebar-declarations');
 get_template_part('functions/template-tags');
 get_template_part('functions/rewrite-rules');
 get_template_part('functions/userphoto');
+get_template_part('functions/cookies_to_formdata');
