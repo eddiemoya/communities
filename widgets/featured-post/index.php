@@ -1,9 +1,14 @@
-<!--/Users/emoya1/Public/Projects/comm/wordpress/wp-content/themes/Eris/widgets/parts/category.php -->
-<?php get_template_part('parts/header', 'widget') ;?>
+<?php
+    get_template_part('parts/header', 'widget');
 
+    if (have_posts()) {
+        global $excerptLength;
 
-		<?php if (have_posts()) { while (have_posts()) { the_post(); ?>
+        $excerptLength = 140;
 
+        while (have_posts()) {
+            the_post();
+?>
 			<li class="featured">
 	        	<section class="column clearfix">
 	        		<div class="span4 badge">
@@ -27,8 +32,9 @@
 
 	        	</section>
 			</li>
+<?php
+        }
+    }
 
+    get_template_part('parts/footer', 'widget');
 
-		<?php }} ?>
-
-<?php get_template_part('parts/footer', 'widget') ;?>
