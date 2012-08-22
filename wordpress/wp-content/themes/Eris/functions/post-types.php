@@ -138,7 +138,7 @@ function custom_excerpt_length($excerpt) {
 
 	return $newExcerpt;
 }
-//add_filter( 'get_the_excerpt', 'custom_excerpt_length', 9);
+add_filter( 'get_the_excerpt', 'custom_excerpt_length', 9);
 
 // add_action( 'registered_post_type', 'redefine_posts' );
 // function redefine_posts() {
