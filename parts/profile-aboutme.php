@@ -4,9 +4,7 @@
     * @subpackage Eris
     */
     
-    if ($_FILES["userphoto_image_file"]["name"] != "") {
-        userphoto_profile_update(wp_get_current_user()->ID);
-    }
+    $absent_info = '&ndash;';
 ?>
 
 <section class="profile">
@@ -25,17 +23,17 @@
             
         </div>
         <div class="span9 info">
-            <h4><?php echo (isset($user_profile['name']) && ! empty($user_profile['name'])) ? $user_profile['name'] : '&nbsp;';?></h4>
+            <h4><?php echo (isset($user_profile['name']) && ! empty($user_profile['name'])) ? $user_profile['name'] : $absent_info; ?></h4>
         </div>
         <dl class="span12 vitals">
             <dt>Screen Name</dt>
-            <dd><?php echo (isset($user_profile['screenname']) && ! empty($user_profile['screenname'])) ? $user_profile['screenname'] : '&ndash;'; ?></dd>
+            <dd><?php echo (isset($user_profile['screenname']) && ! empty($user_profile['screenname'])) ? $user_profile['screenname'] : $absent_info; ?></dd>
             <dt>Email</dt>
-            <dd><?php echo (isset($user_profile['email']) && ! empty($user_profile['email']) ) ? $user_profile['email'] : '&ndash;'; ?></dd>
+            <dd><?php echo (isset($user_profile['email']) && ! empty($user_profile['email']) ) ? $user_profile['email'] : $absent_info; ?></dd>
             <dt>Location</dt>
-            <dd><address><?php echo (isset($user_profile['zipcode']) && ! empty($user_profile['zipcode'])) ? $user_profile['zipcode']: '&ndash;'; ?></address></dd>
+            <dd><address><?php echo (isset($user_profile['zipcode']) && ! empty($user_profile['zipcode'])) ? $user_profile['zipcode']: $absent_info; ?></address></dd>
             <dt>Birthday</dt>
-            <dd><time datetime="<?php echo (isset($user_profile['dob']) && ! empty($user_profile['dob'])) ? date( "Y-m-d", strtotime($user_profile["dob"])) : ''; ?>" pubdate="pubdate"><?php echo (isset($user_profile['dob']) && ! empty($user_profile['dob'])) ? date( "F j, Y", strtotime($user_profile["dob"])) : '&ndash;'; ?></time></dd>
+            <dd><time datetime="<?php echo (isset($user_profile['dob']) && ! empty($user_profile['dob'])) ? date( "Y-m-d", strtotime($user_profile["dob"])) : ''; ?>" pubdate="pubdate"><?php echo (isset($user_profile['dob']) && ! empty($user_profile['dob'])) ? date( "F j, Y", strtotime($user_profile["dob"])) : $absent_info; ?></time></dd>
         </dl>
         
         <?php else:?>
