@@ -223,12 +223,16 @@ function process_front_end_question(){
 		                'post_status'   => 'publish',           
 		                'post_type'     => 'question'
 		            );
-		
-		        wp_insert_post($post); 
-		        do_action('wp_insert_post', 'wp_insert_post'); 
-		        
-		        	
+				
+		           
+		            
+		        //Only post if the question for this user doesn't exist    
+		       if(! question_exists($post)) {   
 		       	
+		        	wp_insert_post($post); 
+		        	do_action('wp_insert_post', 'wp_insert_post');
+		        	
+		       }
 		        
 		        return array('errors' => null, 'step' => '3');
 		        
@@ -243,6 +247,19 @@ function process_front_end_question(){
     return array('errors' => null, 'step' => '1');
 }
 
+
+function question_exists($post) {
+	
+	global $wpdb;
+	global $current_user;
+	get_currentuserinfo();
+	
+	$p = $wpdb->base_prefix . 'posts';
+	
+	$q = "SELECT ID FROM " . $p . " WHERE post_title = '" . $post['post_title'] ."' AND post_content = '". $post['post_content'] . "' AND post_type = 'question' AND post_author = " . $current_user->ID;
+	
+	return ($wpdb->get_var($q)) ? true : false;
+}
 
 
 /**

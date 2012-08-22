@@ -18,7 +18,7 @@ get_currentuserinfo();
 
 					<div class="state_post-question-details">
 						<ul class="form-fields">
-							<?php if(! has_screen_name($current_user->ID)):?>
+							<?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
 							<li>
 								<label for="screen-name" class="required">Screen Name</label>
 								<input type="text" class="input_text" name="screen-name" id="screen-name" value="" required/>
