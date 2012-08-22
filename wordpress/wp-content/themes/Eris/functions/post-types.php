@@ -103,11 +103,7 @@ function new_excerpt_more($excerpt) {
         return $excerpt;
     }
 
-    if(strlen($excerpt) > $excerptLength) {
-	    return $excerpt.'... <a class="moretag" href="'. get_permalink($post->ID) . '">See More</a>';
-    }
-
-    return $excerpt;
+    return $excerpt.'... <a class="moretag" href="'. get_permalink($post->ID) . '">See More</a>';
 }
 add_filter('get_the_excerpt', 'new_excerpt_more');
 
@@ -118,26 +114,13 @@ function custom_excerpt_length($excerpt) {
         return $excerpt;
     }
 
-    if(strlen(trim(strip_tags($post->post_content))) > $excerptLength) {
-        $words = explode(' ', trim(strip_tags($post->post_content)));
+    $excerpt = trim(strip_tags($post->post_content));
 
-        $curTotal = 0;
-        $i = 0;
-        $newExcerpt = '';
-
-        do {
-            $newExcerpt .= $words[$i].' ';
-
-            // Don't forget to count the space as a necessary character, as well!
-            $curTotal += strlen($words[$i]) + 1;
-            $i++;
-
-        } while($curTotal <= $excerptLength);
-
-        $newExcerpt = substr($newExcerpt, 0, -1);
+    if(strlen($post->post_content) > $excerptLength) {
+        return substr($excerpt, 0, strpos($excerpt, " ", $excerptLength));
     }
 
-	return $newExcerpt;
+	return $excerpt;
 }
 add_filter( 'get_the_excerpt', 'custom_excerpt_length', 9);
 
