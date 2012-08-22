@@ -52,6 +52,7 @@ loop();
 				.blog-post h1 {
 					font-size:1.25em;
 					font-weight:bold;
+					line-height:1.1em;
 				}
 				
 				.blog-post.content-container .content-body {
