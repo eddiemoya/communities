@@ -1,4 +1,4 @@
-
+<?php the_post(); ?>
 <?php get_template_part('parts/header', 'widget') ;?>
     <?php $c = get_the_category(); ?>
     <?php if (is_widget()->show_category || is_widget()->show_date) : ?>
@@ -22,20 +22,21 @@
 
     <?php if (is_widget()->show_thumbnail) : ?>
         <div class="category-image">
-            <img src="<?php echo get_category_image_url($c[0]->term_id, true, true); ?>" />
+
+            <img src="<?php (function_exists('get_category_image_url')) ? get_category_image_url((int)$c[0]->term_id) : ''; ?>" />
         </div>
     <?php endif; ?>
 
     <h6 class="content-headline">
-        <a href="<?php the_permalink(); ?>">
-            Q:
+        Q:<a href="<?php the_permalink(); ?>">
+            
             <?php the_title(); ?>
         </a>
     </h6>
 
 
     <ul class="content-comments">
-        <li><?php comments_number(); ?></li>
+        <li><?php custom_comment_count('answer'); ?> answers</li>
     </ul>
 
 <?php get_template_part('parts/footer', 'widget') ;?>

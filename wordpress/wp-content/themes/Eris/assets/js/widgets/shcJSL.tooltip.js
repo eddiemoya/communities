@@ -202,7 +202,7 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         var leftPosition = 0;
         var topPosition = 0;
 
-        var data = jQuery('#' + _this.options.displayData).clone().removeClass('hidden');
+        var data = jQuery('#' + _this.options.displayData).clone().removeClass('hide');
 
         jQuery(_this.tooltip.element).children('.middle').html(data);
 

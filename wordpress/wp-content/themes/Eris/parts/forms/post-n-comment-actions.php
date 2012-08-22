@@ -6,8 +6,11 @@
 
     $acts = array('upvote', 'downvote', 'follow');
 
+    $acts['follow']['myaction'] = 'follow';
+
     if(isset($actions) && !empty($actions)) {
         foreach($actions as $action) {
+
             switch($action->action) {
                 case 'upvote':
                     $acts['upvote']['action'] = $action;
@@ -38,7 +41,7 @@
 
                                 break;
                             case 'follow':
-                                $acts['follow']['myaction'] = ' active';
+                                $acts['follow']['myaction'] = 'followed';
 
                                 break;
                             default:
@@ -62,7 +65,7 @@
             $buttons[] = '<div class="reply"><a href="#">Reply</a></div>';
         }
         if ( in_array( "follow", $options ) ) {
-            $buttons[] = '<button type="button" shc:gizmo="actions" name="button1" value="follow" title="Follow this ' . $type . '" id="follow-question-' . $id . '" class="follow'.$myActionFollow.'" shc:gizmo="actions" shc:gizmo:options="{actions:{post:{id:'.$id.',name:\'follow\',sub_type:\''.$sub_type.'\',type:\''.$type.'\'}}}">follow</button>';
+            $buttons[] = '<button type="button" shc:gizmo="actions" name="button1" value="follow" title="Follow this ' . $type . '" id="follow-question-' . $id . '" class="follow" shc:gizmo="actions" shc:gizmo:options="{actions:{post:{id:'.$id.',name:\'follow\',sub_type:\''.$sub_type.'\',type:\''.$type.'\'}}}">'.$acts['follow']['myaction'].'</button>';
         }
         if ( in_array( "share", $options ) ) {
             $buttons[] = return_partial( 'parts/share', array( "url" => $url ) );

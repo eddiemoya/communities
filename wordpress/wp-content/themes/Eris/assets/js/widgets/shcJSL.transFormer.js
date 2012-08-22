@@ -24,6 +24,7 @@ shcJSL.methods.transFormer = function(target, options) {
 	var form;	// The form HTMLObject
 	var figs; // Configurations for the current form
 	var submitEval = []; // Functions to run for testing the form submitting
+	var transformers = []; // (Array) Array of all the forms that are being monitored by transFormer
 	
 	form = target;
 	
@@ -36,6 +37,8 @@ shcJSL.methods.transFormer = function(target, options) {
 			return false;
 		}
 	}
+	
+	
 	
 	figs = ($(form).attr("shc:gizmo:options") != undefined)? (((eval('(' + $(form).attr("shc:gizmo:options") + ')')).form)?(eval('(' + $(form).attr("shc:gizmo:options") + ')')).form:{}):{};
 	
