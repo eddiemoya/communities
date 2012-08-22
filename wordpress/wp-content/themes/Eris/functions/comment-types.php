@@ -105,17 +105,20 @@ function set_flags_comment_type($is_flag, $comment_type, $comment_data, $parent)
 
 function organizeByChildren($comments) {
     if(isset($comments) && !empty($comments)) {
-        $children = array();
 
-        foreach($comments as $comment) {
+        foreach($comments as $key=>$comment) {
             if(isset($comment->comment_parent) && $comment->comment_parent != '0' && $comment->comment_parent != '') {
-                $children[$comment->comment_parent] = $comment;
+                $children[$comment->comment_parent][] = $comment;
+
+                unset($comments[$key]);
             }
         }
 
         foreach($comments as $comment) {
             if(array_key_exists($comment->comment_ID, $children)) {
-                $comment->children[] = $children[$comment->comment_ID];
+                foreach($children[$comment->comment_ID] as $child) {
+                    $comment->children[] = $child;
+                }
             }
         }
     }
