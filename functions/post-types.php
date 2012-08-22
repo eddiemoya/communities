@@ -118,8 +118,8 @@ function custom_excerpt_length($excerpt) {
         return $excerpt;
     }
 
-    if(strlen($post->post_content) > $excerptLength) {
-        $words = explode(' ', $post->post_content);
+    if(strlen(trim(strip_tags($post->post_content))) > $excerptLength) {
+        $words = explode(' ', trim(strip_tags($post->post_content)));
 
         $curTotal = 0;
         $i = 0;
@@ -128,7 +128,8 @@ function custom_excerpt_length($excerpt) {
         do {
             $newExcerpt .= $words[$i].' ';
 
-            $curTotal += strlen($words[$i]);
+            // Don't forget to count the space as a necessary character, as well!
+            $curTotal += strlen($words[$i]) + 1;
             $i++;
 
         } while($curTotal <= $excerptLength);
@@ -138,7 +139,7 @@ function custom_excerpt_length($excerpt) {
 
 	return $newExcerpt;
 }
-//add_filter( 'get_the_excerpt', 'custom_excerpt_length', 9);
+add_filter( 'get_the_excerpt', 'custom_excerpt_length', 9);
 
 // add_action( 'registered_post_type', 'redefine_posts' );
 // function redefine_posts() {
