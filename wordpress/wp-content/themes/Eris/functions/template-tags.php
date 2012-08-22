@@ -271,15 +271,18 @@ function get_category_image($category_id = null, $echo = false, $args = array())
          )
     );
     
+
     $image = get_posts(array_merge($img_args, $args));
     
-    if(isset($image[0])){
-        $image = $image[0];
-    
-    if ($echo ) { echo $image; }
 
-    else { return $image; }
-    } else return false;
+    if(isset($image[0])) {
+        $image = $image[0];
+        
+        if ($echo ) 
+            { echo $image; }
+        else 
+            { return $image; }
+    }
 }
 
 

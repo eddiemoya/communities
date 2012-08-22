@@ -1,4 +1,4 @@
-<header class="content-header result-list">
+<header class="content-header">
 	<form method="post" action="">
 		<label for="sort-results">Sort By</label>
 			<?php 
@@ -33,16 +33,18 @@
 				'name' => 'filter-category',
 				'id' => 'sort-results'
 			));
-			wp_dropdown_categories(array(
-				'depth'=> 1,
-				'selected' => $subcategory,
-				'child_of' => $category,
-				'hierarchical' => true,
-				'hide_if_empty' => true,
-				'class' => '',
-				'name' => 'filter-sub-category',
-				'id' => 'sub-category'
-			));
+			if(!empty($subcategory)){
+				wp_dropdown_categories(array(
+					'depth'=> 1,
+					'selected' => $subcategory,
+					'child_of' => $category,
+					'hierarchical' => true,
+					'hide_if_empty' => true,
+					'class' => '',
+					'name' => 'filter-sub-category',
+					'id' => 'sub-category'
+				));
+			}
 			?>
 		<input type="hidden" value="results-list" name="widget" />
 		<input type="submit" value="Submit" name="submit" />
