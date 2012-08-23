@@ -152,16 +152,22 @@ shcJSL.cookies = function(cookie) {
 			document.cookie = cookie + "=" + ((settings.value)? settings.value:'undefined') + ((settings.expiration)? ("; expires=" + getTimes(settings.expiration)):"") + "; path=" + ((settings.path)? settings.path:"/");
 		},
 		serve: function(cookie) {
+			var cookie = cookie;
+			
 			if (cookie) {
 				cookie = cookie + "=";
 			}
 			$Cookies = document.cookie.split(';');
+			var value;
 			for (var i=0;i < $Cookies.length;i++) {
 				$cookie = $Cookies[i];
 				while ($cookie.charAt(0) == ' ') $cookie = $cookie.substring(1, $cookie.length);
-				if ($cookie.indexOf(cookie) == 0) return $cookie.substring(cookie.length, $cookie.length);
+
+				if ($cookie.indexOf(cookie) == 0) {
+					value = $cookie.substr(cookie.length);
+				}
 			}
-			return null;
+			return value;
 		},
 		eat: function(cookie) {
 			bakery.bake.call({expiration:'-1m'}, cookie)
@@ -184,8 +190,7 @@ shcJSL.cookies = function(cookie) {
 	for (var action in bakery)(
 		function(n,m) {
 			cookies[n] = function(x) {
-				cookies.map(m,x);
-				return cookies;
+				return cookies.map(m,x).toString();
 			}
 		}(action, bakery[action])
 	)
@@ -308,7 +313,7 @@ shcJSL.gizmos.activate = function(event, parent, selector) {
 							
 			// Remove the selector code to get attribute
 			(Selector.toString().indexOf("\\") != -1)? attribute = ((Selector.split("\\")[0]) + (Selector.split("\\")[1])).replace(/(\*?\[)|(\])/g, '').toString():attribute = Selector.toString().replace(/(\*?\[)|(\])/g, '').toString();
-			try {
+			//try {
 				// If the the widget has 'shc:name' attribute, assign the
 				// JavaScript object [shc:widget] to the global variable
 				// that is [shc:name]
@@ -316,7 +321,7 @@ shcJSL.gizmos.activate = function(event, parent, selector) {
 				// If it can not create the object, error out gracefully
 				// and log the error, the widget that failed and the
 				// error message
-			} catch(error) {console.log("Failed to instantiate widget " + attribute + "[" + $(this).attr(attribute) + "] - " + error);}
+			//} catch(error) {console.log("Failed to instantiate widget " + attribute + "[" + $(this).attr(attribute) + "] - " + error);}
 		} // END $.each function
 	) // END $.each
 }

@@ -121,7 +121,7 @@ shcJSL.methods.actions = function(_element, options) {
 	 * Assigns the click event for moodle to the element
 	 *
 	 * @access Public
-	 * @author Tim Steele
+	 * @author Sebastian Frohm
 	 * @since 1.0
 	 */
 if (shcJSL && shcJSL.gizmos)  {
