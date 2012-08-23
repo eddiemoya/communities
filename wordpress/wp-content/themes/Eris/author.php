@@ -126,7 +126,7 @@ if(isset($_GET['post-type'])) {
 			$activities = $user_activities->page($page)
 											->get_actions($type)
 											->activities;
-			
+											
 			include('parts/profile-recent.php');
 		}
 		
