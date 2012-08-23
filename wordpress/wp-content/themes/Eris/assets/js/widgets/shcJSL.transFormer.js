@@ -48,16 +48,22 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 
 		if ($(target).attr("shc:gizmo:form") != undefined) {
 			options = eval('(' + $(target).attr("shc:gizmo:form") + ')');
+			
 			if (options.required && options.required == true) required[required.length] = target;
+			
 			if (options.pattern) {
-				var pattern = new RegExp();
+				var pattern = new RegExp(options.pattern);
+				console.log(pattern);
+				console.log(target.value);
+				console.log(target.value.toString());
 				$(target).bind('blur', function() {
 					if (target.value != '') {
 						if (pattern.test(target.value.toString())) error.destroy();
 						else error.create();
 					}
 				});
-			}
+			} // END pattern
+			
 		}
 	}
 	
