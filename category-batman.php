@@ -1,5 +1,6 @@
 <?php
 /**
+ * Template Name: batman
  * @package WordPress
  * @subpackage White Label
  */
@@ -49,10 +50,19 @@ loop();
 					padding:0px;
 				}
 				
+				.sears .blog-post h1 {
+					color:#067BB5;
+				}
+				
+				.kmart .blog-post h1 {
+					color:#980017;
+				}
+				
 				.blog-post h1 {
 					font-size:1.25em;
 					font-weight:bold;
 					line-height:1.1em;
+					margin:.75em 0;
 				}
 				
 				.blog-post.content-container .content-body {
@@ -60,7 +70,7 @@ loop();
 				}
 				
 					.blog-post.content-container .content-body p {
-						font-size:1em;
+						margin-bottom:1.5em;
 					}
 				
 				

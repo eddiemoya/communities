@@ -1,4 +1,4 @@
-author-tax-question.php<?php get_template_part('parts/header'); ?>
+<?php get_template_part('parts/header'); ?>
 
 <?php 
 	$data = process_front_end_question();
