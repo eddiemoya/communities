@@ -833,6 +833,12 @@ ul.bullets {
     border: 0; }
 .featured-members .member .stats {
   float: right; }
+  .featured-members .member .stats li {
+    font-size: 12px; }
+  .featured-members .member .stats p {
+    margin-bottom: .3em; }
+.featured-members .member .info ul {
+  margin: .3em 0; }
 
 .span3 .member, .span4 .member, .span6 .member {
   margin-top: 1em; }
@@ -1112,6 +1118,7 @@ fieldset#use_your_account_from {
   background-image: -webkit-linear-gradient(#ffffff, #f4f4f4);
   background-image: -moz-linear-gradient(#ffffff, #f4f4f4);
   background-image: -o-linear-gradient(#ffffff, #f4f4f4);
+  background-image: -ms-linear-gradient(#ffffff, #f4f4f4);
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;
