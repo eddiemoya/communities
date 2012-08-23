@@ -96,7 +96,7 @@
                                 echo 'not active';
                             }
                         ?>
-                        <form action="http://localhost:4000/wp-comments-post.php" method="post" id="commentform" style="display: block; ">
+                        <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" method="post" id="commentform" style="display: block; ">
                             <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
                             <p class="form-submit">
                                 <input type="submit" id="submit" class="kmart_button" value="Post">
