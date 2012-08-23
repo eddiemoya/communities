@@ -37,9 +37,5 @@ function formdata_cookie_check() {
 	}
 }
 
-function detect_question_submit_step_3() {
-	
-	
-}
 
 add_action('init', 'formdata_cookie_check');

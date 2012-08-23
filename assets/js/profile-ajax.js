@@ -9,7 +9,7 @@ more = function(event) {
 	
 	jQuery.ajax({
 		type:"POST",
-		url: "/wp-admin/admin-ajax.php",
+		url: ajaxdata.ajaxurl,
 		data: action,
 		success:function(html){
 			//Remove current next-page element
