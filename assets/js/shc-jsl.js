@@ -152,16 +152,22 @@ shcJSL.cookies = function(cookie) {
 			document.cookie = cookie + "=" + ((settings.value)? settings.value:'undefined') + ((settings.expiration)? ("; expires=" + getTimes(settings.expiration)):"") + "; path=" + ((settings.path)? settings.path:"/");
 		},
 		serve: function(cookie) {
+			var cookie = cookie;
+			
 			if (cookie) {
 				cookie = cookie + "=";
 			}
 			$Cookies = document.cookie.split(';');
+			var value;
 			for (var i=0;i < $Cookies.length;i++) {
 				$cookie = $Cookies[i];
 				while ($cookie.charAt(0) == ' ') $cookie = $cookie.substring(1, $cookie.length);
-				if ($cookie.indexOf(cookie) == 0) return $cookie.substring(cookie.length, $cookie.length);
+
+				if ($cookie.indexOf(cookie) == 0) {
+					value = $cookie.substr(cookie.length);
+				}
 			}
-			return null;
+			return value;
 		},
 		eat: function(cookie) {
 			bakery.bake.call({expiration:'-1m'}, cookie)
@@ -184,8 +190,7 @@ shcJSL.cookies = function(cookie) {
 	for (var action in bakery)(
 		function(n,m) {
 			cookies[n] = function(x) {
-				cookies.map(m,x);
-				return cookies;
+				return cookies.map(m,x).toString();
 			}
 		}(action, bakery[action])
 	)
