@@ -3,7 +3,7 @@
 	url = git@github.com:eddiemoya/WP-Dropzones.git
 [submodule "meet-team"]
 	path = wordpress/wp-content/plugins/meet-team
-	url = git@github.com:harryoh87/meet-team-widget.git
+	url = git@github.com/eddiemoya/meet-team-widget
 [submodule "cct"]
 	path = wordpress/wp-content/plugins/comment-types
 	url = git@github.com:eddiemoya/Custom-Comment-Types.git

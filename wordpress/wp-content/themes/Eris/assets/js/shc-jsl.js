@@ -161,7 +161,7 @@ shcJSL.cookies = function(cookie) {
 				while ($cookie.charAt(0) == ' ') $cookie = $cookie.substring(1, $cookie.length);
 				if ($cookie.indexOf(cookie) == 0) return $cookie.substring(cookie.length, $cookie.length);
 			}
-			return null;
+			return 'no cookie';
 		},
 		eat: function(cookie) {
 			bakery.bake.call({expiration:'-1m'}, cookie)
