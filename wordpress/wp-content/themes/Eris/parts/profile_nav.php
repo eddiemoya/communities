@@ -1,10 +1,9 @@
 <?php
 
-  
-  $a_tabs = array(
-    "Community Activity" => $url_no_qs . '?post-type=recent',
-    "About Me" => $url_no_qs . '?post-type=aboutme',
-  );
+    $a_tabs = array(
+        "Community Activity" => $url_no_qs . '?post-type=recent',
+        "About Me" => $url_no_qs . '?post-type=aboutme'
+    );
   
     $a_navigation = array(
         "recent" => array(
@@ -50,17 +49,30 @@
 ?>
 
 <?php
+    # if a user is looking at another's profile, show the crest
     if( $profile_type != 'myprofile' && $_REQUEST['post-type'] != 'aboutme' ):
 ?>
 <div class="profile-summary clearfix">
-<?
-    get_partial( 'parts/crest', array( "user_id" => wp_get_current_user()->ID, "titling" => true, "show_name" => false, "width" => 'span2' ) );
+<?php
+    $crest_options = array(
+        "user_id"   => $profile_user->ID, 
+        "show_name" => false, 
+        "width"     => 'span2'
+    );
+    if ( $profile_user->roles[0] == 'communityexpert' ) {
+        $crest_options["titling"] = true;
+    }
+    
+    get_partial( 'parts/crest', $crest_options );
 ?>
-    <div class="span10 info"><h2><?php echo wp_get_current_user()->user_nicename; ?></h2></div>
+    <div class="span10 info"><h2><?php get_screenname( $profile_user->ID ); ?></h2></div>
 </div>
 <?php endif; ?>
 
-<?php if( $profile_type == 'myprofile' ): ?>
+<?php
+    # if a user is looking at themselves, show the tabs
+    if( $profile_type == 'myprofile' ):
+?>
 <nav class="clearfix">
   <ul class="tabs clearfix">
     <?php
@@ -77,7 +89,10 @@
 </nav>
 <?php endif; ?>
 
-<?php if( $_REQUEST['post-type'] != 'aboutme' && !empty( $available_tabs ) ): ?>
+<?php
+    # show the sub tab bar only if a user is not on the About Me page and if they actually have any activity
+    if( $_REQUEST['post-type'] != 'aboutme' && !empty( $available_tabs ) ): 
+?>
 <nav class="bar clearfix">
   <ul class="clearfix">
     <?php
@@ -105,7 +120,10 @@
 </nav>
 <?php endif; ?>
 
-<?php if( $_REQUEST['post-type'] != 'aboutme' && empty( $available_tabs ) ): ?>
+<?php
+    # catch the circumstance where the user has not yet done anything on the site.
+    if( $_REQUEST['post-type'] != 'aboutme' && empty( $available_tabs ) ):
+?>
     <section class="no-activity">
         Get out there and show us what you're all about!
     </section>

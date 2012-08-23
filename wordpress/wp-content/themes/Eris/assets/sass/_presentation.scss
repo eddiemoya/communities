@@ -148,13 +148,13 @@ ul.bullets {
 
 // Handles the display of user's images, names, titles and addresses (their crest)
 .crest {
+  word-wrap: break-word;
   img {
     display: block;
     margin: 0 auto;
   }
   h4 {
     padding: .5em 0;
-    word-wrap: break-word;
     letter-spacing:-.05em;
   }
   h4, address {
@@ -396,25 +396,51 @@ form {}
 }
 
 // FEATURED COMMUNITY MEMBERS
-.featured-members {
-  .span4 {
-    .member {
-      border-right: 1px solid sears( decorative );
-      @include col_layout( ( 100, 90 ), 10 );
-      .content-comments {
-        width: 100%;
-        li {
-          float: none;
-          border: 0;
-        }
-      }
+.featured-members .member {
+  .content-comments {
+    width: 100%;
+    li {
+      float: none;
+      border: 0;
     }
-    & + .span4 + .span4 .member {
-      border-right: 0;
+  }
+  .stats {
+    float: right;
+  }
+}
+
+.span3, .span4, .span6 {
+  .member {
+    @include col_layout( ( 50, 100 ), 10 );
+    margin-top: 1em;
+    &:first-child {
+      margin-top: 0;
     }
   }
 }
 
+.span8, .span9, .span12 {
+  .featured-members .content-body {
+    & > * {
+      width: 29.9%;
+      float: left;
+      padding: 0 1.6%;
+    }
+    .member {
+      border-left: 1px solid sears( decorative );
+      &:first-child {
+        border-left: 0;
+      }
+      @include col_layout( ( 50, 50 ), 5 );
+    }
+    @include legacy-pie-clearfix;
+    .stats {
+      float: none;
+      clear: left;
+      width: 100%;
+    }
+  }
+}
 // Alternate selector for below class. Use if override for more scenarios is required.
 // Also, more like these would have to be created on a per-widget basis if development is asked to create more override states.
 //.span3 .featured-members, .span4 .featured-members, .span6 .featured-members,
@@ -740,6 +766,10 @@ $tab-padding: "1em 0 .6em 0";
   .profile-summary {
     margin-bottom: 1em;
   }
+  .edit-profile-link {
+    display: block;
+    margin-top: 3em;
+  }
   .answers-toggle {
     display: block;
     margin-left: 2em;
@@ -794,6 +824,11 @@ $tab-padding: "1em 0 .6em 0";
       display: inline-block;
       cursor: pointer;
       margin: .5em;
+    }
+    input[type="file"] {
+      width: 100%;
+      font-size: 12px;
+      text-align: right;
     }
   }
   .no-activity {
