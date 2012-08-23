@@ -1,5 +1,7 @@
 <?php
 
+define(EXPERT_ROLE, 'expert');
+
 //User_Profile class
 require_once 'classes/communities_profile.php';
 
@@ -27,7 +29,7 @@ if(is_user_logged_in() && ($profile_user->data->ID == $current_user->data->ID)){
 } else {
 	
 	//Viewing someone else's profile
-	$profile_type = (in_array('communityexpert', $profile_user->roles)) ? 'expert' : 'member';
+	$profile_type = (in_array(EXPERT_ROLE, $profile_user->roles)) ? 'expert' : 'member';
 	
 }
 
@@ -126,7 +128,7 @@ if(isset($_GET['post-type'])) {
 			$activities = $user_activities->page($page)
 											->get_actions($type)
 											->activities;
-			
+											
 			include('parts/profile-recent.php');
 		}
 		
