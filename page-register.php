@@ -26,13 +26,13 @@ get_template_part('parts/header'); ?>
 					<div><?php echo $error;?></div>
 				<?php endif;?>
 				
-				<form class="form_register" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>" shc:gizmo="transFormer">
+				<form class="form_register" id="register-form" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>" shc:gizmo="transFormer">
             <ul class="form-fields">
                 
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="loginId">Email:</label></dt>
-                        <dd class="span9"><input type="text" name="loginId" class="input_text" id="loginId" shc:gizmo:form="{required:true}" /></dd>
+                        <dd class="span9"><input type="text" name="loginId" class="input_text" id="loginId" shc:gizmo:form="{required:true, pattern: '^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$'}" /></dd>
                         
                     </dl>
                     							
@@ -57,7 +57,7 @@ get_template_part('parts/header'); ?>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="zipcode">ZIP Code:</label></dt>
-                        <dd class="span9"><input type="text" name="zipcode" class="input_text input_password" id="zipcode" shc:gizmo:form="{required:true, validate: '(^\d{5})(-\d{4})?$'}" /></dd>
+                        <dd class="span9"><input type="text" name="zipcode" class="input_text input_password" id="zipcode" shc:gizmo:form="{required:true, pattern: '(^\d{5})(-\d{4})?$'}" /></dd>
                     </dl>
                 </li>
                 
