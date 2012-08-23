@@ -16,7 +16,6 @@ $alinks = array(
     'post' => 'Blog Posts',
     'guide' => 'Buying Guides'
     );
-
 ?>
 
 <nav id="navigation">
@@ -29,7 +28,7 @@ $alinks = array(
         <li>
             <a href="<?php echo site_url(); ?>"><span>Categories</span></a>
             <ul>
-                <?php wp_list_categories(array('parent' => 0, 'hide_empty' => true, 'depth' => 1, 'title_li'=>'')); ?>
+                <?php wp_list_categories(array('parent' => 0, 'hide_empty' => true, 'depth' => 1, 'title_li'=>'', 'exclude' => 1)); ?>
             </ul>
         </li>
 
@@ -38,7 +37,7 @@ $alinks = array(
             <a href="<?php echo $alinks[$post_type]; ?>"><?php echo $label; ?></a>
             <ul>
                 <?php foreach($terms[$post_type] as $term) : ?>
-                    <?php if($term->parent == 0) :?>
+                    <?php if($term->parent == 0 && $term->term_id != 1) :?>
                     <li>
                         <a href="<?php echo esc_url( get_category_link($term->term_id) ); ?>?post_type=<?php echo $post_type; ?>">
                             <?php echo $term->name; ?>
