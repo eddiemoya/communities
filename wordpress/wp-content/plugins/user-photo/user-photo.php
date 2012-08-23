@@ -682,7 +682,7 @@ function userphoto_display_selector_fieldset_frontend() {
     <?php endif; ?>
     
 
-    <label for="userphoto_image_file"><?php echo _e("Upload an avatar", 'user-photo') ?></label>
+    <label for="userphoto_image_file"><?php echo _e("Change this picture", 'user-photo') ?></label>
     <input type="file" name="userphoto_image_file" id="userphoto_image_file" />
 
     <?php
