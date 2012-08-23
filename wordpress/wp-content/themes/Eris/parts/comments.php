@@ -57,8 +57,8 @@
                 <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
                 <p class="form-submit">
                     <input type="submit" id="submit" class="kmart_button" value="Post">
-                    <input type="submit" shc:gizmo="tooltip" class="kmart_button azure" value="Cancel">
-                    <input type="hidden" name="comment_post_ID" value="332" id="comment_post_ID">
+                    <input type="reset" shc:gizmo="tooltip" class="kmart_button azure" value="Cancel">
+                    <input type="hidden" name="comment_post_ID" value="<?php echo $comment->comment_post_ID; ?>" id="comment_post_ID">
                     <input type="hidden" name="comment_parent" id="comment_parent" value="<?php echo $comment->comment_ID; ?>">
                 </p>
                 <input type="hidden" name="comment_type" value="<?php echo $comment_type; ?>">
@@ -97,11 +97,11 @@
                             }
                         ?>
                         <form action="http://localhost:4000/wp-comments-post.php" method="post" id="commentform" style="display: block; ">
-                            <textarea id="comment" name="comment" cols="45" rows="8" shc:gizmo="tooltip" shc:gizmo:options="{tooltip:{events:['click'],displayData:'shower'}}" aria-required="true"></textarea>
+                            <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
                             <p class="form-submit">
                                 <input type="submit" id="submit" class="kmart_button" value="Post">
-                                <input type="submit" shc:gizmo="tooltip" shc:gizmo:options="{tooltip:{events:['click'],displayData:'shower2'}}" class="kmart_button azure" value="Cancel">
-                                <input type="hidden" name="comment_post_ID" value="332" id="comment_post_ID">
+                                <input type="reset" class="kmart_button azure" value="Cancel">
+                                <input type="hidden" name="comment_post_ID" value="<?php echo $comment->comment_post_ID; ?>" id="comment_post_ID">
                                 <input type="hidden" name="comment_parent" id="comment_parent" value="<?php echo $comment->comment_ID; ?>">
                             </p>
                             <input type="hidden" name="comment_type" value="<?php echo $comment_type; ?>">
