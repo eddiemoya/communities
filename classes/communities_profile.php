@@ -7,7 +7,7 @@
  */
 class User_Profile {
 	
-	const EXPERT_ROLE = 'communityexpert';
+	const EXPERT_ROLE = 'expert';
 	/**
 	 * User's wordpress user_id
 	 * @var int

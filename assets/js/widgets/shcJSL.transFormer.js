@@ -16,24 +16,64 @@
  */
 TRANSfORMER = {}
 TRANSfORMER.transFormer = $TransFormer = function(form) {
+	var bindMethods;	// (Function) Bind the validation methods to the fields
 	var error; // (Function) generate the error message
-	var transformer; // The form object
 	var fields = [];	// (Array) Array of all the form fields
+	var required = [];	// (Array) Array of required fields
 	var self = this;
+	var methods = {};	// Field validation methods;
+	var transformer; // The form object
 	this.verify;	// (Function) Verify that the form is valid for submission
 	var valid;	// (Boolean) Whether the form is currently valid for submission or not
 	
 	transformer = form;
 	
+	methods = {
+		pattern: function(a, b) {
+			
+		}
+	}
 	
+	error = {
+		create: function() {
+			alert("ERROR");
+		},
+		destroy: function() {
+			alert("OKAY");
+		}
+	}
 	
-	// fields = fields.concat(
-		// [].slice.call(document.getElementsByTagName("input")),
-		// [].slice.call(document.getElementsByTagName("select")),
-		// [].slice.call(document.getElementsByTagName("textarea"))
-	// );
+	bindMethods = function(target) {
+		var options;	// Form options from shc:gizmo:form
+
+		if ($(target).attr("shc:gizmo:form") != undefined) {
+			options = eval('(' + $(target).attr("shc:gizmo:form") + ')');
+			
+			if (options.required && options.required == true) required[required.length] = target;
+			
+			if (options.pattern) {
+				var pattern = new RegExp(options.pattern);
+				console.log(pattern);
+				console.log(target.value);
+				console.log(target.value.toString());
+				$(target).bind('blur', function() {
+					if (target.value != '') {
+						if (pattern.test(target.value.toString())) error.destroy();
+						else error.create();
+					}
+				});
+			} // END pattern
+			
+		}
+	}
 	
-	fields = transformer.elements;
+	fields = fields.concat([].slice.call(transformer.elements));
+	fields.map(bindMethods);
+
+	
+	this.verify = function() {
+		return false;
+	}
 	
 	//console.log(fields);
 }
@@ -42,10 +82,12 @@ shcJSL.methods.transFormer = function(target, options) {
 	var checkForLogin; // (Function) Check to see if the user is logged in
 	var form;	// The form HTMLObject
 	var figs; // Configurations for the current form
-	var submitEval = []; // Functions to run for testing the form submitting
+	var submitEval = {}; // Functions to run for testing the form submitting
 	var transformers = []; // (Array) Array of all the forms that are being monitored by transFormer
 	
 	form = target;
+	
+	submitEval[form.id] = [];
 	
 	// PRIVATE TEST METHODS
 	checkForLogin = function() {
@@ -57,26 +99,26 @@ shcJSL.methods.transFormer = function(target, options) {
 		}
 	}
 	
-	//transformers[form.id] = new $TransFormer(form);
+	transformers[form.id] = new $TransFormer(form);
+	submitEval[form.id][submitEval[form.id].length] = transformers[form.id].verify;
 		
 	figs = ($(form).attr("shc:gizmo:options") != undefined)? (((eval('(' + $(form).attr("shc:gizmo:options") + ')')).form)?(eval('(' + $(form).attr("shc:gizmo:options") + ')')).form:{}):{};
 	
 	if (figs.requireLogIn === true) {
-		submitEval[submitEval.length] = checkForLogin;
+		submitEval[form.id][submitEval[form.id].length] = checkForLogin;
 	}
-	
+		
 	$(target).bind('submit',function(event) {
 		var success; // Whether success passes the check
-		if (submitEval.length > 0) {
-			(function() {
-				var i = 0;
-				do {
-					success = submitEval[i]();
-					i++;
-				} while (success != false || i < submitEval.length)
-			})()
+		if (submitEval[this.id].length > 0) {
+			var i = 0;
+			do {
+				success = submitEval[this.id][i]();
+				i++;
+			} while (success != false || i < submitEval.length)
 		}
 		if (success === false) event.preventDefault();
+		else event.preventDefault();
 	})
 	
 	//($Moodle instanceof MOODLE.modal)? $Moodle[method](target, this):($Moodle = new $Moodle())[method](target,this)
