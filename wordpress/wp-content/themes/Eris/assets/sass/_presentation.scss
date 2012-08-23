@@ -395,6 +395,7 @@ form {}
   }
 }
 
+
 // FEATURED COMMUNITY MEMBERS
 .featured-members .member {
   .content-comments {
@@ -406,6 +407,15 @@ form {}
   }
   .stats {
     float: right;
+    li {
+      font-size: 12px;
+    }
+    p {
+      margin-bottom: .3em;
+    }
+  }
+  .info ul {
+    margin: .3em 0;
   }
 }
 
