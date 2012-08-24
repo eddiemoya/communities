@@ -2,8 +2,9 @@
     /**
     * @author Tim Steele
     */
-    $current_user = wp_get_current_user();
-
+	
+	 
+  	$current_user = wp_get_current_user();
     $qualtricsUrl = theme_option('brand') == 'sears' ? 'http://searshc.us2.qualtrics.com/SE/?SID=SV_3QzHxmNKUzYTjNy' : 'http://searshc.us2.qualtrics.com/SE/?SID=SV_9X1h8K6RVZUV7x2';
 ?>
 <header id="header" class="<?php echo theme_option("brand"); ?> clearfix">
@@ -37,7 +38,8 @@
     					<!-- <li><a href="<?php //echo wp_logout_url( get_permalink() ); ?>" title="Logout" class="bold">Logout</a></li> -->
 				    <?php else: ?>
     					<li><a href="<?php //echo site_url('login'); ?>login/" title="Login" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">Login</a></li>
-							<li><a href="<?php //echo site_url('register'); ?>register/" title="Sign Up: Join the Community" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-register'}}}">Join the community</a></li>
+    					<!-- <li><a href="<?php //echo site_url('login'); ?>login/" title="Login" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480}}">Login</a></li> -->
+						<li><a href="<?php //echo site_url('register'); ?>register/" title="Sign Up: Join the Community" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-register'}}}">Join the community</a></li>
 					<?php endif; ?>
 				</ul>
 			</li>
