@@ -350,7 +350,7 @@ shcJSL.gizmos.persistr = function(element) {
 		
 		yScroll = $(this).scrollTop();
 		
-		if (yScroll >= offsetTop) {
+		if (yScroll > offsetTop) {
 			$(element).addClass("persist");
 			$("#container").css("padding-top",$(element).outerHeight())
 		} else {
