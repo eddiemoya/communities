@@ -26,7 +26,7 @@ get_template_part('parts/header'); ?>
 					<div><?php echo $error;?></div>
 				<?php endif;?>
 				
-				<form class="form_register" id="register-form" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>" shc:gizmo="transFormer">
+				<form class="form_register" id="register-form" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>">
             <ul class="form-fields">
                 
                 <li>
