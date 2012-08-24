@@ -123,6 +123,8 @@ function userphoto__get_userphoto($user_id, $photoSize, $before, $after, $attrib
 	if($user_id && ($userdata = get_userdata($user_id))){
 	    
 	    $cache_buster = get_user_meta($user_id, "userphoto_cachebuster", true);
+	    $img_domain = get_user_meta($user_id, "userphoto_domain", true);
+	    
 		if($image_file = ($photoSize == USERPHOTO_FULL_SIZE ? $userdata->userphoto_image_file : $userdata->userphoto_thumb_file))
 		{
 			$width = $photoSize == USERPHOTO_FULL_SIZE ? $userdata->userphoto_image_width : $userdata->userphoto_thumb_width;
@@ -131,7 +133,7 @@ function userphoto__get_userphoto($user_id, $photoSize, $before, $after, $attrib
 			$upload_dir = wp_upload_dir();
 			if(!empty($upload_dir['error']))
 				return "Error: " . $upload_dir['error'];
-			$src = trailingslashit($upload_dir['baseurl']) . 'userphoto/' . $image_file;
+			$src = trailingslashit(get_site_url() . $img_domain) . $image_file;
 		}
 		else if($default_src){
 			$src = $default_src;
@@ -475,6 +477,9 @@ function userphoto_profile_update($userID){
 						update_usermeta($userID, "userphoto_thumb_width", $thumbinfo[0]);
 						update_usermeta($userID, "userphoto_thumb_height", $thumbinfo[1]);
 						update_usermeta($userID, "userphoto_cachebuster", time());
+						$location = explode("/wp-content/", $dir);
+						$location = "/wp-content/" . $location[1];
+						update_usermeta($userID, "userphoto_domain", $location);
 						
 						//Delete old thumbnail if it has a different filename (extension)
 						if($oldimagefile != $imagefile)
@@ -906,21 +911,21 @@ function userphoto_resize_image($filename, $newFilename, $maxdimension, &$error)
 		}
 
 		$imageresized = imagecreatetruecolor( $image_new_width, $image_new_height);
-		@ imagecopyresampled( $imageresized, $image, 0, 0, 0, 0, $image_new_width, $image_new_height, $info[0], $info[1] );
+		@imagecopyresampled( $imageresized, $image, 0, 0, 0, 0, $image_new_width, $image_new_height, $info[0], $info[1] );
 
 		// move the thumbnail to its final destination
 		if ( $info[2] == IMAGETYPE_GIF ) {
-			if (!imagegif( $imageresized, $newFilename ) ) {
+			if (!@imagegif( $imageresized, $newFilename ) ) {
 				$error = __( "Thumbnail path invalid" );
 			}
 		}
 		elseif ( $info[2] == IMAGETYPE_JPEG ) {
-			if (!imagejpeg( $imageresized, $newFilename, $userphoto_jpeg_compression ) ) {
+			if (!@imagejpeg( $imageresized, $newFilename, $userphoto_jpeg_compression ) ) {
 				$error = __( "Thumbnail path invalid" );
 			}
 		}
 		elseif ( $info[2] == IMAGETYPE_PNG ) {
-			if (!imagepng( $imageresized, $newFilename ) ) {
+			if (!@imagepng( $imageresized, $newFilename ) ) {
 				$error = __( "Thumbnail path invalid" );
 			}
 		}
