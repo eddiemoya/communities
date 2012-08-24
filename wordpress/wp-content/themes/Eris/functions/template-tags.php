@@ -106,6 +106,9 @@ function has_screen_name($user_id) {
  */
 function process_front_end_question() {
 	
+	//Neither step has been taken, were on step 1
+ 	 $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '1');
+			
     //If step 1 - return that we should move on to step 2.
     if( wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-1' ) || (isset($_POST['new_question_step_1']))){
 
@@ -117,7 +120,7 @@ function process_front_end_question() {
         											'errors'	=> null);
         	
             
-        } else {
+        } else { 
             /**
              * Kick off login modal SSO login crazyness here 
              */
@@ -242,8 +245,7 @@ function process_front_end_question() {
     
     }
 
-    //Neither step has been taken, were on step 1
-   $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '1');
+    
 }
 
 //Used for post a question widget
