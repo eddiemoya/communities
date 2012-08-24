@@ -585,7 +585,7 @@ ol.bullets {
 ul.bullets {
   list-style-type: disc; }
 
-.bold, .link-emulator, .member .info h4, .member .info address, .badge h4, .badge address, .crest h4, .crest address, .post hgroup, .content-container .content-header, .content-container .content-body .content-details .content-category, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, .sears .post-n-comments h2, .kmart .post-n-comments h2 {
+.bold, .member .info h4, .member .info address, .badge h4, .badge address, .crest h4, .crest address, .post hgroup, .content-container .content-header, .content-container .content-body .content-details .content-category, .profile .answers-toggle, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, .sears .post-n-comments h2, .kmart .post-n-comments h2 {
   font-weight: 700; }
 
 .faint, .member .info h5, .member .info p, .post .content-date, .excerpt, .content-container .content-header, .recent-activity time {
