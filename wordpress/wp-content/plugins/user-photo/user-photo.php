@@ -915,17 +915,17 @@ function userphoto_resize_image($filename, $newFilename, $maxdimension, &$error)
 
 		// move the thumbnail to its final destination
 		if ( $info[2] == IMAGETYPE_GIF ) {
-			if (!imagegif( $imageresized, $newFilename ) ) {
+			if (!@imagegif( $imageresized, $newFilename ) ) {
 				$error = __( "Thumbnail path invalid" );
 			}
 		}
 		elseif ( $info[2] == IMAGETYPE_JPEG ) {
-			if (!imagejpeg( $imageresized, $newFilename, $userphoto_jpeg_compression ) ) {
+			if (!@imagejpeg( $imageresized, $newFilename, $userphoto_jpeg_compression ) ) {
 				$error = __( "Thumbnail path invalid" );
 			}
 		}
 		elseif ( $info[2] == IMAGETYPE_PNG ) {
-			if (!imagepng( $imageresized, $newFilename ) ) {
+			if (!@imagepng( $imageresized, $newFilename ) ) {
 				$error = __( "Thumbnail path invalid" );
 			}
 		}
