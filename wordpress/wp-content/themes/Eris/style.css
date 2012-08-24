@@ -525,14 +525,10 @@ ul.footer_anterior {
 
 #persistent-header {
   background-color: #ffffff;
-  top: 0px;
-  position: relative; }
+  z-index: 1000000; }
 
 #persistent-header.persist {
-  position: fixed;
-  z-index: 1000000; }
-  #persistent-header.persist #header.sears form #button_search {
-    height: 2.1em; }
+  position: fixed; }
 
 #content {
   padding: 1em 1.063829787234043%; }
@@ -1118,7 +1114,6 @@ fieldset#use_your_account_from {
   background-image: -webkit-linear-gradient(#ffffff, #f4f4f4);
   background-image: -moz-linear-gradient(#ffffff, #f4f4f4);
   background-image: -o-linear-gradient(#ffffff, #f4f4f4);
-  background-image: -ms-linear-gradient(#ffffff, #f4f4f4);
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;

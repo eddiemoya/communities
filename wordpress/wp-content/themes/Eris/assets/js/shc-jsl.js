@@ -350,10 +350,13 @@ shcJSL.gizmos.persistr = function(element) {
 		
 		yScroll = $(this).scrollTop();
 		
-		if (yScroll > offsetTop) {
+		if ((yScroll > offsetTop) && (yScroll < offsetTop + $(this).height())) {
+			console.log("PERSIST:"); console.log(yScroll); console.log(offsetTop);
 			$(element).addClass("persist");
 			$("#container").css("padding-top",$(element).outerHeight())
 		} else {
+			console.log("UNPERSIST");
+			console.log(yScroll); console.log(offsetTop);
 			$(element).removeClass("persist");
 			$("#container").css("padding-top",0)
 		}
