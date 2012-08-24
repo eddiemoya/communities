@@ -62,7 +62,7 @@
 
     if ( isset( $options ) && ( !empty( $options ) ) ) {
         if ( in_array( "reply", $options ) ) {
-            $buttons[] = '<div class="reply"><a href="#">Reply</a></div>';
+            $buttons[] = '<div class="reply">Reply</div>';
         }
         if ( in_array( "follow", $options ) ) {
             $buttons[] = '<button type="button" shc:gizmo="actions" name="button1" value="follow" title="Follow this ' . $type . '" id="follow-question-' . $id . '" class="follow" shc:gizmo="actions" shc:gizmo:options="{actions:{post:{id:'.$id.',name:\'follow\',sub_type:\''.$sub_type.'\',type:\''.$type.'\'}}}">'.$acts['follow']['myaction'].'</button>';

@@ -37,6 +37,14 @@
             comments_template('/parts/comments.php');
         ?>
     </article>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+             // $(".reply-to-form").hide();
+             // $(".reply").on('click', function () {
+             //                  $(this).next(".reply-to-form").slideToggle("slow");
+             //              });
+         });
+    </script>
 </section>
 <section class="span4">
 <?php

@@ -585,7 +585,7 @@ ol.bullets {
 ul.bullets {
   list-style-type: disc; }
 
-.bold, .member .info h4, .member .info address, .badge h4, .badge address, .crest h4, .crest address, .post hgroup, .content-container .content-header, .content-container .content-body .content-details .content-category, .profile .answers-toggle, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, .sears .post-n-comments h2, .kmart .post-n-comments h2 {
+.bold, .link-emulator, .member .info h4, .member .info address, .badge h4, .badge address, .crest h4, .crest address, .post hgroup, .content-container .content-header, .content-container .content-body .content-details .content-category, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, .sears .post-n-comments h2, .kmart .post-n-comments h2 {
   font-weight: 700; }
 
 .faint, .member .info h5, .member .info p, .post .content-date, .excerpt, .content-container .content-header, .recent-activity time {
@@ -599,6 +599,17 @@ ul.bullets {
 
 .background_light-gray {
   background-color: #f3f3f3; }
+
+.link-emulator {
+  cursor: pointer; }
+  .link-emulator:hover {
+    text-decoration: underline; }
+
+.sears .link-emulator {
+  color: #067bb5; }
+
+.kmart .link-emulator {
+  color: #980017; }
 
 #header.sears form #button_search, #header.sears form #input_search,
 .sears_button {
@@ -1134,10 +1145,7 @@ fieldset#use_your_account_from {
   margin-top: 3em; }
 .profile .answers-toggle {
   display: block;
-  margin-left: 2em;
-  cursor: pointer; }
-  .profile .answers-toggle:hover {
-    text-decoration: underline; }
+  margin-left: 2em; }
 .profile .expert-answers {
   padding: 1em 3%; }
   .profile .expert-answers.span2 {

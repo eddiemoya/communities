@@ -65,9 +65,9 @@
                         </form>
                     <?php endif; ?>
             <script type="text/javascript">
-                $(".commentForm form").hide();
+                $(".commentForm form#comment").hide();
                 $(".leaveComment").click(function () {
-                  $(".commentForm form").slideToggle("slow");
+                  $(".commentForm form#comment").slideToggle("slow");
                 });
             </script>
         <?php
