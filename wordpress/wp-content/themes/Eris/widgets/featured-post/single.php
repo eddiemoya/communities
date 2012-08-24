@@ -68,7 +68,6 @@
         <?php  if(is_widget()->show_content) : ?>
             <p class="content-excerpt">
                 <?php the_excerpt(); ?>
-                <a href="#" title="Read More">Read more</a>
             <p>
         <?php endif; //is_widget_show_content ?>
 
