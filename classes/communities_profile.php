@@ -191,7 +191,7 @@ class User_Profile {
 						
 		$this->posts = get_posts($args);
 		
-		$this->next_page = (count($this->posts) <= $this->posts_per_page) ? null : ($this->page + 1);	
+		$this->next_page = (count($this->posts) < $this->posts_per_page) ? null : ($this->page + 1);	
 		$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
 		
 		//Get and add categories property to each post
@@ -302,7 +302,8 @@ class User_Profile {
 		
 		$this->set_activities_attributes();
 		
-		$this->next_page = (count($this->activities) <= $this->posts_per_page) ? null : ($this->page + 1);
+		
+		$this->next_page = (count($this->activities) < $this->posts_per_page) ? null : ($this->page + 1);
 		$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
 		
 		return $this;
@@ -370,7 +371,9 @@ class User_Profile {
 		
 		$this->set_activities_attributes();
 		
-		$this->next_page = (count($this->activities) <= $this->posts_per_page) ? null : ($this->page + 1);
+		
+		
+		$this->next_page = (count($this->activities) < $this->posts_per_page) ? null : ($this->page + 1);
 		$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
 		
 		return $this;
@@ -477,7 +480,7 @@ class User_Profile {
 						
 			$this->comments = get_comments($args);
 			
-			$this->next_page = (count($this->comments) <= $this->posts_per_page) ? null : ($this->page + 1);
+			$this->next_page = (count($this->comments) < $this->posts_per_page) ? null : ($this->page + 1);
 			$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
 			
 			$this->get_comment_post();
