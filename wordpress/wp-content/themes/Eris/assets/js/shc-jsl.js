@@ -343,21 +343,21 @@ shcJSL.gizmos.persistr = function(element) {
 	var persisted;	// (HTMLObject) the persisted element
 	
 	persisted = element;
-	offsetTop = $(element).offset().top;
+	offsetTop = ($(persisted).offset().top).toFixed(0);
 	
 	$(window).scroll(function(event) {
 		var yScroll;	// (Int) Current position of the top of the page via scroll
 		
 		yScroll = $(this).scrollTop();
 		
-		if ((yScroll > offsetTop) && (yScroll < offsetTop + $(this).height())) {
-			console.log("PERSIST:"); console.log(yScroll); console.log(offsetTop);
-			$(element).addClass("persist");
-			$("#container").css("padding-top",$(element).outerHeight())
+		console.log(yScroll)
+		console.log(offsetTop)
+		
+		if ((yScroll >= offsetTop) && (yScroll < offsetTop + $(this).height())) {
+			$(persisted).addClass("persist");
+			$("#container").css("padding-top",$(persisted).outerHeight())
 		} else {
-			console.log("UNPERSIST");
-			console.log(yScroll); console.log(offsetTop);
-			$(element).removeClass("persist");
+			$(persisted).removeClass("persist");
 			$("#container").css("padding-top",0)
 		}
 	});
