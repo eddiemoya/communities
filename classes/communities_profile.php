@@ -273,7 +273,7 @@ class User_Profile {
 				
 				UNION ALL
 
-				(SELECT c.comment_ID,
+				(SELECT DISTINCT c.comment_ID,
 				c.comment_post_ID,
 				c.user_id, 
 				c.comment_date, 
