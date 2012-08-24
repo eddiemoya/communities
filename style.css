@@ -600,6 +600,17 @@ ul.bullets {
 .background_light-gray {
   background-color: #f3f3f3; }
 
+.link-emulator {
+  cursor: pointer; }
+  .link-emulator:hover {
+    text-decoration: underline; }
+
+.sears .link-emulator {
+  color: #067bb5; }
+
+.kmart .link-emulator {
+  color: #980017; }
+
 #header.sears form #button_search, #header.sears form #input_search,
 .sears_button {
   background-image: url(/wp-content/themes/Eris/assets/img/sears/sprite_global.png); }
@@ -1134,10 +1145,7 @@ fieldset#use_your_account_from {
   margin-top: 3em; }
 .profile .answers-toggle {
   display: block;
-  margin-left: 2em;
-  cursor: pointer; }
-  .profile .answers-toggle:hover {
-    text-decoration: underline; }
+  margin-left: 2em; }
 .profile .expert-answers {
   padding: 1em 3%; }
   .profile .expert-answers.span2 {

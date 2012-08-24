@@ -57,7 +57,7 @@ ACTIONS.actions = $actions = function(element, options) {
             post,
             function(data) {
                 var existingCookies = [];
-                var jsonString = '{[';
+                var jsonString = '';
 
                 data = eval(data);
 
@@ -66,10 +66,11 @@ ACTIONS.actions = $actions = function(element, options) {
                 } else if(data === 'deactivated') {
                     jQuery(_this.action.element).removeClass('active');
                 } else if(data === 'activated-out') {
-                    existingCookies = shcJSL.cookies('actions').serve('value');
-                    console.log(eval(existingCookies));
+                    existingCookies = eval(shcJSL.cookies('actions').serve('value'));
 
-                    jsonString += '{"id":"' + _this.options.post.id + '","name":"' + _this.options.post.name + '","sub_type":"' + _this.options.post.sub_type + '","type":"' + _this.options.post.type + '"}]}';
+                    console.log(existingCookies[0]);
+
+                    jsonString = '{"id":"' + _this.options.post.id + '","name":"' + _this.options.post.name + '","sub_type":"' + _this.options.post.sub_type + '","type":"' + _this.options.post.type + '"}';
 
                     shcJSL.cookies("actions").bake({value: jsonString, expiration: '1y'});
 
@@ -92,7 +93,7 @@ ACTIONS.actions = $actions = function(element, options) {
         var currentTotal = '';
 
         if(action == 'follow') {
-            var text = jQuery(_this.action.element).html() === 'followed' ? 'follow' : 'followed';
+            var text = jQuery(_this.action.element).html() === 'following' ? 'follow' : 'following';
 
             jQuery(_this.action.element).html(text);
         } else {
