@@ -221,9 +221,7 @@ function template_check(){
     $pt = get_query_var('post_type');
 
 
-
-
-    if((!is_widget() && (is_category() && $pt != 'section') || is_post_type_archive(array('guide', 'question')) || $pt == 'post' )){
+    if((!is_widget() && is_category() && $pt != 'section') || (is_post_type_archive(array('guide', 'question')) || $pt == 'post' )){
 
         $templates = array();
 

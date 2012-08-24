@@ -1,7 +1,9 @@
 <?php get_template_part('parts/header'); ?>
 
 <?php 
-	$data = process_front_end_question();
+	global $post_question_data;
+	$data = $post_question_data;
+	
 	$nav_menus = get_terms( 'nav_menu', array( 'hide_empty' => true ) );
 	$sidebar_args = array(
 	    'before_widget' => '<article class="span12 content-container widget dropzone-widget sidebar-widget widget %2$s" id="%1$s">',
