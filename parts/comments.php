@@ -53,8 +53,8 @@
                     echo 'not active';
                 }
             ?>
-            <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" method="post" id="commentform" style="display: block; ">
-                <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
+            <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" method="post" id="commentform-<?php echo $comment->comment_ID ?>" class="reply-to-form">
+                <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" cols="45" rows="8" aria-required="true"></textarea>
                 <p class="form-submit">
                     <input type="submit" id="submit" class="kmart_button" value="Post">
                     <input type="reset" shc:gizmo="tooltip" class="kmart_button azure" value="Cancel">
