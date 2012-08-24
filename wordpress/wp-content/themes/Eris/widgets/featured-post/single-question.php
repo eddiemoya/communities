@@ -33,6 +33,12 @@
             <?php the_title(); ?>
         </a>
     </h6>
+    
+    <?php  if(is_widget()->show_content) : ?>
+        <p class="content-excerpt">
+            <?php the_excerpt(); ?>
+        <p>
+    <?php endif; //is_widget_show_content ?>
 
 
     <ul class="content-comments">
