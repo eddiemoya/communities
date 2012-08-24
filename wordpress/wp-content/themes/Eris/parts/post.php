@@ -22,12 +22,18 @@
         comments_template('/parts/commentForm.php');
         comments_template('/parts/comments.php');
     ?>
-    <script type="text/javascript" charset="utf-8">
-        $(document).ready(function() {
-             $(".reply-to-form").hide();
-             $(".reply").on('click', function () {
-                 $(this).next(".reply-to-form").slideToggle("slow");
-             });
-         });
+    <script type="text/javascript">
+        // Toggle reply forms
+        $(".commentForm form").hide();
+        $(".leaveComment").click(function () {
+          $(".commentForm form").slideToggle("slow");
+        });
+        $(".reply-to-form").hide();
+        $(".reply").on('click', function () {
+            $(this).parent().next(".reply-to-form").slideToggle("slow");
+        });
+        $(".cancel-reply").on('click', function () {
+            $(this).parent().parent().slideToggle("slow");
+        });
     </script>
 </article>

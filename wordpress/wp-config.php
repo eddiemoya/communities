@@ -26,8 +26,8 @@ define('DB_PASSWORD', 'password1');
 
 /** MySQL hostname */
 #define('DB_HOST', '10.98.0.164');
-define('DB_HOST', '127.0.0.1:3306');
-define('WP_ALLOW_MULTISITE', true);
+define('DB_HOST', 'barable.com');
+// define('WP_ALLOW_MULTISITE', true);
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
