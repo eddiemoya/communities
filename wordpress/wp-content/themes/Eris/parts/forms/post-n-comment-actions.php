@@ -41,7 +41,7 @@
 
                                 break;
                             case 'follow':
-                                $acts['follow']['myaction'] = 'followed';
+                                $acts['follow']['myaction'] = 'following';
 
                                 break;
                             default:
