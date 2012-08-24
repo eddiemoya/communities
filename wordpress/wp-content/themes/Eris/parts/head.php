@@ -10,7 +10,7 @@
 <header id="header" class="<?php echo theme_option("brand"); ?> clearfix">
 	
 	<div class="<?php echo (theme_option("brand") == "sears")? "span4":"span3"; ?>">
-		<a href="<?php echo site_url(''); ?>" id="logo" class="invisible"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/<?php echo theme_option("brand"); ?>/logo.png" /></a>
+		<a href="<?php echo get_site_url(''); ?>" id="logo" class="invisible"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/<?php echo theme_option("brand"); ?>/logo.png" /></a>
 	</div>
 	
 	<div class="<?php echo (theme_option("brand") == "sears")? "span5":"span6"; ?>">
@@ -37,9 +37,9 @@
 				        
     					<!-- <li><a href="<?php //echo wp_logout_url( get_permalink() ); ?>" title="Logout" class="bold">Logout</a></li> -->
 				    <?php else: ?>
-    					<li><a href="<?php //echo site_url('login'); ?>login/" title="Login" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">Login</a></li>
+    					<li><a href="<?php echo get_site_url(); ?>/login/" title="Login" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">Login</a></li>
     					<!-- <li><a href="<?php //echo site_url('login'); ?>login/" title="Login" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480}}">Login</a></li> -->
-						<li><a href="<?php //echo site_url('register'); ?>register/" title="Sign Up: Join the Community" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-register'}}}">Join the community</a></li>
+						<li><a href="<?php echo get_site_url(); ?>/register/" title="Sign Up: Join the Community" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-register'}}}">Join the community</a></li>
 					<?php endif; ?>
 				</ul>
 			</li>
