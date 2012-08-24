@@ -56,11 +56,29 @@ ACTIONS.actions = $actions = function(element, options) {
             ajaxurl + '?action=add_user_action',
             post,
             function(data) {
+                var existingCookies = [];
+                var jsonString = '{[';
+
                 data = eval(data);
 
                 if(data === 'activated') {
                     jQuery(_this.action.element).addClass('active');
                 } else if(data === 'deactivated') {
+                    jQuery(_this.action.element).removeClass('active');
+                } else if(data === 'activated-out') {
+                    existingCookies = shcJSL.cookies('actions').serve('value');
+                    console.log(existingCookies);
+
+                    jsonString += '{"id":"' + _this.options.post.id + '","name":"' + _this.options.post.name + '","sub_type":"' + _this.options.post.sub_type + '","type":"' + _this.options.post.type + '"}]}';
+
+                    shcJSL.cookies("actions").bake({value: jsonString, expiration: '1y'});
+
+                    jQuery(_this.action.element).addClass('active');
+                } else if(data === 'deactivated-out') {
+                    jsonString += '{"id":"' + _this.options.post.id + '","name":"' + _this.options.post.name + '","sub_type":"' + _this.options.post.sub_type + '","type":"' + _this.options.post.type + '"}]}';
+
+                    shcJSL.cookies("action").bake({value: jsonString, expiration: '1y'});
+
                     jQuery(_this.action.element).removeClass('active');
                 }
 
@@ -83,15 +101,13 @@ ACTIONS.actions = $actions = function(element, options) {
 
             curValue = curValue.replace(/[^0-9]/g, '');
 
-            if(data === 'activated') {
+            if(data === 'activated' || data === 'activated-out') {
                 currentTotal = parseInt(curValue) + 1;
-
-                jQuery('label[for="' + curId + '"]').html("(" + currentTotal + ')');
-            } else if(data === 'deactivated') {
+            } else if(data === 'deactivated' || data === 'deactivated-out') {
                 currentTotal = parseInt(curValue) - 1;
-
-                jQuery('label[for="' + curId + '"]').html('(' + currentTotal + ')');
             }
+
+            jQuery('label[for="' + curId + '"]').html("(" + currentTotal + ')');
         }
     };
 
@@ -121,7 +137,7 @@ shcJSL.methods.actions = function(_element, options) {
 	 * Assigns the click event for moodle to the element
 	 *
 	 * @access Public
-	 * @author Tim Steele
+	 * @author Sebastian Frohm
 	 * @since 1.0
 	 */
 if (shcJSL && shcJSL.gizmos)  {
