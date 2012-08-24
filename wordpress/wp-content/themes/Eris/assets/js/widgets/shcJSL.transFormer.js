@@ -99,8 +99,8 @@ shcJSL.methods.transFormer = function(target, options) {
 		}
 	}
 	
-	transformers[form.id] = new $TransFormer(form);
-	submitEval[form.id][submitEval[form.id].length] = transformers[form.id].verify;
+	//transformers[form.id] = new $TransFormer(form);
+	//submitEval[form.id][submitEval[form.id].length] = transformers[form.id].verify;
 		
 	figs = ($(form).attr("shc:gizmo:options") != undefined)? (((eval('(' + $(form).attr("shc:gizmo:options") + ')')).form)?(eval('(' + $(form).attr("shc:gizmo:options") + ')')).form:{}):{};
 	
@@ -118,7 +118,7 @@ shcJSL.methods.transFormer = function(target, options) {
 			} while (success != false || i < submitEval.length)
 		}
 		if (success === false) event.preventDefault();
-		else event.preventDefault();
+		else return true;
 	})
 	
 	//($Moodle instanceof MOODLE.modal)? $Moodle[method](target, this):($Moodle = new $Moodle())[method](target,this)

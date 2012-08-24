@@ -49,15 +49,20 @@
                 */
                 if(is_plugin_active('action_jackson/action_jackson.php')) {
                     get_partial( 'parts/forms/post-n-comment-actions', $comment_actions );
-                } else {
-                    echo 'not active';
                 }
             ?>
-            <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" method="post" id="commentform" style="display: block; ">
-                <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
+            <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" method="post" id="commentform-<?php echo $comment->comment_ID ?>" class="reply-to-form">
+                <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" cols="45" rows="8" aria-required="true"></textarea>
                 <p class="form-submit">
-                    <input type="submit" id="submit" class="kmart_button" value="Post">
-                    <input type="reset" shc:gizmo="tooltip" class="kmart_button azure" value="Cancel">
+                    <?php
+                        if(!is_user_logged_in()):
+                    ?>
+                        <input type="submit" id="submit" class="kmart_button" value="Post" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
+                        <input type="reset" class="kmart_button azure" value="Cancel" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
+                    <?php else: ?>
+                        <input type="submit" id="submit" class="kmart_button" value="Post">
+                        <input type="reset" class="kmart_button azure" value="Cancel">
+                    <?php endif; ?>
                     <input type="hidden" name="comment_post_ID" value="<?php echo $comment->comment_post_ID; ?>" id="comment_post_ID">
                     <input type="hidden" name="comment_parent" id="comment_parent" value="<?php echo $comment->comment_ID; ?>">
                 </p>
@@ -72,7 +77,12 @@
     ?>
             <ol class="children">
                 <li class="comment clearfix<?php echo $container_class; ?>">
-                    <?php get_partial( 'parts/crest', $crest_options ); ?>
+                    <?php
+                        $crest_options = array(
+                                    "user_id"   => $child->user_id
+                                );
+                        get_partial( 'parts/crest', $crest_options );
+                    ?>
                     <div class="span10">
                         <time class="content-date" datetime="<?php echo date( "Y-m-d", $child_date ); ?>" pubdate="pubdate"><?php echo date( "F j, Y g:ia", $child_date ); ?></time>
                         <article>
@@ -96,11 +106,18 @@
                                 echo 'not active';
                             }
                         ?>
-                        <form action="http://localhost:4000/wp-comments-post.php" method="post" id="commentform" style="display: block; ">
+                        <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" method="post" id="commentform" style="display: block; ">
                             <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
                             <p class="form-submit">
-                                <input type="submit" id="submit" class="kmart_button" value="Post">
-                                <input type="reset" class="kmart_button azure" value="Cancel">
+                                <?php
+                                    if(!is_user_logged_in()):
+                                ?>
+                                    <input type="submit" id="submit" class="kmart_button" value="Post" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
+                                    <input type="reset" class="kmart_button azure" value="Cancel" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
+                                <?php else: ?>
+                                    <input type="submit" id="submit" class="kmart_button" value="Post">
+                                    <input type="reset" class="kmart_button azure" value="Cancel">
+                                <?php endif; ?>
                                 <input type="hidden" name="comment_post_ID" value="<?php echo $comment->comment_post_ID; ?>" id="comment_post_ID">
                                 <input type="hidden" name="comment_parent" id="comment_parent" value="<?php echo $comment->comment_ID; ?>">
                             </p>
