@@ -219,11 +219,9 @@ add_filter('sanitize_title', 'sanitize_title_with_dots_and_dashes', 10, 3);
 add_action('template_redirect', 'template_check');
 function template_check(){
     $pt = get_query_var('post_type');
-    global $wp_query;
 
-  
 
-    if(!is_widget() && (is_category() || is_post_type_archive(array('guide', 'question')) || $pt == 'post' )){
+    if((!is_widget() && is_category() && $pt != 'section') || (is_post_type_archive(array('guide', 'question')) || $pt == 'post' )){
 
         $templates = array();
 
