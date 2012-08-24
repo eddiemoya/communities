@@ -67,7 +67,7 @@ ACTIONS.actions = $actions = function(element, options) {
                     jQuery(_this.action.element).removeClass('active');
                 } else if(data === 'activated-out') {
                     existingCookies = shcJSL.cookies('actions').serve('value');
-                    console.log(existingCookies);
+                    console.log(eval(existingCookies));
 
                     jsonString += '{"id":"' + _this.options.post.id + '","name":"' + _this.options.post.name + '","sub_type":"' + _this.options.post.sub_type + '","type":"' + _this.options.post.type + '"}]}';
 
@@ -137,7 +137,7 @@ shcJSL.methods.actions = function(_element, options) {
 	 * Assigns the click event for moodle to the element
 	 *
 	 * @access Public
-	 * @author Sebastian Frohm
+	 * @author Tim Steele
 	 * @since 1.0
 	 */
 if (shcJSL && shcJSL.gizmos)  {
