@@ -34,7 +34,7 @@ $alinks = array(
 
         <?php foreach($labels as $post_type => $label) : ?>
         <li>
-            <a href="<?php echo $alinks[$post_type]; ?>"><?php echo $label; ?></a>
+            <a href="<?php echo $alinks[$post_type]; ?>"><span><?php echo $label; ?></span></a>
             <ul>
                 <?php foreach($terms[$post_type] as $term) : ?>
                     <?php if($term->parent == 0 && $term->term_id != 1) :?>
