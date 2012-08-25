@@ -339,29 +339,28 @@ shcJSL.gizmos.bulletin = {}
  * @param element: 
  */
 shcJSL.gizmos.persistr = function(element) {
-	var offsetTop;	// (Int) pixel difference from the top of the page
-	var persisted;	// (HTMLObject) the persisted element
+	var offset;	// (Int) pixel difference from the top of the page
+	var persist;		// (Function) function to persist the element
+	var sticker;	// (HTMLObject) the persisted element
 	
-	persisted = element;
-	offsetTop = ($(persisted).offset().top).toFixed(0);
+	sticker = element;
+	offset = ($(sticker).offset().top).toFixed(0);
 	
-	$(window).scroll(function(event) {
-		var yScroll;	// (Int) Current position of the top of the page via scroll
+	function persist(event) {
+		var y;	// Y scroll, y-axis of the scroll bar
 		
-		yScroll = $(this).scrollTop();
-		
-		console.log(yScroll)
-		console.log(offsetTop)
-		
-		if ((yScroll >= offsetTop) && (yScroll < offsetTop + $(this).height())) {
-			$(persisted).addClass("persist");
-			$("#container").css("padding-top",$(persisted).outerHeight())
+		y = $(window).scrollTop();
+		if (y >= offset) {
+			$(sticker).parent().css("padding-top",$(sticker).outerHeight());
+			$(sticker).addClass("persist");
 		} else {
-			$(persisted).removeClass("persist");
-			$("#container").css("padding-top",0)
+			$(sticker).removeClass("persist");
+			$(sticker).parent().css("padding-top",0)	
 		}
-	});
+	}
 	
+	$(window).bind('scroll', persist);
+	persist();
 }
 
 /*
