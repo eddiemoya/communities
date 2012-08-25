@@ -56,7 +56,7 @@ foreach($activities as $activity):
  		<?php endif;?>
  		&nbsp;&nbsp;
  	</noscript>
- 	
+ 
  	<?php if($user_activities->next_page):?>
 	 	<a href="<?php echo $url_no_qs . '?post-type=' . $type . '&page=' . $user_activities->next_page; ?>" id="page-more">More &gt;</a>
  	<?php endif;?>
