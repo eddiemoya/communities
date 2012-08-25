@@ -528,7 +528,10 @@ ul.footer_anterior {
   z-index: 1000000; }
 
 #persistent-header.persist {
-  position: fixed; }
+  position: fixed;
+  top: 0px; }
+  #persistent-header.persist #header.sears form #button_search {
+    height: 2.1em; }
 
 #content {
   padding: 1em 1.063829787234043%; }
