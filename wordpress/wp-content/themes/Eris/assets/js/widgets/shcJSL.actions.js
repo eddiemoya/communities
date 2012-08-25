@@ -56,9 +56,6 @@ ACTIONS.actions = $actions = function(element, options) {
             ajaxurl + '?action=add_user_action',
             post,
             function(data) {
-                var existingCookies = [];
-                var jsonString = '';
-
                 data = eval(data);
 
                 if(data === 'activated') {
@@ -66,19 +63,11 @@ ACTIONS.actions = $actions = function(element, options) {
                 } else if(data === 'deactivated') {
                     jQuery(_this.action.element).removeClass('active');
                 } else if(data === 'activated-out') {
-                    existingCookies = eval(shcJSL.cookies('actions').serve('value'));
-
-                    console.log(existingCookies[0]);
-
-                    jsonString = '{"id":"' + _this.options.post.id + '","name":"' + _this.options.post.name + '","sub_type":"' + _this.options.post.sub_type + '","type":"' + _this.options.post.type + '"}';
-
-                    shcJSL.cookies("actions").bake({value: jsonString, expiration: '1y'});
+                    _this._updateCookie();
 
                     jQuery(_this.action.element).addClass('active');
                 } else if(data === 'deactivated-out') {
-                    jsonString += '{"id":"' + _this.options.post.id + '","name":"' + _this.options.post.name + '","sub_type":"' + _this.options.post.sub_type + '","type":"' + _this.options.post.type + '"}]}';
-
-                    shcJSL.cookies("action").bake({value: jsonString, expiration: '1y'});
+                    _this._updateCookie();
 
                     jQuery(_this.action.element).removeClass('active');
                 }
@@ -110,6 +99,26 @@ ACTIONS.actions = $actions = function(element, options) {
 
             jQuery('label[for="' + curId + '"]').html("(" + currentTotal + ')');
         }
+    };
+
+    _this._updateCookie = function() {
+        var existingCookies = [];
+        var jsonString = '{"actions": [';
+
+        existingCookies = eval('(' + shcJSL.cookies('actions').serve('value') + ')');
+        existingCookies = existingCookies.actions;
+
+        if(typeof(existingCookies) !== 'undefined') {
+            for(var i = 0; i < existingCookies.length; i++) {
+                jsonString += '{"id": "' + existingCookies[i].id + '", "name": "' + existingCookies[i].name + '", "sub_type": "' + existingCookies[i].sub_type + '", "type": "' + existingCookies[i].type + '"}, ';
+
+                console.log(jsonString);
+            }
+        }
+
+        jsonString += '{"id": "' + _this.options.post.id + '", "name": "' + _this.options.post.name + '", "sub_type": "' + _this.options.post.sub_type + '", "type": "' + _this.options.post.type + '"}]}';
+console.log('final: ' + jsonString);
+        shcJSL.cookies("actions").bake({value: jsonString, expiration: '1y'});
     };
 
     _this.init(element, options);

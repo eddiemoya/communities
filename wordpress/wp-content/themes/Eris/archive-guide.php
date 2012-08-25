@@ -25,7 +25,7 @@
 		'filter-by' => 'manual',
 		'widget_name' => 'featured-post',
 		'limit' => 1,
-		'post__in_1' => 696
+		'post__in_1' => 600
 	);
 	$fp2_instance = array(
 		'show_comment_count' => 'on',
@@ -49,7 +49,7 @@
 			<?php the_widget('Featured_Posts_Widget', $fp1_instance, $sidebar_args ) ?>
 			<?php the_widget('Featured_Posts_Widget', $fp2_instance, $sidebar_args ) ?>
 		
-		</article>
+		
 	<?php endif; ?> 
 
 </ul>
