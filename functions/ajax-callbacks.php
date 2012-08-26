@@ -52,18 +52,16 @@ function get_posts_ajax(){
 
     if( isset($_POST['template']) ){
         global $wp_query;
-        $wp_query = new WP_Query(array(
-            'cat' => $_POST['category']
-            ));
+       
+            $query['cat'] = $_POST['category'];
 
             if(isset($_GET['s'])) { 
                 $wp_query['s'] = $_GET['s'];
             }
+            $wp_query = new WP_Query($query);
 
-        
-        loop_by_type($_POST['template']);
+        loop($_POST['template']);
         wp_reset_query();
-
 
     } else {
         echo "<!-- No template selected -->";
