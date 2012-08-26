@@ -79,18 +79,23 @@
 
 #persistent-header {
   background-color:#ffffff;
-  top:0px;
-  position:relative;
+  z-index:1000000;
 }
 
 #persistent-header.persist {
   position:fixed;
-  z-index:1000000;
+  top:0px;
   #header.sears form #button_search {
     height:2.1em;
   }
   
 }
+
+// #persistent-header {
+  // background-color:#ffffff;
+  // position:fixed;
+  // top:0px;
+// }
 
 #content {
   padding:1em ( $margin-width-pct / 2);

@@ -26,17 +26,25 @@
 
       <?php wp_nav_menu( array('menu' => theme_option("brand").'-ribbon'))?>
 
+<!-- 
       <div id="container">
 
           <div id="persistent-header">
-          <!-- <div id="persistent-header"> -->
+           <div id="persistent-header"> -->
 
-              <?php get_template_part('parts/head'); ?>
 
-              <?php get_template_part('parts/navigation'); ?>
+      <div id="container">
 
-          </div>    
+				<div id="persistent-header" shc:gizmo="persistr">
+	      <!-- <div id="persistent-header"> -->
+	
+	          <?php get_template_part('parts/head'); ?>
+	
+	          <?php get_template_part('parts/navigation'); ?>
+	
+	      </div>
 					
+
 					<!-- #content -->
 					<section id="content" class="clearfix">
 					
