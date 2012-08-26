@@ -925,7 +925,7 @@ ul.bullets {
     border-right: 0;
     padding-right: 0; }
 
-.results-list {
+.result-list {
   margin-top: 1em;
   border: 1px solid #cccccc;
   -webkit-border-radius: 5px;
@@ -933,18 +933,18 @@ ul.bullets {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px; }
-  .results-list .content-header {
+  .result-list .content-header {
     width: 95%;
     margin-left: auto;
     margin-right: auto; }
-  .results-list .lone-result {
+  .result-list .lone-result {
     padding-top: .75em;
     margin-top: .5em;
     border-top: 1px solid #cccccc; }
-    .results-list .lone-result:first-child {
+    .result-list .lone-result:first-child {
       margin-top: 0;
       border-top: 0; }
-  .results-list .content-header {
+  .result-list .content-header {
     border-top: 0;
     font-size: 75%;
     padding-top: 1.5em;
