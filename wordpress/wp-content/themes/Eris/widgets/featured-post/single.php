@@ -22,20 +22,16 @@
 
 
     <div class="featured-post <?php echo $featured_post_span; ?>">
-
         <?php if (is_widget()->show_category || is_widget()->show_date) : ?>
             <div class="content-details clearfix">
 
-
-                <?php if (is_widget()->show_category) : ?>
+                <?php if (is_widget()->show_category) : $c = get_the_category(); ?>
                     <span class="content-category">
-                        <a href="#" title="Kittens">
-                            <?php $c = get_the_category(); echo $c[0]->cat_name; ?>
+                        <a href="<?php echo get_category_link($c[0]); ?>" title="<?php echo $c[0]->name; ?>">
+                            <?php echo $c[0]->cat_name; ?>
                         </a>
                     </span>
-                <?php endif; //is_widget->show_category ?>
-
-
+                <?php endif; ?>
 
                 <time class="content-date" datetime="<?php the_time('Y-m-d'); ?>">
                     <?php the_time('F j, Y'); ?>
@@ -68,8 +64,21 @@
         <?php  if(is_widget()->show_content) : ?>
             <p class="content-excerpt">
                 <?php the_excerpt(); ?>
-            <p>
+
+                <a href="<?php the_permalink(); ?>" title="Read More">Read more</a>
+
+            </p>
         <?php endif; //is_widget_show_content ?>
+
+        <?php if (is_widget()->show_tags) : ?>
+            <span class="content-category">
+                <?php $tags = get_the_tags(); foreach($tags as $tag) : ?>
+                <a href="<?php echo get_tag_link($tag->term_id); ?>" title="<?php echo $tag->name ?>">
+                    <?php echo $tag->name ?>
+                </a>
+                <?php endforeach; ?>
+            </span>
+        <?php endif; ?>
 
         <section class="post-actions">
             <?php get_partial( 'parts/share' ); ?>
