@@ -20,6 +20,8 @@ ACTIONS = {};
 ACTIONS.actions = $actions = function(element, options) {
     var _this = this;
 
+    _this.isVoteSwitch = false;
+
     _this.action = {
         element: null
     };
@@ -72,24 +74,21 @@ ACTIONS.actions = $actions = function(element, options) {
                     _this.options.post.nli_reset = _this.options.post.name;
                 }
 
-                console.log('postaction:')
-                console.log(element);
+                _this._decideForDownUpSwitch(data);
 
                 if(data === 'activated') {
                     jQuery(element).addClass('active');
                 } else if(data === 'deactivated') {
                     jQuery(element).removeClass('active');
                 } else if(data === 'activated-out') {
-                    _this._updateCookie();
+                    _this._updateCookie(data);
 
                     jQuery(element).addClass('active');
                 } else if(data === 'deactivated-out') {
-                    _this._updateCookie();
+                    _this._updateCookie(data);
 
                     jQuery(element).removeClass('active');
                 }
-
-                _this._decideForDownUpSwitch(data);
 
                 _this._resetActionTotal(data, element);
             }
@@ -97,6 +96,8 @@ ACTIONS.actions = $actions = function(element, options) {
     };
 
     _this._decideForDownUpSwitch = function(data) {
+            var newOptions = {};
+
         if(data === 'activated' || data === 'activated-out') {
             var thisAction = _this.options.post.name === 'downvote' ? 'upvote' : 'downvote';
 
@@ -104,23 +105,57 @@ ACTIONS.actions = $actions = function(element, options) {
                 var options = eval('(' + jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').attr('shc:gizmo:options') + ')');
 
                 _this.options.post.name = thisAction;
-                _this.options.post.nli_reset = thisAction;
+                _this.options.post.nli_reset = 'deactivate';
 
                 _this._postAction(jQuery(_this.action.element).siblings('button[name=' + thisAction + ']'), options.actions);
 
+                /**
+                 * Unset nli_reset (Not Logged In Reset of vote)
+                 */
+                options.actions.post.nli_reset = null;
                 delete options.actions.post.nli_reset;
 
+                console.log(jQuery(_this.action.element));
                 jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').attr('shc:gizmo:options', JSON.stringify(options));
 
-                _this.options = _this.originalOptions;
+                /**
+                 * Reset options for _this clicked button
+                 */
+                console.log('starting reset ' + _this.originalOptions.post.name);
+                console.log(_this.action.element);
 
                 options = eval('(' + jQuery(_this.action.element).attr('shc:gizmo:options') + ')');
 
-                options.actions.post.nli_reset = thisAction;
+                options.actions.post.nli_reset = 'deactivate';
 
                 jQuery(_this.action.element).attr('shc:gizmo:options', JSON.stringify(options));
+
+                _this.options = _this.originalOptions;
+
+                console.log(_this.options.post);
+
+                _this.isVoteSwitch = true;
+            } else {
+                newOptions.actions = {};
+                newOptions.actions.post = {};
+
+                newOptions.actions.post = _this.options.post;
+
+                jQuery(_this.action.element).attr('shc:gizmo:options', JSON.stringify(newOptions));
+
+                _this.isVoteSwitch = false;
+                _this.options.post.nli_reset = 'deactivate';
             }
         } else {
+            _this.options.post.nli_reset = null;
+            delete _this.options.post.nli_reset;
+
+            newOptions.actions = {};
+            newOptions.actions.post = {};
+
+            newOptions.actions.post = _this.options.post;
+
+            jQuery(_this.action.element).attr('shc:gizmo:options', JSON.stringify(newOptions));
         }
     };
 
@@ -148,16 +183,19 @@ ACTIONS.actions = $actions = function(element, options) {
         }
     };
 
-    _this._updateCookie = function() {
+    _this._updateCookie = function(data) {
         var existingCookies = [];
         var jsonString = '{"actions": [';
 
-        existingCookies = eval('(' + shcJSL.cookies('actions').serve('value') + ')');
-        existingCookies = existingCookies.actions;
+        if(typeof(shcJSL.cookies('actions').serve('value')) !== 'undefined' && shcJSL.cookies('actions').serve('value') !== '') {
+            existingCookies = eval('(' + shcJSL.cookies('actions').serve('value') + ')');
+            existingCookies = existingCookies.actions;
 
-        if(typeof(existingCookies) !== 'undefined') {
             for(var i = 0; i < existingCookies.length; i++) {
-                jsonString += '{"id": "' + existingCookies[i].id + '", "name": "' + existingCookies[i].name + '", "sub_type": "' + existingCookies[i].sub_type + '", "type": "' + existingCookies[i].type + '"}, ';
+                if(existingCookies[i].id != _this.options.post.id && existingCookies[i].name != _this.options.post.name) {
+                    jsonString += '{"id": "' + existingCookies[i].id + '", "name": "' + existingCookies[i].name + '", "sub_type": "' + existingCookies[i].sub_type + '", "type": "' + existingCookies[i].type + '"}, ';
+                    console.log(jsonString);
+                }
             }
         }
 
