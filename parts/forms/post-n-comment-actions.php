@@ -52,12 +52,12 @@
                 switch($action->action) {
                     case 'upvote':
                         $acts['upvote']['myaction'] = ' active';
-                        $acts['upvote']['nli_reset'] = ',nli_reset:\'upvote\'';
+                        $acts['upvote']['nli_reset'] = ',nli_reset:\'deactivate\'';
 
                         break;
                     case 'downvote':
                         $acts['downvote']['myaction'] = ' active';
-                        $acts['downvote']['nli_reset'] = ',nli_reset:\'downvote\'';
+                        $acts['downvote']['nli_reset'] = ',nli_reset:\'deactivate\'';
 
                         break;
                     case 'follow':
