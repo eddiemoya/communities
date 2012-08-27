@@ -8,6 +8,8 @@
 * @version [1.0: 2012-08-08]
 * - Initial script release
 */
+var allActions = [];
+
 ACTIONS = {};
 /**
  *
@@ -28,12 +30,17 @@ ACTIONS.actions = $actions = function(element, options) {
             id: 0,
             name: '',
             sub_type: '',
-            type: ''
+            type: '',
+            nli_reset: null
         }
     };
 
+    _this.originalOptions = {};
+
+    _this.originalAction = {};
+
     _this.click = function() {
-        _this._postAction();
+        _this._postAction(_this.action.element, _this.options);
     };
 
     _this.init = function(element, options) {
@@ -42,15 +49,15 @@ ACTIONS.actions = $actions = function(element, options) {
         /**
          * Take in options based in on creation and shove onto existing _this.options;
          */
-        _this.options = jQuery.extend(true, _this.options, options);
+        _this.originalOptions = _this.options = jQuery.extend(true, _this.options, options);
     };
 
     _this.setActionObject = function(element) {
-        _this.action.element = element;
+        _this.originalAction.element = _this.action.element = element;
     };
 
-    _this._postAction = function() {
-        var post = _this.options.post;
+    _this._postAction = function(element, options) {
+        var post = options.post;
 
         jQuery.post(
             ajaxurl + '?action=add_user_action',
@@ -58,35 +65,75 @@ ACTIONS.actions = $actions = function(element, options) {
             function(data) {
                 data = eval(data);
 
+                if(typeof _this.options.post.nli_reset !== 'undefined') {
+                    _this.options.post.nli_reset = null;
+                    delete _this.options.post.nli_reset;
+                } else {
+                    _this.options.post.nli_reset = _this.options.post.name;
+                }
+
+                console.log('postaction:')
+                console.log(element);
+
                 if(data === 'activated') {
-                    jQuery(_this.action.element).addClass('active');
+                    jQuery(element).addClass('active');
                 } else if(data === 'deactivated') {
-                    jQuery(_this.action.element).removeClass('active');
+                    jQuery(element).removeClass('active');
                 } else if(data === 'activated-out') {
                     _this._updateCookie();
 
-                    jQuery(_this.action.element).addClass('active');
+                    jQuery(element).addClass('active');
                 } else if(data === 'deactivated-out') {
                     _this._updateCookie();
 
-                    jQuery(_this.action.element).removeClass('active');
+                    jQuery(element).removeClass('active');
                 }
 
-                _this._resetActionTotal(data);
+                _this._decideForDownUpSwitch(data);
+
+                _this._resetActionTotal(data, element);
             }
         );
     };
 
-    _this._resetActionTotal = function(data) {
+    _this._decideForDownUpSwitch = function(data) {
+        if(data === 'activated' || data === 'activated-out') {
+            var thisAction = _this.options.post.name === 'downvote' ? 'upvote' : 'downvote';
+
+            if(jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').hasClass('active')) {
+                var options = eval('(' + jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').attr('shc:gizmo:options') + ')');
+
+                _this.options.post.name = thisAction;
+                _this.options.post.nli_reset = thisAction;
+
+                _this._postAction(jQuery(_this.action.element).siblings('button[name=' + thisAction + ']'), options.actions);
+
+                delete options.actions.post.nli_reset;
+
+                jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').attr('shc:gizmo:options', JSON.stringify(options));
+
+                _this.options = _this.originalOptions;
+
+                options = eval('(' + jQuery(_this.action.element).attr('shc:gizmo:options') + ')');
+
+                options.actions.post.nli_reset = thisAction;
+
+                jQuery(_this.action.element).attr('shc:gizmo:options', JSON.stringify(options));
+            }
+        } else {
+        }
+    };
+
+    _this._resetActionTotal = function(data, element) {
         var action = _this.options.post.name;
         var currentTotal = '';
 
         if(action == 'follow') {
-            var text = jQuery(_this.action.element).html() === 'following' ? 'follow' : 'following';
+            var text = jQuery(element.element).html() === 'following' ? 'follow' : 'following';
 
-            jQuery(_this.action.element).html(text);
+            jQuery(element).html(text);
         } else {
-            var curId = jQuery(_this.action.element).attr('id');
+            var curId = jQuery(element).attr('id');
             var curValue = jQuery('label[for="' + curId + '"]').html();
 
             curValue = curValue.replace(/[^0-9]/g, '');
@@ -111,13 +158,11 @@ ACTIONS.actions = $actions = function(element, options) {
         if(typeof(existingCookies) !== 'undefined') {
             for(var i = 0; i < existingCookies.length; i++) {
                 jsonString += '{"id": "' + existingCookies[i].id + '", "name": "' + existingCookies[i].name + '", "sub_type": "' + existingCookies[i].sub_type + '", "type": "' + existingCookies[i].type + '"}, ';
-
-                console.log(jsonString);
             }
         }
 
         jsonString += '{"id": "' + _this.options.post.id + '", "name": "' + _this.options.post.name + '", "sub_type": "' + _this.options.post.sub_type + '", "type": "' + _this.options.post.type + '"}]}';
-console.log('final: ' + jsonString);
+
         shcJSL.cookies("actions").bake({value: jsonString, expiration: '1y'});
     };
 
@@ -135,8 +180,6 @@ shcJSL.methods.actions = function(_element, options) {
     var _elementOptions = ($(_element).attr("shc:gizmo:options") != undefined)? (((eval('(' + $(_element).attr("shc:gizmo:options") + ')')).actions) ? (eval('(' + $(_element).attr("shc:gizmo:options") + ')')).actions:{}):{};
 
     var action = ($actions instanceof TOOLTIP.tooltip) ? $actions : new $actions(jQuery(_element), _elementOptions);
-
-    var i, method;
 
     action.click(event);
 };
