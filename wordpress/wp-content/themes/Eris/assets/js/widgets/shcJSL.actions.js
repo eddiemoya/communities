@@ -220,7 +220,7 @@ shcJSL.methods.actions = function(_element, options) {
 
     var action = ($actions instanceof TOOLTIP.tooltip) ? $actions : new $actions(jQuery(_element), _elementOptions);
 
-    action.click(event);
+    action.click();
 };
 
 /**
@@ -239,5 +239,5 @@ if (shcJSL && shcJSL.gizmos)  {
         jQuery(element).click(function() {
             shcJSL.get(element).actions(element, options);
         });
-	}
+    }
 }
