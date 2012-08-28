@@ -33,7 +33,7 @@ ACTIONS.actions = $actions = function(element, options) {
             name: '',
             sub_type: '',
             type: '',
-            nli_reset: null
+            nli_reset: ''
         }
     };
 
@@ -96,16 +96,21 @@ ACTIONS.actions = $actions = function(element, options) {
     };
 
     _this._decideForDownUpSwitch = function(data) {
-            var newOptions = {};
+        var newOptions = {};
+        newOptions.actions = {};
+        newOptions.actions.post = {
+            id: 0,
+            name: '',
+            sub_type: '',
+            type: '',
+            nli_reset: ''
+        };
 
         if(data === 'activated' || data === 'activated-out') {
             var thisAction = _this.options.post.name === 'downvote' ? 'upvote' : 'downvote';
 
             if(jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').hasClass('active')) {
                 var options = eval('(' + jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').attr('shc:gizmo:options') + ')');
-
-                _this.options.post.name = thisAction;
-                _this.options.post.nli_reset = 'deactivate';
 
                 _this._postAction(jQuery(_this.action.element).siblings('button[name=' + thisAction + ']'), options.actions);
 
@@ -115,43 +120,39 @@ ACTIONS.actions = $actions = function(element, options) {
                 options.actions.post.nli_reset = null;
                 delete options.actions.post.nli_reset;
 
-                console.log(jQuery(_this.action.element));
                 jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').attr('shc:gizmo:options', JSON.stringify(options));
+
+                console.log('options after nli_reset');
+                console.log(_this.options);
+                console.log('the sibling ' + thisAction + ' of ' + _this.options.post.name);
+                console.log(jQuery(_this.action.element).siblings('button[name=' + thisAction + ']'));
 
                 /**
                  * Reset options for _this clicked button
                  */
-                console.log('starting reset ' + _this.originalOptions.post.name);
-                console.log(_this.action.element);
+                _this.options.post.nli_reset = 'deactivate';
+                newOptions.actions.post = _this.options.post;
 
-                options = eval('(' + jQuery(_this.action.element).attr('shc:gizmo:options') + ')');
+                // this doesn't do anything/
+//                newOptions.actions.post.nli_reset = 'deactivate';
 
-                options.actions.post.nli_reset = 'deactivate';
+                console.log(newOptions.actions.post.nli_reset);
+                console.log(newOptions.actions.post);
 
-                jQuery(_this.action.element).attr('shc:gizmo:options', JSON.stringify(options));
-
-                _this.options = _this.originalOptions;
-
-                console.log(_this.options.post);
+                jQuery(_this.action.element).attr('shc:gizmo:options', JSON.stringify(newOptions));
 
                 _this.isVoteSwitch = true;
             } else {
-                newOptions.actions = {};
-                newOptions.actions.post = {};
-
+                _this.options.post.nli_reset = 'deactivate';
                 newOptions.actions.post = _this.options.post;
 
                 jQuery(_this.action.element).attr('shc:gizmo:options', JSON.stringify(newOptions));
 
                 _this.isVoteSwitch = false;
-                _this.options.post.nli_reset = 'deactivate';
             }
         } else {
             _this.options.post.nli_reset = null;
             delete _this.options.post.nli_reset;
-
-            newOptions.actions = {};
-            newOptions.actions.post = {};
 
             newOptions.actions.post = _this.options.post;
 
