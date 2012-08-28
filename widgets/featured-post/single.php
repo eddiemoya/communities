@@ -64,6 +64,7 @@
         <?php  if(is_widget()->show_content) : ?>
             <p class="content-excerpt">
                 <?php the_excerpt(); ?>
+                <!-- <a href="<?php the_permalink(); ?>" title="Read More">Read more</a> -->
             </p>
         <?php endif; //is_widget_show_content ?>
 
@@ -77,8 +78,12 @@
             </span>
         <?php endif; ?>
 
+        <?php
+            $share_options = array();
+            if ( is_widget()->share_style == 'long' ) { $share_options["version"] = 'long'; }
+        ?>
         <section class="post-actions">
-            <?php get_partial( 'parts/share' ); ?>
+            <?php get_partial( 'parts/share', $share_options ); ?>
         </section>
 
     </div> <!-- featured-post -->
