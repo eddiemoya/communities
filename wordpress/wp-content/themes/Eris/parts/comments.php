@@ -64,7 +64,7 @@
                 }
             ?>
             <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" method="post" id="commentform-<?php echo $comment->comment_ID ?>" class="reply-to-form">
-                <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" cols="45" rows="8" aria-required="true"></textarea>
+                <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" rows="8" aria-required="true"></textarea>
                 <p class="form-submit">
                     <?php
                         if(!is_user_logged_in()):
@@ -119,8 +119,8 @@
                                 echo 'not active';
                             }
                         ?>
-                        <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" method="post" id="commentform" style="display: block; ">
-                            <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
+                        <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" method="post" id="commentform" class="reply-to-form">
+                            <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" rows="8" aria-required="true"></textarea>
                             <p class="form-submit">
                                 <?php
                                     if(!is_user_logged_in()):
