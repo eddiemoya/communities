@@ -10,6 +10,8 @@
 */
 var allActions = [];
 
+var isVoteSwitch = false;
+
 ACTIONS = {};
 /**
  *
@@ -19,8 +21,6 @@ ACTIONS = {};
  */
 ACTIONS.actions = $actions = function(element, options) {
     var _this = this;
-
-    _this.isVoteSwitch = false;
 
     _this.action = {
         element: null
@@ -67,13 +67,6 @@ ACTIONS.actions = $actions = function(element, options) {
             function(data) {
                 data = eval(data);
 
-                if(typeof _this.options.post.nli_reset !== 'undefined') {
-                    _this.options.post.nli_reset = null;
-                    delete _this.options.post.nli_reset;
-                } else {
-                    _this.options.post.nli_reset = _this.options.post.name;
-                }
-
                 _this._decideForDownUpSwitch(data);
 
                 if(data === 'activated') {
@@ -110,53 +103,48 @@ ACTIONS.actions = $actions = function(element, options) {
             var thisAction = _this.options.post.name === 'downvote' ? 'upvote' : 'downvote';
 
             if(jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').hasClass('active')) {
-                var options = eval('(' + jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').attr('shc:gizmo:options') + ')');
-
-                _this._postAction(jQuery(_this.action.element).siblings('button[name=' + thisAction + ']'), options.actions);
-
-                /**
-                 * Unset nli_reset (Not Logged In Reset of vote)
-                 */
-                options.actions.post.nli_reset = null;
-                delete options.actions.post.nli_reset;
-
-                jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').attr('shc:gizmo:options', JSON.stringify(options));
-
-                console.log('options after nli_reset');
-                console.log(_this.options);
-                console.log('the sibling ' + thisAction + ' of ' + _this.options.post.name);
-                console.log(jQuery(_this.action.element).siblings('button[name=' + thisAction + ']'));
-
                 /**
                  * Reset options for _this clicked button
                  */
                 _this.options.post.nli_reset = 'deactivate';
                 newOptions.actions.post = _this.options.post;
 
-                // this doesn't do anything/
-//                newOptions.actions.post.nli_reset = 'deactivate';
-
-                console.log(newOptions.actions.post.nli_reset);
-                console.log(newOptions.actions.post);
+                console.log(_this.options.post);
 
                 jQuery(_this.action.element).attr('shc:gizmo:options', JSON.stringify(newOptions));
 
-                _this.isVoteSwitch = true;
+                var options = eval('(' + jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').attr('shc:gizmo:options') + ')');
+
+                /**
+                 * Unset nli_reset (Not Logged In Reset of vote)
+                 */
+                options.actions.post.nli_reset = null;
+
+                jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').attr('shc:gizmo:options', JSON.stringify(options));
+
+                options.actions.post.nli_reset = 'deactivated';
+
+                _this._postAction(jQuery(_this.action.element).siblings('button[name=' + thisAction + ']'), options.actions);
+
+                isVoteSwitch = true;
             } else {
                 _this.options.post.nli_reset = 'deactivate';
                 newOptions.actions.post = _this.options.post;
 
                 jQuery(_this.action.element).attr('shc:gizmo:options', JSON.stringify(newOptions));
 
-                _this.isVoteSwitch = false;
+                isVoteSwitch = false;
             }
         } else {
-            _this.options.post.nli_reset = null;
-            delete _this.options.post.nli_reset;
+            if(isVoteSwitch === false) {
+                _this.options.post.nli_reset = null;
 
-            newOptions.actions.post = _this.options.post;
+                newOptions.actions.post = _this.options.post;
 
-            jQuery(_this.action.element).attr('shc:gizmo:options', JSON.stringify(newOptions));
+                jQuery(_this.action.element).attr('shc:gizmo:options', JSON.stringify(newOptions));
+            }
+
+            isVoteSwitch = false;
         }
     };
 
@@ -165,6 +153,8 @@ ACTIONS.actions = $actions = function(element, options) {
         var currentTotal = '';
 
         if(action == 'follow') {
+
+            console.log(jQuery(element));
             var text = jQuery(element.element).html() === 'following' ? 'follow' : 'following';
 
             jQuery(element).html(text);
