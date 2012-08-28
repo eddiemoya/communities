@@ -937,13 +937,6 @@ $tab-padding: "1em 0 .6em 0";
 // Threaded Discussion
 .commentForm {
   margin-bottom: 20px;
-
-  textarea {
-    @include border-radius( 4px );
-    border: 1px solid #d6d6d6;
-    margin-bottom: 15px;
-    width: 99%;
-  }
   
   .leaveComment {
     float: right;
