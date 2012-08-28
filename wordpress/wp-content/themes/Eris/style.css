@@ -700,10 +700,6 @@ ul.bullets {
  * form elements
  */
 .input_text {
-  /*
-   * Do not set padding for left/right to 0.
-   * IE8 no like this.
-   */
   padding: .3125em .01em;
   border: solid 1px #cccccc;
   height: 1.25em; }
@@ -767,7 +763,7 @@ ul.bullets {
   border: solid 1px #ff0000; }
 .error .error-message {
   background-color: #e41e13;
-  color: #ffffff;
+  color: white;
   display: block;
   float: left;
   font-weight: bold;
@@ -936,7 +932,7 @@ ul.bullets {
     border-right: 0;
     padding-right: 0; }
 
-.results-list {
+.result-list {
   margin-top: 1em;
   border: 1px solid #cccccc;
   -webkit-border-radius: 5px;
@@ -944,18 +940,18 @@ ul.bullets {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px; }
-  .results-list .content-header {
+  .result-list .content-header {
     width: 95%;
     margin-left: auto;
     margin-right: auto; }
-  .results-list .lone-result {
+  .result-list .lone-result {
     padding-top: .75em;
     margin-top: .5em;
     border-top: 1px solid #cccccc; }
-    .results-list .lone-result:first-child {
+    .result-list .lone-result:first-child {
       margin-top: 0;
       border-top: 0; }
-  .results-list .content-header {
+  .result-list .content-header {
     border-top: 0;
     font-size: 75%;
     padding-top: 1.5em;
@@ -1090,7 +1086,7 @@ fieldset#use_your_account_from {
   color: #666666; }
   .widget_communities_menu_widget .subcat-selector-container select {
     margin-left: 10px;
-    color: #000000; }
+    color: black; }
 
 .profile .tabs {
   border-bottom: 1px solid #cccccc;
@@ -1128,6 +1124,7 @@ fieldset#use_your_account_from {
   background-image: -webkit-linear-gradient(#ffffff, #f4f4f4);
   background-image: -moz-linear-gradient(#ffffff, #f4f4f4);
   background-image: -o-linear-gradient(#ffffff, #f4f4f4);
+  background-image: -ms-linear-gradient(#ffffff, #f4f4f4);
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;
@@ -1239,23 +1236,14 @@ fieldset#use_your_account_from {
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
     border-radius: 4px;
-    background-color: #fff;
+    background-color: white;
     border: 1px solid #A0C7FF;
-    color: #000;
+    color: black;
     float: left;
     padding: 7px; }
 
 .commentForm {
   margin-bottom: 20px; }
-  .commentForm textarea {
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    border-radius: 4px;
-    border: 1px solid #d6d6d6;
-    margin-bottom: 15px;
-    width: 99%; }
   .commentForm .leaveComment {
     float: right;
     cursor: pointer; }
@@ -1511,16 +1499,21 @@ button.follow {
     border-radius: 5px;
     border: 1px solid #cccccc; }
     .sears #header_nav.dropmenu ul li, .kmart #header_nav.dropmenu ul li {
-      border-top: 1px solid #cccccc;
-      border-right: 0;
-      width: 100%; }
-      .sears #header_nav.dropmenu ul li:first-child, .kmart #header_nav.dropmenu ul li:first-child {
-        border-top: 0; }
+      width: 100%;
+      border-right: 0; }
       .sears #header_nav.dropmenu ul li a, .kmart #header_nav.dropmenu ul li a {
+        color: #73726F;
         border-right: 0; }
 
 .sears #header_nav.dropmenu, .kmart #header_nav.dropmenu {
   background-position: left -80px; }
+
+.kmart #header_nav.dropmenu ul {
+  padding: 4px 0; }
+  .kmart #header_nav.dropmenu ul li a:hover {
+    color: white;
+    text-decoration: none;
+    background: red; }
 
 #footer_nav.dropmenu li a {
   padding-top: .5em;
@@ -1746,6 +1739,15 @@ button.follow {
   .post-n-comments .content p {
     font-size: 14px;
     margin-bottom: 25px; }
+  .post-n-comments textarea {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #d6d6d6;
+    margin-bottom: 15px;
+    width: 99%; }
 
 /**
  *  @author Tim Steele

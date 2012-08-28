@@ -1,6 +1,6 @@
 <?php
 
-$origin = (isset($_GET['origin'])) ? urldecode($_GET['origin']) : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_permalink($post->ID));
+$origin = (isset($_GET['origin'])) ? urldecode($_GET['origin']) : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_site_url());
 $error = (isset($_GET['err'])) ? urldecode($_GET['err']) : false;
 
 /**
@@ -78,7 +78,7 @@ get_template_part('parts/header'); ?>
 				<li class="open-id_service open-id_facebook"><a href="#" shc:openID="facebook">Facebook</a></li>
 				<li class="open-id_service open-id_yahoo"><a href="#" shc:openID="yahoo">Yahoo!</a></li>
 				<li class="open-id_service open-id_google"><a href="#" shc:openID="google">Google</a></li>
-				<li class="open-id_service open-id_twitter"><a href="#" shc:openID="twitter">Twitter</a></li>
+				<!-- <li class="open-id_service open-id_twitter"><a href="#" shc:openID="twitter">Twitter</a></li> -->
 			</ul>
 		</section>
 		

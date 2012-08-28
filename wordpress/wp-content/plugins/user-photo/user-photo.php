@@ -161,8 +161,8 @@ function userphoto__get_userphoto($user_id, $photoSize, $before, $after, $attrib
 		$img .= $before;
 		$img .= '<img src="' . htmlspecialchars($src) . "?" . $cache_buster . '"';
 		
-		if(empty($attributes['alt']))
-			$img .= ' alt="' . htmlspecialchars($userdata->display_name) . '"';
+		//if(empty($attributes['alt']))
+		//	$img .= ' alt="' . htmlspecialchars($userdata->display_name) . '"';
 		if(empty($attributes['width']) && !empty($width) && $attributes["size"] != "none")
 			$img .= ' width="' . htmlspecialchars($width) . '"';
 		if(empty($attributes['height']) && !empty($height) && $attributes["size"] != "none")

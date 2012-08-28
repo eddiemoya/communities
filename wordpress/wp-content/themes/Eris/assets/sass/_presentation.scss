@@ -235,10 +235,8 @@ ul.bullets {
  * form elements
  */
 .input_text {
-  /*
-   * Do not set padding for left/right to 0.
-   * IE8 no like this.
-   */
+  // Do not set padding for left/right to 0.
+  // IE8 no like this.
   padding:.3125em .01em;
   border:solid 1px sears( decorative );
   height:1.25em;
@@ -314,7 +312,7 @@ ul.bullets {
   }
   .error-message {
     background-color:#e41e13;
-    color:#ffffff;
+    color:$lightest-color;
     display:block;
     float:left;
     font-weight:bold;
@@ -534,7 +532,7 @@ form {}
 }
 
 // RESULT LIST
-.results-list {
+.result-list {
   margin-top: 1em;
   border: 1px solid sears( decorative );
   @include border-radius( 5px );
@@ -571,13 +569,13 @@ form {}
 
 // FEATURED BLOG POST
 .content-container.featured-post {
-	.content-excerpt, .content-byline {
-		font-size:.75em
-	}
+  .content-excerpt, .content-byline {
+    font-size:.75em
+  }
 }
 .span4 .content-container.featured-post .span6 {
-	width: 100%;
-	margin-left: 0;
+  width: 100%;
+  margin-left: 0;
 }
 
 // RECENT ACTIVITY
@@ -723,21 +721,21 @@ fieldset#use_your_account_from {
 
 // subnav widget
 .widget_communities_menu_widget {
-	.subnav-items {
-		font-size: .80em;
-		.menu-item {
-			padding: 6px 0;
-		}
-	}
-	.subcat-selector-container {
-		font-size: .75em;
-		margin-top: 15px;
-		color: #666666;
-		select {
-			margin-left: 10px;
-			color: #000000;
-		}
-	}
+  .subnav-items {
+    font-size: .80em;
+    .menu-item {
+      padding: 6px 0;
+    }
+  }
+  .subcat-selector-container {
+    font-size: .75em;
+    margin-top: 15px;
+    color: sears( secondary-link );
+    select {
+      margin-left: 10px;
+      color: $darkest-color;
+    }
+  }
 }
 
 // PROFILE
@@ -808,7 +806,7 @@ $tab-padding: "1em 0 .6em 0";
     dt, dd {
       float: left;
       padding: 1em 0;
-      border-top: 1px solid sears(decorative);
+      border-top: 1px solid sears( decorative );
       font-size: percentage( 13/16 );
     }
     dt {
@@ -869,28 +867,28 @@ $tab-padding: "1em 0 .6em 0";
 
 // content list widget
 .content-body.content-list {
-	.content-item {
-		margin-bottom: 10px;
-		float: left;
-		clear: both;
-		.post-title {
-			line-height: 1.2em;
-		}
-		.byline, .comments-count, .post-date {
-			font-size: .7em;
-			line-height: 1.4em;
-			color: #999;
-		}
-		p {
-			margin-bottom: 0;
-		}
-	}
-	.more-link {
-		font-size: .8em;
-		margin-top: 15px;
-		float: left;
-		clear:both;
-	}
+  .content-item {
+    margin-bottom: 10px;
+    float: left;
+    clear: both;
+    .post-title {
+      line-height: 1.2em;
+    }
+    .byline, .comments-count, .post-date {
+      font-size: .7em;
+      line-height: 1.4em;
+      color: #999;
+    }
+    p {
+      margin-bottom: 0;
+    }
+  }
+  .more-link {
+    font-size: .8em;
+    margin-top: 15px;
+    float: left;
+    clear:both;
+  }
 }
 
 .tooltip {
@@ -928,9 +926,9 @@ $tab-padding: "1em 0 .6em 0";
 
   .middle {
     @include border-radius( 4px );
-    background-color: #fff;
+    background-color: $lightest-color;
     border: 1px solid #A0C7FF;
-    color: #000;
+    color: $darkest-color;
     float: left;
     padding: 7px;
   }
@@ -939,13 +937,6 @@ $tab-padding: "1em 0 .6em 0";
 // Threaded Discussion
 .commentForm {
   margin-bottom: 20px;
-
-  textarea {
-    @include border-radius( 4px );
-    border: 1px solid #d6d6d6;
-    margin-bottom: 15px;
-    width: 99%;
-  }
   
   .leaveComment {
     float: right;

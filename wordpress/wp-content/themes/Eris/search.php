@@ -4,8 +4,12 @@
  * @subpackage White Label
  */
 
-get_template_part('parts/header');
+get_template_part('parts/header'); ?>
 
-get_template_part('widgets/results-list/archive');
+<article class="span12 results-list result-list content-container">
 
-get_template_part('parts/footer');
+ <?php get_template_part('widgets/results-list/archive'); ?>
+
+</article>
+
+<? get_template_part('parts/footer');
