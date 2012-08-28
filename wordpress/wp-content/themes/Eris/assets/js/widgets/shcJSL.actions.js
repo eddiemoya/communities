@@ -8,6 +8,10 @@
 * @version [1.0: 2012-08-08]
 * - Initial script release
 */
+var allActions = [];
+
+var isVoteSwitch = false;
+
 ACTIONS = {};
 /**
  *
@@ -28,12 +32,17 @@ ACTIONS.actions = $actions = function(element, options) {
             id: 0,
             name: '',
             sub_type: '',
-            type: ''
+            type: '',
+            nli_reset: ''
         }
     };
 
+    _this.originalOptions = {};
+
+    _this.originalAction = {};
+
     _this.click = function() {
-        _this._postAction();
+        _this._postAction(_this.action.element, _this.options);
     };
 
     _this.init = function(element, options) {
@@ -42,15 +51,15 @@ ACTIONS.actions = $actions = function(element, options) {
         /**
          * Take in options based in on creation and shove onto existing _this.options;
          */
-        _this.options = jQuery.extend(true, _this.options, options);
+        _this.originalOptions = _this.options = jQuery.extend(true, _this.options, options);
     };
 
     _this.setActionObject = function(element) {
-        _this.action.element = element;
+        _this.originalAction.element = _this.action.element = element;
     };
 
-    _this._postAction = function() {
-        var post = _this.options.post;
+    _this._postAction = function(element, options) {
+        var post = options.post;
 
         jQuery.post(
             ajaxurl + '?action=add_user_action',
@@ -58,35 +67,99 @@ ACTIONS.actions = $actions = function(element, options) {
             function(data) {
                 data = eval(data);
 
+                _this._decideForDownUpSwitch(data);
+
                 if(data === 'activated') {
-                    jQuery(_this.action.element).addClass('active');
+                    jQuery(element).addClass('active');
                 } else if(data === 'deactivated') {
-                    jQuery(_this.action.element).removeClass('active');
+                    jQuery(element).removeClass('active');
                 } else if(data === 'activated-out') {
-                    _this._updateCookie();
+                    _this._updateCookie(data);
 
-                    jQuery(_this.action.element).addClass('active');
+                    jQuery(element).addClass('active');
                 } else if(data === 'deactivated-out') {
-                    _this._updateCookie();
+                    _this._updateCookie(data);
 
-                    jQuery(_this.action.element).removeClass('active');
+                    jQuery(element).removeClass('active');
                 }
 
-                _this._resetActionTotal(data);
+                _this._resetActionTotal(data, element);
             }
         );
     };
 
-    _this._resetActionTotal = function(data) {
+    _this._decideForDownUpSwitch = function(data) {
+        var newOptions = {};
+        newOptions.actions = {};
+        newOptions.actions.post = {
+            id: 0,
+            name: '',
+            sub_type: '',
+            type: '',
+            nli_reset: ''
+        };
+
+        if(data === 'activated' || data === 'activated-out') {
+            var thisAction = _this.options.post.name === 'downvote' ? 'upvote' : 'downvote';
+
+            if(jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').hasClass('active')) {
+                /**
+                 * Reset options for _this clicked button
+                 */
+                _this.options.post.nli_reset = 'deactivate';
+                newOptions.actions.post = _this.options.post;
+
+                console.log(_this.options.post);
+
+                jQuery(_this.action.element).attr('shc:gizmo:options', JSON.stringify(newOptions));
+
+                var options = eval('(' + jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').attr('shc:gizmo:options') + ')');
+
+                /**
+                 * Unset nli_reset (Not Logged In Reset of vote)
+                 */
+                options.actions.post.nli_reset = null;
+
+                jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').attr('shc:gizmo:options', JSON.stringify(options));
+
+                options.actions.post.nli_reset = 'deactivated';
+
+                _this._postAction(jQuery(_this.action.element).siblings('button[name=' + thisAction + ']'), options.actions);
+
+                isVoteSwitch = true;
+            } else {
+                _this.options.post.nli_reset = 'deactivate';
+                newOptions.actions.post = _this.options.post;
+
+                jQuery(_this.action.element).attr('shc:gizmo:options', JSON.stringify(newOptions));
+
+                isVoteSwitch = false;
+            }
+        } else {
+            if(isVoteSwitch === false) {
+                _this.options.post.nli_reset = null;
+
+                newOptions.actions.post = _this.options.post;
+
+                jQuery(_this.action.element).attr('shc:gizmo:options', JSON.stringify(newOptions));
+            }
+
+            isVoteSwitch = false;
+        }
+    };
+
+    _this._resetActionTotal = function(data, element) {
         var action = _this.options.post.name;
         var currentTotal = '';
 
         if(action == 'follow') {
-            var text = jQuery(_this.action.element).html() === 'following' ? 'follow' : 'following';
 
-            jQuery(_this.action.element).html(text);
+            console.log(jQuery(element));
+            var text = jQuery(element.element).html() === 'following' ? 'follow' : 'following';
+
+            jQuery(element).html(text);
         } else {
-            var curId = jQuery(_this.action.element).attr('id');
+            var curId = jQuery(element).attr('id');
             var curValue = jQuery('label[for="' + curId + '"]').html();
 
             curValue = curValue.replace(/[^0-9]/g, '');
@@ -101,23 +174,24 @@ ACTIONS.actions = $actions = function(element, options) {
         }
     };
 
-    _this._updateCookie = function() {
+    _this._updateCookie = function(data) {
         var existingCookies = [];
         var jsonString = '{"actions": [';
 
-        existingCookies = eval('(' + shcJSL.cookies('actions').serve('value') + ')');
-        existingCookies = existingCookies.actions;
+        if(typeof(shcJSL.cookies('actions').serve('value')) !== 'undefined' && shcJSL.cookies('actions').serve('value') !== '') {
+            existingCookies = eval('(' + shcJSL.cookies('actions').serve('value') + ')');
+            existingCookies = existingCookies.actions;
 
-        if(typeof(existingCookies) !== 'undefined') {
             for(var i = 0; i < existingCookies.length; i++) {
-                jsonString += '{"id": "' + existingCookies[i].id + '", "name": "' + existingCookies[i].name + '", "sub_type": "' + existingCookies[i].sub_type + '", "type": "' + existingCookies[i].type + '"}, ';
-
-                console.log(jsonString);
+                if(existingCookies[i].id != _this.options.post.id && existingCookies[i].name != _this.options.post.name) {
+                    jsonString += '{"id": "' + existingCookies[i].id + '", "name": "' + existingCookies[i].name + '", "sub_type": "' + existingCookies[i].sub_type + '", "type": "' + existingCookies[i].type + '"}, ';
+                    console.log(jsonString);
+                }
             }
         }
 
         jsonString += '{"id": "' + _this.options.post.id + '", "name": "' + _this.options.post.name + '", "sub_type": "' + _this.options.post.sub_type + '", "type": "' + _this.options.post.type + '"}]}';
-console.log('final: ' + jsonString);
+
         shcJSL.cookies("actions").bake({value: jsonString, expiration: '1y'});
     };
 
@@ -136,9 +210,7 @@ shcJSL.methods.actions = function(_element, options) {
 
     var action = ($actions instanceof TOOLTIP.tooltip) ? $actions : new $actions(jQuery(_element), _elementOptions);
 
-    var i, method;
-
-    action.click(event);
+    action.click();
 };
 
 /**
@@ -157,5 +229,5 @@ if (shcJSL && shcJSL.gizmos)  {
         jQuery(element).click(function() {
             shcJSL.get(element).actions(element, options);
         });
-	}
+    }
 }

@@ -1284,6 +1284,11 @@ fieldset#use_your_account_from {
     #allComments .comment article {
       font-size: 13px;
       margin: 1em 0; }
+    #allComments .comment .responseTo {
+      font-weight: bold;
+      margin: 10px 0 0 0; }
+    #allComments .comment textarea {
+      width: 98%; }
   #allComments .children {
     clear: both;
     float: right;
@@ -1359,6 +1364,9 @@ button.follow {
   text-indent: 0em;
   background: none;
   margin-left: 0; }
+  button.follow .active {
+    background-color: #4E74A3;
+    color: #fff; }
 
 .metainfo {
   display: block;

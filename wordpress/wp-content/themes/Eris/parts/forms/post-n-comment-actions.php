@@ -10,7 +10,6 @@
 
     if(isset($actions) && !empty($actions)) {
         foreach($actions as $action) {
-
             switch($action->action) {
                 case 'upvote':
                     $acts['upvote']['action'] = $action;
@@ -49,6 +48,27 @@
                         }
                     }
                 }
+            } elseif(isset($action->user) && $action->user->id != 0) {
+                switch($action->action) {
+                    case 'upvote':
+                        $acts['upvote']['myaction'] = ' active';
+                        $acts['upvote']['nli_reset'] = ',nli_reset:\'deactivate\'';
+
+                        break;
+                    case 'downvote':
+                        $acts['downvote']['myaction'] = ' active';
+                        $acts['downvote']['nli_reset'] = ',nli_reset:\'deactivate\'';
+
+                        break;
+                    case 'follow':
+                        $acts['follow']['myaction'] = 'following';
+
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+
             }
         }
     }
@@ -59,6 +79,9 @@
     $myActionDownvote = isset($acts['downvote']['myaction']) ? $acts['downvote']['myaction'] : '';
     $myActionFollow = isset($acts['follow']['myaction']) ? $acts['follow']['myaction'] : '';
     $myActionUpvote = isset($acts['upvote']['myaction']) ? $acts['upvote']['myaction'] : '';
+
+    $nliDownvote = isset($acts['downvote']['nli_reset']) ? $acts['downvote']['nli_reset'] : '';
+    $nliUpvote = isset($acts['upvote']['nli_reset']) ? $acts['upvote']['nli_reset'] : '';
 
     if ( isset( $options ) && ( !empty( $options ) ) ) {
         if ( in_array( "reply", $options ) ) {
@@ -82,10 +105,10 @@
             $buttons[] = '<button type="button" name="button1" value="flag" title="Flag this ' . $type . '" id="flag-comment-' . $id . '" class="flag">flag</button>';
         }
         if ( in_array( "downvote", $options ) ) {
-            $buttons[] = '<label class="metainfo" for="downvote-comment-' . $id . '">('.$downvoteTotal.')</label><button shc:gizmo="actions" shc:gizmo:options="{actions:{post:{id:'.$id.',name:\'downvote\',sub_type:\''.$sub_type.'\',type:\''.$type.'\'}}}" type="button" name="button1" value="down vote" title="Down vote this ' . $type . '" id="downvote-comment-' . $id . '" class="downvote'.$myActionDownvote.'">down vote</button>';
+            $buttons[] = '<label class="metainfo" for="downvote-comment-' . $id . '">('.$downvoteTotal.')</label><button shc:gizmo="actions" shc:gizmo:options="{actions:{post:{id:'.$id.',name:\'downvote\',sub_type:\''.$sub_type.'\',type:\''.$type.'\''.$nliDownvote.'}}}" type="button" name="downvote" value="down vote" title="Down vote this ' . $type . '" id="downvote-comment-' . $id . '" class="downvote'.$myActionDownvote.'">down vote</button>';
         }
         if ( in_array( "upvote", $options ) ) {
-            $buttons[] = '<label class="metainfo" shc:gizmo="actions" for="upvote-comment-' . $id . '">('.$upvoteTotal.')</label><button shc:gizmo="actions" shc:gizmo:options="{actions:{post:{id:'.$id.',name:\'upvote\',sub_type:\''.$sub_type.'\',type:\''.$type.'\'}}}" type="button" name="button1" value="helpful" title="Up vote this ' . $type . '" id="upvote-comment-' . $id . '" class="upvote'.$myActionUpvote.'">helpful</button>';
+            $buttons[] = '<label class="metainfo" shc:gizmo="actions" for="upvote-comment-' . $id . '">('.$upvoteTotal.')</label><button shc:gizmo="actions" shc:gizmo:options="{actions:{post:{id:'.$id.',name:\'upvote\',sub_type:\''.$sub_type.'\',type:\''.$type.'\''.$nliUpvote.'}}}" type="button" name="upvote" value="helpful" title="Up vote this ' . $type . '" id="upvote-comment-' . $id . '" class="upvote'.$myActionUpvote.'">helpful</button>';
         }
     }
     
