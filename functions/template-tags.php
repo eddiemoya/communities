@@ -51,7 +51,7 @@ function loop_by_type($special = null){
             the_post();
      
             $template = (isset($special)) ? $wp_query->post->post_type.'-'.$special : $wp_query->post->post_type;
-            print_pre($template);
+            //print_pre($template);
             get_template_part('parts/'.$template);
         }    
     }
