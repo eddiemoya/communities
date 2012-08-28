@@ -14,45 +14,44 @@
  * 
  * TransFormer object
  */
-TRANSfORMER = $tf = {}
-TRANSfORMER.blunder = function(element) {
-	var methods;		// (Object) methods for errors
-	var goofs = [];	// (Array) contains goof object
-	
-	methods = {
-		create: function(param) {
-			console.log("CREATE: "); console.log(param);
-		},
-		destroy: function(param) {
-			console.log("DESTROY:"); console.log(param);
-		}
-	}
-	
-	goofs.push(element);
-	
-	for (var action in methods)(
-		function(n,m) {
-			goofs[n] = function(x) {
-				return goofs.map(m,x);
-			}
-		}(action, methods[action])
-	)
-	
-	return goofs;
-}
+TRANSfORMER = {}
 TRANSfORMER.transFormer = $TransFormer = function(form) {
+	var bindMethods;	// (Function) Bind the validation methods to the fields
+	var error; // (Object) Error create/destroy
 	var fields = [];	// (Array) Array of all the form fields
-	var methods;	// (Function) Bind the validation methods to the fields
 	var required = [];	// (Array) Array of required fields
+	var self = this;
 	var transformer; // The form object
 	this.verify;	// (Function) Verify that the form is valid for submission
-	var blunders = [];	// (Array) Array of any outstanding blunders;
+	var valid;	// (Boolean) Whether the form is currently valid for submission or not
 	
-	var self = this;
 	transformer = form;
 	valid = 0;
 	
-	methods = function(target) {
+	error = {
+		message: function(string) {
+			var message;	// Error message element
+			
+			message = shcJSL.createNewElement("p","error-message")
+			message.appendChild(shcJSL.createNewElement("span","error-pointer"));
+			
+			console.log(message);
+			console.log(string)
+			return (message.appendChild(createTextNode(string)));
+		},
+		create: function(target) {
+			var err;	// Error message object
+			console.log(options);
+			err = new error.message(options.message);
+			
+			console.log(err);
+		},
+		destroy: function(target) {
+			alert("OKAY");
+		}
+	}
+	
+	bindMethods = function(target) {
 		if ($(target).attr("shc:gizmo:form") != undefined) {
 			options = eval('(' + $(target).attr("shc:gizmo:form") + ')');
 			
@@ -68,37 +67,36 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				fn[fn.length] = function(options) {
 					var pattern = new RegExp(options.pattern);
 					if (target.value != '') {
-						if (pattern.test(target.value.toString())) return true;
-						else return false;
+						if (pattern.test(target.value.toString())) {
+							error.destroy(target);
+						} else {
+							error.create(target);
+						}
 					}	// END if target.value != ''
 				} // END fn function
 			} // END pattern
 			
 			if (options.custom) {
-				fn[fn.length] = function(options) {
-					return options.custom();
-				}
+				
 			}
 			
-			$(target).bind('blur', function(event) {
-				var i; // counter
-				for (i=0; i < fn.length; i++) {
-					if (!(fn[i](options))) {
-						$tf.blunder(this).create();
-						blunders[blunders.length] = this;
-						break;
-					} // END if error
-				}	// END for fn.length;
-				if (i >= fn.length) {
-					blunders.remove(this);
-				}
-			});
-				
+			if (options.custom) {
+				//$(target).bind('blur', function() {
+					var check;	// true or false valid check
+					
+					check = options.custom;
+					
+					if (check == false) {
+						error.create(target);
+					} else error.destroy(target);
+				//});
+			}	// END custom
+			
 		}
 	}
 	
 	fields = fields.concat([].slice.call(transformer.elements));
-	fields.map(methods);
+	fields.map(bindMethods);
 
 	
 	this.verify = function() {

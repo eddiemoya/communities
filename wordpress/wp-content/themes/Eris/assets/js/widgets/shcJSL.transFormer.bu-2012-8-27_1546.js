@@ -80,7 +80,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				}
 			}
 			
-			$(target).bind('blur', function(event) {
+			$(target).bind('blur keyup', function(event) {
 				var i; // counter
 				for (i=0; i < fn.length; i++) {
 					if (!(fn[i](options))) {
@@ -93,7 +93,36 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 					blunders.remove(this);
 				}
 			});
-				
+			
+				// var queued = false; // Is timeout queued?
+				// var waiter;	// Timeout event;
+				// function validate() {
+					// var i; // counter
+					// for (i=0; i < fn.length; i++) {
+						// if (!(fn[i](options))) {
+							// $tf.blunder(this).create();
+							// blunders[blunders.length] = this;
+							// break;
+						// } // END if error
+					// }	// END for fn.length;
+					// if (i >= fn.length) {
+						// blunders.remove(this);
+					// }
+				// }
+				// if (event.type == "blur") {
+					// if (queued) window.clearTimeout(waiter);
+					// console.log(this)
+					// validate.call(this);
+// 					
+				// } else if (event.type == "keyup") {
+					// console.log(queued);
+					// if (!queued) {
+						// console.log("DO");
+						// queued = true;
+						// waiter = window.setTimeout(function() {validate.call(this); queued = false;}, 2500);
+// 						
+					// }
+				// }
 		}
 	}
 	
