@@ -1244,15 +1244,6 @@ fieldset#use_your_account_from {
 
 .commentForm {
   margin-bottom: 20px; }
-  .commentForm textarea {
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -o-border-radius: 4px;
-    border-radius: 4px;
-    border: 1px solid #d6d6d6;
-    margin-bottom: 15px;
-    width: 99%; }
   .commentForm .leaveComment {
     float: right;
     cursor: pointer; }
@@ -1748,6 +1739,15 @@ button.follow {
   .post-n-comments .content p {
     font-size: 14px;
     margin-bottom: 25px; }
+  .post-n-comments textarea {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #d6d6d6;
+    margin-bottom: 15px;
+    width: 99%; }
 
 /**
  *  @author Tim Steele
