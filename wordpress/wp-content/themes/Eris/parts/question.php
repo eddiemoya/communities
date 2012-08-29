@@ -37,20 +37,35 @@
             comments_template('/parts/comments.php');
         ?>
     </article>
-    <script type="text/javascript">
-        // Toggle reply forms
-        $(".commentForm form").hide();
-        $(".leaveComment").click(function () {
-          $(".commentForm form").slideToggle("slow");
-        });
-        $(".reply-to-form").hide();
-        $(".reply").on('click', function () {
-            $(this).parent().next(".reply-to-form").slideToggle("slow");
-        });
-        $(".cancel-reply").on('click', function () {
-            $(this).parent().parent().slideToggle("slow");
-        });
-    </script>
+<?php
+    if(is_user_logged_in()) {
+?>
+        <script type="text/javascript">
+            // Toggle reply forms
+            $(".commentForm form").hide();
+            $(".leaveComment").click(function () {
+              $(".commentForm form").slideToggle("slow");
+            });
+
+            $(".reply-to-form").hide();
+            $(".reply").on('click', function () {
+                $(this).parent().next(".reply-to-form").slideToggle("slow");
+            });
+            $(".cancel-reply").on('click', function () {
+                $(this).parent().parent().slideToggle("slow");
+            });
+        </script>
+<?php
+    } else {
+?>
+        <script type="text/javascript">
+            // Toggle reply forms
+            $(".commentForm form").hide();
+            $(".reply-to-form").hide();
+        </script>
+<?php
+    }
+?>
 </section>
 <section class="span4">
 <?php

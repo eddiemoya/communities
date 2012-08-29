@@ -1059,12 +1059,12 @@ button.follow {
   text-indent: 0em;
   background: none;
   margin-left: 0;
+}
 
-  .active {
+.follow.active {
     background-color: #4E74A3;
     color: #fff;
   }
-}
 
 .metainfo {
   display: block;

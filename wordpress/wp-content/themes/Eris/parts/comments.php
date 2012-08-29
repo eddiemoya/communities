@@ -4,7 +4,6 @@
     $comment_type = get_post_type( $post->ID ) == 'question' ? 'answer' : 'comment';
 
     if ( isset( $comments ) && !empty( $comments ) ) {
-
 ?>
 
 <header class="section-header comments-header clearfix">
