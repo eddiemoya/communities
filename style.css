@@ -1124,7 +1124,6 @@ fieldset#use_your_account_from {
   background-image: -webkit-linear-gradient(#ffffff, #f4f4f4);
   background-image: -moz-linear-gradient(#ffffff, #f4f4f4);
   background-image: -o-linear-gradient(#ffffff, #f4f4f4);
-  background-image: -ms-linear-gradient(#ffffff, #f4f4f4);
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;
@@ -1364,9 +1363,10 @@ button.follow {
   text-indent: 0em;
   background: none;
   margin-left: 0; }
-  button.follow .active {
-    background-color: #4E74A3;
-    color: #fff; }
+
+.follow.active {
+  background-color: #4E74A3;
+  color: #fff; }
 
 .metainfo {
   display: block;
