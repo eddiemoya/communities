@@ -891,6 +891,24 @@ $tab-padding: "1em 0 .6em 0";
   }
 }
 
+// question list widget
+.content-container.questionlist .content-body.content-list {
+	.content-item {
+		margin-bottom: 20px;
+		.post-category {
+			font-weight: bold;
+			margin-bottom: 4px;
+		}
+		.addthis.dropmenu {
+			padding-top: 3px;
+			font-size: .75em;
+			.sharebutton {
+				padding: 0;
+			}
+		}
+	}
+}
+
 .tooltip {
   display: none;
   position: absolute;
