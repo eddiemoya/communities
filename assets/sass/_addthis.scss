@@ -89,9 +89,7 @@
 }
 
 .addthis_button_shopyourway img {
-  position: absolute;
-  left: 14px;
-  top: 4px;
+  float: left;
 }
 
 .addthis.dropmenu {
@@ -104,7 +102,12 @@
       display: inline;
     }
     ul li {
+      padding: .2em;
+      width: 96%;
       @include border-radius( 5px );
+      a {
+        padding-left: .2em;
+      }
     }
   }
   .sharebutton {
@@ -113,7 +116,7 @@
   }
   .sharemenulinks  {
     background: #fff;
-    width: 136px;
+    min-width: 150px;
     padding: 1px;
     border: 3px solid #eee;
     @include border-radius( 0px 5px 5px 5px );
