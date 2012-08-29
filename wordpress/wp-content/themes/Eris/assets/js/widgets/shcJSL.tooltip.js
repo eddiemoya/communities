@@ -138,6 +138,14 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         _this._preventDefault(_this.options.events.preventDefault, event);
     };
 
+    _this.setDisplayData = function() {
+        if(typeof(_this.options.displayData) !== 'function') {
+            _this.options.displayData = jQuery('#default').length() > 0 ? jQuery('#default') : null;
+        } else {
+            _this.options.displayData = _this.options.displayData();
+        }
+    };
+
     /**
      *
      */

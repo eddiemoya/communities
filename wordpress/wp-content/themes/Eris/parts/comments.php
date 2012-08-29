@@ -124,7 +124,12 @@
                                 <?php
                                     if(!is_user_logged_in()):
                                 ?>
-                                    <input type="submit" id="submit" class="kmart_button" value="Post" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
+                                    <input
+                                            type="submit"
+                                            id="submit"
+                                            class="kmart_button"
+                                            value="Post"
+                                            shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
                                     <input type="reset" class="kmart_button azure" value="Cancel" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
                                 <?php else: ?>
                                     <input
@@ -132,27 +137,31 @@
                                             id="submit"
                                             class="kmart_button"
                                             value="Post"
-                                            shc:gizmo="tooltip"
-                                            shc:gizmo:options="{tooltip:{events:{
-                                                click:{
-                                                        callBack: function(event){
-                                                            var options = {};
-
-                                                            var flagger = new $flagger(event.target, options);
-
-                                                            event.preventDefault();
+                                            shc:gizmo="tooltipForm"
+                                            shc:gizmo:options="{tooltipForm:{
+                                                form: {
+                                                    elements: [
+                                                        {
+                                                            element: 'textarea',
+                                                            class: 'flagField',
+                                                            attributes: {
+                                                                'cols': 2,
+                                                                'name': 'comment',
+                                                                'aria-required': true,
+                                                                'id': 'comment-body-<?php echo $comment->comment_ID ?>'
+                                                            }
                                                         },
-                                                        active: true,
-                                                        name: 'click',
-                                                        preventDefault: true
-                                                },
-                                                mouseover:{
-                                                        callBack: function(){console.log('asdf');},
-                                                        active: true,
-                                                        name:'mouseover',
-                                                        preventDefault: true
+                                                        {
+                                                            element: 'input',
+                                                            class: 'kmart_button',
+                                                            attributes: {
+                                                                'type': 'submit',
+                                                                'value': 'Flag'
+                                                            }
+                                                        }
+                                                    ]
                                                 }
-                                            }}}"
+                                            }}"
                                     />
                                     <input type="reset" class="kmart_button azure" value="Cancel">
                                 <?php endif; ?>
