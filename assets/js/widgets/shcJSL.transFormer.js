@@ -26,10 +26,12 @@ TRANSfORMER.blunder = function(element) {
 	
 	methods = {
 		create: function(param) {
+			var err = new error(this);
 			if (($(param.parentNode).children(".error-message")).length < 1) {
-				var err = new error(this);
 				param.parentNode.insertBefore(err, param.nextSibling);
 				$(param.parentNode).addClass("error");
+			} else {
+				param.parentNode.replaceChild(err, $(param.parentNode).children(".error-message").get(0));
 			}
 		},
 		destroy: function(param) {
@@ -94,6 +96,9 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				}
 			}
 			
+			/* !TO DO! If user blanks a field, remove the error */
+			
+			
 			$(target).bind('blur', function(event) {
 				if (this.value != '') {
 					var i; // counter
@@ -113,21 +118,46 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 		}
 	}
 	
-	fields = fields.concat([].slice.call(transformer.elements));
+	fields = shcJSL.sequence(transformer.elements);
 	fields.map(methods);
 
 	function checkReqd() {
-		console.log(fields);
-	}
-	alert(fields.concat())
-	alert(required.concat())
-	console.log(fields);
-	console.log(required);
-	this.verify = function() {
-		return false;
+		var flag = true;	// Valid flag;
+		for (var i=0; i < required.length; i++) {
+			if (required[i].nodeName != "INPUT") {
+				var group;	// Group of form elements;
+				if (required[i].nodeName == "FIELDSET") {
+					// First check for checboxes
+					group = $(required[i]).find('[name="' + required[i].id + '"]');
+					if (group.length > 0) {
+						for (var j =0; j < group.length; j++) {
+							if ($(group[j]).is(":checked")) break;
+						}
+						
+						if (j >= group.length) {
+							if (flag != false) flag = false;
+							$tf.blunder(required[i]).create("This field is required.")
+						}
+					}
+				}
+			}	// END IF !INPUT
+			else {
+				if (required[i].value == '') {
+					if (flag != false) flag = false;
+					$tf.blunder(required[i]).create("This field is required.")
+				}	// END IF required value
+			}	// END ELSE != Input
+		}	// END FOR
+		return flag;
 	}
 	
-	//console.log(fields);
+	this.verify = function() {
+		var valid;
+		
+		valid = checkReqd();
+		console.log(valid);
+		return valid;
+	}
 }
 
 shcJSL.methods.transFormer = function(target, options) {
@@ -167,13 +197,14 @@ shcJSL.methods.transFormer = function(target, options) {
 			do {
 				success = submitEval[this.id][i]();
 				i++;
+				console.log(success);
 			} while (success != false || i < submitEval.length)
 		}
+		console.log(success);
 		if (success === false) event.preventDefault();
 		else return true;
 	})
 	
-	//($Moodle instanceof MOODLE.modal)? $Moodle[method](target, this):($Moodle = new $Moodle())[method](target,this)
 }
 
 shcJSL.gizmos.bulletin['shcJSL.transFormer.js'] = true;
