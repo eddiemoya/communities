@@ -1,58 +1,13 @@
 <?php get_template_part('parts/header'); ?>
 
+<ul class="span8">
 <?php
-	$posts = get_posts(array('post_type' => 'guide', 'numberposts' => 2));
-
-	//echo "<pre>";print_r($posts);echo "</pre>";
-	$nav_menus = get_terms( 'nav_menu', array( 'hide_empty' => true ) );
-	$sidebar_args = array(
-	    'before_widget' => '<article class="span12 content-container widget dropzone-widget sidebar-widget widget %2$s" id="%1$s">',
-	    'after_widget' => '</article>',
-	    'before_title' => '<header class="content-header"><h3 class="widgettitle">',
-	    'after_title' => '</h3></header>'
-	);
-	$fp1_instance = array(
-		'widget_title' => 'The Community Blog',
-		'widget_subtitle' => 'Find out more. About whatever interests you.',
-		'show_title' => true,
-		'show_subtitle' => true,
-		'show_comment_count' => 'on',
-		'show_category' => true,
-		'show_date' => true,
-		'show_thumbnail' => true,
-		'show_content' => true,
-		'show_share'	=> true,
-		'filter-by' => 'manual',
-		'widget_name' => 'featured-post',
-		'limit' => 1,
-		'post__in_1' => 518
-	);
-	$fp2_instance = array(
-		'show_comment_count' => 'on',
-		'show_category' => true,
-		'show_date' => true,
-		'show_thumbnail' => true,
-		'show_content' => true,
-		'show_share'	=> true,
-		'filter-by' => 'manual',
-		'widget_name' => 'featured-post',
-		'limit' => 1,
-		'post__in_1' => 607
-	);
-
- ?>
-
-<ul class="span8 widget_dropzone_widget dropzone">
-
-	<?php if(!dynamic_sidebar('Posts Content Area')) : ?> 
-			<!-- <article class="span12 widget_featured-post content-container widget featured-post"> -->
-			<?php the_widget('Featured_Posts_Widget', $fp1_instance, $sidebar_args ) ?>
-			<?php the_widget('Featured_Posts_Widget', $fp2_instance, $sidebar_args ) ?>
-		
-		</article>
-	<?php endif; ?> 
-
-
+    if (have_posts()) :
+        while (have_posts()) :
+            get_partial("widgets/featured-post/single", array("is_widget_override" => true));
+        endwhile;
+    endif;
+?>
 </ul>
 
 <ul class="span4 widget_dropzone_widget dropzone">

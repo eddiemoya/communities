@@ -307,7 +307,7 @@ ul.bullets {
 }
 
 .error {
-  input[type="text"] {
+  input[type="text"], input[type="password"] {
     border:solid 1px #ff0000;
   }
   .error-message {
@@ -1055,6 +1055,16 @@ $tab-padding: "1em 0 .6em 0";
   float: left;
 }
 
+.reply-to-form {
+  label, input[type="text"] {
+    float: left;
+    margin: .5em 1%;
+  }
+  label {
+    margin-top: 1em;
+  }
+}
+
 @include sprite-position( 'button.flag', center, (( $act-sprite-period * -1 ) * 4) + 2 );
 @include sprite-position( 'button.flag.active', center, (( $act-sprite-period * -1 ) * 5) + 2 );
 
@@ -1069,7 +1079,7 @@ button.upvote {
   padding-right: 1.5em;
 }
 @include sprite-position( 'button.upvote', 95%, 2px );
-@include sprite-position( 'button.upvote.active', right, ( $act-sprite-period * -1 ) + 2 );
+@include sprite-position( 'button.upvote.active', 95%, ( $act-sprite-period * -1 ) + 2 );
 
 button.follow {
   float: left;
@@ -1123,4 +1133,15 @@ button.follow {
       
 .sears .breadcrumb li:before {
   color:sears( link );
+}
+.no-results {
+	.header {
+		font-weight: bold;
+		margin-top: 15px;
+		margin-bottom: 5px;
+		font-size: 1em;
+	}
+	ul {
+		padding-left: 20px;
+	}
 }

@@ -31,7 +31,7 @@ get_template_part('parts/header'); ?>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="loginId">Email:</label></dt>
-                        <dd class="span9"><input type="text" name="loginId" autocomplete="off" class="input_text" id="loginId" shc:gizmo:form="{required:true, pattern: /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, message: 'Please enter a valid email address'}" /></dd>
+                        <dd class="span9"><input type="text" name="loginId" autocomplete="off" class="input_text" id="loginId" shc:gizmo:form="{required:true, pattern: /^.+@.+?\.[a-zA-Z]{2,}$/, message: 'Please enter a valid email address'}" /></dd>
                         
                     </dl>
                     							
@@ -49,7 +49,7 @@ get_template_part('parts/header'); ?>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="logonPassword">Password:</label></dt>
-                        <dd class="span9"><input type="password" name="logonPassword" autocomplete="off" class="input_text input_password" id="logonPassword" shc:gizmo:form="{required:true, pattern: /^[A-Za-z0-9]{8,}$/}" /></dd>
+                        <dd class="span9"><input type="password" name="logonPassword" autocomplete="off" class="input_text input_password" id="logonPassword" shc:gizmo:form="{required:true, pattern: /^[A-Za-z0-9]{8,}$/, message: 'Please enter a valid password.'}" /></dd>
                     </dl>
                 </li>
                 
@@ -59,7 +59,6 @@ get_template_part('parts/header'); ?>
                         <dd class="span9"><input type="text" name="zipcode" autocomplete="off" class="input_text input_password" id="zipcode" shc:gizmo:form="{required:true, pattern: /(^\d{5})(-\d{4})?$/, message: 'Please enter a valid ZIP code'}" /></dd>
                     </dl>
                 </li>
-                
                 
                 <li class="clearfix">
                     <dl>
@@ -93,22 +92,6 @@ get_template_part('parts/header'); ?>
                 </li>
                 
             </ul>
-            <fieldset id="boobs" shc:gizmo:form="{required:true}">
-	            <ul>
-	            	<li><input type="checkbox" name="boobs" value="A" /> A</li>
-	            	<li><input type="checkbox" name="boobs" value="B" /> B</li>
-	            	<li><input type="checkbox" name="boobs" value="C" /> C</li>
-	            	<li><input type="checkbox" name="boobs" value="D" /> D</li>
-	            	<li><input type="checkbox" name="boobs" value="DD" /> DD</li>
-	            </ul>
-            </fieldset>
-            
-            <fieldset id="sex" shc:gizmo:form="{required:true}">
-		          <ul>
-		          	<li><input type="radio" name="sex" value="yes" /> Yes</li>
-		          	<li><input type="radio" name="sex" value="doube yes" /> Double Yes</li>
-		          </ul>
-            </fieldset>
             
 				</form>
 				

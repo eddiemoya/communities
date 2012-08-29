@@ -72,6 +72,7 @@ function enqueue_scripts() {
 
 add_action('wp_head','pluginname_ajaxurl');
 function pluginname_ajaxurl() {
+
     $url = site_url('/wp-admin/admin-ajax.php');
 
     echo '
