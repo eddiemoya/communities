@@ -62,17 +62,20 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         displayData: null,
         events: {
             click: {
-//                callback: _this.click(),
+                callBack: _this.click,
+                active: false,
                 name: 'click',
                 preventDefault: false
             },
             mouseover: {
-//                callback: _this.mouseOver,
+                callBack: _this.mouseover,
+                active: false,
                 name: 'mouseover',
                 preventDefault: false
             },
             mouseout: {
-//                callback: _this.mouseOut(),
+                callBack: _this.mouseout,
+                active: false,
                 name: 'mouseout',
                 preventDefault: false
             },
@@ -99,26 +102,28 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
          */
         _this.options = jQuery.extend(true, _this.options, options);
 
+        _this.addListener(options);
+
         _this.setTooltip();
     };
 
-    _this.addListener = function() {
+    _this.addListener = function(options) {
         var callback = function() {};
         var name = '';
 
         for(var i in _this.options.events) {
-            callback = _this.options.events[0].callback();
-            name = _this.options.events[0].name;
-
-            jQuery(_this.actedObj.element).on(name, callback);
+            if(_this.options.events[i].active === true) {
+                jQuery(_this.actedObj.element).bind(_this.options.events[i].name, _this.options.events[i].callBack);
+            }
         }
     };
 
     _this.click = function(event) {
+        event.preventDefault();
+
         _this._openTooltip();
 
-//        _this._preventDefault(_this.options.events.click.preventDefault, event);
-        _this._preventDefault(true, event);
+        _this._preventDefault(_this.options.events.click.preventDefault, event);
     };
 
     _this.mouseover = function(event) {
@@ -285,19 +290,9 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
  * @param options = this instance
  */
 shcJSL.methods.tooltip = function(_element, options) {
-    var _elementOptions = ($(_element).attr("shc:gizmo:options") != undefined)? (((eval('(' + $(_element).attr("shc:gizmo:options") + ')')).tooltip)?(eval('(' + $(_element).attr("shc:gizmo:options") + ')')).tooltip:{}):{};
+    var _elementOptions = ($(_element).attr("shc:gizmo:options") != undefined) ? (((eval('(' + $(_element).attr("shc:gizmo:options") + ')')).tooltip)?(eval('(' + $(_element).attr("shc:gizmo:options") + ')')).tooltip:{}):{};
 
     var tooltip = ($tooltip instanceof TOOLTIP.tooltip) ? $tooltip : new $tooltip(jQuery(_element), _elementOptions);
-
-    var i, method;
-
-    for (i = 0; i < _elementOptions.events.length; i++) {
-        method = _elementOptions.events[i];
-
-        jQuery(_element).bind(method, function(event) {
-            tooltip[method](event);
-        });
-    }
 };
 
 /**

@@ -127,7 +127,33 @@
                                     <input type="submit" id="submit" class="kmart_button" value="Post" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
                                     <input type="reset" class="kmart_button azure" value="Cancel" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
                                 <?php else: ?>
-                                    <input type="submit" id="submit" class="kmart_button" value="Post">
+                                    <input
+                                            type="submit"
+                                            id="submit"
+                                            class="kmart_button"
+                                            value="Post"
+                                            shc:gizmo="tooltip"
+                                            shc:gizmo:options="{tooltip:{events:{
+                                                click:{
+                                                        callBack: function(event){
+                                                            var options = {};
+
+                                                            var flagger = new $flagger(event.target, options);
+
+                                                            event.preventDefault();
+                                                        },
+                                                        active: true,
+                                                        name: 'click',
+                                                        preventDefault: true
+                                                },
+                                                mouseover:{
+                                                        callBack: function(){console.log('asdf');},
+                                                        active: true,
+                                                        name:'mouseover',
+                                                        preventDefault: true
+                                                }
+                                            }}}"
+                                    />
                                     <input type="reset" class="kmart_button azure" value="Cancel">
                                 <?php endif; ?>
                                 <input type="hidden" name="comment_post_ID" value="<?php echo $comment->comment_post_ID; ?>" id="comment_post_ID">
