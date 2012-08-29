@@ -759,7 +759,7 @@ ul.bullets {
 .error-message {
   display: none; }
 
-.error input[type="text"] {
+.error input[type="text"], .error input[type="password"] {
   border: solid 1px #ff0000; }
 .error .error-message {
   background-color: #e41e13;
