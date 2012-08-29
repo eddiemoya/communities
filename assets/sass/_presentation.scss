@@ -307,7 +307,7 @@ ul.bullets {
 }
 
 .error {
-  input[type="text"] {
+  input[type="text"], input[type="password"] {
     border:solid 1px #ff0000;
   }
   .error-message {
