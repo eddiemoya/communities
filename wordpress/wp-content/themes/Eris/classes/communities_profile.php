@@ -68,6 +68,14 @@ class User_Profile {
 	 * 
 	 * @var int
 	 */
+	
+	/**
+	 * Category term id(s)
+	 * @var unknown_type
+	 */
+	private $category;
+	
+	
 	private $posts_per_page = 5;
 	
 	/**
@@ -110,9 +118,9 @@ class User_Profile {
 	 * Constructor
 	 * @param int $user_id
 	 */
-	public function __construct($user_id = false) {
+	public function __construct($user_id = null) {
 		
-		 if(! $user_id) die('You must supply a user ID to constructor of User_Profile.'); 
+		 //if(! $user_id) die('You must supply a user ID to constructor of User_Profile.'); 
 		 
 		 $this->user_id = $user_id;
 		
@@ -735,6 +743,97 @@ class User_Profile {
 					return false;
 				}	
 		
+	}
+	
+	public function category($term_id = false) {
+		
+		if(! $term_id) {
+			
+			$this->get_all_categories();
+			
+		} else {
+			
+			$this->category = $term_id;
+		}
+		
+		return $this;
+		
+	}
+	
+	private function get_all_categories() {
+		
+		$args = array(
+					'type'                     => 'post',
+					'child_of'                 => 0,
+					'parent'                   => '',
+					'orderby'                  => 'name',
+					'order'                    => 'ASC',
+					'hide_empty'               => 0,
+					'hierarchical'             => 1,
+					'exclude'                  => '',
+					'include'                  => '',
+					'number'                   => '',
+					'taxonomy'                 => 'category',
+					'pad_counts'               => false );
+				
+		$cats = get_categories( $args );
+		
+		//Package into terms array
+		foreach($cats as $cat){
+			
+			$terms[] = $cat->term_id;
+		}
+		
+		$this->category = implode(',', $terms);
+	}
+	
+	public function get_all_activities() {
+		
+		global $wpdb;
+		
+		$q = "(SELECT 
+				p.ID as ID,  
+				p.post_parent as parent,
+				p.post_author as author,
+				p.post_date as date,
+				p.post_type as type,
+				p.post_excerpt as action,
+				p.post_title as title,
+				p.post_content as content
+				
+				FROM {$wpdb->posts} as p
+				LEFT JOIN communities.wp_term_relationships tr ON p.ID = tr.object_id
+      			LEFT JOIN communities.wp_term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+				WHERE tt.term_id IN ({$this->category}) AND tt.taxonomy = 'category' 
+				AND p.post_type IN ('question', 'guides', 'post')
+				AND p.post_status='publish')
+				
+				UNION ALL
+				
+				(SELECT 
+				c.comment_ID,
+				c.comment_post_ID,
+				c.user_id,
+				c.comment_date,
+				c.comment_type,
+				c.comment_karma,
+				c.comment_author_url,
+				c.comment_content
+				
+				FROM {$wpdb->comments} as c
+				LEFT JOIN communities.wp_term_relationships tr ON c.comment_post_ID = tr.object_id
+        		LEFT JOIN communities.wp_term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+       			WHERE tt.term_id IN ({$this->category}) AND tt.taxonomy = 'category' 
+				AND c.comment_type IN ( 'answer', 'comment', '' )
+				AND c.comment_approved = 1)
+				
+				ORDER BY date DESC LIMIT 0," . $this->posts_per_page;
+		
+				$this->activities = $wpdb->get_results($q);
+				
+				$this->set_activities_attributes();
+				
+				return $this;
 	}
 	
 }
