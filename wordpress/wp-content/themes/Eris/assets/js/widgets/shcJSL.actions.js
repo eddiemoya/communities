@@ -109,8 +109,6 @@ ACTIONS.actions = $actions = function(element, options) {
                 _this.options.post.nli_reset = 'deactivate';
                 newOptions.actions.post = _this.options.post;
 
-                console.log(_this.options.post);
-
                 jQuery(_this.action.element).attr('shc:gizmo:options', JSON.stringify(newOptions));
 
                 var options = eval('(' + jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').attr('shc:gizmo:options') + ')');
@@ -122,7 +120,7 @@ ACTIONS.actions = $actions = function(element, options) {
 
                 jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').attr('shc:gizmo:options', JSON.stringify(options));
 
-                options.actions.post.nli_reset = 'deactivated';
+                options.actions.post.nli_reset = 'deactivate';
 
                 _this._postAction(jQuery(_this.action.element).siblings('button[name=' + thisAction + ']'), options.actions);
 
@@ -153,9 +151,7 @@ ACTIONS.actions = $actions = function(element, options) {
         var currentTotal = '';
 
         if(action == 'follow') {
-
-            console.log(jQuery(element));
-            var text = jQuery(element.element).html() === 'following' ? 'follow' : 'following';
+            var text = data === 'activated' ? 'following' : 'follow';
 
             jQuery(element).html(text);
         } else {
@@ -185,7 +181,6 @@ ACTIONS.actions = $actions = function(element, options) {
             for(var i = 0; i < existingCookies.length; i++) {
                 if(existingCookies[i].id != _this.options.post.id && existingCookies[i].name != _this.options.post.name) {
                     jsonString += '{"id": "' + existingCookies[i].id + '", "name": "' + existingCookies[i].name + '", "sub_type": "' + existingCookies[i].sub_type + '", "type": "' + existingCookies[i].type + '"}, ';
-                    console.log(jsonString);
                 }
             }
         }
