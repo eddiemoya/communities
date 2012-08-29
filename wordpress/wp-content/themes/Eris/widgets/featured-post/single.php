@@ -67,12 +67,15 @@
         <?php endif; //is_widget_show_content ?>
 
         <?php if (is_widget()->show_tags || $is_widget_override) : ?>
-            <span class="content-category">
-                <?php $tags = get_the_tags(); foreach((object)$tags as $tag) : ?>
-                <a href="<?php echo get_tag_link($tag->term_id); ?>" title="<?php echo $tag->name ?>">
-                    <?php echo $tag->name ?>
-                </a>
-                <?php endforeach; ?>
+            <span class="content-tags">
+                <?php 
+                    $tags = get_the_tags(); 
+                    foreach((object)$tags as $tag) {
+                        $output[] = '<a href="' . get_tag_link($tag->term_id) . '" title="' . $tag->name . '"> ' . $tag->name . '</a>';
+                    }
+                    if (count($output) > 0)
+                        echo "Tags: " . implode(', ', $output);
+                ?>
             </span>
         <?php endif; ?>
 
