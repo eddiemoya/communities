@@ -10,15 +10,14 @@
  *
  * @return void.
  */
-function loop($template = 'post', $special = null){
+function loop($template = 'post', $special = null, $base_path = "parts"){
     global $wp_query;
-
+    //print_pre($wp_query);
     $template = (isset($special)) ? $template.'-'.$special : $template;
-
     if (have_posts()) {
         while (have_posts()) {
             the_post();
-            get_template_part('parts/'.$template);
+            get_template_part(trailingslashit($base_path).$template);
         }
     }
 
