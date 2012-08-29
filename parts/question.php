@@ -1,4 +1,5 @@
 <?php
+
     $i = 0;
 
     $categories = get_the_category( $post->ID );
@@ -31,7 +32,6 @@
             <?php the_content(); ?>
             <?php get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); ?>
         </div>
-    
         <?php
             comments_template('/parts/commentForm.php');
             comments_template('/parts/comments.php');
