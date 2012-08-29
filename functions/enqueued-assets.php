@@ -71,7 +71,7 @@ function pluginname_ajaxurl() {
 
     echo '
         <script type="text/javascript">
-            var ajaxurl = \''.admin_url('admin-ajax.php').'\';
+            var ajaxurl = \''.network_admin_url('admin-ajax.php').'\';
         </script>
     ';
 }
