@@ -203,7 +203,7 @@ shcJSL.gizmos.bulletin['shcJSL.actions.js'] = true;
 shcJSL.methods.actions = function(_element, options) {
     var _elementOptions = ($(_element).attr("shc:gizmo:options") != undefined)? (((eval('(' + $(_element).attr("shc:gizmo:options") + ')')).actions) ? (eval('(' + $(_element).attr("shc:gizmo:options") + ')')).actions:{}):{};
 
-    var action = ($actions instanceof TOOLTIP.tooltip) ? $actions : new $actions(jQuery(_element), _elementOptions);
+    var action = ($actions instanceof ACTIONS.actions) ? $actions : new $actions(jQuery(_element), _elementOptions);
 
     action.click();
 };
