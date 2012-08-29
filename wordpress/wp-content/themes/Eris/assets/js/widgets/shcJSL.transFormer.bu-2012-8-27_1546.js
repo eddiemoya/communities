@@ -16,30 +16,15 @@
  */
 TRANSfORMER = $tf = {}
 TRANSfORMER.blunder = function(element) {
-	var error;			// (Object) new error message
-	var goofs = [];	// (Array) contains goof object
 	var methods;		// (Object) methods for errors
-	
-	function error(message) {
-		return shcJSL.addChildren(shcJSL.createNewElement("p","error-message"),[shcJSL.createNewElement("span","error-pointer"),document.createTextNode(message)])
-	}
+	var goofs = [];	// (Array) contains goof object
 	
 	methods = {
 		create: function(param) {
-			var err = new error(this);
-			if (($(param.parentNode).children(".error-message")).length < 1) {
-				param.parentNode.insertBefore(err, param.nextSibling);
-				$(param.parentNode).addClass("error");
-			} else {
-				param.parentNode.replaceChild(err, $(param.parentNode).children(".error-message").get(0));
-			}
+			console.log("CREATE: "); console.log(param);
 		},
 		destroy: function(param) {
-			var err = $(param.parentNode).children(".error-message");
-			if (err.length > 0) {
-				param.parentNode.removeChild($(err).get(0));
-				$(param.parentNode).removeClass("error");
-			}
+			console.log("DESTROY:"); console.log(param);
 		}
 	}
 	
@@ -56,13 +41,12 @@ TRANSfORMER.blunder = function(element) {
 	return goofs;
 }
 TRANSfORMER.transFormer = $TransFormer = function(form) {
-	var blunders = [];	// (Array) Array of any outstanding blunders;
-	var checkReqd;			// (Function) Checks the required fields
-	var fields = [];		// (Array) Array of all the form fields
-	var methods;				// (Function) Bind the validation methods to the fields
+	var fields = [];	// (Array) Array of all the form fields
+	var methods;	// (Function) Bind the validation methods to the fields
 	var required = [];	// (Array) Array of required fields
-	var transformer; 		// The form object
-	this.verify;				// (Function) Verify that the form is valid for submission
+	var transformer; // The form object
+	this.verify;	// (Function) Verify that the form is valid for submission
+	var blunders = [];	// (Array) Array of any outstanding blunders;
 	
 	var self = this;
 	transformer = form;
@@ -92,72 +76,65 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			
 			if (options.custom) {
 				fn[fn.length] = function(options) {
-					return options.custom(target);
+					return options.custom();
 				}
 			}
 			
-			/* !TO DO! If user blanks a field, remove the error */
-			
-			
-			$(target).bind('blur', function(event) {
-				if (this.value != '') {
-					var i; // counter
-					for (i=0; i < fn.length; i++) {
-						if (!(fn[i](options))) {
-							(options.message)? $tf.blunder(this).create(options.message):$tf.blunder(this).create("Error");
-							blunders[blunders.length] = this;
-							break;
-						} // END if error
-					}	// END for fn.length;
-					if (i >= fn.length) {
-						$tf.blunder(this).destroy();
-						blunders.remove(this);
-					}
+			$(target).bind('blur keyup', function(event) {
+				var i; // counter
+				for (i=0; i < fn.length; i++) {
+					if (!(fn[i](options))) {
+						$tf.blunder(this).create();
+						blunders[blunders.length] = this;
+						break;
+					} // END if error
+				}	// END for fn.length;
+				if (i >= fn.length) {
+					blunders.remove(this);
 				}
 			});
+			
+				// var queued = false; // Is timeout queued?
+				// var waiter;	// Timeout event;
+				// function validate() {
+					// var i; // counter
+					// for (i=0; i < fn.length; i++) {
+						// if (!(fn[i](options))) {
+							// $tf.blunder(this).create();
+							// blunders[blunders.length] = this;
+							// break;
+						// } // END if error
+					// }	// END for fn.length;
+					// if (i >= fn.length) {
+						// blunders.remove(this);
+					// }
+				// }
+				// if (event.type == "blur") {
+					// if (queued) window.clearTimeout(waiter);
+					// console.log(this)
+					// validate.call(this);
+// 					
+				// } else if (event.type == "keyup") {
+					// console.log(queued);
+					// if (!queued) {
+						// console.log("DO");
+						// queued = true;
+						// waiter = window.setTimeout(function() {validate.call(this); queued = false;}, 2500);
+// 						
+					// }
+				// }
 		}
 	}
 	
-	fields = shcJSL.sequence(transformer.elements);
+	fields = fields.concat([].slice.call(transformer.elements));
 	fields.map(methods);
 
-	function checkReqd() {
-		var flag = true;	// Valid flag;
-		for (var i=0; i < required.length; i++) {
-			if (required[i].nodeName != "INPUT") {
-				var group;	// Group of form elements;
-				if (required[i].nodeName == "FIELDSET") {
-					// First check for checboxes
-					group = $(required[i]).find('[name="' + required[i].id + '"]');
-					if (group.length > 0) {
-						for (var j =0; j < group.length; j++) {
-							if ($(group[j]).is(":checked")) break;
-						}
-						
-						if (j >= group.length) {
-							if (flag != false) flag = false;
-							$tf.blunder(required[i]).create("This field is required.")
-						}
-					}
-				}
-			}	// END IF !INPUT
-			else {
-				if (required[i].value == '') {
-					if (flag != false) flag = false;
-					$tf.blunder(required[i]).create("This field is required.")
-				}	// END IF required value
-			}	// END ELSE != Input
-		}	// END FOR
-		return flag;
-	}
 	
 	this.verify = function() {
-		var valid;
-		
-		valid = checkReqd();
-		console.log(valid);
-		return valid;
+		return false;
 	}
+	
+	//console.log(fields);
 }
 
 shcJSL.methods.transFormer = function(target, options) {
@@ -197,14 +174,13 @@ shcJSL.methods.transFormer = function(target, options) {
 			do {
 				success = submitEval[this.id][i]();
 				i++;
-				console.log(success);
 			} while (success != false || i < submitEval.length)
 		}
-		console.log(success);
 		if (success === false) event.preventDefault();
 		else return true;
 	})
 	
+	//($Moodle instanceof MOODLE.modal)? $Moodle[method](target, this):($Moodle = new $Moodle())[method](target,this)
 }
 
 shcJSL.gizmos.bulletin['shcJSL.transFormer.js'] = true;
