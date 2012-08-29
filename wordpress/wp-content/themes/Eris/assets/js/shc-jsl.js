@@ -110,7 +110,7 @@ shcJSL.get = function(element) {
 			collection.push(getID(element.slice(1)));
 		// Need to add in class selector at some point.
 		} else {	// Selector is an element OR not a valid selector
-			collection = collection.concat([].slice.call(getTags(element)));
+			collection = shcJSL.sequence(getTags(element));
 		}
 	} else if (typeof element == "object") {
 		// element is an HTMLObject
@@ -291,6 +291,17 @@ shcJSL.formDataToJSON = function(form) {
 	
 	console.log(jason);
 	return jason;
+}
+
+shcJSL.sequence = function(array) {
+	var sequence = [];	// New 'true' array
+	try {sequence = sequence.concat([].slice.call(array));}
+	catch(e) {
+		for (var i=0; i < array.length; i++) {
+			sequence.push(array[i]);
+		}
+	}
+	return sequence;
 }
 /*
 	[2.0] WIDGETS
