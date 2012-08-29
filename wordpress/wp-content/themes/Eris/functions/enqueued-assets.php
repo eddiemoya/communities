@@ -69,7 +69,8 @@ add_action('wp_head','pluginname_ajaxurl');
 function pluginname_ajaxurl() {
     global $blog_id;
 
-    $url = get_admin_url($blog_id, 'wp-admin.php');
+    //there has to be a better way to do this.
+    $url = get_blog_details($blog_id)->siteurl.'/wp-admin/admin-ajax.php';
 
     echo '
         <script type="text/javascript">
