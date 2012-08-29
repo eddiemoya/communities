@@ -891,6 +891,24 @@ $tab-padding: "1em 0 .6em 0";
   }
 }
 
+// question list widget
+.content-container.questionlist .content-body.content-list {
+	.content-item {
+		margin-bottom: 20px;
+		.post-category {
+			font-weight: bold;
+			margin-bottom: 4px;
+		}
+		.addthis.dropmenu {
+			padding-top: 3px;
+			font-size: .75em;
+			.sharebutton {
+				padding: 0;
+			}
+		}
+	}
+}
+
 .tooltip {
   display: none;
   position: absolute;
@@ -963,6 +981,7 @@ $tab-padding: "1em 0 .6em 0";
     display: inline-block;
   }
 }
+
 #allComments {
   @include border-radius( 4px );
   border: 1px solid #d6d6d6;
@@ -979,6 +998,15 @@ $tab-padding: "1em 0 .6em 0";
     article {
       font-size: 13px;
       margin: 1em 0;
+    }
+
+    .responseTo {
+      font-weight: bold;
+      margin: 10px 0 0 0;
+    }
+
+    textarea {
+      width: 98%;
     }
   }
 
@@ -1050,6 +1078,11 @@ button.follow {
   background: none;
   margin-left: 0;
 }
+
+.follow.active {
+    background-color: #4E74A3;
+    color: #fff;
+  }
 
 .metainfo {
   display: block;

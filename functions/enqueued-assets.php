@@ -67,9 +67,14 @@ function enqueue_scripts() {
 
 add_action('wp_head','pluginname_ajaxurl');
 function pluginname_ajaxurl() {
-    ?>
+    global $blog_id;
+
+    //there has to be a better way to do this.
+    $url = get_blog_details($blog_id)->siteurl.'/wp-admin/admin-ajax.php';
+
+    echo '
         <script type="text/javascript">
-            var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+            var ajaxurl = \''.$url.'\';
         </script>
-    <?php
+    ';
 }

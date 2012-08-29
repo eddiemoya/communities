@@ -4,12 +4,23 @@
     $comment_type = get_post_type( $post->ID ) == 'question' ? 'answer' : 'comment';
 
     if ( isset( $comments ) && !empty( $comments ) ) {
-
 ?>
 
 <header class="section-header comments-header clearfix">
     <h3><?php echo ucfirst( $comment_type ); ?>s</h3>
-    <h4><?php comments_number( '', '1 ' . $comment_type, '% ' . $comment_type . 's' ); ?></h4>
+    <h4>
+        <?php
+            $commentCount = get_custom_comment_count($comment_type, $post->ID);
+
+            if($commentCount > 0) {
+                $string = ($commentCount > 1) ? $commentCount.' '.ucfirst($comment_type).'s' : $commentCount.' '.ucfirst($comment_type);
+
+                echo $string;
+            } else {
+                echo 'No '.ucfirst($comment_type);
+            }
+        ?>
+    </h4>
 </header>
 <ol id="allComments">
 <?php
@@ -85,6 +96,7 @@
                     ?>
                     <div class="span10">
                         <time class="content-date" datetime="<?php echo date( "Y-m-d", $child_date ); ?>" pubdate="pubdate"><?php echo date( "F j, Y g:ia", $child_date ); ?></time>
+                        <p class="responseTo">In response to <?php comment_author($comment->comment_ID); ?></p>
                         <article>
                             <?php echo $child->comment_content; ?>
                         </article>
