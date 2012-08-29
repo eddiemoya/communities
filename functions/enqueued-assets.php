@@ -69,9 +69,11 @@ add_action('wp_head','pluginname_ajaxurl');
 function pluginname_ajaxurl() {
     global $blog_id;
 
+    $url = get_admin_url($blog_id, 'wp-admin.php');
+
     echo '
         <script type="text/javascript">
-            var ajaxurl = \''.network_admin_url('admin-ajax.php').'\';
+            var ajaxurl = \''.$url.'\';
         </script>
     ';
 }
