@@ -1,4 +1,5 @@
 <?php
+
     $i = 0;
 
     $categories = get_the_category( $post->ID );
@@ -31,7 +32,6 @@
             <?php the_content(); ?>
             <?php get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); ?>
         </div>
-    
         <?php
             comments_template('/parts/commentForm.php');
             comments_template('/parts/comments.php');
@@ -47,7 +47,8 @@
         $(".reply").on('click', function () {
             $(this).parent().next(".reply-to-form").slideToggle("slow");
         });
-        $(".cancel-reply").on('click', function () {
+        // Make the cancel button collapse the form, too.
+        $('.reply-to-form input[type="reset"]').on('click', function () {
             $(this).parent().parent().slideToggle("slow");
         });
     </script>
