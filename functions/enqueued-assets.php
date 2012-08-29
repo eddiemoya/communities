@@ -44,12 +44,12 @@ function enqueue_scripts() {
         wp_enqueue_script('modernizr');
        // wp_enqueue_script('debug');
         wp_enqueue_script('shcJSL');
-				wp_enqueue_script('moodle');  
+        wp_enqueue_script('moodle');
         wp_enqueue_script('ajaxrequests');   
         wp_enqueue_script('openID');
         wp_enqueue_script('tooltip');
         wp_enqueue_script('actions');
-				wp_enqueue_script('transFormer');
+        wp_enqueue_script('transFormer');
 
 		wp_localize_script('jquery', 'ajaxdata', $data);		
         
@@ -70,10 +70,7 @@ function enqueue_scripts() {
 
 add_action('wp_head','pluginname_ajaxurl');
 function pluginname_ajaxurl() {
-    global $blog_id;
-
-    //there has to be a better way to do this.
-    $url = get_blog_details($blog_id)->siteurl.'/wp-admin/admin-ajax.php';
+    $url = site_url('/wp-admin/admin-ajax.php');
 
     echo '
         <script type="text/javascript">
