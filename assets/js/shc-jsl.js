@@ -245,6 +245,24 @@ shcJSL.first = function(element) {
 	return firstChild;
 }
 
+shcJSL.addChildren = function(p, c) {
+	if (p && c) {
+		for (var i=0; i < c.length; i++) {
+			p.appendChild(c[i]);
+		}
+		return p;
+	}
+}
+
+shcJSL.setStyles = function(e, s) {
+	if (typeof s != undefined && typeof e != undefined) {
+		for (var i in s) {
+			e.style[i] = s[i];
+		}
+		return e;
+	}
+}
+
 shcJSL.formDataToJSON = function(form) {
 	var cereal; // Serialized string of the form
 	var jason;	// (String) Our JSON object
