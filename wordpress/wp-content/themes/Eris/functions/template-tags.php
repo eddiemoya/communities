@@ -478,7 +478,7 @@ function get_screenname_link( $user_id ) {
 
 
 /**
- * Detects AJAX request, returns true, else returns false
+ * Detects AJAX request, returns true if it is, else returns false
  * 
  * @author Dan Crimmins
  * @return bool
@@ -508,6 +508,9 @@ function get_user_sso_guid($user_id) {
         return $sso_guid;
 }
 
+/**
+ * @author Dan Crimmins
+ */
 function update_user_nicename($uid, $name) {
 	
 	global $wpdb;
@@ -520,5 +523,37 @@ function update_user_nicename($uid, $name) {
 		return ($update) ? true : false;
 }
 
+/**
+ * @author Dan Crimmins
+ */
+function set_screen_name($screen_name) {
+	
+	global $current_user;
+	get_currentuserinfo();
+	
+	$sso_guid = get_user_sso_guid($current_user->ID);
+		    					
+	$profile = new SSO_Profile;
+	    					
+	$response = $profile->update($sso_guid, array('email' => $current_user->user_email,
+    											  'screen_name' => $screen_name));
+		
+	//Check for error
+	if(isset($response['code'])) {
+			
+		return false;
+			
+	} else {
+			
+		//Add user meta for screen name
+		update_user_meta($current_user->ID, 'profile_screen_name', $screen_name);
+			
+		//Update user's nicename to screen name
+		update_user_nicename($current_user->ID, $screen_name);
+			
+		return true;
+	}
+	
+}
 
 

@@ -759,7 +759,7 @@ ul.bullets {
 .error-message {
   display: none; }
 
-.error input[type="text"] {
+.error input[type="text"], .error input[type="password"] {
   border: solid 1px #ff0000; }
 .error .error-message {
   background-color: #e41e13;
@@ -1343,6 +1343,12 @@ fieldset#use_your_account_from {
 .reply {
   float: left; }
 
+.reply-to-form label, .reply-to-form input[type="text"] {
+  float: left;
+  margin: .5em 1%; }
+.reply-to-form label {
+  margin-top: 1em; }
+
 button.flag {
   background-position: center -158px; }
 
@@ -1366,7 +1372,7 @@ button.upvote {
   background-position: 95% 2px; }
 
 button.upvote.active {
-  background-position: right -38px; }
+  background-position: 95% -38px; }
 
 button.follow {
   float: left;
@@ -1412,6 +1418,14 @@ button.follow {
 
 .sears .breadcrumb li:before {
   color: #067bb5; }
+
+.no-results .header {
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 1em; }
+.no-results ul {
+  padding-left: 20px; }
 
 .dropmenu li {
   float: left;
@@ -1848,9 +1862,7 @@ button.follow {
   z-index: 1; }
 
 .addthis_button_shopyourway img {
-  position: absolute;
-  left: 14px;
-  top: 4px; }
+  float: left; }
 
 .addthis.dropmenu li {
   -webkit-border-radius: 5px 5px 0px 0px;
@@ -1863,17 +1875,21 @@ button.follow {
   .addthis.dropmenu li a {
     display: inline; }
   .addthis.dropmenu li ul li {
+    padding: .2em;
+    width: 96%;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
     border-radius: 5px; }
+    .addthis.dropmenu li ul li a {
+      padding-left: .2em; }
 .addthis.dropmenu .sharebutton {
   padding: 6px 12px 6px 12px;
   cursor: pointer; }
 .addthis.dropmenu .sharemenulinks {
   background: #fff;
-  width: 136px;
+  min-width: 150px;
   padding: 1px;
   border: 3px solid #eee;
   -webkit-border-radius: 0px 5px 5px 5px;
