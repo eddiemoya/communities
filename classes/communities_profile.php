@@ -120,9 +120,8 @@ class User_Profile {
 	 */
 	public function __construct($user_id = null) {
 		
-		 //if(! $user_id) die('You must supply a user ID to constructor of User_Profile.'); 
-		 
-		 $this->user_id = $user_id;
+		// if(! $user_id) die('You must supply a user ID to constructor of User_Profile.'); 
+		 $this->user_id = (! $user_id) ? 0 : $user_id;
 		
 		 $this->set_experts($this->get_experts());
 		 
