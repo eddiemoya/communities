@@ -16,15 +16,28 @@
  */
 TRANSfORMER = $tf = {}
 TRANSfORMER.blunder = function(element) {
-	var methods;		// (Object) methods for errors
+	var error;			// (Object) new error message
 	var goofs = [];	// (Array) contains goof object
+	var methods;		// (Object) methods for errors
+	
+	function error(message) {
+		return shcJSL.addChildren(shcJSL.createNewElement("p","error-message"),[shcJSL.createNewElement("span","error-pointer"),document.createTextNode(message)])
+	}
 	
 	methods = {
 		create: function(param) {
-			console.log("CREATE: "); console.log(param);
+			if (($(param.parentNode).children(".error-message")).length < 1) {
+				var err = new error(this);
+				param.parentNode.insertBefore(err, param.nextSibling);
+				$(param.parentNode).addClass("error");
+			}
 		},
 		destroy: function(param) {
-			console.log("DESTROY:"); console.log(param);
+			var err = $(param.parentNode).children(".error-message");
+			if (err.length > 0) {
+				param.parentNode.removeChild($(err).get(0));
+				$(param.parentNode).removeClass("error");
+			}
 		}
 	}
 	
@@ -41,12 +54,13 @@ TRANSfORMER.blunder = function(element) {
 	return goofs;
 }
 TRANSfORMER.transFormer = $TransFormer = function(form) {
-	var fields = [];	// (Array) Array of all the form fields
-	var methods;	// (Function) Bind the validation methods to the fields
-	var required = [];	// (Array) Array of required fields
-	var transformer; // The form object
-	this.verify;	// (Function) Verify that the form is valid for submission
 	var blunders = [];	// (Array) Array of any outstanding blunders;
+	var checkReqd;			// (Function) Checks the required fields
+	var fields = [];		// (Array) Array of all the form fields
+	var methods;				// (Function) Bind the validation methods to the fields
+	var required = [];	// (Array) Array of required fields
+	var transformer; 		// The form object
+	this.verify;				// (Function) Verify that the form is valid for submission
 	
 	var self = this;
 	transformer = form;
@@ -76,31 +90,39 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			
 			if (options.custom) {
 				fn[fn.length] = function(options) {
-					return options.custom();
+					return options.custom(target);
 				}
 			}
 			
 			$(target).bind('blur', function(event) {
-				var i; // counter
-				for (i=0; i < fn.length; i++) {
-					if (!(fn[i](options))) {
-						$tf.blunder(this).create();
-						blunders[blunders.length] = this;
-						break;
-					} // END if error
-				}	// END for fn.length;
-				if (i >= fn.length) {
-					blunders.remove(this);
+				if (this.value != '') {
+					var i; // counter
+					for (i=0; i < fn.length; i++) {
+						if (!(fn[i](options))) {
+							(options.message)? $tf.blunder(this).create(options.message):$tf.blunder(this).create("Error");
+							blunders[blunders.length] = this;
+							break;
+						} // END if error
+					}	// END for fn.length;
+					if (i >= fn.length) {
+						$tf.blunder(this).destroy();
+						blunders.remove(this);
+					}
 				}
 			});
-				
 		}
 	}
 	
 	fields = fields.concat([].slice.call(transformer.elements));
 	fields.map(methods);
 
-	
+	function checkReqd() {
+		console.log(fields);
+	}
+	alert(fields.concat())
+	alert(required.concat())
+	console.log(fields);
+	console.log(required);
 	this.verify = function() {
 		return false;
 	}
