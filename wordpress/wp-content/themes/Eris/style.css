@@ -759,7 +759,7 @@ ul.bullets {
 .error-message {
   display: none; }
 
-.error input[type="text"] {
+.error input[type="text"], .error input[type="password"] {
   border: solid 1px #ff0000; }
 .error .error-message {
   background-color: #e41e13;
@@ -1418,6 +1418,14 @@ button.follow {
 
 .sears .breadcrumb li:before {
   color: #067bb5; }
+
+.no-results .header {
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 1em; }
+.no-results ul {
+  padding-left: 20px; }
 
 .dropmenu li {
   float: left;

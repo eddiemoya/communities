@@ -307,7 +307,7 @@ ul.bullets {
 }
 
 .error {
-  input[type="text"] {
+  input[type="text"], input[type="password"] {
     border:solid 1px #ff0000;
   }
   .error-message {
@@ -1133,4 +1133,15 @@ button.follow {
       
 .sears .breadcrumb li:before {
   color:sears( link );
+}
+.no-results {
+	.header {
+		font-weight: bold;
+		margin-top: 15px;
+		margin-bottom: 5px;
+		font-size: 1em;
+	}
+	ul {
+		padding-left: 20px;
+	}
 }
