@@ -165,3 +165,31 @@ function profile_paginate() {
 
 add_action('wp_ajax_profile_paginate', 'profile_paginate');
 add_action('wp_ajax_nopriv_profile_paginate', 'profile_paginate');
+
+/**
+ * Validates a screen name. Returns 'true' if it is valid and 
+ * available; false if not.
+ * 
+ * @author Dan Crimmins
+ * @param string $screen_name
+ * @return string - 'true' or 'false'
+ */
+function validate_screen_name($screen_name) {
+	
+	if(class_exists('SSO_Profile')) {
+		
+		$profile = new SSO_Profile;
+		$response = $profile->validate_screen_name($screen_name);
+		
+		echo ($response['code'] == '200') ? 'true' : 'false';
+		
+		exit;
+	}
+	
+		
+	exit;
+}
+
+add_action('wp_ajax_validate_screen_name', 'validate_screen_name');
+add_action('wp_ajax_nopriv_validate_screen_name', 'validate_screen_name');
+
