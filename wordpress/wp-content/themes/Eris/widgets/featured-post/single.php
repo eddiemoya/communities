@@ -1,7 +1,7 @@
 <?php get_template_part('parts/header', 'widget') ;?>
 	<?php the_post(); ?>
     <?php if ((is_widget()->show_thumbnail && has_post_thumbnail()) || ($is_widget_override && has_post_thumbnail())) :
-        $widget_span = is_widget()->span;
+        $widget_span = (!$is_widget_override) ? is_widget()->span : "12";
         $widget_span = str_replace("span", "", $widget_span);
         if ($widget_span <= 6) :
             $featured_img_span = "span12";
