@@ -6,6 +6,10 @@
 
     $acts = array('upvote', 'downvote', 'follow');
 
+    if(!isset($id) || empty($id)) {
+        $id = $post_id;
+    }
+
     if(isset($actions) && !empty($actions)) {
         foreach($actions as $action) {
             switch($action->action) {
@@ -133,7 +137,7 @@
                                 shc:gizmo:options="{tooltipForm:{
                                     form: {
                                         attributes: {
-                                            action: ajaxurl + \'?action=flagMe\',
+                                            action: ajaxurl + \'?action=flag_me\',
                                             method: \'post\',
                                             id: \'commentForm-'.$id.'\'
                                         },
@@ -146,7 +150,8 @@
                                                     cols: 2,
                                                     name: \'comment\',
                                                     \'aria-required\': true,
-                                                    id: \'comment-body-'.$id.'\'
+                                                    id: \'comment-body-'.$id.'\',
+                                                    \'shc:gizmo:form\': \'{required: true, pattern: /^.+@.+?\.[a-zA-Z]{2,}$/, message: \'asdf\'}\'
                                                 }
                                             },
                                             {
@@ -156,8 +161,36 @@
                                                     \'type\': \'submit\',
                                                     \'value\': \'Flag\'
                                                 }
+                                            },
+                                            {
+                                                element: \'input\',
+                                                attributes: {
+                                                    name: \'comment_post_ID\',
+                                                    id: \'comment_post_ID\',
+                                                    type: \'hidden\',
+                                                    value: \''.$post_id.'\'
+                                                }
+                                            },
+                                            {
+                                                element: \'input\',
+                                                attributes: {
+                                                    name: \'comment_parent\',
+                                                    id: \'comment_parent\',
+                                                    type: \'hidden\',
+                                                    value: \''.$id.'\'
+                                                }
+                                            },
+                                            {
+                                                element: \'input\',
+                                                attributes: {
+                                                    name: \'comment_type\',
+                                                    id: \'comment_type\',
+                                                    type: \'hidden\',
+                                                    value: \'flag\'
+                                                }
                                             }
-                                        ]
+                                        ],
+                                        isAjax: true
                                     }
                                 }}"
                                 >flag</button>';

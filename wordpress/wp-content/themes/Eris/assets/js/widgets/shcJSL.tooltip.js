@@ -30,12 +30,12 @@ TOOLTIP = {};
  * @var options (Object) options regarding the construction of the tooltip
  */
 TOOLTIP.tooltip = $tooltip = function(element, options) {
-    var _thisToolip = this;
+    var _thisTooltip = this;
 
     /**
      * Set all parent infomartion
      */
-    _thisToolip.actedObj = {
+    _thisTooltip.actedObj = {
         element: {},
         height: 0,
         offest: {},
@@ -43,7 +43,7 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         width: 0
     };
 
-    _thisToolip.tooltip = {
+    _thisTooltip.tooltip = {
         arrow: {
             element: null,
             height: 0
@@ -54,7 +54,7 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         position: 0
     }; //keeps the tooltip base object
 
-    _thisToolip.options = {
+    _thisTooltip.options = {
         arrowPosition: 'left',
         closer: {
             initialized: true
@@ -62,19 +62,19 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         displayData: null,
         events: {
             click: {
-                callBack: _thisToolip.click,
+                callBack: _thisTooltip.click,
                 active: false,
                 name: 'click',
                 preventDefault: false
             },
             mouseover: {
-                callBack: _thisToolip.mouseover,
+                callBack: _thisTooltip.mouseover,
                 active: false,
                 name: 'mouseover',
                 preventDefault: false
             },
             mouseout: {
-                callBack: _thisToolip.mouseout,
+                callBack: _thisTooltip.mouseout,
                 active: false,
                 name: 'mouseout',
                 preventDefault: false
@@ -88,10 +88,10 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         }
     };
 
-    _thisToolip.init = function(element, options) {
+    _thisTooltip.init = function(element, options) {
 
         try {
-            _thisToolip.actedObj.element = (typeof(element) === 'object') ? element : null;
+            _thisTooltip.actedObj.element = (typeof(element) === 'object') ? element : null;
         } catch(e) {
             console.log('The element is not a jQuery Object! Bailing!');
 
@@ -99,111 +99,111 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         }
 
         /**
-         * Take in options based in on creation and shove onto existing _thisToolip.options;
+         * Take in options based in on creation and shove onto existing _thisTooltip.options;
          */
-        _thisToolip.options = jQuery.extend(true, _thisToolip.options, options);
+        _thisTooltip.options = jQuery.extend(true, _thisTooltip.options, options);
 
-        _thisToolip.addListener(options);
+        _thisTooltip.addListener(options);
 
-        _thisToolip.setTooltip();
+        _thisTooltip.setTooltip();
     };
 
-    _thisToolip.addListener = function(options) {
+    _thisTooltip.addListener = function(options) {
         var callback = function() {};
         var name = '';
 
-        for(var i in _thisToolip.options.events) {
-            if(_thisToolip.options.events[i].active === true) {
-                jQuery(_thisToolip.actedObj.element).bind(_thisToolip.options.events[i].name, _thisToolip.options.events[i].callBack);
+        for(var i in _thisTooltip.options.events) {
+            if(_thisTooltip.options.events[i].active === true) {
+                jQuery(_thisTooltip.actedObj.element).bind(_thisTooltip.options.events[i].name, _thisTooltip.options.events[i].callBack);
             }
         }
     };
 
-    _thisToolip.click = function(event) {
+    _thisTooltip.click = function(event) {
         event.preventDefault();
 
-        _thisToolip._openTooltip();
+        _thisTooltip._openTooltip();
 
-        _thisToolip._preventDefault(_thisToolip.options.events.click.preventDefault, event);
+        _thisTooltip._preventDefault(_thisTooltip.options.events.click.preventDefault, event);
     };
 
-    _thisToolip.mouseover = function(event) {
-        _thisToolip._openTooltip();
+    _thisTooltip.mouseover = function(event) {
+        _thisTooltip._openTooltip();
 
-        _thisToolip._preventDefault(_thisToolip.options.events.preventDefault, event);
+        _thisTooltip._preventDefault(_thisTooltip.options.events.preventDefault, event);
     };
 
-    _thisToolip.mouseout = function(event) {
-        _thisToolip._closeTooltip();
+    _thisTooltip.mouseout = function(event) {
+        _thisTooltip._closeTooltip();
 
-        _thisToolip._preventDefault(_thisToolip.options.events.preventDefault, event);
+        _thisTooltip._preventDefault(_thisTooltip.options.events.preventDefault, event);
     };
 
-    _thisToolip.setDisplayData = function() {
-        if(typeof(_thisToolip.options.displayData) !== 'function') {
-            _thisToolip.options.displayData = jQuery('#default').length() > 0 ? jQuery('#default') : null;
+    _thisTooltip.setDisplayData = function() {
+        if(typeof(_thisTooltip.options.displayData) !== 'function') {
+            _thisTooltip.options.displayData = jQuery('#default').length() > 0 ? jQuery('#default') : null;
         } else {
-            _thisToolip.options.displayData = _thisToolip.options.displayData();
+            _thisTooltip.options.displayData = _thisTooltip.options.displayData();
         }
     };
 
     /**
      *
      */
-    _thisToolip.getOffset = function(obj, side) {
+    _thisTooltip.getOffset = function(obj, side) {
         return obj.offset[side];
     };
 
     /**
      *
      */
-    _thisToolip.setOffset = function(obj) {
+    _thisTooltip.setOffset = function(obj) {
         obj.offset = jQuery(obj.element).offset();
     };
 
     /**
      *
      */
-    _thisToolip.getPosition = function(obj, side) {
+    _thisTooltip.getPosition = function(obj, side) {
         return obj.position[side];
     };
 
     /**
      *
      */
-    _thisToolip.setPosition = function(obj) {
+    _thisTooltip.setPosition = function(obj) {
         obj.position = jQuery(obj.element).position();
     };
 
-    _thisToolip.getHeight = function(obj) {
+    _thisTooltip.getHeight = function(obj) {
         return obj.height;
     };
 
-    _thisToolip.setHeight = function(obj) {
+    _thisTooltip.setHeight = function(obj) {
         obj.height = jQuery(obj.element).outerHeight();
     };
 
-    _thisToolip.getWidth = function(obj) {
+    _thisTooltip.getWidth = function(obj) {
         return obj.width;
     };
 
-    _thisToolip.setWidth = function(obj) {
+    _thisTooltip.setWidth = function(obj) {
         obj.width = jQuery(obj.element).innerWidth();
     };
 
-    _thisToolip.setTooltip = function() {
-        _thisToolip.tooltip.element = jQuery('#tooltip').length > 0 ? jQuery('#tooltip') : null;
+    _thisTooltip.setTooltip = function() {
+        _thisTooltip.tooltip.element = jQuery('#tooltip').length > 0 ? jQuery('#tooltip') : null;
 
-        _thisToolip.tooltip.arrow.element = jQuery(_thisToolip.tooltip.element).children('.arrow').length > 0 ? jQuery(_thisToolip.tooltip.element).children('.arrow') : null;
+        _thisTooltip.tooltip.arrow.element = jQuery(_thisTooltip.tooltip.element).children('.arrow').length > 0 ? jQuery(_thisTooltip.tooltip.element).children('.arrow') : null;
     };
 
-    _thisToolip._positionArrow = function() {
-        var arrow = _thisToolip.tooltip.arrow.element;
-        var tooltip = _thisToolip.tooltip.element;
-        var tooltipHeight = _thisToolip.tooltip.height;
-        var tooltipWidth = _thisToolip.tooltip.width;
+    _thisTooltip._positionArrow = function() {
+        var arrow = _thisTooltip.tooltip.arrow.element;
+        var tooltip = _thisTooltip.tooltip.element;
+        var tooltipHeight = _thisTooltip.tooltip.height;
+        var tooltipWidth = _thisTooltip.tooltip.width;
 
-        switch(_thisToolip.options.arrowPosition) {
+        switch(_thisTooltip.options.arrowPosition) {
             case 'left':
                 var arrowLeft = jQuery(arrow).children('.left');
 
@@ -227,82 +227,83 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         }
     };
 
-    _thisToolip._openTooltip = function() {
+    _thisTooltip._openTooltip = function() {
         if(tooltipOpen === true) {
-            _thisToolip.tooltip.element.hide();
+            _thisTooltip.tooltip.element.hide();
         }
 
         var leftPosition = 0;
         var topPosition = 0;
 
-        //var data = jQuery(_thisToolip.options.displayData).clone().removeClass('hide');
+        //var data = jQuery(_thisTooltip.options.displayData).clone().removeClass('hide');
 
-        //jQuery(_thisToolip.tooltip.element).children('.middle').html(data);
+        //jQuery(_thisTooltip.tooltip.element).children('.middle').html(data);
 
-        jQuery(_thisToolip.tooltip.element).children('.middle').append(_thisToolip.options.displayData);
+        jQuery(_thisTooltip.tooltip.element).children('.middle').html();
+        jQuery(_thisTooltip.tooltip.element).children('.middle').append(_thisTooltip.options.displayData);
 
         /**
          * The position/dimensional info needs to be set here, in case elements with tooltips are hidden, etc.
          */
-        _thisToolip.setHeight(_thisToolip.actedObj);
-        _thisToolip.setOffset(_thisToolip.actedObj);
-        _thisToolip.setPosition(_thisToolip.actedObj);
-        _thisToolip.setWidth(_thisToolip.actedObj);
+        _thisTooltip.setHeight(_thisTooltip.actedObj);
+        _thisTooltip.setOffset(_thisTooltip.actedObj);
+        _thisTooltip.setPosition(_thisTooltip.actedObj);
+        _thisTooltip.setWidth(_thisTooltip.actedObj);
 
-        _thisToolip.setHeight(_thisToolip.tooltip);
-        _thisToolip.setOffset(_thisToolip.tooltip);
-        _thisToolip.setPosition(_thisToolip.tooltip);
-        _thisToolip.setWidth(_thisToolip.tooltip);
+        _thisTooltip.setHeight(_thisTooltip.tooltip);
+        _thisTooltip.setOffset(_thisTooltip.tooltip);
+        _thisTooltip.setPosition(_thisTooltip.tooltip);
+        _thisTooltip.setWidth(_thisTooltip.tooltip);
 
-        switch(_thisToolip.options.arrowPosition) {
+        switch(_thisTooltip.options.arrowPosition) {
             case 'left':
-                if(_thisToolip._switchSides()) {
-                    _thisToolip.options.arrowPosition = 'left';
+                if(_thisTooltip._switchSides()) {
+                    _thisTooltip.options.arrowPosition = 'left';
 
-                    _thisToolip._openTooltip();
+                    _thisTooltip._openTooltip();
 
                     return false;
                 }
 
-                leftPosition = _thisToolip.getPosition(_thisToolip.actedObj, 'left') + _thisToolip.getWidth(_thisToolip.actedObj) + _thisToolip.options.position.left + 12;
-                topPosition = _thisToolip.getPosition(_thisToolip.actedObj, 'top') + _thisToolip.options.position.top;
+                leftPosition = _thisTooltip.getPosition(_thisTooltip.actedObj, 'left') + _thisTooltip.getWidth(_thisTooltip.actedObj) + _thisTooltip.options.position.left + 12;
+                topPosition = _thisTooltip.getPosition(_thisTooltip.actedObj, 'top') + _thisTooltip.options.position.top;
 
-                if(_thisToolip.getHeight(_thisToolip.tooltip) < _thisToolip.getHeight(_thisToolip.actedObj)) {
-                    topPosition += (_thisToolip.getHeight(_thisToolip.actedObj) / 2) - (_thisToolip.getHeight(_thisToolip.tooltip) / 2);
+                if(_thisTooltip.getHeight(_thisTooltip.tooltip) < _thisTooltip.getHeight(_thisTooltip.actedObj)) {
+                    topPosition += (_thisTooltip.getHeight(_thisTooltip.actedObj) / 2) - (_thisTooltip.getHeight(_thisTooltip.tooltip) / 2);
                 }
 
                 break;
             case 'top':
 
-                leftPosition = _thisToolip.getPosition(_thisToolip.actedObj, 'left') + _thisToolip.getWidth(_thisToolip.actedObj) + _thisToolip.options.position.left + 12;
-                topPosition = _thisToolip.getPosition(_thisToolip.actedObj, 'top') + _thisToolip.options.position.top;
+                leftPosition = _thisTooltip.getPosition(_thisTooltip.actedObj, 'left') + _thisTooltip.getWidth(_thisTooltip.actedObj) + _thisTooltip.options.position.left + 12;
+                topPosition = _thisTooltip.getPosition(_thisTooltip.actedObj, 'top') + _thisTooltip.options.position.top;
 
-                if(_thisToolip.getHeight(_thisToolip.tooltip) < _thisToolip.getHeight(_thisToolip.actedObj)) {
-                    topPosition += (_thisToolip.getHeight(_thisToolip.actedObj) / 2) - (_thisToolip.getHeight(_thisToolip.tooltip) / 2);
+                if(_thisTooltip.getHeight(_thisTooltip.tooltip) < _thisTooltip.getHeight(_thisTooltip.actedObj)) {
+                    topPosition += (_thisTooltip.getHeight(_thisTooltip.actedObj) / 2) - (_thisTooltip.getHeight(_thisTooltip.tooltip) / 2);
                 }
 
             default:
                 break;
         }
 
-        _thisToolip.tooltip.element
+        _thisTooltip.tooltip.element
                 .css('left', leftPosition)
                 .css('top', topPosition)
                 .show();
 
-        _thisToolip._positionArrow();
+        _thisTooltip._positionArrow();
 
         tooltipOpen = true;
     }
 
-    _thisToolip._closeTooltip = function() {
-        jQuery(_thisToolip.tooltip.element).fadeOut('slow');
+    _thisTooltip._closeTooltip = function() {
+        jQuery(_thisTooltip.tooltip.element).hide();
     };
 
     /**
      * Decide if the tooltip should be on the opposite side of what it is defaulted as (used when displaying tooltip would go off screen)
      */
-    _thisToolip._switchSides = function() {
+    _thisTooltip._switchSides = function() {
 
     };
 
@@ -314,13 +315,13 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
      *
      * @void
      */
-    _thisToolip._preventDefault = function(prevent, event) {
+    _thisTooltip._preventDefault = function(prevent, event) {
         if(prevent === true) {
             event.preventDefault();
         }
     };
 
-    _thisToolip.init(element, options);
+    _thisTooltip.init(element, options);
 };
 
 /**
