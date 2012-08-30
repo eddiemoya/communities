@@ -55,7 +55,6 @@ shcJSL.methods.openID = function(target, options) {
 			
 			height = 600;
 			width = 600;
-			console.log(url);
 			mywindow = window.open(url, 'Login', 'resizable=0,height=' + height + ',width=' + width + ',left=' + ((screen.width/2) - (width/2)) + ',top=' + ((screen.height/2) - (height-2)))
 		});		
 	})

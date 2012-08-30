@@ -96,24 +96,21 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				}
 			}
 			
-			/* !TO DO! If user blanks a field, remove the error */
-			
-			
 			$(target).bind('blur', function(event) {
-				if (this.value != '') {
-					var i; // counter
-					for (i=0; i < fn.length; i++) {
+				var i; // counter
+				for (i=0; i < fn.length; i++) {
+					if (this.value != '') {
 						if (!(fn[i](options))) {
 							(options.message)? $tf.blunder(this).create(options.message):$tf.blunder(this).create("Error");
 							blunders[blunders.length] = this;
 							break;
 						} // END if error
-					}	// END for fn.length;
-					if (i >= fn.length) {
-						$tf.blunder(this).destroy();
-						blunders.remove(this);
 					}
-				}
+				}	// END for fn.length;
+				if (i >= fn.length || this.value == '') {
+					$tf.blunder(this).destroy();
+					blunders.remove(this);
+				}					
 			});
 		}
 	}
@@ -155,7 +152,6 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 		var valid;
 		
 		valid = checkReqd();
-		console.log(valid);
 		return valid;
 	}
 }
@@ -197,10 +193,10 @@ shcJSL.methods.transFormer = function(target, options) {
 			do {
 				success = submitEval[this.id][i]();
 				i++;
-				console.log(success);
+
 			} while (success != false || i < submitEval.length)
 		}
-		console.log(success);
+		
 		if (success === false) event.preventDefault();
 		else return true;
 	})
