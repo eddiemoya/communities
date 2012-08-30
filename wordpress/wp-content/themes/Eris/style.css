@@ -964,7 +964,7 @@ ul.bullets {
     border: 0;
     margin-top: 0; }
 
-.content-container.featured-post .content-excerpt, .content-container.featured-post .content-byline {
+.content-container.featured-post .content-excerpt, .content-container.featured-post .content-byline, .content-container.featured-post .content-tags, .content-container.featured-guide .content-excerpt, .content-container.featured-guide .content-byline, .content-container.featured-guide .content-tags {
   font-size: 0.75em; }
 
 .span4 .content-container.featured-post .span6 {
