@@ -762,7 +762,7 @@ ul.bullets {
 .error-message {
   display: none; }
 
-.error input[type="text"] {
+.error input[type="text"], .error input[type="password"] {
   border: solid 1px #ff0000; }
 .error .error-message {
   background-color: #e41e13;
@@ -967,7 +967,7 @@ ul.bullets {
     border: 0;
     margin-top: 0; }
 
-.content-container.featured-post .content-excerpt, .content-container.featured-post .content-byline {
+.content-container.featured-post .content-excerpt, .content-container.featured-post .content-byline, .content-container.featured-post .content-tags, .content-container.featured-guide .content-excerpt, .content-container.featured-guide .content-byline, .content-container.featured-guide .content-tags {
   font-size: 0.75em; }
 
 .span4 .content-container.featured-post .span6 {
@@ -1423,6 +1423,14 @@ button.follow {
 .sears .breadcrumb li:before {
   color: #067bb5; }
 
+.no-results .header {
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 1em; }
+.no-results ul {
+  padding-left: 20px; }
+
 .dropmenu li {
   float: left;
   position: relative; }
@@ -1659,8 +1667,17 @@ button.follow {
   position: absolute;
   z-index: 1000002; }
 
-#moodle_container > header {
-  position: relative; }
+#moodle_container {
+  *zoom: 1; }
+  #moodle_container > header {
+    position: relative; }
+
+#moodle_container:before, #moodle_container:after {
+  content: "";
+  display: table; }
+
+#moodle_container:after {
+  clear: both; }
 
 .close-button {
   position: absolute;
