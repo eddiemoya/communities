@@ -118,25 +118,26 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 	fields = shcJSL.sequence(transformer.elements);
 	fields.map(methods);
 
+	console.log(fields);
+	console.log(required);
+
 	function checkReqd() {
 		var flag = true;	// Valid flag;
 		for (var i=0; i < required.length; i++) {
-			if (required[i].nodeName != "INPUT") {
+			if (required[i].nodeName == "FIELDSET") {
 				var group;	// Group of form elements;
-				if (required[i].nodeName == "FIELDSET") {
-					// First check for checboxes
-					group = $(required[i]).find('[name="' + required[i].id + '"]');
-					if (group.length > 0) {
-						for (var j =0; j < group.length; j++) {
-							if ($(group[j]).is(":checked")) break;
-						}
-						
-						if (j >= group.length) {
-							if (flag != false) flag = false;
-							$tf.blunder(required[i]).create("This field is required.")
-						}
+				group = $(required[i]).find('[name="' + required[i].id + '"]');
+				if (group.length > 0) {
+					for (var j =0; j < group.length; j++) {
+						if ($(group[j]).is(":checked")) break;
+					}
+					
+					if (j >= group.length) {
+						if (flag != false) flag = false;
+						$tf.blunder(required[i]).create("This field is required.")
 					}
 				}
+				
 			}	// END IF !INPUT
 			else {
 				if (required[i].value == '') {
@@ -169,12 +170,13 @@ shcJSL.methods.transFormer = function(target, options) {
 	
 	// PRIVATE TEST METHODS
 	checkForLogin = function() {
-		if (OID != undefined) {
+		if (window['OID'] != undefined) {
 			var data = shcJSL.formDataToJSON(form);
 			(form.id)? shcJSL.cookies("form-data").bake({value: '{"' + form.id + '":' + data + '}'}):shcJSL.cookies("form-data").bake({value:data});
 			shcJSL.get(document).moodle({width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}});
 			return false;
 		}
+		else return true;
 	}
 	
 	transformers[form.id] = new $TransFormer(form);
@@ -191,10 +193,13 @@ shcJSL.methods.transFormer = function(target, options) {
 		if (submitEval[this.id].length > 0) {
 			var i = 0;
 			do {
+				console.log(submitEval[this.id]);
+				console.log(submitEval[this.id].length);
+				console.log(i)
 				success = submitEval[this.id][i]();
 				i++;
 
-			} while (success != false || i < submitEval.length)
+			} while (success != false && i < submitEval[this.id].length)
 		}
 		
 		if (success === false) event.preventDefault();
