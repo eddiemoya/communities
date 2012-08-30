@@ -1656,8 +1656,17 @@ button.follow {
   position: absolute;
   z-index: 1000002; }
 
-#moodle_container > header {
-  position: relative; }
+#moodle_container {
+  *zoom: 1; }
+  #moodle_container > header {
+    position: relative; }
+
+#moodle_container:before, #moodle_container:after {
+  content: "";
+  display: table; }
+
+#moodle_container:after {
+  clear: both; }
 
 .close-button {
   position: absolute;
