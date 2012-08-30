@@ -661,7 +661,8 @@ form {}
  * LOGIN/REGISTER/FORGOT PASSWORD
  */
 #moodle_container .sign-in, body > .sign-in,
-#moodle_container .register, body > .register {
+#moodle_container .register, body > .register,
+#moodle_container .forgot-password, body > .forgot-password {
   padding:20px;
 }
 
