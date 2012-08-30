@@ -193,3 +193,19 @@ function validate_screen_name($screen_name) {
 add_action('wp_ajax_validate_screen_name', 'validate_screen_name');
 add_action('wp_ajax_nopriv_validate_screen_name', 'validate_screen_name');
 
+function ajaxify_comments() {
+    $data = array(
+    	'comment_post_ID'  => $_POST['comment_post_ID'],
+    	'comment_content'  => $_POST['comment'],
+    	'comment_date'     => date('Y-m-d H:i:s'),
+    	'comment_date_gmt' => date('Y-m-d H:i:s'),
+    	'comment_approved' => 1,
+        'comment_type'     => 'flag'
+    );
+
+    $comment_id = wp_insert_comment($data);
+
+    echo $comment_id.' is the comment';
+}
+add_action('wp_ajax_flag_me', 'ajaxify_comments');
+add_action('wp_ajax_priv_flag_me', 'ajaxify_comments');

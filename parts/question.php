@@ -9,7 +9,7 @@
     );
 
     $post_actions = array(
-        "id"        => $post->ID,
+        "post_id"        => $post->ID,
         "type"      => $post->post_type,
         "options"   => array( "follow", "flag", "share" ),
         "url"       => get_permalink( $post->ID ),

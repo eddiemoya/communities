@@ -35,15 +35,17 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
     _thisTooltipForm.options = {
         events: {
             click: {
-                callBack: _thisTooltipForm._openTooltip,
+                callBack: _openTooltip,
                 active: true,
                 name: 'click',
-                preventDefault: false
+                preventDefault: true
             },
         },
         form: {
             attributes: {
                 action: ajaxurl + '?',
+                id: 'default-form',
+                method: 'post'
             },
             events: null,
             class: '',
@@ -58,11 +60,9 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
                     element: 'textarea',
                     events: {
                         click: {
-                            callBack: function(event) {
-                            },
                             active: false,
                             name: 'click',
-                            preventDefault: false
+                            preventDefault: true
                         },
                     }
                 },
@@ -75,11 +75,10 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
                     element: 'input',
                     events: {
                         click: {
-                            callBack: function(event) {
-                            },
                             active: true,
+                            callBack: _postForm,
                             name: 'click',
-                            preventDefault: false
+                            preventDefault: true
                         },
                     }
                 },
@@ -92,14 +91,15 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
                     element: 'input',
                     events: {
                         click: {
-                            callBack: _thisTooltipForm._closeTooltip,
+                            callBack: _closeTooltip,
                             active: true,
                             name: 'click',
                             preventDefault: false
                         },
                     }
                 }
-            ]
+            ],
+            isAjax: false
         }
     };
 
@@ -114,17 +114,53 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
                     console.log('not defined')
                     element.bind(events[i].name, _thisTooltipForm[events[i].name]);
                 }
-            } else {
             }
         }
     };
 
-    _thisTooltipForm.click = function() {
-        _thisTooltipForm._openTooltip();
+    /**
+     * Private functions
+     */
+
+    function _openTooltip (event) {
+        _thisTooltipForm.tooltip._openTooltip();
+
+        _thisTooltipForm._preventDefault(true, event);
     };
 
-    _thisTooltipForm._openTooltip = function() {
-        _thisTooltipForm.tooltip._openTooltip();
+    function _closeTooltip () {
+        _thisTooltipForm.tooltip._closeTooltip();
+
+        _thisTooltipForm._preventDefault(true, event);
+    };
+
+    function _postForm(event) {
+        var data = {};
+        var form = jQuery('#' + _thisTooltipForm.options.form.attributes.id);
+
+        form.children().each(function(i) {
+            data[jQuery(this).attr('name')] = jQuery(this).val();
+        });
+
+        if(_thisTooltipForm.options.form.isAjax === true) {
+            jQuery.post(
+                _thisTooltipForm.options.form.attributes.action,
+                data,
+                function(data) {
+                    console.log(data)
+                }
+            );
+        }
+
+        _thisTooltipForm._preventDefault(true, event);
+    }
+
+    /**
+     * Public functions
+     */
+
+    _thisTooltipForm.click = function() {
+        _thisTooltipForm._openTooltip();
     };
 
     _thisTooltipForm._renderForm = function() {
@@ -145,9 +181,18 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
     };
 
     _thisTooltipForm._setChildren = function(children) {
+        var childAttributes = '';
         var elems = [];
 
         for(var i = 0; i < children.length; i++) {
+//            for(var j in children[i].attributes) {
+//                if(typeof children[i].attributes[j] === 'object') {
+//                    children[i].attributes[j] = '"' + children[i].attributes[j] + '"';
+//                }
+//            }
+
+            childAttributes = (typeof children[i].attributes === 'object') ? JSON.stringify(children[i].attributes) : children[i].attributes;
+
             elems[i] = shcJSL.createNewElement(children[i].element, children[i].class, children[i].attributes);
 
             _thisTooltipForm.addListeners(jQuery(elems[i]), children[i].events)
@@ -186,6 +231,20 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
         };
 
         _thisTooltipForm.tooltip = new $tooltip(jQuery(element), ttOptions);
+    };
+
+    /**
+     * Decides if default functionality of element's listener should happen
+     *
+     * @param prevent boolean
+     * @private
+     *
+     * @void
+     */
+    _thisTooltipForm._preventDefault = function(prevent, event) {
+        if(prevent === true) {
+            event.preventDefault();
+        }
     };
 
     _thisTooltipForm.init(element, options);
