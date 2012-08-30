@@ -801,8 +801,8 @@ class User_Profile {
 				p.post_content as content
 				
 				FROM {$wpdb->posts} as p
-				LEFT JOIN communities.wp_term_relationships tr ON p.ID = tr.object_id
-      			LEFT JOIN communities.wp_term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+				LEFT JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
+      			LEFT JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
 				WHERE tt.term_id IN ({$this->category}) AND tt.taxonomy = 'category' 
 				AND p.post_type IN ('question', 'guides', 'post')
 				AND p.post_status='publish')
@@ -820,8 +820,8 @@ class User_Profile {
 				c.comment_content
 				
 				FROM {$wpdb->comments} as c
-				LEFT JOIN communities.wp_term_relationships tr ON c.comment_post_ID = tr.object_id
-        		LEFT JOIN communities.wp_term_taxonomy tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+				LEFT JOIN {$wpdb->term_relationships} tr ON c.comment_post_ID = tr.object_id
+        		LEFT JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
        			WHERE tt.term_id IN ({$this->category}) AND tt.taxonomy = 'category' 
 				AND c.comment_type IN ( 'answer', 'comment', '' )
 				AND c.comment_approved = 1)
