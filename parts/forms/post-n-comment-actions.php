@@ -122,7 +122,45 @@
             $buttons[] = return_partial( 'parts/share', array( "url" => $url ) );
         }
         if ( in_array( "flag", $options ) ) {
-            $buttons[] = '<button type="button" name="button1" value="flag" title="Flag this ' . $type . '" id="flag-comment-' . $id . '" class="flag">flag</button>';
+            $buttons[] = '<button
+                                type="button"
+                                name="button1"
+                                value="flag"
+                                title="Flag this '.$type.'"
+                                id="flag-comment-'.$id.'"
+                                class="flag"
+                                shc:gizmo="tooltipForm"
+                                shc:gizmo:options="{tooltipForm:{
+                                    form: {
+                                        attributes: {
+                                            action: ajaxurl + \'?action=flagMe\',
+                                            method: \'post\',
+                                            id: \'commentForm-'.$id.'\'
+                                        },
+                                        class: \'flag-form\',
+                                        elements: [
+                                            {
+                                                element: \'textarea\',
+                                                class: \'flagField\',
+                                                attributes: {
+                                                    cols: 2,
+                                                    name: \'comment\',
+                                                    \'aria-required\': true,
+                                                    id: \'comment-body-'.$id.'\'
+                                                }
+                                            },
+                                            {
+                                                element: \'input\',
+                                                class: \'kmart_button\',
+                                                attributes: {
+                                                    \'type\': \'submit\',
+                                                    \'value\': \'Flag\'
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }}"
+                                >flag</button>';
         }
         if ( in_array( "downvote", $options ) ) {
             $buttons[] = '<label class="metainfo" for="downvote-comment-' . $id . '">('.$downvoteTotal.')</label><button shc:gizmo="actions" shc:gizmo:options="{actions:{post:{id:'.$id.',name:\'downvote\',sub_type:\''.$sub_type.'\',type:\''.$type.'\''.$nliDownvote.'}}}" type="button" name="downvote" value="down vote" title="Down vote this ' . $type . '" id="downvote-comment-' . $id . '" class="downvote'.$myActionDownvote.'">down vote</button>';
