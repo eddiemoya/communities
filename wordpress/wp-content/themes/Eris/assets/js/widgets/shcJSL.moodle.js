@@ -356,6 +356,10 @@ MOODLE.modal = $Moodle = function(element, options) {
 					$(content).toggleClass("moodle_transit").animate({
 						opacity:100
 					},{
+						complete: function() {
+							$(gears.modal).css("height","auto");
+						}					
+					},{
 						duration:750
 					}) // End content animate
 				},
