@@ -26,9 +26,19 @@
   }
   
   #moodle_container {
+    *zoom: 1;
     & > header {
       position:relative;
     }
+  }
+
+  #moodle_container:before, #moodle_container:after {
+    content: ""; 
+    display: table; 
+  }
+
+  #moodle_container:after {
+    clear:both;
   }
   
   .close-button {
