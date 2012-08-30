@@ -28,9 +28,9 @@
 				<ul>
 				    <?php if ( is_user_logged_in() ): ?>
 				        <li>
-				            <a href="<?php echo site_url(''); ?>/author/<?php echo $current_user->user_nicename; ?>" title="View your profile" class="bold">
+				            <a href="<?php echo get_profile_url( $current_user->ID ); ?>" title="View your profile" class="bold">
 				                <?php echo current_user_profile_thumbnail(); ?>
-				                <?php echo $current_user->user_nicename; ?>
+				                <?php get_screenname( $current_user->ID ); ?>
 				            </a>
 				        </li>
 				        <li><?php sso_logout_link('Logout');?> </li>
