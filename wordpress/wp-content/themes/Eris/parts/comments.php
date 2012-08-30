@@ -133,46 +133,11 @@
                                 <?php
                                     if(!is_user_logged_in()):
                                 ?>
-                                    <input
-                                            type="submit"
-                                            id="submit"
-                                            class="kmart_button"
-                                            value="Post"
-                                            shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
-                                    <input type="reset" class="kmart_button azure" value="Cancel" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
+                                        <input type="submit" id="submit" class="kmart_button" value="Post" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
+                                        <input type="reset" class="kmart_button azure" value="Cancel" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
                                 <?php else: ?>
-                                    <input
-                                            type="submit"
-                                            id="submit"
-                                            class="kmart_button"
-                                            value="Post"
-                                            shc:gizmo="tooltipForm"
-                                            shc:gizmo:options="{tooltipForm:{
-                                                form: {
-                                                    elements: [
-                                                        {
-                                                            element: 'textarea',
-                                                            class: 'flagField',
-                                                            attributes: {
-                                                                'cols': 2,
-                                                                'name': 'comment',
-                                                                'aria-required': true,
-                                                                'id': 'comment-body-<?php echo $comment->comment_ID ?>'
-                                                            }
-                                                        },
-                                                        {
-                                                            element: 'input',
-                                                            class: 'kmart_button',
-                                                            attributes: {
-                                                                'type': 'submit',
-                                                                'value': 'Flag'
-                                                            }
-                                                        }
-                                                    ]
-                                                }
-                                            }}"
-                                    />
-                                    <input type="reset" class="kmart_button azure" value="Cancel">
+                                        <input type="submit" id="submit" class="kmart_button" value="Post" />
+                                        <input type="reset" class="kmart_button azure" value="Cancel" />
                                 <?php endif; ?>
                                 <input type="hidden" name="comment_post_ID" value="<?php echo $comment->comment_post_ID; ?>" id="comment_post_ID">
                                 <input type="hidden" name="comment_parent" id="comment_parent" value="<?php echo $comment->comment_ID; ?>">
