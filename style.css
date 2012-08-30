@@ -1420,6 +1420,14 @@ button.follow {
 .sears .breadcrumb li:before {
   color: #067bb5; }
 
+.no-results .header {
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 1em; }
+.no-results ul {
+  padding-left: 20px; }
+
 .dropmenu li {
   float: left;
   position: relative; }
