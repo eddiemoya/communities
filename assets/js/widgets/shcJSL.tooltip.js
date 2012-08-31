@@ -320,6 +320,14 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         }
     };
 
+    jQuery('body').click(function(event) {
+        console.log(event.target)
+
+        if(jQuery(this).is(jQuery(_thisTooltip.tooltip.element))) {
+            console.log('closeable')
+        }
+    });
+
     _thisTooltip.init(element, options);
 };
 

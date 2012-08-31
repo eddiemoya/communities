@@ -194,6 +194,9 @@ add_action('wp_ajax_validate_screen_name', 'validate_screen_name');
 add_action('wp_ajax_nopriv_validate_screen_name', 'validate_screen_name');
 
 function ajaxify_comments() {
+    global $current_user;
+    get_currentuserinfo();
+
     $data = array(
     	'comment_post_ID'  => $_POST['comment_post_ID'],
     	'comment_content'  => $_POST['comment'],
@@ -202,6 +205,10 @@ function ajaxify_comments() {
     	'comment_approved' => 1,
         'comment_type'     => 'flag'
     );
+
+    if(is_user_logged_in()) {
+        $data['user_id'] = $current_user->ID;
+    }
 
     $comment_id = wp_insert_comment($data);
 
