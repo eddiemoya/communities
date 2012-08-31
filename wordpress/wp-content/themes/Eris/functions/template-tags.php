@@ -424,6 +424,26 @@ function return_partial( $partial, $variables = array() ){
 }
 
 /**
+ * Return a user's profile url.
+ *
+ *
+ * @author Carl Albrecht-Buehler
+ * @param $user_id (integer) [required] ID of the user whose screen name you want to look up.
+ *
+ * @return (string) User's screen name (user_nicename).
+ */
+function get_profile_url( $user_id ) {
+    # create a fallback screen name if one has not yet been set by sso
+    if ( !has_screen_name( $user_id ) ) {
+        $link = home_url( '/' ) . '?author=' . $user_id;
+    }
+    else {
+        $link = get_author_posts_url( $user_id );
+    }
+    return $link;
+}
+
+/**
  * Return a user's screen name (user_nicename).
  *
  *
@@ -434,7 +454,16 @@ function return_partial( $partial, $variables = array() ){
  */
 function return_screenname( $user_id ) {
     $user_info = get_userdata( $user_id );
-    return $user_info->user_nicename;
+    $screen_name = '';
+    # create a fallback screen name if one has not yet been set by sso
+    if ( !has_screen_name( $user_id ) ) {
+        $email_parts = explode( '@', $user_info->user_login );
+        $screen_name = $email_parts[0];
+    }
+    else {
+        $screen_name = $user_info->user_nicename;
+    }
+    return $screen_name;
 }
 
 /**
@@ -460,7 +489,7 @@ function get_screenname( $user_id ) {
  * @return (string) User's screen name (user_nicename) formatted into an HTML anchor..
  */
 function return_screenname_link( $user_id ) {
-    return '<a href="' . get_author_posts_url( $user_id ) . '">' . return_screenname( $user_id ) . '</a>';
+    return '<a href="' . get_profile_url( $user_id ) . '">' . return_screenname( $user_id ) . '</a>';
 }
 
 /**

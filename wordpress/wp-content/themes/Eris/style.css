@@ -179,16 +179,19 @@ legend {
     margin-bottom: .35em; }
   #header aside ul li {
     text-align: right; }
-  #header aside ul li ul li {
-    border-left: solid 1px #666666;
-    display: inline-block;
-    font-size: .75em;
-    padding: 0 .4em 0 .8em; }
-    #header aside ul li ul li img {
-      vertical-align: bottom;
-      margin-right: .5em; }
-  #header aside ul li ul li:first-child {
-    border: none; }
+  #header aside ul li ul {
+    text-align: center; }
+    #header aside ul li ul li {
+      border-left: solid 1px #666666;
+      display: inline-block;
+      font-size: .75em;
+      padding: 0 .4em 0 .8em;
+      text-align: center; }
+      #header aside ul li ul li img {
+        vertical-align: bottom;
+        margin-right: .5em; }
+      #header aside ul li ul li:first-child {
+        border: none; }
 
 #header.kmart form {
   border: solid 5px #e02334; }
@@ -998,6 +1001,10 @@ ul.bullets {
 .recent-activity .category {
   font-size: 90%;
   padding-top: .2em; }
+
+.span3 .recent-activity .excerpt, .span4 .recent-activity .excerpt, .span6 .recent-activity .excerpt {
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 /*
  * POST A QUESTION
