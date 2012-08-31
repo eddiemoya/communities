@@ -111,7 +111,6 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
                 if(typeof events[i].callBack !== 'undefined') {
                     element.bind(events[i].name, events[i].callBack);
                 } else {
-                    console.log('not defined')
                     element.bind(events[i].name, _thisTooltipForm[events[i].name]);
                 }
             }
@@ -147,7 +146,7 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
                 _thisTooltipForm.options.form.attributes.action,
                 data,
                 function(data) {
-                    console.log(data)
+                    _thisTooltipForm._closeTooltip();
                 }
             );
         }

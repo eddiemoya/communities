@@ -208,4 +208,4 @@ function ajaxify_comments() {
     echo $comment_id.' is the comment';
 }
 add_action('wp_ajax_flag_me', 'ajaxify_comments');
-add_action('wp_ajax_priv_flag_me', 'ajaxify_comments');
+add_action('wp_ajax_nopriv_flag_me', 'ajaxify_comments');
