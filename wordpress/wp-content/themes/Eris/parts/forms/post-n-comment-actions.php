@@ -84,8 +84,6 @@
     $myActionFollowText = isset($acts['follow']['text']) ? 'following' : 'follow';
     $myActionUpvote = isset($acts['upvote']['myaction']) ? $acts['upvote']['myaction'] : '';
 
-echo $myActionDownvote.' is the downvote; '.$myActionUpvote.' is the upvote<br/>';
-
     $nliDownvote = isset($acts['downvote']['nli_reset']) ? $acts['downvote']['nli_reset'] : '';
     $nliUpvote = isset($acts['upvote']['nli_reset']) ? $acts['upvote']['nli_reset'] : '';
 ?>
@@ -137,6 +135,7 @@ echo $myActionDownvote.' is the downvote; '.$myActionUpvote.' is the upvote<br/>
                                                     }
                                                 },
                                                 {element: 'input',class: 'kmart_button',attributes: {'type': 'submit','value': 'Flag'}},
+                                                {element: 'input',class: 'kmart_button azure',attributes: {'reset': 'submit','value': 'Cancel'}},
                                                 {element: 'input',attributes: {name: 'comment_post_ID',id: 'comment_post_ID',type: 'hidden',value: '<?php echo $post_id; ?>'}},
                                                 {element: 'input',attributes: {name: 'comment_parent',id: 'comment_parent',type: 'hidden',value: '<?php echo $id; ?>'}},
                                                 {element: 'input',attributes: {name: 'comment_type',id: 'comment_type',type: 'hidden',value: 'flag'}}

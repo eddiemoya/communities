@@ -146,6 +146,8 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
                 _thisTooltipForm.options.form.attributes.action,
                 data,
                 function(data) {
+                    jQuery(_thisTooltipForm.tooltip.tooltip.element).children('.middle').children('form').children('textarea').val('');
+
                     _thisTooltipForm._closeTooltip();
                 }
             );
