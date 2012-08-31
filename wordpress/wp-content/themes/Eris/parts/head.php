@@ -28,9 +28,9 @@
 				<ul>
 				    <?php if ( is_user_logged_in() ): ?>
 				        <li>
-				            <a href="<?php echo site_url(''); ?>/author/<?php echo $current_user->user_nicename; ?>" title="View your profile" class="bold">
+				            <a href="<?php echo get_profile_url( $current_user->ID ); ?>" title="View your profile" class="bold">
 				                <?php echo current_user_profile_thumbnail(); ?>
-				                <?php echo $current_user->user_nicename; ?>
+				                <?php get_screenname( $current_user->ID ); ?>
 				            </a>
 				        </li>
 				        <li><?php sso_logout_link('Logout');?> </li>
@@ -38,7 +38,6 @@
     					<!-- <li><a href="<?php //echo wp_logout_url( get_permalink() ); ?>" title="Logout" class="bold">Logout</a></li> -->
 				    <?php else: ?>
     					<li><a href="<?php echo get_site_url(); ?>/login/" title="Login" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">Login</a></li>
-    					<!-- <li><a href="<?php //echo site_url('login'); ?>login/" title="Login" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480}}">Login</a></li> -->
 						<li><a href="<?php echo get_site_url(); ?>/register/" title="Sign Up: Join the Community" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-register'}}}">Join the community</a></li>
 					<?php endif; ?>
 				</ul>
