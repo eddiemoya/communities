@@ -1,1 +1,0 @@
-<?php get_template_part('widgets/question-list/index'); ?>

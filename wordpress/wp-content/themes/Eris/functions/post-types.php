@@ -12,7 +12,7 @@ add_action('init', 'register_buying_guides_type');
 function register_questions_type() {
     $labels = array(
         'name'          => _x('Questions', 'post type general name'),
-        'singular_name' => _x('Questions', 'post type singular name'),
+        'singular_name' => _x('Question', 'post type singular name'),
         'add_new'       => _x('Add New', 'question'),
         'add_new_item'  => __('Add New Question'),
         'edit_item'     => __('Edit Question'),
