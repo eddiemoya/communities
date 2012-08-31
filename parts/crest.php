@@ -29,10 +29,15 @@
     if ( $city_state != '' ) { $address = '<address>' . $city_state . '</address>'; }
     
     # Alter the name's appearance if titling is turned on.
-    if ( ( isset( $titling ) ) && ( $titling == true ) ) {
+    # Or if they're an expert.
+    if ( 
+            ( ( isset( $titling ) ) && ( $titling == true ) )
+            ||
+            ( in_array( 'expert', $user->roles ) )
+        ) {
         $a_classes[] = 'labeled';
         $crest_titling = '
-    <h4><a href="' . get_author_posts_url( $user_id ) . '">' . $user->roles[0] . '</a></h4>
+    <h4><a href="' . get_profile_url( $user_id ) . '">' . ucfirst( $user->roles[0] ) . '</a></h4>
     <div class="tail">&nbsp;</div>
 ';
         if ( $display_name ) {
@@ -46,8 +51,8 @@
 ?>
 
 <div class="<?php echo implode( $a_classes, ' ' ); ?>">
-    <a href="<?php echo get_author_posts_url( $user_id ); ?>">
-        <?php echo profile_photo($user_id); ?>
+    <a href="<?php echo get_profile_url( $user_id ); ?>">
+        <?php echo profile_photo( $user_id ); ?>
     </a>
     <?php echo $crest_titling; ?>
     <?php echo $address; ?>
