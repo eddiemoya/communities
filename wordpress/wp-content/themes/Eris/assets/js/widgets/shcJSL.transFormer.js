@@ -158,11 +158,12 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 }
 
 shcJSL.methods.transFormer = function(target, options) {
-	var checkForLogin; // (Function) Check to see if the user is logged in
-	var form;	// The form HTMLObject
-	var figs; // Configurations for the current form
-	var submitEval = {}; // Functions to run for testing the form submitting
-	var transformers = []; // (Array) Array of all the forms that are being monitored by transFormer
+	var checkForLogin; 			// (Function) Check to see if the user is logged in
+	var runScreenName;			// (Function) Check user's screen name to see if it is valid
+	var form;								// The form HTMLObject
+	var figs; 							// Configurations for the current form
+	var submitEval = {}; 		// Functions to run for testing the form submitting
+	var transformers = [];	// (Array) Array of all the forms that are being monitored by transFormer
 	
 	form = target;
 	
