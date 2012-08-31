@@ -84,7 +84,7 @@
             if ( is_widget()->share_style == 'long' ) { $share_options["version"] = 'long'; }
         ?>
         <section class="post-actions">
-            <?php get_partial( 'parts/share', $share_options ); ?>
+            <?php get_partial( 'parts/share', array( "version" => is_widget()->share_style, "url" => get_post_permalink( $post->ID ) ) ); ?>
         </section>
 
     </div> <!-- featured-post -->

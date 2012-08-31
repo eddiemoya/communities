@@ -169,8 +169,8 @@ ul.bullets {
     padding: .5em 0;
     letter-spacing:-.05em;
   }
-  h4, address {
-    font-size: percentage( 12/16 );
+  h4, h5, address {
+    font-size: 12px;
     @extend .bold;
   }
   &.labeled {
