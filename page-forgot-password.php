@@ -37,9 +37,12 @@ if(! empty($_POST)) {
 	 * Access the message via $response['message']
 	 */
 }
+if(! is_ajax()):
 
 get_template_part('parts/header'); ?>
 	<section class="span8">
+<?php endif;?>	
+
 		<?php //echo $response['message'];?>
 		<article class="content-container forgot-password span12">
 			<section class="content-body clearfix">
@@ -85,12 +88,14 @@ get_template_part('parts/header'); ?>
 	
 		</article>
 		
-		
+			<?php if(! is_ajax()):?>
 	</section>
 
 
 	<section class="span4">
-		Tim: empty section... is it actually needed?
 	</section>
+	
+<?php
+get_template_part('parts/footer');
 
-<?php get_template_part('parts/footer'); ?>
+endif;
