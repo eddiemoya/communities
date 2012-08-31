@@ -568,8 +568,8 @@ form {}
 }
 
 // FEATURED BLOG POST
-.content-container.featured-post {
-  .content-excerpt, .content-byline {
+.content-container.featured-post, .content-container.featured-guide {
+  .content-excerpt, .content-byline, .content-tags {
     font-size:.75em
   }
 }
