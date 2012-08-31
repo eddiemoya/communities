@@ -24,7 +24,11 @@
         <?php endif; ?>
         <section class="clearfix">
             <p class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
-            <p class="comments-count"><?php comments_number( 'no answers', '1 answer', '% answers' ); ?></p>
+            <?php if(get_post_type() == "question") : ?>
+                <p class="comments-count"><?php comments_number( 'no answers', '1 answer', '% answers' ); ?></p>
+            <?php else: ?>
+                <p class="comments-count"><?php comments_number( 'no comments', '1 comment', '% comments' ); ?></p>
+            <?php endif; ?>
             <?php if(!empty(is_widget()->show_share)) : ?>
                 <?php get_partial( 'parts/share', array( "version" => is_widget()->share_style, "url" => get_post_permalink( $post->ID ) ) ); ?>
             <?php endif; ?>
