@@ -189,8 +189,8 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
 //                    children[i].attributes[j] = '"' + children[i].attributes[j] + '"';
 //                }
 //            }
-
-            childAttributes = (typeof children[i].attributes === 'object') ? JSON.stringify(children[i].attributes) : children[i].attributes;
+//
+//            childAttributes = (typeof children[i].attributes === 'object') ? JSON.stringify(children[i].attributes) : children[i].attributes;
 
             elems[i] = shcJSL.createNewElement(children[i].element, children[i].class, children[i].attributes);
 

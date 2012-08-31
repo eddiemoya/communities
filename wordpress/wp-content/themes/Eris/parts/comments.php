@@ -42,8 +42,8 @@
             $comment_actions = array(
                 "id"        => $comment->comment_ID,
                 "type"      => 'comments',
-                "sub_type"      => $comment_type,
-                "options"   => array( "reply", "flag", "upvote", "downvote" ),
+                "sub_type"  => $comment_type,
+                "options"   => array("reply", "flag", "downvote", "upvote"),
                 'actions'   => $comment->actions,
                 'post_id'   => $commint->comment_post_ID
             );
@@ -111,7 +111,7 @@
                                 "id"        => $child->comment_ID,
                                 "type"      => 'comments',
                                 "sub_type"  => $comment_type,
-                                "options"   => array( "reply", "flag", "upvote", "downvote" ),
+                                "options"   => array("reply", "flag", "downvote", "upvote"),
                                 'actions'   => $child->actions,
                                 'post_id'   => $commint->comment_post_ID
                             );
