@@ -72,8 +72,6 @@
                     default:
                         break;
                 }
-            } else {
-
             }
         }
     }
@@ -99,24 +97,12 @@
         }
         if ( in_array( "follow", $options ) ) {
             if(! is_user_logged_in()) {
-                $buttons[] = '<button
-                                type="button"
-                                name="button1"
-                                value="follow"
-                                title="Follow this '.$type.'"
-                                id="follow-question-'.$id.'"
-                                class="follow"
+                $buttons[] = '<button type="button" name="button1" value="follow" title="Follow this '.$type.'" id="follow-question-'.$id.'" class="follow"
                                 shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:\'POST\', data:{action: \'get_template_ajax\', template: \'page-login\'}}}"
                                 shc:gizmo="moodle">
                                 '.$myActionFollowText.'</button>';
            	} else {
-                $buttons[] = '<button
-                                type="button"
-                                name="button1"
-                                value="follow"
-                                title="Follow this '.$type.'"
-                                id="follow-question-'.$id.'"
-                                class="follow'.$myActionFollow.'"
+                $buttons[] = '<button type="button" name="button1" value="follow" title="Follow this '.$type.'" id="follow-question-'.$id.'" class="follow'.$myActionFollow.'"
                                 shc:gizmo:options="{actions:{post:{id:'.$id.',name:\'follow\',sub_type:\''.$sub_type.'\',type:\''.$type.'\'}}}"
                                 shc:gizmo="actions">
                                 '.$myActionFollowText.'</button>';
@@ -126,22 +112,9 @@
             $buttons[] = return_partial( 'parts/share', array( "url" => $url ) );
         }
         if ( in_array( "flag", $options ) ) {
-            $buttons[] = '<button
-                                type="button"
-                                name="button1"
-                                value="flag"
-                                title="Flag this '.$type.'"
-                                id="flag-comment-'.$id.'"
-                                class="flag"
-                                shc:gizmo="tooltipForm"
+            $buttons[] = '<button type="button" name="button1" value="flag" title="Flag this '.$type.'" id="flag-comment-'.$id.'" class="flag" shc:gizmo="tooltipForm"
                                 shc:gizmo:options="{tooltipForm:{
-                                    form: {
-                                        attributes: {
-                                            action: ajaxurl + \'?action=flag_me\',
-                                            method: \'post\',
-                                            id: \'commentForm-'.$id.'\'
-                                        },
-                                        class: \'flag-form\',
+                                    form: {attributes: {action: ajaxurl + \'?action=flag_me\',method: \'post\',id: \'commentForm-'.$id.'\'},class: \'flag-form\',
                                         elements: [
                                             {
                                                 element: \'textarea\',
@@ -151,44 +124,13 @@
                                                     name: \'comment\',
                                                     \'aria-required\': true,
                                                     id: \'comment-body-'.$id.'\',
-                                                    \'shc:gizmo:form\': \'{required: true, pattern: /^.+@.+?\.[a-zA-Z]{2,}$/, message: \'asdf\'}\'
+                                                    \'shc:gizmo:form\': {required: true, pattern: \'/^.+@.+?\.[a-zA-Z]{2,}$/\', message: \'asdf\'}
                                                 }
                                             },
-                                            {
-                                                element: \'input\',
-                                                class: \'kmart_button\',
-                                                attributes: {
-                                                    \'type\': \'submit\',
-                                                    \'value\': \'Flag\'
-                                                }
-                                            },
-                                            {
-                                                element: \'input\',
-                                                attributes: {
-                                                    name: \'comment_post_ID\',
-                                                    id: \'comment_post_ID\',
-                                                    type: \'hidden\',
-                                                    value: \''.$post_id.'\'
-                                                }
-                                            },
-                                            {
-                                                element: \'input\',
-                                                attributes: {
-                                                    name: \'comment_parent\',
-                                                    id: \'comment_parent\',
-                                                    type: \'hidden\',
-                                                    value: \''.$id.'\'
-                                                }
-                                            },
-                                            {
-                                                element: \'input\',
-                                                attributes: {
-                                                    name: \'comment_type\',
-                                                    id: \'comment_type\',
-                                                    type: \'hidden\',
-                                                    value: \'flag\'
-                                                }
-                                            }
+                                            {element: \'input\',class: \'kmart_button\',attributes: {\'type\': \'submit\',\'value\': \'Flag\'}},
+                                            {element: \'input\',attributes: {name: \'comment_post_ID\',id: \'comment_post_ID\',type: \'hidden\',value: \''.$post_id.'\'}},
+                                            {element: \'input\',attributes: {name: \'comment_parent\',id: \'comment_parent\',type: \'hidden\',value: \''.$id.'\'}},
+                                            {element: \'input\',attributes: {name: \'comment_type\',id: \'comment_type\',type: \'hidden\',value: \'flag\'}}
                                         ],
                                         isAjax: true
                                     }

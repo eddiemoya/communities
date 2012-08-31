@@ -1,10 +1,10 @@
 <?php
     global $current_user;
     get_currentuserinfo();
-    
-    $comments = get_comments(array('post_id' => $post->ID));
 
     $comment_type = get_post_type( $post->ID ) == 'question' ? 'answer' : 'comment';
+
+    $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type));
 
     if ( isset( $comments ) && !empty( $comments ) ) {
 ?>

@@ -89,7 +89,6 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
     };
 
     _thisTooltip.init = function(element, options) {
-
         try {
             _thisTooltip.actedObj.element = (typeof(element) === 'object') ? element : null;
         } catch(e) {

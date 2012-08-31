@@ -70,6 +70,6 @@
         else :
             do_action( 'comment_form_comments_closed' );
         endif;
-
-        comments_template('/parts/tooltip.php');
     }
+
+    comments_template('/parts/tooltip.php');
