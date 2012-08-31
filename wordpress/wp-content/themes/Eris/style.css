@@ -1002,6 +1002,10 @@ ul.bullets {
   font-size: 90%;
   padding-top: .2em; }
 
+.span3 .recent-activity .excerpt, .span4 .recent-activity .excerpt, .span6 .recent-activity .excerpt {
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
 /*
  * POST A QUESTION
  */
