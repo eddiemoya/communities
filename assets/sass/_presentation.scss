@@ -169,8 +169,8 @@ ul.bullets {
     padding: .5em 0;
     letter-spacing:-.05em;
   }
-  h4, address {
-    font-size: percentage( 12/16 );
+  h4, h5, address {
+    font-size: 12px;
     @extend .bold;
   }
   &.labeled {
@@ -357,7 +357,7 @@ form {}
 
 .content-container .content-body {
   padding:.625em;
- 
+
   .content-details {
     padding-bottom:.625em;
     .content-category {
@@ -482,7 +482,6 @@ form {}
 // FEATURED QUESTION
 .featured-question.content-container {
   .category-image {
-    background:transparent url(#{$img}category-image.jpg) no-repeat 0px 0px;
     float:left;
     height:6.25em;
     margin:0 .625em .625em 0;
@@ -624,6 +623,13 @@ form {}
   }
 }
 
+.span3, .span4, .span6 {
+  .recent-activity .excerpt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 /*
  * POST A QUESTION
  */
@@ -661,7 +667,8 @@ form {}
  * LOGIN/REGISTER/FORGOT PASSWORD
  */
 #moodle_container .sign-in, body > .sign-in,
-#moodle_container .register, body > .register {
+#moodle_container .register, body > .register,
+#moodle_container .forgot-password, body > .forgot-password {
   padding:20px;
 }
 
@@ -920,7 +927,7 @@ $tab-padding: "1em 0 .6em 0";
     left: -10px;
     position: absolute;
 
-    .arrowLeft {
+    .left {
       background-color: transparent;
       border-color: #ffffff #a0c7ff #ffffff #ffffff;
       border-style: solid;
@@ -929,7 +936,7 @@ $tab-padding: "1em 0 .6em 0";
       height: 0px;
     }
 
-    .arrowLeftBorder {
+    .leftBorder {
       background-color: transparent;
       border-color: transparent #ffffff transparent transparent;
       border-style: solid;
@@ -937,8 +944,29 @@ $tab-padding: "1em 0 .6em 0";
       width: 0px;
       height: 0px;
       position: relative;
-      left: 2px;
-      top: -19px;
+      left: 3px;
+      top: 2px;
+    }
+
+    .top {
+      background-color: transparent;
+      border-color: transparent transparent #a0c7ff transparent;
+      border-style: solid;
+      border-width: 0px 10px 10px 10px;
+      width: 0px;
+      height: 0px;
+    }
+
+    .topBorder {
+      background-color: transparent;
+      border-color: transparent transparent #fff transparent;
+      border-style: solid;
+      border-width: 0px 9px 9px 9px;
+      width: 0px;
+      height: 0px;
+      position: relative;
+      left: 1px;
+      top: -9px;
     }
   }
 
@@ -955,7 +983,7 @@ $tab-padding: "1em 0 .6em 0";
 // Threaded Discussion
 .commentForm {
   margin-bottom: 20px;
-  
+
   .leaveComment {
     float: right;
     cursor: pointer;
@@ -1027,7 +1055,7 @@ $tab-padding: "1em 0 .6em 0";
 // Activity buttons
 .actions {
   margin: .5em 0;
-  
+
   button {
     cursor: pointer;
     color: #4e74a3;
@@ -1105,7 +1133,7 @@ button.follow {
 
 /**
  * @author Tim Steele
- * 
+ *
  * Styles for the breadcrumb widget. Mainly used on the single pages, i.e.
  * blog, buying guide, question.
  */
@@ -1130,7 +1158,7 @@ button.follow {
 .kmart .breadcrumb li:before {
   color:kmart( link );
 }
-      
+
 .sears .breadcrumb li:before {
   color:sears( link );
 }
