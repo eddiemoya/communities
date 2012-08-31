@@ -115,11 +115,15 @@ function organizeByChildren($comments) {
         }
 
         if(isset($children) && !empty($children)) {
+
             foreach($comments as $comment) {
                 if(array_key_exists($comment->comment_ID, $children)) {
                     foreach($children[$comment->comment_ID] as $child) {
                         $comment->children[] = $child;
                     }
+
+                    // ensure oldest child comment is first
+                    $comment->children = array_reverse($comment->children);
                 }
             }
         }

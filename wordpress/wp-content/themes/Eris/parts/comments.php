@@ -1,15 +1,28 @@
 <?php
+    global $current_user;
+    get_currentuserinfo();
+    
     $comments = get_comments(array('post_id' => $post->ID));
 
     $comment_type = get_post_type( $post->ID ) == 'question' ? 'answer' : 'comment';
 
     if ( isset( $comments ) && !empty( $comments ) ) {
-
 ?>
-
 <header class="section-header comments-header clearfix">
     <h3><?php echo ucfirst( $comment_type ); ?>s</h3>
-    <h4><?php comments_number( '', '1 ' . $comment_type, '% ' . $comment_type . 's' ); ?></h4>
+    <h4>
+        <?php
+            $commentCount = get_custom_comment_count($comment_type, $post->ID);
+
+            if($commentCount > 0) {
+                $string = ($commentCount > 1) ? $commentCount.' '.ucfirst($comment_type).'s' : $commentCount.' '.ucfirst($comment_type);
+
+                echo $string;
+            } else {
+                echo 'No '.ucfirst($comment_type);
+            }
+        ?>
+    </h4>
 </header>
 <ol id="allComments">
 <?php
@@ -34,8 +47,7 @@
                 'actions'   => $comment->actions
             );
 ?>
-    <li class="comment clearfix<?php echo $container_class; ?>">
-        
+    <li class="comment clearfix<?php echo $container_class; ?>" id="comment-<?php echo $comment->comment_ID ?>">
         <?php get_partial( 'parts/crest', $crest_options ); ?>
         
         <div class="span10">
@@ -52,7 +64,11 @@
                 }
             ?>
             <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" method="post" id="commentform-<?php echo $comment->comment_ID ?>" class="reply-to-form">
-                <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" cols="45" rows="8" aria-required="true"></textarea>
+                <?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
+                    <label for="screen-name" class="required">Screen Name</label>
+                    <input type="text" class="input_text" name="screen-name" id="screen-name" value="" />
+                <?php endif;?>
+                <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" rows="8" aria-required="true"></textarea>
                 <p class="form-submit">
                     <?php
                         if(!is_user_logged_in()):
@@ -76,7 +92,7 @@
                 $child_date = strtotime( $child->comment_date );
     ?>
             <ol class="children">
-                <li class="comment clearfix<?php echo $container_class; ?>">
+                <li class="comment clearfix<?php echo $container_class; ?>" id="comment-<?php echo $comment->comment_ID ?>">
                     <?php
                         $crest_options = array(
                                     "user_id"   => $child->user_id
@@ -85,6 +101,7 @@
                     ?>
                     <div class="span10">
                         <time class="content-date" datetime="<?php echo date( "Y-m-d", $child_date ); ?>" pubdate="pubdate"><?php echo date( "F j, Y g:ia", $child_date ); ?></time>
+                        <p class="responseTo">In response to <?php comment_author($comment->comment_ID); ?></p>
                         <article>
                             <?php echo $child->comment_content; ?>
                         </article>
@@ -106,8 +123,12 @@
                                 echo 'not active';
                             }
                         ?>
-                        <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" method="post" id="commentform" style="display: block; ">
-                            <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>
+                        <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" method="post" id="commentform" class="reply-to-form">
+                            <?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
+                                <label for="screen-name" class="required">Screen Name</label>
+                                <input type="text" class="input_text" name="screen-name" id="screen-name" value="" />
+                            <?php endif;?>
+                            <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" rows="8" aria-required="true"></textarea>
                             <p class="form-submit">
                                 <?php
                                     if(!is_user_logged_in()):

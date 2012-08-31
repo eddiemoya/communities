@@ -37,16 +37,19 @@ function enqueue_scripts() {
         wp_register_script('tooltip', get_template_directory_uri() . '/assets/js/widgets/shcJSL.tooltip.js', array(), '1.0');
         wp_register_script('actions', get_template_directory_uri() . '/assets/js/widgets/shcJSL.actions.js', array(), '1.0');
         wp_register_script('transFormer', get_template_directory_uri() . '/assets/js/widgets/shcJSL.transFormer.js', array(), '1.0');
+				// NOT FOR PRODUCTION
+				//wp_register_script('debug', get_template_directory_uri() . '/assets/js/vendor/debug.js', array(), '1.0');
 
         wp_enqueue_script('jquery');    
         wp_enqueue_script('modernizr');
+       // wp_enqueue_script('debug');
         wp_enqueue_script('shcJSL');
-				wp_enqueue_script('moodle');  
+        wp_enqueue_script('moodle');
         wp_enqueue_script('ajaxrequests');   
         wp_enqueue_script('openID');
         wp_enqueue_script('tooltip');
         wp_enqueue_script('actions');
-				wp_enqueue_script('transFormer');
+        wp_enqueue_script('transFormer');
 
 		wp_localize_script('jquery', 'ajaxdata', $data);		
         
@@ -67,9 +70,12 @@ function enqueue_scripts() {
 
 add_action('wp_head','pluginname_ajaxurl');
 function pluginname_ajaxurl() {
-    ?>
+
+    $url = site_url('/wp-admin/admin-ajax.php');
+
+    echo '
         <script type="text/javascript">
-            var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
+            var ajaxurl = \''.$url.'\';
         </script>
-    <?php
+    ';
 }
