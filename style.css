@@ -851,13 +851,6 @@ ul.bullets {
 
 .span3 .member, .span4 .member, .span6 .member {
   margin-top: 1em; }
-  .span3 .member > *, .span4 .member > *, .span6 .member > * {
-    width: 31.25%;
-    float: left; }
-  .span3 .member > * + *, .span4 .member > * + *, .span6 .member > * + * {
-    width: 62.5%;
-    float: left;
-    margin-left: 6.25%; }
   .span3 .member:first-child, .span4 .member:first-child, .span6 .member:first-child {
     margin-top: 0; }
 
@@ -889,21 +882,6 @@ ul.bullets {
     float: none;
     clear: left;
     width: 100%; }
-
-.span3 .featured-members .span4, .span4 .featured-members .span4, .span6 .featured-members .span4 {
-  float: none;
-  width: 100%;
-  margin-left: 0;
-  margin-bottom: 1em; }
-  .span3 .featured-members .span4 .member, .span4 .featured-members .span4 .member, .span6 .featured-members .span4 .member {
-    border-right: 0; }
-    .span3 .featured-members .span4 .member > *, .span4 .featured-members .span4 .member > *, .span6 .featured-members .span4 .member > * {
-      width: 26.666%;
-      float: left; }
-    .span3 .featured-members .span4 .member > * + *, .span4 .featured-members .span4 .member > * + *, .span6 .featured-members .span4 .member > * + * {
-      width: 70.001%;
-      float: left;
-      margin-left: 3.333%; }
 
 .featured-question.content-container .category-image {
   background: transparent url(/wp-content/themes/Eris/assets/img/category-image.jpg) no-repeat 0px 0px;
@@ -1132,6 +1110,7 @@ fieldset#use_your_account_from {
   background-image: -webkit-linear-gradient(#ffffff, #f4f4f4);
   background-image: -moz-linear-gradient(#ffffff, #f4f4f4);
   background-image: -o-linear-gradient(#ffffff, #f4f4f4);
+  background-image: -ms-linear-gradient(#ffffff, #f4f4f4);
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;

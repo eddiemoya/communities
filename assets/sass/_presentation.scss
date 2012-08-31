@@ -431,7 +431,7 @@ form {}
 
 .span3, .span4, .span6 {
   .member {
-    @include col_layout( ( 50, 100 ), 10 );
+    // @include col_layout( ( 50, 100 ), 10 );
     margin-top: 1em;
     &:first-child {
       margin-top: 0;
@@ -466,18 +466,18 @@ form {}
 //.span3 .featured-members, .span4 .featured-members, .span6 .featured-members,
 //.span3.featured-members, .span4.featured-members, .span6.featured-members, .span8.featured-members
 
-.span3 .featured-members, .span4 .featured-members, .span6 .featured-members {
-  .span4 {
-    float: none;
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 1em;
-    .member {
-      border-right: 0;
-      @include col_layout( (80, 210), 10 );
-    }
-  }
-}
+//.span3 .featured-members, .span4 .featured-members, .span6 .featured-members {
+//  .span4 {
+//    float: none;
+//    width: 100%;
+//    margin-left: 0;
+//    margin-bottom: 1em;
+//    .member {
+//      border-right: 0;
+//      @include col_layout( (80, 210), 10 );
+//    }
+//  }
+//}
 
 // FEATURED QUESTION
 .featured-question.content-container {
