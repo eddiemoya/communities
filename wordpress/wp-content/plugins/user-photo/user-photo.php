@@ -133,7 +133,8 @@ function userphoto__get_userphoto($user_id, $photoSize, $before, $after, $attrib
 			$upload_dir = wp_upload_dir();
 			if(!empty($upload_dir['error']))
 				return "Error: " . $upload_dir['error'];
-			$src = trailingslashit(get_site_url() . $img_domain) . $image_file;
+			//$src = trailingslashit(get_site_url() . $img_domain) . $image_file;
+			$src = trailingslashit($img_domain) . $image_file;
 		}
 		else if($default_src){
 			$src = $default_src;
@@ -478,7 +479,8 @@ function userphoto_profile_update($userID){
 						update_usermeta($userID, "userphoto_thumb_height", $thumbinfo[1]);
 						update_usermeta($userID, "userphoto_cachebuster", time());
 						$location = explode("/wp-content/", $dir);
-						$location = "/wp-content/" . $location[1];
+						$location = get_site_url() . "/wp-content/" . $location[1];
+				
 						update_usermeta($userID, "userphoto_domain", $location);
 						
 						//Delete old thumbnail if it has a different filename (extension)
