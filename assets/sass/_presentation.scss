@@ -624,6 +624,13 @@ form {}
   }
 }
 
+.span3, .span4, .span6 {
+  .recent-activity .excerpt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 /*
  * POST A QUESTION
  */
