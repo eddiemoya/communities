@@ -1,0 +1,1 @@
+<?php get_template_part('widgets/summary-list/index'); ?>
