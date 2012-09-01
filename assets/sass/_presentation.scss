@@ -416,7 +416,7 @@ form {}
     }
   }
   .stats {
-    float: right;
+    float: left;
     li {
       font-size: 12px;
     }
@@ -431,7 +431,7 @@ form {}
 
 .span3, .span4, .span6 {
   .member {
-    // @include col_layout( ( 50, 100 ), 10 );
+    @include col_layout( ( 80, 180 ), 20 );
     margin-top: 1em;
     &:first-child {
       margin-top: 0;
@@ -451,7 +451,7 @@ form {}
       &:first-child {
         border-left: 0;
       }
-      @include col_layout( ( 50, 50 ), 5 );
+      @include col_layout( ( 80, 80 ), 20 );
     }
     @include legacy-pie-clearfix;
     .stats {
