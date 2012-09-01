@@ -891,7 +891,6 @@ ul.bullets {
     width: 100%; }
 
 .featured-question.content-container .category-image {
-  background: transparent url(/wp-content/themes/Eris/assets/img/category-image.jpg) no-repeat 0px 0px;
   float: left;
   height: 6.25em;
   margin: 0 .625em .625em 0;
@@ -1217,14 +1216,14 @@ fieldset#use_your_account_from {
   .tooltip .arrow {
     left: -10px;
     position: absolute; }
-    .tooltip .arrow .arrowLeft {
+    .tooltip .arrow .left {
       background-color: transparent;
       border-color: #ffffff #a0c7ff #ffffff #ffffff;
       border-style: solid;
       border-width: 10px 10px 10px 0px;
       width: 0px;
       height: 0px; }
-    .tooltip .arrow .arrowLeftBorder {
+    .tooltip .arrow .leftBorder {
       background-color: transparent;
       border-color: transparent #ffffff transparent transparent;
       border-style: solid;
@@ -1232,8 +1231,25 @@ fieldset#use_your_account_from {
       width: 0px;
       height: 0px;
       position: relative;
-      left: 2px;
-      top: -19px; }
+      left: 3px;
+      top: 2px; }
+    .tooltip .arrow .top {
+      background-color: transparent;
+      border-color: transparent transparent #a0c7ff transparent;
+      border-style: solid;
+      border-width: 0px 10px 10px 10px;
+      width: 0px;
+      height: 0px; }
+    .tooltip .arrow .topBorder {
+      background-color: transparent;
+      border-color: transparent transparent #fff transparent;
+      border-style: solid;
+      border-width: 0px 9px 9px 9px;
+      width: 0px;
+      height: 0px;
+      position: relative;
+      left: 1px;
+      top: -9px; }
   .tooltip .middle {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -1389,7 +1405,7 @@ button.follow {
 
 /**
  * @author Tim Steele
- * 
+ *
  * Styles for the breadcrumb widget. Mainly used on the single pages, i.e.
  * blog, buying guide, question.
  */
