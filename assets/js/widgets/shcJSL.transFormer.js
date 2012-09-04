@@ -107,7 +107,6 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			
 			$(target).bind('blur', function(event) {
 				var i; // counter
-				console.log(fn)
 				for (i=0; i < fn.length; i++) {
 					if (this.value != '') {
 						if (!(fn[i](options, target))) {
@@ -161,13 +160,9 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 	function checkSN(options, target) {
 		var valid;	// Is screen name valid;
 		
-		alert('suck it trebek')
-		console.log(this);
-		console.log(target);
-		console.log(options);
-		
 		if (window['ajaxdata'] && window['ajaxdata']['ajaxurl']) {
 			jQuery.ajax({
+				async: false,
 				dataType: 'html',
 				data: {
 					"screen_name": target.value,
@@ -176,17 +171,12 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				type: "POST",
 				url: window['ajaxdata']['ajaxurl']
 			}).success(function(data, status, xhr) {
-				console.log(status);
-				console.log(data);
-				console.log(xhr);
-				
+				(data == "true")? valid = true:valid = false;
 			}).error(function(xhr, status, message) {
-				console.log(xhr);
-				console.log(status);
-				console.log(message);
+				valid = true;
 			})
 		}
-		
+		return valid;
 	}
 	
 	this.verify = function() {
