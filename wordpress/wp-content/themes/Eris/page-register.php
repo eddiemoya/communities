@@ -49,7 +49,30 @@ get_template_part('parts/header'); ?>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="logonPassword">Password:</label></dt>
-                        <dd class="span9"><input type="password" name="logonPassword" autocomplete="off" class="input_text input_password" id="logonPassword" shc:gizmo:form="{required:true, pattern: /^[A-Za-z0-9]{8,}$/, message: 'Please enter a valid password.'}" /></dd>
+                        <dd class="span9">
+                            <input
+                                    type="password"
+                                    name="logonPassword"
+                                    autocomplete="off"
+                                    class="input_text input_password"
+                                    id="logonPassword"
+                                    shc:gizmo:form="{required:true, pattern: /^[A-Za-z0-9]{8,}$/, message: 'Please enter a valid password.'}"
+                                    shc:gizmo="tooltip"
+                                    shc:gizmo:options="{tooltip:{
+                                        displayData: '',
+                                        events:{
+                                            focus: {
+                                                active: true,
+                                                preventDefault: true
+                                            },
+                                            blur: {
+                                                active: true,
+                                                preventDefault: true
+                                            }
+                                        }
+                                    }}"
+                            />
+                        </dd>
                     </dl>
                 </li>
                 
@@ -125,9 +148,12 @@ get_template_part('parts/header'); ?>
 		<?php if(! is_ajax()):?>
 	</section>
 
-<?php get_template_part('parts/footer'); 
+<?php get_template_part('parts/footer');
 
 endif;
+
+comments_template('/parts/tooltip.php');
+
 ?>
 
 

@@ -121,7 +121,7 @@
                     case 'flag': ?>
                                 <button type="button" name="button1" value="flag" title="Flag this <?php echo $type; ?>" id="flag-comment-<?php echo $id; ?>" class="flag" shc:gizmo="tooltipForm"
                                     shc:gizmo:options="{tooltipForm:{
-                                        form: {attributes: {action: ajaxurl + '?action=flag_me',method: 'post',id: 'commentForm-<?php echo $id; ?>'},class: 'flag-form',
+                                        form: {attributes: {action: ajaxurl + '?action=flag_me',method: 'post',id: 'commentForm-<?php echo $id; ?>', 'shc:gizmo':'transFormer'},class: 'flag-form',
                                             elements: [
                                                 {
                                                     element: 'textarea',
@@ -131,7 +131,7 @@
                                                         name: 'comment',
                                                         'aria-required': true,
                                                         id: 'comment-body-<?php echo $id; ?>',
-                                                        'shc:gizmo:form': {required: true, pattern: '/^.+@.+?\.[a-zA-Z]{2,}$/', message: 'asdf'}
+                                                        'shc:gizmo:form': '{required: true, custom: function() {alert(\'hello\')}}'
                                                     }
                                                 },
                                                 {element: 'input',class: 'kmart_button',attributes: {'type': 'submit','value': 'Flag'}},
