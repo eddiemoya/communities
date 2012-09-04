@@ -67,18 +67,26 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 	var self = this;
 	transformer = form;
 	valid = 0;
-	
+
 	methods = function(target) {
 		if ($(target).attr("shc:gizmo:form") != undefined) {
-			options = eval('(' + $(target).attr("shc:gizmo:form") + ')');
-			
+
+
+
 			// Scoped private variables
 			var options;	// Form options from shc:gizmo:form
 			var fn = [];	// Functions to run for validation
-			
+
+            options = eval('(' + $(target).attr("shc:gizmo:form") + ')');
+
+            console.log(options)
+
+
 			// Add element to the list of required elements
 			if (options.required && options.required == true) required[required.length] = target;
-			
+
+            console.log(required)
+
 			// Check if the input has to follow a pattern
 			if (options.pattern) {
 				fn[fn.length] = function(options) {
@@ -97,6 +105,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			}
 			
 			$(target).bind('blur', function(event) {
+                console.log(fn)
 				var i; // counter
 				for (i=0; i < fn.length; i++) {
 					if (this.value != '') {
@@ -118,10 +127,11 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 	fields = shcJSL.sequence(transformer.elements);
 	fields.map(methods);
 
-	console.log(fields);
-	console.log(required);
+	//console.log(fields);
+	//console.log(required);
 
 	function checkReqd() {
+        console.log("CHECK REQD")
 		var flag = true;	// Valid flag;
 		for (var i=0; i < required.length; i++) {
 			if (required[i].nodeName == "FIELDSET") {
@@ -140,7 +150,10 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				
 			}	// END IF !INPUT
 			else {
+                console.log(required[i])
+                console.log(required[i].value)
 				if (required[i].value == '') {
+                    console.log("FAILED")
 					if (flag != false) flag = false;
 					$tf.blunder(required[i]).create("This field is required.")
 				}	// END IF required value
@@ -164,7 +177,10 @@ shcJSL.methods.transFormer = function(target, options) {
 	var figs; 							// Configurations for the current form
 	var submitEval = {}; 		// Functions to run for testing the form submitting
 	var transformers = [];	// (Array) Array of all the forms that are being monitored by transFormer
-	
+
+    console.log("TARGET"); console.log(target);
+
+
 	form = target;
 	
 	submitEval[form.id] = [];
@@ -179,10 +195,14 @@ shcJSL.methods.transFormer = function(target, options) {
 		}
 		else return true;
 	}
-	
+
+    console.log(form);
+
 	transformers[form.id] = new $TransFormer(form);
 	submitEval[form.id][submitEval[form.id].length] = transformers[form.id].verify;
-		
+
+    console.log(submitEval);console.log("TRANS"); console.log(transformers);
+
 	figs = ($(form).attr("shc:gizmo:options") != undefined)? (((eval('(' + $(form).attr("shc:gizmo:options") + ')')).form)?(eval('(' + $(form).attr("shc:gizmo:options") + ')')).form:{}):{};
 	
 	if (figs.requireLogIn === true) {

@@ -62,23 +62,35 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         displayData: null,
         events: {
             click: {
-                callBack: _thisTooltip.click,
+                callBack: _click,
                 active: false,
                 name: 'click',
                 preventDefault: false
             },
             mouseover: {
-                callBack: _thisTooltip.mouseover,
+                callBack: _mouseover,
                 active: false,
                 name: 'mouseover',
                 preventDefault: false
             },
             mouseout: {
-                callBack: _thisTooltip.mouseout,
+                callBack: _mouseout,
                 active: false,
                 name: 'mouseout',
                 preventDefault: false
             },
+            blur: {
+                callBack: _blur,
+                active: false,
+                name: 'blur',
+                preventDefault: false
+            },
+            focus: {
+                callBack: _focus,
+                active: false,
+                name: 'focus',
+                preventDefault: false
+            }
         },
         position: {
             bottom: 0,
@@ -118,21 +130,31 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         }
     };
 
-    _thisTooltip.click = function(event) {
-        event.preventDefault();
-
+    function _click(event) {
         _thisTooltip._openTooltip();
 
         _thisTooltip._preventDefault(_thisTooltip.options.events.click.preventDefault, event);
     };
 
-    _thisTooltip.mouseover = function(event) {
+    function _mouseover(event) {
         _thisTooltip._openTooltip();
 
         _thisTooltip._preventDefault(_thisTooltip.options.events.preventDefault, event);
     };
 
-    _thisTooltip.mouseout = function(event) {
+    function _mouseout(event) {
+        _thisTooltip._closeTooltip();
+
+        _thisTooltip._preventDefault(_thisTooltip.options.events.preventDefault, event);
+    };
+
+    function _focus(event) {
+        _thisTooltip._openTooltip();
+
+        _thisTooltip._preventDefault(_thisTooltip.options.events.preventDefault, event);
+    };
+
+    function _blur(event) {
         _thisTooltip._closeTooltip();
 
         _thisTooltip._preventDefault(_thisTooltip.options.events.preventDefault, event);
@@ -319,14 +341,6 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
             event.preventDefault();
         }
     };
-
-    jQuery('body').click(function(event) {
-        console.log(event.target)
-
-        if(jQuery(this).is(jQuery(_thisTooltip.tooltip.element))) {
-            console.log('closeable')
-        }
-    });
 
     _thisTooltip.init(element, options);
 };
