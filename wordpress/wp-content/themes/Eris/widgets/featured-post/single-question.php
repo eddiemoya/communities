@@ -46,7 +46,7 @@
     </ul>
 
     <section class="post-actions">
-        <?php get_partial( 'parts/share' ); ?>
+        <?php get_partial( 'parts/share', array( "version" => is_widget()->share_style, "url" => get_post_permalink( $post->ID ) ) ); ?>
     </section>
 
 <?php get_template_part('parts/footer', 'widget') ;?>
