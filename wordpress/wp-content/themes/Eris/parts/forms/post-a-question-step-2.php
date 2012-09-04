@@ -26,7 +26,7 @@ get_currentuserinfo();
 							<?php endif;?>
 							<li class="clearfix">
 								<label for="your-question" class="required">Your Question</label>
-								<textarea name="your-question" id="your-question" class="input_textarea" shc:gizmo:form="{required:true, custom: function() {alert('DICKBUTT');}}"><?php 
+								<textarea name="your-question" id="your-question" class="input_textarea" shc:gizmo:form="{required:true}"><?php 
 									echo esc_textarea(stripslashes( ($_POST['post-question'] ) ? $_POST['post-question'] : $_POST['your-question'] )); 
 								?></textarea>
 							</li>

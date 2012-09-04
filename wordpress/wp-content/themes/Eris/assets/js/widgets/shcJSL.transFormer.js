@@ -166,22 +166,26 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 		console.log(target);
 		console.log(options);
 		
-		
-		jQuery.ajax({
-			dataType: 'html',
-			//data: settings.data,
-			//type: settings.type,
-			url: '/'
-		}).success(function(data, status, xhr) {
-			console.log(status);
-			console.log(data);
-			console.log(xhr);
-			
-		}).error(function(xhr, status, message) {
-			console.log(xhr);
-			console.log(status);
-			console.log(message);
-		})
+		if (window['ajaxdata'] && window['ajaxdata']['ajaxurl']) {
+			jQuery.ajax({
+				dataType: 'html',
+				data: {
+					"screen_name": target.value,
+					"action": "validate_screen_name"
+				},
+				type: "POST",
+				url: window['ajaxdata']['ajaxurl']
+			}).success(function(data, status, xhr) {
+				console.log(status);
+				console.log(data);
+				console.log(xhr);
+				
+			}).error(function(xhr, status, message) {
+				console.log(xhr);
+				console.log(status);
+				console.log(message);
+			})
+		}
 		
 	}
 	
