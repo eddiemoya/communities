@@ -1,10 +1,10 @@
 <?php
     global $current_user;
     get_currentuserinfo();
-    
-    $comments = get_comments(array('post_id' => $post->ID));
 
     $comment_type = get_post_type( $post->ID ) == 'question' ? 'answer' : 'comment';
+
+    $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type));
 
     if ( isset( $comments ) && !empty( $comments ) ) {
 ?>
@@ -42,9 +42,10 @@
             $comment_actions = array(
                 "id"        => $comment->comment_ID,
                 "type"      => 'comments',
-                "sub_type"      => $comment_type,
-                "options"   => array( "reply", "flag", "upvote", "downvote" ),
-                'actions'   => $comment->actions
+                "sub_type"  => $comment_type,
+                "options"   => array("reply", "flag", "downvote", "upvote"),
+                'actions'   => $comment->actions,
+                'post_id'   => $commint->comment_post_ID
             );
 ?>
     <li class="comment clearfix<?php echo $container_class; ?>" id="comment-<?php echo $comment->comment_ID ?>">
@@ -63,12 +64,12 @@
                     get_partial( 'parts/forms/post-n-comment-actions', $comment_actions );
                 }
             ?>
-            <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" method="post" id="commentform-<?php echo $comment->comment_ID ?>" class="reply-to-form">
+            <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" id="commentform-<?php echo $comment->comment_ID ?>" class="reply-to-form">
                 <?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
                     <label for="screen-name" class="required">Screen Name</label>
                     <input type="text" class="input_text" name="screen-name" id="screen-name" value="" />
                 <?php endif;?>
-                <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" rows="8" aria-required="true"></textarea>
+                <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" rows="8" aria-required="true" shc:gizmo:form="{required:true}"></textarea>
                 <p class="form-submit">
                     <?php
                         if(!is_user_logged_in()):
@@ -110,8 +111,9 @@
                                 "id"        => $child->comment_ID,
                                 "type"      => 'comments',
                                 "sub_type"  => $comment_type,
-                                "options"   => array( "reply", "flag", "upvote", "downvote" ),
-                                'actions'   => $child->actions
+                                "options"   => array("reply", "flag", "downvote", "upvote"),
+                                'actions'   => $child->actions,
+                                'post_id'   => $commint->comment_post_ID
                             );
 
                             /**
@@ -123,21 +125,21 @@
                                 echo 'not active';
                             }
                         ?>
-                        <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" method="post" id="commentform" class="reply-to-form">
+                        <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" id="commentform" class="reply-to-form">
                             <?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
                                 <label for="screen-name" class="required">Screen Name</label>
                                 <input type="text" class="input_text" name="screen-name" id="screen-name" value="" />
                             <?php endif;?>
-                            <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" rows="8" aria-required="true"></textarea>
+                            <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" rows="8" aria-required="true" shc:gizmo:form="{required:true}"></textarea>
                             <p class="form-submit">
                                 <?php
                                     if(!is_user_logged_in()):
                                 ?>
-                                    <input type="submit" id="submit" class="kmart_button" value="Post" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
-                                    <input type="reset" class="kmart_button azure" value="Cancel" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
+                                        <input type="submit" id="submit" class="kmart_button" value="Post" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
+                                        <input type="reset" class="kmart_button azure" value="Cancel" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}" />
                                 <?php else: ?>
-                                    <input type="submit" id="submit" class="kmart_button" value="Post">
-                                    <input type="reset" class="kmart_button azure" value="Cancel">
+                                        <input type="submit" id="submit" class="kmart_button" value="Post" />
+                                        <input type="reset" class="kmart_button azure" value="Cancel" />
                                 <?php endif; ?>
                                 <input type="hidden" name="comment_post_ID" value="<?php echo $comment->comment_post_ID; ?>" id="comment_post_ID">
                                 <input type="hidden" name="comment_parent" id="comment_parent" value="<?php echo $comment->comment_ID; ?>">

@@ -1,49 +1,51 @@
 <?php
 
+    $concat = has_screen_name( $profile_user->ID ) ? '?post-type=' : '&post-type=';
+
     $a_tabs = array(
-        "Community Activity" => $url_no_qs . '?post-type=recent',
-        "About Me" => $url_no_qs . '?post-type=aboutme'
+        "Community Activity" => $author_url . $concat . 'recent',
+        "About Me" => $author_url . $concat . 'aboutme'
     );
   
     $a_navigation = array(
         "recent" => array(
             "name" => "Recent Activity",
-            "url" => $url_no_qs . '?post-type=recent'
+            "url" => $author_url . $concat . 'recent'
         ),
         "question" => array(
             "name" => "Questions",
-            "url" => $url_no_qs . '?post-type=question'
+            "url" => $author_url . $concat . 'question'
         ),
         /*
         "" => array(
             "name" => "Comments",
-            "url" => $url_no_qs . '?post-type='
+            "url" => $author_url . $concat . ''
         ),*/
          "comment" => array(
             "name" => "Comments",
-            "url" => $url_no_qs . '?post-type=comment'
+            "url" => $author_url . $concat . 'comment'
         ),
         
         "answer" => array(
             "name" => "Answers",
-            "url" => $url_no_qs . '?post-type=answer'
+            "url" => $author_url . $concat . 'answer'
         ),
        
         "follow" => array(
             "name" => "Follows",
-            "url" => $url_no_qs . '?post-type=follow'
+            "url" => $author_url . $concat . 'follow'
         ),
         "upvote" => array(
             "name" => "Helpful Votes",
-            "url" => $url_no_qs . '?post-type=upvote'
+            "url" => $author_url . $concat . 'upvote'
         )      ,
         "post" => array(
             "name" => "Posts",
-            "url" => $url_no_qs . '?post-type=post'
+            "url" => $author_url . $concat . 'post'
         ),
         "guides" => array(
             "name" => "Buying Guides",
-            "url" => $url_no_qs . '?post-type=guides'
+            "url" => $author_url . $concat . 'guides'
         )
     );
   

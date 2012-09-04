@@ -21,18 +21,22 @@
     ul li {
       text-align:right;
     }
-    ul li ul li {
-      border-left:solid 1px #666666;
-      display:inline-block;
-      font-size:.75em;
-      padding:0 .4em 0 .8em;
-      img {
-        vertical-align: bottom;
-        margin-right: .5em;
+    ul li ul {
+      text-align: center;
+      li {
+        border-left:solid 1px sears( secondary-link );
+        display:inline-block;
+        font-size:.75em;
+        padding:0 .4em 0 .8em;
+        text-align: center;
+        img {
+          vertical-align: bottom;
+          margin-right: .5em;
+        }
+        &:first-child {
+          border:none;
+        }
       }
-    }
-    ul li ul li:first-child {
-      border:none;
     }
   }
 }

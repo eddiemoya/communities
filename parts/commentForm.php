@@ -15,7 +15,7 @@
 
         $args = array(
             'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
-            'comment_field'        => '<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea>',
+            'comment_field'        => '<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" shc:gizmo:form="{required:true}"></textarea>',
             'must_log_in'          => null,
             'logged_in_as'         => null,
             'comment_notes_before' => null,
@@ -44,7 +44,7 @@
             echo $args['must_log_in'];
             do_action( 'comment_form_must_log_in_after' );
             else : ?>
-            <form action="<?php echo site_url( '/wp-comments-post.php' ); ?>" method="post" id="<?php echo esc_attr( $args['id_form'] ); ?>">
+            <form action="<?php echo site_url( '/wp-comments-post.php' ); ?>" method="post" id="<?php echo esc_attr( $args['id_form'] ); ?>" shc:gizmo="transFormer">
                 <?php
                 do_action( 'comment_form_top' );
 
@@ -70,6 +70,6 @@
         else :
             do_action( 'comment_form_comments_closed' );
         endif;
-
-        comments_template('/parts/tooltip.php');
     }
+
+    comments_template('/parts/tooltip.php');
