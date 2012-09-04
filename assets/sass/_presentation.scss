@@ -445,6 +445,9 @@ form {}
       width: 29.9%;
       float: left;
       padding: 0 1.6%;
+      &:first-child {
+        padding-left: 0;
+      }
     }
     .member {
       border-left: 1px solid sears( decorative );
@@ -489,7 +492,7 @@ form {}
   }
 
   $column-width: nth( $span-widths, 4 );
-  $calculated-widths: ratioize( ($column-width, $column-width, 10) );
+  $calculated-widths: ratioize( ($column-width, $column-width, 20) );
   &.columns {
     .content-body {
       & > * {
