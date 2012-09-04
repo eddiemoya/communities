@@ -21,12 +21,12 @@ get_currentuserinfo();
 							<?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
 							<li class="clearfix">
 								<label for="screen-name" class="required">Screen Name</label>
-								<input type="text" class="input_text" name="screen-name" id="screen-name" value="" />
+								<input type="text" class="input_text" name="screen-name" id="screen-name" value="" shc:gizmo:form="{required:true, special: 'screen-name'}" />
 							</li>
 							<?php endif;?>
 							<li class="clearfix">
 								<label for="your-question" class="required">Your Question</label>
-								<textarea name="your-question" id="your-question" class="input_textarea" shc:gizmo:form="{required:true}"><?php 
+								<textarea name="your-question" id="your-question" class="input_textarea" shc:gizmo:form="{required:true, custom: function() {alert('DICKBUTT');}}"><?php 
 									echo esc_textarea(stripslashes( ($_POST['post-question'] ) ? $_POST['post-question'] : $_POST['your-question'] )); 
 								?></textarea>
 							</li>
