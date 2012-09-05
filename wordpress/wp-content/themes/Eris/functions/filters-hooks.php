@@ -221,22 +221,20 @@ function template_check(){
     $pt = get_query_var('post_type');
 
     if(function_exists('is_widget')){
-        if((!is_widget() && is_category() && $pt != 'section') || (is_post_type_archive(array('guide', 'question')) || $pt == 'post' )){
-
-
-if((!is_widget() && is_category() && ($pt != 'section' && $pt != 'page')) || (is_post_type_archive(array('guide', 'question')) || $pt == 'post' )){
+        if((!is_widget() && is_category() && ($pt != 'section' && $pt != 'page')) || (is_post_type_archive(array('guide', 'question')) || $pt == 'post' )){
         $templates = array();
 
         if(is_category()){
             $templates[] = 'archive-tax-'.$pt.'.php';
             $templates[] = 'archive-tax.php';
         }
-            $templates[] = 'archive-'.$pt.'.php';
-            $templates[] = "archive.php";
-            $template = get_query_template($template_name, $templates);
-            //echo "<pre>";print_r($templates);echo "</pre>";
-            include( $template );
-            exit;
+
+        $templates[] = 'archive-'.$pt.'.php';
+        $templates[] = "archive.php";
+        $template = get_query_template($template_name, $templates);
+        //echo "<pre>";print_r($templates);echo "</pre>";
+        include( $template );
+        exit;
         } 
     }
 
