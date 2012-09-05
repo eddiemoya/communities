@@ -169,8 +169,8 @@ ul.bullets {
     padding: .5em 0;
     letter-spacing:-.05em;
   }
-  h4, address {
-    font-size: percentage( 12/16 );
+  h4, h5, address {
+    font-size: 12px;
     @extend .bold;
   }
   &.labeled {
@@ -181,6 +181,7 @@ ul.bullets {
     }
     h4, h4 a {
       color: $lightest-color;
+      line-height: 1;
     }
     .tail {
       background: url('#{$img}sprite-user.png') no-repeat center top;
@@ -357,7 +358,7 @@ form {}
 
 .content-container .content-body {
   padding:.625em;
- 
+
   .content-details {
     padding-bottom:.625em;
     .content-category {
@@ -416,7 +417,7 @@ form {}
     }
   }
   .stats {
-    float: right;
+    float: left;
     li {
       font-size: 12px;
     }
@@ -431,7 +432,7 @@ form {}
 
 .span3, .span4, .span6 {
   .member {
-    @include col_layout( ( 50, 100 ), 10 );
+    @include col_layout( ( 80, 180 ), 20 );
     margin-top: 1em;
     &:first-child {
       margin-top: 0;
@@ -445,19 +446,23 @@ form {}
       width: 29.9%;
       float: left;
       padding: 0 1.6%;
+      &:first-child {
+        padding-left: 0;
+      }
     }
     .member {
       border-left: 1px solid sears( decorative );
       &:first-child {
         border-left: 0;
       }
-      @include col_layout( ( 50, 50 ), 5 );
+      @include col_layout( ( 80, 80 ), 20 );
     }
     @include legacy-pie-clearfix;
     .stats {
       float: none;
       clear: left;
       width: 100%;
+      margin-left: 0;
     }
   }
 }
@@ -466,23 +471,22 @@ form {}
 //.span3 .featured-members, .span4 .featured-members, .span6 .featured-members,
 //.span3.featured-members, .span4.featured-members, .span6.featured-members, .span8.featured-members
 
-.span3 .featured-members, .span4 .featured-members, .span6 .featured-members {
-  .span4 {
-    float: none;
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 1em;
-    .member {
-      border-right: 0;
-      @include col_layout( (80, 210), 10 );
-    }
-  }
-}
+//.span3 .featured-members, .span4 .featured-members, .span6 .featured-members {
+//  .span4 {
+//    float: none;
+//    width: 100%;
+//    margin-left: 0;
+//    margin-bottom: 1em;
+//    .member {
+//      border-right: 0;
+//      @include col_layout( (80, 210), 10 );
+//    }
+//  }
+//}
 
 // FEATURED QUESTION
 .featured-question.content-container {
   .category-image {
-    background:transparent url(#{$img}category-image.jpg) no-repeat 0px 0px;
     float:left;
     height:6.25em;
     margin:0 .625em .625em 0;
@@ -490,7 +494,7 @@ form {}
   }
 
   $column-width: nth( $span-widths, 4 );
-  $calculated-widths: ratioize( ($column-width, $column-width, 10) );
+  $calculated-widths: ratioize( ($column-width, $column-width, 20) );
   &.columns {
     .content-body {
       & > * {
@@ -621,6 +625,13 @@ form {}
   .category {
     font-size: 90%;
     padding-top: .2em;
+  }
+}
+
+.span3, .span4, .span6 {
+  .recent-activity .excerpt {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -921,7 +932,7 @@ $tab-padding: "1em 0 .6em 0";
     left: -10px;
     position: absolute;
 
-    .arrowLeft {
+    .left {
       background-color: transparent;
       border-color: #ffffff #a0c7ff #ffffff #ffffff;
       border-style: solid;
@@ -930,7 +941,7 @@ $tab-padding: "1em 0 .6em 0";
       height: 0px;
     }
 
-    .arrowLeftBorder {
+    .leftBorder {
       background-color: transparent;
       border-color: transparent #ffffff transparent transparent;
       border-style: solid;
@@ -938,8 +949,29 @@ $tab-padding: "1em 0 .6em 0";
       width: 0px;
       height: 0px;
       position: relative;
-      left: 2px;
-      top: -19px;
+      left: 3px;
+      top: 2px;
+    }
+
+    .top {
+      background-color: transparent;
+      border-color: transparent transparent #a0c7ff transparent;
+      border-style: solid;
+      border-width: 0px 10px 10px 10px;
+      width: 0px;
+      height: 0px;
+    }
+
+    .topBorder {
+      background-color: transparent;
+      border-color: transparent transparent #fff transparent;
+      border-style: solid;
+      border-width: 0px 9px 9px 9px;
+      width: 0px;
+      height: 0px;
+      position: relative;
+      left: 1px;
+      top: -9px;
     }
   }
 
@@ -956,7 +988,7 @@ $tab-padding: "1em 0 .6em 0";
 // Threaded Discussion
 .commentForm {
   margin-bottom: 20px;
-  
+
   .leaveComment {
     float: right;
     cursor: pointer;
@@ -1028,7 +1060,7 @@ $tab-padding: "1em 0 .6em 0";
 // Activity buttons
 .actions {
   margin: .5em 0;
-  
+
   button {
     cursor: pointer;
     color: #4e74a3;
@@ -1106,7 +1138,7 @@ button.follow {
 
 /**
  * @author Tim Steele
- * 
+ *
  * Styles for the breadcrumb widget. Mainly used on the single pages, i.e.
  * blog, buying guide, question.
  */
@@ -1131,7 +1163,7 @@ button.follow {
 .kmart .breadcrumb li:before {
   color:kmart( link );
 }
-      
+
 .sears .breadcrumb li:before {
   color:sears( link );
 }
