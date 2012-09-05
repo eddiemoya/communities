@@ -130,7 +130,6 @@
                                                         cols: 2,
                                                         name: 'comment',
                                                         'aria-required': true,
-                                                        id: 'comment-body-<?php echo $id; ?>',
                                                         'shc:gizmo:form': '{required: true, custom: function() {alert(\'hello\')}}'
                                                     }
                                                 },
