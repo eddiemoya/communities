@@ -181,6 +181,7 @@ ul.bullets {
     }
     h4, h4 a {
       color: $lightest-color;
+      line-height: 1;
     }
     .tail {
       background: url('#{$img}sprite-user.png') no-repeat center top;
@@ -461,6 +462,7 @@ form {}
       float: none;
       clear: left;
       width: 100%;
+      margin-left: 0;
     }
   }
 }
