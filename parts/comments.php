@@ -56,6 +56,7 @@
             <article>
                 <?php echo $comment->comment_content; ?>
             </article>
+            
             <?php
                 /**
                 * Ensure plugin is active before displaying anything
@@ -64,12 +65,20 @@
                     get_partial( 'parts/forms/post-n-comment-actions', $comment_actions );
                 }
             ?>
+	        
             <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" id="commentform-<?php echo $comment->comment_ID ?>" class="reply-to-form">
+            
+            	 <?php if(isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID):?>
+			        <div>
+			        	<?php echo stripslashes(urldecode($_GET['comm_err']));?>
+			        </div>
+		        <?php endif;?>
+		        
                 <?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
                     <label for="screen-name" class="required">Screen Name</label>
-                    <input type="text" class="input_text" name="screen-name" id="screen-name" value="" />
+                    <input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? $_GET['screen-name'] : null; ?>" />
                 <?php endif;?>
-                <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" rows="8" aria-required="true" shc:gizmo:form="{required:true}"></textarea>
+                <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" rows="8" aria-required="true" shc:gizmo:form="{required:true}"><?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? $_GET['comment'] : null; ?></textarea>
                 <p class="form-submit">
                     <?php
                         if(!is_user_logged_in()):
@@ -125,12 +134,20 @@
                                 echo 'not active';
                             }
                         ?>
+                        
                         <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" id="commentform" class="reply-to-form">
+                        
+                        	 <?php if(isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID):?>
+						        <div>
+						        	<?php echo stripslashes(urldecode($_GET['comm_err']));?>
+						        </div>
+					        <?php endif;?>
+					        
                             <?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
                                 <label for="screen-name" class="required">Screen Name</label>
-                                <input type="text" class="input_text" name="screen-name" id="screen-name" value="" />
+                                <input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? $_GET['screen-name'] : null; ?>" />
                             <?php endif;?>
-                            <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" rows="8" aria-required="true" shc:gizmo:form="{required:true}"></textarea>
+                            <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" rows="8" aria-required="true" shc:gizmo:form="{required:true}"><?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? $_GET['comment'] : null; ?></textarea>
                             <p class="form-submit">
                                 <?php
                                     if(!is_user_logged_in()):
