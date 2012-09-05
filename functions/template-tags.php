@@ -570,7 +570,7 @@ function set_screen_name($screen_name) {
 	//Check for error
 	if(isset($response['code'])) {
 			
-		return false;
+		return $response;
 			
 	} else {
 			
@@ -584,5 +584,45 @@ function set_screen_name($screen_name) {
 	}
 	
 }
+
+
+/**
+ * Handles posting of comment (of any with screen name
+ * @param array - comment data
+ * @author Dan Crimmins
+ */
+function post_comment_screen_name($commentdata) {
+	
+	
+	if(isset($_POST['screen-name'])) {
+		
+		//Attempt to set screen name
+		$response = set_screen_name($_POST['screen-name']);
+		
+		/*var_dump($response);
+		exit;*/
+		
+		//If setting screen name fails
+		if($response !== true) {
+			
+			//Create QS
+			$qs = '?screen-name=' . urlencode($_POST['screen-name']) . '&comment=' . urlencode($_POST['comment']) . '&cid=' . $commentdata['comment_parent'] . '&comm_err=' . urlencode($response['message']);
+
+			//Create return URL
+			$linkparts = explode('#', get_comment_link());
+			$url = ($commentdata['comment_parent'] == 0) ? $linkparts[0] . $qs .'#commentform' : $linkparts[0] . $qs .'#comment-' .$commentdata['comment_parent'];
+			
+			//Redirect to return url
+			header('Location: ' . $url);
+			exit;
+		}
+		
+	}
+	
+}
+
+add_action( 'preprocess_comment',  'post_comment_screen_name');
+
+
 
 
