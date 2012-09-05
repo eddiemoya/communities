@@ -1,7 +1,7 @@
 <div class="tooltip" id="tooltip">
     <div class="arrow">
-        <div class="arrowLeft"></div>
-        <div class="arrowLeftBorder"></div>
+        <div class="top"></div>
+        <div class="topBorder"></div>
     </div>
     <div class="middle">
     </div>

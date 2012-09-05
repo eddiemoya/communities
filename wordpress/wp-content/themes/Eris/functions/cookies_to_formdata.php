@@ -38,4 +38,4 @@ function formdata_cookie_check() {
 }
 
 
-add_action('init', 'formdata_cookie_check');
+add_action('init', 'formdata_cookie_check', 1);

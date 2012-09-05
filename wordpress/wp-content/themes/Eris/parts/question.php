@@ -1,4 +1,5 @@
 <?php
+
     $i = 0;
 
     $categories = get_the_category( $post->ID );
@@ -8,7 +9,7 @@
     );
 
     $post_actions = array(
-        "id"        => $post->ID,
+        "post_id"        => $post->ID,
         "type"      => $post->post_type,
         "options"   => array( "follow", "flag", "share" ),
         "url"       => get_permalink( $post->ID ),
@@ -31,26 +32,40 @@
             <?php the_content(); ?>
             <?php get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); ?>
         </div>
-    
         <?php
             comments_template('/parts/commentForm.php');
             comments_template('/parts/comments.php');
         ?>
     </article>
-    <script type="text/javascript">
-        // Toggle reply forms
-        $(".commentForm form").hide();
-        $(".leaveComment").click(function () {
-          $(".commentForm form").slideToggle("slow");
-        });
-        $(".reply-to-form").hide();
-        $(".reply").on('click', function () {
-            $(this).parent().next(".reply-to-form").slideToggle("slow");
-        });
-        $(".cancel-reply").on('click', function () {
-            $(this).parent().parent().slideToggle("slow");
-        });
-    </script>
+<?php
+    if(is_user_logged_in()) {
+?>
+        <script type="text/javascript">
+            // Toggle reply forms
+            $(".commentForm form").hide();
+            $(".leaveComment").click(function () {
+              $(".commentForm form").slideToggle("slow");
+            });
+            $(".reply-to-form").hide();
+            $(".reply").on('click', function () {
+                $(this).parent().next(".reply-to-form").slideToggle("slow");
+            });
+            // Make the cancel button collapse the form, too.
+            $('.reply-to-form input[type="reset"]').on('click', function () {
+                $(this).parent().parent().slideToggle("slow");
+            });
+        </script>
+<?php
+    } else {
+?>
+        <script type="text/javascript">
+            // Toggle reply forms
+            $(".commentForm form").hide();
+            $(".reply-to-form").hide();
+        </script>
+<?php
+    }
+?>
 </section>
 <section class="span4">
 <?php

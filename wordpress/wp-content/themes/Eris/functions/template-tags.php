@@ -10,15 +10,14 @@
  *
  * @return void.
  */
-function loop($template = 'post', $special = null){
+function loop($template = 'post', $special = null, $base_path = "parts"){
     global $wp_query;
-
+    //print_pre($wp_query);
     $template = (isset($special)) ? $template.'-'.$special : $template;
-
     if (have_posts()) {
         while (have_posts()) {
             the_post();
-            get_template_part('parts/'.$template);
+            get_template_part(trailingslashit($base_path).$template);
         }
     }
 
@@ -51,7 +50,7 @@ function loop_by_type($special = null){
             the_post();
      
             $template = (isset($special)) ? $wp_query->post->post_type.'-'.$special : $wp_query->post->post_type;
-            // print_pre($template);
+            //print_pre($template);
             get_template_part('parts/'.$template);
         }    
     }
@@ -425,6 +424,26 @@ function return_partial( $partial, $variables = array() ){
 }
 
 /**
+ * Return a user's profile url.
+ *
+ *
+ * @author Carl Albrecht-Buehler
+ * @param $user_id (integer) [required] ID of the user whose screen name you want to look up.
+ *
+ * @return (string) User's screen name (user_nicename).
+ */
+function get_profile_url( $user_id ) {
+    # create a fallback screen name if one has not yet been set by sso
+    if ( !has_screen_name( $user_id ) ) {
+        $link = home_url( '/' ) . '?author=' . $user_id;
+    }
+    else {
+        $link = get_author_posts_url( $user_id );
+    }
+    return $link;
+}
+
+/**
  * Return a user's screen name (user_nicename).
  *
  *
@@ -435,7 +454,16 @@ function return_partial( $partial, $variables = array() ){
  */
 function return_screenname( $user_id ) {
     $user_info = get_userdata( $user_id );
-    return $user_info->user_nicename;
+    $screen_name = '';
+    # create a fallback screen name if one has not yet been set by sso
+    if ( !has_screen_name( $user_id ) ) {
+        $email_parts = explode( '@', $user_info->user_login );
+        $screen_name = $email_parts[0];
+    }
+    else {
+        $screen_name = $user_info->user_nicename;
+    }
+    return $screen_name;
 }
 
 /**
@@ -461,7 +489,7 @@ function get_screenname( $user_id ) {
  * @return (string) User's screen name (user_nicename) formatted into an HTML anchor..
  */
 function return_screenname_link( $user_id ) {
-    return '<a href="' . get_author_posts_url( $user_id ) . '">' . return_screenname( $user_id ) . '</a>';
+    return '<a href="' . get_profile_url( $user_id ) . '">' . return_screenname( $user_id ) . '</a>';
 }
 
 /**
@@ -479,7 +507,7 @@ function get_screenname_link( $user_id ) {
 
 
 /**
- * Detects AJAX request, returns true, else returns false
+ * Detects AJAX request, returns true if it is, else returns false
  * 
  * @author Dan Crimmins
  * @return bool
@@ -509,6 +537,9 @@ function get_user_sso_guid($user_id) {
         return $sso_guid;
 }
 
+/**
+ * @author Dan Crimmins
+ */
 function update_user_nicename($uid, $name) {
 	
 	global $wpdb;
@@ -521,5 +552,37 @@ function update_user_nicename($uid, $name) {
 		return ($update) ? true : false;
 }
 
+/**
+ * @author Dan Crimmins
+ */
+function set_screen_name($screen_name) {
+	
+	global $current_user;
+	get_currentuserinfo();
+	
+	$sso_guid = get_user_sso_guid($current_user->ID);
+		    					
+	$profile = new SSO_Profile;
+	    					
+	$response = $profile->update($sso_guid, array('email' => $current_user->user_email,
+    											  'screen_name' => $screen_name));
+		
+	//Check for error
+	if(isset($response['code'])) {
+			
+		return false;
+			
+	} else {
+			
+		//Add user meta for screen name
+		update_user_meta($current_user->ID, 'profile_screen_name', $screen_name);
+			
+		//Update user's nicename to screen name
+		update_user_nicename($current_user->ID, $screen_name);
+			
+		return true;
+	}
+	
+}
 
 

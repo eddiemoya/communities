@@ -7,21 +7,25 @@ require_once 'classes/communities_profile.php';
 
 get_template_part('parts/header');
 
-//Current page's url, with querystring params removed
-$url_no_qs = get_author_posts_url( $user_id ) . str_replace("author_name=", "", $wp->query_string) . "/";
-
 //Current User data
 $profile_user = get_userdata(get_query_var('author'));
 
 //User Profile object
-$user_activities = new User_Profile($profile_user->data->ID);
+$user_activities = new User_Profile($profile_user->ID);
+
+//Current page's url, with querystring params removed
+$author_url = get_author_posts_url( $user_id ) . str_replace("author_name=", "", $wp->query_string) . "/";
+
+if ( !has_screen_name( $profile_user->ID )) {
+    $author_url = home_url( '/' ) . '?' . $wp->query_string;
+}
 
 
 //No JS pagination, set page
 $page = (isset($_GET['page'])) ? $_GET['page'] : 1;
 
 //Set profile_type
-if(is_user_logged_in() && ($profile_user->data->ID == $current_user->data->ID)){
+if(is_user_logged_in() && ($profile_user->ID == $current_user->ID)){
 		
 	//Authenticated User viewing own profile
 	$profile_type = 'myprofile';
@@ -91,7 +95,6 @@ if(isset($_GET['post-type'])) {
 											->get_user_comments_by_type($type)
 											->comments;
 											
-																										
 			include('parts/profile-comments.php');
 		}
 		

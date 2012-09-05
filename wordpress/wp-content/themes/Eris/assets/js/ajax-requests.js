@@ -29,25 +29,24 @@ jQuery(document).ready(function($) {
  	 * lamer widgets/results-list/archive.php template, and the ajax-callbacks.php 
  	 * template, allows the posts widget to filter via ajax.
  	 */ 
- 	$('.results-list').on('submit', function(e){
+ 	$('.result-list select').on('change', function(e){
  		e.preventDefault();
 
 		var data = {
 			action		: 'get_posts_ajax',
-			template 	: 'results-list',
+			template 	: 'post-results-list',
 			category	: $('option', this).filter(':selected').val()
 		};
 
 		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
 
-		container = $(this).closest('.results-list');
+		container = $(this).closest('.result-list');
 
 		jQuery.ajax({
 			url  : ajaxdata.ajaxurl,
 			type: 'POST',
 			data : data,
 			success:function(results){
-
 				$('.content-body', container).empty();
 				$('.content-body', container).append($(results));
 			}
