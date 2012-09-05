@@ -20,7 +20,7 @@
             'logged_in_as'         => null,
             'comment_notes_before' => null,
             'comment_notes_after'  => null,
-            'id_form'              => 'commentform',
+            'id_form'              => null,
             'id_submit'            => 'submit',
             'title_reply'          => null,
             'title_reply_to'       => __( 'Leave a Reply to %s' ),

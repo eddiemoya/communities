@@ -121,7 +121,7 @@
                     case 'flag': ?>
                                 <button type="button" name="button1" value="flag" title="Flag this <?php echo $type; ?>" id="flag-comment-<?php echo $id; ?>" class="flag" shc:gizmo="tooltipForm"
                                     shc:gizmo:options="{tooltipForm:{
-                                        form: {attributes: {action: ajaxurl + '?action=flag_me',method: 'post',id: 'flag-<?php echo $id; ?>', 'shc:gizmo':'transFormer'},class: 'flag-form',
+                                        form: {attributes: {action: ajaxurl + '?action=flag_me',method: 'post', 'shc:gizmo':'transFormer'},class: 'flag-form',
                                             elements: [
                                                 {
                                                     element: 'textarea',
