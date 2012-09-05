@@ -1,4 +1,12 @@
+
 <?php
+	global $current_user;
+    get_currentuserinfo();
+    
+    //Set default values for comment & screen name
+    $comment_value = (isset($_GET['comm_err']) && $_GET['cid'] == 0) ? urldecode($_GET['comment']) : null;
+    $screen_name_value = (isset($_GET['comm_err']) && $_GET['cid'] == 0) ? urldecode($_GET['screen-name']) : null;
+    
     $comment_type_text = get_post_type( $post->ID ) == 'question' ? 'an answer' : 'a comment';
     $comment_type = get_post_type( $post->ID ) == 'question' ? 'answer' : 'comment';
 
@@ -15,7 +23,7 @@
 
         $args = array(
             'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
-            'comment_field'        => '<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" shc:gizmo:form="{required:true}"></textarea>',
+            'comment_field'        => '<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" shc:gizmo:form="{required:true}">'. $comment_value .'</textarea>',
             'must_log_in'          => null,
             'logged_in_as'         => null,
             'comment_notes_before' => null,
@@ -39,13 +47,31 @@
         <div class="top clearfix">
             <span class="leaveComment">Leave <?php echo $comment_type_text;?> <span class="smaller">&#9660;</span></span>
         </div>
+        
+        <?php //If there is a screen name error, show it
+        
+        if(isset($_GET['comm_err']) && ($_GET['cid'] == 0)):?>
+        <div>
+        	<?php echo stripslashes(urldecode($_GET['comm_err']));?>
+        </div>
+        <?php endif;?>
+        
         <?php
         if ( get_option( 'comment_registration' ) && !is_user_logged_in() ) :
             echo $args['must_log_in'];
             do_action( 'comment_form_must_log_in_after' );
             else : ?>
-            <form action="<?php echo site_url( '/wp-comments-post.php' ); ?>" method="post" id="<?php echo esc_attr( $args['id_form'] ); ?>" shc:gizmo="transFormer">
+            <form action="<?php echo site_url( '/wp-comments-post.php' ); ?>" method="post" id="<?php echo esc_attr( $args['id_form'] ); ?>" shc:gizmo="transFormer" >
+            
+               <?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
+                    <label for="screen-name" class="required">Screen Name</label>
+                    <input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo $screen_name_value;?>" />
+                <?php endif;?>
+               
+               
                 <?php
+                
+                
                 do_action( 'comment_form_top' );
 
                 if ( is_user_logged_in() ) :
