@@ -670,7 +670,8 @@ ul.bullets {
     -o-border-radius: 0 0 10px 10px;
     border-radius: 0 0 10px 10px; }
   .crest.labeled h4, .crest.labeled h4 a {
-    color: white; }
+    color: white;
+    line-height: 1; }
   .crest.labeled .tail {
     background: url("/wp-content/themes/Eris/assets/img/sprite-user.png") no-repeat center top;
     height: 10px;
@@ -893,7 +894,8 @@ ul.bullets {
   .span8 .featured-members .content-body .stats, .span9 .featured-members .content-body .stats, .span12 .featured-members .content-body .stats {
     float: none;
     clear: left;
-    width: 100%; }
+    width: 100%;
+    margin-left: 0; }
 
 .featured-question.content-container .category-image {
   float: left;
