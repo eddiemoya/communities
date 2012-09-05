@@ -174,7 +174,9 @@ add_action('wp_ajax_nopriv_profile_paginate', 'profile_paginate');
  * @param string $screen_name
  * @return string - 'true' or 'false'
  */
-function validate_screen_name($screen_name) {
+function validate_screen_name() {
+	
+	$screen_name = $_POST['screen_name'];
 	
 	if(class_exists('SSO_Profile')) {
 		

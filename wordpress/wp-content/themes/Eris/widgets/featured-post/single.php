@@ -10,10 +10,17 @@
             $featured_img_span = "span6";
             $featured_post_span = "span6";
         endif;
-    ?>
-        <div class="featured-image <?php echo $featured_img_span; ?>">
-            <?php the_post_thumbnail(); ?>
-        </div>
+        
+        $post_thumbnail_id = get_post_thumbnail_id( $post_id );
+        if ($post_thumbnail_id) :
+            $thumbnail_src = wp_get_attachment_image_src($post_thumbnail_id, "large");
+        ?>
+            <div class="featured-image <?php echo $featured_img_span; ?>">
+                <img src="<?php echo $thumbnail_src[0]; ?>" alt="<?php echo get_the_title(); ?>" />
+            </div>
+        <?php
+        endif;
+        ?>
     <?php else :?>
         <?php $featured_post_span = 'span12';?>
     <?php endif; ?>
