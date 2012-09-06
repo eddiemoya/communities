@@ -27,5 +27,5 @@ function current_user_profile_thumbnail($attributes = array()) {
     $currentUser = wp_get_current_user()->ID;
     $attributes["size"] = $attributes["size"] ? $attributes["size"] : "none";
     $attributes["alt"] = $attributes["alt"] ? $attributes["alt"] : "";
-    return userphoto_thumbnail($currentUser, '', '', $attributes, get_template_directory_uri().'/assets/img/icon_avatar.png');
+    return (function_exists('userphoto_thumbnail')) ? userphoto_thumbnail($currentUser, '', '', $attributes, get_template_directory_uri().'/assets/img/icon_avatar.png') : '';
 }
