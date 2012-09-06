@@ -150,8 +150,6 @@ if(isset($_GET['post-type'])) {
 				
 				$sso_profile = new SSO_Profile();
 				
-				/*echo $profile_user->data->ID;
-				exit;*/
 				$guid = get_user_sso_guid($profile_user->data->ID);
 
 				if($guid){
