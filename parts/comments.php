@@ -65,7 +65,6 @@
                     get_partial( 'parts/forms/post-n-comment-actions', $comment_actions );
                 }
             ?>
-	        
             <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" id="commentform-<?php echo $comment->comment_ID ?>" class="reply-to-form">
             
             	 <?php if(isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID):?>
@@ -73,7 +72,6 @@
 			        	<?php echo stripslashes(urldecode($_GET['comm_err']));?>
 			        </div>
 		        <?php endif;?>
-		        
                 <?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
                     <label for="screen-name" class="required">Screen Name</label>
                     <input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? $_GET['screen-name'] : null; ?>" />
@@ -134,6 +132,7 @@
                                 echo 'not active';
                             }
                         ?>
+<<<<<<< HEAD
                         
                         <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" id="commentform" class="reply-to-form">
                         
@@ -143,6 +142,9 @@
 						        </div>
 					        <?php endif;?>
 					        
+=======
+                        <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" class="reply-to-form">
+>>>>>>> sf.displayissues.r01
                             <?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
                                 <label for="screen-name" class="required">Screen Name</label>
                                 <input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? $_GET['screen-name'] : null; ?>" />

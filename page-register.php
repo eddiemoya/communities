@@ -125,9 +125,12 @@ get_template_part('parts/header'); ?>
 		<?php if(! is_ajax()):?>
 	</section>
 
-<?php get_template_part('parts/footer'); 
+<?php get_template_part('parts/footer');
 
 endif;
+
+comments_template('/parts/tooltip.php');
+
 ?>
 
 
