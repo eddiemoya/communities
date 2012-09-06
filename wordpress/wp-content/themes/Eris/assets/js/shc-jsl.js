@@ -349,7 +349,9 @@ shcJSL.gizmos.activate = function(event, parent, selector) {
 				// If it can not create the object, error out gracefully
 				// and log the error, the widget that failed and the
 				// error message
-			//} catch(error) {console.log("Failed to instantiate widget " + attribute + "[" + $(this).attr(attribute) + "] - " + error);}
+			//} catch(error) {
+			//	if (console && console.log) console.log("Failed to instantiate widget " + attribute + "[" + $(this).attr(attribute) + "] - " + error);
+			//}
 		} // END $.each function
 	) // END $.each
 }
