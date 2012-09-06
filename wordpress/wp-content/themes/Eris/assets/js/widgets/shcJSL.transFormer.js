@@ -85,6 +85,9 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				fn[fn.length] = function(options) {
 					var pattern = new RegExp(options.pattern);
 					if (target.value != '') {
+						console.log("PATTERN:");
+						console.log(pattern.test(target.value.toString()))
+						console.log(pattern);
 						if (pattern.test(target.value.toString())) return true;
 						else return false;
 					}	// END if target.value != ''
