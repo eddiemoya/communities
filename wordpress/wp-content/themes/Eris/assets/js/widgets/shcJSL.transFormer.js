@@ -58,6 +58,7 @@ TRANSfORMER.blunder = function(element) {
 TRANSfORMER.transFormer = $TransFormer = function(form) {
 	var blunders = [];	// (Array) Array of any outstanding blunders;
 	var checkReqd;			// (Function) Checks the required fields
+	var checkSN;				// (Function) Check the screen name
 	var fields = [];		// (Array) Array of all the form fields
 	var methods;				// (Function) Bind the validation methods to the fields
 	var required = [];	// (Array) Array of required fields
@@ -90,6 +91,14 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				} // END fn function
 			} // END pattern
 			
+			if (options.special) {
+				switch(options.special) {
+					case "screen-name":
+						fn[fn.length] = checkSN;
+						break;
+				}
+			}
+			
 			if (options.custom) {
 				fn[fn.length] = function(options) {
 					return options.custom(target);
@@ -100,7 +109,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				var i; // counter
 				for (i=0; i < fn.length; i++) {
 					if (this.value != '') {
-						if (!(fn[i](options))) {
+						if (!(fn[i](options, target))) {
 							(options.message)? $tf.blunder(this).create(options.message):$tf.blunder(this).create("Error");
 							blunders[blunders.length] = this;
 							break;
@@ -117,9 +126,6 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 	
 	fields = shcJSL.sequence(transformer.elements);
 	fields.map(methods);
-
-	console.log(fields);
-	console.log(required);
 
 	function checkReqd() {
 		var flag = true;	// Valid flag;
@@ -149,6 +155,30 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 		return flag;
 	}
 	
+	/* SPECIAL CASES */
+	
+	function checkSN(options, target) {
+		var valid;	// Is screen name valid;
+		
+		if (window['ajaxdata'] && window['ajaxdata']['ajaxurl']) {
+			jQuery.ajax({
+				async: false,
+				dataType: 'html',
+				data: {
+					"screen_name": target.value,
+					"action": "validate_screen_name"
+				},
+				type: "POST",
+				url: window['ajaxdata']['ajaxurl']
+			}).success(function(data, status, xhr) {
+				(data == "true")? valid = true:valid = false;
+			}).error(function(xhr, status, message) {
+				valid = true;
+			})
+		}
+		return valid;
+	}
+	
 	this.verify = function() {
 		var valid;
 		
@@ -159,7 +189,6 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 
 shcJSL.methods.transFormer = function(target, options) {
 	var checkForLogin; 			// (Function) Check to see if the user is logged in
-	var runScreenName;			// (Function) Check user's screen name to see if it is valid
 	var form;								// The form HTMLObject
 	var figs; 							// Configurations for the current form
 	var submitEval = {}; 		// Functions to run for testing the form submitting
@@ -194,9 +223,6 @@ shcJSL.methods.transFormer = function(target, options) {
 		if (submitEval[this.id].length > 0) {
 			var i = 0;
 			do {
-				console.log(submitEval[this.id]);
-				console.log(submitEval[this.id].length);
-				console.log(i)
 				success = submitEval[this.id][i]();
 				i++;
 
