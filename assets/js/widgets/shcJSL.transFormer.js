@@ -88,9 +88,6 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				fn[fn.length] = function(options) {
 					var pattern = new RegExp(options.pattern);
 					if (target.value != '') {
-						console.log("PATTERN:");
-						console.log(pattern.test(target.value.toString()))
-						console.log(pattern);
 						if (pattern.test(target.value.toString())) return true;
 						else return false;
 					}	// END if target.value != ''
@@ -177,8 +174,15 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				type: "POST",
 				url: window['ajaxdata']['ajaxurl']
 			}).success(function(data, status, xhr) {
-				(data == "true")? valid = true:valid = false;
+				if (data == "true"){ 
+					blunders.remove(this);
+					valid = true
+				} else {
+					blunders[blunders.length] = this;
+					valid = false;
+				}
 			}).error(function(xhr, status, message) {
+				blunders.remove(this);
 				valid = true;
 			})
 		}
