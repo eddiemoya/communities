@@ -64,7 +64,7 @@
                     get_partial( 'parts/forms/post-n-comment-actions', $comment_actions );
                 }
             ?>
-            <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" id="commentform-<?php echo $comment->comment_ID ?>" class="reply-to-form">
+            <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" class="reply-to-form">
                 <?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
                     <label for="screen-name" class="required">Screen Name</label>
                     <input type="text" class="input_text" name="screen-name" id="screen-name" value="" />
@@ -125,7 +125,7 @@
                                 echo 'not active';
                             }
                         ?>
-                        <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" id="commentform" class="reply-to-form">
+                        <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" class="reply-to-form">
                             <?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
                                 <label for="screen-name" class="required">Screen Name</label>
                                 <input type="text" class="input_text" name="screen-name" id="screen-name" value="" />
