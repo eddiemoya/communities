@@ -174,8 +174,15 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				type: "POST",
 				url: window['ajaxdata']['ajaxurl']
 			}).success(function(data, status, xhr) {
-				(data == "true")? valid = true:valid = false;
+				if (data == "true"){ 
+					blunders.remove(this);
+					valid = true
+				} else {
+					blunders[blunders.length] = this;
+					valid = false;
+				}
 			}).error(function(xhr, status, message) {
+				blunders.remove(this);
 				valid = true;
 			})
 		}
