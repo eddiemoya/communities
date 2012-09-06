@@ -119,31 +119,42 @@
 
                         break;
                     case 'flag': ?>
-                                <button type="button" name="button1" value="flag" title="Flag this <?php echo $type; ?>" id="flag-comment-<?php echo $id; ?>" class="flag" shc:gizmo="tooltipForm"
-                                    shc:gizmo:options="{tooltipForm:{
-                                        form: {attributes: {action: ajaxurl + '?action=flag_me',method: 'post',id: 'commentForm-<?php echo $id; ?>', 'shc:gizmo':'transFormer'},class: 'flag-form',
-                                            elements: [
-                                                {
-                                                    element: 'textarea',
-                                                    class: 'flagField',
-                                                    attributes: {
-                                                        cols: 2,
-                                                        name: 'comment',
-                                                        'aria-required': true,
-                                                        id: 'comment-body-<?php echo $id; ?>',
-                                                        'shc:gizmo:form': '{required: true, custom: function() {alert(\'hello\')}}'
-                                                    }
-                                                },
-                                                {element: 'input',class: 'kmart_button',attributes: {'type': 'submit','value': 'Flag'}},
-                                                {element: 'input',class: 'kmart_button azure',attributes: {'reset': 'submit','value': 'Cancel'}},
-                                                {element: 'input',attributes: {name: 'comment_post_ID',id: 'comment_post_ID',type: 'hidden',value: '<?php echo $post_id; ?>'}},
-                                                {element: 'input',attributes: {name: 'comment_parent',id: 'comment_parent',type: 'hidden',value: '<?php echo $id; ?>'}},
-                                                {element: 'input',attributes: {name: 'comment_type',id: 'comment_type',type: 'hidden',value: 'flag'}}
-                                            ],
-                                            isAjax: true
-                                        }
-                                    }}"
-                                >flag</button>
+                                <button
+                                        type="button"
+                                        name="button1"
+                                        value="flag"
+                                        title="Flag this <?php echo $type; ?>"
+                                        id="flag-comment-<?php echo $id; ?>"
+                                        class="flag"
+                                        shc:gizmo="tooltip"
+                                        shc:gizmo:options="
+                                            {
+                                                tooltip: {
+                                                    displayData: {
+                                                        element: 'flagForm-<?php echo $id; ?>',
+                                                        callBack: {
+                                                            submit: {
+                                                                active: true,
+                                                                name: 'submit',
+                                                                method:
+                                                                    function(event) {
+                                                                        var sendData = jQuery(event.target).children().serialize();
+
+                                                                        jQuery.post(
+                                                                            ajaxurl + '?action=flag_me',
+                                                                            sendData,
+                                                                            function() {
+                                                                                jQuery('.tooltip').fadeOut();
+                                                                            }
+                                                                        );
+
+                                                                        event.preventDefault();
+                                                                    }
+                                                            }
+                                                        }
+                                                    }, arrowPosition: 'top'
+                                                }
+                                            }">flag</button>
                         <?php
 
                         break;
@@ -166,3 +177,14 @@
             }
         ?>
     </form>
+
+<div id="flagForm-<?php echo $id; ?>" class="hide">
+    <form class="flag-form" id="commentForm-<?php echo $id; ?>" method="post" shc:gizmo="transFormer">
+        <textarea class="flagField" rows="5" cols="2" name="comment" aria-required="true" shc:gizmo:form="{required: true}"></textarea>
+        <input class="kmart_button" type="submit" value="Flag" />
+        <input class="kmart_button azure" type="reset" value="Cancel" reset="reset" />
+        <input name="comment_post_ID" id="comment_post_ID" type="hidden" value="<?php echo $post_id; ?>" />
+        <input name="comment_parent" id="comment_parent" type="hidden" value="<?php echo $id; ?>" />
+        <input name="comment_type" id="comment_type" type="hidden" value="flag">
+    </form>
+</div>
