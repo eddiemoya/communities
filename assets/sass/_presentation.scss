@@ -1038,7 +1038,7 @@ $tab-padding: "1em 0 .6em 0";
     }
 
     .responseTo {
-      font-weight: bold;
+      @extend .bold;
       margin: 10px 0 0 0;
     }
 
@@ -1048,16 +1048,19 @@ $tab-padding: "1em 0 .6em 0";
   }
 
   .children {
-    clear: both;
-    float: right;
+    clear: left;
     width: 85%;
+    margin-left: 14.5%;
     margin-top: .5em;
     border: 1px solid #d6d6d6;
     border-bottom: 0;
     @include border-radius( 4px );
   }
+  .span10 {
+    word-wrap: break-word;
+  }
 }
-.expert {
+#allComments .expert {
   background: lighten( sears( decorative ), 15 );
 }
 
@@ -1093,6 +1096,7 @@ $tab-padding: "1em 0 .6em 0";
 }
 
 .reply-to-form {
+  margin: 1em 0;
   label, input[type="text"] {
     float: left;
     margin: .5em 1%;
