@@ -654,9 +654,6 @@ function post_comment_screen_name($commentdata) {
 		//Attempt to set screen name
 		$response = set_screen_name($_POST['screen-name']);
 		
-		/*var_dump($response);
-		exit;*/
-		
 		//If setting screen name fails
 		if($response !== true) {
 			
@@ -674,9 +671,11 @@ function post_comment_screen_name($commentdata) {
 		
 	}
 	
+	return $commentdata;
+	
 }
 
-add_action( 'preprocess_comment',  'post_comment_screen_name');
+add_filter( 'preprocess_comment',  'post_comment_screen_name');
 
 
 
