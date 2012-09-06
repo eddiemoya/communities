@@ -41,7 +41,7 @@ get_template_part('parts/header'); ?>
                     <dl class="clearfix">
                         <dt class="span3"><label for="login_confirm-email">Confirm Email:</label></dt>
                         <dd class="span9">
-                        	<input type="text" name="login_confirm-email" autocomplete="off" class="input_text" id="login_confirm-email" shc:gizmo:form="{required:true, custom: function(self) {if (self.value != $('#loginId').attr('value')) return false; else return true;}, message: 'Your email does not match. Please check and try again.'}" />
+                        	<input type="text" name="login_confirm-email" autocomplete="off" class="input_text" id="login_confirm-email" shc:gizmo:form="{required:true, custom: function(self) {if (self.value.toLowerCase() != ($('#loginId').attr('value')).toLowerCase()) return false; else return true;}, message: 'Your email does not match. Please check and try again.'}" />
                         </dd>
                     </dl>
                 </li>
@@ -49,7 +49,7 @@ get_template_part('parts/header'); ?>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="logonPassword">Password:</label></dt>
-                        <dd class="span9"><input type="password" name="logonPassword" autocomplete="off" class="input_text input_password" id="logonPassword" shc:gizmo:form="{required:true, pattern: /^[A-Za-z0-9]{8,}$/, message: 'Please enter a valid password.'}" /></dd>
+                        <dd class="span9"><input type="password" name="logonPassword" autocomplete="off" class="input_text input_password" id="logonPassword" shc:gizmo:form="{required:true, pattern: /^\w*(?=\w{8,})(?=\w*\d)(?=\w*[a-zA-Z])(?!\w*_)\w*$/, message: 'Please enter a valid password.'}" /></dd>
                     </dl>
                 </li>
                 
@@ -65,7 +65,7 @@ get_template_part('parts/header'); ?>
                         <dd class="span3">&nbsp;</dd>
                         <dd class="span9">
                             <p>
-                                <input type="checkbox" name="offers" id="offers" value="True" class="input_checkbox" /> I would like to receive offers, updates and sale alerts from Sears
+                                <input type="checkbox" name="offers" id="offers" value="True" class="input_checkbox" checked="checked"/> I would like to receive offers, updates and sale alerts from Sears
                             </p>
                         </dd>
                     </dl>
