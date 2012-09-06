@@ -65,7 +65,7 @@
             
                <?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
                     <label for="screen-name" class="required">Screen Name</label>
-                    <input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo $screen_name_value;?>" />
+                    <input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo $screen_name_value;?>" shc:gizmo:form="{required:true, special: 'screen-name', message: 'Screen name invalid. Screen name is already in use or does not follow the screen name guidelines.'}"/>
                 <?php endif;?>
                
                

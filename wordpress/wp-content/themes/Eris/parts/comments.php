@@ -4,7 +4,7 @@
 
     $comment_type = get_post_type( $post->ID ) == 'question' ? 'answer' : 'comment';
 
-    $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type));
+    $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type, 'status' => 'approve'));
 
     if ( isset( $comments ) && !empty( $comments ) ) {
 ?>
@@ -76,9 +76,9 @@
 		        
                 <?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
                     <label for="screen-name" class="required">Screen Name</label>
-                    <input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? $_GET['screen-name'] : null; ?>" />
+                    <input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? $_GET['screen-name'] : null; ?>" shc:gizmo:form="{required:true, special: 'screen-name', message: 'Screen name invalid. Screen name is already in use or does not follow the screen name guidelines.'}"/>
                 <?php endif;?>
-                <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" rows="8" aria-required="true" shc:gizmo:form="{required:true}"><?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? $_GET['comment'] : null; ?></textarea>
+                <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" rows="8" aria-required="true"><?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? $_GET['comment'] : null; ?></textarea>
                 <p class="form-submit">
                     <?php
                         if(!is_user_logged_in()):
@@ -147,7 +147,7 @@
                                 <label for="screen-name" class="required">Screen Name</label>
                                 <input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? $_GET['screen-name'] : null; ?>" />
                             <?php endif;?>
-                            <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" rows="8" aria-required="true" shc:gizmo:form="{required:true}"><?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? $_GET['comment'] : null; ?></textarea>
+                            <textarea id="comment-body-<?php echo $comment->comment_ID ?>" name="comment" rows="8" aria-required="true" shc:gizmo:form="{required:true, special: 'screen-name', message: 'Screen name invalid. Screen name is already in use or does not follow the screen name guidelines.'}"><?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? $_GET['comment'] : null; ?></textarea>
                             <p class="form-submit">
                                 <?php
                                     if(!is_user_logged_in()):
