@@ -2,12 +2,14 @@
 global $current_user;
 get_currentuserinfo();
 ?>
+			<section class="content-body clearfix">
 				
+				<h6 class="content-headline">Post your question</h6>
 				<?php if($data['errors']):?>
 					
 					<?php foreach($data['errors'] as $error):?>
 					
-						<div><?php echo $error;?></div>
+						<div class="form-errors"><?php echo $error;?></div>
 						
 					<?php endforeach;?>
 					
@@ -21,7 +23,7 @@ get_currentuserinfo();
 							<?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
 							<li class="clearfix">
 								<label for="screen-name" class="required">Screen Name</label>
-								<input type="text" class="input_text" name="screen-name" id="screen-name" value="" />
+								<input type="text" class="input_text" name="screen-name" id="screen-name" value="" shc:gizmo:form="{required:true, special: 'screen-name', message: 'Screen name invalid. Screen name is already in use or does not follow the screen name guidelines.'}" />
 							</li>
 							<?php endif;?>
 							<li class="clearfix">
@@ -60,3 +62,4 @@ get_currentuserinfo();
 						</ul>
 					</div>
 				</form>
+			</section>
