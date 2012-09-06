@@ -327,9 +327,6 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
 
                 break;
             case 'top':
-                console.log(_thisTooltip.getPosition(_thisTooltip.actedObj, 'left'));
-                console.log((_thisTooltip.getWidth(_thisTooltip.tooltip)))
-
                 leftPosition = _thisTooltip.getPosition(_thisTooltip.actedObj, 'left') -
                                 ((_thisTooltip.getWidth(_thisTooltip.tooltip) / 2)) +
                                     _thisTooltip.getWidth(_thisTooltip.actedObj);
