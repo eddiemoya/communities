@@ -220,8 +220,8 @@ add_action('template_redirect', 'template_check');
 function template_check(){
     $pt = get_query_var('post_type');
 
-
-if((!is_widget() && is_category() && ($pt != 'section' && $pt != 'page')) || (is_post_type_archive(array('guide', 'question')) || $pt == 'post' )){
+    if(function_exists('is_widget')){
+        if((!is_widget() && is_category() && ($pt != 'section' && $pt != 'page')) || (is_post_type_archive(array('guide', 'question')) || $pt == 'post' )){
         $templates = array();
 
         if(is_category()){
@@ -235,7 +235,8 @@ if((!is_widget() && is_category() && ($pt != 'section' && $pt != 'page')) || (is
         //echo "<pre>";print_r($templates);echo "</pre>";
         include( $template );
         exit;
-    } 
+        } 
+    }
 
     
 }
