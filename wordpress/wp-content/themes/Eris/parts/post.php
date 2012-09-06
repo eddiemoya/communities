@@ -26,18 +26,27 @@
     if(is_user_logged_in()) {
 ?>
         <script type="text/javascript">
-            // Toggle reply forms
-            $(".commentForm form").hide();
-            $(".leaveComment").click(function () {
-              $(".commentForm form").slideToggle("slow");
-            });
+            $(document).ready(function() {
+                // Toggle the answer form
+                $(".commentForm form").hide();
+                $(".leaveComment").click(function () {
+                    $(".commentForm form").slideToggle("slow");
+                });
 
-            $(".reply-to-form").hide();
-            $(".reply").on('click', function () {
-                $(this).parent().next(".reply-to-form").slideToggle("slow");
-            });
-            $(".cancel-reply").on('click', function () {
-                $(this).parent().parent().slideToggle("slow");
+                // Toggle reply forms
+                $.each($(".reply-to-form"), function() {
+                    if (($(this).get(0)).style.display != 'block') {
+                        $(this).addClass('hide');
+                    }
+                });
+                $(".reply").on('click', function() {
+                    $(this).parent().next("form.reply-to-form").slideToggle("slow");
+                });
+
+                // Make the cancel buttons collapse the forms, too.
+                $('input[type="reset"]').on('click', function () {
+                    $(this).parent().parent().slideToggle("slow");
+                });
             });
         </script>
 <?php

@@ -33,7 +33,7 @@
 				                <?php get_screenname( $current_user->ID ); ?>
 				            </a>
 				        </li>
-				        <li><?php (function_exists('so_logout_link')) ? so_logout_link('Logout') : site_url('logout'); ?> </li>
+				        <li><?php (function_exists('sso_logout_link')) ? sso_logout_link('Logout') : null;?> </li>
 				        
     					<!-- <li><a href="<?php //echo wp_logout_url( get_permalink() ); ?>" title="Logout" class="bold">Logout</a></li> -->
 				    <?php else: ?>
@@ -46,7 +46,7 @@
 			<li>
 				
 				<ul>
-					<li id="header_feedback"><a href="<?php echo $qualtricsUrl; ?>" target="_blank" title="Feedback">Feedback</a></li>
+					<li id="header_feedback"><a href="<?php echo $qualtricsUrl; ?>" title="Feedback">Feedback</a></li>
 					<li id="header_shopping">Go Shopping: <a href="http://www.<?php echo theme_option("brand"); ?>.com" title="<?php echo ucfirst( theme_option("brand") ); ?>" rel="external" title="<?php echo ucfirst( theme_option("brand") ); ?>" class="bold"><?php echo ucfirst( theme_option("brand") ); ?></a></li>
 				</ul>
 				
