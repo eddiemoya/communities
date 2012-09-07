@@ -152,7 +152,8 @@
                                                                     }
                                                             }
                                                         }
-                                                    }, arrowPosition: 'top'
+                                                    },
+                                                    arrowPosition: 'top'
                                                 }
                                             }">flag</button>
                         <?php
