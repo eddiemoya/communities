@@ -1309,7 +1309,8 @@ fieldset#use_your_account_from {
       font-size: 13px; }
     #allComments .comment article {
       font-size: 13px;
-      margin: 1em 0; }
+      margin: 1em 0;
+      word-wrap: break-word; }
     #allComments .comment .responseTo {
       margin: 10px 0 0 0; }
     #allComments .comment textarea {
