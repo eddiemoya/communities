@@ -11,6 +11,8 @@
     $container_class = in_array( 'expert', get_userdata( $comment->user_id )->roles ) ? ' expert' : '';
     $parent_author = $is_recursive ? false : return_screenname( get_comment( $comment->comment_parent )->user_id ) ;
     $date = strtotime( $comment->comment_date );
+		
+    $comment_type = get_post_type( $comment->comment_post_ID ) == 'question' ? 'answer' : 'comment';
 ?>
 
 <li class="comment clearfix<?php echo $container_class; ?>" id="comment-<?php echo $comment->comment_ID ?>">
