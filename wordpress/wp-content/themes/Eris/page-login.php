@@ -20,7 +20,7 @@ get_template_part('parts/header'); ?>
 
 		<h6 class="content-headline">Sign in</h6>
 		
-		<?php if(isset($_GET['err'])):?>
+		<?php if(isset($_GET['err']) && ! is_user_logged_in()):?>
 		
 			<div><?php echo urldecode($_GET['err']);?></div>
 			
