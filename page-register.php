@@ -49,7 +49,30 @@ get_template_part('parts/header'); ?>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="logonPassword">Password:</label></dt>
-                        <dd class="span9"><input type="password" name="logonPassword" autocomplete="off" class="input_text input_password" id="logonPassword" shc:gizmo:form="{required:true, pattern: /^\w*(?=\w{8,})(?=\w*\d)(?=\w*[a-zA-Z])(?!\w*_)\w*$/, message: 'Please enter a valid password.'}" /></dd>
+                        <dd class="span9">
+                            <input
+                                    type="password"
+                                    name="logonPassword"
+                                    autocomplete="off"
+                                    class="input_text input_password"
+                                    id="logonPassword"
+                                    shc:gizmo:form="{required:true, pattern: /^\w*(?=\w{8,})(?=\w*\d)(?=\w*[a-zA-Z])(?!\w*_)\w*$/, message: 'Please enter a valid password.'}"
+                                    shc:gizmo="tooltip"
+                                    shc:gizmo:options="
+                                        {
+                                            tooltip: {
+                                                displayData: {
+                                                    element: 'passInfo'
+                                                },
+                                                events: {
+                                                    blur: {
+                                                        active: true
+                                                    }
+                                                },
+                                                arrowPosition: 'left'
+                                            }
+                                        }"
+                            /></dd>
                     </dl>
                 </li>
                 
@@ -107,6 +130,17 @@ get_template_part('parts/header'); ?>
                 </dl>
             </li>
         </ul>
+                <div id="passInfo" class="hide">
+                    <p class="bold">Your password must have:</p>
+                    <ul>
+                        <li>6 or more characters total</li>
+                        <li>At least one letter</li>
+                        <li>At least one number</li>
+                        <li>No space</li>
+                        <li>No special characters such as ! or ?</li>
+                    </ul>
+                    <p>All passwords are cAsE sEnSiTiVe.</p>
+                </div>
 				
 				<section id="login-open-id" class="open-id" shc:gizmo="openID">
 					<span class="or">OR</span>
@@ -128,8 +162,6 @@ get_template_part('parts/header'); ?>
 <?php get_template_part('parts/footer');
 
 endif;
-
-comments_template('/parts/tooltip.php');
 
 ?>
 

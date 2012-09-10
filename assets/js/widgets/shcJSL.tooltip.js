@@ -255,6 +255,8 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
                 jQuery(arrow).children().last('div').removeClass();
                 jQuery(arrow).children().last('div').addClass('leftBorder');
 
+                console.log(jQuery(arrow).children().last('div'));
+
                 var arrowLeft = jQuery(arrow).children('.left');
 
                 var arrowLeftHeight = arrowLeft.outerHeight();
