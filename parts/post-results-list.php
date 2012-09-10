@@ -27,7 +27,7 @@
 
     <div class="span10">
 
-        <time class="content-date" datetime="<?php echo the_time( "Y-m-d"); ?>" pubdate="pubdate"><?php the_time("F n, Y"); ?></time> <time class="content-date" datetime="<?php echo the_time( "Y-m-d"); ?>" pubdate="pubdate"><?php the_time("g:i a"); ?></time>
+        <time class="content-date" datetime="<?php echo the_time( "Y-m-d"); ?>" pubdate="pubdate"><?php the_time("F n, Y g:i a"); ?></time> <!-- <time class="content-date" datetime="<?php //echo the_time( "Y-m-d"); ?>" pubdate="pubdate"><?php //the_time("g:i a"); ?></time>-->
         
 		
         <hgroup>
