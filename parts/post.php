@@ -40,7 +40,7 @@
                     }
                 });
                 $(".reply").on('click', function() {
-                    $(this).parent().next("form.reply-to-form").slideToggle("slow");
+                	$(this).parent().parent().children("form.reply-to-form").slideToggle("slow");
                 });
 
                 // Make the cancel buttons collapse the forms, too.

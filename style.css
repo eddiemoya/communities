@@ -1271,7 +1271,8 @@ fieldset#use_your_account_from {
       font-size: 91.666%; }
     #allComments .comment article {
       font-size: 108.333%;
-      margin: 1em 0; }
+      margin: 1em 0;
+      word-wrap: break-word; }
     #allComments .comment .responseTo {
       margin: 10px 0 0 0; }
     #allComments .comment textarea {
@@ -1846,13 +1847,13 @@ button.follow {
   float: left; }
 
 .addthis.dropmenu li {
-  -webkit-border-radius: 5px 5px 0px 0px;
-  -moz-border-radius: 5px 5px 0px 0px;
-  -ms-border-radius: 5px 5px 0px 0px;
-  -o-border-radius: 5px 5px 0px 0px;
-  border-radius: 5px 5px 0px 0px; }
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px; }
   .addthis.dropmenu li:hover {
-    background-color: #eee; }
+    background-color: #fff; }
   .addthis.dropmenu li a {
     display: inline; }
   .addthis.dropmenu li ul li {
@@ -1866,7 +1867,8 @@ button.follow {
     .addthis.dropmenu li ul li a {
       padding-left: .2em; }
 .addthis.dropmenu .sharebutton {
-  padding: 6px 12px 6px 12px;
+  font-size: 108.333%;
+  padding: 6px 0px;
   cursor: pointer;
   display: inline-block; }
 .addthis.dropmenu .sharemenulinks {
