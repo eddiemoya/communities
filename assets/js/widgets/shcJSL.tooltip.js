@@ -280,11 +280,7 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         var leftPosition = 0;
         var topPosition = 0;
 
-        //var data = jQuery(_thisTooltip.options.displayData).clone().removeClass('hide');
-
-        //jQuery(_thisTooltip.tooltip.element).children('.middle').html(data);
-
-        jQuery(_thisTooltip.tooltip.element).children('.middle').html();
+        jQuery(_thisTooltip.tooltip.element).children('.middle').html('');
         jQuery(_thisTooltip.tooltip.element).children('.middle').append(_thisTooltip.options.displayData.element);
 
         if(_thisTooltip.options.displayData.element.hasClass('hide')) {
@@ -327,17 +323,12 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
 
                 break;
             case 'top':
-                leftPosition = _thisTooltip.getPosition(_thisTooltip.actedObj, 'left') -
-                                ((_thisTooltip.getWidth(_thisTooltip.tooltip) / 2)) +
-                                    _thisTooltip.getWidth(_thisTooltip.actedObj);
+                leftPosition = _thisTooltip.getOffset(_thisTooltip.actedObj, 'left') -
+                                ((_thisTooltip.getWidth(_thisTooltip.tooltip) / 2) - (_thisTooltip.getWidth(_thisTooltip.actedObj) / 2));
 
-                topPosition = _thisTooltip.getPosition(_thisTooltip.actedObj, 'top') +
+                topPosition = _thisTooltip.getOffset(_thisTooltip.actedObj, 'top') +
                                 _thisTooltip.getHeight(_thisTooltip.actedObj) +
                                     10; //needs to be changed to use actual height getter; doesn't work since it's all border
-
-                if(_thisTooltip.getHeight(_thisTooltip.tooltip) < _thisTooltip.getHeight(_thisTooltip.actedObj)) {
-                    topPosition += (_thisTooltip.getHeight(_thisTooltip.actedObj) / 2) - (_thisTooltip.getHeight(_thisTooltip.tooltip) / 2);
-                }
 
             default:
                 break;
