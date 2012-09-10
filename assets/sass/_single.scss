@@ -1,46 +1,38 @@
-.sears .post-n-comments h2, .sears .leaveComment {
-  color: sears(link);
-}
-
-.kmart .post-n-comments h2, .kmart .leaveComment {
-  color: kmart(link);
-}
-
 .sears .post-n-comments h2, .kmart .post-n-comments h2 {
+  font-size: font-size( 14 );
+  margin: 1.25em 0;
   @extend .bold;
-  font-size: percentage( 18/16 );
-  margin: .5em 0;
 }
 
 .section-header {
   padding: .5em;
   border-top: 1px solid sears( decorative );
   border-bottom: 1px solid sears( decorative );
+  @extend .bold;
 }
 
 .post-n-comments {
   color: #666;
   header {
     margin-bottom: 1em;
+    font-size: font-size( 20 );
     & + .span2.badge, & + .span2.crest {
       margin-left: 0;
     }
   }
   .date {
-    color: #ccc;
     float: right;
-    font-size: 14px;
   }
   a.category {
     display: block;
   }
   .content {
     h2 {
-      font-size: 24px;
+      font-size: font-size( 24 );
       margin-bottom: 10px;
     }
     p {
-      font-size: 14px;
+      font-size: font-size( 14 );
       margin-bottom: 25px;
     }
   }

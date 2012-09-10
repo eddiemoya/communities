@@ -111,9 +111,11 @@
     }
   }
   .sharebutton {
-    font-size:.8125em;
+    // font-size:.8125em;
+    font-size: font-size( 13 );
     padding: 6px 0px;
     cursor: pointer;
+    display: inline-block;
   }
   .sharemenulinks  {
     background: #fff;
