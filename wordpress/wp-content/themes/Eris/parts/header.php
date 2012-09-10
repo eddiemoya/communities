@@ -27,7 +27,6 @@
       <?php wp_nav_menu( array('menu' => theme_option("brand").'-ribbon'))?>
 
 
-
       <div id="container">
 
 				<div id="persistent-header" shc:gizmo="persistr">

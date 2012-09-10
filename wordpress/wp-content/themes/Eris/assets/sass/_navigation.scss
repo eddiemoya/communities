@@ -166,19 +166,24 @@ $arrow-height: 3px;
     @include border-radius( 5px );
     border: 1px solid sears( decorative );
     li {
-      border-top: 1px solid sears( decorative );
-      border-right: 0;
       width: 100%;
-      &:first-child {
-        border-top: 0;
-      }
+      border-right: 0;
       a {
+        color: #73726F;
         border-right: 0;
       }
     }
   }
 }
 @include sprite-position( ".sears #header_nav.dropmenu, .kmart #header_nav.dropmenu", left, ( $nav-sprite-period * ( -1 ) ) );
+.kmart #header_nav.dropmenu ul {
+  padding: 4px 0;
+  li a:hover {
+    color: $lightest-color;
+    text-decoration: none;
+    background: red;
+  }
+}
 
 // Modify dropmenu for the footer
 #footer_nav.dropmenu {

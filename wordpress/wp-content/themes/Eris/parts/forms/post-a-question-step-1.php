@@ -6,7 +6,7 @@
 					
 					<?php foreach($data['errors'] as $error):?>
 					
-						<div><?php echo $error;?></div>
+						<div class="form-errors"><?php echo $error;?></div>
 						
 					<?php endforeach;?>
 					
@@ -20,15 +20,6 @@
 							<input type="text" class="input_text" name="post-question" id="post-question" value="" shc:gizmo:form="{required:true}"/>
 							<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Next</button>
 						</li>
-						
-						<!-- ERROR EXAMPLE
-						<li class="error">
-							<input type="text" class="input_text" name="post-question" id="post-question" value=""/>
-							<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Next</button>
-							<p class="error-message"><span class="error-pointer"></span>
-								Please enter a question
-							</p>
-						</li> -->
 					</ul>
 				</form>
 				

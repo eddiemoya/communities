@@ -1,20 +1,18 @@
 <?php
-$alinks = array(
-    'post' => site_url('posts'),
-    'question' => get_post_type_archive_link('question'),
-    'guide' => get_post_type_archive_link('guide')
+    $alinks = array(
+        'post'     => site_url('posts'),
+        'question' => get_post_type_archive_link('question'),
+        'guide'    => get_post_type_archive_link('guide')
     );
-
-  $terms = array(
-    "question"  => get_terms_by_post_type('category', 'question'),
-    "post"    => get_terms_by_post_type('category', 'post'),
-    "guide" => get_terms_by_post_type('category', 'guide'),
-  );
-
-  $labels = array (
-    'question' => "Q&A's",
-    'post' => 'Blog Posts',
-    'guide' => 'Buying Guides'
+    $terms = array(
+        "question" => get_terms_by_post_type('category', 'question'),
+        "post"     => get_terms_by_post_type('category', 'post'),
+        "guide"    => get_terms_by_post_type('category', 'guide'),
+    );
+    $labels = array (
+        'question' => "Q&A's",
+        'post'     => 'Blog Posts',
+        'guide'    => 'Guides'
     );
 ?>
 
@@ -51,6 +49,4 @@ $alinks = array(
         <?php endforeach;?>
     </ul>
 </nav>
-
-
 

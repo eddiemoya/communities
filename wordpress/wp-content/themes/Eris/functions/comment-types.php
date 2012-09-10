@@ -7,35 +7,34 @@ if (class_exists(CCT_Controller_Comment_Types)) {
     /**
      * 
      */
-    // function register_flags() {
-    //     $args = array(
-    //         'labels' => array(
-    //             'name' => _x('Flags', 'post type general name'),
-    //             'singular_name' => _x('Flag', 'post type singular name'),
-    //             'add_new' => _x('Add New', 'flag'),
-    //             'add_new_item' => __('Add New Flag'),
-    //             'edit_item' => __('Edit Flag'),
-    //             'new_item' => __('New Flag'),
-    //             'all_items' => __('All Flags'),
-    //             'view_item' => __('View Flags'),
-    //             'search_items' => __('Search Flags'),
-    //             'not_found' => __('No flags found'),
-    //             'not_found_in_trash' => __('No flags found in Trash'),
-    //             'parent_item_colon' => 'Flag:',
-    //             'menu_name' => 'Flags'
-    //         ),
-    //         'parent_domain' => 'post',
-    //         'parent_type' => 'question',
-    //         'capability' => 'administrator',
-    //         'menu_icon' => get_template_directory_uri() . '/assets/img/admin/flags_admin_icon.gif',
-    //         'menu_position' => 8,
-    //         'template' => get_template_directory_uri() . '/parts/flags.php'
-    //     );
+     function register_flags() {
+         $args = array(
+             'labels' => array(
+                 'name' => _x('Flags', 'post type general name'),
+                 'singular_name' => _x('Flag', 'post type singular name'),
+                 'add_new' => _x('Add New', 'flag'),
+                 'add_new_item' => __('Add New Flag'),
+                 'edit_item' => __('Edit Flag'),
+                 'new_item' => __('New Flag'),
+                 'all_items' => __('All Flags'),
+                 'view_item' => __('View Flags'),
+                 'search_items' => __('Search Flags'),
+                 'not_found' => __('No flags found'),
+                 'not_found_in_trash' => __('No flags found in Trash'),
+                 'parent_item_colon' => 'Flag:',
+                 'menu_name' => 'Flags'
+             ),
+             'parent_domain' => 'post',
+             'parent_type' => 'question',
+             'capability' => 'administrator',
+             'menu_icon' => get_template_directory_uri() . '/assets/img/admin/flags_admin_icon.gif',
+             'menu_position' => 8,
+             'template' => get_template_directory_uri() . '/parts/flags.php'
+         );
 
-    //     CCT_Controller_Comment_Types::register_comment_type('flag', $args);
-    // }
-
-    // add_action('init', 'register_flags', 10);
+         CCT_Controller_Comment_Types::register_comment_type('flag', $args);
+     }
+     add_action('init', 'register_flags', 10);
 
     /**
      * 
@@ -115,11 +114,15 @@ function organizeByChildren($comments) {
         }
 
         if(isset($children) && !empty($children)) {
+
             foreach($comments as $comment) {
                 if(array_key_exists($comment->comment_ID, $children)) {
                     foreach($children[$comment->comment_ID] as $child) {
                         $comment->children[] = $child;
                     }
+
+                    // ensure oldest child comment is first
+                    $comment->children = array_reverse($comment->children);
                 }
             }
         }
