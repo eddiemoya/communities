@@ -39,9 +39,6 @@ get_currentuserinfo();
                                                     },
                                                     events: {
                                                         blur: {
-                                                            active: false
-                                                        },
-                                                        click: {
                                                             active: true
                                                         },
                                                         focus: {
