@@ -110,7 +110,7 @@ shcJSL.get = function(element) {
 			collection.push(getID(element.slice(1)));
 		// Need to add in class selector at some point.
 		} else {	// Selector is an element OR not a valid selector
-			collection = collection.concat([].slice.call(getTags(element)));
+			collection = shcJSL.sequence(getTags(element));
 		}
 	} else if (typeof element == "object") {
 		// element is an HTMLObject
@@ -245,6 +245,24 @@ shcJSL.first = function(element) {
 	return firstChild;
 }
 
+shcJSL.addChildren = function(p, c) {
+	if (p && c) {
+		for (var i=0; i < c.length; i++) {
+			p.appendChild(c[i]);
+		}
+		return p;
+	}
+}
+
+shcJSL.setStyles = function(e, s) {
+	if (typeof s != undefined && typeof e != undefined) {
+		for (var i in s) {
+			e.style[i] = s[i];
+		}
+		return e;
+	}
+}
+
 shcJSL.formDataToJSON = function(form) {
 	var cereal; // Serialized string of the form
 	var jason;	// (String) Our JSON object
@@ -271,8 +289,18 @@ shcJSL.formDataToJSON = function(form) {
 		return json;
 	}
 	
-	console.log(jason);
 	return jason;
+}
+
+shcJSL.sequence = function(array) {
+	var sequence = [];	// New 'true' array
+	try {sequence = sequence.concat([].slice.call(array));}
+	catch(e) {
+		for (var i=0; i < array.length; i++) {
+			sequence.push(array[i]);
+		}
+	}
+	return sequence;
 }
 /*
 	[2.0] WIDGETS

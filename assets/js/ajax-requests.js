@@ -32,15 +32,12 @@ jQuery(document).ready(function($) {
  	$('.result-list select').on('change', function(e){
  		e.preventDefault();
 
- 		console.log('fucl');
-
 		var data = {
 			action		: 'get_posts_ajax',
 			template 	: 'post-results-list',
 			category	: $('option', this).filter(':selected').val()
 		};
 
-		console.log(data);
 		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
 
 		container = $(this).closest('.result-list');
@@ -50,7 +47,6 @@ jQuery(document).ready(function($) {
 			type: 'POST',
 			data : data,
 			success:function(results){
-				console.log(results)
 				$('.content-body', container).empty();
 				$('.content-body', container).append($(results));
 			}

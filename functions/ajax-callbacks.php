@@ -165,3 +165,56 @@ function profile_paginate() {
 
 add_action('wp_ajax_profile_paginate', 'profile_paginate');
 add_action('wp_ajax_nopriv_profile_paginate', 'profile_paginate');
+
+/**
+ * Validates a screen name. Returns 'true' if it is valid and 
+ * available; false if not.
+ * 
+ * @author Dan Crimmins
+ * @param string $screen_name
+ * @return string - 'true' or 'false'
+ */
+function validate_screen_name() {
+	
+	$screen_name = $_POST['screen_name'];
+	
+	if(class_exists('SSO_Profile')) {
+		
+		$profile = new SSO_Profile;
+		$response = $profile->validate_screen_name($screen_name);
+		
+		echo ($response['code'] == '200') ? 'true' : 'false';
+		
+		exit;
+	}
+	
+		
+	exit;
+}
+
+add_action('wp_ajax_validate_screen_name', 'validate_screen_name');
+add_action('wp_ajax_nopriv_validate_screen_name', 'validate_screen_name');
+
+function ajaxify_comments() {
+    global $current_user;
+    get_currentuserinfo();
+
+    $data = array(
+    	'comment_post_ID'  => $_POST['comment_post_ID'],
+    	'comment_content'  => $_POST['comment'],
+    	'comment_date'     => date('Y-m-d H:i:s'),
+    	'comment_date_gmt' => date('Y-m-d H:i:s'),
+    	'comment_approved' => 1,
+        'comment_type'     => 'flag'
+    );
+
+    if(is_user_logged_in()) {
+        $data['user_id'] = $current_user->ID;
+    }
+
+    $comment_id = wp_insert_comment($data);
+
+    echo $comment_id.' is the comment';
+}
+add_action('wp_ajax_flag_me', 'ajaxify_comments');
+add_action('wp_ajax_nopriv_flag_me', 'ajaxify_comments');
