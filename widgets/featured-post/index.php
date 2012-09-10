@@ -16,13 +16,14 @@
             <time class="content-date" datetime="<?php the_time('Y-m-d'); ?>">
                 <?php the_time('F jS, Y g:ia'); ?>
             </time>
-            <h4 class="content-headline">
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-            </h4>
-
+            
             <ul class="content-comments">
                 <li><?php comments_number(); ?></li>
             </ul>
+            
+            <h4 class="content-headline">
+                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+            </h4>
         </div>
 
     </section>

@@ -51,13 +51,10 @@
 
 
         <p class="content-byline">By: <?php echo get_the_author(); ?> </p>
-
-
+        
         <?php if (is_widget()->show_comment_count || $is_widget_override): ?>
             <p class="content-comments"><?php comments_number(); ?></p>
         <?php endif; //is_widget->show_comment_count ?>
-        
-
 
         <?php  if(is_widget()->show_content || $is_widget_override) : ?>
             <p class="content-excerpt">
