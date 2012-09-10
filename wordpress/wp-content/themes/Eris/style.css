@@ -587,7 +587,7 @@ ol.bullets {
 ul.bullets {
   list-style-type: disc; }
 
-.bold, .member .info h4, .member .info address, .badge h4, .badge address, .crest h4, .crest h5, .crest address, .post hgroup, .content-container .content-header, .content-container .content-body .content-details .content-category, .profile .answers-toggle, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, #allComments .comment .responseTo, .sears .post-n-comments h2, .kmart .post-n-comments h2 {
+.bold, .member .info h4, .member .info address, .badge h4, .badge address, .crest h4, .crest h5, .crest address, .post hgroup, .content-container .content-header, .content-container .content-body .content-category, .profile .answers-toggle, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, #allComments .comment .responseTo, .sears .post-n-comments h2, .kmart .post-n-comments h2 {
   font-weight: 700; }
 
 .faint, .member .info h5, .member .info p, .post .content-date, .excerpt, .content-container .content-header, .recent-activity time {
@@ -791,14 +791,11 @@ ul.bullets {
 .form-errors {
   color: #ff0000; }
 
-.content-container .content-headline {
-  font-size: 1.25em;
-  font-weight: bold;
-  margin: 0; }
+.content-container {
+  border-top: solid 1px #dddcdc; }
 
 .content-container .content-header {
-  border: solid #dddcdc;
-  border-width: 1px 0px;
+  border-bottom: solid 1px #dddcdc;
   padding: .625em; }
   .content-container .content-header h3 {
     font-size: 1.25em; }
@@ -806,26 +803,39 @@ ul.bullets {
     font-size: .6875em; }
 
 .content-container .content-body {
-  padding: .625em; }
-  .content-container .content-body .content-details {
-    padding-bottom: .625em; }
-    .content-container .content-body .content-details .content-category {
-      font-size: .8125em;
-      float: left; }
-    .content-container .content-body .content-details .content-date {
-      color: 1;
-      font-size: .6875em;
-      float: right; }
-  .content-container .content-body .content-comments {
+  padding: .625em;
+  /* 10px */
+  position: relative; }
+  .content-container .content-body .content-author, .content-container .content-body .content-comments {
     color: #333333;
     font-size: .75em;
-    margin-top: .8125em; }
-    .content-container .content-body .content-comments li {
-      border-left: solid 1px #999999;
-      float: left;
-      padding: 0em .3125em; }
-    .content-container .content-body .content-comments > li:first-child {
-      border-left: none; }
+    /* 12px */
+    margin-bottom: .625em;
+    /* 10px */ }
+  .content-container .content-body .content-category {
+    float: left;
+    font-size: .8125em;
+    /* 13px */ }
+  .content-container .content-body .content-date {
+    color: #999999;
+    float: right;
+    font-size: .6875em;
+    /* 11px */
+    line-height: 1.5em; }
+  .content-container .content-body .content-details {
+    margin-bottom: .625em;
+    /* 10px */ }
+  .content-container .content-body .content-headline {
+    font-size: 1.25em;
+    /* 20px */
+    font-weight: bold;
+    line-height: 1.1em;
+    /* 22px */
+    margin: 0 0 .625em;
+    /* 10px */ }
+  .content-container .content-body .featured-image.span12 + .span12 {
+    margin-top: .625em;
+    /* 10px */ }
   .content-container .content-body .share-full {
     margin-top: 10px; }
 
@@ -835,6 +845,10 @@ ul.bullets {
   line-height: 1.7em;
   margin-bottom: 1em; }
 
+.featured-post p, .featured-question p {
+  margin-bottom: 1em; }
+
+.blog-post
 .span4 .content-container .content-body .content-comments li, .span3 .content-container .content-body .content-comments li {
   border-left: 0;
   float: none; }
@@ -957,9 +971,6 @@ ul.bullets {
     float: none;
     border: 0;
     margin-top: 0; }
-
-.content-container.featured-post .content-excerpt, .content-container.featured-post .content-byline, .content-container.featured-post .content-tags, .content-container.featured-guide .content-excerpt, .content-container.featured-guide .content-byline, .content-container.featured-guide .content-tags {
-  font-size: 0.75em; }
 
 .span4 .content-container.featured-post .span6 {
   width: 100%;
@@ -1420,8 +1431,7 @@ button.follow {
  * blog, buying guide, question.
  */
 .breadcrumb {
-  border: solid #d5d5d5;
-  border-width: 1px 0px;
+  border-top: solid 1px #d5d5d5;
   padding: 1em 0; }
   .breadcrumb li {
     float: left;

@@ -340,15 +340,11 @@ ul.bullets {
 form {}
 
 // FEATURED
-.content-container .content-headline {
-  font-size:1.25em;
-  font-weight:bold;
-  margin:0;
+.content-container {
+  border-top:solid 1px #dddcdc;
 }
-
 .content-container .content-header {
-  border:solid #dddcdc;
-  border-width:1px 0px;
+  border-bottom:solid 1px #dddcdc;
   padding:.625em;
   @extend .bold;
   @extend .faint;
@@ -361,33 +357,36 @@ form {}
 }
 
 .content-container .content-body {
-  padding:.625em;
-
-  .content-details {
-    padding-bottom:.625em;
-    .content-category {
-      font-size:.8125em;
-      float:left;
-      @extend .bold;
-    }
-    .content-date {
-      color: sears( sec-dec );
-      font-size:.6875em;
-      float:right;
-    }
-  }
-  .content-comments {
+  padding:.625em; /* 10px */
+  position: relative;
+ .content-author, .content-comments {
     color:#333333;
-    font-size:.75em;
-    margin-top:.8125em;
-    li {
-      border-left:solid 1px #999999;
-      float:left;
-      padding:0em .3125em;
-    }
-    & > li:first-child {
-      border-left:none;
-    }
+    font-size:.75em; /* 12px */
+    margin-bottom: .625em; /* 10px */
+  }
+  .content-category {
+    float:left;
+    font-size:.8125em; /* 13px */
+    @extend .bold;
+  }
+  .content-date {
+    color:#999999;
+    float:right;
+    font-size:.6875em; /* 11px */
+    line-height:1.5em;
+  }
+  .content-details {
+    margin-bottom:.625em; /* 10px */
+  }
+  .content-headline {
+    font-size:1.25em; /* 20px */
+    font-weight:bold;
+    line-height:1.1em; /* 22px */
+    margin:0 0 .625em; /* 10px */
+  }
+  
+  .featured-image.span12 + .span12 {
+    margin-top:.625em; /* 10px */
   }
 	.share-full {
 		margin-top: 10px;
@@ -402,6 +401,14 @@ form {}
     margin-bottom:1em;
   }
 }
+
+.featured-post, .featured-question {
+  p {
+    margin-bottom:1em;
+  }
+}
+
+.blog-post
 
 .span4, .span3 {
   .content-container .content-body .content-comments li {
@@ -576,11 +583,6 @@ form {}
 }
 
 // FEATURED BLOG POST
-.content-container.featured-post, .content-container.featured-guide {
-  .content-excerpt, .content-byline, .content-tags {
-    font-size:.75em
-  }
-}
 .span4 .content-container.featured-post .span6 {
   width: 100%;
   margin-left: 0;
@@ -1152,8 +1154,7 @@ button.follow {
  * blog, buying guide, question.
  */
 .breadcrumb {
-  border:solid #d5d5d5;
-  border-width:1px 0px;
+  border-top:solid 1px #d5d5d5;
   padding:1em 0;
   li {
     float:left;
