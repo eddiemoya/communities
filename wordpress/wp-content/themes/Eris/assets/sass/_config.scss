@@ -1,39 +1,43 @@
 // Paths
-$img:               "/wp-content/themes/Eris/assets/img/";
-$sears-img:         "#{$img}sears/";
-$kmart-img:         "#{$img}kmart/";
+$img:                 "/wp-content/themes/Eris/assets/img/";
+$sears-img:           "#{$img}sears/";
+$kmart-img:           "#{$img}kmart/";
 
 // Fonts
-$basefont:          Helvetica, Arial, Verdana, sans-serif;
+$basefont:            Helvetica, Arial, Verdana, sans-serif;
+$default-font-size:   13;
 
 // Colors
-$lightest-color:    white;
-$darkest-color:     black;
-$nav-color:         #e4e0df;
+$lightest-color:      white;
+$darkest-color:       black;
+$nav-color:           #e4e0df;
 // List of special, site-branded colors
-$color-types:       ( link,     secondary-link, bodycopy, decorative, button,   footer,   footer-hover, footer_fly, footer-subnav-hover,  content-focus,  badge,    secondary-decorative, comment-decor );
-$sears-colors:      ( #067bb5,  #666666,        #555555,  #cccccc,    #1a519b,  #dedbde,  #eeeeee,      #eeeeee,    #55a3c8,              #f2f2f2,        #bcdaf3,  #999999,              #d6d6d6 );
-$kmart-colors:      ( #980017,  #666666,        #555555,  #cccccc,    #e02334,  #f3f0ec,  #7c0505,      #eeeeee,    #55a3c8,              #f2f2f2,        #bcdaf3,  #999999,              #d6d6d6 );
+$color-types:         ( link,     secondary-link, bodycopy, decorative, button,   footer,   footer-hover, footer_fly, footer-subnav-hover,  content-focus,  badge,    secondary-decorative, comment-decor );
+$sears-colors:        ( #067bb5,  #666666,        #555555,  #cccccc,    #1a519b,  #dedbde,  #eeeeee,      #eeeeee,    #55a3c8,              #f2f2f2,        #bcdaf3,  #999999,              #d6d6d6 );
+$kmart-colors:        ( #980017,  #666666,        #555555,  #cccccc,    #e02334,  #f3f0ec,  #7c0505,      #eeeeee,    #55a3c8,              #f2f2f2,        #bcdaf3,  #999999,              #d6d6d6 );
 
 // Scaffolding
-$grid-width:        940;
-$margin-width:      20;
-$margin-width-pct:  percentage( $margin-width / $grid-width );
+$grid-width:          940;
+$margin-width:        20;
+$margin-width-pct:    percentage( $margin-width / $grid-width );
 
-$column-names:      ( 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 );
-$column-count:      length( $column-names );
-$column-bases:      ( 9, 8, 6, 4, 3 );
+$column-names:        ( 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 );
+$column-count:        length( $column-names );
+$column-bases:        ( 9, 8, 6, 4, 3 );
 
-$span-widths:       ();
+$span-widths:         ();
 
-$footer-count-sears: 6;
-$footer-count-kmart: 5;
+$footer-count-sears:  6;
+$footer-count-kmart:  5;
 
 // Spriting variables
-$nav-sprite-offset:  5px;
-$nav-sprite-period:  80px;
+$nav-sprite-offset:   5px;
+$nav-sprite-period:   80px;
 
-$soc-sprite-offset:  225px;
-$soc-sprite-period:  50px;
+$soc-sprite-offset:   225px;
+$soc-sprite-period:   50px;
 
-$act-sprite-period:  40px;
+$act-sprite-period:   40px;
+
+// Adjustments
+$emadjust:            1.92;
