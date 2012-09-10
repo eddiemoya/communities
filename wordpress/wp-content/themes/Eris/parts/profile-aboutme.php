@@ -32,7 +32,7 @@
             <dt>Email</dt>
             <dd><?php echo (isset($user_profile['email']) && ! empty($user_profile['email']) ) ? $user_profile['email'] : $absent_info; ?></dd>
             <dt>Location</dt>
-            <dd><address><?php echo (isset($user_profile['zipcode']) && ! empty($user_profile['zipcode'])) ? $user_profile['zipcode']: $absent_info; ?></address></dd>
+            <dd><address><?php echo (return_address($profile_user->ID) != '&nbsp;') ? return_address($profile_user->ID): $absent_info;?></address></dd>
             <dt>Birthday</dt>
             <dd><time datetime="<?php echo (isset($user_profile['dob']) && ! empty($user_profile['dob'])) ? date( "Y-m-d", strtotime($user_profile["dob"])) : ''; ?>" pubdate="pubdate"><?php echo (isset($user_profile['dob']) && ! empty($user_profile['dob'])) ? date( "F j, Y", strtotime($user_profile["dob"])) : $absent_info; ?></time></dd>
         </dl>
