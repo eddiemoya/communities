@@ -60,7 +60,7 @@
             <?php if(get_user_meta( $current_user->ID, 'sso_guid' ) && ! has_screen_name( $current_user->ID ) ):?>
                 <label for="screen-name-<?php echo $child->comment_ID ?>" class="required">Screen Name</label>
                 <input type="text" class="input_text" name="screen-name" value="<?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? stripslashes( urldecode( $_GET['screen-name'] ) ) : null; ?>" shc:gizmo:form="{required:true, special: 'screen-name', message: 'Screen name invalid. Screen name is already in use or does not follow the screen name guidelines.'}"/>
-            <?php endif;?>parent_id
+            <?php endif;?>
             <textarea name="comment" rows="8" aria-required="true" shc:gizmo:form="{required:true}"><?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? stripslashes( urldecode( $_GET['comment'] ) ) : null; ?></textarea>
             <p class="form-submit">
                 <input type="submit" class="kmart_button" value="Post" />
