@@ -66,6 +66,9 @@ get_template_part('parts/header'); ?>
                                                 },
                                                 events: {
                                                     blur: {
+                                                        active: false
+                                                    },
+                                                    focus: {
                                                         active: true
                                                     }
                                                 },
@@ -130,7 +133,7 @@ get_template_part('parts/header'); ?>
                 </dl>
             </li>
         </ul>
-                <div id="passInfo" class="hide">
+                <div id="passInfo" class="info hide">
                     <p class="bold">Your password must have:</p>
                     <ul>
                         <li>6 or more characters total</li>
