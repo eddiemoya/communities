@@ -1,21 +1,19 @@
 <?php get_template_part('parts/header', 'widget') ;?>
 	<?php the_post(); ?>
     <?php if ((is_widget()->show_thumbnail && has_post_thumbnail()) || ($is_widget_override && has_post_thumbnail())) :
-        $widget_span = (!$is_widget_override) ? is_widget()->span : "12";
-        $widget_span = str_replace("span", "", $widget_span);
-        if ($widget_span <= 6) :
-            $featured_img_span = "span12";
-            $featured_post_span = "span12";
+        //$widget_span = (!$is_widget_override) ? is_widget()->span : "12";
+        //$widget_span = str_replace("span", "", $widget_span);
+        if (is_widget()->span > 6) :
+            $inner_span = "span8";
         else:
-            $featured_img_span = "span6";
-            $featured_post_span = "span6";
+            $inner_span = "span6";
         endif;
         
         $post_thumbnail_id = get_post_thumbnail_id( $post_id );
         if ($post_thumbnail_id) :
             $thumbnail_src = wp_get_attachment_image_src($post_thumbnail_id, "large");
         ?>
-            <div class="featured-image <?php echo $featured_img_span; ?>">
+            <div class="featured-image <?php echo $inner_span; ?>">
                 <img src="<?php echo $thumbnail_src[0]; ?>" alt="<?php echo get_the_title(); ?>" />
             </div>
         <?php
@@ -26,7 +24,7 @@
     <?php endif; ?>
 
 
-    <div class="featured-post <?php echo $featured_post_span; ?>">
+    <div class="featured-post <?php echo $inner_span; ?>">
         <?php if (is_widget()->show_category || is_widget()->show_date || $is_widget_override) : ?>
             <div class="content-details clearfix">
 
