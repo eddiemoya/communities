@@ -79,13 +79,14 @@
     $downvoteTotal = isset($acts['downvote']['action']->total) ? $acts['downvote']['action']->total : 0;
     $upvoteTotal = isset($acts['upvote']['action']->total) ? $acts['upvote']['action']->total : 0;
 
-    $myActionDownvote = isset($acts['downvote']['myaction']) ? $acts['downvote']['myaction'] : '';
-    $myActionFollow = isset($acts['follow']['myaction']) ? $acts['follow']['myaction'] : '';
-    $myActionFollowText = isset($acts['follow']['text']) ? 'following' : 'follow';
-    $myActionUpvote = isset($acts['upvote']['myaction']) ? $acts['upvote']['myaction'] : '';
+    $myActionDownvote = (isset($acts['downvote']['myaction']) && $acts['downvote']['myaction'] != '') ? $acts['downvote']['myaction'] : '';
+    $myActionFollow = (isset($acts['follow']['myaction']) && $acts['follow']['myaction'] != '') ? $acts['follow']['myaction'] : '';
+    $myActionUpvote = (isset($acts['upvote']['myaction']) && $acts['upvote']['myaction'] != '') ? $acts['upvote']['myaction'] : '';
 
-    $nliDownvote = isset($acts['downvote']['nli_reset']) ? $acts['downvote']['nli_reset'] : '';
-    $nliUpvote = isset($acts['upvote']['nli_reset']) ? $acts['upvote']['nli_reset'] : '';
+    $myActionFollowText = (isset($acts['follow']['text']) && $acts['follow']['text'] != '') ? 'following' : 'follow';
+
+    $nliDownvote = (isset($acts['downvote']['nli_reset']) && $acts['downvote']['nli_reset'] != '') ? $acts['downvote']['nli_reset'] : '';
+    $nliUpvote = (isset($acts['upvote']['nli_reset']) && $acts['upvote']['nli_reset'] != '') ? $acts['upvote']['nli_reset'] : '';
 ?>
     <form class="actions clearfix" id="comment-actions-<?php echo $id; ?>" method="post" action="">
         <?php
