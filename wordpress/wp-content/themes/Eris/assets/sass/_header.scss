@@ -3,20 +3,21 @@
  */
 #header {
   margin:0 auto;
-  padding:1.3125em 0 .8em;
+  padding:em-adjust( 1.3125em 0 .8em );
   width:960px;
   #logo {
     display:block;
-    margin-top:.75em;
+    margin-top:em-adjust( .75em );
   }
   form {
-    margin-top:.75em;
+    margin-top:em-adjust( .75em );
     position:relative;
     #input_search {}
   }
   aside {
     & > ul > li {
-      margin-bottom:.35em;
+      margin-bottom: em-adjust( .35em );
+      padding: .165em 0;
     }
     ul li {
       text-align:right;
@@ -26,12 +27,12 @@
       li {
         border-left:solid 1px sears( secondary-link );
         display:inline-block;
-        font-size:.75em;
+        // font-size:.75em;
         padding:0 .4em 0 .8em;
         text-align: center;
         img {
           vertical-align: bottom;
-          margin-right: .5em;
+          margin-right:.5em;
         }
         &:first-child {
           border:none;
@@ -47,8 +48,8 @@
     #input_search {
       background:transparent no-repeat 0px 0px;
       border:none;
-      height:1.25em;
-      padding:.25em 0 .25em 1.7em;
+      height:em-adjust( 1.25em );
+      padding:em-adjust( .25em 0 .25em 1.7em );
       margin-right:9%;
       width:84%;
     }
@@ -56,7 +57,7 @@
       background:transparent repeat-x 0px -48px;
       border:solid #e02334;
       border-width:0 0 0 5px;
-      font-size:.75em;
+      // font-size:.75em;
       height:2.5em;
       padding-bottom:.25em;
       position:absolute;
@@ -74,8 +75,8 @@
     #input_search {
       background:transparent no-repeat 0px 0px;
       border:none;
-      height:1.25em;
-      padding:.125em 0 .125em 1.5em;
+      height:em-adjust( 1.25em );
+      padding:em-adjust( .125em 0 .125em 1.5em );
       margin-right:11%;
       width:82%;
     }
@@ -83,7 +84,7 @@
       background:#ca4019 repeat-x 0px -44px;
       border:0;
       color:#ffffff;
-      font-size:.75em;
+      // font-size:.75em;
       height:2em;
       padding-bottom:.25em;
       position:absolute;
