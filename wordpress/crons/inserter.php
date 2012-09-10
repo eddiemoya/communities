@@ -48,7 +48,7 @@
 
         $startTimeAfterFile = microtime(true);
 
-        $location = '/User/dasfisch/communities/wordpress';
+        $location = '/Users/dasfisch/communities/wordpress';
 
         require_once($location.'/wp-load.php');
 
@@ -70,11 +70,20 @@
                 continue;
             }
 
+//            echo '<pre>';
+//            var_dump($xml->user[0]);
+//            exit;
+
             $user_id = wp_insert_user(array(
                         'user_pass'		=> get_random_string('abcdefghijklmnopqrstuvwxyz0123456789', 10),
-                        'user_email'	=> $email,
-                        'user_login'	=> $username,
-                        'user_role'		=> $this->_default_role));
+                        'user_email'	=> $xml->user[0]->email,
+                        'user_login'	=> $xml->user[0]->screen_name,
+                        'user_nicename'	=> $xml->user[0]->screen_name,
+                        'display_name'	=> $xml->user[0]->screen_name,
+                        'first_name'	=> $xml->user[0]->first_name,
+                        'last_name'	    => $xml->user[0]->last_name,
+                        'user_role'		=> 'subscriber')
+                    );
 
             echo '<pre>';
             var_dump($user_id);
