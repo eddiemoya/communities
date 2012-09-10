@@ -98,7 +98,7 @@
 // }
 
 #content {
-  padding:1em ( $margin-width-pct / 2);
+  padding:em-adjust( 1em ) ( $margin-width-pct / 2);
 }
 
 .input_text {
