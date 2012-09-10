@@ -27,7 +27,7 @@
 <ol id="allComments">
 <?php
         foreach($comments as $comment) {
-            get_partial( 'parts/comment', array( "current_user" => $current_user, "comment" => $comment, "recursive" => true ) );
+            get_partial('parts/comment', array("current_user" => $current_user, "comment" => $comment, "recursive" => true));
         }
 ?>
 </ol>
