@@ -108,30 +108,41 @@ class Section_Front{
 		        return;
 
 		    $categories = $_POST['post_category'];
+		    $types = array(
+		    	'tax-archive' => !empty($_POST['widgetpress_post_type_none']),
+		    	'question' => !empty($_POST['widgetpress_post_type_question']),
+		    	'post' => !empty($_POST['widgetpress_post_type_post']),
+		    	'guide' => !empty($_POST['widgetpress_post_type_guide']),
+		    );
 
-		    self::rewrite_all_the_terms($_POST['post_category']);
+		    self::rewrite_all_the_terms($categories, array_filter($types));
 		}
 	}
  
 	/**
 	 *
 	 */
-	function rewrite_all_the_terms($new_categories){
+	function rewrite_all_the_terms($new_categories, $types){
 		global $wp_rewrite;
 		$categorized_sections = self::get_terms_by_post_type('category', 'section');
-
 		$rules = array();
-	    foreach((array)$categorized_sections as $cat){
-	
-	    	//echo "<pre>";print_r($cat);echo "</pre>";
-	    	$rules[$cat->taxonomy . '/' . $cat->slug .'/?$'] = 'index.php?posts_per_page=1&post_type='.$_POST['post_type'].'&category_name='.$cat->slug;
+		foreach((array)$types as $type => $value){
+			$type = ($type == 'tax-archive') ? '' : $type;
+			$rr_endpoint = (!empty($type)) ? "/{$type}" : '';
 
-	        // $rules[$cat_id] =array(
-	        // $cat->taxonomy . '/' . $cat->slug .'/?$/page/?([0-9]{1,})/?$' => 'index.php?posts_per_page=1&post_type='.$_POST['post_type'].'&category_name='.$cat->slug,
-	        // $cat->taxonomy . '/' . $cat->slug .'/?$' => 'index.php?posts_per_page=1&post_type='.$_POST['post_type'].'&category_name='.$cat->slug,
+		    foreach((array)$categorized_sections as $cat){
+		
+		    	//echo "<pre>";print_r($cat);echo "</pre>";
+		    	$rules[$cat->taxonomy . '/' . $cat->slug .$rr_endpoint.'/?$'] = 'index.php?posts_per_page=1&post_type='.$_POST['post_type'].'&category_name='.$cat->slug;
 
-	    }
-	    //echo "<pre>";print_r($rules);echo "</pre>";
+		        // $rules[$cat_id] =array(
+		        // $cat->taxonomy . '/' . $cat->slug .'/?$/page/?([0-9]{1,})/?$' => 'index.php?posts_per_page=1&post_type='.$_POST['post_type'].'&category_name='.$cat->slug,
+		        // $cat->taxonomy . '/' . $cat->slug .'/?$' => 'index.php?posts_per_page=1&post_type='.$_POST['post_type'].'&category_name='.$cat->slug,
+
+		    }
+		}
+	    // echo "<pre>";print_r($rules);echo "</pre>";
+	    // exit();
 	    // unset($rules[0]);
 	    update_option('section_rewrite_rules', $rules);
 
