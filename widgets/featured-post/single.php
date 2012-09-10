@@ -1,14 +1,9 @@
 <?php get_template_part('parts/header', 'widget') ;?>
 	<?php the_post(); ?>
     <?php if ((is_widget()->show_thumbnail && has_post_thumbnail()) || ($is_widget_override && has_post_thumbnail())) :
-        //$widget_span = (!$is_widget_override) ? is_widget()->span : "12";
-        //$widget_span = str_replace("span", "", $widget_span);
-        if (is_widget()->span > 6) :
-            $inner_span = "span12";
-        else:
-            $inner_span = "span6";
-        endif;
-        
+
+        $inner_span = (is_widget()->span > 6) ? "span12" : "span6";
+
         $post_thumbnail_id = get_post_thumbnail_id( $post_id );
         if ($post_thumbnail_id) :
             $thumbnail_src = wp_get_attachment_image_src($post_thumbnail_id, "large");
