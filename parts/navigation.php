@@ -37,7 +37,7 @@
                 <?php foreach($terms[$post_type] as $term) : ?>
                     <?php if($term->parent == 0 && $term->term_id != 1) :?>
                     <li>
-                        <a href="<?php echo esc_url( get_category_link($term->term_id) ); ?>?post_type=<?php echo $post_type; ?>">
+                        <a href="<?php echo esc_url( get_category_link($term->term_id) ).$post_type; ?>">
                             <?php echo $term->name; ?>
                         </a>
                     </li>
