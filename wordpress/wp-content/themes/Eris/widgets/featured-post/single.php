@@ -4,7 +4,7 @@
         //$widget_span = (!$is_widget_override) ? is_widget()->span : "12";
         //$widget_span = str_replace("span", "", $widget_span);
         if (is_widget()->span > 6) :
-            $inner_span = "span8";
+            $inner_span = "span12";
         else:
             $inner_span = "span6";
         endif;
