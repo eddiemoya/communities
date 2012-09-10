@@ -22,7 +22,7 @@
 
                     break;
                 case 'follow':
-                    $acts['follow']['text'] = 'follow';
+                    $acts['follow']['text'] = '';
                     $acts['follow']['myaction'] = '';
 
                     break;
