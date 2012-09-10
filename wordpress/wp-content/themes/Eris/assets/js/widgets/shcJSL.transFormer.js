@@ -68,18 +68,21 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 	var self = this;
 	transformer = form;
 	valid = 0;
-	
+
 	methods = function(target) {
 		if ($(target).attr("shc:gizmo:form") != undefined) {
-			options = eval('(' + $(target).attr("shc:gizmo:form") + ')');
-			
+
+
+
 			// Scoped private variables
 			var options;	// Form options from shc:gizmo:form
 			var fn = [];	// Functions to run for validation
-			
+
+            options = eval('(' + $(target).attr("shc:gizmo:form") + ')');
+
 			// Add element to the list of required elements
 			if (options.required && options.required == true) required[required.length] = target;
-			
+
 			// Check if the input has to follow a pattern
 			if (options.pattern) {
 				fn[fn.length] = function(options) {
@@ -171,8 +174,15 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				type: "POST",
 				url: window['ajaxdata']['ajaxurl']
 			}).success(function(data, status, xhr) {
-				(data == "true")? valid = true:valid = false;
+				if (data == "true"){ 
+					blunders.remove(this);
+					valid = true
+				} else {
+					blunders[blunders.length] = this;
+					valid = false;
+				}
 			}).error(function(xhr, status, message) {
+				blunders.remove(this);
 				valid = true;
 			})
 		}
@@ -193,7 +203,7 @@ shcJSL.methods.transFormer = function(target, options) {
 	var figs; 							// Configurations for the current form
 	var submitEval = {}; 		// Functions to run for testing the form submitting
 	var transformers = [];	// (Array) Array of all the forms that are being monitored by transFormer
-	
+
 	form = target;
 	
 	submitEval[form.id] = [];
@@ -208,10 +218,10 @@ shcJSL.methods.transFormer = function(target, options) {
 		}
 		else return true;
 	}
-	
+
 	transformers[form.id] = new $TransFormer(form);
 	submitEval[form.id][submitEval[form.id].length] = transformers[form.id].verify;
-		
+
 	figs = ($(form).attr("shc:gizmo:options") != undefined)? (((eval('(' + $(form).attr("shc:gizmo:options") + ')')).form)?(eval('(' + $(form).attr("shc:gizmo:options") + ')')).form:{}):{};
 	
 	if (figs.requireLogIn === true) {

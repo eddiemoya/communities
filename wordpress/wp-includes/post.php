@@ -64,6 +64,7 @@ function create_initial_post_types() {
 		'query_var' => false,
 		'show_in_nav_menus' => false,
 		'supports' => array( 'comments' ),
+		'has_archive' => true
 	) );
 
 	register_post_type( 'revision', array(
