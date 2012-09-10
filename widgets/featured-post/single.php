@@ -48,11 +48,11 @@
 
 
         <?php if (is_widget()->show_title || $is_widget_override) : ?>
-            <p class="content-headline">
+            <h6 class="content-headline">
                 <a href="<?php the_permalink(); ?>">
                     <?php the_title(); ?>
                 </a>
-            </p>
+            </h6>
         <?php endif; //is_widget->show_title ?>
 
 
