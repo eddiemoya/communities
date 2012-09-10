@@ -28,8 +28,11 @@
     </section>
 </li>
 <?php
-        }
-    }
+        } ?>
+        <section class="pagination">
+             <?php echo posts_nav_link(); ?>
+        </section>
+  <?php  }
 
     get_template_part('parts/footer', 'widget');
 
