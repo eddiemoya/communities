@@ -3,7 +3,6 @@
 
     echo 'Started validation at '.date('h:i:s M d, Y').'...'."\n";
 
-
     $base = '/Users/dasfisch/cron_results/';
 
     $badDataFile = $base.'bad_data.xml'; // List of xml elements that have failed
@@ -135,7 +134,7 @@
         if(isset($badData) && !empty($badData)) {
             // Create the XML with all data issues
             if(file_exists($badDataFile)) {
-                $xml = new SimpleXMLElement($badDataFile);
+                $xml = new SimpleXMLElement(file_get_contents($badDataFile));
             } else {
                 $xml = new SimpleXMLElement('<users/>');
             }
