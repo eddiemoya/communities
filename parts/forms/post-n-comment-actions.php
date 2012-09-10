@@ -88,7 +88,7 @@
     $nliUpvote = isset($acts['upvote']['nli_reset']) ? $acts['upvote']['nli_reset'] : '';
 ?>
 
-    <form class="actions clearfix" id="comment-<?php echo $id; ?>" method="post" action="">
+    <form class="actions clearfix" id="comment-actions-<?php echo $id; ?>" method="post" action="">
         <?php
             foreach($options as $option) {
                 switch($option) {
