@@ -39,6 +39,12 @@ get_currentuserinfo();
                                                     },
                                                     events: {
                                                         blur: {
+                                                            active: false
+                                                        },
+                                                        click: {
+                                                            active: true
+                                                        },
+                                                        focus: {
                                                             active: true
                                                         }
                                                     },
@@ -62,7 +68,7 @@ get_currentuserinfo();
 							</li>
 							<li class="clearfix">
 								<label for="category" class="required">Category</label>
-									<?php 
+                                <?php
 									wp_dropdown_categories(array(
 										'depth'=> 1,
 										'selected' => get_queried_object()->term_id,
@@ -72,11 +78,8 @@ get_currentuserinfo();
 										'name' => 'category',
 										'id' => 'category'
 									));
-									?>
-									
+                                ?>
 							</li>
-
-
 							<li class="clearfix">
 								<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Post</button>
 								<button type="submit" class="<?php echo theme_option("brand"); ?>_button azure">Cancel</button>
@@ -84,8 +87,8 @@ get_currentuserinfo();
 						</ul>
 					</div>
 				</form>
-                <div id="snInfo" class="hide">
-                    <p>Love it because you can't change it. This is how you will be known on the site.</p>
+                <div id="snInfo" class="info hide">
+                    <p class="top">Love it because you can't change it. This is how you will be known on the site.</p>
                     <p class="bold">Screen Name Guidelines</p>
                     <ul>
                         <li>2 - 18 characters</li>
