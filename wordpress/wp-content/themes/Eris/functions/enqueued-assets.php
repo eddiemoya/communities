@@ -37,6 +37,7 @@ function enqueue_scripts() {
         wp_register_script('tooltip', get_template_directory_uri() . '/assets/js/widgets/shcJSL.tooltip.js', array(), '1.0');
         wp_register_script('actions', get_template_directory_uri() . '/assets/js/widgets/shcJSL.actions.js', array(), '1.0');
         wp_register_script('transFormer', get_template_directory_uri() . '/assets/js/widgets/shcJSL.transFormer.js', array(), '1.0');
+        wp_register_script('flagger', get_template_directory_uri() . '/assets/js/widgets/shcJSL.flagger.js', array(), '1.0');
 				// NOT FOR PRODUCTION
 				//wp_register_script('debug', get_template_directory_uri() . '/assets/js/vendor/debug.js', array(), '1.0');
 
@@ -50,6 +51,7 @@ function enqueue_scripts() {
         wp_enqueue_script('tooltip');
         wp_enqueue_script('actions');
         wp_enqueue_script('transFormer');
+        wp_enqueue_script('flagger');
 
 		wp_localize_script('jquery', 'ajaxdata', $data);		
         

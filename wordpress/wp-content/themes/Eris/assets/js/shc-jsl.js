@@ -289,7 +289,6 @@ shcJSL.formDataToJSON = function(form) {
 		return json;
 	}
 	
-	console.log(jason);
 	return jason;
 }
 

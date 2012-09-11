@@ -1,7 +1,7 @@
 <?php get_template_part('parts/header', 'widget') ;?>
 	<?php the_post(); ?>
     <?php if ((is_widget()->show_thumbnail && has_post_thumbnail()) || ($is_widget_override && has_post_thumbnail())) :
-        $widget_span = is_widget()->span;
+        $widget_span = (!$is_widget_override) ? is_widget()->span : "12";
         $widget_span = str_replace("span", "", $widget_span);
         if ($widget_span <= 6) :
             $featured_img_span = "span12";
@@ -10,10 +10,17 @@
             $featured_img_span = "span6";
             $featured_post_span = "span6";
         endif;
-    ?>
-        <div class="featured-image <?php echo $featured_img_span; ?>">
-            <?php the_post_thumbnail(); ?>
-        </div>
+        
+        $post_thumbnail_id = get_post_thumbnail_id( $post_id );
+        if ($post_thumbnail_id) :
+            $thumbnail_src = wp_get_attachment_image_src($post_thumbnail_id, "large");
+        ?>
+            <div class="featured-image <?php echo $featured_img_span; ?>">
+                <img src="<?php echo $thumbnail_src[0]; ?>" alt="<?php echo get_the_title(); ?>" />
+            </div>
+        <?php
+        endif;
+        ?>
     <?php else :?>
         <?php $featured_post_span = 'span12';?>
     <?php endif; ?>
@@ -67,12 +74,15 @@
         <?php endif; //is_widget_show_content ?>
 
         <?php if (is_widget()->show_tags || $is_widget_override) : ?>
-            <span class="content-category">
-                <?php $tags = get_the_tags(); foreach((object)$tags as $tag) : ?>
-                <a href="<?php echo get_tag_link($tag->term_id); ?>" title="<?php echo $tag->name ?>">
-                    <?php echo $tag->name ?>
-                </a>
-                <?php endforeach; ?>
+            <span class="content-tags">
+                <?php 
+                    $tags = get_the_tags(); 
+                    foreach((object)$tags as $tag) {
+                        $output[] = '<a href="' . get_tag_link($tag->term_id) . '" title="' . $tag->name . '"> ' . $tag->name . '</a>';
+                    }
+                    if (count($output) > 0)
+                        echo "Tags: " . implode(', ', $output);
+                ?>
             </span>
         <?php endif; ?>
 
@@ -81,7 +91,7 @@
             if ( is_widget()->share_style == 'long' ) { $share_options["version"] = 'long'; }
         ?>
         <section class="post-actions">
-            <?php get_partial( 'parts/share', $share_options ); ?>
+            <?php get_partial( 'parts/share', array( "version" => is_widget()->share_style, "url" => get_post_permalink( $post->ID ) ) ); ?>
         </section>
 
     </div> <!-- featured-post -->

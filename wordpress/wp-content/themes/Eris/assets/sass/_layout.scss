@@ -44,7 +44,7 @@
   @for $s from 1 through length( $column-bases ) {
     $span:            nth( $column-bases, $s );
     $proportionate:   ( $span / $column-count ) * $container;
-    .span#{$container} > .span#{$span} {
+    .span#{$container} .span#{$span} {
       width: grid-width( $proportionate, $margin );
       margin-left: $margin;
     }
