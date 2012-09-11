@@ -124,6 +124,11 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
     function _openTooltip (event) {
         _thisTooltipForm.tooltip._openTooltip();
 
+        console.log("TOOLTIP");
+        console.log(_thisTooltipForm.tooltip.tooltip.element)
+
+        shcJSL.gizmos.activate(null, _thisTooltipForm.tooltip.tooltip.element);
+
         _thisTooltipForm._preventDefault(true, event);
     };
 
@@ -142,15 +147,15 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
         });
 
         if(_thisTooltipForm.options.form.isAjax === true) {
-            jQuery.post(
-                _thisTooltipForm.options.form.attributes.action,
-                data,
-                function(data) {
-                    jQuery(_thisTooltipForm.tooltip.tooltip.element).children('.middle').children('form').children('textarea').val('');
-
-                    _thisTooltipForm._closeTooltip();
-                }
-            );
+//            jQuery.post(
+//                _thisTooltipForm.options.form.attributes.action,
+//                data,
+//                function(data) {
+//                    jQuery(_thisTooltipForm.tooltip.tooltip.element).children('.middle').children('form').children('textarea').val('');
+//
+//                    _thisTooltipForm._closeTooltip();
+//                }
+//            );
         }
 
         _thisTooltipForm._preventDefault(true, event);

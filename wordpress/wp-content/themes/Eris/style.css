@@ -109,6 +109,7 @@ legend {
 
 .menu-sears-ribbon-container, .menu-kmart-ribbon-container {
   background-color: #e7e7e7;
+  font-size: 133.333%;
   height: 1.6em;
   width: 100%; }
   .menu-sears-ribbon-container > ul, .menu-kmart-ribbon-container > ul {
@@ -167,16 +168,17 @@ legend {
  */
 #header {
   margin: 0 auto;
-  padding: 1.3125em 0 .8em;
+  padding: 1.75em 0 1.066em;
   width: 960px; }
   #header #logo {
     display: block;
-    margin-top: .75em; }
+    margin-top: 1em; }
   #header form {
-    margin-top: .75em;
+    margin-top: 1em;
     position: relative; }
   #header aside > ul > li {
-    margin-bottom: .35em; }
+    margin-bottom: 0.466em;
+    padding: .165em 0; }
   #header aside ul li {
     text-align: right; }
   #header aside ul li ul {
@@ -184,7 +186,6 @@ legend {
     #header aside ul li ul li {
       border-left: solid 1px #666666;
       display: inline-block;
-      font-size: .75em;
       padding: 0 .4em 0 .8em;
       text-align: center; }
       #header aside ul li ul li img {
@@ -198,15 +199,14 @@ legend {
   #header.kmart form #input_search {
     background: transparent no-repeat 0px 0px;
     border: none;
-    height: 1.25em;
-    padding: .25em 0 .25em 1.7em;
+    height: 1.666em;
+    padding: 0.333em 0 0.333em 2.266em;
     margin-right: 9%;
     width: 84%; }
   #header.kmart form #button_search {
     background: transparent repeat-x 0px -48px;
     border: solid #e02334;
     border-width: 0 0 0 5px;
-    font-size: .75em;
     height: 2.5em;
     padding-bottom: .25em;
     position: absolute;
@@ -220,15 +220,14 @@ legend {
   #header.sears form #input_search {
     background: transparent no-repeat 0px 0px;
     border: none;
-    height: 1.25em;
-    padding: .125em 0 .125em 1.5em;
+    height: 1.666em;
+    padding: 0.166em 0 0.166em 2em;
     margin-right: 11%;
     width: 82%; }
   #header.sears form #button_search {
     background: #ca4019 repeat-x 0px -44px;
     border: 0;
     color: #ffffff;
-    font-size: .75em;
     height: 2em;
     padding-bottom: .25em;
     position: absolute;
@@ -238,10 +237,9 @@ legend {
     width: 3.33em; }
 
 #footer {
-  padding-bottom: 1.5em; }
+  padding-bottom: 2em; }
 
 ul.footer_anterior {
-  font-size: 75%;
   margin-top: 1em; }
   ul.footer_anterior > * {
     width: 8.102%;
@@ -317,7 +315,7 @@ ul.footer_anterior {
     background-position: -240px top; }
 
 .kmart .footer_anterior p {
-  font-size: 62.5%;
+  font-size: 83.333%;
   margin-top: .5em;
   text-align: center; }
 
@@ -537,7 +535,7 @@ ul.footer_anterior {
     height: 2.1em; }
 
 #content {
-  padding: 1em 1.063829787234043%; }
+  padding: 1.333em 1.063829787234043%; }
 
 .input_text {
   border: solid 1px #cccccc; }
@@ -551,6 +549,9 @@ html, body {
   font-family: Helvetica, Arial, Verdana, sans-serif;
   line-height: 1.4;
   color: 1; }
+
+body {
+  font-size: 75%; }
 
 .kmart a {
   color: #980017;
@@ -578,7 +579,7 @@ html, body {
   display: none; }
 
 .bullets {
-  margin: 1em 0;
+  margin: 1.333em 0;
   padding: 0 0 0 40px; }
 
 ol.bullets {
@@ -587,7 +588,7 @@ ol.bullets {
 ul.bullets {
   list-style-type: disc; }
 
-.bold, .member .info h4, .member .info address, .badge h4, .badge address, .crest h4, .crest h5, .crest address, .post hgroup, .content-container .content-header, .content-container .content-body .content-details .content-category, .profile .answers-toggle, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, #allComments .comment .responseTo, .sears .post-n-comments h2, .kmart .post-n-comments h2 {
+.bold, .member .info h4, .member .info address, .crest h4, .crest h5, .crest address, .post hgroup, .content-container .content-headline, .content-container .content-header, .content-container .content-body .content-details .content-category, .profile .answers-toggle, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, #allComments .comment .responseTo, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header {
   font-weight: 700; }
 
 .faint, .member .info h5, .member .info p, .post .content-date, .excerpt, .content-container .content-header, .recent-activity time {
@@ -622,34 +623,9 @@ ul.bullets {
   background-image: url(/wp-content/themes/Eris/assets/img/kmart/sprite_global.png); }
 
 .member .info {
-  font-size: 75%;
   word-wrap: break-word; }
   .member .info address {
     display: block; }
-
-.badge img {
-  display: block;
-  margin: 0 auto; }
-.badge h4 {
-  padding: .5em 0;
-  word-wrap: break-word;
-  letter-spacing: -0.05em; }
-.badge h4, .badge address {
-  font-size: 75%; }
-.badge.labeled h4 {
-  background: #bcdaf3 url("/wp-content/themes/Eris/assets/img/sprite-user.png") repeat-x left bottom;
-  text-align: center;
-  -webkit-border-radius: 0 0 10px 10px;
-  -moz-border-radius: 0 0 10px 10px;
-  -ms-border-radius: 0 0 10px 10px;
-  -o-border-radius: 0 0 10px 10px;
-  border-radius: 0 0 10px 10px; }
-.badge.labeled h4, .badge.labeled h4 a {
-  color: white; }
-.badge.labeled .badge-tail {
-  background: url("/wp-content/themes/Eris/assets/img/sprite-user.png") no-repeat center top;
-  height: 10px;
-  overflow: hidden; }
 
 .crest {
   word-wrap: break-word; }
@@ -659,8 +635,6 @@ ul.bullets {
   .crest h4 {
     padding: .5em 0;
     letter-spacing: -0.05em; }
-  .crest h4, .crest h5, .crest address {
-    font-size: 12px; }
   .crest.labeled h4 {
     background: #bcdaf3 url("/wp-content/themes/Eris/assets/img/sprite-user.png") repeat-x left bottom;
     text-align: center;
@@ -677,25 +651,21 @@ ul.bullets {
     height: 10px;
     overflow: hidden; }
 
-.span4 .span4 .badge h4 {
-  font-size: 10px; }
-
 .span4 .span4 .crest h4 {
-  font-size: 10px; }
+  font-size: 83.333%; }
 
 .post .content-date {
   display: block;
-  float: right;
-  font-size: .6875em; }
+  float: right; }
 .post h3 {
-  font-size: 90%; }
+  font-size: 116.666%; }
 .post h2 {
   margin-top: .5em; }
 .post article {
   margin-top: .5em; }
 .post .post-actions {
-  margin-top: .5em;
-  font-size: 81.25%; }
+  font-size: 108.333%;
+  margin-top: .5em; }
 
 /*
  * GLOBAL ELEMENTS
@@ -704,13 +674,12 @@ ul.bullets {
  * form elements
  */
 .input_text {
-  padding: .3125em .01em;
+  padding: 0.416em 0.013em;
   border: solid 1px #cccccc;
-  height: 1.25em; }
+  height: 1.666em; }
 
 .required:after, .optional:after {
-  color: #999999;
-  font-size: .7857em; }
+  color: #999999; }
 
 .required:after {
   content: " Required"; }
@@ -719,10 +688,10 @@ ul.bullets {
   content: " Optional"; }
 
 .form-fields > li {
-  margin-bottom: 1.35em; }
+  margin-bottom: 1.8em; }
 .form-fields label {
   display: block;
-  font-size: .875em;
+  font-size: 116.666%;
   font-weight: bold; }
 
 .sears_button, .kmart_button {
@@ -731,7 +700,7 @@ ul.bullets {
   border-width: 0px 1px;
   color: white;
   cursor: pointer;
-  font-size: .875em;
+  font-size: 116.666%;
   font-weight: bold;
   height: 32px;
   padding: 0em 1.5em;
@@ -772,7 +741,7 @@ ul.bullets {
   float: left;
   font-weight: bold;
   margin: 10px 0px 0px;
-  padding: .25em 1em;
+  padding: 0.333em 1.333em;
   position: relative;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -792,33 +761,33 @@ ul.bullets {
   color: #ff0000; }
 
 .content-container .content-headline {
-  font-size: 1.25em;
-  font-weight: bold;
+  font-size: 150%;
   margin: 0; }
 
 .content-container .content-header {
   border: solid #dddcdc;
   border-width: 1px 0px;
-  padding: .625em; }
+  padding: 0.833em; }
   .content-container .content-header h3 {
-    font-size: 1.25em; }
+    font-size: 150%; }
   .content-container .content-header h4 {
-    font-size: .6875em; }
+    font-size: 91.666%; }
+
+.content-date {
+  color: #999999;
+  font-size: 91.666%; }
 
 .content-container .content-body {
-  padding: .625em; }
+  padding: 0.833em; }
   .content-container .content-body .content-details {
-    padding-bottom: .625em; }
+    padding-bottom: 0.833em; }
     .content-container .content-body .content-details .content-category {
-      font-size: .8125em;
+      font-size: 108.333%;
       float: left; }
-    .content-container .content-body .content-details .content-date {
-      color: 1;
-      font-size: .6875em;
-      float: right; }
+  .content-container .content-body .content-date {
+    float: right; }
   .content-container .content-body .content-comments {
     color: #333333;
-    font-size: .75em;
     margin-top: .8125em; }
     .content-container .content-body .content-comments li {
       border-left: solid 1px #999999;
@@ -831,7 +800,7 @@ ul.bullets {
 
 .content-body p {
   color: #333333;
-  font-size: .8125em;
+  font-size: 108.333%;
   line-height: 1.7em;
   margin-bottom: 1em; }
 
@@ -839,69 +808,69 @@ ul.bullets {
   border-left: 0;
   float: none; }
 
-.featured-members .member .content-comments {
-  width: 100%; }
-  .featured-members .member .content-comments li {
-    float: none;
-    border: 0; }
-.featured-members .member .stats {
-  float: left; }
-  .featured-members .member .stats li {
-    font-size: 12px; }
-  .featured-members .member .stats p {
-    margin-bottom: .3em; }
-.featured-members .member .info ul {
-  margin: .3em 0; }
-
-.span3 .member, .span4 .member, .span6 .member {
-  margin-top: 1em; }
-  .span3 .member > *, .span4 .member > *, .span6 .member > * {
-    width: 28.571%;
-    float: left; }
-  .span3 .member > * + *, .span4 .member > * + *, .span6 .member > * + * {
-    width: 64.287%;
-    float: left;
-    margin-left: 7.142%; }
-  .span3 .member:first-child, .span4 .member:first-child, .span6 .member:first-child {
-    margin-top: 0; }
-
-.span8 .featured-members .content-body, .span9 .featured-members .content-body, .span12 .featured-members .content-body {
+.featured-members {
   *zoom: 1; }
-  .span8 .featured-members .content-body > *, .span9 .featured-members .content-body > *, .span12 .featured-members .content-body > * {
+  .featured-members .content-body > * {
     width: 29.9%;
     float: left;
     padding: 0 1.6%; }
-    .span8 .featured-members .content-body > *:first-child, .span9 .featured-members .content-body > *:first-child, .span12 .featured-members .content-body > *:first-child {
+    .featured-members .content-body > *:first-child {
       padding-left: 0; }
-  .span8 .featured-members .content-body .member, .span9 .featured-members .content-body .member, .span12 .featured-members .content-body .member {
-    border-left: 1px solid #cccccc; }
-    .span8 .featured-members .content-body .member:first-child, .span9 .featured-members .content-body .member:first-child, .span12 .featured-members .content-body .member:first-child {
-      border-left: 0; }
-    .span8 .featured-members .content-body .member > *, .span9 .featured-members .content-body .member > *, .span12 .featured-members .content-body .member > * {
-      width: 44.444%;
-      float: left; }
-    .span8 .featured-members .content-body .member > * + *, .span9 .featured-members .content-body .member > * + *, .span12 .featured-members .content-body .member > * + * {
-      width: 44.44499999999999%;
-      float: left;
-      margin-left: 11.111%; }
-  .span8 .featured-members .content-body:after, .span9 .featured-members .content-body:after, .span12 .featured-members .content-body:after {
+  .featured-members:after {
     content: "\0020";
     display: block;
     height: 0;
     clear: both;
     overflow: hidden;
     visibility: hidden; }
-  .span8 .featured-members .content-body .stats, .span9 .featured-members .content-body .stats, .span12 .featured-members .content-body .stats {
-    float: none;
-    clear: left;
-    width: 100%;
-    margin-left: 0; }
+  .featured-members .member {
+    border-left: 1px solid #cccccc; }
+    .featured-members .member:first-child {
+      border-left: 0; }
+    .featured-members .member > * {
+      width: 44.444%;
+      float: left; }
+    .featured-members .member > * + * {
+      width: 44.44499999999999%;
+      float: left;
+      margin-left: 11.111%; }
+    .featured-members .member .content-comments {
+      width: 100%; }
+      .featured-members .member .content-comments li {
+        float: none;
+        border: 0; }
+    .featured-members .member .stats {
+      clear: left;
+      width: 100%;
+      margin-left: 0; }
+      .featured-members .member .stats p {
+        margin-bottom: 0.399em; }
+    .featured-members .member .info ul {
+      margin: 0.399em 0; }
+
+.span3 .featured-members .content-body .member, .span4 .featured-members .content-body .member, .span6 .featured-members .content-body .member {
+  width: 100%;
+  float: none;
+  padding: 0;
+  margin-top: 1em;
+  border-left: 0; }
+  .span3 .featured-members .content-body .member > *, .span4 .featured-members .content-body .member > *, .span6 .featured-members .content-body .member > * {
+    width: 28.571%;
+    float: left; }
+  .span3 .featured-members .content-body .member > * + *, .span4 .featured-members .content-body .member > * + *, .span6 .featured-members .content-body .member > * + * {
+    width: 64.287%;
+    float: left;
+    margin-left: 7.142%; }
+  .span3 .featured-members .content-body .member:first-child, .span4 .featured-members .content-body .member:first-child, .span6 .featured-members .content-body .member:first-child {
+    margin-top: 0; }
+  .span3 .featured-members .content-body .member .stats, .span4 .featured-members .content-body .member .stats, .span6 .featured-members .content-body .member .stats {
+    clear: none; }
 
 .featured-question.content-container .category-image {
   float: left;
-  height: 6.25em;
-  margin: 0 .625em .625em 0;
-  width: 6.25em; }
+  height: 8.333em;
+  margin: 0 0.833em 0.833em 0;
+  width: 8.333em; }
 .featured-question.content-container.columns .content-body > * {
   float: left;
   width: 48.387%; }
@@ -913,7 +882,7 @@ ul.bullets {
 .featured-question.content-container.columns .content-date {
   float: none; }
 .featured-question.content-container.columns .content-headline {
-  font-size: 90%; }
+  font-size: 108.333%; }
 
 .span4 .featured-question.content-container.columns .content-body > *, .span3 .featured-question.content-container.columns .content-body > * {
   float: none;
@@ -939,7 +908,7 @@ ul.bullets {
     margin-left: auto;
     margin-right: auto; }
   .result-list .lone-result {
-    padding-top: .75em;
+    padding-top: 1.5em;
     margin-top: .5em;
     border-top: 1px solid #cccccc; }
     .result-list .lone-result:first-child {
@@ -947,19 +916,16 @@ ul.bullets {
       border-top: 0; }
   .result-list .content-header {
     border-top: 0;
-    font-size: 75%;
     padding-top: 1.5em;
     padding-bottom: 1.5em; }
+  .result-list .content-headline {
+    font-size: 116.666%;
+    margin: 1em 0; }
 
-.member .info .content-comments {
-  font-size: 100%; }
-  .member .info .content-comments li {
-    float: none;
-    border: 0;
-    margin-top: 0; }
-
-.content-container.featured-post .content-excerpt, .content-container.featured-post .content-byline, .content-container.featured-post .content-tags, .content-container.featured-guide .content-excerpt, .content-container.featured-guide .content-byline, .content-container.featured-guide .content-tags {
-  font-size: 0.75em; }
+.member .info .content-comments li {
+  float: none;
+  border: 0;
+  margin-top: 0; }
 
 .span4 .content-container.featured-post .span6 {
   width: 100%;
@@ -970,7 +936,6 @@ ul.bullets {
   border-top: 1px solid #cccccc;
   padding-top: .75em;
   padding-bottom: .75em;
-  font-size: 75%;
   line-height: 1.7; }
   .recent-activity li:first-child {
     margin-top: 0;
@@ -990,7 +955,7 @@ ul.bullets {
   .recent-activity .excerpt:after {
     content: "\201D"; }
 .recent-activity .category {
-  font-size: 90%;
+  font-size: 91.666%;
   padding-top: .2em; }
 
 .span3 .recent-activity .excerpt, .span4 .recent-activity .excerpt, .span6 .recent-activity .excerpt {
@@ -1001,7 +966,7 @@ ul.bullets {
  * POST A QUESTION
  */
 .content-container.post-your-question form {
-  margin-top: .75em; }
+  margin-top: 1em; }
   .content-container.post-your-question form .state_post-your-question .input_text {
     width: 83%; }
   .content-container.post-your-question form .state_post-question-details .input_text {
@@ -1009,11 +974,11 @@ ul.bullets {
   .content-container.post-your-question form .state_post-question-details .input_textarea {
     width: 98%; }
   .content-container.post-your-question form .state_confirm-post .confirmation {
-    padding: .625em; }
+    padding: 0.833em; }
   .content-container.post-your-question form .state_confirm-post .content-headline {
     color: #666666;
-    font-size: 1.25em;
-    margin-bottom: .30em; }
+    font-size: 1.666em;
+    margin-bottom: 0.399em; }
 
 /*
  * LOGIN/REGISTER/FORGOT PASSWORD
@@ -1030,7 +995,7 @@ ul.bullets {
 .form_login label, .form_register label {
   text-align: right; }
 .form_login .forgot, .form_register .forgot {
-  font-size: .6875em; }
+  font-size: 91.666%; }
 .form_login .form-fields > li p, .form_register .form-fields > li p {
   margin-bottom: 0; }
 
@@ -1043,7 +1008,7 @@ fieldset#use_your_account_from {
 .login_options {
   text-align: center;
   line-height: 2.5;
-  width: 15em;
+  width: 20em;
   margin: 0 auto; }
   .login_options a {
     display: inline-block;
@@ -1052,7 +1017,7 @@ fieldset#use_your_account_from {
     background: url("/wp-content/themes/Eris/assets/img/sprite-social.png");
     background-repeat: no-repeat;
     text-indent: -9999em;
-    margin-left: 1.3em; }
+    margin-left: 1.733em; }
     .login_options a:first-child, .login_options a:first-child + a, .login_options a:first-child + a + a {
       margin-left: 0; }
   .login_options .facebook {
@@ -1075,15 +1040,12 @@ fieldset#use_your_account_from {
   .login_options .openid {
     background-position: -525px top; }
 
-.widget_communities_menu_widget .subnav-items {
-  font-size: .80em; }
-  .widget_communities_menu_widget .subnav-items .menu-item {
-    padding: 6px 0; }
-.widget_communities_menu_widget .subcat-selector-container {
-  font-size: .75em;
+.communities_menu_widget .subnav-items li {
+  padding: 6px 0; }
+.communities_menu_widget .subcat-selector-container {
   margin-top: 15px;
   color: #666666; }
-  .widget_communities_menu_widget .subcat-selector-container select {
+  .communities_menu_widget .subcat-selector-container select {
     margin-left: 10px;
     color: black; }
 
@@ -1095,10 +1057,10 @@ fieldset#use_your_account_from {
     float: left;
     min-width: 23.404255319148938%;
     margin-left: 2.127659574468085%;
+    font-size: 108.333%;
     border: solid #cccccc;
     border-width: 1px 1px 0 1px;
     text-align: center;
-    font-size: 75%;
     -webkit-border-radius: 5px 5px 0 0;
     -moz-border-radius: 5px 5px 0 0;
     -ms-border-radius: 5px 5px 0 0;
@@ -1127,7 +1089,7 @@ fieldset#use_your_account_from {
   .profile nav.bar li {
     float: left;
     margin-left: 2.127659574468085%;
-    font-size: 93.75%;
+    font-size: 125%;
     padding: .6em .5em; }
   .profile nav.bar li:first-child {
     margin-left: 0; }
@@ -1149,7 +1111,7 @@ fieldset#use_your_account_from {
     float: left;
     padding: 1em 0;
     border-top: 1px solid #cccccc;
-    font-size: 81.25%; }
+    font-size: 108.333%; }
   .profile .personal_info dt {
     width: 30%;
     margin-left: 2%; }
@@ -1158,12 +1120,12 @@ fieldset#use_your_account_from {
   .profile .personal_info dd {
     width: 64%;
     padding-left: 2%; }
-  .profile .personal_info .info h4 {
-    margin-top: 1em; }
+  .profile .personal_info .info {
+    font-size: 133.333%; }
+    .profile .personal_info .info h4 {
+      margin-top: 1em; }
   .profile .personal_info .badge, .profile .personal_info .crest {
     text-align: center; }
-    .profile .personal_info .badge a, .profile .personal_info .crest a {
-      font-size: 75%; }
   .profile .personal_info .vitals {
     margin-top: 1em;
     background: #f2f2f2; }
@@ -1173,7 +1135,6 @@ fieldset#use_your_account_from {
   margin: .5em; }
 .profile .upload-photo input[type="file"] {
   width: 100%;
-  font-size: 12px;
   text-align: right; }
 .profile .no-activity {
   margin: 2em; }
@@ -1189,15 +1150,15 @@ fieldset#use_your_account_from {
   float: left;
   clear: both; }
   .content-body.content-list .content-item .post-title {
-    line-height: 1.2em; }
+    line-height: 1.599em; }
   .content-body.content-list .content-item .byline, .content-body.content-list .content-item .comments-count, .content-body.content-list .content-item .post-date {
-    font-size: .7em;
-    line-height: 1.4em;
+    font-size: 91.666%;
+    line-height: 1.866em;
     color: #999; }
   .content-body.content-list .content-item p {
     margin-bottom: 0; }
 .content-body.content-list .more-link {
-  font-size: .8em;
+  font-size: 1.066em;
   margin-top: 15px;
   float: left;
   clear: both; }
@@ -1208,17 +1169,16 @@ fieldset#use_your_account_from {
     font-weight: bold;
     margin-bottom: 4px; }
   .content-container.questionlist .content-body.content-list .content-item .addthis.dropmenu {
-    padding-top: 3px;
-    font-size: .75em; }
+    padding-top: 3px; }
     .content-container.questionlist .content-body.content-list .content-item .addthis.dropmenu .sharebutton {
       padding: 0; }
 
 .tooltip {
   display: none;
   position: absolute;
-  left: 12em;
-  width: 200px;
-  z-index: 1000; }
+  left: 16em;
+  width: 250px;
+  z-index: 1000003; }
   .tooltip .arrow {
     left: -10px;
     position: absolute; }
@@ -1272,19 +1232,21 @@ fieldset#use_your_account_from {
   margin-bottom: 20px; }
   .commentForm .leaveComment {
     float: right;
-    cursor: pointer; }
+    cursor: pointer;
+    margin: 1em 0 .5em;
+    font-size: 116.666%; }
     .commentForm .leaveComment .smaller {
       bottom: 2px;
-      font-size: 8px;
+      font-size: 66.666%;
       position: relative; }
 
 .comments-header {
   margin-bottom: 1em; }
-  .comments-header h3 {
-    font-size: 112.5%; }
   .comments-header h4 {
     margin-left: 2em;
-    color: black; }
+    color: black;
+    font-size: 83.333%;
+    font-weight: normal; }
   .comments-header > * {
     display: inline-block; }
 
@@ -1297,7 +1259,7 @@ fieldset#use_your_account_from {
   border: 1px solid #d6d6d6;
   border-bottom: 0; }
   #allComments .comment {
-    padding: .75em 2%;
+    padding: 1em 2%;
     background: white;
     border-bottom: 1px solid #d6d6d6;
     -webkit-border-radius: 4px;
@@ -1306,10 +1268,11 @@ fieldset#use_your_account_from {
     -o-border-radius: 4px;
     border-radius: 4px; }
     #allComments .comment time {
-      font-size: 13px; }
+      font-size: 91.666%; }
     #allComments .comment article {
-      font-size: 13px;
-      margin: 1em 0; }
+      font-size: 108.333%;
+      margin: 1em 0;
+      word-wrap: break-word; }
     #allComments .comment .responseTo {
       margin: 10px 0 0 0; }
     #allComments .comment textarea {
@@ -1333,7 +1296,7 @@ fieldset#use_your_account_from {
   background: #f2f2f2; }
 
 .actions {
-  margin: .5em 0; }
+  margin: 3em 0.5em 0; }
   .actions button {
     cursor: pointer;
     color: #4e74a3;
@@ -1345,7 +1308,7 @@ fieldset#use_your_account_from {
     text-indent: -999em;
     width: 2em;
     margin-left: 1em;
-    font-size: 12px;
+    padding: .33em;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
@@ -1398,7 +1361,8 @@ button.follow {
   width: auto;
   text-indent: 0em;
   background: none;
-  margin-left: 0; }
+  margin-left: 0;
+  margin-right: 1em; }
 
 .follow.active {
   background-color: #4E74A3;
@@ -1407,7 +1371,7 @@ button.follow {
 .metainfo {
   display: block;
   float: right;
-  font-size: 13px;
+  font-size: 108.333%;
   position: relative;
   top: 2px;
   margin-left: .5em; }
@@ -1424,9 +1388,9 @@ button.follow {
   padding: 1em 0; }
   .breadcrumb li {
     float: left;
-    font-size: .8125em;
+    font-size: 108.333%;
     font-weight: bold;
-    padding-right: .375em; }
+    padding-right: 0.5em; }
   .breadcrumb li:before {
     content: " > "; }
   .breadcrumb li:first-child:before {
@@ -1507,7 +1471,6 @@ button.follow {
   -o-border-radius: 5px;
   border-radius: 5px;
   border-left: 1px solid #cccccc;
-  font-size: 75%;
   background-repeat: repeat-x; }
   .sears #header_nav.dropmenu ul, .kmart #header_nav.dropmenu ul {
     background-repeat: repeat-x; }
@@ -1519,8 +1482,8 @@ button.follow {
     padding: 1px 0; }
     .sears #header_nav.dropmenu li a, .kmart #header_nav.dropmenu li a {
       border-right: 1px solid white;
-      padding-top: .5em;
-      padding-bottom: .5em; }
+      padding-top: .66em;
+      padding-bottom: .66em; }
       .sears #header_nav.dropmenu li a span, .kmart #header_nav.dropmenu li a span {
         background-repeat: no-repeat;
         padding-right: 9px; }
@@ -1568,8 +1531,8 @@ button.follow {
     background: red; }
 
 #footer_nav.dropmenu li a {
-  padding-top: .5em;
-  padding-bottom: .5em; }
+  padding-top: .66em;
+  padding-bottom: .66em; }
   #footer_nav.dropmenu li a span {
     background-repeat: no-repeat;
     padding-right: 16px; }
@@ -1582,7 +1545,6 @@ button.follow {
 
 .sears #footer_nav.dropmenu {
   background-repeat: repeat-x;
-  font-size: 75%;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -1619,7 +1581,7 @@ button.follow {
     border-bottom: 0; }
     .sears #footer_nav.dropmenu ul li {
       width: 100%;
-      font-size: 90%;
+      font-size: 91.666%;
       border-left: 0; }
       .sears #footer_nav.dropmenu ul li:hover {
         background: none; }
@@ -1637,7 +1599,7 @@ button.follow {
   .kmart #footer_nav.dropmenu li {
     width: 19.914893617021274%;
     border-left: 1px solid white;
-    font-size: 87.5%;
+    font-size: 116.666%;
     font-family: "Trebuchet MS", Helvetica, Arial, Verdana, sans-serif; }
     .kmart #footer_nav.dropmenu li:hover {
       background: #7c0505; }
@@ -1657,7 +1619,6 @@ button.follow {
     border-bottom: 0; }
     .kmart #footer_nav.dropmenu ul li {
       width: 100%;
-      font-size: 75%;
       border-left: 0; }
       .kmart #footer_nav.dropmenu ul li:hover {
         background: none; }
@@ -1709,7 +1670,7 @@ button.follow {
 
 #moodle_window {
   background: rgba(143, 199, 252, 0.3);
-  padding: .75em;
+  padding: 1em;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
@@ -1717,8 +1678,8 @@ button.follow {
   border-radius: 20px; }
   #moodle_window .loading {
     height: 100%;
-    min-height: 3em;
-    min-width: 3em;
+    min-height: 4em;
+    min-width: 4em;
     text-align: center;
     width: 100%; }
 
@@ -1767,15 +1728,9 @@ button.follow {
   width: 400px;
   padding: 20px; }
 
-.sears .post-n-comments h2, .sears .leaveComment {
-  color: #067bb5; }
-
-.kmart .post-n-comments h2, .kmart .leaveComment {
-  color: #980017; }
-
 .sears .post-n-comments h2, .kmart .post-n-comments h2 {
-  font-size: 112.5%;
-  margin: .5em 0; }
+  font-size: 116.666%;
+  margin: 1.25em 0; }
 
 .section-header {
   padding: .5em;
@@ -1785,20 +1740,19 @@ button.follow {
 .post-n-comments {
   color: #666; }
   .post-n-comments header {
-    margin-bottom: 1em; }
+    margin-bottom: 1em;
+    font-size: 166.666%; }
     .post-n-comments header + .span2.badge, .post-n-comments header + .span2.crest {
       margin-left: 0; }
   .post-n-comments .date {
-    color: #ccc;
-    float: right;
-    font-size: 14px; }
+    float: right; }
   .post-n-comments a.category {
     display: block; }
   .post-n-comments .content h2 {
-    font-size: 24px;
+    font-size: 200%;
     margin-bottom: 10px; }
   .post-n-comments .content p {
-    font-size: 14px;
+    font-size: 116.666%;
     margin-bottom: 25px; }
   .post-n-comments textarea {
     -webkit-border-radius: 4px;
@@ -1893,13 +1847,13 @@ button.follow {
   float: left; }
 
 .addthis.dropmenu li {
-  -webkit-border-radius: 5px 5px 0px 0px;
-  -moz-border-radius: 5px 5px 0px 0px;
-  -ms-border-radius: 5px 5px 0px 0px;
-  -o-border-radius: 5px 5px 0px 0px;
-  border-radius: 5px 5px 0px 0px; }
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px; }
   .addthis.dropmenu li:hover {
-    background-color: #eee; }
+    background-color: #fff; }
   .addthis.dropmenu li a {
     display: inline; }
   .addthis.dropmenu li ul li {
@@ -1913,8 +1867,10 @@ button.follow {
     .addthis.dropmenu li ul li a {
       padding-left: .2em; }
 .addthis.dropmenu .sharebutton {
-  padding: 6px 12px 6px 12px;
-  cursor: pointer; }
+  font-size: 108.333%;
+  padding: 6px 0px;
+  cursor: pointer;
+  display: inline-block; }
 .addthis.dropmenu .sharemenulinks {
   background: #fff;
   min-width: 150px;
@@ -1993,3 +1949,12 @@ button.follow {
   background-position: 0px -101px;
   height: 16px;
   width: 16px; }
+
+.tooltip .middle .info .top {
+  margin-bottom: 15px; }
+.tooltip .middle .info .bold, .tooltip .middle .member .info h4, .member .tooltip .middle .info h4, .tooltip .middle .member .info address, .member .tooltip .middle .info address, .tooltip .middle .info .crest h4, .crest .tooltip .middle .info h4, .tooltip .middle .info .crest h5, .crest .tooltip .middle .info h5, .tooltip .middle .info .crest address, .crest .tooltip .middle .info address, .tooltip .middle .info .post hgroup, .post .tooltip .middle .info hgroup, .tooltip .middle .info .content-container .content-headline, .content-container .tooltip .middle .info .content-headline, .tooltip .middle .info .content-container .content-header, .content-container .tooltip .middle .info .content-header, .tooltip .middle .info .content-container .content-body .content-details .content-category, .content-container .content-body .content-details .tooltip .middle .info .content-category, .tooltip .middle .info .profile .answers-toggle, .profile .tooltip .middle .info .answers-toggle, .tooltip .middle .info .profile .personal_info dt, .profile .personal_info .tooltip .middle .info dt, .tooltip .middle .info .kmart .answers-toggle, .kmart .tooltip .middle .info .answers-toggle, .tooltip .middle .info .kmart .upload-photo label, .kmart .upload-photo .tooltip .middle .info label, .tooltip .middle .info .sears .answers-toggle, .sears .tooltip .middle .info .answers-toggle, .tooltip .middle .info .sears .upload-photo label, .sears .upload-photo .tooltip .middle .info label, .tooltip .middle .info #allComments .comment .responseTo, #allComments .comment .tooltip .middle .info .responseTo, .tooltip .middle .info .sears .post-n-comments h2, .sears .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .kmart .post-n-comments h2, .kmart .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .section-header {
+  margin-bottom: 10px; }
+.tooltip .middle .info ul {
+  list-style-type: circle;
+  margin-bottom: 15px;
+  padding-left: 15px; }

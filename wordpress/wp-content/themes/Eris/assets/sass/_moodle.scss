@@ -63,12 +63,12 @@
   
   #moodle_window {
     background:rgba(143,199,252,.3);
-    padding:.75em;
+    padding:em-adjust( .75em );
     @include border-radius(20px);
     .loading {
       height:100%;
-      min-height:3em;
-      min-width:3em;
+      min-height:em-adjust( 3em );
+      min-width:em-adjust( 3em );
       text-align:center;
       width:100%;
     }

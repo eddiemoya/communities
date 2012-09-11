@@ -2069,7 +2069,7 @@ function wp_insert_term( $term, $taxonomy, $args = array() ) {
 	$term_id = apply_filters('term_id_filter', $term_id, $tt_id);
 
 	clean_term_cache($term_id, $taxonomy);
-
+	//echo "<pre>";print_r(array($term_id, $tt_id, $taxonomy));echo "</pre>";
 	do_action("created_term", $term_id, $tt_id, $taxonomy);
 	do_action("created_$taxonomy", $term_id, $tt_id);
 

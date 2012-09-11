@@ -1,6 +1,8 @@
 <?php get_template_part('parts/header'); ?>
 
+
 <ul class="span8">
+
 <?php
     if (have_posts()) :
         while (have_posts()) :
