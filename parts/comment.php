@@ -11,9 +11,14 @@
     $container_class = in_array( 'expert', get_userdata( $comment->user_id )->roles ) ? ' expert' : '';
     $parent_author = $is_recursive ? false : return_screenname( get_comment( $comment->comment_parent )->user_id ) ;
     $date = strtotime( $comment->comment_date );
+		
+    $comment_type = get_post_type( $comment->comment_post_ID ) == 'question' ? 'answer' : 'comment';
+
+
+    $parentId = (!isset($parentId)) ? $comment->comment_ID : $parentId;
 ?>
 
-<li class="comment clearfix<?php echo $container_class; ?>" id="comment-<?php echo $comment->comment_ID ?>">
+<li class="comment clearfix<?php echo $container_class; ?>" id="<?php echo $comment_type.'-reply-'.$comment->comment_ID ?>">
     <?php get_partial( 'parts/crest', array( "user_id" => $comment->user_id ) ); ?>
     <div class="span10">
         <time class="content-date" datetime="<?php echo date( "Y-m-d", $date ); ?>" pubdate="pubdate"><?php echo date( "F j, Y g:ia", $date ); ?></time>
@@ -62,21 +67,21 @@
                 <input type="reset" class="kmart_button azure" value="Cancel" />
             </p>
             <input type="hidden" name="comment_post_ID" value="<?php echo $comment->comment_post_ID; ?>" />
-            <input type="hidden" name="comment_parent" value="<?php echo $comment->comment_ID; ?>" />
+            <input type="hidden" name="comment_parent" value="<?php echo $parentId; ?>" />
             <input type="hidden" name="comment_type" value="<?php echo $comment_type; ?>" />
             <input type="hidden" name="_wp_unfiltered_html_comment" value="27ff0ea567" />
         </form>
         <?php endif; ?>
     </div>
     <?php
-        if ( $is_recursive && !empty( $comment->children ) ) :
+        if (!empty( $comment->children ) ) :
     ?>
-    <ol class="children">
-    <?php
-            foreach( $comment->children as $child ){
-                get_partial( 'parts/comment', array( "current_user" => $current_user, "comment" => $child ) );
-            }
-    ?>
-    </ol>
+        <ol class="children">
+            <?php
+                    foreach( $comment->children as $child ){
+                        get_partial('parts/comment', array("current_user" => $current_user, "comment" => $child, 'parentId' => $parentId));
+                    }
+            ?>
+        </ol>
     <?php endif; ?>
 </li>

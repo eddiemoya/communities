@@ -7,7 +7,7 @@
         Breadcrumbs
     </header> -->
     <div class="content">
-        <time class="date" datetime="<?php echo the_time( "Y-m-d"); ?>" pubdate="pubdate"><?php the_time("F j, Y g:ia"); ?></time>
+        <time class="date faint" datetime="<?php echo the_time( "Y-m-d"); ?>" pubdate="pubdate"><?php the_time("F j, Y"); ?></time>
         <a href="<?php echo get_category_link($categories[0]->term_id); ?>" class="category"><?php echo $categories[0]->name; ?></a>
         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
         <p><?php the_content(); ?></p>
@@ -40,7 +40,7 @@
                     }
                 });
                 $(".reply").on('click', function() {
-                    $(this).parent().next("form.reply-to-form").slideToggle("slow");
+                	$(this).parent().parent().children("form.reply-to-form").slideToggle("slow");
                 });
 
                 // Make the cancel buttons collapse the forms, too.

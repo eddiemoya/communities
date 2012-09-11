@@ -21,7 +21,7 @@
 
 ?>
 
-<li class="post lone-result clearfix">
+<article class="post lone-result clearfix">
 
     <?php get_partial( 'parts/crest', $crest_options ); ?>
 
@@ -32,7 +32,7 @@
 		
         <hgroup>
             <h3 class="content-category">
-                <a href="<?php get_category_link(get_query_var($cat->term_id)); ?>" title="<?php echo $cat->cat_name; ?>">
+                <a href="<?php get_category_link($cat->term_id); ?>" title="<?php echo $cat->cat_name; ?>">
                     <?php echo $cat->cat_name; ?>
                 </a>
             </h3>
@@ -47,4 +47,4 @@
         <?php get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); ?>
 
     </div>
-</li>
+</article>
