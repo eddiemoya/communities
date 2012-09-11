@@ -1,4 +1,4 @@
-<header class="content-header">
+<header class="content-header author-result-list">
     <?php
         foreach ($variables as $user) :
             if ($user->terms != "") :
@@ -69,6 +69,7 @@
 			}
 			?>
 		<input type="hidden" value="results-list" name="widget" />
+		<input type="hidden" value="author-filter" name="specificity" />
 	</form>
 </header>
 <ol class="content-body">
