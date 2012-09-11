@@ -1177,7 +1177,7 @@ fieldset#use_your_account_from {
   display: none;
   position: absolute;
   left: 14.769em;
-  width: 200px;
+  width: 250px;
   z-index: 1000003; }
   .tooltip .arrow {
     left: -10px;
@@ -1948,3 +1948,12 @@ button.follow {
   background-position: 0px -101px;
   height: 16px;
   width: 16px; }
+
+.tooltip .middle .info .top {
+  margin-bottom: 15px; }
+.tooltip .middle .info .bold, .tooltip .middle .member .info h4, .member .tooltip .middle .info h4, .tooltip .middle .member .info address, .member .tooltip .middle .info address, .tooltip .middle .info .crest h4, .crest .tooltip .middle .info h4, .tooltip .middle .info .crest h5, .crest .tooltip .middle .info h5, .tooltip .middle .info .crest address, .crest .tooltip .middle .info address, .tooltip .middle .info .post hgroup, .post .tooltip .middle .info hgroup, .tooltip .middle .info .content-container .content-header, .content-container .tooltip .middle .info .content-header, .tooltip .middle .info .content-container .content-category, .content-container .tooltip .middle .info .content-category, .tooltip .middle .info .content-container .content-headline, .content-container .tooltip .middle .info .content-headline, .tooltip .middle .info .profile .answers-toggle, .profile .tooltip .middle .info .answers-toggle, .tooltip .middle .info .profile .personal_info dt, .profile .personal_info .tooltip .middle .info dt, .tooltip .middle .info .kmart .answers-toggle, .kmart .tooltip .middle .info .answers-toggle, .tooltip .middle .info .kmart .upload-photo label, .kmart .upload-photo .tooltip .middle .info label, .tooltip .middle .info .sears .answers-toggle, .sears .tooltip .middle .info .answers-toggle, .tooltip .middle .info .sears .upload-photo label, .sears .upload-photo .tooltip .middle .info label, .tooltip .middle .info #allComments .comment .responseTo, #allComments .comment .tooltip .middle .info .responseTo, .tooltip .middle .info .sears .post-n-comments h2, .sears .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .kmart .post-n-comments h2, .kmart .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .section-header {
+  margin-bottom: 10px; }
+.tooltip .middle .info ul {
+  list-style-type: circle;
+  margin-bottom: 15px;
+  padding-left: 15px; }
