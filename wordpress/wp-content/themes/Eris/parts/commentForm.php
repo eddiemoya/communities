@@ -52,7 +52,7 @@
             echo $args['must_log_in'];
             do_action( 'comment_form_must_log_in_after' );
             else : ?>
-            <form id="<?php echo $comment_type.'-'.$comment->comment_ID ?>" action="<?php echo site_url( '/wp-comments-post.php' ); ?>" method="post" id="<?php echo esc_attr( $args['id_form'] ); ?>" shc:gizmo="transFormer">
+            <form id="leave-response" action="<?php echo site_url( '/wp-comments-post.php' ); ?>" method="post" shc:gizmo="transFormer">
             
                 <?php
                 # If a user doesn't have a screen name, prompt them to enter one
