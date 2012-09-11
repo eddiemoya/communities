@@ -26,7 +26,7 @@
         <li>
             <a href="<?php echo site_url(); ?>"><span>Categories</span></a>
             <ul>
-                <?php wp_list_categories(array('parent' => 0, 'hide_empty' => true, 'depth' => 1, 'title_li'=>'', 'exclude' => 1)); ?>
+                <?php wp_list_categories(array('parent' => 0, 'hide_empty' => true, 'depth' => 1, 'title_li'=>'')); ?>
             </ul>
         </li>
 
@@ -35,7 +35,7 @@
             <a href="<?php echo $alinks[$post_type]; ?>"><span><?php echo $label; ?></span></a>
             <ul>
                 <?php foreach($terms[$post_type] as $term) : ?>
-                    <?php if($term->parent == 0 && $term->term_id != 1) :?>
+                    <?php if($term->parent == 0) :?>
                     <li>
                         <a href="<?php echo esc_url( get_category_link($term->term_id) ).$post_type; ?>">
                             <?php echo $term->name; ?>
