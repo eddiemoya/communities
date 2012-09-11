@@ -1,3 +1,4 @@
+<?php if(have_posts()) : ?>
 <header class="content-header">
 	<form method="post" action="">
 		<label for="sort-results">Sort By</label>
@@ -49,4 +50,8 @@
 		<input type="hidden" value="results-list" name="widget" />
 	</form>
 </header>
+
 <section class="content-body">
+
+<?php endif; ?>
+
