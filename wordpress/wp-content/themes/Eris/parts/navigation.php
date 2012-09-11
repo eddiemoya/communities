@@ -14,6 +14,10 @@
         'post'     => 'Blog Posts',
         'guide'    => 'Guides'
     );
+    
+    function cmp($a, $b) {
+        return strcmp(ucfirst($a->name), ucfirst($b->name));
+    }
 ?>
 
 <nav id="navigation">
@@ -26,7 +30,7 @@
         <li>
             <a href="<?php echo site_url(); ?>"><span>Categories</span></a>
             <ul>
-                <?php wp_list_categories(array('parent' => 0, 'hide_empty' => true, 'depth' => 1, 'title_li'=>'')); ?>
+                <?php wp_list_categories(array('parent' => 0, 'hide_empty' => true, 'depth' => 1, 'title_li'=>'', 'order'=>'ASC')); ?>
             </ul>
         </li>
 
@@ -34,6 +38,7 @@
         <li>
             <a href="<?php echo $alinks[$post_type]; ?>"><span><?php echo $label; ?></span></a>
             <ul>
+                <?php usort($terms[$post_type], "cmp"); ?>
                 <?php foreach($terms[$post_type] as $term) : ?>
                     <?php if($term->parent == 0) :?>
                     <li>
