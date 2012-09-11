@@ -387,27 +387,9 @@ form {}
 
 
 // FEATURED COMMUNITY MEMBERS
-.featured-members .member {
-  .content-comments {
-    width: 100%;
-    li {
-      float: none;
-      border: 0;
-    }
-  }
-  .stats {
-    float: left;
-    p {
-      margin-bottom: em-adjust( .3em );
-    }
-  }
-  .info ul {
-    margin: em-adjust( .3em 0 );
-  }
-}
-
-.span8, .span9, .span12 {
-  .featured-members .content-body {
+// the default state: lined up from left to right
+.featured-members {
+  .content-body {
     & > * {
       width: 29.9%;
       float: left;
@@ -416,32 +398,70 @@ form {}
         padding-left: 0;
       }
     }
-    .member {
-      border-left: 1px solid sears( decorative );
-      &:first-child {
-        border-left: 0;
-      }
-      @include col_layout( ( 80, 80 ), 20 );
+  }
+  @include legacy-pie-clearfix;
+  .member {
+    border-left: 1px solid sears( decorative );
+    &:first-child {
+      border-left: 0;
     }
-    @include legacy-pie-clearfix;
+    @include col_layout( ( 80, 80 ), 20 );
+    .content-comments {
+      width: 100%;
+      li {
+        float: none;
+        border: 0;
+      }
+    }
     .stats {
-      float: none;
       clear: left;
       width: 100%;
       margin-left: 0;
+      p {
+        margin-bottom: em-adjust( .3em );
+      }
+    }
+    .info ul {
+      margin: em-adjust( .3em 0 );
     }
   }
 }
 
+// modify the style to create a stacked version.
 .span3, .span4, .span6 {
-  .member {
-    @include col_layout( ( 80, 180 ), 20 );
-    margin-top: 1em;
-    &:first-child {
-      margin-top: 0;
+  .featured-members .content-body {
+    .member {
+      width: 100%;
+      float: none;
+      padding: 0;
+      margin-top: 1em;
+      border-left: 0;
+      @include col_layout( ( 80, 180 ), 20 );
+      &:first-child {
+        margin-top: 0;
+      }
+      .stats {
+        clear: none;
+      }
     }
   }
 }
+
+//.span3, .span4, .span6 {
+//  .featured-members .content-body {
+//    .member {
+//      background: red;
+//      width: 100%;
+//      float: none;
+//      padding: 0;
+//      @include col_layout( ( 80, 180 ), 20 );
+//      margin-top: 1em;
+//      &:first-child {
+//        margin-top: 0;
+//      }
+//    }
+//  }
+//}
 // Alternate selector for below class. Use if override for more scenarios is required.
 // Also, more like these would have to be created on a per-widget basis if development is asked to create more override states.
 //.span3 .featured-members, .span4 .featured-members, .span6 .featured-members,
@@ -707,10 +727,9 @@ fieldset#use_your_account_from {
 }
 
 // subnav widget
-.widget_communities_menu_widget {
+.communities_menu_widget {
   .subnav-items {
-    font-size: font-size( 13 );
-    .menu-item {
+    li {
       padding: 6px 0;
     }
   }
