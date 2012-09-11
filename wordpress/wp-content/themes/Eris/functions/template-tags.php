@@ -640,7 +640,6 @@ function set_screen_name($screen_name) {
 	
 }
 
-
 /**
  * Handles posting of comment (of any with screen name
  * @param array - comment data
@@ -676,7 +675,4 @@ function post_comment_screen_name($commentdata) {
 }
 
 add_filter( 'preprocess_comment',  'post_comment_screen_name');
-
-
-
 
