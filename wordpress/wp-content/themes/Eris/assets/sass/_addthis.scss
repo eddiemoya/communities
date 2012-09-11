@@ -94,9 +94,9 @@
 
 .addthis.dropmenu {
   li{
-    @include border-radius( 5px 5px 0px 0px );
+    @include border-radius( 0px );
     &:hover {
-      background-color: #eee;
+      background-color: #fff;
     }
     a {
       display: inline;
@@ -111,8 +111,11 @@
     }
   }
   .sharebutton {
-    padding: 6px 12px 6px 12px;
+    // font-size:.8125em;
+    font-size: font-size( 13 );
+    padding: 6px 0px;
     cursor: pointer;
+    display: inline-block;
   }
   .sharemenulinks  {
     background: #fff;

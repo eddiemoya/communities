@@ -105,6 +105,8 @@ function has_screen_name($user_id) {
  */
 function process_front_end_question() {
 	
+	global $current_user;
+	
 	//Neither step has been taken, were on step 1
  	 $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '1');
 			
@@ -130,9 +132,6 @@ function process_front_end_question() {
 
     //If step 2, add the post and move to step 3
     if((wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in())) {
-		
-    	global $current_user;
-		get_currentuserinfo();
 		
 		$valid = true;
     	$errors = array();
@@ -194,8 +193,6 @@ function process_front_end_question() {
 	    							update_user_meta($current_user->ID, 'profile_screen_name', $_POST['screen-name']);
 	    							
 	    							//Update user's nicename to screen name
-	    							/*wp_update_user(array('ID'				=> $current_user->ID,
-		 								 				'user_nicename' 	=> $_POST['screen-name']));*/
 	    							if(! update_user_nicename($current_user->ID, $_POST['screen-name'])) 
 	    							
 	    									$valid = false;
@@ -235,6 +232,15 @@ function process_front_end_question() {
 		        	
 		       }
 		        
+		       
+		       	
+		       	unset($current_user);
+		       	get_currentuserinfo();
+		       	
+		       /*	echo '<pre>';
+		       	var_dump($current_user);
+		       	exit;*/
+		       	
 		        $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '3');
 		        
 	    } else {
@@ -256,7 +262,7 @@ function question_exists($post) {
 	global $current_user;
 	get_currentuserinfo();
 	
-	$p = $wpdb->base_prefix . 'posts';
+	$p = $wpdb->prefix . 'posts';
 	
 	$q = "SELECT ID FROM " . $p . " WHERE post_title = '" . $post['post_title'] ."' AND post_content = '". $post['post_content'] . "' AND post_type = 'question' AND post_author = " . $current_user->ID;
 	
@@ -454,6 +460,7 @@ function get_profile_url( $user_id ) {
  */
 function return_screenname( $user_id ) {
     $user_info = get_userdata( $user_id );
+    
     $screen_name = '';
     # create a fallback screen name if one has not yet been set by sso
     if ( !has_screen_name( $user_id ) ) {
@@ -486,7 +493,7 @@ function get_screenname( $user_id ) {
  * @author Carl Albrecht-Buehler
  * @param $user_id (integer) [required] ID of the user whose screen name you want to look up.
  *
- * @return (string) User's screen name (user_nicename) formatted into an HTML anchor..
+ * @return (string) User's screen name (user_nicename) formatted into an HTML anchor.
  */
 function return_screenname_link( $user_id ) {
     return '<a href="' . get_profile_url( $user_id ) . '">' . return_screenname( $user_id ) . '</a>';
@@ -503,6 +510,61 @@ function return_screenname_link( $user_id ) {
  */
 function get_screenname_link( $user_id ) {
     echo return_screenname_link( $user_id );
+}
+
+
+/**
+ * Returns the date of a user's last post.
+ *
+ *
+ * @author Carl Albrecht-Buehler
+ * @param $user_id (integer) [required] ID of the user whose last post you want to look up.
+ *
+ * @return (integer) Timestamp of the last post.
+ */
+function return_last_post_date( $user_id ) {
+    $last_post = get_posts( array( 'numberposts' => 1, 'author' => $user_id, 'post_type' => array( 'question', 'guide', 'post' ) ) );
+    return isset( $last_post[0] ) ? strtotime( $last_post[0]->post_date ) : 0;
+}
+
+/**
+ * Returns the count of a user's total posts.
+ *
+ *
+ * @author Carl Albrecht-Buehler
+ * @param $user_id (integer) [required] ID of the user whose last post you want to look up.
+ *
+ * @return (integer) Timestamp of the last post.
+ */
+function return_post_count( $user_id ) {
+    global $wpdb;
+    return $wpdb->get_var( "select count(`ID`) as `num_posts` from {$wpdb->posts} where `post_type` in ( 'question', 'guide', 'post' ) and `post_author` = {$user_id}" );
+}
+
+/**
+ * Returns a formatted address of a user.
+ *
+ *
+ * @author Carl Albrecht-Buehler
+ * @param $user_id (integer) [required] ID of the user whose address you want to look up.
+ *
+ * @return (string) User's address as [City, State]; [City]; [State]; or [&nbsp;].
+ */
+function return_address( $user_id ) {
+    $a_address = array();
+    $address = '&nbsp;';
+    $i = 0;
+    
+    $city  = get_user_meta( $user_id, 'user_city', true );
+    $state = get_user_meta( $user_id, 'user_state', true );
+    
+    if ( $city != '' )  { $a_address[] = $city; }
+    if ( $state != '' ) { $a_address[] = strtoupper($state); }
+    if ( !empty( $a_address ) ) {
+        $address = implode( ', ', $a_address );
+    }
+    
+    return $address;
 }
 
 
@@ -570,7 +632,7 @@ function set_screen_name($screen_name) {
 	//Check for error
 	if(isset($response['code'])) {
 			
-		return false;
+		return $response;
 			
 	} else {
 			
@@ -584,5 +646,7 @@ function set_screen_name($screen_name) {
 	}
 	
 }
+
+
 
 
