@@ -128,7 +128,6 @@ $arrow-height: 3px;
 .sears #header_nav.dropmenu, .kmart #header_nav.dropmenu {
   @include border-radius( 5px );
   border-left: 1px solid sears( decorative );
-  font-size: percentage( 12/16 );
   background-repeat: repeat-x;
   ul {
     background-repeat: repeat-x;
@@ -140,8 +139,8 @@ $arrow-height: 3px;
     padding: 1px 0;
     a {
       border-right: 1px solid $lightest-color;
-      padding-top: .5em;
-      padding-bottom: .5em;
+      padding-top: .66em;
+      padding-bottom: .66em;
       span {
         background-repeat: no-repeat;
         padding-right: 9px;
@@ -189,8 +188,8 @@ $arrow-height: 3px;
 #footer_nav.dropmenu {
   li {
     a {
-      padding-top: .5em;
-      padding-bottom: .5em;
+      padding-top: .66em;
+      padding-bottom: .66em;
       span {
         background-repeat: no-repeat;
         padding-right: 16px;
@@ -215,7 +214,6 @@ $arrow-height: 3px;
 // Modify footer for Sears
 .sears #footer_nav.dropmenu {
   background-repeat: repeat-x;
-  font-size: percentage( 12/16 );
   @include border-radius( 5px );
   ul {
     background: sears( footer_fly );
@@ -249,7 +247,7 @@ $arrow-height: 3px;
     border-bottom: 0;
     li {
       width: 100%;
-      font-size: 90%;
+      font-size: font-size( 11 );
       border-left: 0;
       &:hover {
         background: none;
@@ -274,7 +272,7 @@ $arrow-height: 3px;
     $divisor: ( $grid-width - ( $footer-count-kmart - 1 ) ) / $footer-count-kmart;
     width: percentage( $divisor / $grid-width );
     border-left: 1px solid $lightest-color;
-    font-size: percentage( 14/16 );
+    font-size: font-size( 14 );
     font-family: 'Trebuchet MS', $basefont;
     // Give the footer item a different background and 
     // make it appear above the footer bar ("drop-up")
@@ -298,7 +296,6 @@ $arrow-height: 3px;
     border-bottom: 0;
     li {
       width: 100%;
-      font-size: percentage( 12/16 );
       border-left: 0;
       &:hover {
         background: none;
