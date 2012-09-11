@@ -74,13 +74,6 @@
             });
         </script>
 <?php
-    } else {
-?>
-    <script type="text/javascript">
-        $(".commentForm form").hide();
-        $(".reply-to-form").hide();
-    </script>
-<?php
-    }
+    } 
 ?>
 <!--</article>-->
