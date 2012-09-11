@@ -34,16 +34,16 @@
         </a>
     </h6>
     
+    <ul class="content-comments">
+        <li><?php custom_comment_count('answer'); ?> answers</li>
+    </ul>
+    
     <?php  if(is_widget()->show_content) : ?>
         <p class="content-excerpt">
             <?php the_excerpt(); ?>
         <p>
     <?php endif; //is_widget_show_content ?>
 
-
-    <ul class="content-comments">
-        <li><?php custom_comment_count('answer'); ?> answers</li>
-    </ul>
 
     <section class="post-actions">
         <?php get_partial( 'parts/share', array( "version" => is_widget()->share_style, "url" => get_post_permalink( $post->ID ) ) ); ?>

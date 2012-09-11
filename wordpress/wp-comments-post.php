@@ -90,6 +90,7 @@ $commentdata = compact('comment_post_ID', 'comment_author', 'comment_author_emai
 $comment_id = wp_new_comment( $commentdata );
 
 $comment = get_comment($comment_id);
+
 if ( !$user->ID ) {
 	$comment_cookie_lifetime = apply_filters('comment_cookie_lifetime', 30000000);
 	setcookie('comment_author_' . COOKIEHASH, $comment->comment_author, time() + $comment_cookie_lifetime, COOKIEPATH, COOKIE_DOMAIN);
