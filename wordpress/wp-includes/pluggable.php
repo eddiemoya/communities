@@ -27,8 +27,8 @@ if ( !function_exists('wp_set_current_user') ) :
 function wp_set_current_user($id, $name = '') {
 	global $current_user;
 
-	/*if ( isset($current_user) && ($id == $current_user->ID) )
-		return $current_user;*/
+	if ( isset($current_user) && ($id == $current_user->ID) )
+		return $current_user;
 
 	$current_user = new WP_User($id, $name);
 

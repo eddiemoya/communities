@@ -553,7 +553,9 @@ class User_Profile {
 		
 		global $wpdb;
 		
-		$q = "SELECT user_id FROM {$wpdb->usermeta} WHERE $wpdb->usermeta.meta_key = 'wp_capabilities' AND $wpdb->usermeta.meta_value LIKE '%" . self::EXPERT_ROLE . "%'";
+		$cap_key = $wpdb->prefix . 'capabilities';
+		
+		$q = "SELECT user_id FROM {$wpdb->usermeta} WHERE $wpdb->usermeta.meta_key = '{$cap_key}' AND $wpdb->usermeta.meta_value LIKE '%" . self::EXPERT_ROLE . "%'";
 		$experts = $wpdb->get_results($q);
 		
 		return $experts;

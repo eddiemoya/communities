@@ -232,12 +232,14 @@ function process_front_end_question() {
 		        	
 		       }
 		        
-		       	$current_user->ID = -1;
+		       
+		       	
+		       	unset($current_user);
 		       	get_currentuserinfo();
 		       	
-		       	echo '<pre>';
+		       /*	echo '<pre>';
 		       	var_dump($current_user);
-		       	exit;
+		       	exit;*/
 		       	
 		        $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '3');
 		        
@@ -458,6 +460,7 @@ function get_profile_url( $user_id ) {
  */
 function return_screenname( $user_id ) {
     $user_info = get_userdata( $user_id );
+    
     $screen_name = '';
     # create a fallback screen name if one has not yet been set by sso
     if ( !has_screen_name( $user_id ) ) {
