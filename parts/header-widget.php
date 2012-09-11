@@ -12,4 +12,5 @@
         <?php endif; ?>
 
 
-        <<?php echo (is_single()) ? 'section' : 'ol'; ?> class="content-body clearfix">
+        <!-- << echo (is_single()) ? 'section' : 'ol'; ?> class="content-body clearfix"> -->
+        <section class="content-body clearfix">
