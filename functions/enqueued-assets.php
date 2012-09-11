@@ -15,7 +15,7 @@ function enqueue_scripts() {
         
         //Set up array to be passed to the shcproducts js file.
         $data = array(
-            'ajaxurl'            => admin_url( 'admin-ajax.php'),
+            'ajaxurl'            => site_url('/wp-admin/admin-ajax.php'),
             'template_dir_uri'  => get_template_directory_uri(),
             'home_url'          => get_home_url(),
             #'cart_quantity'     => get_cart_object()->item_count,
