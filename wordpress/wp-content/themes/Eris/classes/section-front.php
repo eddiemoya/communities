@@ -104,19 +104,27 @@ class Section_Front{
 		    if('section' != $_POST['post_type'])
 		        return;
 
+		if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) 
+			return;
+
+   		if ( defined('DOING_AJAX') && DOING_AJAX ) 
+   			return;
+
 		    if ( !current_user_can( 'edit_post', $post_id ) )
 		        return;
 
 		    $categories = $_POST['post_category'];
 		    $types = array(
-		    	'tax-archive' => !empty($_POST['widgetpress_post_type_none']),
+		    	
 		    	'question' => !empty($_POST['widgetpress_post_type_question']),
 		    	'post' => !empty($_POST['widgetpress_post_type_post']),
 		    	'guide' => !empty($_POST['widgetpress_post_type_guide']),
+		    	'tax-archive' => !empty($_POST['widgetpress_post_type_none']),
 		    );
 
 		    self::rewrite_all_the_terms($categories, array_filter($types));
 		}
+		//return $post_id;
 	}
  
 	/**
