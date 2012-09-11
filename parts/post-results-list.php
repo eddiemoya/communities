@@ -21,17 +21,18 @@
 
 ?>
 
-<li class="post lone-result clearfix">
+<article class="post lone-result clearfix">
 
     <?php get_partial( 'parts/crest', $crest_options ); ?>
 
     <div class="span10">
 
-        <time class="content-date" datetime="<?php echo the_time( "Y-m-d"); ?>" pubdate="pubdate"><?php the_time("F n, Y g:ia"); ?></time>
-
+        <time class="content-date" datetime="<?php echo the_time( "Y-m-d"); ?>" pubdate="pubdate"><?php the_time("F n, Y g:i a"); ?></time> <!-- <time class="content-date" datetime="<?php //echo the_time( "Y-m-d"); ?>" pubdate="pubdate"><?php //the_time("g:i a"); ?></time>-->
+        
+		
         <hgroup>
             <h3 class="content-category">
-                <a href="<?php get_category_link(get_query_var($cat->term_id)); ?>" title="<?php echo $cat->cat_name; ?>">
+                <a href="<?php get_category_link($cat->term_id); ?>" title="<?php echo $cat->cat_name; ?>">
                     <?php echo $cat->cat_name; ?>
                 </a>
             </h3>
@@ -46,4 +47,4 @@
         <?php get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); ?>
 
     </div>
-</li>
+</article>

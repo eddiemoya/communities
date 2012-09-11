@@ -2,7 +2,7 @@
 /**
  * @package WordPress
  * @subpackage White Label
- */ 
+ */
 ?>
                   
       <!--<div class="pagination">
@@ -36,6 +36,6 @@
       </footer>
 
     </div> <!-- #container -->
-
+<?php include('tooltip.php'); ?>
   </body>
 </html>
