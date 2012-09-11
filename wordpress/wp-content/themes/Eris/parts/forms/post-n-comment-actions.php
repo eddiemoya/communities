@@ -22,8 +22,8 @@
 
                     break;
                 case 'follow':
-                    $acts['follow']['text'] = 'following';
-                    $acts['follow']['myaction'] = ' active';
+                    $acts['follow']['text'] = '';
+                    $acts['follow']['myaction'] = '';
 
                     break;
                 default:
@@ -79,15 +79,15 @@
     $downvoteTotal = isset($acts['downvote']['action']->total) ? $acts['downvote']['action']->total : 0;
     $upvoteTotal = isset($acts['upvote']['action']->total) ? $acts['upvote']['action']->total : 0;
 
-    $myActionDownvote = isset($acts['downvote']['myaction']) ? $acts['downvote']['myaction'] : '';
-    $myActionFollow = isset($acts['follow']['myaction']) ? $acts['follow']['myaction'] : '';
-    $myActionFollowText = isset($acts['follow']['text']) ? 'following' : 'follow';
-    $myActionUpvote = isset($acts['upvote']['myaction']) ? $acts['upvote']['myaction'] : '';
+    $myActionDownvote = (isset($acts['downvote']['myaction']) && $acts['downvote']['myaction'] != '') ? $acts['downvote']['myaction'] : '';
+    $myActionFollow = (isset($acts['follow']['myaction']) && $acts['follow']['myaction'] != '') ? $acts['follow']['myaction'] : '';
+    $myActionUpvote = (isset($acts['upvote']['myaction']) && $acts['upvote']['myaction'] != '') ? $acts['upvote']['myaction'] : '';
 
-    $nliDownvote = isset($acts['downvote']['nli_reset']) ? $acts['downvote']['nli_reset'] : '';
-    $nliUpvote = isset($acts['upvote']['nli_reset']) ? $acts['upvote']['nli_reset'] : '';
+    $myActionFollowText = (isset($acts['follow']['text']) && $acts['follow']['text'] != '') ? 'following' : 'follow';
+
+    $nliDownvote = (isset($acts['downvote']['nli_reset']) && $acts['downvote']['nli_reset'] != '') ? $acts['downvote']['nli_reset'] : '';
+    $nliUpvote = (isset($acts['upvote']['nli_reset']) && $acts['upvote']['nli_reset'] != '') ? $acts['upvote']['nli_reset'] : '';
 ?>
-
     <form class="actions clearfix" id="comment-actions-<?php echo $id; ?>" method="post" action="">
         <?php
             foreach($options as $option) {
@@ -177,14 +177,13 @@
             }
         ?>
     </form>
-
-<div id="flagForm-<?php echo $id; ?>" class="hide">
-    <form class="flag-form" id="commentForm-<?php echo $id; ?>" method="post" shc:gizmo="transFormer">
-        <textarea class="flagField" rows="5" cols="2" name="comment" aria-required="true" shc:gizmo:form="{required: true}"></textarea>
-        <input class="kmart_button" type="submit" value="Flag" />
-        <input class="kmart_button azure" type="reset" value="Cancel" reset="reset" />
-        <input name="comment_post_ID" id="comment_post_ID" type="hidden" value="<?php echo $post_id; ?>" />
-        <input name="comment_parent" id="comment_parent" type="hidden" value="<?php echo $id; ?>" />
-        <input name="comment_type" id="comment_type" type="hidden" value="flag">
-    </form>
-</div>
+    <div id="flagForm-<?php echo $id; ?>" class="hide">
+        <form class="flag-form" id="commentForm-<?php echo $id; ?>" method="post" shc:gizmo="transFormer">
+            <textarea class="flagField" rows="5" cols="16" name="comment" aria-required="true" shc:gizmo:form="{required: true}"></textarea>
+            <input class="kmart_button" type="submit" value="Flag" />
+            <input class="kmart_button azure" type="reset" value="Cancel" reset="reset" onclick="jQuery('.tooltip').hide();" />
+            <input name="comment_post_ID" id="comment_post_ID" type="hidden" value="<?php echo $post_id; ?>" />
+            <input name="comment_parent" id="comment_parent" type="hidden" value="<?php echo $id; ?>" />
+            <input name="comment_type" id="comment_type" type="hidden" value="flag">
+        </form>
+    </div>

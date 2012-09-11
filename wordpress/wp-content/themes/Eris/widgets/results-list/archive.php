@@ -1,8 +1,9 @@
-
 <?php 
-
-if(!is_ajax())
+if(!is_ajax() && is_widget()->template == "featured") :
+    get_template_part('parts/header', 'widget');
+elseif(!is_ajax()) :
 	get_template_part('parts/header', 'results-list');
+endif;
 
 if (!have_posts()) {
     ?>
@@ -18,10 +19,23 @@ if (!have_posts()) {
                 <li>If you searched an acronym, try using the full name.</li>
             </ul>
         </section>
-    <?php
-}
 
-loop('post-results-list');
+<?php } //global $wp_query; echo "<pre>";print_r($wp_query);echo "</pre>"; ?>
+        <section class="pagination">
+             <?php echo posts_nav_link(); ?>
+        </section>
+<?php 
+        if(is_widget()->template == "featured") :
+            get_partial("parts/post-featured-post", array("widget" => is_widget()));
+        else :
+        	loop('post-results-list');
+        endif;
+?>
+        
+        <section class="pagination">
+             <?php echo posts_nav_link(); ?>
+        </section>
 
+<?php 
 if(!is_ajax())
 	get_template_part('parts/footer', 'widget') ;?>

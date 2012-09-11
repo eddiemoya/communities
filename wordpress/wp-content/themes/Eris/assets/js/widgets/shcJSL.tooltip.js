@@ -250,16 +250,26 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
 
         switch(_thisTooltip.options.arrowPosition) {
             case 'left':
+                jQuery(arrow).children().first('div').removeClass();
+                jQuery(arrow).children().first('div').addClass('left');
+                jQuery(arrow).children().last('div').removeClass();
+                jQuery(arrow).children().last('div').addClass('leftBorder');
+
                 var arrowLeft = jQuery(arrow).children('.left');
 
                 var arrowLeftHeight = arrowLeft.outerHeight();
 
 //                arrow.css('top', (tooltipHeight - arrowLeftHeight) / 2);
-                arrow.css('top', 15);
+                arrow.css('top', 7);
                 arrow.css('left', '-10');
 
                 break;
             case 'top':
+                jQuery(arrow).children().first('div').removeClass();
+                jQuery(arrow).children().first('div').addClass('top');
+                jQuery(arrow).children().last('div').removeClass();
+                jQuery(arrow).children().last('div').addClass('topBorder');
+
                 var arrowTop = jQuery(arrow).children('.top');
 
                 var arrowTopHeight = (arrowTop.outerHeight() * -1) + .5;
@@ -280,11 +290,7 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         var leftPosition = 0;
         var topPosition = 0;
 
-        //var data = jQuery(_thisTooltip.options.displayData).clone().removeClass('hide');
-
-        //jQuery(_thisTooltip.tooltip.element).children('.middle').html(data);
-
-        jQuery(_thisTooltip.tooltip.element).children('.middle').html();
+        jQuery(_thisTooltip.tooltip.element).children('.middle').html('');
         jQuery(_thisTooltip.tooltip.element).children('.middle').append(_thisTooltip.options.displayData.element);
 
         if(_thisTooltip.options.displayData.element.hasClass('hide')) {
@@ -318,8 +324,8 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
                     return false;
                 }
 
-                leftPosition = _thisTooltip.getPosition(_thisTooltip.actedObj, 'left') + _thisTooltip.getWidth(_thisTooltip.actedObj) + _thisTooltip.options.position.left + 12;
-                topPosition = _thisTooltip.getPosition(_thisTooltip.actedObj, 'top') + _thisTooltip.options.position.top;
+                leftPosition = _thisTooltip.getOffset(_thisTooltip.actedObj, 'left') + _thisTooltip.getWidth(_thisTooltip.actedObj) + _thisTooltip.options.position.left + 12;
+                topPosition = _thisTooltip.getOffset(_thisTooltip.actedObj, 'top') + _thisTooltip.options.position.top;
 
                 if(_thisTooltip.getHeight(_thisTooltip.tooltip) < _thisTooltip.getHeight(_thisTooltip.actedObj)) {
                     topPosition += (_thisTooltip.getHeight(_thisTooltip.actedObj) / 2) - (_thisTooltip.getHeight(_thisTooltip.tooltip) / 2);
@@ -327,20 +333,12 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
 
                 break;
             case 'top':
-                console.log(_thisTooltip.getPosition(_thisTooltip.actedObj, 'left'));
-                console.log((_thisTooltip.getWidth(_thisTooltip.tooltip)))
+                leftPosition = _thisTooltip.getOffset(_thisTooltip.actedObj, 'left') -
+                                ((_thisTooltip.getWidth(_thisTooltip.tooltip) / 2) - (_thisTooltip.getWidth(_thisTooltip.actedObj) / 2));
 
-                leftPosition = _thisTooltip.getPosition(_thisTooltip.actedObj, 'left') -
-                                ((_thisTooltip.getWidth(_thisTooltip.tooltip) / 2)) +
-                                    _thisTooltip.getWidth(_thisTooltip.actedObj);
-
-                topPosition = _thisTooltip.getPosition(_thisTooltip.actedObj, 'top') +
+                topPosition = _thisTooltip.getOffset(_thisTooltip.actedObj, 'top') +
                                 _thisTooltip.getHeight(_thisTooltip.actedObj) +
                                     10; //needs to be changed to use actual height getter; doesn't work since it's all border
-
-                if(_thisTooltip.getHeight(_thisTooltip.tooltip) < _thisTooltip.getHeight(_thisTooltip.actedObj)) {
-                    topPosition += (_thisTooltip.getHeight(_thisTooltip.actedObj) / 2) - (_thisTooltip.getHeight(_thisTooltip.tooltip) / 2);
-                }
 
             default:
                 break;
