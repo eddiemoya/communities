@@ -3,16 +3,8 @@
     * @author Tim Steele
     */
 	
-	global $current_user;
-	get_currentuserinfo();
-	 
-	/*echo '<pre>';
-	 var_dump($current_user);
-	 exit;*/
-
 	
-	 
-  	//$current_user = wp_get_current_user();
+  	$current_user = wp_get_current_user();
     $qualtricsUrl = theme_option('brand') == 'sears' ? 'http://searshc.us2.qualtrics.com/SE/?SID=SV_3QzHxmNKUzYTjNy' : 'http://searshc.us2.qualtrics.com/SE/?SID=SV_9X1h8K6RVZUV7x2';
 ?>
 <header id="header" class="<?php echo theme_option("brand"); ?> clearfix">
