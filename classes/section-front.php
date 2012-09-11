@@ -104,19 +104,27 @@ class Section_Front{
 		    if('section' != $_POST['post_type'])
 		        return;
 
+		if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) 
+			return;
+
+   		if ( defined('DOING_AJAX') && DOING_AJAX ) 
+   			return;
+
 		    if ( !current_user_can( 'edit_post', $post_id ) )
 		        return;
 
 		    $categories = $_POST['post_category'];
 		    $types = array(
-		    	'tax-archive' => !empty($_POST['widgetpress_post_type_none']),
+		    	
 		    	'question' => !empty($_POST['widgetpress_post_type_question']),
 		    	'post' => !empty($_POST['widgetpress_post_type_post']),
 		    	'guide' => !empty($_POST['widgetpress_post_type_guide']),
+		    	'tax-archive' => !empty($_POST['widgetpress_post_type_none']),
 		    );
 
 		    self::rewrite_all_the_terms($categories, array_filter($types));
 		}
+		//return $post_id;
 	}
  
 	/**
@@ -126,11 +134,13 @@ class Section_Front{
 		global $wp_rewrite;
 		$categorized_sections = self::get_terms_by_post_type('category', 'section');
 		$rules = array();
-		foreach((array)$types as $type => $value){
-			$type = ($type == 'tax-archive') ? '' : $type;
-			$rr_endpoint = (!empty($type)) ? "/{$type}" : '';
+
 
 		    foreach((array)$categorized_sections as $cat){
+
+		    			foreach((array)$types as $type => $value){
+			$type = ($type == 'tax-archive') ? '' : $type;
+			$rr_endpoint = (!empty($type)) ? "/{$type}" : '';
 		
 		    	//echo "<pre>";print_r($cat);echo "</pre>";
 		    	$rules[$cat->taxonomy . '/' . $cat->slug .$rr_endpoint.'/?$'] = 'index.php?posts_per_page=1&post_type='.$_POST['post_type'].'&category_name='.$cat->slug;

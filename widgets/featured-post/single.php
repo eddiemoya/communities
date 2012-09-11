@@ -1,6 +1,12 @@
-<?php get_template_part('parts/header', 'widget') ;?>
-	<?php the_post(); ?>
-    <?php if ((is_widget()->show_thumbnail && has_post_thumbnail()) || ($is_widget_override && has_post_thumbnail())) :
+<?php 
+    get_template_part('parts/header', 'widget') ;
+    global $excerptLength;
+    
+    $excerptLength = 200;
+
+    the_post();
+    
+    if ((is_widget()->show_thumbnail && has_post_thumbnail()) || ($is_widget_override && has_post_thumbnail())) :
 
         $inner_span = (is_widget()->span > 6) ? "span12" : "span6";
 
