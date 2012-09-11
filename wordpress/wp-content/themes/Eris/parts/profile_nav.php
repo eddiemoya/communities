@@ -1,48 +1,51 @@
 <?php
 
+    $concat = has_screen_name( $profile_user->ID ) ? '?post-type=' : '&post-type=';
+
     $a_tabs = array(
-        "Community Activity" => $url_no_qs . '?post-type=recent',
-        "About Me" => $url_no_qs . '?post-type=aboutme'
+        "Community Activity" => $author_url . $concat . 'recent',
+        "About Me" => $author_url . $concat . 'aboutme'
     );
   
     $a_navigation = array(
         "recent" => array(
             "name" => "Recent Activity",
-            "url" => $url_no_qs . '?post-type=recent'
+            "url" => $author_url . $concat . 'recent'
         ),
         "question" => array(
             "name" => "Questions",
-            "url" => $url_no_qs . '?post-type=question'
+            "url" => $author_url . $concat . 'question'
         ),
+        /*
         "" => array(
             "name" => "Comments",
-            "url" => $url_no_qs . '?post-type='
-        ),
+            "url" => $author_url . $concat . ''
+        ),*/
          "comment" => array(
             "name" => "Comments",
-            "url" => $url_no_qs . '?post-type=comment'
+            "url" => $author_url . $concat . 'comment'
         ),
         
         "answer" => array(
             "name" => "Answers",
-            "url" => $url_no_qs . '?post-type=answer'
+            "url" => $author_url . $concat . 'answer'
         ),
        
         "follow" => array(
             "name" => "Follows",
-            "url" => $url_no_qs . '?post-type=follow'
+            "url" => $author_url . $concat . 'follow'
         ),
         "upvote" => array(
             "name" => "Helpful Votes",
-            "url" => $url_no_qs . '?post-type=upvote'
+            "url" => $author_url . $concat . 'upvote'
         )      ,
         "post" => array(
             "name" => "Posts",
-            "url" => $url_no_qs . '?post-type=post'
+            "url" => $author_url . $concat . 'post'
         ),
         "guides" => array(
             "name" => "Buying Guides",
-            "url" => $url_no_qs . '?post-type=guides'
+            "url" => $author_url . $concat . 'guides'
         )
     );
   
@@ -94,35 +97,35 @@
     if( $_REQUEST['post-type'] != 'aboutme' && !empty( $available_tabs ) ): 
 ?>
 <nav class="bar clearfix">
-  <ul class="clearfix">
-    <?php
+    <ul class="clearfix">
+<?php
     if($current_tab == 'Community Activity') {
-    	
-	    foreach ($a_navigation as $lone_nav_id => $lone_nav) {
-	    	
-	     if ( in_array($lone_nav_id, $available_tabs) ) {
-	     	
-	        if ( $lone_nav_id == $current_nav ) {
-	        	
-	          echo '<li class="active">' . $lone_nav["name"] . '</li>';
-	        }
-	        
-	        else {
-	        	
-	          echo '<li><a href="' . $lone_nav["url"] . '">' . $lone_nav["name"] . '</a></li>';
-	          
-	        }
-	      }
-	    }
+
+        foreach ($a_navigation as $lone_nav_id => $lone_nav) {
+
+            if ( in_array($lone_nav_id, $available_tabs) ) {
+
+                if ( $lone_nav_id == $current_nav ) {
+
+                    echo '<li class="active">' . $lone_nav["name"] . '</li>';
+                }
+
+                else {
+
+                    echo '<li><a href="' . $lone_nav["url"] . '">' . $lone_nav["name"] . '</a></li>';
+
+                }
+            }
+        }
     }
-    ?>
-  </ul>
+?>
+    </ul>
 </nav>
 <?php endif; ?>
 
 <?php
     # catch the circumstance where the user has not yet done anything on the site.
-    if( $_REQUEST['post-type'] != 'aboutme' && empty( $available_tabs ) ):
+    if( $_REQUEST['post-type'] != 'aboutme' && empty( $available_tabs ) && $profile_type == 'myprofile' ):
 ?>
     <section class="no-activity">
         Get out there and show us what you're all about!

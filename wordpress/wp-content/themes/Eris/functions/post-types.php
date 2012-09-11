@@ -12,7 +12,7 @@ add_action('init', 'register_buying_guides_type');
 function register_questions_type() {
     $labels = array(
         'name'          => _x('Questions', 'post type general name'),
-        'singular_name' => _x('Questions', 'post type singular name'),
+        'singular_name' => _x('Question', 'post type singular name'),
         'add_new'       => _x('Add New', 'question'),
         'add_new_item'  => __('Add New Question'),
         'edit_item'     => __('Edit Question'),
@@ -96,21 +96,21 @@ function register_buying_guides_type() {
     register_post_type('guide', $args);
 }
 
-function new_excerpt_more($excerpt) {
+function see_more_excerpt($excerpt) {
     global $excerptLength;
 
-    if(!isset($excerptLength) || $excerptLength <= 0) {
+    if(!isset($excerpt) || $excerpt == '' || strlen($excerpt) <= $excerptLength) {
         return $excerpt;
     }
 
     return $excerpt.'... <a class="moretag" href="'. get_permalink($post->ID) . '">See More</a>';
 }
-add_filter('get_the_excerpt', 'new_excerpt_more');
+add_filter('get_the_excerpt', 'see_more_excerpt');
 
 function custom_excerpt_length($excerpt) {
     global $excerptLength, $post;
 
-    if(!isset($excerptLength) || $excerptLength <= 0 || (isset($excerpt) && $excerpt != '')) {
+    if(!isset($excerptLength) || $excerptLength <= 0 || (isset($excerpt) && $excerpt != '' && strlen($excerpt) > 0)) {
         return $excerpt;
     }
 

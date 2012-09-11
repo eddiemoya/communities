@@ -110,7 +110,7 @@ shcJSL.get = function(element) {
 			collection.push(getID(element.slice(1)));
 		// Need to add in class selector at some point.
 		} else {	// Selector is an element OR not a valid selector
-			collection = collection.concat([].slice.call(getTags(element)));
+			collection = shcJSL.sequence(getTags(element));
 		}
 	} else if (typeof element == "object") {
 		// element is an HTMLObject
@@ -245,6 +245,24 @@ shcJSL.first = function(element) {
 	return firstChild;
 }
 
+shcJSL.addChildren = function(p, c) {
+	if (p && c) {
+		for (var i=0; i < c.length; i++) {
+			p.appendChild(c[i]);
+		}
+		return p;
+	}
+}
+
+shcJSL.setStyles = function(e, s) {
+	if (typeof s != undefined && typeof e != undefined) {
+		for (var i in s) {
+			e.style[i] = s[i];
+		}
+		return e;
+	}
+}
+
 shcJSL.formDataToJSON = function(form) {
 	var cereal; // Serialized string of the form
 	var jason;	// (String) Our JSON object
@@ -271,8 +289,18 @@ shcJSL.formDataToJSON = function(form) {
 		return json;
 	}
 	
-	console.log(jason);
 	return jason;
+}
+
+shcJSL.sequence = function(array) {
+	var sequence = [];	// New 'true' array
+	try {sequence = sequence.concat([].slice.call(array));}
+	catch(e) {
+		for (var i=0; i < array.length; i++) {
+			sequence.push(array[i]);
+		}
+	}
+	return sequence;
 }
 /*
 	[2.0] WIDGETS
@@ -339,26 +367,28 @@ shcJSL.gizmos.bulletin = {}
  * @param element: 
  */
 shcJSL.gizmos.persistr = function(element) {
-	var offsetTop;	// (Int) pixel difference from the top of the page
-	var persisted;	// (HTMLObject) the persisted element
+	var offset;	// (Int) pixel difference from the top of the page
+	var persist;		// (Function) function to persist the element
+	var sticker;	// (HTMLObject) the persisted element
 	
-	persisted = element;
-	offsetTop = $(element).offset().top;
+	sticker = element;
+	offset = ($(sticker).offset().top).toFixed(0);
 	
-	$(window).scroll(function(event) {
-		var yScroll;	// (Int) Current position of the top of the page via scroll
+	function persist(event) {
+		var y;	// Y scroll, y-axis of the scroll bar
 		
-		yScroll = $(this).scrollTop();
-		
-		if (yScroll > offsetTop) {
-			$(element).addClass("persist");
-			$("#container").css("padding-top",$(element).outerHeight())
+		y = $(window).scrollTop();
+		if (y >= offset) {
+			$(sticker).parent().css("padding-top",$(sticker).outerHeight());
+			$(sticker).addClass("persist");
 		} else {
-			$(element).removeClass("persist");
-			$("#container").css("padding-top",0)
+			$(sticker).removeClass("persist");
+			$(sticker).parent().css("padding-top",0)	
 		}
-	});
+	}
 	
+	$(window).bind('scroll', persist);
+	persist();
 }
 
 /*

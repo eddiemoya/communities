@@ -47,7 +47,6 @@
 			}
 			?>
 		<input type="hidden" value="results-list" name="widget" />
-		<input type="submit" value="Submit" name="submit" />
 	</form>
 </header>
-<ol class="content-body">
+<section class="content-body">

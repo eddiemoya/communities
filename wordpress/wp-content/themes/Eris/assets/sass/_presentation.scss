@@ -169,8 +169,8 @@ ul.bullets {
     padding: .5em 0;
     letter-spacing:-.05em;
   }
-  h4, address {
-    font-size: percentage( 12/16 );
+  h4, h5, address {
+    font-size: 12px;
     @extend .bold;
   }
   &.labeled {
@@ -181,6 +181,7 @@ ul.bullets {
     }
     h4, h4 a {
       color: $lightest-color;
+      line-height: 1;
     }
     .tail {
       background: url('#{$img}sprite-user.png') no-repeat center top;
@@ -235,10 +236,8 @@ ul.bullets {
  * form elements
  */
 .input_text {
-  /*
-   * Do not set padding for left/right to 0.
-   * IE8 no like this.
-   */
+  // Do not set padding for left/right to 0.
+  // IE8 no like this.
   padding:.3125em .01em;
   border:solid 1px sears( decorative );
   height:1.25em;
@@ -309,12 +308,12 @@ ul.bullets {
 }
 
 .error {
-  input[type="text"] {
+  input[type="text"], input[type="password"] {
     border:solid 1px #ff0000;
   }
   .error-message {
     background-color:#e41e13;
-    color:#ffffff;
+    color:$lightest-color;
     display:block;
     float:left;
     font-weight:bold;
@@ -332,6 +331,10 @@ ul.bullets {
       width:19px;
     }
   }
+}
+
+.form-errors {
+  color:#ff0000;
 }
 
 form {}
@@ -359,7 +362,7 @@ form {}
 
 .content-container .content-body {
   padding:.625em;
- 
+
   .content-details {
     padding-bottom:.625em;
     .content-category {
@@ -418,7 +421,7 @@ form {}
     }
   }
   .stats {
-    float: right;
+    float: left;
     li {
       font-size: 12px;
     }
@@ -433,7 +436,7 @@ form {}
 
 .span3, .span4, .span6 {
   .member {
-    @include col_layout( ( 50, 100 ), 10 );
+    @include col_layout( ( 80, 180 ), 20 );
     margin-top: 1em;
     &:first-child {
       margin-top: 0;
@@ -447,19 +450,23 @@ form {}
       width: 29.9%;
       float: left;
       padding: 0 1.6%;
+      &:first-child {
+        padding-left: 0;
+      }
     }
     .member {
       border-left: 1px solid sears( decorative );
       &:first-child {
         border-left: 0;
       }
-      @include col_layout( ( 50, 50 ), 5 );
+      @include col_layout( ( 80, 80 ), 20 );
     }
     @include legacy-pie-clearfix;
     .stats {
       float: none;
       clear: left;
       width: 100%;
+      margin-left: 0;
     }
   }
 }
@@ -468,23 +475,22 @@ form {}
 //.span3 .featured-members, .span4 .featured-members, .span6 .featured-members,
 //.span3.featured-members, .span4.featured-members, .span6.featured-members, .span8.featured-members
 
-.span3 .featured-members, .span4 .featured-members, .span6 .featured-members {
-  .span4 {
-    float: none;
-    width: 100%;
-    margin-left: 0;
-    margin-bottom: 1em;
-    .member {
-      border-right: 0;
-      @include col_layout( (80, 210), 10 );
-    }
-  }
-}
+//.span3 .featured-members, .span4 .featured-members, .span6 .featured-members {
+//  .span4 {
+//    float: none;
+//    width: 100%;
+//    margin-left: 0;
+//    margin-bottom: 1em;
+//    .member {
+//      border-right: 0;
+//      @include col_layout( (80, 210), 10 );
+//    }
+//  }
+//}
 
 // FEATURED QUESTION
 .featured-question.content-container {
   .category-image {
-    background:transparent url(#{$img}category-image.jpg) no-repeat 0px 0px;
     float:left;
     height:6.25em;
     margin:0 .625em .625em 0;
@@ -492,7 +498,7 @@ form {}
   }
 
   $column-width: nth( $span-widths, 4 );
-  $calculated-widths: ratioize( ($column-width, $column-width, 10) );
+  $calculated-widths: ratioize( ($column-width, $column-width, 20) );
   &.columns {
     .content-body {
       & > * {
@@ -534,7 +540,7 @@ form {}
 }
 
 // RESULT LIST
-.results-list {
+.result-list {
   margin-top: 1em;
   border: 1px solid sears( decorative );
   @include border-radius( 5px );
@@ -570,14 +576,14 @@ form {}
 }
 
 // FEATURED BLOG POST
-.content-container.featured-post {
-	.content-excerpt, .content-byline {
-		font-size:.75em
-	}
+.content-container.featured-post, .content-container.featured-guide {
+  .content-excerpt, .content-byline, .content-tags {
+    font-size:.75em
+  }
 }
 .span4 .content-container.featured-post .span6 {
-	width: 100%;
-	margin-left: 0;
+  width: 100%;
+  margin-left: 0;
 }
 
 // RECENT ACTIVITY
@@ -626,6 +632,13 @@ form {}
   }
 }
 
+.span3, .span4, .span6 {
+  .recent-activity .excerpt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
 /*
  * POST A QUESTION
  */
@@ -663,7 +676,8 @@ form {}
  * LOGIN/REGISTER/FORGOT PASSWORD
  */
 #moodle_container .sign-in, body > .sign-in,
-#moodle_container .register, body > .register {
+#moodle_container .register, body > .register,
+#moodle_container .forgot-password, body > .forgot-password {
   padding:20px;
 }
 
@@ -723,21 +737,21 @@ fieldset#use_your_account_from {
 
 // subnav widget
 .widget_communities_menu_widget {
-	.subnav-items {
-		font-size: .80em;
-		.menu-item {
-			padding: 6px 0;
-		}
-	}
-	.subcat-selector-container {
-		font-size: .75em;
-		margin-top: 15px;
-		color: #666666;
-		select {
-			margin-left: 10px;
-			color: #000000;
-		}
-	}
+  .subnav-items {
+    font-size: .80em;
+    .menu-item {
+      padding: 6px 0;
+    }
+  }
+  .subcat-selector-container {
+    font-size: .75em;
+    margin-top: 15px;
+    color: sears( secondary-link );
+    select {
+      margin-left: 10px;
+      color: $darkest-color;
+    }
+  }
 }
 
 // PROFILE
@@ -808,7 +822,7 @@ $tab-padding: "1em 0 .6em 0";
     dt, dd {
       float: left;
       padding: 1em 0;
-      border-top: 1px solid sears(decorative);
+      border-top: 1px solid sears( decorative );
       font-size: percentage( 13/16 );
     }
     dt {
@@ -869,27 +883,45 @@ $tab-padding: "1em 0 .6em 0";
 
 // content list widget
 .content-body.content-list {
+  .content-item {
+    margin-bottom: 10px;
+    float: left;
+    clear: both;
+    .post-title {
+      line-height: 1.2em;
+    }
+    .byline, .comments-count, .post-date {
+      font-size: .7em;
+      line-height: 1.4em;
+      color: #999;
+    }
+    p {
+      margin-bottom: 0;
+    }
+  }
+  .more-link {
+    font-size: .8em;
+    margin-top: 15px;
+    float: left;
+    clear:both;
+  }
+}
+
+// question list widget
+.content-container.questionlist .content-body.content-list {
 	.content-item {
-		margin-bottom: 10px;
-		float: left;
-		clear: both;
-		.post-title {
-			line-height: 1.2em;
+		margin-bottom: 20px;
+		.post-category {
+			font-weight: bold;
+			margin-bottom: 4px;
 		}
-		.byline, .comments-count, .post-date {
-			font-size: .7em;
-			line-height: 1.4em;
-			color: #999;
+		.addthis.dropmenu {
+			padding-top: 3px;
+			font-size: .75em;
+			.sharebutton {
+				padding: 0;
+			}
 		}
-		p {
-			margin-bottom: 0;
-		}
-	}
-	.more-link {
-		font-size: .8em;
-		margin-top: 15px;
-		float: left;
-		clear:both;
 	}
 }
 
@@ -904,7 +936,7 @@ $tab-padding: "1em 0 .6em 0";
     left: -10px;
     position: absolute;
 
-    .arrowLeft {
+    .left {
       background-color: transparent;
       border-color: #ffffff #a0c7ff #ffffff #ffffff;
       border-style: solid;
@@ -913,7 +945,7 @@ $tab-padding: "1em 0 .6em 0";
       height: 0px;
     }
 
-    .arrowLeftBorder {
+    .leftBorder {
       background-color: transparent;
       border-color: transparent #ffffff transparent transparent;
       border-style: solid;
@@ -921,16 +953,37 @@ $tab-padding: "1em 0 .6em 0";
       width: 0px;
       height: 0px;
       position: relative;
-      left: 2px;
-      top: -19px;
+      left: 3px;
+      top: 2px;
+    }
+
+    .top {
+      background-color: transparent;
+      border-color: transparent transparent #a0c7ff transparent;
+      border-style: solid;
+      border-width: 0px 10px 10px 10px;
+      width: 0px;
+      height: 0px;
+    }
+
+    .topBorder {
+      background-color: transparent;
+      border-color: transparent transparent #fff transparent;
+      border-style: solid;
+      border-width: 0px 9px 9px 9px;
+      width: 0px;
+      height: 0px;
+      position: relative;
+      left: 1px;
+      top: -9px;
     }
   }
 
   .middle {
     @include border-radius( 4px );
-    background-color: #fff;
+    background-color: $lightest-color;
     border: 1px solid #A0C7FF;
-    color: #000;
+    color: $darkest-color;
     float: left;
     padding: 7px;
   }
@@ -940,13 +993,6 @@ $tab-padding: "1em 0 .6em 0";
 .commentForm {
   margin-bottom: 20px;
 
-  textarea {
-    @include border-radius( 4px );
-    border: 1px solid #d6d6d6;
-    margin-bottom: 15px;
-    width: 99%;
-  }
-  
   .leaveComment {
     float: right;
     cursor: pointer;
@@ -972,6 +1018,7 @@ $tab-padding: "1em 0 .6em 0";
     display: inline-block;
   }
 }
+
 #allComments {
   @include border-radius( 4px );
   border: 1px solid #d6d6d6;
@@ -988,6 +1035,15 @@ $tab-padding: "1em 0 .6em 0";
     article {
       font-size: 13px;
       margin: 1em 0;
+    }
+
+    .responseTo {
+      font-weight: bold;
+      margin: 10px 0 0 0;
+    }
+
+    textarea {
+      width: 98%;
     }
   }
 
@@ -1008,7 +1064,7 @@ $tab-padding: "1em 0 .6em 0";
 // Activity buttons
 .actions {
   margin: .5em 0;
-  
+
   button {
     cursor: pointer;
     color: #4e74a3;
@@ -1036,6 +1092,16 @@ $tab-padding: "1em 0 .6em 0";
   float: left;
 }
 
+.reply-to-form {
+  label, input[type="text"] {
+    float: left;
+    margin: .5em 1%;
+  }
+  label {
+    margin-top: 1em;
+  }
+}
+
 @include sprite-position( 'button.flag', center, (( $act-sprite-period * -1 ) * 4) + 2 );
 @include sprite-position( 'button.flag.active', center, (( $act-sprite-period * -1 ) * 5) + 2 );
 
@@ -1050,7 +1116,7 @@ button.upvote {
   padding-right: 1.5em;
 }
 @include sprite-position( 'button.upvote', 95%, 2px );
-@include sprite-position( 'button.upvote.active', right, ( $act-sprite-period * -1 ) + 2 );
+@include sprite-position( 'button.upvote.active', 95%, ( $act-sprite-period * -1 ) + 2 );
 
 button.follow {
   float: left;
@@ -1059,6 +1125,11 @@ button.follow {
   background: none;
   margin-left: 0;
 }
+
+.follow.active {
+    background-color: #4E74A3;
+    color: #fff;
+  }
 
 .metainfo {
   display: block;
@@ -1071,7 +1142,7 @@ button.follow {
 
 /**
  * @author Tim Steele
- * 
+ *
  * Styles for the breadcrumb widget. Mainly used on the single pages, i.e.
  * blog, buying guide, question.
  */
@@ -1096,7 +1167,18 @@ button.follow {
 .kmart .breadcrumb li:before {
   color:kmart( link );
 }
-      
+
 .sears .breadcrumb li:before {
   color:sears( link );
+}
+.no-results {
+	.header {
+		font-weight: bold;
+		margin-top: 15px;
+		margin-bottom: 5px;
+		font-size: 1em;
+	}
+	ul {
+		padding-left: 20px;
+	}
 }

@@ -26,6 +26,7 @@ function formdata_cookie_check() {
 					
 			}
 			
+			
 			//Enter more forms here...
 			
 			//Delete cookie
@@ -38,4 +39,4 @@ function formdata_cookie_check() {
 }
 
 
-add_action('init', 'formdata_cookie_check');
+add_action('init', 'formdata_cookie_check', 1);
