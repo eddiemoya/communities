@@ -33,7 +33,7 @@
 				                <?php get_screenname( $current_user->ID ); ?>
 				            </a>
 				        </li>
-				        <li><?php (function_exists('so_logout_link')) ? so_logout_link('Logout') : site_url('logout'); ?> </li>
+				        <li><?php (function_exists('sso_logout_link')) ? sso_logout_link('Logout') : null;?> </li>
 				        
     					<!-- <li><a href="<?php //echo wp_logout_url( get_permalink() ); ?>" title="Logout" class="bold">Logout</a></li> -->
 				    <?php else: ?>

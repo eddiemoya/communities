@@ -20,26 +20,26 @@ get_template_part('parts/header'); ?>
 
 		<h6 class="content-headline">Sign in</h6>
 		
-		<?php if(isset($_GET['err'])):?>
+		<?php if(isset($_GET['err']) && ! is_user_logged_in()):?>
 		
 			<div><?php echo urldecode($_GET['err']);?></div>
 			
 		<?php endif;?>
 		
-		<form class="form_login" method="post" action="<?php echo '?ssologin&origin=' . $origin;?>">
+		<form class="form_login" method="post" action="<?php echo '?ssologin&origin=' . $origin;?>" shc:gizmo="transFormer">
       <ul class="form-fields">
           
           <li>
               <dl class="clearfix">
                   <dt class="span3"><label for="loginId">Email:</label></dt>
-                  <dd class="span9"><input type="text" name="loginId" class="input_text" id="login_email" /></dd>
+                  <dd class="span9"><input type="text" name="loginId" class="input_text" id="login_email" shc:gizmo:form="{required:true}" /></dd>
               </dl>
           </li>
           
           <li>
               <dl class="clearfix">
                   <dt class="span3"><label for="logonPassword">Password:</label></dt>
-                  <dd class="span8"><input type="password" name="logonPassword" class="input_text input_password" id="password" /></dd>
+                  <dd class="span8"><input type="password" name="logonPassword" class="input_text input_password" id="password" shc:gizmo:form="{required:true}" /></dd>
                   <dd class="span1"><a href="<?php echo get_site_url(); ?>/login/" title="Forgot your password?" class="forgot" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-forgot-password'}}}">Forgot?</a></dd>
               </dl>
           </li>

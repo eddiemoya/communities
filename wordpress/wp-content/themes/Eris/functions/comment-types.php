@@ -147,7 +147,6 @@ add_filter('cct_condition_comment', 'set_comment_comment_type', 10, 4);
 
 function organizeByChildren($comments) {
     if(isset($comments) && !empty($comments)) {
-
         foreach($comments as $key=>$comment) {
             if(isset($comment->comment_parent) && $comment->comment_parent != '0' && $comment->comment_parent != '') {
                 $children[$comment->comment_parent][] = $comment;
@@ -157,7 +156,6 @@ function organizeByChildren($comments) {
         }
 
         if(isset($children) && !empty($children)) {
-
             foreach($comments as $comment) {
                 if(array_key_exists($comment->comment_ID, $children)) {
                     foreach($children[$comment->comment_ID] as $child) {
