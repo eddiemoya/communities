@@ -1,4 +1,3 @@
-
 <?php
 	global $current_user;
     get_currentuserinfo();
@@ -23,12 +22,12 @@
 
         $args = array(
             'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
-            'comment_field'        => '<textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" shc:gizmo:form="{required:true}">'. $comment_value .'</textarea>',
+            'comment_field'        => '<textarea id="comment" name="comment" rows="8" aria-required="true" shc:gizmo:form="{required:true}">'. $comment_value .'</textarea>',
             'must_log_in'          => null,
             'logged_in_as'         => null,
             'comment_notes_before' => null,
             'comment_notes_after'  => null,
-            'id_form'              => 'commentform',
+            'id_form'              => null,
             'id_submit'            => 'submit',
             'title_reply'          => null,
             'title_reply_to'       => __( 'Leave a Reply to %s' ),
@@ -48,24 +47,26 @@
             <span class="leaveComment">Leave <?php echo $comment_type_text;?> <span class="smaller">&#9660;</span></span>
         </div>
         
-        <?php //If there is a screen name error, show it
-        
-        if(isset($_GET['comm_err']) && ($_GET['cid'] == 0)):?>
-        <div>
-        	<?php echo stripslashes(urldecode($_GET['comm_err']));?>
-        </div>
-        <?php endif;?>
-        
         <?php
         if ( get_option( 'comment_registration' ) && !is_user_logged_in() ) :
             echo $args['must_log_in'];
             do_action( 'comment_form_must_log_in_after' );
             else : ?>
-            <form action="<?php echo site_url( '/wp-comments-post.php' ); ?>" method="post" id="<?php echo esc_attr( $args['id_form'] ); ?>" shc:gizmo="transFormer" >
+            <form id="<?php echo $comment_type.'-'.$comment->comment_ID ?>" action="<?php echo site_url( '/wp-comments-post.php' ); ?>" method="post" id="<?php echo esc_attr( $args['id_form'] ); ?>" shc:gizmo="transFormer">
             
-               <?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
+                <?php
+                # If a user doesn't have a screen name, prompt them to enter one
+                if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):
+                    
+                    # If there is a screen name error, show it
+                    if(isset($_GET['comm_err']) && ($_GET['cid'] == 0)): 
+                ?>
+                   <div>
+                       <?php echo stripslashes(urldecode($_GET['comm_err']));?>
+                   </div>
+                   <?php endif; ?>
                     <label for="screen-name" class="required">Screen Name</label>
-                    <input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo $screen_name_value;?>" />
+                    <input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo $screen_name_value;?>" shc:gizmo:form="{required:true, special: 'screen-name', message: 'Screen name invalid. Screen name is already in use or does not follow the screen name guidelines.'}"/>
                 <?php endif;?>
                
                
@@ -83,7 +84,7 @@
                 ?>
                 <p class="form-submit">
                     <input type="submit" id="<?php echo esc_attr( $args['id_submit'] ); ?>" class="<?php echo theme_option("brand"); ?>_button" value="<?php echo esc_attr( $args['label_submit'] ); ?>" />
-                    <input type="reset" onclick="jQuery('#commentform').slideUp();" class="<?php echo theme_option("brand"); ?>_button azure" value="Cancel" />
+                    <input type="reset" class="<?php echo theme_option("brand"); ?>_button azure" value="Cancel" />
                     <?php comment_id_fields( $post->ID ); ?>
                 </p>
                 <input type='hidden' name='comment_type' value='<?php echo $comment_type; ?>' />
@@ -97,5 +98,3 @@
             do_action( 'comment_form_comments_closed' );
         endif;
     }
-
-    comments_template('/parts/tooltip.php');

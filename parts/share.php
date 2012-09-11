@@ -15,7 +15,7 @@
     <a class="addthis_button_www.shopyourway.com" addthis:title="ShopYourWay this"<?php echo $add_url; ?>><img src="<?php echo get_template_directory_uri() ?>/assets/img/shopyourway_large.png" /></a>
 </div>
 <?php else: ?>
-<ul class="addthis dropmenu">
+<ul class="addthis dropmenu clearfix">
     <li>
         <span class="sharebutton">Share</span>
         <ul class="sharemenulinks">

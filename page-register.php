@@ -41,7 +41,7 @@ get_template_part('parts/header'); ?>
                     <dl class="clearfix">
                         <dt class="span3"><label for="login_confirm-email">Confirm Email:</label></dt>
                         <dd class="span9">
-                        	<input type="text" name="login_confirm-email" autocomplete="off" class="input_text" id="login_confirm-email" shc:gizmo:form="{required:true, custom: function(self) {if (self.value != $('#loginId').attr('value')) return false; else return true;}, message: 'Your email does not match. Please check and try again.'}" />
+                        	<input type="text" name="login_confirm-email" autocomplete="off" class="input_text" id="login_confirm-email" shc:gizmo:form="{required:true, custom: function(self) {if (self.value.toLowerCase() != ($('#loginId').attr('value')).toLowerCase()) return false; else return true;}, message: 'Your email does not match. Please check and try again.'}" />
                         </dd>
                     </dl>
                 </li>
@@ -49,7 +49,33 @@ get_template_part('parts/header'); ?>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="logonPassword">Password:</label></dt>
-                        <dd class="span9"><input type="password" name="logonPassword" autocomplete="off" class="input_text input_password" id="logonPassword" shc:gizmo:form="{required:true, pattern: /^[A-Za-z0-9]{8,}$/, message: 'Please enter a valid password.'}" /></dd>
+                        <dd class="span9">
+                            <input
+                                    type="password"
+                                    name="logonPassword"
+                                    autocomplete="off"
+                                    class="input_text input_password"
+                                    id="logonPassword"
+                                    shc:gizmo:form="{required:true, pattern: /^\w*(?=\w{8,})(?=\w*\d)(?=\w*[a-zA-Z])(?!\w*_)\w*$/, message: 'Please enter a valid password.'}"
+                                    shc:gizmo="tooltip"
+                                    shc:gizmo:options="
+                                        {
+                                            tooltip: {
+                                                displayData: {
+                                                    element: 'passInfo'
+                                                },
+                                                events: {
+                                                    blur: {
+                                                        active: false
+                                                    },
+                                                    focus: {
+                                                        active: true
+                                                    }
+                                                },
+                                                arrowPosition: 'left'
+                                            }
+                                        }"
+                            /></dd>
                     </dl>
                 </li>
                 
@@ -65,7 +91,7 @@ get_template_part('parts/header'); ?>
                         <dd class="span3">&nbsp;</dd>
                         <dd class="span9">
                             <p>
-                                <input type="checkbox" name="offers" id="offers" value="True" class="input_checkbox" /> I would like to receive offers, updates and sale alerts from Sears
+                                <input type="checkbox" name="offers" id="offers" value="True" class="input_checkbox" checked="checked"/> I would like to receive offers, updates and sale alerts from Sears
                             </p>
                         </dd>
                     </dl>
@@ -85,7 +111,7 @@ get_template_part('parts/header'); ?>
                         <dd class="span3">&nbsp;</dd>
                         <dd class="span9">
                             <p>
-                                By clicking &quot;Register&quot;, I agree to the <a href="#" title="Terms of Use">Terms of Use</a> and <a href="#" title="Privacy Policy">Privacy Policy</a>.
+                                By clicking &quot;Register&quot;, I agree to the <a href="<?php echo (theme_option("brand") == "sears")? "http://www.sears.com/shc/s/nb_10153_12605_NB_CStermsofservice":"http://www.kmart.com/csterms/nb-100000000000005?adCell=WF"; ?>" target="_blank" title="Terms of Use">Terms of Use</a> and <a href="<?php echo (theme_option("brand") == "sears")? "http://www.sears.com/shc/s/nb_10153_12605_NB_CSprivacy":"http://www.kmart.com/csprivacy/nb-100000000000006?adCell=WF"; ?>" target="_blank" title="Privacy Policy">Privacy Policy</a>.
                             </p>
                         </dd>
                     </dl>
@@ -107,6 +133,17 @@ get_template_part('parts/header'); ?>
                 </dl>
             </li>
         </ul>
+                <div id="passInfo" class="info hide">
+                    <p class="bold">Your password must have:</p>
+                    <ul>
+                        <li>6 or more characters total</li>
+                        <li>At least one letter</li>
+                        <li>At least one number</li>
+                        <li>No space</li>
+                        <li>No special characters such as ! or ?</li>
+                    </ul>
+                    <p>All passwords are cAsE sEnSiTiVe.</p>
+                </div>
 				
 				<section id="login-open-id" class="open-id" shc:gizmo="openID">
 					<span class="or">OR</span>
@@ -125,9 +162,10 @@ get_template_part('parts/header'); ?>
 		<?php if(! is_ajax()):?>
 	</section>
 
-<?php get_template_part('parts/footer'); 
+<?php get_template_part('parts/footer');
 
 endif;
+
 ?>
 
 

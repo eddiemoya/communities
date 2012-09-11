@@ -1,8 +1,7 @@
 #footer {
-  padding-bottom: 1.5em;
+  padding-bottom:em-adjust( 1.5em );
 }
 ul.footer_anterior {
-  font-size: percentage( 12/16 );
   margin-top: 1em;
   @include col-layout( ( 76, 160, 74, 74, 74, 74, 74, 74, 74, 16, 16, 16, 16 ), 10);
   .icon {
@@ -22,16 +21,16 @@ ul.footer_anterior {
       line-height:31px;
     }
   }
-  @include sprite-position(".acc", left, top );
-  @include sprite-position(".fb", -120px, top );
-  @include sprite-position(".twtr", -160px, top );
-  @include sprite-position(".yt", -200px, top );
-  @include sprite-position(".smb", -240px, top );
+  @include sprite-position( ".acc", left,   top );
+  @include sprite-position( ".fb",  -120px, top );
+  @include sprite-position( ".twtr",-160px, top );
+  @include sprite-position( ".yt",  -200px, top );
+  @include sprite-position( ".smb", -240px, top );
 }
 
 .kmart .footer_anterior {
   p {
-    font-size: percentage( 10/16 );
+    font-size: font-size( 10 );
     margin-top: .5em;
     text-align: center;
   }
