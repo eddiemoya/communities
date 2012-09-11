@@ -105,6 +105,8 @@ function has_screen_name($user_id) {
  */
 function process_front_end_question() {
 	
+	global $current_user;
+	
 	//Neither step has been taken, were on step 1
  	 $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '1');
 			
@@ -130,9 +132,6 @@ function process_front_end_question() {
 
     //If step 2, add the post and move to step 3
     if((wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in())) {
-		
-    	global $current_user;
-		get_currentuserinfo();
 		
 		$valid = true;
     	$errors = array();
@@ -194,8 +193,6 @@ function process_front_end_question() {
 	    							update_user_meta($current_user->ID, 'profile_screen_name', $_POST['screen-name']);
 	    							
 	    							//Update user's nicename to screen name
-	    							/*wp_update_user(array('ID'				=> $current_user->ID,
-		 								 				'user_nicename' 	=> $_POST['screen-name']));*/
 	    							if(! update_user_nicename($current_user->ID, $_POST['screen-name'])) 
 	    							
 	    									$valid = false;
@@ -235,6 +232,13 @@ function process_front_end_question() {
 		        	
 		       }
 		        
+		       	$current_user->ID = -1;
+		       	get_currentuserinfo();
+		       	
+		       	echo '<pre>';
+		       	var_dump($current_user);
+		       	exit;
+		       	
 		        $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '3');
 		        
 	    } else {
@@ -256,7 +260,7 @@ function question_exists($post) {
 	global $current_user;
 	get_currentuserinfo();
 	
-	$p = $wpdb->base_prefix . 'posts';
+	$p = $wpdb->prefix . 'posts';
 	
 	$q = "SELECT ID FROM " . $p . " WHERE post_title = '" . $post['post_title'] ."' AND post_content = '". $post['post_content'] . "' AND post_type = 'question' AND post_author = " . $current_user->ID;
 	
