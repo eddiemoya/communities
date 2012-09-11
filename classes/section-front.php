@@ -126,11 +126,13 @@ class Section_Front{
 		global $wp_rewrite;
 		$categorized_sections = self::get_terms_by_post_type('category', 'section');
 		$rules = array();
-		foreach((array)$types as $type => $value){
-			$type = ($type == 'tax-archive') ? '' : $type;
-			$rr_endpoint = (!empty($type)) ? "/{$type}" : '';
+
 
 		    foreach((array)$categorized_sections as $cat){
+
+		    			foreach((array)$types as $type => $value){
+			$type = ($type == 'tax-archive') ? '' : $type;
+			$rr_endpoint = (!empty($type)) ? "/{$type}" : '';
 		
 		    	//echo "<pre>";print_r($cat);echo "</pre>";
 		    	$rules[$cat->taxonomy . '/' . $cat->slug .$rr_endpoint.'/?$'] = 'index.php?posts_per_page=1&post_type='.$_POST['post_type'].'&category_name='.$cat->slug;
