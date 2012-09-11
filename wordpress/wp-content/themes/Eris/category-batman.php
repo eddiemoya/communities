@@ -15,7 +15,7 @@ get_template_part('parts/header');
 		<section class="span8">
 		
 			<!-- FEATURED BLOG/BUYING GUIDE WIDGET -->
-			<!-- <article class="content-container featured-post span12">
+			<article class="content-container featured-post span12">
 			
 				<header class="content-header">
 					<h3>Featured Blog Post</h3>
@@ -46,7 +46,7 @@ get_template_part('parts/header');
 					
 				</section>
 		
-			</article> -->
+			</article>
 			<!-- END FEATURED BLOG/BUYING GUIDE WIDGET -->
 			
 			<!-- 6 SPAN FEATURED BLOG/BUYING GUIDE WIDGET -->

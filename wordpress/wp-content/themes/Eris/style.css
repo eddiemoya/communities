@@ -812,18 +812,19 @@ ul.bullets {
   border-top: solid 1px #d5d5d5; }
 
 .single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child,
-.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-body {
+.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-body:first-child,
+.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-header:first-child {
   border-top: none; }
 
-.sears .post h1 {
+.sears .post h1, .sears .question h1 {
   color: #067BB5; }
 
-.kmart .post h1 {
+.kmart .post h1, .kmart .question h1 {
   color: #980017; }
 
-.post {
+.post, .question {
   padding: inherit 0px; }
-  .post .content-body p {
+  .post .content-body p, .question .content-body p {
     margin-bottom: 1.476em; }
 
 textarea.discussion {
@@ -842,6 +843,21 @@ textarea.discussion {
   position: relative;
   text-align: right;
   z-index: 999; }
+
+.question .span2.badge, .question .span2.crest {
+  margin-left: 0px; }
+.question .content-date {
+  float: left; }
+  .question .content-date .time-stamp {
+    display: inline-block;
+    margin-left: 1.5em; }
+.question .actions {
+  float: none; }
+
+.question + .ugc-comment-answer_form .trigger.discussion {
+  height: 1em;
+  margin: 0 0 1em;
+  text-align: right; }
 
 .featured-members .member .content-comments {
   width: 100%; }

@@ -385,19 +385,28 @@ form {}
 }
 
 .single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child, 
-.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-body {
+.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-body:first-child,
+.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-header:first-child {
   border-top:none;
 }
 
-.sears .post h1 {
-  color:#067BB5;
+.sears{
+  .post, .question {
+    h1 {
+      color:#067BB5;
+    }
+  } 
 }
 
-.kmart .post h1 {
-  color:#980017;
+.kmart{
+  .post, .question {
+    h1 {
+      color:#980017;
+    }
+  } 
 }
 
-.post {
+.post, .question {
   padding:inherit 0px;
   .content-body p {
     margin-bottom: em-adjust( 1.2em )
@@ -417,6 +426,28 @@ textarea.discussion {
   position:relative;
   text-align:right;
   z-index:999;
+}
+
+.question {
+  .span2.badge, .span2.crest {
+    margin-left:0px;
+  }
+  .content-date {
+    float:left;
+    .time-stamp {
+      display:inline-block;
+      margin-left:1.5em;
+    }
+  }
+  .actions {
+    float:none;
+  }
+}
+
+.question + .ugc-comment-answer_form .trigger.discussion {
+  height: 1em;
+  margin: 0 0 1em;
+  text-align: right;
 }
 
 // FEATURED COMMUNITY MEMBERS
