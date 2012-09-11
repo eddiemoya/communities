@@ -23,35 +23,7 @@ get_currentuserinfo();
 							<?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
 							<li class="clearfix">
 								<label for="screen-name" class="required">Screen Name</label>
-								<input
-                                        type="text"
-                                        class="input_text"
-                                        name="screen-name"
-                                        id="screen-name"
-                                        value=""
-                                        shc:gizmo:form="{required:true, special: 'screen-name', pattern: /^[A-Za-z0-9_\-\.]{2,18}$/, message: 'Screen name invalid. Screen name is already in use or does not follow the screen name guidelines.'}"
-                                        shc:gizmo="tooltip"
-                                        shc:gizmo:options="
-                                            {
-                                                tooltip: {
-                                                    displayData: {
-                                                        element: 'snInfo'
-                                                    },
-                                                    events: {
-                                                        blur: {
-                                                            active: false
-                                                        },
-                                                        click: {
-                                                            active: true
-                                                        },
-                                                        focus: {
-                                                            active: true
-                                                        }
-                                                    },
-                                                    arrowPosition: 'left'
-                                                }
-                                            }"
-                                />
+								<input type="text" class="input_text" name="screen-name" id="screen-name" value="" shc:gizmo:form="{required:true, special: 'screen-name', pattern: /^[A-Za-z0-9_\-\.]{2,18}$/, message: 'Screen name invalid. Screen name is already in use or does not follow the screen name guidelines.'}" shc:gizmo="tooltip" shc:gizmo:options="{tooltip: {displayData: {element: 'snInfo'},events: {blur: {active: false},click: {active: true},focus: {active: true}}, arrowPosition: 'left'}}"/>
 							</li>
 							<?php endif;?>
 							<li class="clearfix">

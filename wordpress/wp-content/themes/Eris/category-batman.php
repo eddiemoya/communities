@@ -10,81 +10,12 @@ get_template_part('parts/header');
 //loop();
 ?>
 
-	<style type="text/css">
-		.tim, .single {}
-			
-			.tim #content, .single #content {}
-			
-					.tim #content > section.span12, .single #content > section.span12 {
-						border-top:solid 1px #d5d5d5;
-					}
-					
-					.tim #content > section.span12 > section[class*="span"] > [class*="span"]:first-child,
-					.tim #content > section.span12 > section[class*="span"] > [class*="span"]:first-child header,
-					.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child, 
-					.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child header {
-						border-top:none;
-					}
-			
-			
-			
-			
-			.blog-post {}
-			
-				.blog-post .article-data {
-					margin-top:.625em;
-				}
-				
-				.blog-post .article-data cite {
-					float:left;
-					font-size:.8125em;
-					font-weight:bold;
-				}
-				
-				.blog-post .article-data time {
-					color:#d5d5d5;
-					float:right;
-					font-size:.6875em;
-					line-height:1.5em;
-				}
-				
-				.blog-post.content-container .content-header {
-					border:none;
-					padding:0px;
-				}
-				
-				.sears .blog-post h1 {
-					color:#067BB5;
-				}
-				
-				.kmart .blog-post h1 {
-					color:#980017;
-				}
-				
-				.blog-post h1 {
-					font-size:1.25em;
-					font-weight:bold;
-					line-height:1.1em;
-					margin:.75em 0;
-				}
-				
-				.blog-post.content-container .content-body {
-					padding:0px;
-				}
-				
-					.blog-post.content-container .content-body p {
-						margin-bottom:1.5em;
-					}
-				
-				
-	</style>
-
 	<section class="span12">
 		
 		<section class="span8">
 		
 			<!-- FEATURED BLOG/BUYING GUIDE WIDGET -->
-			<article class="content-container featured-post span12">
+			<!-- <article class="content-container featured-post span12">
 			
 				<header class="content-header">
 					<h3>Featured Blog Post</h3>
@@ -115,11 +46,11 @@ get_template_part('parts/header');
 					
 				</section>
 		
-			</article>
+			</article> -->
 			<!-- END FEATURED BLOG/BUYING GUIDE WIDGET -->
 			
 			<!-- 6 SPAN FEATURED BLOG/BUYING GUIDE WIDGET -->
-			<article class="content-container featured-post span6">
+			<!-- <article class="content-container featured-post span6">
 			
 				<header class="content-header">
 					<h3>Featured Blog Post</h3>
@@ -148,10 +79,10 @@ get_template_part('parts/header');
 					
 				</section>
 		
-			</article>
+			</article> -->
 			<!-- END 6 SPAN FEATURED BLOG/BUYING GUIDE WIDGET -->
 			<!-- 6 SPAN FEATURED BLOG/BUYING GUIDE WIDGET -->
-			<article class="content-container featured-question span6">
+			<!-- <article class="content-container featured-question span6">
 				
 				<header class="content-header">
 					<h3>Featured Question</h3>
@@ -175,11 +106,11 @@ get_template_part('parts/header');
 
 				</section>
 		
-			</article>
+			</article> -->
 			<!-- END 6 SPAN FEATURED BLOG/BUYING GUIDE WIDGET -->
 			
 			<!-- FEATURED QUESTION -->
-			<article class="content-container featured-question span12">
+			<!-- <article class="content-container featured-question span12">
 				
 				<header class="content-header">
 					<h3>Featured Question</h3>
@@ -203,7 +134,7 @@ get_template_part('parts/header');
 
 				</section>
 		
-			</article>
+			</article> -->
 			<!-- END FEATURED QUESTION -->
 			
 			<!-- BREADCRUMB WIDGET -->
@@ -257,36 +188,213 @@ get_template_part('parts/header');
 						4 Comments
 					</p>
 				</section>
-				
-				<section class="article-data clearfix">
-					<cite><a href="#" title="Fantasy">Fantasy</a></cite>
-					<time pubdate datetime="1954-07-24">July 24, 1954</time>
-				</section>
-				
-				<header class="content-header">
-					<hgroup>
-						<h1>Chapter 6 The Old Forest</h1>
-					</hgroup>
-				</header>
-				<section class="content-body clearfix">
-					<p>
-						Frodo woke suddenly. It was still dark in the room. Merry was standing there with a candle in one hand, and banging on the door with the other. &quot;All right! What is it?&quot; said Frodo, still shaken and bewildered.
-					</p>
-					<p>
-						&quot;What is it!&quot; cried Merry. &quot;It is time to get up. It is half past four and very foggy. Come on! Sam is already getting breakfast ready. Even Pippin is up. I am just going to saddle the ponies, and fetch the one that is to be the baggage&ndash;carrier. Wake that sluggard Fatty! At least he must get up and see us off.&quot;
-					</p>
-					<p>
-						Soon after six o&rsquo;clock the five hobbits were ready to start. Fatty Bolger was still yawning. They stole quietly out of the house. Merry went in front leading a laden pony, and took his way along a path that went through a spinney behind the house, and then cut across several fields. The leaves of trees were glistening, and every twig was dripping; the grass was grey with cold dew. Everything was still, and far&ndash;away noises seemed near and clear: fowls chattering in a yard, someone closing a door of a distant house.
-					</p>
-					<p>
-						In their shed they found the ponies; sturdy little beasts of the kind loved by hobbits, not speedy, but good for a long day&rsquo;s work. They mounted, and soon they were riding off into the mist, which seemed to open reluctantly before them and close forbiddingly behind them. After riding for about an hour, slowly and without talking, they saw the Hedge looming suddenly ahead. It was tall and netted over with silver cobwebs. &quot;How are you going to get through this?&quot; asked Fredegar. &quot;Follow me!&quot; said Merry, &quot;and you will see.&quot; He turned to the left along the Hedge, and soon they came to a point where it bent inwards, running along the lip of a hollow. A cutting had been made, at some distance from the Hedge, and went sloping gently down into the ground. It had walls of brick at the sides, which rose steadily, until suddenly they arched over and formed a tunnel that dived deep under the Hedge and came out in the hollow on the other side.
-					</p>
-					<p>
-						Here Fatty Bolger halted. &quot;Good&ndash;bye, Frodo!&quot; he said. &quot;I wish you were not going into the Forest. I only hope you will not need rescuing before the day is out. But good luck to you. today and every day!&quot;
-					</p>
-				</section>
 			</article>
 			<!-- END ARTICLE CONTENT -->
+			
+			<!-- COMMENT FORM -->
+			<div class="ugc-comment-answer_form span12">
+				<div class="trigger discussion">
+					<a href="#">Leave a Comment <span class="smaller">&#9660;</span></a>
+				</div>
+				<form>
+					<ul class="form-fields">
+						<li class="clearfix">
+							<textarea id="comment-answer_textarea" class="input_textarea discussion" name="comment"></textarea>
+						</li>
+						<li class="clearfix">
+							<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Post</button>
+							<button class="<?php echo theme_option("brand"); ?>_button azure">Cancel</button>
+						</li>
+					</ul>
+				</form>
+			
+			</div>
+			<!-- END COMMENT FORM -->
+
+			<!-- COMMENT SECTION -->			
+			<section class="content-container span12">
+				
+				<ol id="allComments">
+					<li id="comment-reply-156514" class="comment clearfix">
+						<div class="crest span2">
+				    	<a href="http://localhost:100/?author=1">
+				        <img alt="" class="photo" src="/wp-content/uploads/userphoto/1.jpeg?1345825159">
+				      </a>
+				    	<h4><a href="http://localhost:100/?author=1">admin</a></h4>
+				    	<address>&nbsp;</address>
+				    </div>
+				    <div class="span10">
+				        <time pubdate="pubdate" datetime="2012-09-11" class="content-date">September 11, 2012 2:10pm</time>
+				        <article>
+				        	adsfa sdfasdfasdfasdf
+				        </article>
+				        <form action="" method="post" id="comment-actions-156514" class="actions clearfix">
+				        	<div class="reply link-emulator">Reply</div>
+				          <button shc:gizmo:options="{tooltip: {displayData: {element: 'flagForm-156514',callBack: {submit: {active: true,name: 'submit',method:function(event) {var sendData = jQuery(event.target).children().serialize(); jQuery.post(ajaxurl + '?action=flag_me',sendData,function() {jQuery('.tooltip').fadeOut();});event.preventDefault();}}}}, arrowPosition: 'top'}}" shc:gizmo="tooltip" class="flag" id="flag-comment-156514" title="Flag this comments" value="flag" name="button1" type="button">flag</button>
+				          <label for="downvote-comment-156514" class="metainfo">(0)</label>
+				          <button class="downvote" id="downvote-comment-156514" title="Down vote this comments" value="down vote" name="downvote" type="button" shc:gizmo:options="{actions:{post:{id:156514,name:'downvote',sub_type:'comment',type:'comments'}}}" shc:gizmo="actions">down vote</button>
+				          <label for="upvote-comment-156514" shc:gizmo="actions" class="metainfo">(0)</label>
+				          <button class="upvote" id="upvote-comment-156514" title="Up vote this comments" value="helpful" name="upvote" type="button" shc:gizmo:options="{actions:{post:{id:156514,name:'upvote',sub_type:'comment',type:'comments'}}}" shc:gizmo="actions">helpful</button>
+				        </form>
+						    <div class="hide" id="flagForm-156514">
+						      <form shc:gizmo="transFormer" method="post" id="commentForm-156514" class="flag-form">
+				            <textarea shc:gizmo:form="{required: true}" aria-required="true" name="comment" cols="16" rows="5" class="flagField"></textarea>
+				            <input type="submit" value="Flag" class="kmart_button">
+				            <input type="reset" onclick="jQuery('.tooltip').hide();" reset="reset" value="Cancel" class="kmart_button azure">
+				            <input type="hidden" value="13460" id="comment_post_ID" name="comment_post_ID">
+				            <input type="hidden" value="156514" id="comment_parent" name="comment_parent">
+				            <input type="hidden" value="flag" id="comment_type" name="comment_type">
+						      </form>
+						    </div>        
+				    		<form class="reply-to-form" id="commentform-156514" method="post" shc:gizmo="transFormer" action="http://localhost:100/wp-comments-post.php">
+									<textarea shc:gizmo:form="{required:true}" aria-required="true" rows="8" name="comment"></textarea>
+				            <p class="form-submit">
+				                <input type="submit" value="Post" class="kmart_button">
+				                <input type="reset" value="Cancel" class="kmart_button azure">
+				            </p>
+				            <input type="hidden" value="13460" name="comment_post_ID">
+				            <input type="hidden" value="156514" name="comment_parent">
+				            <input type="hidden" value="comment" name="comment_type">
+				            <input type="hidden" value="27ff0ea567" name="_wp_unfiltered_html_comment">
+				        </form>
+				      </div>
+				      <ol class="children">
+								<li id="comment-reply-156515" class="comment clearfix">
+									<div class="crest span2">
+				    				<a href="http://localhost:100/?author=1"><img alt="" class="photo" src="/wp-content/uploads/userphoto/1.jpeg?1345825159"></a>
+				    				<h4><a href="http://localhost:100/?author=1">admin</a></h4>
+				    				<address>&nbsp;</address>
+				    			</div>
+				    			<div class="span10">
+				        		<time pubdate="pubdate" datetime="2012-09-11" class="content-date">September 11, 2012 2:11pm</time>
+				            <p class="responseTo">In response to admin</p>
+				            <article>
+				            	asfqwerqwerqerqwe        
+				            </article>
+				            <form action="" method="post" id="comment-actions-156515" class="actions clearfix">
+				              <div class="reply link-emulator">Reply</div>
+				            	<button class="flag" id="flag-comment-156515" title="Flag this comments" value="flag" name="button1" type="button">flag</button>
+				              <label for="downvote-comment-156515" class="metainfo">(0)</label>
+				              <button class="downvote" id="downvote-comment-156515" title="Down vote this comments" value="down vote" name="downvote" type="button" shc:gizmo:options="{actions:{post:{id:156515,name:'downvote',sub_type:'comment',type:'comments'}}}" shc:gizmo="actions">down vote</button>
+				              <label for="upvote-comment-156515" shc:gizmo="actions" class="metainfo">(0)</label>
+				              <button class="upvote" id="upvote-comment-156515" title="Up vote this comments" value="helpful" name="upvote" type="button" shc:gizmo:options="{actions:{post:{id:156515,name:'upvote',sub_type:'comment',type:'comments'}}}" shc:gizmo="actions">helpful</button>
+				            </form>
+								    <div class="hide" id="flagForm-156515">
+							        <form shc:gizmo="transFormer" method="post" id="commentForm-156515" class="flag-form">
+						            <textarea shc:gizmo:form="{required: true}" aria-required="true" name="comment" cols="16" rows="5" class="flagField"></textarea>
+						            <input type="submit" value="Flag" class="kmart_button">
+						            <input type="reset" onclick="jQuery('.tooltip').hide();" reset="reset" value="Cancel" class="kmart_button azure">
+						            <input type="hidden" value="13460" id="comment_post_ID" name="comment_post_ID">
+						            <input type="hidden" value="156515" id="comment_parent" name="comment_parent">
+						            <input type="hidden" value="flag" id="comment_type" name="comment_type">
+							        </form>
+								    </div>        
+								    <form class="reply-to-form" id="commentform-156515" method="post" shc:gizmo="transFormer" action="http://localhost:100/wp-comments-post.php">
+											<textarea shc:gizmo:form="{required:true}" aria-required="true" rows="8" name="comment"></textarea>
+					            <p class="form-submit">
+					                <input type="submit" value="Post" class="kmart_button">
+					                <input type="reset" value="Cancel" class="kmart_button azure">
+					            </p>
+					            <input type="hidden" value="13460" name="comment_post_ID">
+					            <input type="hidden" value="156514" name="comment_parent">
+					            <input type="hidden" value="comment" name="comment_type">
+					            <input type="hidden" value="27ff0ea567" name="_wp_unfiltered_html_comment">
+				        		</form>
+				          </div>
+				    		</li>
+								<li id="comment-reply-156515" class="comment clearfix">
+									<div class="crest span2">
+				    				<a href="http://localhost:100/?author=1"><img alt="" class="photo" src="/wp-content/uploads/userphoto/1.jpeg?1345825159"></a>
+				    				<h4><a href="http://localhost:100/?author=1">admin</a></h4>
+				    				<address>&nbsp;</address>
+				    			</div>
+				    			<div class="span10">
+				        		<time pubdate="pubdate" datetime="2012-09-11" class="content-date">September 11, 2012 2:11pm</time>
+				            <p class="responseTo">In response to admin</p>
+				            <article>
+				            	asfqwerqwerqerqwe        
+				            </article>
+				            <form action="" method="post" id="comment-actions-156515" class="actions clearfix">
+				              <div class="reply link-emulator">Reply</div>
+				            	<button class="flag" id="flag-comment-156515" title="Flag this comments" value="flag" name="button1" type="button">flag</button>
+				              <label for="downvote-comment-156515" class="metainfo">(0)</label>
+				              <button class="downvote" id="downvote-comment-156515" title="Down vote this comments" value="down vote" name="downvote" type="button" shc:gizmo:options="{actions:{post:{id:156515,name:'downvote',sub_type:'comment',type:'comments'}}}" shc:gizmo="actions">down vote</button>
+				              <label for="upvote-comment-156515" shc:gizmo="actions" class="metainfo">(0)</label>
+				              <button class="upvote" id="upvote-comment-156515" title="Up vote this comments" value="helpful" name="upvote" type="button" shc:gizmo:options="{actions:{post:{id:156515,name:'upvote',sub_type:'comment',type:'comments'}}}" shc:gizmo="actions">helpful</button>
+				            </form>
+								    <div class="hide" id="flagForm-156515">
+							        <form shc:gizmo="transFormer" method="post" id="commentForm-156515" class="flag-form">
+						            <textarea shc:gizmo:form="{required: true}" aria-required="true" name="comment" cols="16" rows="5" class="flagField"></textarea>
+						            <input type="submit" value="Flag" class="kmart_button">
+						            <input type="reset" onclick="jQuery('.tooltip').hide();" reset="reset" value="Cancel" class="kmart_button azure">
+						            <input type="hidden" value="13460" id="comment_post_ID" name="comment_post_ID">
+						            <input type="hidden" value="156515" id="comment_parent" name="comment_parent">
+						            <input type="hidden" value="flag" id="comment_type" name="comment_type">
+							        </form>
+								    </div>        
+								    <form class="reply-to-form" id="commentform-156515" method="post" shc:gizmo="transFormer" action="http://localhost:100/wp-comments-post.php">
+											<textarea shc:gizmo:form="{required:true}" aria-required="true" rows="8" name="comment"></textarea>
+					            <p class="form-submit">
+					                <input type="submit" value="Post" class="kmart_button">
+					                <input type="reset" value="Cancel" class="kmart_button azure">
+					            </p>
+					            <input type="hidden" value="13460" name="comment_post_ID">
+					            <input type="hidden" value="156514" name="comment_parent">
+					            <input type="hidden" value="comment" name="comment_type">
+					            <input type="hidden" value="27ff0ea567" name="_wp_unfiltered_html_comment">
+				        		</form>
+				          </div>
+				    		</li>
+				      </ol>
+				  	</li>
+				  	<li id="comment-reply-156514" class="comment clearfix">
+						<div class="crest span2">
+				    	<a href="http://localhost:100/?author=1">
+				        <img alt="" class="photo" src="/wp-content/uploads/userphoto/1.jpeg?1345825159">
+				      </a>
+				    	<h4><a href="http://localhost:100/?author=1">admin</a></h4>
+				    	<address>&nbsp;</address>
+				    </div>
+				    <div class="span10">
+				        <time pubdate="pubdate" datetime="2012-09-11" class="content-date">September 11, 2012 2:10pm</time>
+				        <article>
+				        	adsfa sdfasdfasdfasdf
+				        </article>
+				        <form action="" method="post" id="comment-actions-156514" class="actions clearfix">
+				        	<div class="reply link-emulator">Reply</div>
+				          <button shc:gizmo:options="{tooltip: {displayData: {element: 'flagForm-156514',callBack: {submit: {active: true,name: 'submit',method:function(event) {var sendData = jQuery(event.target).children().serialize(); jQuery.post(ajaxurl + '?action=flag_me',sendData,function() {jQuery('.tooltip').fadeOut();});event.preventDefault();}}}}, arrowPosition: 'top'}}" shc:gizmo="tooltip" class="flag" id="flag-comment-156514" title="Flag this comments" value="flag" name="button1" type="button">flag</button>
+				          <label for="downvote-comment-156514" class="metainfo">(0)</label>
+				          <button class="downvote" id="downvote-comment-156514" title="Down vote this comments" value="down vote" name="downvote" type="button" shc:gizmo:options="{actions:{post:{id:156514,name:'downvote',sub_type:'comment',type:'comments'}}}" shc:gizmo="actions">down vote</button>
+				          <label for="upvote-comment-156514" shc:gizmo="actions" class="metainfo">(0)</label>
+				          <button class="upvote" id="upvote-comment-156514" title="Up vote this comments" value="helpful" name="upvote" type="button" shc:gizmo:options="{actions:{post:{id:156514,name:'upvote',sub_type:'comment',type:'comments'}}}" shc:gizmo="actions">helpful</button>
+				        </form>
+						    <div class="hide" id="flagForm-156514">
+						      <form shc:gizmo="transFormer" method="post" id="commentForm-156514" class="flag-form">
+				            <textarea shc:gizmo:form="{required: true}" aria-required="true" name="comment" cols="16" rows="5" class="flagField"></textarea>
+				            <input type="submit" value="Flag" class="kmart_button">
+				            <input type="reset" onclick="jQuery('.tooltip').hide();" reset="reset" value="Cancel" class="kmart_button azure">
+				            <input type="hidden" value="13460" id="comment_post_ID" name="comment_post_ID">
+				            <input type="hidden" value="156514" id="comment_parent" name="comment_parent">
+				            <input type="hidden" value="flag" id="comment_type" name="comment_type">
+						      </form>
+						    </div>        
+				    		<form class="reply-to-form" id="commentform-156514" method="post" shc:gizmo="transFormer" action="http://localhost:100/wp-comments-post.php">
+									<textarea shc:gizmo:form="{required:true}" aria-required="true" rows="8" name="comment"></textarea>
+				            <p class="form-submit">
+				                <input type="submit" value="Post" class="kmart_button">
+				                <input type="reset" value="Cancel" class="kmart_button azure">
+				            </p>
+				            <input type="hidden" value="13460" name="comment_post_ID">
+				            <input type="hidden" value="156514" name="comment_parent">
+				            <input type="hidden" value="comment" name="comment_type">
+				            <input type="hidden" value="27ff0ea567" name="_wp_unfiltered_html_comment">
+				        </form>
+				      </div>
+				    </li>
+					</ol>
+				</section>
+			<!-- EMD COMMENT SECTION -->
+			
 			
 		</section>
 	

@@ -20,6 +20,8 @@
 
     if ( isset( $comments ) && !empty( $comments ) ) :
 ?>
+<section class="span12">
+<?php if ($comment_type == "answer"): ?>
 <header class="section-header comments-header clearfix">
     <h3><?php echo ucfirst( $comment_type ); ?>s</h3>
     <h4>
@@ -45,6 +47,8 @@
         ?>
     </h4>
 </header>
+<?php endif; ?>
+
 <ol id="allComments">
 <?php
         foreach($comments as $comment) {
@@ -56,8 +60,12 @@
     # No Comments.
     else:
 ?>
-<section>
-    No <?php echo $comment_type; ?>s yet.
-</section>
+	<p>
+	    No <?php echo $comment_type; ?>s yet.
+	</p>
+
 <?php
     endif;
+?>
+</section>
+<?php

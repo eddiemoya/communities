@@ -327,6 +327,7 @@ ul.footer_anterior {
   clear: both; }
 
 .clearfix {
+  clear: both;
   *zoom: 1; }
 
 .body {
@@ -679,7 +680,8 @@ ul.bullets {
   height: 1.538em; }
 
 .required:after, .optional:after {
-  color: #999999; }
+  color: #999999;
+  font-size: .7857em; }
 
 .required:after {
   content: " Required"; }
@@ -700,13 +702,12 @@ ul.bullets {
   border-width: 0px 1px;
   color: white;
   cursor: pointer;
-  font-size: 107.692%;
   font-weight: bold;
   height: 32px;
+  margin-right: 1em;
   padding: 0em 1.5em;
   position: relative;
   text-shadow: 1px 1px 1;
-  top: -1px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
@@ -760,11 +761,8 @@ ul.bullets {
 .form-errors {
   color: #ff0000; }
 
-.content-container {
-  border-top: solid 1px #dddcdc; }
-
 .content-container .content-header {
-  border-bottom: solid 1px #dddcdc;
+  border-top: solid 1px #dddcdc;
   padding: 0.769em; }
   .content-container .content-header h3 {
     font-size: 153.846%; }
@@ -776,11 +774,13 @@ ul.bullets {
   font-size: 84.615%; }
 
 .content-container {
-  padding: 0.769em;
   position: relative; }
   .content-container .content-author, .content-container .content-comments {
     color: #333333;
     margin-bottom: 0.769em; }
+  .content-container .content-body {
+    border-top: solid 1px #dddcdc;
+    padding: 0.769em 0; }
   .content-container .content-category {
     float: left;
     font-size: 100%; }
@@ -807,6 +807,41 @@ ul.bullets {
 .span4 .content-container .content-body .content-comments li, .span3 .content-container .content-body .content-comments li {
   border-left: 0;
   float: none; }
+
+.single #content > section.span12 {
+  border-top: solid 1px #d5d5d5; }
+
+.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child,
+.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-body {
+  border-top: none; }
+
+.sears .post h1 {
+  color: #067BB5; }
+
+.kmart .post h1 {
+  color: #980017; }
+
+.post {
+  padding: inherit 0px; }
+  .post .content-body p {
+    margin-bottom: 1.476em; }
+
+textarea.discussion {
+  border: 1px solid #d6d6d6;
+  height: 10em;
+  width: 99%;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px; }
+
+.trigger.discussion {
+  height: 2em;
+  margin-top: -3.75em;
+  position: relative;
+  text-align: right;
+  z-index: 999; }
 
 .featured-members .member .content-comments {
   width: 100%; }
@@ -1250,6 +1285,12 @@ fieldset#use_your_account_from {
   .comments-header > * {
     display: inline-block; }
 
+.sears .comment-actions button {
+  background: transparent url(/wp-content/themes/Eris/assets/img/sears//sprite_global.png) repeat-x 0 -192px; }
+
+.kmart .comment-actions button {
+  background: transparent url(/wp-content/themes/Eris/assets/img/sears//sprite_global.png) repeat-x 0 -200px; }
+
 #allComments {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -1258,6 +1299,10 @@ fieldset#use_your_account_from {
   border-radius: 4px;
   border: 1px solid #d6d6d6;
   border-bottom: 0; }
+  #allComments .content-body {
+    border: none;
+    padding: 0px;
+    margin-bottom: 2em; }
   #allComments .comment {
     padding: 1em 2%;
     background: white;
@@ -1268,11 +1313,15 @@ fieldset#use_your_account_from {
     -o-border-radius: 4px;
     border-radius: 4px; }
     #allComments .comment time {
-      font-size: 84.615%; }
+      float: left; }
+      #allComments .comment time .time-stamp {
+        display: inline-block;
+        margin-left: 1.5em; }
     #allComments .comment article {
       font-size: 100%;
-      margin: 1em 0;
       word-wrap: break-word; }
+      #allComments .comment article p {
+        margin-bottom: 1em; }
     #allComments .comment .responseTo {
       margin: 10px 0 0 0; }
     #allComments .comment textarea {
@@ -1291,12 +1340,19 @@ fieldset#use_your_account_from {
     border-radius: 4px; }
   #allComments .span10 {
     word-wrap: break-word; }
+  #allComments .trigger.discussion {
+    height: 1em;
+    margin: -1.5em 0 2em;
+    text-align: left; }
 
 #allComments .expert {
   background: #f2f2f2; }
 
 .actions {
-  margin: 3em 0.5em 0; }
+  float: right;
+  margin: 0 0.5em;
+  position: relative;
+  z-index: 1000; }
   .actions button {
     cursor: pointer;
     color: #4e74a3;
@@ -1308,7 +1364,7 @@ fieldset#use_your_account_from {
     text-indent: -999em;
     width: 2em;
     margin-left: 1em;
-    padding: .33em;
+    padding: 2px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
