@@ -21,7 +21,7 @@
 
 ?>
 
-<li class="post lone-result clearfix">
+<article class="post lone-result clearfix">
 
     <?php get_partial( 'parts/crest', $crest_options ); ?>
 
@@ -46,4 +46,4 @@
         <?php get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); ?>
 
     </div>
-</li>
+</article>

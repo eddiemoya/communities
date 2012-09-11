@@ -486,7 +486,7 @@ function get_screenname( $user_id ) {
  * @author Carl Albrecht-Buehler
  * @param $user_id (integer) [required] ID of the user whose screen name you want to look up.
  *
- * @return (string) User's screen name (user_nicename) formatted into an HTML anchor..
+ * @return (string) User's screen name (user_nicename) formatted into an HTML anchor.
  */
 function return_screenname_link( $user_id ) {
     return '<a href="' . get_profile_url( $user_id ) . '">' . return_screenname( $user_id ) . '</a>';
@@ -503,6 +503,61 @@ function return_screenname_link( $user_id ) {
  */
 function get_screenname_link( $user_id ) {
     echo return_screenname_link( $user_id );
+}
+
+
+/**
+ * Returns the date of a user's last post.
+ *
+ *
+ * @author Carl Albrecht-Buehler
+ * @param $user_id (integer) [required] ID of the user whose last post you want to look up.
+ *
+ * @return (integer) Timestamp of the last post.
+ */
+function return_last_post_date( $user_id ) {
+    $last_post = get_posts( array( 'numberposts' => 1, 'author' => $user_id, 'post_type' => array( 'question', 'guide', 'post' ) ) );
+    return isset( $last_post[0] ) ? strtotime( $last_post[0]->post_date ) : 0;
+}
+
+/**
+ * Returns the count of a user's total posts.
+ *
+ *
+ * @author Carl Albrecht-Buehler
+ * @param $user_id (integer) [required] ID of the user whose last post you want to look up.
+ *
+ * @return (integer) Timestamp of the last post.
+ */
+function return_post_count( $user_id ) {
+    global $wpdb;
+    return $wpdb->get_var( "select count(`ID`) as `num_posts` from {$wpdb->posts} where `post_type` in ( 'question', 'guide', 'post' ) and `post_author` = {$user_id}" );
+}
+
+/**
+ * Returns a formatted address of a user.
+ *
+ *
+ * @author Carl Albrecht-Buehler
+ * @param $user_id (integer) [required] ID of the user whose address you want to look up.
+ *
+ * @return (string) User's address as [City, State]; [City]; [State]; or [&nbsp;].
+ */
+function return_address( $user_id ) {
+    $a_address = array();
+    $address = '&nbsp;';
+    $i = 0;
+    
+    $city  = get_user_meta( $user_id, 'user_city', true );
+    $state = get_user_meta( $user_id, 'user_state', true );
+    
+    if ( $city != '' )  { $a_address[] = $city; }
+    if ( $state != '' ) { $a_address[] = $state; }
+    if ( !empty( $a_address ) ) {
+        $address = implode( ', ', $a_address );
+    }
+    
+    return $address;
 }
 
 
@@ -570,7 +625,7 @@ function set_screen_name($screen_name) {
 	//Check for error
 	if(isset($response['code'])) {
 			
-		return false;
+		return $response;
 			
 	} else {
 			
@@ -584,5 +639,6 @@ function set_screen_name($screen_name) {
 	}
 	
 }
+
 
 

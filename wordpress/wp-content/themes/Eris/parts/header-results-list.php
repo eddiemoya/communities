@@ -49,4 +49,4 @@
 		<input type="hidden" value="results-list" name="widget" />
 	</form>
 </header>
-<ol class="content-body">
+<section class="content-body">
