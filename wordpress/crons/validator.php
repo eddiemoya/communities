@@ -4,6 +4,7 @@
     echo 'Started validation at '.date('h:i:s M d, Y').'...'."\n";
 
     $base = '/Users/dasfisch/cron_results/';
+    $batchBase = '/Users/dasfisch/cron_results/batches/';
 
     $badDataFile = $base.'bad_data.xml'; // List of xml elements that have failed
     $errorFile = $base.'all_errors.txt';
@@ -13,7 +14,6 @@
     $readFile = $base.'user_export.xml';
 
     $errorFileHandle = fopen($errorFile, 'a+');
-    $readableErrorFileHandle = fopen($readableErrorFile, 'a+');
 
     if(file_exists($nextDataSetFile)) {
         $batchHandle = fopen($nextDataSetFile, 'a+');
@@ -24,12 +24,15 @@
 
         ftruncate($batchHandle, 0);
     } else {
-        $batchHandle = fopen($nextDataSetFile, 'w+');
-
         $nextDataSet = 0;
+
+        $batchHandle = fopen($nextDataSetFile, 'w+');
     }
 
     $finalPosition = ($nextDataSet >= 0) ? $nextDataSet + 10000 : 10000;
+
+    $readableErrorFileHandle = fopen($batchBase.'errors/'.$nextDataSet.'-'.$finalPosition.'.error.xml', 'a+');
+    $goodDataFile = $batchBase.$nextDataSet.'-'.$finalPosition.'.batch.xml';
 
     echo 'The next batch set starting point is array spot '.$nextDataSet."\n";
 
@@ -37,13 +40,20 @@
         echo 'Starting file load at '.date('h:i:s M d, Y').'...'."\n";
 
         $xml = simplexml_load_file($readFile);
+        var_dump($xml->user[0]);
+        exit;
 
-        echo 'Finished file load at '.date('h:i:s M d, Y').'...'."\n";
+        echo 'Finished file load at '.date('h:i:s M d, Y').'!'."\n";
         echo 'Starting validation at '.date('h:i:s M d, Y').'...'."\n";
 
         $startTimeAfterFile = microtime(true);
 
-        for($i = $nextDataSet; $i < $finalPosition; $i++) {
+        $badData = array();
+        $goodData = array();
+
+        echo count($xml->user).' is the total users<br/>'."\n";
+
+        for($i = 0; $i < 10000; $i++) {
             $ourError = '';
 
             if(!isset($xml->user[$i]->email) || !preg_match('/^.+@.+?\.[a-zA-Z]{2,}$/', $xml->user[$i]->email)) {
@@ -123,24 +133,31 @@
 
                 //user is technially valid; we can create this data
             }
+
+            //XML is valid; insert it into insert_bash
+            $goodData[] = $xml->user[$i];
         }
 
-        echo 'Finished validation at '.date('h:i:s M d, Y').'...'."\n";
+        echo 'Finished validation at '.date('h:i:s M d, Y').'!'."\n";
 
         $nextDataSet += 10000;
         
         fwrite($batchHandle, $nextDataSet);
 
+        echo 'Starting writing the bad data XML '.date('h:i:s M d, Y').'...'."\n";
+
         if(isset($badData) && !empty($badData)) {
             // Create the XML with all data issues
             if(file_exists($badDataFile)) {
-                $xml = new SimpleXMLElement(file_get_contents($badDataFile));
+                $badDataXml = new SimpleXMLElement(file_get_contents($badDataFile));
             } else {
-                $xml = new SimpleXMLElement('<users/>');
+                $badDataXml = new SimpleXMLElement('<users/>');
             }
 
+            echo 'There are '.count($badData).' users that are invalid'."\n";
+
             foreach($badData as $key=>$val) {
-                $user = $xml->addChild('user');
+                $user = $badDataXml->addChild('user');
 
                 $user->addChild('posInArray', $val->posInArray);
                 $user->addChild('id', $val->id);
@@ -157,10 +174,66 @@
 
             $dom->preserveWhiteSpace = false;
             $dom->formatOutput = true;
-            $dom->loadXML($xml->asXML());
+            $dom->loadXML($badDataXml->asXML());
 
             $dom->save($badDataFile);
         }
+
+        echo 'Finished writing the bad data XML '.date('h:i:s M d, Y').'...'."\n";
+        echo 'Starting writing the good data XML '.$goodDataFile.' '.date('h:i:s M d, Y').'!'."\n";
+
+        if(isset($goodData) && !empty($goodData)) {
+            // Create the XML with all data issues
+            $goodDataXml = new SimpleXMLElement('<users/>');
+
+            echo 'There are '.count($goodData).' users that are valid'."\n";
+
+            foreach($goodData as $key=>$val) {
+                $user = $goodDataXml->addChild('user');
+
+                $user->addChild('id', $val->id);
+                $user->addChild('screen_name', $val->screen_name);
+                $user->addChild('email', $val->email);
+                $user->addChild('display_name', $val->display_name);
+                $user->addChild('first_name', $val->first_name);
+                $user->addChild('last_name', $val->last_name);
+                $user->addChild('guid', $val->guid);
+            }
+
+            // Saving pretty XML
+            $dom = new DOMDocument('1.0');
+
+            $dom->preserveWhiteSpace = false;
+            $dom->formatOutput = true;
+            $dom->loadXML($goodDataXml->asXML());
+
+            $dom->save($goodDataFile);
+        }
+
+        echo 'Finished writing the good data XML '.$goodDataFile.' '.date('h:i:s M d, Y').'!'."\n";
+
+//        for($j = 0; $j < 10000; $j+=1) {
+////            unset($xml->user[$i]);
+//            $dom=dom_import_simplexml($xml->user[$j]);
+//            $dom->parentNode->removeChild($dom);
+//        }
+
+        $xml->user = array_slice($xml->user, 10000);
+
+        echo count($xml->user).' users remain to be validate'."\n";
+        echo 'Starting '.$readFile.' trimming at '.date('h:i:s M d, Y').'...'."\n";
+
+//        $dom = new DOMDocument('1.0');
+//
+//        $dom->preserveWhiteSpace = false;
+//        $dom->formatOutput = true;
+//        $dom->loadXML($xml->asXML());
+//
+//        $dom->save($readFile);
+
+        $xml->asXML($readFile);
+
+        echo 'Finished '.$readFile.' trimming at '.date('h:i:s M d, Y').'!'."\n";
 
         $endTime = microtime(true);
         echo $endTime - $startTimeAfterFile;
