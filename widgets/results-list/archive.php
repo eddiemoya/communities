@@ -21,9 +21,9 @@ if (!have_posts()) {
         </section>
 
 <?php } //global $wp_query; echo "<pre>";print_r($wp_query);echo "</pre>"; ?>
-        <section class="pagination">
+        <!-- <section class="pagination">
              <?php echo posts_nav_link(); ?>
-        </section>
+        </section> -->
 <?php 
         if(is_widget()->template == "featured") :
             get_partial("parts/post-featured-post", array("widget" => is_widget()));

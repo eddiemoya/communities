@@ -208,7 +208,7 @@ legend {
     border: solid #e02334;
     border-width: 0 0 0 5px;
     height: 2.5em;
-    padding-bottom: .25em;
+    padding-bottom: .20em;
     position: absolute;
     right: 0px;
     text-transform: uppercase;
@@ -228,8 +228,8 @@ legend {
     background: #ca4019 repeat-x 0px -44px;
     border: 0;
     color: #ffffff;
-    height: 2em;
-    padding-bottom: .25em;
+    height: 1.9em;
+    padding-bottom: .20em;
     position: absolute;
     right: 0px;
     text-transform: uppercase;
@@ -532,8 +532,6 @@ ul.footer_anterior {
 #persistent-header.persist {
   position: fixed;
   top: 0px; }
-  #persistent-header.persist #header.sears form #button_search {
-    height: 2.1em; }
 
 #content {
   padding: 1.23em 1.063829787234043%; }
@@ -976,6 +974,14 @@ textarea.discussion {
 .result-list > .content-body {
   border: none;
   padding: 0 0.769em; }
+  .result-list > .content-body > .content-container:first-child .content-body {
+    border-top: none; }
+.result-list > .content-header {
+  border-bottom: 1px solid #DDDCDC;
+  padding: 1.5em 0;
+  width: 100%; }
+  .result-list > .content-header form {
+    margin: 0 .769em; }
 .result-list .question .content-date {
   float: right; }
 
