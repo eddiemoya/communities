@@ -511,39 +511,6 @@ textarea.discussion {
   }
 }
 
-//.span3, .span4, .span6 {
-//  .featured-members .content-body {
-//    .member {
-//      background: red;
-//      width: 100%;
-//      float: none;
-//      padding: 0;
-//      @include col_layout( ( 80, 180 ), 20 );
-//      margin-top: 1em;
-//      &:first-child {
-//        margin-top: 0;
-//      }
-//    }
-//  }
-//}
-// Alternate selector for below class. Use if override for more scenarios is required.
-// Also, more like these would have to be created on a per-widget basis if development is asked to create more override states.
-//.span3 .featured-members, .span4 .featured-members, .span6 .featured-members,
-//.span3.featured-members, .span4.featured-members, .span6.featured-members, .span8.featured-members
-
-//.span3 .featured-members, .span4 .featured-members, .span6 .featured-members {
-//  .span4 {
-//    float: none;
-//    width: 100%;
-//    margin-left: 0;
-//    margin-bottom: 1em;
-//    .member {
-//      border-right: 0;
-//      @include col_layout( (80, 210), 10 );
-//    }
-//  }
-//}
-
 // FEATURED QUESTION
 .featured-question.content-container {
   .category-image {
@@ -629,7 +596,17 @@ textarea.discussion {
   & > .content-body {
     border:none;
     padding:0 em-adjust( .625em );
-    
+    & > .content-container:first-child .content-body {
+      border-top:none;
+    }
+  }
+  & > .content-header {
+    border-bottom:1px solid #DDDCDC;
+    padding:1.5em 0;
+    width:100%;
+    form {
+      margin:0 .769em;
+    }
   }
   .question {
     .content-date {
