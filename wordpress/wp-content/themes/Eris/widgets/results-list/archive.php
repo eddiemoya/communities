@@ -1,11 +1,11 @@
 <?php 
-if(!is_ajax() && is_widget()->template == "featured") :
-    get_template_part('parts/header', 'widget');
-elseif(!is_ajax()) :
-	get_template_part('parts/header', 'results-list');
-endif;
-if (!have_posts()) {
-    ?>
+    if(!is_ajax() && is_widget()->template == "featured") :
+        get_template_part('parts/header', 'widget');
+    elseif(!is_ajax()) :
+        get_template_part('parts/header', 'results-list');
+    endif;
+    if (!have_posts()) :
+?>
         <section class="no-results">
             <p class="header">Sorry, We could not find any matches for "<?php echo $s; ?>"</p>
             <p>Please try your search again</p>
@@ -19,22 +19,35 @@ if (!have_posts()) {
             </ul>
         </section>
 
-<?php } //global $wp_query; echo "<pre>";print_r($wp_query);echo "</pre>"; ?>
-        <section class="pagination">
-             <?php echo posts_nav_link(); ?>
-        </section>
-<?php 
-        if(is_widget()->template == "featured") :
-            get_partial("parts/post-featured-post", array("widget" => is_widget()));
-        else :
-        	loop('post-results-list');
-        endif;
+<?php
+    endif;
+    
+    # Only show pagination if there are enough posts
+    if ( $wp_query->post_count > $wp_query->query_vars['posts_per_page'] ) :
 ?>
-        
         <section class="pagination">
              <?php echo posts_nav_link(); ?>
         </section>
 
 <?php 
-if(!is_ajax())
-	get_template_part('parts/footer', 'widget') ;?>
+    endif;
+    
+    if(is_widget()->template == "featured") :
+        get_partial("parts/post-featured-post", array("widget" => is_widget()));
+    else :
+        loop('post-results-list');
+    endif;
+    
+    # Only show pagination if there are enough posts
+    if ( $wp_query->post_count > $wp_query->query_vars['posts_per_page'] ) :
+?>
+        <section class="pagination">
+             <?php echo posts_nav_link(); ?>
+        </section>
+
+<?php
+    endif;
+    if(!is_ajax())
+        get_template_part('parts/footer', 'widget');
+
+?>
