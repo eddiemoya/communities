@@ -349,9 +349,6 @@ form {}
     margin:0 0 .625em; // 10px
     @extend .bold;
   }
-  .featured-image.span12 + .span12 {
-    margin-top: em-adjust( .625em ); // 10px
-  }
   .share-full {
     margin-top: 10px;
   }
@@ -656,6 +653,19 @@ textarea.discussion {
   width: 100%;
   margin-left: 0;
 }
+
+.content-container.span3.featured-post, 
+.content-container.span4.featured-post, 
+.content-container.span6.featured-post {
+  .featured-image.span6, .featured-post.span6 {
+    margin-left:0;
+    width:100%;
+  }
+  .featured-post.span6 {
+    margin-top: em-adjust( .625em ); // 10px
+  }
+}
+
 // RECENT ACTIVITY
 .recent-activity {
   li {
@@ -1124,7 +1134,6 @@ $tab-padding: "1em 0 .6em 0";
       }
     }
     article {
-      margin: 1em 0;
       // font-size: font-size( 13 );
       word-wrap: break-word;
       p {
