@@ -552,7 +552,7 @@ function return_address( $user_id ) {
     $state = get_user_meta( $user_id, 'user_state', true );
     
     if ( $city != '' )  { $a_address[] = $city; }
-    if ( $state != '' ) { $a_address[] = $state; }
+    if ( $state != '' ) { $a_address[] = strtoupper($state); }
     if ( !empty( $a_address ) ) {
         $address = implode( ', ', $a_address );
     }
@@ -639,4 +639,3 @@ function set_screen_name($screen_name) {
 	}
 	
 }
-
