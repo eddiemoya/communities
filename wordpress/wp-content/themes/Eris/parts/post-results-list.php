@@ -32,7 +32,7 @@
 		
         <hgroup>
             <h3 class="content-category">
-                <a href="<?php get_category_link($cat->term_id); ?>" title="<?php echo $cat->cat_name; ?>">
+                <a href="<?php echo get_category_link($cat->term_id); ?>" title="<?php echo $cat->cat_name; ?>">
                     <?php echo $cat->cat_name; ?>
                 </a>
             </h3>
