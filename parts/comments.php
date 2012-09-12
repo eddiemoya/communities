@@ -20,10 +20,14 @@
 
     if ( isset( $comments ) && !empty( $comments ) ) :
 ?>
-<section class="span12">
+<section class="span12 content-container comments">
 <?php if ($comment_type == "answer"): ?>
-<header class="section-header comments-header clearfix">
-    <h3><?php echo ucfirst( $comment_type ); ?>s</h3>
+	
+<!-- <header class="section-header comments-header clearfix"> -->
+	
+<header class="content-header clearfix">
+	
+	  <h3><?php echo ucfirst( $comment_type ); ?>s</h3>
     <h4>
         <?php
             $commentCount = get_custom_comment_count($comment_type, $post->ID);
@@ -48,7 +52,7 @@
     </h4>
 </header>
 <?php endif; ?>
-
+<section class="content-body">
 <ol id="allComments">
 <?php
         foreach($comments as $comment) {
@@ -66,6 +70,6 @@
 
 <?php
     endif;
-?>
+?></section>
 </section>
 <?php
