@@ -8,17 +8,16 @@ function get_subcategories_ajax(){
 
     if(isset($_POST['category_id'])){
         $parent = absint((int)$_POST['category_id']);
-
-        wp_dropdown_categories(array(
-            'depth'=> 1,
-            'child_of' => $parent,
-            'hierarchical' => true,
-            'hide_if_empty' => true,
-            'class' => 'input_select',
-            'name' => 'sub-category',
-            'id' => 'sub-category',
-            //'echo' => false
-        ));
+            wp_dropdown_categories(array(
+                'depth'=> 1,
+                'child_of' => $parent,
+                'hierarchical' => true,
+                'hide_if_empty' => true,
+                'class' => 'input_select',
+                'name' => 'sub-category',
+                'id' => 'sub-category',
+                //'echo' => false
+            ));
          exit;
     }
 }
@@ -31,7 +30,6 @@ add_action('wp_ajax_nopriv_get_subcategories_ajax', 'get_subcategories_ajax');
  * 
  */
 function get_template_ajax(){
-
     if( isset($_POST['template']) ){
         get_template_part($_POST['template']);
     } else {
@@ -49,7 +47,6 @@ add_action('wp_ajax_get_template_ajax', 'get_template_ajax');
  * 
  */
 function get_posts_ajax(){
-
     if( isset($_POST['template']) ){
         global $wp_query;
        
@@ -75,6 +72,28 @@ function get_posts_ajax(){
 add_action('wp_ajax_nopriv_get_posts_ajax', 'get_posts_ajax');
 add_action('wp_ajax_get_posts_ajax', 'get_posts_ajax');
 
+/**
+ * @author Jason Corradino
+ * 
+ */
+function get_filtered_authors_ajax(){
+    global $wpdb;
+    $category = ($_POST["category"] == -1) ? array() : array($_POST["category"]);
+    $roles = new WP_Roles();
+    $roles = $roles->role_objects;
+    $experts = array();
+    foreach($roles as $role) {
+        if($role->has_cap("post_as_expert"))
+            $experts[] = trim($role->name);
+    }
+    $query = Results_List_Widget::get_user_role_tax_intersection(array('hide_untaxed' => false, 'roles' => $experts, 'terms' => $category));
+    $users = $wpdb->get_results($wpdb->prepare($query));
+    get_partial('widgets/results-list/author-filtered-list', array('users' => $users));
+    exit;
+}
+
+add_action('wp_ajax_nopriv_get_filtered_authors_ajax', 'get_filtered_authors_ajax');
+add_action('wp_ajax_get_filtered_authors_ajax', 'get_filtered_authors_ajax');
 
 /**
  * @author Dan Crimmins
