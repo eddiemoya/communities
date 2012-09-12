@@ -109,7 +109,7 @@ legend {
 
 .menu-sears-ribbon-container, .menu-kmart-ribbon-container {
   background-color: #e7e7e7;
-  font-size: 133.333%;
+  font-size: 123.076%;
   height: 1.6em;
   width: 100%; }
   .menu-sears-ribbon-container > ul, .menu-kmart-ribbon-container > ul {
@@ -168,17 +168,17 @@ legend {
  */
 #header {
   margin: 0 auto;
-  padding: 1.75em 0 1.066em;
+  padding: 1.615em 0 0.984em;
   width: 960px; }
   #header #logo {
     display: block;
-    margin-top: 1em; }
+    margin-top: 0.923em; }
   #header form {
-    margin-top: 1em;
+    margin-top: 0.923em;
     position: relative; }
   #header aside > ul > li {
-    margin-bottom: 0.466em;
-    padding: .165em 0; }
+    margin-bottom: 0.43em;
+    padding: 0.203em 0; }
   #header aside ul li {
     text-align: right; }
   #header aside ul li ul {
@@ -186,6 +186,7 @@ legend {
     #header aside ul li ul li {
       border-left: solid 1px #666666;
       display: inline-block;
+      font-size: 92.307%;
       padding: 0 .4em 0 .8em;
       text-align: center; }
       #header aside ul li ul li img {
@@ -199,14 +200,15 @@ legend {
   #header.kmart form #input_search {
     background: transparent no-repeat 0px 0px;
     border: none;
-    height: 1.666em;
-    padding: 0.333em 0 0.333em 2.266em;
+    height: 1.538em;
+    padding: 0.307em 0 0.307em 2.092em;
     margin-right: 9%;
     width: 84%; }
   #header.kmart form #button_search {
     background: transparent repeat-x 0px -48px;
     border: solid #e02334;
     border-width: 0 0 0 5px;
+    font-size: 92.307%;
     height: 2.5em;
     padding-bottom: .25em;
     position: absolute;
@@ -220,15 +222,16 @@ legend {
   #header.sears form #input_search {
     background: transparent no-repeat 0px 0px;
     border: none;
-    height: 1.666em;
-    padding: 0.166em 0 0.166em 2em;
+    height: 1.538em;
+    padding: 0.153em 0 0.153em 1.846em;
     margin-right: 11%;
     width: 82%; }
   #header.sears form #button_search {
     background: #ca4019 repeat-x 0px -44px;
     border: 0;
     color: #ffffff;
-    height: 2em;
+    font-size: 92.307%;
+    height: 1.9em;
     padding-bottom: .25em;
     position: absolute;
     right: 0px;
@@ -237,15 +240,16 @@ legend {
     width: 3.33em; }
 
 #footer {
-  padding-bottom: 2em; }
+  padding-bottom: 1.846em; }
 
 ul.footer_anterior {
-  margin-top: 1em; }
+  margin-top: 1em;
+  font-size: 92.307%; }
   ul.footer_anterior > * {
     width: 8.102%;
     float: left; }
   ul.footer_anterior > * + * {
-    width: 17.057%;
+    width: 16.524%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * {
@@ -253,27 +257,27 @@ ul.footer_anterior {
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * {
-    width: 7.889%;
+    width: 7.462%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * + * {
-    width: 7.889%;
+    width: 8.102%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * + * + * {
-    width: 7.889%;
+    width: 8.102%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * + * + * + * {
-    width: 7.889%;
+    width: 10.021%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * + * + * + * + * {
-    width: 7.889%;
+    width: 7.569%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * + * + * + * + * + * {
-    width: 7.889%;
+    width: 6.609%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * + * + * + * + * + * + * {
@@ -289,7 +293,7 @@ ul.footer_anterior {
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * + * + * + * + * + * + * + * + * + * {
-    width: 1.710999999999972%;
+    width: 1.712999999999967%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior .icon {
@@ -315,7 +319,7 @@ ul.footer_anterior {
     background-position: -240px top; }
 
 .kmart .footer_anterior p {
-  font-size: 83.333%;
+  font-size: 76.923%;
   margin-top: .5em;
   text-align: center; }
 
@@ -532,10 +536,10 @@ ul.footer_anterior {
   position: fixed;
   top: 0px; }
   #persistent-header.persist #header.sears form #button_search {
-    height: 2.1em; }
+    height: 1.9em; }
 
 #content {
-  padding: 1.333em 1.063829787234043%; }
+  padding: 1.23em 1.063829787234043%; }
 
 .input_text {
   border: solid 1px #cccccc; }
@@ -551,7 +555,7 @@ html, body {
   color: 1; }
 
 body {
-  font-size: 75%; }
+  font-size: 81.25%; }
 
 .kmart a {
   color: #980017;
@@ -579,7 +583,7 @@ body {
   display: none; }
 
 .bullets {
-  margin: 1.333em 0;
+  margin: 1.23em 0;
   padding: 0 0 0 40px; }
 
 ol.bullets {
@@ -652,19 +656,18 @@ ul.bullets {
     overflow: hidden; }
 
 .span4 .span4 .crest h4 {
-  font-size: 83.333%; }
+  font-size: 76.923%; }
 
 .post .content-date {
   display: block;
   float: right; }
 .post h3 {
-  font-size: 116.666%; }
+  font-size: 107.692%; }
 .post h2 {
   margin-top: .5em; }
 .post article {
   margin-top: .5em; }
 .post .post-actions {
-  font-size: 108.333%;
   margin-top: .5em; }
 
 /*
@@ -674,12 +677,13 @@ ul.bullets {
  * form elements
  */
 .input_text {
-  padding: 0.416em 0.013em;
+  padding: 0.384em 0.012em;
   border: solid 1px #cccccc;
-  height: 1.666em; }
+  height: 1.538em; }
 
 .required:after, .optional:after {
-  color: #999999; }
+  color: #999999;
+  font-size: 92.307%; }
 
 .required:after {
   content: " Required"; }
@@ -688,10 +692,10 @@ ul.bullets {
   content: " Optional"; }
 
 .form-fields > li {
-  margin-bottom: 1.8em; }
+  margin-bottom: 1.661em; }
 .form-fields label {
   display: block;
-  font-size: 116.666%;
+  font-size: 107.692%;
   font-weight: bold; }
 
 .sears_button, .kmart_button {
@@ -700,7 +704,7 @@ ul.bullets {
   border-width: 0px 1px;
   color: white;
   cursor: pointer;
-  font-size: 116.666%;
+  font-size: 107.692%;
   font-weight: bold;
   height: 32px;
   padding: 0em 1.5em;
@@ -741,7 +745,7 @@ ul.bullets {
   float: left;
   font-weight: bold;
   margin: 10px 0px 0px;
-  padding: 0.333em 1.333em;
+  padding: 0.307em 1.23em;
   position: relative;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -761,33 +765,33 @@ ul.bullets {
   color: #ff0000; }
 
 .content-container .content-headline {
-  font-size: 150%;
+  font-size: 153.846%;
   margin: 0; }
 
 .content-container .content-header {
   border: solid #dddcdc;
   border-width: 1px 0px;
-  padding: 0.833em; }
+  padding: 0.769em; }
   .content-container .content-header h3 {
-    font-size: 150%; }
+    font-size: 153.846%; }
   .content-container .content-header h4 {
-    font-size: 91.666%; }
+    font-size: 84.615%; }
 
 .content-date {
   color: #999999;
-  font-size: 91.666%; }
+  font-size: 84.615%; }
 
 .content-container .content-body {
-  padding: 0.833em; }
+  padding: 0.769em; }
   .content-container .content-body .content-details {
-    padding-bottom: 0.833em; }
+    padding-bottom: 0.769em; }
     .content-container .content-body .content-details .content-category {
-      font-size: 108.333%;
       float: left; }
   .content-container .content-body .content-date {
     float: right; }
   .content-container .content-body .content-comments {
     color: #333333;
+    font-size: 92.307%;
     margin-top: .8125em; }
     .content-container .content-body .content-comments li {
       border-left: solid 1px #999999;
@@ -800,7 +804,6 @@ ul.bullets {
 
 .content-body p {
   color: #333333;
-  font-size: 108.333%;
   line-height: 1.7em;
   margin-bottom: 1em; }
 
@@ -844,9 +847,9 @@ ul.bullets {
       width: 100%;
       margin-left: 0; }
       .featured-members .member .stats p {
-        margin-bottom: 0.399em; }
+        margin-bottom: 0.369em; }
     .featured-members .member .info ul {
-      margin: 0.399em 0; }
+      margin: 0.369em 0; }
 
 .span3 .featured-members .content-body .member, .span4 .featured-members .content-body .member, .span6 .featured-members .content-body .member {
   width: 100%;
@@ -868,9 +871,9 @@ ul.bullets {
 
 .featured-question.content-container .category-image {
   float: left;
-  height: 8.333em;
-  margin: 0 0.833em 0.833em 0;
-  width: 8.333em; }
+  height: 7.692em;
+  margin: 0 0.769em 0.769em 0;
+  width: 7.692em; }
 .featured-question.content-container.columns .content-body > * {
   float: left;
   width: 48.387%; }
@@ -881,8 +884,6 @@ ul.bullets {
   padding-right: 3.226000000000005%; }
 .featured-question.content-container.columns .content-date {
   float: none; }
-.featured-question.content-container.columns .content-headline {
-  font-size: 108.333%; }
 
 .span4 .featured-question.content-container.columns .content-body > *, .span3 .featured-question.content-container.columns .content-body > * {
   float: none;
@@ -919,13 +920,16 @@ ul.bullets {
     padding-top: 1.5em;
     padding-bottom: 1.5em; }
   .result-list .content-headline {
-    font-size: 116.666%;
+    font-size: 107.692%;
     margin: 1em 0; }
 
 .member .info .content-comments li {
   float: none;
   border: 0;
   margin-top: 0; }
+
+.content-container.featured-post .content-excerpt, .content-container.featured-post .content-byline, .content-container.featured-post .content-tags, .content-container.featured-guide .content-excerpt, .content-container.featured-guide .content-byline, .content-container.featured-guide .content-tags {
+  font-size: 92.307%; }
 
 .span4 .content-container.featured-post .span6 {
   width: 100%;
@@ -955,7 +959,7 @@ ul.bullets {
   .recent-activity .excerpt:after {
     content: "\201D"; }
 .recent-activity .category {
-  font-size: 91.666%;
+  font-size: 84.615%;
   padding-top: .2em; }
 
 .span3 .recent-activity .excerpt, .span4 .recent-activity .excerpt, .span6 .recent-activity .excerpt {
@@ -966,7 +970,7 @@ ul.bullets {
  * POST A QUESTION
  */
 .content-container.post-your-question form {
-  margin-top: 1em; }
+  margin-top: 0.923em; }
   .content-container.post-your-question form .state_post-your-question .input_text {
     width: 83%; }
   .content-container.post-your-question form .state_post-question-details .input_text {
@@ -974,11 +978,11 @@ ul.bullets {
   .content-container.post-your-question form .state_post-question-details .input_textarea {
     width: 98%; }
   .content-container.post-your-question form .state_confirm-post .confirmation {
-    padding: 0.833em; }
+    padding: 0.769em; }
   .content-container.post-your-question form .state_confirm-post .content-headline {
     color: #666666;
-    font-size: 1.666em;
-    margin-bottom: 0.399em; }
+    font-size: 1.538em;
+    margin-bottom: 0.369em; }
 
 /*
  * LOGIN/REGISTER/FORGOT PASSWORD
@@ -995,7 +999,7 @@ ul.bullets {
 .form_login label, .form_register label {
   text-align: right; }
 .form_login .forgot, .form_register .forgot {
-  font-size: 91.666%; }
+  font-size: 84.615%; }
 .form_login .form-fields > li p, .form_register .form-fields > li p {
   margin-bottom: 0; }
 
@@ -1008,7 +1012,7 @@ fieldset#use_your_account_from {
 .login_options {
   text-align: center;
   line-height: 2.5;
-  width: 20em;
+  width: 18.461em;
   margin: 0 auto; }
   .login_options a {
     display: inline-block;
@@ -1017,7 +1021,7 @@ fieldset#use_your_account_from {
     background: url("/wp-content/themes/Eris/assets/img/sprite-social.png");
     background-repeat: no-repeat;
     text-indent: -9999em;
-    margin-left: 1.733em; }
+    margin-left: 1.6em; }
     .login_options a:first-child, .login_options a:first-child + a, .login_options a:first-child + a + a {
       margin-left: 0; }
   .login_options .facebook {
@@ -1043,6 +1047,7 @@ fieldset#use_your_account_from {
 .communities_menu_widget .subnav-items li {
   padding: 6px 0; }
 .communities_menu_widget .subcat-selector-container {
+  font-size: 92.307%;
   margin-top: 15px;
   color: #666666; }
   .communities_menu_widget .subcat-selector-container select {
@@ -1057,7 +1062,7 @@ fieldset#use_your_account_from {
     float: left;
     min-width: 23.404255319148938%;
     margin-left: 2.127659574468085%;
-    font-size: 108.333%;
+    font-size: 107.692%;
     border: solid #cccccc;
     border-width: 1px 1px 0 1px;
     text-align: center;
@@ -1089,7 +1094,7 @@ fieldset#use_your_account_from {
   .profile nav.bar li {
     float: left;
     margin-left: 2.127659574468085%;
-    font-size: 125%;
+    font-size: 115.384%;
     padding: .6em .5em; }
   .profile nav.bar li:first-child {
     margin-left: 0; }
@@ -1110,8 +1115,7 @@ fieldset#use_your_account_from {
   .profile .personal_info dt, .profile .personal_info dd {
     float: left;
     padding: 1em 0;
-    border-top: 1px solid #cccccc;
-    font-size: 108.333%; }
+    border-top: 1px solid #cccccc; }
   .profile .personal_info dt {
     width: 30%;
     margin-left: 2%; }
@@ -1121,7 +1125,7 @@ fieldset#use_your_account_from {
     width: 64%;
     padding-left: 2%; }
   .profile .personal_info .info {
-    font-size: 133.333%; }
+    font-size: 123.076%; }
     .profile .personal_info .info h4 {
       margin-top: 1em; }
   .profile .personal_info .badge, .profile .personal_info .crest {
@@ -1150,15 +1154,15 @@ fieldset#use_your_account_from {
   float: left;
   clear: both; }
   .content-body.content-list .content-item .post-title {
-    line-height: 1.599em; }
+    line-height: 1.476em; }
   .content-body.content-list .content-item .byline, .content-body.content-list .content-item .comments-count, .content-body.content-list .content-item .post-date {
-    font-size: 91.666%;
-    line-height: 1.866em;
+    font-size: 84.615%;
+    line-height: 1.723em;
     color: #999; }
   .content-body.content-list .content-item p {
     margin-bottom: 0; }
 .content-body.content-list .more-link {
-  font-size: 1.066em;
+  font-size: 0.984em;
   margin-top: 15px;
   float: left;
   clear: both; }
@@ -1169,14 +1173,15 @@ fieldset#use_your_account_from {
     font-weight: bold;
     margin-bottom: 4px; }
   .content-container.questionlist .content-body.content-list .content-item .addthis.dropmenu {
-    padding-top: 3px; }
+    padding-top: 3px;
+    font-size: 92.307%; }
     .content-container.questionlist .content-body.content-list .content-item .addthis.dropmenu .sharebutton {
       padding: 0; }
 
 .tooltip {
   display: none;
   position: absolute;
-  left: 16em;
+  left: 14.769em;
   width: 250px;
   z-index: 1000003; }
   .tooltip .arrow {
@@ -1234,10 +1239,10 @@ fieldset#use_your_account_from {
     float: right;
     cursor: pointer;
     margin: 1em 0 .5em;
-    font-size: 116.666%; }
+    font-size: 107.692%; }
     .commentForm .leaveComment .smaller {
       bottom: 2px;
-      font-size: 66.666%;
+      font-size: 61.538%;
       position: relative; }
 
 .comments-header {
@@ -1245,7 +1250,7 @@ fieldset#use_your_account_from {
   .comments-header h4 {
     margin-left: 2em;
     color: black;
-    font-size: 83.333%;
+    font-size: 76.923%;
     font-weight: normal; }
   .comments-header > * {
     display: inline-block; }
@@ -1268,9 +1273,8 @@ fieldset#use_your_account_from {
     -o-border-radius: 4px;
     border-radius: 4px; }
     #allComments .comment time {
-      font-size: 91.666%; }
+      font-size: 84.615%; }
     #allComments .comment article {
-      font-size: 108.333%;
       margin: 1em 0;
       word-wrap: break-word; }
     #allComments .comment .responseTo {
@@ -1371,7 +1375,6 @@ button.follow {
 .metainfo {
   display: block;
   float: right;
-  font-size: 108.333%;
   position: relative;
   top: 2px;
   margin-left: .5em; }
@@ -1388,9 +1391,8 @@ button.follow {
   padding: 1em 0; }
   .breadcrumb li {
     float: left;
-    font-size: 108.333%;
     font-weight: bold;
-    padding-right: 0.5em; }
+    padding-right: 0.461em; }
   .breadcrumb li:before {
     content: " > "; }
   .breadcrumb li:first-child:before {
@@ -1412,7 +1414,8 @@ button.follow {
 
 .dropmenu li {
   float: left;
-  position: relative; }
+  position: relative;
+  font-size: 92.307%; }
   .dropmenu li a {
     display: block;
     font-weight: bold;
@@ -1581,7 +1584,7 @@ button.follow {
     border-bottom: 0; }
     .sears #footer_nav.dropmenu ul li {
       width: 100%;
-      font-size: 91.666%;
+      font-size: 84.615%;
       border-left: 0; }
       .sears #footer_nav.dropmenu ul li:hover {
         background: none; }
@@ -1599,7 +1602,7 @@ button.follow {
   .kmart #footer_nav.dropmenu li {
     width: 19.914893617021274%;
     border-left: 1px solid white;
-    font-size: 116.666%;
+    font-size: 107.692%;
     font-family: "Trebuchet MS", Helvetica, Arial, Verdana, sans-serif; }
     .kmart #footer_nav.dropmenu li:hover {
       background: #7c0505; }
@@ -1670,7 +1673,7 @@ button.follow {
 
 #moodle_window {
   background: rgba(143, 199, 252, 0.3);
-  padding: 1em;
+  padding: 0.923em;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   -ms-border-radius: 20px;
@@ -1678,8 +1681,8 @@ button.follow {
   border-radius: 20px; }
   #moodle_window .loading {
     height: 100%;
-    min-height: 4em;
-    min-width: 4em;
+    min-height: 3.692em;
+    min-width: 3.692em;
     text-align: center;
     width: 100%; }
 
@@ -1729,7 +1732,7 @@ button.follow {
   padding: 20px; }
 
 .sears .post-n-comments h2, .kmart .post-n-comments h2 {
-  font-size: 116.666%;
+  font-size: 107.692%;
   margin: 1.25em 0; }
 
 .section-header {
@@ -1741,7 +1744,7 @@ button.follow {
   color: #666; }
   .post-n-comments header {
     margin-bottom: 1em;
-    font-size: 166.666%; }
+    font-size: 153.846%; }
     .post-n-comments header + .span2.badge, .post-n-comments header + .span2.crest {
       margin-left: 0; }
   .post-n-comments .date {
@@ -1749,10 +1752,10 @@ button.follow {
   .post-n-comments a.category {
     display: block; }
   .post-n-comments .content h2 {
-    font-size: 200%;
+    font-size: 184.615%;
     margin-bottom: 10px; }
   .post-n-comments .content p {
-    font-size: 116.666%;
+    font-size: 107.692%;
     margin-bottom: 25px; }
   .post-n-comments textarea {
     -webkit-border-radius: 4px;
@@ -1867,7 +1870,7 @@ button.follow {
     .addthis.dropmenu li ul li a {
       padding-left: .2em; }
 .addthis.dropmenu .sharebutton {
-  font-size: 108.333%;
+  font-size: 100%;
   padding: 6px 0px;
   cursor: pointer;
   display: inline-block; }
