@@ -425,7 +425,7 @@ textarea.discussion {
   margin-top:-3.75em;
   position:relative;
   text-align:right;
-  z-index:999;
+  z-index:9;
 }
 
 .question {
@@ -451,27 +451,9 @@ textarea.discussion {
 }
 
 // FEATURED COMMUNITY MEMBERS
-.featured-members .member {
-  .content-comments {
-    width: 100%;
-    li {
-      float: none;
-      border: 0;
-    }
-  }
-  .stats {
-    float: left;
-    p {
-      margin-bottom: em-adjust( .3em );
-    }
-  }
-  .info ul {
-    margin: em-adjust( .3em 0 );
-  }
-}
-
-.span8, .span9, .span12 {
-  .featured-members .content-body {
+// the default state: lined up from left to right
+.featured-members {
+  .content-body {
     & > * {
       width: 29.9%;
       float: left;
@@ -480,32 +462,70 @@ textarea.discussion {
         padding-left: 0;
       }
     }
-    .member {
-      border-left: 1px solid sears( decorative );
-      &:first-child {
-        border-left: 0;
-      }
-      @include col_layout( ( 80, 80 ), 20 );
+  }
+  @include legacy-pie-clearfix;
+  .member {
+    border-left: 1px solid sears( decorative );
+    &:first-child {
+      border-left: 0;
     }
-    @include legacy-pie-clearfix;
+    @include col_layout( ( 80, 80 ), 20 );
+    .content-comments {
+      width: 100%;
+      li {
+        float: none;
+        border: 0;
+      }
+    }
     .stats {
-      float: none;
       clear: left;
       width: 100%;
       margin-left: 0;
+      p {
+        margin-bottom: em-adjust( .3em );
+      }
+    }
+    .info ul {
+      margin: em-adjust( .3em 0 );
     }
   }
 }
 
+// modify the style to create a stacked version.
 .span3, .span4, .span6 {
-  .member {
-    @include col_layout( ( 80, 180 ), 20 );
-    margin-top: 1em;
-    &:first-child {
-      margin-top: 0;
+  .featured-members .content-body {
+    .member {
+      width: 100%;
+      float: none;
+      padding: 0;
+      margin-top: 1em;
+      border-left: 0;
+      @include col_layout( ( 80, 180 ), 20 );
+      &:first-child {
+        margin-top: 0;
+      }
+      .stats {
+        clear: none;
+      }
     }
   }
 }
+
+//.span3, .span4, .span6 {
+//  .featured-members .content-body {
+//    .member {
+//      background: red;
+//      width: 100%;
+//      float: none;
+//      padding: 0;
+//      @include col_layout( ( 80, 180 ), 20 );
+//      margin-top: 1em;
+//      &:first-child {
+//        margin-top: 0;
+//      }
+//    }
+//  }
+//}
 // Alternate selector for below class. Use if override for more scenarios is required.
 // Also, more like these would have to be created on a per-widget basis if development is asked to create more override states.
 //.span3 .featured-members, .span4 .featured-members, .span6 .featured-members,
@@ -602,6 +622,19 @@ textarea.discussion {
   .content-headline {
     font-size: font-size( 14 );
     margin: 1em 0;
+  }
+}
+
+.result-list {
+  & > .content-body {
+    border:none;
+    padding:0 em-adjust( .625em );
+    
+  }
+  .question {
+    .content-date {
+      float:right;
+    }
   }
 }
 
@@ -711,6 +744,12 @@ textarea.discussion {
   padding:20px;
 }
 
+.sign-in, .register, .forgot-password {
+  .content-body {
+    border:none;
+  }
+}
+
 .form_login, .form_register {
   .input_text {
     width:100%;
@@ -766,10 +805,9 @@ fieldset#use_your_account_from {
 }
 
 // subnav widget
-.widget_communities_menu_widget {
+.communities_menu_widget {
   .subnav-items {
-    font-size: font-size( 13 );
-    .menu-item {
+    li {
       padding: 6px 0;
     }
   }
@@ -1126,7 +1164,7 @@ $tab-padding: "1em 0 .6em 0";
   float:right;
   margin: 0 0.5em;
   position:relative;
-  z-index:1000;
+  z-index:10;
   button {
     cursor: pointer;
     color: #4e74a3;
