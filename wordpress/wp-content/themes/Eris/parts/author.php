@@ -9,7 +9,7 @@
 ?>
 
         <li class="member lone-result clearfix">
-            <?php get_partial( 'parts/crest', array( "user_id" => $data->ID, "width" => 'span2', "titling" => true, "show_name" => false ) ); ?>
+            <?php get_partial( 'parts/crest', array( "user_id" => $data->ID, "width" => 'span2', "show_name" => false, "show_address" => false ) ); ?>
             <div class="span10 info">
                 <h4><?php get_screenname_link( $data->ID ); ?></h4>
                 <address><?php echo return_address( $data->ID ); ?></address>

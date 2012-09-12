@@ -4,7 +4,6 @@ if(!is_ajax() && is_widget()->template == "featured") :
 elseif(!is_ajax()) :
 	get_template_part('parts/header', 'results-list');
 endif;
-
 if (!have_posts()) {
     ?>
         <section class="no-results">

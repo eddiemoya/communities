@@ -1,5 +1,4 @@
 <?php
-
     # OPTIONS
     # $width =          span2 (default), span3, etc. - controls the width of the badge
     # $show_name =      true (default), false - whether to display the user's screenname under the avatar

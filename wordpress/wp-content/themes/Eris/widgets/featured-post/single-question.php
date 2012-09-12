@@ -34,8 +34,8 @@
         </a>
     </h1>
     
-    <ul class="content-comments">
-        <li><?php custom_comment_count('answer'); ?> answers</li>
+    <ul>
+        <li class="content-comments"><?php custom_comment_count('answer'); ?> answers</li>
     </ul>
     
     <?php  if(is_widget()->show_content) : ?>
