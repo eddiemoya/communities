@@ -67,14 +67,12 @@
             <p class="content-comments"><?php comments_number(); ?></p>
         <?php endif; //is_widget->show_comment_count ?> -->
         <?php  if(is_widget()->show_content || $is_widget_override) : ?>
-            <p class="content-excerpt">
                 <?php the_excerpt(); ?>
                 <!-- <a href="<?php the_permalink(); ?>" title="Read More">Read more</a> -->
-            </p>
         <?php endif; //is_widget_show_content ?>
 
         <?php if (is_widget()->show_tags || $is_widget_override) : ?>
-            <!--<span class="content-tags">
+            <p class="content-tags">
                 <?php 
                     $tags = get_the_tags(); 
                     foreach((object)$tags as $tag) {
@@ -83,7 +81,7 @@
                     if (count($output) > 0)
                         echo "Tags: " . implode(', ', $output);
                 ?>
-            </span>-->
+            </p>
         <?php endif; ?>
 
         <?php
