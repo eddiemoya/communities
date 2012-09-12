@@ -195,13 +195,11 @@ ul.bullets {
   @extend .faint;
 }
 
-/*
- * GLOBAL ELEMENTS
- */
 
-/*
- * form elements
- */
+// GLOBAL ELEMENTS
+
+
+// form elements
 .input_text {
   // Do not set padding for left/right to 0.
   // IE8 no like this.
@@ -241,13 +239,12 @@ ul.bullets {
   border-width:0px 1px;
   color: $lightest-color;
   cursor:pointer;
-  font-size: font-size( 14 );
   font-weight:bold;
   height:32px;
+  margin-right:1em;
   padding:0em 1.5em;
   position:relative;
   text-shadow:1px 1px sears( sec-dec);
-  top:-1px;
   @include border-radius( 5px );
 }
 
@@ -309,25 +306,21 @@ form {}
 
 // FEATURED
 .content-container .content-headline {
-  // font-size:1.25em;
-  font-size: font-size( 20 );
+  font-size: font-size( 20 ); // 1.25em
   margin:0;
   @extend .bold;
 }
 
 .content-container .content-header {
-  border:solid #dddcdc;
-  border-width:1px 0px;
-  padding:em-adjust( .625em );
+  border-top:solid 1px #dddcdc;
+  padding: em-adjust( .625em );
   @extend .bold;
   @extend .faint;
   h3 {
-    // font-size:1.25em;
-    font-size: font-size( 20 );
+    font-size: font-size( 18 ); // 1.25em
   }
   h4 {
-    // font-size:.6875em;
-    font-size: font-size( 11 ); 
+    font-size: font-size( 11 ); // .6875em
   }
 }
 
@@ -335,25 +328,38 @@ form {}
   color: sears( secondary-decorative );
   font-size:font-size( 11 );
 }
-.content-container .content-body {
-  padding:em-adjust( .625em );
 
-  .content-details {
-    padding-bottom:em-adjust( .625em );
-    .content-category {
-      // font-size:.8125em;
-      // font-size: font-size( 13 );
-      float:left;
-      @extend .bold;
-    }
+.content-details {
+  padding-bottom:em-adjust( .625em );
+  .content-category {
+    // font-size:.8125em;
+    // font-size: font-size( 13 );
+    float:left;
+    @extend .bold;
+  }
+}
+.content-container {
+  position: relative;
+  .content-author, .content-comments {
+    color:#333333;
+    margin-bottom: em-adjust( .625em ); // 10px
+  }
+  .content-body {
+    border-top:solid 1px #dddcdc;
+    padding: em-adjust( .625em 0 );
+  }
+  .content-category {
+    float:left;
+    // font-size: font-size( 13 ); // 13px
+    @extend .bold;
   }
   .content-date {
     float:right;
+    line-height: em-adjust( 1.5em );
   }
   .content-comments {
     color:#333333;
-    // font-size:.75em;
-    font-size: font-size( 12 );
+    font-size: font-size( 12 ); // 12px
     margin-top:.8125em;
     li {
       border-left:solid 1px #999999;
@@ -363,16 +369,28 @@ form {}
     & > li:first-child {
       border-left:none;
     }
-  }
-  .share-full {
-    margin-top: 10px;
+    .content-details {
+      margin-bottom: em-adjust( .625em ); // 10px
+    }
+    .content-headline {
+      font-size:font-size( 18 ); // 20px
+      line-height:1.1em; // 22px
+      margin:0 0 .625em; // 10px
+      @extend .bold;
+    }
+
+    .featured-image.span12 + .span12 {
+      margin-top: em-adjust( .625em ); // 10px
+    }
+    .share-full {
+      margin-top: 10px;
+    }
   }
 }
-
 .content-body {
   p {
     color:#333333;
-    // font-size:.8125em;
+    // font-size: font-size( 13 ); // 13px
     line-height:1.7em;
     margin-bottom:1em;
   }
@@ -385,6 +403,76 @@ form {}
   }
 }
 
+// SINGLES PAGE
+.single #content > section.span12 {
+  border-top:solid 1px #d5d5d5;
+}
+
+.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child, 
+.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-body:first-child,
+.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-header:first-child {
+  border-top:none;
+}
+
+.sears{
+  .post, .question {
+    h1 {
+      color:#067BB5;
+    }
+  } 
+}
+
+.kmart{
+  .post, .question {
+    h1 {
+      color:#980017;
+    }
+  } 
+}
+
+.post, .question {
+  padding:inherit 0px;
+  .content-body p {
+    margin-bottom: em-adjust( 1.2em )
+  }
+}
+
+textarea.discussion {
+  border: 1px solid #d6d6d6;
+  height:10em;
+  width: 99%;
+  @include border-radius( 4px );
+}
+
+.trigger.discussion {
+  height:2em;
+  margin-top:-3.75em;
+  position:relative;
+  text-align:right;
+  z-index:9;
+}
+
+.question {
+  .span2.badge, .span2.crest {
+    margin-left:0px;
+  }
+  .content-date {
+    float:left;
+    .time-stamp {
+      display:inline-block;
+      margin-left:1.5em;
+    }
+  }
+  .actions {
+    float:none;
+  }
+}
+
+.question + .ugc-comment-answer_form .trigger.discussion {
+  height: 1em;
+  margin: 0 0 1em;
+  text-align: right;
+}
 
 // FEATURED COMMUNITY MEMBERS
 // the default state: lined up from left to right
@@ -402,6 +490,9 @@ form {}
   @include legacy-pie-clearfix;
   .member {
     border-left: 1px solid sears( decorative );
+    &.clearfix {
+      clear: none;
+    }
     &:first-child {
       border-left: 0;
     }
@@ -434,12 +525,9 @@ form {}
       width: 100%;
       float: none;
       padding: 0;
-      margin-top: 1em;
+      margin-bottom: 1em;
       border-left: 0;
       @include col_layout( ( 80, 180 ), 20 );
-      &:first-child {
-        margin-top: 0;
-      }
       .stats {
         clear: none;
       }
@@ -528,6 +616,19 @@ form {}
   }
 }
 
+.result-list {
+  & > .content-body {
+    border:none;
+    padding:0 em-adjust( .625em );
+    
+  }
+  .question {
+    .content-date {
+      float:right;
+    }
+  }
+}
+
 .member .info .content-comments li {
   float: none;
   border: 0;
@@ -598,10 +699,8 @@ form {}
   }
 }
 
-/*
- * POST A QUESTION
- */
 
+// POST A QUESTION
 .content-container.post-your-question {
   form {
     margin-top:em-adjust( .75em );
@@ -631,13 +730,18 @@ form {}
   }
 }
 
-/*
- * LOGIN/REGISTER/FORGOT PASSWORD
- */
+
+// LOGIN/REGISTER/FORGOT PASSWORD
 #moodle_container .sign-in, body > .sign-in,
 #moodle_container .register, body > .register,
 #moodle_container .forgot-password, body > .forgot-password {
   padding:20px;
+}
+
+.sign-in, .register, .forgot-password {
+  .content-body {
+    border:none;
+  }
 }
 
 .form_login, .form_register {
@@ -981,22 +1085,42 @@ $tab-padding: "1em 0 .6em 0";
   }
 }
 
+.sears .comment-actions button {
+  background: transparent url(#{$sears-img}/sprite_global.png) repeat-x 0 -192px;
+}
+
+.kmart .comment-actions button {
+  background: transparent url(#{$sears-img}/sprite_global.png) repeat-x 0 -200px;
+}
+
 #allComments {
   @include border-radius( 4px );
   border: 1px solid #d6d6d6;
   border-bottom: 0;
-
+  .content-body {
+    border:none;
+    padding:0px;
+    margin-bottom:2em;
+  }
   .comment {
     padding: 1em 2%;
     background: $lightest-color;
     border-bottom: 1px solid #d6d6d6;
     @include border-radius( 4px );
     time {
-      font-size: font-size( 11 );
+      float:left;
+      .time-stamp {
+        display:inline-block;
+        margin-left:1.5em;
+      }
     }
     article {
       margin: 1em 0;
+      // font-size: font-size( 13 );
       word-wrap: break-word;
+      p {
+        margin-bottom:1em;
+      }
     }
 
     .responseTo {
@@ -1021,6 +1145,11 @@ $tab-padding: "1em 0 .6em 0";
   .span10 {
     word-wrap: break-word;
   }
+  .trigger.discussion {
+    height:1em;
+    margin:-1.5em 0 2em;
+    text-align:left;
+  }
 }
 #allComments .expert {
   background: lighten( sears( decorative ), 15 );
@@ -1028,8 +1157,10 @@ $tab-padding: "1em 0 .6em 0";
 
 // Activity buttons
 .actions {
-  margin: 3em 0.5em 0;
-
+  float:right;
+  margin: 0 0.5em;
+  position:relative;
+  z-index:10;
   button {
     cursor: pointer;
     color: #4e74a3;
@@ -1041,7 +1172,7 @@ $tab-padding: "1em 0 .6em 0";
     text-indent: -999em;
     width: 2em;
     margin-left: 1em;
-    padding: .33em;
+    padding: 2px;
     @include border-radius( 2px );
     @include box-shadow(sears( secondary-link ) 1px 2px 4px);
     &:first-letter {
@@ -1108,15 +1239,14 @@ button.follow {
   margin-left: .5em;
 }
 
-/**
- * @author Tim Steele
- *
- * Styles for the breadcrumb widget. Mainly used on the single pages, i.e.
- * blog, buying guide, question.
- */
+
+// @author Tim Steele
+// 
+// Styles for the breadcrumb widget. Mainly used on the single pages, i.e.
+// blog, buying guide, question.
+
 .breadcrumb {
-  border:solid #d5d5d5;
-  border-width:1px 0px;
+  border-top:solid 1px #d5d5d5;
   padding:1em 0;
   li {
     float:left;

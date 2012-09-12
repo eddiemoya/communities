@@ -307,8 +307,3 @@ function post_comment_screen_name($commentdata) {
 }
 
 add_filter( 'preprocess_comment',  'post_comment_screen_name');
-
-
-
-
-
