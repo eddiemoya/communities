@@ -644,7 +644,5 @@ function set_screen_name($screen_name) {
 			
 		return true;
 	}
-	
 }
-
 
