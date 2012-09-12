@@ -1,6 +1,12 @@
-<?php get_template_part('parts/header', 'widget') ;?>
-	<?php the_post(); ?>
-    <?php if ((is_widget()->show_thumbnail && has_post_thumbnail()) || ($is_widget_override && has_post_thumbnail())) :
+<?php 
+    get_template_part('parts/header', 'widget') ;
+    global $excerptLength;
+    
+    $excerptLength = 200;
+
+    the_post();
+    
+    if ((is_widget()->show_thumbnail && has_post_thumbnail()) || ($is_widget_override && has_post_thumbnail())) :
 
         $inner_span = (is_widget()->span > 6) ? "span12" : "span6";
 
@@ -41,21 +47,25 @@
 
 
         <?php if (is_widget()->show_title || $is_widget_override) : ?>
-            <p class="content-headline">
+            <h1 class="content-headline">
                 <a href="<?php the_permalink(); ?>">
                     <?php the_title(); ?>
                 </a>
-            </p>
+            </h1>
         <?php endif; //is_widget->show_title ?>
 
+				<ul>
+					<li class="content-author">By: <?php echo get_the_author(); ?></li>
+					<?php if (is_widget()->show_comment_count || $is_widget_override): ?>
+	            <li class="content-comments"><?php comments_number(); ?></li>
+	        <?php endif; //is_widget->show_comment_count ?>
+				</ul>
 
-
-        <p class="content-byline">By: <?php echo get_the_author(); ?> </p>
+<!--         <p class="content-byline">By: <?php echo get_the_author(); ?> </p>
         
         <?php if (is_widget()->show_comment_count || $is_widget_override): ?>
             <p class="content-comments"><?php comments_number(); ?></p>
-        <?php endif; //is_widget->show_comment_count ?>
-
+        <?php endif; //is_widget->show_comment_count ?> -->
         <?php  if(is_widget()->show_content || $is_widget_override) : ?>
             <p class="content-excerpt">
                 <?php the_excerpt(); ?>
@@ -64,7 +74,7 @@
         <?php endif; //is_widget_show_content ?>
 
         <?php if (is_widget()->show_tags || $is_widget_override) : ?>
-            <span class="content-tags">
+            <!--<span class="content-tags">
                 <?php 
                     $tags = get_the_tags(); 
                     foreach((object)$tags as $tag) {
@@ -73,7 +83,7 @@
                     if (count($output) > 0)
                         echo "Tags: " . implode(', ', $output);
                 ?>
-            </span>
+            </span>-->
         <?php endif; ?>
 
         <?php
