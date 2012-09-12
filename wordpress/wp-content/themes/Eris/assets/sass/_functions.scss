@@ -19,7 +19,14 @@
 // font-size(11) => 91.667%
 // font-size(11em) => 0.916em
 @function font-size( $target-size, $relative-size: $default-font-size ) {
-  @return if( unitless($target-size), to-decimal-places( percentage( $target-size/$relative-size ), 3 ), to-decimal-places( $target-size/$relative-size, 3 ) );
+ $return: '';
+  @if unitless($target-size) {
+    $return: to-decimal-places( percentage( $target-size/$relative-size ), 3 );
+  }
+  @else {
+    $return: to-decimal-places( $target-size/$relative-size, 3 );
+  }
+  @return $return;
 }
 
 // adjust Tim's em values to be relative to 12, not 16px font.
