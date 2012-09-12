@@ -114,7 +114,6 @@ ul.bullets {
 // COMMONLY USED ELEMENTS
 .member {
   .info {
-    // font-size: percentage( 12/16 );
     word-wrap: break-word;
     h4, address {
       @extend .bold;
@@ -187,7 +186,7 @@ ul.bullets {
     margin-top: .5em;
   }
   .post-actions {
-    font-size: font-size( 13 );
+    // font-size: font-size( 13 );
     margin-top: .5em;
   }
 }
@@ -214,6 +213,7 @@ ul.bullets {
 .required:after, .optional:after {
   color: #999999;
   // font-size:.7857em;
+  font-size: font-size( 12 );
 }
 
 .required:after {
@@ -310,7 +310,7 @@ form {}
 // FEATURED
 .content-container .content-headline {
   // font-size:1.25em;
-  font-size: font-size( 18 );
+  font-size: font-size( 20 );
   margin:0;
   @extend .bold;
 }
@@ -323,7 +323,7 @@ form {}
   @extend .faint;
   h3 {
     // font-size:1.25em;
-    font-size: font-size( 18 );
+    font-size: font-size( 20 );
   }
   h4 {
     // font-size:.6875em;
@@ -342,7 +342,7 @@ form {}
     padding-bottom:em-adjust( .625em );
     .content-category {
       // font-size:.8125em;
-      font-size: font-size( 13 );
+      // font-size: font-size( 13 );
       float:left;
       @extend .bold;
     }
@@ -353,6 +353,7 @@ form {}
   .content-comments {
     color:#333333;
     // font-size:.75em;
+    font-size: font-size( 12 );
     margin-top:.8125em;
     li {
       border-left:solid 1px #999999;
@@ -372,7 +373,6 @@ form {}
   p {
     color:#333333;
     // font-size:.8125em;
-    font-size:font-size( 13 );
     line-height:1.7em;
     margin-bottom:1em;
   }
@@ -447,39 +447,6 @@ form {}
   }
 }
 
-//.span3, .span4, .span6 {
-//  .featured-members .content-body {
-//    .member {
-//      background: red;
-//      width: 100%;
-//      float: none;
-//      padding: 0;
-//      @include col_layout( ( 80, 180 ), 20 );
-//      margin-top: 1em;
-//      &:first-child {
-//        margin-top: 0;
-//      }
-//    }
-//  }
-//}
-// Alternate selector for below class. Use if override for more scenarios is required.
-// Also, more like these would have to be created on a per-widget basis if development is asked to create more override states.
-//.span3 .featured-members, .span4 .featured-members, .span6 .featured-members,
-//.span3.featured-members, .span4.featured-members, .span6.featured-members, .span8.featured-members
-
-//.span3 .featured-members, .span4 .featured-members, .span6 .featured-members {
-//  .span4 {
-//    float: none;
-//    width: 100%;
-//    margin-left: 0;
-//    margin-bottom: 1em;
-//    .member {
-//      border-right: 0;
-//      @include col_layout( (80, 210), 10 );
-//    }
-//  }
-//}
-
 // FEATURED QUESTION
 .featured-question.content-container {
   .category-image {
@@ -509,7 +476,7 @@ form {}
       float: none;
     }
     .content-headline {
-      font-size: font-size( 13 );
+      // font-size: font-size( 13 );
     }
   }
 }
@@ -571,6 +538,7 @@ form {}
 .content-container.featured-post, .content-container.featured-guide {
   .content-excerpt, .content-byline, .content-tags {
     // font-size:.75em
+    font-size: font-size( 12 );
   }
 }
 .span4 .content-container.featured-post .span6 {
@@ -735,6 +703,7 @@ fieldset#use_your_account_from {
   }
   .subcat-selector-container {
     // font-size: .75em;
+    font-size: font-size( 12 );
     margin-top: 15px;
     color: sears( secondary-link );
     select {
@@ -755,7 +724,7 @@ $tab-padding: "1em 0 .6em 0";
       float: left;
       min-width: percentage( ( nth( $span-widths, 3 ) ) / $grid-width );
       margin-left: $margin-width-pct;
-      font-size: font-size( 13 );
+      font-size: font-size( 14 );
       border: solid sears( decorative );
       border-width: 1px 1px 0 1px;
       text-align: center;
@@ -813,7 +782,6 @@ $tab-padding: "1em 0 .6em 0";
       float: left;
       padding: 1em 0;
       border-top: 1px solid sears( decorative );
-      font-size: font-size( 13 );
     }
     dt {
       width: 30%;
@@ -907,6 +875,7 @@ $tab-padding: "1em 0 .6em 0";
     .addthis.dropmenu {
       padding-top: 3px;
       // font-size: .75em;
+      font-size: font-size( 12 );
       .sharebutton {
         padding: 0;
       }
@@ -1026,7 +995,6 @@ $tab-padding: "1em 0 .6em 0";
       font-size: font-size( 11 );
     }
     article {
-      font-size: font-size( 13 );
       margin: 1em 0;
       word-wrap: break-word;
     }
@@ -1134,7 +1102,7 @@ button.follow {
   display: block;
   float: right;
   // font-size: 13px;
-  font-size: font-size( 13 );
+  // font-size: font-size( 13 );
   position: relative;
   top: 2px;
   margin-left: .5em;
@@ -1153,7 +1121,6 @@ button.follow {
   li {
     float:left;
     // font-size:.8125em;
-    font-size: font-size( 13 );
     font-weight:bold;
     padding-right:em-adjust(.375em);
   }
