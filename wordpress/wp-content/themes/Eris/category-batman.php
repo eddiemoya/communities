@@ -110,7 +110,7 @@ get_template_part('parts/header');
 			<!-- END 6 SPAN FEATURED BLOG/BUYING GUIDE WIDGET -->
 			
 			<!-- FEATURED QUESTION -->
-			<!-- <article class="content-container featured-question span12">
+			<article class="content-container featured-question span12">
 				
 				<header class="content-header">
 					<h3>Featured Question</h3>
@@ -134,7 +134,7 @@ get_template_part('parts/header');
 
 				</section>
 		
-			</article> -->
+			</article> 
 			<!-- END FEATURED QUESTION -->
 			
 			<!-- BREADCRUMB WIDGET -->
