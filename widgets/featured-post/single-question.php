@@ -27,12 +27,12 @@
         </div>
     <?php endif; ?>
 
-    <h6 class="content-headline">
+    <h1 class="content-headline">
         Q:<a href="<?php the_permalink(); ?>">
             
             <?php the_title(); ?>
         </a>
-    </h6>
+    </h1>
     
     <ul class="content-comments">
         <li><?php custom_comment_count('answer'); ?> answers</li>
