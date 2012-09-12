@@ -22,9 +22,9 @@ class Section_Front{
 	public function add_actions(){
 
 		add_action( 'init', 					array(__CLASS__, 'register_sections_type') );
-		add_action( 'save_post', 				array(__CLASS__, 'save_section') );
-		add_action( 'wp_loaded',				array(__CLASS__, 'flush_custom_rules' ) );
-		add_filter( 'rewrite_rules_array',	array(__CLASS__, 'section_rewrite_rules') );
+		//add_action( 'save_post', 				array(__CLASS__, 'save_section') );
+		//add_action( 'wp_loaded',				array(__CLASS__, 'flush_custom_rules' ) );
+		add_filter( 'rewrite_rules_array',		array(__CLASS__, 'section_rewrite_rules') );
 
 	}
 
@@ -73,9 +73,60 @@ class Section_Front{
 	 *
 	 */
 	public function section_rewrite_rules( $rules ) {
-	    $section_rules = get_option('section_rewrite_rules', array());
-	    $rules = (array)$section_rules + (array)$rules;
-	    return  $rules;
+	   // $section_rules = get_option('section_rewrite_rules', array());
+		$terms = self::get_terms_by_post_type('category', 'section');
+		$posts = array();
+		$new_rules = array();
+
+		foreach($terms as &$term){
+			$posts = get_posts(array(
+				'posts_per_page' => -1,
+				'post_type' => array('section'),
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'category',
+						'terms' => $term->term_id,
+						'field' => 'id',
+			))));
+
+
+			foreach($posts as $post){
+				$post->term = $term;
+
+				$post->meta['rewrite_tax_archive'] = get_post_meta($post->ID, 'widgetpress_post_type_none', true);
+				$post->meta['rewrite_tax_guide'] = get_post_meta($post->ID, 'widgetpress_post_type_guide', true);
+				$post->meta['rewrite_tax_question'] = get_post_meta($post->ID, 'widgetpress_post_type_question', true);
+				$post->meta['rewrite_tax_post'] = get_post_meta($post->ID, 'widgetpress_post_type_post', true);
+
+				$post_types = array();
+				if( !empty($post->meta['rewrite_tax_guide']) || !empty($post->meta['rewrite_tax_question']) || !empty($post->meta['rewrite_tax_post']) ){
+					$post_types[] = (!empty($post->meta['rewrite_tax_guide'])) ? 'guide' :  '';
+					$post_types[] = (!empty($post->meta['rewrite_tax_question'])) ? 'question' :  '';
+					$post_types[] = (!empty($post->meta['rewrite_tax_post'])) ? 'post' :  '';
+
+					$endpoint_pattern = '(' . implode('|', array_filter($post_types)) . ')';
+					$new_rules["{$term->taxonomy}/{$term->slug}/{$endpoint_pattern}/?$"] = 'index.php?posts_per_page=1&posts__in='.$post->ID.'&post_type='.$post->post_type.'&category_name='.$term->slug;
+
+
+				}
+				if(!empty($post->meta['rewrite_tax_archive'])){
+					$new_rules["{$term->taxonomy}/{$term->slug}/?$"] = 'index.php?posts_per_page=1&posts__in='.$post->ID.'&post_type='.$post->post_type.'&category_name='.$term->slug;
+				}
+
+
+				$tposts[] = $post;
+			}
+
+
+			
+		}
+		
+			//echo "<pre>";print_r(array($new_rules, $tposts,$terms));echo "</pre>";
+		
+
+
+	    //$rules = $new_rules + $rules;
+	    return  $new_rules+$rules;
 	}
 
 	/**
@@ -84,13 +135,17 @@ class Section_Front{
 	public function flush_custom_rules(){
 		$rules = get_option( 'rewrite_rules' );
 	    $section_rules = get_option('section_rewrite_rules', array());
-
+	    $flush = false;
 	    //@todo: use in_array or array_search, or some more performant array function
 	    foreach((array)$section_rules as $regex => $querystring){
 			if ( ! isset( $rules[$regex] ) ) {
-				global $wp_rewrite;
-			   	$wp_rewrite->flush_rules();
+				$flush = true;
 			}
+		}
+		if($flush){
+			global $wp_rewrite;
+		   	$wp_rewrite->flush_rules();
+
 		}
 	}
 
@@ -104,29 +159,54 @@ class Section_Front{
 		    if('section' != $_POST['post_type'])
 		        return;
 
-		if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) 
-			return;
+			if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) 
+				return;
 
-   		if ( defined('DOING_AJAX') && DOING_AJAX ) 
-   			return;
+	   		if ( defined('DOING_AJAX') && DOING_AJAX ) 
+	   			return;
 
 		    if ( !current_user_can( 'edit_post', $post_id ) )
 		        return;
 
 		    $categories = $_POST['post_category'];
-		    $types = array(
+		    // $types = array(
 		    	
-		    	'question' => !empty($_POST['widgetpress_post_type_question']),
-		    	'post' => !empty($_POST['widgetpress_post_type_post']),
-		    	'guide' => !empty($_POST['widgetpress_post_type_guide']),
-		    	'tax-archive' => !empty($_POST['widgetpress_post_type_none']),
-		    );
+		    // 	// 'question' => !empty($_POST['widgetpress_post_type_question']),
+		    // 	// 'post' => !empty($_POST['widgetpress_post_type_post']),
+		    // 	// 'guide' => !empty($_POST['widgetpress_post_type_guide']),
+		    // 	'tax-archive' => !empty($_POST['widgetpress_post_type_none'])
+		    // );
+		    $rewritten_terms = self::build_rules(wp_list_pluck(self::get_terms_by_post_type('category', 'section'), 'term_id'));
 
-		    self::rewrite_all_the_terms($categories, array_filter($types));
+		    $saved_rules = get_option('section_rewrite_rules', array());
+		    $new_rules = self::build_rules(array_filter($categories));
+
+		    $rules = array_merge($saved_rules, $new_rules);
+		 //   // $rules 
+			// //update_option('section_rewrite_rules', $new_rules);
+			// echo "<pre>";print_r($categories);echo "</pre>";
+		 //    echo "<pre>";print_r($rewritten_terms);echo "</pre>";
+		 //    echo "<pre>";print_r($saved_rules);echo "</pre>";
+		 //    echo "<pre>";print_r($new_rules);echo "</pre>";
+		 //    echo "<pre>";print_r($rules);echo "</pre>";
+
+		    //self::rewrite_all_the_terms($categories, array_filter($types));
 		}
+
+		$wp_rewrite->flush_rules();
 		//return $post_id;
 	}
  
+ 	function build_rules($categories){
+
+ 		$cats = array();
+ 		foreach($categories as $cat){
+ 			$cat = get_term($cat, 'category');
+ 			$cats[] = $cat;
+ 			$rules["{$cat->taxonomy}/{$cat->slug}/?$"] = 'index.php?posts_per_page=1&posts__in='.$_POST['post_ID'].'&post_type='.$_POST['post_type'].'&category_name='.$cat->slug;
+ 		}
+ 		return $rules;
+ 	}
 	/**
 	 *
 	 */
@@ -136,14 +216,16 @@ class Section_Front{
 		$rules = array();
 
 
-		    foreach((array)$categorized_sections as $cat){
-
-		    			foreach((array)$types as $type => $value){
+		foreach((array)$categorized_sections as $cat){
+		    foreach((array)$types as $type => $value){
 			$type = ($type == 'tax-archive') ? '' : $type;
-			$rr_endpoint = (!empty($type)) ? "/{$type}" : '';
+			$type_endpoint = (!empty($type)) ? "/{$type}" : '';
+
 		
 		    	//echo "<pre>";print_r($cat);echo "</pre>";
-		    	$rules[$cat->taxonomy . '/' . $cat->slug .$rr_endpoint.'/?$'] = 'index.php?posts_per_page=1&post_type='.$_POST['post_type'].'&category_name='.$cat->slug;
+		    	
+
+		    	//$rules[$cat->taxonomy . '/' . $cat->slug .$type_endpoint.'/?$'] = 'index.php?posts_per_page=1&posts__in='.$_POST['post_ID'].'&post_type='.$_POST['post_type'].'&category_name='.$cat->slug;
 
 		        // $rules[$cat_id] =array(
 		        // $cat->taxonomy . '/' . $cat->slug .'/?$/page/?([0-9]{1,})/?$' => 'index.php?posts_per_page=1&post_type='.$_POST['post_type'].'&category_name='.$cat->slug,
@@ -154,7 +236,11 @@ class Section_Front{
 	    // echo "<pre>";print_r($rules);echo "</pre>";
 	    // exit();
 	    // unset($rules[0]);
-	    update_option('section_rewrite_rules', $rules);
+
+	    // $section_rules = get_option('section_rewrite_rules', array());
+	    // $rules = array_merge($section_rules, $rules);
+
+	    // update_option('section_rewrite_rules', $rules);
 
 	   	$wp_rewrite->flush_rules();
 	}
@@ -176,7 +262,7 @@ class Section_Front{
 		);
 		$terms= array();
 		$posts = get_posts($args);
-			foreach($posts as $p){
+			foreach($posts as &$p){
 			//get all terms of your taxonomy for each type
 			$ts = wp_get_object_terms($p->ID,$taxonomy); 
 				foreach ( $ts as $t ) {
@@ -186,9 +272,6 @@ class Section_Front{
 					}
 				}
 			}
-
-
-		wp_reset_postdata();
 
 		return $terms; 
 	}
