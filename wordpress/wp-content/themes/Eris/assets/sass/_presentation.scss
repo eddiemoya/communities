@@ -167,11 +167,9 @@ ul.bullets {
 
 .post {
   .content-date {
+    color:#999999;
     display: block;
     float: right;
-    // font-size:.6875em;
-    // font-size:font-size( 11 );
-    @extend .faint;
   }
   hgroup {
     @extend .bold;
@@ -305,19 +303,13 @@ ul.bullets {
 form {}
 
 // FEATURED
-.content-container .content-headline {
-  font-size: font-size( 20 ); // 1.25em
-  margin:0;
-  @extend .bold;
-}
-
 .content-container .content-header {
   border-top:solid 1px #dddcdc;
   padding: em-adjust( .625em );
   @extend .bold;
   @extend .faint;
   h3 {
-    font-size: font-size( 18 ); // 1.25em
+    font-size: font-size( 20 ); // 1.25em
   }
   h4 {
     font-size: font-size( 11 ); // .6875em
@@ -329,19 +321,11 @@ form {}
   font-size:font-size( 11 );
 }
 
-.content-details {
-  padding-bottom:em-adjust( .625em );
-  .content-category {
-    // font-size:.8125em;
-    // font-size: font-size( 13 );
-    float:left;
-    @extend .bold;
-  }
-}
 .content-container {
   position: relative;
   .content-author, .content-comments {
     color:#333333;
+    font-size: font-size( 12 );
     margin-bottom: em-adjust( .625em ); // 10px
   }
   .content-body {
@@ -350,41 +334,26 @@ form {}
   }
   .content-category {
     float:left;
-    // font-size: font-size( 13 ); // 13px
     @extend .bold;
   }
   .content-date {
     float:right;
     line-height: em-adjust( 1.5em );
   }
-  .content-comments {
-    color:#333333;
-    font-size: font-size( 12 ); // 12px
-    margin-top:.8125em;
-    li {
-      border-left:solid 1px #999999;
-      float:left;
-      padding:0em .3125em;
-    }
-    & > li:first-child {
-      border-left:none;
-    }
-    .content-details {
-      margin-bottom: em-adjust( .625em ); // 10px
-    }
-    .content-headline {
-      font-size:font-size( 18 ); // 20px
-      line-height:1.1em; // 22px
-      margin:0 0 .625em; // 10px
-      @extend .bold;
-    }
-
-    .featured-image.span12 + .span12 {
-      margin-top: em-adjust( .625em ); // 10px
-    }
-    .share-full {
-      margin-top: 10px;
-    }
+  .content-details {
+    margin-bottom: em-adjust( .625em ); // 10px
+  }
+  .content-headline {
+    font-size:font-size( 20 ); // 20px
+    line-height:1.1em; // 22px
+    margin:0 0 .625em; // 10px
+    @extend .bold;
+  }
+  .featured-image.span12 + .span12 {
+    margin-top: em-adjust( .625em ); // 10px
+  }
+  .share-full {
+    margin-top: 10px;
   }
 }
 .content-body {
@@ -422,12 +391,24 @@ form {}
   } 
 }
 
+.single-post .comments {
+  .content-body {
+    border-top:none;
+  }
+}
+
 .kmart{
   .post, .question {
     h1 {
       color:#980017;
     }
   } 
+}
+
+.post.content-container {
+  .content-body {
+    padding:em-adjust(.625em);
+  }
 }
 
 .post, .question {
@@ -465,6 +446,19 @@ textarea.discussion {
   }
   .actions {
     float:none;
+  }
+}
+
+.comments .content-header {
+  h3 {
+    float:left;
+  }
+  h4 {
+    float:left;
+    font-size: font-size( 16 ); 
+    font-weight:normal;
+    line-height:1.75em;
+    margin-left:2em;
   }
 }
 
@@ -536,6 +530,12 @@ textarea.discussion {
 }
 
 // FEATURED QUESTION
+.featured-question {
+  .content-body {
+    padding:em-adjust(.625em);
+  }
+}
+
 .featured-question.content-container {
   .category-image {
     float:left;
@@ -620,7 +620,17 @@ textarea.discussion {
   & > .content-body {
     border:none;
     padding:0 em-adjust( .625em );
-    
+    & > .content-container:first-child .content-body {
+      border-top:none;
+    }
+  }
+  & > .content-header {
+    border-bottom:1px solid #DDDCDC;
+    padding:1.5em 0;
+    width:100%;
+    form {
+      margin:0 .769em;
+    }
   }
   .question {
     .content-date {
@@ -1100,7 +1110,7 @@ $tab-padding: "1em 0 .6em 0";
   .content-body {
     border:none;
     padding:0px;
-    margin-bottom:2em;
+    margin-bottom:1em;
   }
   .comment {
     padding: 1em 2%;
@@ -1278,5 +1288,33 @@ button.follow {
   }
   ul {
     padding-left: 20px;
+  }
+}
+
+// @author Tim Steele
+// 
+// Styles for the breadcrumb widget. Mainly used on the single pages, i.e.
+// blog, buying guide, question.
+.page-title {
+  color:#999999;
+  font-weight:bold;
+  h1 {
+    font-size:font-size( 22 );
+    margin:0 .45em;
+  }
+  h2 {
+    margin:0 em-adjust(.625em);
+  }
+}
+
+.home .page-title {
+  color:#666666;
+  .content-body {
+    border:none;
+  }
+  h1 {
+    font-size:font-size(17);
+    font-weight:normal;
+    margin:0 .58em;
   }
 }

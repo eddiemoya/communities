@@ -190,7 +190,7 @@ legend {
       padding: 0 .4em 0 .8em;
       text-align: center; }
       #header aside ul li ul li img {
-        vertical-align: bottom;
+        width: auto;
         margin-right: .5em; }
       #header aside ul li ul li:first-child {
         border: none; }
@@ -210,7 +210,7 @@ legend {
     border-width: 0 0 0 5px;
     font-size: 92.307%;
     height: 2.5em;
-    padding-bottom: .25em;
+    padding-bottom: .20em;
     position: absolute;
     right: 0px;
     text-transform: uppercase;
@@ -230,7 +230,6 @@ legend {
     background: #ca4019 repeat-x 0px -44px;
     border: 0;
     color: #ffffff;
-    font-size: 92.307%;
     height: 1.9em;
     padding-bottom: .25em;
     position: absolute;
@@ -536,8 +535,6 @@ ul.footer_anterior {
 #persistent-header.persist {
   position: fixed;
   top: 0px; }
-  #persistent-header.persist #header.sears form #button_search {
-    height: 1.9em; }
 
 #content {
   padding: 1.23em 1.063829787234043%; }
@@ -593,10 +590,10 @@ ol.bullets {
 ul.bullets {
   list-style-type: disc; }
 
-.bold, .member .info h4, .member .info address, .crest h4, .crest h5, .crest address, .post hgroup, .content-container .content-headline, .content-container .content-header, .content-details .content-category, .content-container .content-category, .content-container .content-comments .content-headline, .profile .answers-toggle, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, #allComments .comment .responseTo, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header {
+.bold, .member .info h4, .member .info address, .crest h4, .crest h5, .crest address, .post hgroup, .content-container .content-header, .content-container .content-category, .content-container .content-headline, .profile .answers-toggle, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, #allComments .comment .responseTo, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header {
   font-weight: 700; }
 
-.faint, .member .info h5, .member .info p, .post .content-date, .excerpt, .content-container .content-header, .recent-activity time {
+.faint, .member .info h5, .member .info p, .excerpt, .content-container .content-header, .recent-activity time {
   color: #666666; }
 
 .upcase, .actions button:first-letter {
@@ -660,6 +657,7 @@ ul.bullets {
   font-size: 76.923%; }
 
 .post .content-date {
+  color: #999999;
   display: block;
   float: right; }
 .post h3 {
@@ -758,15 +756,11 @@ ul.bullets {
 .form-errors {
   color: #ff0000; }
 
-.content-container .content-headline {
-  font-size: 153.846%;
-  margin: 0; }
-
 .content-container .content-header {
   border-top: solid 1px #dddcdc;
   padding: 0.769em; }
   .content-container .content-header h3 {
-    font-size: 138.461%; }
+    font-size: 153.846%; }
   .content-container .content-header h4 {
     font-size: 84.615%; }
 
@@ -774,15 +768,11 @@ ul.bullets {
   color: #999999;
   font-size: 84.615%; }
 
-.content-details {
-  padding-bottom: 0.769em; }
-  .content-details .content-category {
-    float: left; }
-
 .content-container {
   position: relative; }
   .content-container .content-author, .content-container .content-comments {
     color: #333333;
+    font-size: 92.307%;
     margin-bottom: 0.769em; }
   .content-container .content-body {
     border-top: solid 1px #dddcdc;
@@ -792,26 +782,16 @@ ul.bullets {
   .content-container .content-date {
     float: right;
     line-height: 1.846em; }
-  .content-container .content-comments {
-    color: #333333;
-    font-size: 92.307%;
-    margin-top: .8125em; }
-    .content-container .content-comments li {
-      border-left: solid 1px #999999;
-      float: left;
-      padding: 0em .3125em; }
-    .content-container .content-comments > li:first-child {
-      border-left: none; }
-    .content-container .content-comments .content-details {
-      margin-bottom: 0.769em; }
-    .content-container .content-comments .content-headline {
-      font-size: 138.461%;
-      line-height: 1.1em;
-      margin: 0 0 .625em; }
-    .content-container .content-comments .featured-image.span12 + .span12 {
-      margin-top: 0.769em; }
-    .content-container .content-comments .share-full {
-      margin-top: 10px; }
+  .content-container .content-details {
+    margin-bottom: 0.769em; }
+  .content-container .content-headline {
+    font-size: 153.846%;
+    line-height: 1.1em;
+    margin: 0 0 .625em; }
+  .content-container .featured-image.span12 + .span12 {
+    margin-top: 0.769em; }
+  .content-container .share-full {
+    margin-top: 10px; }
 
 .content-body p {
   color: #333333;
@@ -833,8 +813,14 @@ ul.bullets {
 .sears .post h1, .sears .question h1 {
   color: #067BB5; }
 
+.single-post .comments .content-body {
+  border-top: none; }
+
 .kmart .post h1, .kmart .question h1 {
   color: #980017; }
+
+.post.content-container .content-body {
+  padding: 0.769em; }
 
 .post, .question {
   padding: inherit 0px; }
@@ -867,6 +853,15 @@ textarea.discussion {
     margin-left: 1.5em; }
 .question .actions {
   float: none; }
+
+.comments .content-header h3 {
+  float: left; }
+.comments .content-header h4 {
+  float: left;
+  font-size: 123.076%;
+  font-weight: normal;
+  line-height: 1.75em;
+  margin-left: 2em; }
 
 .question + .ugc-comment-answer_form .trigger.discussion {
   height: 1em;
@@ -931,6 +926,9 @@ textarea.discussion {
   .span3 .featured-members .content-body .member .stats, .span4 .featured-members .content-body .member .stats, .span6 .featured-members .content-body .member .stats {
     clear: none; }
 
+.featured-question .content-body {
+  padding: 0.769em; }
+
 .featured-question.content-container .category-image {
   float: left;
   height: 7.692em;
@@ -988,6 +986,14 @@ textarea.discussion {
 .result-list > .content-body {
   border: none;
   padding: 0 0.769em; }
+  .result-list > .content-body > .content-container:first-child .content-body {
+    border-top: none; }
+.result-list > .content-header {
+  border-bottom: 1px solid #DDDCDC;
+  padding: 1.5em 0;
+  width: 100%; }
+  .result-list > .content-header form {
+    margin: 0 .769em; }
 .result-list .question .content-date {
   float: right; }
 
@@ -1337,7 +1343,7 @@ fieldset#use_your_account_from {
   #allComments .content-body {
     border: none;
     padding: 0px;
-    margin-bottom: 2em; }
+    margin-bottom: 1em; }
   #allComments .comment {
     padding: 1em 2%;
     background: white;
@@ -1491,6 +1497,24 @@ button.follow {
   font-size: 1em; }
 .no-results ul {
   padding-left: 20px; }
+
+.page-title {
+  color: #999999;
+  font-weight: bold; }
+  .page-title h1 {
+    font-size: 169.23%;
+    margin: 0 .45em; }
+  .page-title h2 {
+    margin: 0 0.769em; }
+
+.home .page-title {
+  color: #666666; }
+  .home .page-title .content-body {
+    border: none; }
+  .home .page-title h1 {
+    font-size: 130.769%;
+    font-weight: normal;
+    margin: 0 .58em; }
 
 .dropmenu li {
   float: left;
@@ -2037,7 +2061,7 @@ button.follow {
 
 .tooltip .middle .info .top {
   margin-bottom: 15px; }
-.tooltip .middle .info .bold, .tooltip .middle .member .info h4, .member .tooltip .middle .info h4, .tooltip .middle .member .info address, .member .tooltip .middle .info address, .tooltip .middle .info .crest h4, .crest .tooltip .middle .info h4, .tooltip .middle .info .crest h5, .crest .tooltip .middle .info h5, .tooltip .middle .info .crest address, .crest .tooltip .middle .info address, .tooltip .middle .info .post hgroup, .post .tooltip .middle .info hgroup, .tooltip .middle .info .content-container .content-headline, .content-container .tooltip .middle .info .content-headline, .tooltip .middle .info .content-container .content-header, .content-container .tooltip .middle .info .content-header, .tooltip .middle .info .content-details .content-category, .content-details .tooltip .middle .info .content-category, .tooltip .middle .info .content-container .content-category, .content-container .tooltip .middle .info .content-category, .tooltip .middle .info .content-container .content-comments .content-headline, .content-container .content-comments .tooltip .middle .info .content-headline, .tooltip .middle .info .profile .answers-toggle, .profile .tooltip .middle .info .answers-toggle, .tooltip .middle .info .profile .personal_info dt, .profile .personal_info .tooltip .middle .info dt, .tooltip .middle .info .kmart .answers-toggle, .kmart .tooltip .middle .info .answers-toggle, .tooltip .middle .info .kmart .upload-photo label, .kmart .upload-photo .tooltip .middle .info label, .tooltip .middle .info .sears .answers-toggle, .sears .tooltip .middle .info .answers-toggle, .tooltip .middle .info .sears .upload-photo label, .sears .upload-photo .tooltip .middle .info label, .tooltip .middle .info #allComments .comment .responseTo, #allComments .comment .tooltip .middle .info .responseTo, .tooltip .middle .info .sears .post-n-comments h2, .sears .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .kmart .post-n-comments h2, .kmart .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .section-header {
+.tooltip .middle .info .bold, .tooltip .middle .member .info h4, .member .tooltip .middle .info h4, .tooltip .middle .member .info address, .member .tooltip .middle .info address, .tooltip .middle .info .crest h4, .crest .tooltip .middle .info h4, .tooltip .middle .info .crest h5, .crest .tooltip .middle .info h5, .tooltip .middle .info .crest address, .crest .tooltip .middle .info address, .tooltip .middle .info .post hgroup, .post .tooltip .middle .info hgroup, .tooltip .middle .info .content-container .content-header, .content-container .tooltip .middle .info .content-header, .tooltip .middle .info .content-container .content-category, .content-container .tooltip .middle .info .content-category, .tooltip .middle .info .content-container .content-headline, .content-container .tooltip .middle .info .content-headline, .tooltip .middle .info .profile .answers-toggle, .profile .tooltip .middle .info .answers-toggle, .tooltip .middle .info .profile .personal_info dt, .profile .personal_info .tooltip .middle .info dt, .tooltip .middle .info .kmart .answers-toggle, .kmart .tooltip .middle .info .answers-toggle, .tooltip .middle .info .kmart .upload-photo label, .kmart .upload-photo .tooltip .middle .info label, .tooltip .middle .info .sears .answers-toggle, .sears .tooltip .middle .info .answers-toggle, .tooltip .middle .info .sears .upload-photo label, .sears .upload-photo .tooltip .middle .info label, .tooltip .middle .info #allComments .comment .responseTo, #allComments .comment .tooltip .middle .info .responseTo, .tooltip .middle .info .sears .post-n-comments h2, .sears .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .kmart .post-n-comments h2, .kmart .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .section-header {
   margin-bottom: 10px; }
 .tooltip .middle .info ul {
   list-style-type: circle;

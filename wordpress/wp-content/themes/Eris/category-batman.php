@@ -13,6 +13,30 @@ get_template_part('parts/header');
 	<section class="span12">
 		
 		<section class="span8">
+			
+			<div class="home span12">
+				<article class="widget content-container span12 page-title">
+					<section class="content-body">
+						<h1>Discover ideas. Ask questions. Be you. Welcome to the Community.</h1>
+					</section>
+				</article>
+			</div>
+
+			
+			<article class="widget content-container span12 page-title">
+				<section class="content-body">
+					<h1>All Q&amp;As</h1>
+					<h2>Got a question? Ask and find your answer right here.</h2>
+				</section>
+			</article>
+		
+			<article class="widget content-container span12 image-widget">
+
+      	<section class="content-body">
+      		<img src="http://c.dryicons.com/files/graphics_previews/fantasy_banner.jpg">
+      	</section>
+
+     	</article>
 		
 			<!-- FEATURED BLOG/BUYING GUIDE WIDGET -->
 			<article class="content-container featured-post span12">
@@ -50,7 +74,7 @@ get_template_part('parts/header');
 			<!-- END FEATURED BLOG/BUYING GUIDE WIDGET -->
 			
 			<!-- 6 SPAN FEATURED BLOG/BUYING GUIDE WIDGET -->
-			<!-- <article class="content-container featured-post span6">
+			<article class="content-container featured-post span6">
 			
 				<header class="content-header">
 					<h3>Featured Blog Post</h3>
@@ -79,10 +103,10 @@ get_template_part('parts/header');
 					
 				</section>
 		
-			</article> -->
+			</article>
 			<!-- END 6 SPAN FEATURED BLOG/BUYING GUIDE WIDGET -->
 			<!-- 6 SPAN FEATURED BLOG/BUYING GUIDE WIDGET -->
-			<!-- <article class="content-container featured-question span6">
+			<article class="content-container featured-question span6">
 				
 				<header class="content-header">
 					<h3>Featured Question</h3>
@@ -106,7 +130,7 @@ get_template_part('parts/header');
 
 				</section>
 		
-			</article> -->
+			</article>
 			<!-- END 6 SPAN FEATURED BLOG/BUYING GUIDE WIDGET -->
 			
 			<!-- FEATURED QUESTION -->
