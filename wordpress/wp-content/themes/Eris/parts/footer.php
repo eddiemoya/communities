@@ -15,7 +15,7 @@
 
       </section> <!-- #content -->
 
-      <footer id="footer">
+      <footer id="footer" class="clearfix">
 
         <div id="shc_footer">
           <?php do_action('content-bottom'); ?>
