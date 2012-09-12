@@ -178,7 +178,7 @@ legend {
     position: relative; }
   #header aside > ul > li {
     margin-bottom: 0.43em;
-    padding: .165em 0; }
+    padding: 0.203em 0; }
   #header aside ul li {
     text-align: right; }
   #header aside ul li ul {
@@ -186,10 +186,11 @@ legend {
     #header aside ul li ul li {
       border-left: solid 1px #666666;
       display: inline-block;
+      font-size: 92.307%;
       padding: 0 .4em 0 .8em;
       text-align: center; }
       #header aside ul li ul li img {
-        vertical-align: bottom;
+        width: auto;
         margin-right: .5em; }
       #header aside ul li ul li:first-child {
         border: none; }
@@ -207,8 +208,9 @@ legend {
     background: transparent repeat-x 0px -48px;
     border: solid #e02334;
     border-width: 0 0 0 5px;
+    font-size: 92.307%;
     height: 2.5em;
-    padding-bottom: .25em;
+    padding-bottom: .20em;
     position: absolute;
     right: 0px;
     text-transform: uppercase;
@@ -228,7 +230,7 @@ legend {
     background: #ca4019 repeat-x 0px -44px;
     border: 0;
     color: #ffffff;
-    height: 2em;
+    height: 1.9em;
     padding-bottom: .25em;
     position: absolute;
     right: 0px;
@@ -240,12 +242,13 @@ legend {
   padding-bottom: 1.846em; }
 
 ul.footer_anterior {
-  margin-top: 1em; }
+  margin-top: 1em;
+  font-size: 92.307%; }
   ul.footer_anterior > * {
     width: 8.102%;
     float: left; }
   ul.footer_anterior > * + * {
-    width: 17.057%;
+    width: 16.524%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * {
@@ -253,27 +256,27 @@ ul.footer_anterior {
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * {
-    width: 7.889%;
+    width: 7.462%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * + * {
-    width: 7.889%;
+    width: 8.102%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * + * + * {
-    width: 7.889%;
+    width: 8.102%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * + * + * + * {
-    width: 7.889%;
+    width: 10.021%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * + * + * + * + * {
-    width: 7.889%;
+    width: 7.569%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * + * + * + * + * + * {
-    width: 7.889%;
+    width: 6.609%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * + * + * + * + * + * + * {
@@ -289,14 +292,14 @@ ul.footer_anterior {
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * + * + * + * + * + * + * + * + * + * {
-    width: 1.710999999999972%;
+    width: 1.712999999999967%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior .icon {
     background-image: url("/wp-content/themes/Eris/assets/img/sprite-footer.png");
     background-repeat: no-repeat; }
     ul.footer_anterior .icon a {
-      display: inline-block;
+      display: block;
       height: 15px;
       line-height: 16px;
       text-indent: -999999em; }
@@ -532,8 +535,6 @@ ul.footer_anterior {
 #persistent-header.persist {
   position: fixed;
   top: 0px; }
-  #persistent-header.persist #header.sears form #button_search {
-    height: 2.1em; }
 
 #content {
   padding: 1.23em 1.063829787234043%; }
@@ -592,7 +593,7 @@ ul.bullets {
 .bold, .member .info h4, .member .info address, .crest h4, .crest h5, .crest address, .post hgroup, .content-container .content-header, .content-container .content-category, .content-container .content-headline, .profile .answers-toggle, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, #allComments .comment .responseTo, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header {
   font-weight: 700; }
 
-.faint, .member .info h5, .member .info p, .post .content-date, .excerpt, .content-container .content-header, .recent-activity time {
+.faint, .member .info h5, .member .info p, .excerpt, .content-container .content-header, .recent-activity time {
   color: #666666; }
 
 .upcase, .actions button:first-letter {
@@ -656,6 +657,7 @@ ul.bullets {
   font-size: 76.923%; }
 
 .post .content-date {
+  color: #999999;
   display: block;
   float: right; }
 .post h3 {
@@ -665,15 +667,8 @@ ul.bullets {
 .post article {
   margin-top: .5em; }
 .post .post-actions {
-  font-size: 100%;
   margin-top: .5em; }
 
-/*
- * GLOBAL ELEMENTS
- */
-/*
- * form elements
- */
 .input_text {
   padding: 0.384em 0.012em;
   border: solid 1px #cccccc;
@@ -681,7 +676,7 @@ ul.bullets {
 
 .required:after, .optional:after {
   color: #999999;
-  font-size: .7857em; }
+  font-size: 92.307%; }
 
 .required:after {
   content: " Required"; }
@@ -777,13 +772,13 @@ ul.bullets {
   position: relative; }
   .content-container .content-author, .content-container .content-comments {
     color: #333333;
+    font-size: 92.307%;
     margin-bottom: 0.769em; }
   .content-container .content-body {
     border-top: solid 1px #dddcdc;
     padding: 0.769em 0; }
   .content-container .content-category {
-    float: left;
-    font-size: 100%; }
+    float: left; }
   .content-container .content-date {
     float: right;
     line-height: 1.846em; }
@@ -800,7 +795,6 @@ ul.bullets {
 
 .content-body p {
   color: #333333;
-  font-size: 100%;
   line-height: 1.7em;
   margin-bottom: 1em; }
 
@@ -819,8 +813,14 @@ ul.bullets {
 .sears .post h1, .sears .question h1 {
   color: #067BB5; }
 
+.single-post .comments .content-body {
+  border-top: none; }
+
 .kmart .post h1, .kmart .question h1 {
   color: #980017; }
+
+.post.content-container .content-body {
+  padding: 0.769em; }
 
 .post, .question {
   padding: inherit 0px; }
@@ -854,6 +854,15 @@ textarea.discussion {
 .question .actions {
   float: none; }
 
+.comments .content-header h3 {
+  float: left; }
+.comments .content-header h4 {
+  float: left;
+  font-size: 123.076%;
+  font-weight: normal;
+  line-height: 1.75em;
+  margin-left: 2em; }
+
 .question + .ugc-comment-answer_form .trigger.discussion {
   height: 1em;
   margin: 0 0 1em;
@@ -876,6 +885,8 @@ textarea.discussion {
     visibility: hidden; }
   .featured-members .member {
     border-left: 1px solid #cccccc; }
+    .featured-members .member.clearfix {
+      clear: none; }
     .featured-members .member:first-child {
       border-left: 0; }
     .featured-members .member > * {
@@ -903,7 +914,7 @@ textarea.discussion {
   width: 100%;
   float: none;
   padding: 0;
-  margin-top: 1em;
+  margin-bottom: 1em;
   border-left: 0; }
   .span3 .featured-members .content-body .member > *, .span4 .featured-members .content-body .member > *, .span6 .featured-members .content-body .member > * {
     width: 28.571%;
@@ -912,10 +923,11 @@ textarea.discussion {
     width: 64.287%;
     float: left;
     margin-left: 7.142%; }
-  .span3 .featured-members .content-body .member:first-child, .span4 .featured-members .content-body .member:first-child, .span6 .featured-members .content-body .member:first-child {
-    margin-top: 0; }
   .span3 .featured-members .content-body .member .stats, .span4 .featured-members .content-body .member .stats, .span6 .featured-members .content-body .member .stats {
     clear: none; }
+
+.featured-question .content-body {
+  padding: 0.769em; }
 
 .featured-question.content-container .category-image {
   float: left;
@@ -932,8 +944,6 @@ textarea.discussion {
   padding-right: 3.226000000000005%; }
 .featured-question.content-container.columns .content-date {
   float: none; }
-.featured-question.content-container.columns .content-headline {
-  font-size: 100%; }
 
 .span4 .featured-question.content-container.columns .content-body > *, .span3 .featured-question.content-container.columns .content-body > * {
   float: none;
@@ -976,6 +986,14 @@ textarea.discussion {
 .result-list > .content-body {
   border: none;
   padding: 0 0.769em; }
+  .result-list > .content-body > .content-container:first-child .content-body {
+    border-top: none; }
+.result-list > .content-header {
+  border-bottom: 1px solid #DDDCDC;
+  padding: 1.5em 0;
+  width: 100%; }
+  .result-list > .content-header form {
+    margin: 0 .769em; }
 .result-list .question .content-date {
   float: right; }
 
@@ -983,6 +1001,9 @@ textarea.discussion {
   float: none;
   border: 0;
   margin-top: 0; }
+
+.content-container.featured-post .content-excerpt, .content-container.featured-post .content-byline, .content-container.featured-post .content-tags, .content-container.featured-guide .content-excerpt, .content-container.featured-guide .content-byline, .content-container.featured-guide .content-tags {
+  font-size: 92.307%; }
 
 .span4 .content-container.featured-post .span6 {
   width: 100%;
@@ -1019,9 +1040,6 @@ textarea.discussion {
   overflow: hidden;
   text-overflow: ellipsis; }
 
-/*
- * POST A QUESTION
- */
 .content-container.post-your-question form {
   margin-top: 0.923em; }
   .content-container.post-your-question form .state_post-your-question .input_text {
@@ -1037,9 +1055,6 @@ textarea.discussion {
     font-size: 1.538em;
     margin-bottom: 0.369em; }
 
-/*
- * LOGIN/REGISTER/FORGOT PASSWORD
- */
 #moodle_container .sign-in, body > .sign-in,
 #moodle_container .register, body > .register,
 #moodle_container .forgot-password, body > .forgot-password {
@@ -1103,6 +1118,7 @@ fieldset#use_your_account_from {
 .communities_menu_widget .subnav-items li {
   padding: 6px 0; }
 .communities_menu_widget .subcat-selector-container {
+  font-size: 92.307%;
   margin-top: 15px;
   color: #666666; }
   .communities_menu_widget .subcat-selector-container select {
@@ -1117,7 +1133,7 @@ fieldset#use_your_account_from {
     float: left;
     min-width: 23.404255319148938%;
     margin-left: 2.127659574468085%;
-    font-size: 100%;
+    font-size: 107.692%;
     border: solid #cccccc;
     border-width: 1px 1px 0 1px;
     text-align: center;
@@ -1170,8 +1186,7 @@ fieldset#use_your_account_from {
   .profile .personal_info dt, .profile .personal_info dd {
     float: left;
     padding: 1em 0;
-    border-top: 1px solid #cccccc;
-    font-size: 100%; }
+    border-top: 1px solid #cccccc; }
   .profile .personal_info dt {
     width: 30%;
     margin-left: 2%; }
@@ -1229,7 +1244,8 @@ fieldset#use_your_account_from {
     font-weight: bold;
     margin-bottom: 4px; }
   .content-container.questionlist .content-body.content-list .content-item .addthis.dropmenu {
-    padding-top: 3px; }
+    padding-top: 3px;
+    font-size: 92.307%; }
     .content-container.questionlist .content-body.content-list .content-item .addthis.dropmenu .sharebutton {
       padding: 0; }
 
@@ -1327,7 +1343,7 @@ fieldset#use_your_account_from {
   #allComments .content-body {
     border: none;
     padding: 0px;
-    margin-bottom: 2em; }
+    margin-bottom: 1em; }
   #allComments .comment {
     padding: 1em 2%;
     background: white;
@@ -1343,7 +1359,7 @@ fieldset#use_your_account_from {
         display: inline-block;
         margin-left: 1.5em; }
     #allComments .comment article {
-      font-size: 100%;
+      margin: 1em 0;
       word-wrap: break-word; }
       #allComments .comment article p {
         margin-bottom: 1em; }
@@ -1452,23 +1468,15 @@ button.follow {
 .metainfo {
   display: block;
   float: right;
-  font-size: 100%;
   position: relative;
   top: 2px;
   margin-left: .5em; }
 
-/**
- * @author Tim Steele
- *
- * Styles for the breadcrumb widget. Mainly used on the single pages, i.e.
- * blog, buying guide, question.
- */
 .breadcrumb {
   border-top: solid 1px #d5d5d5;
   padding: 1em 0; }
   .breadcrumb li {
     float: left;
-    font-size: 100%;
     font-weight: bold;
     padding-right: 0.461em; }
   .breadcrumb li:before {
@@ -1489,6 +1497,24 @@ button.follow {
   font-size: 1em; }
 .no-results ul {
   padding-left: 20px; }
+
+.page-title {
+  color: #999999;
+  font-weight: bold; }
+  .page-title h1 {
+    font-size: 169.23%;
+    margin: 0 .45em; }
+  .page-title h2 {
+    margin: 0 0.769em; }
+
+.home .page-title {
+  color: #666666; }
+  .home .page-title .content-body {
+    border: none; }
+  .home .page-title h1 {
+    font-size: 130.769%;
+    font-weight: normal;
+    margin: 0 .58em; }
 
 .dropmenu li {
   float: left;
@@ -1559,7 +1585,8 @@ button.follow {
   .sears #header_nav.dropmenu li, .kmart #header_nav.dropmenu li {
     border-right: 1px solid #cccccc;
     width: 14.285714285714285%;
-    padding: 1px 0; }
+    padding: 1px 0;
+    font-size: 92.307%; }
     .sears #header_nav.dropmenu li a, .kmart #header_nav.dropmenu li a {
       border-right: 1px solid white;
       padding-top: .66em;
@@ -1595,7 +1622,8 @@ button.follow {
     border: 1px solid #cccccc; }
     .sears #header_nav.dropmenu ul li, .kmart #header_nav.dropmenu ul li {
       width: 100%;
-      border-right: 0; }
+      border-right: 0;
+      font-size: 107.692%; }
       .sears #header_nav.dropmenu ul li a, .kmart #header_nav.dropmenu ul li a {
         color: #73726F;
         border-right: 0; }
@@ -1634,7 +1662,8 @@ button.follow {
     background: #eeeeee; }
   .sears #footer_nav.dropmenu li {
     width: 16.578014184397162%;
-    border-left: 1px solid white; }
+    border-left: 1px solid white;
+    font-size: 92.307%; }
     .sears #footer_nav.dropmenu li:hover:first-child {
       -webkit-border-radius: 0 0 0 5px;
       -moz-border-radius: 0 0 0 5px;
@@ -1661,7 +1690,7 @@ button.follow {
     border-bottom: 0; }
     .sears #footer_nav.dropmenu ul li {
       width: 100%;
-      font-size: 84.615%;
+      font-size: 92.307%;
       border-left: 0; }
       .sears #footer_nav.dropmenu ul li:hover {
         background: none; }

@@ -137,6 +137,7 @@ $arrow-height: 3px;
     border-right: 1px solid sears( decorative );
     width: percentage( 1/7 );
     padding: 1px 0;
+    font-size: font-size( 12 );
     a {
       border-right: 1px solid $lightest-color;
       padding-top: .66em;
@@ -167,6 +168,7 @@ $arrow-height: 3px;
     li {
       width: 100%;
       border-right: 0;
+      font-size: font-size( 14 );
       a {
         color: #73726F;
         border-right: 0;
@@ -222,6 +224,7 @@ $arrow-height: 3px;
     $divisor: ( $grid-width - ( $footer-count-sears - 1 ) ) / $footer-count-sears;
     width: percentage( $divisor / $grid-width );
     border-left: 1px solid $lightest-color;
+    font-size: font-size( 12 );
     // Give the footer item a different background
     &:hover {
       // adjust for the first item's rounded corners
@@ -247,7 +250,7 @@ $arrow-height: 3px;
     border-bottom: 0;
     li {
       width: 100%;
-      font-size: font-size( 11 );
+      font-size: font-size( 12 );
       border-left: 0;
       &:hover {
         background: none;
