@@ -114,7 +114,6 @@ ul.bullets {
 // COMMONLY USED ELEMENTS
 .member {
   .info {
-    // font-size: percentage( 12/16 );
     word-wrap: break-word;
     h4, address {
       @extend .bold;
@@ -187,7 +186,7 @@ ul.bullets {
     margin-top: .5em;
   }
   .post-actions {
-    font-size: font-size( 13 );
+    // font-size: font-size( 13 );
     margin-top: .5em;
   }
 }
@@ -196,13 +195,11 @@ ul.bullets {
   @extend .faint;
 }
 
-/*
- * GLOBAL ELEMENTS
- */
 
-/*
- * form elements
- */
+// GLOBAL ELEMENTS
+
+
+// form elements
 .input_text {
   // Do not set padding for left/right to 0.
   // IE8 no like this.
@@ -213,7 +210,8 @@ ul.bullets {
 
 .required:after, .optional:after {
   color: #999999;
-  font-size:.7857em;
+  // font-size:.7857em;
+  font-size: font-size( 12 );
 }
 
 .required:after {
@@ -307,6 +305,11 @@ ul.bullets {
 form {}
 
 // FEATURED
+.content-container .content-headline {
+  font-size: font-size( 20 ); // 1.25em
+  margin:0;
+  @extend .bold;
+}
 
 .content-container .content-header {
   border-top:solid 1px #dddcdc;
@@ -314,7 +317,7 @@ form {}
   @extend .bold;
   @extend .faint;
   h3 {
-    font-size: font-size( 20 ); // 1.25em
+    font-size: font-size( 18 ); // 1.25em
   }
   h4 {
     font-size: font-size( 11 ); // .6875em
@@ -326,47 +329,68 @@ form {}
   font-size:font-size( 11 );
 }
 
+.content-details {
+  padding-bottom:em-adjust( .625em );
+  .content-category {
+    // font-size:.8125em;
+    // font-size: font-size( 13 );
+    float:left;
+    @extend .bold;
+  }
+}
 .content-container {
   position: relative;
- .content-author, .content-comments {
+  .content-author, .content-comments {
     color:#333333;
     margin-bottom: em-adjust( .625em ); // 10px
   }
   .content-body {
     border-top:solid 1px #dddcdc;
-    padding: em-adjust( .625em ) 0;
+    padding: em-adjust( .625em 0 );
   }
   .content-category {
     float:left;
-    font-size: font-size( 13 ); // 13px
+    // font-size: font-size( 13 ); // 13px
     @extend .bold;
   }
   .content-date {
     float:right;
     line-height: em-adjust( 1.5em );
   }
-  .content-details {
-    margin-bottom: em-adjust( .625em ); // 10px
-  }
-  .content-headline {
-    font-size:font-size( 20 ); // 20px
-    line-height:1.1em; // 22px
-    margin:0 0 .625em; // 10px
-    @extend .bold;
-  }
-  
-  .featured-image.span12 + .span12 {
-    margin-top: em-adjust( .625em ); // 10px
-  }
-  .share-full {
-    margin-top: 10px;
+  .content-comments {
+    color:#333333;
+    font-size: font-size( 12 ); // 12px
+    margin-top:.8125em;
+    li {
+      border-left:solid 1px #999999;
+      float:left;
+      padding:0em .3125em;
+    }
+    & > li:first-child {
+      border-left:none;
+    }
+    .content-details {
+      margin-bottom: em-adjust( .625em ); // 10px
+    }
+    .content-headline {
+      font-size:font-size( 18 ); // 20px
+      line-height:1.1em; // 22px
+      margin:0 0 .625em; // 10px
+      @extend .bold;
+    }
+
+    .featured-image.span12 + .span12 {
+      margin-top: em-adjust( .625em ); // 10px
+    }
+    .share-full {
+      margin-top: 10px;
+    }
   }
 }
-
 .content-body {
   p {
     color:#333333;
-    font-size: font-size( 13 ); // 13px
+    // font-size: font-size( 13 ); // 13px
     line-height:1.7em;
     margin-bottom:1em;
   }
@@ -479,6 +503,9 @@ textarea.discussion {
   @include legacy-pie-clearfix;
   .member {
     border-left: 1px solid sears( decorative );
+    &.clearfix {
+      clear: none;
+    }
     &:first-child {
       border-left: 0;
     }
@@ -511,12 +538,9 @@ textarea.discussion {
       width: 100%;
       float: none;
       padding: 0;
-      margin-top: 1em;
+      margin-bottom: 1em;
       border-left: 0;
       @include col_layout( ( 80, 180 ), 20 );
-      &:first-child {
-        margin-top: 0;
-      }
       .stats {
         clear: none;
       }
@@ -553,7 +577,7 @@ textarea.discussion {
       float: none;
     }
     .content-headline {
-      font-size: font-size( 13 );
+      // font-size: font-size( 13 );
     }
   }
 }
@@ -635,6 +659,12 @@ textarea.discussion {
 }
 
 // FEATURED BLOG POST
+.content-container.featured-post, .content-container.featured-guide {
+  .content-excerpt, .content-byline, .content-tags {
+    // font-size:.75em
+    font-size: font-size( 12 );
+  }
+}
 .span4 .content-container.featured-post .span6 {
   width: 100%;
   margin-left: 0;
@@ -692,10 +722,8 @@ textarea.discussion {
   }
 }
 
-/*
- * POST A QUESTION
- */
 
+// POST A QUESTION
 .content-container.post-your-question {
   form {
     margin-top:em-adjust( .75em );
@@ -725,9 +753,8 @@ textarea.discussion {
   }
 }
 
-/*
- * LOGIN/REGISTER/FORGOT PASSWORD
- */
+
+// LOGIN/REGISTER/FORGOT PASSWORD
 #moodle_container .sign-in, body > .sign-in,
 #moodle_container .register, body > .register,
 #moodle_container .forgot-password, body > .forgot-password {
@@ -803,6 +830,7 @@ fieldset#use_your_account_from {
   }
   .subcat-selector-container {
     // font-size: .75em;
+    font-size: font-size( 12 );
     margin-top: 15px;
     color: sears( secondary-link );
     select {
@@ -823,7 +851,7 @@ $tab-padding: "1em 0 .6em 0";
       float: left;
       min-width: percentage( ( nth( $span-widths, 3 ) ) / $grid-width );
       margin-left: $margin-width-pct;
-      font-size: font-size( 13 );
+      font-size: font-size( 14 );
       border: solid sears( decorative );
       border-width: 1px 1px 0 1px;
       text-align: center;
@@ -881,7 +909,6 @@ $tab-padding: "1em 0 .6em 0";
       float: left;
       padding: 1em 0;
       border-top: 1px solid sears( decorative );
-      font-size: font-size( 13 );
     }
     dt {
       width: 30%;
@@ -975,6 +1002,7 @@ $tab-padding: "1em 0 .6em 0";
     .addthis.dropmenu {
       padding-top: 3px;
       // font-size: .75em;
+      font-size: font-size( 12 );
       .sharebutton {
         padding: 0;
       }
@@ -1110,7 +1138,8 @@ $tab-padding: "1em 0 .6em 0";
       }
     }
     article {
-      font-size: font-size( 13 );
+      margin: 1em 0;
+      // font-size: font-size( 13 );
       word-wrap: break-word;
       p {
         margin-bottom:1em;
@@ -1227,25 +1256,24 @@ button.follow {
   display: block;
   float: right;
   // font-size: 13px;
-  font-size: font-size( 13 );
+  // font-size: font-size( 13 );
   position: relative;
   top: 2px;
   margin-left: .5em;
 }
 
-/**
- * @author Tim Steele
- *
- * Styles for the breadcrumb widget. Mainly used on the single pages, i.e.
- * blog, buying guide, question.
- */
+
+// @author Tim Steele
+// 
+// Styles for the breadcrumb widget. Mainly used on the single pages, i.e.
+// blog, buying guide, question.
+
 .breadcrumb {
   border-top:solid 1px #d5d5d5;
   padding:1em 0;
   li {
     float:left;
     // font-size:.8125em;
-    font-size: font-size( 13 );
     font-weight:bold;
     padding-right:em-adjust(.375em);
   }
