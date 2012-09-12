@@ -8,12 +8,17 @@ jQuery(document).ready(function($) {
  	$('.post-your-question select#category, select#sort-results').bind('change', function(e){
 		var data = {
 			action		: 'get_subcategories_ajax',
-			category_id	: $('option', this).filter(':selected').val()
+			category_id	: $('option', this).filter(':selected').val(),
 		};
+		
+		$.each(
+			$(this).parent().find('input[type="hidden"]'), function() {
+				data[($(this).get(0)).name] = ($(this).get(0)).value;
+		});
 		var select = $(this);
 
 		$('#sub-category', select.parent()).remove();
-
+		
 		jQuery.ajax({
 			url  : ajaxdata.ajaxurl,
 			type: 'POST',
@@ -29,6 +34,31 @@ jQuery(document).ready(function($) {
  	 * lamer widgets/results-list/archive.php template, and the ajax-callbacks.php 
  	 * template, allows the posts widget to filter via ajax.
  	 */ 
+ 	$('.author-result-list select').on('change', function(e){
+ 		e.preventDefault();
+
+		var data = {
+			action		: 'get_filtered_authors_ajax',
+			template 	: 'author-filtered-list',
+			category	: $('option', this).filter(':selected').val()
+		};
+
+		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
+
+		container = $(this).closest('.dropzone-inner-wrapper');
+
+		jQuery.ajax({
+			url  : ajaxdata.ajaxurl,
+			type: 'POST',
+			data : data,
+			success:function(results){
+				$('.content-body', container).empty();
+				$('.content-body', container).append($(results));
+			}
+		});
+ 	});
+
+
  	$('.result-list select').on('change', function(e){
  		e.preventDefault();
 
