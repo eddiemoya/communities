@@ -189,7 +189,7 @@ legend {
       padding: 0 .4em 0 .8em;
       text-align: center; }
       #header aside ul li ul li img {
-        vertical-align: bottom;
+        width: auto;
         margin-right: .5em; }
       #header aside ul li ul li:first-child {
         border: none; }
@@ -851,6 +851,15 @@ textarea.discussion {
     margin-left: 1.5em; }
 .question .actions {
   float: none; }
+
+.comments .content-header h3 {
+  float: left; }
+.comments .content-header h4 {
+  float: left;
+  font-size: 123.076%;
+  font-weight: normal;
+  line-height: 1.75em;
+  margin-left: 2em; }
 
 .question + .ugc-comment-answer_form .trigger.discussion {
   height: 1em;

@@ -444,6 +444,19 @@ textarea.discussion {
   }
 }
 
+.comments .content-header {
+  h3 {
+    float:left;
+  }
+  h4 {
+    float:left;
+    font-size: font-size( 16 ); 
+    font-weight:normal;
+    line-height:1.75em;
+    margin-left:2em;
+  }
+}
+
 .question + .ugc-comment-answer_form .trigger.discussion {
   height: 1em;
   margin: 0 0 1em;
