@@ -15,7 +15,7 @@
     <a class="addthis_button_email"<?php echo $add_url; ?>><img src="<?php echo get_template_directory_uri() ?>/assets/img/email.png" /></a>
 </div>
 <?php else: ?>
-<ul class="addthis dropmenu clearfix">
+<ul class="addthis dropmenu">
     <li>
         <span class="sharebutton">Share</span>
         <ul class="sharemenulinks">

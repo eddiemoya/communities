@@ -29,9 +29,9 @@
   @return $return;
 }
 
-// adjust Tim's em values to be relative to 12, not 16px font.
+// adjust Tim's em values to be relative to the default font size instead of 16px.
 @function adjustment-factor( $value ) {
-  @return to-decimal-places( ( ( $value * 16 ) / 12 ), 3 );
+  @return to-decimal-places( ( ( $value * 16 ) / $default-font-size ), 3 );
 }
 
 @function em-adjust( $initial-value ) {
