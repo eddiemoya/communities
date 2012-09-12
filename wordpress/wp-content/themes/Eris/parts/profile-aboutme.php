@@ -23,8 +23,8 @@
             
         </div>
         <div class="span9 info">
-            <h4><?php echo (isset($user_profile['name']) && ! empty($user_profile['name'])) ? $user_profile['name'] : '<span class="faint">We don\'t yet have a name on file for you. Wanna go...</span>'; ?></h4>
-            <a href="https://www.sears.com/shc/s/PersonalInfoView" class="edit-profile-link">Edit Profile</a>
+            <h4><?php echo (isset($user_profile['name']) && ! empty($user_profile['name'])) ? $user_profile['name'] : '<span class="faint">We don\'t yet have a name on file for you. Wanna ...</span>'; ?></h4>
+            <a href="https://www.sears.com/shc/s/PersonalInfoView?catalogId=12605&amp;langId=-1&amp;storeId=10153" class="edit-profile-link">Edit Your Profile</a>
         </div>
         <dl class="span12 vitals">
             <dt>Screen Name</dt>
