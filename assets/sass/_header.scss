@@ -65,9 +65,9 @@
       padding-bottom:.20em;
       position:absolute;
       right:0px;
-      text-transform:uppercase;
       top:0px;
       width:3.33em;
+      @extend .upcase;
     }
   }
 }
@@ -86,14 +86,14 @@
     #button_search {
       background:#ca4019 repeat-x 0px -44px;
       border:0;
-      color:#ffffff;
-      height:1.9em;
+      color:$lightest-color;
+      height:1.8em;
       padding-bottom:.25em;
       position:absolute;
       right:0px;
-      text-transform:uppercase;
       top:0px;
       width:3.33em;
+      @extend .upcase;
     }
   }
 }
