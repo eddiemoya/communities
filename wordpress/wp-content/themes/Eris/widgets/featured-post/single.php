@@ -12,18 +12,18 @@
 
         $post_thumbnail_id = get_post_thumbnail_id( $post_id );
 
-        if ($post_thumbnail_id) {
+        if ($post_thumbnail_id) :
 
             $thumbnail_src = wp_get_attachment_image_src($post_thumbnail_id, "large"); ?>
 
             <div class="featured-image <?php echo $inner_span; ?>">
                 <img src="<?php echo $thumbnail_src[0]; ?>" alt="<?php echo get_the_title(); ?>" />
             </div>=<?php
-        }
+        endif;
 
-    } else {
+    else :
         $inner_span = 'span12';
-    }
+    endif;
 
     ?>
     <div class="featured-post <?php echo $inner_span; ?>">
