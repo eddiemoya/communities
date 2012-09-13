@@ -16,8 +16,9 @@
                                 ->expert_answers
                     );
 
-    $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type, 'status' => 'approve'));
-
+    $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type));
+    
+    
     if ( isset( $comments ) && !empty( $comments ) ) :
 ?>
 <section class="span12 content-container comments">
