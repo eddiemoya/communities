@@ -932,16 +932,6 @@ textarea.discussion {
   height: 7.692em;
   margin: 0 0.769em 0.769em 0;
   width: 7.692em; }
-.featured-question.content-container.columns .content-body > * {
-  float: left;
-  width: 48.387%; }
-  .featured-question.content-container.columns .content-body > * + * {
-    margin-left: 3.226000000000005%; }
-.featured-question.content-container.columns .featured:nth-child(odd) .column {
-  border-right: 1px solid #cccccc;
-  padding-right: 3.226000000000005%; }
-.featured-question.content-container.columns .content-date {
-  float: none; }
 
 .span4 .featured-question.content-container.columns .content-body > *, .span3 .featured-question.content-container.columns .content-body > * {
   float: none;
