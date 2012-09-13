@@ -1,4 +1,4 @@
-<article class="content-container questionlist <?php echo (!is_single())? 'columns' : '';?>">
+<article class="content-container featured-results-list">
 
         <?php if (is_widget()->show_title && !empty(is_widget()->widget_title)) : ?>
 
@@ -12,5 +12,5 @@
         <?php endif; ?>
 
 
-        <!-- <<// echo (is_single()) ? 'section' : 'ol class="content-body clearfix"> -->
+        <!-- << echo (is_single()) ? 'section' : 'ol'; ?> class="content-body clearfix"> -->
         <section class="content-body clearfix">

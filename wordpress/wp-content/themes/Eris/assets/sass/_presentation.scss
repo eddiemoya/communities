@@ -540,30 +540,6 @@ textarea.discussion {
     margin:em-adjust( 0 .625em .625em 0 );
     width: em-adjust( 6.25em );
   }
-
-  $column-width: nth( $span-widths, 4 );
-  $calculated-widths: ratioize( ($column-width, $column-width, 20) );
-  &.columns {
-    .content-body {
-      & > * {
-        float: left;
-        width: nth( $calculated-widths, 1 );
-        & + * {
-          margin-left: nth( $calculated-widths, 3 );
-        }
-      }
-    }
-    .featured:nth-child(odd) .column {
-      border-right: 1px solid sears( decorative );
-      padding-right: nth( $calculated-widths, 3 );
-    }
-    .content-date {
-      float: none;
-    }
-    .content-headline {
-      // font-size: font-size( 13 );
-    }
-  }
 }
 
 .span4, .span3 {
@@ -584,7 +560,7 @@ textarea.discussion {
 }
 
 // RESULT LIST
-.result-list {
+.results-list {
   margin-top: 1em;
   border: 1px solid sears( decorative );
   @include border-radius( 5px );
@@ -613,7 +589,7 @@ textarea.discussion {
   }
 }
 
-.result-list {
+.results-list {
   & > .content-body {
     border:none;
     padding:0 em-adjust( .625em );
