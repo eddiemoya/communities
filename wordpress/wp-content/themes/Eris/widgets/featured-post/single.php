@@ -11,20 +11,21 @@
         $inner_span = (is_widget()->span > 6) ? "span12" : "span6";
 
         $post_thumbnail_id = get_post_thumbnail_id( $post_id );
+
         if ($post_thumbnail_id) :
-            $thumbnail_src = wp_get_attachment_image_src($post_thumbnail_id, "large");
-        ?>
+
+            $thumbnail_src = wp_get_attachment_image_src($post_thumbnail_id, "large"); ?>
+
             <div class="featured-image <?php echo $inner_span; ?>">
                 <img src="<?php echo $thumbnail_src[0]; ?>" alt="<?php echo get_the_title(); ?>" />
-            </div>
-        <?php
+            </div>=<?php
         endif;
-        ?>
-    <?php else :?>
-        <?php $featured_post_span = 'span12';?>
-    <?php endif; ?>
 
+    else :
+        $inner_span = 'span12';
+    endif;
 
+    ?>
     <div class="featured-post <?php echo $inner_span; ?>">
         <?php if (is_widget()->show_category || is_widget()->show_date || $is_widget_override) : ?>
             <div class="content-details clearfix">
@@ -67,14 +68,12 @@
             <p class="content-comments"><?php comments_number(); ?></p>
         <?php endif; //is_widget->show_comment_count ?> -->
         <?php  if(is_widget()->show_content || $is_widget_override) : ?>
-            <p class="content-excerpt">
                 <?php the_excerpt(); ?>
                 <!-- <a href="<?php the_permalink(); ?>" title="Read More">Read more</a> -->
-            </p>
         <?php endif; //is_widget_show_content ?>
 
         <?php if (is_widget()->show_tags || $is_widget_override) : ?>
-            <!--<span class="content-tags">
+            <p class="content-tags">
                 <?php 
                     $tags = get_the_tags(); 
                     foreach((object)$tags as $tag) {
@@ -83,7 +82,7 @@
                     if (count($output) > 0)
                         echo "Tags: " . implode(', ', $output);
                 ?>
-            </span>-->
+            </p>
         <?php endif; ?>
 
         <?php

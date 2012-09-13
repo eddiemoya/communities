@@ -84,7 +84,9 @@ class Page_Title_Header_Widget extends WP_Widget {
         <article class="widget content-container span12 page-title">
 			<section class="content-body">
 			<h1><?php echo $pth_title;?></h1>
-			<h2><?php echo $pth_subtitle;?></h2>
+			<?php if ($pth_subtitle != "") { ?>
+			    <h2><?php echo $pth_subtitle;?></h2>
+			<?php } ?>
 			</section>
 		</article>
         <?php

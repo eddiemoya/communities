@@ -788,8 +788,6 @@ ul.bullets {
     font-size: 153.846%;
     line-height: 1.1em;
     margin: 0 0 .625em; }
-  .content-container .featured-image.span12 + .span12 {
-    margin-top: 0.769em; }
   .content-container .share-full {
     margin-top: 10px; }
 
@@ -934,16 +932,6 @@ textarea.discussion {
   height: 7.692em;
   margin: 0 0.769em 0.769em 0;
   width: 7.692em; }
-.featured-question.content-container.columns .content-body > * {
-  float: left;
-  width: 48.387%; }
-  .featured-question.content-container.columns .content-body > * + * {
-    margin-left: 3.226000000000005%; }
-.featured-question.content-container.columns .featured:nth-child(odd) .column {
-  border-right: 1px solid #cccccc;
-  padding-right: 3.226000000000005%; }
-.featured-question.content-container.columns .content-date {
-  float: none; }
 
 .span4 .featured-question.content-container.columns .content-body > *, .span3 .featured-question.content-container.columns .content-body > * {
   float: none;
@@ -1008,6 +996,18 @@ textarea.discussion {
 .span4 .content-container.featured-post .span6 {
   width: 100%;
   margin-left: 0; }
+
+.content-container.span3.featured-post .featured-image.span6, .content-container.span3.featured-post .featured-post.span6,
+.content-container.span4.featured-post .featured-image.span6,
+.content-container.span4.featured-post .featured-post.span6,
+.content-container.span6.featured-post .featured-image.span6,
+.content-container.span6.featured-post .featured-post.span6 {
+  margin-left: 0;
+  width: 100%; }
+.content-container.span3.featured-post .featured-post.span6,
+.content-container.span4.featured-post .featured-post.span6,
+.content-container.span6.featured-post .featured-post.span6 {
+  margin-top: 0.769em; }
 
 .recent-activity li {
   margin-top: 1em;
@@ -1359,7 +1359,6 @@ fieldset#use_your_account_from {
         display: inline-block;
         margin-left: 1.5em; }
     #allComments .comment article {
-      margin: 1em 0;
       word-wrap: break-word; }
       #allComments .comment article p {
         margin-bottom: 1em; }
