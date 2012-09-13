@@ -107,6 +107,9 @@ legend {
   /* Correct alignment IE6/7 */
   white-space: normal; }
 
+body {
+  font-size: 81.25%; }
+
 .menu-sears-ribbon-container, .menu-kmart-ribbon-container {
   background-color: #e7e7e7;
   font-size: 123.076%;
@@ -213,7 +216,6 @@ legend {
     padding-bottom: .20em;
     position: absolute;
     right: 0px;
-    text-transform: uppercase;
     top: 0px;
     width: 3.33em; }
 
@@ -229,12 +231,11 @@ legend {
   #header.sears form #button_search {
     background: #ca4019 repeat-x 0px -44px;
     border: 0;
-    color: #ffffff;
-    height: 1.9em;
+    color: white;
+    height: 1.8em;
     padding-bottom: .25em;
     position: absolute;
     right: 0px;
-    text-transform: uppercase;
     top: 0px;
     width: 3.33em; }
 
@@ -552,9 +553,6 @@ html, body {
   line-height: 1.4;
   color: 1; }
 
-body {
-  font-size: 81.25%; }
-
 .kmart a {
   color: #980017;
   text-decoration: none; }
@@ -596,7 +594,7 @@ ul.bullets {
 .faint, .member .info h5, .member .info p, .excerpt, .content-container .content-header, .recent-activity time {
   color: #666666; }
 
-.upcase, .actions button:first-letter {
+.upcase, #header.kmart form #button_search, #header.sears form #button_search, .actions button:first-letter {
   text-transform: uppercase; }
 
 .downcase {
@@ -782,6 +780,9 @@ ul.bullets {
   .content-container .content-date {
     float: right;
     line-height: 1.846em; }
+    .content-container .content-date .time-stamp {
+      display: inline-block;
+      margin-left: 1.5em; }
   .content-container .content-details {
     margin-bottom: 0.769em; }
   .content-container .content-headline {
@@ -846,9 +847,6 @@ textarea.discussion {
   margin-left: 0px; }
 .question .content-date {
   float: left; }
-  .question .content-date .time-stamp {
-    display: inline-block;
-    margin-left: 1.5em; }
 .question .actions {
   float: none; }
 
@@ -1125,6 +1123,8 @@ fieldset#use_your_account_from {
     margin-left: 10px;
     color: black; }
 
+.profile .content-container .content-body {
+  border-top: 0; }
 .profile .tabs {
   border-bottom: 1px solid #cccccc;
   position: relative;
@@ -1177,10 +1177,16 @@ fieldset#use_your_account_from {
 .profile .answers-toggle {
   display: block;
   margin-left: 2em; }
-.profile .expert-answers {
-  padding: 1em 3%; }
-  .profile .expert-answers.span2 {
-    margin-left: 0; }
+.profile .expert-answers li {
+  border-top: 0;
+  padding: .5em;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px; }
+  .profile .expert-answers li .content-excerpt {
+    margin-top: 1.5em; }
 .profile .personal_info {
   margin-top: 1em; }
   .profile .personal_info dt, .profile .personal_info dd {
@@ -1385,7 +1391,7 @@ fieldset#use_your_account_from {
     margin: -1.5em 0 2em;
     text-align: left; }
 
-#allComments .expert {
+.expert, #allComments .expert {
   background: #f2f2f2; }
 
 .actions {

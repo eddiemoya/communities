@@ -18,7 +18,7 @@
 
             <div class="featured-image <?php echo $inner_span; ?>">
                 <img src="<?php echo $thumbnail_src[0]; ?>" alt="<?php echo get_the_title(); ?>" />
-            </div>=<?php
+            </div><?php
         endif;
 
     else :
