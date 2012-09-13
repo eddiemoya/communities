@@ -1,7 +1,7 @@
 <?php if(have_posts()) : ?>
 <header class="content-header">
 	<form method="post" action="">
-		<label for="sort-results">Sort By</label>
+		<label for="sort-results">View</label>
 			<?php 
 			// Get the normal queried category term id.
 			$category = get_queried_object()->term_id;
