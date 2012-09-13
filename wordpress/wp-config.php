@@ -15,8 +15,23 @@
  */
 
 define('USE_LOCAL_DB', false);
-
 // ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define('DB_NAME', 'communities');
+
+/** MySQL database username */
+define('DB_USER', 'communities_dba');
+
+/** MySQL database password */
+define('DB_PASSWORD', 'password1');
+
+/** MySQL hostname */
+#define('DB_HOST', '10.98.0.164');
+define('DB_HOST', 'barable.com');
+// define('WP_ALLOW_MULTISITE', true);
+
+/** Database Charset to use in creating database tables. */
+define('DB_CHARSET', 'utf8');
 
 if(! USE_LOCAL_DB) {//Use Barable.com
 	
