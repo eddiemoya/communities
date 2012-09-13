@@ -16,9 +16,9 @@ function get_subcategories_ajax(){
                 'class' => 'input_select',
                 'name' => 'sub-category',
                 'id' => 'sub-category',
-                //'echo' => false
+                'echo' => true
             ));
-         exit;
+        exit();
     }
 }
 add_action('wp_ajax_get_subcategories_ajax', 'get_subcategories_ajax');

@@ -20,7 +20,7 @@
     $comment_count = (function_exists('get_custom_comment_count')) ? get_custom_comment_count('comment') : '';
 
 ?>
-<article class="content-container question">
+<article class="content-container question xxxxx">
 	<section class="content-body clearfix">
 		
 		<?php get_partial( 'parts/crest', $crest_options ); ?>
