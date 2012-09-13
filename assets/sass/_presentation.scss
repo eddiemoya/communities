@@ -13,10 +13,6 @@ html, body {
   color: sears( body );
 }
 
-body {
-  font-size: percentage( $default-font-size/16 );
-}
-
 .kmart a {
   color: kmart( link );
   text-decoration: none;
@@ -339,6 +335,10 @@ form {}
   .content-date {
     float:right;
     line-height: em-adjust( 1.5em );
+    .time-stamp {
+      display:inline-block;
+      margin-left:1.5em;
+    }
   }
   .content-details {
     margin-bottom: em-adjust( .625em ); // 10px
@@ -436,10 +436,6 @@ textarea.discussion {
   }
   .content-date {
     float:left;
-    .time-stamp {
-      display:inline-block;
-      margin-left:1.5em;
-    }
   }
   .actions {
     float:none;
@@ -815,6 +811,9 @@ fieldset#use_your_account_from {
 // PROFILE
 $tab-padding: "1em 0 .6em 0";
 .profile {
+  .content-container .content-body {
+    border-top: 0;
+  }
   .tabs {
     border-bottom: 1px solid sears( decorative );
     position: relative;
@@ -870,9 +869,13 @@ $tab-padding: "1em 0 .6em 0";
     @extend .bold;
   }
   .expert-answers {
-    padding: 1em 3%;
-    &.span2 {
-      margin-left: 0;
+    li {
+      border-top: 0;
+      padding: .5em;
+      @include border-radius( 5px );
+      .content-excerpt {
+        margin-top: 1.5em;
+      }
     }
   }
   .personal_info {
@@ -1145,7 +1148,7 @@ $tab-padding: "1em 0 .6em 0";
     text-align:left;
   }
 }
-#allComments .expert {
+.expert, #allComments .expert {
   background: lighten( sears( decorative ), 15 );
 }
 
