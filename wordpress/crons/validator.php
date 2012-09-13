@@ -34,46 +34,34 @@
     $readableErrorFileHandle = fopen($batchBase.'errors/'.$nextDataSet.'-'.$finalPosition.'.error.xml', 'a+');
     $goodDataFile = $batchBase.$nextDataSet.'-'.$finalPosition.'.batch.xml';
 
-    echo 'The next batch set starting point is array spot '.$nextDataSet."\n\n";
+    echo 'The next batch set starting point is array spot '.$nextDataSet."\n";
 
     if(file_exists($readFile)) {
-        $i = 0;
-
         echo 'Starting file load at '.date('h:i:s M d, Y').'...'."\n";
 
-        $dom = new DomDocument();
+        $xml = simplexml_load_file($readFile);
 
-        $badDataXml->formatOutput = true;
-
-        $dom->load($readFile);
-
-        $users = $dom->getElementsByTagName('user');
-
-        echo 'Finished file load at '.date('h:i:s M d, Y').'!'."\n\n";
-        echo $users->length.' is the total users'."\n\n";
-        echo 'Starting validation at '.date('h:i:s M d, Y').'...'."\n\n";
+        echo 'Finished file load at '.date('h:i:s M d, Y').'!'."\n";
+        echo 'Starting validation at '.date('h:i:s M d, Y').'...'."\n";
 
         $startTimeAfterFile = microtime(true);
 
         $badData = array();
         $goodData = array();
 
-        foreach($users as $user) {
-            if($i == 9999) {
-                break;
-            }
+        echo count($xml->user).' is the total users<br/>'."\n";
 
+        for($i = 0; $i < 10000; $i++) {
             $ourError = '';
 
-            if(!isset($user->getElementsByTagName('email')->item(0)->nodeValue) || !preg_match('/^.+@.+?\.[a-zA-Z]{2,}$/', $user->getElementsByTagName('email')->item(0)->nodeValue)) {
-                $posInArrayNode = $dom->createElement('posInArray', $i);
-                $user->appendChild($posInArrayNode);
+            if(!isset($xml->user[$i]->email) || !preg_match('/^.+@.+?\.[a-zA-Z]{2,}$/', $xml->user[$i]->email)) {
+                $xml->user[$i]->posInArray = $i;
 
-                $badData[] = $user;
+                $badData[] = $xml->user[$i];
 
                 $ourError .= 'ERROR:'."\n";
                 $ourError .= 'Recorded at '.date('h:i:s M d, Y', strtotime('now'))."\n";
-                $ourError .= 'User '.$i.' does not have a valid email: '.$user->getElementsByTagName('email')->item(0)->nodeValue."\n";
+                $ourError .= 'User '.$i.' does not have a valid email: '.$xml->user[$i]->email."\n";
                 $ourError .= "\n";
 
                 echo $ourError;
@@ -86,15 +74,14 @@
                 continue;
             }
 
-            if(!isset($user->getElementsByTagName('screen_name')->item(0)->nodeValue) || strlen($user->getElementsByTagName('screen_name')->item(0)->nodeValue) > 18) {
-                $posInArrayNode = $dom->createElement('posInArray', $i);
-                $user->appendChild($posInArrayNode);
+            if(!isset($xml->user[$i]->screen_name) || strlen($xml->user[$i]->screen_name) > 18) {
+                $xml->user[$i]->posInArray = $i;
 
                 $badData[] = $xml->user[$i];
 
                 $ourError .= 'SCREEN NAME ERROR:'."\n";
                 $ourError .= 'Recorded at '.date('h:i:s M d, Y', strtotime('now'))."\n";
-                $ourError .= 'User '.$i.' does not have a valid screenname: '.$user->getElementsByTagName('screen_name')->item(0)->nodeValue."\n";
+                $ourError .= 'User '.$i.' does not have a valid screenname: '.$xml->user[$i]->screen_name."\n";
                 $ourError .= "\n";
 
                 echo $ourError;
@@ -107,15 +94,14 @@
                 continue;
             }
 
-            if(!isset($user->getElementsByTagName('guid')->item(0)->nodeValue) || $user->getElementsByTagName('guid')->item(0)->nodeValue == '') {
-                $posInArrayNode = $dom->createElement('posInArray', $i);
-                $user->appendChild($posInArrayNode);
+            if(!isset($xml->user[$i]->guid) || $xml->user[$i]->guid == '') {
+                $xml->user[$i]->posInArray = $i;
 
                 $badData[] = $xml->user[$i];
 
                 $ourError .= 'GUID ERROR:'."\n";
                 $ourError .= 'Recorded at '.date('h:i:s M d, Y', strtotime('now'))."\n";
-                $ourError .= 'User '.$i.' does not have a valid guid: '.$user->getElementsByTagName('guid')->item(0)->nodeValue."\n";
+                $ourError .= 'User '.$i.' does not have a valid guid: '.$xml->user[$i]->guid."\n";
                 $ourError .= "\n";
 
                 echo $ourError;
@@ -128,15 +114,14 @@
                 continue;
             }
 
-            if(!isset($user->getElementsByTagName('display_name')->item(0)->nodeValue) || $user->getElementsByTagName('display_name')->item(0)->nodeValue == '') {
-                $posInArrayNode = $dom->createElement('posInArray', $i);
-                $user->appendChild($posInArrayNode);
+            if(!isset($xml->user[$i]->display_name) || $xml->user[$i]->display_name == '') {
+                $xml->user[$i]->posInArray = $i;
 
                 $badData[] = $xml->user[$i];
 
                 $ourError .= 'DISPLAY NAME ERROR:'."\n";
                 $ourError .= 'Recorded at '.date('h:i:s M d, Y', strtotime('now'))."\n";
-                $ourError .= 'User '.$i.' does not have a valid display_name: '.$user->getElementsByTagName('display_name')->item(0)->nodeValue."\n";
+                $ourError .= 'User '.$i.' does not have a valid display_name: '.$xml->user[$i]->display_name."\n";
                 $ourError .= "\n";
 
                 echo $ourError;
@@ -148,18 +133,14 @@
             }
 
             //XML is valid; insert it into insert_bash
-            $goodData[] = $user;
-
-            $i++;
+            $goodData[] = $xml->user[$i];
         }
 
-        echo 'Finished validation at '.date('h:i:s M d, Y').'!'."\n\n";
+        echo 'Finished validation at '.date('h:i:s M d, Y').'!'."\n";
 
         $nextDataSet += 10000;
-
+        
         fwrite($batchHandle, $nextDataSet);
-
-        echo 'There are '.count($badData).' users that are invalid'."\n";
 
         echo 'Starting writing the bad data XML '.date('h:i:s M d, Y').'...'."\n";
 
@@ -179,30 +160,27 @@
             }
 
             foreach($badData as $key=>$val) {
-                $email = $val->getElementsByTagName('email')->item(0)->nodeValue;
-                $firstName = $val->getElementsByTagName('first_name')->item(0)->nodeValue;
-                $guid = $val->getElementsByTagName('guid')->item(0)->nodeValue;
-                $lastName = $val->getElementsByTagName('last_name')->item(0)->nodeValue;
-                $screenName = $val->getElementsByTagName('screen_name')->item(0)->nodeValue;
-
                 $user = $badDataXml->createElement('user');
 
-                $displayNameNode = $badDataXml->createElement('screen_name', $screenName);
+                $displayNameNode = $badDataXml->createElement('pos_in_array', htmlentities($val->posInArray));
                 $user->appendChild($displayNameNode);
 
-                $emailNode = $badDataXml->createElement('email', $email);
+                $displayNameNode = $badDataXml->createElement('screen_name', htmlentities($val->screen_name));
+                $user->appendChild($displayNameNode);
+
+                $emailNode = $badDataXml->createElement('email', htmlentities($val->id));
                 $user->appendChild($emailNode);
 
-                $firstNameNode = $badDataXml->createElement('first_name', $firstName);
+                $firstNameNode = $badDataXml->createElement('first_name', htmlentities($val->first_name));
                 $user->appendChild($firstNameNode);
 
-                $guidNode = $badDataXml->createElement('guid', $guid);
+                $guidNode = $badDataXml->createElement('guid', htmlentities($val->guid));
                 $user->appendChild($guidNode);
 
-                $lastNameNode = $badDataXml->createElement('last_name', $lastName);
+                $lastNameNode = $badDataXml->createElement('last_name', htmlentities($val->last_name));
                 $user->appendChild($lastNameNode);
 
-                $screenNameNode = $badDataXml->createElement('screen_name', $screenName);
+                $screenNameNode = $badDataXml->createElement('screen_name', htmlentities($val->screen_name));
                 $user->appendChild($screenNameNode);
 
                 $usersRoot->appendChild($user);
@@ -211,7 +189,7 @@
             $badDataXml->save($badDataFile);
         }
 
-        echo 'Finished writing the bad data XML '.date('h:i:s M d, Y').'...'."\n\n";
+        echo 'Finished writing the bad data XML '.date('h:i:s M d, Y').'...'."\n";
         echo 'Starting writing the good data XML '.$goodDataFile.' '.date('h:i:s M d, Y').'!'."\n";
 
         if(isset($goodData) && !empty($goodData)) {
@@ -226,30 +204,27 @@
             echo 'There are '.count($goodData).' users that are valid'."\n";
 
             foreach($goodData as $key=>$val) {
-                $email = $val->getElementsByTagName('email')->item(0)->nodeValue;
-                $firstName = $val->getElementsByTagName('first_name')->item(0)->nodeValue;
-                $guid = $val->getElementsByTagName('guid')->item(0)->nodeValue;
-                $lastName = $val->getElementsByTagName('last_name')->item(0)->nodeValue;
-                $screenName = $val->getElementsByTagName('screen_name')->item(0)->nodeValue;
-
                 $user = $goodDataXml->createElement('user');
 
-                $displayNameNode = $goodDataXml->createElement('screen_name', htmlentities($screenName));
+                $displayNameNode = $goodDataXml->createElement('pos_in_array', htmlentities($val->posInArray));
                 $user->appendChild($displayNameNode);
 
-                $emailNode = $goodDataXml->createElement('email', htmlentities($email));
+                $displayNameNode = $goodDataXml->createElement('screen_name', htmlentities($val->screen_name));
+                $user->appendChild($displayNameNode);
+
+                $emailNode = $goodDataXml->createElement('email', htmlentities($val->id));
                 $user->appendChild($emailNode);
 
-                $firstNameNode = $goodDataXml->createElement('first_name', htmlentities($firstName));
+                $firstNameNode = $goodDataXml->createElement('first_name', htmlentities($val->first_name));
                 $user->appendChild($firstNameNode);
 
-                $guidNode = $goodDataXml->createElement('guid', htmlentities($guid));
+                $guidNode = $goodDataXml->createElement('guid', htmlentities($val->guid));
                 $user->appendChild($guidNode);
 
-                $lastNameNode = $goodDataXml->createElement('last_name', htmlentities($lastName));
+                $lastNameNode = $goodDataXml->createElement('last_name', htmlentities($val->last_name));
                 $user->appendChild($lastNameNode);
 
-                $screenNameNode = $goodDataXml->createElement('screen_name', htmlentities($screenName));
+                $screenNameNode = $goodDataXml->createElement('screen_name', htmlentities($val->screen_name));
                 $user->appendChild($screenNameNode);
 
                 $usersRoot->appendChild($user);
@@ -258,23 +233,16 @@
             $goodDataXml->save($goodDataFile);
         }
 
-        echo 'Finished writing the good data XML '.$goodDataFile.' '.date('h:i:s M d, Y').'!'."\n\n";
-        echo $users->length.' users remain to be validate'."\n\n";
-        echo 'Starting '.$readFile.' trimming at '.date('h:i:s M d, Y').'...'."\n\n";
+        echo 'Finished writing the good data XML '.$goodDataFile.' '.date('h:i:s M d, Y').'!'."\n";
 
-        $i = 0;
+        echo count($xml->user).' users remain to be validate'."\n";
+        echo 'Starting '.$readFile.' trimming at '.date('h:i:s M d, Y').'...'."\n";
 
-        foreach($users as $user) {
-            if($i == 9999) {
-                break;
-            }
-
-            $user->parentNode->removeChild($dom->getElementsByTagName('user')->item(0));
-
-            $i++;
+        for($j = 0; $j < 10000; $j+=1) {
+            unset($xml->user[0]);
         }
 
-        $dom->save($readFile);
+        $xml->asXML($readFile);
 
         echo 'Finished '.$readFile.' trimming at '.date('h:i:s M d, Y').'!'."\n";
 
