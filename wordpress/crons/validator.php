@@ -51,8 +51,9 @@
           var_dump($key);
           var_dump($user->getElementsByTagName('email')->item(0)->nodeValue);
 
-          $dom->removeChild($users->item(0));
+          $user->parentNode->removeChild($user);
 
+           var_dump($user->getElementsByTagName('email')->item(0)->nodeValue);
           echo 'now user count is '.count($users);
             exit;
         }
