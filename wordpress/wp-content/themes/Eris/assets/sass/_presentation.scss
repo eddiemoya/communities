@@ -560,7 +560,7 @@ textarea.discussion {
 }
 
 // RESULT LIST
-.result-list {
+.results-list {
   margin-top: 1em;
   border: 1px solid sears( decorative );
   @include border-radius( 5px );
@@ -589,7 +589,7 @@ textarea.discussion {
   }
 }
 
-.result-list {
+.results-list {
   & > .content-body {
     border:none;
     padding:0 em-adjust( .625em );
