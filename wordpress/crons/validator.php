@@ -44,17 +44,17 @@
 
         $users = $dom->getElementsByTagName('user');
 
-        echo 'current user count: '.count($users)."\n";
+        echo 'current user count: '.$users->length."\n";
 
         foreach($users as $key=>$user) {
 
           var_dump($key);
-          var_dump($user->getElementsByTagName('email')->item(0)->nodeValue);
+          var_dump($users->item(0));
 
-          $user->parentNode->removeChild($user);
+          $user->parentNode->removeChild($user->item(0));
 
-           var_dump($user->getElementsByTagName('email')->item(0)->nodeValue);
-          echo 'now user count is '.count($users);
+           var_dump($users->nodeValue);
+          echo 'now user count is '.$users->length;
             exit;
         }
 
