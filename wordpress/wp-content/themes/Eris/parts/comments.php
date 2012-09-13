@@ -16,7 +16,10 @@
                                 ->expert_answers
                     );
 
-    $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type, 'status' => 'approve'));
+    $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type));
+    
+    echo '<pre>';
+    var_dump($comments);
 
     if ( isset( $comments ) && !empty( $comments ) ) :
 ?>
