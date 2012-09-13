@@ -14,23 +14,14 @@ get_template_part('parts/header');
 		
 		<section class="span8">
 			
-			<article class="widget content-container span6 ad-widget">
-				<header class="content-header">
-					<h1>Advertisement</h1>
-				</header>
-				<section class="content-body clearfix">
-					[HTML HERE]
-				</section>
-			</article>
-			
-			<article class="widget content-container span6 ad-widget">
-				<header class="content-header">
-					<h1>Advertisement</h1>
-				</header>
-				<section class="content-body clearfix">
-					[HTML HERE]
-				</section>
-			</article>
+			<div class="home span12">
+				<article class="widget content-container span12 page-title">
+					<section class="content-body">
+						<h1>Discover ideas. Ask questions. Be you. Welcome to the Community.</h1>
+					</section>
+				</article>
+			</div>
+
 			
 			<article class="widget content-container span12 page-title">
 				<section class="content-body">
@@ -48,91 +39,6 @@ get_template_part('parts/header');
      	</article>
 		
 			<!-- FEATURED BLOG/BUYING GUIDE WIDGET -->
-			<article class="content-container featured-post span12">
-			
-				<section class="content-body clearfix">
-					
-					<div class="featured-image span6">
-					  <img src="/wp-content/uploads/2012/07/blogmodule.jpg">
-					</div>
-					
-					<div class="span6">
-					  
-					  <section class="content-details clearfix">
-							<span class="content-category"><a href="#" title="Fantasy">Fantasy</a></span>
-							<time class="content-date" pubdate datetime="1954-07-24">July 24, 1954</time>
-						</section>
-	  				
-					  <h1 class="content-headline"><a href="#">Nusquam copiosae accusata quo ad, in mei eius neglege ntur, vel lucilius sententiae et.  Ne vim mazim menandri effi ciendi.  Ludico virtute elabora ret vis in.</a></h1>
-					 
-					  <ul>
-					  	<li class="content-author">By: Loren Ipsum</li>
-					  	<li class="content-comments">4 comments</li>
-					  </ul>
-
-					  <p class="content-excerpt">Lorem ipsum dolor sit amet, sit senserit similique cotidieque ex, libris postea copora nam.  Sea vidit pro. et, sit senserit similique... <a href="#" title="Read More">Read more</a><p>
-					</div>
-					
-				</section>
-		
-			</article>
-			<article class="content-container featured-post span12">
-			
-		
-				<section class="content-body clearfix">
-					
-					<div class="featured-image span6">
-					  <img src="/wp-content/uploads/2012/07/blogmodule.jpg">
-					</div>
-					
-					<div class="span6">
-					  
-					  <section class="content-details clearfix">
-							<span class="content-category"><a href="#" title="Fantasy">Fantasy</a></span>
-							<time class="content-date" pubdate datetime="1954-07-24">July 24, 1954</time>
-						</section>
-	  				
-					  <h1 class="content-headline"><a href="#">Nusquam copiosae accusata quo ad, in mei eius neglege ntur, vel lucilius sententiae et.  Ne vim mazim menandri effi ciendi.  Ludico virtute elabora ret vis in.</a></h1>
-					 
-					  <ul>
-					  	<li class="content-author">By: Loren Ipsum</li>
-					  	<li class="content-comments">4 comments</li>
-					  </ul>
-
-					  <p class="content-excerpt">Lorem ipsum dolor sit amet, sit senserit similique cotidieque ex, libris postea copora nam.  Sea vidit pro. et, sit senserit similique... <a href="#" title="Read More">Read more</a><p>
-					</div>
-					
-				</section>
-		
-			</article>
-			<article class="content-container featured-post span12">
-
-				<section class="content-body clearfix">
-					
-					<div class="featured-image span6">
-					  <img src="/wp-content/uploads/2012/07/blogmodule.jpg">
-					</div>
-					
-					<div class="span6">
-					  
-					  <section class="content-details clearfix">
-							<span class="content-category"><a href="#" title="Fantasy">Fantasy</a></span>
-							<time class="content-date" pubdate datetime="1954-07-24">July 24, 1954</time>
-						</section>
-	  				
-					  <h1 class="content-headline"><a href="#">Nusquam copiosae accusata quo ad, in mei eius neglege ntur, vel lucilius sententiae et.  Ne vim mazim menandri effi ciendi.  Ludico virtute elabora ret vis in.</a></h1>
-					 
-					  <ul>
-					  	<li class="content-author">By: Loren Ipsum</li>
-					  	<li class="content-comments">4 comments</li>
-					  </ul>
-
-					  <p class="content-excerpt">Lorem ipsum dolor sit amet, sit senserit similique cotidieque ex, libris postea copora nam.  Sea vidit pro. et, sit senserit similique... <a href="#" title="Read More">Read more</a><p>
-					</div>
-					
-				</section>
-		
-			</article>
 			<article class="content-container featured-post span12">
 			
 				<header class="content-header">

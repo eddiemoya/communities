@@ -1302,3 +1302,17 @@ button.follow {
     margin:0 .58em;
   }
 }
+
+// AD WIDGET
+.ad-widget {
+  .content-body {
+    border-top:none;
+  }
+  h1 {
+    color:#cfcece;
+    font-size:font-size(10);
+    font-weight:normal;
+    text-align:center;
+    text-transform:uppercase;
+  }
+}
