@@ -301,7 +301,7 @@ ul.footer_anterior {
     background-repeat: no-repeat; }
     ul.footer_anterior .icon a {
       display: block;
-      height: 15px;
+      height: 16px;
       line-height: 16px;
       text-indent: -999999em; }
   ul.footer_anterior .acc.icon a {
@@ -1657,7 +1657,8 @@ button.follow {
   padding-bottom: .66em; }
   #footer_nav.dropmenu li a span {
     background-repeat: no-repeat;
-    padding-right: 16px; }
+    display: inline-block;
+    width: 90%; }
   #footer_nav.dropmenu li a span {
     background-position: right -240px; }
 #footer_nav.dropmenu li ul {

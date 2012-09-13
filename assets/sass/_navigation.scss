@@ -194,7 +194,9 @@ $arrow-height: 3px;
       padding-bottom: .66em;
       span {
         background-repeat: no-repeat;
-        padding-right: 16px;
+        // padding-right: 16px;
+        display: inline-block;
+        width: 90%;
       }
       @include sprite-position( "span", right, ( $nav-sprite-period * ( -3 ) ) );
     }
