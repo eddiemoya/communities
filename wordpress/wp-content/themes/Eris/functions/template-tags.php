@@ -10,16 +10,30 @@
  *
  * @return void.
  */
-function loop($template = 'post', $special = null, $base_path = "parts"){
+function loop($template = 'post', $special = null, $base_path = "parts", $no_posts_template = false){
     global $wp_query;
     //print_pre($wp_query);
-    $template = (isset($special)) ? $template.'-'.$special : $template;
+
+    //Allows for arrays of tempaltes to be passed, the first of which is found will be loaded.
+    $templates = array();
+
+    foreach((array)$special as $s){
+        foreach((array)$template as $temp){
+                $templates[] = trailingslashit($base_path) . ((isset($special)) ? $temp.'-'.$s : $temp).'.php';
+        }
+    }
+
     if (have_posts()) {
         while (have_posts()) {
             the_post();
-            get_template_part(trailingslashit($base_path).$template);
+            $template = locate_template($templates, true, false);
+        }
+    } else {
+        if($no_posts_template){
+            get_template_part($no_posts_template);
         }
     }
+    echo "<pre>";print_r($templates);echo "</pre>";
 
     wp_reset_query();
 
