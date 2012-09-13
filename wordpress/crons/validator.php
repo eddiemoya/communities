@@ -39,7 +39,25 @@
     if(file_exists($readFile)) {
         echo 'Starting file load at '.date('h:i:s M d, Y').'...'."\n";
 
-        $xml = simplexml_load_file($readFile);
+        $dom = new DomDocument();
+        $dom->load($readFile);
+
+        $users = $dom->getElementsByTagName('user');
+
+        echo 'current user count: '.count($users)."\n";
+
+        foreach($users as $key=>$user) {
+
+          var_dump($key);
+          var_dump($user->getElementsByTagName('email')->item(0)->nodeValue);
+
+          $dom->removeChild($users->item(0));
+
+          echo 'now user count is '.count($users);
+            exit;
+        }
+
+$xml = simplexml_load_file($readFile);
         var_dump($xml->user[0]);
         exit;
 
