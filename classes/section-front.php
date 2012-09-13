@@ -22,11 +22,101 @@ class Section_Front{
 	public function add_actions(){
 
 		add_action( 'init', 					array(__CLASS__, 'register_sections_type') );
-		//add_action( 'save_post', 				array(__CLASS__, 'save_section') );
+
+		add_action( 'save_post', 				array(__CLASS__, 'save_section') );
 		//add_action( 'wp_loaded',				array(__CLASS__, 'flush_custom_rules' ) );
 		add_filter( 'rewrite_rules_array',		array(__CLASS__, 'section_rewrite_rules') );
 
+
+		add_filter('query_vars', 				array(__CLASS__, 'add_var'));
+		//add_filter('pre_get_posts')
+
+		add_action('pre_get_posts', array(__CLASS__, 'custom_primary_query'));
+
+
 	}
+
+
+
+		function add_var($qvars) {
+			$qvars[] = 'meta_key';
+			return $qvars;
+		}
+
+
+// function custom_primary_query($query_string){
+
+// 	if ( isset($query_string['meta_key']) && strstr($query_string['meta_key'], ' ') )  {
+
+// 		$query_string['meta_value'] = 'balls';
+  
+// 	}
+    
+
+    
+// 	return $query_string;
+    
+    
+// }
+//add_filter('request', 'custom_primary_query');
+/**
+ * Do not call this function directly, add it to the request filter
+ * 
+ * Modifies the original WP_Query so that we dont have to continuously re-query 
+ * with query_posts from within templates. 
+ * 
+ * Consider also the 'pre_get_posts', and 'parse_query' filters. As well as
+ * other query filters explained in the WP_Query codex page.
+ * 
+ * @author Eddie Moya
+ * 
+ * @global WP_Query $wp_query
+ * @param WP_Query $query_string
+ * @return modified WP_Query object
+ */
+function custom_primary_query($query = '') {
+
+    /**
+     * This is being used for the results list widget.
+     */
+    if(isset($query->query_vars['meta_key'])){
+        if ( strstr( $query->query_vars['meta_key'], ' ') || strstr( $query->query_vars['meta_key'], ',') ) {
+
+            $meta_in = explode(' ', $query->query_vars['meta_key'] );
+            
+
+            $meta_query = array('relation'=>'AND');
+
+            if(strstr( $query->query_vars['meta_key'], ' ') ){
+	            foreach($meta_in as $meta_key){
+	            	$meta_query[] = array(
+	            		'key' => $meta_key,
+	            		'value' => 'on',
+	            		'compare' => 'IN'
+	            	);
+	            }
+        	}
+            if(strstr( $query->query_vars['meta_key'], ',') ){
+	            $meta_not = explode(',', $query->query_vars['meta_key'] );
+	            foreach($meta_not as $meta_key){
+	            	$meta_query[] = array(
+	            		'key' => $meta_key,
+	            		'compare' => 'NOT EXISTS'
+	            	);
+	            }
+        	}
+
+            unset($query->query_vars['meta_key']);
+            unset($query->query['meta_key']);
+            $query->set('meta_query', $meta_query);
+            //$query->query['meta_query'] = $meta_query;
+            //$query->meta_query = 'TEST';
+            //$query->meta_query->parse_query_vars($meta_query);
+
+        }
+    }
+    return $query;
+}
 
 	/**
 	 *
@@ -73,6 +163,8 @@ class Section_Front{
 	 *
 	 */
 	public function section_rewrite_rules( $rules ) {
+
+		add_rewrite_tag('%meta_key%','([^&]+)');
 	   // $section_rules = get_option('section_rewrite_rules', array());
 		$terms = self::get_terms_by_post_type('category', 'section');
 		$posts = array();
@@ -104,13 +196,20 @@ class Section_Front{
 					$post_types[] = (!empty($post->meta['rewrite_tax_question'])) ? 'question' :  '';
 					$post_types[] = (!empty($post->meta['rewrite_tax_post'])) ? 'post' :  '';
 
+					$meta_keys = array();
+					foreach(array_filter($post_types) as $type){
+						$type = ($type == '') ? 'none' : $type;
+						$meta_keys[] = 'widgetpress_post_type_'.$type;
+					}
+					$meta_keys = implode($meta_keys,'+');
+
 					$endpoint_pattern = '(' . implode('|', array_filter($post_types)) . ')';
-					$new_rules["{$term->taxonomy}/{$term->slug}/{$endpoint_pattern}/?$"] = 'index.php?posts_per_page=1&posts__in='.$post->ID.'&post_type='.$post->post_type.'&category_name='.$term->slug;
+					$new_rules["{$term->taxonomy}/{$term->slug}/{$endpoint_pattern}/?$"] = 'index.php?posts_per_page=1&posts__in='.$post->ID.'&post_type='.$post->post_type.'&category_name='.$term->slug.'&meta_key='.$meta_keys;
 
 
 				}
 				if(!empty($post->meta['rewrite_tax_archive'])){
-					$new_rules["{$term->taxonomy}/{$term->slug}/?$"] = 'index.php?posts_per_page=1&posts__in='.$post->ID.'&post_type='.$post->post_type.'&category_name='.$term->slug;
+					$new_rules["{$term->taxonomy}/{$term->slug}/?$"] = 'index.php?posts_per_page=1&posts__in='.$post->ID.'&post_type='.$post->post_type.'&category_name='.$term->slug.'&meta_key=widgetpress_post_type_none';
 				}
 
 
@@ -175,13 +274,13 @@ class Section_Front{
 		    // 	// 'post' => !empty($_POST['widgetpress_post_type_post']),
 		    // 	// 'guide' => !empty($_POST['widgetpress_post_type_guide']),
 		    // 	'tax-archive' => !empty($_POST['widgetpress_post_type_none'])
-		    // );
-		    $rewritten_terms = self::build_rules(wp_list_pluck(self::get_terms_by_post_type('category', 'section'), 'term_id'));
+		    // // );
+		    // $rewritten_terms = self::build_rules(wp_list_pluck(self::get_terms_by_post_type('category', 'section'), 'term_id'));
 
-		    $saved_rules = get_option('section_rewrite_rules', array());
-		    $new_rules = self::build_rules(array_filter($categories));
+		    // $saved_rules = get_option('section_rewrite_rules', array());
+		    // $new_rules = self::build_rules(array_filter($categories));
 
-		    $rules = array_merge($saved_rules, $new_rules);
+		    // $rules = array_merge($saved_rules, $new_rules);
 		 //   // $rules 
 			// //update_option('section_rewrite_rules', $new_rules);
 			// echo "<pre>";print_r($categories);echo "</pre>";

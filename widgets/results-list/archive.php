@@ -1,8 +1,8 @@
 <?php 
     if(!is_ajax() && is_widget()->template == "featured") :
-        get_template_part('parts/header', 'widget');
+        get_template_part('parts/header', 'featured-results-list');
     elseif(!is_ajax()) :
-        get_template_part('parts/header', 'results-list');
+        get_template_part('parts/header', 'result-list');
     endif;
     if (!have_posts()) :
 ?>
