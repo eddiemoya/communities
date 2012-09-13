@@ -61,7 +61,7 @@
             if(!isset($user->getElementsByTagName('email')->item(0)->nodeValue) || !preg_match('/^.+@.+?\.[a-zA-Z]{2,}$/', $user->getElementsByTagName('email')->item(0)->nodeValue)) {
                 // need to set this element -> $xml->user[$i]->posInArray = $i;
 
-                $badData[] = $user->getElementsByTagName('email')->item(0)->nodeValue;
+                $badData[] = $user;
 
                 $ourError .= 'ERROR:'."\n";
                 $ourError .= 'Recorded at '.date('h:i:s M d, Y', strtotime('now'))."\n";
@@ -140,9 +140,11 @@
 
             //XML is valid; insert it into insert_bash
             $goodData[] = $user;
+
+            $i++;
         }
 
-        exit; 'Finished validation at '.date('h:i:s M d, Y').'!'."\n";
+        echo 'Finished validation at '.date('h:i:s M d, Y').'!'."\n";
 
         $nextDataSet += 10000;
         
@@ -155,38 +157,60 @@
             if(file_exists($badDataFile)) {
                 $badDataXml = new DOMDocument($badDataFile);
             } else {
+                echo 'creating new one'."\n";
+
                 $badDataXml = new DOMDocument("1.0");
 
-                $usersRoot = $badDataXml->createElement("toppings");
+                $usersRoot = $badDataXml->createElement("users");
                 $badDataXml->appendChild($usersRoot);
             }
+
+            $doc->formatOutput = true;
+
+            $i = 0;
 
             echo 'There are '.count($badData).' users that are invalid'."\n";
 
             foreach($badData as $key=>$val) {
+                echo 'in here .'.$i."\n";
+
+                $displayName = $val->getElementsByTagName('screen_name')->item(0)->nodeValue;
+                $email = $val->getElementsByTagName('email')->item(0)->nodeValue;
+                $firstName = $val->getElementsByTagName('first_name')->item(0)->nodeValue;
+                $guid = $val->getElementsByTagName('guid')->item(0)->nodeValue;
+                $lastName = $val->getElementsByTagName('last_name')->item(0)->nodeValue;
+                $screenName = $val->getElementsByTagName('screen_name')->item(0)->nodeValue;
+
                 $user = $badDataXml->createElement('user');
 
-                $user->addChild('posInArray', $val->posInArray);
-                $user->addChild('id', $val->id);
-                $user->addChild('screen_name', $val->screen_name);
-                $user->addChild('email', $val->email);
-                $user->addChild('display_name', $val->display_name);
-                $user->addChild('first_name', $val->first_name);
-                $user->addChild('last_name', $val->last_name);
-                $user->addChild('guid', $val->guid);
+                $displayNameNode = $badDataXml->createElement('screen_name');
+                $user->appendChild($displayNameNode);
+
+                $emailNode = $badDataXml->createElement('email');
+                $user->appendChild($emailNode);
+
+                $firstNameNode = $badDataXml->createElement('first_name');
+                $user->appendChild($firstNameNode);
+
+                $guidNode = $badDataXml->createElement('guid');
+                $user->appendChild($guidNode);
+
+                $lastNameNode = $badDataXml->createElement('last_name');
+                $user->appendChild($lastNameNode);
+
+                $screenNameNode = $badDataXml->createElement('screen_name');
+                $user->appendChild($screenNameNode);
+
+                $usersRoot->appendChild($user);
+
+                $i++;
             }
-
-            // Saving pretty XML
-            $dom = new DOMDocument('1.0');
-
-            $dom->preserveWhiteSpace = false;
-            $dom->formatOutput = true;
-            $dom->loadXML($badDataXml->asXML());
 
             $dom->save($badDataFile);
         }
 
         echo 'Finished writing the bad data XML '.date('h:i:s M d, Y').'...'."\n";
+        exit;
         echo 'Starting writing the good data XML '.$goodDataFile.' '.date('h:i:s M d, Y').'!'."\n";
 
         if(isset($goodData) && !empty($goodData)) {
