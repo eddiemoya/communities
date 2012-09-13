@@ -21,6 +21,16 @@
 
 <?php
     endif;
+
+    # Only show pagination if there are enough posts
+    if ( $wp_query->post_count >= $wp_query->query_vars['posts_per_page'] ) :
+?>
+        <section class="pagination">
+             <?php echo posts_nav_link(); ?>
+        </section>
+
+<?php 
+    endif;
     
     if(is_widget()->template == "featured") :
         get_partial("parts/post-featured-post", array("widget" => is_widget()));
