@@ -28,8 +28,8 @@
 		<div class="span10">
 			
 			<div class="content-details clearfix">
-				<span class="content-category"> <a href="<?php get_category_link($cat->term_id); ?>" title="<?php echo $cat->cat_name; ?>"><?php echo $cat->cat_name; ?></a></span>
-				<time class="content-date" pubdate datetime="<?php echo the_time( "Y-m-d"); ?>"><?php the_time("F n, Y"); ?><span class="time-stamp"><?php the_time("g:i a"); ?></span></time>
+				<span class="content-category"><a href="<?php get_category_link($cat->term_id); ?>" title="<?php echo $cat->cat_name; ?>"><?php echo $cat->cat_name; ?></a></span>
+				<?php get_partial( 'parts/space_date_time', array( "timestamp" => get_the_time( 'U' ) ) ); ?>
 			</div>
 			
 			<h1 class="content-headline"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
@@ -39,7 +39,7 @@
 			</p>
 			
 			<ul>
-		  	<li class="content-comments"><?php echo $answer_count; ?> answers | <?php comments_number('0 replies', '1 reply', '% replies'); ?> | <?php echo $comment_count; ?> comments</li>
+		  	<li class="content-comments"><?php echo $answer_count . ' ' . _n( 'answer', 'answers', $answer_count ); ?> | <?php comments_number('0 replies', '1 reply', '% replies'); ?> | <?php echo $comment_count . ' ' . _n( 'comment', 'comments', $user->comment_count ); ?></li>
 		  </ul>
 			
       <?php get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); ?>

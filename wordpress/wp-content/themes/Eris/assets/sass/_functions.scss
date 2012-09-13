@@ -5,7 +5,7 @@
   @return ( $number-columns * ($margin-width * 3) ) + ( ($number-columns - 1) * $margin-width );
 }
 
-// the hash tables for sears and kmart colors.
+// the lookups for sears and kmart colors.
 @function sears( $lookups, $types: $color-types, $colors: $sears-colors ) {
   @return lookup( $lookups, $types, $colors );
 }
@@ -20,11 +20,12 @@
 // font-size(11em) => 0.916em
 @function font-size( $target-size, $relative-size: $default-font-size ) {
  $return: '';
+ $ratio: $target-size/$relative-size;
   @if unitless($target-size) {
-    $return: to-decimal-places( percentage( $target-size/$relative-size ), 3 );
+    $return: to-decimal-places( percentage( $ratio ), 3 );
   }
   @else {
-    $return: to-decimal-places( $target-size/$relative-size, 3 );
+    $return: to-decimal-places( $ratio, 3 );
   }
   @return $return;
 }
