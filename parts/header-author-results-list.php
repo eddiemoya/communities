@@ -1,3 +1,4 @@
+<article class="content-container result-list">
 <header class="content-header author-result-list">
     <?php
         foreach ($variables as $user) :
