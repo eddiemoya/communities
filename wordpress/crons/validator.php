@@ -11,7 +11,7 @@
     $nextDataSetFile = $base.'current_batch.txt';
     $readableErrorFile = $base.'our_errors.txt';
 
-    $readFile = $base.'user_export.xml';
+    $readFile = $base.'short.xml';
 
     $errorFileHandle = fopen($errorFile, 'a+');
 
@@ -37,30 +37,13 @@
     echo 'The next batch set starting point is array spot '.$nextDataSet."\n";
 
     if(file_exists($readFile)) {
+        $i = 0;
+
         echo 'Starting file load at '.date('h:i:s M d, Y').'...'."\n";
 
         $dom = new DomDocument();
         $dom->load($readFile);
-
         $users = $dom->getElementsByTagName('user');
-
-        echo 'current user count: '.$users->length."\n";
-
-        foreach($users as $key=>$user) {
-
-          var_dump($key);
-          var_dump($users->item(0));
-
-          $user->parentNode->removeChild($user->item(0));
-
-           var_dump($users->nodeValue);
-          echo 'now user count is '.$users->length;
-            exit;
-        }
-
-$xml = simplexml_load_file($readFile);
-        var_dump($xml->user[0]);
-        exit;
 
         echo 'Finished file load at '.date('h:i:s M d, Y').'!'."\n";
         echo 'Starting validation at '.date('h:i:s M d, Y').'...'."\n";
@@ -70,19 +53,19 @@ $xml = simplexml_load_file($readFile);
         $badData = array();
         $goodData = array();
 
-        echo count($xml->user).' is the total users<br/>'."\n";
+        echo $users->length.' is the total users'."\n";
 
-        for($i = 0; $i < 10000; $i++) {
+        foreach($users as $user) {
             $ourError = '';
 
-            if(!isset($xml->user[$i]->email) || !preg_match('/^.+@.+?\.[a-zA-Z]{2,}$/', $xml->user[$i]->email)) {
-                $xml->user[$i]->posInArray = $i;
+            if(!isset($user->getElementsByTagName('email')->item(0)->nodeValue) || !preg_match('/^.+@.+?\.[a-zA-Z]{2,}$/', $user->getElementsByTagName('email')->item(0)->nodeValue)) {
+                // need to set this element -> $xml->user[$i]->posInArray = $i;
 
-                $badData[] = $xml->user[$i];
+                $badData[] = $user->getElementsByTagName('email')->item(0)->nodeValue;
 
                 $ourError .= 'ERROR:'."\n";
                 $ourError .= 'Recorded at '.date('h:i:s M d, Y', strtotime('now'))."\n";
-                $ourError .= 'User '.$i.' does not have a valid email: '.$xml->user[$i]->email."\n";
+                $ourError .= 'User '.$i.' does not have a valid email: '.$user->getElementsByTagName('email')->item(0)->nodeValue."\n";
                 $ourError .= "\n";
 
                 echo $ourError;
@@ -93,9 +76,11 @@ $xml = simplexml_load_file($readFile);
 
                 //user is not valid, no sense in further validating their shit.
                 continue;
+            } else {
+                echo $user->getElementsByTagName('email')->item(0)->nodeValue.' is a valid user'."\n";
             }
 
-            if(!isset($xml->user[$i]->screen_name) || strlen($xml->user[$i]->screen_name) > 18) {
+            /*if(!isset($xml->user[$i]->screen_name) || strlen($xml->user[$i]->screen_name) > 18) {
                 $xml->user[$i]->posInArray = $i;
 
                 $badData[] = $xml->user[$i];
@@ -151,13 +136,13 @@ $xml = simplexml_load_file($readFile);
                 fwrite($errorFileHandle, $i.',');
 
                 //user is technially valid; we can create this data
-            }
+            }*/
 
             //XML is valid; insert it into insert_bash
-            $goodData[] = $xml->user[$i];
+            $goodData[] = $user;
         }
 
-        echo 'Finished validation at '.date('h:i:s M d, Y').'!'."\n";
+        exit; 'Finished validation at '.date('h:i:s M d, Y').'!'."\n";
 
         $nextDataSet += 10000;
         
@@ -168,15 +153,18 @@ $xml = simplexml_load_file($readFile);
         if(isset($badData) && !empty($badData)) {
             // Create the XML with all data issues
             if(file_exists($badDataFile)) {
-                $badDataXml = new SimpleXMLElement(file_get_contents($badDataFile));
+                $badDataXml = new DOMDocument($badDataFile);
             } else {
-                $badDataXml = new SimpleXMLElement('<users/>');
+                $badDataXml = new DOMDocument("1.0");
+
+                $usersRoot = $badDataXml->createElement("toppings");
+                $badDataXml->appendChild($usersRoot);
             }
 
             echo 'There are '.count($badData).' users that are invalid'."\n";
 
             foreach($badData as $key=>$val) {
-                $user = $badDataXml->addChild('user');
+                $user = $badDataXml->createElement('user');
 
                 $user->addChild('posInArray', $val->posInArray);
                 $user->addChild('id', $val->id);
