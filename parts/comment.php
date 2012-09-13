@@ -8,11 +8,13 @@
     # $recursive =      false (default), true - whether to call this very partial again to display any child comments.
 
     $is_recursive = isset( $recursive ) ? $recursive : false;
+    $removed_text = 'This comment has been removed.';
     $container_class = in_array( 'expert', get_userdata( $comment->user_id )->roles ) ? ' expert' : '';
     $parent_author = $is_recursive ? false : return_screenname( get_comment( $comment->comment_parent )->user_id ) ;
     $date = strtotime( $comment->comment_date );
 		
     $comment_type = get_post_type( $comment->comment_post_ID ) == 'question' ? 'answer' : 'comment';
+   
 
 
     $parentId = (!isset($parentId)) ? $comment->comment_ID : $parentId;
@@ -32,7 +34,7 @@
             <p class="responseTo">In response to <?php echo $parent_author; ?></p>
         	<?php endif;?>
           <p>
-          	<?php echo $comment->comment_content; ?>
+          	<?php echo ($comment->comment_approved == 1) ? $comment->comment_content : $removed_text; ?>
           </p>  
 					
 				</section>
