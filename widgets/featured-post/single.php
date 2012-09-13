@@ -11,20 +11,21 @@
         $inner_span = (is_widget()->span > 6) ? "span12" : "span6";
 
         $post_thumbnail_id = get_post_thumbnail_id( $post_id );
-        if ($post_thumbnail_id) :
-            $thumbnail_src = wp_get_attachment_image_src($post_thumbnail_id, "large");
-        ?>
+
+        if ($post_thumbnail_id) {
+
+            $thumbnail_src = wp_get_attachment_image_src($post_thumbnail_id, "large"); ?>
+
             <div class="featured-image <?php echo $inner_span; ?>">
                 <img src="<?php echo $thumbnail_src[0]; ?>" alt="<?php echo get_the_title(); ?>" />
-            </div>
-        <?php
-        endif;
-        ?>
-    <?php else :?>
-        <?php $featured_post_span = 'span12';?>
-    <?php endif; ?>
+            </div>=<?php
+        }
 
+    } else {
+        $inner_span = 'span12';
+    }
 
+    ?>
     <div class="featured-post <?php echo $inner_span; ?>">
         <?php if (is_widget()->show_category || is_widget()->show_date || $is_widget_override) : ?>
             <div class="content-details clearfix">
