@@ -169,7 +169,7 @@ if(isset($_GET['post-type'])) {
      $(document).ready(function() {
          $(".expert-answers").hide();
          $(".answers-toggle").on('click', function () {
-             $(this).next(".expert-answers").slideToggle("fast");
+             $(this).next(".expert-answers").slideToggle("slow");
          });
          $('.upload-photo button').hide();
          $('.upload-photo #userphoto_image_file').hide();

@@ -23,7 +23,7 @@
     endif;
     
     # Only show pagination if there are enough posts
-    if ( $wp_query->post_count > $wp_query->query_vars['posts_per_page'] ) :
+    if ( $wp_query->post_count >= $wp_query->query_vars['posts_per_page'] ) :
 ?>
         <section class="pagination">
              <?php echo posts_nav_link(); ?>
