@@ -150,6 +150,8 @@
                 $badDataXml = new DOMDocument($badDataFile, LIBXML_NOBLANKS);
 
                 $badDataXml->formatOutput = true;
+
+                $usersRoot = $badDataXml->getElementsByTagName('users');
             } else {
                 $badDataXml = new DOMDocument("1.0");
 
