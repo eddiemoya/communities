@@ -589,7 +589,7 @@ ul.bullets {
 .bold, .member .info h4, .member .info address, .crest h4, .crest h5, .crest address, .post hgroup, .content-container .content-header, .content-container .content-category, .content-container .content-headline, .profile .answers-toggle, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, #allComments .comment .responseTo, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header {
   font-weight: 700; }
 
-.faint, .member .info h5, .member .info p, .excerpt, .content-container .content-header, .recent-activity time {
+.faint, .member .info h5, .member .info p, .excerpt, .content-container .content-header {
   color: #666666; }
 
 .upcase, #header.kmart form #button_search, #header.sears form #button_search, .actions button:first-letter {
@@ -1009,12 +1009,12 @@ textarea.discussion {
   .recent-activity li:first-child {
     margin-top: 0;
     border-top: 0; }
-.recent-activity time {
-  float: right; }
 .recent-activity h3 a {
   font-weight: bold; }
 .recent-activity h3 > * {
   display: block; }
+.recent-activity .content-date {
+  text-align: right; }
 .recent-activity .excerpt {
   padding: .3em 1em;
   color: black;
@@ -1024,8 +1024,7 @@ textarea.discussion {
   .recent-activity .excerpt:after {
     content: "\201D"; }
 .recent-activity .category {
-  font-size: 84.615%;
-  padding-top: .2em; }
+  font-size: 84.615%; }
 
 .span3 .recent-activity .excerpt, .span4 .recent-activity .excerpt, .span6 .recent-activity .excerpt {
   overflow: hidden;
