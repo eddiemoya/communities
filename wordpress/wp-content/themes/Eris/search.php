@@ -10,4 +10,4 @@ get_template_part('parts/header'); ?>
 	<?php get_template_part('widgets/results-list/archive'); ?>
 </article> 
 
-<? get_template_part('parts/footer');
+<?php get_template_part('parts/footer');
