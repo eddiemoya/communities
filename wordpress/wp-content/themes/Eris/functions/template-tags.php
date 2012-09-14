@@ -6,23 +6,53 @@
  * @author Eddie Moya
  * 
  * @global type $wp_query
- * @param type $template [optional] Template part to be used in the loop.
+ * @param string|array $template [optional] Template part to be used in the loop. Defaults to 'post'
+ * @param string|array $special [optional] Like get_template_part()'s second param, an appended portion of the filename delimited with a dash. $template-$special.php
+ * @param string|null $base_path [optional] The path (relative to the theme root folder) in which to find the template. Defaults to "parts". Defaults to null.
+ * @param string|null $no_posts_template [optional] The template to load should there not be any posts to show in the query. Defaults to null.
  *
  * @return void.
  */
-function loop($template = 'post', $special = null, $base_path = "parts"){
+function loop($template = 'post', $special = null, $base_path = "parts", $no_posts_template = null){
     global $wp_query;
     //print_pre($wp_query);
-    $template = (isset($special)) ? $template.'-'.$special : $template;
-    if (have_posts()) {
-        while (have_posts()) {
-            the_post();
-            get_template_part(trailingslashit($base_path).$template);
+
+    //Allows for arrays of tempaltes to be passed, the first of which is found will be loaded.
+
+    $template = (array)$template;
+    $special = (array)$special;
+    
+    $templates = array();
+    $index_offset = 0;
+
+    foreach($template as $index => $t){
+        
+        foreach($special as $s){
+
+            $templates[] = trailingslashit($base_path) . $t . '-'.$s.'.php';
+            $index_offset++;
         }
+
+        $templates[$index+$index_offset] = trailingslashit($base_path) . $t .'.php';
     }
 
-    wp_reset_query();
+    if (have_posts()) {
 
+        while (have_posts()) {
+            the_post();
+            locate_template($templates, true, false);
+        }
+
+    } else {
+
+        if(!is_null($no_posts_template)){
+            get_template_part($no_posts_template);
+        }
+
+    }
+    //echo "<pre>";print_r($templates);echo "</pre>";
+
+    wp_reset_query();
 }
 
 /**
@@ -105,6 +135,8 @@ function has_screen_name($user_id) {
  */
 function process_front_end_question() {
 	
+	global $current_user;
+	
 	//Neither step has been taken, were on step 1
  	 $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '1');
 			
@@ -130,9 +162,6 @@ function process_front_end_question() {
 
     //If step 2, add the post and move to step 3
     if((wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in())) {
-		
-    	global $current_user;
-		get_currentuserinfo();
 		
 		$valid = true;
     	$errors = array();
@@ -194,8 +223,6 @@ function process_front_end_question() {
 	    							update_user_meta($current_user->ID, 'profile_screen_name', $_POST['screen-name']);
 	    							
 	    							//Update user's nicename to screen name
-	    							/*wp_update_user(array('ID'				=> $current_user->ID,
-		 								 				'user_nicename' 	=> $_POST['screen-name']));*/
 	    							if(! update_user_nicename($current_user->ID, $_POST['screen-name'])) 
 	    							
 	    									$valid = false;
@@ -235,6 +262,15 @@ function process_front_end_question() {
 		        	
 		       }
 		        
+		       
+		       	
+		       	unset($current_user);
+		       	get_currentuserinfo();
+		       	
+		       /*	echo '<pre>';
+		       	var_dump($current_user);
+		       	exit;*/
+		       	
 		        $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '3');
 		        
 	    } else {
@@ -256,7 +292,7 @@ function question_exists($post) {
 	global $current_user;
 	get_currentuserinfo();
 	
-	$p = $wpdb->base_prefix . 'posts';
+	$p = $wpdb->prefix . 'posts';
 	
 	$q = "SELECT ID FROM " . $p . " WHERE post_title = '" . $post['post_title'] ."' AND post_content = '". $post['post_content'] . "' AND post_type = 'question' AND post_author = " . $current_user->ID;
 	
@@ -454,6 +490,7 @@ function get_profile_url( $user_id ) {
  */
 function return_screenname( $user_id ) {
     $user_info = get_userdata( $user_id );
+    
     $screen_name = '';
     # create a fallback screen name if one has not yet been set by sso
     if ( !has_screen_name( $user_id ) ) {
@@ -637,46 +674,4 @@ function set_screen_name($screen_name) {
 			
 		return true;
 	}
-	
 }
-
-
-/**
- * Handles posting of comment (of any with screen name
- * @param array - comment data
- * @author Dan Crimmins
- */
-function post_comment_screen_name($commentdata) {
-	
-	
-	if(isset($_POST['screen-name'])) {
-		
-		//Attempt to set screen name
-		$response = set_screen_name($_POST['screen-name']);
-		
-		//If setting screen name fails
-		if($response !== true) {
-			
-			//Create QS
-			$qs = '?screen-name=' . urlencode($_POST['screen-name']) . '&comment=' . urlencode($_POST['comment']) . '&cid=' . $commentdata['comment_parent'] . '&comm_err=' . urlencode($response['message']);
-
-			//Create return URL
-			$linkparts = explode('#', get_comment_link());
-			$url = ($commentdata['comment_parent'] == 0) ? $linkparts[0] . $qs .'#commentform' : $linkparts[0] . $qs .'#comment-' .$commentdata['comment_parent'];
-			
-			//Redirect to return url
-			header('Location: ' . $url);
-			exit;
-		}
-		
-	}
-	
-	return $commentdata;
-	
-}
-
-add_filter( 'preprocess_comment',  'post_comment_screen_name');
-
-
-
-

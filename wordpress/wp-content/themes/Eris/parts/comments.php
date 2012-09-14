@@ -9,19 +9,29 @@
     //get expert answers
     $userProfile = new User_Profile();
 
-    $expertCommentCount = count($userProfile->page($page)
+    $expertCommentCount = count($userProfile->page(1)
                                 ->get_posts_by_id($post->ID)
                                 ->get_expert_answers($comment_type)
                                 ->posts[0]
                                 ->expert_answers
                     );
 
-    $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type, 'status' => 'approve'));
+    $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type));
+    
+   /* echo '<pre>';
+    var_dump($comments);
+    exit;*/
 
     if ( isset( $comments ) && !empty( $comments ) ) :
 ?>
-<header class="section-header comments-header clearfix">
-    <h3><?php echo ucfirst( $comment_type ); ?>s</h3>
+<section class="span12 content-container comments">
+<?php if ($comment_type == "answer"): ?>
+	
+<!-- <header class="section-header comments-header clearfix"> -->
+	
+<header class="content-header clearfix">
+	
+	  <h3><?php echo ucfirst( $comment_type ); ?>s</h3>
     <h4>
         <?php
             $commentCount = get_custom_comment_count($comment_type, $post->ID);
@@ -45,6 +55,8 @@
         ?>
     </h4>
 </header>
+<?php endif; ?>
+<section class="content-body">
 <ol id="allComments">
 <?php
         foreach($comments as $comment) {
@@ -56,8 +68,12 @@
     # No Comments.
     else:
 ?>
-<section>
-    No <?php echo $comment_type; ?>s yet.
-</section>
+	<p>
+	    No <?php echo $comment_type; ?>s yet.
+	</p>
+
 <?php
     endif;
+?></section>
+</section>
+<?php

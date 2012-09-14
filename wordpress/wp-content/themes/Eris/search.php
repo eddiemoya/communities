@@ -6,10 +6,10 @@
 
 get_template_part('parts/header'); ?>
 
-<article class="span12 results-list result-list content-container">
+<article class="span8 results-list result-list content-container">
 
  <?php get_template_part('widgets/results-list/archive'); ?>
 
 </article>
 
-<? get_template_part('parts/footer');
+<?php get_template_part('parts/footer');

@@ -32,24 +32,30 @@ if (have_posts()) {
 
 
 
-                <p class="content-headline">
+                <h1 class="content-headline">
                     <a href="<?php the_permalink(); ?>">
                         <?php the_title(); ?>
                     </a>
+                </h1>
+
+								<ul>
+									<li class="content-author">By: <?php echo get_the_author(); ?> </li>
+									<li class="content-comments"><?php comments_number(); ?></li>
+								</ul>
+		
+								<?php the_excerpt(); ?>
+
+                <p class="content-tags">
+                	<?php 
+                        $tags = get_the_tags(); 
+                        foreach((object)$tags as $tag) {
+                            $output[] = '<a href="' . get_tag_link($tag->term_id) . '" title="' . $tag->name . '"> ' . $tag->name . '</a>';
+                        }
+                        if (count($output) > 0)
+                            echo "Tags: " . implode(', ', $output);
+                    ?>
                 </p>
-
-
-
-            <p class="content-byline">By: <?php echo get_the_author(); ?> </p>
-
-
-                <p class="content-comments"><?php comments_number(); ?></p>
-
-
-                <p class="content-excerpt">
-                    <?php the_excerpt(); ?>
-                    <!-- <a href="<?php the_permalink(); ?>" title="Read More">Read more</a> -->
-                </p>
+                
                 
                 <?php
                     $share_options = array();
@@ -58,17 +64,6 @@ if (have_posts()) {
                 <section class="post-actions">
                     <?php get_partial( 'parts/share', array( "version" => "long", "url" => get_post_permalink( $post->ID ) ) ); ?>
                 </section>
-
-                <span class="content-tags">
-                    <?php 
-                        $tags = get_the_tags(); 
-                        foreach((object)$tags as $tag) {
-                            $output[] = '<a href="' . get_tag_link($tag->term_id) . '" title="' . $tag->name . '"> ' . $tag->name . '</a>';
-                        }
-                        if (count($output) > 0)
-                            echo "Tags: " . implode(', ', $output);
-                    ?>
-                </span>
 
         </div> <!-- featured-post --> 
 <?php
