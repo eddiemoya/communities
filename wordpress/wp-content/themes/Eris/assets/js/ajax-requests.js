@@ -5,7 +5,7 @@ jQuery(document).ready(function($) {
 	 
 	 * @author Eddie Moya
 	 */
- 	$('.post-your-question select#category, select.filter-results').bind('change', function(e){
+ 	$('.post-your-question select#category, select.filter-results-posts, select.filter-results-users').bind('change', function(e){
 
 		var data = {
 			action		: 'get_subcategories_ajax',
@@ -59,9 +59,33 @@ jQuery(document).ready(function($) {
 		});
  	});
 
+ 	// Duplicate of above, seperated to keep the old version in case it did something special i was not aware of.
+ 	$('.results-list select.filter-results-users').on('change', function(e){
+ 		e.preventDefault();
+
+		var data = {
+			action		: 'get_filtered_authors_ajax',
+			template 	: 'author-filtered-list',
+			category	: $('option', this).filter(':selected').val()
+		};
+
+		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
+
+		container = $(this).closest('.dropzone-inner-wrapper');
+
+		jQuery.ajax({
+			url  : ajaxdata.ajaxurl,
+			type: 'POST',
+			data : data,
+			success:function(results){
+				$('.content-body', container).empty();
+				$('.content-body', container).append($(results));
+			}
+		});
+ 	});
 
 
- 	$('.results-list select').on('change', function(e){
+ 	$('.results-list select.filter-results-posts').on('change', function(e){
  		e.preventDefault();
 
  		container = $(this).closest('.results-list');
@@ -88,6 +112,10 @@ jQuery(document).ready(function($) {
 			}
 		});
  	});
+
+
+
+
 
 
  	// $('#new_question_step_1').bind('submit', function(e){
