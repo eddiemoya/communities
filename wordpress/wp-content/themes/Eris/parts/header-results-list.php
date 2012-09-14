@@ -59,7 +59,7 @@ if(have_posts()) : ?>
 			}
 
 		?>
-		<label for="sort-results<?php echo $class; ?>">Sort By:</label>
+		<label for="sort-results<?php echo $class; ?>">Sort by</label>
 		<select name="sort-results" id="sort-results" class="sort-results<?php echo $class; ?>">
 			<option value="DESC">Oldest First</option>
 			<option value="ASC">Newset First</option>
