@@ -26,7 +26,7 @@
 
         $args = array(
             'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
-            'comment_field'        => '<textarea id="comment-answer_textarea" class="input_textarea discussion" name="comment">'. $comment_value .'</textarea>',
+            'comment_field'        => '<textarea id="comment-answer_textarea" class="input_textarea discussion" name="comment" shc:gizmo:form="{required:true}">'. $comment_value .'</textarea>',
             'must_log_in'          => null,
             'logged_in_as'         => null,
             'comment_notes_before' => null,
@@ -65,7 +65,7 @@
         		</div>
         		<?php endif; ?>
         		
-            <form action="<?php echo site_url( '/wp-comments-post.php' ); ?>" method="post" shc:gizmo="transFormer">
+            <form id="answer-form" action="<?php echo site_url( '/wp-comments-post.php' ); ?>" method="post" shc:gizmo="transFormer">
 							<ul class="form-fields">
 								<?php
 	                # If a user doesn't have a screen name, prompt them to enter one
