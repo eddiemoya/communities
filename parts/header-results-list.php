@@ -1,5 +1,5 @@
 <?php 
-	if(is_widget()->query_type != 'posts'){
+	if(is_widget()->query_type == 'users'){
 		$post_type = 'users';
 	} else {
 		$queried_type = get_query_var('post_type');
