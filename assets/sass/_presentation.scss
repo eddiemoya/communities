@@ -143,7 +143,8 @@ ul.bullets {
     h4 {
       background: sears( badge ) url('#{$img}sprite-user.png') repeat-x left bottom;
       text-align: center;
-      @include border-radius( 0 0 10px 10px );
+      // removing rounded corners per client's request -CAB 9.14.2012
+      // @include border-radius( 0 0 10px 10px );
     }
     h4, h4 a {
       color: $lightest-color;
