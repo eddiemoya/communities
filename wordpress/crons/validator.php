@@ -1,7 +1,7 @@
 <?php
     $startTime = microtime(true);
 
-    echo 'Started validation at '.date('h:i:s M d, Y').'...'."\n";
+    echo 'Started validation at '.date('h:i:s M d, Y').'...'."\n\n";
 
     $base = '/Users/dasfisch/cron_results/';
     $batchBase = '/Users/dasfisch/cron_results/batches/';
@@ -34,14 +34,14 @@
     $readableErrorFileHandle = fopen($batchBase.'errors/'.$nextDataSet.'-'.$finalPosition.'.error.xml', 'a+');
     $goodDataFile = $batchBase.$nextDataSet.'-'.$finalPosition.'.batch.xml';
 
-    echo 'The next batch set starting point is array spot '.$nextDataSet."\n";
+    echo 'The next batch set starting point is array spot '.$nextDataSet."\n\n";
 
     if(file_exists($readFile)) {
         echo 'Starting file load at '.date('h:i:s M d, Y').'...'."\n";
 
         $xml = simplexml_load_file($readFile);
 
-        echo 'Finished file load at '.date('h:i:s M d, Y').'!'."\n";
+        echo 'Finished file load at '.date('h:i:s M d, Y').'!'."\n\n";
         echo 'Starting validation at '.date('h:i:s M d, Y').'...'."\n";
 
         $startTimeAfterFile = microtime(true);
@@ -136,10 +136,10 @@
             $goodData[] = $xml->user[$i];
         }
 
-        echo 'Finished validation at '.date('h:i:s M d, Y').'!'."\n";
+        echo 'Finished validation at '.date('h:i:s M d, Y').'!'."\n\n";
 
         $nextDataSet += 10000;
-        
+
         fwrite($batchHandle, $nextDataSet);
 
         echo 'Starting writing the bad data XML '.date('h:i:s M d, Y').'...'."\n";
@@ -147,11 +147,12 @@
         if(isset($badData) && !empty($badData)) {
             // Create the XML with all data issues
             if(file_exists($badDataFile)) {
-                $badDataXml = new DOMDocument($badDataFile, LIBXML_NOBLANKS);
+                $badDataXml = new DOMDocument();
+                $badDataXml->loadXML(file_get_contents($badDataFile));
 
                 $badDataXml->formatOutput = true;
 
-                $usersRoot = $badDataXml->getElementsByTagName('users');
+                $usersRoot = $badDataXml->documentElement;
             } else {
                 $badDataXml = new DOMDocument("1.0");
 
@@ -191,7 +192,7 @@
             $badDataXml->save($badDataFile);
         }
 
-        echo 'Finished writing the bad data XML '.date('h:i:s M d, Y').'...'."\n";
+        echo 'Finished writing the bad data XML '.date('h:i:s M d, Y').'...'."\n\n";
         echo 'Starting writing the good data XML '.$goodDataFile.' '.date('h:i:s M d, Y').'!'."\n";
 
         if(isset($goodData) && !empty($goodData)) {
@@ -202,8 +203,6 @@
 
             $usersRoot = $goodDataXml->createElement("users");
             $goodDataXml->appendChild($usersRoot);
-
-            echo 'There are '.count($goodData).' users that are valid'."\n";
 
             foreach($goodData as $key=>$val) {
                 $user = $goodDataXml->createElement('user');
@@ -235,9 +234,9 @@
             $goodDataXml->save($goodDataFile);
         }
 
-        echo 'Finished writing the good data XML '.$goodDataFile.' '.date('h:i:s M d, Y').'!'."\n";
+        echo 'Finished writing the good data XML '.$goodDataFile.' '.date('h:i:s M d, Y').'!'."\n\n";
 
-        echo count($xml->user).' users remain to be validate'."\n";
+        echo (count($xml->user) - 10000).' users remain to be validate'."\n";
         echo 'Starting '.$readFile.' trimming at '.date('h:i:s M d, Y').'...'."\n";
 
         for($j = 0; $j < 10000; $j+=1) {
@@ -246,7 +245,7 @@
 
         $xml->asXML($readFile);
 
-        echo 'Finished '.$readFile.' trimming at '.date('h:i:s M d, Y').'!'."\n";
+        echo 'Finished '.$readFile.' trimming at '.date('h:i:s M d, Y').'!'."\n\n";
 
         $endTime = microtime(true);
         echo $endTime - $startTimeAfterFile;
