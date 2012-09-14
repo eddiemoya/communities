@@ -341,7 +341,7 @@ shcJSL.gizmos.activate = function(event, parent, selector) {
 							
 			// Remove the selector code to get attribute
 			(Selector.toString().indexOf("\\") != -1)? attribute = ((Selector.split("\\")[0]) + (Selector.split("\\")[1])).replace(/(\*?\[)|(\])/g, '').toString():attribute = Selector.toString().replace(/(\*?\[)|(\])/g, '').toString();
-			//try {
+			try {
 				// If the the widget has 'shc:name' attribute, assign the
 				// JavaScript object [shc:widget] to the global variable
 				// that is [shc:name]
@@ -349,9 +349,9 @@ shcJSL.gizmos.activate = function(event, parent, selector) {
 				// If it can not create the object, error out gracefully
 				// and log the error, the widget that failed and the
 				// error message
-			//} catch(error) {
-			//	if (console && console.log) console.log("Failed to instantiate widget " + attribute + "[" + $(this).attr(attribute) + "] - " + error);
-			//}
+			} catch(error) {
+				if (console && console.log) console.log("Failed to instantiate widget " + attribute + "[" + $(this).attr(attribute) + "] - " + error);
+			}
 		} // END $.each function
 	) // END $.each
 }

@@ -13,7 +13,7 @@
 	);
  ?>
 
-<ul class="span8 widget_dropzone_widget dropzone">
+<section class="span8 widget_dropzone_widget dropzone">
 	<?php if(!dynamic_sidebar('Q&A Content Area')) : ?> 
 
 		<article class="span12 widget_post_a_question content-container widget post-your-question">
@@ -26,9 +26,9 @@
 
 	<?php endif; ?> 
 
-</ul>
+</section>
 
-<ul class="span4 widget_dropzone_widget dropzone">
+<section class="span4 widget_dropzone_widget dropzone">
 	<?php 
 		if(!dynamic_sidebar('Q&A Sidebar')){
 
@@ -37,6 +37,6 @@
 
 		 }
 	?>
-</ul>
+</section>
 
 <?php get_template_part('parts/footer'); ?>

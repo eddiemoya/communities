@@ -1,5 +1,22 @@
-<?php if(have_posts()) : ?>
-<header class="content-header">
+<header class="content-header author-result-list">
+    <?php
+        foreach ($variables as $user) :
+            if ($user->terms != "") :
+                $cats = explode(",", $user->terms);
+                foreach ($cats as $cat) {
+                    $include_terms[$cat] = true;
+                }
+            endif;
+        endforeach;
+        
+        $terms = get_terms( 'category' );
+        
+        foreach ($terms as $term) :
+            if ($include_terms[$term->term_id] != true) :
+                $exclude_terms .= $term->term_id.",";
+            endif;
+        endforeach;
+    ?>
 	<form method="post" action="">
 		<label for="sort-results">Sort By</label>
 			<?php 
@@ -32,7 +49,9 @@
 				'hide_if_empty' => true,
 				'class' => 'input_select',
 				'name' => 'filter-category',
-				'id' => 'sort-results'
+				'id' => 'sort-results',
+				'exclude' => $exclude_terms,
+				'show_option_none' => "Show All"
 			));
 			if(!empty($subcategory)){
 				wp_dropdown_categories(array(
@@ -43,15 +62,14 @@
 					'hide_if_empty' => true,
 					'class' => '',
 					'name' => 'filter-sub-category',
-					'id' => 'sub-category'
+					'id' => 'sub-category',
+					'exclude' => $exclude_terms,
+					'show_option_none' => "Show All"
 				));
 			}
 			?>
 		<input type="hidden" value="results-list" name="widget" />
+		<input type="hidden" value="author-filter" name="specificity" />
 	</form>
 </header>
-
-<section class="content-body">
-
-<?php endif; ?>
-
+<ol class="content-body">
