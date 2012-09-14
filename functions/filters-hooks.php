@@ -216,7 +216,7 @@ add_filter('sanitize_title', 'sanitize_title_with_dots_and_dashes', 10, 3);
 
 
 
-add_action('template_redirect', 'template_check');
+//add_action('template_redirect', 'template_check');
 function template_check(){
     $pt = get_query_var('post_type');
 
@@ -307,3 +307,12 @@ function post_comment_screen_name($commentdata) {
 }
 
 add_filter( 'preprocess_comment',  'post_comment_screen_name');
+
+function limit_search($query) {
+    if ($query->is_search)
+        $query->set('post_type',array('post','question','guide'));
+
+    return $query;
+}
+
+add_filter('pre_get_posts','limit_search');
