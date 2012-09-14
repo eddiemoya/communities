@@ -6,37 +6,47 @@
  * @author Eddie Moya
  * 
  * @global type $wp_query
- * @param type $template [optional] Template part to be used in the loop.
+ * @param string|array $template [optional] Template part to be used in the loop. Defaults to 'post'
+ * @param string|array $special [optional] Like get_template_part()'s second param, an appended portion of the filename delimited with a dash. $template-$special.php
+ * @param string|null $base_path [optional] The path (relative to the theme root folder) in which to find the template. Defaults to "parts". Defaults to null.
+ * @param string|null $no_posts_template [optional] The template to load should there not be any posts to show in the query. Defaults to null.
  *
  * @return void.
  */
-function loop($template = 'post', $special = null, $base_path = "parts", $no_posts_template = false){
+function loop($templates = 'post', $special = null, $base_path = "parts", $no_posts_template = null){
     global $wp_query;
     //print_pre($wp_query);
 
     //Allows for arrays of tempaltes to be passed, the first of which is found will be loaded.
-    $templates = array();
 
-    foreach((array)$special as $s){
-        foreach((array)$template as $temp){
-                $templates[] = trailingslashit($base_path) . ((isset($special)) ? $temp.'-'.$s : $temp).'.php';
+    $templates = (array)$templates;
+
+    foreach($templates as &$template){
+        $template = trailingslashit($base_path) . $template;
+     
+        foreach((array)$special as $s){
+                $template .= '-'.$s;
         }
+        $template .= '.php';
     }
 
     if (have_posts()) {
+
         while (have_posts()) {
             the_post();
-            $template = locate_template($templates, true, false);
+            locate_template($template, true, false);
         }
+
     } else {
-        if($no_posts_template){
+
+        if(!is_null($no_posts_template)){
             get_template_part($no_posts_template);
         }
+
     }
-    echo "<pre>";print_r($templates);echo "</pre>";
+    //echo "<pre>";print_r($templates);echo "</pre>";
 
     wp_reset_query();
-
 }
 
 /**
@@ -660,5 +670,3 @@ function set_screen_name($screen_name) {
 	}
 	
 }
-
-
