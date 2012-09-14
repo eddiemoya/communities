@@ -1521,6 +1521,15 @@ button.follow {
     font-weight: normal;
     margin: 0 .58em; }
 
+.ad-widget .content-body {
+  border-top: none; }
+.ad-widget h1 {
+  color: #cfcece;
+  font-size: 76.923%;
+  font-weight: normal;
+  text-align: center;
+  text-transform: uppercase; }
+
 .dropmenu li {
   float: left;
   position: relative; }

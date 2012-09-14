@@ -39,7 +39,7 @@
 		    <p class="content-comments">
 		    <?php
 		        $commentCount = get_custom_comment_count($comment_type, $post->ID);
-		        echo ($commentCount > 1) ? $commentCount.' comments' : $commentCount.'comment';
+		        echo ($commentCount > 1) ? $commentCount.' comments' : $commentCount.' comment';
 		    ?>
 		    </p>
 			</section>
