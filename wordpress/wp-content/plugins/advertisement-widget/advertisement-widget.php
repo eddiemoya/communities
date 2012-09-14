@@ -80,14 +80,14 @@ class Advertisement_Widget extends WP_Widget {
         //echo $before_title . $bp_title . $after_title;
         
         ?>
-        <article class="widget content-container span12 page-title">
-			<section class="content-body">
-			<h1><?php echo $pth_title;?></h1>
-			<?php if ($pth_subtitle != "") { ?>
-			    <h2><?php echo $pth_subtitle;?></h2>
-			<?php } ?>
-			</section>
-		</article>
+        	<article class="widget content-container span6 ad-widget">
+				<header class="content-header">
+				<h1><?php echo $aw_title;?></h1>
+				</header>
+				<section class="content-body clearfix">
+					<?php echo $aw_content;?>
+				</section>
+			</article>
         <?php
     }
     
@@ -109,8 +109,7 @@ class Advertisement_Widget extends WP_Widget {
         /* Lets inherit the existing settings */
         $instance = $old_instance;
         
-        
-        
+       
         /**
          * Sanitize each option - be careful, if not all simple text fields,
          * then make use of other WordPress sanitization functions, but also
@@ -120,7 +119,7 @@ class Advertisement_Widget extends WP_Widget {
          * @see http://codex.wordpress.org/Function_Reference/esc_attr
          */
         foreach($new_instance as $key => $value){
-            $instance[$key] = esc_attr($value);
+            $instance[$key] = $value;
             
         }
         
@@ -168,7 +167,7 @@ class Advertisement_Widget extends WP_Widget {
             array(
                 'field_id' => 'aw_content',
                 'type' => 'textarea',
-                'label' => 'Advertisement Content',
+                'label' => 'Advertisement Content'
             	)
         );
 
@@ -295,4 +294,4 @@ class Advertisement_Widget extends WP_Widget {
     }
 }
 
-Page_Title_Header_Widget::register_widget();
+Advertisement_Widget::register_widget();
