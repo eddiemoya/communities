@@ -13,28 +13,32 @@
  *
  * @return void.
  */
-function loop($templates = 'post', $special = null, $base_path = "parts", $no_posts_template = null){
+function loop($template = 'post', $special = null, $base_path = "parts", $no_posts_template = null){
     global $wp_query;
     //print_pre($wp_query);
 
     //Allows for arrays of tempaltes to be passed, the first of which is found will be loaded.
 
-    $templates = (array)$templates;
+    $template = (array)$template;
+    $templates = array();
+    $index_offset = 0;
 
-    foreach($templates as &$template){
-        $template = trailingslashit($base_path) . $template;
-     
-        foreach((array)$special as $s){
-                $template .= '-'.$s;
+    foreach($template as $index => $t){
+        
+        foreach($special as $s){
+
+            $templates[] = trailingslashit($base_path) . $t . '-'.$s.'.php';
+            $index_offset++;
         }
-        $template .= '.php';
+
+        $templates[$index+$index_offset] = trailingslashit($base_path) . $t .'.php';
     }
 
     if (have_posts()) {
 
         while (have_posts()) {
             the_post();
-            locate_template($template, true, false);
+            locate_template($templates, true, false);
         }
 
     } else {
@@ -44,7 +48,7 @@ function loop($templates = 'post', $special = null, $base_path = "parts", $no_po
         }
 
     }
-    //echo "<pre>";print_r($templates);echo "</pre>";
+    echo "<pre>";print_r($templates);echo "</pre>";
 
     wp_reset_query();
 }
