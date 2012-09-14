@@ -46,7 +46,7 @@
 				
 				<ul>
 					<li id="header_feedback"><a href="<?php echo $qualtricsUrl; ?>" title="Feedback" target="_blank">Feedback</a></li>
-					<li id="header_shopping">Go Shopping: <a href="http://www.<?php echo theme_option("brand"); ?>.com" title="<?php echo ucfirst( theme_option("brand") ); ?>" rel="external" title="<?php echo ucfirst( theme_option("brand") ); ?>" class="bold"><?php echo ucfirst( theme_option("brand") ); ?></a></li>
+					<li id="header_shopping">Go Shopping: <a href="http://www.<?php echo theme_option("brand"); ?>.com" rel="external" title="<?php echo ucfirst( theme_option("brand") ); ?>" class="bold"><?php echo ucfirst( theme_option("brand") ); ?></a></li>
 				</ul>
 				
 			</li>

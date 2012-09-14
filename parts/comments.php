@@ -22,14 +22,12 @@
 ?>
 <section class="span12 content-container comments">
 <?php if ($comment_type == "answer"): ?>
-	
-<!-- <header class="section-header comments-header clearfix"> -->
-	
-<header class="content-header clearfix">
+		
+	<header class="content-header clearfix">
 	
 	  <h3><?php echo ucfirst( $comment_type ); ?>s</h3>
     <h4>
-        <?php
+    	<?php
             $commentCount = get_custom_comment_count($comment_type, $post->ID);
 
             if($commentCount > 0) {
@@ -50,26 +48,26 @@
             }
         ?>
     </h4>
-</header>
+	</header> <!-- END ANSWER HEADER -->
 <?php endif; ?>
-<section class="content-body">
-<ol id="allComments">
+	<section class="content-body">
+		<ol id="allComments">
 <?php
         foreach($comments as $comment) {
             get_partial('parts/comment', array("current_user" => $current_user, "comment" => $comment, "recursive" => true));
         }
 ?>
-</ol>
+		</ol> <!-- END ALL COMMENTS -->
 <?php
     # No Comments.
     else:
 ?>
-	<p>
-	    No <?php echo $comment_type; ?>s yet.
-	</p>
+		<p>
+		    No <?php echo $comment_type; ?>s yet.
+		</p>
 
 <?php
     endif;
-?></section>
-</section>
+?></section> <!-- END CONTENT BODY -->
+</section> <!-- END COMMENTS CONTENT CONTAINER -->
 <?php
