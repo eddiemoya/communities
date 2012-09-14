@@ -6,7 +6,6 @@
     $add_url = isset( $url ) ? ' addthis:url="' . $url . '"' : '';
 ?>
 
-<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
 <?php if ( (isset($version) && $version == 'long') || (is_object(is_widget() && function_exists('is_widget')) && is_widget()->share_style == 'long') ) : ?>
 <div class="addthis_toolbox addthis_default_style">
     <a class="addthis_button_facebook_like"<?php echo $add_url; ?>></a>
@@ -27,4 +26,3 @@
     </li>
 </ul>
 <?php endif; ?>
-<script type="text/javascript" src="<?php echo get_template_directory_uri() ?>/assets/js/addthis.js"></script>
