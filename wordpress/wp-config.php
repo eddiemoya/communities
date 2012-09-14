@@ -18,13 +18,13 @@
 define('DB_NAME', 'communities');
 
 /** MySQL database username */
-define('DB_USER', 'communities_dba');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'password1');
+define('DB_PASSWORD', 'n3uraxis');
 
 /** MySQL hostname */
-define('DB_HOST', 'barable.com');
+define('DB_HOST', '127.0.0.1:3306');
 // define('WP_ALLOW_MULTISITE', true);
 
 /** Database Charset to use in creating database tables. */
