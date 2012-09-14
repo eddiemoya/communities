@@ -12,9 +12,7 @@
                 </span>
             <?php endif; //show category; ?>
 
-            <time class="content-date" datetime="<?php the_time('Y-m-d'); ?>">
-                <?php the_time('F j, Y'); ?>
-            </time>
+            <?php get_partial( 'parts/space_date_time', array( "timestamp" => get_the_time('U'), "remove_hms" => true ) ); ?>
         </div>
 
     <?php endif; //show category or show date ?>
@@ -22,16 +20,12 @@
 
     <?php if (is_widget()->show_thumbnail) : ?>
         <div class="category-image">
-
             <img src="<?php (function_exists('get_category_image_url')) ? get_category_image_url((int)$c[0]->term_id) : ''; ?>" />
         </div>
     <?php endif; ?>
 
     <h1 class="content-headline">
-        Q:<a href="<?php the_permalink(); ?>">
-            
-            <?php the_title(); ?>
-        </a>
+        Q: <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
     </h1>
     
     <ul>

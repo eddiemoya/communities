@@ -13,10 +13,6 @@ html, body {
   color: sears( body );
 }
 
-body {
-  font-size: percentage( $default-font-size/16 );
-}
-
 .kmart a {
   color: kmart( link );
   text-decoration: none;
@@ -339,6 +335,10 @@ form {}
   .content-date {
     float:right;
     line-height: em-adjust( 1.5em );
+    .time-stamp {
+      display:inline-block;
+      margin-left:1.5em;
+    }
   }
   .content-details {
     margin-bottom: em-adjust( .625em ); // 10px
@@ -436,10 +436,6 @@ textarea.discussion {
   }
   .content-date {
     float:left;
-    .time-stamp {
-      display:inline-block;
-      margin-left:1.5em;
-    }
   }
   .actions {
     float:none;
@@ -540,30 +536,6 @@ textarea.discussion {
     margin:em-adjust( 0 .625em .625em 0 );
     width: em-adjust( 6.25em );
   }
-
-  $column-width: nth( $span-widths, 4 );
-  $calculated-widths: ratioize( ($column-width, $column-width, 20) );
-  &.columns {
-    .content-body {
-      & > * {
-        float: left;
-        width: nth( $calculated-widths, 1 );
-        & + * {
-          margin-left: nth( $calculated-widths, 3 );
-        }
-      }
-    }
-    .featured:nth-child(odd) .column {
-      border-right: 1px solid sears( decorative );
-      padding-right: nth( $calculated-widths, 3 );
-    }
-    .content-date {
-      float: none;
-    }
-    .content-headline {
-      // font-size: font-size( 13 );
-    }
-  }
 }
 
 .span4, .span3 {
@@ -584,7 +556,7 @@ textarea.discussion {
 }
 
 // RESULT LIST
-.result-list {
+.results-list {
   margin-top: 1em;
   border: 1px solid sears( decorative );
   @include border-radius( 5px );
@@ -613,7 +585,7 @@ textarea.discussion {
   }
 }
 
-.result-list {
+.results-list {
   & > .content-body {
     border:none;
     padding:0 em-adjust( .625em );
@@ -839,6 +811,9 @@ fieldset#use_your_account_from {
 // PROFILE
 $tab-padding: "1em 0 .6em 0";
 .profile {
+  .content-container .content-body {
+    border-top: 0;
+  }
   .tabs {
     border-bottom: 1px solid sears( decorative );
     position: relative;
@@ -894,9 +869,13 @@ $tab-padding: "1em 0 .6em 0";
     @extend .bold;
   }
   .expert-answers {
-    padding: 1em 3%;
-    &.span2 {
-      margin-left: 0;
+    li {
+      border-top: 0;
+      padding: .5em;
+      @include border-radius( 5px );
+      .content-excerpt {
+        margin-top: 1.5em;
+      }
     }
   }
   .personal_info {
@@ -1169,7 +1148,7 @@ $tab-padding: "1em 0 .6em 0";
     text-align:left;
   }
 }
-#allComments .expert {
+.expert, #allComments .expert {
   background: lighten( sears( decorative ), 15 );
 }
 
@@ -1324,5 +1303,19 @@ button.follow {
     font-size:font-size(17);
     font-weight:normal;
     margin:0 .58em;
+  }
+}
+
+// AD WIDGET
+.ad-widget {
+  .content-body {
+    border-top:none;
+  }
+  h1 {
+    color:#cfcece;
+    font-size:font-size(10);
+    font-weight:normal;
+    text-align:center;
+    text-transform:uppercase;
   }
 }
