@@ -20,6 +20,8 @@ function loop($template = 'post', $special = null, $base_path = "parts", $no_pos
     //Allows for arrays of tempaltes to be passed, the first of which is found will be loaded.
 
     $template = (array)$template;
+    $special = (array)$special;
+    
     $templates = array();
     $index_offset = 0;
 
@@ -48,7 +50,7 @@ function loop($template = 'post', $special = null, $base_path = "parts", $no_pos
         }
 
     }
-    echo "<pre>";print_r($templates);echo "</pre>";
+    //echo "<pre>";print_r($templates);echo "</pre>";
 
     wp_reset_query();
 }
