@@ -5,7 +5,8 @@ jQuery(document).ready(function($) {
 	 
 	 * @author Eddie Moya
 	 */
- 	$('.post-your-question select#category, select#sort-results').bind('change', function(e){
+ 	$('.post-your-question select#category, select.filter-results').bind('change', function(e){
+
 		var data = {
 			action		: 'get_subcategories_ajax',
 			category_id	: $('option', this).filter(':selected').val(),
@@ -59,25 +60,29 @@ jQuery(document).ready(function($) {
  	});
 
 
+
  	$('.results-list select').on('change', function(e){
  		e.preventDefault();
 
+ 		container = $(this).closest('.results-list');
+ 		
 		var data = {
 			action		: 'get_posts_ajax',
-			template 	: 'results-list-post',
-			category	: $('option', this).filter(':selected').val()
+			special		: $('.post_type', container).val(),
+			post_type 	: $('.post_type', container).val(),
+			template 	: $('.widget_name', container).val(),
+			category	: $('.filter-results option', container).filter(':selected').val(),
+			order		: $('.sort-results option', container).filter(':selected').val()
 		};
-
-		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
-
-		container = $(this).closest('.results-list');
+		
+		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category .filter-results option', this).filter(':selected').val() : data.category; //console.log(data);
 
 		jQuery.ajax({
 			url  : ajaxdata.ajaxurl,
 			type: 'POST',
 			data : data,
 			success:function(results){
-				console.log(results)
+				//console.log(results)
 				$('.content-body', container).empty();
 				$('.content-body', container).append($(results));
 			}
