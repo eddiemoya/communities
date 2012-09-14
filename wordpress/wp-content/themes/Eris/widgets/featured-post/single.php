@@ -18,7 +18,7 @@
 
             <div class="featured-image <?php echo $inner_span; ?>">
                 <img src="<?php echo $thumbnail_src[0]; ?>" alt="<?php echo get_the_title(); ?>" />
-            </div>=<?php
+            </div><?php
         endif;
 
     else :
@@ -62,14 +62,9 @@
 	        <?php endif; //is_widget->show_comment_count ?>
 				</ul>
 
-<!--         <p class="content-byline">By: <?php echo get_the_author(); ?> </p>
-        
-        <?php if (is_widget()->show_comment_count || $is_widget_override): ?>
-            <p class="content-comments"><?php comments_number(); ?></p>
-        <?php endif; //is_widget->show_comment_count ?> -->
+
         <?php  if(is_widget()->show_content || $is_widget_override) : ?>
                 <?php the_excerpt(); ?>
-                <!-- <a href="<?php the_permalink(); ?>" title="Read More">Read more</a> -->
         <?php endif; //is_widget_show_content ?>
 
         <?php if (is_widget()->show_tags || $is_widget_override) : ?>

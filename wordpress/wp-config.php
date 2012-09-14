@@ -25,14 +25,12 @@ define('DB_USER', 'communities_dba');
 define('DB_PASSWORD', 'password1');
 
 /** MySQL hostname */
+#define('DB_HOST', '10.98.0.164');
 define('DB_HOST', 'barable.com');
 // define('WP_ALLOW_MULTISITE', true);
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
-
-/** The Database Collate type. Don't change this if in doubt. */
-//define('DB_COLLATE', '');
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -97,6 +95,9 @@ define( 'WP_PLUGIN_URL',  'http://' . $_SERVER['HTTP_HOST'] . '/wp-content/plugi
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
+	
+/** W3 Total Cache **/
+define('WP_CACHE', true); 
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
