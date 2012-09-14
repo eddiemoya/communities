@@ -11,3 +11,4 @@ if(!is_ajax()) {
 if(!is_ajax()){ 
     get_template_part('parts/footer', 'widget');
 }
+
