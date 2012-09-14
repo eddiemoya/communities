@@ -16,9 +16,9 @@ function get_subcategories_ajax(){
                 'class' => 'input_select',
                 'name' => 'sub-category',
                 'id' => 'sub-category',
-                //'echo' => false
+                'echo' => true
             ));
-         exit;
+        exit();
     }
 }
 add_action('wp_ajax_get_subcategories_ajax', 'get_subcategories_ajax');
@@ -53,20 +53,26 @@ function get_posts_ajax(){
             $query['cat'] = $_POST['category'];
 
             if(isset($_GET['s'])) { 
-                $wp_query['s'] = $_GET['s'];
+                $query['s'] = $_GET['s'];
             }
+
+            if(isset($_POST['post_type'])){
+                $query['post_type'] = array($_POST['post_type']);
+            }
+
+            if(isset($_POST['order'])){
+                $query['order'] = $_POST['order'];
+            }
+
             $wp_query = new WP_Query($query);
 
-        loop($_POST['template']);
+        loop($_POST['template'], $_POST['special']);
         wp_reset_query();
 
     } else {
         echo "<!-- No template selected -->";
     }
-
-
     exit;
-    
 }
 
 add_action('wp_ajax_nopriv_get_posts_ajax', 'get_posts_ajax');
