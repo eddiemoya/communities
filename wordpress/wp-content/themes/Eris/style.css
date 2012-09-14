@@ -635,12 +635,7 @@ ul.bullets {
     letter-spacing: -0.05em; }
   .crest.labeled h4 {
     background: #bcdaf3 url("/wp-content/themes/Eris/assets/img/sprite-user.png") repeat-x left bottom;
-    text-align: center;
-    -webkit-border-radius: 0 0 10px 10px;
-    -moz-border-radius: 0 0 10px 10px;
-    -ms-border-radius: 0 0 10px 10px;
-    -o-border-radius: 0 0 10px 10px;
-    border-radius: 0 0 10px 10px; }
+    text-align: center; }
   .crest.labeled h4, .crest.labeled h4 a {
     color: white;
     line-height: 1; }
