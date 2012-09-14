@@ -66,7 +66,7 @@ function get_posts_ajax(){
 
             $wp_query = new WP_Query($query);
 
-        loop($_POST['template'], $_POST['special']);
+        loop($_POST['template'], array($_POST['special'], 'post'));
         wp_reset_query();
 
     } else {
