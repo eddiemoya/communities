@@ -20,7 +20,7 @@
 			<?php include ( get_template_directory().'/parts/forms/post-a-question-step-'.$data['step'].'.php' ); ?>
 		</article>
 
-		<article class="span12 widget_result-list content-container widget results-list">
+		<article class="span12 widget_results-list content-container widget results-list">
 			<?php get_template_part('widgets/results-list/archive'); ?>
 		</article> 
 
