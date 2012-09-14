@@ -19,7 +19,7 @@
         endforeach;
     ?>
 	<form method="post" action="">
-		<label for="sort-results">Sort By</label>
+		<label for="sort-results">Sort by</label>
 			<?php 
 			// Get the normal queried category term id.
 			$category = get_queried_object()->term_id;
