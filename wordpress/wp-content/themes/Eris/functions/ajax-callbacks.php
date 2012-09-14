@@ -240,7 +240,7 @@ add_action('wp_ajax_nopriv_flag_me', 'ajaxify_comments');
 
 
 /**
- * Sets comment_approved to 0.
+ * Sets comment_approve
  * @author Dan Crimmins
  */
 function user_delete_comment() {
