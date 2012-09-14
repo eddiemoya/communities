@@ -37,8 +37,10 @@
         $a_classes[] = 'labeled';
         $crest_titling = '
     <h4><a href="' . get_profile_url( $user_id ) . '">' . ucfirst( $user->roles[0] ) . '</a></h4>
-    <div class="tail">&nbsp;</div>
 ';
+        # removing the tail per client's request. -CAB 9.14.2012
+        # <div class="tail">&nbsp;</div>
+        
         if ( $display_name ) {
             $crest_titling .= '
     <h5>' . return_screenname_link( $user_id ) . '</h5>
