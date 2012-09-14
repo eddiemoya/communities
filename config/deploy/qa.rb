@@ -17,7 +17,7 @@ role :db, domain, :primary => true
 
 set (:branch) { "development" }
 set (:deploy_to) { "/opt/stateadm/communities" }
-set (:app_loc) { "/appl/wordpress/www/comm_new/community/wp-content" }
+set (:app_loc) { "/appl/wordpress/www/community/community/wp-content" }
 
 set :copy_strategy, :checkout
 set :deploy_via, :copy
