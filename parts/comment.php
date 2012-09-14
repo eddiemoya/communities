@@ -18,7 +18,7 @@
     $parentId = (!isset($parentId)) ? $comment->comment_ID : $parentId;
 ?>
 
-<li class="comment clearfix<?php echo $container_class; ?>" id="<?php echo $comment_type.'-reply-'.$comment->comment_ID ?>">
+	<li class="comment clearfix<?php echo $container_class; ?>" id="<?php echo $comment_type.'-reply-'.$comment->comment_ID ?>">
     <?php get_partial( 'parts/crest', array( "user_id" => $comment->user_id ) ); ?>
     <div class="span10">
     	<article class="content-container">
@@ -29,14 +29,16 @@
 					</div>
 					
 					<?php if ($parent_author) : ?>
-            <p class="responseTo">In response to <?php echo $parent_author; ?></p>
+            <p class="responseTo">
+            	In response to <?php echo $parent_author; ?>
+            </p>
         	<?php endif;?>
           <p>
           	<?php echo $comment->comment_content; ?>
           </p>  
 					
 				</section>
-			</article>
+			</article> <!-- END ARTICLE CONTENT CONTAINER -->
         <?php
             $form_style = '';
             $actions = array(
@@ -55,14 +57,13 @@
 
             /**
             * Ensure plugin is active before displaying anything
-            */
+            */            
             if(is_plugin_active('action_jackson/action_jackson.php')) {
                 get_partial( 'parts/forms/post-n-comment-actions', $actions );
             } else {
                 echo 'not active';
             }
 
-            if( is_user_logged_in() ):
         ?>
         <div class="clearfix"></div>
         <div class="ugc-comment-answer_form clearfix">
@@ -86,7 +87,7 @@
 	        			</li>
 		          <?php endif;?>
 	        		<li class="clearfix">
-	        			<textarea id="comment-answer_textarea" class="input_textarea discussion" name="comment" shc:gizmo:form="{required:true}"><?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? stripslashes( urldecode( $_GET['comment'] ) ) : null; ?></textarea>
+	        			<textarea class="input_textarea discussion" name="comment" shc:gizmo:form="{required:true}"><?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? stripslashes( urldecode( $_GET['comment'] ) ) : null; ?></textarea>
 	        		</li>
 	        		<li class="clearfix">
 	        			<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Post</button>
@@ -100,18 +101,17 @@
         	</form>
         	
         	<?php } ?>
-        </div>
-        <?php endif; ?>
-    </div>
+        </div> <!-- END UGC COMMENT ANSWER FORM --> 
+    </div> <!-- END SPAN10 -->
     <?php
         if (!empty( $comment->children ) ) :
     ?>
         <ol class="children">
             <?php
-                    foreach( $comment->children as $child ){
-                        get_partial('parts/comment', array("current_user" => $current_user, "comment" => $child, 'parentId' => $parentId));
-                    }
+              foreach( $comment->children as $child ){
+                  get_partial('parts/comment', array("current_user" => $current_user, "comment" => $child, 'parentId' => $parentId));
+              }
             ?>
         </ol>
     <?php endif; ?>
-</li>
+	</li>
