@@ -652,10 +652,6 @@ textarea.discussion {
       border-top: 0;
     }
   }
-  time {
-    float: right;
-    @extend .faint;
-  }
   h3 {
     a {
       font-weight: bold;
@@ -663,6 +659,9 @@ textarea.discussion {
     & > * {
       display: block;
     }
+  }
+  .content-date {
+    text-align: right;
   }
   .excerpt {
     padding: .3em 1em;
@@ -680,7 +679,6 @@ textarea.discussion {
   }
   .category {
     font-size: font-size( 11 );
-    padding-top: .2em;
   }
 }
 
