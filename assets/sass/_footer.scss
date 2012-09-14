@@ -12,14 +12,12 @@ ul.footer_anterior {
     a {
       display:block;
       height:16px;
-      line-height:16px;
-      text-indent:-999999em;
+      text-indent:-9999em;
     }
   }
   .acc.icon {
     a {
       height:30px;
-      line-height:31px;
     }
   }
   @include sprite-position( ".acc", left,   top );
