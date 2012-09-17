@@ -22,44 +22,24 @@ class Section_Front{
 	public function add_actions(){
 
 		add_action( 'init', 					array(__CLASS__, 'register_sections_type') );
-
 		add_action( 'save_post', 				array(__CLASS__, 'save_section') );
 		//add_action( 'wp_loaded',				array(__CLASS__, 'flush_custom_rules' ) );
 		add_filter( 'rewrite_rules_array',		array(__CLASS__, 'section_rewrite_rules') );
-
-
 		add_filter('query_vars', 				array(__CLASS__, 'add_var'));
-		//add_filter('pre_get_posts')
-
-		add_action('pre_get_posts', array(__CLASS__, 'custom_primary_query'));
-
-
+		add_action('pre_get_posts', 		array(__CLASS__, 'custom_primary_query'));
 	}
 
 
-
-		function add_var($qvars) {
-			$qvars[] = 'meta_key';
-			$qvars[] = 'old_post_type';
-
-			return $qvars;
-		}
+	public function add_var($qvars) {
+		$qvars[] = 'meta_key';
+		$qvars[] = 'old_post_type';
+		$qvars[] = 'old_category';
+		$qvars[] = 'old_paged';
 
 
-// function custom_primary_query($query_string){
+		return $qvars;
+	}
 
-// 	if ( isset($query_string['meta_key']) && strstr($query_string['meta_key'], ' ') )  {
-
-// 		$query_string['meta_value'] = 'balls';
-  
-// 	}
-    
-
-    
-// 	return $query_string;
-    
-    
-// }
 //add_filter('request', 'custom_primary_query');
 /**
  * Do not call this function directly, add it to the request filter
@@ -147,16 +127,15 @@ function custom_primary_query($query = '') {
 	        'show_ui' 			=> true,
 	        'show_in_menu' 		=> true,
 	        'show_in_nav_menus' => false,
-	        'show_in_admin_bar' => true,
-	        'query_var' 		=> false,
+	        'query_var'			=> false,
 	        'rewrite' 			=> false,
+	        'show_in_admin_bar' => true,
 	        'capability_type' 	=> 'page',
 	        'has_archive' 		=> false,
 	        'hierarchical' 		=> false,
 	        'menu_position'	 	=> 3,
 	        'supports' 			=> array('title', 'page-attributes'),
 	        'taxonomies' 		=> array('category'),
-	        'rewrite' 			=> false,
 	    );
 	    register_post_type('section', $args);
 	}
@@ -205,24 +184,19 @@ function custom_primary_query($query = '') {
 					}
 					$meta_keys = implode($meta_keys,'+');
 
-					$endpoint_pattern = '(' . implode('|', array_filter($post_types)) . ')';
-					$new_rules["{$term->taxonomy}/{$term->slug}/({$endpoint_pattern})/?$"] = 'index.php?old_post_type=$matches[1]&posts_per_page=1&posts__in='.$post->ID.'&post_type='.$post->post_type.'&category_name='.$term->slug.'&meta_key='.$meta_keys;
-
-
+					$endpoint_pattern = implode('|', array_filter($post_types));
+					$new_rules["{$term->taxonomy}/{$term->slug}/({$endpoint_pattern})/?$"] = 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_post_type=$matches[1]';
+					$new_rules["{$term->taxonomy}/{$term->slug}/({$endpoint_pattern})/page/?([0-9]{1,})/?$"] = 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_post_type=$matches[1]&old_paged=$matches[2]';
 				}
+
 				if(!empty($post->meta['rewrite_tax_archive'])){
 					$new_rules["{$term->taxonomy}/({$term->slug})/?$"] = 'index.php?posts_per_page=1&posts__in='.$post->ID.'&post_type='.$post->post_type.'&category_name='.$term->slug.'&meta_key=widgetpress_post_type_none';
 				}
-
-
 				$tposts[] = $post;
-			}
-
-
-			
+			}	
 		}
 		
-			//echo "<pre>";print_r(array($new_rules, $tposts,$terms));echo "</pre>";
+		echo "<pre>";print_r(array($new_rules, $tposts,$terms));echo "</pre>";
 		
 
 
