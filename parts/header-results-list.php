@@ -62,7 +62,7 @@ if(have_posts()) : ?>
 		<label for="sort-results<?php echo $class; ?>">Sort by</label>
 		<select name="sort-results" id="sort-results" class="sort-results<?php echo $class; ?>">
 			<option value="DESC">Oldest First</option>
-			<option value="ASC">Newset First</option>
+			<option value="ASC">Newest First</option>
 		</select>
 		<input type="hidden" value="results-list" class="widget_name" name="widget" />
 		<input type="hidden" value="<?php echo $post_type; ?>" class="post_type" name="post_type" />
