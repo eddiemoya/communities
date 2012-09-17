@@ -30,62 +30,62 @@ jQuery(document).ready(function($) {
 		});
  	});
 
- 	/**
- 	 * Super massively awesome jquery that, matched with the somewhat 
- 	 * lamer widgets/results-list/archive.php template, and the ajax-callbacks.php 
- 	 * template, allows the posts widget to filter via ajax.
- 	 */ 
- 	$('.author-result-list select').on('change', function(e){
- 		e.preventDefault();
+ 	// /**
+ 	//  * Super massively awesome jquery that, matched with the somewhat 
+ 	//  * lamer widgets/results-list/archive.php template, and the ajax-callbacks.php 
+ 	//  * template, allows the posts widget to filter via ajax.
+ 	//  */ 
+ 	// $('.author-result-list select').on('change', function(e){
+ 	// 	e.preventDefault();
 
-		var data = {
-			action		: 'get_filtered_authors_ajax',
-			template 	: 'author-filtered-list',
-			category	: $('option', this).filter(':selected').val()
-		};
+		// var data = {
+		// 	action		: 'get_filtered_authors_ajax',
+		// 	template 	: 'author-filtered-list',
+		// 	category	: $('option', this).filter(':selected').val()
+		// };
 
-		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
+		// data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
 
-		container = $(this).closest('.dropzone-inner-wrapper');
+		// container = $(this).closest('.dropzone-inner-wrapper');
 
-		jQuery.ajax({
-			url  : ajaxdata.ajaxurl,
-			type: 'POST',
-			data : data,
-			success:function(results){
-				$('.content-body', container).empty();
-				$('.content-body', container).append($(results));
-			}
-		});
- 	});
+		// jQuery.ajax({
+		// 	url  : ajaxdata.ajaxurl,
+		// 	type: 'POST',
+		// 	data : data,
+		// 	success:function(results){
+		// 		$('.content-body', container).empty();
+		// 		$('.content-body', container).append($(results));
+		// 	}
+		// });
+ 	// });
 
- 	// Duplicate of above, seperated to keep the old version in case it did something special i was not aware of.
- 	$('.results-list select.filter-results-users').on('change', function(e){
- 		e.preventDefault();
+ 	// // Duplicate of above, seperated to keep the old version in case it did something special i was not aware of.
+ 	// $('.results-list select.filter-results-users').on('change', function(e){
+ 	// 	e.preventDefault();
 
-		var data = {
-			action		: 'get_filtered_authors_ajax',
-			template 	: 'author-filtered-list',
-			category	: $('option', this).filter(':selected').val()
-		};
+		// var data = {
+		// 	action		: 'get_filtered_authors_ajax',
+		// 	template 	: 'author-filtered-list',
+		// 	category	: $('option', this).filter(':selected').val()
+		// };
 
-		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
+		// data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
 
-		container = $(this).closest('.dropzone-inner-wrapper');
+		// container = $(this).closest('.dropzone-inner-wrapper');
 
-		jQuery.ajax({
-			url  : ajaxdata.ajaxurl,
-			type: 'POST',
-			data : data,
-			success:function(results){
-				$('.content-body', container).empty();
-				$('.content-body', container).append($(results));
-			}
-		});
- 	});
+		// jQuery.ajax({
+		// 	url  : ajaxdata.ajaxurl,
+		// 	type: 'POST',
+		// 	data : data,
+		// 	success:function(results){
+		// 		$('.content-body', container).empty();
+		// 		$('.content-body', container).append($(results));
+		// 	}
+		// });
+ 	// });
 
 
- 	$('.results-list select.filter-results-posts').on('change', function(e){
+ 	$('.results-list select').on('change', function(e){
  		e.preventDefault();
 
  		container = $(this).closest('.results-list');
@@ -95,8 +95,8 @@ jQuery(document).ready(function($) {
 			special		: $('.post_type', container).val(),
 			post_type 	: $('.post_type', container).val(),
 			template 	: $('.widget_name', container).val(),
-			category	: $('.filter-results option', container).filter(':selected').val(),
-			order		: $('.sort-results option', container).filter(':selected').val()
+			category	: $('.filter-results-posts option', container).filter(':selected').val(),
+			order		: $('.sort-results-posts option', container).filter(':selected').val()
 		};
 		
 		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category .filter-results option', this).filter(':selected').val() : data.category; //console.log(data);

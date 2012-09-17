@@ -66,7 +66,7 @@ function get_posts_ajax(){
 
             $wp_query = new WP_Query($query);
 
-        loop($_POST['template'], $_POST['special']);
+        loop($_POST['template'], array($_POST['special'], 'post'));
         wp_reset_query();
 
     } else {
@@ -243,3 +243,26 @@ function ajaxify_comments() {
 }
 add_action('wp_ajax_flag_me', 'ajaxify_comments');
 add_action('wp_ajax_nopriv_flag_me', 'ajaxify_comments');
+
+
+/**
+ * Sets comment_approve
+ * @author Dan Crimmins
+ */
+function user_delete_comment() {
+	
+	global $wpdb;
+	
+	$comment_id = $_POST['comment_id'];
+	
+	$update = $wpdb->update($wpdb->comments, 
+							array('comment_approved' => '0'),
+							array('comment_ID' => $comment_id));
+	
+	echo ($update) ? $comment_id : null;
+	
+	exit;
+}
+
+add_action('wp_ajax_user_delete_comment', 'user_delete_comment');
+add_action('wp_ajax_nopriv_user_delete_comment', 'user_delete_comment');
