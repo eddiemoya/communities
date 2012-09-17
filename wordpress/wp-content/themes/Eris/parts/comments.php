@@ -18,9 +18,6 @@
 
     $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type));
     
-   /* echo '<pre>';
-    var_dump($comments);
-    exit;*/
 
     if ( isset( $comments ) && !empty( $comments ) ) :
 ?>
