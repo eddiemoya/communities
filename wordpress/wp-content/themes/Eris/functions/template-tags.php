@@ -18,10 +18,10 @@ function loop($template = 'post', $special = null, $base_path = "parts", $no_pos
     //print_pre($wp_query);
 
     //Allows for arrays of tempaltes to be passed, the first of which is found will be loaded.
-
     $template = (array)$template;
     $special = (array)$special;
     
+    //echo "<pre>";print_r($special);echo "</pre>";
     $templates = array();
     $index_offset = 0;
 
@@ -675,3 +675,4 @@ function set_screen_name($screen_name) {
 		return true;
 	}
 }
+

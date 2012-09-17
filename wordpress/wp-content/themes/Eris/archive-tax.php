@@ -46,7 +46,7 @@
 
 	<?php if(!dynamic_sidebar('Posts Content Area')) : ?> 
 			<!-- <article class="span12 widget_featured-post content-container widget featured-post"> -->
-		<article class="span12 widget_result-list content-container widget result-list">
+		<article class="span12 widget_results-list content-container widget results-list">
 			<?php get_template_part('widgets/results-list/archive'); ?>
 		</article> 
 		
