@@ -3,6 +3,8 @@
  * @package WordPress
  * @subpackage White Label
  */
+
+// Can anyone else think of a better way to pass this parameter along
 ?>
                   
 
@@ -29,6 +31,6 @@
       </footer>
 
     </div> <!-- #container -->
-<?php include('tooltip.php'); ?>
+<?php get_partial('parts/tooltip'); ?>
   </body>
 </html>
