@@ -60,14 +60,17 @@
 ?>
 		</ol> <!-- END ALL COMMENTS -->
 <?php
-    # No Comments.
+    # No Comments. Only show on the 'question' post_type.
     else:
+        if ( get_post_type( $post->ID ) == 'question' ):
 ?>
-		<p>
-		    No <?php echo $comment_type; ?>s yet.
-		</p>
+
+    <p>
+        No <?php echo $comment_type; ?>s yet.
+    </p>
 
 <?php
+        endif;
     endif;
 ?></section> <!-- END CONTENT BODY -->
 </section> <!-- END COMMENTS CONTENT CONTAINER -->
