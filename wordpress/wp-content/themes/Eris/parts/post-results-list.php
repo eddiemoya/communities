@@ -51,16 +51,7 @@
             <?php the_excerpt(); ?>
 
             <p class="content-tags">
-
                 <?php the_tags("Tags: ", ", "); ?>
-                <?php 
-                // $tags = get_the_tags(); 
-                //     foreach((object)$tags as $tag) {
-                //         $output[] = '<a href="' . get_tag_link($tag->term_id) . '" title="' . $tag->name . '"> ' . $tag->name . '</a>';
-                //     }
-                //     if (count($output) > 0)
-                //         echo "Tags: " . implode(', ', $output);
-                ?>
             </p>
 
             <section class="post-actions">
