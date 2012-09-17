@@ -1,8 +1,8 @@
 <?php 
 
 
-add_action('category_rewrite_rules', 'category_post_type_endpoints');
-add_action('rewrite_rules_array', 'posts_endpoint');
+//add_action('category_rewrite_rules', 'category_post_type_endpoints', 11);
+//add_action('rewrite_rules_array', 'posts_endpoint');
 /**
  * Add endpoint for posttype archive for the POST post type.
  */
