@@ -9,7 +9,7 @@ foreach($activities as $activity):
 ?>
 <li class="clearfix">
     <h3>
-        <?php get_partial( 'parts/space_date_time', array( "timestamp" => strtotime( $activity->post_date ) ) ); ?> test
+        <?php get_partial( 'parts/space_date_time', array( "timestamp" => strtotime( $activity->post_date ) ) ); ?>
         <a href="<?php  echo (count($activity->categories)) ? get_term_link($activity->categories[0]) : null;?>" class="category"><?php echo (count($activity->categories)) ? $activity->categories[0]->cat_name : 'Uncategorized'; ?></a>
         <a href="<?php echo get_permalink($activity->ID);?>"><?php echo $activity->post_title; ?></a>
     </h3>
