@@ -307,3 +307,12 @@ function post_comment_screen_name($commentdata) {
 }
 
 add_filter( 'preprocess_comment',  'post_comment_screen_name');
+
+function limit_search($query) {
+    if ($query->is_search)
+        $query->set('post_type',array('post','question','guide'));
+
+    return $query;
+}
+
+add_filter('pre_get_posts','limit_search');

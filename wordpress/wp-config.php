@@ -13,55 +13,23 @@
  *
  * @package WordPress
  */
+	
+/** The name of the database for WordPress */
+define('DB_NAME', 'communities');
 
-define('USE_LOCAL_DB', false);
+/** MySQL database username */
+define('DB_USER', 'communities_dba');
 
-// ** MySQL settings - You can get this info from your web host ** //
+/** MySQL database password */
+define('DB_PASSWORD', 'password1');
 
-if(! USE_LOCAL_DB) {//Use Barable.com
-	
-	/** The name of the database for WordPress */
-	define('DB_NAME', 'communities');
-	
-	/** MySQL database username */
-	define('DB_USER', 'communities_dba');
-	
-	/** MySQL database password */
-	define('DB_PASSWORD', 'password1');
-	
-	/** MySQL hostname */
-	define('DB_HOST', 'barable.com');
-	// define('WP_ALLOW_MULTISITE', true);
-	
-	/** Database Charset to use in creating database tables. */
-	define('DB_CHARSET', 'utf8');
-	
-	/** The Database Collate type. Don't change this if in doubt. */
-	//define('DB_COLLATE', '');
+/** MySQL hostname */
+define('DB_HOST', 'barable.com');
+// define('WP_ALLOW_MULTISITE', true);
 
-} else {//Use your local DB
+/** Database Charset to use in creating database tables. */
+define('DB_CHARSET', 'utf8');
 	
-	/** The name of the database for WordPress */
-	define('DB_NAME', 'comm_local');
-	
-	/** MySQL database username */
-	define('DB_USER', 'wp_user');
-	
-	/** MySQL database password */
-	define('DB_PASSWORD', 'philos10');
-	
-	/** MySQL hostname */
-	define('DB_HOST', 'localhost');
-	// define('WP_ALLOW_MULTISITE', true);
-	
-	/** Database Charset to use in creating database tables. */
-	define('DB_CHARSET', 'utf8');
-	
-	/** The Database Collate type. Don't change this if in doubt. */
-	//define('DB_COLLATE', '');
-	
-}
-
 /**#@+
  * Authentication Unique Keys and Salts.
  *

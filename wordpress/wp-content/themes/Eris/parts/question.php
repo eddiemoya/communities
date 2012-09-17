@@ -39,45 +39,52 @@
 					</div>
 					
 					<h1 class="content-headline"><?php the_title(); ?></h1>
+					
 					<?php the_content(); ?>	
 					<?php get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); ?>
-				</div>
+					
+				</div> <!-- END SPAN10 -->
 				
-			</section>
+			</section> <!-- END CONTENT BODY -->
 
-		</article>
+		</article> <!-- END CONTENT CONTAINER QUESTION -->
 		
 		<?php
       comments_template('/parts/commentForm.php');
       comments_template('/parts/comments.php');
     ?>
 		
+	</section> <!-- END SPAN 8 -->
+
+	<section class="span4">
+		<?php
+		    //get_sidebar();
+		?>
 	</section>
-</section>
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $.each($(".ugc-comment-answer_form form"), function() {
-            if (($(this).get(0)).style.display != 'block') {
-                $(this).addClass('hide');
-            }
-        });
-        $(".ugc-comment-answer_form a").on('click', function(event) {
-        	event.preventDefault();
-        	$(this).parents(".ugc-comment-answer_form").children("form").slideToggle("slow");
-        });
-
-        // Make the cancel buttons collapse the forms, too.
-        $('.ugc-comment-answer_form .azure').on('click', function(event) {
-        		event.preventDefault();
-            $(this).parents(".ugc-comment-answer_form").children("form").slideToggle("slow");
-        });
-    });
-</script>
 
 </section>
-<section class="span4">
 <?php
-    //get_sidebar();
+    if(is_user_logged_in()) {
 ?>
-</section>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $.each($(".ugc-comment-answer_form form"), function() {
+                    if (($(this).get(0)).style.display != 'block') {
+                        $(this).addClass('hide');
+                    }
+                });
+                $(".ugc-comment-answer_form a").on('click', function(event) {
+                	event.preventDefault();
+                	$(this).parents(".ugc-comment-answer_form").children("form").slideToggle("slow");
+                });
+
+                // Make the cancel buttons collapse the forms, too.
+                $('.ugc-comment-answer_form .azure').on('click', function(event) {
+                		event.preventDefault();
+                    $(this).parents(".ugc-comment-answer_form").children("form").slideToggle("slow");
+                });
+            });
+        </script>
+<?php
+    } 
+?>
