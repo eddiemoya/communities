@@ -35,7 +35,7 @@
 				<div class="span10">
 					
 					<div class="content-details clearfix">
-						<time class="content-date" pubdate datetime="<?php echo date( "Y-m-d", $post_date ); ?>" pubdate="pubdate"><?php echo date( "F j, Y", $post_date ); ?><span class="time-stamp"><?php echo date( "g:ia", $post_date ); ?></span></time>
+					    <?php get_partial( 'parts/space_date_time', array( "timestamp" => $post_date ) ); ?>
 					</div>
 					
 					<h1 class="content-headline"><?php the_title(); ?></h1>
