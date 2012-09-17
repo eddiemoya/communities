@@ -7,9 +7,10 @@
         $post_count     = count_user_posts( $data->ID );
         
 ?>
-
-        <li class="member lone-result clearfix">
-            <?php get_partial( 'parts/crest', array( "user_id" => $data->ID, "width" => 'span2', "titling" => true, "show_name" => false ) ); ?>
+ <article class="content-container user">
+    <section class="content-body clearfix">
+        <!-- <li class="member lone-result clearfix"> -->
+            <?php get_partial( 'parts/crest', array( "user_id" => $data->ID, "width" => 'span2', "show_name" => false, "show_address" => false ) ); ?>
             <div class="span10 info">
                 <h4><?php get_screenname_link( $data->ID ); ?></h4>
                 <address><?php echo return_address( $data->ID ); ?></address>
@@ -24,4 +25,6 @@
                     </ul>
                 </article>
             </div>
-        </li>
+        <!-- </li> -->
+    </section>
+</article>

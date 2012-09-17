@@ -4,7 +4,7 @@
     if (have_posts()) {
         global $excerptLength;
 
-        $excerptLength = 140;
+        $excerptLength = 200;
 
         while (have_posts()) {
             the_post();

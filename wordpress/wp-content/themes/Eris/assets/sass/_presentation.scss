@@ -13,10 +13,6 @@ html, body {
   color: sears( body );
 }
 
-body {
-  font-size: percentage( $default-font-size/16 );
-}
-
 .kmart a {
   color: kmart( link );
   text-decoration: none;
@@ -114,7 +110,6 @@ ul.bullets {
 // COMMONLY USED ELEMENTS
 .member {
   .info {
-    // font-size: percentage( 12/16 );
     word-wrap: break-word;
     h4, address {
       @extend .bold;
@@ -148,7 +143,8 @@ ul.bullets {
     h4 {
       background: sears( badge ) url('#{$img}sprite-user.png') repeat-x left bottom;
       text-align: center;
-      @include border-radius( 0 0 10px 10px );
+      // removing rounded corners per client's request -CAB 9.14.2012
+      // @include border-radius( 0 0 10px 10px );
     }
     h4, h4 a {
       color: $lightest-color;
@@ -168,11 +164,9 @@ ul.bullets {
 
 .post {
   .content-date {
+    color:#999999;
     display: block;
     float: right;
-    // font-size:.6875em;
-    // font-size:font-size( 11 );
-    @extend .faint;
   }
   hgroup {
     @extend .bold;
@@ -187,7 +181,7 @@ ul.bullets {
     margin-top: .5em;
   }
   .post-actions {
-    font-size: font-size( 13 );
+    // font-size: font-size( 13 );
     margin-top: .5em;
   }
 }
@@ -196,13 +190,11 @@ ul.bullets {
   @extend .faint;
 }
 
-/*
- * GLOBAL ELEMENTS
- */
 
-/*
- * form elements
- */
+// GLOBAL ELEMENTS
+
+
+// form elements
 .input_text {
   // Do not set padding for left/right to 0.
   // IE8 no like this.
@@ -214,6 +206,7 @@ ul.bullets {
 .required:after, .optional:after {
   color: #999999;
   // font-size:.7857em;
+  font-size: font-size( 12 );
 }
 
 .required:after {
@@ -241,13 +234,12 @@ ul.bullets {
   border-width:0px 1px;
   color: $lightest-color;
   cursor:pointer;
-  font-size: font-size( 14 );
   font-weight:bold;
   height:32px;
+  margin-right:1em;
   padding:0em 1.5em;
   position:relative;
   text-shadow:1px 1px sears( sec-dec);
-  top:-1px;
   @include border-radius( 5px );
 }
 
@@ -308,26 +300,16 @@ ul.bullets {
 form {}
 
 // FEATURED
-.content-container .content-headline {
-  // font-size:1.25em;
-  font-size: font-size( 18 );
-  margin:0;
-  @extend .bold;
-}
-
 .content-container .content-header {
-  border:solid #dddcdc;
-  border-width:1px 0px;
-  padding:em-adjust( .625em );
+  border-top:solid 1px #dddcdc;
+  padding: em-adjust( .625em );
   @extend .bold;
   @extend .faint;
   h3 {
-    // font-size:1.25em;
-    font-size: font-size( 18 );
+    font-size: font-size( 20 ); // 1.25em
   }
   h4 {
-    // font-size:.6875em;
-    font-size: font-size( 11 ); 
+    font-size: font-size( 11 ); // .6875em
   }
 }
 
@@ -335,44 +317,47 @@ form {}
   color: sears( secondary-decorative );
   font-size:font-size( 11 );
 }
-.content-container .content-body {
-  padding:em-adjust( .625em );
 
-  .content-details {
-    padding-bottom:em-adjust( .625em );
-    .content-category {
-      // font-size:.8125em;
-      font-size: font-size( 13 );
-      float:left;
-      @extend .bold;
-    }
+.content-container {
+  position: relative;
+  .content-author, .content-comments {
+    color:#333333;
+    font-size: font-size( 12 );
+    margin-bottom: em-adjust( .625em ); // 10px
+  }
+  .content-body {
+    border-top:solid 1px #dddcdc;
+    padding: em-adjust( .625em 0 );
+  }
+  .content-category {
+    float:left;
+    @extend .bold;
   }
   .content-date {
     float:right;
+    line-height: em-adjust( 1.5em );
+    .time-stamp {
+      display:inline-block;
+      margin-left:1.5em;
+    }
   }
-  .content-comments {
-    color:#333333;
-    // font-size:.75em;
-    margin-top:.8125em;
-    li {
-      border-left:solid 1px #999999;
-      float:left;
-      padding:0em .3125em;
-    }
-    & > li:first-child {
-      border-left:none;
-    }
+  .content-details {
+    margin-bottom: em-adjust( .625em ); // 10px
+  }
+  .content-headline {
+    font-size:font-size( 20 ); // 20px
+    line-height:1.1em; // 22px
+    margin:0 0 .625em; // 10px
+    @extend .bold;
   }
   .share-full {
     margin-top: 10px;
   }
 }
-
 .content-body {
   p {
     color:#333333;
-    // font-size:.8125em;
-    font-size:font-size( 13 );
+    // font-size: font-size( 13 ); // 13px
     line-height:1.7em;
     margin-bottom:1em;
   }
@@ -385,29 +370,102 @@ form {}
   }
 }
 
+// SINGLES PAGE
+.single #content > section.span12 {
+  border-top:solid 1px #d5d5d5;
+}
 
-// FEATURED COMMUNITY MEMBERS
-.featured-members .member {
-  .content-comments {
-    width: 100%;
-    li {
-      float: none;
-      border: 0;
+.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child, 
+.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-body:first-child,
+.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-header:first-child {
+  border-top:none;
+}
+
+.sears{
+  .post, .question {
+    h1 {
+      color:#067BB5;
     }
-  }
-  .stats {
-    float: left;
-    p {
-      margin-bottom: em-adjust( .3em );
-    }
-  }
-  .info ul {
-    margin: em-adjust( .3em 0 );
+  } 
+}
+
+.single-post .comments {
+  .content-body {
+    border-top:none;
   }
 }
 
-.span8, .span9, .span12 {
-  .featured-members .content-body {
+.kmart{
+  .post, .question {
+    h1 {
+      color:#980017;
+    }
+  } 
+}
+
+.post.content-container {
+  .content-body {
+    padding:em-adjust(.625em);
+  }
+}
+
+.post, .question {
+  padding:inherit 0px;
+  .content-body p {
+    margin-bottom: em-adjust( 1.2em )
+  }
+}
+
+textarea.discussion {
+  border: 1px solid #d6d6d6;
+  height:10em;
+  width: 99%;
+  @include border-radius( 4px );
+}
+
+.trigger.discussion {
+  height:2em;
+  margin-top:-3.75em;
+  position:relative;
+  text-align:right;
+  z-index:9;
+}
+
+.question {
+  .span2.badge, .span2.crest {
+    margin-left:0px;
+  }
+  .content-date {
+    float:left;
+  }
+  .actions {
+    float:none;
+  }
+}
+
+.comments .content-header {
+  h3 {
+    float:left;
+  }
+  h4 {
+    float:left;
+    font-size: font-size( 16 ); 
+    font-weight:normal;
+    line-height:1.75em;
+    margin-left:2em;
+  }
+}
+
+.question + .ugc-comment-answer_form .trigger.discussion {
+  height: 1em;
+  margin: 0 0 1em;
+  text-align: right;
+}
+
+// FEATURED COMMUNITY MEMBERS
+// the default state: lined up from left to right
+.featured-members {
+  .content-body {
     & > * {
       width: 29.9%;
       float: left;
@@ -416,81 +474,68 @@ form {}
         padding-left: 0;
       }
     }
-    .member {
-      border-left: 1px solid sears( decorative );
-      &:first-child {
-        border-left: 0;
-      }
-      @include col_layout( ( 80, 80 ), 20 );
+  }
+  @include legacy-pie-clearfix;
+  .member {
+    border-left: 1px solid sears( decorative );
+    &.clearfix {
+      clear: none;
     }
-    @include legacy-pie-clearfix;
+    &:first-child {
+      border-left: 0;
+    }
+    @include col_layout( ( 80, 80 ), 20 );
+    .content-comments {
+      width: 100%;
+      li {
+        float: none;
+        border: 0;
+      }
+    }
     .stats {
-      float: none;
       clear: left;
       width: 100%;
       margin-left: 0;
+      p {
+        margin-bottom: em-adjust( .3em );
+      }
+    }
+    .info ul {
+      margin: em-adjust( .3em 0 );
     }
   }
 }
 
+// modify the style to create a stacked version.
 .span3, .span4, .span6 {
-  .member {
-    @include col_layout( ( 80, 180 ), 20 );
-    margin-top: 1em;
-    &:first-child {
-      margin-top: 0;
+  .featured-members .content-body {
+    .member {
+      width: 100%;
+      float: none;
+      padding: 0;
+      margin-bottom: 1em;
+      border-left: 0;
+      @include col_layout( ( 80, 180 ), 20 );
+      .stats {
+        clear: none;
+      }
     }
   }
 }
-// Alternate selector for below class. Use if override for more scenarios is required.
-// Also, more like these would have to be created on a per-widget basis if development is asked to create more override states.
-//.span3 .featured-members, .span4 .featured-members, .span6 .featured-members,
-//.span3.featured-members, .span4.featured-members, .span6.featured-members, .span8.featured-members
-
-//.span3 .featured-members, .span4 .featured-members, .span6 .featured-members {
-//  .span4 {
-//    float: none;
-//    width: 100%;
-//    margin-left: 0;
-//    margin-bottom: 1em;
-//    .member {
-//      border-right: 0;
-//      @include col_layout( (80, 210), 10 );
-//    }
-//  }
-//}
 
 // FEATURED QUESTION
+.featured-question {
+  .content-body {
+    padding:em-adjust(.625em);
+  }
+}
+
 .featured-question.content-container {
   .category-image {
     float:left;
     height:em-adjust( 6.25em );
     margin:em-adjust( 0 .625em .625em 0 );
     width: em-adjust( 6.25em );
-  }
-
-  $column-width: nth( $span-widths, 4 );
-  $calculated-widths: ratioize( ($column-width, $column-width, 20) );
-  &.columns {
-    .content-body {
-      & > * {
-        float: left;
-        width: nth( $calculated-widths, 1 );
-        & + * {
-          margin-left: nth( $calculated-widths, 3 );
-        }
-      }
-    }
-    .featured:nth-child(odd) .column {
-      border-right: 1px solid sears( decorative );
-      padding-right: nth( $calculated-widths, 3 );
-    }
-    .content-date {
-      float: none;
-    }
-    .content-headline {
-      font-size: font-size( 13 );
-    }
   }
 }
 
@@ -512,7 +557,7 @@ form {}
 }
 
 // RESULT LIST
-.result-list {
+.results-list {
   margin-top: 1em;
   border: 1px solid sears( decorative );
   @include border-radius( 5px );
@@ -534,10 +579,36 @@ form {}
     border-top: 0;
     padding-top: 1.5em;
     padding-bottom: 1.5em;
+		label {
+			font-weight: normal;
+		}
   }
   .content-headline {
     font-size: font-size( 14 );
     margin: 1em 0;
+  }
+}
+
+.results-list {
+  & > .content-body {
+    border:none;
+    padding:0 em-adjust( .625em );
+    & > .content-container:first-child .content-body {
+      border-top:none;
+    }
+  }
+  & > .content-header {
+    border-bottom:1px solid #DDDCDC;
+    padding:1.5em 0;
+    width:100%;
+    form {
+      margin:0 .769em;
+    }
+  }
+  .question {
+    .content-date {
+      float:right;
+    }
   }
 }
 
@@ -551,11 +622,24 @@ form {}
 .content-container.featured-post, .content-container.featured-guide {
   .content-excerpt, .content-byline, .content-tags {
     // font-size:.75em
+    font-size: font-size( 12 );
   }
 }
 .span4 .content-container.featured-post .span6 {
   width: 100%;
   margin-left: 0;
+}
+
+.content-container.span3.featured-post, 
+.content-container.span4.featured-post, 
+.content-container.span6.featured-post {
+  .featured-image.span6, .featured-post.span6 {
+    margin-left:0;
+    width:100%;
+  }
+  .featured-post.span6 {
+    margin-top: em-adjust( .625em ); // 10px
+  }
 }
 
 // RECENT ACTIVITY
@@ -571,10 +655,6 @@ form {}
       border-top: 0;
     }
   }
-  time {
-    float: right;
-    @extend .faint;
-  }
   h3 {
     a {
       font-weight: bold;
@@ -582,6 +662,9 @@ form {}
     & > * {
       display: block;
     }
+  }
+  .content-date {
+    text-align: right;
   }
   .excerpt {
     padding: .3em 1em;
@@ -599,7 +682,6 @@ form {}
   }
   .category {
     font-size: font-size( 11 );
-    padding-top: .2em;
   }
 }
 
@@ -610,10 +692,8 @@ form {}
   }
 }
 
-/*
- * POST A QUESTION
- */
 
+// POST A QUESTION
 .content-container.post-your-question {
   form {
     margin-top:em-adjust( .75em );
@@ -643,13 +723,18 @@ form {}
   }
 }
 
-/*
- * LOGIN/REGISTER/FORGOT PASSWORD
- */
+
+// LOGIN/REGISTER/FORGOT PASSWORD
 #moodle_container .sign-in, body > .sign-in,
 #moodle_container .register, body > .register,
 #moodle_container .forgot-password, body > .forgot-password {
   padding:20px;
+}
+
+.sign-in, .register, .forgot-password {
+  .content-body {
+    border:none;
+  }
 }
 
 .form_login, .form_register {
@@ -707,15 +792,15 @@ fieldset#use_your_account_from {
 }
 
 // subnav widget
-.widget_communities_menu_widget {
+.communities_menu_widget {
   .subnav-items {
-    font-size: font-size( 13 );
-    .menu-item {
+    li {
       padding: 6px 0;
     }
   }
   .subcat-selector-container {
     // font-size: .75em;
+    font-size: font-size( 12 );
     margin-top: 15px;
     color: sears( secondary-link );
     select {
@@ -728,6 +813,9 @@ fieldset#use_your_account_from {
 // PROFILE
 $tab-padding: "1em 0 .6em 0";
 .profile {
+  .content-container .content-body {
+    border-top: 0;
+  }
   .tabs {
     border-bottom: 1px solid sears( decorative );
     position: relative;
@@ -736,7 +824,7 @@ $tab-padding: "1em 0 .6em 0";
       float: left;
       min-width: percentage( ( nth( $span-widths, 3 ) ) / $grid-width );
       margin-left: $margin-width-pct;
-      font-size: font-size( 13 );
+      font-size: font-size( 14 );
       border: solid sears( decorative );
       border-width: 1px 1px 0 1px;
       text-align: center;
@@ -783,9 +871,13 @@ $tab-padding: "1em 0 .6em 0";
     @extend .bold;
   }
   .expert-answers {
-    padding: 1em 3%;
-    &.span2 {
-      margin-left: 0;
+    li {
+      border-top: 0;
+      padding: .5em;
+      @include border-radius( 5px );
+      .content-excerpt {
+        margin-top: 1.5em;
+      }
     }
   }
   .personal_info {
@@ -794,7 +886,6 @@ $tab-padding: "1em 0 .6em 0";
       float: left;
       padding: 1em 0;
       border-top: 1px solid sears( decorative );
-      font-size: font-size( 13 );
     }
     dt {
       width: 30%;
@@ -888,6 +979,7 @@ $tab-padding: "1em 0 .6em 0";
     .addthis.dropmenu {
       padding-top: 3px;
       // font-size: .75em;
+      font-size: font-size( 12 );
       .sharebutton {
         padding: 0;
       }
@@ -993,23 +1085,41 @@ $tab-padding: "1em 0 .6em 0";
   }
 }
 
+.sears .comment-actions button {
+  background: transparent url(#{$sears-img}/sprite_global.png) repeat-x 0 -192px;
+}
+
+.kmart .comment-actions button {
+  background: transparent url(#{$sears-img}/sprite_global.png) repeat-x 0 -200px;
+}
+
 #allComments {
   @include border-radius( 4px );
   border: 1px solid #d6d6d6;
   border-bottom: 0;
-
+  .content-body {
+    border:none;
+    padding:0px;
+    margin-bottom:1em;
+  }
   .comment {
     padding: 1em 2%;
     background: $lightest-color;
     border-bottom: 1px solid #d6d6d6;
     @include border-radius( 4px );
     time {
-      font-size: font-size( 11 );
+      float:left;
+      .time-stamp {
+        display:inline-block;
+        margin-left:1.5em;
+      }
     }
     article {
-      font-size: font-size( 13 );
-      margin: 1em 0;
+      // font-size: font-size( 13 );
       word-wrap: break-word;
+      p {
+        margin-bottom:1em;
+      }
     }
 
     .responseTo {
@@ -1034,15 +1144,22 @@ $tab-padding: "1em 0 .6em 0";
   .span10 {
     word-wrap: break-word;
   }
+  .trigger.discussion {
+    height:1em;
+    margin:-1.5em 0 2em;
+    text-align:left;
+  }
 }
-#allComments .expert {
+.expert, #allComments .expert {
   background: lighten( sears( decorative ), 15 );
 }
 
 // Activity buttons
 .actions {
-  margin: 3em 0.5em 0;
-
+  float:right;
+  margin: 0 0.5em;
+  position:relative;
+  z-index:10;
   button {
     cursor: pointer;
     color: #4e74a3;
@@ -1054,7 +1171,7 @@ $tab-padding: "1em 0 .6em 0";
     text-indent: -999em;
     width: 2em;
     margin-left: 1em;
-    padding: .33em;
+    padding: 2px;
     @include border-radius( 2px );
     @include box-shadow(sears( secondary-link ) 1px 2px 4px);
     &:first-letter {
@@ -1115,26 +1232,24 @@ button.follow {
   display: block;
   float: right;
   // font-size: 13px;
-  font-size: font-size( 13 );
+  // font-size: font-size( 13 );
   position: relative;
   top: 2px;
   margin-left: .5em;
 }
 
-/**
- * @author Tim Steele
- *
- * Styles for the breadcrumb widget. Mainly used on the single pages, i.e.
- * blog, buying guide, question.
- */
+
+// @author Tim Steele
+// 
+// Styles for the breadcrumb widget. Mainly used on the single pages, i.e.
+// blog, buying guide, question.
+
 .breadcrumb {
-  border:solid #d5d5d5;
-  border-width:1px 0px;
+  border-top:solid 1px #d5d5d5;
   padding:1em 0;
   li {
     float:left;
     // font-size:.8125em;
-    font-size: font-size( 13 );
     font-weight:bold;
     padding-right:em-adjust(.375em);
   }
@@ -1162,5 +1277,47 @@ button.follow {
   }
   ul {
     padding-left: 20px;
+  }
+}
+
+// @author Tim Steele
+// 
+// Styles for the breadcrumb widget. Mainly used on the single pages, i.e.
+// blog, buying guide, question.
+.page-title {
+  color:#999999;
+  font-weight:bold;
+  h1 {
+    font-size:font-size( 22 );
+    margin:0 .45em;
+  }
+  h2 {
+    margin:0 em-adjust(.625em);
+  }
+}
+
+.home .page-title {
+  color:#666666;
+  .content-body {
+    border:none;
+  }
+  h1 {
+    font-size:font-size(17);
+    font-weight:normal;
+    margin:0 .58em;
+  }
+}
+
+// AD WIDGET
+.ad-widget {
+  .content-body {
+    border-top:none;
+  }
+  h1 {
+    color:#cfcece;
+    font-size:font-size(10);
+    font-weight:normal;
+    text-align:center;
+    text-transform:uppercase;
   }
 }

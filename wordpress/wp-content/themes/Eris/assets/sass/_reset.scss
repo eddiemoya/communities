@@ -114,3 +114,9 @@ legend {
   *margin-left: -7px; /* Correct alignment IE6/7 */
   white-space: normal; 
 }
+
+
+
+body {
+  font-size: percentage( $default-font-size/16 );
+}
