@@ -147,7 +147,8 @@
         if(isset($badData) && !empty($badData)) {
             // Create the XML with all data issues
             if(file_exists($badDataFile)) {
-                $badDataXml = new DOMDocument();
+                $badDataXml = new DOMDocument('1.0', 'utf-8');
+                
                 $badDataXml->loadXML(file_get_contents($badDataFile));
 
                 $badDataXml->formatOutput = true;
@@ -165,31 +166,31 @@
             foreach($badData as $key=>$val) {
                 $user = $badDataXml->createElement('user');
 
-                $displayNameNode = $badDataXml->createElement('pos_in_array', htmlentities($val->posInArray));
+                $displayNameNode = $badDataXml->createElement('pos_in_array', utf8_encode($val->posInArray));
                 $user->appendChild($displayNameNode);
 
-                $displayNameNode = $badDataXml->createElement('screen_name', htmlentities($val->screen_name));
+                $displayNameNode = $badDataXml->createElement('screen_name', utf8_encode($val->screen_name));
                 $user->appendChild($displayNameNode);
 
-                $emailNode = $badDataXml->createElement('email', htmlentities($val->id));
+                $emailNode = $badDataXml->createElement('email', utf8_encode($val->id));
                 $user->appendChild($emailNode);
 
-                $firstNameNode = $badDataXml->createElement('first_name', htmlentities($val->first_name));
+                $firstNameNode = $badDataXml->createElement('first_name', utf8_encode($val->first_name));
                 $user->appendChild($firstNameNode);
 
-                $guidNode = $badDataXml->createElement('guid', htmlentities($val->guid));
+                $guidNode = $badDataXml->createElement('guid', utf8_encode($val->guid));
                 $user->appendChild($guidNode);
 
-                $lastNameNode = $badDataXml->createElement('last_name', htmlentities($val->last_name));
+                $lastNameNode = $badDataXml->createElement('last_name', utf8_encode($val->last_name));
                 $user->appendChild($lastNameNode);
 
-                $screenNameNode = $badDataXml->createElement('screen_name', htmlentities($val->screen_name));
+                $screenNameNode = $badDataXml->createElement('screen_name', utf8_encode($val->screen_name));
                 $user->appendChild($screenNameNode);
 
-                $screenNameNode = $badDataXml->createElement('location', htmlentities($val->location));
+                $screenNameNode = $badDataXml->createElement('location', utf8_encode($val->location));
                 $user->appendChild($screenNameNode);
 
-                $screenNameNode = $badDataXml->createElement('zipcode', htmlentities($val->zipcode));
+                $screenNameNode = $badDataXml->createElement('zipcode', utf8_encode($val->zipcode));
                 $user->appendChild($screenNameNode);
 
                 $usersRoot->appendChild($user);
@@ -213,31 +214,31 @@
             foreach($goodData as $key=>$val) {
                 $user = $goodDataXml->createElement('user');
 
-                $displayNameNode = $goodDataXml->createElement('pos_in_array', htmlentities($val->posInArray));
+                $displayNameNode = $goodDataXml->createElement('pos_in_array', utf8_encode($val->posInArray));
                 $user->appendChild($displayNameNode);
 
-                $displayNameNode = $goodDataXml->createElement('screen_name', htmlentities($val->screen_name));
+                $displayNameNode = $goodDataXml->createElement('screen_name', utf8_encode($val->screen_name));
                 $user->appendChild($displayNameNode);
 
-                $emailNode = $goodDataXml->createElement('email', htmlentities($val->id));
+                $emailNode = $goodDataXml->createElement('email', utf8_encode($val->id));
                 $user->appendChild($emailNode);
 
-                $firstNameNode = $goodDataXml->createElement('first_name', htmlentities($val->first_name));
+                $firstNameNode = $goodDataXml->createElement('first_name', utf8_encode($val->first_name));
                 $user->appendChild($firstNameNode);
 
-                $guidNode = $goodDataXml->createElement('guid', htmlentities($val->guid));
+                $guidNode = $goodDataXml->createElement('guid', utf8_encode($val->guid));
                 $user->appendChild($guidNode);
 
-                $lastNameNode = $goodDataXml->createElement('last_name', htmlentities($val->last_name));
+                $lastNameNode = $goodDataXml->createElement('last_name', utf8_encode($val->last_name));
                 $user->appendChild($lastNameNode);
 
-                $screenNameNode = $goodDataXml->createElement('screen_name', htmlentities($val->screen_name));
+                $screenNameNode = $goodDataXml->createElement('screen_name', utf8_encode($val->screen_name));
                 $user->appendChild($screenNameNode);
 
-                $screenNameNode = $goodDataXml->createElement('location', htmlentities($val->location));
+                $screenNameNode = $goodDataXml->createElement('location', utf8_encode($val->location));
                 $user->appendChild($screenNameNode);
 
-                $screenNameNode = $goodDataXml->createElement('zipcode', htmlentities($val->zipcode));
+                $screenNameNode = $goodDataXml->createElement('zipcode', utf8_encode($val->zipcode));
                 $user->appendChild($screenNameNode);
 
                 $usersRoot->appendChild($user);
