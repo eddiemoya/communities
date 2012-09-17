@@ -216,6 +216,9 @@ function pccf_contfilt() {
 		if($tmp['chk_comments']=='1'){ add_filter('comment_text','pccf_filter'); }
 	}
 	if (isset($tmp['chk_comments'])) {
+		if($tmp['chk_comments']=='1'){ add_filter( 'preprocess_comment',  'pccf_custom_filter'); }
+	}
+	if (isset($tmp['chk_comments'])) {
 		if($tmp['chk_comments']=='1'){ add_filter('get_comment_author', 'pccf_filter'); }
 	}
 	if (isset($tmp['chk_tags'])) {
@@ -226,8 +229,24 @@ function pccf_contfilt() {
 	}
 }
 
-function pccf_filter($text) {
+/**
+ * Custom function used to solve issue with filter not being applied 
+ * to reply to comments/answers.
+ * 
+ * @author Dan Crimmins
+ * @param array $commentdata
+ */
+function pccf_custom_filter($commentdata) {
 
+	$text = pccf_filter($commentdata['comment_content']);
+	$commentdata['comment_content'] = $text;
+	
+	return $commentdata;
+
+}
+
+function pccf_filter($text) {
+	
 	$tmp = get_option('pccf_options');
 	$wildcard_filter_type = $tmp['rdo_word'];
 	$wildcard_char = $tmp['drp_filter_char'];
