@@ -107,7 +107,8 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
             left: 0,
             right: 0,
             top: 0
-        }
+        },
+        tooltipWidth: 250
     };
 
     _thisTooltip.init = function(element, options) {
@@ -301,6 +302,10 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
             });
         }
 
+        //set the width before calculating true with with arrow;
+        _thisTooltip.tooltip.element
+                .css('width', _thisTooltip.options.tooltipWidth + "px");
+
         /**
          * The position/dimensional info needs to be set here, in case elements with tooltips are hidden, etc.
          */
@@ -324,7 +329,9 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
                     return false;
                 }
 
-                leftPosition = _thisTooltip.getOffset(_thisTooltip.actedObj, 'left') + _thisTooltip.getWidth(_thisTooltip.actedObj) + _thisTooltip.options.position.left + 12;
+                leftPosition = _thisTooltip.getOffset(_thisTooltip.actedObj, 'left') +
+                                    _thisTooltip.getWidth(_thisTooltip.actedObj) +
+                                        _thisTooltip.options.position.left + 15;
                 topPosition = _thisTooltip.getOffset(_thisTooltip.actedObj, 'top') + _thisTooltip.options.position.top;
 
                 if(_thisTooltip.getHeight(_thisTooltip.tooltip) < _thisTooltip.getHeight(_thisTooltip.actedObj)) {
