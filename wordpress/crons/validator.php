@@ -186,6 +186,12 @@
                 $screenNameNode = $badDataXml->createElement('screen_name', htmlentities($val->screen_name));
                 $user->appendChild($screenNameNode);
 
+                $screenNameNode = $badDataXml->createElement('location', htmlentities($val->location));
+                $user->appendChild($screenNameNode);
+
+                $screenNameNode = $badDataXml->createElement('zipcode', htmlentities($val->zipcode));
+                $user->appendChild($screenNameNode);
+
                 $usersRoot->appendChild($user);
             }
 
@@ -226,6 +232,12 @@
                 $user->appendChild($lastNameNode);
 
                 $screenNameNode = $goodDataXml->createElement('screen_name', htmlentities($val->screen_name));
+                $user->appendChild($screenNameNode);
+
+                $screenNameNode = $goodDataXml->createElement('location', htmlentities($val->location));
+                $user->appendChild($screenNameNode);
+
+                $screenNameNode = $goodDataXml->createElement('zipcode', htmlentities($val->zipcode));
                 $user->appendChild($screenNameNode);
 
                 $usersRoot->appendChild($user);
