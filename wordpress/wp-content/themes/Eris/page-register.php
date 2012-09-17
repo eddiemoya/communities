@@ -70,7 +70,7 @@ get_template_part('parts/header'); ?>
                                                 },
                                                 events: {
                                                     blur: {
-                                                        active: false
+                                                        active: true
                                                     },
                                                     focus: {
                                                         active: true
