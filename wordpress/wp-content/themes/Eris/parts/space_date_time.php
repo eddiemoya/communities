@@ -14,11 +14,13 @@
     switch ( $glue ) {
         case 'space':   $print_time = ' ' . $formatted_time; break;
         case 'break':   $print_time = '<br /> ' . $formatted_time; break;
-        default :       $print_time = '<span class="time-stamp">' . date( $format_time, $timestamp ) . '</span>'; break;
+        default :       $print_time = ' <span class="time-stamp">' . date( $format_time, $timestamp ) . '</span>'; break;
     }
 ?>
 
-<time class="content-date" pubdate datetime="<?php echo date( "Y-m-d", $timestamp ); ?>">
-<?php echo date( $format_date, $timestamp ); ?>
-<?php if ( !$hide_time ){ echo $print_time; } ?>
-</time>
+<time class="content-date" pubdate datetime="<?php echo date( "Y-m-d", $timestamp ); ?>"><?php
+
+    echo date( $format_date, $timestamp );
+    if ( !$hide_time ){ echo $print_time; }
+
+?></time>
