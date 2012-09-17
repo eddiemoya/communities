@@ -277,6 +277,7 @@ function catch_cookies(){
  * @author Dan Crimmins
  */
 function post_comment_screen_name($commentdata) {
+	
     
     if(isset($_POST['screen-name'])) {
         
@@ -302,6 +303,8 @@ function post_comment_screen_name($commentdata) {
         }
         
     }
+    
+    
     return $commentdata;
     
 }

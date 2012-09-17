@@ -1,4 +1,5 @@
 <?php 
+
 if(!is_ajax()) {
     get_template_part('parts/header', 'results-list');
 }

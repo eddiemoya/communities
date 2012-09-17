@@ -13,6 +13,9 @@
     $date = strtotime( $comment->comment_date );
 		
     $comment_type = get_post_type( $comment->comment_post_ID ) == 'question' ? 'answer' : 'comment';
+    
+    $removed_text = "This {$comment_type} has been removed.";
+   
 
 
     $parentId = (!isset($parentId)) ? $comment->comment_ID : $parentId;
@@ -34,7 +37,7 @@
             </p>
         	<?php endif;?>
           <p>
-          	<?php echo $comment->comment_content; ?>
+          	<?php echo ($comment->comment_approved == 1) ? $comment->comment_content : $removed_text; ?>
           </p>  
 					
 				</section>
