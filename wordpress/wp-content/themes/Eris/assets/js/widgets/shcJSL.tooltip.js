@@ -249,6 +249,8 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         var tooltipHeight = _thisTooltip.tooltip.height;
         var tooltipWidth = _thisTooltip.tooltip.width;
 
+        console.log('arrow position: ' + _thisTooltip.options.arrowPosition)
+
         switch(_thisTooltip.options.arrowPosition) {
             case 'left':
                 jQuery(arrow).children().first('div').removeClass();
@@ -262,7 +264,7 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
 
 //                arrow.css('top', (tooltipHeight - arrowLeftHeight) / 2);
                 arrow.css('top', 7);
-                arrow.css('left', '-10');
+                arrow.css('left', '-10px');
 
                 break;
             case 'top':
