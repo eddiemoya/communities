@@ -143,7 +143,8 @@ ul.bullets {
     h4 {
       background: sears( badge ) url('#{$img}sprite-user.png') repeat-x left bottom;
       text-align: center;
-      @include border-radius( 0 0 10px 10px );
+      // removing rounded corners per client's request -CAB 9.14.2012
+      // @include border-radius( 0 0 10px 10px );
     }
     h4, h4 a {
       color: $lightest-color;
@@ -654,10 +655,6 @@ textarea.discussion {
       border-top: 0;
     }
   }
-  time {
-    float: right;
-    @extend .faint;
-  }
   h3 {
     a {
       font-weight: bold;
@@ -665,6 +662,9 @@ textarea.discussion {
     & > * {
       display: block;
     }
+  }
+  .content-date {
+    text-align: right;
   }
   .excerpt {
     padding: .3em 1em;
@@ -682,7 +682,6 @@ textarea.discussion {
   }
   .category {
     font-size: font-size( 11 );
-    padding-top: .2em;
   }
 }
 

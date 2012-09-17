@@ -301,12 +301,10 @@ ul.footer_anterior {
     background-repeat: no-repeat; }
     ul.footer_anterior .icon a {
       display: block;
-      height: 15px;
-      line-height: 16px;
-      text-indent: -999999em; }
+      height: 16px;
+      text-indent: -9999em; }
   ul.footer_anterior .acc.icon a {
-    height: 30px;
-    line-height: 31px; }
+    height: 30px; }
   ul.footer_anterior .acc {
     background-position: left top; }
   ul.footer_anterior .fb {
@@ -591,7 +589,7 @@ ul.bullets {
 .bold, .member .info h4, .member .info address, .crest h4, .crest h5, .crest address, .post hgroup, .content-container .content-header, .content-container .content-category, .content-container .content-headline, .profile .answers-toggle, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, #allComments .comment .responseTo, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header {
   font-weight: 700; }
 
-.faint, .member .info h5, .member .info p, .excerpt, .content-container .content-header, .recent-activity time {
+.faint, .member .info h5, .member .info p, .excerpt, .content-container .content-header {
   color: #666666; }
 
 .upcase, #header.kmart form #button_search, #header.sears form #button_search, .actions button:first-letter {
@@ -637,12 +635,7 @@ ul.bullets {
     letter-spacing: -0.05em; }
   .crest.labeled h4 {
     background: #bcdaf3 url("/wp-content/themes/Eris/assets/img/sprite-user.png") repeat-x left bottom;
-    text-align: center;
-    -webkit-border-radius: 0 0 10px 10px;
-    -moz-border-radius: 0 0 10px 10px;
-    -ms-border-radius: 0 0 10px 10px;
-    -o-border-radius: 0 0 10px 10px;
-    border-radius: 0 0 10px 10px; }
+    text-align: center; }
   .crest.labeled h4, .crest.labeled h4 a {
     color: white;
     line-height: 1; }
@@ -1018,12 +1011,12 @@ textarea.discussion {
   .recent-activity li:first-child {
     margin-top: 0;
     border-top: 0; }
-.recent-activity time {
-  float: right; }
 .recent-activity h3 a {
   font-weight: bold; }
 .recent-activity h3 > * {
   display: block; }
+.recent-activity .content-date {
+  text-align: right; }
 .recent-activity .excerpt {
   padding: .3em 1em;
   color: black;
@@ -1033,8 +1026,7 @@ textarea.discussion {
   .recent-activity .excerpt:after {
     content: "\201D"; }
 .recent-activity .category {
-  font-size: 84.615%;
-  padding-top: .2em; }
+  font-size: 84.615%; }
 
 .span3 .recent-activity .excerpt, .span4 .recent-activity .excerpt, .span6 .recent-activity .excerpt {
   overflow: hidden;
@@ -1638,8 +1630,8 @@ button.follow {
     border: 1px solid #cccccc; }
     .sears #header_nav.dropmenu ul li, .kmart #header_nav.dropmenu ul li {
       width: 100%;
-      border-right: 0;
-      font-size: 107.692%; }
+      font-size: 100%;
+      border-right: 0; }
       .sears #header_nav.dropmenu ul li a, .kmart #header_nav.dropmenu ul li a {
         color: #73726F;
         border-right: 0; }
@@ -1647,19 +1639,27 @@ button.follow {
 .sears #header_nav.dropmenu, .kmart #header_nav.dropmenu {
   background-position: left -80px; }
 
+.sears #header_nav.dropmenu li ul li {
+  border-top: 1px solid #f1f1f1; }
+  .sears #header_nav.dropmenu li ul li:first-child {
+    border-top: 0; }
+
 .kmart #header_nav.dropmenu ul {
   padding: 4px 0; }
-  .kmart #header_nav.dropmenu ul li a:hover {
-    color: white;
-    text-decoration: none;
-    background: red; }
+  .kmart #header_nav.dropmenu ul li {
+    font-size: 91.666%; }
+    .kmart #header_nav.dropmenu ul li a:hover {
+      color: white;
+      text-decoration: none;
+      background: red; }
 
 #footer_nav.dropmenu li a {
   padding-top: .66em;
   padding-bottom: .66em; }
   #footer_nav.dropmenu li a span {
     background-repeat: no-repeat;
-    padding-right: 16px; }
+    display: inline-block;
+    width: 90%; }
   #footer_nav.dropmenu li a span {
     background-position: right -240px; }
 #footer_nav.dropmenu li ul {
@@ -1706,7 +1706,7 @@ button.follow {
     border-bottom: 0; }
     .sears #footer_nav.dropmenu ul li {
       width: 100%;
-      font-size: 92.307%;
+      font-size: 91.666%;
       border-left: 0; }
       .sears #footer_nav.dropmenu ul li:hover {
         background: none; }
@@ -1724,7 +1724,6 @@ button.follow {
   .kmart #footer_nav.dropmenu li {
     width: 19.915%;
     border-left: 1px solid white;
-    font-size: 107.692%;
     font-family: "Trebuchet MS", Helvetica, Arial, Verdana, sans-serif; }
     .kmart #footer_nav.dropmenu li:hover {
       background: #7c0505; }
@@ -1744,7 +1743,10 @@ button.follow {
     border-bottom: 0; }
     .kmart #footer_nav.dropmenu ul li {
       width: 100%;
-      border-left: 0; }
+      border-left: 0;
+      font-size: 92.307%;
+      line-height: 1;
+      font-family: Helvetica, Arial, Verdana, sans-serif; }
       .kmart #footer_nav.dropmenu ul li:hover {
         background: none; }
       .kmart #footer_nav.dropmenu ul li a {
