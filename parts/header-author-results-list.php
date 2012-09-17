@@ -1,18 +1,26 @@
-<?php 
-	if(is_widget()->query_type == 'users'){
-		$post_type = 'users';
-	} else {
-		$queried_type = get_query_var('post_type');
-		$post_type = (!is_array($queried_type) || !isset($queried_type[1])) ? $queried_type : '';
-		$post_type = (is_array($post_type)) ? $post_type[0] : $post_type;
-	}
-	$class = ($post_type == 'users') ? '-users' : '-posts';
-	
-if(have_posts()) : ?>
-<header class="content-header">
+<article class="content-container result-list">
+<header class="content-header author-result-list">
+    <?php
+        foreach ($variables as $user) :
+            if ($user->terms != "") :
+                $cats = explode(",", $user->terms);
+                foreach ($cats as $cat) {
+                    $include_terms[$cat] = true;
+                }
+            endif;
+        endforeach;
+        
+        $terms = get_terms( 'category' );
+        
+        foreach ($terms as $term) :
+            if ($include_terms[$term->term_id] != true) :
+                $exclude_terms .= $term->term_id.",";
+            endif;
+        endforeach;
+    ?>
 	<form method="post" action="">
-		<label for="filter-results<?php echo $class; ?>">View</label>
-		<?php 
+		<label for="sort-results">Sort by</label>
+			<?php 
 			// Get the normal queried category term id.
 			$category = get_queried_object()->term_id;
 			$subcategory = null;
@@ -40,10 +48,11 @@ if(have_posts()) : ?>
 				'selected' => $category,
 				'hierarchical' => true,
 				'hide_if_empty' => true,
-				//'class' => 'input_select',
-				'class' => 'filter-results'.$class,
+				'class' => 'input_select',
 				'name' => 'filter-category',
-				'id' => 'filter-results'
+				'id' => 'sort-results',
+				'exclude' => $exclude_terms,
+				'show_option_none' => "Show All"
 			));
 			if(!empty($subcategory)){
 				wp_dropdown_categories(array(
@@ -54,22 +63,14 @@ if(have_posts()) : ?>
 					'hide_if_empty' => true,
 					'class' => '',
 					'name' => 'filter-sub-category',
-					'id' => 'sub-category'
+					'id' => 'sub-category',
+					'exclude' => $exclude_terms,
+					'show_option_none' => "Show All"
 				));
 			}
-
-		?>
-		<label for="sort-results<?php echo $class; ?>">Sort by</label>
-		<select name="sort-results" id="sort-results" class="sort-results<?php echo $class; ?>">
-			<option value="DESC">Oldest First</option>
-			<option value="ASC">Newest First</option>
-		</select>
-		<input type="hidden" value="results-list" class="widget_name" name="widget" />
-		<input type="hidden" value="<?php echo $post_type; ?>" class="post_type" name="post_type" />
+			?>
+		<input type="hidden" value="results-list" name="widget" />
+		<input type="hidden" value="author-filter" name="specificity" />
 	</form>
 </header>
-
-<section class="content-body">
-
-<?php endif; ?>
-
+<ol class="content-body">

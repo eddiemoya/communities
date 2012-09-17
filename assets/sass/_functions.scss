@@ -5,7 +5,7 @@
   @return ( $number-columns * ($margin-width * 3) ) + ( ($number-columns - 1) * $margin-width );
 }
 
-// the hash tables for sears and kmart colors.
+// the lookups for sears and kmart colors.
 @function sears( $lookups, $types: $color-types, $colors: $sears-colors ) {
   @return lookup( $lookups, $types, $colors );
 }
@@ -19,12 +19,20 @@
 // font-size(11) => 91.667%
 // font-size(11em) => 0.916em
 @function font-size( $target-size, $relative-size: $default-font-size ) {
-  @return if( unitless($target-size), to-decimal-places( percentage( $target-size/$relative-size ), 3 ), to-decimal-places( $target-size/$relative-size, 3 ) );
+ $return: '';
+ $ratio: $target-size/$relative-size;
+  @if unitless($target-size) {
+    $return: to-decimal-places( percentage( $ratio ), 3 );
+  }
+  @else {
+    $return: to-decimal-places( $ratio, 3 );
+  }
+  @return $return;
 }
 
-// adjust Tim's em values to be relative to 12, not 16px font.
+// adjust Tim's em values to be relative to the default font size instead of 16px.
 @function adjustment-factor( $value ) {
-  @return to-decimal-places( ( ( $value * 16 ) / 12 ), 3 );
+  @return to-decimal-places( ( ( $value * 16 ) / $default-font-size ), 3 );
 }
 
 @function em-adjust( $initial-value ) {
