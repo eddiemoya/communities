@@ -37,7 +37,8 @@
             </p>
         	<?php endif;?>
           <p>
-          	<?php echo ($comment->comment_approved == 1) ? $comment->comment_content : $removed_text; ?>
+          	<?php echo ($comment->comment_approved == 1) ? $comment->comment_content : $removed_text; 
+          			echo '<br>' . $comment->comment_approved;?>
           </p>  
 					
 				</section>
