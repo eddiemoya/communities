@@ -17,7 +17,7 @@
 				
 				<div class="content-details clearfix">
 					<span class="content-category"><a href="<?php echo get_category_link($categories[0]->term_id); ?>" title="Fantasy"><?php echo $categories[0]->name; ?></a></span>
-					<time class="content-date" pubdate datetime="<?php echo the_time( "Y-m-d"); ?>"><?php the_time("F j, Y"); ?></time>
+					<?php get_partial( 'parts/space_date_time', array( "timestamp" => get_the_time( "U"), "remove_hms" => true ) ); ?>
 				</div>
 				
 				<h1 class="content-headline"><?php the_title(); ?></h1>
@@ -39,7 +39,7 @@
 		    <p class="content-comments">
 		    <?php
 		        $commentCount = get_custom_comment_count($comment_type, $post->ID);
-		        echo ($commentCount > 1) ? $commentCount.' comments' : $commentCount.'comment';
+		        echo $commentCount . ' ' . _n( 'comment', 'comments', $commentCount );
 		    ?>
 		    </p>
 			</section>
@@ -58,7 +58,7 @@
             $(document).ready(function() {
                 $.each($(".ugc-comment-answer_form form"), function() {
                     if (($(this).get(0)).style.display != 'block') {
-                        $(this).addClass('hide');
+                        //$(this).addClass('hide');
                     }
                 });
                 $(".ugc-comment-answer_form a").on('click', function(event) {

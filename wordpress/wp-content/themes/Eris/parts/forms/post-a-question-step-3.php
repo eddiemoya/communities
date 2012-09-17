@@ -1,3 +1,5 @@
+            <section class="content-body clearfix">
+                <h6 class="content-headline">Post your question</h6>
 				<form id="new_question_step_1" id="new_question_step_1" method="post" action="">
 					<?php wp_nonce_field('front-end-post_question-step-1'); ?>
 					
@@ -15,3 +17,4 @@
 						</section>
 					</div>
 				</form>
+			</section>

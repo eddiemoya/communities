@@ -3,15 +3,10 @@
  * @package WordPress
  * @subpackage White Label
  */
+
+// Can anyone else think of a better way to pass this parameter along
 ?>
                   
-      <!--<div class="pagination">
-      <div class="nav-previous"><?php next_posts_link(__('<span class="meta-nav">&laquo;</span> Older posts')); ?></div>
-      <div class="nav-next"><?php previous_posts_link(__('Newer posts <span class="meta-nav">&raquo;</span>')); ?></div>
-      -->
-
-      <?php //do_action('content-after'); ?>
-      <?php //get_sidebar(); ?>
 
       </section> <!-- #content -->
 
@@ -36,6 +31,6 @@
       </footer>
 
     </div> <!-- #container -->
-<?php include('tooltip.php'); ?>
+<?php get_partial('parts/tooltip'); ?>
   </body>
 </html>

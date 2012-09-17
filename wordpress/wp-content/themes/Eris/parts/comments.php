@@ -9,7 +9,7 @@
     //get expert answers
     $userProfile = new User_Profile();
 
-    $expertCommentCount = count($userProfile->page($page)
+    $expertCommentCount = count($userProfile->page(1)
                                 ->get_posts_by_id($post->ID)
                                 ->get_expert_answers($comment_type)
                                 ->posts[0]
@@ -18,19 +18,17 @@
 
     $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type));
     
-    
+
     if ( isset( $comments ) && !empty( $comments ) ) :
 ?>
 <section class="span12 content-container comments">
 <?php if ($comment_type == "answer"): ?>
-	
-<!-- <header class="section-header comments-header clearfix"> -->
-	
-<header class="content-header clearfix">
+		
+	<header class="content-header clearfix">
 	
 	  <h3><?php echo ucfirst( $comment_type ); ?>s</h3>
     <h4>
-        <?php
+    	<?php
             $commentCount = get_custom_comment_count($comment_type, $post->ID);
 
             if($commentCount > 0) {
@@ -51,26 +49,29 @@
             }
         ?>
     </h4>
-</header>
+	</header> <!-- END ANSWER HEADER -->
 <?php endif; ?>
-<section class="content-body">
-<ol id="allComments">
+	<section class="content-body">
+		<ol id="allComments">
 <?php
         foreach($comments as $comment) {
             get_partial('parts/comment', array("current_user" => $current_user, "comment" => $comment, "recursive" => true));
         }
 ?>
-</ol>
+		</ol> <!-- END ALL COMMENTS -->
 <?php
-    # No Comments.
+    # No Comments. Only show on the 'question' post_type.
     else:
+        if ( get_post_type( $post->ID ) == 'question' ):
 ?>
-	<p>
-	    No <?php echo $comment_type; ?>s yet.
-	</p>
+
+    <p>
+        No <?php echo $comment_type; ?>s yet.
+    </p>
 
 <?php
+        endif;
     endif;
-?></section>
-</section>
+?></section> <!-- END CONTENT BODY -->
+</section> <!-- END COMMENTS CONTENT CONTAINER -->
 <?php

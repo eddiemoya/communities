@@ -5,7 +5,8 @@ jQuery(document).ready(function($) {
 	 
 	 * @author Eddie Moya
 	 */
- 	$('.post-your-question select#category, select#sort-results').bind('change', function(e){
+ 	$('.post-your-question select#category, select.filter-results-posts, select.filter-results-users').bind('change', function(e){
+
 		var data = {
 			action		: 'get_subcategories_ajax',
 			category_id	: $('option', this).filter(':selected').val(),
@@ -29,59 +30,92 @@ jQuery(document).ready(function($) {
 		});
  	});
 
- 	/**
- 	 * Super massively awesome jquery that, matched with the somewhat 
- 	 * lamer widgets/results-list/archive.php template, and the ajax-callbacks.php 
- 	 * template, allows the posts widget to filter via ajax.
- 	 */ 
- 	$('.author-result-list select').on('change', function(e){
+ 	// /**
+ 	//  * Super massively awesome jquery that, matched with the somewhat 
+ 	//  * lamer widgets/results-list/archive.php template, and the ajax-callbacks.php 
+ 	//  * template, allows the posts widget to filter via ajax.
+ 	//  */ 
+ 	// $('.author-result-list select').on('change', function(e){
+ 	// 	e.preventDefault();
+
+		// var data = {
+		// 	action		: 'get_filtered_authors_ajax',
+		// 	template 	: 'author-filtered-list',
+		// 	category	: $('option', this).filter(':selected').val()
+		// };
+
+		// data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
+
+		// container = $(this).closest('.dropzone-inner-wrapper');
+
+		// jQuery.ajax({
+		// 	url  : ajaxdata.ajaxurl,
+		// 	type: 'POST',
+		// 	data : data,
+		// 	success:function(results){
+		// 		$('.content-body', container).empty();
+		// 		$('.content-body', container).append($(results));
+		// 	}
+		// });
+ 	// });
+
+ 	// // Duplicate of above, seperated to keep the old version in case it did something special i was not aware of.
+ 	// $('.results-list select.filter-results-users').on('change', function(e){
+ 	// 	e.preventDefault();
+
+		// var data = {
+		// 	action		: 'get_filtered_authors_ajax',
+		// 	template 	: 'author-filtered-list',
+		// 	category	: $('option', this).filter(':selected').val()
+		// };
+
+		// data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
+
+		// container = $(this).closest('.dropzone-inner-wrapper');
+
+		// jQuery.ajax({
+		// 	url  : ajaxdata.ajaxurl,
+		// 	type: 'POST',
+		// 	data : data,
+		// 	success:function(results){
+		// 		$('.content-body', container).empty();
+		// 		$('.content-body', container).append($(results));
+		// 	}
+		// });
+ 	// });
+
+
+ 	$('.results-list select').on('change', function(e){
  		e.preventDefault();
 
-		var data = {
-			action		: 'get_filtered_authors_ajax',
-			template 	: 'author-filtered-list',
-			category	: $('option', this).filter(':selected').val()
-		};
-
-		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
-
-		container = $(this).closest('.dropzone-inner-wrapper');
-
-		jQuery.ajax({
-			url  : ajaxdata.ajaxurl,
-			type: 'POST',
-			data : data,
-			success:function(results){
-				$('.content-body', container).empty();
-				$('.content-body', container).append($(results));
-			}
-		});
- 	});
-
-
- 	$('.result-list select').on('change', function(e){
- 		e.preventDefault();
-
+ 		container = $(this).closest('.results-list');
+ 		
 		var data = {
 			action		: 'get_posts_ajax',
-			template 	: 'post-results-list',
-			category	: $('option', this).filter(':selected').val()
+			special		: $('.post_type', container).val(),
+			post_type 	: $('.post_type', container).val(),
+			template 	: $('.widget_name', container).val(),
+			category	: $('.filter-results-posts option', container).filter(':selected').val(),
+			order		: $('.sort-results-posts option', container).filter(':selected').val()
 		};
-
-		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
-
-		container = $(this).closest('.result-list');
+		
+		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category .filter-results option', this).filter(':selected').val() : data.category; //console.log(data);
 
 		jQuery.ajax({
 			url  : ajaxdata.ajaxurl,
 			type: 'POST',
 			data : data,
 			success:function(results){
+				//console.log(results)
 				$('.content-body', container).empty();
 				$('.content-body', container).append($(results));
 			}
 		});
  	});
+
+
+
+
 
 
  	// $('#new_question_step_1').bind('submit', function(e){
