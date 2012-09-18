@@ -293,7 +293,7 @@ ul.footer_anterior {
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior > * + * + * + * + * + * + * + * + * + * + * + * + * {
-    width: 1.713%;
+    width: 1.712999999999967%;
     float: left;
     margin-left: 1.066%; }
   ul.footer_anterior .icon {
@@ -340,40 +340,40 @@ ul.footer_anterior {
   display: block;
   float: left;
   width: 100%;
-  margin-left: 2.128%; }
+  margin-left: 2.127659574468085%; }
 
 .span1 {
-  width: 6.383%; }
+  width: 6.382978723404255%; }
 
 .span2 {
-  width: 14.894%; }
+  width: 14.893617021276595%; }
 
 .span3 {
-  width: 23.404%; }
+  width: 23.404255319148938%; }
 
 .span4 {
-  width: 31.915%; }
+  width: 31.914893617021274%; }
 
 .span5 {
-  width: 40.426%; }
+  width: 40.42553191489361%; }
 
 .span6 {
-  width: 48.936%; }
+  width: 48.93617021276596%; }
 
 .span7 {
-  width: 57.447%; }
+  width: 57.446808510638306%; }
 
 .span8 {
-  width: 65.957%; }
+  width: 65.95744680851064%; }
 
 .span9 {
-  width: 74.468%; }
+  width: 74.46808510638297%; }
 
 .span10 {
-  width: 82.979%; }
+  width: 82.9787234042553%; }
 
 .span11 {
-  width: 91.489%; }
+  width: 91.48936170212765%; }
 
 .span12 {
   width: 100%; }
@@ -381,132 +381,132 @@ ul.footer_anterior {
 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
 .span6 + .span3 + .span3 + .span6 + [class*="span"],
 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
-  margin-left: 2.128%; }
+  margin-left: 2.127659574468085%; }
 
 .span9 .span9 {
-  width: 74.286%;
-  margin-left: 2.857%; }
+  width: 74.28571428571428%;
+  margin-left: 2.857142857142857%; }
 
 .span9 .span8 {
-  width: 65.714%;
-  margin-left: 2.857%; }
+  width: 65.71428571428572%;
+  margin-left: 2.857142857142857%; }
 
 .span9 .span6 {
-  width: 48.571%;
-  margin-left: 2.857%; }
+  width: 48.57142857142857%;
+  margin-left: 2.857142857142857%; }
 
 .span9 .span4 {
-  width: 31.429%;
-  margin-left: 2.857%; }
+  width: 31.42857142857143%;
+  margin-left: 2.857142857142857%; }
 
 .span9 .span3 {
-  width: 22.857%;
-  margin-left: 2.857%; }
+  width: 22.857142857142858%;
+  margin-left: 2.857142857142857%; }
 
 .span9 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
 .span9 .span6 + .span3 + .span3 + .span6 + [class*="span"],
 .span9 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
-  margin-left: 2.857%; }
+  margin-left: 2.857142857142857%; }
 
 .span8 .span9 {
-  width: 74.194%;
-  margin-left: 3.226%; }
+  width: 74.19354838709677%;
+  margin-left: 3.225806451612903%; }
 
 .span8 .span8 {
-  width: 65.591%;
-  margin-left: 3.226%; }
+  width: 65.59139784946235%;
+  margin-left: 3.225806451612903%; }
 
 .span8 .span6 {
-  width: 48.387%;
-  margin-left: 3.226%; }
+  width: 48.38709677419354%;
+  margin-left: 3.225806451612903%; }
 
 .span8 .span4 {
-  width: 31.183%;
-  margin-left: 3.226%; }
+  width: 31.182795698924725%;
+  margin-left: 3.225806451612903%; }
 
 .span8 .span3 {
-  width: 22.581%;
-  margin-left: 3.226%; }
+  width: 22.58064516129032%;
+  margin-left: 3.225806451612903%; }
 
 .span8 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
 .span8 .span6 + .span3 + .span3 + .span6 + [class*="span"],
 .span8 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
-  margin-left: 3.226%; }
+  margin-left: 3.225806451612903%; }
 
 .span6 .span9 {
-  width: 73.913%;
-  margin-left: 4.348%; }
+  width: 73.91304347826086%;
+  margin-left: 4.347826086956522%; }
 
 .span6 .span8 {
-  width: 65.217%;
-  margin-left: 4.348%; }
+  width: 65.21739130434783%;
+  margin-left: 4.347826086956522%; }
 
 .span6 .span6 {
-  width: 47.826%;
-  margin-left: 4.348%; }
+  width: 47.826086956521735%;
+  margin-left: 4.347826086956522%; }
 
 .span6 .span4 {
-  width: 30.435%;
-  margin-left: 4.348%; }
+  width: 30.43478260869565%;
+  margin-left: 4.347826086956522%; }
 
 .span6 .span3 {
-  width: 21.739%;
-  margin-left: 4.348%; }
+  width: 21.73913043478261%;
+  margin-left: 4.347826086956522%; }
 
 .span6 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
 .span6 .span6 + .span3 + .span3 + .span6 + [class*="span"],
 .span6 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
-  margin-left: 4.348%; }
+  margin-left: 4.347826086956522%; }
 
 .span4 .span9 {
-  width: 73.333%;
-  margin-left: 6.667%; }
+  width: 73.33333333333333%;
+  margin-left: 6.666666666666667%; }
 
 .span4 .span8 {
-  width: 64.444%;
-  margin-left: 6.667%; }
+  width: 64.44444444444444%;
+  margin-left: 6.666666666666667%; }
 
 .span4 .span6 {
-  width: 46.667%;
-  margin-left: 6.667%; }
+  width: 46.666666666666664%;
+  margin-left: 6.666666666666667%; }
 
 .span4 .span4 {
-  width: 28.889%;
-  margin-left: 6.667%; }
+  width: 28.888888888888886%;
+  margin-left: 6.666666666666667%; }
 
 .span4 .span3 {
   width: 20%;
-  margin-left: 6.667%; }
+  margin-left: 6.666666666666667%; }
 
 .span4 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
 .span4 .span6 + .span3 + .span3 + .span6 + [class*="span"],
 .span4 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
-  margin-left: 6.667%; }
+  margin-left: 6.666666666666667%; }
 
 .span3 .span9 {
-  width: 72.727%;
-  margin-left: 9.091%; }
+  width: 72.72727272727273%;
+  margin-left: 9.090909090909092%; }
 
 .span3 .span8 {
-  width: 63.636%;
-  margin-left: 9.091%; }
+  width: 63.63636363636364%;
+  margin-left: 9.090909090909092%; }
 
 .span3 .span6 {
-  width: 45.455%;
-  margin-left: 9.091%; }
+  width: 45.45454545454545%;
+  margin-left: 9.090909090909092%; }
 
 .span3 .span4 {
-  width: 27.273%;
-  margin-left: 9.091%; }
+  width: 27.272727272727273%;
+  margin-left: 9.090909090909092%; }
 
 .span3 .span3 {
-  width: 18.182%;
-  margin-left: 9.091%; }
+  width: 18.18181818181818%;
+  margin-left: 9.090909090909092%; }
 
 .span3 .span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
 .span3 .span6 + .span3 + .span3 + .span6 + [class*="span"],
 .span3 .span4 + .span4 + .span4 + .span4 + [class*="span"] {
-  margin-left: 9.091%; }
+  margin-left: 9.090909090909092%; }
 
 [class*="span"]:first-child,
 .span3 + .span3 + .span3 + .span3 + [class*="span"],
@@ -536,7 +536,7 @@ ul.footer_anterior {
   top: 0px; }
 
 #content {
-  padding: 1.23em 1.064%; }
+  padding: 1.23em 1.063829787234043%; }
 
 .input_text {
   border: solid 1px #cccccc; }
@@ -588,6 +588,9 @@ ul.bullets {
 
 .bold, .member .info h4, .member .info address, .crest h4, .crest h5, .crest address, .post hgroup, .content-container .content-header, .content-container .content-category, .content-container .content-headline, .profile .answers-toggle, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, #allComments .comment .responseTo, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header {
   font-weight: 700; }
+
+.italic {
+  font-style: italic; }
 
 .faint, .member .info h5, .member .info p, .excerpt, .content-container .content-header {
   color: #666666; }
@@ -882,7 +885,7 @@ textarea.discussion {
       width: 44.444%;
       float: left; }
     .featured-members .member > * + * {
-      width: 44.445%;
+      width: 44.44499999999999%;
       float: left;
       margin-left: 11.111%; }
     .featured-members .member .content-comments {
@@ -1125,8 +1128,8 @@ fieldset#use_your_account_from {
   top: 1px; }
   .profile .tabs li {
     float: left;
-    min-width: 23.404%;
-    margin-left: 2.128%;
+    min-width: 23.404255319148938%;
+    margin-left: 2.127659574468085%;
     font-size: 107.692%;
     border: solid #cccccc;
     border-width: 1px 1px 0 1px;
@@ -1158,7 +1161,7 @@ fieldset#use_your_account_from {
   background-image: linear-gradient(#ffffff, #f4f4f4); }
   .profile nav.bar li {
     float: left;
-    margin-left: 2.128%;
+    margin-left: 2.127659574468085%;
     font-size: 115.384%;
     padding: .6em .5em; }
   .profile nav.bar li:first-child {
@@ -1524,6 +1527,36 @@ button.follow {
   text-align: center;
   text-transform: uppercase; }
 
+.site-error {
+  margin-top: 2em; }
+  .site-error .span8, .site-error .span10 {
+    background: url(/wp-content/themes/Eris/assets/img/tile_line.gif);
+    margin-top: 2em; }
+  .site-error .message {
+    color: white;
+    margin: 1em;
+    text-align: center;
+    padding: 9em 0; }
+    .site-error .message h1 {
+      font-size: 184.615%;
+      font-family: Impact, Charcoal, sans-serif;
+      letter-spacing: .066em; }
+    .site-error .message h2 {
+      font-size: 246.153%;
+      font-family: Georgia, serif;
+      margin-top: 1em; }
+    .site-error .message .tape {
+      background: url(/wp-content/themes/Eris/assets/img/tile_line.gif);
+      width: 50%;
+      margin: .66em auto;
+      line-height: .5; }
+
+.sears .site-error .message {
+  background: #304f88; }
+
+.kmart .site-error .message {
+  background: #8f2225; }
+
 .dropmenu li {
   float: left;
   position: relative; }
@@ -1592,7 +1625,7 @@ button.follow {
     background-position: left bottom; }
   .sears #header_nav.dropmenu li, .kmart #header_nav.dropmenu li {
     border-right: 1px solid #cccccc;
-    width: 14.286%;
+    width: 14.285714285714285%;
     padding: 1px 0;
     font-size: 92.307%; }
     .sears #header_nav.dropmenu li a, .kmart #header_nav.dropmenu li a {
@@ -1677,7 +1710,7 @@ button.follow {
   .sears #footer_nav.dropmenu ul {
     background: #eeeeee; }
   .sears #footer_nav.dropmenu li {
-    width: 16.578%;
+    width: 16.578014184397162%;
     border-left: 1px solid white;
     font-size: 92.307%; }
     .sears #footer_nav.dropmenu li:hover:first-child {
@@ -1722,7 +1755,7 @@ button.follow {
   .kmart #footer_nav.dropmenu ul {
     background: #f3f0ec; }
   .kmart #footer_nav.dropmenu li {
-    width: 19.915%;
+    width: 19.914893617021274%;
     border-left: 1px solid white;
     font-family: "Trebuchet MS", Helvetica, Arial, Verdana, sans-serif; }
     .kmart #footer_nav.dropmenu li:hover {
