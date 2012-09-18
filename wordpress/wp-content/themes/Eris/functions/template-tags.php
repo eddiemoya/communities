@@ -52,7 +52,7 @@ function loop($template = 'post', $special = null, $base_path = "parts", $no_pos
     }
     //echo "<pre>";print_r($templates);echo "</pre>";
 
-    wp_reset_query();
+    //wp_reset_query();
 }
 
 /**
