@@ -257,6 +257,7 @@ ul.bullets {
 .sears_button.azure,
 .kmart_button.azure {
   background-position:0px -140px;
+  margin-right: 0px;
 }
 
 .kmart_button {
@@ -557,39 +558,10 @@ textarea.discussion {
 }
 
 // RESULT LIST
-.results-list {
+.archive_questions .results-list {
   margin-top: 1em;
   border: 1px solid sears( decorative );
   @include border-radius( 5px );
-  .content-header {
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .lone-result {
-    padding-top: 1.5em;
-    margin-top: .5em;
-    border-top: 1px solid sears( decorative );
-    &:first-child {
-      margin-top: 0;
-      border-top: 0;
-    }
-  }
-  .content-header {
-    border-top: 0;
-    padding-top: 1.5em;
-    padding-bottom: 1.5em;
-		label {
-			font-weight: normal;
-		}
-  }
-  .content-headline {
-    font-size: font-size( 14 );
-    margin: 1em 0;
-  }
-}
-
-.results-list {
   & > .content-body {
     border:none;
     padding:0 em-adjust( .625em );
@@ -599,6 +571,7 @@ textarea.discussion {
   }
   & > .content-header {
     border-bottom:1px solid #DDDCDC;
+    border-top:none;
     padding:1.5em 0;
     width:100%;
     form {
@@ -609,6 +582,42 @@ textarea.discussion {
     .content-date {
       float:right;
     }
+  }
+  .content-headline {
+    font-size:font-size(13);
+    margin: 1em 0;
+  }
+}
+
+.archive_posts .results-list {
+  & > .content-body {
+    border:none;
+    padding:0px;
+    p {
+      margin-bottom:1em;
+    }
+  }
+  .content-category, .content-author, .content-excerpt, .content-comments, .content-share {
+    font-size: font-size(13);
+  }
+  .content-comments {
+    float:left;
+    margin-bottom:0px;
+  }
+  .content-details {
+    margin-bottom:.5em;
+  }
+  .content-excerpt {
+    line-height:15px;
+  }
+  .content-headline {
+    margin-bottom:0px;
+  }
+  .content-share {
+    float:right;
+  }
+  .addthis.dropmenu .sharebutton  {
+    padding:0px;
   }
 }
 
