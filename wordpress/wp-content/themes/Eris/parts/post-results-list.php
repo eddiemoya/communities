@@ -10,21 +10,16 @@
     <!--  // Pull everything from here out to another partial specific to featured posts  -->
     <section class="content-body clearfix">
 
-        <?php  if (has_post_thumbnail()) :  ?>
-
-            <?php $post_thumbnail_id = get_post_thumbnail_id( $post_id ); ?>
-            <?php $thumbnail_src = wp_get_attachment_image_src($post_thumbnail_id, "large"); ?>
-
-            <div class="featured-image <?php echo $inner_span; ?>">
-                <img src="<?php echo $thumbnail_src[0]; ?>" alt="<?php echo get_the_title(); ?>" />
-            </div>
-
-        <?php  endif; ?>
+    <?php if (has_post_thumbnail()) : ?>
+        <div class="featured-image <?php echo $inner_span; ?>">
+            <?php the_post_thumbnail(); ?>
+        </div>
+    <?php endif; ?>
 
 
         <div class="featured-post <?php echo $inner_span; ?>">
 
-            <div class="content-details clearfix">
+            <section class="content-details clearfix">
                 <?php $c = get_the_category(); ?>
                     <span class="content-category">
                         <a href="<?php echo get_category_link($c[0]); ?>" title="<?php echo $c[0]->name; ?>">
@@ -35,7 +30,7 @@
                     <?php the_time('F j, Y'); ?>
                 </time>
 
-            </div> <!-- content-details -->
+            </section> <!-- content-details -->
 
             <h1 class="content-headline">
                 <a href="<?php the_permalink(); ?>">
