@@ -11,4 +11,8 @@ if(!is_ajax()) {
 
 if(!is_ajax()){ 
     get_template_part('parts/footer', 'widget');
-}
+}?>
+
+<section class="pagination">
+     <?php echo posts_nav_link(); ?>
+</section>
