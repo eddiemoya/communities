@@ -61,5 +61,6 @@
         </div> <!-- featured- -->
 
     </section> <!-- featured-post -->
+</article>
 
 <?php// get_template_part('parts/footer', 'widget') ;?>
