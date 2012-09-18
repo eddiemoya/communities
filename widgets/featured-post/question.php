@@ -1,6 +1,5 @@
 <?php $c = get_the_category(); ?>
-
-
+<section class='content-container featured-question'>
 
     <?php if (is_widget('show_category') || is_widget('show_date')) : ?>
         <section class="content-details clearfix">
@@ -44,4 +43,8 @@
     <section class="post-actions">
         <?php get_partial( 'parts/share', array( "version" => is_widget('share_style'), "url" => get_post_permalink( $post->ID ) ) ); ?>
     </section>
+    
+</section>
+
+
 
