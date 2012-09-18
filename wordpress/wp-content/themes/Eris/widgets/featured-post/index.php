@@ -1,10 +1,12 @@
 <?php get_template_part('parts/header', 'widget'); ?>
-<?php if (have_posts()) { global $excerptLength; $excerptLength = 200; while (have_posts()) { the_post(); ?>
+
+
+<?php if (have_posts()) { while (have_posts()) { the_post(); ?>
 
 <section class="span6">
     <article class="content-container question">
 
-<!--         <section class="content-body clearfix"> -->
+        <section class="content-body clearfix">
    
             <?php get_partial( 'parts/crest', array( "user_id" => get_the_author_meta('ID'), "width" => 'span3' ) ); ?>
 
@@ -30,7 +32,7 @@
 
             </div>
 
-        <!-- </section> -->
+        </section>
 
     </article>
 
