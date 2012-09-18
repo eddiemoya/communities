@@ -40,6 +40,8 @@ class Section_Front{
 
 		function add_var($qvars) {
 			$qvars[] = 'meta_key';
+			$qvars[] = 'old_post_type';
+
 			return $qvars;
 		}
 
@@ -204,12 +206,12 @@ function custom_primary_query($query = '') {
 					$meta_keys = implode($meta_keys,'+');
 
 					$endpoint_pattern = '(' . implode('|', array_filter($post_types)) . ')';
-					$new_rules["{$term->taxonomy}/{$term->slug}/{$endpoint_pattern}/?$"] = 'index.php?posts_per_page=1&posts__in='.$post->ID.'&post_type='.$post->post_type.'&category_name='.$term->slug.'&meta_key='.$meta_keys;
+					$new_rules["{$term->taxonomy}/{$term->slug}/({$endpoint_pattern})/?$"] = 'index.php?old_post_type=$matches[1]&posts_per_page=1&posts__in='.$post->ID.'&post_type='.$post->post_type.'&category_name='.$term->slug.'&meta_key='.$meta_keys;
 
 
 				}
 				if(!empty($post->meta['rewrite_tax_archive'])){
-					$new_rules["{$term->taxonomy}/{$term->slug}/?$"] = 'index.php?posts_per_page=1&posts__in='.$post->ID.'&post_type='.$post->post_type.'&category_name='.$term->slug.'&meta_key=widgetpress_post_type_none';
+					$new_rules["{$term->taxonomy}/({$term->slug})/?$"] = 'index.php?posts_per_page=1&posts__in='.$post->ID.'&post_type='.$post->post_type.'&category_name='.$term->slug.'&meta_key=widgetpress_post_type_none';
 				}
 
 

@@ -1,8 +1,18 @@
-<?php if(have_posts()) : ?>
+<?php 
+	if(is_widget()->query_type == 'users'){
+		$post_type = 'users';
+	} else {
+		$queried_type = get_query_var('post_type');
+		$post_type = (!is_array($queried_type) || !isset($queried_type[1])) ? $queried_type : '';
+		$post_type = (is_array($post_type)) ? $post_type[0] : $post_type;
+	}
+	$class = ($post_type == 'users') ? '-users' : '-posts';
+	
+if(have_posts()) : ?>
 <header class="content-header">
 	<form method="post" action="">
-		<label for="sort-results">Sort By</label>
-			<?php 
+		<label for="filter-results<?php echo $class; ?>">View</label>
+		<?php 
 			// Get the normal queried category term id.
 			$category = get_queried_object()->term_id;
 			$subcategory = null;
@@ -30,9 +40,10 @@
 				'selected' => $category,
 				'hierarchical' => true,
 				'hide_if_empty' => true,
-				'class' => 'input_select',
+				//'class' => 'input_select',
+				'class' => 'filter-results'.$class,
 				'name' => 'filter-category',
-				'id' => 'sort-results'
+				'id' => 'filter-results'
 			));
 			if(!empty($subcategory)){
 				wp_dropdown_categories(array(
@@ -46,8 +57,15 @@
 					'id' => 'sub-category'
 				));
 			}
-			?>
-		<input type="hidden" value="results-list" name="widget" />
+
+		?>
+		<label for="sort-results<?php echo $class; ?>">Sort by</label>
+		<select name="sort-results" id="sort-results" class="sort-results<?php echo $class; ?>">
+			<option value="DESC">Oldest First</option>
+			<option value="ASC">Newest First</option>
+		</select>
+		<input type="hidden" value="results-list" class="widget_name" name="widget" />
+		<input type="hidden" value="<?php echo $post_type; ?>" class="post_type" name="post_type" />
 	</form>
 </header>
 
