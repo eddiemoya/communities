@@ -5,7 +5,7 @@
     $inner_span = (has_post_thumbnail()) ? "span6" : "span12";
 ?>
 
-<article class="content-container <?php //echo $post_type ?> <?php echo $post_type ?>">
+<article class="content-container <?php echo $post_type ?>">
 
     <!--  // Pull everything from here out to another partial specific to featured posts  -->
     <section class="content-body clearfix">
@@ -17,7 +17,7 @@
     <?php endif; ?>
 
 
-        <div class="featured-post <?php echo $inner_span; ?>">
+        <div class="<?php echo $inner_span; ?>">
 
             <div class="content-details clearfix">
                 <?php $c = get_the_category(); ?>
@@ -26,7 +26,7 @@
                             <?php echo $c[0]->cat_name; ?>
                         </a>
                     </span>
-                <time class="content-date" datetime="<?php the_time('Y-m-d'); ?>">
+                <time class="content-date" pubdate datetime="<?php the_time('Y-m-d'); ?>">
                     <?php the_time('F j, Y'); ?>
                 </time>
 
@@ -40,7 +40,7 @@
 
             <ul>
                 <li class="content-author">By: <?php echo get_the_author(); ?></li>
-                <li class="content-comments"><?php comments_number(); ?></li>
+      <!--           <li class="content-comments"><?php comments_number(); ?></li> -->
             </ul>
 
             <?php the_excerpt(); ?>
@@ -49,9 +49,10 @@
                 <?php the_tags("Tags: ", ", "); ?>
             </p>
 
-            <section class="post-actions">
-                <?php get_partial( 'parts/share', array( "version" => "long", "url" => get_post_permalink( $post->ID ) ) ); ?>
-            </section>
+            <ul>
+                <li class="content-comments"><?php comments_number(); ?></li> 
+                <?php get_partial( 'parts/share', array("url" => get_post_permalink( $post->ID ) ) ); ?>
+            </ul>
 
         </div> <!-- featured- -->
 
