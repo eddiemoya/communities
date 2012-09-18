@@ -682,4 +682,25 @@ function set_screen_name($screen_name) {
 			
 		return true;
 	}
+
 }
+
+
+
+/**
+ * Sanitizes text of any profanity
+ * 
+ * @param string $text
+ * @uses WP Content Filter plugin [required]
+ */
+function sanitize_text($text) {
+	
+	if(function_exists('pccf_filter')){
+		
+		return pccf_filter($text);
+	} 
+	
+	return $text;
+}
+
+
