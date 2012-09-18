@@ -11,7 +11,7 @@ $inner_span = ((is_widget('show_thumbnail') && has_post_thumbnail()) || is_widge
 <div class="<?php echo $inner_span; ?>">
 
     <?php if (is_widget('show_category') || is_widget('show_date')) : ?>
-        <section class="content-details clearfix">
+        <div class="content-details clearfix">
 
             <?php if (is_widget('show_category')) : $c = get_the_category(); ?>
                 <span class="content-category">
@@ -28,7 +28,7 @@ $inner_span = ((is_widget('show_thumbnail') && has_post_thumbnail()) || is_widge
             <?php endif; ?>
 
 
-        </section> <!-- content-details -->
+        </div> <!-- content-details -->
     <?php endif; //is_widget->show_category, show_date ?>
 
 
