@@ -50,7 +50,7 @@ function filter_body_class($classes) {
         $classes[] = 'section';
 
     if(get_query_var('old_post_type')){
-        $classes[] = 'archive_' . get_query_var('old_post_type');
+        $classes[] = 'archive_' . get_query_var('old_post_type').'s';
     }
     
     return $classes;
