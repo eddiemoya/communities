@@ -1,39 +1,42 @@
-<?php
-    get_template_part('parts/header', 'widget');
+<?php get_template_part('parts/header', 'widget'); ?>
+<?php if (have_posts()) { global $excerptLength; $excerptLength = 200; while (have_posts()) { the_post(); ?>
 
-    if (have_posts()) {
-        global $excerptLength;
+<section class="span6">
+    <article class="content-container question">
 
-        $excerptLength = 200;
+<!--         <section class="content-body clearfix"> -->
+   
+            <?php get_partial( 'parts/crest', array( "user_id" => get_the_author_meta('ID'), "width" => 'span3' ) ); ?>
 
-        while (have_posts()) {
-            the_post();
-?>
-<li class="featured">
-    <section class="column clearfix">
-        <?php get_partial( 'parts/crest', array( "user_id" => get_the_author_meta('ID'), "width" => 'span4' ) ); ?>
-        <div class="span8 info content-details">
-            <time class="content-date" datetime="<?php the_time('Y-m-d'); ?>">
-                <?php the_time('F jS, Y g:ia'); ?>
-            </time>
-            
-            <ul class="content-comments">
-                <li><?php comments_number(); ?></li>
-            </ul>
-            
-            <h4 class="content-headline">
-                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-            </h4>
-        </div>
+            <div class="span9">
 
-    </section>
-</li>
-<?php
-        } ?>
-        <section class="pagination">
-             <?php echo posts_nav_link(); ?>
-        </section>
-  <?php  }
+                <div class="content-details clearfix">
+                    <time class="content-date" pubdate="" datetime="<?php the_time('Y-m-d'); ?>">
+                        <?php the_time('F jS, Y'); ?>
+                        <span class="time-stamp">
+                            <?php the_time('g:ia'); ?>
+                        </span>
+                    </time>
+                </div>
+                <h1 class="content-headline">
+                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                </h1>
 
-    get_template_part('parts/footer', 'widget');
+                <?php the_excerpt(); ?>
+
+                <ul class="content-comments">
+                    <li class="content-comments"><?php echo $answer_count . ' ' . _n( 'answer', 'answers', $answer_count ); ?> | <?php comments_number('0 replies', '1 reply', '% replies'); ?> | <?php echo $comment_count . ' ' . _n( 'comment', 'comments', $user->comment_count ); ?></li>
+                </ul>
+
+            </div>
+
+        <!-- </section> -->
+
+    </article>
+
+</section>
+
+<?php }} ?>
+
+<?php get_template_part('parts/footer', 'widget');
 
