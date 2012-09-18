@@ -241,6 +241,21 @@ function template_check(){
     
 }
 
+add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
+//add_filter( 'image_send_to_editor', 'remove_thumbnail_dimensions', 10 );
+
+function remove_thumbnail_dimensions( $html ) {
+    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+    return $html;
+}
+
+
+
+add_filter( "the_excerpt", "add_class_to_excerpt" );
+function add_class_to_excerpt( $excerpt ) {
+    return str_replace('<p', '<p class="content-excerpt"', $excerpt);
+}
+
 
 add_action('init', 'catch_cookies');
 function catch_cookies(){
@@ -317,5 +332,28 @@ function limit_search($query) {
 
     return $query;
 }
-
 add_filter('pre_get_posts','limit_search');
+
+
+function filter_before_widget($html, $dropzone, $widget){
+
+    $meta = (object)$widget->get('meta');
+    if($meta->widgetpress_widget_classname = 'Featured_Post_Widget'){
+        $query = get_post($meta->post__in_1);
+       // echo "<pre>";print_r($query);echo "</pre>";
+        if($query->post_type == 'question'){
+            if($meta->limit > 1){
+                $html = str_replace('featured-post', 'featured-category-question', $html);
+            } else { 
+                $html = str_replace('featured-post', 'featured-question', $html);
+            }
+        }
+
+    }
+    //echo "<pre>";print_r();echo "</pre>";
+
+    return $html;
+
+}
+
+add_filter('widgetpress_before_widget', 'filter_before_widget', 10, 3);

@@ -65,8 +65,9 @@ function get_posts_ajax(){
             }
 
             $wp_query = new WP_Query($query);
-
-        loop($_POST['template'], array($_POST['special'], 'post'));
+        $path = (isset($_POST['path'])) ? $_POST['path'] : 'parts';
+      
+        loop(array($_POST['special'], 'post'), $_POST['template'], $path, 'parts/no-results.php');
         wp_reset_query();
 
     } else {
@@ -128,7 +129,7 @@ function profile_paginate() {
             $activities = $user_activities->page($page)
                                             ->get_user_comments_by_type($type)
                                             ->comments;
-                                            
+                  
                                                                                                         
             include(get_template_directory() . '/parts/profile-comments.php');
         }
@@ -136,9 +137,6 @@ function profile_paginate() {
         //Posts
         if($type == 'posts' || $type == 'guides' || $type == 'question') {
             
-            /*$activities = $user_activities->page($page)
-                                            ->get_user_posts_by_type($type)
-                                            ->posts;*/
         	
 	        if($type == 'question') {
 					
