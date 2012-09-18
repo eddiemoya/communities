@@ -38,7 +38,7 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
     _thisTooltip.actedObj = {
         element: {},
         height: 0,
-        offest: {},
+        offset: {},
         position: {},
         width: 0
     };
@@ -234,7 +234,7 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
     };
 
     _thisTooltip.setWidth = function(obj) {
-        obj.width = obj.element.innerWidth(true);
+        obj.width = obj.element.outerWidth(true);
     };
 
     _thisTooltip.setTooltip = function() {
@@ -248,8 +248,6 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         var tooltip = _thisTooltip.tooltip.element;
         var tooltipHeight = _thisTooltip.tooltip.height;
         var tooltipWidth = _thisTooltip.tooltip.width;
-
-        console.log('arrow position: ' + _thisTooltip.options.arrowPosition)
 
         switch(_thisTooltip.options.arrowPosition) {
             case 'left':
