@@ -26,8 +26,7 @@ class User_Profile {
 	 * Array of comment types
 	 * @var array
 	 */
-	public $comment_types = array('',
-									'answer',
+	public $comment_types = array('answer',
 									'comment');
 	
 	/**
@@ -320,9 +319,6 @@ class User_Profile {
 				
 				ORDER BY date DESC" . $this->limit;
 		
-		/*echo $q;
-		exit;*/
-		
 		
 		$this->activities = $wpdb->get_results($q);
 		
@@ -408,6 +404,7 @@ class User_Profile {
 	}
 	
 	public function get_expert_answers($type='answer') {
+		
 		foreach($this->posts as $key=>$post) {
 			$answers = $this->get_experts_answers($post->ID, $type);
 
@@ -491,24 +488,37 @@ class User_Profile {
 	 */
 	public function get_user_comments_by_type($type = '') {
 		
-	     $args = array(	'type'				=> $type,
+		global $wpdb;
+		
+		
+	    /* $args = array(	'type'				=> $type,
 					 	'status'			=> 'approve',
 						'user_id'			=> $this->user_id,
 						'order'				=> 'DESC',
 						'orderby'			=> 'comment_date',
 	     				'number'			=> $this->posts_per_page
-						);
+						);*/
 			
 			$this->paginate();
 			
-			$args['offset'] = $this->offset;
-						
-			$this->comments = get_comments($args);
+			$q = "SELECT *
+				FROM {$wpdb->comments}
+				WHERE comment_type = '{$type}'
+				AND comment_approved = 1
+				AND user_id = {$this->user_id}
+				ORDER BY comment_date DESC {$this->limit}";
+			
+			//$args['offset'] = $this->offset;
+					
+			$this->comments = $wpdb->get_results($q);//get_comments($args);
+			
+			
 			
 			$this->next_page = (count($this->comments) < $this->posts_per_page) ? null : ($this->page + 1);
 			$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
 			
 			$this->get_comment_post();
+			
 			
 			return $this;
 			
@@ -680,16 +690,17 @@ class User_Profile {
 	
 	private function has_comment_count($type) {
 		
-		$args = array(	'type'				=> $type,
-					 	'status'			=> 'approve',
-						'user_id'			=> $this->user_id,
-						'order'				=> 'DESC',
-						'orderby'			=> 'comment_date',
-	     				'number'			=> $this->posts_per_page
-						);
-						
-						
-			if(count(get_comments($args))) {
+		global $wpdb;
+		
+		$q = "SELECT *
+			FROM {$wpdb->comments}
+			WHERE comment_type = '{$type}'
+			AND comment_approved = 1
+			AND user_id = {$this->user_id}
+			ORDER BY comment_date DESC {$this->limit}";
+			
+		
+			if(count($wpdb->get_results($q))){
 				
 				return true;
 				

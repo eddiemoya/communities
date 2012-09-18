@@ -128,7 +128,7 @@ function profile_paginate() {
             $activities = $user_activities->page($page)
                                             ->get_user_comments_by_type($type)
                                             ->comments;
-                                            
+                  
                                                                                                         
             include(get_template_directory() . '/parts/profile-comments.php');
         }
@@ -136,9 +136,6 @@ function profile_paginate() {
         //Posts
         if($type == 'posts' || $type == 'guides' || $type == 'question') {
             
-            /*$activities = $user_activities->page($page)
-                                            ->get_user_posts_by_type($type)
-                                            ->posts;*/
         	
 	        if($type == 'question') {
 					
