@@ -5,7 +5,7 @@
     $inner_span = (has_post_thumbnail()) ? "span6" : "span12";
 ?>
 
-<article class="content-container <?php //echo $post_type ?> featured-<?php echo $post_type ?>">
+<article class="content-container <?php //echo $post_type ?> <?php echo $post_type ?>">
 
     <!--  // Pull everything from here out to another partial specific to featured posts  -->
     <section class="content-body clearfix">
