@@ -2,7 +2,7 @@
 <section class='content-container featured-question'>
 
     <?php if (is_widget('show_category') || is_widget('show_date')) : ?>
-        <section class="content-details clearfix">
+        <div class="content-details clearfix">
 
             <?php if (is_widget('show_category')) : $c = get_the_category(); ?>
                 <span class="content-category">
@@ -18,7 +18,7 @@
                 </time>
             <?php endif; ?>
 
-        </section> <!-- content-details -->
+        </div> <!-- content-details -->
 
     <?php endif; //is_widget->show_category, show_date ?>
     <?php //get_partial( 'parts/space_date_time', array( "timestamp" => get_the_time('U'), "remove_hms" => true ) ); ?>
