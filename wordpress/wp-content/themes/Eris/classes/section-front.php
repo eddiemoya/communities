@@ -196,7 +196,7 @@ function custom_primary_query($query = '') {
 			}	
 		}
 		
-		echo "<pre>";print_r(array($new_rules, $tposts,$terms));echo "</pre>";
+		//echo "<pre>";print_r(array($new_rules, $tposts,$terms));echo "</pre>";
 		
 
 
