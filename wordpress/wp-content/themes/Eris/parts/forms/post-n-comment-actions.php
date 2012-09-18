@@ -153,7 +153,8 @@
                                                             }
                                                         }
                                                     },
-                                                    arrowPosition: 'top'
+                                                    arrowPosition: 'top',
+                                                    tooltipWidth: 188,
                                                 }
                                             }">flag</button>
                         <?php
@@ -180,7 +181,7 @@
     </form>
     <div id="flagForm-<?php echo $id; ?>" class="hide">
         <form class="flag-form" id="commentForm-<?php echo $id; ?>" method="post" shc:gizmo="transFormer">
-            <textarea class="flagField" rows="5" cols="16" name="comment" aria-required="true" shc:gizmo:form="{required: true}"></textarea>
+            <textarea class="flagField" rows="5" cols="19" name="comment" aria-required="true" shc:gizmo:form="{required: true}"></textarea>
             <input class="kmart_button" type="submit" value="Flag" />
             <input class="kmart_button azure" type="reset" value="Cancel" onclick="jQuery('.tooltip').hide();" />
             <input name="comment_post_ID" type="hidden" value="<?php echo $post_id; ?>" />
