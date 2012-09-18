@@ -5,21 +5,16 @@
     $inner_span = (has_post_thumbnail()) ? "span6" : "span12";
 ?>
 
-<article class="content-container <?php //echo $post_type ?> featured-<?php echo $post_type ?>">
+<article class="content-container <?php //echo $post_type ?> <?php echo $post_type ?>">
 
     <!--  // Pull everything from here out to another partial specific to featured posts  -->
     <section class="content-body clearfix">
 
-        <?php  if (has_post_thumbnail()) :  ?>
-
-            <?php $post_thumbnail_id = get_post_thumbnail_id( $post_id ); ?>
-            <?php $thumbnail_src = wp_get_attachment_image_src($post_thumbnail_id, "large"); ?>
-
-            <div class="featured-image <?php echo $inner_span; ?>">
-                <img src="<?php echo $thumbnail_src[0]; ?>" alt="<?php echo get_the_title(); ?>" />
-            </div>
-
-        <?php  endif; ?>
+    <?php if (has_post_thumbnail()) : ?>
+        <div class="featured-image <?php echo $inner_span; ?>">
+            <?php the_post_thumbnail(); ?>
+        </div>
+    <?php endif; ?>
 
 
         <div class="featured-post <?php echo $inner_span; ?>">
@@ -51,16 +46,7 @@
             <?php the_excerpt(); ?>
 
             <p class="content-tags">
-
                 <?php the_tags("Tags: ", ", "); ?>
-                <?php 
-                // $tags = get_the_tags(); 
-                //     foreach((object)$tags as $tag) {
-                //         $output[] = '<a href="' . get_tag_link($tag->term_id) . '" title="' . $tag->name . '"> ' . $tag->name . '</a>';
-                //     }
-                //     if (count($output) > 0)
-                //         echo "Tags: " . implode(', ', $output);
-                ?>
             </p>
 
             <section class="post-actions">
@@ -70,5 +56,6 @@
         </div> <!-- featured- -->
 
     </section> <!-- featured-post -->
+</article>
 
 <?php// get_template_part('parts/footer', 'widget') ;?>
