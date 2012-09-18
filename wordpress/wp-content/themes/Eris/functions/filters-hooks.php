@@ -329,5 +329,28 @@ function limit_search($query) {
 
     return $query;
 }
-
 add_filter('pre_get_posts','limit_search');
+
+
+function filter_before_widget($html, $dropzone, $widget){
+
+    $meta = (object)$widget->get('meta');
+    if($meta->widgetpress_widget_classname = 'Featured_Post_Widget'){
+        $query = get_post($meta->post__in_1);
+       // echo "<pre>";print_r($query);echo "</pre>";
+        if($query->post_type == 'question'){
+            if($meta->limit > 1){
+                $html = str_replace('featured-post', 'featured-category-question', $html);
+            } else { 
+                $html = str_replace('featured-post', 'featured-question', $html);
+            }
+        }
+
+    }
+    //echo "<pre>";print_r();echo "</pre>";
+
+    return $html;
+
+}
+
+add_filter('widgetpress_before_widget', 'filter_before_widget', 10, 3);
