@@ -7,7 +7,7 @@
 		$post_type = (is_array($post_type)) ? $post_type[0] : $post_type;
 	}
 	$class = ($post_type == 'users') ? '-users' : '-posts';
-	
+	echo "<pre>";print_r(is_widget());echo "</pre>";
 if(have_posts()) : ?>
 <?php if(is_widget('show_filters')) : ?>
 	<header class="content-header">
