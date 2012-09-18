@@ -19,7 +19,7 @@
 
         <div class="featured-post <?php echo $inner_span; ?>">
 
-            <section class="content-details clearfix">
+            <div class="content-details clearfix">
                 <?php $c = get_the_category(); ?>
                     <span class="content-category">
                         <a href="<?php echo get_category_link($c[0]); ?>" title="<?php echo $c[0]->name; ?>">
@@ -30,7 +30,7 @@
                     <?php the_time('F j, Y'); ?>
                 </time>
 
-            </section> <!-- content-details -->
+            </div> <!-- content-details -->
 
             <h1 class="content-headline">
                 <a href="<?php the_permalink(); ?>">
