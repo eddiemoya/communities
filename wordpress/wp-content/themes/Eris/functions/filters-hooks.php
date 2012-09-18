@@ -241,6 +241,21 @@ function template_check(){
     
 }
 
+add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
+//add_filter( 'image_send_to_editor', 'remove_thumbnail_dimensions', 10 );
+
+function remove_thumbnail_dimensions( $html ) {
+    $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
+    return $html;
+}
+
+
+
+add_filter( "the_excerpt", "add_class_to_excerpt" );
+function add_class_to_excerpt( $excerpt ) {
+    return str_replace('<p', '<p class="content-excerpt"', $excerpt);
+}
+
 
 add_action('init', 'catch_cookies');
 function catch_cookies(){
