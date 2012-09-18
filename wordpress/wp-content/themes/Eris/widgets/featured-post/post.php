@@ -22,7 +22,7 @@ $inner_span = ((is_widget('show_thumbnail') && has_post_thumbnail()) || is_widge
             <?php endif; ?>
 
             <?php if(is_widget('show_date')) : ?>
-                <time class="content-date" datetime="<?php the_time('Y-m-d'); ?>">
+                <time class="content-date" pubdate datetime="<?php the_time('Y-m-d'); ?>">
                     <?php the_time('F j, Y'); ?>
                 </time>
             <?php endif; ?>
