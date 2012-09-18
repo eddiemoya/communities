@@ -633,8 +633,8 @@ ul.bullets {
     display: block;
     margin: 0 auto; }
   .crest h4 {
-    padding: .5em 0;
-    letter-spacing: -0.05em; }
+    font-size: 76.923%;
+    padding: .5em 0; }
   .crest.labeled h4 {
     background: #bcdaf3 url("/wp-content/themes/Eris/assets/img/sprite-user.png") repeat-x left bottom;
     text-align: center;
@@ -650,6 +650,19 @@ ul.bullets {
     background: url("/wp-content/themes/Eris/assets/img/sprite-user.png") no-repeat center top;
     height: 10px;
     overflow: hidden; }
+
+.user-info {
+  overflow: hidden;
+  word-wrap: break-word; }
+  .user-info .user_avatar a {
+    display: block;
+    text-align: left;
+    width: 100%; }
+  .user-info .user_avatar img {
+    width: 100%; }
+  .user-info .user_screenname, .user-info .user_location {
+    font-size: 92.307%;
+    font-weight: bold; }
 
 .span4 .span4 .crest h4 {
   font-size: 76.923%; }
@@ -864,48 +877,6 @@ textarea.discussion {
   margin: 0 0 1em;
   text-align: right; }
 
-.featured-members {
-  *zoom: 1; }
-  .featured-members .content-body > * {
-    width: 29.9%;
-    float: left;
-    padding: 0 1.6%; }
-    .featured-members .content-body > *:first-child {
-      padding-left: 0; }
-  .featured-members:after {
-    content: "\0020";
-    display: block;
-    height: 0;
-    clear: both;
-    overflow: hidden;
-    visibility: hidden; }
-  .featured-members .member {
-    border-left: 1px solid #cccccc; }
-    .featured-members .member.clearfix {
-      clear: none; }
-    .featured-members .member:first-child {
-      border-left: 0; }
-    .featured-members .member > * {
-      width: 44.444%;
-      float: left; }
-    .featured-members .member > * + * {
-      width: 44.44499999999999%;
-      float: left;
-      margin-left: 11.111%; }
-    .featured-members .member .content-comments {
-      width: 100%; }
-      .featured-members .member .content-comments li {
-        float: none;
-        border: 0; }
-    .featured-members .member .stats {
-      clear: left;
-      width: 100%;
-      margin-left: 0; }
-      .featured-members .member .stats p {
-        margin-bottom: 0.369em; }
-    .featured-members .member .info ul {
-      margin: 0.369em 0; }
-
 .span3 .featured-members .content-body .member, .span4 .featured-members .content-body .member, .span6 .featured-members .content-body .member {
   width: 100%;
   float: none;
@@ -966,12 +937,16 @@ textarea.discussion {
     padding-top: 1.5em;
     padding-bottom: 1.5em; }
   .results-list .content-headline {
-    font-size: 107.692%;
+    font-size: 100%;
     margin: 1em 0; }
+  .results-list .content-comments {
+    font-size: 84.615%; }
+  .results-list .content-category {
+    font-size: 84.615%; }
 
 .results-list > .content-body {
   border: none;
-  padding: 0 0.769em; }
+  padding: 0 0.984em; }
   .results-list > .content-body > .content-container:first-child .content-body {
     border-top: none; }
 .results-list > .content-header {
@@ -1396,7 +1371,6 @@ fieldset#use_your_account_from {
 
 .actions {
   float: right;
-  margin: 0 0.5em;
   position: relative;
   z-index: 10; }
   .actions button {
@@ -1529,6 +1503,97 @@ button.follow {
   font-weight: normal;
   text-align: center;
   text-transform: uppercase; }
+
+.featured-category-questions .content-header {
+  border-top: none;
+  padding: 0px; }
+  .featured-category-questions .content-header h1 {
+    font-size: 146.153%;
+    font-weight: normal; }
+.featured-category-questions .content-body {
+  border-top: none; }
+.featured-category-questions .content-headline {
+  font-size: 1em; }
+.featured-category-questions .content-comments {
+  font-size: 84.615%; }
+
+.error404 {
+  color: #333333; }
+  .error404 h1 {
+    font-size: 169.23%;
+    font-weight: bold;
+    margin-bottom: 1.23em; }
+  .error404 h2 {
+    font-weight: bold;
+    margin-bottom: 1em; }
+  .error404 ul {
+    margin-top: 0px; }
+
+.member_avatar {
+  overflow: hidden; }
+  .member_avatar img {
+    width: 100%; }
+  .member_avatar .badge {
+    background: transparent url(/wp-content/themes/Eris/assets/img/sears/sprite_global.png) repeat-x 0px 0px;
+    color: #ffffff;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    width: 100%; }
+
+.sears .member_avatar .badge {
+  background-position: 0px -235px; }
+
+.kmart .member_avatar .badge {
+  background-position: 0px -243px; }
+
+.member-list .member-wrapper {
+  border-left: solid 1px #d5d5d5;
+  padding: 0.769em; }
+.member-list > li:first-child .member-wrapper {
+  border-left: none; }
+
+.member_details {
+  color: #333333; }
+  .member_details .member_screen-name, .member_details .member_location {
+    font-size: 92.307%;
+    font-weight: bold; }
+  .member_details .member_specialties, .member_details .member_last-posted, .member_details .member_answers, .member_details .member_posts,
+  .member_details .member_comments {
+    font-size: 84.615%; }
+  .member_details .member_last-posted {
+    color: #666666; }
+  .member_details .member_location {
+    margin-bottom: 0.615em; }
+  .member_details .member_avatar {
+    margin-bottom: 1.5em; }
+    .member_details .member_avatar .badge {
+      font-size: 107.692%;
+      line-height: 2.5em; }
+
+.span6 .featured-members .content-body, .span4 .featured-members .content-body, .span6 .featured-members .content-body {
+  padding: 0.769em; }
+.span6 .featured-members .span4, .span4 .featured-members .span4, .span6 .featured-members .span4 {
+  float: none;
+  margin-left: 0px;
+  width: 100%; }
+.span6 .featured-members .member_avatar, .span4 .featured-members .member_avatar, .span6 .featured-members .member_avatar {
+  width: 5em; }
+  .span6 .featured-members .member_avatar .badge, .span4 .featured-members .member_avatar .badge, .span6 .featured-members .member_avatar .badge {
+    font-size: 76.923%;
+    line-height: 2em; }
+  .span6 .featured-members .member_avatar img, .span4 .featured-members .member_avatar img, .span6 .featured-members .member_avatar img {
+    min-height: 5em;
+    min-width: 5em; }
+.span6 .featured-members .member-wrapper, .span4 .featured-members .member-wrapper, .span6 .featured-members .member-wrapper {
+  border-left: none;
+  padding: 0px; }
+.span6 .featured-members .member_profile, .span6 .featured-members .member_posts, .span4 .featured-members .member_profile, .span4 .featured-members .member_posts, .span6 .featured-members .member_profile, .span6 .featured-members .member_posts {
+  clear: none;
+  margin-left: 2.5%;
+  width: 70%; }
+.span6 .featured-members .member_location, .span4 .featured-members .member_location, .span6 .featured-members .member_location {
+  margin-bottom: 0px; }
 
 .dropmenu li {
   float: left;
