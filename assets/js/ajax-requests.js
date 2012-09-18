@@ -96,7 +96,8 @@ jQuery(document).ready(function($) {
 			post_type 	: $('.post_type', container).val(),
 			template 	: $('.widget_name', container).val(),
 			category	: $('.filter-results-posts option', container).filter(':selected').val(),
-			order		: $('.sort-results-posts option', container).filter(':selected').val()
+			order		: $('.sort-results-posts option', container).filter(':selected').val(),
+			path		: 'parts',
 		};
 		
 		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category .filter-results option', this).filter(':selected').val() : data.category; //console.log(data);

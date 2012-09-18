@@ -936,7 +936,7 @@ textarea.discussion {
     border-right: 0;
     padding-right: 0; }
 
-.results-list {
+.archive_questions .results-list {
   margin-top: 1em;
   border: 1px solid #cccccc;
   -webkit-border-radius: 5px;
@@ -944,40 +944,44 @@ textarea.discussion {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px; }
-  .results-list .content-header {
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto; }
-  .results-list .lone-result {
-    padding-top: 1.5em;
-    margin-top: .5em;
-    border-top: 1px solid #cccccc; }
-    .results-list .lone-result:first-child {
-      margin-top: 0;
-      border-top: 0; }
-  .results-list .content-header {
-    border-top: 0;
-    padding-top: 1.5em;
-    padding-bottom: 1.5em; }
-    .results-list .content-header label {
-      font-weight: normal; }
-  .results-list .content-headline {
-    font-size: 107.692%;
+  .archive_questions .results-list > .content-body {
+    border: none;
+    padding: 0 0.769em; }
+    .archive_questions .results-list > .content-body > .content-container:first-child .content-body {
+      border-top: none; }
+  .archive_questions .results-list > .content-header {
+    border-bottom: 1px solid #DDDCDC;
+    border-top: none;
+    padding: 1.5em 0;
+    width: 100%; }
+    .archive_questions .results-list > .content-header form {
+      margin: 0 .769em; }
+  .archive_questions .results-list .question .content-date {
+    float: right; }
+  .archive_questions .results-list .content-headline {
+    font-size: 100%;
     margin: 1em 0; }
 
-.results-list > .content-body {
+.archive_posts .results-list > .content-body {
   border: none;
-  padding: 0 0.769em; }
-  .results-list > .content-body > .content-container:first-child .content-body {
-    border-top: none; }
-.results-list > .content-header {
-  border-bottom: 1px solid #DDDCDC;
-  padding: 1.5em 0;
-  width: 100%; }
-  .results-list > .content-header form {
-    margin: 0 .769em; }
-.results-list .question .content-date {
+  padding: 0px; }
+  .archive_posts .results-list > .content-body p {
+    margin-bottom: 1em; }
+.archive_posts .results-list .content-category, .archive_posts .results-list .content-author, .archive_posts .results-list .content-excerpt, .archive_posts .results-list .content-comments, .archive_posts .results-list .content-share {
+  font-size: 100%; }
+.archive_posts .results-list .content-comments {
+  float: left;
+  margin-bottom: 0px; }
+.archive_posts .results-list .content-details {
+  margin-bottom: .5em; }
+.archive_posts .results-list .content-excerpt {
+  line-height: 15px; }
+.archive_posts .results-list .content-headline {
+  margin-bottom: 0px; }
+.archive_posts .results-list .content-share {
   float: right; }
+.archive_posts .results-list .addthis.dropmenu .sharebutton {
+  padding: 0px; }
 
 .member .info .content-comments li {
   float: none;
