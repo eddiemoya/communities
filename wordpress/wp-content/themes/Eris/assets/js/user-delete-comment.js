@@ -23,10 +23,7 @@ delete_comment = function(event) {
 				
 				jQuery('#comm-' + cid).remove();
 				
-			} else {
-				
-				
-			}
+			} 
 		}
 	});
 }
