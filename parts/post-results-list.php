@@ -1,4 +1,5 @@
 <?php
+    global $excerptLength; $excerptLength = 140;
     $queried_type = get_query_var('post_type');
     $post_type = (!is_array($queried_type) || !isset($queried_type[1])) ? $queried_type : 'post';
     $post_type = (is_array($post_type)) ? $post_type[0] : $post_type;
