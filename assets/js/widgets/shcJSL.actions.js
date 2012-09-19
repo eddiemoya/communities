@@ -34,7 +34,8 @@ ACTIONS.actions = $actions = function(element, options) {
             sub_type: '',
             type: '',
             nli_reset: ''
-        }
+        },
+        resetAction: true
     };
 
     _this.originalOptions = {};
@@ -67,7 +68,9 @@ ACTIONS.actions = $actions = function(element, options) {
             function(data) {
                 data = eval(data);
 
-                _this._decideForDownUpSwitch(data);
+                if(_this.options.resetAction === true) {
+                    _this._decideForDownUpSwitch(data);
+                }
 
                 if(data === 'activated') {
                     jQuery(element).addClass('active');
