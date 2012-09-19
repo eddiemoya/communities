@@ -742,6 +742,7 @@ function lookup_expert_comments_count($post_id, $categories) {
     return $return[0]->count;
 }
 
+/*
  * Sanitizes text of any profanity
  * 
  * @param string $text
