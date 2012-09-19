@@ -35,7 +35,7 @@ function get_template_ajax(){
     } else {
         echo "<!-- No template selected -->";
     }
-    exit;
+    exit();
     
 }
 
@@ -73,34 +73,28 @@ function get_posts_ajax(){
     } else {
         echo "<!-- No template selected -->";
     }
-    exit;
+    exit();
 }
 
 add_action('wp_ajax_nopriv_get_posts_ajax', 'get_posts_ajax');
 add_action('wp_ajax_get_posts_ajax', 'get_posts_ajax');
 
 /**
- * @author Jason Corradino
+ * @author Eddie Moya
  * 
  */
-function get_filtered_authors_ajax(){
-    global $wpdb;
-    $category = ($_POST["category"] == -1) ? array() : array($_POST["category"]);
-    $roles = new WP_Roles();
-    $roles = $roles->role_objects;
-    $experts = array();
-    foreach($roles as $role) {
-        if($role->has_cap("post_as_expert"))
-            $experts[] = trim($role->name);
-    }
-    $query = Results_List_Widget::get_user_role_tax_intersection(array('hide_untaxed' => false, 'roles' => $experts, 'terms' => $category));
-    $users = $wpdb->get_results($wpdb->prepare($query));
-    get_partial('widgets/results-list/author-filtered-list', array('users' => $users));
-    exit;
+function get_users_ajax(){
+
+    $category = array($_POST['category']);
+    $hide_untaxed = ($category > 0);
+    
+    $users = Results_List_Widget::query_users(array('hide_untaxed' => $hide_untaxed, 'terms' => $category, 'cap' => 'post_as_expert', 'order' => $_POST['order']));
+    get_partial($_POST['path'].'/'.$_POST['template'], array('users' => $users));
+    exit();
 }
 
-add_action('wp_ajax_nopriv_get_filtered_authors_ajax', 'get_filtered_authors_ajax');
-add_action('wp_ajax_get_filtered_authors_ajax', 'get_filtered_authors_ajax');
+add_action('wp_ajax_nopriv_get_users_ajax', 'get_users_ajax');
+add_action('wp_ajax_get_users_ajax', 'get_users_ajax');
 
 /**
  * @author Dan Crimmins
