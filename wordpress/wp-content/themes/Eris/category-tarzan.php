@@ -148,100 +148,93 @@ get_template_part('parts/header');
 				
 			</section>
 			
-			
-			<section class="span12 featured-members content-container">
-		    <hgroup class="content-header">
-		        <h3>Meet the Community Team</h3>
-		        <h4>Whatever your question or issue, we're here to help</h4>
-		    </hgroup>
-    		<section class="content-body">
-        	<div class="member clearfix">
-        		
-						<div class="crest span2 labeled">
-    					<a href="http://localhost:100/?author=98"><img alt="" class="photo" src="/wp-content/uploads/userphoto/98.jpeg?1345825782"></a>
-        			<h4><a href="http://localhost:100/?author=98">Expert</a></h4>
-    			
-    				</div>
-    			
-	    			<article class="info span8">
-	        		
-	        		<h4><a href="http://localhost:100/?author=98">user</a></h4>
-	        		
-	        		<address>&nbsp;</address>
-	            <h5>Specializes in</h5>
-	            
-	            <ul>
-		            <li><a href="http://localhost:100/category/content-blurb-demo/">Content Blurb Demo</a></li>
-		            <li><a href="http://localhost:100/category/post-a-question/">post-a-question</a></li>
-		            <li><a href="http://localhost:100/category/post-a-question-demo/test-subcat/">Test subcat</a></li>
-	            </ul>
-	          </article>
-	    			<div class="stats">
-	          	<ul>
-	              <li>0 answers</li>
-	              <li>0 posts</li>
-	              <li>1 comment</li>
-	            </ul>
-	          </div>
-					</div>
-				
-					<div class="member clearfix">
-	    
-						<div class="crest span2 labeled">
-	    				<a href="http://localhost:100/author/boobies_rule/"><img alt="" class="photo" src="/7.png?1345662144"></a>
-	    
-	    				<h4><a href="http://localhost:100/author/boobies_rule/"></a></h4>
-	    			</div>
-	    			
-	    			<article class="info span8">
-	        		<h4><a href="http://localhost:100/author/boobies_rule/">boobies_rule</a></h4>
-	        		<address>&nbsp;</address>
-	            <h5>Specializes in</h5>
-	            <ul>
-	              <li><a href="http://localhost:100/category/content-blurb-demo/">Content Blurb Demo</a></li>
-	              <li><a href="http://localhost:100/category/resultlist/">Resultlist</a></li>
-	              <li><a href="http://localhost:100/category/results-list-widget-demo/">Results List Widget Demo</a></li>
-	           	</ul>
-	         	</article>
-	         	
-	    			<div class="stats">
-	            <p>Last posted on <time pubdate="pubdate" datetime="2012-08-22">Aug 22, 2012</time>.</p>
-	            <ul>
-	              <li>0 answers</li>
-	              <li>7 posts</li>
-	              <li>0 comments</li>
-	            </ul>
-	          </div>
-					</div>
-				
-					<div class="member clearfix">
-		    
-						<div class="crest span2 labeled">
-		    			<a href="http://localhost:100/?author=60"><img alt="" class="photo" src="http://localhost:100/wp-content/themes/Eris/assets/img/avatar.jpg?"></a>
-		    			<h4><a href="http://localhost:100/?author=60">Subscriber</a></h4>
-		    		</div>
-		    		
-		    		<article class="info span8">
-		        	<h4><a href="http://localhost:100/?author=60">AGVance</a></h4>
-		        	<address>&nbsp;</address>
-		          <h5>Specializes in</h5>
-		          <ul>
-		            <li><a href="http://localhost:100/category/content-blurb-demo/">Content Blurb Demo</a></li>
-		            <li><a href="http://localhost:100/category/results-list-widget-demo/">Results List Widget Demo</a></li>
-		          </ul>
-		        </article>
-		    		<div class="stats">
-		          <ul>
-		            <li>0 answers</li>
-		            <li>0 posts</li>
-		            <li>0 comments</li>
-		          </ul>
-		        </div>
-					</div>       
-					<span class="left"><a href="http://localhost:100/experts-list/">See More</a></span> 
-    		</section>
-			</section>
-			
+			<div class="archive_questions">
+				<article class="widget content-container span12 results-list">
+					<header class="content-header">
+						<form action="" method="post">
+							<label for="filter-results-posts">View</label>
+							<select class="filter-results-posts" id="filter-results" name="filter-category">
+								<option value="1" class="level-0">General</option>
+								<option value="23" class="level-0">Customer Care</option>
+								<option selected="selected" value="436" class="level-0">Appliances</option>
+								<option value="437" class="level-0">Electronics</option>
+								<option value="438" class="level-0">Fitness &amp; Sports</option>
+								<option value="441" class="level-0">Lawn &amp; Garden</option>
+								<option value="819" class="level-0">Experts</option>
+							</select>
+							<label for="sort-results-posts">Sort by</label>
+							<select class="sort-results-posts" id="sort-results" name="sort-results">
+								<option value="DESC">Oldest First</option>
+								<option value="ASC">Newest First</option>
+							</select>
+							<input type="hidden" name="widget" class="widget_name" value="results-list">
+							<input type="hidden" name="post_type" class="post_type" value="question">
+						</form>
+					</header>
+					<section class="content-body">
+						
+						<article class="content-container question">
+							
+							<section class="content-body clearfix">
+								
+								<ul class="member_details span2">
+									
+									<li class="member_avatar span6">
+										<a href="#">
+											<img src="http://localhost:100/wp-content/themes/Eris/assets/img/avatar.jpg?" />
+											<span class="badge">Subscriber</span>
+										</a>
+									</li>
+									
+									<li class="member_profile span6">
+										<ul>
+											<li class="member_screen-name"><a href="">TimothySteele</a></li>
+											<li class="member_location">Chicago, IL</li>
+										</ul>
+									</li>
+									
+								</ul> <!-- END MEMBER DETAILS -->
+								
+
+								<div class="span10">
+									<div class="content-details clearfix"> <span class="content-category"><a title="Appliances" href="">Appliances</a></span>
+										<time datetime="2012-09-14" pubdate="" class="content-date">September 14, 2012 <span class="time-stamp">7:37 pm</span></time>
+									</div>
+									<h1 class="content-headline"><a href="http://uxint-sears/community/questions/dadasdasd/">dadasdasd</a></h1>
+									<p class="content-excerpt"> </p>
+									<ul>
+										<li class="content-comments">0 answers | 0 replies | 0 comments</li>
+									</ul>
+									<form action="" method="post" id="comment-actions-1916" class="actions clearfix">
+										<button class="flag" id="flag-comment-1916" title="Flag this question" value="flag" name="button1" type="button">flag</button>
+										<ul class="addthis dropmenu">
+											<li> <span class="sharebutton">Share</span>
+												<ul class="sharemenulinks">
+													<li><a addthis:url="http://uxint-sears/community/questions/dadasdasd/" class="addthis_button_facebook at300b" title="Facebook" href="#"><span class="at16nc at300bs at15nc at15t_facebook at16t_facebook"><span class="at_a11y">Share on facebook</span></span>Facebook</a></li>
+													<li><a addthis:url="http://uxint-sears/community/questions/dadasdasd/" class="addthis_button_twitter at300b" title="Tweet This" href="#"><span class="at16nc at300bs at15nc at15t_twitter at16t_twitter"><span class="at_a11y">Share on twitter</span></span>Twitter</a></li>
+													<li><a addthis:title="ShopYourWay this" addthis:url="http://www.sears.com" class="addthis_button_shopyourway" href="http://www.addthis.com/bookmark.php?v=250&amp;winname=addthis&amp;pub=wp-5058a65b62695333&amp;source=tbx-250,wpp-264&amp;lng=en-US&amp;s=shopyourway&amp;url=http%3A%2F%2Fwww.sears.com&amp;title=ShopYourWay%20this&amp;ate=AT-wp-5058a65b62695333/-/-/5058a325a5b300d3/2&amp;frommenu=1&amp;uid=5058a325c0bc0660&amp;pre=http%3A%2F%2Fuxint-sears%2Fcommunity%2Fquestions%2Fthis-is-no-good%2F&amp;tt=0&amp;captcha_provider=nucaptcha" target="_blank" title="Shopyourway"><img src="http://uxint-sears/wp-content/themes/Eris/assets/img/shopyourway_small.jpg">ShopYourWay</a></li>
+													<li><a addthis:url="http://uxint-sears/community/questions/dadasdasd/" class="addthis_button_email at300b" title="Email" href="#"><span class="at16nc at300bs at15nc at15t_email at16t_email"><span class="at_a11y">Share on email</span></span>Email</a></li>
+												</ul>
+											</li>
+										</ul>
+									</form>
+									<div class="hide" id="flagForm-1916">
+										<form shc:gizmo="transFormer" method="post" id="commentForm-1916" class="flag-form">
+											<textarea shc:gizmo:form="{required: true}" aria-required="true" name="comment" cols="19" rows="5" class="flagField"></textarea>
+											<input type="submit" value="Flag" class="kmart_button">
+											<input type="reset" onclick="jQuery('.tooltip').hide();" value="Cancel" class="kmart_button azure">
+											<input type="hidden" value="" name="comment_post_ID">
+											<input type="hidden" value="1916" name="comment_parent">
+											<input type="hidden" value="flag" name="comment_type">
+										</form>
+									</div>
+								</div>
+							</section>
+						</article>
+					</section>
+					<section class="pagination"> </section>
+				</article>
+			</div>
 			
 		</section> <!-- END SPAN8 -->
 	
