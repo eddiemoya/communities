@@ -88,8 +88,11 @@ function get_users_ajax(){
     $category = array($_POST['category']);
     $hide_untaxed = ($category > 0);
     
-    $users = Results_List_Widget::query_users(array('hide_untaxed' => $hide_untaxed, 'terms' => $category, 'cap' => 'post_as_expert', 'order' => $_POST['order']));
-    get_partial($_POST['path'].'/'.$_POST['template'], array('users' => $users));
+    if(class_exists('Results_List_Widget')){
+        $users = Results_List_Widget::query_users(array('hide_untaxed' => $hide_untaxed, 'terms' => $category, 'cap' => 'post_as_expert', 'order' => $_POST['order']));
+        get_partial($_POST['path'].'/'.$_POST['template'], array('users' => $users));
+    }
+    
     exit();
 }
 
