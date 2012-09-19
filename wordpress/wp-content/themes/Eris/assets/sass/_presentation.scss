@@ -65,6 +65,10 @@ ul.bullets {
   font-weight: 700;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .faint {
   color: sears( secondary-link );
 }
@@ -1329,4 +1333,41 @@ button.follow {
     text-align:center;
     text-transform:uppercase;
   }
+}
+
+.site-error {
+  margin-top: 2em;
+  .span8, .span10 {
+    background: url(#{$img}tile_line.gif);
+    margin-top: 2em;
+  }
+  .message {
+    color: white;
+    margin: 1em;
+    text-align: center;
+    padding: 9em 0;
+    h1 {
+      font-size: font-size( 24 );
+      font-family: Impact, Charcoal, sans-serif;
+      letter-spacing: .066em;
+    }
+    h2 {
+      font-size: font-size( 32 );
+      font-family: Georgia, serif;
+      margin-top: 1em;
+    }
+    .tape {
+      background: url(#{$img}tile_line.gif);
+      width: 50%;
+      margin: .66em auto;
+      line-height: .5;
+    }
+  }
+}
+
+.sears .site-error .message {
+  background: sears( site-error );
+}
+.kmart .site-error .message {
+  background: kmart( site-error );
 }
