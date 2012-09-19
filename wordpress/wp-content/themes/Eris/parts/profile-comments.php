@@ -1,8 +1,9 @@
 
 <?php if(! is_ajax() && !empty($activities)):?>
     <ol class="content-body result clearfix" id="profile-results">
+<?php endif;?>
 
-        <?php
+   <?php
     foreach($activities as $activity):
 
         $excerpt = '<article class="excerpt">' . (strlen( $activity->comment_content ) > 200 ? substr( $activity->comment_content, 0, 200 ) . "&#8230;" : $activity->comment_content) . '</article>';
@@ -20,6 +21,7 @@
         </li>
     <?php endforeach; ?>
 
+<?php if(! is_ajax() && !empty($activities)):?>
 </ol>
 <?php endif;?>
 
