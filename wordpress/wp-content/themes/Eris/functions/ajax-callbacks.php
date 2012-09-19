@@ -257,7 +257,7 @@ function user_delete_comment() {
 							array('comment_approved' => '0'),
 							array('comment_ID' => $comment_id));
 	
-		echo ($update) ? $comment_id : null;
+		echo ($update) ? $comment_id : 0;
 		
 	} else {
 		
