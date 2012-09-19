@@ -7,30 +7,29 @@
       "Facebook" => "http://www.facebook.com/kmart",
       "Twitter" => "http://www.twitter.com/kmartdeals",
       "YouTube" => "http://www.youtube.com/kmart",
-      "LinkedIn" => "http://www.linkedin/com/companies/kmart"
+      "LinkedIn" => "http://www.linkedin.com/company/kmart"
     ),
     "Kmart Resources" => array(
       "Store Finder" => "http://www.sears.com/shc/s/StoreLocatorView?storeId=10151&catalogId=10104&langId=-1&adCell=AF&adCell=WF&adCell=WF",
       "Gift Cards" => "http://www.sears.com/shc/s/p_10151_10104_6174302200000000P?adCell=WF&adCell=WF",
-      "Pharmacy" => "http://www.sears.com/shc/s/dap_10151_10104_DAP_Kmart+Pharmacy+Microsite?adCell=WF",
-      "Order History" => "http://www.sears.com/shc/s/UPOrderHistoryView?langId=-1&storeId=10151&catalogId=10104&adCell=WF",
+      "Pharmacy" => "    http://www.kmart.com/kmart-pharmacy-microsite/dap-100000000036522?adCell=WF",
+      "Order History" => "https://www.kmart.com/shc/s/OrderHistoryNewView",
       "My Account" => "http://www.sears.com/shc/s/UserAccountView?storeId=10151&catalogId=10104&langId=-1",
-      "Need help finding something?" => "http://www.sears.com/shc/s/nb_10151_10104_NB_personalShopper?adCell=WF&adCell=WF"
-      
+      "Need help finding something?" => "http://www.kmart.com/personalshopper/nb-100000000214562?adCell=WF&adCell=WF"
     ),
     "Kmart Deals" => array(
       "Weekly Ad" => "http://kmart.shoplocal.com/kmart/new_user_entry.aspx?adref=homepage_footer",
-      "Sign up for email savings!" => "http://www.sears.com/s/nb_10151_10104_NB_EmailSignup?adCell=WF&adCell=WF",
+      "Sign up for email savings!" => "http://www.kmart.com/emailsignup/nb-100000000005013?adCell=WF&adCell=WF",
       "Shop Your Way Rewards SM" => "https://www.shopyourwayrewards.com",
-      "Coupon Center" => "http://www.sears.com/s/dap_10151_10104_DAP_Coupons+Inc?adCell=WF",
-      "Kmart Mobile" => "http://www.sears.com/s/dap_10151_10104_DAP_Kmart+Mobile?adCell=WF"
+      "Coupon Center" => "http://www.kmart.com/coupons-inc/dap-100000000467002?adCell=WF",
+      "Kmart Mobile" => "http://www.kmart.com/kmart-mobile/dap-100000000464003?adCell=WF"
     ),
     "About Kmart" => array(
       "Kmart Company Info" => "http://www.searsholdings.com/about/kmart",
       "Sears Holdings Corporation Info" => "http://www.searsholdings.com/",
       "Careers" => "http://www.searsholdings.com/careers",
       "FTC Gift Card Settlement" => "http://www.sears.com/shc/s/nb_10151_10104_NB_gift card settlement?adCell=WF",
-      "Kmart Affiliate" => "http://www.sears.com/shc/s/nb_10151_10104_NB_Affiliate+Program?adCell=W4"
+      "Kmart Affiliate" => "http://www.kmart.com/affiliate-program/nb-100000000227511?adCell=W4"
     ),
     "Customer Service" => array(
       "Customer Service Home" => "http://www.sears.com/shc/s/nb_10151_10104_NB_CSHome",
@@ -38,7 +37,7 @@
       "Shipping Information" => "http://www.sears.com/shc/s/nb_10151_10104_NB_CSship?adCell=WF&adCell=WF",
       "Contact Us" => "http://www.sears.com/shc/s/nb_10151_10104_NB_CSemail?adCell=WF&adCell=WF",
       "Return Policy" => "http://www.sears.com/shc/s/nb_10151_10104_NB_CSreturns?adCell=WF&adCell=WF",
-      "Credit Cards" => "http://www.sears.com/shc/s/nb_10151_10104_NB_speed+bump"
+      "Credit Cards" => "http://www.kmart.com/speed-bump/nb-100000000194510"
     )
   );
 ?>
