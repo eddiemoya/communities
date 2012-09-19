@@ -61,6 +61,8 @@ function enqueue_scripts() {
         /* Styles */
         wp_register_style('main-styles', get_stylesheet_uri());
         wp_enqueue_style( 'main-styles');
+        
+       
 
         
         //Enqueue profile ajax only for author template
@@ -68,6 +70,11 @@ function enqueue_scripts() {
         	
         	wp_register_script('profile-ajax', get_template_directory_uri() . '/assets/js/profile-ajax.js', array('jquery'), '1.0');
         	wp_enqueue_script('profile-ajax');
+        	
+        	if(is_user_logged_in()) {
+	        	wp_register_script('user-delete-comment', get_template_directory_uri() . '/assets/js/user-delete-comment.js', array('jquery'), '1.0');
+	        	wp_enqueue_script('user-delete-comment');
+        	}
         }
         
     }

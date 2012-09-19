@@ -760,3 +760,19 @@ function lookup_expert_comments_count($post_id, $categories) {
     $return = $wpdb->get_results($wpdb->prepare($query));
     return $return[0]->count;
 }
+
+/*
+ * Sanitizes text of any profanity
+ * 
+ * @param string $text
+ * @uses WP Content Filter plugin [required]
+ */
+function sanitize_text($text) {
+	
+	if(function_exists('pccf_filter')){
+		
+		return pccf_filter($text);
+	} 
+	
+	return $text;
+}

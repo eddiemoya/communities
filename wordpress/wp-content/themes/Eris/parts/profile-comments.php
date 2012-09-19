@@ -5,11 +5,15 @@
 
    <?php
     foreach($activities as $activity):
-	
+
+		
+    	$id = $activity->comment_ID;
+    	$elem_id = 'comm-'. $id;
+    	
         $excerpt = '<article class="excerpt">' . (strlen( $activity->comment_content ) > 200 ? substr( $activity->comment_content, 0, 200 ) . "&#8230;" : $activity->comment_content) . '</article>';
 
         ?>
-        <li class="clearfix">
+        <li class="clearfix" id="<?php echo $elem_id;?>">
             <div>
                 <h3>
                     <?php get_partial( 'parts/space_date_time', array( "timestamp" => strtotime( $activity->comment_date ) ) ); ?>
@@ -17,6 +21,16 @@
                     <a href="<?php echo get_permalink($activity->post->ID);?>"><?php echo sanitize_text($activity->post->post_title); ?></a>
                 </h3>
                 <?php echo sanitize_text($excerpt); ?>
+
+                
+                <?php if($profile_type == 'myprofile'):?>
+               	 <a href="#" id="<?php echo $id;?>" class="delete-comment right">Delete</a>
+               	 <input type="hidden" id="<?php echo 'profile_uid_' . $id;?>" value="<?php echo $current_user->ID;?>" />
+               	<?php 
+               		wp_nonce_field('comment_delete_' . $id . '_' . $current_user->ID, '_wp_nonce_' . $id);
+               	endif;?>
+               	
+
             </div>
         </li>
     <?php endforeach; ?>
