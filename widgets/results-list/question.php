@@ -37,8 +37,8 @@
 			</p>
 			
 			<ul>
-		  	<li class="content-comments"><?php echo $answer_count . ' ' . _n( 'answer', 'answers', $answer_count ); ?> | <?php echo $expert_count . ' ' . _n('community team answer', 'community team answers', $expert_count); ?></li>
-		  </ul>
+		  		<li class="content-comments"><?php echo $answer_count . ' ' . _n( 'answer', 'answers', $answer_count ); ?> | <?php echo $expert_count . ' ' . _n('community team answer', 'community team answers', $expert_count); ?></li>
+		  	</ul>
 			
       <?php get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); ?>
 			
