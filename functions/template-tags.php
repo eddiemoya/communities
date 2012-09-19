@@ -685,6 +685,64 @@ function set_screen_name($screen_name) {
 }
 
 /**
+ * Gets the number of comments in a post by an expert
+ *
+ * @author Jason Corradino
+ * @param $post_id (integer) [required] The ID of the post being looked up
+ * @param $category (integer/array) [optional] Limit expert categories to selected category, defaults to post categories
+ *
+ * @return (integer) Number of comments by an expert
+ */
+function get_expert_comment_count($post_id, $category = "") {
+    global $wpdb;
+    if($category == ""){
+        $category = wp_get_post_categories($post_id);
+    } elseif(is_string($category)) {
+        $category = array($category);
+    } elseif(!is_array($category)) {
+        return false;
+    }
+    return lookup_expert_comments_count($post_id, $category);
+}
+
+/**
+ * Returns the number of expert comments within a given post
+ *
+ * @author Jason Corradino
+ * @param $post_id (integer) [required] The ID of the post being looked up
+ * @param $category (array) [required] Limit expert categories to selected category, defaults to post categories
+ *
+ * @return (integer) Number of comments by an expert
+ */
+function lookup_expert_comments_count($post_id, $categories) {
+    global $wpdb;
+    $roles = new WP_Roles();
+    $roles = $roles->role_objects;
+    $experts = array();
+    foreach($roles as $role) {
+        if($role->has_cap("post_as_expert"))
+            $experts[] = trim($role->name);
+    }
+    $expert_list = implode("|", $experts);
+    $query = "SELECT COUNT(DISTINCT c.comment_ID) AS count FROM {$wpdb->comments} AS c ";
+    $query .= "JOIN {$wpdb->usermeta} AS m ON m.user_id = c.user_id AND m.meta_key = 'um-taxonomy-category' ";
+    if (sizeof($categories) == 1) {
+        $query .= "AND {$categories[0]} IN (m.meta_value) ";
+    } else {
+        $query .= "AND (";
+        foreach($categories as $key => $category) {
+            if ($key != 0) {$query .= "OR ";}
+            $query .= "$category IN (m.meta_value) ";
+        }
+        $query .= ") ";
+    }
+    $query .= "JOIN {$wpdb->usermeta} AS m2 ON m2.user_id = c.user_id AND m2.meta_key = '{$wpdb->base_prefix}capabilities' AND m2.meta_value REGEXP '$expert_list' ";
+    $query .= "WHERE c.comment_post_ID = $post_id";
+    $return = $wpdb->get_results($wpdb->prepare($query));
+    return $return[0]->count;
+}
+
+/*
  * Sanitizes text of any profanity
  * 
  * @param string $text
@@ -699,4 +757,3 @@ function sanitize_text($text) {
 	
 	return $text;
 }
-
