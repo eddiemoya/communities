@@ -248,13 +248,21 @@ function user_delete_comment() {
 	
 	global $wpdb;
 	
-	$comment_id = $_POST['comment_id'];
+	$comment_id = $_POST['cid'];
+	$uid = $_POST['uid'];
 	
-	$update = $wpdb->update($wpdb->comments, 
+	if(wp_verify_nonce($_POST['_wp_nonce'], 'comment_delete_' . $comment_id . '_' . $uid)) {
+		
+		$update = $wpdb->update($wpdb->comments, 
 							array('comment_approved' => '0'),
 							array('comment_ID' => $comment_id));
 	
-	echo ($update) ? $comment_id : null;
+		echo ($update) ? $comment_id : null;
+		
+	} else {
+		
+		echo 0;
+	}
 	
 	exit;
 }
