@@ -13,6 +13,10 @@
     if(isset($actions) && !empty($actions)) {
         foreach($actions as $action) {
             switch($action->action) {
+                case 'flag':
+                    $acts['flag']['action'] = $action;
+
+                    break;
                 case 'upvote':
                     $acts['upvote']['action'] = $action;
 
@@ -38,6 +42,10 @@
                                 $acts['upvote']['myaction'] = ' active';
 
                                 break;
+                            case 'flag':
+                                $acts['flag']['myaction'] = ' active';
+
+                                break;
                             case 'downvote':
                                 $acts['downvote']['myaction'] = ' active';
 
@@ -57,6 +65,10 @@
                     case 'upvote':
                         $acts['upvote']['myaction'] = ' active';
                         $acts['upvote']['nli_reset'] = ',nli_reset:\'deactivate\'';
+
+                        break;
+                    case 'flag':
+                        $acts['flag']['myaction'] = ' active';
 
                         break;
                     case 'downvote':
@@ -147,7 +159,13 @@
                                                                                 var success = '<p>This post has been flagged successfully!</p>';
 
                                                                                 jQuery('.tooltip').children('.middle').html('');
-                                                                                jQuery('.tooltip').children('.middle').html();
+                                                                                jQuery('.tooltip').children('.middle').html(success);
+
+                                                                                setTimeout(
+                                                                                    function() {
+                                                                                        jQuery('.tooltip').fadeOut();
+                                                                                    }, 2000
+                                                                                );
                                                                             }
                                                                         );
 
@@ -185,7 +203,23 @@
     <div id="flagForm-<?php echo $id; ?>" class="hide">
         <form class="flag-form" id="commentForm-<?php echo $id; ?>" method="post" shc:gizmo="transFormer">
             <textarea class="flagField" rows="5" cols="19" name="comment" aria-required="true" shc:gizmo:form="{required: true}"></textarea>
-            <input class="kmart_button" type="submit" value="Flag" />
+            <input
+                    class="kmart_button"
+                    type="submit"
+                    value="Flag"
+                    shc:gizmo="actions"
+                    shc:gizmo:options="
+                        {
+                            actions: {
+                                post: {
+                                    id:<?php echo $id; ?>,
+                                    name:'flag',
+                                    sub_type:'<?php echo $sub_type; ?>',
+                                    type:'<?php echo $type; ?>'
+                                }
+                            }
+                        }"
+                />
             <input class="kmart_button azure" type="reset" value="Cancel" onclick="jQuery('.tooltip').hide();" />
             <input name="comment_post_ID" type="hidden" value="<?php echo $post_id; ?>" />
             <input name="comment_parent" type="hidden" value="<?php echo $id; ?>" />
