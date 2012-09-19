@@ -144,7 +144,10 @@
                                                                             ajaxurl + '?action=flag_me',
                                                                             sendData,
                                                                             function() {
-                                                                                jQuery('.tooltip').fadeOut();
+                                                                                var success = '<p>This post has been flagged successfully!</p>';
+
+                                                                                jQuery('.tooltip').children('.middle').html('');
+                                                                                jQuery('.tooltip').children('.middle').html();
                                                                             }
                                                                         );
 
