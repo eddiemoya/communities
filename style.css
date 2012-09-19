@@ -246,56 +246,42 @@ ul.footer_anterior {
   margin-top: 1em;
   font-size: 92.307%; }
   ul.footer_anterior > * {
-    width: 8.102%;
+    width: 8.172%;
     float: left; }
   ul.footer_anterior > * + * {
-    width: 16.524%;
+    width: 16.129%;
     float: left;
-    margin-left: 1.066%; }
+    margin-left: 1.075%; }
   ul.footer_anterior > * + * + * {
-    width: 7.889%;
+    width: 62.365%;
     float: left;
-    margin-left: 1.066%; }
+    margin-left: 1.075%; }
   ul.footer_anterior > * + * + * + * {
-    width: 7.462%;
+    width: 1.72%;
     float: left;
-    margin-left: 1.066%; }
+    margin-left: 1.075%; }
   ul.footer_anterior > * + * + * + * + * {
-    width: 8.102%;
+    width: 1.72%;
     float: left;
-    margin-left: 1.066%; }
+    margin-left: 1.075%; }
   ul.footer_anterior > * + * + * + * + * + * {
-    width: 8.102%;
+    width: 1.72%;
     float: left;
-    margin-left: 1.066%; }
+    margin-left: 1.075%; }
   ul.footer_anterior > * + * + * + * + * + * + * {
-    width: 10.021%;
+    width: 1.723999999999991%;
     float: left;
-    margin-left: 1.066%; }
-  ul.footer_anterior > * + * + * + * + * + * + * + * {
-    width: 7.569%;
-    float: left;
-    margin-left: 1.066%; }
-  ul.footer_anterior > * + * + * + * + * + * + * + * + * {
-    width: 6.609%;
-    float: left;
-    margin-left: 1.066%; }
-  ul.footer_anterior > * + * + * + * + * + * + * + * + * + * {
-    width: 1.705%;
-    float: left;
-    margin-left: 1.066%; }
-  ul.footer_anterior > * + * + * + * + * + * + * + * + * + * + * {
-    width: 1.705%;
-    float: left;
-    margin-left: 1.066%; }
-  ul.footer_anterior > * + * + * + * + * + * + * + * + * + * + * + * {
-    width: 1.705%;
-    float: left;
-    margin-left: 1.066%; }
-  ul.footer_anterior > * + * + * + * + * + * + * + * + * + * + * + * + * {
-    width: 1.712999999999967%;
-    float: left;
-    margin-left: 1.066%; }
+    margin-left: 1.075%; }
+  ul.footer_anterior li {
+    color: #666666; }
+    ul.footer_anterior li a {
+      color: #666666;
+      font-size: 66.666%; }
+      ul.footer_anterior li a:visited {
+        color: #666666; }
+      ul.footer_anterior li a:hover {
+        color: #55a3c8;
+        text-decoration: none; }
   ul.footer_anterior .icon {
     background-image: url("/wp-content/themes/Eris/assets/img/sprite-footer.png");
     background-repeat: no-repeat; }
@@ -1587,7 +1573,7 @@ button.follow {
   width: 960px;
   margin: 0 auto; }
 
-.shdrbg, .sears #header_nav.dropmenu, .sears #header_nav.dropmenu li a span, .sears #header_nav.dropmenu li.right_button, .sears #footer_nav.dropmenu, .sears #footer_nav.dropmenu li:hover, .sears #footer_nav.dropmenu li a span {
+.shdrbg, .sears #header_nav.dropmenu, .sears #header_nav.dropmenu li a span, .sears #header_nav.dropmenu li.right_button, .sears #footer_nav.dropmenu li, .sears #footer_nav.dropmenu li:hover, .sears #footer_nav.dropmenu li a span {
   background-image: url("/wp-content/themes/Eris/assets/img/sears/sprite_navigation.png"); }
 
 .khdrbg, .kmart #header_nav.dropmenu, .kmart #header_nav.dropmenu li a span, .kmart #header_nav.dropmenu li.right_button, .kmart #footer_nav.dropmenu li a span {
@@ -1603,7 +1589,7 @@ button.follow {
   color: #067bb5; }
 .sears #header_nav.dropmenu li.right_button {
   background-color: #1a519b; }
-.sears #footer_nav.dropmenu {
+.sears #footer_nav.dropmenu li {
   background-color: #dedbde; }
 
 .kmart #header_nav.dropmenu li a {
@@ -1691,14 +1677,12 @@ button.follow {
   padding-bottom: .66em; }
   #footer_nav.dropmenu li a span {
     background-repeat: no-repeat;
-    display: inline-block;
-    width: 90%; }
+    padding-right: 16px;
+    display: inline-block; }
   #footer_nav.dropmenu li a span {
     background-position: right -240px; }
 #footer_nav.dropmenu li ul {
   bottom: 100%; }
-#footer_nav.dropmenu ul li:hover {
-  background: none; }
 
 .sears #footer_nav.dropmenu {
   background-repeat: repeat-x;
@@ -1707,12 +1691,14 @@ button.follow {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px; }
-  .sears #footer_nav.dropmenu ul {
-    background: #eeeeee; }
   .sears #footer_nav.dropmenu li {
-    width: 16.578014184397162%;
+    width: 14.19452887537994%;
     border-left: 1px solid white;
     font-size: 92.307%; }
+    .sears #footer_nav.dropmenu li a {
+      color: #55a3c8; }
+    .sears #footer_nav.dropmenu li:hover a {
+      color: #666666; }
     .sears #footer_nav.dropmenu li:hover:first-child {
       -webkit-border-radius: 0 0 0 5px;
       -moz-border-radius: 0 0 0 5px;
@@ -1722,8 +1708,19 @@ button.follow {
     .sears #footer_nav.dropmenu li:hover {
       background-position: left -400px; }
     .sears #footer_nav.dropmenu li:first-child {
-      border-left: 0; }
-    .sears #footer_nav.dropmenu li + li + li + li + li + li:hover {
+      border-left: 0;
+      -webkit-border-radius: 5px 0 0 5px;
+      -moz-border-radius: 5px 0 0 5px;
+      -ms-border-radius: 5px 0 0 5px;
+      -o-border-radius: 5px 0 0 5px;
+      border-radius: 5px 0 0 5px; }
+    .sears #footer_nav.dropmenu li + li + li + li + li + li + li {
+      -webkit-border-radius: 0 5px 5px 0;
+      -moz-border-radius: 0 5px 5px 0;
+      -ms-border-radius: 0 5px 5px 0;
+      -o-border-radius: 0 5px 5px 0;
+      border-radius: 0 5px 5px 0; }
+    .sears #footer_nav.dropmenu li + li + li + li + li + li + li:hover {
       -webkit-border-radius: 0 0 5px 0;
       -moz-border-radius: 0 0 5px 0;
       -ms-border-radius: 0 0 5px 0;
@@ -1736,18 +1733,26 @@ button.follow {
     -o-border-radius: 5px 5px 0 0;
     border-radius: 5px 5px 0 0;
     border: 1px solid #cccccc;
-    border-bottom: 0; }
+    border-bottom: 0;
+    background-color: #eeeeee;
+    padding-top: 5px; }
     .sears #footer_nav.dropmenu ul li {
-      width: 100%;
+      width: auto;
+      background-image: none;
+      background-color: #eeeeee;
       font-size: 91.666%;
-      border-left: 0; }
+      border-left: 0;
+      padding: 0 .5em .5em .5em; }
       .sears #footer_nav.dropmenu ul li:hover {
-        background: none; }
-      .sears #footer_nav.dropmenu ul li a:hover {
-        color: #55a3c8;
-        text-decoration: none; }
+        background-image: none; }
+      .sears #footer_nav.dropmenu ul li a {
+        color: #666666;
+        padding: 0; }
+        .sears #footer_nav.dropmenu ul li a:hover {
+          color: #55a3c8;
+          text-decoration: none; }
 
-.sears #footer_nav.dropmenu {
+.sears #footer_nav.dropmenu li {
   background-position: left -320px; }
 
 .kmart #footer_nav.dropmenu {
