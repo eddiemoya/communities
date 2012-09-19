@@ -52,7 +52,7 @@ function loop($template = 'post', $special = null, $base_path = "parts", $no_pos
     }
     //echo "<pre>";print_r($templates);echo "</pre>";
 
-    wp_reset_query();
+    //wp_reset_query();
 }
 
 /**
@@ -469,6 +469,9 @@ function return_partial( $partial, $variables = array() ){
  * @return (string) User's screen name (user_nicename).
  */
 function get_profile_url( $user_id ) {
+	
+	wp_cache_flush();
+	
     # create a fallback screen name if one has not yet been set by sso
     if ( !has_screen_name( $user_id ) ) {
         $link = home_url( '/' ) . '?author=' . $user_id;
@@ -489,16 +492,21 @@ function get_profile_url( $user_id ) {
  * @return (string) User's screen name (user_nicename).
  */
 function return_screenname( $user_id ) {
-    $user_info = get_userdata( $user_id );
-    
+  
+   global $wpdb;
+   $wpdb->flush();
+   
+   $q = "SELECT * FROM {$wpdb->base_prefix}users WHERE ID = {$user_id}";
+   $user_info = $wpdb->get_results($q);
+  
     $screen_name = '';
     # create a fallback screen name if one has not yet been set by sso
     if ( !has_screen_name( $user_id ) ) {
-        $email_parts = explode( '@', $user_info->user_login );
+        $email_parts = explode( '@', $user_info[0]->user_login );
         $screen_name = $email_parts[0];
     }
     else {
-        $screen_name = $user_info->user_nicename;
+        $screen_name = $user_info[0]->user_nicename;
     }
     return $screen_name;
 }
@@ -674,5 +682,25 @@ function set_screen_name($screen_name) {
 			
 		return true;
 	}
+
 }
+
+
+
+/**
+ * Sanitizes text of any profanity
+ * 
+ * @param string $text
+ * @uses WP Content Filter plugin [required]
+ */
+function sanitize_text($text) {
+	
+	if(function_exists('pccf_filter')){
+		
+		return pccf_filter($text);
+	} 
+	
+	return $text;
+}
+
 

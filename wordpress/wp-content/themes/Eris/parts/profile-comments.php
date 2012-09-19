@@ -1,10 +1,11 @@
 
 <?php if(! is_ajax() && !empty($activities)):?>
     <ol class="content-body result clearfix" id="profile-results">
+<?php endif;?>
 
-        <?php
+   <?php
     foreach($activities as $activity):
-
+	
         $excerpt = '<article class="excerpt">' . (strlen( $activity->comment_content ) > 200 ? substr( $activity->comment_content, 0, 200 ) . "&#8230;" : $activity->comment_content) . '</article>';
 
         ?>
@@ -13,13 +14,14 @@
                 <h3>
                     <?php get_partial( 'parts/space_date_time', array( "timestamp" => strtotime( $activity->comment_date ) ) ); ?>
                     <a href="<?php echo (count($activity->post->categories)) ? get_term_link($activity->post->categories[0]) : null; ?>" class="category"><?php echo (count($activity->post->categories)) ? $activity->post->categories[0]->cat_name : 'Uncategorized'; ?></a>
-                    <a href="<?php echo get_permalink($activity->post->ID);?>"><?php echo $activity->post->post_title; ?></a>
+                    <a href="<?php echo get_permalink($activity->post->ID);?>"><?php echo sanitize_text($activity->post->post_title); ?></a>
                 </h3>
-                <?php echo $excerpt; ?>
+                <?php echo sanitize_text($excerpt); ?>
             </div>
         </li>
     <?php endforeach; ?>
 
+<?php if(! is_ajax() && !empty($activities)):?>
 </ol>
 <?php endif;?>
 

@@ -12,80 +12,64 @@ jQuery(document).ready(function($) {
 			category_id	: $('option', this).filter(':selected').val(),
 		};
 		
-		$.each(
-			$(this).parent().find('input[type="hidden"]'), function() {
-				data[($(this).get(0)).name] = ($(this).get(0)).value;
-		});
-		var select = $(this);
+		if(data.category_id != 0){
+			$.each(
+				$(this).parent().find('input[type="hidden"]'), function() {
+					data[($(this).get(0)).name] = ($(this).get(0)).value;
+			});
+			var select = $(this);
 
-		$('#sub-category', select.parent()).remove();
-		
+			$('#sub-category', select.parent()).remove();
+			
+			jQuery.ajax({
+				url  : ajaxdata.ajaxurl,
+				type: 'POST',
+				data : data,
+				success:function(results){
+					select.after($(results));
+				}
+			});
+		}
+ 	});
+
+ 	/**
+ 	 * Super massively awesome jquery that, matched with the somewhat 
+ 	 * lamer widgets/results-list/archive.php template, and the ajax-callbacks.php 
+ 	 * template, allows the posts widget to filter and sorted via ajax.
+ 	 *
+ 	 * @author Eddie Moya
+ 	 */ 
+ 	$('.results-list select.filter-results-users, .results-list select.sort-results-users').on('change', function(e){
+ 		e.preventDefault();
+
+		var data = {
+			action		: 'get_users_ajax',
+			template 	: 'author-archive',
+			category	: $('.filter-results-users option', container).filter(':selected').val(),
+			order		: $('.sort-results-users option', container).filter(':selected').val(),
+			path		: 'widgets/results-list',
+		};
+
+		console.log(data);
+		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category .filter-results option', this).filter(':selected').val() : data.category; //console.log(data);
+
+		container = $(this).closest('.results-list');
+
 		jQuery.ajax({
 			url  : ajaxdata.ajaxurl,
 			type: 'POST',
 			data : data,
 			success:function(results){
-				select.after($(results));
+				$('.content-body', container).empty();
+				$('.content-body', container).append($(results));
 			}
 		});
  	});
 
- 	// /**
- 	//  * Super massively awesome jquery that, matched with the somewhat 
- 	//  * lamer widgets/results-list/archive.php template, and the ajax-callbacks.php 
- 	//  * template, allows the posts widget to filter via ajax.
- 	//  */ 
- 	// $('.author-result-list select').on('change', function(e){
- 	// 	e.preventDefault();
-
-		// var data = {
-		// 	action		: 'get_filtered_authors_ajax',
-		// 	template 	: 'author-filtered-list',
-		// 	category	: $('option', this).filter(':selected').val()
-		// };
-
-		// data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
-
-		// container = $(this).closest('.dropzone-inner-wrapper');
-
-		// jQuery.ajax({
-		// 	url  : ajaxdata.ajaxurl,
-		// 	type: 'POST',
-		// 	data : data,
-		// 	success:function(results){
-		// 		$('.content-body', container).empty();
-		// 		$('.content-body', container).append($(results));
-		// 	}
-		// });
- 	// });
-
- 	// // Duplicate of above, seperated to keep the old version in case it did something special i was not aware of.
- 	// $('.results-list select.filter-results-users').on('change', function(e){
- 	// 	e.preventDefault();
-
-		// var data = {
-		// 	action		: 'get_filtered_authors_ajax',
-		// 	template 	: 'author-filtered-list',
-		// 	category	: $('option', this).filter(':selected').val()
-		// };
-
-		// data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
-
-		// container = $(this).closest('.dropzone-inner-wrapper');
-
-		// jQuery.ajax({
-		// 	url  : ajaxdata.ajaxurl,
-		// 	type: 'POST',
-		// 	data : data,
-		// 	success:function(results){
-		// 		$('.content-body', container).empty();
-		// 		$('.content-body', container).append($(results));
-		// 	}
-		// });
- 	// });
-
-
- 	$('.results-list select').on('change', function(e){
+ 	/**
+ 	 * @author Eddie Moya
+ 	 */
+ 	$('.results-list select.filter-results-posts, .results-list select.sort-results-posts').on('change', function(e){
  		e.preventDefault();
 
  		container = $(this).closest('.results-list');
@@ -96,7 +80,8 @@ jQuery(document).ready(function($) {
 			post_type 	: $('.post_type', container).val(),
 			template 	: $('.widget_name', container).val(),
 			category	: $('.filter-results-posts option', container).filter(':selected').val(),
-			order		: $('.sort-results-posts option', container).filter(':selected').val()
+			order		: $('.sort-results-posts option', container).filter(':selected').val(),
+			path		: 'parts',
 		};
 		
 		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category .filter-results option', this).filter(':selected').val() : data.category; //console.log(data);

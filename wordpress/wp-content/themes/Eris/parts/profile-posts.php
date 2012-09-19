@@ -9,9 +9,9 @@ foreach($activities as $activity):
 ?>
 <li class="clearfix">
     <h3>
-        <?php get_partial( 'parts/space_date_time', array( "timestamp" => get_the_time('U') ) ); ?>
+        <?php get_partial( 'parts/space_date_time', array( "timestamp" => strtotime( $activity->post_date ) ) ); ?>
         <a href="<?php  echo (count($activity->categories)) ? get_term_link($activity->categories[0]) : null;?>" class="category"><?php echo (count($activity->categories)) ? $activity->categories[0]->cat_name : 'Uncategorized'; ?></a>
-        <a href="<?php echo get_permalink($activity->ID);?>"><?php echo $activity->post_title; ?></a>
+        <a href="<?php echo get_permalink($activity->ID);?>"><?php echo sanitize_text($activity->post_title); ?></a>
     </h3>
 <?php 
         // Expert answers
@@ -27,7 +27,7 @@ foreach($activities as $activity):
         <?php get_partial( 'parts/crest', array( "user_id" => $answer->user_id, "titling" => true ) ); ?>
         <div class="span10">
             <?php get_partial( 'parts/space_date_time', array( "timestamp" => strtotime( $answer->comment_date ) ) ); ?>
-            <p class="content-excerpt"><?php echo $answer->comment_content; ?></p>
+            <p class="content-excerpt"><?php echo sanitize_text($answer->comment_content); ?></p>
         </div>
     </li>
 
