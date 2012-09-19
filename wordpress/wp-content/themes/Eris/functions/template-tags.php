@@ -736,7 +736,7 @@ function lookup_expert_comments_count($post_id, $categories) {
         }
         $query .= ") ";
     }
-    $query .= "JOIN {$wpdb->usermeta} AS m2 ON m2.user_id = c.user_id AND m2.meta_key = '{$wpdb->base_prefix}capabilities' AND m2.meta_value REGEXP '$expert_list' ";
+    $query .= "JOIN {$wpdb->usermeta} AS m2 ON m2.user_id = c.user_id AND m2.meta_key = '{$wpdb->prefix}capabilities' AND m2.meta_value REGEXP '$expert_list' ";
     $query .= "WHERE c.comment_post_ID = $post_id";
     $return = $wpdb->get_results($wpdb->prepare($query));
     return $return[0]->count;
