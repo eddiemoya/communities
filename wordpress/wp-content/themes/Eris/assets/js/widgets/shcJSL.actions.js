@@ -190,13 +190,12 @@ ACTIONS.actions = $actions = function(element, options) {
             existingCookies = existingCookies.actions;
 
             for(var i = 0; i < existingCookies.length; i++) {
+                jsonString += '{"id": "' + existingCookies[i].id + '", "name": "' + existingCookies[i].name + '", "sub_type": "' + existingCookies[i].sub_type + '", "type": "' + existingCookies[i].type + '"}, ';
                 /**
                  * Ensure we can have a flag and an upvote OR a downvote at a time
                  */
                 if(existingCookies[i].id != _this.options.post.id && existingCookies[i].name != _this.options.post.name) {
                     jsonString += '{"id": "' + existingCookies[i].id + '", "name": "' + existingCookies[i].name + '", "sub_type": "' + existingCookies[i].sub_type + '", "type": "' + existingCookies[i].type + '"}, ';
-                } else if(_this.options.post.name != 'flag' && existingCookies[i].name == 'flag') {
-                   jsonString += '{"id": "' + existingCookies[i].id + '", "name": "' + existingCookies[i].name + '", "sub_type": "' + existingCookies[i].sub_type + '", "type": "' + existingCookies[i].type + '"}, ';
                 }
             }
         }
