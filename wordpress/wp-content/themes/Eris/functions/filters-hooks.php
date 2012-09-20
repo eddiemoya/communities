@@ -313,7 +313,7 @@ function post_comment_screen_name($commentdata) {
         if($response !== true) {
             
             //Create QS
-            $qs = '?screen-name=' . urlencode($clean_screen_name) . '&comment=' . urlencode($_POST['comment']) . '&cid=' . $commentdata['comment_parent'] . '&comm_err=' . urlencode($response['message']);
+            $qs = '?comment=' . urlencode($_POST['comment']) . '&cid=' . $commentdata['comment_parent'] . '&comm_err=' . urlencode($response['message']);
 
             //Create return URL
             $linkparts = explode('#', get_comment_link());
