@@ -43,11 +43,11 @@ if(!function_exists('imagecopyresampled')){
 $userphoto_validtypes = array(
 	"image/jpeg" => true,
 	"image/pjpeg" => true,
-	"image/gif" => true,
+	"image/gif" => false,
 	"image/png" => true,
 	"image/x-png" => true
 );
-$userphoto_validextensions = array('jpeg', 'jpg', 'gif', 'png');
+$userphoto_validextensions = array('jpeg', 'jpg', 'png');
 
 define('USERPHOTO_PENDING', 0);
 define('USERPHOTO_REJECTED', 1);
