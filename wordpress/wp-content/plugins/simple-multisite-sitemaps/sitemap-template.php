@@ -43,10 +43,10 @@ echo '<?xml version="1.0" encoding="'.get_option( 'blog_charset' ).'"?'.'>';
 global $blog_id;
 
 $query_args = array(
-	'post_type'         => array( 'post', 'page', 'question', 'guide' ),
-	'post_status'       => 'publish',
-	'orderby'           => 'date',
-	'posts_per_page'    => -1
+	'post_type'     => array( 'post', 'page', 'question', 'guide' ),
+	'post_status'   => 'publish',
+	'orderby'       => 'date',
+	'showposts'     => -1
 );
 query_posts( $query_args );
 
