@@ -46,6 +46,36 @@ get_template_part('parts/header');
 							</section>
 					
 						</article> 
+						<article class="content-container question">
+							<section class="content-body clearfix">
+								
+								<div class="crest span3">
+									<ul class="user-info">
+										<li class="user_avatar"><a href="http://sears-communities.qa.ch4.s.com/community/author/SHC-JudyM/"><img alt="" class="photo" src="http://sears-communities.qa.ch4.s.com/community/wp-content/uploads/userphoto/35.png?1347888749"></a></li>
+										<li ckass="user_screenname"><a href="http://sears-communities.qa.ch4.s.com/community/author/SHC-JudyM/">SHC-JudyM</a></li>
+										<li class="user_location">Chicago, IL</li>
+									</ul>
+								</div>
+			
+								<div class="span9">
+									
+									<div class="content-details clearfix">
+										<time datetime="2012-09-17" pubdate="" class="content-date">September 9, 2012    <span class="time-stamp">1:59 pm</span></time>
+									</div>
+									
+									<h1 class="content-headline"><a href="http://sears-communities.qa.ch4.s.com/community/questions/looking-for-something-that-is-out-of-stock-is-there-a-way-to-opt-in-to-get-notification-of-when-it-is-back-in-stock/">Looking for something that is out of stock, is there a way to opt in to get notification of when it is back in stock?</a></h1>
+									
+									<p class="content-excerpt">
+													</p>
+									
+									<ul>
+								  	<li class="content-comments">2 answers | 2 replies | 0 comments</li>
+								  </ul>
+									
+								</div>
+			
+							</section>
+						</article>
 		
 						<!-- END DROPZONE -->
 					</section>
@@ -72,6 +102,36 @@ get_template_part('parts/header');
 							</section>
 					
 						</article> 
+							<article class="content-container question">
+							<section class="content-body clearfix">
+								
+								<div class="span3">
+									<ul class="user-info">
+										<li class="user_avatar"><a href="http://sears-communities.qa.ch4.s.com/community/author/SHC-JudyM/"><img alt="" class="photo" src="http://sears-communities.qa.ch4.s.com/community/wp-content/uploads/userphoto/35.png?1347888749"></a></li>
+										<li ckass="user_screenname"><a href="http://sears-communities.qa.ch4.s.com/community/author/SHC-JudyM/">SHC-JudyM</a></li>
+										<li class="user_location">Chicago, IL</li>
+									</ul>
+								</div>
+			
+								<div class="span9">
+									
+									<div class="content-details clearfix">
+										<time datetime="2012-09-17" pubdate="" class="content-date">September 9, 2012    <span class="time-stamp">1:59 pm</span></time>
+									</div>
+									
+									<h1 class="content-headline"><a href="http://sears-communities.qa.ch4.s.com/community/questions/looking-for-something-that-is-out-of-stock-is-there-a-way-to-opt-in-to-get-notification-of-when-it-is-back-in-stock/">Looking for something that is out of stock, is there a way to opt in to get notification of when it is back in stock?</a></h1>
+									
+									<p class="content-excerpt">
+													</p>
+									
+									<ul>
+								  	<li class="content-comments">2 answers | 2 replies | 0 comments</li>
+								  </ul>
+									
+								</div>
+			
+							</section>
+						</article>
 						
 						<!-- END DROPZONE -->
 					</section>
@@ -80,7 +140,6 @@ get_template_part('parts/header');
 				
 				
 			</article>
-			
 			
 			<article class="widget content-container span6 ad-widget">
 				<header class="content-header">
@@ -230,6 +289,10 @@ get_template_part('parts/header');
 					  <p class="content-excerpt">Lorem ipsum dolor sit amet, sit senserit similique cotidieque ex, libris postea copora nam.  Sea vidit pro. et, sit senserit similique... <a href="#" title="Read More">Read more</a><p>
 					</div>
 					
+					<section class="post-actions">
+            <?php get_partial( 'parts/share', array( "version" => is_widget()->share_style, "url" => get_post_permalink( $post->ID ) ) ); ?>
+      	  </section>
+					
 				</section>
 		
 			</article>
@@ -307,6 +370,10 @@ get_template_part('parts/header');
 					<div class="content-details clearfix">
 						<span class="content-category"><a href="#" title="Fantasy">Fantasy</a></span>
 							<time class="content-date" pubdate datetime="1954-07-24">July 24, 1954</time>
+					</div>
+					
+					<div class="category-image">
+						
 					</div>
 					
 					<h1 class="content-headline">
