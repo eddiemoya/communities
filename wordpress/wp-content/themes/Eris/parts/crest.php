@@ -1,5 +1,5 @@
 <?php
-
+    global $wp_roles;
     # OPTIONS
     # $width =          span2 (default), span3, etc. - controls the width of the crest
     # $show_name =      true (default), false - whether to display the user's screenname under the avatar
@@ -7,7 +7,6 @@
     # $show_address =   true (default), false - whether to display the user's city and state under the avatar
 
     $user = get_userdata( $user_id );
-    
     $a_classes = array( 'crest' );
     $a_classes[] = ( !isset( $width ) ) ? 'span2' : $width;
     
@@ -36,7 +35,7 @@
         ) {
         $a_classes[] = 'labeled';
         $crest_titling = '
-    <h4><a href="' . get_profile_url( $user_id ) . '">' . ucfirst( $user->roles[0] ) . '</a></h4>
+    <h4><a href="' . get_profile_url( $user_id ) . '">' . $wp_roles->roles[$user->roles[0]]["name"] . '</a></h4>
 ';
         # removing the tail per client's request. -CAB 9.14.2012
         # <div class="tail">&nbsp;</div>

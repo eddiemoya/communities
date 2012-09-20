@@ -52,7 +52,7 @@ function loop($template = 'post', $special = null, $base_path = "parts", $no_pos
     }
     //echo "<pre>";print_r($templates);echo "</pre>";
 
-    wp_reset_query();
+    //wp_reset_query();
 }
 
 /**
@@ -469,6 +469,9 @@ function return_partial( $partial, $variables = array() ){
  * @return (string) User's screen name (user_nicename).
  */
 function get_profile_url( $user_id ) {
+	
+	wp_cache_flush();
+	
     # create a fallback screen name if one has not yet been set by sso
     if ( !has_screen_name( $user_id ) ) {
         $link = home_url( '/' ) . '?author=' . $user_id;
@@ -489,16 +492,21 @@ function get_profile_url( $user_id ) {
  * @return (string) User's screen name (user_nicename).
  */
 function return_screenname( $user_id ) {
-    $user_info = get_userdata( $user_id );
-    
+  
+   global $wpdb;
+   $wpdb->flush();
+   
+   $q = "SELECT * FROM {$wpdb->base_prefix}users WHERE ID = {$user_id}";
+   $user_info = $wpdb->get_results($q);
+  
     $screen_name = '';
     # create a fallback screen name if one has not yet been set by sso
     if ( !has_screen_name( $user_id ) ) {
-        $email_parts = explode( '@', $user_info->user_login );
+        $email_parts = explode( '@', $user_info[0]->user_login );
         $screen_name = $email_parts[0];
     }
     else {
-        $screen_name = $user_info->user_nicename;
+        $screen_name = $user_info[0]->user_nicename;
     }
     return $screen_name;
 }
@@ -676,3 +684,76 @@ function set_screen_name($screen_name) {
 	}
 }
 
+/**
+ * Gets the number of comments in a post by an expert
+ *
+ * @author Jason Corradino
+ * @param $post_id (integer) [required] The ID of the post being looked up
+ * @param $category (integer/array) [optional] Limit expert categories to selected category, defaults to post categories
+ *
+ * @return (integer) Number of comments by an expert
+ */
+function get_expert_comment_count($post_id, $category = "") {
+    global $wpdb;
+    if($category == ""){
+        $category = wp_get_post_categories($post_id);
+    } elseif(is_string($category)) {
+        $category = array($category);
+    } elseif(!is_array($category)) {
+        return false;
+    }
+    return lookup_expert_comments_count($post_id, $category);
+}
+
+/**
+ * Returns the number of expert comments within a given post
+ *
+ * @author Jason Corradino
+ * @param $post_id (integer) [required] The ID of the post being looked up
+ * @param $category (array) [required] Limit expert categories to selected category, defaults to post categories
+ *
+ * @return (integer) Number of comments by an expert
+ */
+function lookup_expert_comments_count($post_id, $categories) {
+    global $wpdb;
+    $roles = new WP_Roles();
+    $roles = $roles->role_objects;
+    $experts = array();
+    foreach($roles as $role) {
+        if($role->has_cap("post_as_expert"))
+            $experts[] = trim($role->name);
+    }
+    $expert_list = implode("|", $experts);
+    $query = "SELECT COUNT(DISTINCT c.comment_ID) AS count FROM {$wpdb->comments} AS c ";
+    $query .= "JOIN {$wpdb->usermeta} AS m ON m.user_id = c.user_id AND m.meta_key = 'um-taxonomy-category' ";
+    if (sizeof($categories) == 1) {
+        $query .= "AND {$categories[0]} IN (m.meta_value) ";
+    } else {
+        $query .= "AND (";
+        foreach($categories as $key => $category) {
+            if ($key != 0) {$query .= "OR ";}
+            $query .= "$category IN (m.meta_value) ";
+        }
+        $query .= ") ";
+    }
+    $query .= "JOIN {$wpdb->usermeta} AS m2 ON m2.user_id = c.user_id AND m2.meta_key = '{$wpdb->prefix}capabilities' AND m2.meta_value REGEXP '$expert_list' ";
+    $query .= "WHERE c.comment_post_ID = $post_id";
+    $return = $wpdb->get_results($wpdb->prepare($query));
+    return $return[0]->count;
+}
+
+/*
+ * Sanitizes text of any profanity
+ * 
+ * @param string $text
+ * @uses WP Content Filter plugin [required]
+ */
+function sanitize_text($text) {
+	
+	if(function_exists('pccf_filter')){
+		
+		return pccf_filter($text);
+	} 
+	
+	return $text;
+}

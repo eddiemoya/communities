@@ -4,7 +4,21 @@
 ul.footer_anterior {
   margin-top: 1em;
   font-size: font-size( 12 );
-  @include col-layout( ( 76, 155, 74, 70, 76, 76, 94, 71, 62, 16, 16, 16, 16 ), 10);
+  @include col-layout( ( 76, 150, 580, 16, 16, 16, 16 ), 10);
+  li {
+    color: sears( secondary-link );
+    a {
+      color: sears( secondary-link );
+      font-size: font-size( 8, 12 );
+      &:visited {
+        color: sears( secondary-link );
+      }
+      &:hover {
+        color: sears( footer-subnav-hover );
+        text-decoration: none;
+      }
+    }
+  }
   .icon {
     background-image: url('#{$img}sprite-footer.png');
     background-repeat: no-repeat;
