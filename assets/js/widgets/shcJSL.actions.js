@@ -83,6 +83,8 @@ ACTIONS.actions = $actions = function(element, options) {
 
                     jQuery(element).addClass('active');
                 } else if(data === 'deactivated-out') {
+                    console.log(element);
+
                     _this._updateCookie(data);
 
                     jQuery(element).removeClass('active');
@@ -182,6 +184,8 @@ ACTIONS.actions = $actions = function(element, options) {
     };
 
     _this._updateCookie = function(data) {
+        var addedToCookie = false;
+        var currentCookie = {}
         var existingCookies = [];
         var jsonString = '{"actions": [';
 
@@ -190,17 +194,49 @@ ACTIONS.actions = $actions = function(element, options) {
             existingCookies = existingCookies.actions;
 
             for(var i = 0; i < existingCookies.length; i++) {
-                jsonString += '{"id": "' + existingCookies[i].id + '", "name": "' + existingCookies[i].name + '", "sub_type": "' + existingCookies[i].sub_type + '", "type": "' + existingCookies[i].type + '"}, ';
-                /**
-                 * Ensure we can have a flag and an upvote OR a downvote at a time
-                 */
-                if(existingCookies[i].id != _this.options.post.id && existingCookies[i].name != _this.options.post.name) {
-                    jsonString += '{"id": "' + existingCookies[i].id + '", "name": "' + existingCookies[i].name + '", "sub_type": "' + existingCookies[i].sub_type + '", "type": "' + existingCookies[i].type + '"}, ';
+                currentCookie = existingCookies[i];
+
+                if(currentCookie.id != _this.options.post.id) {
+                    jsonString += '{"id": "' + currentCookie.id +
+                                        '", "name": "' + currentCookie.name +
+                                        '", "sub_type": "' + currentCookie.sub_type +
+                                        '", "type": "' + currentCookie.type + '"}, ';
+
+                    addedToCookie = true;
+                } else {
+                    //The ids are the same; now it's time for work
+
+                    /**
+                     * The names are not the same; which means we are not deactivating
+                     */
+                    if(currentCookie.name != _this.options.post.name) {
+                        /**
+                         * Is the cookie an upvote? Is the current action a downvote? Turn off the upvote
+                         */
+                        if(currentCookie.name == 'upvote' && _this.options.post.name == 'downvote') {
+                            continue;
+                        } else if(currentCookie.name == 'downvote' && _this.options.post.name == 'upvote') {
+                            continue;
+                        } else {
+                            jsonString += '{"id": "' + currentCookie.id +
+                                                '", "name": "' + currentCookie.name +
+                                                '", "sub_type": "' + currentCookie.sub_type +
+                                                '", "type": "' + currentCookie.type + '"}, ';
+
+                            addedToCookie = true;
+                        }
+                    }
                 }
             }
         }
 
-        jsonString += '{"id": "' + _this.options.post.id + '", "name": "' + _this.options.post.name + '", "sub_type": "' + _this.options.post.sub_type + '", "type": "' + _this.options.post.type + '"}]}';
+        if(data !== 'deactivated-out') {
+            jsonString += '{"id": "' + _this.options.post.id + '", "name": "' + _this.options.post.name + '", "sub_type": "' + _this.options.post.sub_type + '", "type": "' + _this.options.post.type + '"}]}';
+
+            console.log(jsonString);
+        } else if(addedToCookie === true) {
+            jsonString = jsonString.substring(0, jsonString .length - 1) + "]}";
+        }
 
         shcJSL.cookies("actions").bake({value: jsonString, expiration: '1y'});
     };
