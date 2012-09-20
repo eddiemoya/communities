@@ -59,8 +59,7 @@
 <?php
     $crest_options = array(
         "user_id"   => $profile_user->ID, 
-        "show_name" => false, 
-        "width"     => 'span2'
+        //"width"     => 'span2'
     );
     if ( $profile_user->roles[0] == 'communityexpert' ) {
         $crest_options["titling"] = true;
@@ -68,7 +67,6 @@
     
     get_partial( 'parts/crest', $crest_options );
 ?>
-    <div class="span10 info"><h2><?php get_screenname( $profile_user->ID ); ?></h2></div>
 </div>
 <?php endif; ?>
 

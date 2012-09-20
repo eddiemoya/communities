@@ -24,7 +24,7 @@ foreach($activities as $activity):
             foreach($activity->expert_answers as $answer):
 ?>
     <li class="clearfix expert">
-        <?php get_partial( 'parts/crest', array( "user_id" => $answer->user_id, "titling" => true ) ); ?>
+        <?php get_partial( 'parts/crest', array( "user_id" => $answer->user_id, "width" => "span2") ); ?>
         <div class="span10">
             <?php get_partial( 'parts/space_date_time', array( "timestamp" => strtotime( $answer->comment_date ) ) ); ?>
             <p class="content-excerpt"><?php echo $answer->comment_content; ?></p>
