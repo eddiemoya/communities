@@ -364,6 +364,7 @@ add_filter('widgetpress_before_widget', 'filter_before_widget', 10, 3);
 
 function disallow_admin_access() {
     global $current_user;
+<<<<<<< HEAD
 
     if(!is_ajax()) {
         $show_admin = (current_user_can("access_admin") || $current_user->caps["administrator"] == 1) ? true : false;
@@ -371,6 +372,12 @@ function disallow_admin_access() {
             wp_redirect(home_url());
             exit();
         }
+=======
+    $show_admin = (current_user_can("access_admin") || $current_user->caps["administrator"] == 1 || (defined('DOING_AJAX') && DOING_AJAX)) ? true : false;
+    if (!$show_admin) {
+        wp_redirect(home_url());
+        exit();
+>>>>>>> bce18119b202f2fe9998271be6c8d18efd284fbd
     }
 }
 

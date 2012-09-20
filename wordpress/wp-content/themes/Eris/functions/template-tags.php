@@ -682,7 +682,11 @@ function set_screen_name($screen_name) {
 			
 		return true;
 	}
+
 }
+
+
+
 
 /**
  * Gets the number of comments in a post by an expert
