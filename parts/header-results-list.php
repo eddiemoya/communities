@@ -71,8 +71,8 @@ if(have_posts() || !is_widget()) : ?>
 
 				<label for="sort-results<?php echo $class; ?>">Sort by</label>
 				<select name="sort-results" id="sort-results" class="sort-results<?php echo $class; ?>">
-					<option value="DESC"><?php echo ( $post_type=="users" ) ? "Newest First" : "Z - A"; ?></option>
-					<option value="ASC"><?php echo ( $post_type=="users" ) ? "Oldest First" : "A - Z"; ?></option>
+					<option value="DESC"><?php echo ( $post_type!="users" ) ? "Newest" : "Z - A"; ?></option>
+					<option value="ASC"><?php echo ( $post_type!="users" ) ? "Oldest" : "A - Z"; ?></option>
 				</select>
 
 			<?php endif; ?>
