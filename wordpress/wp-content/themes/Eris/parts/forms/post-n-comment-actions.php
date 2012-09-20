@@ -92,6 +92,7 @@
     $upvoteTotal = isset($acts['upvote']['action']->total) ? $acts['upvote']['action']->total : 0;
 
     $myActionDownvote = (isset($acts['downvote']['myaction']) && $acts['downvote']['myaction'] != '') ? $acts['downvote']['myaction'] : '';
+    $myActionFlag = (isset($acts['flag']['myaction']) && $acts['flag']['myaction'] != '') ? $acts['flag']['myaction'] : '';
     $myActionFollow = (isset($acts['follow']['myaction']) && $acts['follow']['myaction'] != '') ? $acts['follow']['myaction'] : '';
     $myActionUpvote = (isset($acts['upvote']['myaction']) && $acts['upvote']['myaction'] != '') ? $acts['upvote']['myaction'] : '';
 
@@ -130,54 +131,70 @@
                         <?php
 
                         break;
-                    case 'flag': ?>
-                                <button
-                                        type="button"
-                                        name="button1"
-                                        value="flag"
-                                        title="Flag this <?php echo $type; ?>"
-                                        id="flag-comment-<?php echo $id; ?>"
-                                        class="flag"
-                                        shc:gizmo="tooltip"
-                                        shc:gizmo:options="
-                                            {
-                                                tooltip: {
-                                                    displayData: {
-                                                        element: 'flagForm-<?php echo $id; ?>',
-                                                        callBack: {
-                                                            submit: {
-                                                                active: true,
-                                                                name: 'submit',
-                                                                method:
-                                                                    function(event) {
-                                                                        var sendData = jQuery(event.target).children().serialize();
+                    case 'flag':
+                        ?>
+                            <button
+                                    type="button"
+                                    name="button1"
+                                    value="flag"
+                                    title="Flag this <?php echo $type; ?>"
+                                    id="flag-comment-<?php echo $id; ?>"
+                                    class="flag<?php echo $myActionFlag; ?>"
+                        <?php
+                            if(!isset($myActionFlag) || $myActionFlag == '') :
+                        ?>
+                                    shc:gizmo="tooltip"
+                                    shc:gizmo:options="
+                                        {
+                                            tooltip: {
+                                                customListener: {
+                                                    callBack:
+                                                        function(element) {
+                                                            element.addClass('active');
+                                                        },
+                                                    name: 'addActiveToFlag-<?php echo $id; ?>'
+                                                },
+                                                displayData: {
+                                                    element: 'flagForm-<?php echo $id; ?>',
+                                                    callBack: {
+                                                        submit: {
+                                                            active: true,
+                                                            name: 'submit',
+                                                            method:
+                                                                function(event) {
+                                                                    var sendData = jQuery(event.target).children().serialize();
 
-                                                                        jQuery.post(
-                                                                            ajaxurl + '?action=flag_me',
-                                                                            sendData,
-                                                                            function() {
-                                                                                var success = '<p>This post has been flagged successfully!</p>';
+                                                                    jQuery.post(
+                                                                        ajaxurl + '?action=flag_me',
+                                                                        sendData,
+                                                                        function() {
+                                                                            var success = '<p>This post has been flagged successfully!</p>';
 
-                                                                                jQuery('.tooltip').children('.middle').html('');
-                                                                                jQuery('.tooltip').children('.middle').html(success);
+                                                                            jQuery('.tooltip').children('.middle').html('');
+                                                                            jQuery('.tooltip').children('.middle').html(success);
 
-                                                                                setTimeout(
-                                                                                    function() {
-                                                                                        jQuery('.tooltip').fadeOut();
-                                                                                    }, 2000
-                                                                                );
-                                                                            }
-                                                                        );
+                                                                            setTimeout(
+                                                                                function() {
+                                                                                    jQuery('.tooltip').fadeOut();
+                                                                                }, 2000
+                                                                            );
+                                                                        }
+                                                                    );
 
-                                                                        event.preventDefault();
-                                                                    }
-                                                            }
+                                                                    event.preventDefault();
+                                                                }
                                                         }
-                                                    },
-                                                    arrowPosition: 'top',
-                                                    tooltipWidth: 188,
-                                                }
-                                            }">flag</button>
+                                                    }
+                                                },
+                                                arrowPosition: 'top',
+                                                tooltipWidth: 188,
+                                            }
+                                        }
+                                    "
+                        <?php
+                            endif;
+                        ?>
+                            >flag</button>
                         <?php
 
                         break;
@@ -211,6 +228,10 @@
                     shc:gizmo:options="
                         {
                             actions: {
+                                customEvent:
+                                    function(element) {
+                                        element.trigger('addActiveToFlag-<?php echo $id; ?>');
+                                    },
                                 post: {
                                     id:<?php echo $id; ?>,
                                     name:'flag',

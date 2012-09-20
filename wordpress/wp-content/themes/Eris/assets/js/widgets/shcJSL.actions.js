@@ -27,6 +27,8 @@ ACTIONS.actions = $actions = function(element, options) {
     };
 
     _this.options = {
+        customEvent: null,
+        customListener: null,
         element: null,
         post: {
             id: 0,
@@ -84,6 +86,10 @@ ACTIONS.actions = $actions = function(element, options) {
                     _this._updateCookie(data);
 
                     jQuery(element).removeClass('active');
+                }
+
+                if(typeof _this.options.customEvent === 'function') {
+                    _this.options.customEvent(jQuery(element));
                 }
 
                 _this._resetActionTotal(data, element);
@@ -157,6 +163,8 @@ ACTIONS.actions = $actions = function(element, options) {
             var text = data === 'activated' ? 'following' : 'follow';
 
             jQuery(element).html(text);
+        } else if(action == 'flag') {
+
         } else {
             var curId = jQuery(element).attr('id');
             var curValue = jQuery('label[for="' + curId + '"]').html();
@@ -182,8 +190,13 @@ ACTIONS.actions = $actions = function(element, options) {
             existingCookies = existingCookies.actions;
 
             for(var i = 0; i < existingCookies.length; i++) {
+                /**
+                 * Ensure we can have a flag and an upvote OR a downvote at a time
+                 */
                 if(existingCookies[i].id != _this.options.post.id && existingCookies[i].name != _this.options.post.name) {
                     jsonString += '{"id": "' + existingCookies[i].id + '", "name": "' + existingCookies[i].name + '", "sub_type": "' + existingCookies[i].sub_type + '", "type": "' + existingCookies[i].type + '"}, ';
+                } else if(_this.options.post.name != 'flag' && existingCookies[i].name == 'flag') {
+                   jsonString += '{"id": "' + existingCookies[i].id + '", "name": "' + existingCookies[i].name + '", "sub_type": "' + existingCookies[i].sub_type + '", "type": "' + existingCookies[i].type + '"}, ';
                 }
             }
         }
