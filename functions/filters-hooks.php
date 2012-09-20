@@ -364,7 +364,7 @@ add_filter('widgetpress_before_widget', 'filter_before_widget', 10, 3);
 
 function disallow_admin_access() {
     global $current_user;
-    $show_admin = (current_user_can("access_admin") || $current_user->caps["administrator"] == 1) ? true : false;
+    $show_admin = (current_user_can("access_admin") || $current_user->caps["administrator"] == 1 || (defined('DOING_AJAX') && DOING_AJAX)) ? true : false;
     if (!$show_admin) {
         wp_redirect(home_url());
         exit();
