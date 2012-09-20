@@ -5,7 +5,8 @@
     $categories = get_the_category( $post->ID );
 
     $crest_options = array(
-        "user_id" => $post->post_author
+        "user_id" => $post->post_author,
+        "width"		=> "span2"
     );
 
     $post_actions = array(
