@@ -31,9 +31,9 @@ foreach($activities as $activity):
                     <span><?php echo $activity_text; ?></span>
                     <?php get_partial( 'parts/space_date_time', array( "timestamp" => strtotime($activity->date) ) ); ?>
                     <a href="<?php echo (in_array($activity->type, $user_activities->comment_types)) ? ((count($activity->post->category)) ? get_term_link($activity->post->category[0]) : null) : ((count($activity->category)) ? get_term_link($activity->category[0]) : null) ;?>" class="category"><?php echo (in_array($activity->type, $user_activities->comment_types)) ? ((count($activity->post->category)) ? $activity->post->category[0]->cat_name : 'Uncategorized') : ((count($activity->category)) ? $activity->category[0]->cat_name : 'Uncategorized') ;?></a>
-                    <a href="<?php echo (in_array($activity->type, $user_activities->comment_types)) ? get_permalink($activity->post->ID) : get_permalink($activity->ID) ;?>"><?php echo (in_array($activity->type, $user_activities->comment_types)) ? $activity->post->post_title : $activity->title;?></a>
+                    <a href="<?php echo (in_array($activity->type, $user_activities->comment_types)) ? get_permalink($activity->post->ID) : get_permalink($activity->ID) ;?>"><?php echo (in_array($activity->type, $user_activities->comment_types)) ? sanitize_text($activity->post->post_title) : sanitize_text($activity->title);?></a>
                 </h3>
-                <?php echo (in_array($activity->type, $user_activities->comment_types)) ? $excerpt : null; ?>
+                <?php echo (in_array($activity->type, $user_activities->comment_types)) ? sanitize_text($excerpt) : null; ?>
             </div>
         </li>
  <?php endforeach; ?>

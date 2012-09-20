@@ -82,9 +82,9 @@ $arrow-height: 3px;
     }
   }
   #footer_nav.dropmenu {
-    background-color: sears( footer );
-    @extend .shdrbg;
     li {
+      background-color: sears( footer );
+      @extend .shdrbg;
       &:hover {
         @extend .shdrbg;
       }
@@ -203,9 +203,9 @@ $arrow-height: 3px;
       padding-bottom: .66em;
       span {
         background-repeat: no-repeat;
-        // padding-right: 16px;
+        padding-right: 16px;
         display: inline-block;
-        width: 90%;
+        //width: 90%;
       }
       @include sprite-position( "span", right, ( $nav-sprite-period * ( -3 ) ) );
     }
@@ -218,7 +218,7 @@ $arrow-height: 3px;
   ul {
     li {
       &:hover {
-        background: none;
+        // background: none;
       }
     }
   }
@@ -228,16 +228,20 @@ $arrow-height: 3px;
 .sears #footer_nav.dropmenu {
   background-repeat: repeat-x;
   @include border-radius( 5px );
-  ul {
-    background: sears( footer_fly );
-  }
   li {
     $divisor: ( $grid-width - ( $footer-count-sears - 1 ) ) / $footer-count-sears;
     width: percentage( $divisor / $grid-width );
     border-left: 1px solid $lightest-color;
     font-size: font-size( 12 );
+    @extend .shdrbg;
+    a {
+      color: sears( footer-subnav-hover );
+    }
     // Give the footer item a different background
     &:hover {
+      a {
+        color: sears( secondary-link );
+      }
       // adjust for the first item's rounded corners
       &:first-child {
         @include border-radius( 0 0 0 5px );
@@ -246,10 +250,14 @@ $arrow-height: 3px;
     @include sprite-position( "&:hover", left, ( $nav-sprite-period * ( -5 ) ) );
     &:first-child {
       border-left: 0;
+      @include border-radius( 5px 0 0 5px );
     }
     
     // adjust for the last item's rounded corners
     $last_item: repeat-concat( "", "+ li", ( $footer-count-sears - 1 ) );
+    #{$last_item} {
+      @include border-radius( 0 5px 5px 0 );
+    }
     #{$last_item}:hover {
       @include border-radius( 0 0 5px 0 );
     }
@@ -259,22 +267,31 @@ $arrow-height: 3px;
     @include border-radius( 5px 5px 0 0);
     border: 1px solid sears( decorative );
     border-bottom: 0;
+    background-color: sears( footer_fly );
+    padding-top: 5px;
     li {
-      width: 100%;
+      width: auto;
+      background-image: none;
+      background-color: sears( footer_fly );
       font-size: font-size( 11, 12 );
       border-left: 0;
+      padding: 0 .5em .5em .5em;
       &:hover {
-        background: none;
+        background-image: none;
       }
-      a:hover {
-        color: sears( footer-subnav-hover );
-        text-decoration: none;
+      a {
+        color: sears( secondary-link );
+        padding: 0;
+        &:hover {
+          color: sears( footer-subnav-hover );
+          text-decoration: none;
+        }
       }
     }
   }
 }
 
-@include sprite-position( ".sears #footer_nav.dropmenu", left, ( $nav-sprite-period * ( -4 ) ) );
+@include sprite-position( ".sears #footer_nav.dropmenu li", left, ( $nav-sprite-period * ( -4 ) ) );
 
 // Modify footer for Kmart
 .kmart #footer_nav.dropmenu {
