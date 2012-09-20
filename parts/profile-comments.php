@@ -4,6 +4,9 @@
 <?php endif;?>
 
    <?php
+   	global $current_user;
+   	get_currentuserinfo();
+   	
     foreach($activities as $activity):
 		
     	$id = $activity->comment_ID;
@@ -21,7 +24,7 @@
                 </h3>
                 <?php echo sanitize_text($excerpt); ?>
                 
-                <?php if($profile_type == 'myprofile'):?>
+                <?php if($profile_type == 'myprofile' || $current_user->ID == $activity->user_id):?>
                	 <a href="#" id="<?php echo $id;?>" class="delete-comment right">Delete</a>
                	 <input type="hidden" id="<?php echo 'profile_uid_' . $id;?>" value="<?php echo $current_user->ID;?>" />
                	<?php 
