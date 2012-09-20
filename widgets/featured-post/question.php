@@ -1,4 +1,4 @@
-<?php $c = get_the_category(); ?>
+<?php global $excerptLength; $excerptLength = 140; $c = get_the_category(); ?>
 <section class='content-container featured-question'>
 
     <?php if (is_widget('show_category') || is_widget('show_date')) : ?>
