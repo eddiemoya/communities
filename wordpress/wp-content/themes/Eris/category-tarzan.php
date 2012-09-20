@@ -14,6 +14,111 @@ get_template_part('parts/header');
 		
 		<section class="span8">
 			
+			<!-- BEGIN EXPERTS LIST -->
+			
+			<div class="archive_users span12">
+				<article class="widget content-container span12 results-list">
+					<header class="content-header">
+						<form action="" method="post">
+							<label for="filter-results-posts">View</label>
+							<select class="filter-results-posts" id="filter-results" name="filter-category">
+								<option value="1" class="level-0">General</option>
+								<option value="23" class="level-0">Customer Care</option>
+								<option selected="selected" value="436" class="level-0">Appliances</option>
+								<option value="437" class="level-0">Electronics</option>
+								<option value="438" class="level-0">Fitness &amp; Sports</option>
+								<option value="441" class="level-0">Lawn &amp; Garden</option>
+								<option value="819" class="level-0">Experts</option>
+							</select>
+							<label for="sort-results-posts">Sort by</label>
+							<select class="sort-results-posts" id="sort-results" name="sort-results">
+								<option value="DESC">Oldest First</option>
+								<option value="ASC">Newest First</option>
+							</select>
+							<input type="hidden" name="widget" class="widget_name" value="results-list">
+							<input type="hidden" name="post_type" class="post_type" value="question">
+						</form>
+					</header>
+					<section class="content-body">
+						
+						<article class="content-container user clearfix">
+							
+							<ul class="member_details">
+								
+								<li class="member_avatar span6">
+									<a href="#">
+										<img src="http://localhost:100/wp-content/themes/Eris/assets/img/avatar.jpg?" />
+										<span class="badge">Subscriber</span>
+									</a>
+								</li>
+								
+								<li class="member_profile span6">
+									<ul>
+										<li class="member_screen-name"><a href="">TimothySteele</a></li>
+										<li class="member_location">Chicago, IL</li>
+									</ul>
+								</li>
+								
+								<li class="member_content span12">
+									<ul>
+										<li class="member_last-posted">Last Posted on September 17, 2012</li>
+										<li class="member_answers">8 answers</li>
+										<li class="member_posts">3 blog posts</li>
+										<li class="member_comments">6 comments</li>
+									</ul>
+								</li>
+								
+							</ul>	
+							
+						</article>
+					
+						<article class="content-container user clearfix">
+							
+							<ul class="member_details">
+								
+								<li class="member_avatar span6">
+									<a href="#">
+										<img src="http://localhost:100/wp-content/themes/Eris/assets/img/avatar.jpg?" />
+										<span class="badge">Subscriber</span>
+									</a>
+								</li>
+								
+								<li class="member_profile span6">
+									<ul>
+										<li class="member_screen-name"><a href="">TimothySteele</a></li>
+										<li class="member_location">Chicago, IL</li>
+										<li class="member_specialties">
+											Specializes in:
+											<ul>
+												<li><a href="#">Specialty 1</a></li>
+												<li><a href="#">Specialty 2</a></li>
+												<li><a href="#">Specialty 3</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								
+								<li class="member_posts span12">
+									<ul>
+										<li class="member_last-posted">Last Posted on September 17, 2012</li>
+										<li class="member_answers">8 answers</li>
+										<li class="member_posts">3 blog posts</li>
+										<li class="member_comments">6 comments</li>
+									</ul>
+								</li>
+								
+							</ul>	
+							
+						</article>
+						
+					
+					</section>
+					<section class="pagination"> </section>
+				</article>
+			</div>
+			
+			<!-- END EXPERTS LIST -->
+			
 			<section class="span12 featured-members content-container">
 				
 				<hgroup class="content-header">
@@ -236,9 +341,76 @@ get_template_part('parts/header');
 				</article>
 			</div>
 			
+			
+			
+			
 		</section> <!-- END SPAN8 -->
 	
 		<section class="span4">
+			
+			<!-- NEW RECENT ACTIVITY -->
+				
+			
+				
+			<!-- END NEW RECENT ACTIVITY -->
+			
+			<!-- ORIGINAL RECENT ACTIVITY -->
+			
+			<section class="span12">
+    		<section class="content-container recent-activity">
+
+        	<hgroup class="content-header">
+        		<h3>Recent Activities</h3>
+        	</hgroup>
+
+        	<ol class="content-body result clearfix">
+
+            <li class="clearfix">
+                
+							<div class="crest span4">
+    						<a href="http://uxint-sears/community/author/Jasonthegreat/"><img alt="" class="photo" src="http://uxint-sears/wp-content/themes/Eris/assets/img/avatar.jpg?"></a>
+    
+    						<h4><a href="http://uxint-sears/community/author/Jasonthegreat/">Jasonthegreat</a></h4>
+    						<address>Carol Stream, IL</address>
+    					</div>
+    					
+             	<div class="span8">
+              	<h3>
+              		<span>Asked this: </span>
+									<time datetime="2012-09-19" pubdate="" class="content-date">Sep 19 5:18pm</time>
+                  <a class="category" href="http://uxint-sears/community/category/customer-care/maintenance-parts/">Repairs, Maintenance &amp; Parts</a>
+                  <a href="http://uxint-sears/community/questions/where-can-i-find-manuals-for-tv/">where can i find manuals for tv?</a>
+                </h3>
+              </div>
+            </li>
+
+            <li class="clearfix">
+                
+							<div class="crest span4 labeled">
+    						<a href="http://uxint-sears/community/author/hamidxjs/"><img alt="" class="photo" src="http://uxint-sears/community/wp-content/blogs.dir/2/files/userphoto/4.jpg?1346446016"></a>
+    
+    						<h4><a href="http://uxint-sears/community/author/hamidxjs/">Expert</a></h4>
+
+    						<h5><a href="http://uxint-sears/community/author/hamidxjs/">hamidxjs</a></h5>
+    						<address>Villa Park, ILLINOIS</address>
+    					</div>
+              <div class="span8">
+              	<h3>
+                	<span>Asked this: </span>
+                        
+									<time datetime="2012-09-19" pubdate="" class="content-date">Sep 19 5:13pm</time>
+                  <a class="category" href="http://uxint-sears/community/category/general/">General</a>
+                  <a href="http://uxint-sears/community/questions/frank-is-great-right/">frank is great right?</a>
+                </h3>
+              </div>
+            </li>
+        	</ol>
+    		</section>
+			</section>
+			
+			<!-- END ORIGINAL RECENT ACTIVITY -->
+			
+			
 			
 			<section class="span12 featured-members content-container">
 				
@@ -338,64 +510,6 @@ get_template_part('parts/header');
 					
 				</section>
 				
-			</section>
-			
-			
-			
-			
-			<section class="span12 featured-members content-container">
-		    
-		    <hgroup class="content-header">
-		        <h3>Meet the Community Team</h3>
-		        <h4>Whatever your question or issue, we're here to help</h4>
-		    </hgroup>
-    
-		    <section class="content-body">
-					<div class="member clearfix">
-		    
-		    		<div class="crest span3 labeled">
-		    			<a href="http://localhost:100/?author=98"><img alt="" class="photo" src="/wp-content/uploads/userphoto/98.jpeg?1345825782"></a>
-		    			<h4><a href="http://localhost:100/?author=98">Expert</a></h4>
-		    		</div>
-		    		
-		    		<article class="info span8">
-		        	<h4><a href="http://localhost:100/?author=98">user</a></h4>
-		        	<address>&nbsp;</address>
-		        </article>
-		    		
-		    		<div class="stats"></div>
-		    		
-					</div>
-					<div class="member clearfix">
-		    
-						<div class="crest span2 labeled">
-		    			<a href="http://localhost:100/?author=60"><img alt="" class="photo" src="http://localhost:100/wp-content/themes/Eris/assets/img/avatar.jpg?"></a>
-		    
-		    			<h4><a href="http://localhost:100/?author=60">Subscriber</a></h4>
-		    		</div>
-		    		<article class="info span8">
-		        	<h4><a href="http://localhost:100/?author=60">AGVance</a></h4>
-		        	<address>&nbsp;</address>
-		        </article>
-		    		<div class="stats"></div>
-		    	</div>
-		    	<div class="member clearfix">
-		    
-						<div class="crest span2 labeled">
-		    			<a href="http://localhost:100/author/boobies_rule/"><img alt="" class="photo" src="/7.png?1345662144"></a>
-		    
-		    			<h4><a href="http://localhost:100/author/boobies_rule/"></a></h4>
-		    		</div>
-		    		<article class="info span8">
-		        	<h4><a href="http://localhost:100/author/boobies_rule/">boobies_rule</a></h4>
-		        	<address>&nbsp;</address>
-		        </article>
-		    		<div class="stats">
-		        	<p>Last posted on <time pubdate="pubdate" datetime="2012-08-22">Aug 22, 2012</time>.</p>
-		        </div>
-					</div>       
-					<span class="left"><a href="http://localhost:100/experts-list/">See More</a></span> 
-		    </section>
 			</section>
 			
 		</section>
