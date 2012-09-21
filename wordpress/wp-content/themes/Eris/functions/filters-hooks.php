@@ -302,16 +302,16 @@ function post_comment_screen_name($commentdata) {
         
     	//sanitize
     	$clean_screen_name = sanitize_text_field($_POST['screen-name']);
-    	
+
         //Attempt to set screen name
         $response = set_screen_name($clean_screen_name);
-        
+
         /*var_dump($response);
         exit;*/
-        
+
         //If setting screen name fails
         if($response !== true) {
-            
+
             //Create QS
             $qs = '?comment=' . urlencode($_POST['comment']) . '&cid=' . $commentdata['comment_parent'] . '&comm_err=' . urlencode($response['message']);
 
@@ -355,6 +355,14 @@ function filter_before_widget($html, $dropzone, $widget){
                 $html = str_replace('featured-post', 'featured-question', $html);
             }
         }
+
+    }
+
+    if($meta->widgetpress_widget_classname = 'Results_List_Widget'){
+
+        if($meta->query_type == 'users'){
+            $html = str_replace('results-list', 'results-list_users', $html);
+           }
 
     }
     //echo "<pre>";print_r();echo "</pre>";

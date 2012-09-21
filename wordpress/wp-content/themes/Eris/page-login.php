@@ -1,5 +1,13 @@
 <?php
 
+//if user is logged in, redirect to home page
+if(is_user_logged_in()) {
+	
+	wp_redirect(get_site_url());
+	exit;
+}
+
+
 $origin = (isset($_GET['origin'])) ? urldecode($_GET['origin']) : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_site_url());
 $error = (isset($_GET['err'])) ? urldecode($_GET['err']) : false;
 
@@ -7,7 +15,6 @@ $error = (isset($_GET['err'])) ? urldecode($_GET['err']) : false;
  * @package WordPress
  * @subpackage White Label
  */
-ob_start();
 
 if(! is_ajax()):
 

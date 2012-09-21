@@ -576,7 +576,16 @@ function return_last_post_date( $user_id ) {
  */
 function return_post_count( $user_id ) {
     global $wpdb;
-    return $wpdb->get_var( "select count(`ID`) as `num_posts` from {$wpdb->posts} where `post_type` in ( 'question', 'guide', 'post' ) and `post_author` = {$user_id}" );
+
+    if(!empty($user_id)){
+        return $wpdb->get_var( "
+            select count(`ID`) as `num_posts` 
+            from {$wpdb->posts} 
+            where `post_type` in ( 'question', 'guide', 'post' ) 
+            and `post_author` = {$user_id}" );
+    } else {
+        return null;
+    }
 }
 
 /**
@@ -762,10 +771,14 @@ function sanitize_text($text) {
 	return $text;
 }
 
-function the_truncated_title(){
+
+
+function the_truncated_title($length = 100){
+    
     $title = get_the_title();
 
-    if (strlen($title) > 100) $title = substr($title, 0, 100) . "...";
+    if (strlen($title) > $length) $title = substr($title, 0, $length) . "...";
 
     echo $title;
+
 }
