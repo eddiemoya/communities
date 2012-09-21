@@ -1,5 +1,5 @@
 <?php  ///echo "<pre>";print_r(is_widget('show_filters'));echo "</pre>";
-	if(!is_widget()){
+	if(is_widget('query_type') == 'users'){
 		$post_type = 'users';
 	} else {
 		$queried_type = get_query_var('post_type');
