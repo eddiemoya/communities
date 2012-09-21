@@ -68,7 +68,8 @@ img {
   vertical-align: middle; }
 
 img, object, embed {
-  max-width: 100%; }
+  max-width: 100%;
+  width: 100%; }
 
 sub, sup {
   font-size: 75%;
@@ -806,7 +807,7 @@ ul.bullets {
 #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child .content-header:first-child {
   border-top: none; }
 
-.page-title + .results-list .content-container .content-body {
+.page-title + .results-list > .content-body {
   border-top: none; }
 
 .sears .post h1, .sears .question h1 {
@@ -924,8 +925,8 @@ textarea.discussion {
   margin-bottom: 0px; }
 .archive_posts .results-list .content-details, .archive_guides .results-list .content-details {
   margin-bottom: .5em; }
-.archive_posts .results-list .content-excerpt, .archive_guides .results-list .content-excerpt {
-  line-height: 15px; }
+.archive_posts .results-list .content-excerpt, .archive_posts .results-list .content-tags, .archive_guides .results-list .content-excerpt, .archive_guides .results-list .content-tags {
+  line-height: 115.384%; }
 .archive_posts .results-list .content-headline, .archive_guides .results-list .content-headline {
   margin-bottom: 0px; }
 .archive_posts .results-list .content-share, .archive_guides .results-list .content-share {
