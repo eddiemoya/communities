@@ -15,6 +15,7 @@
     $display_specialty 	= ( !isset( $specializations ) )? false : $specializations;
 		$display_recent			= ( !isset( $last_posted ) )? false : $last_posted;
 		$display_stats			= ( !isset( $stats ) )? false : $stats;
+
 ?>
 
 <ul class="member_details<?php if (isset( $width )) {echo " " . $width;} ?>">
@@ -29,7 +30,7 @@
             ( user_can($user_id, "post_as_expert" ) )
 					) {
 			?>
-			<span class="badge"><?php echo ucfirst( $user->roles[0] ); ?></span>
+			<span class="badge"><?php echo $wp_roles->roles[$user->roles[0]]["name"]; ?></span>
 			<?php } ?>
 		</a>
 	</li>

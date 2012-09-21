@@ -14,7 +14,7 @@ get_template_part('parts/header');
 		
 		<section class="span8">
 			
-			<article class="widget content-container featured-category-questions widget span12">
+			<article class="widget content-container featured-category-question widget span12">
 				
 				<header class="content-header">
 					<h1>Featured Questions</h1>
@@ -60,7 +60,7 @@ get_template_part('parts/header');
 					</section>
 					<section class="span6">
 						<!-- DROPZONE: SECOND FEATURED QUESTION -->
-							<article class="content-container question">
+						<article class="content-container question">
 							<section class="content-body clearfix">
 								
 								<div class="span3">
