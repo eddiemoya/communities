@@ -161,7 +161,7 @@ function process_front_end_question() {
     }
 
     //If step 2, add the post and move to step 3
-    if((wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in())) {
+    if((wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in()) && ! isset($_POST['cancel'])) {
 		
 		$valid = true;
     	$errors = array();
