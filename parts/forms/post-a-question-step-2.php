@@ -54,7 +54,8 @@ get_currentuserinfo();
 							</li>
 							<li class="clearfix">
 								<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Post</button>
-								<button type="submit" class="<?php echo theme_option("brand"); ?>_button azure">Cancel</button>
+								<button type="submit" name="cancel" class="<?php echo theme_option("brand"); ?>_button azure">Cancel</button>
+								<input type="hidden" name="post-question" value="<?php echo $_POST['post-question']; ?>" />
 							</li>
 						</ul>
 					</div>

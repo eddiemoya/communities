@@ -14,74 +14,6 @@ get_template_part('parts/header');
 		
 		<section class="span8">
 			
-			<article class="widget content-container featured-category-questions widget span12">
-				
-				<header class="content-header">
-					<h1>Featured Questions</h1>
-				</header>
-				
-				<section class="content-body clearfix">
-					
-					<section class="span6">
-						<!-- DROPZONE: FIRST FEATURED QUESTION -->
-						
-						<article class="content-container featured-question span12">
-				
-							<section class="content-body clearfix">
-								
-								<div class="content-details clearfix">
-									<span class="content-category"><a href="#" title="Fantasy">Fantasy</a></span>
-										<time class="content-date" pubdate datetime="1954-07-24">July 24, 1954</time>
-								</div>
-								
-								<h1 class="content-headline">
-									Q:
-									<a href="#" title="Lorem ipsum dolor sit amet, ut pri congue viven scaevola. Primis verear honestatis vel no, habeo prima delicata te pro. Quodsi omnesque iracundia et ius, munere viderer?">Lorem ipsum dolor sit amet, ut pri congue viven scaevola. Primis verear honestatis vel no, habeo prima delicata te pro. Quodsi omnesque iracundia et ius, munere viderer?</a>
-								</h1>
-								
-								<ul class="clearfix">
-									<li class="content-comments">8 answers | 2 community team answers</li>
-								</ul>
-			
-							</section>
-					
-						</article> 
-		
-						<!-- END DROPZONE -->
-					</section>
-					<section class="span6">
-						<!-- DROPZONE: SECOND FEATURED QUESTION -->
-							<article class="content-container featured-question span12">
-				
-							<section class="content-body clearfix">
-								
-								<div class="content-details clearfix">
-									<span class="content-category"><a href="#" title="Fantasy">Fantasy</a></span>
-										<time class="content-date" pubdate datetime="1954-07-24">July 24, 1954</time>
-								</div>
-								
-								<h1 class="content-headline">
-									Q:
-									<a href="#" title="Lorem ipsum dolor sit amet, ut pri congue viven scaevola. Primis verear honestatis vel no, habeo prima delicata te pro. Quodsi omnesque iracundia et ius, munere viderer?">Lorem ipsum dolor sit amet, ut pri congue viven scaevola. Primis verear honestatis vel no, habeo prima delicata te pro. Quodsi omnesque iracundia et ius, munere viderer?</a>
-								</h1>
-								
-								<ul class="clearfix">
-									<li class="content-comments">8 answers | 2 community team answers</li>
-								</ul>
-			
-							</section>
-					
-						</article> 
-						
-						<!-- END DROPZONE -->
-					</section>
-					
-				</section>
-				
-				
-			</article>
-			
-			
 			<article class="widget content-container span6 ad-widget">
 				<header class="content-header">
 					<h1>Advertisement</h1>
@@ -230,6 +162,10 @@ get_template_part('parts/header');
 					  <p class="content-excerpt">Lorem ipsum dolor sit amet, sit senserit similique cotidieque ex, libris postea copora nam.  Sea vidit pro. et, sit senserit similique... <a href="#" title="Read More">Read more</a><p>
 					</div>
 					
+					<section class="post-actions">
+            <?php get_partial( 'parts/share', array( "version" => is_widget()->share_style, "url" => get_post_permalink( $post->ID ) ) ); ?>
+      	  </section>
+					
 				</section>
 		
 			</article>
@@ -307,6 +243,10 @@ get_template_part('parts/header');
 					<div class="content-details clearfix">
 						<span class="content-category"><a href="#" title="Fantasy">Fantasy</a></span>
 							<time class="content-date" pubdate datetime="1954-07-24">July 24, 1954</time>
+					</div>
+					
+					<div class="category-image">
+						
 					</div>
 					
 					<h1 class="content-headline">
