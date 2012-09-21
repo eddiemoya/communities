@@ -31,7 +31,7 @@
 	/** Database Charset to use in creating database tables. */
 	define('DB_CHARSET', 'utf8');
 	
-}
+
 	
 /**#@+
  * Authentication Unique Keys and Salts.
