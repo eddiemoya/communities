@@ -26,8 +26,7 @@ class User_Profile {
 	 * Array of comment types
 	 * @var array
 	 */
-	public $comment_types = array('',
-									'answer',
+	public $comment_types = array('answer',
 									'comment');
 	
 	/**
@@ -177,35 +176,55 @@ class User_Profile {
 		return $this;
 	}
 	
-	/**
-	 * Gets user posts by type, sets posts property
-	 * @param string $post_type
-	 * @return object
-	 */
-	public function get_user_posts_by_type($post_type = 'post' ) {
-		
-		$args = 	array('author'			=> $this->user_id,
-						'post_status'		=> 'publish',
-						'post_type'			=> $post_type,
-						'order'				=> 'DESC',
-						'orderby'			=> 'date',
-						'posts_per_page'	=> $this->posts_per_page,
-						'paged'				=> $this->page);
-						
-		
-		//Sets num_pages and offset
-		$this->paginate();
-						
-		$this->posts = get_posts($args);
-		
-		$this->next_page = (count($this->posts) < $this->posts_per_page) ? null : ($this->page + 1);	
-		$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
-		
-		//Get and add categories property to each post
-		$this->set_post_categories();
-		
-		return $this;
-	}
+    /**
+   	 * Gets user posts by type, sets posts property
+   	 * @param string $post_type
+   	 * @return object
+   	 */
+   	public function get_user_posts_by_type($post_type = 'post' ) {
+
+   		$args = 	array('author'			=> $this->user_id,
+   						'post_status'		=> 'publish',
+   						'post_type'			=> $post_type,
+   						'order'				=> 'DESC',
+   						'orderby'			=> 'date',
+   						'posts_per_page'	=> $this->posts_per_page,
+   						'paged'				=> $this->page);
+
+
+   		//Sets num_pages and offset
+   		$this->paginate();
+
+   		$this->posts = get_posts($args);
+
+   		$this->next_page = (count($this->posts) < $this->posts_per_page) ? null : ($this->page + 1);
+   		$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
+
+   		//Get and add categories property to each post
+   		$this->set_post_categories();
+
+   		return $this;
+   	}
+
+    /**
+   	 * Gets user posts by type, sets posts property
+   	 * @param string $post_type
+   	 * @return object
+   	 */
+   	public function get_posts_by_id($postId) {
+   		//Sets num_pages and offset
+   		$this->paginate();
+
+   		$this->posts = array(get_post($postId));
+
+   		$this->next_page = (count($this->posts) < $this->posts_per_page) ? null : ($this->page + 1);
+   		$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
+
+   		//Get and add categories property to each post
+   		$this->set_post_categories();
+
+   		return $this;
+   	}
 	
 	/**
 	 * Gets user's recent activities (posts,comments,actions).
@@ -300,9 +319,6 @@ class User_Profile {
 				
 				ORDER BY date DESC" . $this->limit;
 		
-		/*echo $q;
-		exit;*/
-		
 		
 		$this->activities = $wpdb->get_results($q);
 		
@@ -387,12 +403,11 @@ class User_Profile {
 	
 	}
 	
-	public function get_expert_answers() {
+	public function get_expert_answers($type='answer') {
 		
 		foreach($this->posts as $key=>$post) {
-			
-			$answers = $this->get_experts_answers($post->ID);
-			
+			$answers = $this->get_experts_answers($post->ID, $type);
+
 			$this->posts[$key]->expert_answers = $answers;
 			
 			unset($answers);
@@ -401,12 +416,12 @@ class User_Profile {
 		return $this;
 	}
 	
-	private function get_experts_answers($post_id) {
+	private function get_experts_answers($post_id, $type='answer') {
 		
 		global $wpdb;
 		
-		$q = "SELECT * FROM {$wpdb->comments} WHERE comment_post_id = {$post_id} AND comment_type = 'answer' AND user_id IN ({$this->experts})";
-		
+		$q = "SELECT * FROM {$wpdb->comments} WHERE comment_post_id = {$post_id} AND comment_type = '".$type."' AND user_id IN ({$this->experts})";
+
 		return $wpdb->get_results($q);
 	}
 	
@@ -473,24 +488,37 @@ class User_Profile {
 	 */
 	public function get_user_comments_by_type($type = '') {
 		
-	     $args = array(	'type'				=> $type,
+		global $wpdb;
+		
+		
+	    /* $args = array(	'type'				=> $type,
 					 	'status'			=> 'approve',
 						'user_id'			=> $this->user_id,
 						'order'				=> 'DESC',
 						'orderby'			=> 'comment_date',
 	     				'number'			=> $this->posts_per_page
-						);
+						);*/
 			
 			$this->paginate();
 			
-			$args['offset'] = $this->offset;
-						
-			$this->comments = get_comments($args);
+			$q = "SELECT *
+				FROM {$wpdb->comments}
+				WHERE comment_type = '{$type}'
+				AND comment_approved = 1
+				AND user_id = {$this->user_id}
+				ORDER BY comment_date DESC {$this->limit}";
+			
+			//$args['offset'] = $this->offset;
+					
+			$this->comments = $wpdb->get_results($q);//get_comments($args);
+			
+			
 			
 			$this->next_page = (count($this->comments) < $this->posts_per_page) ? null : ($this->page + 1);
 			$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
 			
 			$this->get_comment_post();
+			
 			
 			return $this;
 			
@@ -553,7 +581,9 @@ class User_Profile {
 		
 		global $wpdb;
 		
-		$q = "SELECT user_id FROM {$wpdb->usermeta} WHERE $wpdb->usermeta.meta_key = 'wp_capabilities' AND $wpdb->usermeta.meta_value LIKE '%" . self::EXPERT_ROLE . "%'";
+		$cap_key = $wpdb->prefix . 'capabilities';
+		
+		$q = "SELECT user_id FROM {$wpdb->usermeta} WHERE $wpdb->usermeta.meta_key = '{$cap_key}' AND $wpdb->usermeta.meta_value LIKE '%" . self::EXPERT_ROLE . "%'";
 		$experts = $wpdb->get_results($q);
 		
 		return $experts;
@@ -660,16 +690,17 @@ class User_Profile {
 	
 	private function has_comment_count($type) {
 		
-		$args = array(	'type'				=> $type,
-					 	'status'			=> 'approve',
-						'user_id'			=> $this->user_id,
-						'order'				=> 'DESC',
-						'orderby'			=> 'comment_date',
-	     				'number'			=> $this->posts_per_page
-						);
-						
-						
-			if(count(get_comments($args))) {
+		global $wpdb;
+		
+		$q = "SELECT *
+			FROM {$wpdb->comments}
+			WHERE comment_type = '{$type}'
+			AND comment_approved = 1
+			AND user_id = {$this->user_id}
+			ORDER BY comment_date DESC {$this->limit}";
+			
+		
+			if(count($wpdb->get_results($q))){
 				
 				return true;
 				

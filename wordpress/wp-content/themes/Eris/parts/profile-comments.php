@@ -1,27 +1,41 @@
 
 <?php if(! is_ajax() && !empty($activities)):?>
     <ol class="content-body result clearfix" id="profile-results">
+<?php endif;?>
 
-        <?php
+   <?php
+   	global $current_user;
+   	get_currentuserinfo();
+   	
     foreach($activities as $activity):
-
-        $excerpt = '<article class="excerpt">' . (strlen( $activity->comment_content ) > 180 ? substr( $activity->comment_content, 0, 180 ) . "&#8230;" : $activity->comment_content) . '</article>';
+		
+    	$id = $activity->comment_ID;
+    	$elem_id = 'comm-'. $id;
+    	
+        $excerpt = '<article class="excerpt">' . (strlen( $activity->comment_content ) > 200 ? substr( $activity->comment_content, 0, 200 ) . "&#8230;" : $activity->comment_content) . '</article>';
 
         ?>
-        <li class="clearfix">
-            <?php //echo $badge; ?>
+        <li class="clearfix" id="<?php echo $elem_id;?>">
             <div>
                 <h3>
-                    <?php //echo $start; ?>
-                    <time class="content-date" datetime="<?php echo date( "Y-m-d", strtotime($activity->comment_date)); ?>" pubdate="pubdate"><?php echo date( "F j, Y g:ia", strtotime($activity->comment_date)); ?></time>
+                    <?php get_partial( 'parts/space_date_time', array( "timestamp" => strtotime( $activity->comment_date ) ) ); ?>
                     <a href="<?php echo (count($activity->post->categories)) ? get_term_link($activity->post->categories[0]) : null; ?>" class="category"><?php echo (count($activity->post->categories)) ? $activity->post->categories[0]->cat_name : 'Uncategorized'; ?></a>
-                    <a href="<?php echo get_permalink($activity->post->ID);?>"><?php echo $activity->post->post_title; ?></a>
+                    <a href="<?php echo get_permalink($activity->post->ID);?>"><?php echo sanitize_text($activity->post->post_title); ?></a>
                 </h3>
-                <?php echo $excerpt; ?>
+                <?php echo sanitize_text($excerpt); ?>
+                
+                <?php if($profile_type == 'myprofile' || $current_user->ID == $activity->user_id):?>
+               	 <a href="#" id="<?php echo $id;?>" class="delete-comment right">Delete</a>
+               	 <input type="hidden" id="<?php echo 'profile_uid_' . $id;?>" value="<?php echo $current_user->ID;?>" />
+               	<?php 
+               		wp_nonce_field('comment_delete_' . $id . '_' . $current_user->ID, '_wp_nonce_' . $id);
+               	endif;?>
+               	
             </div>
         </li>
     <?php endforeach; ?>
 
+<?php if(! is_ajax() && !empty($activities)):?>
 </ol>
 <?php endif;?>
 

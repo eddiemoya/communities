@@ -23,7 +23,7 @@
             </section>
         <?php endif; ?>
         <section class="clearfix">
-            <p class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+            <p class="post-title"><a href="<?php the_permalink(); ?>"><?php the_truncated_title(); ?></a></p>
             <?php if(get_post_type() == "question") : ?>
                 <p class="comments-count"><?php comments_number( 'no answers', '1 answer', '% answers' ); ?></p>
             <?php else: ?>

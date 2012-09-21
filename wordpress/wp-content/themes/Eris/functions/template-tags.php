@@ -6,23 +6,53 @@
  * @author Eddie Moya
  * 
  * @global type $wp_query
- * @param type $template [optional] Template part to be used in the loop.
+ * @param string|array $template [optional] Template part to be used in the loop. Defaults to 'post'
+ * @param string|array $special [optional] Like get_template_part()'s second param, an appended portion of the filename delimited with a dash. $template-$special.php
+ * @param string|null $base_path [optional] The path (relative to the theme root folder) in which to find the template. Defaults to "parts". Defaults to null.
+ * @param string|null $no_posts_template [optional] The template to load should there not be any posts to show in the query. Defaults to null.
  *
  * @return void.
  */
-function loop($template = 'post', $special = null, $base_path = "parts"){
+function loop($template = 'post', $special = null, $base_path = "parts", $no_posts_template = null){
     global $wp_query;
     //print_pre($wp_query);
-    $template = (isset($special)) ? $template.'-'.$special : $template;
-    if (have_posts()) {
-        while (have_posts()) {
-            the_post();
-            get_template_part(trailingslashit($base_path).$template);
+
+    //Allows for arrays of tempaltes to be passed, the first of which is found will be loaded.
+    $template = (array)$template;
+    $special = (array)$special;
+    
+    //echo "<pre>";print_r($special);echo "</pre>";
+    $templates = array();
+    $index_offset = 0;
+
+    foreach($template as $index => $t){
+        
+        foreach($special as $s){
+
+            $templates[] = trailingslashit($base_path) . $t . '-'.$s.'.php';
+            $index_offset++;
         }
+
+        $templates[$index+$index_offset] = trailingslashit($base_path) . $t .'.php';
     }
 
-    wp_reset_query();
+    if (have_posts()) {
 
+        while (have_posts()) {
+            the_post();
+            locate_template($templates, true, false);
+        }
+
+    } else {
+
+        if(!is_null($no_posts_template)){
+            get_template_part($no_posts_template);
+        }
+
+    }
+    //echo "<pre>";print_r($templates);echo "</pre>";
+
+    //wp_reset_query();
 }
 
 /**
@@ -105,6 +135,8 @@ function has_screen_name($user_id) {
  */
 function process_front_end_question() {
 	
+	global $current_user;
+	
 	//Neither step has been taken, were on step 1
  	 $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '1');
 			
@@ -129,10 +161,7 @@ function process_front_end_question() {
     }
 
     //If step 2, add the post and move to step 3
-    if((wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in())) {
-		
-    	global $current_user;
-		get_currentuserinfo();
+    if((wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in()) && ! isset($_POST['cancel'])) {
 		
 		$valid = true;
     	$errors = array();
@@ -194,8 +223,6 @@ function process_front_end_question() {
 	    							update_user_meta($current_user->ID, 'profile_screen_name', $_POST['screen-name']);
 	    							
 	    							//Update user's nicename to screen name
-	    							/*wp_update_user(array('ID'				=> $current_user->ID,
-		 								 				'user_nicename' 	=> $_POST['screen-name']));*/
 	    							if(! update_user_nicename($current_user->ID, $_POST['screen-name'])) 
 	    							
 	    									$valid = false;
@@ -235,6 +262,15 @@ function process_front_end_question() {
 		        	
 		       }
 		        
+		       
+		       	
+		       	unset($current_user);
+		       	get_currentuserinfo();
+		       	
+		       /*	echo '<pre>';
+		       	var_dump($current_user);
+		       	exit;*/
+		       	
 		        $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '3');
 		        
 	    } else {
@@ -256,7 +292,7 @@ function question_exists($post) {
 	global $current_user;
 	get_currentuserinfo();
 	
-	$p = $wpdb->base_prefix . 'posts';
+	$p = $wpdb->prefix . 'posts';
 	
 	$q = "SELECT ID FROM " . $p . " WHERE post_title = '" . $post['post_title'] ."' AND post_content = '". $post['post_content'] . "' AND post_type = 'question' AND post_author = " . $current_user->ID;
 	
@@ -433,6 +469,9 @@ function return_partial( $partial, $variables = array() ){
  * @return (string) User's screen name (user_nicename).
  */
 function get_profile_url( $user_id ) {
+	
+	wp_cache_flush();
+	
     # create a fallback screen name if one has not yet been set by sso
     if ( !has_screen_name( $user_id ) ) {
         $link = home_url( '/' ) . '?author=' . $user_id;
@@ -453,15 +492,21 @@ function get_profile_url( $user_id ) {
  * @return (string) User's screen name (user_nicename).
  */
 function return_screenname( $user_id ) {
-    $user_info = get_userdata( $user_id );
+  
+   global $wpdb;
+   $wpdb->flush();
+   
+   $q = "SELECT * FROM {$wpdb->base_prefix}users WHERE ID = {$user_id}";
+   $user_info = $wpdb->get_results($q);
+  
     $screen_name = '';
     # create a fallback screen name if one has not yet been set by sso
     if ( !has_screen_name( $user_id ) ) {
-        $email_parts = explode( '@', $user_info->user_login );
+        $email_parts = explode( '@', $user_info[0]->user_login );
         $screen_name = $email_parts[0];
     }
     else {
-        $screen_name = $user_info->user_nicename;
+        $screen_name = $user_info[0]->user_nicename;
     }
     return $screen_name;
 }
@@ -552,7 +597,7 @@ function return_address( $user_id ) {
     $state = get_user_meta( $user_id, 'user_state', true );
     
     if ( $city != '' )  { $a_address[] = $city; }
-    if ( $state != '' ) { $a_address[] = $state; }
+    if ( $state != '' ) { $a_address[] = strtoupper($state); }
     if ( !empty( $a_address ) ) {
         $address = implode( ', ', $a_address );
     }
@@ -637,46 +682,88 @@ function set_screen_name($screen_name) {
 			
 		return true;
 	}
-	
 }
-
 
 /**
- * Handles posting of comment (of any with screen name
- * @param array - comment data
- * @author Dan Crimmins
+ * Gets the number of comments in a post by an expert
+ *
+ * @author Jason Corradino
+ * @param $post_id (integer) [required] The ID of the post being looked up
+ * @param $category (integer/array) [optional] Limit expert categories to selected category, defaults to post categories
+ *
+ * @return (integer) Number of comments by an expert
  */
-function post_comment_screen_name($commentdata) {
-	
-	
-	if(isset($_POST['screen-name'])) {
-		
-		//Attempt to set screen name
-		$response = set_screen_name($_POST['screen-name']);
-		
-		//If setting screen name fails
-		if($response !== true) {
-			
-			//Create QS
-			$qs = '?screen-name=' . urlencode($_POST['screen-name']) . '&comment=' . urlencode($_POST['comment']) . '&cid=' . $commentdata['comment_parent'] . '&comm_err=' . urlencode($response['message']);
-
-			//Create return URL
-			$linkparts = explode('#', get_comment_link());
-			$url = ($commentdata['comment_parent'] == 0) ? $linkparts[0] . $qs .'#commentform' : $linkparts[0] . $qs .'#comment-' .$commentdata['comment_parent'];
-			
-			//Redirect to return url
-			header('Location: ' . $url);
-			exit;
-		}
-		
-	}
-	
-	return $commentdata;
-	
+function get_expert_comment_count($post_id, $category = "") {
+    global $wpdb;
+    if($category == ""){
+        $category = wp_get_post_categories($post_id);
+    } elseif(is_string($category)) {
+        $category = array($category);
+    } elseif(!is_array($category)) {
+        return false;
+    }
+    return lookup_expert_comments_count($post_id, $category);
 }
 
-add_filter( 'preprocess_comment',  'post_comment_screen_name');
+/**
+ * Returns the number of expert comments within a given post
+ *
+ * @author Jason Corradino
+ * @param $post_id (integer) [required] The ID of the post being looked up
+ * @param $category (array) [required] Limit expert categories to selected category, defaults to post categories
+ *
+ * @return (integer) Number of comments by an expert
+ */
+function lookup_expert_comments_count($post_id, $categories) {
+    global $wpdb;
+    $roles = new WP_Roles();
+    $roles = $roles->role_objects;
+    $experts = array();
+    foreach($roles as $role) {
+        if($role->has_cap("post_as_expert"))
+            $experts[] = trim($role->name);
+    }
+    $expert_list = implode("|", $experts);
+    $query = "SELECT COUNT(DISTINCT c.comment_ID) AS count FROM {$wpdb->comments} AS c ";
+    $query .= "JOIN {$wpdb->usermeta} AS m ON m.user_id = c.user_id AND m.meta_key = 'um-taxonomy-category' ";
+    if (sizeof($categories) == 1) {
+        $query .= "AND {$categories[0]} IN (m.meta_value) ";
+    } else {
+        $query .= "AND (";
+        foreach($categories as $key => $category) {
+            if ($key != 0) {$query .= "OR ";}
+            $query .= "$category IN (m.meta_value) ";
+        }
+        $query .= ") ";
+    }
+    $query .= "JOIN {$wpdb->usermeta} AS m2 ON m2.user_id = c.user_id AND m2.meta_key = '{$wpdb->prefix}capabilities' AND m2.meta_value REGEXP '$expert_list' ";
+    $query .= "WHERE c.comment_post_ID = $post_id";
+    $return = $wpdb->get_results($wpdb->prepare($query));
+    return $return[0]->count;
+}
 
+/*
+ * Sanitizes text of any profanity
+ * 
+ * @param string $text
+ * @uses WP Content Filter plugin [required]
+ */
+function sanitize_text($text) {
+	
+	if(function_exists('pccf_filter')){
+		
+		return pccf_filter($text);
+	} 
+	
+	return $text;
+}
 
+function the_truncated_title($length = 100){
+    
+    $title = get_the_title();
 
+    if (strlen($title) > $length) $title = substr($title, 0, $length) . "...";
 
+    echo $title;
+
+}

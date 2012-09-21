@@ -3,22 +3,35 @@
 }
 ul.footer_anterior {
   margin-top: 1em;
-  @include col-layout( ( 76, 160, 74, 74, 74, 74, 74, 74, 74, 16, 16, 16, 16 ), 10);
+  font-size: font-size( 12 );
+  @include col-layout( ( 76, 150, 580, 16, 16, 16, 16 ), 10);
+  li {
+    color: sears( secondary-link );
+    a {
+      color: sears( secondary-link );
+      font-size: font-size( 8, 12 );
+      &:visited {
+        color: sears( secondary-link );
+      }
+      &:hover {
+        color: sears( footer-subnav-hover );
+        text-decoration: none;
+      }
+    }
+  }
   .icon {
     background-image: url('#{$img}sprite-footer.png');
     background-repeat: no-repeat;
     //width: 16px;
     a {
-      display:inline-block;
-      height:15px;
-      line-height:16px;
-      text-indent:-999999em;
+      display:block;
+      height:16px;
+      text-indent:-9999em;
     }
   }
   .acc.icon {
     a {
       height:30px;
-      line-height:31px;
     }
   }
   @include sprite-position( ".acc", left,   top );

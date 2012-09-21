@@ -8,18 +8,17 @@ function get_subcategories_ajax(){
 
     if(isset($_POST['category_id'])){
         $parent = absint((int)$_POST['category_id']);
-
-        wp_dropdown_categories(array(
-            'depth'=> 1,
-            'child_of' => $parent,
-            'hierarchical' => true,
-            'hide_if_empty' => true,
-            'class' => 'input_select',
-            'name' => 'sub-category',
-            'id' => 'sub-category',
-            //'echo' => false
-        ));
-         exit;
+            wp_dropdown_categories(array(
+                'depth'=> 1,
+                'child_of' => $parent,
+                'hierarchical' => true,
+                'hide_if_empty' => true,
+                'class' => 'input_select',
+                'name' => 'sub-category',
+                'id' => 'sub-category',
+                'echo' => true
+            ));
+        exit();
     }
 }
 add_action('wp_ajax_get_subcategories_ajax', 'get_subcategories_ajax');
@@ -31,13 +30,12 @@ add_action('wp_ajax_nopriv_get_subcategories_ajax', 'get_subcategories_ajax');
  * 
  */
 function get_template_ajax(){
-
     if( isset($_POST['template']) ){
         get_template_part($_POST['template']);
     } else {
         echo "<!-- No template selected -->";
     }
-    exit;
+    exit();
     
 }
 
@@ -49,32 +47,57 @@ add_action('wp_ajax_get_template_ajax', 'get_template_ajax');
  * 
  */
 function get_posts_ajax(){
-
     if( isset($_POST['template']) ){
         global $wp_query;
        
             $query['cat'] = $_POST['category'];
 
             if(isset($_GET['s'])) { 
-                $wp_query['s'] = $_GET['s'];
+                $query['s'] = $_GET['s'];
             }
-            $wp_query = new WP_Query($query);
 
-        loop($_POST['template']);
+            if(isset($_POST['post_type'])){
+                $query['post_type'] = array($_POST['post_type']);
+            }
+
+            if(isset($_POST['order'])){
+                $query['order'] = $_POST['order'];
+            }
+
+            $wp_query = new WP_Query($query);
+        $path = (isset($_POST['path'])) ? $_POST['path'] : 'parts';
+      
+        loop(array($_POST['special'], 'post'), $_POST['template'], $path, 'parts/no-results');
         wp_reset_query();
 
     } else {
         echo "<!-- No template selected -->";
     }
-
-
-    exit;
-    
+    exit();
 }
 
 add_action('wp_ajax_nopriv_get_posts_ajax', 'get_posts_ajax');
 add_action('wp_ajax_get_posts_ajax', 'get_posts_ajax');
 
+/**
+ * @author Eddie Moya
+ * 
+ */
+function get_users_ajax(){
+
+    $category = array($_POST['category']);
+    $hide_untaxed = ($category > 0);
+    
+    if(class_exists('Results_List_Widget')){
+        $users = Results_List_Widget::query_users(array('hide_untaxed' => $hide_untaxed, 'terms' => $category, 'cap' => 'post_as_expert', 'order' => $_POST['order']));
+        get_partial($_POST['path'].'/'.$_POST['template'], array('users' => $users));
+    }
+    
+    exit();
+}
+
+add_action('wp_ajax_nopriv_get_users_ajax', 'get_users_ajax');
+add_action('wp_ajax_get_users_ajax', 'get_users_ajax');
 
 /**
  * @author Dan Crimmins
@@ -103,7 +126,7 @@ function profile_paginate() {
             $activities = $user_activities->page($page)
                                             ->get_user_comments_by_type($type)
                                             ->comments;
-                                            
+                  
                                                                                                         
             include(get_template_directory() . '/parts/profile-comments.php');
         }
@@ -111,9 +134,6 @@ function profile_paginate() {
         //Posts
         if($type == 'posts' || $type == 'guides' || $type == 'question') {
             
-            /*$activities = $user_activities->page($page)
-                                            ->get_user_posts_by_type($type)
-                                            ->posts;*/
         	
 	        if($type == 'question') {
 					
@@ -218,3 +238,34 @@ function ajaxify_comments() {
 }
 add_action('wp_ajax_flag_me', 'ajaxify_comments');
 add_action('wp_ajax_nopriv_flag_me', 'ajaxify_comments');
+
+
+/**
+ * Sets comment_approve
+ * @author Dan Crimmins
+ */
+function user_delete_comment() {
+	
+	global $wpdb;
+	
+	$comment_id = $_POST['cid'];
+	$uid = $_POST['uid'];
+	
+	if(wp_verify_nonce($_POST['_wp_nonce'], 'comment_delete_' . $comment_id . '_' . $uid)) {
+		
+		$update = $wpdb->update($wpdb->comments, 
+							array('comment_approved' => '0'),
+							array('comment_ID' => $comment_id));
+	
+		echo ($update) ? $comment_id : 0;
+		
+	} else {
+		
+		echo 0;
+	}
+	
+	exit;
+}
+
+add_action('wp_ajax_user_delete_comment', 'user_delete_comment');
+add_action('wp_ajax_nopriv_user_delete_comment', 'user_delete_comment');

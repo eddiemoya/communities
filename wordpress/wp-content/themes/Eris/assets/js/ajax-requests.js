@@ -5,42 +5,57 @@ jQuery(document).ready(function($) {
 	 
 	 * @author Eddie Moya
 	 */
- 	$('.post-your-question select#category, select#sort-results').bind('change', function(e){
+ 	$('.post-your-question select#category, select.filter-results-posts, select.filter-results-users').bind('change', function(e){
+
 		var data = {
 			action		: 'get_subcategories_ajax',
-			category_id	: $('option', this).filter(':selected').val()
+			category_id	: $('option', this).filter(':selected').val(),
 		};
-		var select = $(this);
+		
+		if(data.category_id != 0){
+			$.each(
+				$(this).parent().find('input[type="hidden"]'), function() {
+					data[($(this).get(0)).name] = ($(this).get(0)).value;
+			});
+			var select = $(this);
 
-		$('#sub-category', select.parent()).remove();
-
-		jQuery.ajax({
-			url  : ajaxdata.ajaxurl,
-			type: 'POST',
-			data : data,
-			success:function(results){
-				select.after($(results));
-			}
-		});
+			$('#sub-category', select.parent()).remove();
+			
+			jQuery.ajax({
+				url  : ajaxdata.ajaxurl,
+				type: 'POST',
+				data : data,
+				success:function(results){
+					select.after($(results));
+				}
+			});
+		}
  	});
 
  	/**
  	 * Super massively awesome jquery that, matched with the somewhat 
  	 * lamer widgets/results-list/archive.php template, and the ajax-callbacks.php 
- 	 * template, allows the posts widget to filter via ajax.
+ 	 * template, allows the posts widget to filter and sorted via ajax.
+ 	 *
+ 	 * @author Eddie Moya
  	 */ 
- 	$('.result-list select').on('change', function(e){
+ 	$('.results-list select.filter-results-users, .results-list select.sort-results-users').on('change', function(e){
  		e.preventDefault();
 
+ 		container = $(this).closest('.results-list');
+
 		var data = {
-			action		: 'get_posts_ajax',
-			template 	: 'post-results-list',
-			category	: $('option', this).filter(':selected').val()
+			action		: 'get_users_ajax',
+			template 	: 'author-archive',
+			category	: $('.filter-results-users option', container).filter(':selected').val(),
+			order		: $('.sort-results-users option', container).filter(':selected').val(),
+			path		: 'widgets/results-list',
 		};
 
-		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category option', this).filter(':selected').val() : data.category;
+		//console.log(data);
+		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category .filter-results option', this).filter(':selected').val() : data.category; //console.log(data);
 
-		container = $(this).closest('.result-list');
+		
 
 		jQuery.ajax({
 			url  : ajaxdata.ajaxurl,
@@ -52,6 +67,42 @@ jQuery(document).ready(function($) {
 			}
 		});
  	});
+
+ 	/**
+ 	 * @author Eddie Moya
+ 	 */
+ 	$('.results-list select.filter-results-posts, .results-list select.sort-results-posts').on('change', function(e){
+ 		e.preventDefault();
+
+ 		container = $(this).closest('.results-list');
+ 		
+		var data = {
+			action		: 'get_posts_ajax',
+			special		: $('.post_type', container).val(),
+			post_type 	: $('.post_type', container).val(),
+			template 	: $('.widget_name', container).val(),
+			category	: $('.filter-results-posts option', container).filter(':selected').val(),
+			order		: $('.sort-results-posts option', container).filter(':selected').val(),
+			path		: 'parts',
+		};
+		
+		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category .filter-results option', this).filter(':selected').val() : data.category; //console.log(data);
+
+		jQuery.ajax({
+			url  : ajaxdata.ajaxurl,
+			type: 'POST',
+			data : data,
+			success:function(results){
+				//console.log(results)
+				$('.content-body', container).empty();
+				$('.content-body', container).append($(results));
+			}
+		});
+ 	});
+
+
+
+
 
 
  	// $('#new_question_step_1').bind('submit', function(e){

@@ -38,7 +38,7 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
     _thisTooltip.actedObj = {
         element: {},
         height: 0,
-        offest: {},
+        offset: {},
         position: {},
         width: 0
     };
@@ -59,6 +59,11 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         arrowPosition: 'left',
         closer: {
             initialized: true
+        },
+        customEvent: null,
+        customListener: {
+            callBack: function() {},
+            name: ''
         },
         displayData: {
             element: null,
@@ -107,7 +112,8 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
             left: 0,
             right: 0,
             top: 0
-        }
+        },
+        tooltipWidth: 250
     };
 
     _thisTooltip.init = function(element, options) {
@@ -131,6 +137,12 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         _thisTooltip.setDisplayData();
 
         _thisTooltip.setTooltip();
+
+        if(typeof _thisTooltip.options.customListener !== 'undefined') {
+            jQuery(document).on(_thisTooltip.options.customListener.name, function(event) {
+                _thisTooltip.options.customListener.callBack(_thisTooltip.actedObj.element);
+            });
+        }
     };
 
     _thisTooltip.addListener = function() {
@@ -233,7 +245,7 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
     };
 
     _thisTooltip.setWidth = function(obj) {
-        obj.width = obj.element.innerWidth(true);
+        obj.width = obj.element.outerWidth(true);
     };
 
     _thisTooltip.setTooltip = function() {
@@ -255,15 +267,13 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
                 jQuery(arrow).children().last('div').removeClass();
                 jQuery(arrow).children().last('div').addClass('leftBorder');
 
-                console.log(jQuery(arrow).children().last('div'));
-
                 var arrowLeft = jQuery(arrow).children('.left');
 
                 var arrowLeftHeight = arrowLeft.outerHeight();
 
 //                arrow.css('top', (tooltipHeight - arrowLeftHeight) / 2);
                 arrow.css('top', 7);
-                arrow.css('left', '-10');
+                arrow.css('left', '-10px');
 
                 break;
             case 'top':
@@ -303,6 +313,10 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
             });
         }
 
+        //set the width before calculating true with with arrow;
+        _thisTooltip.tooltip.element
+                .css('width', _thisTooltip.options.tooltipWidth + "px");
+
         /**
          * The position/dimensional info needs to be set here, in case elements with tooltips are hidden, etc.
          */
@@ -326,7 +340,9 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
                     return false;
                 }
 
-                leftPosition = _thisTooltip.getOffset(_thisTooltip.actedObj, 'left') + _thisTooltip.getWidth(_thisTooltip.actedObj) + _thisTooltip.options.position.left + 12;
+                leftPosition = _thisTooltip.getOffset(_thisTooltip.actedObj, 'left') +
+                                    _thisTooltip.getWidth(_thisTooltip.actedObj) +
+                                        _thisTooltip.options.position.left + 15;
                 topPosition = _thisTooltip.getOffset(_thisTooltip.actedObj, 'top') + _thisTooltip.options.position.top;
 
                 if(_thisTooltip.getHeight(_thisTooltip.tooltip) < _thisTooltip.getHeight(_thisTooltip.actedObj)) {

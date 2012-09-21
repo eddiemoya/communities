@@ -5,6 +5,10 @@ $origin = (isset($_GET['origin'])) ? $_GET['origin'] : ((isset($_SERVER['HTTP_RE
 
 //If error is set
 $error = (isset($_GET['err'])) ? urldecode($_GET['err']) : false;
+
+//CSAT Post
+$email = (isset($_POST['email'])) ? urldecode($_POST['email']) : null;
+$zipcode = (isset($_POST['zipcode'])) ? urldecode($_POST['zipcode']) : null;
 /**
  * @package WordPress
  * @subpackage White Label
@@ -31,7 +35,7 @@ get_template_part('parts/header'); ?>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="loginId">Email:</label></dt>
-                        <dd class="span9"><input type="text" name="loginId" autocomplete="off" class="input_text" id="loginId" shc:gizmo:form="{required:true, pattern: /^.+@.+?\.[a-zA-Z]{2,}$/, message: 'Please enter a valid email address'}" /></dd>
+                        <dd class="span9"><input type="text" name="loginId" autocomplete="off" class="input_text" id="loginId" shc:gizmo:form="{required:true, pattern: /^.+@.+?\.[a-zA-Z]{2,}$/, message: 'Please enter a valid email address'}" value="<?php echo $email; ?>"/></dd>
                         
                     </dl>
                     							
@@ -67,6 +71,9 @@ get_template_part('parts/header'); ?>
                                                 events: {
                                                     blur: {
                                                         active: true
+                                                    },
+                                                    focus: {
+                                                        active: true
                                                     }
                                                 },
                                                 arrowPosition: 'left'
@@ -79,7 +86,7 @@ get_template_part('parts/header'); ?>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="zipcode">ZIP Code:</label></dt>
-                        <dd class="span9"><input type="text" name="zipcode" autocomplete="off" class="input_text input_password" id="zipcode" shc:gizmo:form="{required:true, pattern: /(^\d{5})(-\d{4})?$/, message: 'Please enter a valid ZIP code'}" /></dd>
+                        <dd class="span9"><input type="text" name="zipcode" autocomplete="off" class="input_text input_password" id="zipcode" shc:gizmo:form="{required:true, pattern: /(^\d{5})(-\d{4})?$/, message: 'Please enter a valid ZIP code'}" value="<?php echo $zipcode;?>" /></dd>
                     </dl>
                 </li>
                 
@@ -130,7 +137,7 @@ get_template_part('parts/header'); ?>
                 </dl>
             </li>
         </ul>
-                <div id="passInfo" class="hide">
+                <div id="passInfo" class="info hide">
                     <p class="bold">Your password must have:</p>
                     <ul>
                         <li>6 or more characters total</li>

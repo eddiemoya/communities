@@ -7,7 +7,8 @@
   clear: both; 
 }
 
-.clearfix { 
+.clearfix {
+  clear:both; 
   *zoom: 1; 
 }
 
@@ -85,17 +86,7 @@
 #persistent-header.persist {
   position:fixed;
   top:0px;
-  #header.sears form #button_search {
-    height:2.1em;
-  }
-  
 }
-
-// #persistent-header {
-  // background-color:#ffffff;
-  // position:fixed;
-  // top:0px;
-// }
 
 #content {
   padding:em-adjust( 1em ) ( $margin-width-pct / 2);

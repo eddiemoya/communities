@@ -3,7 +3,7 @@
     * @author Tim Steele
     */
 	
-	 
+	
   	$current_user = wp_get_current_user();
     $qualtricsUrl = theme_option('brand') == 'sears' ? 'http://searshc.us2.qualtrics.com/SE/?SID=SV_3QzHxmNKUzYTjNy' : 'http://searshc.us2.qualtrics.com/SE/?SID=SV_9X1h8K6RVZUV7x2';
 ?>
@@ -28,9 +28,8 @@
 				<ul>
 				    <?php if ( is_user_logged_in() ): ?>
 				        <li>
-				            <a href="<?php echo get_profile_url( $current_user->ID ); ?>" title="View your profile" class="bold">
-				                <?php echo current_user_profile_thumbnail(); ?>
-				                <?php get_screenname( $current_user->ID ); ?>
+				            <a href="<?php echo get_profile_url( $current_user->ID ); ?>" title="View your profile"><?php echo current_user_profile_thumbnail(); ?></a>
+				                <a href="<?php echo get_profile_url( $current_user->ID ); ?>" title="View your profile" class="bold"><?php get_screenname( $current_user->ID ); ?>
 				            </a>
 				        </li>
 				        <li><?php (function_exists('sso_logout_link')) ? sso_logout_link('Logout') : null;?> </li>
@@ -46,8 +45,8 @@
 			<li>
 				
 				<ul>
-					<li id="header_feedback"><a href="<?php echo $qualtricsUrl; ?>" title="Feedback">Feedback</a></li>
-					<li id="header_shopping">Go Shopping: <a href="http://www.<?php echo theme_option("brand"); ?>.com" title="<?php echo ucfirst( theme_option("brand") ); ?>" rel="external" title="<?php echo ucfirst( theme_option("brand") ); ?>" class="bold"><?php echo ucfirst( theme_option("brand") ); ?></a></li>
+					<li id="header_feedback"><a href="<?php echo $qualtricsUrl; ?>" title="Feedback" target="_blank">Feedback</a></li>
+					<li id="header_shopping">Go Shopping: <a href="http://www.<?php echo theme_option("brand"); ?>.com" rel="external" title="<?php echo ucfirst( theme_option("brand") ); ?>" class="bold"><?php echo ucfirst( theme_option("brand") ); ?></a></li>
 				</ul>
 				
 			</li>

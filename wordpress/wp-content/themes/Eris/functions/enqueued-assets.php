@@ -38,6 +38,8 @@ function enqueue_scripts() {
         wp_register_script('actions', get_template_directory_uri() . '/assets/js/widgets/shcJSL.actions.js', array(), '1.0');
         wp_register_script('transFormer', get_template_directory_uri() . '/assets/js/widgets/shcJSL.transFormer.js', array(), '1.0');
         wp_register_script('flagger', get_template_directory_uri() . '/assets/js/widgets/shcJSL.flagger.js', array(), '1.0');
+        wp_register_script('addthis', 'http://s7.addthis.com/js/250/addthis_widget.js', array(), '1.0');
+				
 				// NOT FOR PRODUCTION
 				//wp_register_script('debug', get_template_directory_uri() . '/assets/js/vendor/debug.js', array(), '1.0');
 
@@ -52,12 +54,15 @@ function enqueue_scripts() {
         wp_enqueue_script('actions');
         wp_enqueue_script('transFormer');
         wp_enqueue_script('flagger');
+        wp_enqueue_script('addthis');
 
 		wp_localize_script('jquery', 'ajaxdata', $data);		
         
         /* Styles */
         wp_register_style('main-styles', get_stylesheet_uri());
         wp_enqueue_style( 'main-styles');
+        
+       
 
         
         //Enqueue profile ajax only for author template
@@ -65,6 +70,11 @@ function enqueue_scripts() {
         	
         	wp_register_script('profile-ajax', get_template_directory_uri() . '/assets/js/profile-ajax.js', array('jquery'), '1.0');
         	wp_enqueue_script('profile-ajax');
+        	
+        	if(is_user_logged_in()) {
+	        	wp_register_script('user-delete-comment', get_template_directory_uri() . '/assets/js/user-delete-comment.js', array('jquery'), '1.0');
+	        	wp_enqueue_script('user-delete-comment');
+        	}
         }
         
     }
