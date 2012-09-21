@@ -7,6 +7,8 @@ if(!is_ajax()) {
     $post_type = get_query_var('post_type');
     $post_type = (is_array($post_type)) ? $post_type[0] : $post_type;
 
+    $post_type = (isset($_GET['s'])) ? 'question' : $post_type;
+
     loop(array($post_type, 'post'), null, 'widgets/results-list', 'parts/no-results');
 
     
