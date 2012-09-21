@@ -357,6 +357,14 @@ function filter_before_widget($html, $dropzone, $widget){
         }
 
     }
+
+    if($meta->widgetpress_widget_classname = 'Results_List_Widget'){
+
+        if($meta->query_type == 'users'){
+            $html = str_replace('results-list', 'results-list_users', $html);
+           }
+
+    }
     //echo "<pre>";print_r();echo "</pre>";
 
     return $html;

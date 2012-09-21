@@ -19,6 +19,9 @@
     $expert_count = (function_exists('get_expert_comment_count')) ? get_expert_comment_count($post->ID) : '';
     $answer_count = $answer_count - $expert_count;
 
+    $answer_count_string = ($answer_count > 500) ? "500+ answers" : $answer_count . " " . _n( ' answer', ' answers', $answer_count );
+    $expert_count_string = ($expert_count > 500) ? "500+ community team answers" : $expert_count . " " . _n( ' community team answer', ' community team answers', $expert_count );
+    
 ?>
 <article class="content-container question">
 	<section class="content-body clearfix">
@@ -39,7 +42,7 @@
 			</p>
 			
 			<ul>
-		  		<li class="content-comments"><?php echo $answer_count . ' ' . _n( 'answer', 'answers', $answer_count ); ?> | <?php echo $expert_count . ' ' . _n('community team answer', 'community team answers', $expert_count); ?></li>
+		  		<li class="content-comments"><?php echo $answer_count_string ?> | <?php echo $expert_count_string; ?></li>
 		  	</ul>
 			
       <?php get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); ?>
