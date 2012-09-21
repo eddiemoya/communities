@@ -1708,6 +1708,30 @@ button.follow {
 .profile-summary .member_details .member_location {
   margin-bottom: 0px; }
 
+.site-error {
+  margin-top: 2em; }
+  .site-error .span8, .site-error .span10 {
+    background: url(/wp-content/themes/Eris/assets/img/tile_line.gif);
+    margin-top: 2em; }
+  .site-error .message {
+    color: white;
+    margin: 1em;
+    text-align: center;
+    padding: 9em 0; }
+    .site-error .message h1 {
+      font-size: 184.615%;
+      font-family: Impact, Charcoal, sans-serif;
+      letter-spacing: .066em; }
+    .site-error .message h2 {
+      font-size: 246.153%;
+      font-family: Georgia, serif;
+      margin-top: 1em; }
+    .site-error .message .tape {
+      background: url(/wp-content/themes/Eris/assets/img/tile_line.gif);
+      width: 50%;
+      margin: .66em auto;
+      line-height: .5; }
+
 .question .member_avatar.span6, .question .member_profile.span6, .comment .member_avatar.span6, .comment .member_profile.span6, .expert-answers .member_avatar.span6, .expert-answers .member_profile.span6 {
   float: none;
   width: 100%; }
@@ -1731,6 +1755,12 @@ button.follow {
 .border-left {
   border-left: solid 1px #dfdede;
   padding-left: 1.45em; }
+
+.sears .site-error .message {
+  background: #304f88; }
+
+.kmart .site-error .message {
+  background: #8f2225; }
 
 .dropmenu li {
   float: left;
