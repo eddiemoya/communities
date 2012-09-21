@@ -307,14 +307,14 @@ ul.footer_anterior {
   margin-top: .5em;
   text-align: center; }
 
-.clearfix:before, .featured-category-question .border-left:before, .featured-category-question .border-left, .clearfix:after, .featured-category-question .border-left:after, .featured-category-question .border-left {
+.clearfix:before, .border-left:before, .border-left, .clearfix:after, .border-left:after, .border-left {
   content: "";
   display: table; }
 
-.clearfix:after, .featured-category-question .border-left:after, .featured-category-question .border-left {
+.clearfix:after, .border-left:after, .border-left {
   clear: both; }
 
-.clearfix, .featured-category-question .border-left {
+.clearfix, .border-left {
   clear: both;
   *zoom: 1; }
 
@@ -1559,196 +1559,213 @@ button.follow {
 .kmart .site-error .message {
   background: #8f2225; }
 
-.featured-category-question {
+.featured-category-question .content-header {
+  border-top: none;
+  padding: 0px; }
+  .featured-category-question .content-header h1 {
+    font-size: 146.153%;
+    font-weight: normal; }
+.featured-category-question .content-body {
+  border-top: none; }
+.featured-category-question .content-headline {
+  font-size: 1em; }
+.featured-category-question .content-comments {
+  font-size: 84.615%; }
+
+.error404 {
+  color: #333333; }
+  .error404 h1 {
+    font-size: 169.23%;
+    font-weight: bold;
+    margin-bottom: 1.23em; }
+  .error404 h2 {
+    font-weight: bold;
+    margin-bottom: 1em; }
+  .error404 ul {
+    margin-top: 0px; }
+
+.member_avatar {
+  overflow: hidden; }
+  .member_avatar img {
+    width: 100%; }
+  .member_avatar .badge {
+    background: transparent url(/wp-content/themes/Eris/assets/img/sears/sprite_global.png) repeat-x 0px 0px;
+    color: #ffffff;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    width: 100%; }
+
+.sears .member_avatar .badge {
+  background-position: 0px -235px; }
+
+.kmart .member_avatar .badge {
+  background-position: 0px -243px; }
+
+.member-list .member-wrapper {
+  border-left: solid 1px #d5d5d5;
+  padding: 0.769em; }
+.member-list > li:first-child .member-wrapper {
+  border-left: none; }
+
+.member_details {
+  color: #333333; }
+  .member_details .member_screen-name, .member_details .member_location {
+    font-size: 92.307%;
+    font-weight: bold;
+    word-wrap: break-word; }
+  .member_details .member_specialties, .member_details .member_last-posted, .member_details .member_answers, .member_details .member_posts,
+  .member_details .member_comments {
+    font-size: 84.615%; }
+  .member_details .member_last-posted {
+    color: #666666; }
+  .member_details .member_location {
+    margin-bottom: 0.615em; }
+  .member_details .member_avatar {
+    margin-bottom: 1.5em; }
+    .member_details .member_avatar .badge {
+      font-size: 107.692%;
+      line-height: 2.5em; }
+
+.see-more {
+  display: none; }
+
+.span6 .featured-members .content-body, .span4 .featured-members .content-body, .span3 .featured-members .content-body {
+  padding: 0.769em; }
+.span6 .featured-members .span4, .span4 .featured-members .span4, .span3 .featured-members .span4 {
+  float: none;
+  margin-left: 0px;
+  width: 100%; }
+.span6 .featured-members .member_avatar, .span4 .featured-members .member_avatar, .span3 .featured-members .member_avatar {
+  width: 5em; }
+  .span6 .featured-members .member_avatar .badge, .span4 .featured-members .member_avatar .badge, .span3 .featured-members .member_avatar .badge {
+    font-size: 76.923%;
+    line-height: 2em; }
+  .span6 .featured-members .member_avatar img, .span4 .featured-members .member_avatar img, .span3 .featured-members .member_avatar img {
+    min-height: 5em;
+    min-width: 5em; }
+.span6 .featured-members .member-wrapper, .span4 .featured-members .member-wrapper, .span3 .featured-members .member-wrapper {
+  border-left: none;
+  padding: 0px; }
+.span6 .featured-members .member_profile, .span6 .featured-members .member_posts, .span4 .featured-members .member_profile, .span4 .featured-members .member_posts, .span3 .featured-members .member_profile, .span3 .featured-members .member_posts {
+  clear: none;
+  margin-left: 2.5%;
+  width: 70%; }
+.span6 .featured-members .member_location, .span4 .featured-members .member_location, .span3 .featured-members .member_location {
+  margin-bottom: 0px; }
+.span6 .featured-members .see-more, .span4 .featured-members .see-more, .span3 .featured-members .see-more {
+  font-size: 92.307%;
+  display: block; }
+
+.user {
+  padding: 1em 0px; }
+  .user .member_avatar {
+    margin-bottom: 0px;
+    width: 5em; }
+    .user .member_avatar .badge {
+      font-size: 76.923%;
+      line-height: 2em; }
+    .user .member_avatar img {
+      min-height: 5em;
+      min-width: 5em; }
+  .user .member_screen-name {
+    font-size: 123.076%; }
+  .user .member_location {
+    font-size: 107.692%; }
+  .user .member_profile {
+    float: left;
+    margin-left: .5em;
+    padding-top: 1.25em;
+    width: auto; }
+  .user .member_details .member_content.span12 {
+    clear: none;
+    float: left;
+    margin: 3em 0 0 2em;
+    width: auto; }
+  .user .member_last-posted, .user .member_answers, .user .member_posts, .user .member_comments {
+    float: left; }
+  .user .member_last-posted {
+    color: #666666;
+    margin-right: .8em; }
+  .user .member_answers, .user .member_posts, .user .member_comments {
+    color: #333333;
+    padding: 0px .2em; }
+  .user .member_posts, .user .member_comments {
+    border-left: solid 1px #999999; }
+
+.profile-summary .member_details .member_avatar {
+  width: 5em; }
+  .profile-summary .member_details .member_avatar .badge {
+    font-size: 76.923%;
+    line-height: 2em; }
+  .profile-summary .member_details .member_avatar img {
+    min-height: 5em;
+    min-width: 5em; }
+.profile-summary .member_details .member_profile, .profile-summary .member_details .member_content {
+  clear: none;
+  margin-left: 2.5%;
+  width: 70%; }
+.profile-summary .member_details .member_location {
+  margin-bottom: 0px; }
+
+.site-error {
+  margin-top: 2em; }
+  .site-error .span8, .site-error .span10 {
+    background: url(/wp-content/themes/Eris/assets/img/tile_line.gif);
+    margin-top: 2em; }
+  .site-error .message {
+    color: white;
+    margin: 1em;
+    text-align: center;
+    padding: 9em 0; }
+    .site-error .message h1 {
+      font-size: 184.615%;
+      font-family: Impact, Charcoal, sans-serif;
+      letter-spacing: .066em; }
+    .site-error .message h2 {
+      font-size: 246.153%;
+      font-family: Georgia, serif;
+      margin-top: 1em; }
+    .site-error .message .tape {
+      background: url(/wp-content/themes/Eris/assets/img/tile_line.gif);
+      width: 50%;
+      margin: .66em auto;
+      line-height: .5; }
+
+.question .member_avatar.span6, .question .member_profile.span6, .comment .member_avatar.span6, .comment .member_profile.span6, .expert-answers .member_avatar.span6, .expert-answers .member_profile.span6 {
+  float: none;
+  width: 100%; }
+.question .member_avatar, .comment .member_avatar, .expert-answers .member_avatar {
+  margin-bottom: .5em; }
+.question .member_avatar .badge, .comment .member_avatar .badge, .expert-answers .member_avatar .badge {
+  font-size: 76.923%; }
+
+#profile-results .expert-answers .expert {
+  padding: .75em; }
+  #profile-results .expert-answers .expert li {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0;
+    padding: 0px; }
+#profile-results .expert-answers .member_profile, #profile-results .expert-answers .member_screen-name, #profile-results .expert-answers .member_location {
+  margin: 0px; }
+
+.border-left {
+  border-left: solid 1px #dfdede;
+  padding-left: 1.45em; }
+
+.sears .site-error .message {
+  background: #304f88; }
+
+.kmart .site-error .message {
+  background: #8f2225; }
+
+.pagination {
   border-top: 1px solid #CCCCCC;
   padding: 0.5em;
   text-align: center; }
-  .featured-category-question .content-header {
-    border-top: none;
-    padding: 0px; }
-    .featured-category-question .content-header h1 {
-      font-size: 146.153%;
-      font-weight: normal; }
-  .featured-category-question .content-body {
-    border-top: none; }
-    .featured-category-question .content-body .content-headline {
-      font-size: 1em; }
-    .featured-category-question .content-body .content-comments {
-      font-size: 84.615%; }
-  .featured-category-question .error404 {
-    color: #333333; }
-    .featured-category-question .error404 h1 {
-      font-size: 169.23%;
-      font-weight: bold;
-      margin-bottom: 1.23em; }
-    .featured-category-question .error404 h2 {
-      font-weight: bold;
-      margin-bottom: 1em; }
-    .featured-category-question .error404 ul {
-      margin-top: 0px; }
-  .featured-category-question .member_avatar {
-    overflow: hidden; }
-    .featured-category-question .member_avatar img {
-      width: 100%; }
-    .featured-category-question .member_avatar .badge {
-      background: transparent url(/wp-content/themes/Eris/assets/img/sears/sprite_global.png) repeat-x 0px 0px;
-      color: #ffffff;
-      display: block;
-      font-weight: bold;
-      text-align: center;
-      width: 100%; }
-  .featured-category-question .sears .member_avatar .badge {
-    background-position: 0px -235px; }
-  .featured-category-question .kmart .member_avatar .badge {
-    background-position: 0px -243px; }
-  .featured-category-question .member-list .member-wrapper {
-    border-left: solid 1px #d5d5d5;
-    padding: 0.769em; }
-  .featured-category-question .member-list > li:first-child .member-wrapper {
-    border-left: none; }
-  .featured-category-question .member_details {
-    color: #333333; }
-    .featured-category-question .member_details .member_screen-name, .featured-category-question .member_details .member_location {
-      font-size: 92.307%;
-      font-weight: bold;
-      word-wrap: break-word; }
-    .featured-category-question .member_details .member_specialties, .featured-category-question .member_details .member_last-posted, .featured-category-question .member_details .member_answers, .featured-category-question .member_details .member_posts,
-    .featured-category-question .member_details .member_comments {
-      font-size: 84.615%; }
-    .featured-category-question .member_details .member_last-posted {
-      color: #666666; }
-    .featured-category-question .member_details .member_location {
-      margin-bottom: 0.615em; }
-    .featured-category-question .member_details .member_avatar {
-      margin-bottom: 1.5em; }
-      .featured-category-question .member_details .member_avatar .badge {
-        font-size: 107.692%;
-        line-height: 2.5em; }
-  .featured-category-question .see-more {
-    display: none; }
-  .featured-category-question .span6 .featured-members .content-body, .featured-category-question .span4 .featured-members .content-body, .featured-category-question .span3 .featured-members .content-body {
-    padding: 0.769em; }
-  .featured-category-question .span6 .featured-members .span4, .featured-category-question .span4 .featured-members .span4, .featured-category-question .span3 .featured-members .span4 {
-    float: none;
-    margin-left: 0px;
-    width: 100%; }
-  .featured-category-question .span6 .featured-members .member_avatar, .featured-category-question .span4 .featured-members .member_avatar, .featured-category-question .span3 .featured-members .member_avatar {
-    width: 5em; }
-    .featured-category-question .span6 .featured-members .member_avatar .badge, .featured-category-question .span4 .featured-members .member_avatar .badge, .featured-category-question .span3 .featured-members .member_avatar .badge {
-      font-size: 76.923%;
-      line-height: 2em; }
-    .featured-category-question .span6 .featured-members .member_avatar img, .featured-category-question .span4 .featured-members .member_avatar img, .featured-category-question .span3 .featured-members .member_avatar img {
-      min-height: 5em;
-      min-width: 5em; }
-  .featured-category-question .span6 .featured-members .member-wrapper, .featured-category-question .span4 .featured-members .member-wrapper, .featured-category-question .span3 .featured-members .member-wrapper {
-    border-left: none;
-    padding: 0px; }
-  .featured-category-question .span6 .featured-members .member_profile, .featured-category-question .span6 .featured-members .member_posts, .featured-category-question .span4 .featured-members .member_profile, .featured-category-question .span4 .featured-members .member_posts, .featured-category-question .span3 .featured-members .member_profile, .featured-category-question .span3 .featured-members .member_posts {
-    clear: none;
-    margin-left: 2.5%;
-    width: 70%; }
-  .featured-category-question .span6 .featured-members .member_location, .featured-category-question .span4 .featured-members .member_location, .featured-category-question .span3 .featured-members .member_location {
-    margin-bottom: 0px; }
-  .featured-category-question .span6 .featured-members .see-more, .featured-category-question .span4 .featured-members .see-more, .featured-category-question .span3 .featured-members .see-more {
-    font-size: 92.307%;
-    display: block; }
-  .featured-category-question .user {
-    padding: 1em 0px; }
-    .featured-category-question .user .member_avatar {
-      margin-bottom: 0px;
-      width: 5em; }
-      .featured-category-question .user .member_avatar .badge {
-        font-size: 76.923%;
-        line-height: 2em; }
-      .featured-category-question .user .member_avatar img {
-        min-height: 5em;
-        min-width: 5em; }
-    .featured-category-question .user .member_screen-name {
-      font-size: 123.076%; }
-    .featured-category-question .user .member_location {
-      font-size: 107.692%; }
-    .featured-category-question .user .member_profile {
-      float: left;
-      margin-left: .5em;
-      padding-top: 1.25em;
-      width: auto; }
-    .featured-category-question .user .member_details .member_content.span12 {
-      clear: none;
-      float: left;
-      margin: 3em 0 0 2em;
-      width: auto; }
-    .featured-category-question .user .member_last-posted, .featured-category-question .user .member_answers, .featured-category-question .user .member_posts, .featured-category-question .user .member_comments {
-      float: left; }
-    .featured-category-question .user .member_last-posted {
-      color: #666666;
-      margin-right: .8em; }
-    .featured-category-question .user .member_answers, .featured-category-question .user .member_posts, .featured-category-question .user .member_comments {
-      color: #333333;
-      padding: 0px .2em; }
-    .featured-category-question .user .member_posts, .featured-category-question .user .member_comments {
-      border-left: solid 1px #999999; }
-  .featured-category-question .profile-summary .member_details .member_avatar {
-    width: 5em; }
-    .featured-category-question .profile-summary .member_details .member_avatar .badge {
-      font-size: 76.923%;
-      line-height: 2em; }
-    .featured-category-question .profile-summary .member_details .member_avatar img {
-      min-height: 5em;
-      min-width: 5em; }
-  .featured-category-question .profile-summary .member_details .member_profile, .featured-category-question .profile-summary .member_details .member_content {
-    clear: none;
-    margin-left: 2.5%;
-    width: 70%; }
-  .featured-category-question .profile-summary .member_details .member_location {
-    margin-bottom: 0px; }
-  .featured-category-question .site-error {
-    margin-top: 2em; }
-    .featured-category-question .site-error .span8, .featured-category-question .site-error .span10 {
-      background: url(/wp-content/themes/Eris/assets/img/tile_line.gif);
-      margin-top: 2em; }
-    .featured-category-question .site-error .message {
-      color: white;
-      margin: 1em;
-      text-align: center;
-      padding: 9em 0; }
-      .featured-category-question .site-error .message h1 {
-        font-size: 184.615%;
-        font-family: Impact, Charcoal, sans-serif;
-        letter-spacing: .066em; }
-      .featured-category-question .site-error .message h2 {
-        font-size: 246.153%;
-        font-family: Georgia, serif;
-        margin-top: 1em; }
-      .featured-category-question .site-error .message .tape {
-        background: url(/wp-content/themes/Eris/assets/img/tile_line.gif);
-        width: 50%;
-        margin: .66em auto;
-        line-height: .5; }
-  .featured-category-question .question .member_avatar.span6, .featured-category-question .question .member_profile.span6, .featured-category-question .comment .member_avatar.span6, .featured-category-question .comment .member_profile.span6, .featured-category-question .expert-answers .member_avatar.span6, .featured-category-question .expert-answers .member_profile.span6 {
-    float: none;
-    width: 100%; }
-  .featured-category-question .question .member_avatar, .featured-category-question .comment .member_avatar, .featured-category-question .expert-answers .member_avatar {
-    margin-bottom: .5em; }
-  .featured-category-question .question .member_avatar .badge, .featured-category-question .comment .member_avatar .badge, .featured-category-question .expert-answers .member_avatar .badge {
-    font-size: 76.923%; }
-  .featured-category-question #profile-results .expert-answers .expert {
-    padding: .75em; }
-    .featured-category-question #profile-results .expert-answers .expert li {
-      -webkit-border-radius: 0;
-      -moz-border-radius: 0;
-      -ms-border-radius: 0;
-      -o-border-radius: 0;
-      border-radius: 0;
-      padding: 0px; }
-  .featured-category-question #profile-results .expert-answers .member_profile, .featured-category-question #profile-results .expert-answers .member_screen-name, .featured-category-question #profile-results .expert-answers .member_location {
-    margin: 0px; }
-  .featured-category-question .border-left {
-    border-left: solid 1px #dfdede;
-    padding-left: 1.45em; }
-  .featured-category-question .sears .site-error .message {
-    background: #304f88; }
-  .featured-category-question .kmart .site-error .message {
-    background: #8f2225; }
 
 .dropmenu li {
   float: left;

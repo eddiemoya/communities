@@ -1426,6 +1426,7 @@ button.follow {
       // border-left:none;
     // }
   // }
+  }
   .content-headline {
     font-size:1em;
   }
@@ -1692,14 +1693,16 @@ button.follow {
   @extend .clearfix:after;
   @extend .clearfix:before;
 }
+
 .sears .site-error .message {
   background: sears( site-error );
 }
+
 .kmart .site-error .message {
   background: kmart( site-error );
 }
 
-.pagination {}
+.pagination {
   border-top: 1px solid #CCCCCC;
   padding: 0.5em;
   text-align: center;
