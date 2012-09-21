@@ -2,8 +2,9 @@
 global $excerptLength; $excerptLength = 140;
 
 //Inner span is span12, unless theres a thumbnail to show, or unless the the widget's span is already 6 or lower.
+$comments = get_comments_number();
+$comments_string = ($comments > 500) ? "500+ comments" : $comments . " " . _n( 'comment', 'comments', $comments );
 $inner_span = ((is_widget('show_thumbnail') && has_post_thumbnail()) || is_widget()->span <= 6) ? "span6" : "span12";?>
-
 <?php if (is_widget('show_thumbnail') && has_post_thumbnail()) : ?>
     <div class="featured-image <?php echo $inner_span; ?>">
         <?php the_post_thumbnail('large'); ?>
@@ -48,7 +49,7 @@ $inner_span = ((is_widget('show_thumbnail') && has_post_thumbnail()) || is_widge
 
 		<?php if(is_widget('show_comment_count')): ?>
 
-            <li class="content-comments"><?php comments_number(); ?></li>
+            <li class="content-comments"><?php echo $comments_string; ?></li>
 
         <?php endif; //is_widget->show_comment_count ?>
 	</ul>
