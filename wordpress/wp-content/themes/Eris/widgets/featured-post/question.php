@@ -1,4 +1,8 @@
-<?php global $excerptLength; $excerptLength = 140; $c = get_the_category(); ?>
+<?php 
+    global $excerptLength; $excerptLength = 140; $c = get_the_category(); 
+    $answer_count = (function_exists('get_custom_comment_count')) ? get_custom_comment_count('answer') : '';
+    $expert_count = (function_exists('get_expert_comment_count')) ? get_expert_comment_count($post->ID) : '';
+?>
 <section class='content-container featured-question'>
 
     <?php if (is_widget('show_category') || is_widget('show_date')) : ?>
@@ -35,7 +39,7 @@
 
     <?php if(is_widget('show_comment_count')): ?>
         <ul class="clearfix">
-            <li class="content-comments"><?php custom_comment_count('answer'); ?> answers</li>
+            <li class="content-comments"><?php echo $answer_count . ' ' . _n( 'answer', 'answers', $answer_count ); ?> | <?php echo $expert_count . ' ' . _n('community team answer', 'community team answers', $expert_count); ?></li>
         </ul>
     <?php endif; ?>
 
