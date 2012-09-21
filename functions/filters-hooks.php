@@ -363,6 +363,20 @@ function filter_before_widget($html, $dropzone, $widget){
 
 }
 
+add_action('template_redirect', 'template_redirect');
+
+function template_redirect(){
+
+    if(isset($_GET['s'])){
+        $templates[] = 'search.php';
+
+        $template = get_query_template($template_name, $templates);
+        //echo "<pre>";print_r($templates);echo "</pre>";
+        include( $template );
+        exit;
+        }
+}
+
 add_filter('widgetpress_before_widget', 'filter_before_widget', 10, 3);
 
 function disallow_admin_access() {
@@ -378,3 +392,23 @@ function disallow_admin_access() {
 }
 
 add_filter('admin_init', 'disallow_admin_access');
+
+/**
+ * When a search query occurs, check for profanity. If there is 
+ * profanity, then clear out search, redirect to home with blank search.
+ * 
+ * @param void
+ */
+function search_profanity_filter() {
+	
+	if(isset($_GET['s'])) {
+		
+		if(strpos(sanitize_text($_GET['s']), '**') !== false) {
+			
+			$url = home_url('/') . '?s=';
+			wp_redirect($url);
+		}
+	}
+}
+
+add_action('init', 'search_profanity_filter');
