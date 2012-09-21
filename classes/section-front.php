@@ -218,7 +218,7 @@ class Section_Front{
 			}	
 		}
 		
-		echo "<pre>";print_r(array($new_rules, $tposts,$terms));echo "</pre>";
+		//echo "<pre>";print_r(array($new_rules, $tposts,$terms));echo "</pre>";
 		
 
 
