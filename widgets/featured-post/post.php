@@ -38,7 +38,7 @@ $inner_span = ((is_widget('show_thumbnail') && has_post_thumbnail()) || is_widge
     <?php if (is_widget('show_title')) : ?>
         <h1 class="content-headline">
             <a href="<?php the_permalink(); ?>">
-                <?php the_title(); ?>
+                <?php the_truncated_title(); ?>
             </a>
         </h1>
     <?php endif; //is_widget->show_title ?>

@@ -4,7 +4,8 @@
     $c = get_the_category();
     $cat = $c[0];
     $crest_options = array(
-        "user_id" => $post->post_author
+        "user_id" => $post->post_author,
+        "width"		=> "span2"
     );
 
     $post_actions = array(
@@ -30,7 +31,7 @@
 				<?php get_partial( 'parts/space_date_time', array( "timestamp" => get_the_time( 'U' ) ) ); ?>
 			</div>
 			
-			<h1 class="content-headline"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+			<h1 class="content-headline"><a href="<?php the_permalink(); ?>"><?php the_truncated_title(); ?></a></h1>
 			
 			<p class="content-excerpt">
 				<?php the_excerpt(); ?>
