@@ -300,8 +300,11 @@ function post_comment_screen_name($commentdata) {
     
     if(isset($_POST['screen-name'])) {
         
+    	//sanitize
+    	$clean_screen_name = sanitize_text_field($_POST['screen-name']);
+    	
         //Attempt to set screen name
-        $response = set_screen_name($_POST['screen-name']);
+        $response = set_screen_name($clean_screen_name);
         
         /*var_dump($response);
         exit;*/
@@ -310,7 +313,7 @@ function post_comment_screen_name($commentdata) {
         if($response !== true) {
             
             //Create QS
-            $qs = '?screen-name=' . urlencode($_POST['screen-name']) . '&comment=' . urlencode($_POST['comment']) . '&cid=' . $commentdata['comment_parent'] . '&comm_err=' . urlencode($response['message']);
+            $qs = '?comment=' . urlencode($_POST['comment']) . '&cid=' . $commentdata['comment_parent'] . '&comm_err=' . urlencode($response['message']);
 
             //Create return URL
             $linkparts = explode('#', get_comment_link());
