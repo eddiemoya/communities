@@ -302,16 +302,16 @@ function post_comment_screen_name($commentdata) {
         
     	//sanitize
     	$clean_screen_name = sanitize_text_field($_POST['screen-name']);
-    	
+
         //Attempt to set screen name
         $response = set_screen_name($clean_screen_name);
-        
+
         /*var_dump($response);
         exit;*/
-        
+
         //If setting screen name fails
         if($response !== true) {
-            
+
             //Create QS
             $qs = '?comment=' . urlencode($_POST['comment']) . '&cid=' . $commentdata['comment_parent'] . '&comm_err=' . urlencode($response['message']);
 
@@ -367,7 +367,7 @@ add_filter('widgetpress_before_widget', 'filter_before_widget', 10, 3);
 
 function disallow_admin_access() {
     global $current_user;
-    
+
     if(!is_ajax()) {
         $show_admin = (current_user_can("access_admin") || $current_user->caps["administrator"] == 1) ? true : false;
         if (!$show_admin) {
