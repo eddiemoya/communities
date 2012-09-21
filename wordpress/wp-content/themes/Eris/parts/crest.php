@@ -1,5 +1,5 @@
 <?php
-
+    global $wp_roles;
     # OPTIONS
     # $width =          span2 (default), span3, etc. - controls the width of the crest
     # $show_name =      true (default), false - whether to display the user's screenname under the avatar
@@ -7,7 +7,6 @@
     # $show_address =   true (default), false - whether to display the user's city and state under the avatar
 
     $user = get_userdata( $user_id );
-    
     $a_classes = array( 'crest' );
     $a_classes[] = ( !isset( $width ) ) ? 'span2' : $width;
 
@@ -16,9 +15,6 @@
     $display_specialty 	= ( !isset( $specializations ) )? false : $specializations;
 		$display_recent			= ( !isset( $last_posted ) )? false : $last_posted;
 		$display_stats			= ( !isset( $stats ) )? false : $stats;
-		
-    $crest_titling   = '';
-    $address         = '';
 ?>
 
 <ul class="member_details<?php if (isset( $width )) {echo " " . $width;} ?>">
