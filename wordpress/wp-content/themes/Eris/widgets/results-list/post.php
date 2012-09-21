@@ -52,7 +52,7 @@
 
             <ul>
                 <li class="content-comments"><?php comments_number(); ?></li> 
-                <?php get_partial( 'parts/share', array("url" => get_post_permalink( $post->ID ) ) ); ?>
+                <li class="content-share"><?php get_partial( 'parts/share', array("url" => get_post_permalink( $post->ID ) ) ); ?></li>
             </ul>
 
         </div> <!-- featured- -->
