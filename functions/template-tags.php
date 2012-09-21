@@ -762,10 +762,14 @@ function sanitize_text($text) {
 	return $text;
 }
 
-function the_truncated_title(){
+
+
+function the_truncated_title($length = 100){
+    
     $title = get_the_title();
 
-    if (strlen($title) > 100) $title = substr($title, 0, 100) . "...";
+    if (strlen($title) > $length) $title = substr($title, 0, $length) . "...";
 
     echo $title;
+
 }
