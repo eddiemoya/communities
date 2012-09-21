@@ -2,6 +2,7 @@
     global $excerptLength; $excerptLength = 140; $c = get_the_category(); 
     $answer_count = (function_exists('get_custom_comment_count')) ? get_custom_comment_count('answer') : '';
     $expert_count = (function_exists('get_expert_comment_count')) ? get_expert_comment_count($post->ID) : '';
+    $answer_count = $answer_count - $expert_count;
 ?>
 <section class='content-container featured-question'>
 
