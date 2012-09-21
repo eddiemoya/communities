@@ -42,6 +42,8 @@ jQuery(document).ready(function($) {
  	$('.results-list select.filter-results-users, .results-list select.sort-results-users').on('change', function(e){
  		e.preventDefault();
 
+ 		container = $(this).closest('.results-list');
+
 		var data = {
 			action		: 'get_users_ajax',
 			template 	: 'author-archive',
@@ -50,10 +52,10 @@ jQuery(document).ready(function($) {
 			path		: 'widgets/results-list',
 		};
 
-		console.log(data);
+		//console.log(data);
 		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category .filter-results option', this).filter(':selected').val() : data.category; //console.log(data);
 
-		container = $(this).closest('.results-list');
+		
 
 		jQuery.ajax({
 			url  : ajaxdata.ajaxurl,

@@ -35,7 +35,7 @@
 
             <h1 class="content-headline">
                 <a href="<?php the_permalink(); ?>">
-                    <?php the_title(); ?>
+                    <?php the_truncated_title(); ?>
                 </a>
             </h1> <!-- content-headline -->
 
@@ -52,7 +52,7 @@
 
             <ul>
                 <li class="content-comments"><?php comments_number(); ?></li> 
-                <?php get_partial( 'parts/share', array("url" => get_post_permalink( $post->ID ) ) ); ?>
+                <li class="content-share"><?php get_partial( 'parts/share', array("url" => get_post_permalink( $post->ID ) ) ); ?></li>
             </ul>
 
         </div> <!-- featured- -->
