@@ -813,7 +813,13 @@ ul.bullets {
 
 .single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child,
 .single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-body:first-child,
-.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-header:first-child {
+.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-header:first-child,
+.single #content > section.span12 > section[class*="span"] > .dropzone > [class*="span"]:first-child,
+.single #content > section.span12 > section[class*="span"] > .dropzone > [class*="span"]:first-child .content-body:first-child,
+.single #content > section.span12 > section[class*="span"] > .dropzone > [class*="span"]:first-child .content-header:first-child {
+  border-top: none; }
+
+.page-title + .results-list .content-container .content-body {
   border-top: none; }
 
 .sears .post h1, .sears .question h1 {
@@ -891,7 +897,7 @@ textarea.discussion {
     border-right: 0;
     padding-right: 0; }
 
-.archive_questions .results-list {
+.archive_questions .results-list, .search-results .results-list {
   margin-top: 1em;
   border: 1px solid #cccccc;
   -webkit-border-radius: 5px;
@@ -899,24 +905,24 @@ textarea.discussion {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px; }
-  .archive_questions .results-list > .content-body {
+  .archive_questions .results-list > .content-body, .search-results .results-list > .content-body {
     border: none;
     padding: 0 0.984em; }
-    .archive_questions .results-list > .content-body > .content-container:first-child .content-body {
+    .archive_questions .results-list > .content-body > .content-container:first-child .content-body, .search-results .results-list > .content-body > .content-container:first-child .content-body {
       border-top: none; }
-  .archive_questions .results-list > .content-header {
+  .archive_questions .results-list > .content-header, .search-results .results-list > .content-header {
     border-bottom: 1px solid #DDDCDC;
     border-top: none;
     padding: 1.5em 0;
     width: 100%; }
-    .archive_questions .results-list > .content-header form {
+    .archive_questions .results-list > .content-header form, .search-results .results-list > .content-header form {
       margin: 0 .769em; }
-  .archive_questions .results-list .question .content-date {
+  .archive_questions .results-list .question .content-date, .search-results .results-list .question .content-date {
     float: right; }
-  .archive_questions .results-list .content-headline {
+  .archive_questions .results-list .content-headline, .search-results .results-list .content-headline {
     font-size: 100%;
     margin: 1em 0; }
-  .archive_questions .results-list .content-category, .archive_questions .results-list .content-date, .archive_questions .results-list .content-comments {
+  .archive_questions .results-list .content-category, .archive_questions .results-list .content-date, .archive_questions .results-list .content-comments, .search-results .results-list .content-category, .search-results .results-list .content-date, .search-results .results-list .content-comments {
     font-size: 84.615%; }
 
 .archive_posts .results-list > .content-body {
@@ -1534,17 +1540,17 @@ button.follow {
   text-align: center;
   text-transform: uppercase; }
 
-.featured-category-questions .content-header {
+.featured-category-question .content-header {
   border-top: none;
   padding: 0px; }
-  .featured-category-questions .content-header h1 {
+  .featured-category-question .content-header h1 {
     font-size: 146.153%;
     font-weight: normal; }
-.featured-category-questions .content-body {
+.featured-category-question .content-body {
   border-top: none; }
-.featured-category-questions .content-headline {
+.featured-category-question .content-headline {
   font-size: 1em; }
-.featured-category-questions .content-comments {
+.featured-category-question .content-comments {
   font-size: 84.615%; }
 
 .error404 {
@@ -1602,30 +1608,33 @@ button.follow {
       font-size: 107.692%;
       line-height: 2.5em; }
 
-.span6 .featured-members .content-body, .span4 .featured-members .content-body, .span6 .featured-members .content-body {
+.see-more {
+  display: none; }
+
+.span6 .featured-members .content-body, .span4 .featured-members .content-body, .span3 .featured-members .content-body {
   padding: 0.769em; }
-.span6 .featured-members .span4, .span4 .featured-members .span4, .span6 .featured-members .span4 {
+.span6 .featured-members .span4, .span4 .featured-members .span4, .span3 .featured-members .span4 {
   float: none;
   margin-left: 0px;
   width: 100%; }
-.span6 .featured-members .member_avatar, .span4 .featured-members .member_avatar, .span6 .featured-members .member_avatar {
+.span6 .featured-members .member_avatar, .span4 .featured-members .member_avatar, .span3 .featured-members .member_avatar {
   width: 5em; }
-  .span6 .featured-members .member_avatar .badge, .span4 .featured-members .member_avatar .badge, .span6 .featured-members .member_avatar .badge {
+  .span6 .featured-members .member_avatar .badge, .span4 .featured-members .member_avatar .badge, .span3 .featured-members .member_avatar .badge {
     font-size: 76.923%;
     line-height: 2em; }
-  .span6 .featured-members .member_avatar img, .span4 .featured-members .member_avatar img, .span6 .featured-members .member_avatar img {
+  .span6 .featured-members .member_avatar img, .span4 .featured-members .member_avatar img, .span3 .featured-members .member_avatar img {
     min-height: 5em;
     min-width: 5em; }
-.span6 .featured-members .member-wrapper, .span4 .featured-members .member-wrapper, .span6 .featured-members .member-wrapper {
+.span6 .featured-members .member-wrapper, .span4 .featured-members .member-wrapper, .span3 .featured-members .member-wrapper {
   border-left: none;
   padding: 0px; }
-.span6 .featured-members .member_profile, .span6 .featured-members .member_posts, .span4 .featured-members .member_profile, .span4 .featured-members .member_posts, .span6 .featured-members .member_profile, .span6 .featured-members .member_posts {
+.span6 .featured-members .member_profile, .span6 .featured-members .member_posts, .span4 .featured-members .member_profile, .span4 .featured-members .member_posts, .span3 .featured-members .member_profile, .span3 .featured-members .member_posts {
   clear: none;
   margin-left: 2.5%;
   width: 70%; }
-.span6 .featured-members .member_location, .span4 .featured-members .member_location, .span6 .featured-members .member_location {
+.span6 .featured-members .member_location, .span4 .featured-members .member_location, .span3 .featured-members .member_location {
   margin-bottom: 0px; }
-.span6 .featured-members .see-more, .span4 .featured-members .see-more, .span6 .featured-members .see-more {
+.span6 .featured-members .see-more, .span4 .featured-members .see-more, .span3 .featured-members .see-more {
   font-size: 92.307%;
   display: block; }
 
@@ -1679,9 +1688,6 @@ button.follow {
   width: 70%; }
 .profile-summary .member_details .member_location {
   margin-bottom: 0px; }
-
-.span8 .featured-members .see-more, .span9 .featured-members .see-more, .span12 .featured-members .see-more {
-  display: none; }
 
 .question .member_avatar.span6, .question .member_profile.span6, .comment .member_avatar.span6, .comment .member_profile.span6, .expert-answers .member_avatar.span6, .expert-answers .member_profile.span6 {
   float: none;
