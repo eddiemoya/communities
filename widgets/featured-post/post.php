@@ -1,4 +1,6 @@
 <?php 
+global $excerptLength; $excerptLength = 140;
+
 //Inner span is span12, unless theres a thumbnail to show, or unless the the widget's span is already 6 or lower.
 $inner_span = ((is_widget('show_thumbnail') && has_post_thumbnail()) || is_widget()->span <= 6) ? "span6" : "span12";?>
 
