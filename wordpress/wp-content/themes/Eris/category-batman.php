@@ -14,6 +14,91 @@ get_template_part('parts/header');
 		
 		<section class="span8">
 			
+			<article class="widget content-container featured-category-question widget span12">
+				
+				<header class="content-header">
+					<h1>Featured Questions</h1>
+				</header>
+				
+				<section class="content-body clearfix">
+					
+					<section class="span6">
+						<!-- DROPZONE: FIRST FEATURED QUESTION -->
+						
+						<article class="content-container question">
+							<section class="content-body clearfix">
+								
+								<div class="crest span3">
+									<ul class="user-info">
+										<li class="user_avatar"><a href="http://sears-communities.qa.ch4.s.com/community/author/SHC-JudyM/"><img alt="" class="photo" src="http://sears-communities.qa.ch4.s.com/community/wp-content/uploads/userphoto/35.png?1347888749"></a></li>
+										<li ckass="user_screenname"><a href="http://sears-communities.qa.ch4.s.com/community/author/SHC-JudyM/">SHC-JudyM</a></li>
+										<li class="user_location">Chicago, IL</li>
+									</ul>
+								</div>
+			
+								<div class="span9">
+									
+									<div class="content-details clearfix">
+										<time datetime="2012-09-17" pubdate="" class="content-date">September 9, 2012    <span class="time-stamp">1:59 pm</span></time>
+									</div>
+									
+									<h1 class="content-headline"><a href="http://sears-communities.qa.ch4.s.com/community/questions/looking-for-something-that-is-out-of-stock-is-there-a-way-to-opt-in-to-get-notification-of-when-it-is-back-in-stock/">Looking for something that is out of stock, is there a way to opt in to get notification of when it is back in stock?</a></h1>
+									
+									<p class="content-excerpt">
+													</p>
+									
+									<ul>
+								  	<li class="content-comments">2 answers | 2 replies | 0 comments</li>
+								  </ul>
+									
+								</div>
+			
+							</section>
+						</article>
+		
+						<!-- END DROPZONE -->
+					</section>
+					<section class="span6">
+						<!-- DROPZONE: SECOND FEATURED QUESTION -->
+						<article class="content-container question">
+							<section class="content-body clearfix">
+								
+								<div class="span3">
+									<ul class="user-info">
+										<li class="user_avatar"><a href="http://sears-communities.qa.ch4.s.com/community/author/SHC-JudyM/"><img alt="" class="photo" src="http://sears-communities.qa.ch4.s.com/community/wp-content/uploads/userphoto/35.png?1347888749"></a></li>
+										<li ckass="user_screenname"><a href="http://sears-communities.qa.ch4.s.com/community/author/SHC-JudyM/">SHC-JudyM</a></li>
+										<li class="user_location">Chicago, IL</li>
+									</ul>
+								</div>
+			
+								<div class="span9">
+									
+									<div class="content-details clearfix">
+										<time datetime="2012-09-17" pubdate="" class="content-date">September 9, 2012    <span class="time-stamp">1:59 pm</span></time>
+									</div>
+									
+									<h1 class="content-headline"><a href="http://sears-communities.qa.ch4.s.com/community/questions/looking-for-something-that-is-out-of-stock-is-there-a-way-to-opt-in-to-get-notification-of-when-it-is-back-in-stock/">Looking for something that is out of stock, is there a way to opt in to get notification of when it is back in stock?</a></h1>
+									
+									<p class="content-excerpt">
+													</p>
+									
+									<ul>
+								  	<li class="content-comments">2 answers | 2 replies | 0 comments</li>
+								  </ul>
+									
+								</div>
+			
+							</section>
+						</article>
+						
+						<!-- END DROPZONE -->
+					</section>
+					
+				</section>
+				
+				
+			</article>
+			
 			<article class="widget content-container span6 ad-widget">
 				<header class="content-header">
 					<h1>Advertisement</h1>
