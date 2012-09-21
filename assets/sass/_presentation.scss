@@ -1101,6 +1101,10 @@ $tab-padding: "1em 0 .6em 0";
     color: $darkest-color;
     float: left;
     padding: 7px;
+
+    input {
+      margin-top: 7px;
+    }
   }
 }
 

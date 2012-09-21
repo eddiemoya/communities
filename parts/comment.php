@@ -94,11 +94,11 @@
 	        		</li>
 	        		<li class="clearfix">
 	        			<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Post</button>
-								<button class="<?php echo theme_option("brand"); ?>_button azure">Cancel</button>
-	        			<input type="hidden" name="comment_post_ID" value="<?php echo $comment->comment_post_ID; ?>" />
-		            <input type="hidden" name="comment_parent" value="<?php echo $parentId; ?>" />
-		            <input type="hidden" name="comment_type" value="<?php echo $comment_type; ?>" />
-		            <input type="hidden" name="_wp_unfiltered_html_comment" value="27ff0ea567" />
+                        <button class="<?php echo theme_option("brand"); ?>_button azure">Cancel</button>
+                        <input type="hidden" name="comment_post_ID" value="<?php echo $comment->comment_post_ID; ?>" />
+                        <input type="hidden" name="comment_parent" value="<?php echo $parentId; ?>" />
+                        <input type="hidden" name="comment_type" value="<?php echo $comment_type; ?>" />
+                        <input type="hidden" name="_wp_unfiltered_html_comment" value="27ff0ea567" />
 	        		</li>
 	        	</ul>
         	</form>
