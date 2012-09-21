@@ -68,7 +68,8 @@ img {
   vertical-align: middle; }
 
 img, object, embed {
-  max-width: 100%; }
+  max-width: 100%;
+  width: 100%; }
 
 sub, sup {
   font-size: 75%;
@@ -800,15 +801,15 @@ ul.bullets {
 .single #content > section.span12 {
   border-top: solid 1px #d5d5d5; }
 
-.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child,
-.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-body:first-child,
-.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-header:first-child,
-.single #content > section.span12 > section[class*="span"] > .dropzone > [class*="span"]:first-child,
-.single #content > section.span12 > section[class*="span"] > .dropzone > [class*="span"]:first-child .content-body:first-child,
-.single #content > section.span12 > section[class*="span"] > .dropzone > [class*="span"]:first-child .content-header:first-child {
+#content > section.span12 > section[class*="span"] > [class*="span"]:first-child,
+#content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-body:first-child,
+#content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-header:first-child,
+#content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child,
+#content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child .content-body:first-child,
+#content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child .content-header:first-child {
   border-top: none; }
 
-.page-title + .results-list .content-container .content-body {
+.page-title + .results-list > .content-body {
   border-top: none; }
 
 .sears .post h1, .sears .question h1 {
@@ -914,28 +915,28 @@ textarea.discussion {
   .archive_questions .results-list .content-category, .archive_questions .results-list .content-date, .archive_questions .results-list .content-comments, .search-results .results-list .content-category, .search-results .results-list .content-date, .search-results .results-list .content-comments {
     font-size: 84.615%; }
 
-.archive_posts .results-list > .content-body {
+.archive_posts .results-list > .content-body, .archive_guides .results-list > .content-body {
   border: none;
   padding: 0px; }
-  .archive_posts .results-list > .content-body p {
+  .archive_posts .results-list > .content-body p, .archive_guides .results-list > .content-body p {
     margin-bottom: 1em; }
-.archive_posts .results-list .content-category, .archive_posts .results-list .content-author, .archive_posts .results-list .content-excerpt, .archive_posts .results-list .content-comments, .archive_posts .results-list .content-share {
+.archive_posts .results-list .content-category, .archive_posts .results-list .content-author, .archive_posts .results-list .content-excerpt, .archive_posts .results-list .content-comments, .archive_posts .results-list .content-share, .archive_guides .results-list .content-category, .archive_guides .results-list .content-author, .archive_guides .results-list .content-excerpt, .archive_guides .results-list .content-comments, .archive_guides .results-list .content-share {
   font-size: 100%; }
-.archive_posts .results-list .content-comments {
+.archive_posts .results-list .content-comments, .archive_guides .results-list .content-comments {
   float: left;
   margin-bottom: 0px; }
-.archive_posts .results-list .content-details {
+.archive_posts .results-list .content-details, .archive_guides .results-list .content-details {
   margin-bottom: .5em; }
-.archive_posts .results-list .content-excerpt {
-  line-height: 15px; }
-.archive_posts .results-list .content-headline {
+.archive_posts .results-list .content-excerpt, .archive_posts .results-list .content-tags, .archive_guides .results-list .content-excerpt, .archive_guides .results-list .content-tags {
+  line-height: 115.384%; }
+.archive_posts .results-list .content-headline, .archive_guides .results-list .content-headline {
   margin-bottom: 0px; }
-.archive_posts .results-list .content-share {
+.archive_posts .results-list .content-share, .archive_guides .results-list .content-share {
   float: right; }
-.archive_posts .results-list .addthis.dropmenu .sharebutton {
+.archive_posts .results-list .addthis.dropmenu .sharebutton, .archive_guides .results-list .addthis.dropmenu .sharebutton {
   padding: 0px; }
 
-.archive_users .results-list {
+.results-list_users {
   margin-top: 1em;
   border: 1px solid #cccccc;
   -webkit-border-radius: 5px;
@@ -943,17 +944,17 @@ textarea.discussion {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px; }
-  .archive_users .results-list > .content-body {
+  .results-list_users > .content-body {
     border: none;
     padding: 0 0.984em; }
-    .archive_users .results-list > .content-body > .content-container:first-child .content-body {
+    .results-list_users > .content-body > .content-container:first-child .content-body {
       border-top: none; }
-  .archive_users .results-list > .content-header {
+  .results-list_users > .content-header {
     border-bottom: 1px solid #DDDCDC;
     border-top: none;
     padding: 1.5em 0;
     width: 100%; }
-    .archive_users .results-list > .content-header form {
+    .results-list_users > .content-header form {
       margin: 0 .769em; }
 
 .member .info .content-comments li {
@@ -1529,6 +1530,36 @@ button.follow {
   text-align: center;
   text-transform: uppercase; }
 
+.site-error {
+  margin-top: 2em; }
+  .site-error .span8, .site-error .span10 {
+    background: url(/wp-content/themes/Eris/assets/img/tile_line.gif);
+    margin-top: 2em; }
+  .site-error .message {
+    color: white;
+    margin: 1em;
+    text-align: center;
+    padding: 9em 0; }
+    .site-error .message h1 {
+      font-size: 184.615%;
+      font-family: Impact, Charcoal, sans-serif;
+      letter-spacing: .066em; }
+    .site-error .message h2 {
+      font-size: 246.153%;
+      font-family: Georgia, serif;
+      margin-top: 1em; }
+    .site-error .message .tape {
+      background: url(/wp-content/themes/Eris/assets/img/tile_line.gif);
+      width: 50%;
+      margin: .66em auto;
+      line-height: .5; }
+
+.sears .site-error .message {
+  background: #304f88; }
+
+.kmart .site-error .message {
+  background: #8f2225; }
+
 .featured-category-question .content-header {
   border-top: none;
   padding: 0px; }
@@ -1734,6 +1765,11 @@ button.follow {
 
 .kmart .site-error .message {
   background: #8f2225; }
+
+.pagination {
+  border-top: 1px solid #CCCCCC;
+  padding: 0.5em;
+  text-align: center; }
 
 .dropmenu li {
   float: left;
