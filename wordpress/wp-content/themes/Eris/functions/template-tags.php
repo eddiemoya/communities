@@ -761,3 +761,11 @@ function sanitize_text($text) {
 	
 	return $text;
 }
+
+function the_truncated_title(){
+    $title = get_the_title();
+
+    if (strlen($title) > 100) $title = substr($title, 0, 100) . "...";
+
+    echo $title;
+}
