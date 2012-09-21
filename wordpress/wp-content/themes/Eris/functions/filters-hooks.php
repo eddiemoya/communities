@@ -17,18 +17,6 @@ function add_menu_class_first_last($output) {
 }
 add_filter('wp_nav_menu', 'add_menu_class_first_last');
 
-add_action('template_redirect', 'template_redirect');
-function template_redirect(){
-
-    if(isset($_GET['s'])){
-        $templates[] = 'search.php';
-
-        $template = get_query_template($template_name, $templates);
-        //echo "<pre>";print_r($templates);echo "</pre>";
-        include( $template );
-        exit;
-        } 
-}
 /**
  * Do not call this function directly, add it to the body_class filter
  * 
