@@ -1605,7 +1605,10 @@ button.follow {
 .span6 .featured-members .span4, .span4 .featured-members .span4, .span3 .featured-members .span4 {
   float: none;
   margin-left: 0px;
-  width: 100%; }
+  width: 100%;
+  margin-top: 1.5em; }
+  .span6 .featured-members .span4:first-child, .span4 .featured-members .span4:first-child, .span3 .featured-members .span4:first-child {
+    margin-top: 0; }
 .span6 .featured-members .member_avatar, .span4 .featured-members .member_avatar, .span3 .featured-members .member_avatar {
   width: 5em; }
   .span6 .featured-members .member_avatar .badge, .span4 .featured-members .member_avatar .badge, .span3 .featured-members .member_avatar .badge {
@@ -1617,7 +1620,7 @@ button.follow {
 .span6 .featured-members .member-wrapper, .span4 .featured-members .member-wrapper, .span3 .featured-members .member-wrapper {
   border-left: none;
   padding: 0px; }
-.span6 .featured-members .member_profile, .span6 .featured-members .member_posts, .span4 .featured-members .member_profile, .span4 .featured-members .member_posts, .span3 .featured-members .member_profile, .span3 .featured-members .member_posts {
+.span6 .featured-members .member_profile, .span6 .featured-members .member_content, .span4 .featured-members .member_profile, .span4 .featured-members .member_content, .span3 .featured-members .member_profile, .span3 .featured-members .member_content {
   clear: none;
   margin-left: 2.5%;
   width: 70%; }
