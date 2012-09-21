@@ -13,6 +13,7 @@
  *
  * @package WordPress
  */
+
 	
 /** The name of the database for WordPress */
 define('DB_NAME', 'communities');
@@ -29,7 +30,10 @@ define('DB_HOST', 'barable.com');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
+
+
 	
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *
