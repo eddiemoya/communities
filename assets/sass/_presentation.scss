@@ -81,6 +81,10 @@ ul.bullets {
   text-transform: lowercase;
 }
 
+.break-word {
+  word-wrap: break-word;
+}
+
 .background_light-gray {
   background-color: #f3f3f3;
 }
@@ -114,7 +118,7 @@ ul.bullets {
 // COMMONLY USED ELEMENTS
 .member {
   .info {
-    word-wrap: break-word;
+    @extend .break-word;
     h4, address {
       @extend .bold;
     }
@@ -131,7 +135,7 @@ ul.bullets {
 // CREST - the assembly of a user's image, title, name and address
 // Handles the display of user's images, names, titles and addresses (their crest)
 .crest {
-  word-wrap: break-word;
+  @extend .break-word;
   img {
     display: block;
     margin: 0 auto;
@@ -164,7 +168,7 @@ ul.bullets {
 
 .user-info {
   overflow:hidden;
-  word-wrap: break-word;
+  @extend .break-word;
   .user_avatar {
     a {
       display:block;
@@ -373,6 +377,7 @@ form {}
     font-size:font-size( 20 ); // 20px
     line-height:1.1em; // 22px
     margin:0 0 .625em; // 10px
+    @extend .break-word;
     @extend .bold;
   }
   .share-full {
@@ -400,19 +405,17 @@ form {}
   border-top:solid 1px #d5d5d5;
 }
 
-.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child, 
-.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-body:first-child,
-.single #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-header:first-child,
-.single #content > section.span12 > section[class*="span"] > .dropzone > [class*="span"]:first-child, 
-.single #content > section.span12 > section[class*="span"] > .dropzone > [class*="span"]:first-child .content-body:first-child,
-.single #content > section.span12 > section[class*="span"] > .dropzone > [class*="span"]:first-child .content-header:first-child {
-  border-top:none;
+#content > section.span12 > section[class*="span"] > [class*="span"]:first-child,
+#content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-body:first-child,
+#content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-header:first-child,
+#content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child,
+#content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child .content-body:first-child,
+#content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child .content-header:first-child {
+  border-top: none; 
 }
 
-.page-title + .results-list {
-  .content-container .content-body {
+.page-title + .results-list > .content-body {
     border-top:none;
-  }
 }
 
 .sears{
@@ -564,7 +567,7 @@ textarea.discussion {
   }
 }
 
-.archive_posts .results-list {
+.archive_posts .results-list, .archive_guides .results-list {
   & > .content-body {
     border:none;
     padding:0px;
@@ -582,8 +585,8 @@ textarea.discussion {
   .content-details {
     margin-bottom:.5em;
   }
-  .content-excerpt {
-    line-height:15px;
+  .content-excerpt, .content-tags {
+    line-height:font-size(15);
   }
   .content-headline {
     margin-bottom:0px;
@@ -596,7 +599,7 @@ textarea.discussion {
   }
 }
 
-.archive_users .results-list {
+.results-list_users {
   margin-top: 1em;
   border: 1px solid sears( decorative );
   @include border-radius( 5px );
@@ -676,6 +679,7 @@ textarea.discussion {
   .recent-activity_title, .recent_activity_excerpt {
     font-size:font-size(12);
     margin-bottom:.5em;
+    @extend .break-word;
   }
   .recent-activity_excerpt {
     padding: .3em 1em;
@@ -1165,7 +1169,7 @@ $tab-padding: "1em 0 .6em 0";
     }
     article {
       // font-size: font-size( 13 );
-      word-wrap: break-word;
+      @extend .break-word;
       p {
         margin-bottom:1em;
       }
@@ -1191,7 +1195,7 @@ $tab-padding: "1em 0 .6em 0";
     @include border-radius( 4px );
   }
   .span10 {
-    word-wrap: break-word;
+    @extend .break-word;
   }
   .trigger.discussion {
     height:1em;
@@ -1419,6 +1423,13 @@ button.follow {
   }
   .content-body {
     border-top:none;
+    // & > .span6 .content-body {
+      // border-left:solid 1px #d5d5d5;
+    // }
+    // & > .span6:first-child .content-body {
+      // border-left:none;
+    // }
+  // }
   }
   .content-headline {
     font-size:1em;
@@ -1427,6 +1438,8 @@ button.follow {
     font-size:font-size(11);
   }
 }
+
+
 
 .error404 {
   color:#333333;
@@ -1485,8 +1498,8 @@ button.follow {
   color:#333333;
   .member_screen-name, .member_location {
     font-size:font-size(12);
-    font-weight:bold;
-    word-wrap:break-word;
+    @extend .bold;
+    @extend .break-word;
   }
   .member_specialties, .member_last-posted, .member_answers, .member_posts,
   .member_comments {
@@ -1688,9 +1701,17 @@ button.follow {
   @extend .clearfix:after;
   @extend .clearfix:before;
 }
+
 .sears .site-error .message {
   background: sears( site-error );
 }
+
 .kmart .site-error .message {
   background: kmart( site-error );
+}
+
+.pagination {
+  border-top: 1px solid #CCCCCC;
+  padding: 0.5em;
+  text-align: center;
 }
