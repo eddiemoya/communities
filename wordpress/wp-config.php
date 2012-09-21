@@ -18,6 +18,7 @@
 define('USE_LOCAL_DB', false);
 
 
+<<<<<<< HEAD
 if(USE_LOCAL_DB) {
 	
 	/** The name of the database for WordPress */
@@ -40,6 +41,9 @@ if(USE_LOCAL_DB) {
 } else {
 	
 
+=======
+
+>>>>>>> em.postwidget.r28
 	/** The name of the database for WordPress */
 	define('DB_NAME', 'communities');
 	
@@ -55,6 +59,8 @@ if(USE_LOCAL_DB) {
 	
 	/** Database Charset to use in creating database tables. */
 	define('DB_CHARSET', 'utf8');
+
+
 	
 
 }
