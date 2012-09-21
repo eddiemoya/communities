@@ -2,7 +2,7 @@
 
 
 add_action('category_rewrite_rules', 'category_post_type_endpoints');
-add_action('rewrite_rules_array', 'posts_endpoint');
+add_action('post_rewrite_rules', 'posts_endpoint');
 /**
  * Add endpoint for posttype archive for the POST post type.
  */
