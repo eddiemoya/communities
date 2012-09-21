@@ -201,7 +201,11 @@ function pccf_contfilt() {
 	$tmp = get_option('pccf_options');
 	
 	if (isset($tmp['chk_post_content'])) {
-		if($tmp['chk_post_content']=='1'){ add_filter('the_content', 'pccf_filter'); }
+		if($tmp['chk_post_content']=='1'){ 
+			
+			add_filter('the_content', 'pccf_filter'); 
+			add_filter('the_excerpt', 'pccf_filter');
+		}
 
 		/* bbPress specific filtering (only if bbPress is present). */
 		if (class_exists('bbPress')) {
