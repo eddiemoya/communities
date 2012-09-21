@@ -409,8 +409,7 @@ form {}
   border-top: none; 
 }
 
-.page-title + .results-list {
-  .content-container .content-body {
+.page-title + .results-list > .content-body {
     border-top:none;
   }
 }
@@ -582,8 +581,8 @@ textarea.discussion {
   .content-details {
     margin-bottom:.5em;
   }
-  .content-excerpt {
-    line-height:15px;
+  .content-excerpt, .content-tags {
+    line-height:font-size(15);
   }
   .content-headline {
     margin-bottom:0px;
