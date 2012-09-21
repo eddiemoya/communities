@@ -15,7 +15,7 @@
     $display_specialty 	= ( !isset( $specializations ) )? false : $specializations;
 		$display_recent			= ( !isset( $last_posted ) )? false : $last_posted;
 		$display_stats			= ( !isset( $stats ) )? false : $stats;
-
+		$return_address  = rtrim(return_address( $user_id ));
 ?>
 
 <ul class="member_details<?php if (isset( $width )) {echo " " . $width;} ?>">
@@ -43,7 +43,7 @@
 			<?php if ($display_name): ?>
 				<li class="member_screen-name"><?php echo return_screenname_link( $user_id ); ?></li>
 			<?php endif; 
-				if ($display_address && $display_address !== " "):
+				if ($display_address && !empty($return_address) && $return_address == " "):
 			?>
 				<li class="member_location"><?php echo return_address( $user_id ); ?></li>
 			<?php endif;
