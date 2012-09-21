@@ -27,6 +27,8 @@ ACTIONS.actions = $actions = function(element, options) {
     };
 
     _this.options = {
+        customEvent: null,
+        customListener: null,
         element: null,
         post: {
             id: 0,
@@ -34,7 +36,8 @@ ACTIONS.actions = $actions = function(element, options) {
             sub_type: '',
             type: '',
             nli_reset: ''
-        }
+        },
+        resetAction: true
     };
 
     _this.originalOptions = {};
@@ -67,7 +70,9 @@ ACTIONS.actions = $actions = function(element, options) {
             function(data) {
                 data = eval(data);
 
-                _this._decideForDownUpSwitch(data);
+                if(_this.options.resetAction === true) {
+                    _this._decideForDownUpSwitch(data);
+                }
 
                 if(data === 'activated') {
                     jQuery(element).addClass('active');
@@ -78,9 +83,15 @@ ACTIONS.actions = $actions = function(element, options) {
 
                     jQuery(element).addClass('active');
                 } else if(data === 'deactivated-out') {
+                    console.log(element);
+
                     _this._updateCookie(data);
 
                     jQuery(element).removeClass('active');
+                }
+
+                if(typeof _this.options.customEvent === 'function') {
+                    _this.options.customEvent(jQuery(element));
                 }
 
                 _this._resetActionTotal(data, element);
@@ -154,6 +165,8 @@ ACTIONS.actions = $actions = function(element, options) {
             var text = data === 'activated' ? 'following' : 'follow';
 
             jQuery(element).html(text);
+        } else if(action == 'flag') {
+
         } else {
             var curId = jQuery(element).attr('id');
             var curValue = jQuery('label[for="' + curId + '"]').html();
@@ -171,6 +184,8 @@ ACTIONS.actions = $actions = function(element, options) {
     };
 
     _this._updateCookie = function(data) {
+        var addedToCookie = false;
+        var currentCookie = {}
         var existingCookies = [];
         var jsonString = '{"actions": [';
 
@@ -179,13 +194,49 @@ ACTIONS.actions = $actions = function(element, options) {
             existingCookies = existingCookies.actions;
 
             for(var i = 0; i < existingCookies.length; i++) {
-                if(existingCookies[i].id != _this.options.post.id && existingCookies[i].name != _this.options.post.name) {
-                    jsonString += '{"id": "' + existingCookies[i].id + '", "name": "' + existingCookies[i].name + '", "sub_type": "' + existingCookies[i].sub_type + '", "type": "' + existingCookies[i].type + '"}, ';
+                currentCookie = existingCookies[i];
+
+                if(currentCookie.id != _this.options.post.id) {
+                    jsonString += '{"id": "' + currentCookie.id +
+                                        '", "name": "' + currentCookie.name +
+                                        '", "sub_type": "' + currentCookie.sub_type +
+                                        '", "type": "' + currentCookie.type + '"}, ';
+
+                    addedToCookie = true;
+                } else {
+                    //The ids are the same; now it's time for work
+
+                    /**
+                     * The names are not the same; which means we are not deactivating
+                     */
+                    if(currentCookie.name != _this.options.post.name) {
+                        /**
+                         * Is the cookie an upvote? Is the current action a downvote? Turn off the upvote
+                         */
+                        if(currentCookie.name == 'upvote' && _this.options.post.name == 'downvote') {
+                            continue;
+                        } else if(currentCookie.name == 'downvote' && _this.options.post.name == 'upvote') {
+                            continue;
+                        } else {
+                            jsonString += '{"id": "' + currentCookie.id +
+                                                '", "name": "' + currentCookie.name +
+                                                '", "sub_type": "' + currentCookie.sub_type +
+                                                '", "type": "' + currentCookie.type + '"}, ';
+
+                            addedToCookie = true;
+                        }
+                    }
                 }
             }
         }
 
-        jsonString += '{"id": "' + _this.options.post.id + '", "name": "' + _this.options.post.name + '", "sub_type": "' + _this.options.post.sub_type + '", "type": "' + _this.options.post.type + '"}]}';
+        if(data !== 'deactivated-out') {
+            jsonString += '{"id": "' + _this.options.post.id + '", "name": "' + _this.options.post.name + '", "sub_type": "' + _this.options.post.sub_type + '", "type": "' + _this.options.post.type + '"}]}';
+
+            console.log(jsonString);
+        } else if(addedToCookie === true) {
+            jsonString = jsonString.substring(0, jsonString .length - 1) + "]}";
+        }
 
         shcJSL.cookies("actions").bake({value: jsonString, expiration: '1y'});
     };
