@@ -44,7 +44,11 @@
 		  		<li class="content-comments"><?php echo $answer_count_string ?> | <?php echo $expert_count_string; ?></li>
 		  	</ul>
 			
-      <?php get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); ?>
+      		<?php 
+      			if(!is_search()){
+      				get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); 
+      			}
+      		?>
 			
 		</div>
 		
