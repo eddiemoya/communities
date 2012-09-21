@@ -161,7 +161,7 @@ function process_front_end_question() {
     }
 
     //If step 2, add the post and move to step 3
-    if((wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in())) {
+    if((wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in()) && ! isset($_POST['cancel'])) {
 		
 		$valid = true;
     	$errors = array();
@@ -736,7 +736,7 @@ function lookup_expert_comments_count($post_id, $categories) {
         }
         $query .= ") ";
     }
-    $query .= "JOIN {$wpdb->usermeta} AS m2 ON m2.user_id = c.user_id AND m2.meta_key = '{$wpdb->base_prefix}capabilities' AND m2.meta_value REGEXP '$expert_list' ";
+    $query .= "JOIN {$wpdb->usermeta} AS m2 ON m2.user_id = c.user_id AND m2.meta_key = '{$wpdb->prefix}capabilities' AND m2.meta_value REGEXP '$expert_list' ";
     $query .= "WHERE c.comment_post_ID = $post_id";
     $return = $wpdb->get_results($wpdb->prepare($query));
     return $return[0]->count;

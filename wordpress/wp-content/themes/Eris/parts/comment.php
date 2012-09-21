@@ -22,7 +22,7 @@
 ?>
 
 	<li class="comment clearfix<?php echo $container_class; ?>" id="<?php echo $comment_type.'-reply-'.$comment->comment_ID ?>">
-    <?php get_partial( 'parts/crest', array( "user_id" => $comment->user_id ) ); ?>
+    <?php get_partial( 'parts/crest', array( "user_id" => $comment->user_id, "width" => "span2" ) ); ?>
     <div class="span10">
     	<article class="content-container">
 				<section class="content-body clearfix">
