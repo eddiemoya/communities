@@ -687,21 +687,6 @@ function set_screen_name($screen_name) {
 
 
 
-/**
- * Sanitizes text of any profanity
- * 
- * @param string $text
- * @uses WP Content Filter plugin [required]
- */
-function sanitize_text($text) {
-	
-	if(function_exists('pccf_filter')){
-		
-		return pccf_filter($text);
-	} 
-	
-	return $text;
-}
 
 /**
  * Gets the number of comments in a post by an expert
@@ -775,4 +760,12 @@ function sanitize_text($text) {
 	} 
 	
 	return $text;
+}
+
+function the_truncated_title(){
+    $title = get_the_title();
+
+    if (strlen($title) > 100) $title = substr($title, 0, 100) . "...";
+
+    echo $title;
 }
