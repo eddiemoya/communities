@@ -14,6 +14,31 @@
  * @package WordPress
  */
 
+	
+define('USE_LOCAL_DB', false);
+
+
+if(USE_LOCAL_DB) {
+	
+	/** The name of the database for WordPress */
+	define('DB_NAME', 'comm_local');
+	
+	/** MySQL database username */
+	define('DB_USER', 'wp_user');
+	
+	/** MySQL database password */
+	define('DB_PASSWORD', 'philos10');
+	
+	/** MySQL hostname */
+	define('DB_HOST', 'localhost');
+	// define('WP_ALLOW_MULTISITE', true);
+	
+	/** Database Charset to use in creating database tables. */
+	define('DB_CHARSET', 'utf8');
+	
+	
+} else {
+	
 
 	/** The name of the database for WordPress */
 	define('DB_NAME', 'communities');
@@ -31,6 +56,9 @@
 	/** Database Charset to use in creating database tables. */
 	define('DB_CHARSET', 'utf8');
 	
+
+}
+
 
 	
 /**#@+
