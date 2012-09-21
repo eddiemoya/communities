@@ -60,6 +60,11 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         closer: {
             initialized: true
         },
+        customEvent: null,
+        customListener: {
+            callBack: function() {},
+            name: ''
+        },
         displayData: {
             element: null,
             callBack: {
@@ -132,6 +137,12 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         _thisTooltip.setDisplayData();
 
         _thisTooltip.setTooltip();
+
+        if(typeof _thisTooltip.options.customListener !== 'undefined') {
+            jQuery(document).on(_thisTooltip.options.customListener.name, function(event) {
+                _thisTooltip.options.customListener.callBack(_thisTooltip.actedObj.element);
+            });
+        }
     };
 
     _thisTooltip.addListener = function() {

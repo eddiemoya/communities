@@ -17,7 +17,7 @@
 					
 					<ul class="state_post-your-question form-fields">
 						<li>
-							<input type="text" class="input_text" name="post-question" id="post-question" value="" shc:gizmo:form="{required:true}"/>
+							<input type="text" class="input_text" name="post-question" id="post-question" value="<?php echo (isset($_POST['post-question'])) ? $_POST['post-question'] : null;?>" shc:gizmo:form="{required:true}"/>
 							<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Next</button>
 						</li>
 					</ul>

@@ -67,7 +67,7 @@ function get_posts_ajax(){
             $wp_query = new WP_Query($query);
         $path = (isset($_POST['path'])) ? $_POST['path'] : 'parts';
       
-        loop(array($_POST['special'], 'post'), $_POST['template'], $path, 'parts/no-results.php');
+        loop(array($_POST['special'], 'post'), $_POST['template'], $path, 'parts/no-results');
         wp_reset_query();
 
     } else {
@@ -88,8 +88,11 @@ function get_users_ajax(){
     $category = array($_POST['category']);
     $hide_untaxed = ($category > 0);
     
-    $users = Results_List_Widget::query_users(array('hide_untaxed' => $hide_untaxed, 'terms' => $category, 'cap' => 'post_as_expert', 'order' => $_POST['order']));
-    get_partial($_POST['path'].'/'.$_POST['template'], array('users' => $users));
+    if(class_exists('Results_List_Widget')){
+        $users = Results_List_Widget::query_users(array('hide_untaxed' => $hide_untaxed, 'terms' => $category, 'cap' => 'post_as_expert', 'order' => $_POST['order']));
+        get_partial($_POST['path'].'/'.$_POST['template'], array('users' => $users));
+    }
+    
     exit();
 }
 
@@ -245,13 +248,21 @@ function user_delete_comment() {
 	
 	global $wpdb;
 	
-	$comment_id = $_POST['comment_id'];
+	$comment_id = $_POST['cid'];
+	$uid = $_POST['uid'];
 	
-	$update = $wpdb->update($wpdb->comments, 
+	if(wp_verify_nonce($_POST['_wp_nonce'], 'comment_delete_' . $comment_id . '_' . $uid)) {
+		
+		$update = $wpdb->update($wpdb->comments, 
 							array('comment_approved' => '0'),
 							array('comment_ID' => $comment_id));
 	
-	echo ($update) ? $comment_id : null;
+		echo ($update) ? $comment_id : 0;
+		
+	} else {
+		
+		echo 0;
+	}
 	
 	exit;
 }
