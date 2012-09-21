@@ -17,7 +17,6 @@ function add_menu_class_first_last($output) {
 }
 add_filter('wp_nav_menu', 'add_menu_class_first_last');
 
-
 /**
  * Do not call this function directly, add it to the body_class filter
  * 
@@ -51,6 +50,10 @@ function filter_body_class($classes) {
 
     if(get_query_var('old_post_type')){
         $classes[] = 'archive_' . get_query_var('old_post_type').'s';
+    }
+
+    if(isset($_GET['s'])){
+        $classes[] = 'search-results';
     }
     
     return $classes;
@@ -355,6 +358,14 @@ function filter_before_widget($html, $dropzone, $widget){
                 $html = str_replace('featured-post', 'featured-question', $html);
             }
         }
+
+    }
+
+    if($meta->widgetpress_widget_classname = 'Results_List_Widget'){
+
+        if($meta->query_type == 'users'){
+            $html = str_replace('results-list', 'results-list_users', $html);
+           }
 
     }
     //echo "<pre>";print_r();echo "</pre>";

@@ -7,7 +7,6 @@ if(!is_ajax()) {
 
     $post_type = get_query_var('post_type');
     $post_type = (is_array($post_type)) ? $post_type[0] : $post_type;
-
     
     if(isset($_GET['s']) && trim($_GET['s']) == '') {
     	

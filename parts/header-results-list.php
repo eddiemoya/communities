@@ -11,7 +11,7 @@
 	
 if(have_posts() || !is_widget()) : ?>
 
-<?php if((is_widget('show_filters') || is_widget('show_sort')) || !is_widget()) : ?>
+<?php if(is_widget('show_filters') || is_widget('show_sort')) : ?>
 
 	<header class="content-header">
 		<form method="post" action="">

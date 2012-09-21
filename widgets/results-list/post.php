@@ -3,6 +3,8 @@
     $queried_type = get_query_var('post_type');
     $post_type = (!is_array($queried_type) || !isset($queried_type[1])) ? $queried_type : 'post';
     $post_type = (is_array($post_type)) ? $post_type[0] : $post_type;
+    $comments = get_comments_number();
+    $comments_string = ($comments > 500) ? "500+ comments" : $comments . " " . _n( 'comment', 'comments', $comments );
     $inner_span = (has_post_thumbnail()) ? "span6" : "span12";
 ?>
 
@@ -11,7 +13,7 @@
     <!--  // Pull everything from here out to another partial specific to featured posts  -->
     <section class="content-body clearfix">
 
-    <?php if (has_post_thumbnail()) : ?>
+    <?php if (has_post_thumbnail() || !$_GET['s']) : ?>
         <div class="featured-image <?php echo $inner_span; ?>">
             <?php the_post_thumbnail(); ?>
         </div>
@@ -51,8 +53,10 @@
             </p>
 
             <ul>
-                <li class="content-comments"><?php comments_number(); ?></li> 
+                <li class="content-comments"><?php echo $comments_string; ?></li> 
+                <?php if(!$_GET['s']): ?>
                 <li class="content-share"><?php get_partial( 'parts/share', array("url" => get_post_permalink( $post->ID ) ) ); ?></li>
+                <?php endif; ?>
             </ul>
 
         </div> <!-- featured- -->
