@@ -16,7 +16,7 @@
 			<section class="content-body clearfix">
 				
 				<div class="content-details clearfix">
-					<span class="content-category"><a href="<?php echo get_category_link($categories[0]->term_id); ?>" title="<?php echo $categories[0]->name?>"><?php echo $categories[0]->name; ?></a></span>
+					<span class="content-category"><a href="<?php echo get_category_link($categories[0]->term_id); ?>" title="<?php ec?>"><?php echo $categories[0]->name; ?></a></span>
 					<?php get_partial( 'parts/space_date_time', array( "timestamp" => get_the_time( "U" ), "remove_hms" => true ) ); ?>
 				</div>
 				
