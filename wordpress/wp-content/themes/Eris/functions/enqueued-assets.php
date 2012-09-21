@@ -59,7 +59,9 @@ function enqueue_scripts() {
 		wp_localize_script('jquery', 'ajaxdata', $data);		
         
         /* Styles */
-        wp_register_style('main-styles', get_stylesheet_uri());
+        $style_path = STYLESHEETPATH . "/style.css";
+        $style_version = file_exists( $style_path ) ? filemtime( $style_path ) : '1.0';
+        wp_register_style( 'main-styles', get_stylesheet_uri(), array(), $style_version );
         wp_enqueue_style( 'main-styles');
         
        
