@@ -286,6 +286,8 @@ function process_front_end_question() {
 //Used for post a question widget
 add_action('init', 'process_front_end_question');
 
+
+
 function question_exists($post) {
 	
 	global $wpdb;
@@ -770,7 +772,6 @@ function sanitize_text($text) {
 	
 	return $text;
 }
-
 
 
 function the_truncated_title($length = 100){
