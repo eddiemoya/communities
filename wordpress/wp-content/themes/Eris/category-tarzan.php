@@ -14,6 +14,98 @@ get_template_part('parts/header');
 		
 		<section class="span8">
 			
+			
+			
+			<article class="widget content-container span12 summary-list">
+				
+				<header class="content-header">
+        	<h3>Related Stories</h3>
+        </header>
+        
+        <section class="content-body clearfix">
+        	
+        	<ul>
+        		
+        		<li class="summary_list-item summary-list_question clearfix">
+        			<ul>
+        				<li class="summary_type-date">
+        					<span class="summary_type">Questions</span>
+        					<span class="summary_date">July 5, 2012</span>
+        				</li>
+        				
+        				<li class="summary_title">
+        					<a href="#">
+        						Question headline goes here and here. This is a really long title for a post with many characters and needs to be truncated&hellip;
+        					</a>
+        				</li>
+        				
+        				<li class="summary_comments">
+        					<span class="summary_comment-count">4 answers | 2 community team answers</span>
+        				</li>
+        				
+        				<li class="summary_see-more">
+        					<a href="#">See More</a>
+        				</li>
+        			</ul>
+        		</li>
+        		
+        		<li class="summary_list-item summary-list_post clearfix">
+        			<ul>
+        				<li class="summary_type-date">
+        					<span class="summary_type">Blog Posts</span>
+        					<span class="summary_date">July 5, 2012</span>
+        				</li>
+        				
+        				<li class="summary_title">
+        					<a href="#">
+        						Question headline goes here and here. This is a really long title for a post with many characters and needs to be truncated&hellip;
+        					</a>
+        				</li>
+        				
+        				<li class="summary_comments">
+        					<span class="summary_author">By: Dick Headless</span>
+        					<span class="summary_comment-count">2 community team answers</span>
+        				</li>
+        				
+        				<li class="summary_see-more">
+        					<a href="#">See More</a>
+        				</li>
+        			</ul>
+        		</li>
+        		
+        		<li class="summary_list-item summary-list_guide clearfix">
+        			<ul>
+        				<li class="summary_type-date">
+        					<span class="summary_type">Buying Guides</span>
+        					<span class="summary_date">July 5, 2012</span>
+        				</li>
+        				
+        				<li class="summary_title">
+        					<a href="#">
+        						Question headline goes here and here. This is a really long title for a post with many characters and needs to be truncated&hellip;
+        					</a>
+        				</li>
+        				
+        				<li class="summary_comments">
+        					<span class="summary_author">By: Dick Headless</span>
+        					<span class="summary_comment-count">2 community team answers</span>
+        				</li>
+        				
+        				<li class="summary_see-more">
+        					<a href="#">See More</a>
+        				</li>
+        			</ul>
+        		</li>
+        		
+        		
+        	</ul>
+        	
+        </section>
+				
+			</article>
+			
+			
+			
 			<!-- BEGIN EXPERTS LIST -->
 			
 			<div class="archive_users span12">
