@@ -17,10 +17,7 @@
 	
 define('USE_LOCAL_DB', false);
 
-
-<<<<<<< HEAD
 if(USE_LOCAL_DB) {
-	
 	/** The name of the database for WordPress */
 	define('DB_NAME', 'comm_local');
 	
@@ -36,14 +33,7 @@ if(USE_LOCAL_DB) {
 	
 	/** Database Charset to use in creating database tables. */
 	define('DB_CHARSET', 'utf8');
-	
-	
 } else {
-	
-
-=======
-
->>>>>>> em.postwidget.r28
 	/** The name of the database for WordPress */
 	define('DB_NAME', 'communities');
 	
@@ -59,44 +49,7 @@ if(USE_LOCAL_DB) {
 	
 	/** Database Charset to use in creating database tables. */
 	define('DB_CHARSET', 'utf8');
-
-
-	
-
 }
-	
-/** The name of the database for WordPress */
-// define('DB_NAME', 'communities');
-// 
-// /** MySQL database username */
-// define('DB_USER', 'communities_dba');
-// 
-// /** MySQL database password */
-// define('DB_PASSWORD', 'password1');
-// 
-// /** MySQL hostname */
-// define('DB_HOST', 'barable.com');
-// define('WP_ALLOW_MULTISITE', true);
-
-/** Database Charset to use in creating database tables. */
-// define('DB_CHARSET', 'utf8');
-// 
-// /** The name of the database for WordPress */
-// define('DB_NAME', 'communities');
-// 
-// /** MySQL database username */
-// define('DB_USER', 'root');
-// 
-// /** MySQL database password */
-// define('DB_PASSWORD', 'tim97669');
-// 
-// /** MySQL hostname */
-// define('DB_HOST', '127.0.0.1:3306');
-// // define('WP_ALLOW_MULTISITE', true);
-// 
-// /** Database Charset to use in creating database tables. */
-// define('DB_CHARSET', 'utf8');
-
 
 	
 /**#@+

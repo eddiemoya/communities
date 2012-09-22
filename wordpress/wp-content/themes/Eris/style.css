@@ -1308,6 +1308,14 @@ fieldset#use_your_account_from {
     color: black;
     float: left;
     padding: 7px; }
+    .tooltip .middle input {
+      margin-top: 7px; }
+    .tooltip .middle .kmart_button {
+      float: left; }
+    .tooltip .middle .azure {
+      float: right; }
+    .tooltip .middle textarea {
+      width: 100%; }
 
 .commentForm {
   margin-bottom: 20px; }
