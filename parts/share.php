@@ -10,7 +10,7 @@
 <div class="addthis_toolbox addthis_default_style">
     <a class="addthis_button_facebook_like"<?php echo $add_url; ?>></a>
     <a class="addthis_button_tweet"<?php echo $add_url; ?>></a>
-    <a class="addthis_button_www.shopyourway.com" addthis:title="ShopYourWay this"<?php echo $add_url; ?>><img src="<?php echo get_template_directory_uri() ?>/assets/img/shopyourway_large.png" /></a>
+    <a class="addthis_button_www.shopyourway.com share_shop-your-way" addthis:title="ShopYourWay this"<?php echo $add_url; ?>><img src="<?php echo get_template_directory_uri() ?>/assets/img/shopyourway_large.png" /></a>
     <a class="addthis_button_email"<?php echo $add_url; ?>><img src="<?php echo get_template_directory_uri() ?>/assets/img/email.png" /></a>
 </div>
 <?php else: ?>
