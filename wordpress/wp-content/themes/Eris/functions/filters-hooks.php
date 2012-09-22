@@ -388,3 +388,11 @@ function disallow_admin_access() {
 }
 
 add_filter('admin_init', 'disallow_admin_access');
+
+function force_list_class( $data , $postarr ) {
+    $data['post_content'] = str_replace( '<ol>', '<ol class="bullets">', $data['post_content']);
+    $data['post_content'] = str_replace( '<ul>', '<ul class="bullets">', $data['post_content']);
+    return $data;
+}
+
+add_filter( 'wp_insert_post_data' , 'force_list_class' , '99', 2 );
