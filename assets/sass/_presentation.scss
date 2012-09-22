@@ -396,7 +396,7 @@ form {}
 }
 
 // SINGLES PAGE
-.single #content > section.span12 {
+#content > section.span12 {
   border-top:solid 1px #d5d5d5;
 }
 
@@ -1704,4 +1704,41 @@ button.follow {
   border-top: 1px solid #CCCCCC;
   padding: 0.5em;
   text-align: center;
+}
+
+.summary-list {
+  .summary_type {
+    color:#666666;
+    font-size:font-size(12);
+    font-weight:bold;
+  }
+  .summary_date {
+    color:#333333;
+    float:right;
+    font-size:font-size(11);
+  }
+  .summary_type-date, .summary_title, .summary_comments {
+    margin-bottom:.6em;
+  }
+  .summary_title {
+    font-size:font-size(12);
+  }
+  .summary_comment-count {
+    font-size:font-size(11);
+  }
+  .summary_see-more {
+    font-size:font-size(11);
+  }
+  .summary-list_post, .summary-list_guide {
+    .summary_author {
+      float:left;
+      font-size:(11);
+    }
+    .summary_comment-count {
+      float:right;
+    }
+  }
+  .summary_list-item {
+    margin-bottom:1.75em;
+  }
 }
