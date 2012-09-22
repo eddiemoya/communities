@@ -796,7 +796,7 @@ ul.bullets {
   border-left: 0;
   float: none; }
 
-.single #content > section.span12 {
+#content > section.span12 {
   border-top: solid 1px #d5d5d5; }
 
 #content > section.span12 > section[class*="span"] > [class*="span"]:first-child,
@@ -1763,6 +1763,30 @@ button.follow {
   padding: 0.5em;
   text-align: center; }
 
+.summary-list .summary_type {
+  color: #666666;
+  font-size: 92.307%;
+  font-weight: bold; }
+.summary-list .summary_date {
+  color: #333333;
+  float: right;
+  font-size: 84.615%; }
+.summary-list .summary_type-date, .summary-list .summary_title, .summary-list .summary_comments {
+  margin-bottom: .6em; }
+.summary-list .summary_title {
+  font-size: 92.307%; }
+.summary-list .summary_comment-count {
+  font-size: 84.615%; }
+.summary-list .summary_see-more {
+  font-size: 84.615%; }
+.summary-list .summary-list_post .summary_author, .summary-list .summary-list_guide .summary_author {
+  float: left;
+  font-size: 11; }
+.summary-list .summary-list_post .summary_comment-count, .summary-list .summary-list_guide .summary_comment-count {
+  float: right; }
+.summary-list .summary_list-item {
+  margin-bottom: 1.75em; }
+
 .dropmenu li {
   float: left;
   position: relative; }
@@ -2250,7 +2274,7 @@ button.follow {
     -o-border-radius: 5px;
     border-radius: 5px; }
     .addthis.dropmenu li ul li a {
-      padding-left: .2em; }
+      padding-left: .01em; }
 .addthis.dropmenu .sharebutton {
   font-size: 100%;
   padding: 6px 0px;
@@ -2274,6 +2298,9 @@ button.follow {
 
 .sears .sharebutton {
   color: #067bb5; }
+
+.share_shop-your-way img {
+  width: 6.15em; }
 
 #login-open-id.open-id {
   border-top: solid 1px #cccccc;

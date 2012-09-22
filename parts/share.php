@@ -25,7 +25,7 @@
         <ul class="sharemenulinks">
             <li><a class="addthis_button_facebook"<?php echo $add_url; ?>>Facebook</a></li>
             <li><a class="addthis_button_twitter"<?php echo $add_url; ?>>Twitter</a></li>
-            <li><a onclick="javascript:window.open('http://shopyourway.com/sharer/share?title=<<?php echo $encoded_title; ?>&amp;link=<?php echo urlencode( $url ); ?>&amp;sourceSiteUrl=&amp;sourceSiteAlias=&amp;content=&amp;imageUrl=<?php echo $encoded_image; ?>','ShopYourWay','width=650,height=350'); return false;"><img src="http://static.shopyourway.com/static/share-buttons/small-light.png" alt=""/>ShopYourWay</a></li>
+            <li><a class="addthis_button_shopyourway" onclick="javascript:window.open('http://shopyourway.com/sharer/share?title=<<?php echo $encoded_title; ?>&amp;link=<?php echo urlencode( $url ); ?>&amp;sourceSiteUrl=&amp;sourceSiteAlias=&amp;content=&amp;imageUrl=<?php echo $encoded_image; ?>','ShopYourWay','width=650,height=350'); return false;"><img src="http://static.shopyourway.com/static/share-buttons/small-light.png" alt=""/> ShopYourWay</a></li>
             <li><a class="addthis_button_email"<?php echo $add_url; ?>>Email</a></li>
         </ul>
     </li>
