@@ -1755,6 +1755,11 @@ button.follow {
   .summary_see-more {
     font-size:font-size(11);
   }
+  .summary_comments {
+    @extend .clearfix;
+    @extend .clearfix:after;
+    @extend .clearfix:before;
+  }
   .summary-list_post, .summary-list_guide {
     .summary_author {
       float:left;
