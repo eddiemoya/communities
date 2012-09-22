@@ -566,8 +566,13 @@ html, body {
   display: none; }
 
 .bullets {
-  margin: 1.23em 0;
-  padding: 0 0 0 40px; }
+  color: #333333;
+  line-height: 1.7em;
+  margin: 0 0 1.476em 0;
+  padding: 0 0 0 3em; }
+
+.bullets ul {
+  margin-bottom: 0px; }
 
 ol.bullets {
   list-style-type: decimal; }
