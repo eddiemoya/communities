@@ -741,16 +741,16 @@ function lookup_expert_comments_count($post_id, $categories) {
     $expert_list = implode("|", $experts);
     $query = "SELECT COUNT(DISTINCT c.comment_ID) AS count FROM {$wpdb->comments} AS c ";
     $query .= "JOIN {$wpdb->usermeta} AS m ON m.user_id = c.user_id AND m.meta_key = 'um-taxonomy-category' ";
-    if (sizeof($categories) == 1) {
-        $query .= "AND {$categories[0]} IN (m.meta_value) ";
-    } else {
-        $query .= "AND (";
-        foreach($categories as $key => $category) {
-            if ($key != 0) {$query .= "OR ";}
-            $query .= "$category IN (m.meta_value) ";
-        }
-        $query .= ") ";
-    }
+    // if (sizeof($categories) == 1) {
+    //     $query .= "AND {$categories[0]} IN (m.meta_value) ";
+    // } else {
+    //     $query .= "AND (";
+    //     foreach($categories as $key => $category) {
+    //         if ($key != 0) {$query .= "OR ";}
+    //         $query .= "$category IN (m.meta_value) ";
+    //     }
+    //     $query .= ") ";
+    // }
     $query .= "JOIN {$wpdb->usermeta} AS m2 ON m2.user_id = c.user_id AND m2.meta_key = '{$wpdb->prefix}capabilities' AND m2.meta_value REGEXP '$expert_list' ";
     $query .= "WHERE c.comment_post_ID = $post_id";
     $return = $wpdb->get_results($wpdb->prepare($query));
