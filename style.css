@@ -54,6 +54,9 @@ table {
 b, strong {
   font-weight: bold; }
 
+em, i {
+  font-style: italic; }
+
 hr {
   border: 0;
   border-top: 1px solid #ccc;
@@ -68,8 +71,7 @@ img {
   vertical-align: middle; }
 
 img, object, embed {
-  max-width: 100%;
-  width: 100%; }
+  max-width: 100%; }
 
 sub, sup {
   font-size: 75%;
@@ -1782,7 +1784,8 @@ button.follow {
 .summary-list .summary_type-date, .summary-list .summary_title, .summary-list .summary_comments {
   margin-bottom: .6em; }
 .summary-list .summary_title {
-  font-size: 92.307%; }
+  font-size: 92.307%;
+  word-wrap: break-word; }
 .summary-list .summary_comment-count {
   font-size: 84.615%; }
 .summary-list .summary_see-more {
