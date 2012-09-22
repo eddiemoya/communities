@@ -49,8 +49,17 @@ html, body {
 }
 
 .bullets {
-  margin: em-adjust( 1em 0 ); 
-  padding: 0 0 0 40px; 
+  color:#333333;
+  line-height:1.7em;
+  margin: 0 0 em-adjust( 1.2em ) 0; 
+  padding: 0 0 0 3em; 
+  li {
+    margin-bottom:.6em;
+  }
+}
+
+.bullets ul {
+  margin-bottom:0px;
 }
 
 ol.bullets {
