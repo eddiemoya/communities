@@ -162,6 +162,10 @@
                                                             name: 'submit',
                                                             method:
                                                                 function(event) {
+                                                                    if(jQuery(event.target).children('textarea').val() == '') {
+                                                                        return false;
+                                                                    }
+
                                                                     var sendData = jQuery(event.target).children().serialize();
 
                                                                     jQuery.post(
@@ -233,6 +237,13 @@
                                         element.trigger('addActiveToFlag-<?php echo $id; ?>');
                                     },
                                 post: {
+                                    blocker: function(target) {
+                                        if(typeof target !== 'undefined' && target.siblings('textarea').val() == '') {
+                                            return false;
+                                        }
+
+                                        return true;
+                                    },
                                     id:<?php echo $id; ?>,
                                     name:'flag',
                                     sub_type:'<?php echo $sub_type; ?>',

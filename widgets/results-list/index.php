@@ -1,0 +1,1 @@
+<?php get_template_part('widgets/results-list/archive');

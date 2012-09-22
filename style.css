@@ -1308,6 +1308,8 @@ fieldset#use_your_account_from {
     color: black;
     float: left;
     padding: 7px; }
+    .tooltip .middle input {
+      margin-top: 7px; }
 
 .commentForm {
   margin-bottom: 20px; }
