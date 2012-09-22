@@ -570,6 +570,8 @@ html, body {
   line-height: 1.7em;
   margin: 0 0 1.476em 0;
   padding: 0 0 0 3em; }
+  .bullets li {
+    margin-bottom: .6em; }
 
 .bullets ul {
   margin-bottom: 0px; }
