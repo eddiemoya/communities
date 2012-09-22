@@ -10,7 +10,6 @@ if(!is_ajax()) {
 
     $post_type = (isset($_GET['s'])) ? 'question' : $post_type;
 
-    loop(array($post_type, 'post'), null, 'widgets/results-list', 'parts/no-results');
     
     if(isset($_GET['s']) && trim($_GET['s']) == '') {
     	
