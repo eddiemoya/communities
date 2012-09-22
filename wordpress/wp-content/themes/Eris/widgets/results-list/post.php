@@ -13,7 +13,7 @@
     <!--  // Pull everything from here out to another partial specific to featured posts  -->
     <section class="content-body clearfix">
 
-    <?php if (has_post_thumbnail()) : ?>
+    <?php if (has_post_thumbnail() || !$_GET['s']) : ?>
         <div class="featured-image <?php echo $inner_span; ?>">
             <?php the_post_thumbnail(); ?>
         </div>
@@ -54,7 +54,9 @@
 
             <ul>
                 <li class="content-comments"><?php echo $comments_string; ?></li> 
+                <?php if(!$_GET['s']): ?>
                 <li class="content-share"><?php get_partial( 'parts/share', array("url" => get_post_permalink( $post->ID ) ) ); ?></li>
+                <?php endif; ?>
             </ul>
 
         </div> <!-- featured- -->

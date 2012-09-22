@@ -198,7 +198,6 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
 
         for(var i in callBacks) {
             if(callBacks[i].active === true) {
-
                 _thisTooltip.options.displayData.element.bind(callBacks[i].name, callBacks[i].method);
             }
         }
