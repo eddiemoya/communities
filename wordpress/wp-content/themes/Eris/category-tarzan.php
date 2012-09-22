@@ -349,8 +349,134 @@ get_template_part('parts/header');
 		<section class="span4">
 			
 			<!-- NEW RECENT ACTIVITY -->
+			<article class="widget content-container span12 summary-list">
 				
+				<header class="content-header">
+        	<h3>Related Stories</h3>
+        </header>
+        
+        <section class="content-body clearfix">
+        	
+        	<ul>
+        		
+        		<li class="summary_list-item summary-list_question clearfix">
+        			<ul>
+        				<li class="summary_type-date">
+        					<span class="summary_type">Questions</span>
+        					<span class="summary_date">July 5, 2012</span>
+        				</li>
+        				
+        				<li class="summary_title">
+        					<a href="#">
+        						Question headline goes here and here. This is a really long title for a post with many characters and needs to be truncated&hellip;
+        					</a>
+        				</li>
+        				
+        				<li class="summary_comments">
+        					<span class="summary_comment-count">4 answers | 2 community team answers</span>
+        				</li>
+        				
+        				<li class="summary_see-more">
+        					<a href="#">See More</a>
+        				</li>
+        			</ul>
+        		</li>
+        		
+        		<li class="summary_list-item summary-list_post clearfix">
+        			<ul>
+        				<li class="summary_type-date">
+        					<span class="summary_type">Blog Posts</span>
+        					<span class="summary_date">July 5, 2012</span>
+        				</li>
+        				
+        				<li class="summary_title">
+        					<a href="#">
+        						Question headline goes here and here. This is a really long title for a post with many characters and needs to be truncated&hellip;
+        					</a>
+        				</li>
+        				
+        				<li class="summary_comments">
+        					<span class="summary_author">By: Dick Headless</span>
+        					<span class="summary_comment-count">2 community team answers</span>
+        				</li>
+        				
+        				<li class="summary_see-more">
+        					<a href="#">See More</a>
+        				</li>
+        			</ul>
+        		</li>
+        		
+        		<li class="summary_list-item summary-list_guide clearfix">
+        			<ul>
+        				<li class="summary_type-date">
+        					<span class="summary_type">Buying Guides</span>
+        					<span class="summary_date">July 5, 2012</span>
+        				</li>
+        				
+        				<li class="summary_title">
+        					<a href="#">
+        						Question headline goes here and here. This is a really long title for a post with many characters and needs to be truncated&hellip;
+        					</a>
+        				</li>
+        				
+        				<li class="summary_comments">
+        					<span class="summary_author">By: Dick Headless</span>
+        					<span class="summary_comment-count">2 community team answers</span>
+        				</li>
+        				
+        				<li class="summary_see-more">
+        					<a href="#">See More</a>
+        				</li>
+        			</ul>
+        		</li>
+        		
+        		
+        	</ul>
+        	
+        </section>
+				
+			</article>
 			
+			
+			
+			<article class="widget content-container span12 summary-list">
+				<article class="content-container questionlist columns">
+	
+	        <header class="content-header">
+	        	<h3>Related Stories</h3>
+	        </header>
+	
+	        <section class="content-body clearfix">
+	    			<section class="content-body content-list clearfix">
+	        		<article class="content-item span12">
+	    					<div class="post-data span12">
+	              	<section class="clearfix">
+	                	<p class="post-category left">Question</p>
+	                  <p class="post-date right">September 21, 2012</p>
+	                </section>
+	                <section class="clearfix">
+	            			<p class="post-title"><a href="http://uxint-sears/community/questions/test-test/">Test test</a></p>
+	                  <p class="comments-count">no answers</p>
+	                                        
+	                </section>
+	    					</div>
+							</article>
+							<article class="content-item span12">
+	    					<div class="post-data span12">
+	              	<section class="clearfix">
+	                	<p class="post-category left">Question</p>
+	                  <p class="post-date right"></p>
+	                </section>
+	                <section class="clearfix">
+		            		<p class="post-title"><a href="http://uxint-sears/community/questions/does-sears-sell-rain-coats/">Does sears sell rain coats?</a></p>
+		                <p class="comments-count">5 answers</p>
+	            		</section>
+	    					</div>
+							</article>
+				    </section>
+	    		</section>
+				</article>
+			</article>
 				
 			<!-- END NEW RECENT ACTIVITY -->
 			

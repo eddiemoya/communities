@@ -106,7 +106,7 @@
       width: 96%;
       @include border-radius( 5px );
       a {
-        padding-left: .2em;
+        padding-left: .01em;
       }
     }
   }
@@ -134,4 +134,8 @@
 }
 .sears .sharebutton {
   color: sears( link );
+}
+
+.share_shop-your-way img {
+  width:6.15em;
 }
