@@ -141,7 +141,7 @@ function process_front_end_question() {
  	 $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '1');
 			
     //If step 1 - return that we should move on to step 2.
-    if( wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-1' ) || (isset($_POST['new_question_step_1']))){
+    if((wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-1' ) || isset($_POST['new_question_step_1'])) && (! isset($_POST['question-post-complete']))){
 
         //If user is logged in - step 2
         if(is_user_logged_in() && ! empty($_POST['post-question'])) {
