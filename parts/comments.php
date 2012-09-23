@@ -5,19 +5,14 @@
     require_once get_template_directory().'/classes/communities_profile.php';
 
     $comment_type = get_post_type( $post->ID ) == 'question' ? 'answer' : 'comment';
-
-    //get expert answers
-    $userProfile = new User_Profile();
-
-    $expertCommentCount = count($userProfile->page(1)
-                                ->get_posts_by_id($post->ID)
-                                ->get_expert_answers($comment_type)
-                                ->posts[0]
-                                ->expert_answers
-                    );
-
     $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type));
     
+    
+    $answer_count = (function_exists('get_custom_comment_count')) ? get_custom_comment_count('answer') : '';
+    $expert_count = (function_exists('get_expert_comment_count')) ? get_expert_comment_count($post->ID) : '';
+    $answer_count = $answer_count - $expert_count;
+    $answer_count_string = ($answer_count > 500) ? "500+ answers" : $answer_count . " " . _n( ' answer', ' answers', $answer_count );
+    $expert_count_string = ($expert_count > 500) ? "500+ community team answers" : $expert_count . " " . _n( ' community team answer', ' community team answers', $expert_count );
 
     if ( isset( $comments ) && !empty( $comments ) ) :
 ?>
@@ -28,26 +23,7 @@
 	
 	  <h3><?php echo ucfirst( $comment_type ); ?>s</h3>
     <h4>
-    	<?php
-            $commentCount = get_custom_comment_count($comment_type, $post->ID);
-
-            if($commentCount > 0) {
-                $string = ($commentCount > 1) ? $commentCount.' '.ucfirst($comment_type).'s' : $commentCount.' '.ucfirst($comment_type);
-
-                echo $string;
-            } else {
-                echo 'No '.ucfirst($comment_type);
-            }
-        ?> |
-        <?php
-            if($expertCommentCount > 0) {
-                $string = ($expertCommentCount > 1) ? $expertCommentCount.' Community Team '.ucfirst($comment_type).'s' : $commentCount.' Community Team '.ucfirst($comment_type);
-
-                echo $string;
-            } else {
-                echo '0 Community Team '.ucfirst($comment_type);
-            }
-        ?>
+    	<?php echo $answer_count_string; ?> | <?php echo $expert_count_string; ?>
     </h4>
 	</header> <!-- END ANSWER HEADER -->
 <?php endif; ?>
