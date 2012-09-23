@@ -172,7 +172,7 @@
                                                                         ajaxurl + '?action=flag_me',
                                                                         sendData,
                                                                         function() {
-                                                                            var success = '<p>This post has been flagged successfully!</p>';
+                                                                            var success = '<p>Thanks for your concern. We\'ll look into it as soon as possible.</p>';
 
                                                                             jQuery('.tooltip').children('.middle').html('');
                                                                             jQuery('.tooltip').children('.middle').html(success);
@@ -191,7 +191,7 @@
                                                     }
                                                 },
                                                 arrowPosition: 'top',
-                                                tooltipWidth: 188,
+                                                tooltipWidth: 200,
                                             }
                                         }
                                     "

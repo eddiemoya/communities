@@ -209,10 +209,16 @@ ul.bullets {
     @extend .bold;
   }
   h3 {
+    margin: .25em 0 .5em;
     font-size: font-size( 14 );
+    @extend .bold;
+    @extend .faint;
   }
   h2 {
-    margin-top: .5em;
+    margin: .5em 0 .5em;
+    font-size: font-size( 16 );
+    @extend .faint;
+    @extend .italic;
   }
   article {
     margin-top: .5em;
@@ -1113,6 +1119,18 @@ $tab-padding: "1em 0 .6em 0";
 
     input {
       margin-top: 7px;
+    }
+
+    .kmart_button {
+      float: left;
+    }
+
+    .azure {
+      float: right;
+    }
+
+    textarea {
+      width: 100%;
     }
   }
 }
