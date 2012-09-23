@@ -1,5 +1,5 @@
 <section class="no-results">
-    <p class="header">Sorry, We could not find any matches for "<?php echo $s; ?>"</p>
+    <p class="header">We're sorry. We could not find any matches for "<?php echo $s; ?>"</p>
     <p>Please try your search again</p>
     
     <p class="header">Search Tips:</p>

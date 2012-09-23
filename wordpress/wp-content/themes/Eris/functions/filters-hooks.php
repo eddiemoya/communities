@@ -17,7 +17,6 @@ function add_menu_class_first_last($output) {
 }
 add_filter('wp_nav_menu', 'add_menu_class_first_last');
 
-
 /**
  * Do not call this function directly, add it to the body_class filter
  * 
@@ -51,6 +50,10 @@ function filter_body_class($classes) {
 
     if(get_query_var('old_post_type')){
         $classes[] = 'archive_' . get_query_var('old_post_type').'s';
+    }
+
+    if(isset($_GET['s'])){
+        $classes[] = 'search-results';
     }
     
     return $classes;
@@ -357,10 +360,32 @@ function filter_before_widget($html, $dropzone, $widget){
         }
 
     }
+
+    if($meta->widgetpress_widget_classname = 'Results_List_Widget'){
+
+        if($meta->query_type == 'users'){
+            $html = str_replace('results-list', 'results-list_users', $html);
+           }
+
+    }
     //echo "<pre>";print_r();echo "</pre>";
 
     return $html;
 
+}
+
+add_action('template_redirect', 'template_redirect');
+
+function template_redirect(){
+
+    if(isset($_GET['s'])){
+        $templates[] = 'search.php';
+
+        $template = get_query_template($template_name, $templates);
+        //echo "<pre>";print_r($templates);echo "</pre>";
+        include( $template );
+        exit;
+        }
 }
 
 add_filter('widgetpress_before_widget', 'filter_before_widget', 10, 3);
@@ -378,3 +403,39 @@ function disallow_admin_access() {
 }
 
 add_filter('admin_init', 'disallow_admin_access');
+
+/**
+ * When a search query occurs, check for profanity. If there is 
+ * profanity, then clear out search, redirect to home with blank search.
+ * 
+ * @param void
+ */
+function search_profanity_filter() {
+	
+	if(isset($_GET['s'])) {
+		
+		if(strpos(sanitize_text($_GET['s']), '**') !== false) {
+			
+			$url = home_url('/') . '?s=';
+			wp_redirect($url);
+		}
+	}
+}
+
+add_action('init', 'search_profanity_filter');
+
+function force_list_class( $data , $postarr ) {
+    $data['post_content'] = str_replace( '<ol>', '<ol class="bullets">', $data['post_content']);
+    $data['post_content'] = str_replace( '<ul>', '<ul class="bullets">', $data['post_content']);
+    return $data;
+}
+
+add_filter( 'wp_insert_post_data' , 'force_list_class' , '99', 2 );
+
+function force_list_class_inline( $data ) {
+    $data = str_replace( '<ol>', '<ol class="bullets">', $data);
+    $data = str_replace( '<ul>', '<ul class="bullets">', $data);
+    echo $data;
+}
+add_filter( 'the_content', 'force_list_class_inline' );
+add_filter( 'the_excerpt', 'force_list_class_inline' );
