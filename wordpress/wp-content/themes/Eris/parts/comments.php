@@ -13,41 +13,38 @@
     $answer_count = $answer_count - $expert_count;
     $answer_count_string = ($answer_count > 500) ? "500+ answers" : $answer_count . " " . _n( ' answer', ' answers', $answer_count );
     $expert_count_string = ($expert_count > 500) ? "500+ community team answers" : $expert_count . " " . _n( ' community team answer', ' community team answers', $expert_count );
-
-    if ( isset( $comments ) && !empty( $comments ) ) :
 ?>
-<section class="span12 content-container comments">
-<?php if ($comment_type == "answer"): ?>
+    <section class="span12 content-container comments">
+    <?php if ( isset( $comments ) && !empty( $comments ) ) { ?>
+
+        
+
+        <?php if ($comment_type == "answer"): ?>
 		
-	<header class="content-header clearfix">
-	
-	  <h3><?php echo ucfirst( $comment_type ); ?>s</h3>
-    <h4>
-    	<?php echo $answer_count_string; ?> | <?php echo $expert_count_string; ?>
-    </h4>
-	</header> <!-- END ANSWER HEADER -->
-<?php endif; ?>
-	<section class="content-body">
-		<ol id="allComments">
-<?php
-        foreach($comments as $comment) {
-            get_partial('parts/comment', array("current_user" => $current_user, "comment" => $comment, "recursive" => true));
-        }
-?>
-		</ol> <!-- END ALL COMMENTS -->
-<?php
-    # No Comments. Only show on the 'question' post_type.
-    else:
-        if ( get_post_type( $post->ID ) == 'question' ):
-?>
+	       <header class="content-header clearfix">
+    	       <h3><?php echo ucfirst( $comment_type ); ?>s</h3>
+               <h4><?php echo $answer_count_string; ?> | <?php echo $expert_count_string; ?></h4>
+	       </header> <!-- END ANSWER HEADER -->
+        <?php endif; ?>
 
-    <p>
-        No <?php echo $comment_type; ?>s yet.
-    </p>
 
-<?php
-        endif;
-    endif;
-?></section> <!-- END CONTENT BODY -->
+	   <section class="content-body">
+            <ol id="allComments">
+            <?php
+                foreach($comments as $comment) {
+                    get_partial('parts/comment', array("current_user" => $current_user, "comment" => $comment, "recursive" => true));
+                }
+            ?>
+            </ol> <!-- END ALL COMMENTS -->
+    <?php } else { // no comments or comments empty ?>
+        <?php if ( get_post_type( $post->ID ) == 'question' ): ?>
+            <p>
+                No <?php echo $comment_type; ?>s yet.
+            </p>
+        <?php endif; ?>
+    <?php } ?>
+
+
+</section> <!-- END CONTENT BODY -->
 </section> <!-- END COMMENTS CONTENT CONTAINER -->
 <?php
