@@ -50,7 +50,6 @@
 	    ?>
 	</section>
 	<section class="span4">
-		Single Right Rail
 		<?php display_dropzone("single-{$post->post_type}-right-rail"); ?>
 
 	</section>
