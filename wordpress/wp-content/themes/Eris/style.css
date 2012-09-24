@@ -597,7 +597,7 @@ ul.bullets {
 .downcase {
   text-transform: lowercase; }
 
-.break-word, .member .info, .crest, .user-info, .content-container .content-headline, .recent_activity .recent-activity_title, .recent_activity .recent_activity_excerpt, #allComments .comment article, #allComments .span10, .member_details .member_screen-name, .member_details .member_location {
+.break-word, .member .info, .crest, .user-info, .content-container .content-headline, .recent_activity .recent-activity_title, .recent_activity .recent_activity_excerpt, .content-body.content-list .content-item .post-title, #allComments .comment article, #allComments .span10, .member_details .member_screen-name, .member_details .member_location {
   word-wrap: break-word; }
 
 .background_light-gray {
@@ -832,6 +832,12 @@ ul.bullets {
 
 .post.content-container .content-body {
   padding: 0.769em; }
+  .post.content-container .content-body img.alignleft {
+    float: left;
+    margin: 0 .5em .5em 0; }
+  .post.content-container .content-body img.alignright {
+    float: right;
+    margin: 0 0 .5em .5em; }
 
 .post, .question {
   padding: inherit 0px; }
