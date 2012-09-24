@@ -62,7 +62,7 @@
             $(document).ready(function() {
                 $.each($(".ugc-comment-answer_form form"), function() {
                     if (($(this).get(0)).style.display != 'block') {
-                        //$(this).addClass('hide');
+                        $(this).addClass('hide');
                     }
                 });
                 $(".ugc-comment-answer_form a").on('click', function(event) {

@@ -14,6 +14,7 @@
 								Your question has been posted. Within 72 hours, you'll get an answer from our Community Team. 
 							</p>
 							<button type="submit" class="<?php echo theme_option("brand"); ?>_button azure">Close</button>
+							<input type="hidden" name="question-post-complete" value="" />
 						</section>
 					</div>
 				</form>
