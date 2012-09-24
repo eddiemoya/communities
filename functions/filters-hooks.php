@@ -423,3 +423,19 @@ function search_profanity_filter() {
 }
 
 add_action('init', 'search_profanity_filter');
+
+function force_list_class( $data , $postarr ) {
+    $data['post_content'] = str_replace( '<ol>', '<ol class="bullets">', $data['post_content']);
+    $data['post_content'] = str_replace( '<ul>', '<ul class="bullets">', $data['post_content']);
+    return $data;
+}
+
+add_filter( 'wp_insert_post_data' , 'force_list_class' , '99', 2 );
+
+function force_list_class_inline( $data ) {
+    $data = str_replace( '<ol>', '<ol class="bullets">', $data);
+    $data = str_replace( '<ul>', '<ul class="bullets">', $data);
+    echo $data;
+}
+add_filter( 'the_content', 'force_list_class_inline' );
+add_filter( 'the_excerpt', 'force_list_class_inline' );

@@ -198,7 +198,6 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
 
         for(var i in callBacks) {
             if(callBacks[i].active === true) {
-
                 _thisTooltip.options.displayData.element.bind(callBacks[i].name, callBacks[i].method);
             }
         }
@@ -352,7 +351,7 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
                 break;
             case 'top':
                 leftPosition = _thisTooltip.getOffset(_thisTooltip.actedObj, 'left') -
-                                ((_thisTooltip.getWidth(_thisTooltip.tooltip) / 2) - (_thisTooltip.getWidth(_thisTooltip.actedObj) / 2));
+                                ((_thisTooltip.getWidth(_thisTooltip.tooltip) / 2) - (_thisTooltip.getWidth(_thisTooltip.actedObj) / 2)) - 5;
 
                 topPosition = _thisTooltip.getOffset(_thisTooltip.actedObj, 'top') +
                                 _thisTooltip.getHeight(_thisTooltip.actedObj) +

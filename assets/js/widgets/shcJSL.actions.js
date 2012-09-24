@@ -31,6 +31,9 @@ ACTIONS.actions = $actions = function(element, options) {
         customListener: null,
         element: null,
         post: {
+            blocker: function() {
+                return true;
+            },
             id: 0,
             name: '',
             sub_type: '',
@@ -62,6 +65,13 @@ ACTIONS.actions = $actions = function(element, options) {
     };
 
     _this._postAction = function(element, options) {
+        console.log('the elemnt in the func it ')
+        console.log(element);
+
+        if(_this.options.post.blocker(element) == false) {
+            return false;
+        }
+
         var post = options.post;
 
         jQuery.post(
@@ -83,8 +93,6 @@ ACTIONS.actions = $actions = function(element, options) {
 
                     jQuery(element).addClass('active');
                 } else if(data === 'deactivated-out') {
-                    console.log(element);
-
                     _this._updateCookie(data);
 
                     jQuery(element).removeClass('active');
@@ -232,8 +240,6 @@ ACTIONS.actions = $actions = function(element, options) {
 
         if(data !== 'deactivated-out') {
             jsonString += '{"id": "' + _this.options.post.id + '", "name": "' + _this.options.post.name + '", "sub_type": "' + _this.options.post.sub_type + '", "type": "' + _this.options.post.type + '"}]}';
-
-            console.log(jsonString);
         } else if(addedToCookie === true) {
             jsonString = jsonString.substring(0, jsonString .length - 1) + "]}";
         }

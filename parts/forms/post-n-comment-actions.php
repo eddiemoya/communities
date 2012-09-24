@@ -162,13 +162,17 @@
                                                             name: 'submit',
                                                             method:
                                                                 function(event) {
+                                                                    if(jQuery(event.target).children('textarea').val() == '') {
+                                                                        return false;
+                                                                    }
+
                                                                     var sendData = jQuery(event.target).children().serialize();
 
                                                                     jQuery.post(
                                                                         ajaxurl + '?action=flag_me',
                                                                         sendData,
                                                                         function() {
-                                                                            var success = '<p>This post has been flagged successfully!</p>';
+                                                                            var success = '<p>Thanks for your concern. We\'ll look into it as soon as possible.</p>';
 
                                                                             jQuery('.tooltip').children('.middle').html('');
                                                                             jQuery('.tooltip').children('.middle').html(success);
@@ -187,7 +191,7 @@
                                                     }
                                                 },
                                                 arrowPosition: 'top',
-                                                tooltipWidth: 188,
+                                                tooltipWidth: 200,
                                             }
                                         }
                                     "
@@ -233,6 +237,13 @@
                                         element.trigger('addActiveToFlag-<?php echo $id; ?>');
                                     },
                                 post: {
+                                    blocker: function(target) {
+                                        if(typeof target !== 'undefined' && target.siblings('textarea').val() == '') {
+                                            return false;
+                                        }
+
+                                        return true;
+                                    },
                                     id:<?php echo $id; ?>,
                                     name:'flag',
                                     sub_type:'<?php echo $sub_type; ?>',

@@ -52,6 +52,10 @@ b, strong {
   font-weight: bold; 
 }
 
+em, i {
+  font-style:italic;
+}
+
 hr { 
   border: 0; 
   border-top: 1px solid #ccc; 
@@ -69,7 +73,6 @@ img {
 
 img, object, embed {
   max-width: 100%;
-  width:100%;
 }
 
 sub, sup { 
