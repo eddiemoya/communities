@@ -5,7 +5,7 @@ if(!is_ajax())
 
 foreach($users as $user){
 	$user = get_userdata($user->ID);
-	get_partial('parts/author', $user);
+	get_partial('widgets/results-list/user', array('user' =>$user));
 }
 
 if(!is_ajax())

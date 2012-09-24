@@ -1,5 +1,5 @@
 <?php  ///echo "<pre>";print_r(is_widget('show_filters'));echo "</pre>";
-	if(!is_widget()){
+	if(is_widget('query_type') == 'users'){
 		$post_type = 'users';
 	} else {
 		$queried_type = get_query_var('post_type');
@@ -11,7 +11,7 @@
 	
 if(have_posts() || !is_widget()) : ?>
 
-<?php if((is_widget('show_filters') || is_widget('show_sort')) || !is_widget()) : ?>
+<?php if(is_widget('show_filters') || is_widget('show_sort')) : ?>
 
 	<header class="content-header">
 		<form method="post" action="">
