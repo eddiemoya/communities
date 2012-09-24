@@ -1,22 +1,22 @@
 /*
 Syntax error: Invalid CSS after "  }": expected selector or at-rule, was "}"
-        on line 468 of sass/_presentation.scss
+        on line 477 of sass/_presentation.scss
         from line 19 of sass/style.scss
 
-463:   .bullets li {
-464:       position: relative;
-465:       left: 1.5em;
-466:     }
-467:   }
-468: }
-469: 
-470: .post, .question {
-471:   padding:inherit 0px;
-472:   .content-body p {
-473:     margin-bottom: em-adjust( 1.2em );
+472:   .bullets li {
+473:       position: relative;
+474:       left: 1.5em;
+475:     }
+476:   }
+477: }
+478: 
+479: .post, .question {
+480:   padding:inherit 0px;
+481:   .content-body p {
+482:     margin-bottom: em-adjust( 1.2em );
 
 Backtrace:
-sass/_presentation.scss:468
+sass/_presentation.scss:477
 sass/style.scss:19
 /Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/scss/parser.rb:1010:in `expected'
 /Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/scss/parser.rb:956:in `expected'
@@ -55,4 +55,4 @@ sass/style.scss:19
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"  }\": expected selector or at-rule, was \"}\"\A         on line 468 of sass/_presentation.scss\A         from line 19 of sass/style.scss\A \A 463:   .bullets li {\A 464:       position: relative;\A 465:       left: 1.5em;\A 466:     }\A 467:   }\A 468: }\A 469: \A 470: .post, .question {\A 471:   padding:inherit 0px;\A 472:   .content-body p {\A 473:     margin-bottom: em-adjust( 1.2em );"; }
+  content: "Syntax error: Invalid CSS after \"  }\": expected selector or at-rule, was \"}\"\A         on line 477 of sass/_presentation.scss\A         from line 19 of sass/style.scss\A \A 472:   .bullets li {\A 473:       position: relative;\A 474:       left: 1.5em;\A 475:     }\A 476:   }\A 477: }\A 478: \A 479: .post, .question {\A 480:   padding:inherit 0px;\A 481:   .content-body p {\A 482:     margin-bottom: em-adjust( 1.2em );"; }
