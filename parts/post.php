@@ -24,6 +24,8 @@
 				
 				<?php the_content(); ?>
 				
+				<div class="clearfix">&nbsp;</div>
+				
 				<p class="content-author">
 					By: <?php get_screenname_link( $post->post_author ); ?>
 				</p>

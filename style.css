@@ -825,6 +825,12 @@ ul.bullets {
 
 .post.content-container .content-body {
   padding: 0.769em; }
+  .post.content-container .content-body img.alignleft {
+    float: left;
+    margin: 0 .5em .5em 0; }
+  .post.content-container .content-body img.alignright {
+    float: right;
+    margin: 0 0 .5em .5em; }
 
 .post, .question {
   padding: inherit 0px; }
