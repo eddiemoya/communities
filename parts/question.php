@@ -58,9 +58,7 @@
 	</section> <!-- END SPAN 8 -->
 
 	<section class="span4">
-		<?php
-		    //get_sidebar();
-		?>
+		<?php display_dropzone('single-question-right-rail'); ?>
 	</section>
 
 </section>
