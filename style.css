@@ -590,7 +590,7 @@ ul.bullets {
 .downcase {
   text-transform: lowercase; }
 
-.break-word, .member .info, .crest, .user-info, .content-container .content-headline, .recent_activity .recent-activity_title, .recent_activity .recent_activity_excerpt, #allComments .comment article, #allComments .span10, .member_details .member_screen-name, .member_details .member_location {
+.break-word, .member .info, .crest, .user-info, .content-container .content-headline, .recent_activity .recent-activity_title, .recent_activity .recent_activity_excerpt, .content-body.content-list .content-item .post-title, #allComments .comment article, #allComments .span10, .member_details .member_screen-name, .member_details .member_location {
   word-wrap: break-word; }
 
 .background_light-gray {
