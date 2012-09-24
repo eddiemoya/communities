@@ -5,7 +5,7 @@
     require_once get_template_directory().'/classes/communities_profile.php';
 
     $comment_type = get_post_type( $post->ID ) == 'question' ? 'answer' : 'comment';
-    $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type));
+    $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type, 'number' => 100));
     
     
     $answer_count = (function_exists('get_custom_comment_count')) ? get_custom_comment_count('answer') : '';
@@ -16,7 +16,6 @@
 ?>
     <section class="span12 content-container comments">
         <?php if ( isset( $comments ) && !empty( $comments ) ) { ?>
-
 
 
             <?php if ($comment_type == "answer"): ?>
