@@ -1,15 +1,18 @@
 <?php 
     global $excerptLength; $excerptLength = 140;
     get_template_part('parts/header', 'widget'); 
+?>
+
+
+<?php 
+    if (have_posts()) { while (have_posts()) { 
+    the_post(); 
     $answer_count = (function_exists('get_custom_comment_count')) ? get_custom_comment_count('answer') : '';
     $expert_count = (function_exists('get_expert_comment_count')) ? get_expert_comment_count($post->ID) : '';
     $answer_count = $answer_count - $expert_count;
     $answer_count_string = ($answer_count > 500) ? "500+ answers" : $answer_count . " " . _n( ' answer', ' answers', $answer_count );
-    $expert_count_string = ($expert_count > 500) ? "500+ community team answers" : $expert_count . " " . _n( ' community team answer', ' community team answers', $expert_count );
+    $expert_count_string = ($expert_count > 500) ? "500+ community team answers" : $expert_count . " " . _n( ' community team answer', ' community team answers', $expert_count );    
 ?>
-
-
-<?php if (have_posts()) { while (have_posts()) { the_post(); ?>
 
 <section class="span6">
     <article class="content-container question">
