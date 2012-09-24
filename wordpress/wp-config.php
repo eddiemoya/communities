@@ -14,11 +14,10 @@
  * @package WordPress
  */
 
+	
 define('USE_LOCAL_DB', false);
 
-
 if(USE_LOCAL_DB) {
-	
 	/** The name of the database for WordPress */
 	define('DB_NAME', 'comm_local');
 	
@@ -34,12 +33,7 @@ if(USE_LOCAL_DB) {
 	
 	/** Database Charset to use in creating database tables. */
 	define('DB_CHARSET', 'utf8');
-	
-	
 } else {
-	
-	
-	
 	/** The name of the database for WordPress */
 	define('DB_NAME', 'communities');
 	
@@ -55,7 +49,6 @@ if(USE_LOCAL_DB) {
 	
 	/** Database Charset to use in creating database tables. */
 	define('DB_CHARSET', 'utf8');
-	
 }
 
 	

@@ -77,18 +77,18 @@ class Advertisement_Widget extends WP_Widget {
         extract($args);
         extract($instance);
         
-        //echo $before_title . $bp_title . $after_title;
-        
+       
+         echo $before_widget;
         ?>
-        	<article class="widget content-container span6 ad-widget">
 				<header class="content-header">
 				<h1><?php echo $aw_title;?></h1>
 				</header>
 				<section class="content-body clearfix">
 					<?php echo $aw_content;?>
 				</section>
-			</article>
         <?php
+        echo $after_widget;
+       
     }
     
     /**
