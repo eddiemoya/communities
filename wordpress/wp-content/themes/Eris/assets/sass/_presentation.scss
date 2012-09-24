@@ -449,6 +449,14 @@ form {}
 .post.content-container {
   .content-body {
     padding:em-adjust(.625em);
+    img.alignleft {
+      float: left;
+      margin: 0 .5em .5em 0;
+    }
+    img.alignright {
+      float: right;
+      margin: 0 0 .5em .5em;
+    }
   }
 }
 
