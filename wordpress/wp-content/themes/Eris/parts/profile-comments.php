@@ -12,7 +12,7 @@
 		
     	$id = $activity->comment_ID;
     	$elem_id = 'comm-'. $id;
-    	
+
         $excerpt = '<article class="excerpt">' . (strlen( $activity->comment_content ) > 200 ? substr( $activity->comment_content, 0, 200 ) . "&#8230;" : $activity->comment_content) . '</article>';
 
         ?>
@@ -24,7 +24,6 @@
                     <a href="<?php echo get_permalink($activity->post->ID);?>"><?php echo sanitize_text($activity->post->post_title); ?></a>
                 </h3>
                 <?php echo sanitize_text($excerpt); ?>
-
                 
                 <?php if($profile_type == 'myprofile' || $current_user->ID == $activity->user_id):?>
                	 <a href="#" id="<?php echo $id;?>" class="delete-comment right">Delete</a>
@@ -32,7 +31,6 @@
                	<?php 
                		wp_nonce_field('comment_delete_' . $id . '_' . $current_user->ID, '_wp_nonce_' . $id);
                	endif;?>
-               	
 
             </div>
         </li>

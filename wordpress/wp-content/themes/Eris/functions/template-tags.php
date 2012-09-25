@@ -773,6 +773,7 @@ function sanitize_text($text) {
 	return $text;
 }
 
+
 function the_truncated_title($length = 100){
     
     $title = get_the_title();
@@ -780,6 +781,7 @@ function the_truncated_title($length = 100){
     if (strlen($title) > $length) $title = substr($title, 0, $length) . "...";
 
     echo $title;
+
 }
 
 function truncated_text($text, $length = 100) {
