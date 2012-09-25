@@ -51,7 +51,7 @@
 	</section>
 
 	<section class="span4">
-		<sections class="dropzone-inner-wrapper border-left">
+		<section class="dropzone-inner-wrapper border-left">
 			<?php display_dropzone("single-{$post->post_type}-right-rail"); ?>
 		</section>
 	</section>
