@@ -683,6 +683,7 @@ textarea.discussion {
   .recent-activity_title, .recent_activity_excerpt {
     font-size:font-size(12);
     margin-bottom:.5em;
+    word-wrap:break-word;
   }
   .recent-activity_excerpt {
     padding: .3em 1em;

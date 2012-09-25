@@ -1009,7 +1009,8 @@ textarea.discussion {
     font-weight: bold; }
 .recent_activity .recent-activity_title, .recent_activity .recent_activity_excerpt {
   font-size: 92.307%;
-  margin-bottom: .5em; }
+  margin-bottom: .5em;
+  word-wrap: break-word; }
 .recent_activity .recent-activity_excerpt {
   padding: .3em 1em;
   color: black;
