@@ -2279,6 +2279,9 @@ button.follow {
 .at300b img, .at300bo img {
   vertical-align: top; }
 
+.at300b:hover {
+  opacity: 1; }
+
 .addthis_toolbox .share_menu_links {
   z-index: 1; }
 
@@ -2331,10 +2334,6 @@ button.follow {
 
 .share_shop-your-way img {
   width: 6.15em; }
-
-.fb_edge_widget_with_comment span.fb_edge_comment_widget {
-  top: 15px !important;
-  left: -250px !important; }
 
 #login-open-id.open-id {
   border-top: solid 1px #cccccc;
