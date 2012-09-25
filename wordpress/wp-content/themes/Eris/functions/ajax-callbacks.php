@@ -67,7 +67,7 @@ function get_posts_ajax(){
             $wp_query = new WP_Query($query);
         $path = (isset($_POST['path'])) ? $_POST['path'] : 'parts';
       
-        loop(array($_POST['special'], 'post'), $_POST['template'], $path, 'parts/no-results');
+        loop(array($_POST['template'], 'post'), $_POST['special'], $path, 'parts/no-results');
         wp_reset_query();
 
     } else {
