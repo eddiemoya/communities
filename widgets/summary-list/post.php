@@ -28,7 +28,7 @@ $header = (is_widget('list_style') == 'post-type') ? $post_type_label : $categor
 
 		<li class="summary_title">
 			<a href="<?php the_permalink(); ?>">
-				<?php the_title(); ?>
+				<?php the_truncated_title(); ?>
 			</a>
 		</li>
 
@@ -39,20 +39,18 @@ $header = (is_widget('list_style') == 'post-type') ? $post_type_label : $categor
 			<?php endif; ?>
 
 			<span class="summary_comment-count">
-				<?php echo $answer_count_string; ?> | <?php echo $expert_count_string; ?>
+				<?php echo $answer_count_string; ?>
+				<?php echo ($post->post_type == 'question') ? ' | ' . $expert_count_string : ''; ?>
 			</span>
 		</li>
 
-		
-		<?php if(is_widget('show_share')) :?>
-			<li class="summary_content-share">
-				<?php get_partial( 'parts/share', array( "version" => is_widget('share_style'), "url" => get_post_permalink( $post->ID ) ) ); ?>
-		
-		<?php else: ?>
-			<li class="summary_see-more">
-				<a href="<?php the_permalink(); ?>">See More</a>
+		<li class="summary_see-more">
 
-		<?php endif; ?>
+			<?php if(is_widget('show_share')) :?>
+				<?php get_partial( 'parts/share', array( "version" => "short", "url" => get_post_permalink( $post->ID ) ) ); ?>
+			<?php else: ?>
+				<a href="<?php the_permalink(); ?>">See More</a>
+			<?php endif; ?>
 
 		</li> <!-- ends summary_see-more or summary_content-share -->
 
