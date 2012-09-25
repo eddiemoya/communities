@@ -4,7 +4,15 @@
 ?>
 
 
-<?php if (have_posts()) { while (have_posts()) { the_post(); ?>
+<?php 
+    if (have_posts()) { while (have_posts()) { 
+    the_post(); 
+    $answer_count = (function_exists('get_custom_comment_count')) ? get_custom_comment_count('answer') : '';
+    $expert_count = (function_exists('get_expert_comment_count')) ? get_expert_comment_count(get_the_ID()) : '';
+    $answer_count = $answer_count - $expert_count;
+    $answer_count_string = ($answer_count > 500) ? "500+ answers" : $answer_count . " " . _n( ' answer', ' answers', $answer_count );
+    $expert_count_string = ($expert_count > 500) ? "500+ community team answers" : $expert_count . " " . _n( ' community team answer', ' community team answers', $expert_count );    
+?>
 
 <section class="span6">
     <article class="content-container question">
@@ -30,7 +38,7 @@
                 <?php the_excerpt(); ?>
 
                 <ul class="content-comments">
-                    <li class="content-comments"><?php echo $answer_count . ' ' . _n( 'answer', 'answers', $answer_count ); ?> | <?php comments_number('0 replies', '1 reply', '% replies'); ?> | <?php echo $comment_count . ' ' . _n( 'comment', 'comments', $user->comment_count ); ?></li>
+                    <li class="content-comments"><?php echo $answer_count_string ?> | <?php echo $expert_count_string; ?></li>
                 </ul>
 
             </div>

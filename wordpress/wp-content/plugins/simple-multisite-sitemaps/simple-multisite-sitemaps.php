@@ -37,24 +37,22 @@ License: GPLv2
 \--------------------------------------------------------------------/
 */
 
-// flush!
-function jb_sms_sitemap_flush_rules() {
-    global $wp_rewrite;
-    $wp_rewrite->flush_rules();
-}
-add_action( 'init', 'jb_sms_sitemap_flush_rules' );
+// // flush!
+// function jb_sms_sitemap_flush_rules() {
+//     global $wp_rewrite;
+//     $wp_rewrite->flush_rules();
+// }
+// add_action( 'init', 'jb_sms_sitemap_flush_rules' );
 
-// rewrite
-function jb_sms_xml_feed_rewrite($wp_rewrite) {
-    global $wp_rewrite;
-
-    $feed_rules = array(
-        '.*sitemap.xml$' => 'index.php?feed=sitemap'
-    );
- 
-    $wp_rewrite->rules = $feed_rules + $wp_rewrite->rules;
-}
-add_filter( 'generate_rewrite_rules', 'jb_sms_xml_feed_rewrite' );
+// // rewrite
+// function jb_sms_xml_feed_rewrite($wp_rewrite) {
+//     global $wp_rewrite;
+// 
+//     $feed_rules = array('.*sitemap.xml$' => 'index.php?feed=sitemap');
+//  
+//     $wp_rewrite->rules = $feed_rules + $wp_rewrite->rules;
+// }
+// add_filter( 'generate_rewrite_rules', 'jb_sms_xml_feed_rewrite' );
 
 // generate sitemap.xml using the template
 function jb_sms_generate_sitemap() {
