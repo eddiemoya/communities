@@ -781,3 +781,10 @@ function the_truncated_title($length = 100){
 
     echo $title;
 }
+
+function truncated_text($text, $length = 100) {
+	
+	 if (strlen($text) > $length) $text = substr($text, 0, $length) . "...";
+
+    	return $text;
+}
