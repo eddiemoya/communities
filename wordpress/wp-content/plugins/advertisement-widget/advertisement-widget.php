@@ -33,7 +33,7 @@ class Advertisement_Widget extends WP_Widget {
      * 
      * @var string [OPTIONAL]
      */
-    private $classname = 'advertisement-widget';
+    private $classname = 'ad-widget';
     
     /**
      * Be careful to consider PHP versions. If running PHP4 class name as the contructor instead.
