@@ -14,8 +14,30 @@
  * @package WordPress
  */
 
+	
+define('USE_LOCAL_DB', false);
 
+if(USE_LOCAL_DB) {
+	/** The name of the database for WordPress */
+	define('DB_CHARSET', 'utf8');
+	
+	/** The name of the database for WordPress */
+	define('DB_NAME', 'communities');
+	
+	/** MySQL database username */
+	define('DB_USER', 'root');
+	
+	/** MySQL database password */
+	define('DB_PASSWORD', 'tim97669');
+	
+	/** MySQL hostname */
+	// define('WP_ALLOW_MULTISITE', true);
 
+	/** Database Charset to use in creating database tables. */
+	define('DB_CHARSET', 'utf8');
+
+	define('DB_HOST', '127.0.0.1:3306');
+} else {
 	/** The name of the database for WordPress */
 	define('DB_NAME', 'communities');
 	
@@ -31,9 +53,7 @@
 	
 	/** Database Charset to use in creating database tables. */
 	define('DB_CHARSET', 'utf8');
-
-
-	
+}
 
 	
 /**#@+
