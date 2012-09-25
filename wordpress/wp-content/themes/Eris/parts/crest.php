@@ -24,14 +24,8 @@
 	<li class="member_avatar span6">
 		<a href="<?php echo get_profile_url( $user_id ); ?>">
 			<?php echo profile_photo( $user_id ); ?>
-			<?php
-				if (
-						( ( isset( $titling ) ) && ( $titling == true ) )
-            ||
-            ( user_can($user_id, "post_as_expert" ) )
-					) {
-			?>
-			<span class="badge"><?php echo $wp_roles->roles[$user->roles[0]]["name"]; ?></span>
+			<?php if ( ( ( isset( $titling ) ) && ( $titling == true ) ) || ( user_can($user_id, "show_badge" ) ) ) { ?>
+			    <span class="badge"><?php echo $wp_roles->roles[$user->roles[0]]["name"]; ?></span>
 			<?php } ?>
 		</a>
 	</li>
