@@ -14,10 +14,10 @@ $categories = get_the_category();
 $header = (is_widget('list_style') == 'post-type') ? $post_type_label : $categories[0]->name;
 
 ?>
-<li class="summar_list-item summary-list_<?php echo get_post_type(get_the_ID()); ?>">
+<li class="summary_list-item summary-list_<?php echo get_post_type(get_the_ID()); ?>">
 	<ul>
 
-		<li class="summarty_type-date">
+		<li class="summary_type-date">
 			<span class="summary_type"><?php echo $header; ?></span>
 
 			<?php if(is_widget('show_date')): ?>
