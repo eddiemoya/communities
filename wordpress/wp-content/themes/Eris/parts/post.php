@@ -51,10 +51,13 @@
 	        comments_template('/parts/comments.php');
 	    ?>
 	</section>
-	<section class="span4">
-		<?php display_dropzone("single-{$post->post_type}-right-rail"); ?>
 
+	<section class="span4">
+		<sections class="dropzone-inner-wrapper border-left">
+			<?php display_dropzone("single-{$post->post_type}-right-rail"); ?>
+		</section>
 	</section>
+	
 </section>
 <?php
     if(is_user_logged_in()) {
