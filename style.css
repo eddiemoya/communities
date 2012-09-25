@@ -1,4 +1,4 @@
-/*
+/* 
 Theme Name: Eris
 Theme URI: http://ewww.sears.com/communities
 Description: The flexible 960 grid developed for Sears Communites and Kmart Communities sites
@@ -833,11 +833,16 @@ ul.bullets {
 .post.content-container .content-body {
   padding: 0.769em; }
   .post.content-container .content-body img.alignleft {
+    clear: left;
     float: left;
     margin: 0 .5em .5em 0; }
   .post.content-container .content-body img.alignright {
+    clear: right;
     float: right;
     margin: 0 0 .5em .5em; }
+  .post.content-container .content-body .bullets li {
+    position: relative;
+    left: 1.5em; }
 
 .post, .question {
   padding: inherit 0px; }
@@ -2396,63 +2401,3 @@ button.follow {
   list-style-type: circle;
   margin-bottom: 15px;
   padding-left: 15px; }
-
-/*
-Syntax error: Invalid CSS after "  }": expected selector or at-rule, was "}"
-        on line 477 of sass/_presentation.scss
-        from line 19 of sass/style.scss
-
-472:   .bullets li {
-473:       position: relative;
-474:       left: 1.5em;
-475:     }
-476:   }
-477: }
-478:
-479: .post, .question {
-480:   padding:inherit 0px;
-481:   .content-body p {
-482:     margin-bottom: em-adjust( 1.2em );
-
-Backtrace:
-sass/_presentation.scss:477
-sass/style.scss:19
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/scss/parser.rb:1010:in `expected'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/scss/parser.rb:956:in `expected'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/scss/parser.rb:28:in `parse'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/engine.rb:327:in `_to_tree'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/engine.rb:259:in `to_tree'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:144:in `visit_import'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:18:in `visit'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/tree/visitors/perform.rb:7:in `visit'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/tree/root_node.rb:20:in `render'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/engine.rb:300:in `_render'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/engine.rb:247:in `render'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/plugin/compiler.rb:200:in `each'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/lib/sass/plugin/compiler.rb:298:in `block in watch'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/vendor/listen/lib/listen/multi_listener.rb:86:in `call'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/vendor/listen/lib/listen/multi_listener.rb:86:in `on_change'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/vendor/listen/lib/listen/multi_listener.rb:95:in `block in initialize_adapter'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/vendor/listen/lib/listen/adapters/polling.rb:55:in `call'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/vendor/listen/lib/listen/adapters/polling.rb:55:in `poll'
-/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/gems/sass-3.1.20/vendor/listen/lib/listen/adapters/polling.rb:31:in `block in start'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"  }\": expected selector or at-rule, was \"}\"\A         on line 477 of sass/_presentation.scss\A         from line 19 of sass/style.scss\A \A 472:   .bullets li {\A 473:       position: relative;\A 474:       left: 1.5em;\A 475:     }\A 476:   }\A 477: }\A 478: \A 479: .post, .question {\A 480:   padding:inherit 0px;\A 481:   .content-body p {\A 482:     margin-bottom: em-adjust( 1.2em );"; }
->>>>>>> cab.recent.r16
