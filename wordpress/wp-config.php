@@ -15,9 +15,13 @@
  */
 
 	
-define('USE_LOCAL_DB', false);
+define('USE_LOCAL_DB', true);
 
 if(USE_LOCAL_DB) {
+	
+	/** The name of the database for WordPress */
+	define('DB_CHARSET', 'utf8');
+	
 	/** The name of the database for WordPress */
 	define('DB_NAME', 'comm_local');
 	
@@ -28,11 +32,13 @@ if(USE_LOCAL_DB) {
 	define('DB_PASSWORD', 'philos10');
 	
 	/** MySQL hostname */
-	define('DB_HOST', 'localhost');
 	// define('WP_ALLOW_MULTISITE', true);
+	define('DB_HOST', 'localhost');
 	
 	/** Database Charset to use in creating database tables. */
 	define('DB_CHARSET', 'utf8');
+
+	
 } else {
 	/** The name of the database for WordPress */
 	define('DB_NAME', 'communities');

@@ -1,0 +1,182 @@
+# Serbian translation of the WordPress plugin Cache Images 2.0 by Matt Mullenweg.
+# Copyright (C) 2010 Matt Mullenweg
+# This file is distributed under the same license as the Cache Images package.
+# Milan Dinić <milan@srpski.biz>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cache Images 2.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/cache-images\n"
+"POT-Creation-Date: 2010-12-03 21:08+0000\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Milan Dinić <milan@srpski.biz>\n"
+"Language-Team: AMPM <marcelo@marcelopedra.com.ar>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3;    plural=n%10==1 && n%100!=11 ? 0 :    n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Poedit-Language: Spanish\n"
+
+#: cache-images.php:46
+msgid "Settings"
+msgstr "Configuraci&oacute;n"
+
+#: cache-images.php:47
+msgid "Scanning"
+msgstr "Escaneando"
+
+#: cache-images.php:86
+msgid "Cache Remote Images"
+msgstr "Cachear Im&aacute;genes Remotas"
+
+#: cache-images.php:94
+msgid "Remote Image Caching"
+msgstr "Cacheado de Im&aacute;genes Remotas"
+
+#: cache-images.php:95
+msgid "Here&#8217;s how this works:"
+msgstr "As&iacute; es como funciona:"
+
+#: cache-images.php:97
+msgid "Click the button below and we&#8217;ll scan all of your posts for remote images"
+msgstr "Haga click en el siguiente bot&oacute;n para escanear todos los art&iacute;culos en busca de im&aacute;genes remotas"
+
+#: cache-images.php:97
+#: cache-images.php:315
+msgid "Button <strong>Scan</strong> will search only for images that are hotlinked (ie. used like in example <code>&lt;img src=\"http://example.com/picture.jpg\" /&gt;</code>), while button <strong>Scan (including linked)</strong> will search for images that are only linked from this site (ie. ised like in example <code>&lt;a href=\"http://example.com/picture.jpg\"&gt;example&lt;/a&gt;</code>). Use second button with caution!"
+msgstr "El bot&oacute;n <strong>Scan</strong> s&oacute;lo buscar&aacute; im&aacute;genes con hotlinking (ej: <code>&lt;img src=\"http://ejemplo.com/imagen.jpg\" /&gt;</code>), mientras que el bot&oacute;n <strong>Escanear (incluyendo enlazadas)</strong> va a buscar im&aacute;genes enlazadas solamente desde este sitio (ej: <code>&lt;a href=\"http://ejemplo.com/imagen.jpg\"&gt;example&lt;/a&gt;</code>). Use el segundo bot&oacute;n con precauci&oacute;n!"
+
+#: cache-images.php:98
+msgid "Then you&#8217;ll be presented with a list of domains. For each domain, press button Cache from this domain"
+msgstr "Entonces aparecer&aacute; una lista de dominios. Por cada dominio, habr&aacute; un bot&oacute;n Cachear desde este dominio."
+
+#: cache-images.php:99
+msgid "The images will be copied to your upload directory, the links in your posts will be updated to the new location, and images will be added to your media library, associated to first post from where they are found."
+msgstr "Las im&aacute;genes ser&aacute;n copiados a la carpeta upload, y los links en todos esos posts se actualizar&aacute;n para usar las im&aacute;genes en su nueva ubicaci&oacute;n. También se actualizar&aacute;n las entradas de la biblioteca multimedia."
+
+#: cache-images.php:107
+msgid "Tip:"
+msgstr "Consejo:"
+
+#: cache-images.php:108
+msgid "You can install plugin WP Smush.it to reduce image file sizes and improve performance using the Smush.it API."
+msgstr "Puede instalar tambi&eacute;n el plugin WP Smush.it para reducir el tama&ntilde;o de las im&aacute;genes y mejorar as&iacute; el rendimiento global del sitio."
+
+#: cache-images.php:109
+#, php-format
+msgid " (<a href='%s'>read more about WP Smush.it</a>)"
+msgstr " (<a href='%s'>m&aacute; info acerca de WP Smush.it</a>)"
+
+#: cache-images.php:110
+#, php-format
+msgid "<a href='%s' class='thickbox'>Install WP Smush.it</a>"
+msgstr "<a href='%s' class='thickbox'>Instalar WP Smush.it</a>"
+
+#: cache-images.php:123
+#: cache-images.php:159
+#: cache-images.php:392
+#: cache-images.php:412
+#: cache-images.php:428
+msgid "No posts with images were found."
+msgstr "No se encontraron art&iacute;culos con im&aacute;genes."
+
+#: cache-images.php:129
+#: cache-images.php:165
+msgid "We found some results. Choose the domains from where you want to grab images from by clicking on a button \"Cache from this domain\" next to it."
+msgstr "Se encontraron algunos resultados. Seleccione los dominios desde donde desee tomar im&aacute;genes cliqueando en el bot&oacute;n \"Cachear desde este dominio\"."
+
+#: cache-images.php:129
+#: cache-images.php:165
+msgid "<strong>Note</strong>: you <strong>must not close</strong> this page while caching is performed. You can close it when you see message \"Done caching from...\" and yellow bar is removed"
+msgstr "<strong>Nota</strong>: <strong>POR FAVOR NO CERRAR ESTA PAGINA</strong> mientras se cachean datos. Puede cerrarse cuando lea el mensaje \"Cache completo desde...\" y la barra amarilla desaparezca."
+
+#: cache-images.php:135
+#: cache-images.php:171
+#, php-format
+msgid "results: %1$s"
+msgstr "resultados: %1$s"
+
+#: cache-images.php:135
+#: cache-images.php:171
+msgid "Cache from this domain"
+msgstr "Cachear desde este dominio"
+
+#: cache-images.php:143
+#: cache-images.php:179
+#: cache-images.php:244
+#: cache-images.php:296
+#, php-format
+msgid "Error %1$s"
+msgstr "Error %1$s"
+
+#: cache-images.php:201
+#: cache-images.php:253
+msgid "Reading posts..."
+msgstr "Leyendo posts..."
+
+#: cache-images.php:216
+#: cache-images.php:268
+#, php-format
+msgid "Done caching from %1$s"
+msgstr "Cache completo desde %1$s"
+
+#: cache-images.php:222
+#: cache-images.php:274
+#, php-format
+msgid "Caching %1$s of %2$s"
+msgstr "Cacheando %1$s / %2$s"
+
+#: cache-images.php:313
+msgid "Scan &raquo;"
+msgstr "Escanear &raquo;"
+
+#: cache-images.php:314
+msgid "Scan (including linked) &raquo;"
+msgstr "Escanear (incluyendo enlazadas) &raquo;"
+
+#: cache-images.php:314
+msgid "what is difference?"
+msgstr "Cu&aacute;l es la diferencia?"
+
+#: cache-images.php:322
+#, php-format
+msgid "Last cached picture: %1$s"
+msgstr "Ultima imagen cacheada: %1$s"
+
+#. #-#-#-#-#  plugin.pot (Cache Images 3.1)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: cache-images.php:550
+msgid "Cache Images"
+msgstr "Cache Images"
+
+#: cache-images.php:551
+msgid "Automatic caching"
+msgstr "Cacheado autom&aacute;tico"
+
+#: cache-images.php:566
+msgid "Automatically cache images on post&#8217;s saving"
+msgstr "Autom&aacute;ticamente cachear im&aacute;genes al guardar entradas"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/cache-images/"
+msgstr "http://wordpress.org/extend/plugins/cache-images/"
+
+# Description of the plugin/theme
+#. Description of the plugin/theme
+msgid "Goes through your posts and gives you the option to cache all hotlinked images from a domain locally in your upload folder"
+msgstr "Recorre todos los posts para localizar im&aacute;genes hotlinkeadas desde este blog y permite copiarlas para almacenarlas localmente."
+
+#. Author of the plugin/theme
+msgid "Matt Mullenweg"
+msgstr "Matt Mullenweg"
+
+#. Author URI of the plugin/theme
+msgid "http://ma.tt/"
+msgstr "http://ma.tt/"
+
+#~ msgid "(%1$s image found)"
+
+#~ msgid_plural "(%1$s images found)"
+#~ msgstr[0] "(%1$s imagen encontrada)"
+#~ msgstr[1] "(%1$s  im&aacute;genes encontradas)"
+#~ msgstr[2] "(%1$s  im&aacute;genes encontradas)"
