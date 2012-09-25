@@ -459,12 +459,18 @@ form {}
   .content-body {
     padding:em-adjust(.625em);
     img.alignleft {
+      clear: left;
       float: left;
       margin: 0 .5em .5em 0;
     }
     img.alignright {
+      clear: right;
       float: right;
       margin: 0 0 .5em .5em;
+    }
+    .bullets li {
+      position: relative;
+      left: 1.5em;
     }
   }
 }
@@ -472,7 +478,7 @@ form {}
 .post, .question {
   padding:inherit 0px;
   .content-body p {
-    margin-bottom: em-adjust( 1.2em )
+    margin-bottom: em-adjust( 1.2em );
   }
 }
 
