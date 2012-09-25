@@ -21,7 +21,7 @@ $header = (is_widget('list_style') == 'post-type') ? $post_type_label : $categor
 			<span class="summary_type"><?php echo $header; ?></span>
 
 			<?php if(is_widget('show_date')): ?>
-				<span class="summary_date"><?php the_date(); ?></span>
+				<span class="summary_date"><?php the_time('F j, Y'); ?></span>
 			<?php endif; ?>
 
 		</li>
