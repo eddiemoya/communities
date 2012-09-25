@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-/* 
+/*
 Theme Name: Eris
 Theme URI: http://ewww.sears.com/communities
 Description: The flexible 960 grid developed for Sears Communites and Kmart Communities sites
@@ -2397,7 +2396,7 @@ button.follow {
   list-style-type: circle;
   margin-bottom: 15px;
   padding-left: 15px; }
-=======
+
 /*
 Syntax error: Invalid CSS after "  }": expected selector or at-rule, was "}"
         on line 477 of sass/_presentation.scss
@@ -2409,7 +2408,7 @@ Syntax error: Invalid CSS after "  }": expected selector or at-rule, was "}"
 475:     }
 476:   }
 477: }
-478: 
+478:
 479: .post, .question {
 480:   padding:inherit 0px;
 481:   .content-body p {
