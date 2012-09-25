@@ -1743,9 +1743,6 @@ button.follow {
 .border-left {
   border-left:solid 1px #dfdede;
   padding-left:1.45em;
-  @extend .clearfix;
-  @extend .clearfix:after;
-  @extend .clearfix:before;
 }
 
 .sears .site-error .message {
