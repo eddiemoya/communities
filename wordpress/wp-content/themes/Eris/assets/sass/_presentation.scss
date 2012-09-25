@@ -209,10 +209,16 @@ ul.bullets {
     @extend .bold;
   }
   h3 {
+    margin: .25em 0 .5em;
     font-size: font-size( 14 );
+    @extend .bold;
+    @extend .faint;
   }
   h2 {
-    margin-top: .5em;
+    margin: .5em 0 .5em;
+    font-size: font-size( 16 );
+    @extend .faint;
+    @extend .italic;
   }
   article {
     margin-top: .5em;
@@ -452,6 +458,14 @@ form {}
 .post.content-container {
   .content-body {
     padding:em-adjust(.625em);
+    img.alignleft {
+      float: left;
+      margin: 0 .5em .5em 0;
+    }
+    img.alignright {
+      float: right;
+      margin: 0 0 .5em .5em;
+    }
   }
 }
 
@@ -1012,6 +1026,7 @@ $tab-padding: "1em 0 .6em 0";
     clear: both;
     .post-title {
       line-height:em-adjust( 1.2em );
+      @extend .break-word;
     }
     .byline, .comments-count, .post-date {
       font-size: font-size( 11 );
@@ -1113,6 +1128,18 @@ $tab-padding: "1em 0 .6em 0";
 
     input {
       margin-top: 7px;
+    }
+
+    .kmart_button {
+      float: left;
+    }
+
+    .azure {
+      float: right;
+    }
+
+    textarea {
+      width: 100%;
     }
   }
 }
