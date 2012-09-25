@@ -741,6 +741,7 @@ textarea.discussion {
   h3 {
     a {
       font-weight: bold;
+      @extend .break-word;
     }
     & > * {
       display: block;
@@ -753,6 +754,7 @@ textarea.discussion {
     padding: .3em 1em;
     color: $darkest-color;
     background: sears( content-focus );
+    @extend .break-word;
     // create quotes around a comment
     &:before {
       // left quote
