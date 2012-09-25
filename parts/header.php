@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xmlns:shc="http://www.sears.com" <?php language_attributes(); ?> > <!--<![endif]-->
 <head>
-
-    <title><?php echo sanitize_text(wp_title('&laquo;', false, 'right')); ?> <?php bloginfo('name'); ?></title>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <title><?php echo (is_author()) ? "Communities User Profile &laquo;" : sanitize_text(wp_title('&laquo;', false, 'right'))?> <?php bloginfo('name'); ?></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
 		
     <meta charset="<?php bloginfo('charset'); ?>" />
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
