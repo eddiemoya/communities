@@ -989,16 +989,16 @@ textarea.discussion {
   width: 100%;
   margin-left: 0; }
 
-.content-container.span3.featured-post .featured-image.span6, .content-container.span3.featured-post .featured-post.span6,
+.content-container.span3.featured-post .featured-image.span6, .content-container.span3.featured-post .featured-content.span6,
 .content-container.span4.featured-post .featured-image.span6,
-.content-container.span4.featured-post .featured-post.span6,
+.content-container.span4.featured-post .featured-content.span6,
 .content-container.span6.featured-post .featured-image.span6,
-.content-container.span6.featured-post .featured-post.span6 {
+.content-container.span6.featured-post .featured-content.span6 {
   margin-left: 0;
   width: 100%; }
-.content-container.span3.featured-post .featured-post.span6,
-.content-container.span4.featured-post .featured-post.span6,
-.content-container.span6.featured-post .featured-post.span6 {
+.content-container.span3.featured-post .featured-content.span6,
+.content-container.span4.featured-post .featured-content.span6,
+.content-container.span6.featured-post .featured-content.span6 {
   margin-top: 0.769em; }
 
 .recent_activity .recent-activity-list > li {
