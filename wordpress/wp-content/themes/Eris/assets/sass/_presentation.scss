@@ -51,8 +51,9 @@ html, body {
 .bullets {
   color:#333333;
   line-height:1.7em;
-  margin: 0 0 em-adjust( 1.2em ) 0; 
-  padding: 0 0 0 3em; 
+  margin: 0 0 em-adjust( 1.2em ) 1em; 
+  padding: 0 0 0 1.5em;
+  overflow:hidden; 
   li {
     margin-bottom:.6em;
   }
@@ -467,10 +468,6 @@ form {}
       clear: right;
       float: right;
       margin: 0 0 .5em .5em;
-    }
-    .bullets li {
-      position: relative;
-      left: 1.5em;
     }
   }
 }
