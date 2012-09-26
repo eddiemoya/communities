@@ -2,7 +2,7 @@
 /**
  * Custom Comment Types 
  */
-if (class_exists(CCT_Controller_Comment_Types)) {
+if (class_exists('CCT_Controller_Comment_Types')) {
     
     /**
      * 
