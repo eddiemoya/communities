@@ -12,6 +12,7 @@ if (class_exists(CCT_Controller_Comment_Types)) {
              'labels' => array(
                  'name' => _x('Flags', 'post type general name'),
                  'singular_name' => _x('Flag', 'post type singular name'),
+                 'plural' => 'Flags',
                  'add_new' => _x('Add New', 'flag'),
                  'add_new_item' => __('Add New Flag'),
                  'edit_item' => __('Edit Flag'),
@@ -42,6 +43,7 @@ if (class_exists(CCT_Controller_Comment_Types)) {
     function register_answers() {
         $args = array(
             'labels' => array(
+                'plural' => 'Answers',
                 'name' => _x('Answers', 'post type general name'),
                 'singular_name' => _x('Answer', 'post type singular name'),
                 'add_new' => _x('Add New', 'answer'),
