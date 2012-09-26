@@ -58,8 +58,9 @@
 	</section> <!-- END SPAN 8 -->
 
 	<section class="span4">
-        <sections class="dropzone-inner-wrapper border-left">
+        <section class="dropzone-inner-wrapper border-left">
             <?php display_dropzone('single-question-right-rail'); ?>
+            <div class="clearfix"></div>
         </section>
 	</section>
 
