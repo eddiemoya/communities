@@ -11,7 +11,7 @@ $inner_span = ((is_widget('show_thumbnail') && has_post_thumbnail()) || is_widge
     </div>
 <?php endif; ?>
 
-<div class="<?php echo $inner_span; ?>">
+<div class="featured-content <?php echo $inner_span; ?>">
 
     <?php if (is_widget('show_category') || is_widget('show_date')) : ?>
         <div class="content-details clearfix">
