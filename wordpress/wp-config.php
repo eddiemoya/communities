@@ -13,6 +13,7 @@
  *
  * @package WordPress
  */
+define('USE_LOCAL_DB', false);
 
 if(USE_LOCAL_DB) {
 	
