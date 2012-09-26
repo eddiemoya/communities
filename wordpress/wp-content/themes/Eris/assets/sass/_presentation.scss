@@ -51,8 +51,9 @@ html, body {
 .bullets {
   color:#333333;
   line-height:1.7em;
-  margin: 0 0 em-adjust( 1.2em ) 0; 
-  padding: 0 0 0 3em; 
+  margin: 0 0 em-adjust( 1.2em ) 1em; 
+  padding: 0 0 0 1.5em;
+  overflow:hidden; 
   li {
     margin-bottom:.6em;
   }
@@ -468,10 +469,6 @@ form {}
       float: right;
       margin: 0 0 .5em .5em;
     }
-    .bullets li {
-      position: relative;
-      left: 1.5em;
-    }
   }
 }
 
@@ -671,11 +668,11 @@ textarea.discussion {
 .content-container.span3.featured-post, 
 .content-container.span4.featured-post, 
 .content-container.span6.featured-post {
-  .featured-image.span6, .featured-post.span6 {
+  .featured-image.span6, .featured-content.span6 {
     margin-left:0;
     width:100%;
   }
-  .featured-post.span6 {
+  .featured-content.span6 {
     margin-top: em-adjust( .625em ); // 10px
   }
 }

@@ -568,8 +568,9 @@ html, body {
 .bullets {
   color: #333333;
   line-height: 1.7em;
-  margin: 0 0 1.476em 0;
-  padding: 0 0 0 3em; }
+  margin: 0 0 1.476em 1em;
+  padding: 0 0 0 1.5em;
+  overflow: hidden; }
   .bullets li {
     margin-bottom: .6em; }
 
@@ -840,9 +841,6 @@ ul.bullets {
     clear: right;
     float: right;
     margin: 0 0 .5em .5em; }
-  .post.content-container .content-body .bullets li {
-    position: relative;
-    left: 1.5em; }
 
 .post, .question {
   padding: inherit 0px; }
@@ -989,16 +987,16 @@ textarea.discussion {
   width: 100%;
   margin-left: 0; }
 
-.content-container.span3.featured-post .featured-image.span6, .content-container.span3.featured-post .featured-post.span6,
+.content-container.span3.featured-post .featured-image.span6, .content-container.span3.featured-post .featured-content.span6,
 .content-container.span4.featured-post .featured-image.span6,
-.content-container.span4.featured-post .featured-post.span6,
+.content-container.span4.featured-post .featured-content.span6,
 .content-container.span6.featured-post .featured-image.span6,
-.content-container.span6.featured-post .featured-post.span6 {
+.content-container.span6.featured-post .featured-content.span6 {
   margin-left: 0;
   width: 100%; }
-.content-container.span3.featured-post .featured-post.span6,
-.content-container.span4.featured-post .featured-post.span6,
-.content-container.span6.featured-post .featured-post.span6 {
+.content-container.span3.featured-post .featured-content.span6,
+.content-container.span4.featured-post .featured-content.span6,
+.content-container.span6.featured-post .featured-content.span6 {
   margin-top: 0.769em; }
 
 .recent_activity .recent-activity-list > li {
@@ -2208,7 +2206,6 @@ button.follow {
  *  @author Tim Steele
  */
 .addthis_button_facebook_like iframe {
-  width: 49px !important;
   min-width: 49px !important; }
 
 .addthis_button_tweet iframe {
@@ -2279,6 +2276,9 @@ button.follow {
 
 .at300b img, .at300bo img {
   vertical-align: top; }
+
+.at300b:hover {
+  opacity: 1; }
 
 .addthis_toolbox .share_menu_links {
   z-index: 1; }

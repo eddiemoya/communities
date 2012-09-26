@@ -1,4 +1,4 @@
-<div class="ugc-comment-answer_form">
+<div class="ugc-comment-answer_form span12">
 <?php
 	global $current_user;
     get_currentuserinfo();
