@@ -568,8 +568,9 @@ html, body {
 .bullets {
   color: #333333;
   line-height: 1.7em;
-  margin: 0 0 1.476em 0;
-  padding: 0 0 0 3em; }
+  margin: 0 0 1.476em 1em;
+  padding: 0 0 0 1.5em;
+  overflow: hidden; }
   .bullets li {
     margin-bottom: .6em; }
 
@@ -840,9 +841,6 @@ ul.bullets {
     clear: right;
     float: right;
     margin: 0 0 .5em .5em; }
-  .post.content-container .content-body .bullets li {
-    position: relative;
-    left: 1.5em; }
 
 .post, .question {
   padding: inherit 0px; }
