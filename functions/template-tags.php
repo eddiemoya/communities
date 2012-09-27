@@ -109,7 +109,7 @@ function return_template_part($template){
 
 /**
  * Checks if user has a screen name set. If so, returns true, else false
- * 
+ * ersection
  * @author Dan Crimmins
  * @param int $user_id - WP User ID
  * @return bool
