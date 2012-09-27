@@ -1505,6 +1505,9 @@ button.follow {
 
 .member_avatar {
   overflow:hidden;
+  a:hover {
+    text-decoration: none;
+  }
   img {
     width:100%;
   }
