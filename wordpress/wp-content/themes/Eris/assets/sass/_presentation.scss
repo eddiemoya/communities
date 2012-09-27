@@ -1505,16 +1505,19 @@ button.follow {
 
 .member_avatar {
   overflow:hidden;
+  a:hover {
+    text-decoration: none;
+  }
   img {
     width:100%;
   }
   .badge {
-    background:transparent url(#{$sears-img}sprite_global.png) repeat-x 0px 0px;
-    color:#ffffff;
+    background:sears( badge ) url(#{$sears-img}sprite_global.png) repeat-x 0px 0px;
+    color:$lightest-color;
     display:block;
-    font-weight:bold;
     text-align:center;
     width:100%;
+    @extend .bold;
   }
 }
 
