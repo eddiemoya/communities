@@ -141,7 +141,7 @@ function process_front_end_question() {
  	 $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '1');
 			
     //If step 1 - return that we should move on to step 2.
-    if( wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-1' ) || (isset($_POST['new_question_step_1']))){
+    if( ( isset($_POST['_wpnonce']) && wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-1' ) || isset($_POST['new_question_step_1'])) && (! isset($_POST['question-post-complete']))){
 
         //If user is logged in - step 2
         if(is_user_logged_in() && ! empty($_POST['post-question'])) {
@@ -161,7 +161,7 @@ function process_front_end_question() {
     }
 
     //If step 2, add the post and move to step 3
-    if((wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in()) && ! isset($_POST['cancel'])) {
+    if( (isset($_POST['_wpnonce']) && wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in()) && ! isset($_POST['cancel'])) {
 		
 		$valid = true;
     	$errors = array();
@@ -741,16 +741,16 @@ function lookup_expert_comments_count($post_id, $categories) {
     $expert_list = implode("|", $experts);
     $query = "SELECT COUNT(DISTINCT c.comment_ID) AS count FROM {$wpdb->comments} AS c ";
     $query .= "JOIN {$wpdb->usermeta} AS m ON m.user_id = c.user_id AND m.meta_key = 'um-taxonomy-category' ";
-    if (sizeof($categories) == 1) {
-        $query .= "AND {$categories[0]} IN (m.meta_value) ";
-    } else {
-        $query .= "AND (";
-        foreach($categories as $key => $category) {
-            if ($key != 0) {$query .= "OR ";}
-            $query .= "$category IN (m.meta_value) ";
-        }
-        $query .= ") ";
-    }
+    // if (sizeof($categories) == 1) {
+    //     $query .= "AND {$categories[0]} IN (m.meta_value) ";
+    // } else {
+    //     $query .= "AND (";
+    //     foreach($categories as $key => $category) {
+    //         if ($key != 0) {$query .= "OR ";}
+    //         $query .= "$category IN (m.meta_value) ";
+    //     }
+    //     $query .= ") ";
+    // }
     $query .= "JOIN {$wpdb->usermeta} AS m2 ON m2.user_id = c.user_id AND m2.meta_key = '{$wpdb->prefix}capabilities' AND m2.meta_value REGEXP '$expert_list' ";
     $query .= "WHERE c.comment_post_ID = $post_id";
     $return = $wpdb->get_results($wpdb->prepare($query));
@@ -773,6 +773,7 @@ function sanitize_text($text) {
 	return $text;
 }
 
+
 function the_truncated_title($length = 100){
     
     $title = get_the_title();
@@ -780,4 +781,12 @@ function the_truncated_title($length = 100){
     if (strlen($title) > $length) $title = substr($title, 0, $length) . "...";
 
     echo $title;
+
+}
+
+function truncated_text($text, $length = 100) {
+	
+	 if (strlen($text) > $length) $text = substr($text, 0, $length) . "...";
+
+    	return $text;
 }
