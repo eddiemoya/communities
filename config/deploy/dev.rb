@@ -13,7 +13,7 @@ role :web, "#{domain}"  # Your HTTP server, Apache/etc
 role :app, "#{domain}"  # This may be the same as your `Web` server
 role :db, domain, :primary => true
 
-set (:branch) { "development" }
+set (:branch) { "dev" }
 set (:deploy_to) { "/opt/stateadm/communities" }
 set (:app_loc) { "/appl/communities/www/wp-content" }
 set :deploy_via, :remote_cache

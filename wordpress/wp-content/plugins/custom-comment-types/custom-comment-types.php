@@ -15,13 +15,13 @@ Author URI: http://eddiemoya.com/
  * @todo Comment Types (including builtin) filters at top of page are not respecting query string for comment_type.
  *  
  */
-define(CCT_PATH, plugin_dir_path(__FILE__));
+define('CCT_PATH', plugin_dir_path(__FILE__));
 
-define(CCT_CONTROLLERS,     CCT_PATH . 'controllers/');
-define(CCT_MODELS,          CCT_PATH . 'models/');
-define(CCT_VIEWS,           CCT_PATH . 'views/');
-define(CCT_LIBRARY,         CCT_PATH . 'library/');
-define(CCT_ASSETS,          CCT_PATH . 'assets/');
+define('CCT_CONTROLLERS',     CCT_PATH . 'controllers/');
+define('CCT_MODELS',          CCT_PATH . 'models/');
+define('CCT_VIEWS',           CCT_PATH . 'views/');
+define('CCT_LIBRARY',         CCT_PATH . 'library/');
+define('CCT_ASSETS',          CCT_PATH . 'assets/');
 
 
 require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
