@@ -780,7 +780,7 @@ ul.bullets {
     border-top: solid 1px #dddcdc;
     padding: 0.769em 0; }
     .content-container .content-body .hr {
-      background: transparent url("/wp-content/themes/Eris/assets/img/background_hr.gif") repeat-x 0px 0px;
+      background: transparent url("assets/img/background_hr.gif") repeat-x 0px 0px;
       height: 1px;
       padding: 18px 0px;
       width: 100%; }
@@ -1617,7 +1617,7 @@ button.follow {
     width: 100%; }
   .member_avatar .badge {
     background: #bcdaf3 url(assets/img/sears/sprite_global.png) repeat-x 0px 0px;
-    color: white;
+    color: #ffffff;
     display: block;
     text-align: center;
     width: 100%; }
