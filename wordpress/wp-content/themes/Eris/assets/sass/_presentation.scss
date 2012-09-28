@@ -373,6 +373,12 @@ form {}
   .content-body {
     border-top:solid 1px #dddcdc;
     padding: em-adjust( .625em 0 );
+    hr {
+      clear:both;
+      float:left;
+      margin:1.5em 0;
+      width:100%;
+    }
   }
   .content-category {
     float:left;
@@ -1803,3 +1809,5 @@ button.follow {
     margin-bottom:1.75em;
   }
 }
+
+
