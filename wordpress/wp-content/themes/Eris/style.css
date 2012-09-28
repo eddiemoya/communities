@@ -782,6 +782,11 @@ ul.bullets {
   .content-container .content-body {
     border-top: solid 1px #dddcdc;
     padding: 0.769em 0; }
+    .content-container .content-body hr {
+      clear: both;
+      float: left;
+      margin: 1.5em 0;
+      width: 100%; }
   .content-container .content-category {
     float: left; }
   .content-container .content-date {
