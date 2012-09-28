@@ -374,7 +374,7 @@ form {}
     border-top:solid 1px #dddcdc;
     padding: em-adjust( .625em 0 );
     .hr {
-      background:transparent url('#{$img}/background_hr.gif') repeat-x 0px 0px;
+      background:transparent url('#{$img}background_hr.gif') repeat-x 0px 0px;
       height:1px;
       @extend .clearfix;
       @extend .clearfix:after;
