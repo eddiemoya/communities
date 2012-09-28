@@ -307,14 +307,14 @@ ul.footer_anterior {
   margin-top: .5em;
   text-align: center; }
 
-.clearfix:before, .summary-list .summary_comments:before, .summary-list .summary_comments, .clearfix:after, .summary-list .summary_comments:after, .summary-list .summary_comments {
+.clearfix:before, .content-container .content-body .hr:before, .content-container .content-body .hr, .summary-list .summary_comments:before, .summary-list .summary_comments, .clearfix:after, .content-container .content-body .hr:after, .content-container .content-body .hr, .summary-list .summary_comments:after, .summary-list .summary_comments {
   content: "";
   display: table; }
 
-.clearfix:after, .summary-list .summary_comments:after, .summary-list .summary_comments {
+.clearfix:after, .content-container .content-body .hr:after, .content-container .content-body .hr, .summary-list .summary_comments:after, .summary-list .summary_comments {
   clear: both; }
 
-.clearfix, .summary-list .summary_comments {
+.clearfix, .content-container .content-body .hr, .summary-list .summary_comments {
   clear: both;
   *zoom: 1; }
 
@@ -779,10 +779,10 @@ ul.bullets {
   .content-container .content-body {
     border-top: solid 1px #dddcdc;
     padding: 0.769em 0; }
-    .content-container .content-body hr {
-      clear: both;
-      float: left;
-      margin: 1.5em 0;
+    .content-container .content-body .hr {
+      background: transparent url("/wp-content/themes/Eris/assets/img//background_hr.gif") repeat-x 0px 0px;
+      height: 1px;
+      padding: 18px 0px;
       width: 100%; }
   .content-container .content-category {
     float: left; }
