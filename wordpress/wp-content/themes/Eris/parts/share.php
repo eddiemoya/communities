@@ -21,7 +21,7 @@
         <ul class="sharemenulinks">
             <li><a class="addthis_button_facebook" addthis:url="<?php the_permalink(); ?>">Facebook</a></li>
             <li><a class="addthis_button_twitter" addthis:url="<?php the_permalink(); ?>">Twitter</a></li>
-            <li><a onclick="javascript:window.open('http://shopyourway.com/sharer/share?title=<?php echo urlencode( get_the_title() ); ?>&amp;link=<?php echo urlencode( get_permalink() ); ?>&amp;sourceSiteUrl=&amp;sourceSiteAlias=&amp;content=&amp;imageUrl=<?php echo $encoded_image; ?>','ShopYourWay','width=650,height=350'); return false;" style="cursor:pointer;" title="Post this to your ShopYourWay account"><img src="http://static.shopyourway.com/static/share-buttons/small-light.png" alt="" />ShopYourWay</a></li>
+            <li><a onclick="javascript:window.open('http://shopyourway.com/sharer/share?title=<?php echo urlencode( get_the_title() ); ?>&amp;link=<?php echo urlencode( get_permalink() ); ?>&amp;sourceSiteUrl=&amp;sourceSiteAlias=&amp;content=&amp;imageUrl=<?php echo $encoded_image; ?>','ShopYourWay','width=650,height=350'); return false;" style="cursor:pointer;" title="Post this to your ShopYourWay account"><img src="https://static.shopyourway.com/static/share-buttons/small-light.png" alt="" />ShopYourWay</a></li>
             <li><a class="addthis_button_email" addthis:url="<?php the_permalink(); ?>">Email</a></li>
         </ul>
     </li>
