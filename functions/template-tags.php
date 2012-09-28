@@ -602,7 +602,6 @@ function return_post_count( $user_id ) {
 function return_address( $user_id ) {
     $a_address = array();
     $address = '&nbsp;';
-    $i = 0;
     
     $city  = get_user_meta( $user_id, 'user_city', true );
     $state = get_user_meta( $user_id, 'user_state', true );
