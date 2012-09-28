@@ -187,19 +187,16 @@ body {
     padding: 0.203em 0; }
   #header aside ul li {
     text-align: right; }
-  #header aside ul li ul {
-    text-align: center; }
-    #header aside ul li ul li {
-      border-left: solid 1px #666666;
-      display: inline-block;
-      font-size: 92.307%;
-      padding: 0 .4em 0 .8em;
-      text-align: center; }
-      #header aside ul li ul li img {
-        width: auto;
-        margin-right: .5em; }
-      #header aside ul li ul li:first-child {
-        border: none; }
+  #header aside ul li ul li {
+    border-left: solid 1px #666666;
+    display: inline-block;
+    font-size: 92.307%;
+    padding: 0 .4em 0 .8em; }
+    #header aside ul li ul li img {
+      width: auto;
+      margin-right: .5em; }
+    #header aside ul li ul li:first-child {
+      border: none; }
 
 #header.kmart form {
   border: solid 5px #e02334; }
@@ -782,6 +779,11 @@ ul.bullets {
   .content-container .content-body {
     border-top: solid 1px #dddcdc;
     padding: 0.769em 0; }
+    .content-container .content-body hr {
+      clear: both;
+      float: left;
+      margin: 1.5em 0;
+      width: 100%; }
   .content-container .content-category {
     float: left; }
   .content-container .content-date {
