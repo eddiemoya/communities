@@ -1519,13 +1519,23 @@ button.follow {
 .sears .breadcrumb li:before {
   color: #067bb5; }
 
-.no-results .header {
-  font-weight: bold;
-  margin-top: 15px;
-  margin-bottom: 5px;
-  font-size: 1em; }
-.no-results ul {
-  padding-left: 20px; }
+.no-results {
+  font-size: 138.461%; }
+  .no-results .header {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1em; }
+  .no-results ul {
+    padding-left: 20px; }
+  .no-results .bullets, .no-results p {
+    color: #666666; }
+
+.sears .no-results .term {
+  color: #067bb5; }
+
+.kmart .no-results .term {
+  color: #980017; }
 
 .page-title {
   color: #999999;
