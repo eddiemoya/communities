@@ -39,7 +39,7 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
                 active: true,
                 name: 'click',
                 preventDefault: true
-            },
+            }
         },
         form: {
             attributes: {
@@ -147,15 +147,15 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
         });
 
         if(_thisTooltipForm.options.form.isAjax === true) {
-//            jQuery.post(
-//                _thisTooltipForm.options.form.attributes.action,
-//                data,
-//                function(data) {
-//                    jQuery(_thisTooltipForm.tooltip.tooltip.element).children('.middle').children('form').children('textarea').val('');
-//
-//                    _thisTooltipForm._closeTooltip();
-//                }
-//            );
+            jQuery.post(
+                _thisTooltipForm.options.form.attributes.action,
+                data,
+                function(data) {
+                    jQuery(_thisTooltipForm.tooltip.tooltip.element).children('.middle').children('form').children('textarea').val('');
+
+                    _thisTooltipForm._closeTooltip();
+                }
+            );
         }
 
         _thisTooltipForm._preventDefault(true, event);
@@ -191,14 +191,6 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
         var elems = [];
 
         for(var i = 0; i < children.length; i++) {
-//            for(var j in children[i].attributes) {
-//                if(typeof children[i].attributes[j] === 'object') {
-//                    children[i].attributes[j] = '"' + children[i].attributes[j] + '"';
-//                }
-//            }
-//
-//            childAttributes = (typeof children[i].attributes === 'object') ? JSON.stringify(children[i].attributes) : children[i].attributes;
-
             elems[i] = shcJSL.createNewElement(children[i].element, children[i].class, children[i].attributes);
 
             _thisTooltipForm.addListeners(jQuery(elems[i]), children[i].events)
