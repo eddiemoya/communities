@@ -47,7 +47,7 @@ $inner_span = (is_widget('show_thumbnail') && has_post_thumbnail()) ? "span6" : 
     <?php endif; //is_widget->show_title ?>
 
 	<ul>
-		<li class="content-author">By: <?php echo get_the_author(); ?></li>
+		<li class="content-author">By: <a href="<?php echo get_profile_url($post->post_author); ?>"><?php echo get_the_author(); ?></a></li>
 
 		<?php if(is_widget('show_comment_count')): ?>
 

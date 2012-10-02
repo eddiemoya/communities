@@ -35,7 +35,7 @@ $header = (is_widget('list_style') == 'post-type') ? $post_type_label : $categor
 		<li class="summary_comments">
 
 			<?php if(is_widget('show_author')) : ?>
-				<span class="summary_author">By: <?php the_author(); ?></span>
+				<span class="summary_author">By: <a href="<?php echo get_profile_url($post->post_author); ?>"><?php echo get_the_author(); ?></a></span>
 			<?php endif; ?>
 
 			<span class="summary_comment-count">
