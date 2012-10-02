@@ -1,6 +1,6 @@
 <section class="no-results">
-    <p class="header">We're sorry. We could not find any matches for "<?php echo $s; ?>"</p>
-    <p>Please try your search again</p>
+    <p class="header">Sorry, we could not find any matches for &#8220;<span class="term"><?php echo $s; ?></span>&#8221;</p>
+    <p>Please try your search again.</p>
     
     <p class="header">Search Tips:</p>
     <ul class="bullets">
