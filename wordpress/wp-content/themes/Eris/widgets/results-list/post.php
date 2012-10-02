@@ -42,7 +42,7 @@
             </h1> <!-- content-headline -->
 
             <ul>
-                <li class="content-author">By: <?php echo get_the_author(); ?></li>
+                <li class="content-author">By: <a href="<?php echo get_profile_url($post->post_author); ?>"><?php echo get_the_author(); ?></a></li>
       <!--           <li class="content-comments"><?php comments_number(); ?></li> -->
             </ul>
 
