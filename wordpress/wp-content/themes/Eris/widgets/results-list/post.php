@@ -1,5 +1,5 @@
 <?php
-    global $excerptLength; $excerptLength = 140;
+    global $excerptLength; $excerptLength = 200;
     $queried_type = get_query_var('post_type');
     $post_type = (!is_array($queried_type) || !isset($queried_type[1])) ? $queried_type : 'post';
     $post_type = (is_array($post_type)) ? $post_type[0] : $post_type;
@@ -42,7 +42,7 @@
             </h1> <!-- content-headline -->
 
             <ul>
-                <li class="content-author">By: <?php echo get_the_author(); ?></li>
+                <li class="content-author">By: <a href="<?php echo get_profile_url($post->post_author); ?>"><?php echo get_the_author(); ?></a></li>
       <!--           <li class="content-comments"><?php comments_number(); ?></li> -->
             </ul>
 
