@@ -234,7 +234,8 @@ function ajaxify_comments() {
 
     $comment_id = wp_insert_comment($data);
 
-    echo $comment_id.' is the comment';
+    echo $comment_id;
+    exit;
 }
 add_action('wp_ajax_flag_me', 'ajaxify_comments');
 add_action('wp_ajax_nopriv_flag_me', 'ajaxify_comments');

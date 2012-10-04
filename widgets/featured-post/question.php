@@ -37,7 +37,7 @@
     <?php endif; ?>
 
     <h1 class="content-headline">
-        Q: <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_truncated_title(); ?></a>
+        Q: <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_truncated_title(75); ?></a>
     </h1>
 
     <?php if(is_widget('show_comment_count')): ?>
