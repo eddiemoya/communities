@@ -39,7 +39,7 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
                 active: true,
                 name: 'click',
                 preventDefault: true
-            },
+            }
         },
         form: {
             attributes: {
@@ -48,7 +48,7 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
                 method: 'post'
             },
             events: null,
-            class: '',
+            className: '',
             elements:  [
                 {
                     attributes: {
@@ -56,7 +56,7 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
                         cols: 4,
                         name: 'comment'
                     },
-                    class: 'flagField',
+                    className: 'flagField',
                     element: 'textarea',
                     events: {
                         click: {
@@ -71,7 +71,7 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
                         type: 'submit',
                         value: 'Submit'
                     },
-                    class: '',
+                    className: '',
                     element: 'input',
                     events: {
                         click: {
@@ -87,7 +87,7 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
                         type: 'reset',
                         value: 'Cancel'
                     },
-                    class: '',
+                    className: '',
                     element: 'input',
                     events: {
                         click: {
@@ -124,9 +124,6 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
     function _openTooltip (event) {
         _thisTooltipForm.tooltip._openTooltip();
 
-        console.log("TOOLTIP");
-        console.log(_thisTooltipForm.tooltip.tooltip.element)
-
         shcJSL.gizmos.activate(null, _thisTooltipForm.tooltip.tooltip.element);
 
         _thisTooltipForm._preventDefault(true, event);
@@ -147,15 +144,15 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
         });
 
         if(_thisTooltipForm.options.form.isAjax === true) {
-//            jQuery.post(
-//                _thisTooltipForm.options.form.attributes.action,
-//                data,
-//                function(data) {
-//                    jQuery(_thisTooltipForm.tooltip.tooltip.element).children('.middle').children('form').children('textarea').val('');
-//
-//                    _thisTooltipForm._closeTooltip();
-//                }
-//            );
+            jQuery.post(
+                _thisTooltipForm.options.form.attributes.action,
+                data,
+                function(data) {
+                    jQuery(_thisTooltipForm.tooltip.tooltip.element).children('.middle').children('form').children('textarea').val('');
+
+                    _thisTooltipForm._closeTooltip();
+                }
+            );
         }
 
         _thisTooltipForm._preventDefault(true, event);
@@ -175,7 +172,7 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
         var children = _thisTooltipForm.options.form.elements;
         var parentAttributes = _thisTooltipForm.options.form.attributes;
 
-        var parentHtml = shcJSL.createNewElement("form", _thisTooltipForm.options.form.class, parentAttributes);
+        var parentHtml = shcJSL.createNewElement("form", _thisTooltipForm.options.form.className, parentAttributes);
 
         if(typeof(children) !== 'undefined' && children.length > 0) {
             childrenHtml = _thisTooltipForm._setChildren(children);
@@ -191,15 +188,7 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
         var elems = [];
 
         for(var i = 0; i < children.length; i++) {
-//            for(var j in children[i].attributes) {
-//                if(typeof children[i].attributes[j] === 'object') {
-//                    children[i].attributes[j] = '"' + children[i].attributes[j] + '"';
-//                }
-//            }
-//
-//            childAttributes = (typeof children[i].attributes === 'object') ? JSON.stringify(children[i].attributes) : children[i].attributes;
-
-            elems[i] = shcJSL.createNewElement(children[i].element, children[i].class, children[i].attributes);
+            elems[i] = shcJSL.createNewElement(children[i].element, children[i].className, children[i].attributes);
 
             _thisTooltipForm.addListeners(jQuery(elems[i]), children[i].events)
         }

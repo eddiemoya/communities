@@ -109,7 +109,7 @@ function return_template_part($template){
 
 /**
  * Checks if user has a screen name set. If so, returns true, else false
- * 
+ * ersection
  * @author Dan Crimmins
  * @param int $user_id - WP User ID
  * @return bool
@@ -141,7 +141,7 @@ function process_front_end_question() {
  	 $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '1');
 			
     //If step 1 - return that we should move on to step 2.
-    if((wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-1' ) || isset($_POST['new_question_step_1'])) && (! isset($_POST['question-post-complete']))){
+    if( ( isset($_POST['_wpnonce']) && wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-1' ) || isset($_POST['new_question_step_1'])) && (! isset($_POST['question-post-complete']))){
 
         //If user is logged in - step 2
         if(is_user_logged_in() && ! empty($_POST['post-question'])) {
@@ -161,7 +161,7 @@ function process_front_end_question() {
     }
 
     //If step 2, add the post and move to step 3
-    if((wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in()) && ! isset($_POST['cancel'])) {
+    if( (isset($_POST['_wpnonce']) && wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in()) && ! isset($_POST['cancel'])) {
 		
 		$valid = true;
     	$errors = array();
@@ -602,7 +602,6 @@ function return_post_count( $user_id ) {
 function return_address( $user_id ) {
     $a_address = array();
     $address = '&nbsp;';
-    $i = 0;
     
     $city  = get_user_meta( $user_id, 'user_city', true );
     $state = get_user_meta( $user_id, 'user_state', true );

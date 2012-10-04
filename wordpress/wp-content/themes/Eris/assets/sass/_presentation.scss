@@ -51,8 +51,9 @@ html, body {
 .bullets {
   color:#333333;
   line-height:1.7em;
-  margin: 0 0 em-adjust( 1.2em ) 0; 
-  padding: 0 0 0 3em; 
+  margin: 0 0 em-adjust( 1.2em ) 1em; 
+  padding: 0 0 0 1.5em;
+  overflow:hidden; 
   li {
     margin-bottom:.6em;
   }
@@ -372,6 +373,15 @@ form {}
   .content-body {
     border-top:solid 1px #dddcdc;
     padding: em-adjust( .625em 0 );
+    .hr {
+      background:transparent url('#{$img}background_hr.gif') repeat-x 0px 0px;
+      height:1px;
+      @extend .clearfix;
+      @extend .clearfix:after;
+      @extend .clearfix:before;
+      padding:18px 0px;
+      width:100%;
+    }
   }
   .content-category {
     float:left;
@@ -467,10 +477,6 @@ form {}
       clear: right;
       float: right;
       margin: 0 0 .5em .5em;
-    }
-    .bullets li {
-      position: relative;
-      left: 1.5em;
     }
   }
 }
@@ -1369,6 +1375,7 @@ button.follow {
   color:sears( link );
 }
 .no-results {
+  font-size: font-size( 18 );
   .header {
     font-weight: bold;
     margin-top: 15px;
@@ -1378,6 +1385,15 @@ button.follow {
   ul {
     padding-left: 20px;
   }
+  .bullets, p {
+    color: sears( secondary-link );
+  }
+}
+.sears .no-results .term {
+  color: sears( link );
+}
+.kmart .no-results .term {
+  color: kmart( link );
 }
 
 // @author Tim Steele
@@ -1508,16 +1524,19 @@ button.follow {
 
 .member_avatar {
   overflow:hidden;
+  a:hover {
+    text-decoration: none;
+  }
   img {
     width:100%;
   }
   .badge {
-    background:transparent url(#{$sears-img}sprite_global.png) repeat-x 0px 0px;
-    color:#ffffff;
+    background:sears( badge ) url(#{$sears-img}sprite_global.png) repeat-x 0px 0px;
+    color:$lightest-color;
     display:block;
-    font-weight:bold;
     text-align:center;
     width:100%;
+    @extend .bold;
   }
 }
 
@@ -1803,3 +1822,5 @@ button.follow {
     margin-bottom:1.75em;
   }
 }
+
+

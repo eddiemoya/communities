@@ -301,8 +301,7 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         var leftPosition = 0;
         var topPosition = 0;
 
-        jQuery(_thisTooltip.tooltip.element).children('.middle').html('');
-        jQuery(_thisTooltip.tooltip.element).children('.middle').append(_thisTooltip.options.displayData.element);
+        jQuery(_thisTooltip.tooltip.element).children('.middle').html(_thisTooltip.options.displayData.element);
 
         if(_thisTooltip.options.displayData.element.hasClass('hide')) {
             var children = jQuery(_thisTooltip.tooltip.element).children('.middle').children();

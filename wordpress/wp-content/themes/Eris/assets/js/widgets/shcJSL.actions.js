@@ -65,9 +65,6 @@ ACTIONS.actions = $actions = function(element, options) {
     };
 
     _this._postAction = function(element, options) {
-        console.log('the elemnt in the func it ')
-        console.log(element);
-
         if(_this.options.post.blocker(element) == false) {
             return false;
         }
