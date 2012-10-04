@@ -47,9 +47,7 @@
             </ul>
 
             <?php
-                $data = isset($post->post_excerpt) && strlen($post->post_excerpt) > 0 ? $post->post_excerpt : $post->post_content;
-
-                echo truncated_text($data, 500);
+                echo truncated_text(get_the_excerpt(), 500);
             ?>
 
             <p class="content-tags">
