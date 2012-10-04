@@ -1,0 +1,208 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Cache Inspect\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-19 11:51+0100\n"
+"PO-Revision-Date: 2011-12-02 12:04-0800\n"
+"Last-Translator: Brian Flores <baflores@gmail.com>\n"
+"Language-Team: Frank Bueltge <frank@bueltge.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: D:/Eigene/WP-Plugins/wp-cache-inspect/trunk/\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: wp-cache-inspect.php:252
+msgid "Settings"
+msgstr "Ajustes"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:281
+msgid "Cache"
+msgstr "Cache"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:284
+#: wp-cache-inspect.php:288
+msgid "Cache Management"
+msgstr "Gestión del Cache"
+
+#: wp-cache-inspect.php:303
+msgid "Version"
+msgstr "Versión"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:303
+msgid "History"
+msgstr "Historia"
+
+#: wp-cache-inspect.php:303
+msgid "Author"
+msgstr "Autor"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:370
+#: wp-cache-inspect.php:391
+#: wp-cache-inspect.php:402
+msgid "Cache flush"
+msgstr "Limpieza del Cache"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:415
+#: wp-cache-inspect.php:511
+#: wp-cache-inspect.php:674
+msgid "Removes all cache items."
+msgstr "Elimina todos los elementos del cache."
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:418
+#: wp-cache-inspect.php:515
+msgid "Cache not removed - you don&lsquo;t have the privilidges to do this!."
+msgstr "El cache no ha sido eliminado - ¡No cuentas con el permiso para hacerlo!"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:538
+msgid "Options update."
+msgstr "Opciones de actualización."
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:542
+msgid "Options not update - you don&lsquo;t have the privilidges to do this!"
+msgstr "Las opciones no se actualizaron - ¡No cuentas con el permiso para hacerlo!"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:552
+msgid "All entries in the database was cleared."
+msgstr "Todas las entradas en la base de datos fueron eliminadas."
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:556
+msgid "Entries was not delleted - check the checkbox or you don&lsquo;t have the privilidges to do this!"
+msgstr "Las entradas no fueron eliminadas – Revise la casilla de información. ¡Puede ser que no cuentes con el permiso para hacerlo!"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:574
+msgid "WordPress Cache Management"
+msgstr "Gestión del Cache de WordPress"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:579
+msgid "Configuration"
+msgstr "Configuración"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:590
+msgid "Link in Footer"
+msgstr "Enlace en el Pie de Página"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:594
+msgid "Activate to display a link in your backend footer for clearing cache of all pages."
+msgstr "Activa para mostrar un enlace en el pie de página backend para borrar el cache de todas las páginas."
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:602
+msgid "Link in Favorits"
+msgstr "Enlace a Favoritos"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:606
+msgid "Activate for show a link to clear cache von all pages in backend in favorite actions."
+msgstr "Activa para mostrar un enlace para borrar el cache de todas páginas en el backend de las acciones favoritas."
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:614
+msgid "Data in Frontend"
+msgstr "Datos en Frontend"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:618
+msgid "Activate to show a selection of data about the cache in your blog frontend. Only for logged in admin viewable."
+msgstr "Activa para mostrar una selección de datos sobre el cache de tu blog frontend. Sólo visible para los administradores que tienen acceso."
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:624
+msgid "Link in Frontend"
+msgstr "Enlace en Frontend"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:628
+msgid "Activate for show a link to clear cache in your blog frontend. Only for logged in admin viewable."
+msgstr "Activa para mostrar un enlace para borrar el cache de tu blog frontend. Sólo visible para los administradores que tienen acceso. "
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:635
+#: wp-cache-inspect.php:685
+msgid "Cache Data"
+msgstr "Datos del Cache"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:639
+msgid "Activate to display all datas of the cache."
+msgstr "Activa para mostrar todos los datos del cache."
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:646
+msgid "Save Changes"
+msgstr "Guarda los Cambios"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:656
+msgid "Management"
+msgstr "Gestión"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:662
+msgid "Info"
+msgstr "Información"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:665
+msgid "Use this button to clear standard WordPress Cache or add same function in the footer on in the favorite actions (only WP 2.7 and greater)."
+msgstr "Usa este botón para borrar el Cache estándar deWordPress o para añadir una función en el pie de página de las acciones favoritas. (se requiere WP 2.7 o superior)."
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:689
+msgid "WordPress Object Cache"
+msgstr "WordPress Object Cache"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:699
+msgid "Clear Options"
+msgstr "Borra las Opciones"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:702
+msgid "Click this button to delete settings of this plugin. Deactivating WordPress Cache Management plugin remove any data that may have been created, such as the cache options."
+msgstr "Haz clic en este botón para borrar los ajustes de este plugin. El plugin  de la Gestión de Desactivación del Cache de WordPress elimina todos los datos que han sido creados, como las opciones cache."
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:707
+msgid "Delete Options"
+msgstr "Elimina las Opciones"
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:718
+msgid "About the plugin"
+msgstr "Sobre el plugin "
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:721
+msgid "Further information: Visit the <a href=\"http://bueltge.de/wordpress-cache-steuern-plugin/819/\">plugin homepage</a> for further information or to grab the latest version of this plugin."
+msgstr "Para mayor información: Visita <a href=\"http://bueltge.de/wordpress-cache-steuern-plugin/819/\">plugin homepage</a> para mayor información o para descargar la última versión de este plugin. "
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:721
+msgid "You want to thank me? Visit my <a href=\"http://bueltge.de/wunschliste/\">wishlist</a>."
+msgstr "¿Quieres darme las gracias? Visita: <a href=\"http://bueltge.de/wunschliste/\">wishlist</a>. "
+
+#@ wp-cache-inspect
+#: wp-cache-inspect.php:285
+msgid "<a href=\"http://wordpress.org/extend/plugins/wp-cache-inspect/\">Documentation</a>"
+msgstr "<a href=\"http://wordpress.org/extend/plugins/wp-cache-inspect/\">Documentation</a> "
+

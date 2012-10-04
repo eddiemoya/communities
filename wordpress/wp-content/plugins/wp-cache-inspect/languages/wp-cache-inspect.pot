@@ -1,0 +1,173 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Cache Inspect\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-19 11:51+0100\n"
+"PO-Revision-Date: 2008-11-19 11:52+0100\n"
+"Last-Translator: Frank Bueltge <frank@bueltge.de>\n"
+"Language-Team: Frank Bueltge <frank@bueltge.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: D:\\Eigene\\WP-Plugins\\wp-cache-inspect\\trunk\\\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: wp-cache-inspect.php:240
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: wp-cache-inspect.php:269
+msgid "Cache"
+msgstr "Cache"
+
+#: wp-cache-inspect.php:271
+msgid "Cache Management"
+msgstr "Cache Verwaltung"
+
+#: wp-cache-inspect.php:284
+msgid "Version"
+msgstr "Version"
+
+#: wp-cache-inspect.php:284
+msgid "History"
+msgstr "Historie"
+
+#: wp-cache-inspect.php:284
+msgid "Author"
+msgstr "Autor"
+
+#: wp-cache-inspect.php:351
+#: wp-cache-inspect.php:372
+#: wp-cache-inspect.php:383
+msgid "Cache flush"
+msgstr "Cache abgleichen"
+
+#: wp-cache-inspect.php:396
+#: wp-cache-inspect.php:490
+#: wp-cache-inspect.php:650
+msgid "Removes all cache items."
+msgstr "Aktualisiere den Cache."
+
+#: wp-cache-inspect.php:398
+#: wp-cache-inspect.php:494
+msgid "Cache not removed - you don&lsquo;t have the privilidges to do this!."
+msgstr "Cache wurde nicht zurückgesetzt - du haßt keine ausreichenden Rechte dazu!"
+
+#: wp-cache-inspect.php:517
+msgid "Options update."
+msgstr "Einstellungen aktualisiert."
+
+#: wp-cache-inspect.php:521
+msgid "Options not update - you don&lsquo;t have the privilidges to do this!"
+msgstr "Einstellungen wurden nicht aktualisiert - du haßt keine ausreichenden Rechte dazu!"
+
+#: wp-cache-inspect.php:531
+msgid "All entries in the database was cleared."
+msgstr "Alle Einträge in der Datenbank wurden gelöscht."
+
+#: wp-cache-inspect.php:535
+msgid "Entries was not delleted - check the checkbox or you don&lsquo;t have the privilidges to do this!"
+msgstr "Die Einträge wurden nicht entfernt - aktiviere die Checkbox oder du haßt keine ausreichenden Rechte dazu!"
+
+#: wp-cache-inspect.php:553
+msgid "WordPress Cache Management"
+msgstr "WordPress Cache Verwaltung"
+
+#: wp-cache-inspect.php:557
+msgid "Configuration"
+msgstr "Einstellungen"
+
+#: wp-cache-inspect.php:568
+msgid "Link in Footer"
+msgstr "Link im Footer"
+
+#: wp-cache-inspect.php:572
+msgid "Activate to display a link in your backend footer for clearing cache of all pages."
+msgstr "Aktiviere um einen Link im Footer des Backend zu erhalten. Der Link ist auf allen Seiten des Administrationsbereiches sichtbar."
+
+#: wp-cache-inspect.php:580
+msgid "Link in Favorits"
+msgstr "Link in den Favoriten"
+
+#: wp-cache-inspect.php:584
+msgid "Activate for show a link to clear cache von all pages in backend in favorite actions."
+msgstr "Aktiviere um einen Link in den Favoriten des Backend zu erhalten. Der Link ist auf allen Seiten des Administrationsbereiches im Bereich Favoriten des Header sichtbar."
+
+#: wp-cache-inspect.php:591
+msgid "Data in Frontend"
+msgstr "Daten im Frontend"
+
+#: wp-cache-inspect.php:595
+msgid "Activate to show a selection of data about the cache in your blog frontend. Only for logged in admin viewable."
+msgstr "Aktiviere für die Sicht auf eine Auswahl von Daten über den Cache im Frontend des Blog. Die Anzeige ist ausschließlich für geloggte Admin&lsquo;s sichtbar."
+
+#: wp-cache-inspect.php:601
+msgid "Link in Frontend"
+msgstr "Link im Frontend"
+
+#: wp-cache-inspect.php:605
+msgid "Activate for show a link to clear cache in your blog frontend. Only for logged in admin viewable."
+msgstr "Aktiviere um einen Link zum Aktualisieren des Cache im Frontend des Blog zu haben. Die Anzeige ist ausschließlich für geloggte Admin&lsquo;s sichtbar."
+
+#: wp-cache-inspect.php:611
+#: wp-cache-inspect.php:661
+msgid "Cache Data"
+msgstr "Cache Daten"
+
+#: wp-cache-inspect.php:615
+msgid "Activate to display all datas of the cache."
+msgstr "Aktiviere um alle Daten des Cache zu sehen."
+
+#: wp-cache-inspect.php:622
+msgid "Save Changes"
+msgstr "Änderungen speichern"
+
+#: wp-cache-inspect.php:632
+msgid "Management"
+msgstr "Verwaltung"
+
+#: wp-cache-inspect.php:638
+msgid "Info"
+msgstr "Info"
+
+#: wp-cache-inspect.php:641
+msgid "Use this button to clear standard WordPress Cache or add same function in the footer on in the favorite actions (only WP 2.7 and greater)."
+msgstr "Nutze den Button um den Cache von WordPress zu aktualisieren. Er entspricht der gleichen Funktion wie die optionalen Links im Footer und in den Favoriten (ab WP 2.7)."
+
+#: wp-cache-inspect.php:665
+msgid "WordPress Object Cache"
+msgstr "WordPress Object Cache"
+
+#: wp-cache-inspect.php:675
+msgid "Clear Options"
+msgstr "Einstellungen löschen "
+
+#: wp-cache-inspect.php:678
+msgid "Click this button to delete settings of this plugin. Deactivating WordPress Cache Management plugin remove any data that may have been created, such as the cache options."
+msgstr "Nutze diese Möglichkeit um alle Einstellungen des Plugins in der Datenbank zu löschen. Das Plugin löscht ebenfalls alle Einstellungen wenn du es deaktivierst oder aus dem Backend heraus entfernst (ab WP 2.7)."
+
+#: wp-cache-inspect.php:683
+msgid "Delete Options"
+msgstr "Einstellungen löschen"
+
+#: wp-cache-inspect.php:694
+msgid "About the plugin"
+msgstr "Über das Plugin"
+
+#: wp-cache-inspect.php:697
+msgid "Further information: Visit the <a href=\"http://bueltge.de/wordpress-cache-steuern-plugin/819/\">plugin homepage</a> for further information or to grab the latest version of this plugin."
+msgstr "Weitere Information: Besuche die <a href=\"http://bueltge.de/wordpress-cache-steuern-plugin/819/\">Plugin homepage</a> für mehr Information oder um die aktuelle Version des Plugins herunter zu laden."
+
+#: wp-cache-inspect.php:697
+msgid "You want to thank me? Visit my <a href=\"http://bueltge.de/wunschliste/\">wishlist</a>."
+msgstr "Du willst Danke sagen? Besuche meine <a href=\"http://bueltge.de/wunschliste/\">Wunschliste</a>."
+
+#~ msgid "View Data-Page"
+#~ msgstr "Cache Daten"
+#~ msgid "Clear the cache"
+#~ msgstr "Cache zurücksetzen"
+#~ msgid "Cache cleared."
+#~ msgstr "Cache neu gesetzt."
+
