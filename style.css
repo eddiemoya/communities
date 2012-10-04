@@ -165,6 +165,9 @@ body {
   .menu-sears-ribbon-container .ribbon_sears-outlet a, .menu-kmart-ribbon-container .ribbon_sears-outlet a {
     background-position: 0px -135px;
     width: 59px; }
+  .menu-sears-ribbon-container .ribbon_kmart-vendors a, .menu-kmart-ribbon-container .ribbon_kmart-vendors a {
+    background-position: 0px -165px;
+    width: 54px; }
   .menu-sears-ribbon-container .ribbon_see-all a, .menu-kmart-ribbon-container .ribbon_see-all a {
     background-position: 0px -150px;
     width: 32px; }
