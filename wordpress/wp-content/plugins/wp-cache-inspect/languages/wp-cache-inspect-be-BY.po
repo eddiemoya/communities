@@ -1,0 +1,175 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Cache Inspect\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-11-19 11:51+0100\n"
+"PO-Revision-Date: 2009-11-14 18:36+0200\n"
+"Last-Translator: Fat Cow <zhr@tut.by>\n"
+"Language-Team: Fat Cow <zhr@tut.by>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: D:\\Eigene\\WP-Plugins\\wp-cache-inspect\\trunk\\\n"
+"X-Poedit-Language: Belarusian\n"
+"X-Poedit-Country: BELARUS\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: wp-cache-inspect.php:240
+msgid "Settings"
+msgstr "Настройки"
+
+#: wp-cache-inspect.php:269
+msgid "Cache"
+msgstr "Кэш"
+
+#: wp-cache-inspect.php:271
+msgid "Cache Management"
+msgstr "Управление кэшем"
+
+#: wp-cache-inspect.php:284
+msgid "Version"
+msgstr "Версия"
+
+#: wp-cache-inspect.php:284
+msgid "History"
+msgstr "История"
+
+#: wp-cache-inspect.php:284
+msgid "Author"
+msgstr "Автор"
+
+#: wp-cache-inspect.php:351
+#: wp-cache-inspect.php:372
+#: wp-cache-inspect.php:383
+msgid "Cache flush"
+msgstr "Очистка кэша"
+
+#: wp-cache-inspect.php:396
+#: wp-cache-inspect.php:490
+#: wp-cache-inspect.php:650
+msgid "Removes all cache items."
+msgstr "Удалить содержимое кэша."
+
+#: wp-cache-inspect.php:398
+#: wp-cache-inspect.php:494
+msgid "Cache not removed - you don&lsquo;t have the privilidges to do this!."
+msgstr "Кэш не удален - у вас нет прав!"
+
+#: wp-cache-inspect.php:517
+msgid "Options update."
+msgstr "Настройки обновлены."
+
+#: wp-cache-inspect.php:521
+msgid "Options not update - you don&lsquo;t have the privilidges to do this!"
+msgstr "Настройки не обновлены - у вас нет прав!"
+
+#: wp-cache-inspect.php:531
+msgid "All entries in the database was cleared."
+msgstr "Все элементы в БД удалены."
+
+#: wp-cache-inspect.php:535
+msgid "Entries was not delleted - check the checkbox or you don&lsquo;t have the privilidges to do this!"
+msgstr "Элементы не удалены - у вас нет прав!"
+
+#: wp-cache-inspect.php:553
+msgid "WordPress Cache Management"
+msgstr "WordPress управление кэшем"
+
+#: wp-cache-inspect.php:557
+msgid "Configuration"
+msgstr "Конфигурация"
+
+#: wp-cache-inspect.php:568
+msgid "Link in Footer"
+msgstr "Линк в подвале"
+
+#: wp-cache-inspect.php:572
+msgid "Activate to display a link in your backend footer for clearing cache of all pages."
+msgstr "Включить отображение ссылки в конечном колонтитуле для очистки кэша всех страниц."
+
+#: wp-cache-inspect.php:580
+msgid "Link in Favorits"
+msgstr "Линк в букмарках"
+
+#: wp-cache-inspect.php:584
+msgid "Activate for show a link to clear cache von all pages in backend in favorite actions."
+msgstr "Включите для показа ссылку очистить кэш фоне всех страницах бэкэнда в favorite действиях."
+
+#: wp-cache-inspect.php:591
+msgid "Data in Frontend"
+msgstr "Данные в интерфейсе"
+
+#: wp-cache-inspect.php:595
+msgid "Activate to show a selection of data about the cache in your blog frontend. Only for logged in admin viewable."
+msgstr "Включить показ отбора данных о кэш-памяти в вашем блоге в интерфейсе. Только вошедшие в админ-панель могут просмотреть."
+
+#: wp-cache-inspect.php:601
+msgid "Link in Frontend"
+msgstr "Линк в интерфейсе"
+
+#: wp-cache-inspect.php:605
+msgid "Activate for show a link to clear cache in your blog frontend. Only for logged in admin viewable."
+msgstr "Включите для показа ссылку очистить кэш в вашем блоге в интерфейсе. Только вошедшие в админ-панель могут просмотреть."
+
+#: wp-cache-inspect.php:611
+#: wp-cache-inspect.php:661
+msgid "Cache Data"
+msgstr "Данные кэша"
+
+#: wp-cache-inspect.php:615
+msgid "Activate to display all datas of the cache."
+msgstr "Включить отображение всех данных из кэша."
+
+#: wp-cache-inspect.php:622
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: wp-cache-inspect.php:632
+msgid "Management"
+msgstr "Управление"
+
+#: wp-cache-inspect.php:638
+msgid "Info"
+msgstr "Информация"
+
+#: wp-cache-inspect.php:641
+msgid "Use this button to clear standard WordPress Cache or add same function in the footer on in the favorite actions (only WP 2.7 and greater)."
+msgstr "Используйте эту кнопку, чтобы очистить кэш стандартных WordPress или же добавить функцию в нижний колонтитул в любимом действия (только WP 2.7 и выше)."
+
+#: wp-cache-inspect.php:665
+msgid "WordPress Object Cache"
+msgstr "WordPress Object Cache"
+
+#: wp-cache-inspect.php:675
+msgid "Clear Options"
+msgstr "Очистить опции"
+
+#: wp-cache-inspect.php:678
+msgid "Click this button to delete settings of this plugin. Deactivating WordPress Cache Management plugin remove any data that may have been created, such as the cache options."
+msgstr "Нажмите на эту кнопку, чтобы удалить настройки этого плагина. Отключение WordPress Управление кэшем плагина удалит все данные, которые могут быть созданы, например, кэш-страницу."
+
+#: wp-cache-inspect.php:683
+msgid "Delete Options"
+msgstr "Удалить настройки"
+
+#: wp-cache-inspect.php:694
+msgid "About the plugin"
+msgstr "О плагине"
+
+#: wp-cache-inspect.php:697
+msgid "Further information: Visit the <a href=\"http://bueltge.de/wordpress-cache-steuern-plugin/819/\">plugin homepage</a> for further information or to grab the latest version of this plugin."
+msgstr "Дополнительная информация: Посетите <a href=\"http://bueltge.de/wordpress-cache-steuern-plugin/819/\">страницу плагина</a> для получения дополнительной информации или взять последней версии этого плагина."
+
+#: wp-cache-inspect.php:697
+msgid "You want to thank me? Visit my <a href=\"http://bueltge.de/wunschliste/\">wishlist</a>."
+msgstr "Вы хотите поблагодарить меня? Посетите мои <a href=\"http://bueltge.de/wunschliste/\">пожелания.</a>"
+
+#~ msgid "View Data-Page"
+#~ msgstr "Cache Daten"
+#~ msgid "Clear the cache"
+#~ msgstr "Cache zurücksetzen"
+#~ msgid "Cache cleared."
+#~ msgstr "Cache neu gesetzt."
+
