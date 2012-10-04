@@ -1,20 +1,11 @@
 <?php
-    global $current_user;
-    
     # OPTIONS
     # $version =    NULL (default) or long - whether to display the long form with links on the page,
     #                                     or short with icons hidden in a rollover.
     # $image =      Path to an optional image to accompany the posting.
     
     $encoded_image = isset( $image ) ? urlencode( $image ) : '';
-    $email_from = is_user_logged_in() ? $current_user->user_email : '';
 ?>
-<script type="text/javascript">
-  var addthis_config = {
-    ui_email_note: "Thought you might like this from My<?php echo ucfirst( theme_option("brand") ); ?> Community.",
-    ui_email_from: '<?php echo $email_from; ?>'
-  }
-</script>
 <?php if ( ( isset( $version ) && $version == 'long' ) || ( is_object( is_widget() && function_exists( 'is_widget' ) ) && is_widget()->share_style == 'long' ) ) : ?>
 <div class="addthis_toolbox addthis_default_style">
     <a class="addthis_button_facebook_like" addthis:url="<?php the_permalink(); ?>"></a>
