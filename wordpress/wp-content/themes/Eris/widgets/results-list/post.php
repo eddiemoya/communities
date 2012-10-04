@@ -1,5 +1,5 @@
 <?php
-    global $excerptLength; $excerptLength = 200;
+    global $excerptLength; $excerptLength = 500;
     $queried_type = get_query_var('post_type');
     $post_type = (!is_array($queried_type) || !isset($queried_type[1])) ? $queried_type : 'post';
     $post_type = (is_array($post_type)) ? $post_type[0] : $post_type;
@@ -47,7 +47,7 @@
             </ul>
 
             <?php
-                echo truncated_text(get_the_excerpt(), 500);
+                the_excerpt();
             ?>
 
             <p class="content-tags">
