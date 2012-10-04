@@ -46,7 +46,11 @@
       <!--           <li class="content-comments"><?php comments_number(); ?></li> -->
             </ul>
 
-            <?php echo truncated_text($post->excerpt, 500); ?>
+            <?php
+                $data = isset($post->post_excerpt) && strlen($post->post_excerpt) > 0 ? $post->post_excerpt : $post->post_content;
+
+                echo truncated_text($data, 500);
+            ?>
 
             <p class="content-tags">
                 <?php the_tags("Tags: ", ", "); ?>
