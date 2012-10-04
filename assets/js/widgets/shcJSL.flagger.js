@@ -124,9 +124,6 @@ TOOLTIPFORM.tooltipForm = $tooltipForm = function(element, options) {
     function _openTooltip (event) {
         _thisTooltipForm.tooltip._openTooltip();
 
-        console.log("TOOLTIP");
-        console.log(_thisTooltipForm.tooltip.tooltip.element)
-
         shcJSL.gizmos.activate(null, _thisTooltipForm.tooltip.tooltip.element);
 
         _thisTooltipForm._preventDefault(true, event);
