@@ -15,11 +15,6 @@
 	<div class="trigger discussion">
 		<a href="#" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">Leave <?php echo $comment_type_text; ?> <span class="smaller">&#9660;</span></a>
 	</div>
-<!--         <div class="commentForm" xmlns="http://www.w3.org/1999/html">
-            <div class="top clearfix">
-                <a class="leaveComment" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">Leave <?php echo $comment_type_text; ?> <span class="smaller">&#9660;</span></a>
-            </div>
-        </div> -->
 <?php
     } else {
         $fields =  array();
@@ -98,10 +93,12 @@
 							</ul>
 						</form>
       <?php endif; ?>
-</div>
+
     <?php
             do_action( 'comment_form_after' );
         else :
             do_action( 'comment_form_comments_closed' );
         endif;
     }
+?>
+</div>

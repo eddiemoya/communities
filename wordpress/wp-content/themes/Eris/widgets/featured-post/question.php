@@ -1,4 +1,11 @@
-<?php global $excerptLength; $excerptLength = 140; $c = get_the_category(); ?>
+<?php 
+    global $excerptLength; $excerptLength = 140; $c = get_the_category(); 
+    $answer_count = (function_exists('get_custom_comment_count')) ? get_custom_comment_count('answer') : '';
+    $expert_count = (function_exists('get_expert_comment_count')) ? get_expert_comment_count($post->ID) : '';
+    $answer_count = $answer_count - $expert_count;
+    $answer_count_string = ($answer_count > 500) ? "500+ answers" : $answer_count . " " . _n( ' answer', ' answers', $answer_count );
+    $expert_count_string = ($expert_count > 500) ? "500+ community team answers" : $expert_count . " " . _n( ' community team answer', ' community team answers', $expert_count );
+?>
 <section class='content-container featured-question'>
 
     <?php if (is_widget('show_category') || is_widget('show_date')) : ?>
@@ -30,12 +37,12 @@
     <?php endif; ?>
 
     <h1 class="content-headline">
-        Q: <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+        Q: <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_truncated_title(75); ?></a>
     </h1>
 
     <?php if(is_widget('show_comment_count')): ?>
         <ul class="clearfix">
-            <li class="content-comments"><?php custom_comment_count('answer'); ?> answers</li>
+            <li class="content-comments"><?php echo $answer_count_string ?> | <?php echo $expert_count_string; ?></li>
         </ul>
     <?php endif; ?>
 

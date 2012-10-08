@@ -5,73 +5,54 @@
     require_once get_template_directory().'/classes/communities_profile.php';
 
     $comment_type = get_post_type( $post->ID ) == 'question' ? 'answer' : 'comment';
-
-    //get expert answers
-    $userProfile = new User_Profile();
-
-    $expertCommentCount = count($userProfile->page(1)
-                                ->get_posts_by_id($post->ID)
-                                ->get_expert_answers($comment_type)
-                                ->posts[0]
-                                ->expert_answers
-                    );
-
-    $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type));
+    $comments = get_comments(array('post_id' => $post->ID, 'type' => $comment_type, 'number' => 100));
     
-
-    if ( isset( $comments ) && !empty( $comments ) ) :
+    
+    $answer_count = (function_exists('get_custom_comment_count')) ? get_custom_comment_count('answer') : '';
+    $expert_count = (function_exists('get_expert_comment_count')) ? get_expert_comment_count($post->ID) : '';
+    $answer_count = $answer_count - $expert_count;
+    $answer_count_string = ($answer_count > 500) ? "500+ answers" : $answer_count . " " . _n( ' answer', ' answers', $answer_count );
+    $expert_count_string = ($expert_count > 500) ? "500+ community team answers" : $expert_count . " " . _n( ' community team answer', ' community team answers', $expert_count );
 ?>
-<section class="span12 content-container comments">
-<?php if ($comment_type == "answer"): ?>
-		
-	<header class="content-header clearfix">
-	
-	  <h3><?php echo ucfirst( $comment_type ); ?>s</h3>
-    <h4>
-    	<?php
-            $commentCount = get_custom_comment_count($comment_type, $post->ID);
+    <section class="span12 content-container comments">
+        <?php if ( isset( $comments ) && !empty( $comments ) ) { ?>
 
-            if($commentCount > 0) {
-                $string = ($commentCount > 1) ? $commentCount.' '.ucfirst($comment_type).'s' : $commentCount.' '.ucfirst($comment_type);
 
-                echo $string;
-            } else {
-                echo 'No '.ucfirst($comment_type);
-            }
-        ?> |
-        <?php
-            if($expertCommentCount > 0) {
-                $string = ($expertCommentCount > 1) ? $expertCommentCount.' Community Team '.ucfirst($comment_type).'s' : $commentCount.' Community Team '.ucfirst($comment_type);
+            <?php if ($comment_type == "answer"): ?>
+    	       <header class="content-header clearfix">
+        	       <h3><?php echo ucfirst( $comment_type ); ?>s</h3>
+                   <h4><?php echo $answer_count_string; ?> | <?php echo $expert_count_string; ?></h4>
+    	       </header> <!-- END ANSWER HEADER -->
+            <?php endif; ?>
 
-                echo $string;
-            } else {
-                echo '0 Community Team '.ucfirst($comment_type);
-            }
-        ?>
-    </h4>
-	</header> <!-- END ANSWER HEADER -->
-<?php endif; ?>
-	<section class="content-body">
-		<ol id="allComments">
-<?php
-        foreach($comments as $comment) {
-            get_partial('parts/comment', array("current_user" => $current_user, "comment" => $comment, "recursive" => true));
-        }
-?>
-		</ol> <!-- END ALL COMMENTS -->
-<?php
-    # No Comments. Only show on the 'question' post_type.
-    else:
-        if ( get_post_type( $post->ID ) == 'question' ):
-?>
 
-    <p>
-        No <?php echo $comment_type; ?>s yet.
-    </p>
+            <section class="content-body">
+                <ol id="allComments">
+                <?php
+                    foreach($comments as $comment) {
+                        get_partial('parts/comment', array("current_user" => $current_user, "comment" => $comment, "recursive" => true));
+                    }
+                ?>
+                </ol> <!-- END ALL COMMENTS -->
+            </section> <!-- END CONTENT BODY -->
 
-<?php
-        endif;
-    endif;
-?></section> <!-- END CONTENT BODY -->
-</section> <!-- END COMMENTS CONTENT CONTAINER -->
-<?php
+
+
+        <?php } else { // no comments or comments empty ?>
+
+
+
+            <section class="content-body">
+                <?php if ( get_post_type( $post->ID ) == 'question' ): ?>
+
+                    <p>
+                        No <?php echo $comment_type; ?>s yet.
+                    </p>
+                   
+                <?php endif; ?>
+            </section> <!-- END CONTENT BODY -->
+
+
+
+        <?php } ?>
+    </section> <!-- END COMMENTS CONTENT CONTAINER -->

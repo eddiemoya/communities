@@ -1,5 +1,14 @@
 <?php
 
+//if user is logged in, send them to home page.
+if(is_user_logged_in()) {
+	
+	wp_redirect(get_site_url());
+	exit;
+}
+
+
+
 //If origin param is set use it, otherwise if HTTP_REFERER is set, use it; otherwise use current page
 $origin = (isset($_GET['origin'])) ? $_GET['origin'] : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_site_url());
 
@@ -69,6 +78,9 @@ get_template_part('parts/header'); ?>
                                                     element: 'passInfo'
                                                 },
                                                 events: {
+                                                    click: {
+                                                        active: false
+                                                    },
                                                     blur: {
                                                         active: true
                                                     },

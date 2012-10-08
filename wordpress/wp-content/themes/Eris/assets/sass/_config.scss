@@ -1,8 +1,10 @@
 // Paths
-$img:                 "/wp-content/themes/Eris/assets/img/";
+$img:                 "assets/img/";
 $sears-img:           "#{$img}sears/";
 $kmart-img:           "#{$img}kmart/";
 
+// For cache-busting
+$version:             "?v=2";
 // Fonts
 $basefont:            Helvetica, Arial, Verdana, sans-serif;
 $default-font-size:   13;

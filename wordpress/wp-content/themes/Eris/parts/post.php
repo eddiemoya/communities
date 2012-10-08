@@ -16,13 +16,15 @@
 			<section class="content-body clearfix">
 				
 				<div class="content-details clearfix">
-					<span class="content-category"><a href="<?php echo get_category_link($categories[0]->term_id); ?>" title="<?php echo $categories[0]->name?>"><?php echo $categories[0]->name; ?></a></span>
+					<span class="content-category"><a href="<?php echo get_category_link($categories[0]->term_id); ?>" title="<?php ec?>"><?php echo $categories[0]->name; ?></a></span>
 					<?php get_partial( 'parts/space_date_time', array( "timestamp" => get_the_time( "U" ), "remove_hms" => true ) ); ?>
 				</div>
 				
 				<h1 class="content-headline"><?php the_title(); ?></h1>
 				
 				<?php the_content(); ?>
+				
+				<div class="clearfix">&nbsp;</div>
 				
 				<p class="content-author">
 					By: <?php get_screenname_link( $post->post_author ); ?>
@@ -49,7 +51,13 @@
 	        comments_template('/parts/comments.php');
 	    ?>
 	</section>
-	<section class="span4"></section>
+
+	<section class="span4">
+		<section class="dropzone-inner-wrapper border-left">
+			<?php display_dropzone("single-{$post->post_type}-right-rail"); ?>
+		</section>
+	</section>
+	
 </section>
 <?php
     if(is_user_logged_in()) {
@@ -58,7 +66,7 @@
             $(document).ready(function() {
                 $.each($(".ugc-comment-answer_form form"), function() {
                     if (($(this).get(0)).style.display != 'block') {
-                        //$(this).addClass('hide');
+                        $(this).addClass('hide');
                     }
                 });
                 $(".ugc-comment-answer_form a").on('click', function(event) {

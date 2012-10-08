@@ -59,7 +59,9 @@ function enqueue_scripts() {
 		wp_localize_script('jquery', 'ajaxdata', $data);		
         
         /* Styles */
-        wp_register_style('main-styles', get_stylesheet_uri());
+        $style_path = STYLESHEETPATH . "/style.css";
+        $style_version = file_exists( $style_path ) ? filemtime( $style_path ) : '1.0';
+        wp_register_style( 'main-styles', get_stylesheet_uri(), array(), $style_version );
         wp_enqueue_style( 'main-styles');
         
        
@@ -81,6 +83,7 @@ function enqueue_scripts() {
 }
 
 add_action('wp_head','pluginname_ajaxurl');
+add_action('wp_head','pluginname_addthis_config');
 function pluginname_ajaxurl() {
 
     $url = site_url('/wp-admin/admin-ajax.php');
@@ -88,6 +91,21 @@ function pluginname_ajaxurl() {
     echo '
         <script type="text/javascript">
             var ajaxurl = \''.$url.'\';
+        </script>
+    ';
+}
+function pluginname_addthis_config() {
+    
+    global $current_user;
+    
+    $email_from = is_user_logged_in() ? $current_user->user_email : '';
+
+    echo '
+        <script type="text/javascript">
+            var addthis_config = {
+                ui_email_note: "Thought you might like this from My' . ucfirst( theme_option("brand") ) .' Community.",
+                ui_email_from: "' . $email_from . '"
+              }
         </script>
     ';
 }

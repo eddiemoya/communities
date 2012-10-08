@@ -17,7 +17,6 @@ function add_menu_class_first_last($output) {
 }
 add_filter('wp_nav_menu', 'add_menu_class_first_last');
 
-
 /**
  * Do not call this function directly, add it to the body_class filter
  * 
@@ -51,6 +50,10 @@ function filter_body_class($classes) {
 
     if(get_query_var('old_post_type')){
         $classes[] = 'archive_' . get_query_var('old_post_type').'s';
+    }
+
+    if(isset($_GET['s'])){
+        $classes[] = 'search-results';
     }
     
     return $classes;
@@ -221,29 +224,29 @@ add_filter('sanitize_title', 'sanitize_title_with_dots_and_dashes', 10, 3);
 
 
 //add_action('template_redirect', 'template_check');
-function template_check(){
-    $pt = get_query_var('post_type');
+// function template_check(){
+//     $pt = get_query_var('post_type');
 
-    if(function_exists('is_widget')){
-        if((!is_widget() && is_category() && ($pt != 'section' && $pt != 'page')) || (is_post_type_archive(array('guide', 'question')) || $pt == 'post' )){
-        $templates = array();
+//     if(function_exists('is_widget')){
+//         if((!is_widget() && is_category() && ($pt != 'section' && $pt != 'page')) || (is_post_type_archive(array('guide', 'question')) || $pt == 'post' )){
+//         $templates = array();
 
-        if(is_category()){
-            $templates[] = 'archive-tax-'.$pt.'.php';
-            $templates[] = 'archive-tax.php';
-        }
+//         if(is_category()){
+//             $templates[] = 'archive-tax-'.$pt.'.php';
+//             $templates[] = 'archive-tax.php';
+//         }
 
-        $templates[] = 'archive-'.$pt.'.php';
-        $templates[] = "archive.php";
-        $template = get_query_template($template_name, $templates);
-        //echo "<pre>";print_r($templates);echo "</pre>";
-        include( $template );
-        exit;
-        } 
-    }
+//         $templates[] = 'archive-'.$pt.'.php';
+//         $templates[] = "archive.php";
+//         $template = get_query_template($template_name, $templates);
+//         //echo "<pre>";print_r($templates);echo "</pre>";
+//         include( $template );
+//         exit;
+//         } 
+//     }
 
     
-}
+// }
 
 add_filter( 'post_thumbnail_html', 'remove_thumbnail_dimensions', 10 );
 //add_filter( 'image_send_to_editor', 'remove_thumbnail_dimensions', 10 );
@@ -300,17 +303,20 @@ function post_comment_screen_name($commentdata) {
     
     if(isset($_POST['screen-name'])) {
         
+    	//sanitize
+    	$clean_screen_name = sanitize_text_field($_POST['screen-name']);
+
         //Attempt to set screen name
-        $response = set_screen_name($_POST['screen-name']);
-        
+        $response = set_screen_name($clean_screen_name);
+
         /*var_dump($response);
         exit;*/
-        
+
         //If setting screen name fails
         if($response !== true) {
-            
+
             //Create QS
-            $qs = '?screen-name=' . urlencode($_POST['screen-name']) . '&comment=' . urlencode($_POST['comment']) . '&cid=' . $commentdata['comment_parent'] . '&comm_err=' . urlencode($response['message']);
+            $qs = '?comment=' . urlencode($_POST['comment']) . '&cid=' . $commentdata['comment_parent'] . '&comm_err=' . urlencode($response['message']);
 
             //Create return URL
             $linkparts = explode('#', get_comment_link());
@@ -354,10 +360,82 @@ function filter_before_widget($html, $dropzone, $widget){
         }
 
     }
+
+    if($meta->widgetpress_widget_classname = 'Results_List_Widget'){
+
+        if($meta->query_type == 'users'){
+            $html = str_replace('results-list', 'results-list_users', $html);
+           }
+
+    }
     //echo "<pre>";print_r();echo "</pre>";
 
     return $html;
 
 }
 
+add_action('template_redirect', 'template_redirect');
+
+function template_redirect(){
+
+    if(isset($_GET['s'])){
+        $templates[] = 'search.php';
+
+        $template = get_query_template($template_name, $templates);
+        //echo "<pre>";print_r($templates);echo "</pre>";
+        include( $template );
+        exit;
+        }
+}
+
 add_filter('widgetpress_before_widget', 'filter_before_widget', 10, 3);
+
+function disallow_admin_access() {
+    global $current_user;
+
+    if(!is_ajax()) {
+        $show_admin = (current_user_can("access_admin") || $current_user->caps["administrator"] == 1) ? true : false;
+        if (!$show_admin) {
+            wp_redirect(home_url());
+            exit();
+        }
+    }
+}
+
+add_filter('admin_init', 'disallow_admin_access');
+
+/**
+ * When a search query occurs, check for profanity. If there is 
+ * profanity, then clear out search, redirect to home with blank search.
+ * 
+ * @param void
+ */
+function search_profanity_filter() {
+	
+	if(isset($_GET['s'])) {
+		
+		if(strpos(sanitize_text($_GET['s']), '**') !== false) {
+			
+			$url = home_url('/') . '?s=';
+			wp_redirect($url);
+		}
+	}
+}
+
+add_action('init', 'search_profanity_filter');
+
+function force_list_class( $data , $postarr ) {
+    $data['post_content'] = str_replace( '<ol>', '<ol class="bullets">', $data['post_content']);
+    $data['post_content'] = str_replace( '<ul>', '<ul class="bullets">', $data['post_content']);
+    return $data;
+}
+
+add_filter( 'wp_insert_post_data' , 'force_list_class' , '99', 2 );
+
+function force_list_class_inline( $data ) {
+    $data = str_replace( '<ol>', '<ol class="bullets">', $data);
+    $data = str_replace( '<ul>', '<ul class="bullets">', $data);
+    echo $data;
+}
+add_filter( 'the_content', 'force_list_class_inline' );
+add_filter( 'the_excerpt', 'force_list_class_inline' );

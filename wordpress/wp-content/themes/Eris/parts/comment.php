@@ -22,7 +22,13 @@
 ?>
 
 	<li class="comment clearfix<?php echo $container_class; ?>" id="<?php echo $comment_type.'-reply-'.$comment->comment_ID ?>">
-    <?php get_partial( 'parts/crest', array( "user_id" => $comment->user_id ) ); ?>
+    <?php 
+    if($comment->comment_approved == 1) {
+    	
+     	get_partial( 'parts/crest', array( "user_id" => $comment->user_id, "width" => "span2" ) ); 
+
+    }	
+    ?>
     <div class="span10">
     	<article class="content-container">
 				<section class="content-body clearfix">
@@ -60,7 +66,8 @@
 
             /**
             * Ensure plugin is active before displaying anything
-            */            
+            */        
+            require_once ABSPATH . '/wp-admin/includes/plugin.php';   // http://codex.wordpress.org/Function_Reference/is_plugin_active
             if(is_plugin_active('action_jackson/action_jackson.php')) {
                 get_partial( 'parts/forms/post-n-comment-actions', $actions );
             } else {
@@ -94,11 +101,11 @@
 	        		</li>
 	        		<li class="clearfix">
 	        			<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Post</button>
-								<button class="<?php echo theme_option("brand"); ?>_button azure">Cancel</button>
-	        			<input type="hidden" name="comment_post_ID" value="<?php echo $comment->comment_post_ID; ?>" />
-		            <input type="hidden" name="comment_parent" value="<?php echo $parentId; ?>" />
-		            <input type="hidden" name="comment_type" value="<?php echo $comment_type; ?>" />
-		            <input type="hidden" name="_wp_unfiltered_html_comment" value="27ff0ea567" />
+                        <button class="<?php echo theme_option("brand"); ?>_button azure">Cancel</button>
+                        <input type="hidden" name="comment_post_ID" value="<?php echo $comment->comment_post_ID; ?>" />
+                        <input type="hidden" name="comment_parent" value="<?php echo $parentId; ?>" />
+                        <input type="hidden" name="comment_type" value="<?php echo $comment_type; ?>" />
+                        <input type="hidden" name="_wp_unfiltered_html_comment" value="27ff0ea567" />
 	        		</li>
 	        	</ul>
         	</form>

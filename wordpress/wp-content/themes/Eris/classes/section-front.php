@@ -26,12 +26,12 @@ class Section_Front{
 		//add_action( 'wp_loaded',				array(__CLASS__, 'flush_custom_rules' ) );
 		add_filter( 'rewrite_rules_array',		array(__CLASS__, 'section_rewrite_rules') );
 		add_filter('query_vars', 				array(__CLASS__, 'add_var'));
-		add_action('pre_get_posts', 		array(__CLASS__, 'custom_primary_query'));
+		//add_action('pre_get_posts', 		array(__CLASS__, 'custom_primary_query'));
 	}
 
 
 	public function add_var($qvars) {
-		$qvars[] = 'meta_key';
+		//$qvars[] = 'meta_key';
 		$qvars[] = 'old_post_type';
 		$qvars[] = 'old_category';
 		$qvars[] = 'old_paged';
@@ -56,49 +56,49 @@ class Section_Front{
  * @param WP_Query $query_string
  * @return modified WP_Query object
  */
-function custom_primary_query($query = '') {
+// function custom_primary_query($query = '') {
 
-    /**
-     * This is being used for the results list widget.
-     */
-    if(isset($query->query_vars['meta_key'])){
-        if ( strstr( $query->query_vars['meta_key'], ' ') || strstr( $query->query_vars['meta_key'], ',') ) {
+//     /**
+//      * This is being used for the results list widget.
+//      */
+//     // if(isset($query->query_vars['meta_key'])){
+//     //     if ( strstr( $query->query_vars['meta_key'], ' ') || strstr( $query->query_vars['meta_key'], ',') ) {
 
-            $meta_in = explode(' ', $query->query_vars['meta_key'] );
+//     //         $meta_in = explode(' ', $query->query_vars['meta_key'] );
             
 
-            $meta_query = array('relation'=>'AND');
+//     //         $meta_query = array('relation'=>'AND');
 
-            if(strstr( $query->query_vars['meta_key'], ' ') ){
-	            foreach($meta_in as $meta_key){
-	            	$meta_query[] = array(
-	            		'key' => $meta_key,
-	            		'value' => 'on',
-	            		'compare' => 'IN'
-	            	);
-	            }
-        	}
-            if(strstr( $query->query_vars['meta_key'], ',') ){
-	            $meta_not = explode(',', $query->query_vars['meta_key'] );
-	            foreach($meta_not as $meta_key){
-	            	$meta_query[] = array(
-	            		'key' => $meta_key,
-	            		'compare' => 'NOT EXISTS'
-	            	);
-	            }
-        	}
+//     //         if(strstr( $query->query_vars['meta_key'], ' ') ){
+// 	   //          foreach($meta_in as $meta_key){
+// 	   //          	$meta_query[] = array(
+// 	   //          		'key' => $meta_key,
+// 	   //          		'value' => 'on',
+// 	   //          		'compare' => 'IN'
+// 	   //          	);
+// 	   //          }
+//     //     	}
+//     //         if(strstr( $query->query_vars['meta_key'], ',') ){
+// 	   //          $meta_not = explode(',', $query->query_vars['meta_key'] );
+// 	   //          foreach($meta_not as $meta_key){
+// 	   //          	$meta_query[] = array(
+// 	   //          		'key' => $meta_key,
+// 	   //          		'compare' => 'NOT EXISTS'
+// 	   //          	);
+// 	   //          }
+//     //     	}
 
-            unset($query->query_vars['meta_key']);
-            unset($query->query['meta_key']);
-            $query->set('meta_query', $meta_query);
-            //$query->query['meta_query'] = $meta_query;
-            //$query->meta_query = 'TEST';
-            //$query->meta_query->parse_query_vars($meta_query);
+//     //         unset($query->query_vars['meta_key']);
+//     //         unset($query->query['meta_key']);
+//     //         $query->set('meta_query', $meta_query);
+//             //$query->query['meta_query'] = $meta_query;
+//             //$query->meta_query = 'TEST';
+//             //$query->meta_query->parse_query_vars($meta_query);
 
-        }
-    }
-    return $query;
-}
+//     //     }
+//     // }
+//     return $query;
+// }
 
 	/**
 	 *
@@ -128,7 +128,7 @@ function custom_primary_query($query = '') {
 	        'show_in_menu' 		=> true,
 	        'show_in_nav_menus' => false,
 	        'query_var'			=> false,
-	        'rewrite' 			=> false,
+	        'rewrite' 			=> 'section',
 	        'show_in_admin_bar' => true,
 	        'capability_type' 	=> 'page',
 	        'has_archive' 		=> false,
@@ -171,26 +171,48 @@ function custom_primary_query($query = '') {
 				$post->meta['rewrite_tax_question'] = get_post_meta($post->ID, 'widgetpress_post_type_question', true);
 				$post->meta['rewrite_tax_post'] = get_post_meta($post->ID, 'widgetpress_post_type_post', true);
 
-				$post_types = array();
-				if( !empty($post->meta['rewrite_tax_guide']) || !empty($post->meta['rewrite_tax_question']) || !empty($post->meta['rewrite_tax_post']) ){
-					$post_types[] = (!empty($post->meta['rewrite_tax_guide'])) ? 'guide' :  '';
-					$post_types[] = (!empty($post->meta['rewrite_tax_question'])) ? 'question' :  '';
-					$post_types[] = (!empty($post->meta['rewrite_tax_post'])) ? 'post' :  '';
+				$post->meta['rewrite_guide'] = get_post_meta($post->ID, 'widgetpress_guide_archive', true);
+				$post->meta['rewrite_question'] = get_post_meta($post->ID, 'widgetpress_question_archive', true);
+				$post->meta['rewrite_post'] = get_post_meta($post->ID, 'widgetpress_post_archive', true);
 
-					$meta_keys = array();
-					foreach(array_filter($post_types) as $type){
-						$type = ($type == '') ? 'none' : $type;
-						$meta_keys[] = 'widgetpress_post_type_'.$type;
-					}
-					$meta_keys = implode($meta_keys,'+');
+				$post_types = array();
+
+				//Taxonomy/Post Intersection
+				if( !empty($post->meta['rewrite_tax_guide']) || !empty($post->meta['rewrite_tax_question']) || !empty($post->meta['rewrite_tax_post']) ){
+					$post_types[] = (!empty($post->meta['rewrite_tax_guide'])) 		? 'guide' 		:  '';
+					$post_types[] = (!empty($post->meta['rewrite_tax_question'])) 	? 'question' 	:  '';
+					$post_types[] = (!empty($post->meta['rewrite_tax_post'])) 		? 'post' 		:  '';
+
 
 					$endpoint_pattern = implode('|', array_filter($post_types));
-					$new_rules["{$term->taxonomy}/{$term->slug}/({$endpoint_pattern})/?$"] = 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_post_type=$matches[1]';
-					$new_rules["{$term->taxonomy}/{$term->slug}/({$endpoint_pattern})/page/?([0-9]{1,})/?$"] = 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_post_type=$matches[1]&old_paged=$matches[2]';
+					$new_rules["{$term->taxonomy}/{$term->slug}/({$endpoint_pattern})/?$"] 
+					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_post_type=$matches[1]';
+
+					$new_rules["{$term->taxonomy}/{$term->slug}/({$endpoint_pattern})/page/?([0-9]{1,})/?$"] 
+					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_post_type=$matches[1]&old_paged=$matches[2]';
 				}
 
+				//Post Type Archive
+				if( !empty($post->meta['rewrite_guide']) || !empty($post->meta['rewrite_question']) || !empty($post->meta['rewrite_post']) ){
+					$post_types[] = (!empty($post->meta['rewrite_guide'])) 		? 'guide' 		:  '';
+					$post_types[] = (!empty($post->meta['rewrite_question'])) 	? 'question' 	:  '';
+					$post_types[] = (!empty($post->meta['rewrite_post'])) 		? 'post' 		:  '';
+
+					$endpoint_pattern = implode('|', array_filter($post_types));
+					$new_rules["({$endpoint_pattern})s?/?$"] 
+					= 'index.php?post_type=section&p='.$post->ID.'&old_post_type=$matches[1]&category_name='.$term->slug;
+
+					$new_rules["({$endpoint_pattern})s?/page/?([0-9]{1,})/?$"] 
+					= 'index.php?post_type=section&p='.$post->ID.'&old_post_type=$matches[1]&category_name='.$term->slug.'&old_paged=$matches[2]';
+				}
+
+				//Taxonomy Archive
 				if(!empty($post->meta['rewrite_tax_archive'])){
-					$new_rules["{$term->taxonomy}/({$term->slug})/?$"] = 'index.php?posts_per_page=1&posts__in='.$post->ID.'&post_type='.$post->post_type.'&category_name='.$term->slug.'&meta_key=widgetpress_post_type_none';
+					$new_rules["{$term->taxonomy}/({$term->slug})/?$"] 
+					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug;
+
+					$new_rules["{$term->taxonomy}/({$term->slug})/page/?([0-9]{1,})/?$"] 
+					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_paged=$matches[1]';
 				}
 				$tposts[] = $post;
 			}	

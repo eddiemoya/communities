@@ -60,6 +60,11 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         closer: {
             initialized: true
         },
+        customEvent: null,
+        customListener: {
+            callBack: function() {},
+            name: ''
+        },
         displayData: {
             element: null,
             callBack: {
@@ -132,6 +137,12 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         _thisTooltip.setDisplayData();
 
         _thisTooltip.setTooltip();
+
+        if(typeof _thisTooltip.options.customListener !== 'undefined') {
+            jQuery(document).on(_thisTooltip.options.customListener.name, function(event) {
+                _thisTooltip.options.customListener.callBack(_thisTooltip.actedObj.element);
+            });
+        }
     };
 
     _thisTooltip.addListener = function() {
@@ -187,7 +198,6 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
 
         for(var i in callBacks) {
             if(callBacks[i].active === true) {
-
                 _thisTooltip.options.displayData.element.bind(callBacks[i].name, callBacks[i].method);
             }
         }
@@ -291,8 +301,7 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
         var leftPosition = 0;
         var topPosition = 0;
 
-        jQuery(_thisTooltip.tooltip.element).children('.middle').html('');
-        jQuery(_thisTooltip.tooltip.element).children('.middle').append(_thisTooltip.options.displayData.element);
+        jQuery(_thisTooltip.tooltip.element).children('.middle').html(_thisTooltip.options.displayData.element);
 
         if(_thisTooltip.options.displayData.element.hasClass('hide')) {
             var children = jQuery(_thisTooltip.tooltip.element).children('.middle').children();
@@ -341,7 +350,7 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
                 break;
             case 'top':
                 leftPosition = _thisTooltip.getOffset(_thisTooltip.actedObj, 'left') -
-                                ((_thisTooltip.getWidth(_thisTooltip.tooltip) / 2) - (_thisTooltip.getWidth(_thisTooltip.actedObj) / 2));
+                                ((_thisTooltip.getWidth(_thisTooltip.tooltip) / 2) - (_thisTooltip.getWidth(_thisTooltip.actedObj) / 2)) - 5;
 
                 topPosition = _thisTooltip.getOffset(_thisTooltip.actedObj, 'top') +
                                 _thisTooltip.getHeight(_thisTooltip.actedObj) +
