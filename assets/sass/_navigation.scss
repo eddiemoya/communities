@@ -51,18 +51,18 @@ $arrow-height: 3px;
 
 // Sears Header Background
 .shdrbg {
-  background-image: url('#{$sears-img}sprite_navigation.png');
+  background-image: image-url('#{$sears-img}sprite_navigation.png');
 }
 // Kmart Header Background
 .khdrbg {
-  background-image: url('#{$kmart-img}sprite_navigation.png');
+  background-image: image-url('#{$kmart-img}sprite_navigation.png');
 }
 
 .sears #header_nav.dropmenu, .kmart #header_nav.dropmenu {
   background-color: $nav-color;
 }
 .sears #header_nav.dropmenu ul, .kmart #header_nav.dropmenu ul {
-  background: $lightest-color url('#{$img}sprite-menu.png');
+  background: $lightest-color image-url('sprite-menu.png');
 }
 
 .sears {
