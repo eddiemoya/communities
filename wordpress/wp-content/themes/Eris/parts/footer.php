@@ -32,22 +32,5 @@
 
     </div> <!-- #container -->
     <?php get_partial('parts/tooltip'); ?>
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-
-        _gaq.push(['_setAccount', 'UA-35378729-1']);
-        _gaq.push(['_trackPageview']);
-        _gaq.push(['_addIgnoredRef', 'sso.shld.net']);
-
-        if(typeof referer != 'undefined' && referer != '') {
-          _gaq.push(['_setReferrerOverride', referer]);
-        }
-
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
   </body>
 </html>

@@ -9,6 +9,15 @@
 
     <meta name="description" content="<?php bloginfo('description'); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+
+        _gaq.push(['_addIgnoredRef', 'sso.shld.net']);
+
+        if(typeof referer != 'undefined' && referer != '') {
+          _gaq.push(['_setReferrerOverride', referer]);
+        }
+    </script>
 
     <!--<link rel="shortcut icon" href="<?php //echo get_template_directory_uri(); ?>/images/favicon.ico" /> -->
 
