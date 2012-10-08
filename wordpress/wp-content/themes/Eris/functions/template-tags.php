@@ -500,6 +500,9 @@ function return_screenname( $user_id ) {
    
    $q = "SELECT * FROM {$wpdb->base_prefix}users WHERE ID = {$user_id}";
    $user_info = $wpdb->get_results($q);
+   
+   //if screen name has been blocked...
+   if(is_screen_name_blocked($user_id)) return '*********';
   
     $screen_name = '';
     # create a fallback screen name if one has not yet been set by sso
@@ -511,6 +514,17 @@ function return_screenname( $user_id ) {
         $screen_name = $user_info[0]->user_nicename;
     }
     return $screen_name;
+}
+
+/**
+ * Checks if user has been flagged to block display of his/her screen name
+ *
+ * @param int $user_id
+ * @return bool
+ */
+function is_screen_name_blocked($user_id) {
+	
+	return (get_user_meta($user_id, 'block_screen_name', true) == 'yes') ? true : false;
 }
 
 /**
