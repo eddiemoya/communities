@@ -236,8 +236,8 @@ function process_front_end_question() {
 	    		
 		        $raw_content = $_POST['more-details'];
 		
-		        $title =  wp_kses($_POST['your-question'], array(), array());
-		        $content = wpautop(wp_kses($_POST['more-details'], array(), array()));
+		        $title =  sanitize_text(wp_kses($_POST['your-question'], array(), array()));
+		        $content = sanitize_text(wpautop(wp_kses($_POST['more-details'], array(), array())));
 		
 		        $category = (isset($_POST['category'])) ?  absint((int)$_POST['category'])  : '' ;
 		        $category = (isset($_POST['sub-category'])) ? absint((int)$_POST['sub-category']) : $category; 
