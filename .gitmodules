@@ -1,0 +1,12 @@
+[submodule "plugins/WidgetPress"]
+	path = plugins/WidgetPress
+	url = git@github.com:eddiemoya/WP-Dropzones.git
+[submodule "plugins/Posts-Widget"]
+	path = plugins/Posts-Widget
+	url = git@github.com:eddiemoya/Posts-Widget.git
+[submodule "themes/twentyeleven"]
+	path = themes/twentyeleven
+	url = git://github.com/brigleb/twentyeleven.git
+[submodule "wordpress"]
+	path = wordpress
+	url = git://github.com/WordPress/WordPress.git
