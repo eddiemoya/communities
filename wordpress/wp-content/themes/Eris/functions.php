@@ -26,6 +26,7 @@ get_template_part('classes/theme-options');
 get_template_part('classes/section-front');
 
 //Function
+get_template_part('functions/general');
 get_template_part('functions/ajax-callbacks');
 get_template_part('functions/enqueued-assets');
 get_template_part('functions/filters-hooks');
