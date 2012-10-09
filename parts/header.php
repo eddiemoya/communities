@@ -9,6 +9,10 @@
 
     <meta name="description" content="<?php bloginfo('description'); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--<link rel="shortcut icon" href="<?php //echo get_template_directory_uri(); ?>/images/favicon.ico" /> -->
+
+    <?php wp_head(); ?>
     <script type="text/javascript">//<![CDATA[
         // Google Analytics for WordPress by Yoast v4.2.5 | http://yoast.com/wordpress/google-analytics/
         var _gaq = _gaq || [];
@@ -32,10 +36,6 @@
         })();
         //]]>
     </script>
-
-    <!--<link rel="shortcut icon" href="<?php //echo get_template_directory_uri(); ?>/images/favicon.ico" /> -->
-
-    <?php wp_head(); ?>
   </head>
 
   <body <?php body_class(); ?>>
