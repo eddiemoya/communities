@@ -134,7 +134,7 @@ body {
     .menu-sears-ribbon-container > ul > li:first-child, .menu-kmart-ribbon-container > ul > li:first-child {
       border-left: none; }
   .menu-sears-ribbon-container .menu-item a, .menu-kmart-ribbon-container .menu-item a {
-    background: transparent url(assets/img/sprite_ribbon.png) no-repeat; }
+    background: transparent url(assets/img/sprite_ribbon.png?v=2) no-repeat; }
   .menu-sears-ribbon-container .ribbon_shop-your-way a, .menu-kmart-ribbon-container .ribbon_shop-your-way a {
     background-position: 0px -30px;
     width: 59px; }

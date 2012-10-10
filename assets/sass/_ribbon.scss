@@ -23,7 +23,7 @@
     }
   }
   .menu-item a {
-    background:transparent url(#{$img}sprite_ribbon.png) no-repeat;
+    background:transparent url(#{$img}sprite_ribbon.png#{$version}) no-repeat;
   }
   .ribbon_shop-your-way {
     a {
