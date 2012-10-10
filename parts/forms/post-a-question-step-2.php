@@ -45,7 +45,7 @@ get_currentuserinfo();
 										'depth'=> 1,
 										'selected' => get_queried_object()->term_id,
 										'hierarchical' => true,
-										'hide_if_empty' => true,
+										'hide_if_empty' => false,
 										'class' => 'input_select',
 										'name' => 'category',
 										'id' => 'category'
