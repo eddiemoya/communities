@@ -8,6 +8,7 @@ Version: 1.0
 @import 'compass/css3';
 @import 'compass/utilities';
 @import 'compass/layout';
+@import 'compass/typography';
 @import 'uihelper';
 @import 'config';
 @import 'functions';
@@ -22,4 +23,4 @@ Version: 1.0
 @import 'single';
 @import 'addthis';
 @import 'open-id';
-@import '_toolip_children';
+@import 'toolip_children';
