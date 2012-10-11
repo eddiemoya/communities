@@ -10,6 +10,7 @@ jQuery(document).ready(function($) {
 		var data = {
 			action		: 'get_subcategories_ajax',
 			category_id	: $('option', this).filter(':selected').val(),
+			hide_empty : $('.hide_empty', $(this).closest('form')).val()
 		};
 		
 		if(data.category_id != 0){

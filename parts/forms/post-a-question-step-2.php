@@ -45,7 +45,7 @@ get_currentuserinfo();
 										'depth'=> 1,
 										'selected' => get_queried_object()->term_id,
 										'hierarchical' => true,
-										'hide_if_empty' => true,
+										'hide_if_empty' => false,
 										'class' => 'input_select',
 										'name' => 'category',
 										'id' => 'category'
@@ -56,6 +56,7 @@ get_currentuserinfo();
 								<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Post</button>
 								<button type="submit" name="cancel" class="<?php echo theme_option("brand"); ?>_button azure">Cancel</button>
 								<input type="hidden" name="post-question" value="<?php echo $_POST['post-question']; ?>" />
+								<input type="hidden" name="hide_empty" class="hide_empty" value="false" />
 							</li>
 						</ul>
 					</div>
