@@ -7,17 +7,21 @@
 function get_subcategories_ajax(){
 
     if(isset($_POST['category_id'])){
+        $hide_empty = ($_POST['hide_empty'] == "true") ? true : false;
         $parent = absint((int)$_POST['category_id']);
+
             wp_dropdown_categories(array(
                 'depth'=> 1,
                 'child_of' => $parent,
                 'hierarchical' => true,
                 'hide_if_empty' => true,
+                'hide_empty' => $hide_empty,
                 'class' => 'input_select',
                 'name' => 'sub-category',
                 'id' => 'sub-category',
                 'echo' => true
             ));
+
         exit();
     }
 }
