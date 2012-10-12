@@ -23,7 +23,10 @@ function enqueue_scripts() {
          );
         
         //This condition is just an example, here we only needed to track omniture on category archives.
-        if (is_category()) { $data['omchannel'] = single_cat_title('', false); }
+       // if (is_category()) { $data['omchannel'] = single_cat_title('', false); }
+        $omniture = array(
+            'pageName' => get_omniture()
+        );
             
         
        /* Scripts */
@@ -56,7 +59,8 @@ function enqueue_scripts() {
         wp_enqueue_script('flagger');
         wp_enqueue_script('addthis');
 
-		wp_localize_script('jquery', 'ajaxdata', $data);		
+		wp_localize_script('jquery', 'ajaxdata', $data);
+        wp_localize_script('jquery', 'omniture', $omniture);    		
         
         /* Styles */
         $style_path = STYLESHEETPATH . "/style.css";
