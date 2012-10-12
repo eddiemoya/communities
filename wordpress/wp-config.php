@@ -14,7 +14,7 @@
  * @package WordPress
  */
 
-define('USE_LOCAL_DB', false);
+define('USE_LOCAL_DB', true);
 
 if( ! USE_LOCAL_DB) {
 
