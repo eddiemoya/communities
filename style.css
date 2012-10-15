@@ -1630,7 +1630,7 @@ button.follow {
     width: 100%; }
   .member_avatar .badge {
     background: #bcdaf3 url(assets/img/sears/sprite_global.png) repeat-x 0px 0px;
-    color: #ffffff;
+    color: white;
     display: block;
     text-align: center;
     width: 100%; }
@@ -1734,19 +1734,38 @@ button.follow {
     border-left: solid 1px #999999; }
 
 .profile-summary .member_details .member_avatar {
-  width: 5em; }
+  width: 8.5em; }
   .profile-summary .member_details .member_avatar .badge {
-    font-size: 76.923%;
+    font-size: 107.692%;
     line-height: 2em; }
   .profile-summary .member_details .member_avatar img {
     min-height: 5em;
     min-width: 5em; }
-.profile-summary .member_details .member_profile, .profile-summary .member_details .member_content {
+.profile-summary .member_details .member_profile {
+  margin-left: 0px;
+  position: absolute; }
+  .profile-summary .member_details .member_profile .member_screen-name {
+    font-size: 153.846%; }
+    .profile-summary .member_details .member_profile .member_screen-name a, .profile-summary .member_details .member_profile .member_screen-name a:visited, .profile-summary .member_details .member_profile .member_screen-name a:hover {
+      color: #666666; }
+  .profile-summary .member_details .member_profile .member_location {
+    font-size: 107.692%; }
+.profile-summary .member_details .member_content {
   clear: none;
   margin-left: 2.5%;
-  width: 70%; }
+  width: 10em; }
 .profile-summary .member_details .member_location {
   margin-bottom: 0px; }
+.profile-summary .member_avatar, .profile-summary .member_content, .profile-summary .member_bio {
+  margin-top: 5em; }
+.profile-summary .member_bio {
+  border-left: solid 1px #e4e4e4;
+  float: left;
+  padding-left: 2.5em;
+  width: 24em; }
+  .profile-summary .member_bio h3 {
+    font-size: 107.692%;
+    font-weight: bold; }
 
 .site-error {
   margin-top: 2em; }
