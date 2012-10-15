@@ -531,20 +531,23 @@ shcJSL.schematic = {}; shcJSL.apparatus = {}; shcJSL.gizmos = {};
  */
 
 shcJSL.governor = new function() {
-	var populace = {};	// (Object) contains list of elements keyed to their gizmo
+	this.populace = {};	// (Object) contains list of elements keyed to their gizmo
+	
+	var self = this;
 	
 	this.architect = function(gizmo, element) {
-		if (populace[gizmo] === undefined) populace[gizmo] = [];
-		populace[gizmo].push(element);
+		if (self.populace[gizmo] === undefined) self.populace[gizmo] = [];
+		self.populace[gizmo].push(element);
 	}
 	
 	this.activate = function() {
-		for (var i in populace) {
+		for (var i in self.populace) {
 			shcJSL.lazee.plug(i);
-			$(window).bind(i, {gizmo: i, elements:populace[i]}, function(event){
+			$(window).bind(i, {gizmo: i, elements:self.populace[i]}, function(event){
 				var data = event.data;
 				try {
 					shcJSL.gizmos[event.data.gizmo](event.data.elements);
+					delete shcJSL.governor.populace[event.data.gizmo];
 				} catch(error) { console.log("Failed to instantiate widget " + event.data.gizmo + " - " + error); }
 			});
 		}

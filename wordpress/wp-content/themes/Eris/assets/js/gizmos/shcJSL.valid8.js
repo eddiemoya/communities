@@ -22,58 +22,102 @@ valid8 = {};
  */
 
 valid8.cipher = {
-	
+	"category": {
+		"required": "Please choose a category."
+	},
+	"confirm-email": {
+		"match": "Your email does not match. Please check and try again."
+	},
+	"email": {
+		"pattern": "The email address you enter should follow this format: name@domain.com. Please try again.",
+		"required": "Please enter a valid email address."
+	},
+	"flag": {
+		"pattern": "Please enter at least 3 characters.",
+		"required": "This field cannot be empty."
+	},
+	"password": {
+		"pattern": "please enter a valid password.",
+		"required": "Please enter your password."
+	},
+	"open-text": {
+		"pattern": "Please enter at least 3 characters.",
+		"required": "Please enter at least 3 characters."
+	},
+	"post-question": {
+		"required": "Please enter your question."
+	},
+	"screen-name": {
+		"availability": "That screen name has already been taken. Please select a new one.",
+		"pattern": "Please follow the screen name guidelines."
+	},
+	"zip-code": {
+		"pattern": "Please enter a valid Zip code."
+	}
 }
 
 /**
- * TRANSfORMER, TRANSfORMER.transFormer
- * 
- * TransFormer object
+ * REGEX VALIDATION PATTERNS
  */
-TRANSfORMER = $tf = {}
-
-
-
-TRANSfORMER.blunder = function(element) {
-	var error;			// (Object) new error message
-	var goofs = [];	// (Array) contains goof object
-	var methods;		// (Object) methods for errors
-	
-	function error(message) {
-		return shcJSL.addChildren(shcJSL.createNewElement("p","error-message"),[shcJSL.createNewElement("span","error-pointer"),document.createTextNode(message)])
-	}
-	
-	methods = {
-		create: function(param) {
-			var err = new error(this);
-			if (($(param.parentNode).children(".error-message")).length < 1) {
-				param.parentNode.insertBefore(err, param.nextSibling);
-				$(param.parentNode).addClass("error");
-			} else {
-				param.parentNode.replaceChild(err, $(param.parentNode).children(".error-message").get(0));
-			}
-		},
-		destroy: function(param) {
-			var err = $(param.parentNode).children(".error-message");
-			if (err.length > 0) {
-				param.parentNode.removeChild($(err).get(0));
-				$(param.parentNode).removeClass("error");
-			}
-		}
-	}
-	
-	goofs.push(element);
-	
-	for (var action in methods)(
-		function(n,m) {
-			goofs[n] = function(x) {
-				return goofs.map(m,x);
-			}
-		}(action, methods[action])
-	)
-	
-	return goofs;
+valid8.patterns = {
+	"email": /^.+@.+?\.[a-zA-Z]{2,}$/,
+	"password": /^\w*(?=\w{8,})(?=\w*\d)(?=\w*[a-zA-Z])(?!\w*_)\w*$/,
+	"zip-code": /(^\d{5})(-\d{4})?$/
 }
+
+valid8.forms 	= {}
+
+$V8.form		= function(form) {
+	console.log(form);
+}
+
+shcJSL.methods.valid8 = function(target, options) {
+	console.log("THIS: "); console.log(this);
+	
+	console.log("TARGET: "); console.log(target);
+	
+	console.log("OPTIONS:"); console.log(options);
+}
+// TRANSfORMER.blunder = function(element) {
+	// var error;			// (Object) new error message
+	// var goofs = [];	// (Array) contains goof object
+	// var methods;		// (Object) methods for errors
+// 	
+	// function error(message) {
+		// return shcJSL.addChildren(shcJSL.createNewElement("p","error-message"),[shcJSL.createNewElement("span","error-pointer"),document.createTextNode(message)])
+	// }
+// 	
+	// methods = {
+		// create: function(param) {
+			// var err = new error(this);
+			// if (($(param.parentNode).children(".error-message")).length < 1) {
+				// param.parentNode.insertBefore(err, param.nextSibling);
+				// $(param.parentNode).addClass("error");
+			// } else {
+				// param.parentNode.replaceChild(err, $(param.parentNode).children(".error-message").get(0));
+			// }
+		// },
+		// destroy: function(param) {
+			// var err = $(param.parentNode).children(".error-message");
+			// if (err.length > 0) {
+				// param.parentNode.removeChild($(err).get(0));
+				// $(param.parentNode).removeClass("error");
+			// }
+		// }
+	// }
+// 	
+	// goofs.push(element);
+// 	
+	// for (var action in methods)(
+		// function(n,m) {
+			// goofs[n] = function(x) {
+				// return goofs.map(m,x);
+			// }
+		// }(action, methods[action])
+	// )
+// 	
+	// return goofs;
+// }
 TRANSfORMER.transFormer = $TransFormer = function(form) {
 	var blunders = [];	// (Array) Array of any outstanding blunders;
 	var checkReqd;			// (Function) Checks the required fields
@@ -272,7 +316,7 @@ shcJSL.methods.transFormer = function(target, options) {
 	 * @since 1.0
 	 */
 if (shcJSL && shcJSL.gizmos)  {
-	shcJSL.gizmos.transFormer = function(element) {
+	shcJSL.gizmos.valid8 = function(element) {
 		shcJSL.get(element).transFormer();
 	}
 }

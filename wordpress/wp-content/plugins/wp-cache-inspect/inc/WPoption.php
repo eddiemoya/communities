@@ -1,0 +1,144 @@
+<?php
+/**
+ * WPoption [Klasse]
+ *
+ * Updaten, Setzen, Holen und L&ouml;schen von Optionen in WordPress
+ *
+ * WPoption gruppiert und verwaltet alle Optionen eines Plugins bzw.
+ * Themes in einem einzigen Optionsfeld. Die Anzahl der
+ * Datenbankabfragen und somit die Ladezeit des Blogs k&ouml;nnen sich
+ * sich enorm verringern. WPoption richtet sich an die Entwickler
+ * von WordPress-Plugins und -Themes.
+ *
+ * @package  WPoption.php
+ * @author   Sergej M&uuml;ller und Frank B&uuml;ltge
+ * @since    26.09.2008
+ * @change   26.09.2008
+ * @access   public
+ */
+
+
+class WPoption {
+	
+	
+	/**
+	 * WPoption [Konstruktor]
+	 *
+	 * Setzt Eigenschafen fest und startet die Initialisierung
+	 *
+	 * @package  WPoption.php
+	 * @author   Sergej M&uuml;ller
+	 * @since    26.09.2008
+	 * @change   26.09.2008
+	 * @access   public
+	 * @param    array  $option  Name der Multi-Option in der DB [optional]
+	 * @param    array  $data  ..Array mit Anfangswerten [optional]
+	 */
+	
+	function WPoption($option = '', $data = array()) {
+		if (empty($option) === true) {
+			$this->multi_option = 'WPoption_'. md5(get_bloginfo('home'));
+		} else {
+			$this->multi_option = $option;
+		}
+		
+		$this->init_option($data);
+	}
+	
+	
+	/**
+	 * init_option
+	 *
+	 * Initialisiert die Multi-Option in der DB
+	 *
+	 * @package  WPoption.php
+	 * @author   Sergej M&uuml;ller
+	 * @since    26.09.2008
+	 * @change   26.09.2008
+	 * @access   public
+	 * @param    array  $data  Array mit Anfangswerten [optional]
+	 */
+	
+	function init_option($data = array()) {
+		add_option($this->multi_option, $data);	
+	}
+	
+	
+	/**
+	 * delete_option
+	 *
+	 * Entfernt die Multi-Option aus der DB
+	 *
+	 * @package  WPoption.php
+	 * @author   Sergej M&uuml;ller
+	 * @since    26.09.2008
+	 * @change   26.09.2008
+	 * @access   public
+	 */
+	
+	function delete_option() {
+		delete_option($this->multi_option);
+	}
+	
+	
+	/**
+	 * get_option
+	 *
+	 * Liefert den Wert einer Option
+	 *
+	 * @package  WPoption.php
+	 * @author   Sergej M&uuml;ller
+	 * @since    26.09.2008
+	 * @change   26.09.2008
+	 * @access   public
+	 * @param    string  $key  Name der Option
+	 * @return   mixed         Wert der Option [false im Fehlerfall]
+	 */
+	
+	function get_option($key) {
+		if (empty($key) === true) {
+			return false;
+		}
+		
+		$data = get_option($this->multi_option);
+		
+		return @$data[$key];
+	}
+	
+	
+	/**
+	 * update_option
+	 *
+	 * Weist den Optionen neue Werte zu
+	 *
+	 * @package  WPoption.php
+	 * @author   Sergej M&uuml;ller
+	 * @since    26.09.2008
+	 * @change   26.09.2008
+	 * @access   public
+	 * @param    mixed    $key    Name der Option [alternativ Array mit Optionen]
+	 * @param    string   $value  Wert der Option [optional]
+	 * @return   boolean          False im Fehlerfall
+	 */
+	
+	function update_option($key, $value = '') {
+		if (empty($key) === true) {
+			return false;
+		}
+		
+		if (is_array($key) === true) {
+			$data = $key;
+		} else {
+			$data = array($key => $value);
+		}
+		
+		update_option(
+									$this->multi_option,
+								  array_merge(
+								              get_option($this->multi_option),
+								              $data
+								             )
+								 );
+	}
+}
+?>

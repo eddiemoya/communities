@@ -31,7 +31,7 @@
 }
 
 .open-id_service a {
-  background:transparent url(#{$img}sprite_open-id-services.png) no-repeat 0px 0px;
+  background:transparent image-url("sprite_open-id-services.png") no-repeat 0px 0px;
   display:block;
   text-indent:-9999em;
 }

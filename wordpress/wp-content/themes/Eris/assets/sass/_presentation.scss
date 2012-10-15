@@ -116,13 +116,13 @@ ul.bullets {
 #header.sears form #button_search, #header.sears form #input_search,
 .sears_button
 {
-  background-image:url(#{$sears-img}sprite_global.png);
+  background-image:image-url("#{$sears-img}sprite_global.png");
 }
 
 #header.kmart form #button_search, #header.kmart form #input_search,
 .kmart_button
 {
-  background-image:url(#{$kmart-img}sprite_global.png);
+  background-image:image-url("#{$kmart-img}sprite_global.png");
 }
 
 // COMMONLY USED ELEMENTS
@@ -159,7 +159,7 @@ ul.bullets {
   }
   &.labeled {
     h4 {
-      background: sears( badge ) url('#{$img}sprite-user.png') repeat-x left bottom;
+      background: sears( badge ) image-url("sprite-user.png") repeat-x left bottom;
       text-align: center;
       // removing rounded corners per client's request -CAB 9.14.2012
       // @include border-radius( 0 0 10px 10px );
@@ -169,7 +169,7 @@ ul.bullets {
       line-height: 1;
     }
     .tail {
-      background: url('#{$img}sprite-user.png') no-repeat center top;
+      background: image-url("sprite-user.png") no-repeat center top;
       height: 10px;
       overflow: hidden;
     }
@@ -190,7 +190,7 @@ ul.bullets {
     }
   }
   .user_screenname, .user_location {
-    font-size:font-size(12);
+    font-size:font-size( 12 );
     font-weight:bold;
   }
   
@@ -288,7 +288,7 @@ ul.bullets {
 }
 
 .sears_button.azure, .kmart_button.azure {
-  background-image: url('#{$sears-img}/sprite_global.png');
+  background-image: image-url('#{$sears-img}/sprite_global.png');
   border-color:#60768b;
   color:#366392;
   text-shadow:none;
@@ -327,7 +327,7 @@ ul.bullets {
     position:relative;
     @include border-radius( 5px );
     .error-pointer {
-      background:transparent url(#{$img}error_pointer-arrow.png) no-repeat 0px 0px;
+      background:transparent image-url("error_pointer-arrow.png") no-repeat 0px 0px;
       height:9px;
       display:block;
       left:15px;
@@ -373,6 +373,15 @@ form {}
   .content-body {
     border-top:solid 1px #dddcdc;
     padding: em-adjust( .625em 0 );
+    .hr {
+      background:transparent image-url('background_hr.gif') repeat-x 0px 0px;
+      height:1px;
+      @extend .clearfix;
+      @extend .clearfix:after;
+      @extend .clearfix:before;
+      padding:18px 0px;
+      width:100%;
+    }
   }
   .content-category {
     float:left;
@@ -852,7 +861,7 @@ fieldset#use_your_account_from {
     display: inline-block;
     width: 16px;
     height: 16px;
-    background: url('#{$img}sprite-social.png');
+    background: image-url('sprite-social.png');
     background-repeat: no-repeat;
     text-indent: -9999em;
     margin-left: em-adjust( 1.3em );
@@ -911,7 +920,7 @@ $tab-padding: "1em 0 .6em 0";
       border-width: 1px 1px 0 1px;
       text-align: center;
       @include border-radius( 5px 5px 0 0);
-      background: $nav-color url('#{$sears-img}sprite_navigation.png');
+      background: $nav-color image-url('#{$sears-img}sprite_navigation.png');
     }
     a {
       display: block;
@@ -1184,11 +1193,11 @@ $tab-padding: "1em 0 .6em 0";
 }
 
 .sears .comment-actions button {
-  background: transparent url(#{$sears-img}/sprite_global.png) repeat-x 0 -192px;
+  background: transparent image-url("#{$sears-img}/sprite_global.png") repeat-x 0 -192px;
 }
 
 .kmart .comment-actions button {
-  background: transparent url(#{$sears-img}/sprite_global.png) repeat-x 0 -200px;
+  background: transparent image-url("#{$sears-img}/sprite_global.png") repeat-x 0 -200px;
 }
 
 #allComments {
@@ -1262,7 +1271,7 @@ $tab-padding: "1em 0 .6em 0";
     color: #4e74a3;
     border: 1px solid #d6d6d6;
     font-weight: bold;
-    background: $lightest-color url('#{$img}sprite-actions.png') no-repeat;
+    background: $lightest-color image-url('sprite-actions.png') no-repeat;
     display: inline-block;
     float: right;
     text-indent: -999em;
@@ -1366,6 +1375,7 @@ button.follow {
   color:sears( link );
 }
 .no-results {
+  font-size: font-size( 18 );
   .header {
     font-weight: bold;
     margin-top: 15px;
@@ -1375,6 +1385,15 @@ button.follow {
   ul {
     padding-left: 20px;
   }
+  .bullets, p {
+    color: sears( secondary-link );
+  }
+}
+.sears .no-results .term {
+  color: sears( link );
+}
+.kmart .no-results .term {
+  color: kmart( link );
 }
 
 // @author Tim Steele
@@ -1422,7 +1441,7 @@ button.follow {
 .site-error {
   margin-top: 2em;
   .span8, .span10 {
-    background: url(#{$img}tile_line.gif);
+    background: image-url("tile_line.gif");
     margin-top: 2em;
   }
   .message {
@@ -1441,7 +1460,7 @@ button.follow {
       margin-top: 1em;
     }
     .tape {
-      background: url(#{$img}tile_line.gif);
+      background: image-url("tile_line.gif");
       width: 50%;
       margin: .66em auto;
       line-height: .5;
@@ -1505,16 +1524,19 @@ button.follow {
 
 .member_avatar {
   overflow:hidden;
+  a:hover {
+    text-decoration: none;
+  }
   img {
     width:100%;
   }
   .badge {
-    background:transparent url(#{$sears-img}sprite_global.png) repeat-x 0px 0px;
-    color:#ffffff;
+    background:sears( badge ) image-url("#{$sears-img}sprite_global.png") repeat-x 0px 0px;
+    color:$lightest-color;
     display:block;
-    font-weight:bold;
     text-align:center;
     width:100%;
+    @extend .bold;
   }
 }
 
@@ -1686,7 +1708,7 @@ button.follow {
 .site-error {
   margin-top: 2em;
   .span8, .span10 {
-    background: url(#{$img}tile_line.gif);
+    background: image-url("tile_line.gif");
     margin-top: 2em;
   }
   .message {
@@ -1705,7 +1727,7 @@ button.follow {
       margin-top: 1em;
     }
     .tape {
-      background: url(#{$img}tile_line.gif);
+      background: image-url("tile_line.gif");
       width: 50%;
       margin: .66em auto;
       line-height: .5;
@@ -1800,3 +1822,5 @@ button.follow {
     margin-bottom:1.75em;
   }
 }
+
+

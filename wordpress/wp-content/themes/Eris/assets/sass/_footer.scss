@@ -20,7 +20,7 @@ ul.footer_anterior {
     }
   }
   .icon {
-    background-image: url('#{$img}sprite-footer.png');
+    background-image: image-url('sprite-footer.png');
     background-repeat: no-repeat;
     //width: 16px;
     a {

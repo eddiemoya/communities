@@ -109,7 +109,7 @@ function return_template_part($template){
 
 /**
  * Checks if user has a screen name set. If so, returns true, else false
- * 
+ * ersection
  * @author Dan Crimmins
  * @param int $user_id - WP User ID
  * @return bool
@@ -602,7 +602,6 @@ function return_post_count( $user_id ) {
 function return_address( $user_id ) {
     $a_address = array();
     $address = '&nbsp;';
-    $i = 0;
     
     $city  = get_user_meta( $user_id, 'user_city', true );
     $state = get_user_meta( $user_id, 'user_state', true );
@@ -775,7 +774,7 @@ function sanitize_text($text) {
 
 
 function the_truncated_title($length = 100){
-    
+
     $title = get_the_title();
 
     if (strlen($title) > $length) $title = substr($title, 0, $length) . "...";
@@ -785,7 +784,7 @@ function the_truncated_title($length = 100){
 }
 
 function truncated_text($text, $length = 100) {
-	
+
 	 if (strlen($text) > $length) $text = substr($text, 0, $length) . "...";
 
     	return $text;

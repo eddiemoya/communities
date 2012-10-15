@@ -39,22 +39,20 @@ get_template_part('parts/header'); ?>
 					<div><?php echo $error;?></div>
 				<?php endif;?>
 				
-				<form class="form_register" id="register-form" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>" shc:gizmo="transFormer">
+				<form class="form_register" id="register-form" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>" shc:gizmo="valid8">
             <ul class="form-fields">
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="loginId">Email:</label></dt>
-                        <dd class="span9"><input type="text" name="loginId" autocomplete="off" class="input_text" id="loginId" shc:gizmo:form="{required:true, pattern: /^.+@.+?\.[a-zA-Z]{2,}$/, message: 'Please enter a valid email address'}" value="<?php echo $email; ?>"/></dd>
-                        
+                        <dd class="span9"><input type="text" name="loginId" class="input_text" id="loginId" data-required="true" data-type="email" value="<?php echo $email; ?>"/></dd>
                     </dl>
-                    							
                 </li>
                 
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="login_confirm-email">Confirm Email:</label></dt>
                         <dd class="span9">
-                        	<input type="text" name="login_confirm-email" autocomplete="off" class="input_text" id="login_confirm-email" shc:gizmo:form="{required:true, custom: function(self) {if (self.value.toLowerCase() != ($('#loginId').attr('value')).toLowerCase()) return false; else return true;}, message: 'Your email does not match. Please check and try again.'}" />
+                        	<input type="text" name="login_confirm-email" autocomplete="off" class="input_text" id="login_confirm-email" data-required="true" data-type="confirm-email" />
                         </dd>
                     </dl>
                 </li>
@@ -63,39 +61,15 @@ get_template_part('parts/header'); ?>
                     <dl class="clearfix">
                         <dt class="span3"><label for="logonPassword">Password:</label></dt>
                         <dd class="span9">
-                            <input
-                                    type="password"
-                                    name="logonPassword"
-                                    autocomplete="off"
-                                    class="input_text input_password"
-                                    id="logonPassword"
-                                    shc:gizmo:form="{required:true, pattern: /^\w*(?=\w{8,})(?=\w*\d)(?=\w*[a-zA-Z])(?!\w*_)\w*$/, message: 'Please enter a valid password.'}"
-                                    shc:gizmo="tooltip"
-                                    shc:gizmo:options="
-                                        {
-                                            tooltip: {
-                                                displayData: {
-                                                    element: 'passInfo'
-                                                },
-                                                events: {
-                                                    blur: {
-                                                        active: true
-                                                    },
-                                                    focus: {
-                                                        active: true
-                                                    }
-                                                },
-                                                arrowPosition: 'left'
-                                            }
-                                        }"
-                            /></dd>
+                        	<input type="password" name="logonPassword" autocomplete="off" class="input_text input_password" id="logonPassword" data-required="true" data-type="password" />
+                        </dd>
                     </dl>
                 </li>
                 
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="zipcode">ZIP Code:</label></dt>
-                        <dd class="span9"><input type="text" name="zipcode" autocomplete="off" class="input_text input_password" id="zipcode" shc:gizmo:form="{required:true, pattern: /(^\d{5})(-\d{4})?$/, message: 'Please enter a valid ZIP code'}" value="<?php echo $zipcode;?>" /></dd>
+                        <dd class="span9"><input type="text" name="zipcode" class="input_text input_password" id="zipcode" data-required="true" data-type="zip-code" value="<?php echo $zipcode;?>" /></dd>
                     </dl>
                 </li>
                 
@@ -140,7 +114,7 @@ get_template_part('parts/header'); ?>
                     <dd class="span3">&nbsp;</dd>
                     <dd class="span9">
                         <p class="bold">
-                            Existing Customer? <a href="/login/" title="Sign In" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">Sign In</a>
+                            Existing Customer? <a href="/login/" title="Sign In" shc:gizmo="moodle" shc:gizmo:options='{"moodle": {"width":"480", "data":{"action": "get_template_ajax", "template": "page-login"}}}'>Sign In</a>
                         </p>
                     </dd>
                 </dl>
@@ -181,5 +155,28 @@ endif;
 
 ?>
 
-
+ <!-- <input type="password" name="logonPassword" autocomplete="off" class="input_text input_password" id="logonPassword" data-required="true" data-type="password"
+                                    shc:gizmo:form="{required:true, pattern: /^\w*(?=\w{8,})(?=\w*\d)(?=\w*[a-zA-Z])(?!\w*_)\w*$/, message: 'Please enter a valid password.'}"
+                                    shc:gizmo="tooltip"
+                                    shc:gizmo:options="
+                                        {
+                                            tooltip: {
+                                                displayData: {
+                                                    element: 'passInfo'
+                                                },
+                                                events: {
+                                                    click: {
+                                                        active: false
+                                                    },
+                                                    blur: {
+                                                        active: true
+                                                    },
+                                                    focus: {
+                                                        active: true
+                                                    }
+                                                },
+                                                arrowPosition: 'left'
+                                            }
+                                        }"
+                            /> -->
 

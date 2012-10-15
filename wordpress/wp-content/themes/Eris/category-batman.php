@@ -99,6 +99,7 @@ get_template_part('parts/header');
 				
 			</article>
 			
+			
 			<article class="widget content-container span6 ad-widget">
 				<header class="content-header">
 					<h1>Advertisement</h1>
@@ -375,6 +376,7 @@ get_template_part('parts/header');
 					<p>
 						&quot;What is it!&quot; cried Merry. &quot;It is time to get up. It is half past four and very foggy. Come on! Sam is already getting breakfast ready. Even Pippin is up. I am just going to saddle the ponies, and fetch the one that is to be the baggage&ndash;carrier. Wake that sluggard Fatty! At least he must get up and see us off.&quot;
 					</p>
+					<div class="hr"></div>
 					<p>
 						Soon after six o&rsquo;clock the five hobbits were ready to start. Fatty Bolger was still yawning. They stole quietly out of the house. Merry went in front leading a laden pony, and took his way along a path that went through a spinney behind the house, and then cut across several fields. The leaves of trees were glistening, and every twig was dripping; the grass was grey with cold dew. Everything was still, and far&ndash;away noises seemed near and clear: fowls chattering in a yard, someone closing a door of a distant house.
 					</p>
