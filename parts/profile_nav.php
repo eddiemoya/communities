@@ -94,15 +94,16 @@
 			);
 			
     	get_partial( 'parts/crest', $experts_settings ); 
-
 ?>
 
-	<section class="member_bio">
-		<h3>About %USERNAME%</h3>
-		<p>
-			Vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
-		</p>
-	</section>
+    <?php if(get_the_author_meta('description')) : ?>
+        <section class="member_bio">
+            <h3>About <?php get_screenname($profile_user->ID); ?></h3>
+            <p>
+                <?php the_author_meta('description'); ?>
+            </p>
+        </section>
+    <?php endif; ?>
 
 </div>
 <?php endif; ?>
