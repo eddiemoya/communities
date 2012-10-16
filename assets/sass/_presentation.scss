@@ -1684,9 +1684,9 @@ button.follow {
 .profile-summary {
   .member_details {
     .member_avatar {
-      width:5em;
+      width:8.5em;
       .badge {
-        font-size:font-size(10);
+        font-size:font-size(14);
         line-height:2em;
       }
       img {
@@ -1694,13 +1694,39 @@ button.follow {
         min-width:5em;
       }
     }
-    .member_profile, .member_content {
+    .member_profile {
+      margin-left:0px;
+      position:absolute;
+      .member_screen-name {
+        font-size:font-size(20);
+        a, a:visited, a:hover {
+          color:#666666;
+        }
+      }
+      .member_location {
+        font-size:font-size(14);
+      }
+    }
+    .member_content {
       clear:none;
       margin-left:2.5%;
-      width:70%;
+      width:10em;
     }
     .member_location {
       margin-bottom:0px;
+    }
+  }
+  .member_avatar, .member_content, .member_bio {
+    margin-top:5em;
+  }
+  .member_bio {
+    border-left:solid 1px #e4e4e4;
+    float:left;
+    padding-left:2.5em;
+    width:24em;
+    h3 {
+      font-size:font-size(14);
+      font-weight:bold;
     }
   }
 }
