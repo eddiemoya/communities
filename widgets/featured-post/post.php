@@ -1,5 +1,5 @@
 <?php 
-global $excerptLength; $excerptLength = 140;
+global $excerptLength; $excerptLength = 200;
 
 //Inner span is span12, unless theres a thumbnail to show, or unless the the widget's span is already 6 or lower.
 $comments = get_comments_number();
