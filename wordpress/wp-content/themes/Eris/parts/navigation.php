@@ -28,7 +28,20 @@
         </li>
 
         <li>
-            <a href="<?php echo site_url(); ?>"><span>Categories</span></a>
+            <?php if(is_front_page()) : ?>
+                <span>
+            <?php else: ?>
+                <a href="<?php echo site_url(); ?>">
+            <?php endif; ?>
+
+            <span>Categories</span>
+
+            <?php if(is_front_page()): ?>
+                </span>
+            <?php else: ?>
+                </a>
+            <?php endif; ?>
+
             <ul>
                 <?php wp_list_categories(array('parent' => 0, 'hide_empty' => true, 'depth' => 1, 'title_li'=>'', 'order'=>'ASC')); ?>
             </ul>
