@@ -10,7 +10,14 @@ if(!is_ajax()) {
     	loop('post', null, 'widgets/summary-list', 'parts/no-results');
 
     echo "</ul>";
+    
+    if(is_widget('filter-post-type') == 'question'):
+    ?>
+		<a href="<?php echo get_site_url(get_current_blog_id(), 'questions');?>">See More</a>
+	<?php 
+	endif;
 
 if(!is_ajax()){ 
     get_template_part('parts/footer', 'widget');
 }
+?>
