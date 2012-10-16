@@ -68,6 +68,10 @@ function get_posts_ajax(){
                 $query['order'] = $_POST['order'];
             }
 
+            if(isset($_POST['orderby'])){
+                $query['orderby'] = $_POST['orderby'];
+            }
+
             $wp_query = new WP_Query($query);
         $path = (isset($_POST['path'])) ? $_POST['path'] : 'parts';
       
