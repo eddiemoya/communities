@@ -396,7 +396,7 @@ function print_pre($r){
  *
  * @return (array) Terms found to have posts of the provided post type.
  **/
-function get_terms_by_post_type($taxonomy = 'category',$post_type = 'post', $show_children = true){
+function get_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
 
     //get a list of all post of your type
     $args = array(
@@ -412,17 +412,8 @@ function get_terms_by_post_type($taxonomy = 'category',$post_type = 'post', $sho
         $ts = wp_get_object_terms($p->ID,$taxonomy); 
         foreach ( $ts as $t ) {
             if (!in_array($t,$terms)){ //only add this term if its not there yet
-
-                if(!$show_children){
-                    if($t=>parent == 0){
-                    //$t->cat_name = ''
-                    $terms[] = $t;
-                    }
-                } else {
-                    $terms[] = $t;
-                }
-
-
+                //$t->cat_name = ''
+                $terms[] = $t;
             }
         }
     }
