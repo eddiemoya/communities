@@ -46,7 +46,7 @@ function enqueue_scripts() {
 				
 				// NOT FOR PRODUCTION
 				//wp_register_script('debug', get_template_directory_uri() . '/assets/js/vendor/debug.js', array(), '1.0');
-
+	
         wp_enqueue_script('jquery');    
         wp_enqueue_script('modernizr');
        // wp_enqueue_script('debug');
