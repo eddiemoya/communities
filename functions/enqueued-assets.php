@@ -23,7 +23,9 @@ function enqueue_scripts() {
          );
         
         //This condition is just an example, here we only needed to track omniture on category archives.
-        if (is_category()) { $data['omchannel'] = single_cat_title('', false); }
+       // if (is_category()) { $data['omchannel'] = single_cat_title('', false); }
+        $pageName = get_omniture();
+
             
         
        /* Scripts */
@@ -38,7 +40,12 @@ function enqueue_scripts() {
         wp_register_script('actions', get_template_directory_uri() . '/assets/js/widgets/shcJSL.actions.js', array(), '1.0');
         wp_register_script('transFormer', get_template_directory_uri() . '/assets/js/widgets/shcJSL.transFormer.js', array(), '1.0');
         wp_register_script('flagger', get_template_directory_uri() . '/assets/js/widgets/shcJSL.flagger.js', array(), '1.0');
+<<<<<<< HEAD
         wp_register_script('addthis', 'https://s7.addthis.com/js/250/addthis_widget.js', array(), '1.1');
+=======
+				wp_register_script('omniture', get_template_directory_uri() . '/assets/js/vendor/omniture.' . theme_option("brand") . '.js', array(), '1.0');
+        wp_register_script('addthis', 'http://s7.addthis.com/js/250/addthis_widget.js', array(), '1.0');
+>>>>>>> emts.omnomnomniture.r02
 				
 				// NOT FOR PRODUCTION
 				//wp_register_script('debug', get_template_directory_uri() . '/assets/js/vendor/debug.js', array(), '1.0');
@@ -54,9 +61,11 @@ function enqueue_scripts() {
         wp_enqueue_script('actions');
         wp_enqueue_script('transFormer');
         wp_enqueue_script('flagger');
+				wp_enqueue_script('omniture');
         wp_enqueue_script('addthis');
 
-		wp_localize_script('jquery', 'ajaxdata', $data);		
+				wp_localize_script('jquery', 'ajaxdata', $data);
+        //wp_localize_script('addthis', 's.pageName', $pageName);    		
         
         /* Styles */
         $style_path = STYLESHEETPATH . "/style.css";
@@ -84,6 +93,8 @@ function enqueue_scripts() {
 
 add_action('wp_head','pluginname_ajaxurl');
 add_action('wp_head','pluginname_addthis_config');
+add_action('wp_head','omniture_sVars');
+
 function pluginname_ajaxurl() {
 
     $url = site_url('/wp-admin/admin-ajax.php');
@@ -108,4 +119,18 @@ function pluginname_addthis_config() {
               }
         </script>
     ';
+}
+function omniture_sVars() {
+	echo "
+		<script type='text/javascript'>
+			s.pageName = '". get_omniture() . "';
+			s.prop1 = '". get_omniture() . "';
+			s.prop2 = '". get_omniture() . "';
+			s.prop3 = '". get_omniture() . "';
+			s.prop13 = '". get_omniture() . "';
+			s.prop18 = '". get_omniture() . "';
+			s.prop27 = '". get_omniture() . "';
+			s.prop28 = '". get_omniture() . "';
+		</script>
+	";
 }
