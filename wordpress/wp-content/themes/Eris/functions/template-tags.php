@@ -423,6 +423,7 @@ function get_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
     return $terms; 
 }
 
+
 /**
  * Includes partial while passing a set of variables into the included templates
  * scope.
