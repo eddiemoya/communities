@@ -96,11 +96,12 @@
     	get_partial( 'parts/crest', $experts_settings ); 
 ?>
 
-    <?php if(get_the_author_meta('description')) : ?>
+    <?php 
+    if(get_the_author_meta('user_description',$profile_user->ID)) : ?>
         <section class="member_bio">
             <h3>About <?php get_screenname($profile_user->ID); ?></h3>
             <p>
-                <?php the_author_meta('description'); ?>
+                <?php the_author_meta('user_description',$profile_user->ID); ?>
             </p>
         </section>
     <?php endif; ?>

@@ -15,6 +15,7 @@
  */
 
 
+
 	
 define('USE_LOCAL_DB', true);
 
@@ -43,6 +44,7 @@ if(USE_LOCAL_DB) {
 } else {
 	
 	
+
 	/** The name of the database for WordPress */
 	define('DB_NAME', 'comm_local');
 
@@ -59,6 +61,8 @@ if(USE_LOCAL_DB) {
 	/** Database Charset to use in creating database tables. */
 	define('DB_CHARSET', 'utf8');
 	
+	/** The Database Collate type. Don't change this if in doubt. */
+	define('DB_COLLATE', '');
 }
 
 
@@ -127,7 +131,7 @@ if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
 	
 /** W3 Total Cache **/
-define('WP_CACHE', true); 
+ 
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');

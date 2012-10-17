@@ -1629,8 +1629,20 @@ button.follow {
   .member_avatar img {
     width: 100%; }
   .member_avatar .badge {
+<<<<<<< HEAD
     background: #bcdaf3 url('assets/img/sears/sprite_global.png?v=1348775259') repeat-x 0px 0px;
+=======
+    background: #bcdaf3 url(assets/img/sears/sprite_global.png) repeat-x 0px 0px;
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> f69093f8407ea17465ee895cfe6420bbbea7e57c
     color: white;
+=======
+    color: #ffffff;
+>>>>>>> 74fc1c025ba03dc3ac3c9b84cdac650bea7f3ac4
+=======
+    color: white;
+>>>>>>> tsem.rawr-im-a-dinosaur.r01
     display: block;
     text-align: center;
     width: 100%; }
