@@ -14,6 +14,7 @@
  * @package WordPress
  */
 
+
 	
 define('USE_LOCAL_DB', false);
 
@@ -43,17 +44,17 @@ if(USE_LOCAL_DB) {
 	
 	/** The name of the database for WordPress */
 	define('DB_NAME', 'communities');
-	
+
 	/** MySQL database username */
 	define('DB_USER', 'communities_dba');
-	
+
 	/** MySQL database password */
 	define('DB_PASSWORD', 'password1');
-	
+
 	/** MySQL hostname */
 	define('DB_HOST', 'barable.com');
 	// define('WP_ALLOW_MULTISITE', true);
-	
+
 	/** Database Charset to use in creating database tables. */
 	define('DB_CHARSET', 'utf8');
 	
@@ -61,7 +62,6 @@ if(USE_LOCAL_DB) {
 	define('DB_COLLATE', '');
 }
 
-	
 /**#@+
  * Authentication Unique Keys and Salts.
  *

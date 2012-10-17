@@ -78,6 +78,9 @@ get_template_part('parts/header'); ?>
                                                     element: 'passInfo'
                                                 },
                                                 events: {
+                                                    click: {
+                                                        active: false
+                                                    },
                                                     blur: {
                                                         active: true
                                                     },

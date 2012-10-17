@@ -10,8 +10,11 @@
 
     $post_actions = array(
         "id"        => $post->ID,
-        "type"      => $post->post_type,
+        "type"      => 'post',
+        "sub_type"   => $post->post_type,
         "options"   => array( "flag", "share" ),
+        'actions'   => $post->actions,
+        'post_id'   => $post->ID,
         "url"       => get_permalink( $post->ID )
     );
 
@@ -20,7 +23,6 @@
     $answer_count = $answer_count - $expert_count;
     $answer_count_string = ($answer_count > 500) ? "500+ answers" : $answer_count . " " . _n( ' answer', ' answers', $answer_count );
     $expert_count_string = ($expert_count > 500) ? "500+ community team answers" : $expert_count . " " . _n( ' community team answer', ' community team answers', $expert_count );
-    
 ?>
 <article class="content-container question">
 	<section class="content-body clearfix">
@@ -34,7 +36,7 @@
 				<?php get_partial( 'parts/space_date_time', array( "timestamp" => get_the_time( 'U' ) ) ); ?>
 			</div>
 			
-			<h1 class="content-headline"><a href="<?php the_permalink(); ?>"><?php the_truncated_title(); ?></a></h1>
+			<h1 class="content-headline"><a href="<?php the_permalink(); ?>"><?php the_truncated_title(75); ?></a></h1>
 			
 			<p class="content-excerpt">
 				<?php the_excerpt(); ?>
