@@ -10,6 +10,7 @@ jQuery(document).ready(function($) {
 		var data = {
 			action		: 'get_subcategories_ajax',
 			category_id	: $('option', this).filter(':selected').val(),
+			hide_empty : $('.hide_empty', $(this).closest('form')).val()
 		};
 		
 		if(data.category_id != 0){
@@ -74,7 +75,7 @@ jQuery(document).ready(function($) {
  	$('.results-list select.filter-results-posts, .results-list select.sort-results-posts').on('change', function(e){
  		e.preventDefault();
 
- 		container = $(this).closest('.results-list');
+ 		var container = $(this).closest('.results-list');
  		
 		var data = {
 			action		: 'get_posts_ajax',
@@ -84,7 +85,13 @@ jQuery(document).ready(function($) {
 			order		: $('.sort-results-posts option', container).filter(':selected').val(),
 			path		: 'widgets/results-list'
 		};
-		
+
+		if(data.order == 'comment_count'){
+			data.orderby = data.order;
+			delete data.order;
+		}
+
+
 		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category .filter-results option', this).filter(':selected').val() : data.category; //console.log(data);
 
 		jQuery.ajax({
