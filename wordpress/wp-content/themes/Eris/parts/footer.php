@@ -24,8 +24,11 @@
           get_template_part('parts/footer_navigation');
           get_template_part('parts/footer_anterior');
         }
-        
-        session_destroy();
+
+         
+        //Used to destroy session used only to capture referer information
+        session_destroy();       
+
         ?>
 
         <?php wp_footer(); ?>
@@ -33,6 +36,6 @@
       </footer>
 
     </div> <!-- #container -->
-<?php get_partial('parts/tooltip'); ?>
+    <?php get_partial('parts/tooltip'); ?>
   </body>
 </html>
