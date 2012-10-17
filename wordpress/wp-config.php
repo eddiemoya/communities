@@ -46,7 +46,6 @@ if(USE_LOCAL_DB) {
 	/** The name of the database for WordPress */
 	define('DB_NAME', 'communities');
 
-
 	/** MySQL database username */
 	define('DB_USER', 'communities_dba');
 
