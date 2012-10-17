@@ -14,7 +14,7 @@
  * @package WordPress
  */
 
-define('USE_LOCAL_DB', true);
+define('USE_LOCAL_DB', false);
 
 if( ! USE_LOCAL_DB) {
 
@@ -49,14 +49,12 @@ if( ! USE_LOCAL_DB) {
 	define('DB_HOST', 'localhost');
 	// define('WP_ALLOW_MULTISITE', true);
 
-<<<<<<< HEAD
 	/** Database Charset to use in creating database tables. */
 	define('DB_CHARSET', 'utf8');
 	
 }
 
-=======
->>>>>>> rawr-im-a-dinosaur.r01.em
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *

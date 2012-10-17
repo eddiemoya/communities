@@ -24,6 +24,9 @@
           get_template_part('parts/footer_navigation');
           get_template_part('parts/footer_anterior');
         }
+         
+        //Used to destroy session used only to capture referer information
+        session_destroy();       
         ?>
 
         <?php wp_footer(); ?>
