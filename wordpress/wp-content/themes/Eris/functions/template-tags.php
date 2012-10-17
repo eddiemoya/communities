@@ -423,6 +423,7 @@ function get_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
     return $terms; 
 }
 
+
 /**
  * Includes partial while passing a set of variables into the included templates
  * scope.
@@ -774,7 +775,7 @@ function sanitize_text($text) {
 
 
 function the_truncated_title($length = 100){
-    
+
     $title = get_the_title();
 
     if (strlen($title) > $length) $title = substr($title, 0, $length) . "...";
@@ -784,7 +785,7 @@ function the_truncated_title($length = 100){
 }
 
 function truncated_text($text, $length = 100) {
-	
+
 	 if (strlen($text) > $length) $text = substr($text, 0, $length) . "...";
 
     	return $text;

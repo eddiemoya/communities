@@ -165,6 +165,9 @@ body {
   .menu-sears-ribbon-container .ribbon_sears-outlet a, .menu-kmart-ribbon-container .ribbon_sears-outlet a {
     background-position: 0px -135px;
     width: 59px; }
+  .menu-sears-ribbon-container .ribbon_kmart-vendors a, .menu-kmart-ribbon-container .ribbon_kmart-vendors a {
+    background-position: 0px -165px;
+    width: 54px; }
   .menu-sears-ribbon-container .ribbon_see-all a, .menu-kmart-ribbon-container .ribbon_see-all a {
     background-position: 0px -150px;
     width: 32px; }
@@ -1519,13 +1522,23 @@ button.follow {
 .sears .breadcrumb li:before {
   color: #067bb5; }
 
-.no-results .header {
-  font-weight: bold;
-  margin-top: 15px;
-  margin-bottom: 5px;
-  font-size: 1em; }
-.no-results ul {
-  padding-left: 20px; }
+.no-results {
+  font-size: 138.461%; }
+  .no-results .header {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1em; }
+  .no-results ul {
+    padding-left: 20px; }
+  .no-results .bullets, .no-results p {
+    color: #666666; }
+
+.sears .no-results .term {
+  color: #067bb5; }
+
+.kmart .no-results .term {
+  color: #980017; }
 
 .page-title {
   color: #999999;
@@ -1617,7 +1630,11 @@ button.follow {
     width: 100%; }
   .member_avatar .badge {
     background: #bcdaf3 url(assets/img/sears/sprite_global.png) repeat-x 0px 0px;
+<<<<<<< HEAD
     color: white;
+=======
+    color: #ffffff;
+>>>>>>> 74fc1c025ba03dc3ac3c9b84cdac650bea7f3ac4
     display: block;
     text-align: center;
     width: 100%; }

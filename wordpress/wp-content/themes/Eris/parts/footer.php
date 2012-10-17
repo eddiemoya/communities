@@ -24,6 +24,8 @@
           get_template_part('parts/footer_navigation');
           get_template_part('parts/footer_anterior');
         }
+        
+        session_destroy();
         ?>
 
         <?php wp_footer(); ?>

@@ -49,7 +49,7 @@ jQuery(document).ready(function($) {
 			template 	: 'author-archive',
 			category	: $('.filter-results-users option', container).filter(':selected').val(),
 			order		: $('.sort-results-users option', container).filter(':selected').val(),
-			path		: 'widgets/results-list',
+			path		: 'widgets/results-list'
 		};
 
 		//console.log(data);
@@ -82,7 +82,7 @@ jQuery(document).ready(function($) {
 			template 	: $('.post_type', container).val(),
 			category	: $('.filter-results-posts option', container).filter(':selected').val(),
 			order		: $('.sort-results-posts option', container).filter(':selected').val(),
-			path		: 'widgets/results-list',
+			path		: 'widgets/results-list'
 		};
 		
 		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category .filter-results option', this).filter(':selected').val() : data.category; //console.log(data);

@@ -1375,6 +1375,7 @@ button.follow {
   color:sears( link );
 }
 .no-results {
+  font-size: font-size( 18 );
   .header {
     font-weight: bold;
     margin-top: 15px;
@@ -1384,6 +1385,15 @@ button.follow {
   ul {
     padding-left: 20px;
   }
+  .bullets, p {
+    color: sears( secondary-link );
+  }
+}
+.sears .no-results .term {
+  color: sears( link );
+}
+.kmart .no-results .term {
+  color: kmart( link );
 }
 
 // @author Tim Steele

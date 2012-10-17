@@ -1,0 +1,82 @@
+.root li {
+margin-left:15px;
+list-style: upper-roman;
+font-weight: 700;
+list-style-position: inside;
+background: #fff;
+}
+.root li li {
+list-style: decimal-leading-zero;
+font-weight: 400;
+list-style-position: inside;
+background: #f4f4f4;
+}
+.root li li li {
+list-style: upper-alpha;
+font-weight: 700;
+list-style-position: inside;
+background: #fff;
+}
+.root li li li li {
+list-style: lower-alpha;
+font-weight: 400;
+list-style-position: inside;
+background: #f4f4f4;
+}
+.root li li li li li {
+list-style: disc;
+font-weight: 700;
+list-style-position: inside;
+background: #fff;
+}
+.root li li li li li li {
+list-style: circle;
+font-weight: 400;
+list-style-position: inside;
+background: #f4f4f4;
+}
+.root li li li li li li li {
+list-style: none;
+background: #fff;
+}
+.root li li li li li li li li {
+list-style: none;
+background: #f4f4f4;
+}
+.root li li li li li li li li li {
+list-style: none;
+background: #fff;
+}
+
+.vt-object {
+padding: 10px 5px 10px 10px;
+border: 1px dotted #666;
+}
+.vt-array {
+padding: 10px 5px 10px 10px;
+border: 1px solid #333;
+}
+.vt-boolean {
+padding: 10px 5px 10px 10px;
+border: 1px dotted #eee;
+}
+.vt-integer {
+padding: 10px 5px 10px 10px;
+border: 1px solid #ddd;
+}
+.vt-double {
+padding: 10px 5px 10px 10px;
+border: 1px dotted #bbb;
+}
+.vt-float {
+padding: 10px 5px 10px 10px;
+border: 1px dotted #ccc;
+}
+.vt-string {
+padding: 10px 5px 10px 10px;
+border: 1px solid #2583AD;
+}
+
+li span.key { font-weight: bold; }
+ul.root small{ color: #666; }
+span.value { color: #2583AD;}
