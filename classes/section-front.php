@@ -211,7 +211,7 @@ class Section_Front{
 					$new_rules["{$term->taxonomy}/({$term->slug})/?$"] 
 					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug;
 
-					$new_rules["{$term->taxonomy}/({$term->slug})/page/?([0-9]{1,0}/?$"] 
+					$new_rules["{$term->taxonomy}/({$term->slug})/page/?([0-9]{1,})/?$"] 
 					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_paged=$matches[1]';
 				}
 				$tposts[] = $post;

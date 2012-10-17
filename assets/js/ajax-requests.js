@@ -49,7 +49,7 @@ jQuery(document).ready(function($) {
 			template 	: 'author-archive',
 			category	: $('.filter-results-users option', container).filter(':selected').val(),
 			order		: $('.sort-results-users option', container).filter(':selected').val(),
-			path		: 'widgets/results-list',
+			path		: 'widgets/results-list'
 		};
 
 		//console.log(data);
@@ -78,12 +78,11 @@ jQuery(document).ready(function($) {
  		
 		var data = {
 			action		: 'get_posts_ajax',
-			special		: $('.post_type', container).val(),
 			post_type 	: $('.post_type', container).val(),
-			template 	: $('.widget_name', container).val(),
+			template 	: $('.post_type', container).val(),
 			category	: $('.filter-results-posts option', container).filter(':selected').val(),
 			order		: $('.sort-results-posts option', container).filter(':selected').val(),
-			path		: 'parts',
+			path		: 'widgets/results-list'
 		};
 		
 		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category .filter-results option', this).filter(':selected').val() : data.category; //console.log(data);
