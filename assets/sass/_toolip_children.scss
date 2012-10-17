@@ -28,6 +28,12 @@
   }
 }
 
-#badgesInfo h2 {
-  font-size: font-size(18);
+#badgesInfo {
+  .badge-exegesis {
+    margin: 1em;
+  }
+  h2 {
+    margin: 1em 0 0 .722em;
+    font-size: font-size(18);
+  }
 }
