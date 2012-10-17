@@ -14,8 +14,8 @@
     $display_recent    = ( !isset( $last_posted ) )? false : $last_posted;
     $display_stats     = ( !isset( $stats ) )? false : $stats;
 
-    $return_address    = rtrim(return_address( $user_id ));
-
+    $return_address    = rtrim(return_address( $user_id ));		
+		
 ?>
 
 <ul class="member_details<?php if (isset( $width )) {echo " " . $width;} ?>">

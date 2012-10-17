@@ -57,16 +57,55 @@
 ?>
 <div class="profile-summary clearfix">
 <?php
-    $crest_options = array(
-        "user_id"   => $profile_user->ID, 
-        //"width"     => 'span2'
-    );
-    if ( $profile_user->roles[0] == 'communityexpert' ) {
-        $crest_options["titling"] = true;
-    }
+    // $crest_options = array(
+        // "user_id"   => $profile_user->ID, 
+        // //"width"     => 'span2'
+    // );
+    // if ( $profile_user->roles[0] == 'communityexpert' ) {
+        // $crest_options["titling"] = true;
+    // }
+//     
+    // get_partial( 'parts/crest', $crest_options );
     
-    get_partial( 'parts/crest', $crest_options );
+		$experts_settings = array(
+				"user_id" => $profile_user->ID, 
+				//"width" => 'span4', 
+				//"titling" => true, 
+				//"show_name" => false, 
+				//"show_address" => false
+			);
+    	
+			if ( ( $show_specializations === 'on' ) && ( !empty( $profile_user->categories ) ) ) {
+				$experts_settings['specializations'] = $profile_user->categories;
+			}
+			
+			if ( $profile_user->most_recent_post_date ) {
+				$experts_settings['last_posted'] = $profile_user->most_recent_post_date;
+			}
+						
+			$profile_user->answer_count 	= (empty($profile_user->answer_count))? 0:$profile_user->answer_count;
+			$profile_user->post_count 		= (empty($profile_user->post_count))? 0:$profile_user->post_count;
+			$profile_user->comment_count 	= (empty($profile_user->comment_count ))? 0:$profile_user->comment_count ;
+			
+			$experts_settings['stats'] = array(
+				"answers"		=> $profile_user->answer_count . ' ' . _n( 'answer', 'answers', $profile_user->answer_count ),
+				"posts"			=> $profile_user->post_count . ' ' . _n( 'post', 'posts', $profile_user->post_count ),
+				"comments"	=> $profile_user->comment_count . ' ' . _n( 'comment', 'comments', $profile_user->comment_count )
+			);
+			
+    	get_partial( 'parts/crest', $experts_settings ); 
 ?>
+
+    <?php 
+    if(get_the_author_meta('user_description',$profile_user->ID)) : ?>
+        <section class="member_bio">
+            <h3>About <?php get_screenname($profile_user->ID); ?></h3>
+            <p>
+                <?php the_author_meta('user_description',$profile_user->ID); ?>
+            </p>
+        </section>
+    <?php endif; ?>
+
 </div>
 <?php endif; ?>
 
