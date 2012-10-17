@@ -40,12 +40,9 @@ function enqueue_scripts() {
         wp_register_script('actions', get_template_directory_uri() . '/assets/js/widgets/shcJSL.actions.js', array(), '1.0');
         wp_register_script('transFormer', get_template_directory_uri() . '/assets/js/widgets/shcJSL.transFormer.js', array(), '1.0');
         wp_register_script('flagger', get_template_directory_uri() . '/assets/js/widgets/shcJSL.flagger.js', array(), '1.0');
-<<<<<<< HEAD
-        wp_register_script('addthis', 'https://s7.addthis.com/js/250/addthis_widget.js', array(), '1.1');
-=======
-				wp_register_script('omniture', get_template_directory_uri() . '/assets/js/vendor/omniture.' . theme_option("brand") . '.js', array(), '1.0');
-        wp_register_script('addthis', 'http://s7.addthis.com/js/250/addthis_widget.js', array(), '1.0');
->>>>>>> emts.omnomnomniture.r02
+
+		wp_register_script('omniture', get_template_directory_uri() . '/assets/js/vendor/omniture.' . theme_option("brand") . '.js', array(), '1.0');
+        wp_register_script('addthis', 'http://s7.addthis.com/js/250/addthis_widget.js', array(), '1.1');
 				
 				// NOT FOR PRODUCTION
 				//wp_register_script('debug', get_template_directory_uri() . '/assets/js/vendor/debug.js', array(), '1.0');
