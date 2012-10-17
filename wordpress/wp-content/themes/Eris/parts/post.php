@@ -23,12 +23,6 @@
 				
 				<h1 class="content-headline"><?php the_title(); ?></h1>
 				
-				<div class="link-emulator" shc:gizmo:options="{moodle: {width:580, target:'badgesInfo', method:'local'}}" shc:gizmo="moodle">clickme</div>
-
-                <div id="badgesInfo" class="hide">
-                    <h2><?php echo $badge_page->post_title; ?></h2>
-                    <?php echo $badge_page->post_content; ?>
-                </div>
 				
 				<?php the_content(); ?>
 				
