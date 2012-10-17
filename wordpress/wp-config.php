@@ -30,7 +30,6 @@
 	/** Database Charset to use in creating database tables. */
 	define('DB_CHARSET', 'utf8');
 
-}
 /**#@+
  * Authentication Unique Keys and Salts.
  *
@@ -96,7 +95,7 @@ if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
 	
 /** W3 Total Cache **/
-define('WP_CACHE', true); 
+ 
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
