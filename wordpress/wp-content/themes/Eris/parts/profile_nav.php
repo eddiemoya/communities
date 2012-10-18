@@ -1,6 +1,9 @@
 <?php
 
     $concat = has_screen_name( $profile_user->ID ) ? '?post-type=' : '&post-type=';
+    if ( user_can( $profile_user->ID, "show_badge" ) ) {
+        $badge_page = get_page_by_title( 'Types of Badges' );
+    }
 
     $a_tabs = array(
         "Community Activity" => $author_url . $concat . 'recent',
@@ -95,7 +98,15 @@
 			
     	get_partial( 'parts/crest', $experts_settings ); 
 ?>
-
+    <?php if ( user_can( $profile_user->ID, "show_badge" ) ): ?>
+        <div class="link-emulator badge-descriptor" shc:gizmo:options="{moodle: {width:540, target:'badgesInfo', method:'local'}}" shc:gizmo="moodle">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/more-info.png" />
+        </div>
+        <div id="badgesInfo" class="hide">
+            <h2><?php echo $badge_page->post_title; ?></h2>
+            <?php echo $badge_page->post_content; ?>
+        </div>
+    <?php endif; ?>
     <?php 
     if(get_the_author_meta('user_description',$profile_user->ID)) : ?>
         <section class="member_bio">
