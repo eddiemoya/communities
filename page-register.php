@@ -16,7 +16,7 @@ $origin = (isset($_GET['origin'])) ? $_GET['origin'] : ((isset($_SERVER['HTTP_RE
 $error = (isset($_GET['err'])) ? urldecode($_GET['err']) : false;
 
 //CSAT Post
-$email = (isset($_POST['email'])) ? urldecode($_POST['email']) : null;
+$email = (isset($_POST['loginId'])) ? urldecode($_POST['loginId']) : null;
 $zipcode = (isset($_POST['zipcode'])) ? urldecode($_POST['zipcode']) : null;
 /**
  * @package WordPress
