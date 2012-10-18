@@ -98,15 +98,7 @@
 			
     	get_partial( 'parts/crest', $experts_settings ); 
 ?>
-    <?php if ( user_can( $profile_user->ID, "show_badge" ) ): ?>
-        <div class="link-emulator badge-descriptor" shc:gizmo:options="{moodle: {width:540, target:'badgesInfo', method:'local'}}" shc:gizmo="moodle">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/more-info.png" />
-        </div>
-        <div id="badgesInfo" class="hide">
-            <h2><?php echo $badge_page->post_title; ?></h2>
-            <?php echo $badge_page->post_content; ?>
-        </div>
-    <?php endif; ?>
+    
     <?php 
     if(get_the_author_meta('user_description',$profile_user->ID)) : ?>
         <section class="member_bio">
@@ -116,7 +108,15 @@
             </p>
         </section>
     <?php endif; ?>
-
+		<?php if ( user_can( $profile_user->ID, "show_badge" ) ): ?>
+        <div class="link-emulator badge-descriptor" shc:gizmo:options="{moodle: {width:540, target:'badgesInfo', method:'local'}}" shc:gizmo="moodle">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/more-info.png" />
+        </div>
+        <div id="badgesInfo" class="hide">
+            <h2><?php echo $badge_page->post_title; ?></h2>
+            <?php echo $badge_page->post_content; ?>
+        </div>
+    <?php endif; ?>
 </div>
 <?php endif; ?>
 
