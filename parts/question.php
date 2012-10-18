@@ -12,7 +12,7 @@
     $post_actions = array(
         "post_id"        => $post->ID,
         "type"      => $post->post_type,
-        "options"   => array( "follow", "flag", "share" ),
+        "options"   => array( "flag", "share" ),
         "url"       => get_permalink( $post->ID ),
         "sub_type"  => $post->post_type,
         'type'      => 'posts',
