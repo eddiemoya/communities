@@ -105,19 +105,19 @@ function see_more_excerpt($excerpt) {
 
     return $excerpt.'... <a class="moretag" href="'. get_permalink($post->ID) . '">See More</a>';
 }
-add_filter('get_the_excerpt', 'see_more_excerpt');
+//add_filter('get_the_excerpt', 'see_more_excerpt');
 
 function custom_excerpt_length($excerpt) {
     global $excerptLength, $post;
 
     if(!isset($excerptLength) || $excerptLength <= 0 || (isset($excerpt) && $excerpt != '' && strlen($excerpt) > 0)) {
-        return $excerpt;
+        return $excerpt . '... <a class="moretag" href="'. get_permalink($post->ID) . '">See More</a>';
     }
 
     $excerpt = trim(strip_tags($post->post_content));
 
     if(strlen($post->post_content) > $excerptLength) {
-        return substr($excerpt, 0, strpos($excerpt, " ", $excerptLength));
+        return substr($excerpt, 0, strpos($excerpt, " ", $excerptLength)) . '... <a class="moretag" href="'. get_permalink($post->ID) . '">See More</a>';
     }
 
 	return $excerpt;
