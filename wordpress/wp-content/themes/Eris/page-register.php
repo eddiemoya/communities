@@ -54,7 +54,7 @@ get_template_part('parts/header'); ?>
                     <dl class="clearfix">
                         <dt class="span3"><label for="login_confirm-email">Confirm Email:</label></dt>
                         <dd class="span9">
-                        	<input type="text" name="login_confirm-email" autocomplete="off" class="input_text" id="login_confirm-email" shc:gizmo:form="{required:true, custom: function(self) {if (self.value.toLowerCase() != ($('#loginId').attr('value')).toLowerCase()) return false; else return true;}, message: 'Your email does not match. Please check and try again.'}" />
+                        	<input type="text" name="login_confirm-email" autocomplete="off" class="input_text" id="login_confirm-email" shc:gizmo:form="{required:true, custom: function(self) {if (self.value.toLowerCase() != ($('#loginId').attr('value')).toLowerCase()) return false; else return true;}, message: 'Your email does not match. Please check and try again.'}" value="<?php echo $email;?>" />
                         </dd>
                     </dl>
                 </li>
