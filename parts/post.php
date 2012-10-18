@@ -22,7 +22,9 @@
 				
 				<h1 class="content-headline"><?php the_title(); ?></h1>
 				
+				
 				<?php the_content(); ?>
+				
 				
 				<div class="clearfix">&nbsp;</div>
 				
