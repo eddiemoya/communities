@@ -1,7 +1,6 @@
 <?php
     $i = 0;
     $categories = get_the_category( $post->ID );
-    $badge_page = get_page_by_title( 'Types of Badges' );
 ?>
 <!-- BREADCRUMB WIDGET -->
 <!-- <nav class="span12 breadcrumb">
