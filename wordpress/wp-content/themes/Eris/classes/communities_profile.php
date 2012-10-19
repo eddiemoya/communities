@@ -182,7 +182,7 @@ class User_Profile {
    	 * @return object
    	 */
    	public function get_user_posts_by_type($post_type = 'post' ) {
-guides/
+// guides/
    		$args = 	array('author'			=> $this->user_id,
    						'post_status'		=> 'publish',
    						'post_type'			=> $post_type,
