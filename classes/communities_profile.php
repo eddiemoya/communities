@@ -27,7 +27,8 @@ class User_Profile {
 	 * @var array
 	 */
 	public $comment_types = array('answer',
-									'comment');
+									'comment',
+									'');
 	
 	/**
 	 * Array of action types
@@ -608,7 +609,7 @@ class User_Profile {
 		
 		global $wpdb;
 		
-		
+		$comment_type_sql = ($type == 'comment') ? "comment_type IN ('', 'comment') " : "comment_type = '{$type}' ";
 	    /* $args = array(	'type'				=> $type,
 					 	'status'			=> 'approve',
 						'user_id'			=> $this->user_id,
@@ -621,7 +622,7 @@ class User_Profile {
 			
 			$q = "SELECT *
 				FROM {$wpdb->comments}
-				WHERE comment_type = '{$type}'
+				WHERE {$comment_type_sql}
 				AND comment_approved = 1
 				AND user_id = {$this->user_id}
 				ORDER BY comment_date DESC {$this->limit}";
@@ -748,7 +749,7 @@ class User_Profile {
 		}
 		
 			//If there's blank and comment, remove blank
-		 	/*if(in_array('', $this->nav) && in_array('comment', $this->nav)) {
+		 	if(in_array('', $this->nav) && in_array('comment', $this->nav)) {
 		 		
 		 		//Find blank
 		 		$i = array_search('', $this->nav);
@@ -760,7 +761,7 @@ class User_Profile {
 		 		$i = array_search('', $this->nav);
 		 		$this->nav[$i] = 'comment';
 		 		
-		 	}*/
+		 	}
 		 	
 		 		
 		
