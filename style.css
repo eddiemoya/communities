@@ -633,7 +633,7 @@ ul.bullets {
   font-size: 76.923%;
   padding: .5em 0; }
 .crest.labeled h4 {
-  background: #bcdaf3 url('assets/img/sprite-user.png?v=1348772832') repeat-x left bottom;
+  background: #1885bb url('assets/img/sprite-user.png?v=1348772832') repeat-x left bottom;
   text-align: center; }
 .crest.labeled h4, .crest.labeled h4 a {
   color: white;
@@ -1629,13 +1629,14 @@ button.follow {
     margin-top: 0px; }
 
 .member_avatar {
-  overflow: hidden; }
+  overflow: hidden;
+  word-wrap: break-word; }
   .member_avatar a:hover {
     text-decoration: none; }
   .member_avatar img {
     width: 100%; }
   .member_avatar .badge {
-    background: #bcdaf3 url('assets/img/sears/sprite_global.png?v=1348775259') repeat-x 0px 0px;
+    background: #1885bb url('assets/img/sears/sprite_global.png?v=1348775259') repeat-x 0px 0px;
     color: white;
     display: block;
     text-align: center;
@@ -1668,7 +1669,8 @@ button.follow {
     margin-bottom: 1.5em; }
     .member_details .member_avatar .badge {
       font-size: 107.692%;
-      line-height: 2.5em; }
+      line-height: 1.5em;
+      padding: .5em 0; }
 
 .see-more {
   display: none; }
@@ -1685,8 +1687,7 @@ button.follow {
 .span6 .featured-members .member_avatar, .span4 .featured-members .member_avatar, .span3 .featured-members .member_avatar {
   width: 5em; }
   .span6 .featured-members .member_avatar .badge, .span4 .featured-members .member_avatar .badge, .span3 .featured-members .member_avatar .badge {
-    font-size: 76.923%;
-    line-height: 2em; }
+    font-size: 76.923%; }
   .span6 .featured-members .member_avatar img, .span4 .featured-members .member_avatar img, .span3 .featured-members .member_avatar img {
     min-height: 5em;
     min-width: 5em; }
