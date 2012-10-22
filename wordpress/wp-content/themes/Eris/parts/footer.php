@@ -34,6 +34,18 @@
       </footer>
 
     </div> <!-- #container -->
-    <?php get_partial('parts/tooltip'); ?>
+    <?php get_partial('parts/tooltip'); 
+    global $current_user;
+    
+    $email_from = is_user_logged_in() ? $current_user->user_email : '';
+
+    echo '
+        <script type="text/javascript">
+            var addthis_config = {
+                ui_email_note: "Thought you might like this from My' . ucfirst( theme_option("brand") ) .' Community.",
+                ui_email_from: "' . $email_from . '"
+              }
+        </script>
+    ';?>
   </body>
 </html>

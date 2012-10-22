@@ -59,7 +59,7 @@ function enqueue_scripts() {
         wp_enqueue_script('transFormer');
         wp_enqueue_script('flagger');
 				wp_enqueue_script('omniture');
-        wp_enqueue_script('addthis');
+        // wp_enqueue_script('addthis');
 
 				wp_localize_script('jquery', 'ajaxdata', $data);
         //wp_localize_script('addthis', 's.pageName', $pageName);    		
@@ -89,7 +89,7 @@ function enqueue_scripts() {
 }
 
 add_action('wp_head','pluginname_ajaxurl');
-add_action('wp_head','pluginname_addthis_config');
+// add_action('wp_head','pluginname_addthis_config');
 add_action('wp_head','omniture_sVars');
 
 function pluginname_ajaxurl() {
