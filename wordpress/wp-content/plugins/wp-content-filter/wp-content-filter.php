@@ -249,6 +249,7 @@ function pccf_custom_filter($commentdata) {
 
 }
 
+
 function pccf_filter($text) {
 	
 	$tmp = get_option('pccf_options');

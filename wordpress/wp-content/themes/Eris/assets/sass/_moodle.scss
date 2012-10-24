@@ -58,7 +58,7 @@
   }
   
   .no-rgba #moodle_overlay {
-    background:transparent url(#{$img}background_overlay_no-rgba.png) repeat 0px 0px;
+    background:transparent image-url("background_overlay_no-rgba.png") repeat 0px 0px;
   }
   
   #moodle_window {
@@ -83,19 +83,19 @@
   }
   
   .sears .loading {
-    background:transparent url(#{$sears-img}background_loading.gif) no-repeat center center;
+    background:transparent image-url("#{$sears-img}background_loading.gif") no-repeat center center;
   }
   
   .kmart .loading {
-    background:transparent url(#{$kmart-img}background_loading.gif) no-repeat center center;
+    background:transparent image-url("#{$kmart-img}background_loading.gif") no-repeat center center;
   }
   
   .no-rgba .sears #moodle_window {
-    background:transparent url(#{$sears-img}background_modal-border_no-rgba.png) repeat 0px 0px;
+    background:transparent image-url("#{$sears-img}background_modal-border_no-rgba.png") repeat 0px 0px;
   }
   
   .no-rgba .kmart #moodle_window {
-    background:transparent url(#{$kmart-img}background_modal-border_no-rgba.png) repeat 0px 0px;
+    background:transparent image-url("#{$kmart-img}background_modal-border_no-rgba.png") repeat 0px 0px;
   }
   
   #moodle_container {
@@ -106,7 +106,7 @@
   }
   
   #moodle_container .close-button {
-    background:transparent url(#{$img}modal_close-button.png) no-repeat 0px 0px;
+    background:transparent image-url("modal_close-button.png") no-repeat 0px 0px;
     height:8px;
     width:35px;
   }

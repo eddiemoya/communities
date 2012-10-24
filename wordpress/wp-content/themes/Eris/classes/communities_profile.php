@@ -27,7 +27,8 @@ class User_Profile {
 	 * @var array
 	 */
 	public $comment_types = array('answer',
-									'comment');
+									'comment',
+									'');
 	
 	/**
 	 * Array of action types
@@ -163,7 +164,7 @@ class User_Profile {
 		return $this;
 	}
 	
-	/**
+	/**guides/
 	 * Sets posts_per_page
 	 * @param int $num
 	 * @return object
@@ -182,7 +183,7 @@ class User_Profile {
    	 * @return object
    	 */
    	public function get_user_posts_by_type($post_type = 'post' ) {
-
+// guides/
    		$args = 	array('author'			=> $this->user_id,
    						'post_status'		=> 'publish',
    						'post_type'			=> $post_type,
@@ -332,6 +333,110 @@ class User_Profile {
 		return $this;
 	}
 	
+	public function get_all_activities() {
+		
+		global $wpdb;
+		
+		$q = "(SELECT 
+				p.ID as ID,  
+				p.post_parent as parent,
+				p.post_author as author,
+				p.post_date as date,
+				p.post_type as type,
+				p.post_excerpt as action,
+				p.post_title as title,
+				p.post_content as content
+				
+				FROM {$wpdb->posts} as p
+				LEFT JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
+      			LEFT JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+				WHERE tt.term_id IN ({$this->category}) AND tt.taxonomy = 'category' 
+				AND p.post_type IN ('question', 'guides', 'post')
+				AND p.post_status='publish')
+				
+				
+				UNION ALL
+				
+				(SELECT 
+				c.comment_ID,
+				c.comment_post_ID,
+				c.user_id,
+				c.comment_date,
+				c.comment_type,
+				c.comment_karma,
+				c.comment_author_url,
+				c.comment_content
+				
+				
+				FROM {$wpdb->comments} as c
+				LEFT JOIN {$wpdb->term_relationships} tr ON c.comment_post_ID = tr.object_id
+        		LEFT JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+       			WHERE tt.term_id IN ({$this->category}) AND tt.taxonomy = 'category' 
+				AND c.comment_type IN ( 'answer', 'comment', '' )
+				AND c.comment_approved = 1)
+				
+				UNION ALL
+				
+				(SELECT DISTINCT
+				p.ID as ID,  
+				p.post_parent as parent,
+				ua.user_id as author,
+				FROM_UNIXTIME(ua.action_added)as date, 
+				p.post_type as type,
+				pa.action_type as action,
+				p.post_title as title,
+				p.post_content as content
+				
+				FROM {$wpdb->posts} p
+				LEFT JOIN {$wpdb->prefix}post_actions pa
+				ON p.ID = pa.object_id
+				LEFT JOIN {$wpdb->prefix}user_actions ua
+				ON pa.post_action_id = ua.action_id
+				LEFT JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
+      			LEFT JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+				WHERE pa.object_type = 'posts'
+				AND pa.object_subtype IN ('question', 'guides', 'post')
+				AND pa.action_type IN ('upvote', 'downvote', 'follow')
+				AND tt.term_id IN ({$this->category}) 
+				AND tt.taxonomy = 'category'
+				AND p.post_status='publish'
+				)
+				
+				UNION ALL
+
+				(SELECT DISTINCT c.comment_ID,
+				c.comment_post_ID,
+				ua.user_id, 
+				FROM_UNIXTIME(ua.action_added)as date, 
+				c.comment_type, 
+				pa.action_type,
+				c.comment_author_url,
+				c.comment_content 
+				
+				FROM {$wpdb->comments} c 
+				LEFT JOIN {$wpdb->prefix}post_actions pa 
+				ON c.comment_ID = pa.object_id 
+				LEFT JOIN {$wpdb->prefix}user_actions ua 
+				ON pa.post_action_id = ua.action_id 
+				LEFT JOIN {$wpdb->term_relationships} tr ON c.comment_post_ID = tr.object_id
+        		LEFT JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
+				WHERE pa.object_type = 'comments'
+				AND tt.term_id IN ({$this->category}) 
+				AND tt.taxonomy = 'category' 
+				AND pa.action_type IN ('upvote', 'downvote', 'follow') 
+				AND c.comment_approved = 1)
+				
+				ORDER BY date DESC LIMIT 0," . $this->posts_per_page;
+		
+			
+				$this->activities = $wpdb->get_results($q);
+				
+				$this->set_activities_attributes();
+				
+				return $this;
+		
+	}
+	
 	/**
 	 * Gets user's actions by action type
 	 * 
@@ -454,10 +559,13 @@ class User_Profile {
 			foreach($this->activities as $key => $activity) {
 				
 				//If is a comment
-				if(in_array($activity->type, $this->comment_types)) {
+				if(in_array($activity->type, $this->comment_types) || $activity->type == '') {
 					
 					//set post property on comment
 					$this->activities[$key]->post = get_post($activity->parent);
+					
+					//Set comment parent author property
+					$this->activities[$key]->comment_parent_author = $this->get_comment_parent($activity->ID);
 					
 					//If post property is an object, get post category and add 
 					//category property to object
@@ -480,6 +588,17 @@ class User_Profile {
 		}
 	}
 	
+	private function get_comment_parent($comment_id) {
+		
+		global $wpdb;
+		
+		$q = "SELECT user_id, comment_type, comment_content FROM {$wpdb->comments} 
+				WHERE comment_ID IN (SELECT comment_parent FROM {$wpdb->comments} WHERE comment_ID = {$comment_id})";
+		
+		return $wpdb->get_results($q);
+		
+	}
+	
 	
 	/**
 	 * Gets user comments by type. Sets comments property.
@@ -490,7 +609,7 @@ class User_Profile {
 		
 		global $wpdb;
 		
-		
+		$comment_type_sql = ($type == 'comment') ? "comment_type IN ('', 'comment') " : "comment_type = '{$type}' ";
 	    /* $args = array(	'type'				=> $type,
 					 	'status'			=> 'approve',
 						'user_id'			=> $this->user_id,
@@ -503,7 +622,7 @@ class User_Profile {
 			
 			$q = "SELECT *
 				FROM {$wpdb->comments}
-				WHERE comment_type = '{$type}'
+				WHERE {$comment_type_sql}
 				AND comment_approved = 1
 				AND user_id = {$this->user_id}
 				ORDER BY comment_date DESC {$this->limit}";
@@ -630,7 +749,7 @@ class User_Profile {
 		}
 		
 			//If there's blank and comment, remove blank
-		 	/*if(in_array('', $this->nav) && in_array('comment', $this->nav)) {
+		 	if(in_array('', $this->nav) && in_array('comment', $this->nav)) {
 		 		
 		 		//Find blank
 		 		$i = array_search('', $this->nav);
@@ -642,7 +761,7 @@ class User_Profile {
 		 		$i = array_search('', $this->nav);
 		 		$this->nav[$i] = 'comment';
 		 		
-		 	}*/
+		 	}
 		 	
 		 		
 		
@@ -817,7 +936,7 @@ class User_Profile {
 		$this->category = implode(',', $terms);
 	}
 	
-	public function get_all_activities() {
+	public function get_all_activities_OLD() {
 		
 		global $wpdb;
 		

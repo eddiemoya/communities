@@ -14,23 +14,47 @@
  * @package WordPress
  */
 
+define('USE_LOCAL_DB', true);
+
+if( ! USE_LOCAL_DB) {
+
 	/** The name of the database for WordPress */
-	define('DB_NAME', 'communities');
+	define('DB_NAME', 'deb');
 
 	/** MySQL database username */
-	define('DB_USER', 'communities_dba');
+	define('DB_USER', 'root');
 
 	/** MySQL database password */
-	define('DB_PASSWORD', 'password1');
+	define('DB_PASSWORD', 'root');
 
 	/** MySQL hostname */
-	define('DB_HOST', 'barable.com');
+	define('DB_HOST', 'localhost');
 	// define('WP_ALLOW_MULTISITE', true);
 
 	/** Database Charset to use in creating database tables. */
 	define('DB_CHARSET', 'utf8');
+	
+} else {
+	
+	/** The name of the database for WordPress */
+	define('DB_NAME', 'comm_local');
 
+	/** MySQL database username */
+	define('DB_USER', 'wp_user');
+
+	/** MySQL database password */
+	define('DB_PASSWORD', 'philos10');
+
+	/** MySQL hostname */
+	define('DB_HOST', 'localhost');
+	// define('WP_ALLOW_MULTISITE', true);
+
+	/** Database Charset to use in creating database tables. */
+	define('DB_CHARSET', 'utf8');
+	
 }
+
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *

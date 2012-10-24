@@ -22,7 +22,9 @@
 				
 				<h1 class="content-headline"><?php the_title(); ?></h1>
 				
+				
 				<?php the_content(); ?>
+				
 				
 				<div class="clearfix">&nbsp;</div>
 				
@@ -55,7 +57,9 @@
 	<section class="span4">
 		<section class="dropzone-inner-wrapper border-left">
 			<?php display_dropzone("single-{$post->post_type}-right-rail"); ?>
+			<div class="clearfix"></div>
 		</section>
+		<div class="clearfix"></div>
 	</section>
 	
 </section>
