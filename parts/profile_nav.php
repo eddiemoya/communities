@@ -25,11 +25,11 @@
             "name" => "Questions",
             "url" => $author_url . $concat . 'question'
         ),
-        /*
+        
         "" => array(
             "name" => "Comments",
             "url" => $author_url . $concat . ''
-        ),*/
+        ),
          "comment" => array(
             "name" => "Comments",
             "url" => $author_url . $concat . 'comment'
