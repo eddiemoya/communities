@@ -61,7 +61,7 @@
     <ul id="footer_nav" class="dropmenu clearfix">
         <?php foreach ( $a_navigation as $nav_item => $a_subnav ): ?>
             <li>
-                <a href="#"><span><?php echo htmlentities( $nav_item, ENT_QUOTES ); ?></span></a>
+                <span><span><?php echo htmlentities( $nav_item, ENT_QUOTES ); ?></span></span>
                 <?php if ( !empty( $a_subnav ) ): ?>
                     <ul>
 <?php
