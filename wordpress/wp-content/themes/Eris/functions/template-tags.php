@@ -898,3 +898,21 @@ function get_omniture($post_id = null){
     $omniture = implode(' > ', $omchannel);
     return $omniture;
 }
+
+/**
+ * get_last_activity_date() - Given a user's ID returns the 
+ * date of the most recent post/comment made by user.
+ * 
+ * @param int $user_id
+ * @return string|bool
+ * @author Dan Crimmins
+ */
+function get_last_activity_date($user_id) {
+	
+	global $wpdb;
+	
+	$q = "SELECT GREATEST(MAX(c.comment_date), MAX(p.post_date)) as latest FROM {$wpdb->prefix}comments c, {$wpdb->prefix}posts p
+		 WHERE p.post_author = {$user_id} AND c.user_id = {$user_id} AND c.comment_type IN ('', 'answer', 'comment')";
+	
+	return $wpdb->get_var($q);
+}

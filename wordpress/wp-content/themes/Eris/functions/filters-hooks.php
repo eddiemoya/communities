@@ -193,9 +193,13 @@ function sanitize_title_with_dots_and_dashes($title, $raw_title = '', $context =
 
     $title = strtolower($title);
     $title = preg_replace('/&.+?;/', '', $title); // kill entities
-    if( 'query' == $context ){ 
-        $title = str_replace('.', '-', $title);
-    }
+    
+    //Removed this because it was causing 404 on profile page for authors
+    //with a . in their screen name
+    
+    /*if( 'query' == $context ){ 
+        $title = str_replace('.', '-', $title); 
+    }*/
 
     if ( 'save' == $context ) {
         // nbsp, ndash and mdash

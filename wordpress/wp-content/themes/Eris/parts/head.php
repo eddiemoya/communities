@@ -2,6 +2,9 @@
     /**
     * @author Tim Steele
     */
+	/*global $wp_query;
+	
+	print_r($wp_query);*/
 	
   	$current_user = wp_get_current_user();
     $qualtricsUrl = theme_option('brand') == 'sears' ? 'http://searshc.us2.qualtrics.com/SE/?SID=SV_3QzHxmNKUzYTjNy' : 'http://searshc.us2.qualtrics.com/SE/?SID=SV_9X1h8K6RVZUV7x2';
