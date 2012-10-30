@@ -76,7 +76,7 @@ class User_Profile {
 	private $category;
 	
 	
-	private $posts_per_page = 5;
+	private $posts_per_page = 10;
 	
 	/**
 	 * Pagination offset
