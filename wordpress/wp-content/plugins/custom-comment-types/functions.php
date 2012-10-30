@@ -11,7 +11,7 @@ function get_custom_comment_count($type, $post_id = null, $args = array()){
 	}
 
 	$arguments = array(
-		'status' => 'approved',
+		'status' => 'approve',
 		'post_id' => $post_id,
 		'count' => true,
         'type' => $type

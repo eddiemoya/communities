@@ -1531,6 +1531,7 @@ button.follow {
 
 .member_avatar {
   overflow:hidden;
+  word-wrap: break-word;
   a:hover {
     text-decoration: none;
   }
@@ -1589,7 +1590,8 @@ button.follow {
     margin-bottom:1.5em;
     .badge {
       font-size:font-size(14);
-      line-height:2.5em;
+      line-height:1.5em;
+      padding: .5em 0;
     }
   }
 }
@@ -1615,7 +1617,7 @@ button.follow {
     width:5em;
     .badge {
       font-size:font-size(10);
-      line-height:2em;
+      //line-height:2em;
     }
     img {
       min-height:5em;
