@@ -4,7 +4,7 @@ $sears-img:           "sears/";
 $kmart-img:           "kmart/";
 
 // For cache-busting
-$version:             "?v=2";
+$version:             "?v=3";
 // Fonts
 $basefont:            Helvetica, Arial, Verdana, sans-serif;
 $default-font-size:   13;
@@ -15,8 +15,8 @@ $darkest-color:       black;
 $nav-color:           #e4e0df;
 // List of special, site-branded colors
 $color-types:         ( link,     secondary-link, bodycopy, decorative, button,   footer,   footer-hover, footer_fly, footer-subnav-hover,  content-focus,  badge,    secondary-decorative, comment-decor,  site-error );
-$sears-colors:        ( #067bb5,  #666666,        #555555,  #cccccc,    #1a519b,  #dedbde,  #eeeeee,      #eeeeee,    #55a3c8,              #f2f2f2,        #bcdaf3,  #999999,              #d6d6d6,        #304f88 );
-$kmart-colors:        ( #980017,  #666666,        #555555,  #cccccc,    #e02334,  #f3f0ec,  #7c0505,      #eeeeee,    #55a3c8,              #f2f2f2,        #bcdaf3,  #999999,              #d6d6d6,        #8f2225 );
+$sears-colors:        ( #067bb5,  #666666,        #555555,  #cccccc,    #1a519b,  #dedbde,  #eeeeee,      #eeeeee,    #55a3c8,              #f2f2f2,        #1885bb,  #999999,              #d6d6d6,        #304f88 );
+$kmart-colors:        ( #980017,  #666666,        #555555,  #cccccc,    #e02334,  #f3f0ec,  #7c0505,      #eeeeee,    #55a3c8,              #f2f2f2,        #1885bb,  #999999,              #d6d6d6,        #8f2225 );
 
 // Scaffolding
 $grid-width:          940;

@@ -45,6 +45,10 @@
                 ui_email_note: "Thought you might like this from My' . ucfirst( theme_option("brand") ) .' Community.",
                 ui_email_from: "' . $email_from . '"
               }
+              function openSYWWindow(theURL,winName,features) { 
+                  newwindow=window.open(theURL,winName,features); 
+                  if (window.focus) {newwindow.focus()} 
+              }
         </script>
     ';?>
   </body>

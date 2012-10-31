@@ -9,6 +9,8 @@
 
     <meta name="description" content="<?php bloginfo('description'); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta property="og:url" content="<?php the_permalink(); ?>" />
 
     <!--<link rel="shortcut icon" href="<?php //echo get_template_directory_uri(); ?>/images/favicon.ico" /> -->
 
@@ -36,6 +38,9 @@
         })();
         //]]>
     </script>
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({publisher: "19948559-bbd9-4a81-99f2-1355aa7c811a"});</script>
   </head>
 
   <body <?php body_class(); ?>>
