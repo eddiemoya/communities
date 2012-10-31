@@ -95,7 +95,7 @@ if (class_exists('CCT_Controller_Comment_Types')) {
             'template' => get_template_directory_uri() . '/parts/flags.php'
         );
 
-        CCT_Controller_Comment_Types::register_comment_type('comments', $args);
+        CCT_Controller_Comment_Types::register_comment_type('comment', $args);
     }
 
     //add_action('init', 'register_comments', 11);

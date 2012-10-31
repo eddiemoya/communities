@@ -134,7 +134,7 @@ body {
     .menu-sears-ribbon-container > ul > li:first-child, .menu-kmart-ribbon-container > ul > li:first-child {
       border-left: none; }
   .menu-sears-ribbon-container .menu-item a, .menu-kmart-ribbon-container .menu-item a {
-    background: transparent url('assets/img/sprite_ribbon.png?v=1350417689') no-repeat; }
+    background: transparent url('sprite_ribbon.png?v=1350417689') no-repeat; }
   .menu-sears-ribbon-container .ribbon_shop-your-way a, .menu-kmart-ribbon-container .ribbon_shop-your-way a {
     background-position: 0px -30px;
     width: 59px; }
@@ -286,7 +286,7 @@ ul.footer_anterior {
         color: #55a3c8;
         text-decoration: none; }
   ul.footer_anterior .icon {
-    background-image: url('assets/img/sprite-footer.png?v=1348772832');
+    background-image: url('sprite-footer.png?v=1348772832');
     background-repeat: no-repeat; }
     ul.footer_anterior .icon a {
       display: block;
@@ -310,11 +310,11 @@ ul.footer_anterior {
   margin-top: .5em;
   text-align: center; }
 
-.clearfix:before, .content-container .content-body .hr:before, .content-container .content-body .hr, .summary-list .summary_comments:before, .summary-list .summary_comments, .clearfix:after, .content-container .content-body .hr:after, .content-container .content-body .hr, .summary-list .summary_comments:after, .summary-list .summary_comments {
+.clearfix:before, .content-container .content-body .hr, .summary-list .summary_comments, .clearfix:after, .content-container .content-body .hr, .summary-list .summary_comments {
   content: "";
   display: table; }
 
-.clearfix:after, .content-container .content-body .hr:after, .content-container .content-body .hr, .summary-list .summary_comments:after, .summary-list .summary_comments {
+.clearfix:after, .content-container .content-body .hr, .summary-list .summary_comments {
   clear: both; }
 
 .clearfix, .content-container .content-body .hr, .summary-list .summary_comments {
@@ -617,11 +617,11 @@ ul.bullets {
 
 #header.sears form #button_search, #header.sears form #input_search,
 .sears_button {
-  background-image: url('assets/img/sears/sprite_global.png?v=1348775259'); }
+  background-image: url('sears/sprite_global.png?v=1348775259'); }
 
 #header.kmart form #button_search, #header.kmart form #input_search,
 .kmart_button {
-  background-image: url('assets/img/kmart/sprite_global.png?v=1348775259'); }
+  background-image: url('kmart/sprite_global.png?v=1348775259'); }
 
 .member .info address {
   display: block; }
@@ -633,13 +633,13 @@ ul.bullets {
   font-size: 76.923%;
   padding: .5em 0; }
 .crest.labeled h4 {
-  background: #bcdaf3 url('assets/img/sprite-user.png?v=1348772832') repeat-x left bottom;
+  background: #1885bb url('sprite-user.png?v=1348772832') repeat-x left bottom;
   text-align: center; }
 .crest.labeled h4, .crest.labeled h4 a {
   color: white;
   line-height: 1; }
 .crest.labeled .tail {
-  background: url('assets/img/sprite-user.png?v=1348772832') no-repeat center top;
+  background: url('sprite-user.png?v=1348772832') no-repeat center top;
   height: 10px;
   overflow: hidden; }
 
@@ -714,7 +714,7 @@ ul.bullets {
   border-radius: 5px; }
 
 .sears_button.azure, .kmart_button.azure {
-  background-image: url('assets/img/sears/sprite_global.png?v=1348775259');
+  background-image: url('sears/sprite_global.png?v=1348775259');
   border-color: #60768b;
   color: #366392;
   text-shadow: none; }
@@ -750,7 +750,7 @@ ul.bullets {
   -o-border-radius: 5px;
   border-radius: 5px; }
   .error .error-message .error-pointer {
-    background: transparent url('assets/img/error_pointer-arrow.png?v=1348772832') no-repeat 0px 0px;
+    background: transparent url('error_pointer-arrow.png?v=1348772832') no-repeat 0px 0px;
     height: 9px;
     display: block;
     left: 15px;
@@ -783,7 +783,7 @@ ul.bullets {
     border-top: solid 1px #dddcdc;
     padding: 0.769em 0; }
     .content-container .content-body .hr {
-      background: transparent url('assets/img/background_hr.gif?v=1350417689') repeat-x 0px 0px;
+      background: transparent url('background_hr.gif?v=1350417689') repeat-x 0px 0px;
       height: 1px;
       padding: 18px 0px;
       width: 100%; }
@@ -1112,7 +1112,7 @@ fieldset#use_your_account_from {
     display: inline-block;
     width: 16px;
     height: 16px;
-    background: url('assets/img/sprite-social.png?v=1348772832');
+    background: url('sprite-social.png?v=1348772832');
     background-repeat: no-repeat;
     text-indent: -9999em;
     margin-left: 1.6em; }
@@ -1167,7 +1167,7 @@ fieldset#use_your_account_from {
     -ms-border-radius: 5px 5px 0 0;
     -o-border-radius: 5px 5px 0 0;
     border-radius: 5px 5px 0 0;
-    background: #e4e0df url('assets/img/sears/sprite_navigation.png?v=1348772832'); }
+    background: #e4e0df url('sears/sprite_navigation.png?v=1348772832'); }
   .profile .tabs a {
     display: block;
     padding: 1em 0 .6em 0; }
@@ -1371,10 +1371,10 @@ fieldset#use_your_account_from {
     display: inline-block; }
 
 .sears .comment-actions button {
-  background: transparent url('assets/img/sears/sprite_global.png?v=1348775259') repeat-x 0 -192px; }
+  background: transparent url('sears/sprite_global.png?v=1348775259') repeat-x 0 -192px; }
 
 .kmart .comment-actions button {
-  background: transparent url('assets/img/sears/sprite_global.png?v=1348775259') repeat-x 0 -200px; }
+  background: transparent url('sears/sprite_global.png?v=1348775259') repeat-x 0 -200px; }
 
 #allComments {
   -webkit-border-radius: 4px;
@@ -1437,7 +1437,7 @@ fieldset#use_your_account_from {
     color: #4e74a3;
     border: 1px solid #d6d6d6;
     font-weight: bold;
-    background: white url('assets/img/sprite-actions.png?v=1348772832') no-repeat;
+    background: white url('sprite-actions.png?v=1348772832') no-repeat;
     display: inline-block;
     float: right;
     text-indent: -999em;
@@ -1576,7 +1576,7 @@ button.follow {
 .site-error {
   margin-top: 2em; }
   .site-error .span8, .site-error .span10 {
-    background: url('assets/img/tile_line.gif?v=1348775259');
+    background: url('tile_line.gif?v=1348775259');
     margin-top: 2em; }
   .site-error .message {
     color: white;
@@ -1592,7 +1592,7 @@ button.follow {
       font-family: Georgia, serif;
       margin-top: 1em; }
     .site-error .message .tape {
-      background: url('assets/img/tile_line.gif?v=1348775259');
+      background: url('tile_line.gif?v=1348775259');
       width: 50%;
       margin: .66em auto;
       line-height: .5; }
@@ -1629,13 +1629,14 @@ button.follow {
     margin-top: 0px; }
 
 .member_avatar {
-  overflow: hidden; }
+  overflow: hidden;
+  word-wrap: break-word; }
   .member_avatar a:hover {
     text-decoration: none; }
   .member_avatar img {
     width: 100%; }
   .member_avatar .badge {
-    background: #bcdaf3 url('assets/img/sears/sprite_global.png?v=1348775259') repeat-x 0px 0px;
+    background: #1885bb url('sears/sprite_global.png?v=1348775259') repeat-x 0px 0px;
     color: white;
     display: block;
     text-align: center;
@@ -1668,7 +1669,8 @@ button.follow {
     margin-bottom: 1.5em; }
     .member_details .member_avatar .badge {
       font-size: 107.692%;
-      line-height: 2.5em; }
+      line-height: 1.5em;
+      padding: .5em 0; }
 
 .see-more {
   display: none; }
@@ -1685,8 +1687,7 @@ button.follow {
 .span6 .featured-members .member_avatar, .span4 .featured-members .member_avatar, .span3 .featured-members .member_avatar {
   width: 5em; }
   .span6 .featured-members .member_avatar .badge, .span4 .featured-members .member_avatar .badge, .span3 .featured-members .member_avatar .badge {
-    font-size: 76.923%;
-    line-height: 2em; }
+    font-size: 76.923%; }
   .span6 .featured-members .member_avatar img, .span4 .featured-members .member_avatar img, .span3 .featured-members .member_avatar img {
     min-height: 5em;
     min-width: 5em; }
@@ -1776,7 +1777,7 @@ button.follow {
 .site-error {
   margin-top: 2em; }
   .site-error .span8, .site-error .span10 {
-    background: url('assets/img/tile_line.gif?v=1348775259');
+    background: url('tile_line.gif?v=1348775259');
     margin-top: 2em; }
   .site-error .message {
     color: white;
@@ -1792,7 +1793,7 @@ button.follow {
       font-family: Georgia, serif;
       margin-top: 1em; }
     .site-error .message .tape {
-      background: url('assets/img/tile_line.gif?v=1348775259');
+      background: url('tile_line.gif?v=1348775259');
       width: 50%;
       margin: .66em auto;
       line-height: .5; }
@@ -1889,16 +1890,16 @@ button.follow {
   margin: 0 auto; }
 
 .shdrbg, .sears #header_nav.dropmenu, .sears #header_nav.dropmenu > li > span span, .sears #header_nav.dropmenu > li a span, .sears #header_nav.dropmenu > li.right_button, .sears #footer_nav.dropmenu > li, .sears #footer_nav.dropmenu > li:hover, .sears #footer_nav.dropmenu > li > span span, .sears #footer_nav.dropmenu > li a span {
-  background-image: url('assets/img/sears/sprite_navigation.png?v=1348772832'); }
+  background-image: url('sears/sprite_navigation.png?v=1348772832'); }
 
 .khdrbg, .kmart #header_nav.dropmenu, .kmart #header_nav.dropmenu > li > span span, .kmart #header_nav.dropmenu > li a span, .kmart #header_nav.dropmenu > li.right_button, .kmart #footer_nav.dropmenu > li > span span, .kmart #footer_nav.dropmenu > li a span {
-  background-image: url('assets/img/kmart/sprite_navigation.png?v=1348772832'); }
+  background-image: url('kmart/sprite_navigation.png?v=1348772832'); }
 
 .sears #header_nav.dropmenu, .kmart #header_nav.dropmenu {
   background-color: #e4e0df; }
 
 .sears #header_nav.dropmenu ul, .kmart #header_nav.dropmenu ul {
-  background: white url('assets/img/sprite-menu.png?v=1348772832'); }
+  background: white url('sprite-menu.png?v=1348772832'); }
 
 .sears #header_nav.dropmenu > li > span, .sears #header_nav.dropmenu > li a {
   color: #067bb5; }
@@ -2145,7 +2146,7 @@ button.follow {
   background: rgba(0, 0, 0, 0.5); }
 
 .no-rgba #moodle_overlay {
-  background: transparent url('assets/img/background_overlay_no-rgba.png?v=1348772832') repeat 0px 0px; }
+  background: transparent url('background_overlay_no-rgba.png?v=1348772832') repeat 0px 0px; }
 
 #moodle_window {
   background: rgba(143, 199, 252, 0.3);
@@ -2169,16 +2170,16 @@ button.follow {
   background: rgba(253, 190, 81, 0.3); }
 
 .sears .loading {
-  background: transparent url('assets/img/sears/background_loading.gif?v=1348772832') no-repeat center center; }
+  background: transparent url('sears/background_loading.gif?v=1348772832') no-repeat center center; }
 
 .kmart .loading {
-  background: transparent url('assets/img/kmart/background_loading.gif?v=1348772832') no-repeat center center; }
+  background: transparent url('kmart/background_loading.gif?v=1348772832') no-repeat center center; }
 
 .no-rgba .sears #moodle_window {
-  background: transparent url('assets/img/sears/background_modal-border_no-rgba.png?v=1348772832') repeat 0px 0px; }
+  background: transparent url('sears/background_modal-border_no-rgba.png?v=1348772832') repeat 0px 0px; }
 
 .no-rgba .kmart #moodle_window {
-  background: transparent url('assets/img/kmart/background_modal-border_no-rgba.png?v=1348772832') repeat 0px 0px; }
+  background: transparent url('kmart/background_modal-border_no-rgba.png?v=1348772832') repeat 0px 0px; }
 
 #moodle_container {
   background: #ffffff;
@@ -2191,7 +2192,7 @@ button.follow {
   border-radius: 10px; }
 
 #moodle_container .close-button {
-  background: transparent url('assets/img/modal_close-button.png?v=1348772832') no-repeat 0px 0px;
+  background: transparent url('modal_close-button.png?v=1348772832') no-repeat 0px 0px;
   height: 8px;
   width: 35px; }
 
@@ -2401,7 +2402,7 @@ button.follow {
   margin: 8px 7px; }
 
 .open-id_service a {
-  background: transparent url('assets/img/sprite_open-id-services.png?v=1348772832') no-repeat 0px 0px;
+  background: transparent url('sprite_open-id-services.png?v=1348772832') no-repeat 0px 0px;
   display: block;
   text-indent: -9999em; }
 
