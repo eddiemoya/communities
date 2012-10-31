@@ -43,8 +43,7 @@
         <script type="text/javascript">
             var addthis_config = {
                 ui_email_note: "Thought you might like this from My' . ucfirst( theme_option("brand") ) .' Community.",
-                ui_email_from: "' . $email_from . '",
-                data_track_addressbar: true
+                ui_email_from: "' . $email_from . '"
               }
               function openSYWWindow(theURL,winName,features) { 
                   newwindow=window.open(theURL,winName,features); 
