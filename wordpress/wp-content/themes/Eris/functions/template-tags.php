@@ -911,8 +911,9 @@ function get_last_activity_date($user_id) {
 	
 	global $wpdb;
 	
-	$q = "SELECT GREATEST(MAX(c.comment_date), MAX(p.post_date)) as latest FROM {$wpdb->prefix}comments c, {$wpdb->prefix}posts p
+	$q = "SELECT GREATEST(MAX(c.comment_date), MAX(p.post_date)) as latest FROM {$wpdb->comments} c, {$wpdb->posts} p
 		 WHERE p.post_author = {$user_id} AND c.user_id = {$user_id} AND c.comment_type IN ('', 'answer', 'comment')";
+	
 	
 	return $wpdb->get_var($q);
 }
