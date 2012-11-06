@@ -227,6 +227,7 @@ shcJSL.get = function(element) {
 	var collection; // (Array) array of objects with shcJSL.methods.
 	var getID;			// (Method) method to get element by ID.
 	var getTags;		// (Method) method to get elements by tag name.
+	var type;				// (Function) Shorthand for calling shcJSL.functions.getObjectType
 	
 	getID = function(id) {
 		/**
@@ -241,20 +242,25 @@ shcJSL.get = function(element) {
 	 		return document.getElementsByTagName(tag);
 	}
 
+	type = shcJSL.functions.getObjectType;
+
 	// Declare collection as an array
 	collection = [];
-	
+			
 	// Take the element(s) and turn it into a true array
-	if (typeof element == "string") {
+	if (type(element) == "[object String]") {
 		if (element[0] == "#") {	// Selector is an ID
 			collection.push(getID(element.slice(1)));
 		// Need to add in class selector at some point.
 		} else {	// Selector is an element OR not a valid selector
-			collection = shcJSL.sequence(getTags(element));
+			collection = shcJSL.functions.sequence(getTags(element));
 		}
-	} else if (typeof element == "object") {
+	} else if (type(element) == "[object Object]" || (type(element).toString()).indexOf("HTML") != -1) {
 		// element is an HTMLObject
-	 	collection.push(element);
+		collection.push(element); 
+	} else if (type(element) == "[object Array]") {
+		// element is already an array
+	 	collection = shcJSL.functions.sequence(element);
 	}
 	
 	// Bind methods from shcJSL.methods to the output Array
@@ -629,7 +635,6 @@ shcJSL.gizmos.activate = function(event, parent) {
 	);	// End EACH	
 	
 	
-	console.log(draft);
 	// Convert all options into JSON Object
 	draft = JSON.parse("{" + draft + "}");
 	
