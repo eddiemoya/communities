@@ -583,7 +583,7 @@ ol.bullets {
 ul.bullets {
   list-style-type: disc; }
 
-.bold, .member .info h4, .member .info address, .crest h4, .crest h5, .crest address, .post hgroup, .post h3, .content-container .content-header, .content-container .content-category, .content-container .content-headline, .profile .answers-toggle, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, #allComments .comment .responseTo, .member_avatar .badge, .member_details .member_screen-name, .member_details .member_location, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header {
+.bold, .member .info h4, .member .info address, .crest h4, .crest h5, .crest address, .post hgroup, .post h3, .content-container .content-header, .content-container .content-category, .content-container .content-headline, .profile .answers-toggle, .profile .personal_info dt, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label, #allComments .comment .responseTo, .member_avatar .badge, .member_details .member_screen-name, .member_details .member_location, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header, .polls label {
   font-weight: 700; }
 
 .italic, .post h2 {
@@ -598,7 +598,7 @@ ul.bullets {
 .downcase {
   text-transform: lowercase; }
 
-.break-word, .member .info, .crest, .user-info, .content-container .content-headline, .recent_activity .recent-activity_title, .recent_activity .recent-activity_excerpt, .recent-activity h3 a, .recent-activity .excerpt, .content-body.content-list .content-item .post-title, #allComments .comment article, #allComments .span10, .member_details .member_screen-name, .member_details .member_location {
+.break-word, .member .info, .crest, .user-info, .content-container .content-headline, .recent_activity .recent-activity_title, .recent_activity .recent-activity_excerpt, .recent-activity h3 a, .recent-activity .excerpt, .content-body.content-list .content-item .post-title, #allComments .comment article, #allComments .span10, .member_details .member_screen-name, .member_details .member_location, .polls .results li > span + span + span {
   word-wrap: break-word; }
 
 .background_light-gray {
@@ -2437,7 +2437,7 @@ button.follow {
 
 .tooltip .middle .info .top {
   margin-bottom: 15px; }
-.tooltip .middle .info .bold, .tooltip .middle .member .info h4, .member .tooltip .middle .info h4, .tooltip .middle .member .info address, .member .tooltip .middle .info address, .tooltip .middle .info .crest h4, .crest .tooltip .middle .info h4, .tooltip .middle .info .crest h5, .crest .tooltip .middle .info h5, .tooltip .middle .info .crest address, .crest .tooltip .middle .info address, .tooltip .middle .info .post hgroup, .post .tooltip .middle .info hgroup, .tooltip .middle .info .post h3, .post .tooltip .middle .info h3, .tooltip .middle .info .content-container .content-header, .content-container .tooltip .middle .info .content-header, .tooltip .middle .info .content-container .content-category, .content-container .tooltip .middle .info .content-category, .tooltip .middle .info .content-container .content-headline, .content-container .tooltip .middle .info .content-headline, .tooltip .middle .info .profile .answers-toggle, .profile .tooltip .middle .info .answers-toggle, .tooltip .middle .info .profile .personal_info dt, .profile .personal_info .tooltip .middle .info dt, .tooltip .middle .info .kmart .answers-toggle, .kmart .tooltip .middle .info .answers-toggle, .tooltip .middle .info .kmart .upload-photo label, .kmart .upload-photo .tooltip .middle .info label, .tooltip .middle .info .sears .answers-toggle, .sears .tooltip .middle .info .answers-toggle, .tooltip .middle .info .sears .upload-photo label, .sears .upload-photo .tooltip .middle .info label, .tooltip .middle .info #allComments .comment .responseTo, #allComments .comment .tooltip .middle .info .responseTo, .tooltip .middle .info .member_avatar .badge, .member_avatar .tooltip .middle .info .badge, .tooltip .middle .info .member_details .member_screen-name, .member_details .tooltip .middle .info .member_screen-name, .tooltip .middle .info .member_details .member_location, .member_details .tooltip .middle .info .member_location, .tooltip .middle .info .sears .post-n-comments h2, .sears .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .kmart .post-n-comments h2, .kmart .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .section-header {
+.tooltip .middle .info .bold, .tooltip .middle .member .info h4, .member .tooltip .middle .info h4, .tooltip .middle .member .info address, .member .tooltip .middle .info address, .tooltip .middle .info .crest h4, .crest .tooltip .middle .info h4, .tooltip .middle .info .crest h5, .crest .tooltip .middle .info h5, .tooltip .middle .info .crest address, .crest .tooltip .middle .info address, .tooltip .middle .info .post hgroup, .post .tooltip .middle .info hgroup, .tooltip .middle .info .post h3, .post .tooltip .middle .info h3, .tooltip .middle .info .content-container .content-header, .content-container .tooltip .middle .info .content-header, .tooltip .middle .info .content-container .content-category, .content-container .tooltip .middle .info .content-category, .tooltip .middle .info .content-container .content-headline, .content-container .tooltip .middle .info .content-headline, .tooltip .middle .info .profile .answers-toggle, .profile .tooltip .middle .info .answers-toggle, .tooltip .middle .info .profile .personal_info dt, .profile .personal_info .tooltip .middle .info dt, .tooltip .middle .info .kmart .answers-toggle, .kmart .tooltip .middle .info .answers-toggle, .tooltip .middle .info .kmart .upload-photo label, .kmart .upload-photo .tooltip .middle .info label, .tooltip .middle .info .sears .answers-toggle, .sears .tooltip .middle .info .answers-toggle, .tooltip .middle .info .sears .upload-photo label, .sears .upload-photo .tooltip .middle .info label, .tooltip .middle .info #allComments .comment .responseTo, #allComments .comment .tooltip .middle .info .responseTo, .tooltip .middle .info .member_avatar .badge, .member_avatar .tooltip .middle .info .badge, .tooltip .middle .info .member_details .member_screen-name, .member_details .tooltip .middle .info .member_screen-name, .tooltip .middle .info .member_details .member_location, .member_details .tooltip .middle .info .member_location, .tooltip .middle .info .sears .post-n-comments h2, .sears .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .kmart .post-n-comments h2, .kmart .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .section-header, .tooltip .middle .info .polls label, .polls .tooltip .middle .info label {
   margin-bottom: 10px; }
 .tooltip .middle .info ul {
   list-style-type: circle;
@@ -2455,3 +2455,76 @@ button.follow {
 #badgesInfo h2 {
   margin: 1em 0 0 .722em;
   font-size: 138.461%; }
+
+.polls .results li {
+  clear: left;
+  font-size: 92.307%; }
+  .polls .results li span {
+    float: left; }
+    .polls .results li span:first-child {
+      font-size: 166.666%;
+      padding-top: .5em;
+      width: 17.926%;
+      padding-right: 1.792%; }
+  .polls .results li > span + span {
+    padding: 0.909em 0.6% 0 0.6%;
+    width: 65.731%; }
+  .polls .results li > span + span + span {
+    width: 11.951%;
+    padding-right: 0;
+    padding-left: 0;
+    font-size: 84.615%; }
+.polls .options li {
+  margin: .5em 0; }
+  .polls .options li > * {
+    width: 77.272%;
+    float: right; }
+  .polls .options li > * + * {
+    width: 19.697999999999997%;
+    float: right;
+    margin-right: 3.03%; }
+  .polls .options li span {
+    text-align: right; }
+.polls .polls_submit {
+  margin-top: 1.5em;
+  margin-left: 19.6979%; }
+.polls .sears_button {
+  margin-left: -1em; }
+.polls .polls_error {
+  color: red;
+  padding-left: 10%;
+  margin: .5em 0; }
+.polls .figures {
+  text-align: right; }
+.polls .bar {
+  line-height: .8;
+  margin: .3em 0; }
+.polls .info, .polls .total {
+  border-right: 1px solid #cccccc;
+  border-left: 1px solid #cccccc; }
+.polls .total {
+  line-height: 1;
+  padding-top: 1.3em; }
+.polls .content-header h3 {
+  font-size: 153.846%;
+  word-spacing: -0.33em; }
+  .polls .content-header h3 span {
+    font-weight: lighter;
+    font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif; }
+.polls .content-header p {
+  font-weight: normal;
+  font-style: italic;
+  margin: .5em 0; }
+.polls h1.content-headline {
+  color: #067bb5;
+  font-size: 123.076%; }
+
+.sears .polls li span:first-child {
+  color: #067bb5; }
+.sears .polls .bar {
+  background: #6dcff6; }
+
+.kmart .polls li span:first-child {
+  color: #980017; }
+.kmart .polls .bar {
+  background: #f28734; }
