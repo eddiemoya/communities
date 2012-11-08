@@ -7,4 +7,4 @@ gem "capistrano-deepmodules"
 
 gem "sass"
 gem "compass"
-gem "uihelper-rails", :git => "git@git301p.prod.ch3.s.com:uihelper-rails_gem", :tag => "v0.1.9"
+gem "uihelper-rails", :git => "git@git301p.prod.ch3.s.com:uihelper-rails_gem", :tag => "v0.2.1"

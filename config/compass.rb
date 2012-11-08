@@ -7,6 +7,8 @@ sass_dir = "wordpress/wp-content/themes/Eris/assets/sass/"
 images_dir = "wordpress/wp-content/themes/Eris/assets/img/"
 javascripts_dir = "wordpress/wp-content/themes/Eris/assets/js/"
 
+# add_import_path "/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/bundler/gems/uihelper-rails_gem-e180d58fb21b/app/assets/stylesheets/"
+
 Sass::Script::Number.precision = 15
 
 asset_cache_buster do |path, real_path|
