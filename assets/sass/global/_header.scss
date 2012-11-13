@@ -1,0 +1,40 @@
+// @author Tim Steele
+
+#header {
+  margin:0 auto;
+  padding:em-adjust( 1.3125em 0 .8em );
+  width:960px;
+  #logo {
+    display:block;
+    margin-top:em-adjust( .75em );
+  }
+  form {
+    margin-top:em-adjust( .75em );
+    position:relative;
+    #input_search {}
+  }
+  aside {
+    & > ul > li {
+      margin-bottom: em-adjust( .35em );
+      padding:  em-adjust( .165em 0 );
+    }
+    ul li {
+      text-align:right;
+    }
+    ul li ul {
+      li {
+        border-left:solid 1px sears( secondary-link );
+        display:inline-block;
+        font-size: font-size( 12 );
+        padding:0 .4em 0 .8em;
+        img {
+          width:auto;
+          margin-right:.5em;
+        }
+        &:first-child {
+          border:none;
+        }
+      }
+    }
+  }
+}

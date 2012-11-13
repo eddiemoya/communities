@@ -26,7 +26,12 @@ function enqueue_scripts() {
        // if (is_category()) { $data['omchannel'] = single_cat_title('', false); }
         $pageName = get_omniture();
 
-            
+        //Removing default WP Polls stuff 
+        remove_action('wp_head', 'poll_head_scripts');
+        wp_dequeue_style('wp-polls');
+        wp_dequeue_script('wp-polls');
+        wp_deregister_style('wp-polls');
+        wp_deregister_script('wp-polls');
         
        /* Scripts */
         wp_deregister_script('jquery'); 
@@ -40,12 +45,13 @@ function enqueue_scripts() {
         wp_register_script('actions', get_template_directory_uri() . '/assets/js/widgets/shcJSL.actions.js', array(), '1.0');
         wp_register_script('transFormer', get_template_directory_uri() . '/assets/js/widgets/shcJSL.transFormer.js', array(), '1.0');
         wp_register_script('flagger', get_template_directory_uri() . '/assets/js/widgets/shcJSL.flagger.js', array(), '1.0');
+        wp_register_script('wp-polls', get_template_directory_uri() . '/assets/js/widgets/polls.js', array(), '1.0');
 
 		wp_register_script('omniture', get_template_directory_uri() . '/assets/js/vendor/omniture.' . theme_option("brand") . '.js', array(), '1.0');
         wp_register_script('addthis', 'http://s7.addthis.com/js/250/addthis_widget.js', array(), '1.1');
 				
-				// NOT FOR PRODUCTION
-				//wp_register_script('debug', get_template_directory_uri() . '/assets/js/vendor/debug.js', array(), '1.0');
+		// NOT FOR PRODUCTION
+		//wp_register_script('debug', get_template_directory_uri() . '/assets/js/vendor/debug.js', array(), '1.0');
 
         wp_enqueue_script('jquery');    
         wp_enqueue_script('modernizr');
@@ -58,10 +64,11 @@ function enqueue_scripts() {
         wp_enqueue_script('actions');
         wp_enqueue_script('transFormer');
         wp_enqueue_script('flagger');
-				wp_enqueue_script('omniture');
+		wp_enqueue_script('omniture');
+		wp_enqueue_script('wp-polls');
         // wp_enqueue_script('addthis');
 
-				wp_localize_script('jquery', 'ajaxdata', $data);
+		wp_localize_script('jquery', 'ajaxdata', $data);
         //wp_localize_script('addthis', 's.pageName', $pageName);    		
         
         /* Styles */
@@ -69,7 +76,8 @@ function enqueue_scripts() {
         $style_version = file_exists( $style_path ) ? filemtime( $style_path ) : '1.0';
         wp_register_style( 'main-styles', get_stylesheet_uri(), array(), $style_version );
         wp_enqueue_style( 'main-styles');
-        
+
+
        
 
         
