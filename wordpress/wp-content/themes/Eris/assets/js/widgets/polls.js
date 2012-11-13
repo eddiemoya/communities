@@ -20,6 +20,9 @@
 var poll_id = 0;
 var poll_answer_id = '';
 var is_being_voted = false;
+pollsL10n ={};
+pollsL10n.show_loading = 1;
+pollsL10n.show_fading = 1;
 // pollsL10n.show_loading = parseInt(pollsL10n.show_loading);
 // pollsL10n.show_fading = parseInt(pollsL10n.show_fading);
 
@@ -28,9 +31,7 @@ function poll_vote(current_poll_id) {
 	if (window['OID'] != undefined) {
 		shcJSL.get(document).moodle({width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}});
 	}
-	else {
-		console.log("VOTE");
-		
+	else {		
 		if(!is_being_voted) {
 			set_is_being_voted(true);
 			poll_id = current_poll_id;
