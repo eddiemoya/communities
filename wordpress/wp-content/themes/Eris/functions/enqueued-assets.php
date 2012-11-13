@@ -40,6 +40,7 @@ function enqueue_scripts() {
         wp_register_script('actions', get_template_directory_uri() . '/assets/js/widgets/shcJSL.actions.js', array(), '1.0');
         wp_register_script('transFormer', get_template_directory_uri() . '/assets/js/widgets/shcJSL.transFormer.js', array(), '1.0');
         wp_register_script('flagger', get_template_directory_uri() . '/assets/js/widgets/shcJSL.flagger.js', array(), '1.0');
+        wp_register_script('polls', get_template_directory_uri() . '/assets/js/widgets/polls.js', array(), '1.0');
 
 		wp_register_script('omniture', get_template_directory_uri() . '/assets/js/vendor/omniture.' . theme_option("brand") . '.js', array(), '1.0');
         wp_register_script('addthis', 'http://s7.addthis.com/js/250/addthis_widget.js', array(), '1.1');
@@ -59,6 +60,7 @@ function enqueue_scripts() {
         wp_enqueue_script('transFormer');
         wp_enqueue_script('flagger');
 				wp_enqueue_script('omniture');
+				wp_enqueue_script('polls');
         // wp_enqueue_script('addthis');
 
 				wp_localize_script('jquery', 'ajaxdata', $data);
