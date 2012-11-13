@@ -1,0 +1,16 @@
+// Tweaks to Polls for Kmart
+
+.kmart {
+  .wp-polls {
+    li {
+      span {
+        &:first-child {
+          color: kmart( link );
+        }
+      }
+    }
+    .bar {
+      background: kmart( bar );
+    }
+  }
+}

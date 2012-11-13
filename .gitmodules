@@ -52,3 +52,6 @@
 [submodule "wordpress/wp-content/plugins/front-end-users"]
 	path = wordpress/wp-content/plugins/front-end-users
 	url = https://github.com/WPoets/front-end-users.git
+[submodule "wordpress/wp-content/plugins/wp-polls"]
+	path = wordpress/wp-content/plugins/wp-polls
+	url = git@github.com:dinocarl/wp-polls.git
