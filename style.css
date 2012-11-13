@@ -2492,8 +2492,9 @@ button.follow {
   margin-left: -1em; }
 .wp-polls .polls_error {
   color: red;
-  padding-left: 10%;
-  margin: .5em 0; }
+  padding-left: 1.3em;
+  margin: .5em 0;
+  background: url('assets/img/error-arrow.png?v=1352825484') no-repeat top left; }
 .wp-polls .figures {
   text-align: right; }
 .wp-polls .bar {
