@@ -1,0 +1,16 @@
+// Tweaks to Polls for Sears
+
+.sears {
+  .wp-polls {
+    li {
+      span {
+        &:first-child {
+          color: sears( link );
+        }
+      }
+    }
+    .bar {
+      background: sears( bar );
+    }
+  }
+}

@@ -1,15 +1,16 @@
 <?php
     $i = 0;
     $categories = get_the_category( $post->ID );
+    // echo '<!-- BREADCRUMB WIDGET -->
+    // <nav class="span12 breadcrumb">
+    //     <ul class="clearfix">
+    //         <li><a href="#" title="The Fellowship of the Ring">The Fellowship of the Ring</a></li>
+    //         <li><a href="#" title="The Old Forest">The Old Forest</a></li>
+    //     </ul>
+    // </nav>
+    // <!-- END BREADCRUMB WIDGET -->';
 ?>
-<!-- BREADCRUMB WIDGET -->
-<!-- <nav class="span12 breadcrumb">
-	<ul class="clearfix">
-		<li><a href="#" title="The Fellowship of the Ring">The Fellowship of the Ring</a></li>
-		<li><a href="#" title="The Old Forest">The Old Forest</a></li>
-	</ul>
-</nav> -->
-<!-- END BREADCRUMB WIDGET -->
+
 <section class="span12">
 	<section class="span8">
 		<article class="content-container post span12">
