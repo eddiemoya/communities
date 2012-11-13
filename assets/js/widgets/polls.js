@@ -20,6 +20,7 @@
 var poll_id = 0;
 var poll_answer_id = '';
 var is_being_voted = false;
+pollsL10n ={};
 pollsL10n.show_loading = 1;
 pollsL10n.show_fading = 1;
 // pollsL10n.show_loading = parseInt(pollsL10n.show_loading);
