@@ -20,17 +20,13 @@
 var poll_id = 0;
 var poll_answer_id = '';
 var is_being_voted = false;
-// pollsL10n.show_loading = parseInt(pollsL10n.show_loading);
-// pollsL10n.show_fading = parseInt(pollsL10n.show_fading);
 
 // When User Vote For Poll 
 function poll_vote(current_poll_id) {
 	if (window['OID'] != undefined) {
 		shcJSL.get(document).moodle({width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}});
 	}
-	else {
-		console.log("VOTE");
-		
+	else {		
 		if(!is_being_voted) {
 			set_is_being_voted(true);
 			poll_id = current_poll_id;
@@ -60,11 +56,8 @@ function poll_vote(current_poll_id) {
 					 * If the poll is checkboxes and the user
 					 * has not selected a checkbox.
 					 */
-					// NOT ENOUGH ANSEWRS
-					// alert(pollsL10n.text_valid);
 					
 					displayError(poll_id, "Oops! You must choose an answer to submit your vote.");
-					// alert("ER MY GAWD! NOT ENURFF ANSEWRS!")
 				} else {
 					set_is_being_voted(false);
 					/*
@@ -72,11 +65,7 @@ function poll_vote(current_poll_id) {
 					 * selected more than the maximum allowed
 					 * checkboxes
 					 */
-					// TOO MANY ANSEWRS
-					// alert(pollsL10n.text_multiple + ' ' + poll_multiple_ans);
-					
 					displayError(poll_id, "You've exceeded the number of answers allowed.");
-					// alert("ER MY GAWD! TOO MANY ANSEWRS!");
 				}
 			} else {
 				if(poll_answer_id > 0) {
@@ -88,14 +77,12 @@ function poll_vote(current_poll_id) {
 					 */
 					set_is_being_voted(false);
 					displayError(poll_id, "Oops! You must choose an answer to submit your vote.");
-					// alert("ER MY GAWD! PICK ER NURMBER!")
-					// alert(pollsL10n.text_valid);
 				}
 			}
 		} else {
 			// For waiting
-			// alert(pollsL10n.text_wait);
-			// alert("ER MY GAWD! JURST WAIT!")
+			// Right now set as do nothing
+
 		}
 		
 	}
@@ -104,19 +91,10 @@ function poll_vote(current_poll_id) {
 // Process Poll (User Click "Vote" Button)
 function poll_process() {
 	poll_nonce = jQuery('#poll_' + poll_id + '_nonce').val();
-	if(pollsL10n.show_fading) {
-		jQuery('#polls-' + poll_id).fadeTo('def', 0, function () {
-			if(pollsL10n.show_loading) {
-				jQuery('#polls-' + poll_id + '-loading').show();
-			}
-			jQuery.ajax({type: 'POST', url: pollsL10n.ajax_url, data: 'action=polls&view=process&poll_id=' + poll_id + '&poll_' + poll_id + '=' + poll_answer_id + '&poll_' + poll_id + '_nonce=' + poll_nonce, cache: false, success: poll_process_success});
-		});
-	} else {
-		if(pollsL10n.show_loading) {
-			jQuery('#polls-' + poll_id + '-loading').show();
-		}
-		jQuery.ajax({type: 'POST', url: pollsL10n.ajax_url, data: 'action=polls&view=process&poll_id=' + poll_id + '&poll_' + poll_id + '=' + poll_answer_id + '&poll_' + poll_id + '_nonce=' + poll_nonce, cache: false, success: poll_process_success});
-	}
+	jQuery('#polls-' + poll_id).fadeTo('def', 0, function () {
+		jQuery('#polls-' + poll_id + '-loading').show();
+		jQuery.ajax({type: 'POST', url: ajaxdata.ajaxurl, data: 'action=polls&view=process&poll_id=' + poll_id + '&poll_' + poll_id + '=' + poll_answer_id + '&poll_' + poll_id + '_nonce=' + poll_nonce, cache: false, success: poll_process_success});
+	});
 }
 
 // Poll's Result (User Click "View Results" Link)
@@ -125,21 +103,12 @@ function poll_result(current_poll_id) {
 		set_is_being_voted(true);
 		poll_id = current_poll_id;
 		poll_nonce = jQuery('#poll_' + poll_id + '_nonce').val();
-		if(pollsL10n.show_fading) {
-			jQuery('#polls-' + poll_id).fadeTo('def', 0, function () {
-				if(pollsL10n.show_loading) {
-					jQuery('#polls-' + poll_id + '-loading').show();
-				}
-				jQuery.ajax({type: 'GET', url: pollsL10n.ajax_url, data: 'action=polls&view=result&poll_id=' + poll_id + '&poll_' + poll_id + '_nonce=' + poll_nonce, cache: false, success: poll_process_success});
-			});
-		} else {
-			if(pollsL10n.show_loading) {
-				jQuery('#polls-' + poll_id + '-loading').show();
-			}
-			jQuery.ajax({type: 'GET', url: pollsL10n.ajax_url, data: 'action=polls&view=result&poll_id=' + poll_id + '&poll_' + poll_id + '_nonce=' + poll_nonce, cache: false, success: poll_process_success});
-		}
+		jQuery('#polls-' + poll_id).fadeTo('def', 0, function () {
+			jQuery('#polls-' + poll_id + '-loading').show();
+			jQuery.ajax({type: 'GET', url: ajaxdata.ajaxurl, data: 'action=polls&view=result&poll_id=' + poll_id + '&poll_' + poll_id + '_nonce=' + poll_nonce, cache: false, success: poll_process_success});
+		});
 	} else {
-		// alert(pollsL10n.text_wait);
+		// Waiting - set to do nothing
 	}
 }
 
@@ -149,37 +118,25 @@ function poll_booth(current_poll_id) {
 		set_is_being_voted(true);
 		poll_id = current_poll_id;
 		poll_nonce = jQuery('#poll_' + poll_id + '_nonce').val();
-		if(pollsL10n.show_fading) {
-			jQuery('#polls-' + poll_id).fadeTo('def', 0, function () {
-				if(pollsL10n.show_loading) {
-					jQuery('#polls-' + poll_id + '-loading').show();
-				}
-				jQuery.ajax({type: 'GET', url: pollsL10n.ajax_url, data: 'action=polls&view=booth&poll_id=' + poll_id + '&poll_' + poll_id + '_nonce=' + poll_nonce, cache: false, success: poll_process_success});
-			});
-		} else {
-			if(pollsL10n.show_loading) {
-				jQuery('#polls-' + poll_id + '-loading').show();
-			}
-			jQuery.ajax({type: 'GET', url: pollsL10n.ajax_url, data: 'action=polls&view=booth&poll_id=' + poll_id + '&poll_' + poll_id + '_nonce=' + poll_nonce, cache: false, success: poll_process_success});
-		}
+
+		jQuery('#polls-' + poll_id).fadeTo('def', 0, function () {
+			jQuery('#polls-' + poll_id + '-loading').show();
+			jQuery.ajax({type: 'GET', url: ajaxdata.ajaxurl, data: 'action=polls&view=booth&poll_id=' + poll_id + '&poll_' + poll_id + '_nonce=' + poll_nonce, cache: false, success: poll_process_success});
+		});
+
 	} else {
-		//alert(pollsL10n.text_wait);
+		// Waiting - set to do nothing
 	}
 }
 
 // Poll Process Successfully
 function poll_process_success(data) {
 	jQuery('#polls-' + poll_id).replaceWith(data);
-	if(pollsL10n.show_loading) {
-		jQuery('#polls-' + poll_id + '-loading').hide();
-	}
-	if(pollsL10n.show_fading) {
-		jQuery('#polls-' + poll_id).fadeTo('def', 1, function () {		
-			set_is_being_voted(false);	
-		});
-	} else {
+
+	jQuery('#polls-' + poll_id + '-loading').hide();
+	jQuery('#polls-' + poll_id).fadeTo('def', 1, function () {		
 		set_is_being_voted(false);	
-	}
+	});
 }
 
 // Set is_being_voted Status
