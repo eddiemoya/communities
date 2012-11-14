@@ -2520,6 +2520,12 @@ button.follow {
   color: #067bb5;
   font-size: 123.076%; }
 
+.wp-polls-loading {
+  display: none;
+  text-align: center;
+  height: 16px;
+  line-height: 16px; }
+
 .sears .wp-polls li span:first-child {
   color: #067bb5; }
 .sears .wp-polls .bar {
