@@ -443,3 +443,119 @@ function force_list_class_inline( $data ) {
 }
 add_filter( 'the_content', 'force_list_class_inline' );
 add_filter( 'the_excerpt', 'force_list_class_inline' );
+
+
+/**
+ * WP Polls - this replaces the get_poll() function used in a hook in WidgetPress.
+ *
+ * This function overwrites the call to get_poll() - but only in the WidgetPress compatible version of the widget.
+ *
+ * The purpose is to make the widget show the form even when users are logged out.
+ */
+
+
+remove_action('widgetpress_compat_wp_polls-get_poll', 'get_poll');
+add_action('widgetpress_compat_wp_polls-get_poll', 'comm_get_poll');
+
+function comm_get_poll($temp_poll_id = 0, $display = true){
+    global $wpdb, $polls_loaded;
+    // Poll Result Link
+    if(isset($_GET['pollresult'])) {
+        $pollresult_id = intval($_GET['pollresult']);
+    } else {
+        $pollresult_id = 0;
+    }
+    $temp_poll_id = intval($temp_poll_id);
+    // Check Whether Poll Is Disabled
+    if(intval(get_option('poll_currentpoll')) == -1) {
+        if($display) {
+            echo stripslashes(get_option('poll_template_disable'));
+            return;
+        } else {
+            return stripslashes(get_option('poll_template_disable'));
+        }       
+    // Poll Is Enabled
+    } else {
+        // Hardcoded Poll ID Is Not Specified
+        switch($temp_poll_id) {
+            // Random Poll
+            case -2:
+                $poll_id = $wpdb->get_var("SELECT pollq_id FROM $wpdb->pollsq WHERE pollq_active = 1 ORDER BY RAND() LIMIT 1");
+                break;
+            // Latest Poll
+            case 0:
+                // Random Poll
+                if(intval(get_option('poll_currentpoll')) == -2) {
+                    $random_poll_id = $wpdb->get_var("SELECT pollq_id FROM $wpdb->pollsq WHERE pollq_active = 1 ORDER BY RAND() LIMIT 1");
+                    $poll_id = intval($random_poll_id);
+                    if($pollresult_id > 0) {
+                        $poll_id = $pollresult_id;
+                    } elseif(intval($_POST['poll_id']) > 0) {
+                        $poll_id = intval($_POST['poll_id']);
+                    }
+                // Current Poll ID Is Not Specified
+                } elseif(intval(get_option('poll_currentpoll')) == 0) {
+                    // Get Lastest Poll ID
+                    $poll_id = intval(get_option('poll_latestpoll'));
+                } else {
+                    // Get Current Poll ID
+                    $poll_id = intval(get_option('poll_currentpoll'));
+                }
+                break;
+            // Take Poll ID From Arguments
+            default:
+                $poll_id = $temp_poll_id;
+        }
+    }
+    
+    // Assign All Loaded Poll To $polls_loaded
+    if(empty($polls_loaded)) {
+        $polls_loaded = array();
+    }
+    if(!in_array($poll_id, $polls_loaded)) {
+        $polls_loaded[] = $poll_id;
+    }
+
+    // User Click on View Results Link
+    if($pollresult_id == $poll_id) {
+        if($display) {
+            echo display_pollresult($poll_id);
+            return;
+        } else {
+            return display_pollresult($poll_id);
+        }
+    // Check Whether User Has Voted
+    } else {
+        $poll_active = $wpdb->get_var("SELECT pollq_active FROM $wpdb->pollsq WHERE pollq_id = $poll_id");
+        $poll_active = intval($poll_active);
+        $check_voted = (is_user_logged_in()) ? check_voted($poll_id) : 0;
+        if($poll_active == 0) {
+            $poll_close = intval(get_option('poll_close'));
+        } else {
+            $poll_close = 0;
+        }
+        if(intval($check_voted) > 0 || (is_array($check_voted) && sizeof($check_voted) > 0) || ($poll_active == 0 && $poll_close == 1)) {
+            if($display) {
+                echo display_pollresult($poll_id, $check_voted);
+                return;
+            } else {
+                return display_pollresult($poll_id, $check_voted);
+            }
+        } elseif(!check_allowtovote() || ($poll_active == 0 && $poll_close == 3)) {
+            $disable_poll_js = '<script type="text/javascript">jQuery("#polls_form_'.$poll_id.' :input").each(function (i){jQuery(this).attr("disabled","disabled")});</script>';
+            if($display) {
+                echo display_pollvote($poll_id).$disable_poll_js;
+                return;
+            } else {
+                return display_pollvote($poll_id).$disable_poll_js;
+            }           
+        } elseif($poll_active == 1) {
+            if($display) {
+                echo display_pollvote($poll_id);
+                return;
+            } else {
+                return display_pollvote($poll_id);
+            }
+        }
+    }   
+}
