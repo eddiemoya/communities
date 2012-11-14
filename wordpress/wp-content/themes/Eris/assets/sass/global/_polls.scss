@@ -1,4 +1,9 @@
 $poll-sizes: ratioize( ( 60, 220, 40, 6, 2 ), 98% );
+
+%polls_middle_column {
+  border-right: 1px solid sears( decorative );
+  border-left: 1px solid sears( decorative );
+}
 .wp-polls {
   .results li {
     clear: left;
@@ -54,13 +59,16 @@ $poll-sizes: ratioize( ( 60, 220, 40, 6, 2 ), 98% );
     line-height: .8;
     margin: .3em 0;
   }
-  .info, .total {
-    border-right: 1px solid sears( decorative );
-    border-left: 1px solid sears( decorative );
+  .info {
+    > div:first-child {
+      margin-left: .75em;
+    }
+    @extend %polls_middle_column;
   }
   .total {
     line-height: 1;
     padding-top: 1.3em;
+    @extend %polls_middle_column;
   }
   .content-header {
     h3 {

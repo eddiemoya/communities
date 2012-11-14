@@ -2456,6 +2456,10 @@ button.follow {
   margin: 1em 0 0 .722em;
   font-size: 138.461%; }
 
+.wp-polls .info, .wp-polls .total {
+  border-right: 1px solid #cccccc;
+  border-left: 1px solid #cccccc; }
+
 .wp-polls .results li {
   clear: left;
   font-size: 92.307%; }
@@ -2500,9 +2504,8 @@ button.follow {
 .wp-polls .bar {
   line-height: .8;
   margin: .3em 0; }
-.wp-polls .info, .wp-polls .total {
-  border-right: 1px solid #cccccc;
-  border-left: 1px solid #cccccc; }
+.wp-polls .info > div:first-child {
+  margin-left: .75em; }
 .wp-polls .total {
   line-height: 1;
   padding-top: 1.3em; }
