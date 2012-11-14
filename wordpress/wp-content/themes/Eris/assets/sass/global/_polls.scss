@@ -82,3 +82,10 @@ $poll-sizes: ratioize( ( 60, 220, 40, 6, 2 ), 98% );
     font-size: font-size( 16 );
   }
 }
+
+.wp-polls-loading {
+  display: none;
+  text-align: center;
+  height: 16px;
+  line-height: 16px;
+}
