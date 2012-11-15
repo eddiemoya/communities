@@ -278,3 +278,104 @@ function user_delete_comment() {
 
 add_action('wp_ajax_user_delete_comment', 'user_delete_comment');
 add_action('wp_ajax_nopriv_user_delete_comment', 'user_delete_comment');
+
+
+
+remove_action('wp_ajax_polls', 'vote_poll');
+remove_action('wp_ajax_nopriv_polls', 'vote_poll');
+add_action('wp_ajax_polls', 'comm_vote_poll');
+add_action('wp_ajax_nopriv_polls', 'comm_vote_poll');
+
+function comm_vote_poll() {
+	global $wpdb, $user_identity, $user_ID;
+	
+	if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'polls')
+	{
+		// Load Headers
+		polls_textdomain();
+		header('Content-Type: text/html; charset='.get_option('blog_charset').'');		
+		
+		// Get Poll ID
+		$poll_id = (isset($_REQUEST['poll_id']) ? intval($_REQUEST['poll_id']) : 0);
+		
+		// Ensure Poll ID Is Valid
+		if($poll_id == 0)
+		{
+			_e('Invalid Poll ID', 'wp-polls');
+			exit();
+		}
+		
+		// Verify Referer
+		if(!check_ajax_referer('poll_'.$poll_id.'-nonce', 'poll_'.$poll_id.'_nonce', false))
+		{
+			_e('Failed To Verify Referrer', 'wp-polls');
+			exit();
+		}
+		
+		// Which View
+		switch($_REQUEST['view'])
+		{
+			// Poll Vote
+			case 'process':				
+				$poll_aid = $_POST["poll_$poll_id"];
+				$poll_aid_array = array_unique(array_map('intval', explode(',', $poll_aid)));
+				if($poll_id > 0 && !empty($poll_aid_array) && check_allowtovote()) {
+					$check_voted = check_voted($poll_id);
+					if($check_voted == 0) {
+						if(!empty($user_identity)) {
+							$pollip_user = htmlspecialchars(addslashes($user_identity));
+						} elseif(!empty($_COOKIE['comment_author_'.COOKIEHASH])) {
+							$pollip_user = htmlspecialchars(addslashes($_COOKIE['comment_author_'.COOKIEHASH]));
+						} else {
+							$pollip_user = __('Guest', 'wp-polls');
+						}
+						$pollip_userid = intval($user_ID);
+						$pollip_ip = get_ipaddress();
+						$pollip_host = esc_attr(@gethostbyaddr($pollip_ip));
+						$pollip_timestamp = current_time('timestamp');
+						// Only Create Cookie If User Choose Logging Method 1 Or 2
+						$poll_logging_method = intval(get_option('poll_logging_method'));
+						if($poll_logging_method == 1 || $poll_logging_method == 3) {
+							$cookie_expiry = intval(get_option('poll_cookielog_expiry'));
+							if($cookie_expiry == 0) {
+								$cookie_expiry = 30000000;
+							}
+							$vote_cookie = setcookie('voted_'.$poll_id, $poll_aid, ($pollip_timestamp + $cookie_expiry), COOKIEPATH);						
+						}
+						$i = 0;
+						foreach($poll_aid_array as $polla_aid) {
+							$update_polla_votes = $wpdb->query("UPDATE $wpdb->pollsa SET polla_votes = (polla_votes+1) WHERE polla_qid = $poll_id AND polla_aid = $polla_aid");
+							if(!$update_polla_votes) {
+								unset($poll_aid_array[$i]);
+							}
+							$i++;
+						}
+						$vote_q = $wpdb->query("UPDATE $wpdb->pollsq SET pollq_totalvotes = (pollq_totalvotes+".sizeof($poll_aid_array)."), pollq_totalvoters = (pollq_totalvoters+1) WHERE pollq_id = $poll_id AND pollq_active = 1");
+						if($vote_q) {
+							foreach($poll_aid_array as $polla_aid) {
+								$wpdb->query("INSERT INTO $wpdb->pollsip VALUES (0, $poll_id, $polla_aid, '$pollip_ip', '$pollip_host', '$pollip_timestamp', '$pollip_user', $pollip_userid)");
+							}
+							echo display_pollresult($poll_id,$poll_aid_array, false);
+						} else {
+							printf(__('Unable To Update Poll Total Votes And Poll Total Voters. Poll ID #%s', 'wp-polls'), $poll_id);
+						} // End if($vote_a)
+					} else {
+						//printf(__('You Had Already Voted For This Poll. Poll ID #%s', 'wp-polls'), $poll_id);
+						echo display_pollresult($poll_id, 0, false);
+					}// End if($check_voted)
+				} else {
+					printf(__('Invalid Poll ID. Poll ID #%s', 'wp-polls'), $poll_id);
+				} // End if($poll_id > 0 && !empty($poll_aid_array) && check_allowtovote())
+				break;
+			// Poll Result
+			case 'result':
+				echo display_pollresult($poll_id, 0, false);
+				break;
+			// Poll Booth Aka Poll Voting Form
+			case 'booth':
+				echo display_pollvote($poll_id, false);
+				break;
+		} // End switch($_REQUEST['view'])
+	} // End if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'polls')
+	exit();
+}
