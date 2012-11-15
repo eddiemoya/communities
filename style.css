@@ -1244,11 +1244,9 @@ fieldset#use_your_account_from {
 .profile .no-activity {
   margin: 2em; }
 .profile .badge-descriptor {
-  clear: left;
-  position: relative;
-  left: 8.5em;
-  top: -3.5em;
-  margin-left: 2.5%; }
+  position: absolute;
+  top: 24em;
+  margin-left: 13%; }
 
 .kmart .answers-toggle, .kmart .upload-photo label {
   color: #980017; }
@@ -2498,7 +2496,7 @@ button.follow {
   color: red;
   padding-left: 1.3em;
   margin: .5em 0;
-  background: url('assets/img/error-arrow.png?v=1352825484') no-repeat top left; }
+  background: url('assets/img/error-arrow.png?v=1353015441') no-repeat top left; }
 .wp-polls .figures {
   text-align: right; }
 .wp-polls .bar {
