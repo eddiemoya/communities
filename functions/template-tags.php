@@ -166,9 +166,18 @@ function process_front_end_question() {
 		$valid = true;
     	$errors = array();
     	
+    	//Make sure they posted a question
     	if(empty($_POST['your-question'])) {
     		
+    		$valid = false;
     		$errors['your-question'] = 'Please enter a question.';
+    	}
+    	
+    	//Make sure that a category has been selected
+    	if($_POST['category'] == -1) {
+    		
+    		$valid = false;    		
+    		$errors['category'] = 'Please select a category for your question.';
     	}
     	
     	//If a screen name is required...
