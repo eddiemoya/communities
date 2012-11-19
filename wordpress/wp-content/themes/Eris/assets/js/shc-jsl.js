@@ -264,12 +264,22 @@ shcJSL.setStyles = function(e, s) {
 }
 
 shcJSL.formDataToJSON = function(form) {
+	
+	var fields;	// Form elements;
+	var form = form;	// Set the form to equal the form;
+	
+	fields = form.elements;
+	
+	console.log(fields)
+	
 	var cereal; // Serialized string of the form
 	var jason;	// (String) Our JSON object
 	var scrub;	// (Function) Function to clean up values for JSON
 	var values; // (Array) values pulled from the serialized string
 	
 	cereal = $(form).serialize();
+	
+	console.log(cereal);
 	
 	values = cereal.split("&"); 
 	
@@ -281,6 +291,8 @@ shcJSL.formDataToJSON = function(form) {
 	}
 	
 	jason = jason.substr(0,jason.length -1) + "}";
+	
+	console.log(jason);
 	
 	function scrub(match, key, value, offset, string) {
 		key = key.replace(/\+/g, " ");
