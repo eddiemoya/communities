@@ -1018,11 +1018,9 @@ $tab-padding: "1em 0 .6em 0";
     margin: 2em;
   }
   .badge-descriptor {
-    clear:left;
-    position:relative;
-    left:8.5em;
-    top:-3.5em;
-    margin-left:2.5%
+    position:absolute;
+    top:24em;
+    margin-left:13%;
   }
 }
 
@@ -1160,7 +1158,8 @@ $tab-padding: "1em 0 .6em 0";
     }
 
     textarea {
-      width: 100%;
+      width: 99%;
+      padding: 0;
     }
   }
 }
