@@ -1344,7 +1344,8 @@ fieldset#use_your_account_from {
     .tooltip .middle .azure {
       float: right; }
     .tooltip .middle textarea {
-      width: 100%; }
+      width: 99%;
+      padding: 0; }
 
 .commentForm {
   margin-bottom: 20px; }
