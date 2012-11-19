@@ -279,33 +279,17 @@ function user_delete_comment() {
 add_action('wp_ajax_user_delete_comment', 'user_delete_comment');
 add_action('wp_ajax_nopriv_user_delete_comment', 'user_delete_comment');
 
+
 /**
- * 
+ *  comm_vote_poll() - replaces vote_poll() in the Polls plugin. 
+ *  This fixes the issue with an
+ *  error message being displayed when hitting the back button after voting 
+ *  and resubmitting a vote. Also, this is the function that is used on the AJAX call when voting.
+ *  
+ *  @author Dan Crimmins
+ *  @param void
+ *  @return string - the html for the poll results.
  */
-
-/*add_action('wp_ajax_polls', 'comm_polls_vote_poll', 1);
-add_action('wp_ajax_nopriv_polls', 'comm_polls_vote_poll', 1);
-
-function comm_polls_vote_poll() {
-	
-	if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'polls') {
-		
-	$poll_id = (isset($_REQUEST['poll_id']) ? intval($_REQUEST['poll_id']) : 0);
-	
-	if($poll_id == 0) exit;
-	
-		if(is_user_logged_in() && (check_voted($poll_id) != 0)) {
-			
-			remove_action('wp_ajax_polls', 'vote_poll');
-			remove_action('wp_ajax_nopriv_polls', 'vote_poll');
-			
-			echo display_pollresult($poll_id, 0, false);
-			
-		}
-	}
-	
-	exit;
-}*/
 
 remove_action('wp_ajax_polls', 'vote_poll');
 remove_action('wp_ajax_nopriv_polls', 'vote_poll');
