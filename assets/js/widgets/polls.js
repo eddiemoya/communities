@@ -24,6 +24,10 @@ var is_being_voted = false;
 // When User Vote For Poll 
 function poll_vote(current_poll_id) {
 	if (window['OID'] != undefined) {
+		var form = jQuery('#polls_form_' + current_poll_id)[0];
+		var data = shcJSL.formDataToJSON(form);
+		console.log(form.id);
+		(form.id)? shcJSL.cookies("form-data").bake({value: '{"' + form.id + '":' + data + '}'}):shcJSL.cookies("form-data").bake({value:data});
 		shcJSL.get(document).moodle({width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}});
 	}
 	else {		
