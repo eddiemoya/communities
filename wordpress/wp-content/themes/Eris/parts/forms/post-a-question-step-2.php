@@ -44,6 +44,7 @@ get_currentuserinfo();
 									wp_dropdown_categories(array(
 										'depth'=> 1,
 										'selected' => get_queried_object()->term_id,
+										'show_option_none' => 'Select',
 										'hierarchical' => true,
 										'hide_if_empty' => false,
 										'class' => 'input_select',
