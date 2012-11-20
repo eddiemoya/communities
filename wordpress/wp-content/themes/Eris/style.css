@@ -1202,6 +1202,10 @@ fieldset#use_your_account_from {
 .profile .answers-toggle {
   display: block;
   margin-left: 2em; }
+.profile .comment-tally {
+  float: left;
+  margin: 0 1em;
+  font-weight: bold; }
 .profile .expert-answers li {
   border-top: 0;
   -webkit-border-radius: 5px;
