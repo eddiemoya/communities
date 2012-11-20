@@ -52,29 +52,32 @@
               }
         </script>
     ';?>
-  </body>
-  <!-- SiteCatalyst code version: H.20.3. Copyright 1997-2009 Adobe, Inc. More info available at http://www.Adobe.com -->
-	<script language="JavaScript" type="text/javascript" src="<?php echo get_template_directory_uri() . '/assets/js/vendor/omniture.' . theme_option("brand") . '.js'; ?>"></script>
-	<script language="JavaScript" type="text/javascript"><!--
-	s.pageName="searscom > Home Page";
-	s.prop1="searscom > Home Page";
-	s.prop2="searscom > Home Page";
-	s.prop3="searscom > Home Page";
-	s.prop13="searscom > Home page";
-	s.prop18="searscom > Home Page";
-	s.prop27="searscom > Home Page";
-	s.prop28="searscom > Home Page";
-	/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
-	var s_code=s.t();if(s_code)document.write(s_code)//-->
-	</script>
-	<script language="JavaScript" type="text/javascript">
-	<!--
-	if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
-	//-->
-	</script>
-	<noscript>
-		<a href="http://www.Adobe.com" title="Web Analytics"><imgsrc="//<?php echo (theme_option("brand") == 'kmart')? "searskmartcom":"searscom"; ?>.112.2O7.net/b/ss/<?php echo (theme_option("brand") == 'kmart')? "searskmartcom":"searscom"; ?>/1/H.20.3--NS/0" height="1" width="1" border="0" alt="" /></a>
-	</noscript><!--/DO NOT REMOVE/-->
-	<!-- End SiteCatalyst code version: H.20.3. -->
-  
+    <!-- SiteCatalyst code version: H.20.3. Copyright 1997-2009 Adobe, Inc. More info available at http://www.Adobe.com -->
+		<?php 
+			$channel = (theme_option("brand") == 'kmart')? "myKmart Community":"mySears Community";
+		?>
+		
+		<script language="JavaScript" type="text/javascript" src="<?php echo get_template_directory_uri() . '/assets/js/vendor/omniture.' . theme_option("brand") . '.js'; ?>"></script>
+		<script language="JavaScript" type="text/javascript"><!--
+		s.channel='<?php echo $channel; ?>';	
+		s.pageName="<?php echo $channel; ?> > <?php echo get_omniture(); ?>";
+		s.prop1="<?php echo $channel; ?> > Home Page";
+		s.prop2="<?php echo $channel; ?> > Home Page";
+		s.prop3="<?php echo $channel; ?> > Home Page";
+		s.prop18="<?php echo $channel; ?> > Home Page";
+		s.prop27="<?php echo $channel; ?> > Home Page";
+		s.prop28="<?php echo $channel; ?> > Home Page";
+		/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+		var s_code=s.t();if(s_code)document.write(s_code)//-->
+		</script>
+		<script language="JavaScript" type="text/javascript">
+		<!--
+		if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+		//-->
+		</script>
+		<noscript>
+			<a href="http://www.Adobe.com" title="Web Analytics"><imgsrc="//om.sears.com/b/ss/<?php echo (theme_option("brand") == 'kmart')? "searskmartcom":"searscom"; ?>/1/H.20.3--NS/0" height="1" width="1" border="0" alt="" /></a>
+		</noscript><!--/DO NOT REMOVE/-->
+		<!-- End SiteCatalyst code version: H.20.3. -->
+  </body> 
 </html>
