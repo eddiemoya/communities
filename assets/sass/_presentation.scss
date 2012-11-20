@@ -961,6 +961,11 @@ $tab-padding: "1em 0 .6em 0";
     margin-left: 2em;
     @extend .bold;
   }
+  .comment-tally {
+    float: left;
+    margin: 0 1em;
+    font-weight: bold;
+  }
   .expert-answers {
     li {
       border-top: 0;
