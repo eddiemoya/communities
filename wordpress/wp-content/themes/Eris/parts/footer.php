@@ -53,24 +53,9 @@
         </script>
     ';?>
     <!-- SiteCatalyst code version: H.20.3. Copyright 1997-2009 Adobe, Inc. More info available at http://www.Adobe.com -->
-		<?php 
-			$channel = (theme_option("brand") == 'kmart')? "myKmart Community":"mySears Community";
-		?>
-		
-		<script language="JavaScript" type="text/javascript" src="<?php echo get_template_directory_uri() . '/assets/js/vendor/omniture.' . theme_option("brand") . '.js'; ?>"></script>
-		<script language="JavaScript" type="text/javascript"><!--
-		s.channel='<?php echo $channel; ?>';	
-		s.pageName="<?php echo $channel; ?> > <?php echo get_omniture(); ?>";
-		s.prop1="<?php echo $channel; ?> > Home Page";
-		s.prop2="<?php echo $channel; ?> > Home Page";
-		s.prop3="<?php echo $channel; ?> > Home Page";
-		s.prop18="<?php echo $channel; ?> > Home Page";
-		s.prop27="<?php echo $channel; ?> > Home Page";
-		s.prop28="<?php echo $channel; ?> > Home Page";
-		/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
-		var s_code=s.t();if(s_code)document.write(s_code)//-->
-		</script>
 		<script language="JavaScript" type="text/javascript">
+    /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+    var s_code=s.t();if(s_code)document.write(s_code)//-->
 		<!--
 		if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
 		//-->
