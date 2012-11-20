@@ -350,7 +350,9 @@ add_filter( 'preprocess_comment',  'post_comment_screen_name');
  */
 function clean_comment($commentdata) {
 	
-	$commentdata['comment_content'] = strip_tags_attributes($commentdata['comment_content'], array('<a>', '<p>', '<br>'));
+	$html = (current_user_can('unfiltered_html_comments')) ? array('a' => array('href' => array(), 'title' => array())) : array();
+	
+	$commentdata['comment_content'] = wp_kses($commentdata['comment_content'], $html);
 	
 	return $commentdata;
 }
@@ -561,7 +563,7 @@ function comm_get_poll($temp_poll_id = 0, $display = true){
                 return display_pollresult($poll_id, $check_voted);
             }
         } elseif(!check_allowtovote() || ($poll_active == 0 && $poll_close == 3)) {
-            $disable_poll_js = '<script type="text/javascript">jQuery("#polls_form_'.$poll_id.' :input").each(function (i){jQuery(this).attr("disabled","disabled")});</script>';
+            $disable_poll_js = '<script type="text/javascript">jQuery("#polls_form_'.$poll_id.' :input").each(funoction (i){jQuery(this).attr("disabled","disabled")});</script>';
             if($display) {
                 echo display_pollvote($poll_id).$disable_poll_js;
                 return;
