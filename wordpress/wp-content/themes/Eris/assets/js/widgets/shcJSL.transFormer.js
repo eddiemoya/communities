@@ -71,18 +71,22 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 
 	methods = function(target) {
 		if ($(target).attr("shc:gizmo:form") != undefined) {
-
-
-
 			// Scoped private variables
 			var options;	// Form options from shc:gizmo:form
 			var fn = [];	// Functions to run for validation
 
-            options = eval('(' + $(target).attr("shc:gizmo:form") + ')');
+      options = eval('(' + $(target).attr("shc:gizmo:form") + ')');
 
 			// Add element to the list of required elements
 			if (options.required && options.required == true) required[required.length] = target;
-
+			
+			if (options.trim) {
+				fn[fn.length] = function(options) {
+					if (target.value != '') target.value = (target.value).trim();
+					return true;
+				}
+			}
+			
 			// Check if the input has to follow a pattern
 			if (options.pattern) {
 				fn[fn.length] = function(options) {
