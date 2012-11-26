@@ -52,5 +52,17 @@
               }
         </script>
     ';?>
-  </body>
+    <!-- SiteCatalyst code version: H.20.3. Copyright 1997-2009 Adobe, Inc. More info available at http://www.Adobe.com -->
+		<script language="JavaScript" type="text/javascript">
+    /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+    var s_code=s.t();if(s_code)document.write(s_code)//-->
+		<!--
+		if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+		//-->
+		</script>
+		<noscript>
+			<a href="http://www.Adobe.com" title="Web Analytics"><imgsrc="//om.sears.com/b/ss/<?php echo (theme_option("brand") == 'kmart')? "searskmartcom":"searscom"; ?>/1/H.20.3--NS/0" height="1" width="1" border="0" alt="" /></a>
+		</noscript><!--/DO NOT REMOVE/-->
+		<!-- End SiteCatalyst code version: H.20.3. -->
+  </body> 
 </html>
