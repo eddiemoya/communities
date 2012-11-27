@@ -25,6 +25,14 @@ function block_screen_name_field($user) {
     <span class="description"><?php _e("If checked, user's screen name will be displayed as ********"); ?></span>
     </td>
     </tr>
+    <tr>
+    <td>
+    <label for="s_name"><?php _e("Screen Name")?></label>
+    </td>
+    <td>
+    <input type="text" id="s_name" name="s_name" value="<?php echo get_user_meta($user->id, 'profile_screen_name', true);?>" />
+    </td>
+    </tr>
     </table>
 	<?php
 }
@@ -34,10 +42,17 @@ add_action('edit_user_profile_update', 'save_block_sn_field');
 
 function save_block_sn_field($user_id) {
 	
-    //if ( !current_user_can( 'edit_user', $user_id ) ) { return false; }
-    
+	
     $value = isset($_POST['screen_name_block']) ? 'yes' : 'no';
-    
     update_user_meta($user_id, 'block_screen_name', $value);
+    
+    if(strlen(trim($_POST['s_name'])) > 0) {
+    	
+    	$sn = trim($_POST['s_name']);
+    	update_user_meta($user_id, 'profile_screen_name', $sn);
+    	
+    	update_user_nicename($user_id, $sn);
+    	
+    } 
 }
 	
