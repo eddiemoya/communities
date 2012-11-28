@@ -13,16 +13,6 @@
   @return lookup( $lookups, $types, $colors );
 }
 
-// return either a percentage or an em based on 
-// the desired font-size and the base font-size.
-// $default-font-size: 12;
-// font-size(11) => 91.667%
-// font-size(11em) => 0.916em
-@function font-size( $target-size, $relative-size: $default-font-size ) {
-  $ratio: $target-size / $relative-size;
-  @return if( unitless( $target-size ), to-decimal-places( percentage( $ratio ), 3 ), to-decimal-places( $ratio, 3 ) );
-}
-
 // adjust Tim's em values to be relative to the default font size instead of 16px.
 @function adjustment-factor( $value ) {
   @return to-decimal-places( ( ( $value * 16 ) / $default-font-size ), 3 );

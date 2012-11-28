@@ -24,13 +24,13 @@ function formdata_cookie_check() {
 					//Set form id in post data
 					$_POST['new_question_step_1'] = true;
 					
+					//Delete cookie
+					setcookie('form-data', '0', time() - 6000, '/');
+					
 			}
 			
 			
 			//Enter more forms here...
-			
-			//Delete cookie
-			setcookie('form-data', '0', time() - 6000, '/');
 		
 		}
 		

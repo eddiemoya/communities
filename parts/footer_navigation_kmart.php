@@ -42,18 +42,22 @@
   );
 ?>
 <nav id="footer_navigation">
-  <ul id="footer_nav" class="dropmenu clearfix">
-    <?php foreach ( $a_navigation as $nav_item => $a_subnav ): ?>
-    <li>
-      <a href="#"><span><?php echo htmlentities( $nav_item, ENT_QUOTES ); ?></span></a>
-      <?php if ( !empty( $a_subnav ) ): ?>
-      <ul>
-      <?php foreach ( $a_subnav as $subnav => $nav_url ): ?>
-        <li><a href="<?php echo $nav_url ?>" rel="nofollow"><?php echo htmlentities( $subnav, ENT_QUOTES ); ?></a></li>
-      <?php endforeach; ?>
-      </ul>
-      <?php endif; ?>
-    </li>
-    <?php endforeach; ?>
-  </ul>
+    <ul id="footer_nav" class="dropmenu clearfix">
+        <?php foreach ( $a_navigation as $nav_item => $a_subnav ): ?>
+            <li>
+                <span><span><?php echo htmlentities( $nav_item, ENT_QUOTES ); ?></span></span>
+                <?php if ( !empty( $a_subnav ) ): ?>
+                    <ul>
+<?php
+                        foreach ( $a_subnav as $subnav => $nav_url ):
+                            $the_item = str_replace( "\n", "<br />", htmlentities( $subnav, ENT_QUOTES ) );
+                            $print_item = $nav_url ? '<a href="' . $nav_url . '" rel="nofollow">' . $the_item . '</a>' : $the_item;
+?>
+                            <li><?php echo $print_item; ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
 </nav>

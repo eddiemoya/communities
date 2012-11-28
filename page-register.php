@@ -10,13 +10,13 @@ if(is_user_logged_in()) {
 
 
 //If origin param is set use it, otherwise if HTTP_REFERER is set, use it; otherwise use current page
-$origin = (isset($_GET['origin'])) ? $_GET['origin'] : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_site_url());
+$origin = (isset($_GET['origin'])) ? $_GET['origin'] : ((isset($_SERVER['HTTP_REFERER']) && (! isset($_POST['loginId']) && ! isset($_POST['zipcode']))) ? urlencode($_SERVER['HTTP_REFERER']) : get_site_url());
 
 //If error is set
 $error = (isset($_GET['err'])) ? urldecode($_GET['err']) : false;
 
 //CSAT Post
-$email = (isset($_POST['email'])) ? urldecode($_POST['email']) : null;
+$email = (isset($_POST['loginId'])) ? urldecode($_POST['loginId']) : null;
 $zipcode = (isset($_POST['zipcode'])) ? urldecode($_POST['zipcode']) : null;
 /**
  * @package WordPress
@@ -44,7 +44,7 @@ get_template_part('parts/header'); ?>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="loginId">Email:</label></dt>
-                        <dd class="span9"><input type="text" name="loginId" autocomplete="off" class="input_text" id="loginId" shc:gizmo:form="{required:true, pattern: /^.+@.+?\.[a-zA-Z]{2,}$/, message: 'Please enter a valid email address'}" value="<?php echo $email; ?>"/></dd>
+                        <dd class="span9"><input type="text" name="loginId" autocomplete="off" class="input_text" id="loginId" shc:gizmo:form="{required:true, trim:true, pattern: /^.+@.+?\.[a-zA-Z]{2,}$/, message: 'Please enter a valid email address'}" value="<?php echo $email; ?>"/></dd>
                         
                     </dl>
                     							
@@ -54,7 +54,7 @@ get_template_part('parts/header'); ?>
                     <dl class="clearfix">
                         <dt class="span3"><label for="login_confirm-email">Confirm Email:</label></dt>
                         <dd class="span9">
-                        	<input type="text" name="login_confirm-email" autocomplete="off" class="input_text" id="login_confirm-email" shc:gizmo:form="{required:true, custom: function(self) {if (self.value.toLowerCase() != ($('#loginId').attr('value')).toLowerCase()) return false; else return true;}, message: 'Your email does not match. Please check and try again.'}" />
+                        	<input type="text" name="login_confirm-email" autocomplete="off" class="input_text" id="login_confirm-email" shc:gizmo:form="{required:true, trim:true, custom: function(self) {if (self.value.toLowerCase() != ($('#loginId').attr('value')).toLowerCase()) return false; else return true;}, message: 'Your email does not match. Please check and try again.'}" value="<?php echo $email;?>" />
                         </dd>
                     </dl>
                 </li>
@@ -98,7 +98,7 @@ get_template_part('parts/header'); ?>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="zipcode">ZIP Code:</label></dt>
-                        <dd class="span9"><input type="text" name="zipcode" autocomplete="off" class="input_text input_password" id="zipcode" shc:gizmo:form="{required:true, pattern: /(^\d{5})(-\d{4})?$/, message: 'Please enter a valid ZIP code'}" value="<?php echo $zipcode;?>" /></dd>
+                        <dd class="span9"><input type="text" name="zipcode" autocomplete="off" class="input_text input_password" id="zipcode" shc:gizmo:form="{required:true, trim:true, pattern: /(^\d{5})(-\d{4})?$/, message: 'Please enter a valid ZIP code'}" value="<?php echo $zipcode;?>" /></dd>
                     </dl>
                 </li>
                 

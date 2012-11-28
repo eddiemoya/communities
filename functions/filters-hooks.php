@@ -193,9 +193,13 @@ function sanitize_title_with_dots_and_dashes($title, $raw_title = '', $context =
 
     $title = strtolower($title);
     $title = preg_replace('/&.+?;/', '', $title); // kill entities
-    if( 'query' == $context ){ 
-        $title = str_replace('.', '-', $title);
-    }
+    
+    //Removed this because it was causing 404 on profile page for authors
+    //with a . in their screen name
+    
+    /*if( 'query' == $context ){ 
+        $title = str_replace('.', '-', $title); 
+    }*/
 
     if ( 'save' == $context ) {
         // nbsp, ndash and mdash
@@ -336,6 +340,27 @@ function post_comment_screen_name($commentdata) {
 
 add_filter( 'preprocess_comment',  'post_comment_screen_name');
 
+
+/**
+ * Strips all HTML from all comment content except <a>, <p>, and <br>.
+ * 
+ * @author Dan Crimmins
+ * @param array $commentdata
+ * @return array - the commentdata with HTML stripped from comment_content
+ */
+function clean_comment($commentdata) {
+	
+	$html = (current_user_can('unfiltered_html_comments')) ? array('a' => array('href' => array(), 'title' => array())) : array();
+	
+	$commentdata['comment_content'] = wp_kses($commentdata['comment_content'], $html);
+	
+	return $commentdata;
+}
+
+add_filter('preprocess_comment', 'clean_comment');
+
+
+
 function limit_search($query) {
     if ($query->is_search)
         $query->set('post_type',array('post','question','guide'));
@@ -439,3 +464,119 @@ function force_list_class_inline( $data ) {
 }
 add_filter( 'the_content', 'force_list_class_inline' );
 add_filter( 'the_excerpt', 'force_list_class_inline' );
+
+
+/**
+ * WP Polls - this replaces the get_poll() function used in a hook in WidgetPress.
+ *
+ * This function overwrites the call to get_poll() - but only in the WidgetPress compatible version of the widget.
+ *
+ * The purpose is to make the widget show the form even when users are logged out.
+ */
+
+
+remove_action('widgetpress_compat_wp_polls-get_poll', 'get_poll');
+add_action('widgetpress_compat_wp_polls-get_poll', 'comm_get_poll');
+
+function comm_get_poll($temp_poll_id = 0, $display = true){
+    global $wpdb, $polls_loaded;
+    // Poll Result Link
+    if(isset($_GET['pollresult'])) {
+        $pollresult_id = intval($_GET['pollresult']);
+    } else {
+        $pollresult_id = 0;
+    }
+    $temp_poll_id = intval($temp_poll_id);
+    // Check Whether Poll Is Disabled
+    if(intval(get_option('poll_currentpoll')) == -1) {
+        if($display) {
+            echo stripslashes(get_option('poll_template_disable'));
+            return;
+        } else {
+            return stripslashes(get_option('poll_template_disable'));
+        }       
+    // Poll Is Enabled
+    } else {
+        // Hardcoded Poll ID Is Not Specified
+        switch($temp_poll_id) {
+            // Random Poll
+            case -2:
+                $poll_id = $wpdb->get_var("SELECT pollq_id FROM $wpdb->pollsq WHERE pollq_active = 1 ORDER BY RAND() LIMIT 1");
+                break;
+            // Latest Poll
+            case 0:
+                // Random Poll
+                if(intval(get_option('poll_currentpoll')) == -2) {
+                    $random_poll_id = $wpdb->get_var("SELECT pollq_id FROM $wpdb->pollsq WHERE pollq_active = 1 ORDER BY RAND() LIMIT 1");
+                    $poll_id = intval($random_poll_id);
+                    if($pollresult_id > 0) {
+                        $poll_id = $pollresult_id;
+                    } elseif(intval($_POST['poll_id']) > 0) {
+                        $poll_id = intval($_POST['poll_id']);
+                    }
+                // Current Poll ID Is Not Specified
+                } elseif(intval(get_option('poll_currentpoll')) == 0) {
+                    // Get Lastest Poll ID
+                    $poll_id = intval(get_option('poll_latestpoll'));
+                } else {
+                    // Get Current Poll ID
+                    $poll_id = intval(get_option('poll_currentpoll'));
+                }
+                break;
+            // Take Poll ID From Arguments
+            default:
+                $poll_id = $temp_poll_id;
+        }
+    }
+    
+    // Assign All Loaded Poll To $polls_loaded
+    if(empty($polls_loaded)) {
+        $polls_loaded = array();
+    }
+    if(!in_array($poll_id, $polls_loaded)) {
+        $polls_loaded[] = $poll_id;
+    }
+
+    // User Click on View Results Link
+    if($pollresult_id == $poll_id) {
+        if($display) {
+            echo display_pollresult($poll_id);
+            return;
+        } else {
+            return display_pollresult($poll_id);
+        }
+    // Check Whether User Has Voted
+    } else {
+        $poll_active = $wpdb->get_var("SELECT pollq_active FROM $wpdb->pollsq WHERE pollq_id = $poll_id");
+        $poll_active = intval($poll_active);
+        $check_voted = (is_user_logged_in()) ? check_voted($poll_id) : 0;
+        if($poll_active == 0) {
+            $poll_close = intval(get_option('poll_close'));
+        } else {
+            $poll_close = 0;
+        }
+        if(intval($check_voted) > 0 || (is_array($check_voted) && sizeof($check_voted) > 0) || ($poll_active == 0 && $poll_close == 1)) {
+            if($display) {
+                echo display_pollresult($poll_id, $check_voted);
+                return;
+            } else {
+                return display_pollresult($poll_id, $check_voted);
+            }
+        } elseif(!check_allowtovote() || ($poll_active == 0 && $poll_close == 3)) {
+            $disable_poll_js = '<script type="text/javascript">jQuery("#polls_form_'.$poll_id.' :input").each(funoction (i){jQuery(this).attr("disabled","disabled")});</script>';
+            if($display) {
+                echo display_pollvote($poll_id).$disable_poll_js;
+                return;
+            } else {
+                return display_pollvote($poll_id).$disable_poll_js;
+            }           
+        } elseif($poll_active == 1) {
+            if($display) {
+                echo display_pollvote($poll_id);
+                return;
+            } else {
+                return display_pollvote($poll_id);
+            }
+        }
+    }   
+}
