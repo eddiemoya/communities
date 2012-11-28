@@ -625,7 +625,7 @@ function comm_display_pollvote($poll_id, $display_loading = true) {
 			
 			$poll_form_id = "polls_form_$poll_question_id";
 			
-			if($poll_multiple_ans > 0) { //Multi-answer
+			if($poll_multiple_ans > 0) { //Multi-answer checkbox
 				
 				if($poll_cookie && array_key_exists($poll_form_id, $poll_cookie)) {
 					
@@ -639,7 +639,7 @@ function comm_display_pollvote($poll_id, $display_loading = true) {
 					$template_answer = str_replace("%POLL_CHECKBOX_RADIO%", 'checkbox', $template_answer);
 				}
 				
-			} else { //Single answer
+			} else { //Single answer radio
 				
 				if($poll_cookie && array_key_exists($poll_form_id, $poll_cookie)) {
 						
@@ -691,6 +691,8 @@ function comm_display_pollvote($poll_id, $display_loading = true) {
 	} else {
 		$temp_pollvote .= stripslashes(get_option('poll_template_disable'));
 	}
+	
+	
 	// Return Poll Vote Template
 	return $temp_pollvote;
 }
