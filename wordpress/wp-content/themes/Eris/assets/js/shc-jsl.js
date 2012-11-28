@@ -415,3 +415,18 @@ jQuery(window).load(
 		shcJSL.gizmos.activate();
 	}
 )
+
+/**
+ * @author Jason Corradino
+ * @description:
+ * Load specific rel="external" links in new windows, can be expanded to include all external links in the future.
+ */
+
+jQuery(window).load(
+	function() {
+		jQuery("#header_shopping a[rel=external]").on("click", function(event){
+			event.preventDefault();
+			window.open(this.href);
+		});
+	}
+)
