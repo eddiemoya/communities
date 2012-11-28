@@ -592,6 +592,7 @@ function comm_display_pollvote($poll_id, $display_loading = true) {
 	$template_question = str_replace("%POLL_TOTALVOTERS%", $poll_question_totalvoters, $template_question);
 	$template_question = str_replace("%POLL_START_DATE%", $poll_start_date, $template_question);
 	$template_question = str_replace("%POLL_END_DATE%", $poll_end_date, $template_question);
+	
 	if($poll_multiple_ans > 0) {
 		$template_question = str_replace("%POLL_MULTIPLE_ANS_MAX%", $poll_multiple_ans, $template_question);
 	} else {
