@@ -73,6 +73,9 @@ if(have_posts() || !is_widget()) : ?>
 				<select name="sort-results" id="sort-results" class="sort-results<?php echo $class; ?>">
 					<option value="DESC"><?php echo ( $post_type!="users" ) ? "Newest" : "Z - A"; ?></option>
 					<option value="ASC"><?php echo ( $post_type!="users" ) ? "Oldest" : "A - Z"; ?></option>
+					<?php if($post_type!="users"): ?>
+						<option value="comment_count">Most Responses</option>
+					<?php endif; ?>
 				</select>
 
 			<?php endif; ?>

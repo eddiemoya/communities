@@ -81,6 +81,18 @@ if (!Array.prototype.map) {
   };      
 }
 
+/*
+ * Add String.trim() functionality to
+ * IE8 - which does not support String.trim() natively.
+ * 
+ */
+
+if (!String.prototype.trim) {
+	String.prototype.trim = function() {
+  	return this.replace(/^\s+|\s+$/g,'');
+ 	}
+}
+
 shcJSL.methods = {}
 
 shcJSL.get = function(element) {

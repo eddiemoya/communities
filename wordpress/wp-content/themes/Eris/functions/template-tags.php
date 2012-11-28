@@ -803,3 +803,117 @@ function truncated_text($text, $length = 100) {
 
     	return $text;
 }
+
+
+/**
+ * Horrible clusterfuck that generates a shitty omniture string - which we'll probably need to completely redo anyway.
+ *
+ * The Section rewrite rules interfere with the ability to retreive original query data at the time of enqueueing scripts.
+ * If and WHEN we'ere asked to rewrite omniture - this problem should be solved from within Section/WidgetPress first.
+ *
+ * @author Eddie Moya
+ */
+function get_omniture($post_id = null){
+
+    global $wp_query;
+    //echo "<pre>";print_r($wp_query);echo "</pre>";
+    if(is_single()){
+        global $post;
+    }
+
+    if(is_null($post_id)){
+        $post_id = $post->ID;
+    }
+
+    $omchannel = array();
+
+    if(is_front_page()){
+        $omchannel[2] = "Home";
+    }
+
+
+
+    //If is archive...
+    if(is_archive()){
+
+        //If is a post type archive
+        if(is_post_type_archive()){
+
+            $post_type = (get_query_var('post_type') != 'section') ? get_query_var('post_type') : get_query_var('old_post_type');
+            $omchannel[0] = (is_array($post_type)) ? $post_type[0] : $post_type;
+        }
+
+        //If category archive..
+        if(is_category()){
+            $omchannel[1] =  single_cat_title('', false);
+        }
+
+        if(is_search() && isset($_GET['s'])){
+            $omchannel[2] = "Search";
+        }
+        //echo "<pre>";print_r(get_query_var('old_post_type'));echo "</pre>";
+
+    }
+    
+
+    // index 2 is the blog post title
+    if(is_single()){
+        if(get_query_var('post_type') == 'section'){
+
+            $post_type = get_query_var('old_post_type');
+            $omchannel[0] = (is_array($post_type)) ? $post_type[0] : $post_type;
+
+
+            $category_name = get_query_var('old_category');
+
+            if(!empty( $category_name )){
+              $omchannel[1] = get_category_by_slug($category_name)->name;
+            } 
+
+
+        } else {
+            $omchannel[0] = $post->post_type;
+
+            $category = get_the_category($post_id);
+            $omchannel[1] = $category[0]->name;
+
+            $omchannel[2] = $post->post_title;
+        }
+    }
+
+    switch($omchannel[0]){
+        case 'post':
+            $omchannel[0] = 'Blog Posts';
+            break;
+        case 'question':
+            $omchannel[0] = 'Q&A';
+            break;
+        case 'guide':
+            $omchannel[0] = 'Guides';
+            break;
+        default:
+            unset($omchannel[0]);
+    }
+    
+    $omniture = implode(' > ', $omchannel);
+    return $omniture;
+}
+
+/**
+ * get_last_activity_date() - Given a user's ID returns the 
+ * date of the most recent post/comment made by user.
+ * 
+ * @param int $user_id
+ * @return string|bool
+ * @author Dan Crimmins
+ */
+function get_last_activity_date($user_id) {
+	
+	global $wpdb;
+	
+	$q = "SELECT GREATEST(MAX(c.comment_date), MAX(p.post_date)) as latest FROM {$wpdb->comments} c, {$wpdb->posts} p
+		 WHERE p.post_author = {$user_id} AND c.user_id = {$user_id} AND c.comment_type IN ('', 'answer', 'comment')";
+	
+	
+	return $wpdb->get_var($q);
+}
