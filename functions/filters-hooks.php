@@ -584,6 +584,7 @@ function comm_display_pollvote($poll_id, $display_loading = true) {
 	 
 	//Is there a cookie set for this poll (if so, contains the choice(s) user made before prompted to login)
 	$poll_form_id = "polls_form_$poll_question_id";
+	$poll_input_name = "poll_$poll_question_id";
 	$poll_cookie = (isset($_COOKIE['form-data'])) ? json_decode(urldecode(stripslashes(str_replace("'", "\"", $_COOKIE['form-data']))), true) : false;
 	$poll_cookie_exists = ($poll_cookie && array_key_exists($poll_form_id, $poll_cookie)) ? true : false;
 	
@@ -632,7 +633,7 @@ function comm_display_pollvote($poll_id, $display_loading = true) {
 				
 				if($poll_cookie_exists) {
 					
-					if(in_array($poll_answer_id, $poll_cookie[$poll_form_id])) {
+					if(in_array($poll_answer_id, $poll_cookie[$poll_form_id][$poll_input_name])) {
 						
 						$template_answer = select_it(str_replace("%POLL_CHECKBOX_RADIO%", 'checkbox', $template_answer));
 					}
@@ -647,7 +648,7 @@ function comm_display_pollvote($poll_id, $display_loading = true) {
 				
 				if($poll_cookie_exists) {
 						
-					if(in_array($poll_answer_id, $poll_cookie[$poll_form_id])) {
+					if(in_array($poll_answer_id, $poll_cookie[$poll_form_id][$poll_input_name])) {
 						
 						$template_answer = select_it(str_replace("%POLL_CHECKBOX_RADIO%", 'radio', $template_answer));
 					}
