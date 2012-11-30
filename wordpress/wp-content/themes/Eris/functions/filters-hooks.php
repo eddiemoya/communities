@@ -709,7 +709,7 @@ function comm_display_pollvote($poll_id, $display_loading = true) {
 	//Add JS to submit form if there is a poll cookie
 	if($poll_cookie_exists) {
 		
-		$temp_pollvote .= "\n\n <script>poll_vote(". $poll_question_id .");</script>";
+		$temp_pollvote .= "\n\n shcJSL.cookies('form-data').eat();\n\n <script>poll_vote(". $poll_question_id .");</script>";
 	
 	}
 	
