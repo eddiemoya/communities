@@ -290,61 +290,54 @@ shcJSL.formDataToJSON = function(form) {
 					
 					if (a.length > 0) {
 						for (var i = 0; i < a.length; i++) {
-							if (a[i].checked)  {
+							if (a[i].checked && a[i].getAttribute("name"))  {
 								if (!json[a[i].getAttribute("name")]) json[a[i].getAttribute("name")] = [];
-								json[a[i].getAttribute("name")].push(new String(a[i].getAttribute("value")));
+								json[a[i].getAttribute("name")].push(a[i].getAttribute("value"));
 							}
 						}
 					}
 
 				}).call(e);
 				break;
+			case "hidden":
+				(function(){
+					if (this.getAttribute("name")) json[this.getAttribute("name")] = this.getAttribute("value");
+				}).call(e);
+				break;
 			case "select":
-				
+				(function() {
+					if (this.getAttribute("name")) {
+						if (this.type != "select-multiple") json[this.getAttribute("name")] = this.options[this.selectedIndex].getAttribute("value");
+						else {
+							for (var i = 0; i < this.options.length; i++) {
+								if (this.options[i].selected) {
+									if (!json[this.getAttribute("name")]) json[this.getAttribute("name")] = [];
+									console.log(json[this.getAttribute("name")])
+									json[this.getAttribute("name")].push(this.options[i].getAttribute("value"));
+								}
+							}
+						}
+					}
+				}).call(e);
 				break;
 			case "text":
 				(function(){
-					if (!(this.getAttribute('value')).devoid()) json[this.getAttribute("name")] = new String(this.getAttribute("value"));
+					if (this.getAttribute("name"))
+						if (!(this.getAttribute('value')).devoid()) json[this.getAttribute("name")] = this.getAttribute("value");
 				}).call(e);
 				break;
 			case "textarea":
 				(function(){
-					if (!(this.value).devoid()) json[this.getAttribute("name")] = new String(this.value);
+					if (this.getAttribute("name"))
+						if (!(this.value).devoid())  json[this.getAttribute("name")] = this.value;
 				}).call(e);
 				break;
 			default:
 				break;
 		}
 	}
-	
-	console.log(json);
-	
-	var cereal; // Serialized string of the form
-	var jason;	// (String) Our JSON object
-	var scrub;	// (Function) Function to clean up values for JSON
-	var values; // (Array) values pulled from the serialized string
-	
-	cereal = $(form).serialize();
-	
-	values = cereal.split("&"); 
-	
-	jason = "{";
-	if (values.length > 0) {
-		for (var i=0;i<values.length;i++) {
-			jason += values[i].replace(/^(.*)=(.*)?/,scrub)
-		}
-	}
-	
-	jason = jason.substr(0,jason.length -1) + "}";
 		
-	function scrub(match, key, value, offset, string) {
-		key = key.replace(/\+/g, " ");
-		value = value.replace(/\+/g, " ");
-		json = '"' + escape(key) + '":"' + escape(value) + '",';
-		return json;
-	}
-	
-	return jason;
+	return JSON.stringify(json);
 }
 
 shcJSL.sequence = function(array) {
