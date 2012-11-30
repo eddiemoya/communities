@@ -38,9 +38,6 @@
         })();
         //]]>
     </script>
-    <script type="text/javascript">var switchTo5x=true;</script>
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-    <script type="text/javascript">stLight.options({publisher: "19948559-bbd9-4a81-99f2-1355aa7c811a"});</script>
   </head>
 
   <body <?php body_class(); ?>>
