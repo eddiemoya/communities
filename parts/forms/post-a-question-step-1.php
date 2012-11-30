@@ -20,6 +20,18 @@
 							<input type="text" class="input_text" name="post-question" id="post-question" value="<?php echo (isset($_POST['post-question'])) ? $_POST['post-question'] : null;?>" shc:gizmo:form="{required:true}"/>
 							<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Next</button>
 						</li>
+						<li>
+							<textarea name="test1"></textarea>
+							<input type="hidden" name="test1" value="3" />
+						</li>
+						
+						<li>
+							<select name="selectTest">
+								<option value="Tits">Tits</option>
+								<option value="No Tits">No Tits</option>
+							</select>
+							
+						</li>
 					</ul>
 				</form>
 				
