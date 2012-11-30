@@ -636,7 +636,12 @@ function comm_display_pollvote($poll_id, $display_loading = true) {
 					if(in_array($poll_answer_id, $poll_cookie[$poll_form_id][$poll_input_name])) {
 						
 						$template_answer = select_it(str_replace("%POLL_CHECKBOX_RADIO%", 'checkbox', $template_answer));
+						
+					} else {
+						
+						$template_answer = str_replace("%POLL_CHECKBOX_RADIO%", 'checkbox', $template_answer);
 					}
+					
 					
 				} else {
 				
@@ -651,6 +656,10 @@ function comm_display_pollvote($poll_id, $display_loading = true) {
 					if(in_array($poll_answer_id, $poll_cookie[$poll_form_id][$poll_input_name])) {
 						
 						$template_answer = select_it(str_replace("%POLL_CHECKBOX_RADIO%", 'radio', $template_answer));
+						
+					} else {
+						
+						$template_answer = str_replace("%POLL_CHECKBOX_RADIO%", 'radio', $template_answer);
 					}
 					
 				} else {
