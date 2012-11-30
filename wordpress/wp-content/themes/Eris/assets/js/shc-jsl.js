@@ -292,23 +292,28 @@ shcJSL.formDataToJSON = function(form) {
 						for (var i = 0; i < a.length; i++) {
 							if (a[i].checked)  {
 								if (!json[a[i].getAttribute("name")]) json[a[i].getAttribute("name")] = [];
-								json[a[i].getAttribute("name")].push(a[i].getAttribute("value"));
+								json[a[i].getAttribute("name")].push(new String(a[i].getAttribute("value")));
 							}
 						}
 					}
 
 				}).call(e);
 				break;
+			case "select":
+				
+				break;
 			case "text":
 				(function(){
-					if (!(this.getAttribute('value')).devoid()) {
-						
-					}
+					if (!(this.getAttribute('value')).devoid()) json[this.getAttribute("name")] = new String(this.getAttribute("value"));
 				}).call(e);
-				//console.log("BUTTON");
+				break;
+			case "textarea":
+				(function(){
+					if (!(this.value).devoid()) json[this.getAttribute("name")] = new String(this.value);
+				}).call(e);
 				break;
 			default:
-				//console.log("FAIL");
+				break;
 		}
 	}
 	
