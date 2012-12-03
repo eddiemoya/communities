@@ -17,13 +17,13 @@
 /** The name of the database for WordPress */
 
 
-define('DB_NAME', 'comm_local');
+define('DB_NAME', 'deb');
 
 /** MySQL database username */
-define('DB_USER', 'wp_user');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'philos10');
+define('DB_PASSWORD', 'root');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -82,9 +82,9 @@ define('WPLANG', '');
 define('WP_DEBUG', false);
 
 
-//define( 'WP_CONTENT_DIR', '/Volumes/STATIVUS/Projects/Communities/wordpress/wp-content' );
-//define( 'WP_PLUGIN_DIR', '/Volumes/STATIVUS/Projects/Communities/wordpress/wp-content/plugins' );
-//define( 'PLUGINDIR', '/Volumes/STATIVUS/Projects/Communities/wordpress/wp-content/plugins' );
+define( 'WP_CONTENT_DIR', '/Users/emoya1/Public/Projects/comm/wordpress/plugins/wp-content' );
+// define( 'WP_PLUGIN_DIR', '/Volumes/STATIVUS/Projects/Communities/wordpress/wp-content/plugins' );
+// define( 'PLUGINDIR', '/Volumes/STATIVUS/Projects/Communities/wordpress/wp-content/plugins' );
 
 define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
 define( 'WP_HOME',    'http://' . $_SERVER['HTTP_HOST'] );
