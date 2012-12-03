@@ -7,3 +7,51 @@
 [submodule "wp-content/plugins/meet-team"]
 	path = wp-content/plugins/meet-team
 	url = git@github.com:eddiemoya/meet-team-widget.git
+[submodule "wp-content/plugins/comment-types"]
+	path = wp-content/plugins/comment-types
+	url = git@github.com:eddiemoya/Custom-Comment-Types.git
+[submodule "wp-content/plugins/posts-widget"]
+	path = wp-content/plugins/posts-widget
+	url = git@github.com:eddiemoya/Posts-Widget.git
+[submodule "wp-content/plugins/shc-sso-profile"]
+	path = wp-content/plugins/shc-sso-profile
+	url = git@github.com:eddiemoya/dans-plugin.git
+[submodule "wp-content/plugins/action_jackson"]
+	path = wp-content/plugins/action_jackson
+	url = git@github.com:eddiemoya/Action-Jackson.git
+[submodule "wp-content/plugins/user-taxonomies"]
+	path = wp-content/plugins/user-taxonomies
+	url = git@github.com:dasfisch/User-Taxonomies.git
+[submodule "wp-content/plugins/media-categories-2"]
+	path = wp-content/plugins/media-categories-2
+	url = git@github.com:eddiemoya/Media-Categories.git
+[submodule "wp-content/plugins/communities-menu-widget"]
+	path = wp-content/plugins/communities-menu-widget
+	url = git@github.com:eddiemoya/communities-menu-widget.git
+[submodule "wp-content/plugins/communities-content-blurb"]
+	path = wp-content/plugins/communities-content-blurb
+	url = git@github.com:eddiemoya/communities-content-blurb.git
+[submodule "wp-content/plugins/communities-post-a-question"]
+	path = wp-content/plugins/communities-post-a-question
+	url = git@github.com:eddiemoya/communities-post-a-question.git
+[submodule "wp-content/plugins/user-taxonomy-base-plugin"]
+	path = wp-content/plugins/user-taxonomy-base-plugin
+	url = git@github.com:eddiemoya/User-Taxonomy-2.git
+[submodule "wp-content/plugins/user-meta-taxonomy-3"]
+	path = wp-content/plugins/user-meta-taxonomy-3
+	url = git@github.com:eddiemoya/User-Meta-Taxonomy--3-.git
+[submodule "wp-content/plugins/user-titles"]
+	path = wp-content/plugins/user-titles
+	url = git@github.com:eddiemoya/User-Titles.git
+[submodule "wp-content/plugins/recent-activities-widget"]
+	path = wp-content/plugins/recent-activities-widget
+	url = git@github.com:eddiemoya/Recent-Activities-Widget.git
+[submodule "wp-content/plugins/simple-ldap-login"]
+	path = wp-content/plugins/simple-ldap-login
+	url = git@github.com:eddiemoya/dans-ldap.git
+[submodule "wp-content/plugins/front-end-users"]
+	path = wp-content/plugins/front-end-users
+	url = https://github.com/WPoets/front-end-users.git
+[submodule "wp-content/plugins/wp-polls"]
+	path = wp-content/plugins/wp-polls
+	url = git@github.com:dinocarl/wp-polls.git
