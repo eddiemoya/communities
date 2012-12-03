@@ -82,7 +82,7 @@ define('WPLANG', '');
 define('WP_DEBUG', false);
 
 
-define( 'WP_CONTENT_DIR', '/Users/emoya1/Public/Projects/comm/wordpress/plugins/wp-content' );
+define( 'WP_CONTENT_DIR', '/Users/emoya1/Public/Projects/comm/wp-content' );
 // define( 'WP_PLUGIN_DIR', '/Volumes/STATIVUS/Projects/Communities/wordpress/wp-content/plugins' );
 // define( 'PLUGINDIR', '/Volumes/STATIVUS/Projects/Communities/wordpress/wp-content/plugins' );
 
