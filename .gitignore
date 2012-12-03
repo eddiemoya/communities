@@ -5,7 +5,7 @@ etc/nginx/wordpress/develop.conf
 *.sass-cache
 *.sass-cache/
 /nbproject/private/
-*.DS_Store
+*/*/*.DS_Store
 /wordpress/wp-content/themes/.sass-cache/
 *DS_Store*
 
