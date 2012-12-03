@@ -1,1 +1,0 @@
-<?php get_template_part('widgets/featured-post/single');

@@ -1,3 +1,0 @@
-This is a folder for text AJAX files.
-
-This will be deleted before the site goes live.
