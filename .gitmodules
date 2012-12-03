@@ -1,3 +1,9 @@
 [submodule "wordpress"]
 	path = wordpress
 	url = git@github.com:WordPress/WordPress.git
+[submodule "wp-content/plugins/wp-dropzones"]
+	path = wp-content/plugins/wp-dropzones
+	url = git@github.com:eddiemoya/WP-Dropzones.git
+[submodule "wp-content/plugins/meet-team"]
+	path = wp-content/plugins/meet-team
+	url = git@github.com:eddiemoya/meet-team-widget.git
