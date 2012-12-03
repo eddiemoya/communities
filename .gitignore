@@ -28,7 +28,6 @@ wordpress/sitemap.xml.gz
 wordpress/readme.html
 wordpress/license.txt
 
-!*/wp-config.php
 !*/uploads/*
 .projects
 .project
