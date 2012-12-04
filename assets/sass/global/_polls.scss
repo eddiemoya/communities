@@ -1,5 +1,8 @@
 $poll-sizes: ratioize( ( 60, 220, 40, 6, 2 ), 98% );
 
+%polls_indent {
+  margin-left: .75em;
+}
 %polls_middle_column {
   border-right: 1px solid sears( decorative );
   border-left: 1px solid sears( decorative );
@@ -10,6 +13,7 @@ $poll-sizes: ratioize( ( 60, 220, 40, 6, 2 ), 98% );
     font-size: font-size( 12 );
     span {
       float: left;
+      @extend .break-word;
       &:first-child {
         font-size: font-size( 20, 12 );
         padding-top: .5em;
@@ -26,7 +30,6 @@ $poll-sizes: ratioize( ( 60, 220, 40, 6, 2 ), 98% );
       padding-right: 0;
       padding-left: 0;
       font-size: font-size( 11 );
-      @extend .break-word;
     }
   }
   .options li {
@@ -35,9 +38,6 @@ $poll-sizes: ratioize( ( 60, 220, 40, 6, 2 ), 98% );
     span {
       text-align: right;
     }
-  }
-  label {
-    @extend .bold;
   }
   .polls_submit {
     margin-top: 1.5em;
@@ -59,16 +59,15 @@ $poll-sizes: ratioize( ( 60, 220, 40, 6, 2 ), 98% );
     line-height: .8;
     margin: .3em 0;
   }
-  .info {
+  .info, .total {
     > div:first-child {
-      margin-left: .75em;
+      @extend %polls_indent;
     }
     @extend %polls_middle_column;
   }
   .total {
     line-height: 1;
     padding-top: 1.3em;
-    @extend %polls_middle_column;
   }
   .content-header {
     h3 {
@@ -87,7 +86,6 @@ $poll-sizes: ratioize( ( 60, 220, 40, 6, 2 ), 98% );
     }
   }
   h1.content-headline {
-    color: sears( link );
     font-size: font-size( 16 );
   }
 }
