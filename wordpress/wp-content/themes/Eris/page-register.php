@@ -41,10 +41,22 @@ get_template_part('parts/header'); ?>
 				
 				<form class="form_register" id="register-form" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>" shc:gizmo="transFormer">
             <ul class="form-fields">
+            		<li>
+            			<dl class="clearfix">
+            				<dt class="span3"><label>Test:</label></dt>
+            				<dd class="span9">
+            					<select name="test" shc:gizmo:form="{required:true}">
+            						<option value="default">Select One</option>
+            						<option value="value1">Value 1</option>
+            						<option value="value2">Value 2</option>
+            					</select>
+            				</dd>
+            			</dl>
+            		</li>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="loginId">Email:</label></dt>
-                        <dd class="span9"><input type="text" name="loginId" autocomplete="off" class="input_text" id="loginId" shc:gizmo:form="{required:true, pattern: /^.+@.+?\.[a-zA-Z]{2,}$/, message: 'Please enter a valid email address'}" value="<?php echo $email; ?>"/></dd>
+                        <dd class="span9"><input type="text" name="loginId" autocomplete="off" class="input_text" id="loginId" shc:gizmo:form="{required:true, trim:true, pattern: /^.+@.+?\.[a-zA-Z]{2,}$/, message: 'Please enter a valid email address'}" value="<?php echo $email; ?>"/></dd>
                         
                     </dl>
                     							
@@ -54,7 +66,7 @@ get_template_part('parts/header'); ?>
                     <dl class="clearfix">
                         <dt class="span3"><label for="login_confirm-email">Confirm Email:</label></dt>
                         <dd class="span9">
-                        	<input type="text" name="login_confirm-email" autocomplete="off" class="input_text" id="login_confirm-email" shc:gizmo:form="{required:true, custom: function(self) {if (self.value.toLowerCase() != ($('#loginId').attr('value')).toLowerCase()) return false; else return true;}, message: 'Your email does not match. Please check and try again.'}" value="<?php echo $email;?>" />
+                        	<input type="text" name="login_confirm-email" autocomplete="off" class="input_text" id="login_confirm-email" shc:gizmo:form="{required:true, trim:true, custom: function(self) {if (self.value.toLowerCase() != ($('#loginId').attr('value')).toLowerCase()) return false; else return true;}, message: 'Your email does not match. Please check and try again.'}" value="<?php echo $email;?>" />
                         </dd>
                     </dl>
                 </li>
@@ -98,7 +110,7 @@ get_template_part('parts/header'); ?>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="zipcode">ZIP Code:</label></dt>
-                        <dd class="span9"><input type="text" name="zipcode" autocomplete="off" class="input_text input_password" id="zipcode" shc:gizmo:form="{required:true, pattern: /(^\d{5})(-\d{4})?$/, message: 'Please enter a valid ZIP code'}" value="<?php echo $zipcode;?>" /></dd>
+                        <dd class="span9"><input type="text" name="zipcode" autocomplete="off" class="input_text input_password" id="zipcode" shc:gizmo:form="{required:true, trim:true, pattern: /(^\d{5})(-\d{4})?$/, message: 'Please enter a valid ZIP code'}" value="<?php echo $zipcode;?>" /></dd>
                     </dl>
                 </li>
                 
