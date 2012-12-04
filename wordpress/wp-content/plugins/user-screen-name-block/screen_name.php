@@ -7,7 +7,9 @@ Author: Dan Crimmins
 Version: 1.0
 Author URI:
 */
-add_action('show_user_profile', 'block_screen_name_field');
+
+
+//add_action('show_user_profile', 'block_screen_name_field');
 add_action('edit_user_profile', 'block_screen_name_field');
 
 
@@ -39,7 +41,7 @@ function block_screen_name_field($user) {
 	<?php
 }
 	
-add_action('personal_options_update', 'save_block_sn_field');
+//add_action('personal_options_update', 'save_block_sn_field');
 add_action('edit_user_profile_update', 'save_block_sn_field');
 
 function save_block_sn_field($user_id) {
@@ -57,6 +59,7 @@ function update_screen_name() {
 		
 		update_user_meta($_POST['user_id'], 'profile_screen_name', $_POST['s_name']);
 		update_user_nicename($_POST['user_id'], $_POST['s_name']);
+	
 	}
 }
 	
