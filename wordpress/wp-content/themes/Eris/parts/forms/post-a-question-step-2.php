@@ -74,4 +74,3 @@ get_currentuserinfo();
                 </div>
 			</section>
 			
-			<script>alert(document.getElementById('category').value);</script>
