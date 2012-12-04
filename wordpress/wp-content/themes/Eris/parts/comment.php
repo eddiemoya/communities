@@ -8,7 +8,7 @@
     # $recursive =      false (default), true - whether to call this very partial again to display any child comments.
 
     $is_recursive = isset( $recursive ) ? $recursive : false;
-    $container_class = in_array( 'expert', get_userdata( $comment->user_id )->roles ) ? ' expert' : '';
+    $container_class = isset(get_userdata($comment->user_id)->roles) && in_array('expert', get_userdata($comment->user_id)->roles) ? ' expert' : '';
     $parent_author = $is_recursive ? false : return_screenname( get_comment( $comment->comment_parent )->user_id ) ;
     $date = strtotime( $comment->comment_date );
 		

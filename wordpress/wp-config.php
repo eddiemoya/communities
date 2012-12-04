@@ -1,4 +1,6 @@
 <?php
+	error_reporting(0);
+
 /**
  * The base configurations of the WordPress.
  *
@@ -18,16 +20,16 @@
 /** The name of the database for WordPress */
 
 
-define('DB_NAME', 'comm_local');
+define('DB_NAME', 'communities');
 
 /** MySQL database username */
-define('DB_USER', 'wp_user');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'philos10');
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
+define('DB_HOST', '127.0.0.1:3306');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
