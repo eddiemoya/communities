@@ -277,7 +277,6 @@ add_action('wp_ajax_user_delete_comment', 'user_delete_comment');
 add_action('wp_ajax_nopriv_user_delete_comment', 'user_delete_comment');
 
 
-
 /**
  *  comm_vote_poll() - replaces vote_poll() in the Polls plugin. 
  *  This fixes the issue with an
