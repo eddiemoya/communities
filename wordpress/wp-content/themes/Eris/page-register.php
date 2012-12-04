@@ -41,18 +41,6 @@ get_template_part('parts/header'); ?>
 				
 				<form class="form_register" id="register-form" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>" shc:gizmo="transFormer">
             <ul class="form-fields">
-            		<li>
-            			<dl class="clearfix">
-            				<dt class="span3"><label>Test:</label></dt>
-            				<dd class="span9">
-            					<select name="test" shc:gizmo:form="{required:true}">
-            						<option value="default">Select One</option>
-            						<option value="value1">Value 1</option>
-            						<option value="value2">Value 2</option>
-            					</select>
-            				</dd>
-            			</dl>
-            		</li>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="loginId">Email:</label></dt>

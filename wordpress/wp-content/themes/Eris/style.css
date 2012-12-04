@@ -1071,6 +1071,8 @@ textarea.discussion {
     width: 98%; }
   .content-container.post-your-question form .state_post-question-details .input_textarea {
     width: 98%; }
+  .content-container.post-your-question form .state_post-question-details .select {
+    display: block; }
   .content-container.post-your-question form .state_confirm-post .confirmation {
     padding: 0.769em; }
   .content-container.post-your-question form .state_confirm-post .content-headline {
@@ -2504,7 +2506,7 @@ button.follow {
   color: red;
   padding-left: 1.3em;
   margin: .5em 0;
-  background: url('assets/img/error-arrow.png?v=1354295617') no-repeat top left; }
+  background: url('assets/img/error-arrow.png?v=1354642338') no-repeat top left; }
 .wp-polls .figures {
   text-align: right; }
 .wp-polls .bar {
