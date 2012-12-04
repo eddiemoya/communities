@@ -572,10 +572,10 @@ function comm_get_poll($temp_poll_id = 0, $display = true){
             }           
         } elseif($poll_active == 1) {
             if($display) {
-                echo display_pollvote($poll_id);
+                echo comm_display_pollvote($poll_id);
                 return;
             } else {
-                return display_pollvote($poll_id);
+                return comm_display_pollvote($poll_id);
             }
         }
     }   
