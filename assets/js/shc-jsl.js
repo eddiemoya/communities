@@ -86,6 +86,18 @@ if (!Array.prototype.map) {
   };      
 }
 
+/*
+ * Add String.trim() functionality to
+ * IE8 - which does not support String.trim() natively.
+ * 
+ */
+
+if (!String.prototype.trim) {
+	String.prototype.trim = function() {
+  	return this.replace(/^\s+|\s+$/g,'');
+ 	}
+}
+
 shcJSL.methods = {}
 
 shcJSL.get = function(element) {
@@ -449,5 +461,20 @@ shcJSL.gizmos.persistr = function(element) {
 jQuery(window).load(
 	function() {
 		shcJSL.gizmos.activate();
+	}
+)
+
+/**
+ * @author Jason Corradino
+ * @description:
+ * Load specific rel="external" links in new windows, can be expanded to include all external links in the future.
+ */
+
+jQuery(window).load(
+	function() {
+		jQuery("#header_shopping a[rel=external]").on("click", function(event){
+			event.preventDefault();
+			window.open(this.href);
+		});
 	}
 )

@@ -150,9 +150,6 @@ function profile_paginate() {
 													->get_expert_answers()
 													->posts;
 													
-						/*echo '<pre>';
-						var_dump($activities);
-						exit;*/							
 				
 				} else {
 					
@@ -279,6 +276,7 @@ function user_delete_comment() {
 add_action('wp_ajax_user_delete_comment', 'user_delete_comment');
 add_action('wp_ajax_nopriv_user_delete_comment', 'user_delete_comment');
 
+
 /**
  *  comm_vote_poll() - replaces vote_poll() in the Polls plugin. 
  *  This fixes the issue with an
@@ -289,6 +287,7 @@ add_action('wp_ajax_nopriv_user_delete_comment', 'user_delete_comment');
  *  @param void
  *  @return string - the html for the poll results.
  */
+
 
 remove_action('wp_ajax_polls', 'vote_poll');
 remove_action('wp_ajax_nopriv_polls', 'vote_poll');

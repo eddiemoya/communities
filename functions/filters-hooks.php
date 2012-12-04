@@ -340,6 +340,27 @@ function post_comment_screen_name($commentdata) {
 
 add_filter( 'preprocess_comment',  'post_comment_screen_name');
 
+
+/**
+ * Strips all HTML from all comment content except <a>, <p>, and <br>.
+ * 
+ * @author Dan Crimmins
+ * @param array $commentdata
+ * @return array - the commentdata with HTML stripped from comment_content
+ */
+function clean_comment($commentdata) {
+	
+	$html = (current_user_can('unfiltered_html_comments')) ? array('a' => array('href' => array(), 'title' => array())) : array();
+	
+	$commentdata['comment_content'] = wp_kses($commentdata['comment_content'], $html);
+	
+	return $commentdata;
+}
+
+add_filter('preprocess_comment', 'clean_comment');
+
+
+
 function limit_search($query) {
     if ($query->is_search)
         $query->set('post_type',array('post','question','guide'));
@@ -542,23 +563,24 @@ function comm_get_poll($temp_poll_id = 0, $display = true){
                 return display_pollresult($poll_id, $check_voted);
             }
         } elseif(!check_allowtovote() || ($poll_active == 0 && $poll_close == 3)) {
-            $disable_poll_js = '<script type="text/javascript">jQuery("#polls_form_'.$poll_id.' :input").each(function (i){jQuery(this).attr("disabled","disabled")});</script>';
+            $disable_poll_js = '<script type="text/javascript">jQuery("#polls_form_'.$poll_id.' :input").each(funoction (i){jQuery(this).attr("disabled","disabled")});</script>';
             if($display) {
-                echo comm_display_pollvote($poll_id).$disable_poll_js;
+                echo display_pollvote($poll_id).$disable_poll_js;
                 return;
             } else {
-                return comm_display_pollvote($poll_id).$disable_poll_js;
+                return display_pollvote($poll_id).$disable_poll_js;
             }           
         } elseif($poll_active == 1) {
             if($display) {
-                echo comm_display_pollvote($poll_id);
+                echo display_pollvote($poll_id);
                 return;
             } else {
-                return comm_display_pollvote($poll_id);
+                return display_pollvote($poll_id);
             }
         }
     }   
 }
+
 
 ### Function: Display Voting Form
 function comm_display_pollvote($poll_id, $display_loading = true) {
@@ -716,3 +738,4 @@ function comm_display_pollvote($poll_id, $display_loading = true) {
 	// Return Poll Vote Template
 	return $temp_pollvote;
 }
+
