@@ -927,6 +927,13 @@ function get_last_activity_date($user_id) {
 	return $wpdb->get_var($q);
 }
 
+/**
+ * Modified wp_drop_down_categories for communities - added shcJSL form validation.
+ * 
+ * @param array $args
+ * @return string -- the select element
+ * @author Dan Crimmins
+ */
 function comm_wp_dropdown_categories( $args = '' ) {
 	$defaults = array(
 		'show_option_all' => '', 'show_option_none' => '',
