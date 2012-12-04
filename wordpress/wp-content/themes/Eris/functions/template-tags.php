@@ -975,13 +975,13 @@ function comm_wp_dropdown_categories( $args = '' ) {
 	$id = $id ? esc_attr( $id ) : $name;
 
 	if ( ! $r['hide_if_empty'] || ! empty($categories) )
-		$output = "<select name='$name' id='$id' class='$class' $tab_index_attribute  shc:gizmo:form=\"{required:true, custom: function(self) {if (self.value == -1) return false; else return true;}, message: 'Please select a category.'}\">\n";
+		$output = "<select name='$name' id='$id' class='$class clearfix' shc:gizmo:form=\"{required:true}\" $tab_index_attribute>\n";
 	else
 		$output = '';
 
 	if ( empty($categories) && ! $r['hide_if_empty'] && !empty($show_option_none) ) {
 		$show_option_none = apply_filters( 'list_cats', $show_option_none );
-		$output .= "\t<option value='-1' selected='selected'>$show_option_none</option>\n";
+		$output .= "\t<option value='default' selected='selected'>$show_option_none</option>\n";
 	}
 
 	if ( ! empty( $categories ) ) {
@@ -994,8 +994,8 @@ function comm_wp_dropdown_categories( $args = '' ) {
 
 		if ( $show_option_none ) {
 			$show_option_none = apply_filters( 'list_cats', $show_option_none );
-			$selected = ( '-1' === strval($r['selected']) ) ? " selected='selected'" : '';
-			$output .= "\t<option value='-1'$selected>$show_option_none</option>\n";
+			$selected = ( 'default' === strval($r['selected']) ) ? " selected='selected'" : '';
+			$output .= "\t<option value='default'$selected>$show_option_none</option>\n";
 		}
 
 		if ( $hierarchical )
