@@ -20,7 +20,7 @@ class User_Profile {
 	 */
 	public $post_types = array('question',
 								'post',
-							  	'guides');
+							  	'guide');
 	
 	/**
 	 * Array of comment types
@@ -351,7 +351,7 @@ class User_Profile {
 				LEFT JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
       			LEFT JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
 				WHERE tt.term_id IN ({$this->category}) AND tt.taxonomy = 'category' 
-				AND p.post_type IN ('question', 'guides', 'post')
+				AND p.post_type IN ('question', 'guide', 'post')
 				AND p.post_status='publish')
 				
 				
@@ -395,7 +395,7 @@ class User_Profile {
 				LEFT JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
       			LEFT JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
 				WHERE pa.object_type = 'posts'
-				AND pa.object_subtype IN ('question', 'guides', 'post')
+				AND pa.object_subtype IN ('question', 'guide', 'post')
 				AND pa.action_type IN ('upvote', 'downvote', 'follow')
 				AND tt.term_id IN ({$this->category}) 
 				AND tt.taxonomy = 'category'
@@ -430,6 +430,7 @@ class User_Profile {
 		
 			
 				$this->activities = $wpdb->get_results($q);
+				
 				
 				$this->set_activities_attributes();
 				
@@ -926,6 +927,7 @@ class User_Profile {
 					'pad_counts'               => false );
 				
 		$cats = get_categories( $args );
+		
 		
 		//Package into terms array
 		foreach($cats as $cat){
