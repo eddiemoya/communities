@@ -152,6 +152,12 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				}
 				
 			}	// END IF !INPUT
+			else if (required[i].nodeName == "SELECT") {
+				if (required[i].value === 'default') {
+					if (flag != false) flag = false;
+					$tf.blunder(required[i]).create("Please select an option.");
+				}
+			} // END IF SELECT
 			else {
 				if (required[i].value == '') {
 					if (flag != false) flag = false;
