@@ -478,7 +478,7 @@ function comm_get_poll($temp_poll_id = 0, $display = true){
     } else {
         // Hardcoded Poll ID Is Not Specified
         switch($temp_poll_id) {
-            // Random Poll
+            // Random Poll&& array_key_exists($poll_form_id, $poll_cookie)
             case -2:
                 $poll_id = $wpdb->get_var("SELECT pollq_id FROM $wpdb->pollsq WHERE pollq_active = 1 ORDER BY RAND() LIMIT 1");
                 break;
@@ -544,18 +544,175 @@ function comm_get_poll($temp_poll_id = 0, $display = true){
         } elseif(!check_allowtovote() || ($poll_active == 0 && $poll_close == 3)) {
             $disable_poll_js = '<script type="text/javascript">jQuery("#polls_form_'.$poll_id.' :input").each(function (i){jQuery(this).attr("disabled","disabled")});</script>';
             if($display) {
-                echo display_pollvote($poll_id).$disable_poll_js;
+                echo comm_display_pollvote($poll_id).$disable_poll_js;
                 return;
             } else {
-                return display_pollvote($poll_id).$disable_poll_js;
+                return comm_display_pollvote($poll_id).$disable_poll_js;
             }           
         } elseif($poll_active == 1) {
             if($display) {
-                echo display_pollvote($poll_id);
+                echo comm_display_pollvote($poll_id);
                 return;
             } else {
-                return display_pollvote($poll_id);
+                return comm_display_pollvote($poll_id);
             }
         }
     }   
+}
+
+### Function: Display Voting Form
+function comm_display_pollvote($poll_id, $display_loading = true) {
+	global $wpdb;
+	
+	// Temp Poll Result
+	$temp_pollvote = '';
+	// Get Poll Question Data
+	$poll_question = $wpdb->get_row("SELECT pollq_id, pollq_question, pollq_totalvotes, pollq_timestamp, pollq_expiry, pollq_multiple, pollq_totalvoters FROM $wpdb->pollsq WHERE pollq_id = $poll_id LIMIT 1");
+	// Poll Question Variables
+	$poll_question_text = stripslashes($poll_question->pollq_question);
+	$poll_question_id = intval($poll_question->pollq_id);
+	$poll_question_totalvotes = intval($poll_question->pollq_totalvotes);
+	$poll_question_totalvoters = intval($poll_question->pollq_totalvoters);
+	$poll_start_date = mysql2date(sprintf(__('%s @ %s', 'wp-polls'), get_option('date_format'), get_option('time_format')), gmdate('Y-m-d H:i:s', $poll_question->pollq_timestamp)); 
+	$poll_expiry = trim($poll_question->pollq_expiry);
+	if(empty($poll_expiry)) {
+		$poll_end_date  = __('No Expiry', 'wp-polls');
+	} else {
+		$poll_end_date  = mysql2date(sprintf(__('%s @ %s', 'wp-polls'), get_option('date_format'), get_option('time_format')), gmdate('Y-m-d H:i:s', $poll_expiry));
+	}
+	
+	 
+	//Is there a cookie set for this poll (if so, contains the choice(s) user made before prompted to login)
+	$poll_form_id = "polls_form_$poll_question_id";
+	$poll_input_name = "poll_$poll_question_id";
+	$poll_cookie = (isset($_COOKIE['form-data'])) ? json_decode(urldecode(stripslashes(str_replace("'", "\"", $_COOKIE['form-data']))), true) : false;
+	$poll_cookie_exists = ($poll_cookie && array_key_exists($poll_form_id, $poll_cookie)) ? true : false;
+	
+	$poll_multiple_ans = intval($poll_question->pollq_multiple);
+	$template_question = stripslashes(get_option('poll_template_voteheader'));
+	$template_question = str_replace("%POLL_QUESTION%", $poll_question_text, $template_question);
+	$template_question = str_replace("%POLL_ID%", $poll_question_id, $template_question);
+	$template_question = str_replace("%POLL_TOTALVOTES%", $poll_question_totalvotes, $template_question);
+	$template_question = str_replace("%POLL_TOTALVOTERS%", $poll_question_totalvoters, $template_question);
+	$template_question = str_replace("%POLL_START_DATE%", $poll_start_date, $template_question);
+	$template_question = str_replace("%POLL_END_DATE%", $poll_end_date, $template_question);
+	
+	if($poll_multiple_ans > 0) {
+		$template_question = str_replace("%POLL_MULTIPLE_ANS_MAX%", $poll_multiple_ans, $template_question);
+	} else {
+		$template_question = str_replace("%POLL_MULTIPLE_ANS_MAX%", '1', $template_question);
+	}
+	// Get Poll Answers Data
+	$poll_answers = $wpdb->get_results("SELECT polla_aid, polla_answers, polla_votes FROM $wpdb->pollsa WHERE polla_qid = $poll_question_id ORDER BY ".get_option('poll_ans_sortby').' '.get_option('poll_ans_sortorder'));
+	// If There Is Poll Question With Answers
+	if($poll_question && $poll_answers) {
+		// Display Poll Voting Form
+		$temp_pollvote .= "<div id=\"polls-$poll_question_id\" class=\"wp-polls\">\n";
+		$temp_pollvote .= "\t<form id=\"polls_form_$poll_question_id\" class=\"wp-polls-form\" action=\"".htmlspecialchars($_SERVER['REQUEST_URI'])."\" method=\"post\">\n";
+		$temp_pollvote .= "\t\t<p style=\"display: none;\"><input type=\"hidden\" id=\"poll_{$poll_question_id}_nonce\" name=\"wp-polls-nonce\" value=\"".wp_create_nonce('poll_'.$poll_question_id.'-nonce')."\" /></p>\n";
+		$temp_pollvote .= "\t\t<p style=\"display: none;\"><input type=\"hidden\" name=\"poll_id\" value=\"$poll_question_id\" /></p>\n";
+		if($poll_multiple_ans > 0) {
+			$temp_pollvote .= "\t\t<p style=\"display: none;\"><input type=\"hidden\" id=\"poll_multiple_ans_$poll_question_id\" name=\"poll_multiple_ans_$poll_question_id\" value=\"$poll_multiple_ans\" /></p>\n";
+		}
+		// Print Out Voting Form Header Template
+		$temp_pollvote .= "\t\t$template_question\n";
+		foreach($poll_answers as $poll_answer) {
+			// Poll Answer Variables
+			$poll_answer_id = intval($poll_answer->polla_aid); 
+			$poll_answer_text = stripslashes($poll_answer->polla_answers);
+			$poll_answer_votes = intval($poll_answer->polla_votes);
+			$template_answer = stripslashes(get_option('poll_template_votebody'));
+			$template_answer = str_replace("%POLL_ID%", $poll_question_id, $template_answer);
+			$template_answer = str_replace("%POLL_ANSWER_ID%", $poll_answer_id, $template_answer);
+			$template_answer = str_replace("%POLL_ANSWER%", $poll_answer_text, $template_answer);
+			$template_answer = str_replace("%POLL_ANSWER_VOTES%", number_format_i18n($poll_answer_votes), $template_answer);
+			
+			
+			
+			if($poll_multiple_ans > 0) { //Multi-answer checkbox
+				
+				if($poll_cookie_exists) {
+					
+					if(in_array($poll_answer_id, $poll_cookie[$poll_form_id][$poll_input_name])) {
+						
+						$template_answer = select_it(str_replace("%POLL_CHECKBOX_RADIO%", 'checkbox', $template_answer));
+						
+					} else {
+						
+						$template_answer = str_replace("%POLL_CHECKBOX_RADIO%", 'checkbox', $template_answer);
+					}
+					
+					
+				} else {
+				
+					
+					$template_answer = str_replace("%POLL_CHECKBOX_RADIO%", 'checkbox', $template_answer);
+				}
+				
+			} else { //Single answer radio
+				
+				if($poll_cookie_exists) {
+						
+					if(in_array($poll_answer_id, $poll_cookie[$poll_form_id][$poll_input_name])) {
+						
+						$template_answer = select_it(str_replace("%POLL_CHECKBOX_RADIO%", 'radio', $template_answer));
+						
+					} else {
+						
+						$template_answer = str_replace("%POLL_CHECKBOX_RADIO%", 'radio', $template_answer);
+					}
+					
+				} else {
+					
+						$template_answer = str_replace("%POLL_CHECKBOX_RADIO%", 'radio', $template_answer);
+				}
+				
+			}
+			// Print Out Voting Form Body Template
+			$temp_pollvote .= "\t\t$template_answer\n";
+		}
+		// Determine Poll Result URL
+		$poll_result_url = $_SERVER['REQUEST_URI'];
+		$poll_result_url = preg_replace('/pollresult=(\d+)/i', 'pollresult='.$poll_question_id, $poll_result_url);
+		if(isset($_GET['pollresult']) && intval($_GET['pollresult']) == 0) {
+			if(strpos($poll_result_url, '?') !== false) {
+				$poll_result_url = "$poll_result_url&amp;pollresult=$poll_question_id";
+			} else {
+				$poll_result_url = "$poll_result_url?pollresult=$poll_question_id";
+			}
+		}
+		// Voting Form Footer Variables
+		$template_footer = stripslashes(get_option('poll_template_votefooter'));
+		$template_footer = str_replace("%POLL_ID%", $poll_question_id, $template_footer);
+		$template_footer = str_replace("%POLL_RESULT_URL%", $poll_result_url, $template_footer);
+		$template_footer = str_replace("%POLL_START_DATE%", $poll_start_date, $template_footer);
+		$template_footer = str_replace("%POLL_END_DATE%", $poll_end_date, $template_footer);
+		if($poll_multiple_ans > 0) {
+			$template_footer = str_replace("%POLL_MULTIPLE_ANS_MAX%", $poll_multiple_ans, $template_footer);
+		} else {
+			$template_footer = str_replace("%POLL_MULTIPLE_ANS_MAX%", '1', $template_footer);
+		}
+		// Print Out Voting Form Footer Template
+		$temp_pollvote .= "\t\t$template_footer\n";
+		$temp_pollvote .= "\t</form>\n";
+		$temp_pollvote .= "</div>\n";
+		if($display_loading) {
+			$poll_ajax_style = get_option('poll_ajax_style');
+			if(intval($poll_ajax_style['loading']) == 1) {
+				$temp_pollvote .= "<div id=\"polls-$poll_question_id-loading\" class=\"wp-polls-loading\"><img src=\"".plugins_url('wp-polls/images/loading.gif')."\" width=\"16\" height=\"16\" alt=\"".__('Loading', 'wp-polls')." ...\" title=\"".__('Loading', 'wp-polls')." ...\" class=\"wp-polls-image\" />&nbsp;".__('Loading', 'wp-polls')." ...</div>\n";
+			}
+		}
+	} else {
+		$temp_pollvote .= stripslashes(get_option('poll_template_disable'));
+	}
+	
+	//Add JS to submit form if there is a poll cookie
+	if($poll_cookie_exists && is_user_logged_in()) {
+		
+		$temp_pollvote .= " \n\n <script> \n\n shcJSL.cookies('form-data').eat(); \n\n poll_vote(". $poll_question_id ."); \n\n </script>";
+	
+	}
+	
+	// Return Poll Vote Template
+	return $temp_pollvote;
 }

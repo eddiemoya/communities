@@ -223,7 +223,7 @@
     </form>
     <div id="flagForm-<?php echo $id; ?>" class="hide">
         <form class="flag-form" id="commentForm-<?php echo $id; ?>" method="post" shc:gizmo="transFormer">
-            <textarea class="flagField" rows="5" cols="19" name="comment" aria-required="true" shc:gizmo:form="{required: true}"></textarea>
+            <textarea class="flagField" rows="5" name="comment" aria-required="true" shc:gizmo:form="{required: true}"></textarea>
             <input
                     class="kmart_button"
                     type="submit"

@@ -31,6 +31,11 @@ if (!shcJSL) shcJSL = $S = {};
 	Extending native JavaScript objects with additional
 	functionality. 
 */
+
+// Is a string just a bunch of white space?
+String.prototype.devoid = function() {
+	return (!/\S/.test(this))? true:false;
+}
 	/*
 		[1.1] ARRAY
 		-----------
@@ -264,32 +269,75 @@ shcJSL.setStyles = function(e, s) {
 }
 
 shcJSL.formDataToJSON = function(form) {
-	var cereal; // Serialized string of the form
-	var jason;	// (String) Our JSON object
-	var scrub;	// (Function) Function to clean up values for JSON
-	var values; // (Array) values pulled from the serialized string
 	
-	cereal = $(form).serialize();
+	var form = form;	// Set the form to equal the form;
+	var json = {};		// JSON object to be converted into a string;
 	
-	values = cereal.split("&"); 
+	// Gather all the form elements and turn it into a true array then
+	// then turn the array into a key/value pair object
+	(shcJSL.sequence(form.elements)).map(set);
 	
-	jason = "{";
-	if (values.length > 0) {
-		for (var i=0;i<values.length;i++) {
-			jason += values[i].replace(/^(.*)=(.*)?/,scrub)
+	// 'e' is form element;
+	function set(e) {
+		switch((e.nodeName == "INPUT")? e.type:(e.nodeName).toLowerCase()) {
+			case "fieldset":
+				(function(){
+					// 'a' is an array, to hold the checked elements
+					var a = [];
+					
+					// this is the fieldset element;
+					($(this).find('[type="checkbox"]').length > 0)? a = $(this).find('[type="checkbox"]'):a = $(this).find('[type="radio"]');
+					
+					if (a.length > 0) {
+						for (var i = 0; i < a.length; i++) {
+							if (a[i].checked && a[i].getAttribute("name"))  {
+								if (!json[a[i].getAttribute("name")]) json[a[i].getAttribute("name")] = [];
+								json[a[i].getAttribute("name")].push(a[i].getAttribute("value"));
+							}
+						}
+					}
+
+				}).call(e);
+				break;
+			case "hidden":
+				(function(){
+					if (this.getAttribute("name")) json[this.getAttribute("name")] = this.getAttribute("value");
+				}).call(e);
+				break;
+			case "select":
+				(function() {
+					if (this.getAttribute("name")) {
+						if (this.type != "select-multiple") json[this.getAttribute("name")] = this.options[this.selectedIndex].getAttribute("value");
+						else {
+							for (var i = 0; i < this.options.length; i++) {
+								if (this.options[i].selected) {
+									if (!json[this.getAttribute("name")]) json[this.getAttribute("name")] = [];
+									console.log(json[this.getAttribute("name")])
+									json[this.getAttribute("name")].push(this.options[i].getAttribute("value"));
+								}
+							}
+						}
+					}
+				}).call(e);
+				break;
+			case "text":
+				(function(){
+					if (this.getAttribute("name"))
+						if (!(this.getAttribute('value')).devoid()) json[this.getAttribute("name")] = this.getAttribute("value");
+				}).call(e);
+				break;
+			case "textarea":
+				(function(){
+					if (this.getAttribute("name"))
+						if (!(this.value).devoid())  json[this.getAttribute("name")] = this.value;
+				}).call(e);
+				break;
+			default:
+				break;
 		}
 	}
-	
-	jason = jason.substr(0,jason.length -1) + "}";
-	
-	function scrub(match, key, value, offset, string) {
-		key = key.replace(/\+/g, " ");
-		value = value.replace(/\+/g, " ");
-		json = '"' + escape(key) + '":"' + escape(value) + '",';
-		return json;
-	}
-	
-	return jason;
+		
+	return JSON.stringify(json);
 }
 
 shcJSL.sequence = function(array) {
