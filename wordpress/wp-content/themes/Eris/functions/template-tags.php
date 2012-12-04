@@ -926,3 +926,86 @@ function get_last_activity_date($user_id) {
 	
 	return $wpdb->get_var($q);
 }
+
+function comm_wp_dropdown_categories( $args = '' ) {
+	$defaults = array(
+		'show_option_all' => '', 'show_option_none' => '',
+		'orderby' => 'id', 'order' => 'ASC',
+		'show_last_update' => 0, 'show_count' => 0,
+		'hide_empty' => 1, 'child_of' => 0,
+		'exclude' => '', 'echo' => 1,
+		'selected' => 0, 'hierarchical' => 0,
+		'name' => 'cat', 'id' => '',
+		'class' => 'postform', 'depth' => 0,
+		'tab_index' => 0, 'taxonomy' => 'category',
+		'hide_if_empty' => false
+	);
+
+	$defaults['selected'] = ( is_category() ) ? get_query_var( 'cat' ) : 0;
+
+	// Back compat.
+	if ( isset( $args['type'] ) && 'link' == $args['type'] ) {
+		_deprecated_argument( __FUNCTION__, '3.0', '' );
+		$args['taxonomy'] = 'link_category';
+	}
+
+	$r = wp_parse_args( $args, $defaults );
+
+	if ( !isset( $r['pad_counts'] ) && $r['show_count'] && $r['hierarchical'] ) {
+		$r['pad_counts'] = true;
+	}
+
+	$r['include_last_update_time'] = $r['show_last_update'];
+	extract( $r );
+
+	$tab_index_attribute = '';
+	if ( (int) $tab_index > 0 )
+		$tab_index_attribute = " tabindex=\"$tab_index\"";
+
+	$categories = get_terms( $taxonomy, $r );
+	$name = esc_attr( $name );
+	$class = esc_attr( $class );
+	$id = $id ? esc_attr( $id ) : $name;
+
+	if ( ! $r['hide_if_empty'] || ! empty($categories) )
+		$output = "<select name='$name' id='$id' class='$class' $tab_index_attribute  shc:gizmo:form=\"{required:true, custom: function(self) {if (self.value == -1) return false; else return true;}, message: 'Please select a category.'}\">\n";
+	else
+		$output = '';
+
+	if ( empty($categories) && ! $r['hide_if_empty'] && !empty($show_option_none) ) {
+		$show_option_none = apply_filters( 'list_cats', $show_option_none );
+		$output .= "\t<option value='-1' selected='selected'>$show_option_none</option>\n";
+	}
+
+	if ( ! empty( $categories ) ) {
+
+		if ( $show_option_all ) {
+			$show_option_all = apply_filters( 'list_cats', $show_option_all );
+			$selected = ( '0' === strval($r['selected']) ) ? " selected='selected'" : '';
+			$output .= "\t<option value='0'$selected>$show_option_all</option>\n";
+		}
+
+		if ( $show_option_none ) {
+			$show_option_none = apply_filters( 'list_cats', $show_option_none );
+			$selected = ( '-1' === strval($r['selected']) ) ? " selected='selected'" : '';
+			$output .= "\t<option value='-1'$selected>$show_option_none</option>\n";
+		}
+
+		if ( $hierarchical )
+			$depth = $r['depth'];  // Walk the full depth.
+		else
+			$depth = -1; // Flat.
+
+		$output .= walk_category_dropdown_tree( $categories, $depth, $r );
+	}
+	if ( ! $r['hide_if_empty'] || ! empty($categories) )
+		$output .= "</select>\n";
+
+
+	$output = apply_filters( 'wp_dropdown_cats', $output );
+
+	if ( $echo )
+		echo $output;
+
+	return $output;
+}

@@ -41,9 +41,9 @@ get_currentuserinfo();
 							<li class="clearfix">
 								<label for="category" class="required">Category</label>
                                 <?php
-									wp_dropdown_categories(array(
+									comm_wp_dropdown_categories(array(
 										'depth'=> 1,
-										'selected' => get_queried_object()->term_id,
+										'selected' => (! get_queried_object()->term_id) ? -1 : get_queried_object()->term_id,
 										'show_option_none' => 'Select',
 										'hierarchical' => true,
 										'hide_if_empty' => false,
@@ -53,6 +53,7 @@ get_currentuserinfo();
 									));
                                 ?>
 							</li>
+							
 							<li class="clearfix">
 								<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Post</button>
 								<button type="submit" name="cancel" class="<?php echo theme_option("brand"); ?>_button azure">Cancel</button>
@@ -72,3 +73,5 @@ get_currentuserinfo();
                     </ul>
                 </div>
 			</section>
+			
+			<script>alert(document.getElementById('category').value);</script>
