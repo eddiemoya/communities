@@ -14,7 +14,7 @@
 		
     $comment_type = get_post_type( $comment->comment_post_ID ) == 'question' ? 'answer' : 'comment';
     
-    $removed_text = "This {$comment_type} has been removed.";
+    $removed_text = "<p>This {$comment_type} has been removed.</p>";
    
 
 
@@ -42,9 +42,7 @@
             	In response to <?php echo $parent_author; ?>
             </p>
         	<?php endif;?>
-          <p>
           	<?php echo ($comment->comment_approved == 1) ? wpautop($comment->comment_content) : $removed_text; ?>
-          </p>  
 					
 				</section>
 			</article> <!-- END ARTICLE CONTENT CONTAINER -->
