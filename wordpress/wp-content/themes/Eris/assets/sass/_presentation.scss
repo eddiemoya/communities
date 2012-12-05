@@ -800,6 +800,9 @@ textarea.discussion {
       .input_textarea {
         width:98%;
       }
+      select {
+        display:block;
+      }
     }
     .state_confirm-post {
       .confirmation {
@@ -960,6 +963,11 @@ $tab-padding: "1em 0 .6em 0";
     display: block;
     margin-left: 2em;
     @extend .bold;
+  }
+  .comment-tally {
+    float: left;
+    margin: 0 1em;
+    font-weight: bold;
   }
   .expert-answers {
     li {

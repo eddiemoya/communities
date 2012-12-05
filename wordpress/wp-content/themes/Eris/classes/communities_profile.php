@@ -57,17 +57,12 @@ class User_Profile {
 	public $activities = null;
 	
 	/**
+	 * experts - array of expert user_id's
 	 * 
-	 * @var unknown_type
+	 * @var array
 	 */
 	
 	public $experts;
-	
-	/**
-	 * Posts per page 
-	 * 
-	 * @var int
-	 */
 	
 	/**
 	 * Category term id(s)
@@ -75,8 +70,12 @@ class User_Profile {
 	 */
 	private $category;
 	
-	
-	private $posts_per_page = 10;
+	/**
+	 * Posts per page 
+	 * 
+	 * @var int
+	 */
+	private $posts_per_page = 20;
 	
 	/**
 	 * Pagination offset
@@ -164,7 +163,7 @@ class User_Profile {
 		return $this;
 	}
 	
-	/**guides/
+	/**
 	 * Sets posts_per_page
 	 * @param int $num
 	 * @return object
@@ -183,7 +182,7 @@ class User_Profile {
    	 * @return object
    	 */
    	public function get_user_posts_by_type($post_type = 'post' ) {
-// guides/
+
    		$args = 	array('author'			=> $this->user_id,
    						'post_status'		=> 'publish',
    						'post_type'			=> $post_type,
