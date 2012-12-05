@@ -1,0 +1,199 @@
+/**
+ * To create a new color scheme see the details about the new themes file structure: http://www.codeflavors.com/documentation/theme-file-structure/
+ */
+.FA_overall_container_classic {
+	display:block;
+	position:relative;
+	clear:both;
+	background:#282828;
+	border:1px solid #282828;
+	z-index:1;
+	margin:0px auto;
+}	
+
+.FA_overall_container_classic a:focus {
+	outline:0px;
+}
+focus {
+	outline:0px;
+}
+
+.FA_overall_container_classic h3.FA_title_section { 	
+	padding:0px;
+	margin:0px;
+	font-size:30px;
+	color:#003333 !important; 
+	font-weight:normal;
+	font-style:italic;
+}
+
+.FA_overall_container_classic .FA_featured_articles {
+	display:block;
+	position:relative;
+	clear:both;
+	height:300px;
+	width:100%;
+	overflow:hidden;	
+}
+
+.FA_overall_container_classic .FA_featured_articles .FA_article{
+	display:block;
+	position:relative;
+	clear:both;
+	/* if you plan on using left slide morph, set width on the elements */
+	width:100%;
+	padding:0px;
+	color:#CCCCCC;
+	overflow:hidden;	
+	text-align:justify;	
+}
+	.FA_overall_container_classic .FA_featured_articles .FA_article .FA_wrap{
+		padding:30px 40px;
+	}
+
+
+.FA_overall_container_classic .FA_featured_articles .FA_article .image_container{
+	display:block;
+	position:relative;
+	float:left;
+	margin:0px 30px 30px 0px;
+	background-color:#333333;
+	padding:6px;
+	border:1px #666666 solid;
+	z-index:2000;
+}
+	.FA_overall_container_classic .FA_featured_articles .FA_article .image_container img{
+		margin:0px;
+	}
+
+.FA_overall_container_classic .FA_featured_articles .FA_article h2{
+	margin:0px;
+	padding:0px;
+	font-size:22px;
+	color:#eeeeee !important;
+	font-weight:normal;
+	border:none;
+	clear:none;
+	text-align:left;
+	background-color:#282828;
+	z-index:1;
+}
+	.FA_overall_container_classic .FA_featured_articles .FA_article h2 a{
+		color:inherit;
+	}
+
+.FA_overall_container_classic .FA_featured_articles .FA_article span.FA_date{
+	font-size:14px;
+	color:#a8a8a8;
+	font-style:italic;
+}
+
+.FA_overall_container_classic .FA_featured_articles .FA_article p{
+	font-size:12px; 
+	color:#FFFFFF;
+	margin:0px;
+	padding:30px 0px 30px;
+	line-height:18px;	
+	text-align:justify;
+}
+
+.FA_overall_container_classic .FA_featured_articles .FA_article p a{
+	color:#FFFFFF !important;
+}
+
+.FA_overall_container_classic .FA_featured_articles .FA_article a.FA_read_more{
+	font-size:16px;
+	color:#ffffff;
+	background:#3b3b3b;
+	padding:4px 6px;
+	font-style:italic;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	text-decoration:none;
+}
+
+/*
+	Bottom navigation
+*/
+.FA_overall_container_classic ul.FA_navigation {
+	display:block;
+	position:relative;
+	background:#282828;
+	padding:0px !important;
+	list-style-type:none !important;
+	margin:0px !important;
+	text-align:left;
+	width:100%;	
+	height:17px;
+	border:none;
+}
+	.FA_overall_container_classic ul.FA_navigation li{
+		display:inline;
+		border:none;
+		padding:0px !important;
+		list-style-type:none !important;
+		background:none;
+	}
+		.FA_overall_container_classic ul.FA_navigation li.first{
+			margin-left:35px !important;
+		}
+		.FA_overall_container_classic ul.FA_navigation li a{
+			display:inline-block;
+			width:12px;
+			height:17px;
+			line-height:17px;
+			font-size:0px;
+			background-image:url(images/nav.png);
+			background-position:bottom center;
+			background-repeat:no-repeat;
+			margin:0px 0px 0px 5px;
+		}
+		.FA_overall_container_classic ul.FA_navigation li span{
+			display:none;
+			position:absolute;
+			top:-20px;
+			left:0px;
+			color:#CCC;
+			text-align:left;
+			font-family:Georgia, "Times New Roman", Times, serif;
+			width:100%;
+			padding-left:35px;
+		}
+	
+.FA_overall_container_classic ul.FA_navigation a.active{
+	background-position:top center;
+	color:#EEE;
+}
+
+.FA_overall_container_classic ul.FA_navigation a:hover{
+	background-position:top center;
+}
+
+/* Sideways navigation */
+.FA_overall_container_classic .FA_back{
+	display:block;
+	position:absolute;
+	left:0px;
+	top:45%;
+	width:20px;
+	height:45px;
+	background-image:url(images/left.png);
+	background-position:top center;
+	background-repeat:no-repeat;
+	z-index:110;
+}
+.FA_overall_container_classic .FA_next{
+	display:block;
+	position:absolute;
+	right:0px;
+	top:45%;
+	width:20px;
+	height:45px;
+	background-image:url(images/right.png);
+	background-position:top center;
+	background-repeat:no-repeat;
+	z-index:110;
+}
+.FA_overall_container_classic .FA_back:HOVER,
+.FA_overall_container_classic .FA_next:HOVER{
+	background-position:bottom center;
+}

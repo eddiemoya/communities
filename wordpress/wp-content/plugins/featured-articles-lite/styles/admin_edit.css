@@ -1,0 +1,224 @@
+table.FA_options_table{
+	border:none;
+	border-collapse:collapse;
+	margin-top:10px;
+}
+	table.FA_options_table tr td{
+		padding-bottom:15px;
+	}
+	table.FA_options_table tr td.label{
+		vertical-align:top;
+		padding-right:15px;
+	}
+		table.FA_options_table tr td input.FA_number,
+		#displayed_content{
+			margin:0px;
+		}
+		#displayed_content{
+			width:300px;
+		}
+		
+a.FA_info{
+	color:#CCC;
+	text-decoration:none;
+}		
+
+.FA_sortable{
+	
+}
+	.FA_sortable li{
+		display:block;
+		position:relative;
+		background:#CCC;
+		background-image:-moz-linear-gradient(top, #dddddd, #d3d3d3);
+		background-image:-webkit-linear-gradient(top,#dddddd,#d3d3d3);
+		background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#dddddd), to(#d3d3d3));
+		background:-ms-linear-gradient(top, #dddddd, #d3d3d3);
+		background:-o-linear-gradient(top, #dddddd, #d3d3d3);
+		padding:4px 5px;
+		border:1px #d1d1d1 solid;
+		border-radius:5px;
+		-moz-border-radius:5px;
+		cursor:move;
+	}
+	
+	.FA_sortable li.post a{
+		background:url(icons/icon-post.png) left center no-repeat;
+	}
+	.FA_sortable li.page a{
+		background:url(icons/icon-page.png) left center no-repeat;
+	}
+	.FA_sortable li.fa_slide a{
+		background:url(icons/icon-custom.png) left center no-repeat;
+			
+	}
+	
+		.FA_sortable li a{
+			color:#000;
+			text-decoration:none;
+			padding-left:23px;
+			line-height:20px;
+			padding-top:2px;
+			padding-bottom:2px;
+		}
+		.FA_sortable li a:HOVER{
+			color:#21759B;
+			text-decoration:underline;
+		}
+		.FA_sortable li a.remove_item{
+			color:#FF0000;
+			float:right;
+			display:none;
+			background:none;
+			padding:0px;
+		}
+
+
+#poststuff #post-body-content .inside{
+	margin:5px;
+	padding:20px;
+	border:1px #e1ebec solid;
+	background:#f8f8f8;
+}
+
+.inside .FA_content_display{
+	margin-top:10px;
+}
+.inside label.clear{
+	display:block;
+	clear:both;
+	margin-bottom:7px;
+}
+
+.columns{
+	display:block;
+	width:100%;
+	float:left;
+	clear:both;
+}
+	.columns .left{
+		width:180px;
+		float:left;
+		margin-right:20px;
+	}
+		.left .image-holder{
+			display:block;
+			position:relative;
+			overflow:hidden;
+			width:180px;
+			height:120px;
+			border:1px #CCC solid;
+			background:#FFF;
+		}
+		.left .image-holder span{
+			display:block;
+			position:relative;
+			width:130px;
+			margin:45px auto;
+			text-align:center;
+			font-size:14px;
+			text-transform:uppercase;
+			color:#949494;
+			font-weight:bold;
+			z-index:1;
+		}
+		
+	.columns .right{
+		float:left;
+	}
+		.columns .right label{
+			display:block;
+			position:relative;
+			clear:both;
+			margin-bottom:5px;
+			margin-top:5px;
+		}
+		.columns .right label.FA_inline{
+			display:inline;
+			position:static;
+			clear:none;
+		}
+		.columns .right select{
+			width:300px;
+		}
+
+strong.section-title{
+	display:block;
+	position:relative;
+	clear:both;
+	margin-bottom:10px;
+	width:100%;
+}
+
+strong.separator{
+	border-top:1px #dedede solid;
+	margin-top:10px;
+	padding-top:10px;
+}
+
+.inside div.section{
+	margin-bottom:10px;
+	width:100%;
+	padding-bottom:10px;
+	border-bottom:1px #CCC solid;
+	line-height:17px;
+}	
+.inside div.last{
+	border-bottom:none;
+}	
+	.inside div.section strong{
+		display:block;
+		margin-bottom:5px;
+	}
+	.inside div.section label{
+		margin-right:5px;
+	}
+	span.note{
+		font-size:11px;
+		color:#666666;
+		font-style:italic;
+	}
+	
+p.info{
+	padding:5px;
+	background:url(info.png) 10px 9px no-repeat #FFFFCC;
+	border:1px #CCC solid;
+	padding-left:30px;
+}	
+
+label.disabled{
+	color:#CCC;
+}
+
+#FA_theme_messages{
+	font-size:11px;
+	color:red;
+	padding:5px 0px;
+	line-height:14px;
+}
+
+#go-pro{
+	display:block;
+	position:relative;
+	text-align:center;
+	padding:10px 0px;
+	border-top:1px #CCC solid;
+	margin-top:15px;
+	padding-top:15px;
+	font-size:12px;
+}
+#go-pro a{
+	background:#006699;
+	display:block;
+	position:relative;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	color:#FFF;
+	text-decoration:none;
+	font-size:14px;
+	padding:10px 0px;
+	width:100px;
+	margin:0px auto;
+	margin-bottom:10px;
+}
