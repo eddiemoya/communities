@@ -1286,6 +1286,9 @@ fieldset#use_your_account_from {
     .content-container.questionlist .content-body.content-list .content-item .addthis.dropmenu .sharebutton {
       padding: 0; }
 
+/**
+ * All definitions for the base tooltip
+ */
 .tooltip {
   display: none;
   position: absolute;
