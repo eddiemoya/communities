@@ -44,11 +44,23 @@ String.prototype.devoid = function() {
 	/*
 	 * Added Array.remove([entry]) functionality to Array
 	 */
-
-Array.prototype.remove = function(e) {
-	var t, _ref;
-  if ((t = this.indexOf(e)) > -1) {return ([].splice.apply(this, [t, t - t + 1].concat(_ref = [])), _ref);}
-};
+if ([].indexOf) {
+	Array.prototype.remove = function(e) {
+		var t, _ref;
+	  if ((t = this.indexOf(e)) > -1) {return ([].splice.apply(this, [t, t - t + 1].concat(_ref = [])), _ref);}
+	}
+} else {
+	Array.prototype.remove = function(e) {
+		if (e) {
+			for (var i = 0; i < this.length; i++) {
+				if (this[i] === e) {
+					this.splice(i, 1);
+					break;
+				}
+			}
+		}
+	}
+}
 
 /*
  * Add Array.map(callback, [thisArg]) functionality to
