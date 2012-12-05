@@ -1,0 +1,142 @@
+/**
+ * To create a new color scheme see the details about the new themes file structure: http://www.codeflavors.com/documentation/theme-file-structure/
+ */
+.FA_overall_container_smoke {
+	display:block;
+	position:relative;
+	clear:both;
+	border:1px solid #b5b5b5;
+	background:#000000;
+	z-index:1;	
+	margin:0px auto;
+}	
+
+.FA_overall_container_smoke  a:focus {
+	outline:0px;
+}
+focus {
+	outline:0px;
+}
+
+.FA_overall_container_smoke  h3.FA_title_section { 	
+	padding:0px;
+	margin:0px;
+	font-size:30px;
+	letter-spacing:3px;
+	color:#003333; 
+	font-weight:normal;
+	font-style:italic;
+}
+
+.FA_overall_container_smoke .FA_featured_articles {
+	display:block;
+	position:relative;
+	clear:both;
+	height:300px;
+	overflow:hidden;
+	width:100%;
+}
+
+.FA_overall_container_smoke .FA_featured_articles .FA_article{
+	display:block;
+	position:relative;
+	clear:both;
+	/* if you plan on using left slide morph, set width on the elements */
+	width:100%;
+	height:100%;
+	color:#CCCCCC;
+	padding:0px;
+	overflow:hidden;
+	text-align:justify;
+}
+	.FA_overall_container_smoke .FA_featured_articles .FA_wrap{
+		background:url(smoke.png);
+		width:40%;
+		padding:20px;
+		height:100%;
+		margin-right:10%;
+		display:block;
+		position:relative;
+		overflow:hidden;
+	}
+	.FA_overall_container_smoke .FA_featured_articles .FA-remove-bg{
+		background:none;
+	}
+
+.FA_overall_container_smoke .FA_featured_articles .FA_article h2{
+	margin:0px;
+	padding:0px;
+	font-size:18px;
+	color:#FFF !important;
+	font-weight:normal;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	border:none;	
+	clear:none;
+	text-align:left;
+	z-index:1;
+}
+	.FA_overall_container_smoke .FA_featured_articles .FA_article h2 a{
+		color:#FFF;
+	}
+
+.FA_overall_container_smoke .FA_featured_articles .FA_article span.FA_date{
+	font-size:12px;
+	color:#CCC;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-style:italic;
+	padding:0px;
+}
+
+.FA_overall_container_smoke .FA_featured_articles .FA_article p{
+	font-size:12px; 
+	color:#FFF;
+	margin:0px;
+	padding:30px 0px 30px;
+	line-height:18px;
+}
+.FA_overall_container_smoke .FA_featured_articles .FA_article p a{
+	color:#FFF !important;
+}
+.FA_overall_container_smoke .FA_featured_articles .FA_article a.FA_read_more{
+	font-size:11px;
+	color:#ccc;
+	padding:0px;
+	text-decoration:none;
+	background:url(smoke.png);
+	padding:10px;
+	float:right;
+}
+
+/* Sideways navigation */
+.FA_overall_container_smoke .FA_back{
+	display:block;
+	position:absolute;
+	left:10px;
+	bottom:10px;
+	width:20px;
+	height:20px;
+	line-height:20px;
+	text-align:center;
+	color:#FFF !important;
+	background:url(smoke.png);
+	text-decoration:none;
+	z-index:110;
+}
+.FA_overall_container_smoke .FA_next{
+	display:block;
+	position:absolute;
+	left:32px;
+	bottom:10px;
+	width:20px;
+	height:20px;
+	line-height:20px;
+	text-align:center;
+	color:#FFF !important;
+	background:url(smoke.png);
+	text-decoration:none;
+	z-index:110;
+}
+.FA_overall_container_smoke .FA_back:HOVER,
+.FA_overall_container_smoke .FA_next:HOVER{
+	color:#CCC !important;
+}
