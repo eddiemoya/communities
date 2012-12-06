@@ -6,7 +6,7 @@
  */
 function get_subcategories_ajax(){
 
-    if(isset($_POST['category_id'])){
+    if(isset($_POST['category_id']) && $_POST['category_id'] != 'default'){
         $hide_empty = ($_POST['hide_empty'] == "true") ? true : false;
         $parent = absint((int)$_POST['category_id']);
 
