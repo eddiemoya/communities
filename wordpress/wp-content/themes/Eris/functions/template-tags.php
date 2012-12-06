@@ -174,7 +174,7 @@ function process_front_end_question() {
     	}
     	
     	//Make sure that a category has been selected
-    	if($_POST['category'] == -1) {
+    	if($_POST['category'] == 'default') {
     		
     		$valid = false;    		
     		$errors['category'] = 'Please select a category for your question.';
