@@ -83,13 +83,13 @@ define('WP_DEBUG', false);
 
 
 define( 'WP_CONTENT_DIR', '/Users/emoya1/Public/Projects/comm/wp-content' );
-// define( 'WP_PLUGIN_DIR', '/Volumes/STATIVUS/Projects/Communities/wordpress/wp-content/plugins' );
-// define( 'PLUGINDIR', '/Volumes/STATIVUS/Projects/Communities/wordpress/wp-content/plugins' );
+define( 'WP_PLUGIN_DIR', '/Users/emoya1/Public/Projects/comm/wp-content/plugins' );
+define( 'PLUGINDIR', '/Users/emoya1/Public/Projects/comm/wp-content/plugins' );
 
-define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST']);
-define( 'WP_HOME',    'http://' . $_SERVER['HTTP_HOST'] );
-define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp-content');
-define( 'WP_PLUGIN_URL',  'http://' . $_SERVER['HTTP_HOST'] . '/wp-content/plugins');
+define( 'WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/comm/wordpress');
+define( 'WP_HOME',    'http://' . $_SERVER['HTTP_HOST'] . '/comm/wordpress');
+define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/comm/wp-content');
+define( 'WP_PLUGIN_URL',  'http://' . $_SERVER['HTTP_HOST'] . '/comm/wp-content/plugins');
 //define( 'UPLOADS',  'wp-content/uploads' );
 
 /* That's all, stop editing! Happy blogging. */
