@@ -4,7 +4,6 @@ Plugin Name: Media Embed Widget
 Description: Handles oEmbed items on section fronts
 Version: 0.1
 Author: Jason Corradino, Eddie Moya
-Author URI: http://ididntbreak.it, http://eddiemoya.com/
  */
 
 /**
@@ -98,11 +97,23 @@ class Media_Embed_Widget extends WP_Widget {
      * @return void 
      */
     public function widget($args, $instance) {
-        global $wp_query;
-        
+		echo '<article class="widget content-container content-blurb span12">';
+		
+		if ($instance["title"]) {
+			echo '
+				<header class="content-header">
+					<h3>'.$instance["title"].'</h3>
+				</header>
+			';
+		}
+
+		echo $before_widget;
+		
 		echo $instance["code"];
 
         echo $after_widget;
+
+		echo '</article>';
     }
 
     /**
@@ -156,8 +167,9 @@ class Media_Embed_Widget extends WP_Widget {
 
         }
 
-		if ($instance["url"] != $old_instance["url"]) {
-			$instance["code"] = wp_oembed_get($instance["url"]);
+		if ($instance["url"] != $old_instance["url"] || $instance["width"] != $old_instance["width"]) {
+			$width = ($instance['width']) ? $instance["width"] : 500;
+			$instance["code"] = wp_oembed_get($instance["url"], array('width'=>$width));
 			$instance['video_tiny'] = wp_oembed_get($instance["url"], array('width'=>225));
 		}
 	
@@ -194,14 +206,19 @@ class Media_Embed_Widget extends WP_Widget {
        
         $this->form_field('title', 'text', 'Title', $instance);
 
-		echo $instance["video_tiny"];
+		//echo $instance["video_tiny"];
 
         $fields = array(
             array(
                 'field_id' => 'url',
                 'type' => 'text',
                 'label' => 'URL'
-            )
+            ),
+			array(
+				'field_id' => 'width',
+				'type' => 'text',
+				'label' => "Video Width (ex: 500)"
+			)
         );
         $this->form_fields($fields, $instance, true);
     }
