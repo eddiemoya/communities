@@ -17,7 +17,7 @@ class Media_Embed_Widget extends WP_Widget {
      * 
      * @var string [REQUIRED]
      */
-    var $widget_name = 'Media Widget';
+    var $widget_name = 'Embed Widget';
    
     /**
      * Root id for all widgets of this type. Will be automatically generate if not set.
