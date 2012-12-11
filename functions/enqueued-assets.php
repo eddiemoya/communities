@@ -62,10 +62,11 @@ function enqueue_scripts() {
         wp_register_script('omniture_start', get_template_directory_uri() . '/assets/js/vendor/omniture.start.js', array('omniture_scode'), '1.0', true);
 
 
+        wp_register_script('omniture', get_template_directory_uri() . '/assets/js/vendor/omniture.' . theme_option("brand") . '.js', array(), '1.0');
         wp_register_script('addthis', 'http://s7.addthis.com/js/250/addthis_widget.js', array(), '1.1');
-				
-		// NOT FOR PRODUCTION
-		//wp_register_script('debug', get_template_directory_uri() . '/assets/js/vendor/debug.js', array(), '1.0');
+
+        // NOT FOR PRODUCTION
+        //wp_register_script('debug', get_template_directory_uri() . '/assets/js/vendor/debug.js', array(), '1.0');
 
         wp_enqueue_script('jquery');    
         wp_enqueue_script('modernizr');
@@ -82,31 +83,38 @@ function enqueue_scripts() {
 		wp_enqueue_script('wp-polls');
         wp_enqueue_script('omniture_scode');
         wp_enqueue_script('omniture_start');
-
-
         // wp_enqueue_script('addthis');
 
 		wp_localize_script('jquery', 'ajaxdata', $data);
-        wp_localize_script('omniture_start', 's_properties', $s_properties);    		
+        wp_localize_script('omniture_start', 's_properties', $s_properties);
+
+        wp_localize_script('jquery', 'ajaxdata', $data);
+        //wp_localize_script('addthis', 's.pageName', $pageName);    		
+
         
         /* Styles */
         $style_path = STYLESHEETPATH . "/style.css";
         $style_version = file_exists( $style_path ) ? filemtime( $style_path ) : '1.0';
+        // Implement the following lines and delete the above after migrating to new sass layout
+        // $style_path = STYLESHEETPATH . "/" . theme_option("brand") . ".css";
+        // $style_url = get_template_directory_uri() . "/" . theme_option("brand") . ".css";
+        // $style_version = file_exists( $style_path ) ? filemtime( $style_path ) : '1.0';
+        // wp_register_style( 'main-styles', $style_url, array(), $style_version );
         wp_register_style( 'main-styles', get_stylesheet_uri(), array(), $style_version );
         wp_enqueue_style( 'main-styles');
+
         
         //Enqueue profile ajax only for author template
         if(is_author()) {
-        	
-        	wp_register_script('profile-ajax', get_template_directory_uri() . '/assets/js/profile-ajax.js', array('jquery'), '1.0');
-        	wp_enqueue_script('profile-ajax');
-        	
-        	if(is_user_logged_in()) {
-	        	wp_register_script('user-delete-comment', get_template_directory_uri() . '/assets/js/user-delete-comment.js', array('jquery'), '1.0');
-	        	wp_enqueue_script('user-delete-comment');
-        	}
-        }
-        
+
+            wp_register_script('profile-ajax', get_template_directory_uri() . '/assets/js/profile-ajax.js', array('jquery'), '1.0');
+            wp_enqueue_script('profile-ajax');
+
+            if(is_user_logged_in()) {
+                wp_register_script('user-delete-comment', get_template_directory_uri() . '/assets/js/user-delete-comment.js', array('jquery'), '1.0');
+                wp_enqueue_script('user-delete-comment');
+            }
+        }     
     }
 }
 
@@ -140,16 +148,16 @@ function pluginname_addthis_config() {
     ';
 }
 function omniture_sVars() {
-	echo "
-		<script type='text/javascript'>
-			s.pageName = '". get_omniture() . "';
-			s.prop1 = '". get_omniture() . "';
-			s.prop2 = '". get_omniture() . "';
-			s.prop3 = '". get_omniture() . "';
-			s.prop13 = '". get_omniture() . "';
-			s.prop18 = '". get_omniture() . "';
-			s.prop27 = '". get_omniture() . "';
-			s.prop28 = '". get_omniture() . "';
-		</script>
-	";
+    echo "
+        <script type='text/javascript'>
+            s.pageName = '". get_omniture() . "';
+            s.prop1 = '". get_omniture() . "';
+            s.prop2 = '". get_omniture() . "';
+            s.prop3 = '". get_omniture() . "';
+            s.prop13 = '". get_omniture() . "';
+            s.prop18 = '". get_omniture() . "';
+            s.prop27 = '". get_omniture() . "';
+            s.prop28 = '". get_omniture() . "';
+        </script>
+    ";
 }
