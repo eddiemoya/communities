@@ -96,6 +96,38 @@ function register_buying_guides_type() {
     register_post_type('guide', $args);
 }
 
+function strip_oembed_from_excerpt($excerpt){
+	$oembedProviders = array(
+		'#http://(www\.)?youtube.com/watch.*#i',
+		'#http://youtu.be/*#i',
+		'#http://blip.tv/*#i',
+		'#http://(www\.)?vimeo\.com/.*#i',
+		'#http://(www\.)?dailymotion\.com/.*#i',
+		'#http://(www\.)?flickr\.com/.*#i',
+		'#http://(.+\.)?smugmug\.com/.*#i',
+		'#http://(www\.)?hulu\.com/watch/.*#i',
+		'#http://(www\.)?viddler\.com/.*#i',
+		'#http://qik.com/*#i',
+		'#http://revision3.com/*#i',
+		'#http://i*.photobucket.com/albums/*#i',
+		'#http://gi*.photobucket.com/groups/*#i',
+		'#http://(www\.)?scribd\.com/.*#i',
+		'#http://wordpress.tv/*#i',
+		'#http://(.+\.)?polldaddy\.com/.*#i',
+		'#http://(www\.)?funnyordie\.com/videos/.*#i'
+	);
+	
+	foreach ($oembedProviders as $provider) {
+		if(preg_match_all($provider, $excerpt, $matches)) {
+			foreach($matches[0] as $match) {
+				$excerpt = str_replace($match, "", $excerpt);
+			}
+		}
+	}
+	
+	return $excerpt;
+}
+
 function see_more_excerpt($excerpt) {
     global $excerptLength;
 
@@ -114,7 +146,7 @@ function custom_excerpt_length($excerpt) {
         return $excerpt . '... <a class="moretag" href="'. get_permalink($post->ID) . '">See More</a>';
     }
 
-    $excerpt = trim(strip_tags($post->post_content));
+    $excerpt = trim(strip_oembed_from_excerpt(strip_tags($post->post_content)));
 
     if(strlen($post->post_content) > $excerptLength) {
         return substr($excerpt, 0, strpos($excerpt, " ", $excerptLength)) . '... <a class="moretag" href="'. get_permalink($post->ID) . '">See More</a>';
