@@ -560,9 +560,14 @@ function comm_get_poll($temp_poll_id = 0, $display = true){
     }   
 }
 
-function force_media_https($data) {
+function oembed_result_modification($data) {
 	$data = str_replace("http://www.youtube.com", "https://www.youtube.com", $data);
 	$data = str_replace("http://player.vimeo.com", "https://player.vimeo.com", $data);
+	
+	if ( strpos( $data, '<param name="movie"' ) !== false )
+            $data = preg_replace( '|</param>|', '</param><param name="wmode" value="opaque"></param>', $data, 1 );
+    if ( strpos( $data, '<embed' ) !== false )
+            $data = str_replace( '<embed', '<embed wmode="opaque"', $data );
 	return $data;
 }
-add_filter("oembed_result", "force_media_https", 10);
+add_filter("oembed_result", "oembed_result_modification", 10);
