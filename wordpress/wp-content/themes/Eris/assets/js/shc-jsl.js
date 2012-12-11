@@ -175,8 +175,8 @@ shcJSL.lazee = new function() {
 			var path;	//	Path to the socket's URL
 			var file;	//	File's name
 			
-			var path = shcJSL.sockets[socket]; 
-			var file = getFileName(path);
+			path = shcJSL.sockets[socket]; 
+			file = getFileName(path);
 			
 			/* Check to see if the script exists already. If
 			 * it doesn't exist, then add it and return true

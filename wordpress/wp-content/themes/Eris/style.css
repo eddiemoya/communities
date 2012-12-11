@@ -310,11 +310,11 @@ ul.footer_anterior {
   margin-top: .5em;
   text-align: center; }
 
-.clearfix:before, .content-container .content-body .hr:before, .content-container .content-body .hr, .summary-list .summary_comments:before, .summary-list .summary_comments, .clearfix:after, .content-container .content-body .hr:after, .content-container .content-body .hr, .summary-list .summary_comments:after, .summary-list .summary_comments {
+.clearfix:before, .content-container .content-body .hr, .summary-list .summary_comments, .clearfix:after, .content-container .content-body .hr, .summary-list .summary_comments {
   content: "";
   display: table; }
 
-.clearfix:after, .content-container .content-body .hr:after, .content-container .content-body .hr, .summary-list .summary_comments:after, .summary-list .summary_comments {
+.clearfix:after, .content-container .content-body .hr, .summary-list .summary_comments {
   clear: both; }
 
 .clearfix, .content-container .content-body .hr, .summary-list .summary_comments {
