@@ -168,7 +168,7 @@ class Media_Embed_Widget extends WP_Widget {
         }
 
 		if ($instance["url"] != $old_instance["url"] || $instance["width"] != $old_instance["width"]) {
-			$width = ($instance['width']) ? $instance["width"] : 500;
+			$width = ($instance['width']) ? $instance["width"] : 620;
 			$instance["code"] = wp_oembed_get($instance["url"], array('width'=>$width));
 			$instance['video_tiny'] = wp_oembed_get($instance["url"], array('width'=>225));
 		}
