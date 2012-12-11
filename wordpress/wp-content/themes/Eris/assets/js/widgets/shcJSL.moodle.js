@@ -456,8 +456,6 @@ shcJSL.methods.moodle = function(target, options) {
 	($Moodle instanceof MOODLE.modal)? $Moodle[method](target, this):($Moodle = new $Moodle())[method](target,this)
 }
 
-shcJSL.gizmos.bulletin['shcJSL.moodle.js'] = true;
-
 /**
 	 * Event Assigner
 	 * 
@@ -475,3 +473,5 @@ if (shcJSL && shcJSL.gizmos)  {
 		});
 	}
 }
+
+$(window).trigger("moodle");

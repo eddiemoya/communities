@@ -61,8 +61,6 @@ shcJSL.methods.openID = function(target, options) {
 	})
 }
 
-shcJSL.gizmos.bulletin['shcJSL.openID.js'] = true;
-
 /**
 	 * Event Assigner
 	 * 
