@@ -217,7 +217,7 @@ class Media_Embed_Widget extends WP_Widget {
 			array(
 				'field_id' => 'width',
 				'type' => 'text',
-				'label' => "Video Width (ex: 500)"
+				'label' => "Video Width (default 620)"
 			)
         );
         $this->form_fields($fields, $instance, true);
