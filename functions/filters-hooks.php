@@ -560,9 +560,9 @@ function comm_get_poll($temp_poll_id = 0, $display = true){
     }   
 }
 
-function force_youtube_https($data) {
+function force_media_https($data) {
 	$data = str_replace("http://www.youtube.com", "https://www.youtube.com", $data);
 	$data = str_replace("http://player.vimeo.com", "https://player.vimeo.com", $data);
 	return $data;
 }
-add_filter("oembed_result", "force_youtube_https", 10);
+add_filter("oembed_result", "force_media_https", 10);
