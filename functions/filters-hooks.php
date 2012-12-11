@@ -746,11 +746,8 @@ function oembed_result_modification($data) {
 
 	$data = str_replace("http://www.youtube.com", "https://www.youtube.com", $data);
 	$data = str_replace("http://player.vimeo.com", "https://player.vimeo.com", $data);
+	$data = str_replace("feature=oembed", "feature=oembed&wmode=opaque", $data);
 	
-	if ( strpos( $data, '<param name="movie"' ) !== false )
-            $data = preg_replace( '|</param>|', '</param><param name="wmode" value="opaque"></param>', $data, 1 );
-    if ( strpos( $data, '<embed' ) !== false )
-            $data = str_replace( '<embed', '<embed wmode="opaque"', $data );
 	return $data;
 }
 
