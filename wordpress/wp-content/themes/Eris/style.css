@@ -1,4 +1,4 @@
-/*
+/* 
 Theme Name: Eris
 Theme URI: http://www.sears.com/community/
 Description: The flexible 960 grid developed for Sears Communites and Kmart Communities sites
@@ -1292,6 +1292,9 @@ fieldset#use_your_account_from {
 /**
  * All definitions for the base tooltip
  */
+.testymcgee {
+  width: 100%; }
+
 .tooltip {
   display: none;
   position: absolute;
@@ -2549,5 +2552,4 @@ button.follow {
 .kmart .wp-polls h1.content-headline {
   color: #980017; }
 .kmart .wp-polls .bar {
-
   background: #f28734; }
