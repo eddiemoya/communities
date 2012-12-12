@@ -1,5 +1,4 @@
-
-/* 
+/*
 Theme Name: Eris
 Theme URI: http://www.sears.com/community/
 Description: The flexible 960 grid developed for Sears Communites and Kmart Communities sites
@@ -1205,6 +1204,10 @@ fieldset#use_your_account_from {
 .profile .answers-toggle {
   display: block;
   margin-left: 2em; }
+.profile .comment-tally {
+  float: left;
+  margin: 0 1em;
+  font-weight: bold; }
 .profile .expert-answers li {
   border-top: 0;
   -webkit-border-radius: 5px;
@@ -1308,11 +1311,11 @@ fieldset#use_your_account_from {
       background-color: transparent;
       border-color: transparent #ffffff transparent transparent;
       border-style: solid;
-      border-width: 9px 9px 9px 0px;
+      border-width: 8px 9px 9px 0px;
       width: 0px;
       height: 0px;
       position: relative;
-      left: 3px;
+      left: 2px;
       top: 2px; }
     .tooltip .arrow .top {
       background-color: transparent;
@@ -2505,8 +2508,7 @@ button.follow {
   color: red;
   padding-left: 1.3em;
   margin: .5em 0;
-  background: url('assets/img/error-arrow.png?v=1354655334') no-repeat top left; }
-
+  background: url('assets/img/error-arrow.png?v=1354738575') no-repeat top left; }
 .wp-polls .figures {
   text-align: right; }
 .wp-polls .bar {
@@ -2527,7 +2529,6 @@ button.follow {
   font-style: italic;
   margin: .5em 0; }
 .wp-polls h1.content-headline {
-  color: #067bb5;
   font-size: 123.076%; }
 
 .wp-polls-loading {
@@ -2538,10 +2539,14 @@ button.follow {
 
 .sears .wp-polls li span:first-child {
   color: #067bb5; }
+.sears .wp-polls h1.content-headline {
+  color: #067bb5; }
 .sears .wp-polls .bar {
   background: #6dcff6; }
 
 .kmart .wp-polls li span:first-child {
+  color: #980017; }
+.kmart .wp-polls h1.content-headline {
   color: #980017; }
 .kmart .wp-polls .bar {
   background: #f28734; }
