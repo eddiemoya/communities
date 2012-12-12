@@ -148,7 +148,7 @@ shcJSL.lazee = new function() {
 	
 	function checkForScript(file, add) {
 		if (shcJSL.bulletin[file] === undefined) {
-			if (add !== false) shcJSL.bulletin[file ] = true;
+			if (add !== false) shcJSL.bulletin[file] = true;
 			return false;
 		} else {
 			return true;
@@ -230,6 +230,8 @@ shcJSL.lazee = new function() {
 	}
 	
 }
+
+shcJSL.lazee.p
 
 /*
 	SHCJSL FUNCTIONS
@@ -753,47 +755,7 @@ shcJSL.gizmos.activate = function(event, parent) {
  * This object keeps track of what gizmos have been loaded 
  * into the page. 
  */
-shcJSL.gizmos.bulletin = {}
-
-/**
- * @author Tim Steele
- * @param element: 
- */
-shcJSL.gizmos.persistr = function(element) {
-	var offset;	// (Int) pixel difference from the top of the page
-	var persist;		// (Function) function to persist the element
-	var sticker;	// (HTMLObject) the persisted element
-	
-	sticker = element;
-	offset = ($(sticker).offset().top).toFixed(0);
-	
-	function persist(event) {
-		var y;	// Y scroll, y-axis of the scroll bar
-		
-		y = $(window).scrollTop();
-		if (y >= offset) {
-			$(sticker).parent().css("padding-top",$(sticker).outerHeight());
-			$(sticker).addClass("persist");
-		} else {
-			$(sticker).removeClass("persist");
-			$(sticker).parent().css("padding-top",0)	
-		}
-	}
-	
-	$(window).bind('scroll', persist);
-	persist();
-}
-
-/*
-	[3.0] ONLOAD EVENTS
-	-------------------
-	Events to fire on document load and ready.
-*/
-jQuery(window).load(
-	function() {
-		shcJSL.gizmos.activate();
-	}
-)
+shcJSL.bulletin = {}
 
 jQuery(document).ready(function() {
 	shcJSL.gizmos.activate();
