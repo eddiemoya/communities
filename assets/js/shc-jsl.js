@@ -316,7 +316,7 @@ shcJSL.formDataToJSON = function(form) {
 						for (var i = 0; i < a.length; i++) {
 							if (a[i].checked && a[i].getAttribute("name"))  {
 								if (!json[a[i].getAttribute("name")]) json[a[i].getAttribute("name")] = [];
-								json[a[i].getAttribute("name")].push(a[i].getAttribute("value"));
+								json[a[i].getAttribute("name")].push(a[i].value);
 							}
 						}
 					}
@@ -325,19 +325,19 @@ shcJSL.formDataToJSON = function(form) {
 				break;
 			case "hidden":
 				(function(){
-					if (this.getAttribute("name")) json[this.getAttribute("name")] = this.getAttribute("value");
+					if (this.getAttribute("name")) json[this.getAttribute("name")] = this.value;
 				}).call(e);
 				break;
 			case "select":
 				(function() {
 					if (this.getAttribute("name")) {
-						if (this.type != "select-multiple") json[this.getAttribute("name")] = this.options[this.selectedIndex].getAttribute("value");
+						if (this.type != "select-multiple") json[this.getAttribute("name")] = this.options[this.selectedIndex].value
 						else {
 							for (var i = 0; i < this.options.length; i++) {
 								if (this.options[i].selected) {
 									if (!json[this.getAttribute("name")]) json[this.getAttribute("name")] = [];
 									console.log(json[this.getAttribute("name")])
-									json[this.getAttribute("name")].push(this.options[i].getAttribute("value"));
+									json[this.getAttribute("name")].push(this.options[i].value);
 								}
 							}
 						}
@@ -347,7 +347,7 @@ shcJSL.formDataToJSON = function(form) {
 			case "text":
 				(function(){
 					if (this.getAttribute("name"))
-						if (!(this.getAttribute('value')).devoid()) json[this.getAttribute("name")] = this.getAttribute("value");
+						if (!(this.value).devoid()) json[this.getAttribute("name")] = this.value;
 				}).call(e);
 				break;
 			case "textarea":
