@@ -1,0 +1,30 @@
+body{
+	width:100%;
+	height:100%;
+	margin:0px;
+	padding:0px;
+}
+.wrap{
+	padding:10px;
+}
+
+div.separator-title{
+	background:#999;
+	color:#FFFFFF;
+	padding:3px 10px;
+	clear:both;
+	margin-bottom:5px;
+	margin-top:5px;
+}
+	div.separator-title a{
+		color:#FFF;
+		float:right;
+	}
+
+ul li{
+	padding-left: 10px;
+}
+	span{
+		font-size:11px;
+		color:#000;
+	}	
