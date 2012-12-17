@@ -1,9 +1,9 @@
 === AddThis === 
-Contributors: _mjk_, jorbin
-Tags: share, addthis, social, bookmark, sharing, bookmarking, widget,AddThis, addtoany, aim, bookmark, buzz, del.icio.us, Digg,e-mail, email, Facebook, google bookmarks, google buzz, myspace,network, NewsVine, Reddit, Share, share this, sharethis, social, socialize, stumbleupon, twitter, windows live, yahoo buzz
+Contributors: srijith.v, solchea, jorbin, _mjk_, addthis_paul, joesullivan 
+Tags: share, addthis, social, bookmark, sharing, bookmarking, widget,AddThis, addtoany, aim, bookmark, buzz, del.icio.us, Digg,e-mail, email, Facebook, google bookmarks, google buzz, myspace,network, NewsVine, Reddit, Share, share this, sharethis, social, socialize, stumbleupon, twitter, windows live, yahoo buzz, pintrest, widget
 Requires at least: 2.9
-Tested up to: 3.3.2
-Stable tag: 2.3.1
+Tested up to: 3.4.2
+Stable tag: 3.0.1
 
 The AddThis Social Bookmarking Widget allows any visitor to bookmark and share your site easily with over 330 popular services. 
 
@@ -11,6 +11,10 @@ The AddThis Social Bookmarking Widget allows any visitor to bookmark and share y
 Get more traffic back to your site by installing the AddThis WordPress plugin. With AddThis, your users can promote your content by sharing to 330 of the most popular social networking and bookmarking sites (like Facebook, Twitter, Digg, StumbleUpon and MySpace). We also support address bar sharing in modern browsers. Our button is small, unobtrusive, quick to load and recognized all over the web. 
 
 Optionally, sign up for a free AddThis.com account to see how your visitors are sharing your content: which services they're using for sharing, which content is shared the most, and more.
+
+We also have plugins available for <a href='http://wordpress.org/extend/plugins/addthis-follow/'>increasing followers on social networks</a>, <a href='http://wordpress.org/extend/plugins/addthis-welcome/'>welcoming users based on social behavior</a>, and <a href='http://wordpress.org/extend/plugins/addthis-social-sign-in'>adding social authentication</a> to your WordPress blog.
+
+Help make AddThis even better by taking this <a href='http://www.surveymonkey.com/s/53FDFRF'>short customer survey.</a>
 
 <a href="http://www.addthis.com/blog">AddThis Blog</a> | <a href="http://www.addthis.com/privacy">Privacy Policy</a>
 
@@ -36,7 +40,7 @@ To upload the plugin through WordPress, instead of FTP:
 
 = Is AddThis free? =
 
-Yep! The features you see today on AddThis will always be free.
+Yep! The features you see today on AddThis will always be free of charge.
 
 = Do I need to create an account? =
 
@@ -55,7 +59,7 @@ All of the options required through this plugin require javascript.   JavaScript
 1. It's free!
 
 = Who else uses AddThis? =
-Over 1,200,000 sites have installed AddThis. With over a billion unique users, AddThis is helping share content all over the world, in more than sixty languages. You might be surprised who's sharing their website using AddThis--<a href="http://www.addthis.com/features#partners">here are just a few</a>.
+Over 14,000,000 sites have installed AddThis. With over a billion unique users, AddThis is helping share content all over the world, in more than sixty languages. You might be surprised who's sharing their website using AddThis--<a href="http://www.addthis.com/features#partners">here are just a few</a>.
 
 = What services does AddThis support? =
 We currently support over 330 services, from email and blogging platforms to social networks and news aggregators, and we add new services every month. Want to know if your favorite service is supported? This list is accurate up to the minute: <a href="http://www.addthis.com/services">http://www.addthis.com/services</a>.
@@ -74,8 +78,34 @@ In the screen options you can enable the AddThis meta box.  Check the box and sa
 PHP 5+ is preferred; PHP 4 is supported.
 
 == Changelog ==
+= 3.0.1 = 
+* Bug fix: Issues with usernames/passwords with special characters
+
+= 3.0 =
+* UX changes in admin settings
+* Credential verification in Admin settings. If AddThis account details are wrong it will be notified to user. 
+* Bug fixes
+
+= 2.5.1 =
+* Added hashtag support for Twitter
+* Conflict removed with <a href="http://wordpress.org/extend/plugins/addthis-follow/">AddThis Follow</a> and <a href="http://wordpress.org/extend/plugins/addthis-welcome/">AddThis Welcome Bar</a> Wordpress plugins
+* Bug fixes
+
+= 2.5.0 =
+* <a href="http://www.addthis.com/blog/2012/09/13/introducing-our-new-sharing-experience">New streamlined and simplified share menu</a>
+* Added Instant Share for Facebook and Twitter
+* Updated Pinterest support
+* Bug fixes
+
+= 2.4.1 =
+* Bug fixes
+
+= 2.4.0 =   
+* Refactor how we add code to pages which should eliminate how many times it is added
+* Numerous Bug Fixes and a few new filters
+
 = 2.3.2 =
-* Add opt out for copy text tracking
+* Add opt out for copy tracking 
 
 = 2.3.1 =
 * Don't strip pintrest tags from custom buttons
@@ -180,32 +210,57 @@ Fixed nondeterministic bug with the_title(), causing the title to occasionally a
 
 
 == Upgrade Notice ==
+
+= 3.0.1 = 
+Bug fixes.
+
+= 3.0 =
+Updated UI, AddThis account verification and bug fixes.
+
+= 2.5.1 =
+Bug fixes.
+
+= 2.5.0 =
+Updated share menu, Instant Share, Pinterest updates and bug fixes.
+
+= 2.4.3 =
+Fixed admin console bug for non-administrators.
+
+= 2.4.1 = 
+Bug fixes.
+
+= 2.4.0 =
+Better performance and improved UI.
+
+= 2.3.2 =
+New option for opting out of copy text tracking.
+
 = 2.3.0 = 
-Improve the Settings interface and add Google Analytics Integration
+Improve the Settings interface and add Google Analytics integration.
 
 = 2.2.1 = 
-Add 3.2 compatability
+Add 3.2 compatability.
 
 = 2.2.0 =
-More Customization options
+More customization options.
 
 = 2.1.0 =
-More Features, More Filters, More Social Goodness
+More features, more filters, more social goodness.
 
 = 2.0.5 =
-Force service codes to be lowercase and, if opting out of clickback tracking, set config to force opting out
+Force service codes to be lowercase and, if opting out of clickback tracking, set config to force opting out.
 
 = 2.0.4 =
-Fix conflict with other plugins and other bug fixes
+Fix conflict with other plugins and other bug fixes.
 
 = 2.0.3 = 
-Still work in themes that don't have wp_head and wp_footer
+Still work in themes that don't have wp_head and wp_footer.
 
 = 2.0.2 =
-Bug Fixes, enhanced customization
+Bug fixes, enhanced customization.
 
 = 2.0.1 =
-Bug Fixes, more filters, small tweak to options
+Bug fixes, more filters, small tweak to options.
 
 = 2.0.0 =
 More and better options for sharing widgets.  Redesigned analytics dashboard widget and interface.  

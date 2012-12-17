@@ -43,7 +43,7 @@ get_currentuserinfo();
                                 <?php
 									comm_wp_dropdown_categories(array(
 										'depth'=> 1,
-										'selected' => (! get_queried_object()->term_id) ? -1 : get_queried_object()->term_id,
+										'selected' => (! get_queried_object()->term_id) ? 'default' : get_queried_object()->term_id,
 										'show_option_none' => 'Select',
 										'hierarchical' => true,
 										'hide_if_empty' => false,

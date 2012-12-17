@@ -1,0 +1,87 @@
+/*
+	Main container background color and border.
+	Basically, the slider background color and border :)
+*/
+.FA_overall_container_classic.dark{
+	background:#282828;
+	border:1px solid #282828;
+}
+/*
+	Section title color (the title above the slider)
+*/
+.FA_overall_container_classic.dark h3.FA_title_section{
+	color:#003333 !important; 
+}
+/*
+	Text color inside a slide
+*/
+.FA_overall_container_classic.dark .FA_featured_articles .FA_article{
+	color:#CCCCCC;
+}
+/*
+	Slide image background color and border
+*/
+.FA_overall_container_classic.dark .FA_featured_articles .FA_article .image_container{
+	background-color:#333333;
+	border:1px #666666 solid;
+}
+/*
+	Item title color and background
+*/
+.FA_overall_container_classic.dark .FA_featured_articles .FA_article h2{
+	color:#eeeeee !important;
+	background-color:#282828; /* background color on titles is set to prevent the jagged font when doing opacity animations. */
+}
+/*
+	Article date beneath the title
+*/
+.FA_overall_container_classic.dark .FA_featured_articles .FA_article span.FA_date{
+	color:#a8a8a8;
+}
+/*
+	Item text color
+*/
+.FA_overall_container_classic.dark .FA_featured_articles .FA_article p{
+	color:#FFF;
+}
+/*
+	Links inside text color (if you allow them to be displayed)
+*/
+.FA_overall_container_classic.dark .FA_featured_articles .FA_article p a{
+	color:#FFFFFF !important;
+}
+/*
+	Read more link
+*/
+.FA_overall_container_classic.dark .FA_featured_articles .FA_article a.FA_read_more{
+	color:#ffffff;
+	background:#3b3b3b;
+}
+
+/*  BOTTOM NAVIGATION COLORS AND BACKGROUNDS */
+/*
+	List element holding the bottom navigation
+*/
+.FA_overall_container_classic.dark ul.FA_navigation{
+	background:#282828;
+}
+/*
+	Individual navigation elements background
+*/
+.FA_overall_container_classic.dark ul.FA_navigation li a{
+	background-image:url(../images/dark-nav.png);
+}	
+/*
+	The tooltip showing the article name when you hover bottom navigation
+*/
+.FA_overall_container_classic.dark ul.FA_navigation li span{
+	color:#CCC;
+}
+
+/* NEXT AND BACK NAVIGATION */
+.FA_overall_container_classic.dark .FA_back{
+	background-image:url(../images/dark-left.png);
+}
+.FA_overall_container_classic.dark .FA_next{
+	background-image:url(../images/dark-right.png);
+}

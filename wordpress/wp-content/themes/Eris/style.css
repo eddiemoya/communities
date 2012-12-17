@@ -1304,29 +1304,17 @@ fieldset#use_your_account_from {
     left: -10px;
     position: absolute; }
     .tooltip .arrow .left {
-      background-color: transparent;
-      border-color: #ffffff #a0c7ff #ffffff #ffffff;
-      border-style: solid;
-      border-width: 10px 10px 10px 0px;
-      width: 0px;
-      height: 0px; }
-    .tooltip .arrow .leftBorder {
-      background-color: transparent;
-      border-color: transparent #ffffff transparent transparent;
-      border-style: solid;
-      border-width: 8px 9px 9px 0px;
-      width: 0px;
-      height: 0px;
+      background: url("arrow-left.png");
+      height: 22px;
+      left: 1px;
       position: relative;
-      left: 2px;
-      top: 2px; }
+      width: 12px; }
     .tooltip .arrow .top {
-      background-color: transparent;
-      border-color: transparent transparent #a0c7ff transparent;
-      border-style: solid;
-      border-width: 0px 10px 10px 10px;
-      width: 0px;
-      height: 0px; }
+      background: url('assets/img/arrow-top.png?v=1355777901');
+      height: 12px;
+      position: relative;
+      top: 1px;
+      width: 22px; }
     .tooltip .arrow .topBorder {
       background-color: transparent;
       border-color: transparent transparent #fff transparent;

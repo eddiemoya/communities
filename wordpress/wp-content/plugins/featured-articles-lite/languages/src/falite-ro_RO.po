@@ -1,0 +1,1469 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Featured Articles Lite 2.4.8\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-21 12:25+0200\n"
+"PO-Revision-Date: 2012-03-21 12:29+0200\n"
+"Last-Translator: CodeFlavors <codeflavors@codeflavors.com>\n"
+"Language-Team: CodeFlavors\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_n\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Language: Romanian\n"
+"X-Poedit-Country: ROMANIA\n"
+"X-Poedit-SearchPath-0: \n"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/add_content.php:22
+msgid "Choose content"
+msgstr "Alege continut"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/add_content.php:47
+msgid "Select the content you want to display in slideshow"
+msgstr "Selectati continutul pe care vreti sa-l afisati in slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/add_content.php:59
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/sliders.php:18
+msgid "Title"
+msgstr "Titlu"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/add_content.php:60
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/sliders.php:20
+msgid "Author"
+msgstr "Autor"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/add_content.php:61
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/sliders.php:21
+msgid "Date"
+msgstr "Data"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/add_content.php:70
+msgid "Done, close window"
+msgstr "Inchide fereastra"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:17
+msgid "Sorry, there's no slider with that ID in here."
+msgstr "Slideshow inexistent, reincercati."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:29
+msgid "Sorry, it looks like your request is not valid. Please try again."
+msgstr "Cererea este invalida. Va rugam, reincercati."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:156
+msgid "Add new Slider"
+msgstr "Adauga Slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:156
+msgid "Edit Slider"
+msgstr "Editare slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:176
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:368
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:453
+msgid "Click to toggle"
+msgstr "Click pentru a inchide/deschide"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:176
+msgid "Slider Options"
+msgstr "Optiuni Slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:178
+msgid "Build slides based on"
+msgstr "Construieste elementele slideshow-ului pe baza de"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:178
+msgid "Choose between displaying posts or pages into your slider. Each option displays different settings that allow to further customize the content displayed."
+msgstr "Alege intre afisarea de articole sau pagini. Fiecare optiune afiseaza setari diferite pentru a permite o personalizare detaliata a continutului afisat."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:182
+msgid "Posts"
+msgstr "Articole"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:183
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:476
+msgid "Pages"
+msgstr "Pagini"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:211
+msgid "Maximum number of posts to display into the slider"
+msgstr "Numar maxim de articole in slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:211
+msgid "Use"
+msgstr "Foloseste"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:212
+msgid "(numeric)"
+msgstr "(numeric)"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:215
+msgid "Choose specific categories to display posts from."
+msgstr "Alege categorii pentru a afisa articole."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:215
+msgid "From"
+msgstr "Din"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:217
+msgid "All categories"
+msgstr "Toate categoriile"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:229
+msgid "Display posts only from this author"
+msgstr "Afiseaza articole scrise de acest autor"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:229
+msgid "From author"
+msgstr "De catre autorul"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:233
+msgid "All"
+msgstr "Toti"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:243
+msgid "Choose display order"
+msgstr "Alege ordinea de afisare"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:243
+msgid "Ordered"
+msgstr "Ordonare"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:246
+msgid "Newest first"
+msgstr "Cel mai nou primul"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:247
+msgid "Most commented"
+msgstr "Cele mai comentate"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:248
+msgid "Random order"
+msgstr "Ordine aleatoare"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:265
+msgid "Remove"
+msgstr "Scoate"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:269
+msgid "Select Pages"
+msgstr "Selecteaza pagini"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:274
+msgid "Slider Theme"
+msgstr "Tema slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:283
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:565
+msgid "Preview image not available"
+msgstr "Imaginea nu este disponibila"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:290
+msgid "Base theme"
+msgstr "Tema de baza"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:302
+msgid "Color scheme"
+msgstr "Paleta culori"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:318
+msgid "Display bottom navigation"
+msgstr "Afiseaza navigare jos"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:320
+msgid "Display sideways navigation"
+msgstr "Afiseaza navigare laterala"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:327
+msgid "Animation"
+msgstr "Animatie"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:329
+msgid "Choose between top sliding or left sliding entry point"
+msgstr "Alege intre intrare de sus sau din stanga pentru animatie"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:329
+msgid "Effect direction"
+msgstr "Directie efect de animatie"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:331
+msgid "Slides enter from left"
+msgstr "Elementele intra din stanga"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:332
+msgid "Slides enter from top"
+msgstr "Elementele intra de sus"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:336
+msgid "Enter the number of seconds the transition effect should take when sliding"
+msgstr "Numar de secunde pentru efectul de tranzitie"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:336
+msgid "Effect duration"
+msgstr "Durata efect"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:337
+msgid "sec. (numeric)"
+msgstr "sec. (numeric)"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:339
+msgid "Choose the distance to start the sliding effect from (in pixels)"
+msgstr "Alege distanta de la care incepe efectul (in pixeli)"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:339
+msgid "Fade distance"
+msgstr "Distanta efectului de opacitate"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:340
+msgid "pixels (numeric)"
+msgstr "pixeli (numeric)"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:345
+msgid "Autoplay"
+msgstr "Animatie automata"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:348
+msgid "Change slides automatically every"
+msgstr "Schimba elementele automat la fiecare"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:349
+msgid "seconds"
+msgstr "secunde"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:352
+msgid "When autoslide in effect, it will stop if user clicks navigation"
+msgstr "Cand elementele se schimba automat, animatia se opreste la interactiunea userului cu navigarea"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:352
+msgid "Navigation click stops Autoplay"
+msgstr "Interactiunea cu navigarea opreste animatia automata"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:357
+msgid "User interactions"
+msgstr "Interactiuni utilizator"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:360
+msgid "Enable/disable mouse wheel navigation in slider"
+msgstr "Activeaza/dezactiveaza navigarea cu rotita mouse-ului"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:360
+msgid "Enable mouse wheel navigation"
+msgstr "Activeaza navigarea cu rotita mouse-ului"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:368
+msgid "Slide Content Options"
+msgstr "Optiuni Continut Slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:371
+msgid "Titles"
+msgstr "Titlu"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:373
+msgid "If a custom title is specified on posts or pages, it will be displayed into the slide"
+msgstr "Daca un titlu predefinit este specificat in post sau pagina atunci acesta va fi afisat in element"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:373
+msgid "Use custom defined titles (if available)"
+msgstr "Foloseste titluri predefinite (daca sunt disponibile)"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:376
+msgid "Article title becomes a link pointing to full article"
+msgstr "Titlul articolului devine link spre pagina articolului"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:376
+msgid "Title is clickable"
+msgstr "Se poate face click pe titlu"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:381
+msgid "Text"
+msgstr "Text"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:384
+msgid "Display excerpts as slide text if available"
+msgstr "Afiseaza fragmentul articolului ca text in element"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:384
+msgid "Use post excerpt (if defined)"
+msgstr "Foloseste fragment de text (daca este disponibil)"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:387
+msgid "Always display custom text set for posts/pages"
+msgstr "Afiseaza textul predefinit specificat pentru articol/pagina"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:387
+msgid "If available, custom defined slide description overrides post excerpt and post content text"
+msgstr "Daca este disponibil, textul predefinit va fi afisat in favoarea fragmentului sau continutului articolului"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:390
+msgid "Remove all schortcodes from item content."
+msgstr "Sterge toate shortcode-urile din continutul articolului."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:390
+msgid "Remove all shortcodes from descriptions"
+msgstr "Dezactiveaza toate shortcode-urile din continutul articolului"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:392
+msgid "Posts or pages with image will have maximum this many characters"
+msgstr "Articolele si paginile cu imagine vor afisa acest numar de caractere"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:392
+msgid "Limit text in slides with image to"
+msgstr "Limiteaza textul in elemente cu imagine la"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:393
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:396
+msgid "characters (numeric)"
+msgstr "caractere (numeric)"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:395
+msgid "Posts or pages without image will have maximum this many characters"
+msgstr "Articolele sau paginile fara imagine vor afisa acest numar de caractere"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:395
+msgid "Limit text in slides without image to"
+msgstr "Limiteaza textul in elementele fara imagine la"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:398
+msgid "Shortened text will end with these characters."
+msgstr "Textul scurtat se va termina cu aceste caractere."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:398
+msgid "End truncated text with"
+msgstr "Textul scurtat se va incheia cu"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:401
+msgid "Read more link on article will display this text."
+msgstr "Link-ul catre articolul intreg va afisa acest tex."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:401
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_post.php:40
+msgid "Link text"
+msgstr "Text link"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:404
+msgid "The tags you specify here will not be stripped from the description."
+msgstr "Tag-urile HTML specificate nu vor fi scoase din descriere."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:404
+msgid "Allow these HTML tags"
+msgstr "Accepta doar aceste tag-uri HTML"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:406
+msgid "Example to allow links and paragraphs:"
+msgstr "Exemplu ce permite afisarea de paragrafe si link-uri"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:411
+msgid "Image"
+msgstr "Imagine"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:414
+msgid "Choose to display images or not"
+msgstr "Afiseaza imagini pentru elemente"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:414
+msgid "Display item image"
+msgstr "Afiseaza imaginea elementului"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:418
+msgid "Your theme supports thumbnails."
+msgstr "Tema WordPress suporta thumbnail-uri."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:419
+msgid "By default the plugin will search images that are set using the Custom image for Featured Articles Lite feature. If no such image is found, it will display the post thumbnails (if any is set)."
+msgstr "Plugin-ul va cauta intai imaginile stabilite special pentru Featured Articles. Daca acest tip de imagine nu este gasit, va afisa thumbnail-ul articolului (daca exista vreunul)."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:423
+msgid "Set image maximum size if displayed"
+msgstr "Dimensiunea maxima a imaginii"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:423
+msgid "Image size"
+msgstr "Dimensiune imagine"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:436
+msgid "max. uploaded size"
+msgstr "dim. maxima upload"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:441
+msgid "Image is clickable"
+msgstr "Se poate face click pe imagine"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:453
+msgid "Automatic placement Options"
+msgstr "Optiuni amplasare automata"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:457
+msgid "Automatic placement works by placing the slider before the first loop it find into the pages you selected the slider to be displayed."
+msgstr "Amplasarea automata functioneaza prin plasarea slideshow-ului deasupra coloanei de articole."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:458
+msgid "Depending on your theme, the first loop can be, for example, into your sidebar, displaying, let's say, a list of your most recent posts. If that's not the place where you want the slider to show, increase the loop value below until the slider is displayed into the position you desire."
+msgstr "In functie de tema, prima coloana de articole poate fi, spre exemplu, in bara laterala afisand o lista cu cele mai noi articole. Daca aceea nu este pozitia in care slideshow-ul trebuie afisat, modificati valoarea de mai jos pana cand slideshow-ul va fi afisat in pozitia dorita."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:459
+msgid "To display the slider into the actual content section of your blog, the page must display a loop where the main content is."
+msgstr "Pentru a afisa slideshow-ul in pagina blog-ului, aceasta trebuie sa afiseze o coloana de articole."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:460
+msgid "If you want to display a slider into your sidebar this plugin has a widget that does exactly this. Also, shortcodes are available and for manual placement into your theme files, see the last panel from the sidebar on this screen."
+msgstr "Daca doriti sa afisati slideshow-ul ca widget, pluginul dispune de aceasta functionalitate. De asemena, shortcodes sunt disponibile iar pentru amplasare manuala in fisierele temei WordPress, codul este afisat in panoul de jos din bara laterala a acestei pagini."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:462
+msgid "If you have multiple articles columns displaying in your page, change this value to the column number you want the slider to display on top of."
+msgstr "Daca in pagina sunt afisate mai multe coloane cu articole, modifica valoarea cu numarul coloanei deasupra careia trebuie afisat slideshow-ul."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:462
+msgid "Display on loop"
+msgstr "Afiseaza pe bucla"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:466
+msgid "Display slider on"
+msgstr "Afiseaza slideshow in"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:467
+msgid "Display on home page"
+msgstr "Afiseaza pe prima pagina"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:473
+msgid "Categories"
+msgstr "Categorii"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/edit.php:490
+msgid "Save Changes"
+msgstr "Salveaza modificari"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:371
+msgid "FA Lite Sliders"
+msgstr "Slideshow-uri FA Lite"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:371
+msgid "Sliders"
+msgstr "Slideshow-uri"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:372
+msgid "FA Lite Slider"
+msgstr "Slideshow FA Lite"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:372
+msgid "Add New Slider"
+msgstr "Adauga slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:375
+msgid "Settings"
+msgstr "Setari"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:376
+msgid "Featured Articles PRO"
+msgstr "Featured Articles PRO"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:376
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_cf_info.php:13
+msgid "Go PRO!"
+msgstr "Go PRO!"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:378
+msgid "Add content"
+msgstr "Adauga continut"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:379
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_slider_save.php:13
+msgid "Preview Slider"
+msgstr "Vizualizare slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:421
+msgid "Save Slider"
+msgstr "Salveaza slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:422
+msgid "Manual placement"
+msgstr "Amplasare manuala"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:423
+msgid "Help, support & info"
+msgstr "Ajutor, suport si informatii"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:578
+msgid "Featured Articles Sliders"
+msgstr "Featured Articles Slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:579
+msgid "Featured Articles Slider"
+msgstr "Featured Articles Slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:589
+msgid "Featured Articles Slide"
+msgstr "Featured Articles Slide"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:610
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/main.php:611
+msgid "Featured Articles Lite"
+msgstr "Featured Articles Lite"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/preview.php:15
+msgid "FeaturedArticles Lite - Slider preview"
+msgstr "Featured Articles - Vizualizare slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:14
+msgid "Sorry, your action is invalid."
+msgstr "Ne pare rau, actiunea este invalida."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:53
+msgid "Featured Articles - plugin settings"
+msgstr "Featured Articles - optiuni plugin"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:60
+msgid "Set plugin access"
+msgstr "Stabiliti accesul la plugin"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:78
+msgid "You can grant permissions to users depending on their role. Admins have default access to all plugin areas."
+msgstr "Puteti acorda permisiune de utilizare in functie de rolul utilizatorilor din site-ul dvs. Administratorii au acces implicit la toate zonele plugin-ului."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:84
+msgid "Enable full uninstall"
+msgstr "Activeaza dezinstalarea completa"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:90
+msgid "'While we don't expect anything bad to happen we recommended that you first back-up your database before completely removing the plugin."
+msgstr "Cu toate ca nu ne asteptam totusi nu putem garanta siguranta datelor. Inainte de a dezinstala complet plugin-ul, faceti o copie de siguranta bazei de date. "
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:91
+msgid "Complete plugin removal will be performed after you deactivate the plugin and delete it from Wordpress Plugins page."
+msgstr "Dezinstalarea completa a plugin-ului va fi facuta dupa ce dezactivati plugin-ul si il stergeti prin intermediul paginii dedicate WordPress."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:94
+msgid "If checked, when the plugin is uninstalled from plugins page all data (sliders, slides, options and meta fields) will also be removed from database."
+msgstr "Daca este selectat, cand plugin-ul este dezinstalat, toate setarile acestuia vor fi sterse din baza de date."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:100
+msgid "Enable automatic slider insertion"
+msgstr "Activeaza setarea de inserare automata a slideshow-urilor"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:105
+msgid "When enabled it will display on slider editing/creation a new panel that allows insertion into category pages, home page and pages of slides without the need of additional code."
+msgstr "Daca este activata va afisa in pagina de editare/adaugare de slideshow-uri un nou panou care va permite inserarea in categorii si pagini fara necesitatea de a adauga cod suplimentar."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:106
+msgid "Please note that this kind of slider insertion in your pages will display the slider before the loop you have in those pages. For more precise display into your pages we recommend using the manual insertion or the shortcode insertion."
+msgstr "Atentie! Aceasta modalitate de publicare a slideshow-ului in paginile blogului se face atasand slideshow-ul deasupra primei coloane de articole gasita in pagina. Pentru o amplasare mai precisa va recomandam sa utilizati metoda manuala sau shortcodes."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:116
+msgid "Allow slideshows in WPtouch themes"
+msgstr "Afisati slideshow-uri in paginile mobile generate de pluginul WPtouch"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:121
+msgid "By enabling this option you will allow slideshows to be displayed and run into your WPtouch mobile version website."
+msgstr "Prin selectarea acestei optiuni veti permite afisarea de slideshow-uri in paginile pentru device-uri mobile generate de pluginl WPtouch."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:122
+msgid "Please note that if you have enabled WPtouch <strong>Restricted Mode</strong> setting, no slideshows will be displayed into your website mobile version."
+msgstr "Atentie! Daca ati selectat in setarile WPtouch optiunea de restrictionare, niciun slideshow nu va fi afisat in paginile din versiunea mobila a site-ului."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:130
+msgid "Save settings"
+msgstr "Salveaza setari"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:134
+msgid "Change FeaturedArticles themes folder"
+msgstr "Schimbati directorul temelor Featured Articles"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:136
+msgid "Do this only if you created custom themes for your plugin. If you're using the default themes, you can leave this setting as is."
+msgstr "Efectuati setarea doar daca ati creat teme aditionale personalizate special pentru nevoie dvs. Daca folositi temele implicite, puteti lasa optiunea neschimbata."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:140
+msgid "Create a folder in this location"
+msgstr "Creati un director in aceasta locatie"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:141
+msgid "Give the folder a web-safe name (only letters and underscore will keep you safe; for example you could use"
+msgstr "Dati directorului un nume sigur pentru web (doar litere si _ sunt suficiente); spre exemplu, puteti folosi"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:142
+msgid "Copy all themes from the current location to the new folder you created on step 1."
+msgstr "Copiati toate temele din locatia curenta in directorul creat la pasul 1."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:144
+msgid "Add folder path here and save. You don't need the whole server path, only path from inside wp_content folder."
+msgstr "Adaugati locatia directorului si salvati. Nu este nevoie de locatia completa ci doar de locatia relativa din interiorul directorului wp_content."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:145
+msgid "We'll do all checking before setting anything. If something is wrong, we'll let you know."
+msgstr "Vom face toate verificarile necesare inainte de a salva. Daca ceva nu este corect, va vom anunta."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:146
+msgid "After successful save, you'll see the new path in text field. You can now remove all themes from the old location if you want to."
+msgstr "Dupa salvarea cu succes veti vedea noua cale in campul de mai jos. Daca doriti, puteti sterge temele din locatia veche."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:151
+msgid "Enter only the path from within your current wp_content folder"
+msgstr "Introduceti numai calea relativa din directorul wp_content"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:164
+msgid "Done, folder path changed. See if everything is OK."
+msgstr "Succes, calea catre director a fost modificata. Verificati daca totul este in regula."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/settings.php:169
+msgid "Save new path"
+msgstr "Salveaza noua cale"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/sliders.php:19
+msgid "Slider ID"
+msgstr "ID Slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/sliders.php:39
+msgid "Add New"
+msgstr "Adauga"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_cf_info.php:9
+msgid "Found an error? Let us know."
+msgstr "Ai gasit o eroare? Anunta-ne!"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_cf_info.php:9
+msgid "Report a bug"
+msgstr "Raporteaza eroare"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_cf_info.php:10
+msgid "Help docs on plugin usage and themes structure."
+msgstr "Utilizare plugin si structura teme."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_cf_info.php:10
+msgid "Plugin documentation"
+msgstr "Documentatie plugin"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_cf_info.php:11
+msgid "News from CodeFlavors"
+msgstr "Noutati CodeFlavors"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_cf_info.php:11
+msgid "News & stuff"
+msgstr "Noutati & altele"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_cf_info.php:13
+msgid "Get FeaturedArticles PRO!"
+msgstr "Cumpara FeaturedArticles PRO!"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_cf_info.php:13
+msgid "And get among others: priority support, custom written slides, extra themes, YouTube and Vimeo videos and a visual editor to easily create new color schemes for existing themes."
+msgstr "Si obtineti printre altele: suport prioritar, continut special, mai multe teme pentru slideshow-uri, posibilitatea de a insera filme YouTube si Vimeo si un editor vizual pentru temele existente."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_post.php:15
+msgid "Current Featured Articles image set for this post."
+msgstr "Imaginea curenta setata pentru acest articol."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_post.php:21
+msgid "Remove image"
+msgstr "Scoate imagine"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_post.php:25
+msgid "Add new image for Featured Articles"
+msgstr "Adauga imagine pentru Featured Articles"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_post.php:25
+msgid "Set image"
+msgstr "Alege imagine"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_post.php:28
+msgid "Slide Title"
+msgstr "Titlu element"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_post.php:34
+msgid "Slide Text"
+msgstr "Text element"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_post.php:47
+msgid "Custom slide CSS class"
+msgstr "Clasa CSS "
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_post.php:48
+msgid "You can change this particular slide CSS styles by styling the class you put in here."
+msgstr "Poti schimba stilurile CSS folosing clasa specificata aici."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_post.php:53
+msgid "Slide background color"
+msgstr "Culoare fundal element"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_post.php:54
+msgid "When placed into a slider, this item will display the background color you set below."
+msgstr "La pozitionarea intr-un slideshow, acest element va avea culoarea de fundal specificata mai jos."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_post.php:55
+msgid "Choose color"
+msgstr "Alege culoare"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_post.php:80
+msgid "Insert a FA slider into this post/page"
+msgstr "Insereaza slideshow in acest post/pagina "
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_post.php:81
+msgid "Just choose the slider from the list and hit insert. The shortcode will be placed into the editor automatically."
+msgstr "Alege slideshow-ul si apasa butonul Insereaza. Shortcode-ul va fi amplasat automat in editor."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_post.php:83
+msgid "Choose slider"
+msgstr "Alege slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_post.php:105
+msgid "Please select a slider first."
+msgstr "Selecteaza un slideshow."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_slider_implement.php:9
+msgid "Make sure that you first save the slider. Once that is done, the code needed to place the slider into your theme files will be displayed here."
+msgstr "Intai trebuie salvat slideshow-ul. Imediat dupa aceea, codul necesar a fi inserat in tema WordPress pentru a afisa slideshow-ul va fi disponibil aici."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_slider_implement.php:11
+msgid "If you want to display this Slider into your Wordpress theme template, simply copy and paste the code below in the theme file where you want it displayed."
+msgstr "Daca vrei sa afisezi acest slideshow in tema ta WordPress, copiaza si apoi insereaza codul de mai jos in fisierul temei unde vrei sa fie afisat."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_slider_save.php:20
+msgid "Choose a name for this slider."
+msgstr "Alege nume pentru slideshow."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_slider_save.php:20
+msgid "Slider name"
+msgstr "Nume slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_slider_save.php:23
+msgid "Choose whether to display the slider title or not"
+msgstr "Optiune de afisare a titlului slideshow-ului"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_slider_save.php:23
+msgid "Display slider name"
+msgstr "Afiseaza nume slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_slider_save.php:27
+msgid "Slider size"
+msgstr "Dimensiune slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_slider_save.php:28
+msgid "Width"
+msgstr "Latime"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_slider_save.php:29
+msgid "Height"
+msgstr "Inaltime"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_slider_save.php:30
+msgid "Note: to disable size control, enter 0 for size."
+msgstr "Nota: pentru a anula controlul dimensiunii introduceti 0 ca marime."
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_slider_save.php:38
+msgid "Are you sure you want to delete this slideshow?"
+msgstr "Esti sigur ca vrei sa stergi acest slideshow?"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_slider_save.php:38
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/includes/custom_wp_list_table.php:74
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/includes/custom_wp_list_table.php:139
+msgid "Delete"
+msgstr "Sterge"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_slider_save.php:42
+msgid "Update"
+msgstr "Actualizeaza"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/panel_slider_save.php:42
+msgid "Save"
+msgstr "Salveaza"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/displays/widget_options.php:9
+msgid "Choose slider to display"
+msgstr "Alege un slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/includes/common.php:21
+msgid "Set as FA Lite featured image"
+msgstr "Seteaza ca imagine pentru Featured Articles Lite"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/includes/custom_wp_list_table.php:73
+msgid "Edit"
+msgstr "Editare"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/includes/custom_wp_list_table.php:74
+msgid "Do you really want to delete this item?"
+msgstr "Sigur vrei sa stergi acest element?"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/includes/widgets.php:33
+msgid "Add a FeaturedArticles Slideshow widget"
+msgstr "Adauga widget Featured Articles"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/includes/widgets.php:106
+msgid "Slideshow"
+msgstr "Slideshow"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/themes/classic/display.php:60
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/themes/smoke/display.php:23
+msgid "Previous post"
+msgstr "Articolul precedent"
+
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/themes/classic/display.php:61
+#: G:\server_httpdocs\wp_content_lite\plugins\featured-articles-lite/themes/smoke/display.php:24
+msgid "Next post"
+msgstr "Articolul urmator"
+
+#~ msgid "Search results for"
+#~ msgstr "Rezultatele cautarii"
+
+#~ msgid "Search"
+#~ msgstr "Cautare"
+
+#~ msgid ""
+#~ "Slideshow themes folder couldn't be found. Make sure the path specified "
+#~ "in plugin Settings is the path to your slideshow themes folder."
+#~ msgstr ""
+#~ "Directorul in care sunt stocate temele pentru slideshow-uri nu a putut fi "
+#~ "gasit. Verifica corectitudinea setarii din pagina Setari unde este "
+#~ "specificata calea spre acest director."
+
+#~ msgid "Add new slideshow"
+#~ msgstr "Adauga slideshow"
+
+#~ msgid "Featured Content"
+#~ msgstr "Continut special"
+
+#~ msgid "Select Featured Content"
+#~ msgstr "Selecteaza continut special"
+
+#~ msgid "Navigation event"
+#~ msgstr "Navigatia se face pe"
+
+#~ msgid "click"
+#~ msgstr "click mouse"
+
+#~ msgid "mouse over"
+#~ msgstr "mouse over"
+
+#~ msgid "Append to shortened post content"
+#~ msgstr "Ataseaza versiunii scurtate a articolului"
+
+#~ msgid "max."
+#~ msgstr "max."
+
+#~ msgid "New hooks can be created inside page"
+#~ msgstr "Noi \"hook-uri\" pot si create in pagina"
+
+#~ msgid "Hook Management"
+#~ msgstr "Gestionare \"hook-uri\""
+
+#~ msgid ""
+#~ "Once a new hook is created, the code to run it will be made available in "
+#~ "hooks table. Codes need to be placed directly in your Wordpress theme "
+#~ "files."
+#~ msgstr ""
+#~ "In momentul in care un nou hook este creat, codul necesar pentru "
+#~ "functionarea acestuia va deveni disponibil in pagina. COdurile trebuiesc "
+#~ "amplasate direct in fisierele temei WordPress."
+
+#~ msgid ""
+#~ "Hooks can successfully replace manual placement and offer the flexibility "
+#~ "of being able to change slideshows displayed at any time directly from "
+#~ "administration area."
+#~ msgstr ""
+#~ "Hook-urile pot inlocui cu succes modalitatea manuala de amplasare in "
+#~ "pagini oferind un plus de flexibilitate prin abilitatea de a gestiona "
+#~ "slideshow-urile care se afiseaza pentru un anumit hok in orice moment."
+
+#~ msgid ""
+#~ "If widget placement is chosen you must publish the widget from WP Widgets "
+#~ "settings and control the areas it displays from here."
+#~ msgstr ""
+#~ "Daca amplasarea prin widget-uri este selectata, slideshow-ul publicat in "
+#~ "acest mod va putea fi controlat in orice moment prin setarile de mai jos."
+
+#~ msgid "Slideshow display position"
+#~ msgstr "Amplasare slideshow"
+
+#~ msgid "Categories where slideshow will display"
+#~ msgstr "Categorii in care va fi afisat slideshow-ul"
+
+#~ msgid "Pages where slideshow will display"
+#~ msgstr "Pagini in care va fi afisat slideshow-ul"
+
+#~ msgid "Hooks management"
+#~ msgstr "Gestionare \"hook-uri\""
+
+#~ msgid "Your license was successfully activated."
+#~ msgstr "Licenta a fost activata cu succes."
+
+#~ msgid "Featured Articles - Register your plugin license"
+#~ msgstr "Featured Articles - Inregistrare licenta plugin"
+
+#~ msgid "Don't do the activation on localhost."
+#~ msgstr "Nu activati licenta pe localhost."
+
+#~ msgid ""
+#~ "Do your testing, give it a try and activate the plugin on the actual "
+#~ "website you're going to use it in so that you won't waste a perfectly "
+#~ "good license key."
+#~ msgstr ""
+#~ "Faceti testele necesare, incercati plugin-ul si activati licenta pe site-"
+#~ "ul real unde veti folosi plugin-ul. In acest fel nu veti pierde licenta."
+
+#~ msgid "You get the license key after purchasing a license from"
+#~ msgstr "Cheia de licenta o obtineti in urma unei cumparari de pe"
+
+#~ msgid "License key"
+#~ msgstr "Cheie licenta"
+
+#~ msgid ""
+#~ "License key not valid. Please contact CodeFlavors staff for more details."
+#~ msgstr ""
+#~ "Cheia de licenta este invalida. Va rugam sa contactati personalul "
+#~ "CodeFlavors pentru mai multe detalii."
+
+#~ msgid "Activation date"
+#~ msgstr "Data activarii"
+
+#~ msgid "Enter new license key"
+#~ msgstr "Adauga cheie de licenta noua"
+
+#~ msgid "Register license"
+#~ msgstr "Inregistreaza cheie de licenta"
+
+#~ msgid "Enter title here"
+#~ msgstr "Introduceti titlul aici"
+
+#~ msgid ""
+#~ "By default, slideshows will be displayed above the first loop found in "
+#~ "pages. Additionally, new areas can be created by using the Hook "
+#~ "Management feature."
+#~ msgstr ""
+#~ "Implicit, slideshow-urile pot fi afisate deasupra coloanei principale de "
+#~ "articole din pagina. Aditional, noi zone pot fi create prin utilizarea "
+#~ "optiunii \"Gestionare Hook-uri\"."
+
+#~ msgid "Content"
+#~ msgstr "Continut"
+
+#~ msgid "Automatic placement"
+#~ msgstr "Amplasare automata"
+
+#~ msgid "Slider theme"
+#~ msgstr "Tema slideshow"
+
+#~ msgid "Slideshows"
+#~ msgstr "Slideshow-uri"
+
+#~ msgid "Featured Articles Slides"
+#~ msgstr "Elemente Featured Articles"
+
+#~ msgid ""
+#~ "Sorry but the theme seems to be missing. Hit back button and try again"
+#~ msgstr ""
+#~ "Ne pare rau dar tema aceasta lipseste. Apasati butonul Inapoi si "
+#~ "reincercati."
+
+#~ msgid "This theme does not support color customizations."
+#~ msgstr "Aceasta tema nu suporta personalizare de culoare."
+
+#~ msgid ""
+#~ "Theme folder not writable. To create new CSS color scheme files for this "
+#~ "theme following folder must be writable:"
+#~ msgstr ""
+#~ "Directorul temei nu poate fi scris. Pentru a crea noi palete de culori "
+#~ "CSS, urmatorul director trebuie sa poata fi scris:"
+
+#~ msgid "Sorry, this color scheme could not be found."
+#~ msgstr "Ne pare rau dar paleta de culoare nu a putut fi gasita."
+
+#~ msgid ""
+#~ "File is not writable. To be able to edit styles for this color scheme, "
+#~ "following file must be writable:"
+#~ msgstr ""
+#~ "Fisierul nu poate fi scris. Pentru a putea edita stilurile acestei "
+#~ "palete, fisierul urmator trebuia sa poata fi scris:"
+
+#~ msgid "Back to themes list"
+#~ msgstr "Inapoi la lista temelor"
+
+#~ msgid "Create new color scheme"
+#~ msgstr "Creati o noua paleta culori"
+
+#~ msgid "Edit color scheme"
+#~ msgstr "Editati paleta culori"
+
+#~ msgid "Featured Articles Themes"
+#~ msgstr "Teme Featured Articles"
+
+#~ msgid "FeaturedArticles - Slideshow preview"
+#~ msgstr "Featured Articles - Vizualizare slideshow"
+
+#~ msgid "FeaturedArticles PRO release"
+#~ msgstr "FeaturedArticles PRO - versiune noua"
+
+#~ msgid "A new FeaturedArticles PRO update was released."
+#~ msgstr "O noua versiune FeaturedArticles PRO a fost lansata."
+
+#~ msgid "Download FeaturedArticles PRO version"
+#~ msgstr "FeaturedArticles PRO - download versiune"
+
+#~ msgid "Your CodeFlavors account"
+#~ msgstr "Contul tau CodeFlavors"
+
+#~ msgid "CodeFlavors account"
+#~ msgstr "Cont CodeFlavors"
+
+#~ msgid "Hook"
+#~ msgstr "Hook"
+
+#~ msgid "(only letters and underscores)"
+#~ msgstr "(doar litere si _)"
+
+#~ msgid "Hook name"
+#~ msgstr "Nume hook"
+
+#~ msgid "(a name for reference)"
+#~ msgstr "(nume de referinta)"
+
+#~ msgid "Hook description"
+#~ msgstr "Descriere hook"
+
+#~ msgid "(short description for reference)"
+#~ msgstr "(scurta descriere pentru referinta)"
+
+#~ msgid "Template file name"
+#~ msgstr "Nume fisier template tema WP"
+
+#~ msgid "(to know where it's placed)"
+#~ msgstr "(pentru a sti unde e amplasat)"
+
+#~ msgid "Cancel"
+#~ msgstr "Anuleaza"
+
+#~ msgid "Update hook"
+#~ msgstr "Actualizeaza hook"
+
+#~ msgid "Save hook"
+#~ msgstr "Salveaza hook"
+
+#~ msgid "Custom URL"
+#~ msgstr "URL specific"
+
+#~ msgid "Custom CSS class"
+#~ msgstr "Clasa CSS specifica"
+
+#~ msgid "Choose media to attach to slideshow"
+#~ msgstr "Tip media atasat slideshow-ului"
+
+#~ msgid "Attach image"
+#~ msgstr "Ataseaza imagine"
+
+#~ msgid "Attach video"
+#~ msgstr "Ataseaza video"
+
+#~ msgid "Image media setting"
+#~ msgstr "Setari imagini"
+
+#~ msgid "Choose image to be used as media for this slide."
+#~ msgstr "Alegeti imaginea ce va fi afisata in element."
+
+#~ msgid ""
+#~ "Image size will respect the size set on slideshow setting where this "
+#~ "slide is displayed into."
+#~ msgstr ""
+#~ "Dimensiunea imaginii va respecta dimensiunea setata a slideshow-ului in "
+#~ "care acest element va fi prezentat."
+
+#~ msgid "No image."
+#~ msgstr "Fara imagine."
+
+#~ msgid "Video media setting"
+#~ msgstr "Setari video"
+
+#~ msgid "Videos can be set for either YouTube or Vimeo."
+#~ msgstr "Filmele pot fi preluate din YouTube sau Vimeo."
+
+#~ msgid "Video size will be the size you enter below."
+#~ msgstr "Dimensiunea filmului va fi cea setata mai jos."
+
+#~ msgid ""
+#~ "For full background slideshows, the video size will be the full size of "
+#~ "the slideshow."
+#~ msgstr ""
+#~ "Pentru slideshow-uri cu background complet dimensiunea filmului va fi "
+#~ "egala cu cea a slideshow-ului."
+
+#~ msgid "Choose video source"
+#~ msgstr "Sursa video"
+
+#~ msgid "Video from Vimeo"
+#~ msgstr "Filme Vimeo"
+
+#~ msgid "Video from YouTube"
+#~ msgstr "Filme YouTube"
+
+#~ msgid "Video ID"
+#~ msgstr "ID video"
+
+#~ msgid "Preview Video"
+#~ msgstr "Vizualizare film"
+
+#~ msgid "Volume"
+#~ msgstr "Volum"
+
+#~ msgid "(between 0 and 100)"
+#~ msgstr "(intre 0 si 100)"
+
+#~ msgid "Video size"
+#~ msgstr "Dimensiune video"
+
+#~ msgid "Autoplay video (video will start playing when slide is active)"
+#~ msgstr ""
+#~ "Filmul ruleaza automat (va porni in momentul in care acest element este "
+#~ "selectat in slideshow)"
+
+#~ msgid "Allow full screen (displays fullscreen button on video controls)"
+#~ msgstr ""
+#~ "Afiseaza buton \"Full screen\" (afiseaza butonul in comenzile player-ului)"
+
+#~ msgid "Loop video"
+#~ msgstr "Repeta video"
+
+#~ msgid "YouTube specific settings"
+#~ msgstr "Setari YouTube"
+
+#~ msgid "Display controls on YouTube player"
+#~ msgstr "Afisare controale player YouTube"
+
+#~ msgid "Autohide controls on YouTube player on mouse out"
+#~ msgstr "Ascunde bara YouTube cand mouse-ul nu este deasupra filmului"
+
+#~ msgid ""
+#~ "Load HD version in YouTube player (will load only if available; users "
+#~ "with slower connections may have problems viewing videos in HD mode)"
+#~ msgstr ""
+#~ "Incarca versiunea HD in playerul YouTube (va fi incarcata doar daca este "
+#~ "disponibila; utilizatorii ce dispun de conexiuni internet mai lente pot "
+#~ "avea probleme cu vizualizarea in mod HD)"
+
+#~ msgid ""
+#~ "Vimeo specific settings (settings may be overridden by Plus member "
+#~ "preferences)"
+#~ msgstr "Setari Vimeo (acestea pot si suprascrise daca userul are cont Plus)"
+
+#~ msgid "Show video title in player (for Vimeo player only)"
+#~ msgstr "Arata titlul filmului in player (doar pentru Vimeo)"
+
+#~ msgid "Show video author in player (for Vimeo player only)"
+#~ msgstr "Arata autorul filmului in player (doar pentru Vimeo)"
+
+#~ msgid "Show video author thumbnail in player (for Vimeo player only)"
+#~ msgstr "Arata imaginea autorului in player (doar pentru Vimeo)"
+
+#~ msgid "Video Preview"
+#~ msgstr "Vizualizare video"
+
+#~ msgid ""
+#~ "Please note this is not the full implementation for videos. It is only a "
+#~ "preview for video, size and general aspect (controls, titles, etc)."
+#~ msgstr ""
+#~ "Atentie! Aceasta nu este implementarea full a playerului. Este doar un "
+#~ "preview al aspectului general."
+
+#~ msgid "Please insert a video ID first."
+#~ msgstr "Introduceti un ID de video intai."
+
+#~ msgid "Enter a name for this color scheme"
+#~ msgstr "Seteaza un nume pentru paleta de culoare"
+
+#~ msgid "Color scheme name"
+#~ msgstr "Nume paleta culori"
+
+#~ msgid "Featured Articles Custom Slides"
+#~ msgstr "Articole speciale Featured Articles"
+
+#~ msgid "Custom Slides"
+#~ msgstr "Continut special"
+
+#~ msgid "Custom Slide"
+#~ msgstr "Continut special"
+
+#~ msgid "Add Custom Slide"
+#~ msgstr "Adauga continut special"
+
+#~ msgid "Featured Articles Hooks Management"
+#~ msgstr "Gestionare hook-uri"
+
+#~ msgid "Featured Articles themes management"
+#~ msgstr "Gestionare teme Featured Articles"
+
+#~ msgid "Themes"
+#~ msgstr "Teme"
+
+#~ msgid "FA theme editing preview"
+#~ msgstr "Preview editare tema"
+
+#~ msgid "Theme edit preview"
+#~ msgstr "Preview editare tema"
+
+#~ msgid "License"
+#~ msgstr "Licenta"
+
+#~ msgid "Update notices"
+#~ msgstr "Notificari update"
+
+#~ msgid "General info"
+#~ msgstr "Informatii generale"
+
+#~ msgid "Write permissions"
+#~ msgstr "Permisiuni de scriere"
+
+#~ msgid "Customizable themes"
+#~ msgstr "Teme configurabile"
+
+#~ msgid "Slide media settings"
+#~ msgstr "Setari media"
+
+#~ msgid "Sorry but this item could not be found."
+#~ msgstr "Ne pare rau dar nu am putut identifica elementul."
+
+#~ msgid "Edit hook"
+#~ msgstr "Editare hook"
+
+#~ msgid "Theme color"
+#~ msgstr "Culoare tema"
+
+#~ msgid "Properties"
+#~ msgstr "Proprietati"
+
+#~ msgid "Not configurable."
+#~ msgstr "Nu este configurabil."
+
+#~ msgid "New color"
+#~ msgstr "Culoare noua"
+
+#~ msgid "Use image in FA PRO theme"
+#~ msgstr "Utilizeaza imagine in tema FA PRO"
+
+#~ msgid ""
+#~ "You must enter a folder path. Folder path must be inside wp_content "
+#~ "folder of your Wordpress blog."
+#~ msgstr ""
+#~ "Trebuie introdusa o cale valida. Calea trebuie sa fie in interiorul "
+#~ "directorului wp_content al blogului WordPress."
+
+#~ msgid ""
+#~ "Folder you entered is not valid. Enter only the path inside wp_content "
+#~ "(ie: my_fa_themes should be enough if folder is inside wp_content folder)."
+#~ msgstr ""
+#~ "Directorul specificat este invalid. Introduceti numai calea din "
+#~ "interiorul directorului wp_content (ex: tema_mea ar trebui sa fie "
+#~ "suficient daca acesta este plasat direct in wp_content)."
+
+#~ msgid ""
+#~ "Folder was found but no FeaturedArticles themes could be found inside it. "
+#~ "Please copy the themes first to avoid errors."
+#~ msgstr ""
+#~ "Directorul a fost gasit numai ca temele care ar trebui sa fie in el nu "
+#~ "exista. Copiati toate temele pentru a evita eventualele erori."
+
+#~ msgid "Widget placement"
+#~ msgstr "Amplasare widget"
+
+#~ msgid "Display controlled by widgets"
+#~ msgstr "Afiseaza este controlata prin widget"
+
+#~ msgid "Above posts loop"
+#~ msgstr "Desupra coloanei de articole"
+
+#~ msgid "Displays above the posts loop in current page"
+#~ msgstr "Afiseaza deasupra coloanei de articole din pagina curenta"
+
+#~ msgid "Do you really want to delete this hook?"
+#~ msgstr "Sigur vrei sa stergi acest hook?"
+
+#~ msgid "WP hook"
+#~ msgstr "Hook WordPress"
+
+#~ msgid "Code"
+#~ msgstr "Cod"
+
+#~ msgid "must be placed in WP theme files"
+#~ msgstr "trebuie inserat in fisierele temei WordPress"
+
+#~ msgid "Name"
+#~ msgstr "Nume"
+
+#~ msgid "In template file"
+#~ msgstr "In fisierele temei"
+
+#~ msgid "Description"
+#~ msgstr "Descriere"
+
+#~ msgid "Off"
+#~ msgstr "Dezactivat"
+
+#~ msgid "blog home"
+#~ msgstr "pagina home"
+
+#~ msgid "and"
+#~ msgstr "si"
+
+#~ msgid "category"
+#~ msgstr "categorie"
+
+#~ msgid "page"
+#~ msgstr "pagina"
+
+#~ msgid "Displayed on"
+#~ msgstr "Afisare in"
+
+#~ msgid "hook deleted; slideshow not displayed"
+#~ msgstr "hook sters; slideshow-ul nu este afisat"
+
+#~ msgid "Newest"
+#~ msgstr "Cele mai noi"
+
+#~ msgid "Most commented first"
+#~ msgstr "Cele mai comentate"
+
+#~ msgid "Random selected"
+#~ msgstr "Selectate aleatoare"
+
+#~ msgid "posts from"
+#~ msgstr "articole din"
+
+#~ msgid "manually selected"
+#~ msgstr "selectate manual"
+
+#~ msgid "Manually selected pages"
+#~ msgstr "Pagini selectate manual"
+
+#~ msgid "none selected"
+#~ msgstr "niciuna selectata"
+
+#~ msgid "Custom selected mixed content"
+#~ msgstr "Continut mixt"
+
+#~ msgid "item"
+#~ msgstr "element"
+
+#~ msgid "currently displaying posts"
+#~ msgstr "afiseaza articole"
+
+#~ msgid "currently displaying pages"
+#~ msgstr "afiseaza pagini"
+
+#~ msgid "In"
+#~ msgstr "In"
+
+#~ msgid "slideshow"
+#~ msgstr "slideshow"
+
+#~ msgid "none"
+#~ msgstr "niciunul"
+
+#~ msgid "Custom slides"
+#~ msgstr "Continut special"
+
+#~ msgid "Create new color"
+#~ msgstr "Creeaza culoare noua"
+
+#~ msgid "Not customizable."
+#~ msgstr "Nu este configurabil."
+
+#~ msgid "You cannot create new color schemes."
+#~ msgstr "Nu puteti crea noi palete de culoare."
+
+#~ msgid "Yes"
+#~ msgstr "Da"
+
+#~ msgid "No"
+#~ msgstr "Nu"
+
+#~ msgid ""
+#~ "To enable color creation for this theme, change write conditions on folder"
+#~ msgstr ""
+#~ "Pentru a permite crearea de palete de culoare trebuie sa dati acces de "
+#~ "scriere directorului "
+
+#~ msgid "from theme"
+#~ msgstr "din tema"
+
+#~ msgid "Not available."
+#~ msgstr "Nu este disponibil."
+
+#~ msgid "Colors"
+#~ msgstr "Culori"
+
+#~ msgid "Writable"
+#~ msgstr "Poate fi scris"
+
+#~ msgid "Preview"
+#~ msgstr "Vizualizare"
+
+#~ msgid "Border color"
+#~ msgstr "Culoare chenar"
+
+#~ msgid "Background color"
+#~ msgstr "Culoare fundal"
+
+#~ msgid "Background image"
+#~ msgstr "Imagine fundal"
+
+#~ msgid "Text color"
+#~ msgstr "Culoare text"
+
+#~ msgid "Font size"
+#~ msgstr "Dimensiune text"
+
+#~ msgid "Background repeat"
+#~ msgstr "Repetare fundal"
+
+#~ msgid "Background position"
+#~ msgstr "Pozitie fundal"
+
+#~ msgid "The theme doesn't support color scheme configuration."
+#~ msgstr "Aceasta tema nu suporta personalizare a paletei de culoare."
+
+#~ msgid "The theme doesn't exist."
+#~ msgstr "Aceasta tema nu exista."
+
+#~ msgid ""
+#~ "The name of the color scheme you're trying to save already exists. Choose "
+#~ "another name and try again."
+#~ msgstr ""
+#~ "Numele paletei de culoare pe care incercati sa o salvati este deja "
+#~ "existent. Alegeti alt nume si reincercati."
+
+#~ msgid ""
+#~ "The stylesheet for the color scheme you're trying to save couldn't be "
+#~ "created. Check that colors folder and/or color stylesheets have write "
+#~ "permission."
+#~ msgstr ""
+#~ "Fisierul de stil al paletei de culoare pe care incercati sa o creati nu a "
+#~ "putut fi creat. Verificati ca directorul sau fisierele de culoare sa aiba "
+#~ "drept de scriere."
+
+#~ msgid "FeaturedArticles slideshow"
+#~ msgstr "Slideshow Featured Articles"
+
+#~ msgid ""
+#~ "Slideshow will not be visible as widget because it is set to display on "
+#~ "hook"
+#~ msgstr ""
+#~ "Slideshow-ul nu va fi vizibil ca widget deoarece este setat sa fie afisat "
+#~ "pe hook"
+
+#~ msgid ""
+#~ "To change this review the settings under Automatic Placement Options from"
+#~ msgstr ""
+#~ "Pentru a modifica, verificati setarile aflate in Plasare Automata in "
+#~ "pagina"
+
+#~ msgid "slideshow edit page"
+#~ msgstr "editare slideshow"
+
+#~ msgid "Home page"
+#~ msgstr "Pagina de inceput"
+
+#~ msgid "Slideshow not visible."
+#~ msgstr "Slideshow-ul nu este vizibil."
+
+#~ msgid "Edit slideshow and display it on categories and/or pages."
+#~ msgstr ""
+#~ "Editare slideshow si afisare in paginile de categorii si/sau pagini."
+
+#~ msgid "Slideshow displayed on"
+#~ msgstr "Slideshow-ul este amplasat in"
+
+#~ msgid "Base theme: "
+#~ msgstr "Tema de baza:"

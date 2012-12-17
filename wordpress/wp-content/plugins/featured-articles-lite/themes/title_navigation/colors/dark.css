@@ -1,0 +1,59 @@
+.FA_overall_container_title_nav.dark h3.FA_title_section { 	
+	color:#003333; 
+}
+
+.FA_overall_container_title_nav.dark .FA_featured_articles {
+	background:#eaeaea;
+}
+
+.FA_overall_container_title_nav.dark .FA_featured_articles .FA_article{
+	color:#CCCCCC;
+}
+
+.FA_overall_container_title_nav.dark .FA_featured_articles .FA_article .image_container{
+	background-color:#eaeaea;
+	border:1px #3b3b3b solid;
+}
+
+.FA_overall_container_title_nav.dark .FA_featured_articles .FA_article h2{
+	color:#303030 !important;
+}
+	.FA_featured_articles .FA_article h2 a{
+		color:#303030;
+	}	
+	
+.FA_overall_container_title_nav.dark .FA_featured_articles .FA_article span.FA_date{
+	color:#545454;
+}
+
+.FA_overall_container_title_nav.dark .FA_featured_articles .FA_article p{
+	color:#000000;
+}
+
+.FA_overall_container_title_nav.dark .FA_featured_articles .FA_article p a{
+	color:#000000 !important;
+}
+
+.FA_overall_container_title_nav.dark .FA_featured_articles .FA_article a.FA_read_more{
+	color:#ffffff;
+	background:#3b3b3b;
+}
+
+/*
+	Bottom navigation
+*/
+.FA_overall_container_title_nav.dark ul.FA_navigation {
+	background:#383838;	
+}
+		.FA_overall_container_title_nav.dark ul.FA_navigation li a{
+			color:#ccc;
+			border-bottom:1px #666666 solid;
+		}	
+.FA_overall_container_title_nav.dark .FA_navigation a.active{
+	background:#000;
+	color:#FFF;
+}
+
+.FA_overall_container_title_nav.dark .FA_navigation a:hover{
+	color:#FFF;
+}
