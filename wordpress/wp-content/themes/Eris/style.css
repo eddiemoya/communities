@@ -1301,12 +1301,17 @@ fieldset#use_your_account_from {
     left: -10px;
     position: absolute; }
     .tooltip .arrow .left {
-      background: url("");
-      width: 12px;
-      height: 22px; }
+      background: url("arrow-left.png");
+      height: 22px;
+      left: 1px;
+      position: relative;
+      width: 12px; }
     .tooltip .arrow .top {
-      width: 22px;
-      height: 12px; }
+      background: url('assets/img/arrow-top.png?v=1355776097');
+      height: 12px;
+      position: relative;
+      top: 1px;
+      width: 22px; }
     .tooltip .arrow .topBorder {
       background-color: transparent;
       border-color: transparent transparent #fff transparent;
