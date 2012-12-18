@@ -88,7 +88,10 @@
 					
         	<form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" id="commentform-<?php echo $comment->comment_ID ?>" class="reply-to-form clearfix"<?php echo $form_style; ?>>
 	        	<ul class="form-fields">
-	        		<?php if(get_user_meta( $current_user->ID, 'sso_guid' ) && ! has_screen_name( $current_user->ID ) ):?>
+	        		<?php 
+	        			$sso_user = SSO_User::factory()->get_by_id($current_user->ID);
+	        			if($sso_user->guid && ! $sso_user->screen_name):
+	        			//if(get_user_meta( $current_user->ID, 'sso_guid' ) && ! has_screen_name( $current_user->ID ) ):?>
 	        			<li class="clearfix">
 		              <label for="screen-name-<?php echo $child->comment_ID ?>" class="required">Screen Name</label>
 		              <input type="text" class="input_text" name="screen-name" value="<?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? stripslashes( urldecode( $_GET['screen-name'] ) ) : null; ?>" shc:gizmo:form="{required:true, special: 'screen-name', message: 'Screen name invalid. Screen name is already in use or does not follow the screen name guidelines.'}"/>

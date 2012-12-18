@@ -116,7 +116,8 @@ function return_template_part($template){
  */
 function has_screen_name($user_id) {
 	
-	if(get_user_meta($user_id, 'profile_screen_name', true)) {
+	//if(get_user_meta($user_id, 'profile_screen_name', true)) {
+	if(SSO_User::factory()->get_by_id($user_id)->screen_name) {
 		
 		return true;
 	}
@@ -229,7 +230,10 @@ function process_front_end_question() {
 	    						} else {
 	    							
 	    							//Add user meta for screen name
-	    							update_user_meta($current_user->ID, 'profile_screen_name', $_POST['screen-name']);
+	    							//update_user_meta($current_user->ID, 'profile_screen_name', $_POST['screen-name']);
+	    							SSO_User::factory()->get_by_id($current_user->ID)
+	    												->set('screen_name', $_POST['screen-name'])
+	    												->save();
 	    							
 	    							//Update user's nicename to screen name
 	    							if(! update_user_nicename($current_user->ID, $_POST['screen-name'])) 
@@ -693,11 +697,14 @@ function set_screen_name($screen_name) {
 	global $current_user;
 	get_currentuserinfo();
 	
-	$sso_guid = get_user_sso_guid($current_user->ID);
+	$sso_user = SSO_User::factory()->get_by_id($current_user->ID);
+	
+	//$sso_guid = get_user_sso_guid($current_user->ID);
+	//$sso_guid = SSO_User::factory()->get_by_id($current_user->ID)->guid;
 		    					
 	$profile = new SSO_Profile;
 	    					
-	$response = $profile->update($sso_guid, array('email' => $current_user->user_email,
+	$response = $profile->update($sso_user->guid, array('email' => $current_user->user_email,
     											  'screen_name' => $screen_name));
 		
 	//Check for error
@@ -708,7 +715,9 @@ function set_screen_name($screen_name) {
 	} else {
 			
 		//Add user meta for screen name
-		update_user_meta($current_user->ID, 'profile_screen_name', $screen_name);
+		//update_user_meta($current_user->ID, 'profile_screen_name', $screen_name);
+		$sso_user->set('screen_name', $screen_name)
+				 ->save();
 			
 		//Update user's nicename to screen name
 		update_user_nicename($current_user->ID, $screen_name);
@@ -779,7 +788,7 @@ function lookup_expert_comments_count($post_id, $categories) {
     return $return[0]->count;
 }
 
-/*
+/**
  * Sanitizes text of any profanity
  * 
  * @param string $text
