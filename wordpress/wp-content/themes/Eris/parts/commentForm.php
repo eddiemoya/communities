@@ -64,7 +64,9 @@
 							<ul class="form-fields">
 								<?php
 	                # If a user doesn't have a screen name, prompt them to enter one
-	                if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):
+	                $sso_user = SSO_User::factory()->get_by_id($current_user->ID);
+	                if($sso_user->guid && ! $sso_user->screen_name):
+	                //if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):
 	              ?>
 	              <li class="clearfix">	
 	                <label for="screen-name" class="required">Screen Name</label>
