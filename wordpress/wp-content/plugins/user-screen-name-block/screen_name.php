@@ -15,9 +15,6 @@ add_action('edit_user_profile', 'block_screen_name_field');
 
 function block_screen_name_field($user) {
 	
-	/*echo '<pre>';
-	var_dump($user);
-	exit;*/
 	?>
 	<h3><?php _e("Screen Name", "blank"); ?></h3>
     <table class="form-table">
@@ -33,8 +30,9 @@ function block_screen_name_field($user) {
     </tr>
     <?php 
     	//if(! get_user_meta($user->id, 'sso_guid', true)):
-    	$sso_user = SSO_User::factory()->get_by_id($user->id);
-    	if(! $sso_user->guid):
+     $sso_user = SSO_User::factory()->get_by_id($user->id);
+    	
+     if(! $sso_user->guid):
     ?>
     <tr>
     <td>
