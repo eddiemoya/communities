@@ -1303,7 +1303,6 @@ fieldset#use_your_account_from {
     .tooltip .arrow .left {
       background: url('assets/img/arrow-left.png?v=1355943210');
       height: 22px;
-      left: 1px;
       position: relative;
       width: 12px; }
     .tooltip .arrow .top {
