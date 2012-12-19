@@ -283,7 +283,7 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
                 var arrowTopWidth = arrowTop.outerWidth();
 
                 arrow.css('top', arrowTopHeight);
-                arrow.css('left', (tooltipWidth - arrowTopWidth) / 2);
+                arrow.css('left', ((tooltipWidth - arrowTopWidth) / 2) - 10);
 
                 break;
         }

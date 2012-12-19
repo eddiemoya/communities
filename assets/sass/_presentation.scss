@@ -1105,7 +1105,7 @@ $tab-padding: "1em 0 .6em 0";
     position: absolute;
 
     .left {
-      background: url('arrow-left.png');
+      background: image-url('arrow-left.png');
       height: 22px;
       left: 1px;
       position: relative;
@@ -1114,9 +1114,9 @@ $tab-padding: "1em 0 .6em 0";
 
     .top {
       background: image-url('arrow-top.png');
+      bottom: 11px;
       height: 12px;
       position: relative;
-      top: 1px;
       width: 22px;
     }
 
