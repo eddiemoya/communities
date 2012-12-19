@@ -117,12 +117,18 @@ function return_template_part($template){
 function has_screen_name($user_id) {
 	
 	//if(get_user_meta($user_id, 'profile_screen_name', true)) {
-	if(SSO_User::factory()->get_by_id($user_id)->screen_name) {
+	$user = SSO_User::factory()->get_by_id($user_id);
+	
+	//if this is a non-SSO user, return true to display user_nicename
+	if(! $user->id) {
 		
 		return true;
+		
+	} else {
+		
+		return ($user->screen_name) ? true : false;
 	}
 	
-		return false;
 }
 
 
@@ -214,12 +220,13 @@ function process_front_end_question() {
 	    				//If everything is valid, attempt to set screen name
 	    				if($valid) {
 	    				
-	    					$sso_guid = get_user_sso_guid($current_user->ID);
+	    					//$sso_guid = get_user_sso_guid($current_user->ID);
+	    					$sso_user = SSO_User::factory()->get_by_id($current_user->ID);
 	    					
 	    					$profile = new SSO_Profile;
 	    					
-	    					$response = $profile->update($sso_guid, array('email' => $current_user->user_email ,
-	    																 'screen_name' => $_POST['screen-name']));
+	    					$response = $profile->update($sso_user->guid, array('email' => $current_user->user_email ,
+	    																 		'screen_name' => $_POST['screen-name']));
 	    					
 	    						//Check for error
 	    						if(isset($response['code'])) {
@@ -232,9 +239,9 @@ function process_front_end_question() {
 	    							
 	    							//Add user meta for screen name
 	    							//update_user_meta($current_user->ID, 'profile_screen_name', $_POST['screen-name']);
-	    							SSO_User::factory()->get_by_id($current_user->ID)
-	    												->set('screen_name', $_POST['screen-name'])
-	    												->save();
+	    												
+    								$sso_user->set('screen_name', $_POST['screen-name'])
+    										 ->save();
 	    							
 	    							//Update user's nicename to screen name
 	    							if(! update_user_nicename($current_user->ID, $_POST['screen-name'])) 
@@ -632,8 +639,21 @@ function return_address( $user_id ) {
     $a_address = array();
     $address = '&nbsp;';
     
-    $city  = get_user_meta( $user_id, 'user_city', true );
-    $state = get_user_meta( $user_id, 'user_state', true );
+    $sso_user = SSO_User::factory()->get_by_id($user_id);
+    
+    if($sso_user->guid){
+    	
+    	$city = $sso_user->city;
+    	$state = $sso_user->state;
+    	
+    } else {
+    	
+	    $city  = get_user_meta( $user_id, 'user_city', true );
+	    $state = get_user_meta( $user_id, 'user_state', true );
+    	
+    }
+    
+   
     
     if ( $city != '' )  { $a_address[] = $city; }
     if ( $state != '' ) { $a_address[] = strtoupper($state); }
