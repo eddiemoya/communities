@@ -1,6 +1,6 @@
 <?php
-
     $concat = has_screen_name( $profile_user->ID ) ? '?post-type=' : '&post-type=';
+    
     
     if ( user_can( $profile_user->ID, "show_badge" ) ) {
         $badge_page = get_page_by_title( 'Types of Badges' );
