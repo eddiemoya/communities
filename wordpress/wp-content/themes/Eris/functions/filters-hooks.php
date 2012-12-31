@@ -753,3 +753,45 @@ function oembed_result_modification($data) {
 
 add_filter("oembed_result", "oembed_result_modification", 10);
 
+
+function profile_data_sync() {
+	
+	if(is_user_logged_in()) {
+		
+		global $current_user;
+		
+		$local_user = SSO_User::factory()->get_by_id($current_user->ID);
+		$profile_user = new SSO_Profile();
+		
+			if($local_user->guid) {
+				
+				$profile_data = $profile_user->get($local_user->guid);
+				
+					if(! isset($profile_data['error'])) {
+						
+						if($profile_data['zipcode'] != $local_user->zipcode) {
+							
+							$user_location = new User_Location;
+							
+							 if($location = $user_location->get($profile_data['zipcode'])->response)
+							 	$local_user->set(array('zipcode' => $profile_data['zipcode'],
+							 							'city'	=> $location['city'],
+							 							'state'	=>	$location['state']));
+							
+						}
+					}
+					
+					if( (string) $profile_data['screenname'] != $local_user->screen_name) {
+						
+						$local_user->set('screen_name', (string) $profile_data['screenname']);
+						// !!!!Check order of execution on tis function
+						update_user_nicename($current_user->ID, $local_user->screen_name);
+					}
+					
+					$local_user->save();
+			}
+		
+	}
+}
+
+add_action('init', 'profile_data_sync');
