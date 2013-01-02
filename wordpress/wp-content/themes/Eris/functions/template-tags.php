@@ -137,6 +137,8 @@ function process_front_end_question() {
 	
 	global $current_user;
 	
+	/*var_dump($_POST);
+			exit;*/
 	//Neither step has been taken, were on step 1
  	 $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '1');
 			
@@ -144,7 +146,7 @@ function process_front_end_question() {
     if( ( isset($_POST['_wpnonce']) && wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-1' ) || isset($_POST['new_question_step_1'])) && (! isset($_POST['question-post-complete']))){
 
         //If user is logged in - step 2
-        if(is_user_logged_in() && ! empty($_POST['post-question'])) {
+        if(is_user_logged_in() && strlen(trim($_POST['post-question'])) > 0) {
 			
 			
         	$GLOBALS['post_question_data'] = array('step'		=> '2',
@@ -167,7 +169,7 @@ function process_front_end_question() {
     	$errors = array();
     	
     	//Make sure they posted a question
-    	if(empty($_POST['your-question'])) {
+    	if(strlen(trim($_POST['your-question'])) == 0) {
     		
     		$valid = false;
     		$errors['your-question'] = 'Please enter a question.';
@@ -275,10 +277,6 @@ function process_front_end_question() {
 		       	
 		       	unset($current_user);
 		       	get_currentuserinfo();
-		       	
-		       /*	echo '<pre>';
-		       	var_dump($current_user);
-		       	exit;*/
 		       	
 		        $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '3');
 		        
