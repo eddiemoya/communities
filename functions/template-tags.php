@@ -482,12 +482,17 @@ function get_profile_url( $user_id ) {
 	wp_cache_flush();
 	
     # create a fallback screen name if one has not yet been set by sso
-    if ( !has_screen_name( $user_id ) ) {
+    if ( !has_screen_name( $user_id )) {
         $link = home_url( '/' ) . '?author=' . $user_id;
     }
     else {
         $link = get_author_posts_url( $user_id );
     }
+    
+    //Check to make sure we have a valid link. If link same as home link, do this...
+    if($link == home_url())
+    	 $link = home_url('/' ) . '?author=' . $user_id;
+    	
     return $link;
 }
 
