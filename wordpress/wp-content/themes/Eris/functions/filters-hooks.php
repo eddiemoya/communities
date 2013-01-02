@@ -753,44 +753,59 @@ function oembed_result_modification($data) {
 
 add_filter("oembed_result", "oembed_result_modification", 10);
 
+/**
+ * profile_data_sync() - Runs on 'init', does a check of user's
+ * screen name and zipcode and updates location and screen name in the comm database
+ * if they differ.
+ * 
+ * @param void
+ * @return void
+ * @author Dan Crimmins
+ */
 
 function profile_data_sync() {
 	
-	if(is_user_logged_in()) {
-		
+	//Only proceed if the user is logged in and there is not login or register event happening...
+	if(is_user_logged_in() && ! in_array(array('ssoreg', 'ssologin', 'ssologincheck', 
+												'ssoregister', 'ssologout',
+												 'ssologoutreceive', 'openid_auth'), $_GET)
+							&& class_exists('SSO_Profile')) {
+								
 		global $current_user;
 		
 		$local_user = SSO_User::factory()->get_by_id($current_user->ID);
 		$profile_user = new SSO_Profile();
 		
-			if($local_user->guid) {
+		if($local_user->guid) {
+			
+			$profile_data = $profile_user->get($local_user->guid);
+			
+				//only proceed if we received a valid response from CIS
+				if(! isset($profile_data['error'])) {
 				
-				$profile_data = $profile_user->get($local_user->guid);
-				
-					if(! isset($profile_data['error'])) {
+					//Check and change location information if necessary
+					if($profile_data['zipcode'] != $local_user->zipcode) {
 						
-						if($profile_data['zipcode'] != $local_user->zipcode) {
-							
-							$user_location = new User_Location;
-							
-							 if($location = $user_location->get($profile_data['zipcode'])->response)
-							 	$local_user->set(array('zipcode' => $profile_data['zipcode'],
-							 							'city'	=> $location['city'],
-							 							'state'	=>	$location['state']));
-							
-						}
+						$user_location = new User_Location;
+						
+						 if($location = $user_location->get($profile_data['zipcode'])->response)
+						 
+						 	$local_user->set(array('zipcode' => $profile_data['zipcode'],
+						 							'city'	=> $location['city'],
+						 							'state'	=>	$location['state']));
+						
 					}
 					
-					if( (string) $profile_data['screenname'] != $local_user->screen_name) {
+					//Check and change screen name if necessary
+					if($profile_data['screenname'] != $local_user->screen_name) {
 						
-						$local_user->set('screen_name', (string) $profile_data['screenname']);
-						// !!!!Check order of execution on tis function
+						$local_user->set('screen_name', $profile_data['screenname']);
 						update_user_nicename($current_user->ID, $local_user->screen_name);
 					}
 					
 					$local_user->save();
-			}
-		
+				}
+		}
 	}
 }
 
