@@ -820,8 +820,8 @@ function truncated_text($text, $length = 100) {
 /**
  * Horrible clusterfuck that generates a shitty omniture string - which we'll probably need to completely redo anyway.
  *
- * The Section rewrite rules interfere with the ability to retreive original query data at the time of enqueueing scripts.
- * If and WHEN we'ere asked to rewrite omniture - this problem should be solved from within Section/WidgetPress first.
+ * The Section rewrite rules interfere with the ability to retrieve original query data at the time of enqueueing scripts.
+ * If and WHEN we're asked to rewrite omniture - this problem should be solved from within Section/WidgetPress first.
  *
  * @author Eddie Moya
  */
@@ -928,6 +928,23 @@ function get_last_activity_date($user_id) {
 	
 	
 	return $wpdb->get_var($q);
+}
+
+/**
+ * return the contents of a http request
+ * 
+ * @param string $url
+ * @return string -- content of the request
+ * @author Carl Albrecht-Buehler
+ */
+function curl_it($url){
+    $curl_handle = curl_init();
+    curl_setopt( $curl_handle, CURLOPT_URL, $url );
+    curl_setopt( $curl_handle, CURLOPT_CONNECTTIMEOUT, 2 );
+    curl_setopt( $curl_handle, CURLOPT_RETURNTRANSFER, 1 );
+    $content = curl_exec( $curl_handle );
+    curl_close( $curl_handle );
+    return $content;
 }
 
 /**
