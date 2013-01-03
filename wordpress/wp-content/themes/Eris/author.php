@@ -14,7 +14,8 @@ $profile_user = get_userdata(get_query_var('author'));
 $user_activities = new User_Profile($profile_user->ID);
 
 //Current page's url, with querystring params removed
-$author_url = get_author_posts_url( $user_id ) . str_replace("author_name=", "", $wp->query_string) . "/";
+
+$author_url = get_profile_url($profile_user->ID);
 
 if ( !has_screen_name( $profile_user->ID )) {
     $author_url = home_url( '/' ) . '?' . $wp->query_string;

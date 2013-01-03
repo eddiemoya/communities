@@ -18,7 +18,6 @@
 
 
 
-
 /** The name of the database for WordPress */
 
 define('DB_NAME', 'comm_local');
