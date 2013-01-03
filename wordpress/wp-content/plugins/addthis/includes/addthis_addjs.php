@@ -1,8 +1,5 @@
 <?php
 
-/**
- * Class for managing AddThis script includes across all its plugins.
- */
 Class AddThis_addjs{
     /**
     * var bool check to see if we have added our JS already.  Ensures that we don't add it twice
@@ -41,18 +38,18 @@ Class AddThis_addjs{
             _doing_it_wrong( 'addthis_addjs', 'Only one instance of this class should be initialized.  Look for the $addthis_addjs global first',1 ); 
         }
 
-        $this->productCode = ADDTHIS_PRODUCT_VERSION;
+        $this->productCode = 'wpp-265';
+
+        // Version of AddThis code to use
+        $this->atversion = '250';
 
         // We haven't added our JS yet. Or at least better not have.
         $this->_js_added = false;
 
         $this->_options = $options;
-        
-        // Version of AddThis code to use
-        $this->atversion = array_key_exists('atversion_update_status', $options) && $options['atversion_update_status'] == ADDTHIS_ATVERSION_REVERTED ? $options['atversion'] : ADDTHIS_ATVERSION;
-        
+
         // set the cuid
-        $base = get_option('home');
+        $base = home_url();
         $cuid = hash_hmac('md5', $base, 'addthis'); 
         $this->_cuid = $cuid;
 
@@ -240,6 +237,14 @@ Class AddThis_addjs{
             }
 
             return '<p class="addthis_more_promo">' .$string . '</p>';
+            
+
+
+
+
+
         }
     }
+
 }
+
