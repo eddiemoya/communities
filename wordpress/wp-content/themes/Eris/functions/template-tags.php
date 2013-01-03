@@ -137,6 +137,8 @@ function process_front_end_question() {
 	
 	global $current_user;
 	
+	/*var_dump($_POST);
+			exit;*/
 	//Neither step has been taken, were on step 1
  	 $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '1');
 			
@@ -144,7 +146,7 @@ function process_front_end_question() {
     if( ( isset($_POST['_wpnonce']) && wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-1' ) || isset($_POST['new_question_step_1'])) && (! isset($_POST['question-post-complete']))){
 
         //If user is logged in - step 2
-        if(is_user_logged_in() && ! empty($_POST['post-question'])) {
+        if(is_user_logged_in() && strlen(trim($_POST['post-question'])) > 0) {
 			
 			
         	$GLOBALS['post_question_data'] = array('step'		=> '2',
@@ -167,7 +169,7 @@ function process_front_end_question() {
     	$errors = array();
     	
     	//Make sure they posted a question
-    	if(empty($_POST['your-question'])) {
+    	if(strlen(trim($_POST['your-question'])) == 0) {
     		
     		$valid = false;
     		$errors['your-question'] = 'Please enter a question.';
@@ -275,10 +277,6 @@ function process_front_end_question() {
 		       	
 		       	unset($current_user);
 		       	get_currentuserinfo();
-		       	
-		       /*	echo '<pre>';
-		       	var_dump($current_user);
-		       	exit;*/
 		       	
 		        $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '3');
 		        
@@ -822,8 +820,8 @@ function truncated_text($text, $length = 100) {
 /**
  * Horrible clusterfuck that generates a shitty omniture string - which we'll probably need to completely redo anyway.
  *
- * The Section rewrite rules interfere with the ability to retreive original query data at the time of enqueueing scripts.
- * If and WHEN we'ere asked to rewrite omniture - this problem should be solved from within Section/WidgetPress first.
+ * The Section rewrite rules interfere with the ability to retrieve original query data at the time of enqueueing scripts.
+ * If and WHEN we're asked to rewrite omniture - this problem should be solved from within Section/WidgetPress first.
  *
  * @author Eddie Moya
  */
@@ -930,6 +928,23 @@ function get_last_activity_date($user_id) {
 	
 	
 	return $wpdb->get_var($q);
+}
+
+/**
+ * return the contents of a http request
+ * 
+ * @param string $url
+ * @return string -- content of the request
+ * @author Carl Albrecht-Buehler
+ */
+function curl_it($url){
+    $curl_handle = curl_init();
+    curl_setopt( $curl_handle, CURLOPT_URL, $url );
+    curl_setopt( $curl_handle, CURLOPT_CONNECTTIMEOUT, 2 );
+    curl_setopt( $curl_handle, CURLOPT_RETURNTRANSFER, 1 );
+    $content = curl_exec( $curl_handle );
+    curl_close( $curl_handle );
+    return $content;
 }
 
 /**
