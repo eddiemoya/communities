@@ -19,6 +19,7 @@ function addthis_kses($string)
     $mytags = $allowedposttags;
     $mytags['a'][ 'gplusonesize' ] = array();
     $mytags['a'][ 'gplusonecount' ]= array();
+    $mytags['a'][ 'gplusoneannotation' ]= array();
     $mytags['a'][ 'fblikelayout' ]= array();
     $mytags['a'][ 'fblikesend' ]= array();
     $mytags['a'][ 'fblikeshow_faces' ]= array();
@@ -109,6 +110,8 @@ function addthis_kses($string)
                         $checked = 'checked="checked"';
                         $class = '';
                     }
+                    if ($checked === '' && isset($v['defaultHide']) &&  $v['defaultHide'] == true)
+                        continue;
                     echo "<div class='$name"."_option select_row $class '><span class='radio'><input $checked type='radio' value='".$k."' name='addthis_settings[$name]' /></span><img alt='".$k."'  src='". $imgLocationBase  .  $v['img'] ."' align='left' /><div class='clear'></div></div>";
                 }
                 
@@ -117,31 +120,31 @@ function addthis_kses($string)
                 if ($option == 'custom' || ($option == 'none' && 'custom' == $addthis_default_options[$name]  ) ){
                     $checked = 'checked="checked"';
                     $class = '';
+
+                    echo "<div class='$name"."_option select_row $class mt20'><span class='radio mt4'><input $checked type='radio' value='custom' name='addthis_settings[$name]' id='$name"."_custom_button' /></span> Build your own<div class='clear'></div></div>";
+
+                    echo "<ul class='$name"."_option_custom hidden'>";
+                    $custom_16 = ($custom_size == 16) ? 'selected="selected"' : '' ;
+                    $custom_32 = ($custom_size == 32) ? 'selected="selected"' : '' ;
+
+                    echo "<li class='nocheck'><span class='at_custom_label'>Size:</span><select name='addthis_settings[$name"."_custom_size]'><option value='16' $custom_16 >16x16</option><option value='32' $custom_32 >32x32</option></select><br/><span class='description'>The size of the icons to display</span></li>";
+                    echo "<li><input $do_custom_services class='at_do_custom'  type='checkbox' name='addthis_settings[$name"."_do_custom_services]' value='true' /><span class='at_custom_label'>Services to always show:</span><input class='at_custom_input' name='addthis_settings[$name"."_custom_services]' value='$custom_services'/><br/><span class='description'>Enter a comma-separated list of <a href='//addthis.com/services'>service codes</a> </span></li>";
+                    echo "<li><input type='checkbox' $do_custom_preferred class='at_do_custom'  name='addthis_settings[$name"."_do_custom_preferred]' value='true' /><span class='at_custom_label'>Automatically personalized:</span>
+                        <select name='addthis_settings[$name"."_custom_preferred]' class='at_custom_input'>";
+                        for($i=0; $i <= 11; $i++)
+                        {
+                            $selected = '';
+                            if ($custom_preferred == $i)
+                                $selected = 'selected="selected"';
+                            echo '<option value="'.$i.'" '.$selected.'>'.$i.'</option>';
+
+                        }
+                    echo "</select><br/><span class='description'>Enter the number of automatically user-personalized items you want displayed</span></li>";
+                   $custom_more = ( $custom_more ) ? 'checked="checked"' : '';
+                    
+                    echo "<li><input $custom_more type='checkbox' class='at_do_custom' name='addthis_settings[$name"."_custom_more]' value='true' /><span class='at_custom_label'>More</span><br/><span class='description'>Display our iconic logo that offers sharing to over 330 destinations</span></li>";
+                    echo "</ul></div>";
                 }
-
-                echo "<div class='$name"."_option select_row $class mt20'><span class='radio mt4'><input $checked type='radio' value='custom' name='addthis_settings[$name]' id='$name"."_custom_button' /></span> Build your own<div class='clear'></div></div>";
-
-                echo "<ul class='$name"."_option_custom hidden'>";
-                $custom_16 = ($custom_size == 16) ? 'selected="selected"' : '' ;
-                $custom_32 = ($custom_size == 32) ? 'selected="selected"' : '' ;
-
-                echo "<li class='nocheck'><span class='at_custom_label'>Size:</span><select name='addthis_settings[$name"."_custom_size]'><option value='16' $custom_16 >16x16</option><option value='32' $custom_32 >32x32</option></select><br/><span class='description'>The size of the icons to display</span></li>";
-                echo "<li><input $do_custom_services class='at_do_custom'  type='checkbox' name='addthis_settings[$name"."_do_custom_services]' value='true' /><span class='at_custom_label'>Services to always show:</span><input class='at_custom_input' name='addthis_settings[$name"."_custom_services]' value='$custom_services'/><br/><span class='description'>Enter a comma-separated list of <a href='//addthis.com/services'>service codes</a> </span></li>";
-                echo "<li><input type='checkbox' $do_custom_preferred class='at_do_custom'  name='addthis_settings[$name"."_do_custom_preferred]' value='true' /><span class='at_custom_label'>Automatically personalized:</span>
-                    <select name='addthis_settings[$name"."_custom_preferred]' class='at_custom_input'>";
-                    for($i=0; $i <= 11; $i++)
-                    {
-                        $selected = '';
-                        if ($custom_preferred == $i)
-                            $selected = 'selected="selected"';
-                        echo '<option value="'.$i.'" '.$selected.'>'.$i.'</option>';
-
-                    }
-                echo "</select><br/><span class='description'>Enter the number of automatically user-personalized items you want displayed</span></li>";
-               $custom_more = ( $custom_more ) ? 'checked="checked"' : '';
-                
-                echo "<li><input $custom_more type='checkbox' class='at_do_custom' name='addthis_settings[$name"."_custom_more]' value='true' /><span class='at_custom_label'>More</span><br/><span class='description'>Display our iconic logo that offers sharing to over 330 destinations</span></li>";
-                echo "</ul></div>";
                
                     $class = 'hidden';
                     $checked = '';
@@ -152,12 +155,13 @@ function addthis_kses($string)
                     }
 
                     echo "<div class='$name"."_option select_row $class '><span class='radio mt4'><input $checked type='radio' value='custom_string' name='addthis_settings[$name]' id='$name"."_custom_string' /></span> Custom button<div class='clear'></div></div>";
-                    echo "<textarea rows='5' cols='120' name='addthis_settings[$name"."_custom_string]' id='$name"."_custom_string_input' />".esc_textarea($custom_string)."</textarea>";
+                    _e( sprintf("<div style='max-width: 748px;' class='%s_custom_string_input'> This text box allows you to enter any AddThis markup that you wish. To see examples of what you can do, visit <a href='https://www.addthis.com/get/sharing'>AddThis.com Sharing Tools</a> and select any sharing tool. You can also check out our <a href='http://support.addthis.com/customer/portal/articles/381263-addthis-client-api#rendering-decoration'>Client API</a>. For any help you may need, please visit <a href='http://support.addthis.com'>AddThis Support</a></div>", $name ),'addthis_trans_domain');
+                    echo "<textarea style='max-width:748px;'  rows='5' cols='120' name='addthis_settings[$name"."_custom_string]' class='$name"."_custom_string_input' />".esc_textarea($custom_string)."</textarea>";
 
                     echo '</div>';
                 ?>
-				<div class="select_row description"><span class='radio mt0'><input type="radio" name="addthis_settings[<?php echo $name; ?>]" <?php echo ('none' == $option) ? 'checked="checked"' : '';?> value='none' /></span>None</div>
-				<p><a class="<?php echo $name;?>_option" href="#<?php echo $name;?>_more" id="<?php echo $name;?>_more">More options</a></p>
+				<div class="select_row description"><span class='radio mt0'><input type="radio" class='always' name="addthis_settings[<?php echo $name; ?>]" <?php echo ('none' == $option) ? 'checked="checked"' : '';?> value='none' /></span>None</div>
+				<p><a class="<?php echo $name;?>_option" href="#<?php echo $name;?>_more" id="<?php echo $name;?>_more"><span>More options</span><span class='hidden'>Less options</span></a></p>
 				
 			  </fieldset>	
             </td>

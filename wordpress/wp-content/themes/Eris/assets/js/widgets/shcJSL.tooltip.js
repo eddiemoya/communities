@@ -263,8 +263,6 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
             case 'left':
                 jQuery(arrow).children().first('div').removeClass();
                 jQuery(arrow).children().first('div').addClass('left');
-                jQuery(arrow).children().last('div').removeClass();
-                jQuery(arrow).children().last('div').addClass('leftBorder');
 
                 var arrowLeft = jQuery(arrow).children('.left');
 
@@ -278,8 +276,6 @@ TOOLTIP.tooltip = $tooltip = function(element, options) {
             case 'top':
                 jQuery(arrow).children().first('div').removeClass();
                 jQuery(arrow).children().first('div').addClass('top');
-                jQuery(arrow).children().last('div').removeClass();
-                jQuery(arrow).children().last('div').addClass('topBorder');
 
                 var arrowTop = jQuery(arrow).children('.top');
 

@@ -16,6 +16,8 @@ function get_subcategories_ajax(){
                 'hierarchical' => true,
                 'hide_if_empty' => true,
                 'hide_empty' => $hide_empty,
+            	'orderby'	=> 'name',
+				'order'	=> 'ASC',
                 'class' => 'input_select',
                 'name' => 'sub-category',
                 'id' => 'sub-category',

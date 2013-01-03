@@ -56,6 +56,7 @@
             "See More" => "http://www.sears.com/shc/s/nb_10153_12605_NB_see+it+all?storeId=10153&amp;vName=see+it+all&amp;catalogInd=NB&amp;catalogId=12605"
             )
     );
+   // $footer_html = curl_it("http://localhost:3000/navigators/sears-footer-tree");
 ?>
 <nav id="footer_navigation">
     <ul id="footer_nav" class="dropmenu clearfix">

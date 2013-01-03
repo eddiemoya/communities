@@ -91,6 +91,9 @@ ul.nav-tab-wrapper li.ui-tabs-selected{
 .submit a {
 	margin-left: 20px;
 }
+.form-table tr th h2{
+    width: 240px;
+}
 
 
 
