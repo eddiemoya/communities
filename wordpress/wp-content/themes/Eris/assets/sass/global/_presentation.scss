@@ -647,6 +647,9 @@ textarea.discussion {
       .input_textarea {
         width:98%;
       }
+      select {
+        display:block;
+      }
     }
     .state_confirm-post {
       .confirmation {
@@ -808,6 +811,11 @@ $tab-padding: "1em 0 .6em 0";
     margin-left: 2em;
     @extend .bold;
   }
+  .comment-tally {
+    float: left;
+    margin: 0 1em;
+    font-weight: bold;
+  }
   .expert-answers {
     li {
       border-top: 0;
@@ -865,11 +873,9 @@ $tab-padding: "1em 0 .6em 0";
     margin: 2em;
   }
   .badge-descriptor {
-    clear:left;
-    position:relative;
-    left:8.5em;
-    top:-3.5em;
-    margin-left:2.5%
+    position:absolute;
+    top:24em;
+    margin-left:13%;
   }
 }
 
@@ -922,7 +928,6 @@ $tab-padding: "1em 0 .6em 0";
 .tooltip {
   display: none;
   position: absolute;
-  left: em-adjust( 12em );
   width: 250px;
   z-index: 1000003;
 
@@ -931,33 +936,18 @@ $tab-padding: "1em 0 .6em 0";
     position: absolute;
 
     .left {
-      background-color: transparent;
-      border-color: #ffffff #a0c7ff #ffffff #ffffff;
-      border-style: solid;
-      border-width: 10px 10px 10px 0px;
-      width: 0px;
-      height: 0px;
-    }
-
-    .leftBorder {
-      background-color: transparent;
-      border-color: transparent #ffffff transparent transparent;
-      border-style: solid;
-      border-width: 9px 9px 9px 0px;
-      width: 0px;
-      height: 0px;
+      background: image-url('arrow-left.png');
+      height: 22px;
       position: relative;
-      left: 3px;
-      top: 2px;
+      width: 12px;
     }
 
     .top {
-      background-color: transparent;
-      border-color: transparent transparent #a0c7ff transparent;
-      border-style: solid;
-      border-width: 0px 10px 10px 10px;
-      width: 0px;
-      height: 0px;
+      background: image-url('arrow-top.png');
+      height: 12px;
+      position: relative;
+      top: 1px;
+      width: 22px;
     }
 
     .topBorder {
@@ -994,7 +984,8 @@ $tab-padding: "1em 0 .6em 0";
     }
 
     textarea {
-      width: 100%;
+      width: 99%;
+      padding: 0;
     }
   }
 }
