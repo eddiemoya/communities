@@ -3,6 +3,8 @@
     get_currentuserinfo();
 
     $buttons = array();
+    
+    $brand = theme_option("brand") ? theme_option("brand") : 'sears';
 
     $acts = array('upvote', 'downvote', 'follow');
 
@@ -225,7 +227,7 @@
         <form class="flag-form" id="commentForm-<?php echo $id; ?>" method="post" shc:gizmo="transFormer">
             <textarea class="flagField" rows="5" name="comment" aria-required="true" shc:gizmo:form="{required: true}"></textarea>
             <input
-                    class="kmart_button"
+                    class="<?php echo $brand; ?>_button"
                     type="submit"
                     value="Flag"
                     shc:gizmo="actions"
@@ -252,7 +254,7 @@
                             }
                         }"
                 />
-            <input class="kmart_button azure" type="reset" value="Cancel" onclick="jQuery('.tooltip').hide();" />
+            <input class="<?php echo $brand; ?>_button azure" type="reset" value="Cancel" onclick="jQuery('.tooltip').hide();" />
             <input name="comment_post_ID" type="hidden" value="<?php echo $post_id; ?>" />
             <input name="comment_parent" type="hidden" value="<?php echo $id; ?>" />
             <input name="comment_type" type="hidden" value="flag" />
