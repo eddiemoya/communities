@@ -27,7 +27,7 @@ if (class_exists('CCT_Controller_Comment_Types')) {
              ),
              'parent_domain' => 'post',
              'parent_type' => 'question',
-             'capability' => 'administrator',
+             'capability' => 'moderate_flags',
              'menu_icon' => get_template_directory_uri() . '/assets/img/admin/flags_admin_icon.gif',
              'menu_position' => 8,
              'template' => get_template_directory_uri() . '/parts/flags.php'
@@ -60,7 +60,7 @@ if (class_exists('CCT_Controller_Comment_Types')) {
             ),
             'parent_domain' => 'post',
             'parent_type' => 'question',
-            'capability' => 'administrator',
+            'capability' => 'moderate_answers',
             'menu_position' => 9,
             'template' => get_template_directory_uri() . '/parts/flags.php'
         );
@@ -90,12 +90,12 @@ if (class_exists('CCT_Controller_Comment_Types')) {
             ),
             'parent_domain' => 'post',
             'parent_type' => 'question',
-            'capability' => 'administrator',
+            'capability' => 'moderate_comments',
             'menu_position' => 9,
             'template' => get_template_directory_uri() . '/parts/flags.php'
         );
 
-        CCT_Controller_Comment_Types::register_comment_type('comments', $args);
+        CCT_Controller_Comment_Types::register_comment_type('comment', $args);
     }
 
     //add_action('init', 'register_comments', 11);
@@ -148,28 +148,32 @@ add_filter('cct_condition_comment', 'set_comment_comment_type', 10, 4);
 
 
 function organizeByChildren($comments) {
-    if(isset($comments) && !empty($comments)) {
-        foreach($comments as $key=>$comment) {
-            if(isset($comment->comment_parent) && $comment->comment_parent != '0' && $comment->comment_parent != '') {
-                $children[$comment->comment_parent][] = $comment;
-
-                unset($comments[$key]);
-            }
-        }
-
-        if(isset($children) && !empty($children)) {
-            foreach($comments as $comment) {
-                if(array_key_exists($comment->comment_ID, $children)) {
-                    foreach($children[$comment->comment_ID] as $child) {
-                        $comment->children[] = $child;
-                    }
-
-                    // ensure oldest child comment is first
-                    $comment->children = array_reverse($comment->children);
-                }
-            }
-        }
-    }
+	
+	if(! is_admin()){
+		
+	    if(isset($comments) && !empty($comments)) {
+	        foreach($comments as $key=>$comment) {
+	            if(isset($comment->comment_parent) && $comment->comment_parent != '0' && $comment->comment_parent != '') {
+	                $children[$comment->comment_parent][] = $comment;
+	
+	                unset($comments[$key]);
+	            }
+	        }
+	
+	        if(isset($children) && !empty($children)) {
+	            foreach($comments as $comment) {
+	                if(array_key_exists($comment->comment_ID, $children)) {
+	                    foreach($children[$comment->comment_ID] as $child) {
+	                        $comment->children[] = $child;
+	                    }
+	
+	                    // ensure oldest child comment is first
+	                    $comment->children = array_reverse($comment->children);
+	                }
+	            }
+	        }
+	    }
+	}
 
     return $comments;
 }

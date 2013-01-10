@@ -1,0 +1,15 @@
+// Tweaks to Moodle for Kmart
+
+.kmart {
+  #moodle_window {
+    background:rgba(253,190,81,.3);
+  }
+
+  .loading {
+    background:transparent image-url("#{$kmart-img}background_loading.gif") no-repeat center center;
+  }
+}
+
+.no-rgba .kmart #moodle_window {
+  background:transparent image-url("#{$kmart-img}background_modal-border_no-rgba.png") repeat 0px 0px;
+}

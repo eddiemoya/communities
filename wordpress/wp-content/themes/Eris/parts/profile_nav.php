@@ -1,9 +1,15 @@
 <?php
 
-    $concat = has_screen_name( $profile_user->ID ) ? '?post-type=' : '&post-type=';
+    $concat = (strpos($author_url, '?') !== false) ? '&post-type=' : '?post-type=';
+    
     if ( user_can( $profile_user->ID, "show_badge" ) ) {
         $badge_page = get_page_by_title( 'Types of Badges' );
     }
+    
+    // Get the stats
+    $profile_user->answer_count  = get_comments( array( 'user_id' => $profile_user->ID, 'status' => 'approved', 'count' => true, 'type' => 'answer' ) );
+    $profile_user->comment_count = get_comments( array( 'user_id' => $profile_user->ID, 'status' => 'approved', 'count' => true, 'type' => 'comment' ) );
+    $profile_user->post_count    = return_post_count( $profile_user->ID );
 
     $a_tabs = array(
         "Community Activity" => $author_url . $concat . 'recent',
@@ -19,11 +25,11 @@
             "name" => "Questions",
             "url" => $author_url . $concat . 'question'
         ),
-        /*
+        
         "" => array(
             "name" => "Comments",
             "url" => $author_url . $concat . ''
-        ),*/
+        ),
          "comment" => array(
             "name" => "Comments",
             "url" => $author_url . $concat . 'comment'

@@ -1,0 +1,98 @@
+$poll-sizes: ratioize( ( 60, 220, 40, 6, 2 ), 98% );
+
+%polls_indent {
+  margin-left: .75em;
+}
+%polls_middle_column {
+  border-right: 1px solid sears( decorative );
+  border-left: 1px solid sears( decorative );
+}
+.wp-polls {
+  .results li {
+    clear: left;
+    font-size: font-size( 12 );
+    span {
+      float: left;
+      @extend .break-word;
+      &:first-child {
+        font-size: font-size( 20, 12 );
+        padding-top: .5em;
+        width: nth( $poll-sizes, 1 );
+        padding-right: nth( $poll-sizes, 4 );
+      }
+    }
+    & > span + span {
+      padding: .909em nth( $poll-sizes, 5 ) 0 nth( $poll-sizes, 5 );
+      width: nth( $poll-sizes, 2 );
+    }
+    & > span + span + span {
+      width: nth( $poll-sizes, 3 );
+      padding-right: 0;
+      padding-left: 0;
+      font-size: font-size( 11 );
+    }
+  }
+  .options li {
+    @include col_layout( ( 255, 65 ), 10, $float: right );
+    margin: .5em 0;
+    span {
+      text-align: right;
+    }
+  }
+  .polls_submit {
+    margin-top: 1.5em;
+    margin-left: 19.6979%;
+  }
+  .sears_button {
+    margin-left: -1em;
+  }
+  .polls_error{
+    color: red;
+    padding-left: 1.3em;
+    margin: .5em 0;
+    background: image-url('error-arrow.png') no-repeat top left;
+  }
+  .figures {
+    text-align: right;
+  }
+  .bar {
+    line-height: .8;
+    margin: .3em 0;
+  }
+  .info, .total {
+    > div:first-child {
+      @extend %polls_indent;
+    }
+    @extend %polls_middle_column;
+  }
+  .total {
+    line-height: 1;
+    padding-top: 1.3em;
+  }
+  .content-header {
+    h3 {
+      font-size: font-size( 20 );
+      word-spacing: -.33em;
+      span {
+        font-weight: lighter;
+        font-family: "Helvetica Neue", #{$basefont};
+      }
+    }
+    p {
+      font-size: font-size( 12 );
+      font-weight: normal;
+      font-style: italic;
+      margin: .5em 0;
+    }
+  }
+  h1.content-headline {
+    font-size: font-size( 16 );
+  }
+}
+
+.wp-polls-loading {
+  display: none;
+  text-align: center;
+  height: 16px;
+  line-height: 16px;
+}

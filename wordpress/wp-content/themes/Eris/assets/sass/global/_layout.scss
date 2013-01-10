@@ -1,0 +1,97 @@
+.clearfix:before, .clearfix:after { 
+  content: ""; 
+  display: table; 
+}
+
+.clearfix:after { 
+  clear: both; 
+}
+
+.clearfix {
+  clear:both; 
+  *zoom: 1; 
+}
+
+.body {
+  width:#{$grid-width}px;
+  margin:0px auto;
+}
+
+// McGriddles Stuff
+[class*="span"] {
+  display:block;
+  float:left;
+  width:100%;
+  margin-left:$margin-width-pct;
+}
+
+// set up the basic columns
+@for $i from 1 through ( $column-count ) {
+  $width: floor( grid-width( $i, $margin-width ) );
+  $span-widths: append( $span-widths, $width );
+  .span#{$i} {
+    width: percentage( $width / $grid-width );
+  }
+}
+
+// adjust the necessary classes
+@include margin-adjust;
+
+// create specialized rules that adjust widths and
+// margins nested inside the $column-bases columns
+@for $c from 1 through length( $column-bases ) {
+  $container:         nth( $column-bases, $c );
+  $margin:            percentage( $margin-width / nth( $span-widths, $container ) );
+  @for $s from 1 through length( $column-bases ) {
+    $span:            nth( $column-bases, $s );
+    $proportionate:   ( $span / $column-count ) * $container;
+    .span#{$container} .span#{$span} {
+      width: grid-width( $proportionate, $margin );
+      margin-left: $margin;
+    }
+  }
+  @include margin-adjust( ".span#{$container} ", $margin );
+}
+
+// zero out the leftmost columns' left margin
+[class*="span"]:first-child,
+.span3 + .span3 + .span3 + .span3 + [class*="span"],
+.span3 + .span3 + .span6 + [class*="span"],
+.span3 + .span9 + [class*="span"],
+.span4 + .span4 + .span4 + [class*="span"],
+.span4 + .span8 + [class*="span"],
+.span6 + .span3 + .span3 + [class*="span"],
+.span6 + .span6 + [class*="span"],
+.span8 + .span4 + [class*="span"],
+.span9 + .span3 + [class*="span"],
+.span12 + [class*="span"] {
+  clear:left;
+  margin-left:0px;
+}
+
+.content-display {}
+.dropzone {}
+
+#container {
+  margin:0 auto;
+  position:relative;
+  width:960px;
+}
+
+#persistent-header {
+  background-color:#ffffff;
+  z-index:1000000;
+}
+
+#persistent-header.persist {
+  position:fixed;
+  top:0px;
+}
+
+#content {
+  padding:em-adjust( 1em ) ( $margin-width-pct / 2);
+}
+
+.input_text {
+  border:solid 1px #cccccc;
+}

@@ -1,11 +1,13 @@
 # Require any additional compass plugins here.
 
 # Set this to the root of your project when deployed:
-http_path = "/"
-css_dir = "wordpress/wp-content/themes/Eris/"
-sass_dir = "wordpress/wp-content/themes/Eris/assets/sass/"
-images_dir = "wordpress/wp-content/themes/Eris/assets/img/"
+http_path       = "/"
+css_dir         = "wordpress/wp-content/themes/Eris/assets/css/"
+sass_dir        = "wordpress/wp-content/themes/Eris/assets/sass/"
+images_dir      = "wordpress/wp-content/themes/Eris/assets/img/"
 javascripts_dir = "wordpress/wp-content/themes/Eris/assets/js/"
+
+# add_import_path "/Users/calbre1/.rvm/gems/ruby-1.9.2-p290/bundler/gems/uihelper-rails_gem-e180d58fb21b/app/assets/stylesheets/"
 
 Sass::Script::Number.precision = 15
 
@@ -21,7 +23,7 @@ end
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
-output_style = (environment == :production) ? :compressed : :nested
+output_style = (environment == :production) ? :compressed : :compact
 
 # To enable relative paths to assets via compass helper functions. Uncomment:
 relative_assets = true

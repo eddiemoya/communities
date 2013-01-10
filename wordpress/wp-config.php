@@ -1,4 +1,6 @@
 <?php
+	error_reporting(0);
+
 /**
  * The base configurations of the WordPress.
  *
@@ -14,45 +16,26 @@
  * @package WordPress
  */
 
-define('USE_LOCAL_DB', true);
 
-if( ! USE_LOCAL_DB) {
 
-	/** The name of the database for WordPress */
-	define('DB_NAME', 'deb');
+/** The name of the database for WordPress */
 
-	/** MySQL database username */
-	define('DB_USER', 'root');
+define('DB_NAME', 'comm_local');
 
-	/** MySQL database password */
-	define('DB_PASSWORD', 'root');
+/** MySQL database username */
+define('DB_USER', 'wp_user');
 
-	/** MySQL hostname */
-	define('DB_HOST', 'localhost');
-	// define('WP_ALLOW_MULTISITE', true);
+/** MySQL database password */
+define('DB_PASSWORD', 'philos10');
 
-	/** Database Charset to use in creating database tables. */
-	define('DB_CHARSET', 'utf8');
-	
-} else {
-	
-	/** The name of the database for WordPress */
-	define('DB_NAME', 'comm_local');
+/** MySQL hostname */
+define('DB_HOST', 'localhost');
 
-	/** MySQL database username */
-	define('DB_USER', 'wp_user');
+/** Database Charset to use in creating database tables. */
+define('DB_CHARSET', 'utf8');
 
-	/** MySQL database password */
-	define('DB_PASSWORD', 'philos10');
-
-	/** MySQL hostname */
-	define('DB_HOST', 'localhost');
-	// define('WP_ALLOW_MULTISITE', true);
-
-	/** Database Charset to use in creating database tables. */
-	define('DB_CHARSET', 'utf8');
-	
-}
+/** The Database Collate type. Don't change this if in doubt. */
+define('DB_COLLATE', '');
 
 
 /**#@+

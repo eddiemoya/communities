@@ -20,14 +20,15 @@ class User_Profile {
 	 */
 	public $post_types = array('question',
 								'post',
-							  	'guides');
+							  	'guide');
 	
 	/**
 	 * Array of comment types
 	 * @var array
 	 */
 	public $comment_types = array('answer',
-									'comment');
+									'comment',
+									'');
 	
 	/**
 	 * Array of action types
@@ -56,17 +57,12 @@ class User_Profile {
 	public $activities = null;
 	
 	/**
+	 * experts - array of expert user_id's
 	 * 
-	 * @var unknown_type
+	 * @var array
 	 */
 	
 	public $experts;
-	
-	/**
-	 * Posts per page 
-	 * 
-	 * @var int
-	 */
 	
 	/**
 	 * Category term id(s)
@@ -74,8 +70,12 @@ class User_Profile {
 	 */
 	private $category;
 	
-	
-	private $posts_per_page = 5;
+	/**
+	 * Posts per page 
+	 * 
+	 * @var int
+	 */
+	private $posts_per_page = 20;
 	
 	/**
 	 * Pagination offset
@@ -163,7 +163,7 @@ class User_Profile {
 		return $this;
 	}
 	
-	/**guides/
+	/**
 	 * Sets posts_per_page
 	 * @param int $num
 	 * @return object
@@ -182,7 +182,7 @@ class User_Profile {
    	 * @return object
    	 */
    	public function get_user_posts_by_type($post_type = 'post' ) {
-// guides/
+
    		$args = 	array('author'			=> $this->user_id,
    						'post_status'		=> 'publish',
    						'post_type'			=> $post_type,
@@ -350,7 +350,7 @@ class User_Profile {
 				LEFT JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
       			LEFT JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
 				WHERE tt.term_id IN ({$this->category}) AND tt.taxonomy = 'category' 
-				AND p.post_type IN ('question', 'guides', 'post')
+				AND p.post_type IN ('question', 'guide', 'post')
 				AND p.post_status='publish')
 				
 				
@@ -394,7 +394,7 @@ class User_Profile {
 				LEFT JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
       			LEFT JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
 				WHERE pa.object_type = 'posts'
-				AND pa.object_subtype IN ('question', 'guides', 'post')
+				AND pa.object_subtype IN ('question', 'guide', 'post')
 				AND pa.action_type IN ('upvote', 'downvote', 'follow')
 				AND tt.term_id IN ({$this->category}) 
 				AND tt.taxonomy = 'category'
@@ -429,6 +429,7 @@ class User_Profile {
 		
 			
 				$this->activities = $wpdb->get_results($q);
+				
 				
 				$this->set_activities_attributes();
 				
@@ -608,7 +609,7 @@ class User_Profile {
 		
 		global $wpdb;
 		
-		
+		$comment_type_sql = ($type == 'comment') ? "comment_type IN ('', 'comment') " : "comment_type = '{$type}' ";
 	    /* $args = array(	'type'				=> $type,
 					 	'status'			=> 'approve',
 						'user_id'			=> $this->user_id,
@@ -621,7 +622,7 @@ class User_Profile {
 			
 			$q = "SELECT *
 				FROM {$wpdb->comments}
-				WHERE comment_type = '{$type}'
+				WHERE {$comment_type_sql}
 				AND comment_approved = 1
 				AND user_id = {$this->user_id}
 				ORDER BY comment_date DESC {$this->limit}";
@@ -748,7 +749,7 @@ class User_Profile {
 		}
 		
 			//If there's blank and comment, remove blank
-		 	/*if(in_array('', $this->nav) && in_array('comment', $this->nav)) {
+		 	if(in_array('', $this->nav) && in_array('comment', $this->nav)) {
 		 		
 		 		//Find blank
 		 		$i = array_search('', $this->nav);
@@ -760,7 +761,7 @@ class User_Profile {
 		 		$i = array_search('', $this->nav);
 		 		$this->nav[$i] = 'comment';
 		 		
-		 	}*/
+		 	}
 		 	
 		 		
 		
@@ -925,6 +926,7 @@ class User_Profile {
 					'pad_counts'               => false );
 				
 		$cats = get_categories( $args );
+		
 		
 		//Package into terms array
 		foreach($cats as $cat){

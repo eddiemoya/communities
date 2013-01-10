@@ -24,9 +24,9 @@ get_template_part('parts/header');
 					</ul>
 					<p>Evil trolls or not, we&rsquo;re here to help you find just what you need.</p>
 					<ul>
-						<li><a href="">Community Customer Care</a></li>
+						<li><a href="<?php echo get_permalink(get_page_by_path('customer-care'));?>">Community Customer Care</a></li>
 						<li>or</li>
-						<li><a href="#">MySears Community</a></li>
+						<li><a href="<?php echo get_site_url('');?>"><?php echo (strtolower(theme_option("brand")) == "sears") ? "MySears Community" : "MyKmart Community";?></a></li>
 					</ul>
 				</section>
 				

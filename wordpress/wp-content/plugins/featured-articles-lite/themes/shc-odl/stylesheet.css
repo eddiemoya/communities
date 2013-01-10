@@ -1,0 +1,253 @@
+/**
+ * To create a new color scheme see the details about the new themes file structure: http://www.codeflavors.com/documentation/theme-file-structure/
+ */
+ 
+@font-face { font-family: "Targetts"; src: url('fonts/tagetts2_U.ttf') format('truetype'); }
+ #carousel {
+     overflow: hidden;
+ }
+ 
+.FA_overall_container_smoke {
+	display:block;
+	position:relative;
+	clear:both;
+	border:1px solid #b5b5b5;
+	z-index:1;	
+	margin:0px auto;
+}	
+
+div.FA_overall_container_smoke.dark {
+    border: none;
+}
+
+div.FA_overall_container_smoke.dark > a {
+    display: none !important;
+}
+.FA_overall_container_smoke  a:focus {
+	outline:0px;
+}
+focus {
+	outline:0px;
+}
+
+.FA_overall_container_smoke  h3.FA_title_section { 	
+	padding:0px;
+	margin:0px;
+	font-size:30px;
+	letter-spacing:3px;
+	color:#003333; 
+	font-weight:normal;
+	font-style:italic;
+}
+
+.FA_overall_container_smoke .FA_featured_articles {
+	display:block;
+	position:relative;
+	clear:both;
+	height:317px;
+	overflow:hidden;
+	width:100%;
+}
+
+.FA_overall_container_smoke .FA_featured_articles .FA_article{
+	display:block;
+	position:relative;
+	clear:both;
+	/* if you plan on using left slide morph, set width on the elements */
+	width:100%;
+	height:100%;
+	color:#CCCCCC;
+	padding:0px;
+	overflow:hidden;
+	text-align:justify;
+}
+.FA_overall_container_smoke .FA_featured_articles .FA_wrap{
+/*    background: url(images/smoke.png);*/
+    width: 96%;
+    padding: 2%;
+    height: 70%;
+    display: block;
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+}
+	.FA_overall_container_smoke .FA_featured_articles .FA-remove-bg{
+		background:none;
+	}
+
+.FA_overall_container_smoke .FA_featured_articles .FA_article h2{
+	margin:0px;
+	padding:0px;
+	font-size:18px;
+	color:#FFF !important;
+	font-weight:normal;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	border:none;	
+	clear:none;
+	text-align:left;
+	z-index:1;
+}
+	.FA_overall_container_smoke .FA_featured_articles .FA_article h2 a{
+		color:#FFF;
+	}
+
+.FA_overall_container_smoke .FA_featured_articles .FA_article span.FA_date{
+	font-size:12px;
+	color:#CCC;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-style:italic;
+	padding:0px;
+}
+
+.FA_overall_container_smoke .FA_featured_articles .FA_article p{
+    font-family:  "Targetts";
+    text-shadow: 0px 0px 6px #555;
+    filter: dropshadow(color=#555, offx=0, offy=0);
+    font-size: 70px;
+    margin: 0px;
+    line-height: 105px;
+    width: 100%;
+}
+.FA_overall_container_smoke .FA_featured_articles .FA_article p a{
+	color:#FFF !important;
+}
+.FA_overall_container_smoke .FA_featured_articles .FA_article a.FA_read_more{
+	font-size:11px;
+	color:#ccc;
+	padding:0px;
+	text-decoration:none;
+/*	background:url(smoke.png);*/
+/*	padding:10px;*/
+/*	float:right;*/
+}
+/*
+.FA_overall_container_smoke .FA_back{
+	display:block;
+	position:absolute;
+	left:10px;
+	bottom:10px;
+	width:20px;
+	height:20px;
+	line-height:20px;
+	text-align:center;
+	color:#FFF !important;
+	background:url(smoke.png);
+	text-decoration:none;
+	z-index:110;
+}/*
+.FA_overall_container_smoke .FA_next{
+	display:block;
+	position:absolute;
+	left:32px;
+	bottom:10px;
+	width:20px;
+	height:20px;
+	line-height:20px;
+	text-align:center;
+	color:#FFF !important;
+	background:url(smoke.png);
+	text-decoration:none;
+	z-index:110;
+}
+.FA_overall_container_smoke .FA_back:HOVER,
+.FA_overall_container_smoke .FA_next:HOVER{
+	color:#CCC !important;
+}*/
+
+/*
+	Bottom navigation
+*/
+.FA_overall_container_smoke ul.FA_navigation {
+	display:block;
+	position:relative;
+	padding:0px !important;
+	list-style-type:none !important;
+	margin:0px !important;
+	text-align:center;
+	width:100%;	
+	height:60px;
+	border:none;
+        
+}
+.FA_overall_container_smoke ul.FA_navigation li{
+    display:inline;
+    position: relative;
+    z-index: 9999;
+    border:none;
+    margin-left:9px;
+    padding:0px !important;
+    list-style-type:none !important;
+    background:none;
+}
+		.FA_overall_container_smoke ul.FA_navigation li.first{
+			margin-left:35px !important;
+		}
+		.FA_overall_container_smoke ul.FA_navigation li a{
+			display:inline-block;
+			width:auto;
+			height:25px;
+                        width: 22px;
+			background-image:url(images/navigation_off.png);
+			background-position:bottom center;
+			background-repeat:no-repeat;
+			margin:20px 0;
+            color: #EEE;
+		}
+		.FA_overall_container_smoke ul.FA_navigation li span{
+			display:none;
+			position:absolute;
+			top:-20px;
+			left:0px;
+			color:#CCC;
+			text-align:left;
+			font-family:Georgia, "Times New Roman", Times, serif;
+			width:100%;
+			padding-left:35px;
+		}
+	
+.FA_overall_container_smoke ul.FA_navigation a.active{
+    background-image: url('images/navigation_on.png');
+	color:#EE0000;
+}
+
+.FA_overall_container_smoke ul.FA_navigation a:hover{
+    text-decoration: none;
+}
+
+/* Sideways navigation */
+.FA_overall_container_smoke .FA_back{
+	display:block;
+	position:absolute;
+	left:0px;
+	top:45%;
+	width:20px;
+	height:45px;
+	background-image:url(images/left.png);
+	background-position:top center;
+	background-repeat:no-repeat;
+	z-index:110;
+}
+.FA_overall_container_smoke .FA_next{
+	display:block;
+	position:absolute;
+	right:0px;
+	top:45%;
+	width:20px;
+	height:45px;
+	background-image:url(images/right.png);
+	background-position:top center;
+	background-repeat:no-repeat;
+	z-index:110;
+}
+.FA_overall_container_smoke .FA_back:HOVER,
+.FA_overall_container_smoke .FA_next:HOVER{
+	background-position:bottom center;
+}
+.FA_overall_container_smoke .FA_wrap {
+	background: rgba(0,0,0,.3) !important;
+	height: 25px !important;
+}
+.FA_overall_container_smoke .scrollerTitle {
+	font-size: 20px;
+	color: #ffffff;
+}
