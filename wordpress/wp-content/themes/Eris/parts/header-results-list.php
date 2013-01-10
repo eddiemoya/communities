@@ -68,7 +68,8 @@ if(have_posts() || !is_widget()) : ?>
 							'id' => 'sub-category'
 						));
 					} ?>
-
+			<?php else: ?>
+				<input type="hidden" value="<?php echo get_queried_object()->term_id; ?>" name="filter-category" />
 			<?php endif; //if is_widget('show_filters') ?>
 
 			<?php if(is_widget('show_sort') || !is_widget()) : ?>
