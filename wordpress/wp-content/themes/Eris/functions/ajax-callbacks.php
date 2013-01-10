@@ -6,7 +6,7 @@
  */
 function get_subcategories_ajax(){
 
-    if(isset($_POST['category_id'])){
+    if(isset($_POST['category_id']) && $_POST['category_id'] != 'default'){
         $hide_empty = ($_POST['hide_empty'] == "true") ? true : false;
         $parent = absint((int)$_POST['category_id']);
 
@@ -16,6 +16,8 @@ function get_subcategories_ajax(){
                 'hierarchical' => true,
                 'hide_if_empty' => true,
                 'hide_empty' => $hide_empty,
+            	'orderby'	=> 'name',
+				'order'	=> 'ASC',
                 'class' => 'input_select',
                 'name' => 'sub-category',
                 'id' => 'sub-category',
@@ -275,7 +277,6 @@ function user_delete_comment() {
 
 add_action('wp_ajax_user_delete_comment', 'user_delete_comment');
 add_action('wp_ajax_nopriv_user_delete_comment', 'user_delete_comment');
-
 
 
 /**

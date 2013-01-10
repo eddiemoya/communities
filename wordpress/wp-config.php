@@ -1,4 +1,6 @@
 <?php
+	error_reporting(0);
+
 /**
  * The base configurations of the WordPress.
  *
@@ -14,23 +16,27 @@
  * @package WordPress
  */
 
+
+
 /** The name of the database for WordPress */
-define('DB_NAME', 'communities');
+
+define('DB_NAME', 'comm_local');
 
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', 'wp_user');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'tim97669');
+define('DB_PASSWORD', 'philos10');
 
 /** MySQL hostname */
-define('DB_HOST', '127.0.0.1:3306');
+define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
+
 
 /**#@+
  * Authentication Unique Keys and Salts.

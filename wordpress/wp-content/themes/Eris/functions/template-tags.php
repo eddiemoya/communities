@@ -137,6 +137,8 @@ function process_front_end_question() {
 	
 	global $current_user;
 	
+	/*var_dump($_POST);
+			exit;*/
 	//Neither step has been taken, were on step 1
  	 $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '1');
 			
@@ -144,7 +146,7 @@ function process_front_end_question() {
     if( ( isset($_POST['_wpnonce']) && wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-1' ) || isset($_POST['new_question_step_1'])) && (! isset($_POST['question-post-complete']))){
 
         //If user is logged in - step 2
-        if(is_user_logged_in() && ! empty($_POST['post-question'])) {
+        if(is_user_logged_in() && strlen(trim($_POST['post-question'])) > 0) {
 			
 			
         	$GLOBALS['post_question_data'] = array('step'		=> '2',
@@ -166,9 +168,18 @@ function process_front_end_question() {
 		$valid = true;
     	$errors = array();
     	
-    	if(empty($_POST['your-question'])) {
+    	//Make sure they posted a question
+    	if(strlen(trim($_POST['your-question'])) == 0) {
     		
+    		$valid = false;
     		$errors['your-question'] = 'Please enter a question.';
+    	}
+    	
+    	//Make sure that a category has been selected
+    	if($_POST['category'] == 'default') {
+    		
+    		$valid = false;    		
+    		$errors['category'] = 'Please select a category for your question.';
     	}
     	
     	//If a screen name is required...
@@ -266,10 +277,6 @@ function process_front_end_question() {
 		       	
 		       	unset($current_user);
 		       	get_currentuserinfo();
-		       	
-		       /*	echo '<pre>';
-		       	var_dump($current_user);
-		       	exit;*/
 		       	
 		        $GLOBALS['post_question_data'] =  array('errors' => null, 'step' => '3');
 		        
@@ -475,12 +482,17 @@ function get_profile_url( $user_id ) {
 	wp_cache_flush();
 	
     # create a fallback screen name if one has not yet been set by sso
-    if ( !has_screen_name( $user_id ) ) {
+    if ( !has_screen_name( $user_id )) {
         $link = home_url( '/' ) . '?author=' . $user_id;
     }
     else {
         $link = get_author_posts_url( $user_id );
     }
+    
+    //Check to make sure we have a valid link. If link same as home link, do this...
+    if($link == home_url())
+    	 $link = home_url('/' ) . '?author=' . $user_id;
+    	
     return $link;
 }
 
@@ -808,8 +820,8 @@ function truncated_text($text, $length = 100) {
 /**
  * Horrible clusterfuck that generates a shitty omniture string - which we'll probably need to completely redo anyway.
  *
- * The Section rewrite rules interfere with the ability to retreive original query data at the time of enqueueing scripts.
- * If and WHEN we'ere asked to rewrite omniture - this problem should be solved from within Section/WidgetPress first.
+ * The Section rewrite rules interfere with the ability to retrieve original query data at the time of enqueueing scripts.
+ * If and WHEN we're asked to rewrite omniture - this problem should be solved from within Section/WidgetPress first.
  *
  * @author Eddie Moya
  */
@@ -916,4 +928,111 @@ function get_last_activity_date($user_id) {
 	
 	
 	return $wpdb->get_var($q);
+}
+
+/**
+ * return the contents of a http request
+ * 
+ * @param string $url
+ * @return string -- content of the request
+ * @author Carl Albrecht-Buehler
+ */
+function curl_it($url){
+    $curl_handle = curl_init();
+    curl_setopt( $curl_handle, CURLOPT_URL, $url );
+    curl_setopt( $curl_handle, CURLOPT_CONNECTTIMEOUT, 2 );
+    curl_setopt( $curl_handle, CURLOPT_RETURNTRANSFER, 1 );
+    $content = curl_exec( $curl_handle );
+    curl_close( $curl_handle );
+    return $content;
+}
+
+/**
+ * Modified wp_drop_down_categories for communities - added shcJSL form validation.
+ * 
+ * @param array $args
+ * @return string -- the select element
+ * @author Dan Crimmins
+ */
+function comm_wp_dropdown_categories( $args = '' ) {
+	$defaults = array(
+		'show_option_all' => '', 'show_option_none' => '',
+		'orderby' => 'id', 'order' => 'ASC',
+		'show_last_update' => 0, 'show_count' => 0,
+		'hide_empty' => 1, 'child_of' => 0,
+		'exclude' => '', 'echo' => 1,
+		'selected' => 0, 'hierarchical' => 0,
+		'name' => 'cat', 'id' => '',
+		'class' => 'postform', 'depth' => 0,
+		'tab_index' => 0, 'taxonomy' => 'category',
+		'hide_if_empty' => false
+	);
+
+	$defaults['selected'] = ( is_category() ) ? get_query_var( 'cat' ) : 0;
+
+	// Back compat.
+	if ( isset( $args['type'] ) && 'link' == $args['type'] ) {
+		_deprecated_argument( __FUNCTION__, '3.0', '' );
+		$args['taxonomy'] = 'link_category';
+	}
+
+	$r = wp_parse_args( $args, $defaults );
+
+	if ( !isset( $r['pad_counts'] ) && $r['show_count'] && $r['hierarchical'] ) {
+		$r['pad_counts'] = true;
+	}
+
+	$r['include_last_update_time'] = $r['show_last_update'];
+	extract( $r );
+
+	$tab_index_attribute = '';
+	if ( (int) $tab_index > 0 )
+		$tab_index_attribute = " tabindex=\"$tab_index\"";
+
+	$categories = get_terms( $taxonomy, $r );
+	$name = esc_attr( $name );
+	$class = esc_attr( $class );
+	$id = $id ? esc_attr( $id ) : $name;
+
+	if ( ! $r['hide_if_empty'] || ! empty($categories) )
+		$output = "<select name='$name' id='$id' class='$class clearfix' shc:gizmo:form=\"{required:true}\" $tab_index_attribute>\n";
+	else
+		$output = '';
+
+	if ( empty($categories) && ! $r['hide_if_empty'] && !empty($show_option_none) ) {
+		$show_option_none = apply_filters( 'list_cats', $show_option_none );
+		$output .= "\t<option value='default' selected='selected'>$show_option_none</option>\n";
+	}
+
+	if ( ! empty( $categories ) ) {
+
+		if ( $show_option_all ) {
+			$show_option_all = apply_filters( 'list_cats', $show_option_all );
+			$selected = ( '0' === strval($r['selected']) ) ? " selected='selected'" : '';
+			$output .= "\t<option value='0'$selected>$show_option_all</option>\n";
+		}
+
+		if ( $show_option_none ) {
+			$show_option_none = apply_filters( 'list_cats', $show_option_none );
+			$selected = ( 'default' === strval($r['selected']) ) ? " selected='selected'" : '';
+			$output .= "\t<option value='default'$selected>$show_option_none</option>\n";
+		}
+
+		if ( $hierarchical )
+			$depth = $r['depth'];  // Walk the full depth.
+		else
+			$depth = -1; // Flat.
+
+		$output .= walk_category_dropdown_tree( $categories, $depth, $r );
+	}
+	if ( ! $r['hide_if_empty'] || ! empty($categories) )
+		$output .= "</select>\n";
+
+
+	$output = apply_filters( 'wp_dropdown_cats', $output );
+
+	if ( $echo )
+		echo $output;
+
+	return $output;
 }

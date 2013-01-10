@@ -7,7 +7,9 @@ Author: Dan Crimmins
 Version: 1.0
 Author URI:
 */
-add_action('show_user_profile', 'block_screen_name_field');
+
+
+//add_action('show_user_profile', 'block_screen_name_field');
 add_action('edit_user_profile', 'block_screen_name_field');
 
 
@@ -25,19 +27,39 @@ function block_screen_name_field($user) {
     <span class="description"><?php _e("If checked, user's screen name will be displayed as ********"); ?></span>
     </td>
     </tr>
+    <?php if(! get_user_meta($user->id, 'sso_guid', true)):?>
+    <tr>
+    <td>
+    <label for="s_name"><?php _e("Screen Name")?></label>
+    </td>
+    <td>
+    <input type="text" id="s_name" name="s_name" value="<?php echo get_user_meta($user->id, 'profile_screen_name', true);?>" />
+    </td>
+    </tr>
+    <?php endif;?>
     </table>
 	<?php
 }
 	
-add_action('personal_options_update', 'save_block_sn_field');
+//add_action('personal_options_update', 'save_block_sn_field');
 add_action('edit_user_profile_update', 'save_block_sn_field');
 
 function save_block_sn_field($user_id) {
 	
-    //if ( !current_user_can( 'edit_user', $user_id ) ) { return false; }
-    
     $value = isset($_POST['screen_name_block']) ? 'yes' : 'no';
-    
     update_user_meta($user_id, 'block_screen_name', $value);
+    
+}
+
+add_action('admin_init', 'update_screen_name');
+
+function update_screen_name() {
+	
+	if(isset($_POST['s_name']) && strlen(trim($_POST['s_name'])) > 0) {
+		
+		update_user_meta($_POST['user_id'], 'profile_screen_name', $_POST['s_name']);
+		update_user_nicename($_POST['user_id'], $_POST['s_name']);
+	
+	}
 }
 	

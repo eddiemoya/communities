@@ -800,6 +800,9 @@ textarea.discussion {
       .input_textarea {
         width:98%;
       }
+      select {
+        display:block;
+      }
     }
     .state_confirm-post {
       .confirmation {
@@ -1088,10 +1091,12 @@ $tab-padding: "1em 0 .6em 0";
   }
 }
 
+/**
+ * All definitions for the base tooltip
+ */
 .tooltip {
   display: none;
   position: absolute;
-  left: em-adjust( 12em );
   width: 250px;
   z-index: 1000003;
 
@@ -1100,33 +1105,18 @@ $tab-padding: "1em 0 .6em 0";
     position: absolute;
 
     .left {
-      background-color: transparent;
-      border-color: #ffffff #a0c7ff #ffffff #ffffff;
-      border-style: solid;
-      border-width: 10px 10px 10px 0px;
-      width: 0px;
-      height: 0px;
-    }
-
-    .leftBorder {
-      background-color: transparent;
-      border-color: transparent #ffffff transparent transparent;
-      border-style: solid;
-      border-width: 9px 9px 9px 0px;
-      width: 0px;
-      height: 0px;
+      background: image-url('arrow-left.png');
+      height: 22px;
       position: relative;
-      left: 3px;
-      top: 2px;
+      width: 12px;
     }
 
     .top {
-      background-color: transparent;
-      border-color: transparent transparent #a0c7ff transparent;
-      border-style: solid;
-      border-width: 0px 10px 10px 10px;
-      width: 0px;
-      height: 0px;
+      background: image-url('arrow-top.png');
+      height: 12px;
+      position: relative;
+      top: 1px;
+      width: 22px;
     }
 
     .topBorder {
