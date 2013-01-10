@@ -753,3 +753,25 @@ function oembed_result_modification($data) {
 
 add_filter("oembed_result", "oembed_result_modification", 10);
 
+function add_attachment_slide_link_url( $form_fields, $post ) {
+	$form_fields['slide-link-url'] = array(
+		'label' => 'Link URL',
+		'input' => 'text',
+		'value' => get_post_meta( $post->ID, 'slide-link-url', true ),
+		'helps' => 'When used on a Hero Slider item, this will direct user to linked webpage (either internal or external)',
+	);
+	
+	return $form_fields;
+}
+
+add_filter( 'attachment_fields_to_edit', 'add_attachment_slide_link_url', 10, 2 );
+
+function add_attachment_slide_link_url_save( $post, $attachment ) {
+	if( isset( $attachment['slide-link-url'] ) )
+		update_post_meta( $post['ID'], 'slide-link-url', $attachment['slide-link-url'] );
+	
+	return $post;
+}
+
+add_filter( 'attachment_fields_to_save', 'add_attachment_slide_link_url_save', 10, 2 );
+
