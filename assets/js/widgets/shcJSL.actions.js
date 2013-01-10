@@ -116,6 +116,7 @@ ACTIONS.actions = $actions = function(element, options) {
         };
 
         if(data === 'activated' || data === 'activated-out') {
+            //Get the opposite action of the button that was clicked
             var thisAction = _this.options.post.name === 'downvote' ? 'upvote' : 'downvote';
 
             if(jQuery(_this.action.element).siblings('button[name=' + thisAction + ']').hasClass('active')) {
