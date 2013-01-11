@@ -58,30 +58,45 @@ shcJSL.sockets = {
 String.prototype.devoid = function() {
 	return (!/\S/.test(this))? true:false;
 }
-	/*
-		[1.1] ARRAY
-		-----------
-	*/
-	
-	/*
-	 * Added Array.remove([entry]) functionality to Array
-	 */
-if ([].indexOf) {
-	Array.prototype.remove = function(e) {
-		var t, _ref;
-	  if ((t = this.indexOf(e)) > -1) {return ([].splice.apply(this, [t, t - t + 1].concat(_ref = [])), _ref);}
-	}
-} else {
-	Array.prototype.remove = function(e) {
-		if (e) {
-			for (var i = 0; i < this.length; i++) {
-				if (this[i] === e) {
-					this.splice(i, 1);
-					break;
-				}
-			}
-		}
-	}
+
+/*
+ * Add Array.indexOf(searchElement [, fromIndex]) functionality to 
+ * IE8 - which does not support Array.indexOf() natively.
+ * 
+ * NOTE: pulled from Mozilla Developer Network (MDN)
+ * https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Array/indexOf
+ */
+if (!Array.prototype.indexOf) {
+  Array.prototype.indexOf = function (searchElement /*, fromIndex */ ) {
+    "use strict";
+    if (this == null) {
+        throw new TypeError();
+    }
+    var t = Object(this);
+    var len = t.length >>> 0;
+    if (len === 0) {
+        return -1;
+    }
+    var n = 0;
+    if (arguments.length > 1) {
+        n = Number(arguments[1]);
+        if (n != n) { // shortcut for verifying if it's NaN
+            n = 0;
+        } else if (n != 0 && n != Infinity && n != -Infinity) {
+            n = (n > 0 || -1) * Math.floor(Math.abs(n));
+        }
+    }
+    if (n >= len) {
+        return -1;
+    }
+    var k = n >= 0 ? n : Math.max(len - Math.abs(n), 0);
+    for (; k < len; k++) {
+        if (k in t && t[k] === searchElement) {
+            return k;
+        }
+    }
+		return -1;
+  }
 }
 
 /*
@@ -124,6 +139,8 @@ if (!Array.prototype.map) {
  * Add String.trim() functionality to
  * IE8 - which does not support String.trim() natively.
  * 
+ * NOTE: pulled from Mozilla Developer Network (MDN)
+ * https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String/Trim
  */
 
 if (!String.prototype.trim) {
@@ -131,6 +148,25 @@ if (!String.prototype.trim) {
   	return this.replace(/^\s+|\s+$/g,'');
  	}
 }
+
+/*
+ * Add Array.remove([entry]) to Array object
+ */
+
+if (!Array.prototype.remove) {
+	Array.prototype.remove = function(e) {
+		var t, _ref;
+	  if ((t = this.indexOf(e)) > -1) {return ([].splice.apply(this, [t, t - t + 1].concat(_ref = [])), _ref);}
+	}
+}
+
+/**
+ * @author Tim Steele
+ * @description:
+ * This object keeps track of what gizmos have been loaded 
+ * into the page. 
+ */
+shcJSL.bulletin = {};
 
 /*
 	LAZEE
@@ -143,7 +179,7 @@ shcJSL.lazee = new function() {
 	queue = [];	// (Array) Array of functions to be performed on page load
 	
 	function getFileName(file) {
-		return (shcJSL.functions.createNewElement("a",null,{href:file})).pathname.split('/').pop();
+		return (shcJSL.fn.createNewElement("a",null,{href:file})).pathname.split('/').pop();
 	}
 	
 	function checkForScript(file, add) {
@@ -156,9 +192,9 @@ shcJSL.lazee = new function() {
 	}
 	
 	this.add = function(script) {
-		if (shcJSL.functions.getObjectType(script) === "[object String]") {
+		if (shcJSL.fn.getObjectType(script) === "[object String]") {
 			queue[queue.length] = function() {self.load(script);}
-		} else if (shcJSL.functions.getObjectType(script) === "[object Function]") {
+		} else if (shcJSL.fn.getObjectType(script) === "[object Function]") {
 			queue[queue.length] = function() {script()}
 		}
 	}
@@ -192,7 +228,7 @@ shcJSL.lazee = new function() {
 			}
 		}
 		if (!checkForScript(getFileName(url))) {
-			document.getElementsByTagName("head").item(0).appendChild(shcJSL.functions.createNewElement('script',null,{'src':url, "type":"text/javascript"}));
+			document.getElementsByTagName("head").item(0).appendChild(shcJSL.fn.createNewElement('script',null,{'src':url, "type":"text/javascript"}));
 		}
 		
 		if (notifier && callback) radar();
@@ -214,7 +250,7 @@ shcJSL.lazee = new function() {
 			 * the url as a string as a parameter. It return
 			 * false, then invoke the add function with a
 			 * function to execute as the parameter.
-			 */
+			 */			
 			(!checkForScript(file, false))? self.add(path):self.add( function() {
 				$(window).trigger(socket);
 			}); // End checkForScript 
@@ -231,10 +267,8 @@ shcJSL.lazee = new function() {
 	
 }
 
-shcJSL.lazee.p
-
 /*
-	SHCJSL FUNCTIONS
+	SHCJSL METHODS
 	----------------
 	Functions to interact with SHCJSL specific
 	properties and functionality. 
@@ -257,7 +291,7 @@ shcJSL.get = function(element) {
 	var collection; // (Array) array of objects with shcJSL.methods.
 	var getID;			// (Method) method to get element by ID.
 	var getTags;		// (Method) method to get elements by tag name.
-	var type;				// (Function) Shorthand for calling shcJSL.functions.getObjectType
+	var type;				// (Function) Shorthand for calling shcJSL.fn.getObjectType
 	
 	getID = function(id) {
 		/**
@@ -272,7 +306,7 @@ shcJSL.get = function(element) {
 	 		return document.getElementsByTagName(tag);
 	}
 
-	type = shcJSL.functions.getObjectType;
+	type = shcJSL.fn.getObjectType;
 
 	// Declare collection as an array
 	collection = [];
@@ -283,14 +317,14 @@ shcJSL.get = function(element) {
 			collection.push(getID(element.slice(1)));
 		// Need to add in class selector at some point.
 		} else {	// Selector is an element OR not a valid selector
-			collection = shcJSL.functions.sequence(getTags(element));
+			collection = shcJSL.fn.sequence(getTags(element));
 		}
 	} else if (type(element) == "[object Object]" || (type(element).toString()).indexOf("HTML") != -1) {
 		// element is an HTMLObject
 		collection.push(element); 
 	} else if (type(element) == "[object Array]") {
 		// element is already an array
-	 	collection = shcJSL.functions.sequence(element);
+	 	collection = shcJSL.fn.sequence(element);
 	}
 	
 	// Bind methods from shcJSL.methods to the output Array
@@ -449,160 +483,150 @@ shcJSL.options = function(stamp) {
 }
 
 /*
-	SHCJSL SHORTCUTS
-	----------------
-	Functions to assist in manipulating the DOM
+	shcJSL Functions 
 */
 
-shcJSL.functions = shcJSL.F = {}
-
-shcJSL.functions.createNewElement = function(e, c, a) {
-	var newElement; // New element that will be created;
+shcJSL.fn = {
 	
-	newElement = document.createElement(e);
-	if (c != null) newElement.className = c;
-	if (typeof a != 'undefined' && typeof a == 'object') {
-		for (var i in a) {
-			newElement.setAttribute(i, a[i]);
+	createNewElement: function(e, c, a) {
+		var newElement; // New element that will be created;
+		
+		newElement = document.createElement(e);
+		if (c != null) newElement.className = c;
+		if (typeof a != 'undefined' && typeof a == 'object') {
+			for (var i in a) {
+				newElement.setAttribute(i, a[i]);
+			}
 		}
-	}
-	return newElement;
-}
-
-shcJSL.functions.preloadImages = function(html) {
-	if (html) {
-		var image = new Image(); // Dummy new image object;
-		
-		jQuery.each($(html).find('img'), function() {
-			image.src = this.src;
-		})
-		
-		return html;
-	} else return false;
-}
-
-shcJSL.functions.renderHTML = function(parent, html) {
-	if ((parent && html) && typeof html == 'string') {
-		parent.innerHTML = html;
-	}
-	return parent;
-}
-
-shcJSL.functions.first = function(element) {
-	var firstChild = element.firstChild;
-	while (firstChild.nodeName == "#text") {
-		firstChild = firstChild.nextSibling;
-	}
-	return firstChild;
-}
-
-shcJSL.functions.addChildren = function(p, c) {
-	if (p && c) {
-		for (var i=0; i < c.length; i++) {
-			p.appendChild(c[i]);
+		return newElement;
+	},
+	preloadImages: function(html) {
+		if (html) {
+			var image = new Image(); // Dummy new image object;
+			
+			jQuery.each($(html).find('img'), function() {
+				image.src = this.src;
+			})
+			
+			return html;
+		} else return false;
+	},
+	renderHTML: function(parent, html) {
+		if ((parent && html) && typeof html == 'string') {
+			parent.innerHTML = html;
+		}
+		return parent;
+	},	
+	addChildren: function(p, c) {
+		if (p && c) {
+			for (var i=0; i < c.length; i++) {
+				p.appendChild(c[i]);
+			}
 		}
 		return p;
-	}
-}
-
-shcJSL.functions.setStyles = function(e, s) {
-	if (typeof s != undefined && typeof e != undefined) {
-		for (var i in s) {
-			e.style[i] = s[i];
+	},
+	setStyles: function(e, s) {
+		if (typeof s != undefined && typeof e != undefined) {
+			for (var i in s) {
+				e.style[i] = s[i];
+			}
 		}
 		return e;
-	}
-}
-
-shcJSL.functions.formDataToJSON = function(form) {
-
-	
-	var form = form;	// Set the form to equal the form;
-	var json = {};		// JSON object to be converted into a string;
-	
-	// Gather all the form elements and turn it into a true array then
-	// then turn the array into a key/value pair object
-	(shcJSL.sequence(form.elements)).map(set);
-	
-	// 'e' is form element;
-	function set(e) {
-		switch((e.nodeName == "INPUT")? e.type:(e.nodeName).toLowerCase()) {
-			case "fieldset":
-				(function(){
-					// 'a' is an array, to hold the checked elements
-					var a = [];
-					
-					// this is the fieldset element;
-					($(this).find('[type="checkbox"]').length > 0)? a = $(this).find('[type="checkbox"]'):a = $(this).find('[type="radio"]');
-					
-					if (a.length > 0) {
-						for (var i = 0; i < a.length; i++) {
-							if (a[i].checked && a[i].getAttribute("name"))  {
-								if (!json[a[i].getAttribute("name")]) json[a[i].getAttribute("name")] = [];
-								json[a[i].getAttribute("name")].push(a[i].value);
-							}
-						}
-					}
-
-				}).call(e);
-				break;
-			case "hidden":
-				(function(){
-					if (this.getAttribute("name")) json[this.getAttribute("name")] = this.value;
-				}).call(e);
-				break;
-			case "select":
-				(function() {
-					if (this.getAttribute("name")) {
-						if (this.type != "select-multiple") json[this.getAttribute("name")] = this.options[this.selectedIndex].value
-						else {
-							for (var i = 0; i < this.options.length; i++) {
-								if (this.options[i].selected) {
-									if (!json[this.getAttribute("name")]) json[this.getAttribute("name")] = [];
-									console.log(json[this.getAttribute("name")])
-									json[this.getAttribute("name")].push(this.options[i].value);
+	},
+	formDataToJSON: function(form) {
+		var form = form,	// Set the form to equal the form;
+			json = {};		// JSON object to be converted into a string;
+		
+		// Gather all the form elements and turn it into a true array then
+		// then turn the array into a key/value pair object
+		(shcJSL.sequence(form.elements)).map(set);
+		
+		// 'e' is form element;
+		function set(e) {
+			switch((e.nodeName == "INPUT")? e.type:(e.nodeName).toLowerCase()) {
+				case "fieldset":
+					(function(){
+						// 'a' is an array, to hold the checked elements
+						var a = [];
+						
+						// this is the fieldset element;
+						($(this).find('[type="checkbox"]').length > 0)? a = $(this).find('[type="checkbox"]'):a = $(this).find('[type="radio"]');
+						
+						if (a.length > 0) {
+							for (var i = 0; i < a.length; i++) {
+								if (a[i].checked && a[i].getAttribute("name"))  {
+									if (!json[a[i].getAttribute("name")]) json[a[i].getAttribute("name")] = [];
+									json[a[i].getAttribute("name")].push(a[i].value);
 								}
 							}
 						}
-					}
-				}).call(e);
-				break;
-			case "text":
-				(function(){
-					if (this.getAttribute("name"))
-						if (!(this.value).devoid()) json[this.getAttribute("name")] = this.value;
-				}).call(e);
-				break;
-			case "textarea":
-				(function(){
-					if (this.getAttribute("name"))
-						if (!(this.value).devoid())  json[this.getAttribute("name")] = this.value;
-				}).call(e);
-				break;
-			default:
-				break;
+	
+					}).call(e);
+					break;
+				case "hidden":
+					(function(){
+						if (this.getAttribute("name")) json[this.getAttribute("name")] = this.value;
+					}).call(e);
+					break;
+				case "select":
+					(function() {
+						if (this.getAttribute("name")) {
+							if (this.type != "select-multiple") json[this.getAttribute("name")] = this.options[this.selectedIndex].value
+							else {
+								for (var i = 0; i < this.options.length; i++) {
+									if (this.options[i].selected) {
+										if (!json[this.getAttribute("name")]) json[this.getAttribute("name")] = [];
+										json[this.getAttribute("name")].push(this.options[i].value);
+									}
+								}
+							}
+						}
+					}).call(e);
+					break;
+				case "text":
+					(function(){
+						if (this.getAttribute("name"))
+							if (!(this.value).devoid()) json[this.getAttribute("name")] = this.value;
+					}).call(e);
+					break;
+				case "textarea":
+					(function(){
+						if (this.getAttribute("name"))
+							if (!(this.value).devoid())  json[this.getAttribute("name")] = this.value;
+					}).call(e);
+					break;
+				default:
+					break;
+			}
 		}
-	}
-		
-	return JSON.stringify(json);
-}
-
-shcJSL.functions.sequence = function(array) {
-	var sequence = [];	// New 'true' array
-	try {sequence = sequence.concat([].slice.call(array));}
-	catch(e) {
-		for (var i=0; i < array.length; i++) {
-			sequence.push(array[i]);
+			
+		return JSON.stringify(json);
+	},
+	sequence: function(array) {
+		var sequence = [];	// New 'true' array
+		try {sequence = sequence.concat([].slice.call(array));}
+		catch(e) {
+			for (var i=0; i < array.length; i++) {
+				sequence.push(array[i]);
+			}
 		}
+		return sequence;
+	},
+	getObjectType: function(object) {
+		return Object.prototype.toString.call(object);
+	},
+	createCustomActionArray: function(array, methods) {
+		for (var action in methods) (
+			function(n,m) {
+				array[n] = function(x) {
+					return array.map(m,x);
+				}
+				
+			}(action, methods[action])
+		)
+		return array;
 	}
-	return sequence;
-}
-
-shcJSL.functions.id = function(id) {return document.getElementById(id);}
-
-shcJSL.functions.getObjectType = function(object) {
-	return Object.prototype.toString.call(object);
-}
+};
 
 shcJSL.schematic = {}; shcJSL.apparatus = {}; shcJSL.gizmos = {};
 
@@ -623,11 +647,12 @@ shcJSL.governor = new function() {
 	this.activate = function() {
 		for (var i in self.populace) {
 			shcJSL.lazee.plug(i);
-			$(window).bind(i, {gizmo: i, elements:self.populace[i]}, function(event){
+			$(window).one(i, {gizmo: i, elements:self.populace[i]}, function(event){
 				var data = event.data;
 				try {
 					shcJSL.gizmos[event.data.gizmo](event.data.elements);
 					delete shcJSL.governor.populace[event.data.gizmo];
+					$(window)
 				} catch(error) { console.log("Failed to instantiate widget " + event.data.gizmo + " - " + error); }
 			});
 		}
@@ -654,26 +679,21 @@ shcJSL.governor = new function() {
  * 		set then the script defaults to the body element.
  */
 shcJSL.gizmos.activate = function(event, parent) {
-	var draft = "";	// Temporary object for storing option data
-	var Parent;			// (HTMLObject) parent argument, or if null, the body element
-	var Selector;		// (Array) Array of selectors
-	
-	var date = new Date();
-	var uid = (new Array( date.getYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(),  date.getSeconds(), date.getMilliseconds() )).join("");
-	
-	Parent = parent || $('body').get(0);
-	Selector = new Array("*[shc\\:gizmo]", "*[shc\\:gadget]")
-
+	var draft 		= "",																								// Temporary object for storing option data
+			Parent 		= parent || $('body').get(0),												// (HTMLObject) parent argument, or if null, the body element
+			Selector 	= new Array("*[shc\\:gizmo]", "*[shc\\:gadget]"),		// (Array) Array of selectors
+			date 			= new Date(),
+			uid 			= (new Array( date.getYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(),  date.getSeconds(), date.getMilliseconds() )).join("");
+				
 	$.each(
 		$(Parent).find(Selector.join()),	// Array of elements matching selector inside parent
 		function(index, value) {
-			var date 			= new Date();																// New data object for unique ID
-			var gadget 		= this.getAttribute("shc:gadget");					// shc:gadget attribute || null
-			var gizmo 		= this.getAttribute("shc:gizmo");						// shc:gizmo attribute || null
-			var options 	= this.getAttribute("shc:gizmo:options");		// shc:gizmo:options attrubute || null
-			var sprocket 	= this.getAttribute("shc:gadget:sprocket");	// shc:gadget:sprocket attribute || null
-			var stamp	=	uid++;																				// Unique SHCJSL identifier
-			
+			var gadget 		= this.getAttribute("shc:gadget"),					// shc:gadget attribute || null
+					gizmo 		= this.getAttribute("shc:gizmo"),						// shc:gizmo attribute || null
+					options 	= this.getAttribute("shc:gizmo:options"),		// shc:gizmo:options attrubute || null
+					sprocket 	= this.getAttribute("shc:gadget:sprocket"),	// shc:gadget:sprocket attribute || null
+					stamp	=	uid++;																				// Unique SHCJSL identifier
+						
 			// Assign unique ID
 			this.setAttribute("shc:stamp",stamp);
 
@@ -696,8 +716,8 @@ shcJSL.gizmos.activate = function(event, parent) {
 				
 				(/^\[.*\]$/.test(gizmo))? gizmo.replace(/^\[(.*)\]$/, function(match, key, value, offset, string) {giz = key.split(/, ?/g);}):giz = gizmo;
 				
-				if (shcJSL.functions.getObjectType(giz) === "[object String]") shcJSL.governor.architect(giz, this)
-				else if (shcJSL.functions.getObjectType(giz) === "[object Array]") {
+				if (shcJSL.fn.getObjectType(giz) === "[object String]") shcJSL.governor.architect(giz, this)
+				else if (shcJSL.fn.getObjectType(giz) === "[object Array]") {
 					for (var i=0; i < giz.length; i++) {
 						shcJSL.governor.architect(giz[i], this);
 					} 
@@ -724,38 +744,7 @@ shcJSL.gizmos.activate = function(event, parent) {
 	})();
 	
 	shcJSL.governor.activate();
-		
-	return;
-	
-	$.each(
-		$(Parent).find(Selector),	// Array of elements matching selector inside parent
-		function(index, value) {
-			var attribute; // Cleaned attribute derived from selector
-							
-			// Remove the selector code to get attribute
-			(Selector.toString().indexOf("\\") != -1)? attribute = ((Selector.split("\\")[0]) + (Selector.split("\\")[1])).replace(/(\*?\[)|(\])/g, '').toString():attribute = Selector.toString().replace(/(\*?\[)|(\])/g, '').toString();
-			try {
-				// If the the widget has 'shc:name' attribute, assign the
-				// JavaScript object [shc:widget] to the global variable
-				// that is [shc:name]
-				($(this).attr("shc:name") != undefined)? window[$(this).attr("shc:name")] = new shcJSL.gizmos[$(this).attr(attribute)](this):new shcJSL.gizmos[$(this).attr(attribute)](this);
-				// If it can not create the object, error out gracefully
-				// and log the error, the widget that failed and the
-				// error message
-			} catch(error) {
-				if (console && console.log) console.log("Failed to instantiate widget " + attribute + "[" + $(this).attr(attribute) + "] - " + error);
-			}
-		} // END $.each function
-	) // END $.each
 }
-
-/**
- * @author Tim Steele
- * @description:
- * This object keeps track of what gizmos have been loaded 
- * into the page. 
- */
-shcJSL.bulletin = {}
 
 jQuery(document).ready(function() {
 	shcJSL.gizmos.activate();

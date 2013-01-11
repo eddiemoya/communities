@@ -49,9 +49,9 @@ MOODLE.modal = $Moodle = function(element, options) {
 	 * @var container (HTMLObject) The modal window's container element
 	 */
 	gears = {
-		overlay: shcJSL.functions.createNewElement('div','overlay', {id:'moodle_overlay'}),
-	  modal: shcJSL.functions.createNewElement('section','modal-window', {id:'moodle_window'}),
-	  container: shcJSL.functions.createNewElement('div','modal-container',{id:'moodle_container'})
+		overlay: shcJSL.fn.createNewElement('div','overlay', {id:'moodle_overlay'}),
+	  modal: shcJSL.fn.createNewElement('section','modal-window', {id:'moodle_window'}),
+	  container: shcJSL.fn.createNewElement('div','modal-container',{id:'moodle_container'})
 	}
 	
 	/**
@@ -299,7 +299,8 @@ MOODLE.modal = $Moodle = function(element, options) {
 					var htmlObject;	// New HTMLObject created the the AJAX response string
 					
 					// Convert the string into an HTML element
-					htmlObject = shcJSL.functions.first(shcJSL.functions.preloadImages(shcJSL.functions.renderHTML(shcJSL.functions.createNewElement("div"), data)));
+					//htmlObject = shcJSL.fn.first(shcJSL.fn.preloadImages(shcJSL.fn.renderHTML(shcJSL.fn.createNewElement("div"), data)));
+					htmlObject = $(shcJSL.fn.preloadImages(shcJSL.fn.renderHTML(shcJSL.fn.createNewElement("div"), data))).first();
 					compose(htmlObject, [status, xhr])
 				}).error(function(xhr, status, message) {
 					error(message, xhr, status)
@@ -342,7 +343,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 					$(gears.container).append(content);
 					
 					// Create and attach the close button, set it to close the modal
-					$(gears.container).append($(shcJSL.functions.createNewElement("a","close-button",{href:'#'})).bind('click', {data:settings}, self.destroy))
+					$(gears.container).append($(shcJSL.fn.createNewElement("a","close-button",{href:'#'})).bind('click', {data:settings}, self.destroy))
 					// User's can click on the overlay to close the modal if 
 					// clickOverlayToClose is set to true.
 					if (settings.clickOverlayToClose) $(gears.overlay).bind('click', {data:settings},self.destroy);
@@ -396,13 +397,19 @@ MOODLE.modal = $Moodle = function(element, options) {
 		// The modal settings/data
 		settings = event.data.data;
 		
+		$(document).trigger("moodle-preclose");
+		
 		// If the modal window had a local on page element
 		// return that element to the page
 		if (String(settings.method).toLowerCase() == 'local') {
 			try {$(document.body).append($("#"+settings.target).hide())} 
 			catch(error) {}
 		}
-		
+		else {
+			$.each($(gears.modal).find((new Array("*[shc\\:gizmo]", "*[shc\\:gadget]","*[data-type]")).join()), function(index, value) {
+				$(this).off();
+			});
+		}
 		// turn on the loading screen
 		toggleLoading();
 		// Remove the modal window
@@ -469,7 +476,6 @@ shcJSL.methods.moodle = function(target, options) {
 	 */
 if (shcJSL && shcJSL.gizmos)  {
 	shcJSL.gizmos.moodle = function(elements) {
-		//console.log(element);
 		for (var i =0; i < elements.length; i++) {
 			$(elements[i]).bind('click',function(event) {
 				shcJSL.get(this).moodle();

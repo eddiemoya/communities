@@ -297,6 +297,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 					
 					// Convert the string into an HTML element
 					htmlObject = shcJSL.first(shcJSL.preloadImages(shcJSL.renderHTML(shcJSL.createNewElement("div"), data)));
+					
 					compose(htmlObject, [status, xhr])
 				}).error(function(xhr, status, message) {
 					error(message, xhr, status)

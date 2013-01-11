@@ -1,4 +1,3 @@
-
 /* 
 Theme Name: Eris
 Theme URI: http://www.sears.com/community/
@@ -135,11 +134,7 @@ body {
     .menu-sears-ribbon-container > ul > li:first-child, .menu-kmart-ribbon-container > ul > li:first-child {
       border-left: none; }
   .menu-sears-ribbon-container .menu-item a, .menu-kmart-ribbon-container .menu-item a {
-<<<<<<< HEAD
-    background: transparent url('assets/img/sprite_ribbon.png?v=1354641814') no-repeat; }
-=======
     background: transparent url('assets/img/sprite_ribbon.png?v=1350503856') no-repeat; }
->>>>>>> the-tickler
   .menu-sears-ribbon-container .ribbon_shop-your-way a, .menu-kmart-ribbon-container .ribbon_shop-your-way a {
     background-position: 0px -30px;
     width: 59px; }
@@ -291,11 +286,7 @@ ul.footer_anterior {
         color: #55a3c8;
         text-decoration: none; }
   ul.footer_anterior .icon {
-<<<<<<< HEAD
-    background-image: url('assets/img/sprite-footer.png?v=1349124350');
-=======
     background-image: url('assets/img/sprite-footer.png?v=1348844464');
->>>>>>> the-tickler
     background-repeat: no-repeat; }
     ul.footer_anterior .icon a {
       display: block;
@@ -626,19 +617,11 @@ ul.bullets {
 
 #header.sears form #button_search, #header.sears form #input_search,
 .sears_button {
-<<<<<<< HEAD
-  background-image: url('assets/img/sears/sprite_global.png?v=1354556648'); }
-
-#header.kmart form #button_search, #header.kmart form #input_search,
-.kmart_button {
-  background-image: url('assets/img/kmart/sprite_global.png?v=1354556648'); }
-=======
   background-image: url('assets/img/sears/sprite_global.png?v=1348844464'); }
 
 #header.kmart form #button_search, #header.kmart form #input_search,
 .kmart_button {
   background-image: url('assets/img/kmart/sprite_global.png?v=1348844464'); }
->>>>>>> the-tickler
 
 .member .info address {
   display: block; }
@@ -650,21 +633,13 @@ ul.bullets {
   font-size: 76.923%;
   padding: .5em 0; }
 .crest.labeled h4 {
-<<<<<<< HEAD
-  background: #1885bb url('assets/img/sprite-user.png?v=1349124350') repeat-x left bottom;
-=======
-  background: #bcdaf3 url('assets/img/sprite-user.png?v=1348844464') repeat-x left bottom;
->>>>>>> the-tickler
+  background: #1885bb url('assets/img/sprite-user.png?v=1348844464') repeat-x left bottom;
   text-align: center; }
 .crest.labeled h4, .crest.labeled h4 a {
   color: white;
   line-height: 1; }
 .crest.labeled .tail {
-<<<<<<< HEAD
-  background: url('assets/img/sprite-user.png?v=1349124350') no-repeat center top;
-=======
   background: url('assets/img/sprite-user.png?v=1348844464') no-repeat center top;
->>>>>>> the-tickler
   height: 10px;
   overflow: hidden; }
 
@@ -739,11 +714,7 @@ ul.bullets {
   border-radius: 5px; }
 
 .sears_button.azure, .kmart_button.azure {
-<<<<<<< HEAD
-  background-image: url('assets/img/sears/sprite_global.png?v=1354556648');
-=======
   background-image: url('assets/img/sears/sprite_global.png?v=1348844464');
->>>>>>> the-tickler
   border-color: #60768b;
   color: #366392;
   text-shadow: none; }
@@ -779,11 +750,7 @@ ul.bullets {
   -o-border-radius: 5px;
   border-radius: 5px; }
   .error .error-message .error-pointer {
-<<<<<<< HEAD
-    background: transparent url('assets/img/error_pointer-arrow.png?v=1349124349') no-repeat 0px 0px;
-=======
     background: transparent url('assets/img/error_pointer-arrow.png?v=1348844464') no-repeat 0px 0px;
->>>>>>> the-tickler
     height: 9px;
     display: block;
     left: 15px;
@@ -816,11 +783,7 @@ ul.bullets {
     border-top: solid 1px #dddcdc;
     padding: 0.769em 0; }
     .content-container .content-body .hr {
-<<<<<<< HEAD
-      background: transparent url('assets/img/background_hr.gif?v=1354641813') repeat-x 0px 0px;
-=======
       background: transparent url('assets/img/background_hr.gif?v=1350503826') repeat-x 0px 0px;
->>>>>>> the-tickler
       height: 1px;
       padding: 18px 0px;
       width: 100%; }
@@ -1151,11 +1114,7 @@ fieldset#use_your_account_from {
     display: inline-block;
     width: 16px;
     height: 16px;
-<<<<<<< HEAD
-    background: url('assets/img/sprite-social.png?v=1349124350');
-=======
     background: url('assets/img/sprite-social.png?v=1348844464');
->>>>>>> the-tickler
     background-repeat: no-repeat;
     text-indent: -9999em;
     margin-left: 1.6em; }
@@ -1210,11 +1169,7 @@ fieldset#use_your_account_from {
     -ms-border-radius: 5px 5px 0 0;
     -o-border-radius: 5px 5px 0 0;
     border-radius: 5px 5px 0 0;
-<<<<<<< HEAD
-    background: #e4e0df url('assets/img/sears/sprite_navigation.png?v=1349124350'); }
-=======
     background: #e4e0df url('assets/img/sears/sprite_navigation.png?v=1348844464'); }
->>>>>>> the-tickler
   .profile .tabs a {
     display: block;
     padding: 1em 0 .6em 0; }
@@ -1249,6 +1204,10 @@ fieldset#use_your_account_from {
 .profile .answers-toggle {
   display: block;
   margin-left: 2em; }
+.profile .comment-tally {
+  float: left;
+  margin: 0 1em;
+  font-weight: bold; }
 .profile .expert-answers li {
   border-top: 0;
   -webkit-border-radius: 5px;
@@ -1419,17 +1378,10 @@ fieldset#use_your_account_from {
     display: inline-block; }
 
 .sears .comment-actions button {
-<<<<<<< HEAD
-  background: transparent url('assets/img/sears/sprite_global.png?v=1354556648') repeat-x 0 -192px; }
-
-.kmart .comment-actions button {
-  background: transparent url('assets/img/sears/sprite_global.png?v=1354556648') repeat-x 0 -200px; }
-=======
   background: transparent url('assets/img/sears/sprite_global.png?v=1348844464') repeat-x 0 -192px; }
 
 .kmart .comment-actions button {
   background: transparent url('assets/img/sears/sprite_global.png?v=1348844464') repeat-x 0 -200px; }
->>>>>>> the-tickler
 
 #allComments {
   -webkit-border-radius: 4px;
@@ -1492,11 +1444,7 @@ fieldset#use_your_account_from {
     color: #4e74a3;
     border: 1px solid #d6d6d6;
     font-weight: bold;
-<<<<<<< HEAD
-    background: white url('assets/img/sprite-actions.png?v=1349124350') no-repeat;
-=======
     background: white url('assets/img/sprite-actions.png?v=1348844464') no-repeat;
->>>>>>> the-tickler
     display: inline-block;
     float: right;
     text-indent: -999em;
@@ -1635,11 +1583,7 @@ button.follow {
 .site-error {
   margin-top: 2em; }
   .site-error .span8, .site-error .span10 {
-<<<<<<< HEAD
-    background: url('assets/img/tile_line.gif?v=1354556648');
-=======
     background: url('assets/img/tile_line.gif?v=1348844464');
->>>>>>> the-tickler
     margin-top: 2em; }
   .site-error .message {
     color: white;
@@ -1655,11 +1599,7 @@ button.follow {
       font-family: Georgia, serif;
       margin-top: 1em; }
     .site-error .message .tape {
-<<<<<<< HEAD
-      background: url('assets/img/tile_line.gif?v=1354556648');
-=======
       background: url('assets/img/tile_line.gif?v=1348844464');
->>>>>>> the-tickler
       width: 50%;
       margin: .66em auto;
       line-height: .5; }
@@ -1703,11 +1643,7 @@ button.follow {
   .member_avatar img {
     width: 100%; }
   .member_avatar .badge {
-<<<<<<< HEAD
-    background: #1885bb url('assets/img/sears/sprite_global.png?v=1354556648') repeat-x 0px 0px;
-=======
-    background: #bcdaf3 url('assets/img/sears/sprite_global.png?v=1348844464') repeat-x 0px 0px;
->>>>>>> the-tickler
+    background: #1885bb url('assets/img/sears/sprite_global.png?v=1348844464') repeat-x 0px 0px;
     color: white;
     display: block;
     text-align: center;
@@ -1848,11 +1784,7 @@ button.follow {
 .site-error {
   margin-top: 2em; }
   .site-error .span8, .site-error .span10 {
-<<<<<<< HEAD
-    background: url('assets/img/tile_line.gif?v=1354556648');
-=======
     background: url('assets/img/tile_line.gif?v=1348844464');
->>>>>>> the-tickler
     margin-top: 2em; }
   .site-error .message {
     color: white;
@@ -1868,11 +1800,7 @@ button.follow {
       font-family: Georgia, serif;
       margin-top: 1em; }
     .site-error .message .tape {
-<<<<<<< HEAD
-      background: url('assets/img/tile_line.gif?v=1354556648');
-=======
       background: url('assets/img/tile_line.gif?v=1348844464');
->>>>>>> the-tickler
       width: 50%;
       margin: .66em auto;
       line-height: .5; }
@@ -1968,29 +1896,17 @@ button.follow {
   width: 960px;
   margin: 0 auto; }
 
-<<<<<<< HEAD
 .shdrbg, .sears #header_nav.dropmenu, .sears #header_nav.dropmenu > li > span span, .sears #header_nav.dropmenu > li a span, .sears #header_nav.dropmenu > li.right_button, .sears #footer_nav.dropmenu > li, .sears #footer_nav.dropmenu > li:hover, .sears #footer_nav.dropmenu > li > span span, .sears #footer_nav.dropmenu > li a span {
-  background-image: url('assets/img/sears/sprite_navigation.png?v=1349124350'); }
-
-.khdrbg, .kmart #header_nav.dropmenu, .kmart #header_nav.dropmenu > li > span span, .kmart #header_nav.dropmenu > li a span, .kmart #header_nav.dropmenu > li.right_button, .kmart #footer_nav.dropmenu > li > span span, .kmart #footer_nav.dropmenu > li a span {
-  background-image: url('assets/img/kmart/sprite_navigation.png?v=1349124349'); }
-=======
-.shdrbg, .sears #header_nav.dropmenu, .sears #header_nav.dropmenu li a span, .sears #header_nav.dropmenu li.right_button, .sears #footer_nav.dropmenu li, .sears #footer_nav.dropmenu li:hover, .sears #footer_nav.dropmenu li a span {
   background-image: url('assets/img/sears/sprite_navigation.png?v=1348844464'); }
 
-.khdrbg, .kmart #header_nav.dropmenu, .kmart #header_nav.dropmenu li a span, .kmart #header_nav.dropmenu li.right_button, .kmart #footer_nav.dropmenu li a span {
+.khdrbg, .kmart #header_nav.dropmenu, .kmart #header_nav.dropmenu > li > span span, .kmart #header_nav.dropmenu > li a span, .kmart #header_nav.dropmenu > li.right_button, .kmart #footer_nav.dropmenu > li > span span, .kmart #footer_nav.dropmenu > li a span {
   background-image: url('assets/img/kmart/sprite_navigation.png?v=1348844464'); }
->>>>>>> the-tickler
 
 .sears #header_nav.dropmenu, .kmart #header_nav.dropmenu {
   background-color: #e4e0df; }
 
 .sears #header_nav.dropmenu ul, .kmart #header_nav.dropmenu ul {
-<<<<<<< HEAD
-  background: white url('assets/img/sprite-menu.png?v=1349124350'); }
-=======
   background: white url('assets/img/sprite-menu.png?v=1348844464'); }
->>>>>>> the-tickler
 
 .sears #header_nav.dropmenu > li > span, .sears #header_nav.dropmenu > li a {
   color: #067bb5; }
@@ -2237,11 +2153,7 @@ button.follow {
   background: rgba(0, 0, 0, 0.5); }
 
 .no-rgba #moodle_overlay {
-<<<<<<< HEAD
-  background: transparent url('assets/img/background_overlay_no-rgba.png?v=1349124349') repeat 0px 0px; }
-=======
   background: transparent url('assets/img/background_overlay_no-rgba.png?v=1348844464') repeat 0px 0px; }
->>>>>>> the-tickler
 
 #moodle_window {
   background: rgba(143, 199, 252, 0.3);
@@ -2265,18 +2177,6 @@ button.follow {
   background: rgba(253, 190, 81, 0.3); }
 
 .sears .loading {
-<<<<<<< HEAD
-  background: transparent url('assets/img/sears/background_loading.gif?v=1349124349') no-repeat center center; }
-
-.kmart .loading {
-  background: transparent url('assets/img/kmart/background_loading.gif?v=1349124349') no-repeat center center; }
-
-.no-rgba .sears #moodle_window {
-  background: transparent url('assets/img/sears/background_modal-border_no-rgba.png?v=1349124349') repeat 0px 0px; }
-
-.no-rgba .kmart #moodle_window {
-  background: transparent url('assets/img/kmart/background_modal-border_no-rgba.png?v=1349124349') repeat 0px 0px; }
-=======
   background: transparent url('assets/img/sears/background_loading.gif?v=1348844464') no-repeat center center; }
 
 .kmart .loading {
@@ -2287,7 +2187,6 @@ button.follow {
 
 .no-rgba .kmart #moodle_window {
   background: transparent url('assets/img/kmart/background_modal-border_no-rgba.png?v=1348844464') repeat 0px 0px; }
->>>>>>> the-tickler
 
 #moodle_container {
   background: #ffffff;
@@ -2300,11 +2199,7 @@ button.follow {
   border-radius: 10px; }
 
 #moodle_container .close-button {
-<<<<<<< HEAD
-  background: transparent url('assets/img/modal_close-button.png?v=1349124349') no-repeat 0px 0px;
-=======
   background: transparent url('assets/img/modal_close-button.png?v=1348844464') no-repeat 0px 0px;
->>>>>>> the-tickler
   height: 8px;
   width: 35px; }
 
@@ -2514,11 +2409,7 @@ button.follow {
   margin: 8px 7px; }
 
 .open-id_service a {
-<<<<<<< HEAD
-  background: transparent url('assets/img/sprite_open-id-services.png?v=1349124350') no-repeat 0px 0px;
-=======
   background: transparent url('assets/img/sprite_open-id-services.png?v=1348844464') no-repeat 0px 0px;
->>>>>>> the-tickler
   display: block;
   text-indent: -9999em; }
 
@@ -2617,8 +2508,7 @@ button.follow {
   color: red;
   padding-left: 1.3em;
   margin: .5em 0;
-  background: url('assets/img/error-arrow.png?v=1354655334') no-repeat top left; }
-
+  background: url('assets/img/error-arrow.png?v=1355328640') no-repeat top left; }
 .wp-polls .figures {
   text-align: right; }
 .wp-polls .bar {
@@ -2639,7 +2529,6 @@ button.follow {
   font-style: italic;
   margin: .5em 0; }
 .wp-polls h1.content-headline {
-  color: #067bb5;
   font-size: 123.076%; }
 
 .wp-polls-loading {
@@ -2650,11 +2539,14 @@ button.follow {
 
 .sears .wp-polls li span:first-child {
   color: #067bb5; }
+.sears .wp-polls h1.content-headline {
+  color: #067bb5; }
 .sears .wp-polls .bar {
   background: #6dcff6; }
 
 .kmart .wp-polls li span:first-child {
   color: #980017; }
+.kmart .wp-polls h1.content-headline {
+  color: #980017; }
 .kmart .wp-polls .bar {
   background: #f28734; }
-

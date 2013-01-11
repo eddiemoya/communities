@@ -25,18 +25,18 @@
 		<ul>
 			<li>
 				<ul>
-				    <?php if ( is_user_logged_in() ): ?>
-				        <li>
-				            <a href="<?php echo get_profile_url( $current_user->ID ); ?>" title="View your profile"><?php echo current_user_profile_thumbnail(); ?></a>
-				                <a href="<?php echo get_profile_url( $current_user->ID ); ?>" title="View your profile" class="bold"><?php get_screenname( $current_user->ID ); ?>
-				            </a>
-				        </li>
-				        <li><?php (function_exists('sso_logout_link')) ? sso_logout_link('Logout') : null;?> </li>
+				  <?php if ( is_user_logged_in() ): ?>
+		        <li>
+		            <a href="<?php echo get_profile_url( $current_user->ID ); ?>" title="View your profile"><?php echo current_user_profile_thumbnail(); ?></a>
+		                <a href="<?php echo get_profile_url( $current_user->ID ); ?>" title="View your profile" class="bold"><?php get_screenname( $current_user->ID ); ?>
+		            </a>
+		        </li>
+		        <li><?php (function_exists('sso_logout_link')) ? sso_logout_link('Logout') : null;?> </li>
 				        
     					<!-- <li><a href="<?php //echo wp_logout_url( get_permalink() ); ?>" title="Logout" class="bold">Logout</a></li> -->
-				    <?php else: ?>
-    					<li><a href="<?php echo get_site_url(); ?>/login/" title="Login" class="bold" shc:gizmo="moodle" shc:gizmo:options='{"moodle": {"width":"480", "data":{"action": "get_template_ajax", "template": "page-login"}}}'>Login</a></li>
-						<li><a href="<?php echo get_site_url(); ?>/register/" title="Sign Up: Join the Community" class="bold" shc:gizmo="moodle" shc:gizmo:options='{"moodle": {"width":"480", "data":{"action": "get_template_ajax", "template": "page-register"}}}'>Join the community</a></li>
+				  <?php else: ?>
+    				<li><a href="<?php echo get_site_url(); ?>/login/" title="Login" class="bold" shc:gizmo="moodle" shc:gizmo:options='{"moodle": {"width":"480", "data":{"action": "get_template_ajax", "template": "page-login"}}}'>Login</a></li>
+						<li><a href="<?php echo get_site_url(); ?>/register/" title="Sign Up: Join the Community" class="bold" shc:gizmo="moodle" shc:gizmo:options='{"moodle": {"width":"480", "data":{"action": "get_template_ajax", "template": "page-register"}}}' id="register-link">Join the community</a></li>
 					<?php endif; ?>
 				</ul>
 			</li>

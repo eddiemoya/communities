@@ -5,11 +5,10 @@
  * @subpackage White Label
  */
 
-//get_template_part('parts/header');
+get_template_part('parts/header');
 
 // loop();
 ?>
-<link rel="stylesheet" type='text/css' href="http://localhost:100/wp-content/themes/Eris/style.css?ver=1355328644" />
 <script type='text/javascript'>
 /* <![CDATA[ */
 var ajaxdata = {"ajaxurl":"http:\/\/localhost:100\/wp-admin\/admin-ajax.php","template_dir_uri":"http:\/\/localhost:100\/wp-content\/themes\/Eris","home_url":"http:\/\/localhost:100"};
@@ -25,7 +24,7 @@ var ajaxdata = {"ajaxurl":"http:\/\/localhost:100\/wp-admin\/admin-ajax.php","te
 		<div id="test">	
 			<ul>
 				<li><a href="#" shc:gizmo="moodle" shc:gadget="test" shc:gizmo:options='{"moodle": {"key": "value"}}'>Test 1 (Gizmo and Gadget)</a></li>
-				<li><a href="#" shc:gizmo="moodle" shc:gizmo:options='{"moodle": {"width":"480", "data":{"action": "get_template_ajax", "template": "page-register"}}}'>Test 2 (Gizmo Only)</a></li>
+				<li><a href="#" shc:gizmo="moodle" shc:gizmo:options='{"moodle": {"width":"480", "data":{"action": "get_template_ajax", "template": "page-login"}}}'>Test 2 (Gizmo Only)</a></li>
 				<li><a href="#" shc:gadget="test2" shc:gadget:sprocket="catcher">Test 3 (Gadget Only, Sprocket)</a></li>
 				<li><a href="#" shc:gizmo="[moodle, openID]" shc:gizmo:options='{"moodle": {"key": "value"}, "openID": {"key":"value"}}'>Test 4 (Gizmo in Array)</a></li>
 				<li><a href="#" shc:gadget="test2" shc:gadget:sprocket="receiver">Test 5 (Gadget Only, Sprocket)</a></li>
