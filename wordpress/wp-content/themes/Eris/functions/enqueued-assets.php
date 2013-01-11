@@ -93,15 +93,15 @@ function enqueue_scripts() {
 
         
         /* Styles */
-        $style_path = STYLESHEETPATH . "/style.css";
-        $style_version = file_exists( $style_path ) ? filemtime( $style_path ) : '1.0';
-        // Implement the following lines and delete the above after migrating to new sass layout
-        // $style_path = STYLESHEETPATH . "/" . theme_option("brand") . ".css";
-        // $style_url = get_template_directory_uri() . "/" . theme_option("brand") . ".css";
+        // $style_path = STYLESHEETPATH . "/style.css";
         // $style_version = file_exists( $style_path ) ? filemtime( $style_path ) : '1.0';
-        // wp_register_style( 'main-styles', $style_url, array(), $style_version );
-        wp_register_style( 'main-styles', get_stylesheet_uri(), array(), $style_version );
-        wp_enqueue_style( 'main-styles');
+        // Implement the following lines and delete the above after migrating to new sass layout
+        $style_path = get_stylesheet_directory() . '/assets/css/' . theme_option("brand") . '.css';
+        $style_url = get_stylesheet_directory_uri() . '/assets/css/' . theme_option("brand") . '.css';
+        $style_version = file_exists( $style_path ) ? filemtime( $style_path ) : '2.0';
+        wp_register_style( 'main-styles', $style_url, array(), $style_version );
+        // wp_register_style( 'main-styles', get_stylesheet_uri(), array(), $style_version );
+        wp_enqueue_style( 'main-styles' );
 
         
         //Enqueue profile ajax only for author template
