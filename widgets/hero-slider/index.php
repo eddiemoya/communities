@@ -20,13 +20,19 @@
 ?>
 REMEMBER TO MOVE INTO STYLESHEET
 <style>
-	.hero-slider {
+	.dropzone.span8 .hero-slider {
+		background: url(/wp-content/themes/Eris/assets/img/hero-slider-bg.png) center center;
+		width: 620px;
+		height: 360px;
 		position: relative;
 	}
 	.rotating-banner {
 		overflow:hidden;
 		position:relative;
-		z-index:25
+		width: 579px;
+		z-index:25;
+		left:20px;
+		top:-5px;
 	}
 	.rotating-banner .content-headline {
 		position: absolute;
@@ -72,21 +78,21 @@ REMEMBER TO MOVE INTO STYLESHEET
 		z-index:30
 	}
 	.hero-slider a.prev-slide {
-		background: url(/wp-content/themes/Eris/assets/img/gs-slide-left.png) center center transparent;
-		width: 31px;
-		height: 75px;
+		background: url(/wp-content/themes/Eris/assets/img/hero-slide-left.png) center center transparent;
+		width: 40px;
+		height: 100px;
 		position: absolute;
-		top: 135px;
-		left: -4px;
+		top: 115px;
+		left: 0px;
 		z-index:30;
 	}
 	.hero-slider a.next-slide {
-		background: url(/wp-content/themes/Eris/assets/img/gs-slide-right.png) center center transparent;
-		width: 31px;
-		height: 75px;
+		background: url(/wp-content/themes/Eris/assets/img/hero-slide-right.png) center center transparent;
+		width: 40px;
+		height: 100px;
 		position: absolute;
-		top: 135px;
-		right: -4px;
+		top: 115px;
+		right: 1px;
 		z-index:30;
 	}
 	.rotating-banner .banner {
