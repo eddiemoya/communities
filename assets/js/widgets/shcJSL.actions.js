@@ -206,40 +206,42 @@ ACTIONS.actions = $actions = function(element, options) {
                     jsonString += '{"id": "' + currentCookie.id +
                                         '", "name": "' + currentCookie.name +
                                         '", "sub_type": "' + currentCookie.sub_type +
-                                        '", "type": "' + currentCookie.type + '"}, ';
+                                        '", "type": "' + currentCookie.type + '"},';
 
                     addedToCookie = true;
                 } else {
-                    //The ids are the same; now it's time for work
-
                     /**
-                     * The names are not the same; which means we are not deactivating
+                     * Is the cookie an upvote? Is the current action a downvote? Turn off the upvote
                      */
-                    if(currentCookie.name != _this.options.post.name) {
-                        /**
-                         * Is the cookie an upvote? Is the current action a downvote? Turn off the upvote
-                         */
-                        if(currentCookie.name == 'upvote' && _this.options.post.name == 'downvote') {
-                            continue;
-                        } else if(currentCookie.name == 'downvote' && _this.options.post.name == 'upvote') {
-                            continue;
-                        } else {
-                            jsonString += '{"id": "' + currentCookie.id +
-                                                '", "name": "' + currentCookie.name +
-                                                '", "sub_type": "' + currentCookie.sub_type +
-                                                '", "type": "' + currentCookie.type + '"}, ';
+                    if(currentCookie.name == 'upvote' && _this.options.post.name == 'downvote') {
+                        continue;
+                    } else if(currentCookie.name == 'downvote' && _this.options.post.name == 'upvote') {
+                        continue;
+                    } else {
+                        jsonString += '{"id": "' + currentCookie.id +
+                                            '", "name": "' + currentCookie.name +
+                                            '", "sub_type": "' + currentCookie.sub_type +
+                                            '", "type": "' + currentCookie.type + '"},';
 
-                            addedToCookie = true;
-                        }
+                        addedToCookie = true;
                     }
                 }
             }
         }
 
+        /**
+         * If the action is an upvote automatically add it to the cookie list;
+         * If the action is a downvote, do not add it to the cookie list;
+         */
         if(data !== 'deactivated-out') {
-            jsonString += '{"id": "' + _this.options.post.id + '", "name": "' + _this.options.post.name + '", "sub_type": "' + _this.options.post.sub_type + '", "type": "' + _this.options.post.type + '"}]}';
+            jsonString += '{"id":"' + _this.options.post.id + '","name":"' + _this.options.post.name + '","sub_type":"' + _this.options.post.sub_type + '","type": "' + _this.options.post.type + '"}]}';
         } else if(addedToCookie === true) {
             jsonString = jsonString.substring(0, jsonString .length - 1) + "]}";
+        } else {
+            /**
+             * This is to ensure that, if there are no actions at all, to have an empty string.
+             */
+            jsonString += ']}';
         }
 
         shcJSL.cookies("actions").bake({value: jsonString, expiration: '1y'});
