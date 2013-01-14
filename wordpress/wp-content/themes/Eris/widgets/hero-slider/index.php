@@ -30,13 +30,14 @@ REMEMBER TO MOVE INTO STYLESHEET
 		overflow:hidden;
 		position:relative;
 		width: 579px;
+		height: 315px;
 		z-index:25;
 		left:20px;
 		top:-5px;
 	}
 	.rotating-banner .content-headline {
 		position: absolute;
-		bottom: 10px;
+		top: 260px;
 		width: 100%;
 		background: #000000;
 		background: rgba(0,0,0,.5);
@@ -141,7 +142,6 @@ REMEMBER TO MOVE INTO STYLESHEET
 				$counter++;
 			endforeach;
 		?>
-		</div>
 	</div>
 </section>
 
