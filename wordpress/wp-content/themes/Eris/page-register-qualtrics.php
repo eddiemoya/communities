@@ -21,17 +21,14 @@ $zipcode = (isset($_POST['zipcode'])) ? urldecode($_POST['zipcode']) : null;
 * @subpackage White Label
 */
 
-if(! is_ajax()):
-
     get_template_part('parts/header'); ?>
-    <section class="span8">
-<?php endif; ?>
-
+    <section class="span12">
+        
+        <?php echo $post->post_content; ?>
+        
         <?php get_template_part('parts/register'); ?>
 
-<?php if(! is_ajax()): ?>
     </section>
 
-<?php get_template_part('parts/footer');
-
-endif;
+<?php
+    get_template_part('parts/footer');
