@@ -52,7 +52,7 @@ jQuery(document).ready(function($) {
 			order		: $('.sort-results-users option', container).filter(':selected').val(),
 			path		: 'widgets/results-list'
 		};
-
+		
 		//console.log(data);
 		data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category .filter-results option', this).filter(':selected').val() : data.category; //console.log(data);
 
@@ -85,7 +85,11 @@ jQuery(document).ready(function($) {
 			order		: $('.sort-results-posts option', container).filter(':selected').val(),
 			path		: 'widgets/results-list'
 		};
-
+		
+		if(data.category == "" || data.category == undefined) {
+			data.category = $('.content-header input[name=filter-category]').val();
+		}
+		
 		if(data.order == 'comment_count'){
 			data.orderby = data.order;
 			delete data.order;
