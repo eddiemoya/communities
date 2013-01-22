@@ -27,7 +27,8 @@ valid8 = {
 			"required": "Please choose a category."
 		},
 		"confirm-email": {
-			"function": "Your email does not match. Please check and try again."
+			"function": "Your email does not match. Please check and try again.",
+			"required": "Your email does not match. Please check and try again."
 		},
 		"email": {
 			"pattern": "The email address you enter should follow this format: name@domain.com. Please try again.",
@@ -49,7 +50,11 @@ valid8 = {
 			"required": "Please enter your question."
 		},
 		"screen-name": {
-			"function": "That screen name has already been taken. Please select a new one.",
+			"function": {
+				"default": "Please follow the screen name guideslines.",
+				"155": "Please follow the screen name guideslines.",
+				"120": "That screen name has already been taken. Please select a new one."
+			},
 			"pattern": "Please follow the screen name guidelines."
 		},
 		"zip-code": {
@@ -57,9 +62,42 @@ valid8 = {
 			"required": "Please enter a valid Zip code."
 		}
 	},
-	fn: {
-		"screen-name": function() {
-			
+	"function": {
+		"confirm-email": function(value, type) {
+			console.log(this);
+			console.log(value);
+			console.log(type);
+			var email = $(this).closest("form").find('[data-type="email"]').get(0);
+			console.log(email)
+		},
+		"screen-name": function(value, type) {
+			// console.log($._data(this, "events"));
+			var valid,
+					element = this;
+			if (window['ajaxdata'] && window['ajaxdata']['ajaxurl']) {
+				jQuery.ajax({
+					async: false,
+					dataType: 'html',
+					data: {
+						"screen_name": value,
+						"action": "validate_screen_name"
+					},
+					type: "POST",
+					url: window['ajaxdata']['ajaxurl']
+				}).success(function(data, status, xhr) {
+					if (parseInt(data) === 200) valid = true;
+					else {
+						valid = null;
+						valid8.oops(element).concoct(
+							(valid8.cipher[element.getAttribute("data-type")] && valid8.cipher[element.getAttribute("data-type")]["function"])? ((valid8.cipher[element.getAttribute("data-type")]["function"][data.substr(data.indexOf(".") + 1)])? valid8.cipher[element.getAttribute("data-type")]["function"][data.substr(data.indexOf(".") + 1)]:valid8.cipher[element.getAttribute("data-type")]["function"]["default"]):"Error"
+						)
+						
+					}
+				}).error(function(xhr, status, message) {
+					valid = true;
+				})
+			}
+			return (valid == true)? true:null;
 		}
 	},
 	pattern: {
@@ -87,18 +125,17 @@ valid8.oops = function(element, failure) {
 		// This is the error message;
 		// element is the element in question;
 		concoct: function(element) {
-			var error = (valid8.cipher[element.getAttribute("data-type")] && valid8.cipher[element.getAttribute("data-type")][this])? valid8.cipher[element.getAttribute("data-type")][this]:"Error";
 			if (!element.nextSibling || (element.nextSibling && element.nextSibling.className.indexOf("error-message") == -1)) {
-				element.parentNode.insertBefore((new blunder(error)), element.nextSibling);
+				element.parentNode.insertBefore((new blunder(this)), element.nextSibling);
 			}
 			else if (element.nextSibling && element.nextSibling.className.indexOf("error-message") != -1) {
-				element.parentNode.replaceChild((new blunder(error)),element.nextSibling);
+				element.parentNode.replaceChild((new blunder(this)),element.nextSibling);
 			}
 			
 			if (element.parentNode.className.indexOf("error") == -1) element.parentNode.className += " error";
 		},
 		consume: function(element) {
-			if (element.nextSibling && element.nextSibling.className.indexOf("error-message") != -1) element.parentNode.removeChild(element.nextSibling);
+			if (element.nextSibling && element.nextSibling.nodeName != "#text" && element.nextSibling.className.indexOf("error-message") != -1) element.parentNode.removeChild(element.nextSibling);
 			if (element.parentNode.className.indexOf("error") != -1) element.parentNode.className = element.parentNode.className.replace(/( )?error/, '');
 		}
 	}
@@ -120,12 +157,10 @@ valid8.form		= function(form, options) {
 	var self 		= this,														// Root object
 			elements,																	// (Array) All the form fields
 			form 		= form,														// (HTMLElement) The form HTMLElement
-			invalid = {},															// (Object) Object containing invalid fields (using name:element pairing);
+			invalid = [],															// (Object) Object containing invalid fields (using name:element pairing);
 			options	= (options)? options:undefined,		// (Object) Any options that exist with the form
 			spy,																			// (Function) Assign 
 			watch;																		// (Timeout) The timeout for onkeyup validation
-	
-	
 		
 	// Gather the form elements
 	if (form) {
@@ -143,33 +178,48 @@ valid8.form		= function(form, options) {
 		input = (element.value = element.value.trim()).toString();
 
 		// Clear the timeout and set it so the watch is undeclared;
-		clearTimeout(watch);
-		watch = undefined;
+		window.clearTimeout(watch);
+		watch = null;
 		
 		fn = {
 			pattern: function(type) {
 				if (!(input.devoid())) {
 					return (valid8.pattern[type].test(input))? true:false;
-				} // END devoid();
+				} else return true;
+			},
+			"function": function(type) {
+				if (!(input.devoid())) {
+					return valid8["function"][type].call(element, input, type);
+				} else return true;
 			}
-		}
+		};
 		
-		for (var i in valid8.cipher[type]) {
-			if (i != "required") {
-				if (!(fn[i](type))) {
-					valid = false;
-					valid8.oops(element).concoct(i);
-					break;
+		(function() {
+			for (var i in valid8.cipher[type]) {
+				var result = undefined;
+				if (i != "required") {
+					result = fn[i](type)
+					if (result === false) {
+						valid = false;
+						valid8.oops(element).concoct(
+							(valid8.cipher[element.getAttribute("data-type")] && valid8.cipher[element.getAttribute("data-type")][i])? valid8.cipher[element.getAttribute("data-type")][i]:"Error"
+						);
+						break;
+					} else if (result === null) {
+						valid = false;
+						break;
+					}
 				}
 			}
-		}
+		}());
+
 		if (valid) {
 			invalid.remove(element);
 			valid8.oops(element).consume();
 			return true;
 		}
 		else {
-			invalid.push(element);
+			if (invalid.indexOf(element) == -1) invalid.push(element);
 			return false;
 		}
 	}
@@ -184,13 +234,30 @@ valid8.form		= function(form, options) {
 			}
 			else if (event.type == "keyup") {
 				// User has typed something, wait 2.5 seconds and then run tests;
-				if (watch == undefined) watch = setTimeout(validate,2500,[event.target])
+				if (watch != null) {
+					window.clearTimeout(watch);
+					watch = null;
+					
+				}
+				watch = window.setTimeout(validate,1500,[event.target])
 			}
 		});
 	}
 	
 	this.verify = function() {
-		elements.map(validate);
+		
+		if (invalid.length <= 0) {
+			elements.map(validate);
+			
+			if (invalid.length > 0) {
+				return false;
+			}
+			
+			else {
+				
+			}
+		}
+		
 	}
 	
 	if ($(form).parents("#moodle_container").length) {
@@ -201,6 +268,8 @@ valid8.form		= function(form, options) {
 				}
 		$(document).on('moodle-preclose', fn[form.getAttribute("shc:stamp")])
 	}
+	
+	return this;
 }
 
 shcJSL.methods.valid8 = function(target) {

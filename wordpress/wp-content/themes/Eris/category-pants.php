@@ -45,6 +45,12 @@ var ajaxdata = {"ajaxurl":"http:\/\/localhost:100\/wp-admin\/admin-ajax.php","te
 
 				<form class="form_register" id="register-form" method="post" action="#" shc:gizmo="valid8" shc:gizmo:options='{"valid8":{"login":"true"}}'>
             <ul class="form-fields">
+            		<li class="clearfix">
+            			<dl class="clearfix">
+										<dt class="span3"><label for="screen-name">Screen Name</label></dt>
+										<dd class="span9"><input type="text" class="input_text" name="screen-name" id="screen-name" value="" data-required="true" data-type="screen-name" /></dd>
+									</dl>
+								</li>
                 <li>
                     <dl class="clearfix">
                         <dt class="span3"><label for="loginId">Email:</label></dt>
@@ -95,7 +101,7 @@ var ajaxdata = {"ajaxurl":"http:\/\/localhost:100\/wp-admin\/admin-ajax.php","te
                 			<fieldset name="frequency">
                 				<legend>Contact Frequency: </legend>
                 				<ul>
-                					<li><input type="checkbox" name="frequency"</li>
+                					<li><input type="checkbox" name="frequency" /> Frequency</li>
                 				</ul>
                 			</fieldset>
                 		</dd>

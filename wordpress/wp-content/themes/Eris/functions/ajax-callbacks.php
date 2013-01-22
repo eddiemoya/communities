@@ -208,7 +208,9 @@ function validate_screen_name() {
 		$profile = new SSO_Profile;
 		$response = $profile->validate_screen_name($screen_name);
 		
-		echo ($response['code'] == '200') ? 'true' : 'false';
+		//echo ($response['code'] == '200') ? 'true' : 'false';
+		
+		echo $response['code'];
 		
 		exit;
 	}
