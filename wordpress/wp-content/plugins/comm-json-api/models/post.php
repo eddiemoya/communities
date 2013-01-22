@@ -163,9 +163,11 @@ class JSON_API_Post {
     global $json_api;
     if ($json_api->include_value('content')) {
       $content = get_the_content($json_api->query->read_more);
-      $content = apply_filters('the_content', $content);
+      //Remove filter because it was causing issues with content in json response
+      //$content = apply_filters('the_content', $content);
       $content = str_replace(']]>', ']]&gt;', $content);
-      $this->content = $content;
+      //Added strip_tags
+      $this->content = strip_tags($content);
     } else {
       unset($this->content);
     }
