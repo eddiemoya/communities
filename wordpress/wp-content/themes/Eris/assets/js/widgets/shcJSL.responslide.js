@@ -310,7 +310,7 @@ responslide = function(element, options) {
 			if (components.slides.length > 1 && self.conf.arrowNavigationOnly) {
 				if (typeof components.squares == 'undefined') components.squares = new Array();
 				components.squares[0] = $("<a href='#' class='next-slide'></a>");
-				$(components.squares[0]).bind('click', function() {self.back();return false;});
+				$(components.squares[0]).bind('click', function() {self.next();return false;});
 			}
 			
 			if (!self.conf.arrowNavigationOnly) {
@@ -328,7 +328,7 @@ responslide = function(element, options) {
 			if (components.slides.length > 1 && self.conf.arrowNavigationOnly) {
 				if (typeof components.squares == 'undefined') components.squares = new Array();
 				components.squares[1] = $("<a href='#'  class='prev-slide'></a>");
-				$(components.squares[1]).bind('click', function() {self.next();return false;});
+				$(components.squares[1]).bind('click', function() {self.back();return false;});
 			}
 			
 		}
