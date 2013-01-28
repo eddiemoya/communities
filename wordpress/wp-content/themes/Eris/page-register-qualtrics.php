@@ -24,77 +24,71 @@ $zipcode = (isset($_POST['zipcode'])) ? urldecode($_POST['zipcode']) : null;
 $message = array(
 	"sears" => array(
 		"low" => 
-			"<h2>Thank you for sharing your feedback.</h2>
-			<h1>We’re sorry we fell short&hellip;</h1>
+			"<h1>Oops! We fell short&hellip;</h1>
 			<p>
-				We&rsquo;re just as disappointed as you. Your comments are our incentive to do so much better next time.
+				We’re disappointed too! Your reply is our incentive to do better next time.
 			</p>
 			<p>
-				Thank you for your valuable input&ndash;and your business.
+				Thank you for your valuable input, and your business.
 			</p>
 			<p class='signature'>
-				Sears Customer Experience Team
+				The Sears Customer Experience Team
 			</p>",
 		"medium" => 
-		"<h2>Thank you for sharing your feedback.</h2>
-			<h1>There&rsquo;s room for improvement&hellip;</h1>
+		"<h1>So, you’ve seen better&hellip;</h1>
 			<p>
-				Your feedback takes us that much closer to creating a better experience for you the next time you visit.
+				Thanks to your feedback, we know there’s room for improvement.
 			</p>
 			<p>
-				Thank you for your time&ndash;and your business.
+				We appreciate your valuable input, and your business!
 			</p>
 			<p class='signature'>
-				Sears Customer Experience Team
+				The Sears Customer Experience Team
 			</p>",
 			"high" =>
-			"<h2>Thank you for sharing your feedback.</h2>
-			<h1>You’ve had a successful shopping trip? That’s fantastic!</h1>
+			"<h1>We’re glad your shopping trip was a success&hellip;for both of us!</h1>
 			<p>
-				We&rsquo;re happy you&rsquo;re happy with your latest Sears visit.
+				But, we promise not to get too comfortable. We’d like to keep you happy!
 			</p>
 			<p>
-				Thank you for your valuable input&ndash;and your business.
+				Thank you for your valuable input, and your business.
 			</p>
 			<p class='signature'>
-				Sears Customer Experience Team
+				The Sears Customer Experience Team
 			</p>"),
 	"kmart" => array(
 		"low" => 
-			"<h2>Thank you for sharing your feedback.</h2>
-			<h1>We’re sorry we fell short&hellip;</h1>
+			"<h1>Oops! We fell short&hellip;</h1>
 			<p>
-				We&rsquo;re just as disappointed as you. Your comments are our incentive to do so much better next time.
+				We’re disappointed too! Your reply is our incentive to do better next time.
 			</p>
 			<p>
-				Thank you for your valuable input&ndash;and your business.
+				Thank you for your valuable input, and your business.
 			</p>
 			<p class='signature'>
-				Kmart Customer Experience Team
+				The Kmart Customer Experience Team
 			</p>",
 		"medium" => 
-		"<h2>Thank you for sharing your feedback.</h2>
-			<h1>There&rsquo;s room for improvement&hellip;</h1>
+			"<h1>So, you’ve seen better&hellip;</h1>
 			<p>
-				Your feedback takes us that much closer to creating a better experience for you the next time you visit.
+				Thanks to your feedback, we know there’s room for improvement.
 			</p>
 			<p>
-				Thank you for your time&ndash;and your business.
+				We appreciate your valuable input, and your business!
 			</p>
 			<p class='signature'>
-				Kmart Customer Experience Team
+				The Kmart Customer Experience Team
 			</p>",
-			"high" =>
-			"<h2>Thank you for sharing your feedback.</h2>
-			<h1>You’ve had a successful shopping trip? That’s fantastic!</h1>
+		"high" =>
+			"<h1>We’re glad your shopping trip was a success&hellip;for both of us!</h1>
 			<p>
-				We&rsquo;re happy you&rsquo;re happy with your latest Sears visit.
+				But, we promise not to get too comfortable. We’d like to keep you happy!
 			</p>
 			<p>
-				Thank you for your valuable input&ndash;and your business.
+				Thank you for your valuable input, and your business.
 			</p>
 			<p class='signature'>
-				Kmart Customer Experience Team
+				The Kmart Customer Experience Team
 			</p>")
 );
 ?>
@@ -136,37 +130,52 @@ $message = array(
 
     </section>
     <section class="span4">
-    	<div class="shadow-border-right">
+    	<section class="shadow-border-right clear">
     		<article class="widget content-container qualtics-welcome span12">
 	      	
-	      	<header class="content-header">
+	      	<header class="content-header clear">
 	        	<h3>Welcome to the</h3>
 	        	<h4>Community</h4>
 					</header>
 					
-					<section class="content-body clearfix">
+					<section class="content-body clearfix clear">
 						
-						<p>
-							Here you have a voice. We encourage you to continue to share your thoughts and ideas. 
+						<p class="bold">
+							Here you'll find valuable information on topics important to you. 
 						</p>
 						
-						<p>
-							Here you&rsquo;ll find valuable information on topics important to you. We&rsquo;re here to make your every day life a little easier. 
-						</p>
+						<ul class="circles">
+							<li>
+								<p>
+									Share thoughts and ideas with a community that has similar interests
+								</p> 
+							</li>
+							
+							<li>
+								<p>
+									Get feedback and read reviews on products you’re interested in purchasing
+								</p>
+							</li>
+							<li>
+								<p>
+									Chat with customer care staff, product experts and other community members
+								</p>
+							</li>
+						</ul>
 						
 						<p>
-							If you have a question, our customer care staff, product experts and community members are here to help. 
+							We're here to make your every day life a little easier. Let’s get started! 
 						</p>
 						
 	 				</section>
 	
 				</article>
-    	</div>
+    	</section>
     </section>
 		<section class="span8">
 			<article class="content-container register span12">
 			    <section class="content-body clearfix">
-			        <h6 class="content-headline">Register</h6>
+			        <h6 class="content-headline">Join now!</h6>
 
 			
 			        <form class="form_register" id="register-form" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>" shc:gizmo="transFormer">
@@ -246,7 +255,7 @@ $message = array(
 			                    <dl>
 			                        <dd class="span3">&nbsp;</dd>
 			                        <dd class="span9">
-			                            <button type="submit" class="<?php echo theme_option("brand"); ?>_button">Register</button>
+			                            <button type="submit" class="<?php echo theme_option("brand"); ?>_button">Join</button>
 			                        </dd>
 			                    </dl>
 			                </li>
@@ -256,7 +265,7 @@ $message = array(
 			                        <dd class="span3">&nbsp;</dd>
 			                        <dd class="span9">
 			                            <p>
-			                                By clicking &quot;Register&quot;, I agree to the <a href="<?php echo (theme_option("brand") == "sears")? "http://www.sears.com/shc/s/nb_10153_12605_NB_CStermsofservice":"http://www.kmart.com/csterms/nb-100000000000005?adCell=WF"; ?>" target="_blank" title="Terms of Use">Terms of Use</a> and <a href="<?php echo (theme_option("brand") == "sears")? "http://www.sears.com/shc/s/nb_10153_12605_NB_CSprivacy":"http://www.kmart.com/csprivacy/nb-100000000000006?adCell=WF"; ?>" target="_blank" title="Privacy Policy">Privacy Policy</a>.
+			                                By clicking &quot;Join&quot;, I agree to the <a href="<?php echo (theme_option("brand") == "sears")? "http://www.sears.com/shc/s/nb_10153_12605_NB_CStermsofservice":"http://www.kmart.com/csterms/nb-100000000000005?adCell=WF"; ?>" target="_blank" title="Terms of Use">Terms of Use</a> and <a href="<?php echo (theme_option("brand") == "sears")? "http://www.sears.com/shc/s/nb_10153_12605_NB_CSprivacy":"http://www.kmart.com/csprivacy/nb-100000000000006?adCell=WF"; ?>" target="_blank" title="Privacy Policy">Privacy Policy</a>.
 			                            </p>
 			                        </dd>
 			                    </dl>
