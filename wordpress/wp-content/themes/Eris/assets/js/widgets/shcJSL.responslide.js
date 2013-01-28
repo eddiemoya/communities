@@ -194,14 +194,14 @@ responslide = function(element, options) {
 			 * 
 			 * invoke the taggleActive function to change the current banner.
 			 */
-			console.log(self.conf.animate)
+			//console.log(self.conf.animate)
 			if (active == undefined || n != active) {
 				// Let Responslide know that a transition is in progress
 				inTransition = true;
 				
 				// Make sure this is not a new instance, and that the user wants a sliding animation
 				if (typeof active != 'undefined' && self.conf.animate == true) {
-					console.log("ANIMATE");
+					//console.log("ANIMATE");
 					/*
 					 * We need to set the height and width of the new slide to be the same
 					 * as the current slide's height and width. This is removed after the
