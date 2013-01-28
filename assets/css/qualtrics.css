@@ -1,17 +1,19 @@
 #content .qualtics-alert .content-body {
 	border:solid 10px;
 	margin-bottom:28px;
-	padding:16px 32px;
+	padding:16px 22px;
 }
 
 .qualtics-alert .content-body img {
 	float:left;
-	padding-right:42px;
+	padding-right:30px;
 }
 
 .qualtics-alert .content-body h1 {
-	font-size:2.1em;
-	line-height:1em;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:2em;
+	line-height:1.5em;
+	margin-top:4px;
 }
 
 .qualtics-alert .content-body h2 {
@@ -30,6 +32,25 @@
 	float:right;
 	font-size:1.16em;
 	font-weight:bold;
+}
+
+.shadow-border-right {
+	background:transparent url(../img/qualtrics/shadow-divider.png) repeat-y right top;
+	float:left;
+	padding-right:31px;
+}
+
+.circles li {
+	background:transparent no-repeat 0px 0px;
+	padding-left:15px;
+}
+
+.sears .circles li {
+	background-image:url(../img/qualtrics/bullet_sears.png);
+}
+
+.kmart .circles li {
+	background-image:url(../img/qualtrics/bullet_kmart.png);
 }
 
 .qualtics-welcome .content-header, .qualtics-welcome .content-body {
@@ -51,6 +72,11 @@
 	font-size:2.08em;
 	font-weight:bold;
 	text-transform:uppercase;
+}
+
+.qualtics-welcome .content-body p {
+	font-size:1.1em;
+	line-height:1.25em;
 }
 
 .sears #content .qualtics-alert .content-body {
