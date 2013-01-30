@@ -1,4 +1,4 @@
-// Tweaks to Presentation for Kmart
+// Tweaks to Presentation for Garden Solutions Center
 
 // Sprites
 #header.kmart form #button_search, #header.kmart form #input_search,
@@ -10,28 +10,28 @@
 .kmart {
   // Site-Wide Tag Styles
   a {
-    color: kmart( link );
+    color: garden( link );
     text-decoration: none;
     &:hover {
       text-decoration: underline;
     }
     &:visited {
-      color: kmart( link );
+      color: garden( link );
     }
   }
   // Convenience Classes
   .link-emulator {
-    color: kmart( link );
+    color: garden( link );
   }
   // Singles Page
   .post, .question {
     h1 {
-      color: kmart( link );
+      color: garden( link );
     }
   }
   // Profile Page
   .answers-toggle, .upload-photo label {
-    color: kmart( link );
+    color: garden( link );
     @extend .bold;
   }
   // Threaded Discussion
@@ -40,15 +40,15 @@
   }
   // Breadcrumb
   .breadcrumb li:before {
-    color:kmart( link );
+    color:garden( link );
   }
   // Search Results
   .no-results .term {
-    color: kmart( link );
+    color: garden( link );
   }
   // Errors
   .site-error .message {
-    background: kmart( site-error );
+    background: garden( site-error );
   }
   // Avatar
   .member_avatar .badge {
