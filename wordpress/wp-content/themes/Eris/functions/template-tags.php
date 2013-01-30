@@ -1069,7 +1069,6 @@ function lookup_stylesheet() {
 			$css = array_merge((array)$css, (array)$css_current);
 		}
 	}
-	print_r($css);
 	foreach (array_reverse($css) as $file) {
 		if (file_exists(get_stylesheet_directory()."/assets/css/$file.css")) {
 			return get_template_directory_uri()."/assets/css/$file.css";
