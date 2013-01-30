@@ -1,6 +1,6 @@
 /* 
 Theme Name: Eris
-Theme URI: http://www.kmart.com/community/
+Theme URI: http://www.kmart.com/community/category/gardensolutionscenter
 Description: The Fractal 960 grid developed for Sears and Kmart Community sites
 Author: Carl Albrecht-Buehler and Captain Timothy "Heartbreaker Widowmaker" Steele
 Version: 2.0 */
@@ -821,15 +821,15 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 
 #header.kmart form #button_search, #header.kmart form #input_search, .kmart_button { background-image: url('../img/kmart/sprite_global.png?v=1348775259'); }
 
-.kmart a { color: #980017; text-decoration: none; }
+.kmart a { color: #006633; text-decoration: none; }
 .kmart a:hover { text-decoration: underline; }
-.kmart a:visited { color: #980017; }
-.kmart .link-emulator { color: #980017; }
-.kmart .post h1, .kmart .question h1 { color: #980017; }
-.kmart .answers-toggle, .kmart .upload-photo label { color: #980017; }
+.kmart a:visited { color: #006633; }
+.kmart .link-emulator { color: #006633; }
+.kmart .post h1, .kmart .question h1 { color: #006633; }
+.kmart .answers-toggle, .kmart .upload-photo label { color: #006633; }
 .kmart .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1348775259') repeat-x 0 -200px; }
-.kmart .breadcrumb li:before { color: #980017; }
-.kmart .no-results .term { color: #980017; }
+.kmart .breadcrumb li:before { color: #006633; }
+.kmart .no-results .term { color: #006633; }
 .kmart .site-error .message { background: #8f2225; }
 .kmart .member_avatar .badge { background-position: 0px -243px; }
 

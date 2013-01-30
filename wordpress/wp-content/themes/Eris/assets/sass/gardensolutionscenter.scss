@@ -1,6 +1,6 @@
 /* 
 Theme Name: Eris
-Theme URI: http://www.kmart.com/community/
+Theme URI: http://www.kmart.com/community/category/gardensolutionscenter
 Description: The Fractal 960 grid developed for Sears and Kmart Community sites
 Author: Carl Albrecht-Buehler and Captain Timothy "Heartbreaker Widowmaker" Steele
 Version: 2.0
@@ -31,15 +31,15 @@ Version: 2.0
 @import 'global/polls';
 @import 'global/hero_slider';
 
-// Kmart-Specific Adjustments
-@import 'gardensolutionscenter/ribbon';
-@import 'gardensolutionscenter/header';
-@import 'gardensolutionscenter/footer';
+// Kmart & Garden Solutions-Specific Adjustments
+@import 'kmart/ribbon';
+@import 'kmart/header';
+@import 'kmart/footer';
 @import 'gardensolutionscenter/presentation';
-@import 'gardensolutionscenter/navigation';
-@import 'gardensolutionscenter/moodle';
+@import 'kmart/navigation';
+@import 'kmart/moodle';
 @import 'gardensolutionscenter/single';
-@import 'gardensolutionscenter/addthis';
+@import 'kmart/addthis';
 @import 'gardensolutionscenter/open-id';
 @import 'gardensolutionscenter/toolip_children';
 @import 'gardensolutionscenter/polls';
