@@ -1,0 +1,104 @@
+#content .qualtics-alert .content-body {
+	border:solid 10px;
+	margin-bottom:28px;
+	padding:16px 22px;
+}
+
+.qualtics-alert .content-body img {
+	float:left;
+	padding-right:30px;
+}
+
+.qualtics-alert .content-body h1 {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:2em;
+	line-height:1.5em;
+	margin-top:4px;
+}
+
+.qualtics-alert .content-body h2 {
+	font-size:1.66em;
+	line-height:1em;
+	padding-bottom:.75em;
+} 
+
+.qualtics-alert .content-body p {
+	font-size:1.4em;
+	line-height:1.1em;
+	margin-bottom:.8em;
+}
+
+.qualtics-alert .content-body .signature {
+	float:right;
+	font-size:1.16em;
+	font-weight:bold;
+}
+
+.shadow-border-right {
+	background:transparent url(../img/qualtrics/shadow-divider.png) repeat-y right top;
+	float:left;
+	padding-right:31px;
+}
+
+.circles li {
+	background:transparent no-repeat 0px 0px;
+	padding-left:15px;
+}
+
+.sears .circles li {
+	background-image:url(../img/qualtrics/bullet_sears.png);
+}
+
+.kmart .circles li {
+	background-image:url(../img/qualtrics/bullet_kmart.png);
+}
+
+.qualtics-welcome .content-header, .qualtics-welcome .content-body {
+	border:none;
+}
+
+.qualtics-welcome .content-header {
+	padding:0px;
+}
+
+.qualtics-welcome .content-header h3 {
+	color:#000000;
+	font-size:1.41em;
+	font-weight:normal;
+	line-height:1em;
+}
+
+.qualtics-welcome .content-header h4 {
+	font-size:2.08em;
+	font-weight:bold;
+	text-transform:uppercase;
+}
+
+.qualtics-welcome .content-body p {
+	font-size:1.1em;
+	line-height:1.25em;
+}
+
+.sears #content .qualtics-alert .content-body {
+	border-color:#0297d6;
+}
+
+.sears .qualtics-alert .content-body h1 {
+	color:#163c92;
+}
+
+.sears .qualtics-welcome .content-header h4 {
+	color:#0297d6;
+}
+
+.kmart .qualtics-alert .content-body h1 {
+	color:#e41937;
+}
+
+.kmart #content .qualtics-alert .content-body {
+	border-color:#b10f1e;
+}
+
+.kmart .qualtics-welcome .content-header h4 {
+	color:#b10f1e;
+}
