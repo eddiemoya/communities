@@ -14,6 +14,8 @@ class Custom_Comments_List_Table extends WP_Comments_List_Table {
 
     private $comment_type;
     private $comment;
+	
+	//TEST
 
     function __construct($comment) {
         global $post_id, $status, $page;
