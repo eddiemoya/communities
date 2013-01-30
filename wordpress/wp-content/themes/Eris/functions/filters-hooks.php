@@ -29,7 +29,8 @@ add_filter('wp_nav_menu', 'add_menu_class_first_last');
  * @return array 
  */
 function filter_body_class($classes) {
-    
+    global $post;
+
     /**
      * Modify Styles pages on theme options. This example is from Kmart Fashion
      */
@@ -55,6 +56,10 @@ function filter_body_class($classes) {
     if(isset($_GET['s'])){
         $classes[] = 'search-results';
     }
+
+	foreach((get_the_category($post->ID)) as $category) {
+		$classes[] = $category->category_nicename;
+	}
     
     return $classes;
 }
