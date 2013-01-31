@@ -1,5 +1,66 @@
 // Tweaks to Presentation for Garden Solutions Center
 
+body {
+  background:transparent image-url("#{$garden-img}background_main-grass.jpg") repeat 0px 0px;
+  height:auto;
+}
+
+#container {
+  background-color:#faf9f2;
+  padding:0px 10px;
+}
+
+.content-container {
+  .content-header {
+    h3, h4 {
+      color:#3b2314;
+    }
+    h4 {
+      font-size:font-size(12);
+      font-weight:normal;
+    }
+  } 
+}  
+
+#header.kmart, #footer {
+  a, a:visited, a:hover {
+    color:kmart( link )
+  }
+}
+
+#header {
+  background-color:#faf9f2;
+}
+
+.content-container {
+  background:#ffffff;
+  margin-top:1.54em;
+  .content-header {
+    border:solid #dedede;
+    border-width:1px 1px 0px; 
+  }
+  .content-headline {
+    a, a:visited, a:hover {
+      color:#a8d04a;
+    }
+  }
+}
+
+.content-container.image-widget {
+  background:none;
+}
+
+.featured-question {
+  .content-header {
+    background:transparent image-url("#{$garden-img}icon_question-watering-can_29x29.png") no-repeat 10px 10px;
+    padding-left:3.77em;
+  }
+  .content-body {
+    border:solid #dedede;
+    border-width:0px 1px 1px;
+  } 
+}
+
 // Sprites
 #header.kmart form #button_search, #header.kmart form #input_search,
 .kmart_button
