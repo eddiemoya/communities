@@ -1,10 +1,20 @@
 <?php
 /*
-Plugin Name: WidgetPress: Weather Widget
-Description: Display current weather off of GoGadget Weather Widget
-Version: 1.0.1
-Author: Eddie Moya
-*/  
+Widget class based on work by Eddie Moya (http://eddiemoya.com/)
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License, version 2, as 
+published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
 class WP_Weather_Widget extends WP_Widget {
       
     /**
@@ -76,10 +86,24 @@ class WP_Weather_Widget extends WP_Widget {
     public function widget( $args, $instance ){
         extract($args);
         extract($instance);
+		$weather = new wp_weather();
+		$conditions = $weather->get_current_conditions($instance["zip"]);
 
    		echo $before_widget;
    		
-   		echo GG_func_widget_weather_and_weather_forecast();
+		?>
+		<section class="wp_weather">
+			<?php if ($instance['widget_title'] != "") { ?>
+				<h1 class="content-headline"><?php echo $instance['widget_title']; ?></h1>
+			<?php } ?>
+			<h3 class="location"><?php echo $conditions->current_observation->display_location->full?></h3>
+			<img src="<?php echo $conditions->current_observation->icon_url; ?>" title="<?php echo $conditions->current_observation->weather; ?>">
+			<span class="current-conditions"><?php echo $conditions->current_observation->weather; ?></span>
+			<span class="temp"><?php echo round($conditions->current_observation->temp_f); ?>&deg; F</span>
+		</section>
+		<?php
+
+		//print_r($conditions->current_observation);
 
         echo $after_widget;
         
@@ -155,8 +179,39 @@ class WP_Weather_Widget extends WP_Widget {
         /* Merge saved input values with default values */
         $instance = wp_parse_args((array) $instance, $defaults);
 
-        echo GG_func_widget_weather_and_weather_forecast();
-    
+		?><p><strong>General Options:</strong></p><?php
+
+		if(isset($instance['show_title'])) {
+            $fields[] = array(
+                'field_id' => 'widget_title',
+                'type' => 'text',
+                'label' => 'Title'
+            );
+        }
+		
+		$fields[] = array(
+            'field_id' => 'zip',
+            'type' => 'text',
+            'label' => 'Fixed Zip Code'
+        );
+		$this->form_fields($fields, $instance);
+
+		?><p><strong>Display Options:</strong></p><?php
+
+        $this->form_field($field_id, $type, $label, $instance, $options);
+		$show_options = array(
+            array(
+                'field_id' => 'show_title',
+                'type' => 'checkbox',
+                'label' => 'Title'
+            ),
+            array(
+                'field_id' => 'widget_name',
+                'type' => 'hidden',
+                'label' => ''
+            )
+        );
+        $this->form_fields($show_options, $instance, true);
     }
     
 

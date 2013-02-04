@@ -117,7 +117,7 @@ class WP_Weather_Admin {
 	 *
 	 */
 	function setup_pages() {
-		add_options_page('WP Weather Settings', 'WP Weather Settings', 'manage_options', 'wp_weather', array(__CLASS__, "plugin_options"));
+		add_options_page('WP Weather', 'WP Weather', 'manage_options', 'wp_weather', array(__CLASS__, "plugin_options"));
 	}
 	
 	/**
@@ -146,13 +146,39 @@ class WP_Weather_Admin {
 
 class WP_Weather {
 	function get_current_conditions($zip="") {
-		if ($zip == "") {
+		$user = get_current_user_id();
+		$city  = get_user_meta( $user, 'user_city', true );
+	    $state = get_user_meta( $user, 'user_state', true );
+		if ($city != "" && $state != "") { // use user state/city
+			$transient = get_transient("conditions-$city-$state");
+			if ($transient == "") {
+				$contions = $this->wunderground_api("$state/$city");
+				set_transient("conditions-$city-$state", $conditions, 900);
+			} else {
+				$conditions = $transient;
+			}
+		} elseif ($zip != "") { // use pre-set zip
+			$transient = get_transient("conditions-$zip");
+			if ($transient == "") {
+				$contions = $this->wunderground_api($zip);
+				set_transient("conditions-$zip", $conditions, 900);
+			} else {
+				$conditions = $transient;
+			}
+		} else { // lookup weather based on IP location
 			$location = $this->location_api();
 			if ($location->statusCode == "OK") {
-				$conditions = $this->wunderground_api($location->zipCode);
+				$coords['lon'] = $location->longitude;
+				$coords['lat'] = $location->latitude;
+				$locationCode = ($location->zipCode != "" && $location->zipCode != "-") ? $location->zipCode : "{$location->countryCode}-{$location->cityName}";
+				$transient = get_transient("conditions-$locationCode");
+				if ($transient == "") {
+					$conditions = $this->wunderground_api("{$coords['lat']},{$coords['lon']}");
+					set_transient("conditions-$locationCode", $conditions, 900);
+				} else {
+					$conditions = $transient;
+				}
 			}
-		} else {
-			$conditions = $this->wunderground_api($zip);
 		}
 		
 		if ($conditions != "") {
@@ -165,7 +191,8 @@ class WP_Weather {
 	function location_api() {
 		$options = get_option('wp_weather_options');
 		//$uri = 'http://api.ipinfodb.com/v3/ip-city/?key='.$options["ipinfodb_api"].'&format=xml&ip='.$_SERVER['REMOTE_ADDR'];
-		$uri = 'http://api.ipinfodb.com/v3/ip-city/?key='.$options["ipinfodb_api"].'&format=xml&ip=12.34.4.33';
+		//$uri = 'http://api.ipinfodb.com/v3/ip-city/?key='.$options["ipinfodb_api"].'&format=xml&ip=141.101.116.82'; // London
+		$uri = 'http://api.ipinfodb.com/v3/ip-city/?key='.$options["ipinfodb_api"].'&format=xml&ip=98.226.88.41'; // Midlothian
 		$data = $this->get_data($uri);
 		if(substr_count($data,'ode>ERROR') ){
 			return false;
@@ -175,9 +202,9 @@ class WP_Weather {
 		return $location;
 	}
 	
-	function wunderground_api($zip) {
+	function wunderground_api($query) {
 		$options = get_option('wp_weather_options');
-		$uri = 'http://api.wunderground.com/api/56640176b4813886/conditions/q/'.$zip.'.json';
+		$uri = "http://api.wunderground.com/api/{$options['wunderground_api']}/conditions/q/$query.json";
 		$data = json_decode($this->get_data($uri));
 		if ($data->response->error != "") {
 			return false;
@@ -203,10 +230,6 @@ class WP_Weather {
 		return $return;
 	}
 }
-
-$weather = new wp_weather();
-print_r($weather->get_current_conditions());
-exit();
 
 if (is_admin()) {
 	WP_Weather_Admin::init();
