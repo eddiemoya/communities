@@ -826,18 +826,31 @@ body { background: transparent url('../img/gardensolutionscenter/background_main
 .content-container .content-header h3, .content-container .content-header h4 { color: #3b2314; }
 .content-container .content-header h4 { font-size: 92.307%; font-weight: normal; }
 
+#header.kmart form { background: none repeat scroll 0 0 #FFFFFF; }
+
 #header.kmart a, #header.kmart a:visited, #header.kmart a:hover, #footer a, #footer a:visited, #footer a:hover { color: #980017; }
 
 #header { background-color: #faf9f2; }
 
 .content-container { background: #ffffff; margin-top: 1.54em; }
+.content-container .content-body { border: solid #dedede; border-width: 0px 1px 1px; padding: 0 0.769em 0.769em; }
 .content-container .content-header { border: solid #dedede; border-width: 1px 1px 0px; }
 .content-container .content-headline a, .content-container .content-headline a:visited, .content-container .content-headline a:hover { color: #a8d04a; }
 
 .content-container.image-widget { background: none; }
+.content-container.image-widget .content-body { border: none; padding: 0px; }
 
 .featured-question .content-header { background: transparent url('../img/gardensolutionscenter/icon_question-watering-can_29x29.png?v=1359654099') no-repeat 10px 10px; padding-left: 3.77em; }
-.featured-question .content-body { border: solid #dedede; border-width: 0px 1px 1px; }
+
+#content > section.span12 > section[class*="span"] > [class*="span"]:first-child, #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child { margin-top: 0px; }
+
+#content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child .content-header:first-child { border: solid #dedede; border-width: 1px 0px 0px; }
+
+#content > section.span12 { border-top: none; }
+
+.span4 .dropzone-inner-wrapper.border-left .content-container { background: none; }
+.span4 .dropzone-inner-wrapper.border-left .content-container .content-header { border: solid #dedede; border-width: 1px 0px 0px; padding: 0.769em; }
+.span4 .dropzone-inner-wrapper.border-left .content-container .content-body { border: solid #DDDCDC; border-width: 1px 0px 0px; padding: 0.769em; }
 
 #header.kmart form #button_search, #header.kmart form #input_search, .kmart_button { background-image: url('../img/kmart/sprite_global.png?v=1348844464'); }
 
@@ -898,5 +911,7 @@ body { background: transparent url('../img/gardensolutionscenter/background_main
 .kmart .sharebutton { color: #980017; }
 
 .kmart .wp-polls li span:first-child { color: #980017; }
-.kmart .wp-polls h1.content-headline { color: #980017; }
+.kmart .wp-polls h1.content-headline { color: #006633; }
 .kmart .wp-polls .bar { background: #f28734; }
+
+.wp-polls .content-header p { color: #3b2314; font-style: normal; font-weight: bold; }
