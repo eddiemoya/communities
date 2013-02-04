@@ -22,6 +22,10 @@ body {
   } 
 }  
 
+#header.kmart form {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+
 #header.kmart, #footer {
   a, a:visited, a:hover {
     color:kmart( link )
@@ -35,6 +39,11 @@ body {
 .content-container {
   background:#ffffff;
   margin-top:1.54em;
+  .content-body {
+    border:solid #dedede;
+    border-width:0px 1px 1px;
+    padding:0 0.769em 0.769em;
+  } 
   .content-header {
     border:solid #dedede;
     border-width:1px 1px 0px; 
@@ -48,6 +57,10 @@ body {
 
 .content-container.image-widget {
   background:none;
+  .content-body {
+    border:none;
+    padding:0px;
+  }
 }
 
 .featured-question {
@@ -55,12 +68,39 @@ body {
     background:transparent image-url("#{$garden-img}icon_question-watering-can_29x29.png") no-repeat 10px 10px;
     padding-left:3.77em;
   }
-  .content-body {
-    border:solid #dedede;
-    border-width:0px 1px 1px;
-  } 
 }
 
+#content > section.span12 > section[class*="span"] > [class*="span"]:first-child, #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-body:first-child, #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-header:first-child, #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child, #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child .content-body:first-child, #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child .content-header:first-child {
+  
+}
+
+#content > section.span12 > section[class*="span"] > [class*="span"]:first-child, #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child {
+  margin-top:0px;
+}
+
+#content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child .content-header:first-child {
+  border:solid #dedede;
+  border-width:1px 0px 0px; 
+}
+
+#content > section.span12 {
+  border-top:none;
+}
+.span4 .dropzone-inner-wrapper.border-left {
+  .content-container {
+    background:none;
+    .content-header {
+      border:solid #dedede;
+      border-width:1px 0px 0px;
+      padding: 0.769em;
+    }
+    .content-body {
+      border:solid #DDDCDC;
+      border-width:1px 0px 0px;
+      padding: 0.769em;
+    }
+  } 
+}
 // Sprites
 #header.kmart form #button_search, #header.kmart form #input_search,
 .kmart_button
