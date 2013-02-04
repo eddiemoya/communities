@@ -87,8 +87,10 @@ class WP_Weather_Widget extends WP_Widget {
         extract($args);
         extract($instance);
 		$weather = new wp_weather();
+		$options = get_option('wp_weather_options');
 		$conditions = $weather->get_current_conditions($instance["zip"]);
-
+		$image_path = ($options['imageset']!="") ? "http://icons-ak.wxug.com/i/c/{$options['imageset']}/" : "http://icons-ak.wxug.com/i/c/k/";
+		
    		echo $before_widget;
    		
 		?>
@@ -97,18 +99,15 @@ class WP_Weather_Widget extends WP_Widget {
 				<h1 class="content-headline"><?php echo $instance['widget_title']; ?></h1>
 			<?php } ?>
 			<h3 class="location"><?php echo $conditions->current_observation->display_location->full?></h3>
-			<img src="<?php echo $conditions->current_observation->icon_url; ?>" title="<?php echo $conditions->current_observation->weather; ?>">
+			<img src="<?php echo $image_path.$conditions->current_observation->icon; ?>.gif" title="<?php echo $conditions->current_observation->weather; ?>">
 			<span class="current-conditions"><?php echo $conditions->current_observation->weather; ?></span>
 			<span class="temp"><?php echo round($conditions->current_observation->temp_f); ?>&deg; F</span>
 		</section>
 		<?php
 
-		//print_r($conditions->current_observation);
+		//print_r($conditions);
 
         echo $after_widget;
-        
-        
-  		//$image 
         
     }
     
@@ -305,12 +304,6 @@ class WP_Weather_Widget extends WP_Widget {
                 	<label for="<?php echo $this->get_field_id( $field_id ); ?>"><?php echo $label; ?></label>
 
                 <?php break;
-            case 'plupload': $image = wp_get_attachment_url($instance[$field_id]); ?>
-            		<img src="<?php echo $image; ?>" />
-            		<label for="<?php echo $this->get_field_id($field_id); ?>"><?php echo $label; ?></label>
-            		<input id="<?php echo $this->get_field_id($field_id); ?>" name="<?php echo $this->get_field_name($field_id); ?>" type='text' value='<?php echo $image; ?>' />  <?php// $image_url = get_the_post_thumbnail($_POST['post_id']); ?>
-            	<?php break;
-
 
         }
         

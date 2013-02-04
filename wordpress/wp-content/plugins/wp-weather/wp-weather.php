@@ -49,6 +49,8 @@ class WP_Weather_Admin {
 		add_settings_field('weather_underground_api_field', 'API Key', array(__CLASS__, "wunderground_api_textbox"), 'wp_weather', 'weather_underground_api');
 		add_settings_section('ipinfodb_api', 'IPinfoDB API', array(__CLASS__, "ipinfodb_api_text"), 'wp_weather');
 		add_settings_field('ipinfodb_api_field', 'API Key', array(__CLASS__, "ipinfodb_api_textbox"), 'wp_weather', 'ipinfodb_api');
+		add_settings_section('image_select', 'Imageset', array(__CLASS__, "image_select_text"), 'wp_weather');
+		add_settings_field('image_select_field', 'Select Imageset', array(__CLASS__, "image_select_checkboxes"), 'wp_weather', 'image_select');
 	}
 	
 	/**
@@ -62,6 +64,7 @@ class WP_Weather_Admin {
 		return array(
 			"wunderground_api" => $_POST['weather_underground_api_field'],
 			"ipinfodb_api" => $_POST['ipinfodb_api_field'],
+			"imageset" => $_POST['imageset']
 		);
 	}
 	
@@ -111,6 +114,66 @@ class WP_Weather_Admin {
 	}
 	
 	/**
+	 * Sets text to display on options page above profile selection
+	 *
+	 * @author Jason Corradino
+	 *
+	 */
+	function image_select_text() {
+		echo '<p>These are the imagesets available, select the one you would like to use, or submit your own.</p>';
+		return true;
+	}
+
+	/**
+	 * Sets text to display on options page next to profile selection
+	 *
+	 * @author Jason Corradino
+	 *
+	 */
+	function image_select_checkboxes() {
+		$options = get_option('wp_weather_options');
+		if ($options['imageset'] == "") {
+			$options['imageset'] = "k";
+		}
+		$conditions = array("chanceflurries","chancerain","chancesleet","chancesnow","chancetstorms","chancetstorms","clear","cloudy","flurries","fog","hazy","mostlycloudy","mostlysunny","partlycloudy","partlysunny","sleet","rain","snow","sunny","tstorms");
+		$image_sets = range("a", "k");
+		echo '
+		<style>
+			.imageset {
+				float: left;
+				clear: both;
+				margin-bottom: 20px;
+				border: 1px solid #cccccc;
+				background-color: #ececec;
+				padding: 10px 10px 2px 10px;
+			}
+			.imageset input {
+				float: left;
+				margin: 50px 12px 0 6px;
+			}
+			.imageset .images {
+				width: 525px;
+				float: left;
+			}
+			.imageset .images img {
+				margin: 5px;
+			}
+		</style>
+		';
+		foreach ($image_sets as $image_set) {
+			echo "<section class='imageset'><input type='radio' name='imageset' value='$image_set' ";
+			if ($options['imageset'] == $image_set) {
+				echo "checked='checked'";
+			}
+			echo "><div class='images'>";
+				foreach ($conditions as $condition) {
+					echo "<img src='http://icons-ak.wxug.com/i/c/$image_set/$condition.gif' height='42' />";
+				}
+			echo '</div></section>';
+		}
+	}
+	
+	/**
 	 * Creates the "Wall Content" menu item and removes "add new" photo
 	 *
 	 * @author Jason Corradino
@@ -149,19 +212,19 @@ class WP_Weather {
 		$user = get_current_user_id();
 		$city  = get_user_meta( $user, 'user_city', true );
 	    $state = get_user_meta( $user, 'user_state', true );
-		if ($city != "" && $state != "") { // use user state/city
+		if ($zip != "") { // use pre-set zip
+			$transient = get_transient("conditions-$zip");
+			if ($transient == "") {
+				$conditions = $this->wunderground_api($zip);
+				set_transient("conditions-$zip", $conditions, 900);
+			} else {
+				$conditions = $transient;
+			}
+		} elseif  ($city != "" && $state != "") { // use user state/city
 			$transient = get_transient("conditions-$city-$state");
 			if ($transient == "") {
 				$contions = $this->wunderground_api("$state/$city");
 				set_transient("conditions-$city-$state", $conditions, 900);
-			} else {
-				$conditions = $transient;
-			}
-		} elseif ($zip != "") { // use pre-set zip
-			$transient = get_transient("conditions-$zip");
-			if ($transient == "") {
-				$contions = $this->wunderground_api($zip);
-				set_transient("conditions-$zip", $conditions, 900);
 			} else {
 				$conditions = $transient;
 			}
@@ -192,7 +255,8 @@ class WP_Weather {
 		$options = get_option('wp_weather_options');
 		//$uri = 'http://api.ipinfodb.com/v3/ip-city/?key='.$options["ipinfodb_api"].'&format=xml&ip='.$_SERVER['REMOTE_ADDR'];
 		//$uri = 'http://api.ipinfodb.com/v3/ip-city/?key='.$options["ipinfodb_api"].'&format=xml&ip=141.101.116.82'; // London
-		$uri = 'http://api.ipinfodb.com/v3/ip-city/?key='.$options["ipinfodb_api"].'&format=xml&ip=98.226.88.41'; // Midlothian
+		//$uri = 'http://api.ipinfodb.com/v3/ip-city/?key='.$options["ipinfodb_api"].'&format=xml&ip=98.226.88.41'; // Midlothian
+		$uri = 'http://api.ipinfodb.com/v3/ip-city/?key='.$options["ipinfodb_api"].'&format=xml&ip=12.34.4.33'; // Chicago
 		$data = $this->get_data($uri);
 		if(substr_count($data,'ode>ERROR') ){
 			return false;
