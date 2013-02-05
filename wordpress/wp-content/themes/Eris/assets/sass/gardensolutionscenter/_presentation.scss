@@ -1,8 +1,12 @@
 // Tweaks to Presentation for Garden Solutions Center
 
-body {
+html {
   background:transparent image-url("#{$garden-img}background_main-grass.jpg") repeat 0px 0px;
   height:auto;
+}
+
+body {
+  background:none;
 }
 
 #container {
@@ -22,6 +26,10 @@ body {
   } 
 }  
 
+.kmart.gardensolutionscenter .sharebutton {
+  color:garden( link )
+}
+
 #header.kmart form {
     background: none repeat scroll 0 0 #FFFFFF;
 }
@@ -37,7 +45,7 @@ body {
 }
 
 .content-container {
-  background:#ffffff;
+  background-color:#ffffff;
   margin-top:1.54em;
   .content-body {
     border:solid #dedede;
@@ -70,10 +78,6 @@ body {
   }
 }
 
-#content > section.span12 > section[class*="span"] > [class*="span"]:first-child, #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-body:first-child, #content > section.span12 > section[class*="span"] > [class*="span"]:first-child .content-header:first-child, #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child, #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child .content-body:first-child, #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child .content-header:first-child {
-  
-}
-
 #content > section.span12 > section[class*="span"] > [class*="span"]:first-child, #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child {
   margin-top:0px;
 }
@@ -100,6 +104,19 @@ body {
       padding: 0.769em;
     }
   } 
+}
+
+.results-list.content-container {
+  background:none;
+  margin-top:0px;
+  .content-container {
+    background-color:#FAF9F2;
+    .content-body {
+      background-color:#ffffff;
+      border-top-width:1px;
+      padding-top:0.769em;
+    }  
+  }
 }
 // Sprites
 #header.kmart form #button_search, #header.kmart form #input_search,
