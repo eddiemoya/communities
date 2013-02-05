@@ -10,14 +10,14 @@ body {
 }
 
 #container {
-  background-color:#faf9f2;
+  background-color: garden( background );
   padding:0px 10px;
 }
 
 .content-container {
   .content-header {
     h3, h4 {
-      color:#3b2314;
+      color:garden( link );
     }
     h4 {
       font-size:font-size(12);
@@ -41,19 +41,19 @@ body {
 }
 
 #header {
-  background-color:#faf9f2;
+  background-color:garden( background );
 }
 
 .content-container {
   background-color:#ffffff;
   margin-top:1.54em;
   .content-body {
-    border:solid #dedede;
+    border:solid garden( decorative );;
     border-width:0px 1px 1px;
     padding:0 0.769em 0.769em;
   } 
   .content-header {
-    border:solid #dedede;
+    border:solid garden( decorative );;
     border-width:1px 1px 0px; 
   }
   .content-headline {
@@ -73,7 +73,7 @@ body {
 
 .featured-question {
   .content-header {
-    background:transparent image-url("#{$garden-img}icon_question-watering-can_29x29.png") no-repeat 10px 10px;
+    background:transparent image-url("#{$garden-img}icon_question_29x29.png") no-repeat 10px 10px;
     padding-left:3.77em;
   }
 }
@@ -83,7 +83,7 @@ body {
 }
 
 #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child .content-header:first-child {
-  border:solid #dedede;
+  border:solid garden( decorative );
   border-width:1px 0px 0px; 
 }
 
@@ -94,7 +94,7 @@ body {
   .content-container {
     background:none;
     .content-header {
-      border:solid #dedede;
+      border:solid garden( decorative );
       border-width:1px 0px 0px;
       padding: 0.769em;
     }
@@ -110,7 +110,7 @@ body {
   background:none;
   margin-top:0px;
   .content-container {
-    background-color:#FAF9F2;
+    background-color:garden( background );
     .content-body {
       background-color:#ffffff;
       border-top-width:1px;
@@ -163,6 +163,27 @@ body {
   // Search Results
   .no-results .term {
     color: garden( link );
+  }
+  .page-title {
+    background-color: garden( background );
+    color: garden( bodycopy );
+    .content-body {
+      border: 0;
+      padding-left: 2em;
+    }
+    h2 {
+      font-weight: normal;
+    }
+  }
+  
+  // Add icons to page titles
+  $post_types: (post, guide, question);
+  @each $type in $post_types {
+    &.archive_#{$type}s {
+      .page-title {
+        background: garden( background ) image-url("#{$garden-img}icon_#{$type}_29x29.png") no-repeat 0 3px;
+      }
+    }
   }
   // Errors
   .site-error .message {
