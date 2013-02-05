@@ -55,3 +55,6 @@
 [submodule "wp-content/plugins/wp-polls"]
 	path = wp-content/plugins/wp-polls
 	url = git@github.com:dinocarl/wp-polls.git
+[submodule "wp-content/themes/eris"]
+	path = wp-content/themes/eris
+	url = git@github.com:eddiemoya/eris-filtered.git
