@@ -128,3 +128,11 @@
   }
 }
 @include sprite-position( ".kmart #header_nav.dropmenu", left, ( $nav-sprite-period * ( -1 ) ) );
+
+$nav_icons-spacing: 20px;
+
+@import "gardensolutionscenter/nav_icons/*.png";
+@include all-nav_icons-sprites;
+#subnav {
+  
+}
