@@ -211,7 +211,7 @@ class WP_Weather {
 	function get_current_conditions($zip="") {
 		$user = get_current_user_id();
 		$city  = get_user_meta( $user, 'user_city', true );
-	    $state = get_user_meta( $user, 'user_state', true );
+		$state = get_user_meta( $user, 'user_state', true );
 		if ($zip != "") { // use pre-set zip
 			$transient = get_transient("conditions-$zip");
 			if ($transient == "") {
@@ -289,7 +289,7 @@ class WP_Weather {
 			curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt ($ch, CURLOPT_TIMEOUT, $timeout);
 			$return = @curl_exec($ch);
-			curl_close($ch);    
+			curl_close($ch);
 		}
 		return $return;
 	}
