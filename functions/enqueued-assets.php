@@ -98,12 +98,30 @@ function enqueue_scripts() {
         // $style_path = STYLESHEETPATH . "/style.css";
         // $style_version = file_exists( $style_path ) ? filemtime( $style_path ) : '1.0';
         // Implement the following lines and delete the above after migrating to new sass layout
-        $style_path = get_stylesheet_directory() . '/assets/css/' . theme_option("brand") . '.css';
-        $style_url = get_stylesheet_directory_uri() . '/assets/css/' . theme_option("brand") . '.css';
-        $style_version = file_exists( $style_path ) ? filemtime( $style_path ) : '2.0';
-        wp_register_style( 'main-styles', $style_url, array(), $style_version );
-        // wp_register_style( 'main-styles', get_stylesheet_uri(), array(), $style_version );
-        wp_enqueue_style( 'main-styles' );
+		if (get_queried_object()->post_type == "section" || get_queried_object()->post_type == "post" || get_queried_object()->post_type == "guide" || get_queried_object()->post_type == "question") {
+			$dropzone_category = wp_get_post_categories(get_queried_object()->ID);
+			$category_slug = get_category($dropzone_category[0])->slug;
+			$category_path = STYLESHEETPATH . "/assets/css/$category_slug.css";
+			if (file_exists($category_path)) {
+				$style_url = get_stylesheet_directory_uri() . '/assets/css/' . $category_slug . '.css';
+		        $style_version = file_exists( $category_path ) ? filemtime( $category_path ) : '2.0';
+		        wp_register_style( 'main-styles', $style_url, array(), $style_version );
+		        wp_enqueue_style( 'main-styles' );
+			} else {
+				$style_path = get_stylesheet_directory() . '/assets/css/' . theme_option("brand") . '.css';
+		        $style_url = get_stylesheet_directory_uri() . '/assets/css/' . theme_option("brand") . '.css';
+		        $style_version = file_exists( $style_path ) ? filemtime( $style_path ) : '2.0';
+		        wp_register_style( 'main-styles', $style_url, array(), $style_version );
+		        wp_enqueue_style( 'main-styles' );
+			}
+		} else {
+			$style_path = get_stylesheet_directory() . '/assets/css/' . theme_option("brand") . '.css';
+	        $style_url = get_stylesheet_directory_uri() . '/assets/css/' . theme_option("brand") . '.css';
+	        $style_version = file_exists( $style_path ) ? filemtime( $style_path ) : '2.0';
+	        wp_register_style( 'main-styles', $style_url, array(), $style_version );
+	        // wp_register_style( 'main-styles', get_stylesheet_uri(), array(), $style_version );
+	        wp_enqueue_style( 'main-styles' );
+		}
 
         
         //Enqueue profile ajax only for author template
