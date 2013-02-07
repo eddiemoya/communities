@@ -209,7 +209,7 @@ ul.footer_anterior .smb { background-position: -240px top; }
 
 .input_text { border: solid 1px #cccccc; }
 
-html, body { height: 100%; text-align: left; background: white; margin: 0; padding: 0; font-family: Helvetica, Arial, Verdana, sans-serif; line-height: 1.4; color: 1; }
+html, body { height: 100%; text-align: left; font-family: Helvetica, Arial, Verdana, sans-serif; line-height: 1.4; }
 
 .right { float: right; }
 
@@ -287,7 +287,7 @@ ul.bullets { list-style-type: disc; }
 .content-container .content-headline { font-size: 153.846%; line-height: 1.1em; margin: 0 0 0.625em; }
 .content-container .share-full { margin-top: 10px; }
 
-.content-body p { color: #333333; line-height: 1.7em; margin-bottom: 1em; }
+.content-body p { line-height: 1.7em; margin-bottom: 1em; }
 
 .span4 .content-container .content-body .content-comments li, .span3 .content-container .content-body .content-comments li { border-left: 0; float: none; }
 
@@ -819,9 +819,9 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 
 .kmart .footer_anterior p { font-size: 76.923%; margin-top: .5em; text-align: center; }
 
-html { background: transparent url('../img/gardensolutionscenter/background_main-grass.jpg?v=1360012142') repeat 0px 0px; height: auto; }
+html { background: transparent url('../img/gardensolutionscenter/background_main-grass.jpg?v=1360012142') repeat 0px 0px; height: auto; color: #3b2314; }
 
-body { background: none; }
+body, td, p { color: #3b2314; }
 
 #container { background-color: #faf9f2; padding: 0px 10px; }
 
@@ -836,7 +836,7 @@ body { background: none; }
 
 #header { background-color: #faf9f2; }
 
-.content-container { background-color: #ffffff; margin-top: 1.54em; }
+.content-container { background-color: white; margin-top: 1.54em; }
 .content-container .content-body { border: solid #dedede; border-width: 0px 1px 1px; padding: 0 0.769em 0.769em; }
 .content-container .content-header { border: solid #dedede; border-width: 1px 1px 0px; }
 .content-container .content-headline a, .content-container .content-headline a:visited, .content-container .content-headline a:hover { color: #a8d04a; }
@@ -844,7 +844,13 @@ body { background: none; }
 .content-container.image-widget { background: none; }
 .content-container.image-widget .content-body { border: none; padding: 0px; }
 
-.featured-question .content-header { background: transparent url('../img/gardensolutionscenter/icon_question_29x29.png?v=1360012142') no-repeat 10px 10px; padding-left: 3.77em; }
+.kmart.archive_posts .page-title { background-image: url('../img/gardensolutionscenter/icon_post_29x29.png?v=1360013317'); background-repeat: no-repeat; }
+
+.kmart.archive_guides .page-title { background-image: url('../img/gardensolutionscenter/icon_guide_29x29.png?v=1360014182'); background-repeat: no-repeat; }
+
+.featured-question .content-header, .kmart.archive_questions .page-title { background-image: url('../img/gardensolutionscenter/icon_question_29x29.png?v=1360012142'); background-repeat: no-repeat; }
+
+.featured-question .content-header { background-color: transparent; background-position: 10px 10px; padding-left: 3.77em; }
 
 #content > section.span12 > section[class*="span"] > [class*="span"]:first-child, #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child { margin-top: 0px; }
 
@@ -874,9 +880,9 @@ body { background: none; }
 .kmart .page-title { background-color: #faf9f2; color: #3b2314; }
 .kmart .page-title .content-body { border: 0; padding-left: 2em; }
 .kmart .page-title h2 { font-weight: normal; }
-.kmart.archive_posts .page-title { background: #faf9f2 url('../img/gardensolutionscenter/icon_post_29x29.png?v=1360013317') no-repeat 0 3px; }
-.kmart.archive_guides .page-title { background: #faf9f2 url('../img/gardensolutionscenter/icon_guide_29x29.png?v=1360014182') no-repeat 0 3px; }
-.kmart.archive_questions .page-title { background: #faf9f2 url('../img/gardensolutionscenter/icon_question_29x29.png?v=1360012142') no-repeat 0 3px; }
+.kmart.archive_posts .page-title { background-color: #faf9f2; background-position: 0px 6px; }
+.kmart.archive_guides .page-title { background-color: #faf9f2; background-position: 0px 6px; }
+.kmart.archive_questions .page-title { background-color: #faf9f2; background-position: 0px 6px; }
 .kmart .site-error .message { background: #8f2225; }
 .kmart .member_avatar .badge { background-position: 0px -243px; }
 
@@ -917,15 +923,31 @@ body { background: none; }
 
 .kmart #header_nav.dropmenu { background-position: left -80px; }
 
-.nav_icons-sprite, .nav_icons-blog, .nav_icons-guide, .nav_icons-home, .nav_icons-qna { background: url('../img/gardensolutionscenter/nav_icons-sce485aa29a.png') no-repeat; }
+.nav_icons-sprite, #menu-kgscsubnavigation li.garden_nav_posts a, #menu-kgscsubnavigation li.garden_nav_guides a, #menu-kgscsubnavigation li.garden_nav_questions a, #menu-kgscsubnavigation li.garden_nav_home a { background: url('../img/gardensolutionscenter/nav_icons-s5cb02d56f1.png') no-repeat; }
 
-.nav_icons-blog { background-position: 0 -76px; }
+#menu-kgscsubnavigation { *zoom: 1; }
+#menu-kgscsubnavigation:after { content: "\0020"; display: block; height: 0; clear: both; overflow: hidden; visibility: hidden; }
+#menu-kgscsubnavigation li { float: left; width: 24.87562189054727%; text-align: center; border-left: 1px solid #818181; background-color: #666; -webkit-box-shadow: #222222 0px 28px 26px -26px inset; -moz-box-shadow: #222222 0px 28px 26px -26px inset; box-shadow: #222222 0px 28px 26px -26px inset; }
+#menu-kgscsubnavigation li a { color: white; font-weight: bold; display: inline-block; }
+#menu-kgscsubnavigation li a:hover { text-decoration: none; }
+#menu-kgscsubnavigation li:first-child { border-left: 0; }
+#menu-kgscsubnavigation li.garden_nav_posts a { background-position: 0 -76px; padding-left: 20px; }
+#menu-kgscsubnavigation li.garden_nav_posts:hover { background: #57b59b; }
+#menu-kgscsubnavigation li.garden_nav_guides a { background-position: 0 -37px; padding-left: 27px; }
+#menu-kgscsubnavigation li.garden_nav_guides:hover { background: #99b03e; }
+#menu-kgscsubnavigation li.garden_nav_questions a { background-position: 0 0; padding-left: 32px; }
+#menu-kgscsubnavigation li.garden_nav_questions:hover { background: #4e6483; }
+#menu-kgscsubnavigation li.garden_nav_home a { background-position: 0 -115px; padding-left: 23px; }
+#menu-kgscsubnavigation li.garden_nav_home:hover { background: #006633; }
 
-.nav_icons-guide { background-position: 0 -37px; }
+.archive_posts #menu-kgscsubnavigation li.garden_nav_posts, .single-post #menu-kgscsubnavigation li.garden_nav_posts { background: #57b59b; }
 
-.nav_icons-home { background-position: 0 -115px; }
+.archive_guides #menu-kgscsubnavigation li.garden_nav_guides, .single-guide #menu-kgscsubnavigation li.garden_nav_guides { background: #99b03e; }
 
-.nav_icons-qna { background-position: 0 0; }
+.archive_questions #menu-kgscsubnavigation li.garden_nav_questions, .single-question #menu-kgscsubnavigation li.garden_nav_questions { background: #4e6483; }
+
+#content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > .communities_menu_widget:first-child { background: none; }
+#content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > .communities_menu_widget:first-child .content-header:first-child, #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > .communities_menu_widget:first-child .content-body { padding: 0; border: 0; }
 
 .kmart #moodle_window { background: rgba(253, 190, 81, 0.3); }
 .kmart .loading { background: transparent url('../img/kmart/background_loading.gif?v=1348772832') no-repeat center center; }
