@@ -23,8 +23,7 @@
 			
 			<div class="clearfix"></div>
 		</section>
-		<div class="clearfix"></div>
-	
+			
 	<?php } ?>
 
 		<article class="content-container post span12">
