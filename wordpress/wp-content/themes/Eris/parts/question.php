@@ -45,18 +45,18 @@
 			
 			<section class="content-body clearfix">
 				
-				<?php //get_partial( 'parts/crest', $crest_options ); ?>
+				<?php get_partial( 'parts/crest', $crest_options ); ?>
 				
 				<div class="span10">
 					
 					<div class="content-details clearfix">
-					    <?php //get_partial( 'parts/space_date_time', array( "timestamp" => $post_date ) ); ?>
+					    <?php get_partial( 'parts/space_date_time', array( "timestamp" => $post_date ) ); ?>
 					</div>
 					
 					<h1 class="content-headline"><?php the_title(); ?></h1>
 					
 					<?php the_content(); ?>	
-					<?php //get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); ?>
+					<?php get_partial( 'parts/forms/post-n-comment-actions', $post_actions ); ?>
 					
 				</div> <!-- END SPAN10 -->
 				
@@ -65,8 +65,8 @@
 		</article> <!-- END CONTENT CONTAINER QUESTION -->
 		
 		<?php
-      //comments_template('/parts/commentForm.php');
-      //comments_template('/parts/comments.php');
+      comments_template('/parts/commentForm.php');
+      comments_template('/parts/comments.php');
     ?>
 		
 	</section> <!-- END SPAN 8 -->
