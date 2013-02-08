@@ -825,7 +825,7 @@ body, td, p { color: #3b2314; }
 
 #container { background-color: #faf9f2; padding: 0px 10px; }
 
-.content-container .content-header h3, .content-container .content-header h4 { color: #006633; }
+.content-container .content-header h3, .content-container .content-header h4 { color: #3b2314; }
 .content-container .content-header h4 { font-size: 92.307%; font-weight: normal; }
 
 .kmart.gardensolutionscenter .sharebutton { color: #006633; }
@@ -959,8 +959,8 @@ body, td, p { color: #3b2314; }
 
 .archive_questions #menu-kgscsubnavigation li.garden_nav_questions, .single-question #menu-kgscsubnavigation li.garden_nav_questions { background: #4e6483; }
 
-#content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > .communities_menu_widget:first-child { background: none; }
-#content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > .communities_menu_widget:first-child .content-header:first-child, #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > .communities_menu_widget:first-child .content-body { padding: 0; border: 0; }
+#content > section.span12 > section.span8 > .dropzone-inner-wrapper > .communities_menu_widget:first-child { background: none; }
+#content > section.span12 > section.span8 > .dropzone-inner-wrapper > .communities_menu_widget:first-child .content-header:first-child, #content > section.span12 > section.span8 > .dropzone-inner-wrapper > .communities_menu_widget:first-child .content-body { padding: 0; border: 0; }
 
 .kmart #moodle_window { background: rgba(253, 190, 81, 0.3); }
 .kmart .loading { background: transparent url('../img/kmart/background_loading.gif?v=1348844464') no-repeat center center; }

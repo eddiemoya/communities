@@ -195,7 +195,8 @@ $nav_icons: sprite-map("gardensolutionscenter/nav_icons/*.png");
 }
 
 // target the menu
-#content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > .communities_menu_widget:first-child {
+// #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > .communities_menu_widget:first-child {
+#content > section.span12 > section.span8 > .dropzone-inner-wrapper > .communities_menu_widget:first-child {
   background: none;
   .content-header:first-child, .content-body {
     padding: 0;
