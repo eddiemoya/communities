@@ -1,9 +1,9 @@
 <?php
 
 //Register SK Category taxonomy
-add_action( 'init', 'sk_category', 0 );
+add_action( 'init', 'register_sk_category', 0 );
 
-function sk_category() {
+function register_sk_category() {
  
   $labels = array(
     'name'                => _x( 'SKCategories', 'taxonomy general name' ),
