@@ -3,10 +3,10 @@
 html {
   background:transparent image-url("#{$garden-img}background_main-grass.jpg") repeat 0px 0px;
   height:auto;
+  color: garden( bodycopy );
 }
-
-body {
-  background:none;
+body, td, p {
+  color: garden( bodycopy );
 }
 
 #container {
@@ -17,10 +17,10 @@ body {
 .content-container {
   .content-header {
     h3, h4 {
-      color:garden( link );
+      color: garden( link );
     }
     h4 {
-      font-size:font-size(12);
+      font-size: font-size( 12 );
       font-weight:normal;
     }
   } 
@@ -31,7 +31,7 @@ body {
 }
 
 #header.kmart form {
-    background: none repeat scroll 0 0 #FFFFFF;
+    background: none repeat scroll 0 0 garden( bg-contrast );
 }
 
 #header.kmart, #footer {
@@ -41,11 +41,11 @@ body {
 }
 
 #header {
-  background-color:garden( background );
+  background-color: garden( background );
 }
 
 .content-container {
-  background-color:#ffffff;
+  background-color:garden( bg-contrast );
   margin-top:1.54em;
   .content-body {
     border:solid garden( decorative );;
@@ -71,9 +71,18 @@ body {
   }
 }
 
+@each $type in $post_types {
+  %#{$type}_icon {
+    background-image: image-url("#{$garden-img}icon_#{$type}_29x29.png");
+    background-repeat: no-repeat;
+  }
+}
+
 .featured-question {
   .content-header {
-    background:transparent image-url("#{$garden-img}icon_question_29x29.png") no-repeat 10px 10px;
+    @extend %question_icon;
+    background-color:transparent;
+    background-position:10px 10px;
     padding-left:3.77em;
   }
 }
@@ -143,7 +152,7 @@ body {
       }
     }
   }
-}
+} 
 
 .archive_questions .results-list > .content-body > .content-container:first-child .content-body {
   border-top:solid 1px #DEDEDE;
@@ -217,14 +226,16 @@ body {
   }
   
   // Add icons to page titles
-  $post_types: (post, guide, question);
   @each $type in $post_types {
     &.archive_#{$type}s {
       .page-title {
-        background: garden( background ) image-url("#{$garden-img}icon_#{$type}_29x29.png") no-repeat 0 3px;
+        @extend %#{$type}_icon;
+        background-color: garden( background );
+        background-position: 0px 6px;
       }
     }
   }
+  
   // Errors
   .site-error .message {
     background: garden( site-error );
