@@ -33,7 +33,6 @@
             
             <div class="clearfix"></div>
         </section>
-        <div class="clearfix"></div>
     
     <?php } ?>
 
