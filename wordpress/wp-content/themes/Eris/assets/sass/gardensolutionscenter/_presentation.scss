@@ -127,6 +127,46 @@ body, td, p {
     }  
   }
 }
+
+.post-your-question {
+  .content-body {
+    border-top-width:1px;
+    padding-top:10px;
+  }
+}
+
+.archive_questions {
+  .results-list {
+    background-color:#ffffff;
+    @include border-radius(0px);
+    margin-top:20px;
+    .content-header {
+      border:none;
+    }
+    .content-body {
+      .content-container {
+        margin-top:0px;
+      }
+      .content-body {
+        border-width:1px 0px 0px;
+      }
+    }
+  }
+} 
+
+.archive_questions .results-list > .content-body > .content-container:first-child .content-body {
+  border-top:solid 1px #DEDEDE;
+}
+.content-container.post-your-question form .state_confirm-post .confirmation.background_light-gray {
+  background-color:#ffffff;
+}
+
+.pagination {
+  background-color:#FAF9F2;
+  border:solid 1px #FAF9F2;
+  border-top:1px solid #CCCCCC;
+  margin:0px -1px -1px;
+}
 // Sprites
 #header.kmart form #button_search, #header.kmart form #input_search,
 .kmart_button
