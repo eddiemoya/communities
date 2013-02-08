@@ -1,4 +1,8 @@
 // Tweaks to Presentation for Kmart
+html, body {
+  background: kmart( background );
+  color: kmart( bodycopy );
+}
 
 // Sprites
 #header.kmart form #button_search, #header.kmart form #input_search,
@@ -22,6 +26,12 @@
   // Convenience Classes
   .link-emulator {
     color: kmart( link );
+  }
+  // Featured
+  .content-body {
+    p {
+      color: kmart( featured-copy );
+    }
   }
   // Singles Page
   .post, .question {

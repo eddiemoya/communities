@@ -209,7 +209,7 @@ ul.footer_anterior .smb { background-position: -240px top; }
 
 .input_text { border: solid 1px #cccccc; }
 
-html, body { height: 100%; text-align: left; background: white; margin: 0; padding: 0; font-family: Helvetica, Arial, Verdana, sans-serif; line-height: 1.4; color: 1; }
+html, body { height: 100%; text-align: left; font-family: Helvetica, Arial, Verdana, sans-serif; line-height: 1.4; }
 
 .right { float: right; }
 
@@ -287,7 +287,7 @@ ul.bullets { list-style-type: disc; }
 .content-container .content-headline { font-size: 153.846%; line-height: 1.1em; margin: 0 0 0.625em; }
 .content-container .share-full { margin-top: 10px; }
 
-.content-body p { color: #333333; line-height: 1.7em; margin-bottom: 1em; }
+.content-body p { line-height: 1.7em; margin-bottom: 1em; }
 
 .span4 .content-container .content-body .content-comments li, .span3 .content-container .content-body .content-comments li { border-left: 0; float: none; }
 
@@ -819,12 +819,15 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 
 .kmart .footer_anterior p { font-size: 76.923%; margin-top: .5em; text-align: center; }
 
+html, body { background: white; color: #555555; }
+
 #header.kmart form #button_search, #header.kmart form #input_search, .kmart_button { background-image: url('../img/kmart/sprite_global.png?v=1348775259'); }
 
 .kmart a { color: #980017; text-decoration: none; }
 .kmart a:hover { text-decoration: underline; }
 .kmart a:visited { color: #980017; }
 .kmart .link-emulator { color: #980017; }
+.kmart .content-body p { color: #333333; }
 .kmart .post h1, .kmart .question h1 { color: #980017; }
 .kmart .answers-toggle, .kmart .upload-photo label { color: #980017; }
 .kmart .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1348775259') repeat-x 0 -200px; }
