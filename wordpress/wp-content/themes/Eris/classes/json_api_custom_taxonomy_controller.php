@@ -41,10 +41,15 @@ class JSON_API_Custom_Taxonomy_Controller {
             $json_api->error("Not found.");
         }
         $term = $this->get_current_term( $taxonomy );
-        $posts = $json_api->introspector->get_posts(array(
-                    'taxonomy' => $taxonomy,
-                    'term' => $term->slug
-                ));
+       
+        $posts =  $json_api->introspector->get_posts(array('tax_query' => array(
+																				array(
+																					'taxonomy' => $taxonomy,
+																					'field' => 'slug',
+																					'terms' => $term,
+																					'include_children' => $this->get_return_children()
+																				))
+														));
         foreach ($posts as $jpost) {
             $this->add_taxonomies( $jpost );
         }
@@ -61,7 +66,15 @@ class JSON_API_Custom_Taxonomy_Controller {
         }
         return null;
     }
-
+	
+    protected function get_return_children() {
+    	global $json_api;
+    	
+    	 $children = $json_api->query->get('children');
+    	 
+    	 return ($children == 'true') ? true : false;
+    }
+    
     protected function get_current_term( $taxonomy=null ) {
         global $json_api;
         extract($json_api->query->get(array('id', 'slug', 'term_id', 'term_slug')));
