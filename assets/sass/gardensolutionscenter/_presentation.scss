@@ -167,6 +167,87 @@ body, td, p {
   border-top:1px solid #CCCCCC;
   margin:0px -1px -1px;
 }
+.content-container.comments {
+  background:none;
+  .content-header {
+    background:none;
+    border:none;
+    padding-left:0px;
+    padding-right:0px;
+  }
+  .content-body {
+    border:none;
+    padding-left:0px;
+    padding-right:0px;
+  }
+}
+.content-container.sign-in {
+  .content-body {
+    border:0px;
+    padding:0px;
+  }
+}
+#allComments {
+  border:none;
+  .comment {
+    background:none;
+    border:solid #CCCCCC;
+    border-width:0px 0px 1px;
+    padding:0.76em 0px;
+    @include border-radius(0px);
+    .content-container {
+      background:none;
+      margin-top:0px;
+    }
+  }
+  .children {
+    border:none;
+    .comment {
+      border-width:1px 0px 0px;
+      padding-top:0.76em;
+    }
+  }
+}
+
+.comments .content-header h4 {
+  font-weight:bold;
+  line-height:2.35em;
+}
+.kmart .question .content-body, .kmart .post .content-body {
+  h1 {
+    color:#A8D04A;
+  }
+}
+.post {
+  .content-body {
+    border-top-width:1px;
+  }
+}
+// .single-question {
+  // .question {
+    // background:none;
+    // .content-header {
+      // border:none;
+      // padding-left:0px;
+    // }
+    // .content-body {
+      // background:#ffffff;
+      // border-top-width:1px;
+      // padding:0.769em;
+    // }
+  // }
+// }
+.trigger.discussion {
+  margin-top:0px;
+}
+// .question + .ugc-comment-answer_form .trigger.discussion {
+  // background-color:#ffffff;
+  // border:solid #CCCCCC;
+  // border-width:0px 1px 1px;
+// }
+// .ugc-comment-answer_form {
+  // background-color:#ffffff;
+// }
 // Sprites
 #header.kmart form #button_search, #header.kmart form #input_search,
 .kmart_button

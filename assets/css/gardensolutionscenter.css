@@ -879,6 +879,26 @@ body, td, p { color: #3b2314; }
 
 .pagination { background-color: #FAF9F2; border: solid 1px #FAF9F2; border-top: 1px solid #CCCCCC; margin: 0px -1px -1px; }
 
+.content-container.comments { background: none; }
+.content-container.comments .content-header { background: none; border: none; padding-left: 0px; padding-right: 0px; }
+.content-container.comments .content-body { border: none; padding-left: 0px; padding-right: 0px; }
+
+.content-container.sign-in .content-body { border: 0px; padding: 0px; }
+
+#allComments { border: none; }
+#allComments .comment { background: none; border: solid #CCCCCC; border-width: 0px 0px 1px; padding: 0.76em 0px; -webkit-border-radius: 0px; -moz-border-radius: 0px; -ms-border-radius: 0px; -o-border-radius: 0px; border-radius: 0px; }
+#allComments .comment .content-container { background: none; margin-top: 0px; }
+#allComments .children { border: none; }
+#allComments .children .comment { border-width: 1px 0px 0px; padding-top: 0.76em; }
+
+.comments .content-header h4 { font-weight: bold; line-height: 2.35em; }
+
+.kmart .question .content-body h1, .kmart .post .content-body h1 { color: #A8D04A; }
+
+.post .content-body { border-top-width: 1px; }
+
+.trigger.discussion { margin-top: 0px; }
+
 #header.kmart form #button_search, #header.kmart form #input_search, .kmart_button { background-image: url('../img/kmart/sprite_global.png?v=1348844464'); }
 
 .kmart a { color: #006633; text-decoration: none; }
