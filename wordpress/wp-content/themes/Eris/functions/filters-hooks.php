@@ -29,8 +29,7 @@ add_filter('wp_nav_menu', 'add_menu_class_first_last');
  * @return array 
  */
 function filter_body_class($classes) {
-    global $post;
-
+    
     /**
      * Modify Styles pages on theme options. This example is from Kmart Fashion
      */
@@ -42,24 +41,77 @@ function filter_body_class($classes) {
     
     if (is_category())
         $classes[] = get_queried_object()->category_nicename;
+
     
     if (is_page())
-        $classes[] = 'page-' .get_queried_object()->post_name;
-
-     if ('section' == get_post_type())
-        $classes[] = 'section';
-
-    if(get_query_var('old_post_type')){
-        $classes[] = 'archive_' . get_query_var('old_post_type').'s';
-    }
+        $classes[] = 'page-' .get_queried_object()->post_name;    
 
     if(isset($_GET['s'])){
         $classes[] = 'search-results';
     }
 
-	foreach((get_the_category($post->ID)) as $category) {
-		$classes[] = $category->category_nicename;
-	}
+    //Deprecated!!!
+    if(get_query_var('old_post_type')){
+        $classes[] = 'archive_' . get_query_var('old_post_type').'s';
+    }
+
+
+    if(is_single()){
+
+        /* Post Type classes */
+
+        //If this is a section..
+        if('section' == get_post_type()){
+
+            $classes[] = 'archive'; // This in particular will be the case for both category and post type archive shown with sections.
+
+            //And it theres a hidden post type...
+            if(get_query_var('old_post_type')){
+
+                //Add a bunch of crap....
+                $classes[] = 'post-type-archive';
+                $classes[] = 'post-type-archive-' . get_query_var('old_post_type');
+                $classes[] = 'post-type-' . get_query_var('old_post_type');
+            }
+        //If this is not a section
+        } else {
+
+            //Then simply add the post type to the single page.
+            $classes[] = 'post-type-' . get_post_type();
+
+        }
+
+        /* Taxonomy classes */
+
+        if('section' == get_post_type()){
+
+            $terms = array(get_query_var('old_category'));
+        } else {
+
+            $terms = wp_get_post_terms(get_queried_object()->ID, 'category', array('fields' => 'slugs'));
+        }
+
+        if(!empty($terms[0])){
+
+            if('section' == get_post_type()){
+                $classes[] = 'category';
+            }
+
+            //Go through each term now
+            foreach($terms as $term){
+
+                //Add a class for it...
+                $classes[] = "category-{$term}";
+            }
+        }
+
+    }
+
+    if('section' == get_post_type()){
+        $classes = array_diff($classes, array('single', 'single-section'));
+    }
+
+    //print_pre($obj);
     
     return $classes;
 }
