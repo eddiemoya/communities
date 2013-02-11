@@ -1,4 +1,4 @@
-// Tweaks to Navigation for Kmart
+// Tweaks to Navigation for Garden Solutions Center
 
 // Kmart Header Background
 %kmart_nav_bg {
@@ -128,3 +128,83 @@
   }
 }
 @include sprite-position( ".kmart #header_nav.dropmenu", left, ( $nav-sprite-period * ( -1 ) ) );
+
+// Garden Solutions Sub Navigation
+$nav-colors: (#57b59b, #99b03e, #4e6483);
+$nav-home-color: #063;
+
+$nav_icons-spacing: 20px;
+@import "gardensolutionscenter/nav_icons/*.png";
+$nav_icons: sprite-map("gardensolutionscenter/nav_icons/*.png");
+#menu-kgscsubnavigation {
+  @include legacy-pie-clearfix;
+  li {
+    float: left;
+    width: percentage( 1/4.02 );
+    text-align: center;
+    border-left: 1px solid #818181;
+    background-color: #666; // fallback state if browser can't parse the code below;
+    // @include background-image(linear-gradient(#4a4a4a,#666));
+    @include box-shadow(#222 0px 28px 26px -26px inset);
+    a {
+      color: white;
+      font-weight: bold;
+      display: inline-block;
+      //padding-left: 1em;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    &:first-child {
+      border-left: 0;
+    }
+    @each $type in $post_types {
+      &.garden_nav_#{$type}s {
+        a {
+          @include nav_icons-sprite($type);
+          padding-left: 5px + image-width(sprite-file($nav_icons, $type));
+        }
+        &:hover {
+          $index: index($post_types, $type);
+          background: nth($nav-colors, $index);
+        }
+      }
+    }
+    &.garden_nav_home {
+      a {
+        @include nav_icons-sprite(home);
+        padding-left: 5px + image-width(sprite-file($nav_icons, "home"));
+      }
+    }
+  }
+}
+
+// switch the active and off states for the home button on the sub nav widget
+.category-gardensolutionscenter {
+  @include kgsc-home-nav-selector( $nav-home-color );
+  &.post-type-archive {
+    @include kgsc-home-nav-selector( #666 );
+  }
+}
+
+// change background to active color on pages based on post-type
+@each $type in $post_types {
+  .archive_#{$type}s, .single-#{$type} {
+    #menu-kgscsubnavigation li {
+      &.garden_nav_#{$type}s {
+        $index: index($post_types, $type);
+        background: nth($nav-colors, $index);
+      }
+    }
+  }
+}
+
+// target the menu
+// #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > .communities_menu_widget:first-child {
+#content > section.span12 > section.span8 > .dropzone-inner-wrapper > .communities_menu_widget:first-child {
+  background: none;
+  .content-header:first-child, .content-body {
+    padding: 0;
+    border: 0;
+  }
+}
