@@ -1036,3 +1036,42 @@ function comm_wp_dropdown_categories( $args = '' ) {
 
 	return $output;
 }
+
+function lookup_stylesheet() {
+	$current = get_queried_object();
+	
+	$css [] = theme_option("brand");
+	
+	if ($current->term_taxonomy_id && $checked_categories[$current->term_taxonomy_id] != "true") {
+		if ($current->parent != 0 && $checked_categories[$current->parent] != "true") {
+			$checked_categories[$current->parent] = "true";
+			$parent_taxonomy = get_term_by("ID", "$current->parent", "category");
+			$css[] = $parent_taxonomy->slug;
+		}
+		$checked_categories[$current->term_taxonomy_id] = "true";
+		$css[] = $current->slug;
+	} else {
+		$categories = wp_get_post_categories($current->ID);
+		if (!empty($categories)) {
+			foreach($categories as $category) {
+				if ($checked_categories[$category] != "true") {
+					$cat_data = get_term_by("ID", "$category", "category");
+					if ($cat_data->parent != 0 && $checked_categories[$cat_data->parent] != "true") {
+						$checked_categories[$cat_data->parent] = "true";
+						$parent_data = get_term_by("ID", "$cat_data->parent", "category");
+						$css_parents[] = $parent_data->slug;
+					}
+					$checked_categories[$cat_data->term_id] = "true";
+					$css_current[] = $cat_data->slug;
+				}
+			};
+			$css = array_merge((array)$css, (array)$css_parents);
+			$css = array_merge((array)$css, (array)$css_current);
+		}
+	}
+	foreach (array_reverse($css) as $file) {
+		if (file_exists(get_stylesheet_directory()."/assets/css/$file.css")) {
+			return get_template_directory_uri()."/assets/css/$file.css";
+		}
+	}
+}

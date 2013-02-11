@@ -1,4 +1,8 @@
 // Tweaks tofor Presentation for Sears
+html, body {
+  background: sears( background );
+  color: sears( bodycopy );
+}
 
 // Sprites
 #header.sears form #button_search, #header.sears form #input_search,
@@ -21,6 +25,12 @@
   // Convenience Classes
   .link-emulator {
     color: sears( link );
+  }
+  // Featured
+  .content-body {
+    p {
+      color: sears( featured-copy );
+    }
   }
   // Singles Page
   .post, .question {

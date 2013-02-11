@@ -17,14 +17,13 @@
 	<?php if ($slug = get_first_available_slug_from_list_of_terms_dont_use_this_horrible_function("single-{$post->post_type}-top-left", get_the_category())) { ?>
 	
 	
-		<section class="dropzone-inner-wrapper border-left">
+		<section class="dropzone-inner-wrapper span12">
 
 			<?php display_dropzone($slug); ?>
 			
 			<div class="clearfix"></div>
 		</section>
-		<div class="clearfix"></div>
-	
+
 	<?php } ?>
 
 		<article class="content-container post span12">

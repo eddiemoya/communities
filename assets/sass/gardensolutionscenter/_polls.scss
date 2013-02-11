@@ -1,4 +1,4 @@
-// Tweaks to Polls for Kmart
+// Tweaks to Polls for Garden Solutions Center
 
 .kmart {
   .wp-polls {
@@ -10,10 +10,18 @@
       }
     }
     h1.content-headline {
-      color: kmart( link );
+      color: garden( link );
     }
     .bar {
       background: kmart( bar );
     }
+  }
+}
+
+.wp-polls {
+  .content-header p {
+    color:#3b2314;
+    font-style: normal;
+    font-weight: bold;
   }
 }
