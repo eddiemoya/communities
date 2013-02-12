@@ -427,33 +427,47 @@ function limit_search($query) {
 add_filter('pre_get_posts','limit_search');
 
 
+
+/**
+ * Customize widget containers
+ */
 function filter_before_widget($html, $dropzone, $widget){
 
     $meta = (object)$widget->get('meta');
+
+    /** Community Menu Widget **/
+    if($meta->widgetpress_widget_classname = 'Communities_Menu_Widget'){
+        $nav_menu = get_term_by('id', $meta->nav_menu, 'nav_menu');
+        $html = str_replace('communities_menu_widget', "communities_menu_widget menu-{$nav_menu->slug}", $html);
+    }
+
+    /** Featured Post Widget **/
     if($meta->widgetpress_widget_classname = 'Featured_Post_Widget'){
         $query = get_post($meta->post__in_1);
        // echo "<pre>";print_r($query);echo "</pre>";
+
+        $html = str_replace('featured-post', "featured-post post-type-{$query->post_type}", $html);
+
+        // DEPRECATED
         if($query->post_type == 'question'){
             if($meta->limit > 1){
                 $html = str_replace('featured-post', 'featured-category-question', $html);
             } else { 
-                $html = str_replace('featured-post', 'featured-question', $html);
+                $html = str_replace('featured-post', 'featured-post featured-question', $html);
             }
         }
-
     }
 
+    /** Results Widget **/
     if($meta->widgetpress_widget_classname = 'Results_List_Widget'){
 
         if($meta->query_type == 'users'){
             $html = str_replace('results-list', 'results-list_users', $html);
            }
-
     }
     //echo "<pre>";print_r();echo "</pre>";
 
     return $html;
-
 }
 
 add_action('template_redirect', 'template_redirect');
