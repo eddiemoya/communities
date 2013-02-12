@@ -13,7 +13,7 @@
       color: garden( link );
     }
     .bar {
-      background: kmart( bar );
+      background: #a2cd3e;
     }
   }
 }
@@ -24,4 +24,14 @@
     font-style: normal;
     font-weight: bold;
   }
+}
+.wp-polls .results li span:first-child {
+  color:#006633;
+  font-size:150%;
+}
+.wp-polls .info, .wp-polls .total {
+  border:none;
+}
+.wp-polls .info > div:first-child, .wp-polls .total > div:first-child {
+  margin-left:0px;
 }
