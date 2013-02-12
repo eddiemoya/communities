@@ -1,5 +1,5 @@
 <?php
-	error_reporting(0);
+ini_set('max_execution_time', '1000');
 
 /**
  * The base configurations of the WordPress.
