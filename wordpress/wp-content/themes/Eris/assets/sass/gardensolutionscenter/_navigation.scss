@@ -175,14 +175,19 @@ $nav_icons: sprite-map("gardensolutionscenter/nav_icons/*.png");
         @include nav_icons-sprite(home);
         padding-left: 5px + image-width(sprite-file($nav_icons, "home"));
       }
-      &:hover {
-        background: $nav-home-color;
-      }
     }
   }
 }
 
+// switch the active and off states for the home button on the sub nav widget
+.category-gardensolutionscenter {
+  @include kgsc-home-nav-selector( $nav-home-color );
+  &[class*="post-type-"] {
+    @include kgsc-home-nav-selector( #666 );
+  }
+}
 
+// change background to active color on pages based on post-type
 @each $type in $post_types {
   .archive_#{$type}s, .single-#{$type} {
     #menu-kgscsubnavigation li {
@@ -195,7 +200,8 @@ $nav_icons: sprite-map("gardensolutionscenter/nav_icons/*.png");
 }
 
 // target the menu
-#content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > .communities_menu_widget:first-child {
+// #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > .communities_menu_widget:first-child {
+#content > section.span12 > section.span8 > .dropzone-inner-wrapper > .communities_menu_widget:first-child {
   background: none;
   .content-header:first-child, .content-body {
     padding: 0;

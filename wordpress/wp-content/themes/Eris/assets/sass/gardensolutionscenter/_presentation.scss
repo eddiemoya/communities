@@ -17,7 +17,7 @@ body, td, p {
 .content-container {
   .content-header {
     h3, h4 {
-      color: garden( link );
+      color: garden( bodycopy );
     }
     h4 {
       font-size: font-size( 12 );
@@ -78,12 +78,14 @@ body, td, p {
   }
 }
 
-.featured-question {
-  .content-header {
-    @extend %question_icon;
-    background-color:transparent;
-    background-position:10px 10px;
-    padding-left:3.77em;
+@each $type in $post_types {
+  .featured-#{$type} {
+    .content-header {
+      @extend %#{$type}_icon;
+      background-color:transparent;
+      background-position:10px 10px;
+      padding-left:3.77em;
+    }
   }
 }
 
@@ -167,6 +169,65 @@ body, td, p {
   border-top:1px solid #CCCCCC;
   margin:0px -1px -1px;
 }
+.content-container.comments {
+  background:none;
+  .content-header {
+    background:none;
+    border:none;
+    padding-left:0px;
+    padding-right:0px;
+  }
+  .content-body {
+    border:none;
+    padding-left:0px;
+    padding-right:0px;
+  }
+}
+.content-container.sign-in {
+  .content-body {
+    border:0px;
+    padding:0px;
+  }
+}
+#allComments {
+  border:none;
+  .comment {
+    background:none;
+    border:solid #CCCCCC;
+    border-width:0px 0px 1px;
+    padding:0.76em 0px;
+    @include border-radius(0px);
+    .content-container {
+      background:none;
+      margin-top:0px;
+    }
+  }
+  .children {
+    border:none;
+    .comment {
+      border-width:1px 0px 0px;
+      padding-top:0.76em;
+    }
+  }
+}
+
+.comments .content-header h4 {
+  font-weight:bold;
+  line-height:2.35em;
+}
+.kmart .question .content-body, .kmart .post .content-body {
+  h1 {
+    color:#A8D04A;
+  }
+}
+.post {
+  .content-body {
+    border-top-width:1px;
+  }
+}
+.trigger.discussion {
+  margin-top:0px;
+}
 // Sprites
 #header.kmart form #button_search, #header.kmart form #input_search,
 .kmart_button
@@ -227,7 +288,7 @@ body, td, p {
   
   // Add icons to page titles
   @each $type in $post_types {
-    &.archive_#{$type}s {
+    &.archive_#{$type}s, &.single-#{$type} {
       .page-title {
         @extend %#{$type}_icon;
         background-color: garden( background );
