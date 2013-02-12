@@ -78,12 +78,14 @@ body, td, p {
   }
 }
 
-.featured-question {
-  .content-header {
-    @extend %question_icon;
-    background-color:transparent;
-    background-position:10px 10px;
-    padding-left:3.77em;
+@each $type in $post_types {
+  .featured-#{$type} {
+    .content-header {
+      @extend %#{$type}_icon;
+      background-color:transparent;
+      background-position:10px 10px;
+      padding-left:3.77em;
+    }
   }
 }
 
@@ -308,7 +310,7 @@ body, td, p {
   
   // Add icons to page titles
   @each $type in $post_types {
-    &.archive_#{$type}s {
+    &.archive_#{$type}s, &.single-#{$type} {
       .page-title {
         @extend %#{$type}_icon;
         background-color: garden( background );

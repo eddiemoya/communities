@@ -844,11 +844,15 @@ body, td, p { color: #3b2314; }
 .content-container.image-widget { background: none; }
 .content-container.image-widget .content-body { border: none; padding: 0px; }
 
-.kmart.archive_posts .page-title { background-image: url('../img/gardensolutionscenter/icon_post_29x29.png?v=1360013317'); background-repeat: no-repeat; }
+.featured-post .content-header, .kmart.archive_posts .page-title, .kmart.single-post .page-title { background-image: url('../img/gardensolutionscenter/icon_post_29x29.png?v=1360013317'); background-repeat: no-repeat; }
 
-.kmart.archive_guides .page-title { background-image: url('../img/gardensolutionscenter/icon_guide_29x29.png?v=1360014182'); background-repeat: no-repeat; }
+.featured-guide .content-header, .kmart.archive_guides .page-title, .kmart.single-guide .page-title { background-image: url('../img/gardensolutionscenter/icon_guide_29x29.png?v=1360014182'); background-repeat: no-repeat; }
 
-.featured-question .content-header, .kmart.archive_questions .page-title { background-image: url('../img/gardensolutionscenter/icon_question_29x29.png?v=1360012142'); background-repeat: no-repeat; }
+.featured-question .content-header, .kmart.archive_questions .page-title, .kmart.single-question .page-title { background-image: url('../img/gardensolutionscenter/icon_question_29x29.png?v=1360012142'); background-repeat: no-repeat; }
+
+.featured-post .content-header { background-color: transparent; background-position: 10px 10px; padding-left: 3.77em; }
+
+.featured-guide .content-header { background-color: transparent; background-position: 10px 10px; padding-left: 3.77em; }
 
 .featured-question .content-header { background-color: transparent; background-position: 10px 10px; padding-left: 3.77em; }
 
@@ -913,9 +917,9 @@ body, td, p { color: #3b2314; }
 .kmart .page-title { background-color: #faf9f2; color: #3b2314; }
 .kmart .page-title .content-body { border: 0; padding-left: 2em; }
 .kmart .page-title h2 { font-weight: normal; }
-.kmart.archive_posts .page-title { background-color: #faf9f2; background-position: 0px 6px; }
-.kmart.archive_guides .page-title { background-color: #faf9f2; background-position: 0px 6px; }
-.kmart.archive_questions .page-title { background-color: #faf9f2; background-position: 0px 6px; }
+.kmart.archive_posts .page-title, .kmart.single-post .page-title { background-color: #faf9f2; background-position: 0px 6px; }
+.kmart.archive_guides .page-title, .kmart.single-guide .page-title { background-color: #faf9f2; background-position: 0px 6px; }
+.kmart.archive_questions .page-title, .kmart.single-question .page-title { background-color: #faf9f2; background-position: 0px 6px; }
 .kmart .site-error .message { background: #8f2225; }
 .kmart .member_avatar .badge { background-position: 0px -243px; }
 
@@ -974,8 +978,8 @@ body, td, p { color: #3b2314; }
 
 .category-gardensolutionscenter #menu-kgscsubnavigation li.garden_nav_home { background: #006633; }
 .category-gardensolutionscenter #menu-kgscsubnavigation li.garden_nav_home:hover { background: #006633; }
-.category-gardensolutionscenter.post-type-archive #menu-kgscsubnavigation li.garden_nav_home { background: #666666; }
-.category-gardensolutionscenter.post-type-archive #menu-kgscsubnavigation li.garden_nav_home:hover { background: #006633; }
+.category-gardensolutionscenter[class*="post-type-"] #menu-kgscsubnavigation li.garden_nav_home { background: #666666; }
+.category-gardensolutionscenter[class*="post-type-"] #menu-kgscsubnavigation li.garden_nav_home:hover { background: #006633; }
 
 .archive_posts #menu-kgscsubnavigation li.garden_nav_posts, .single-post #menu-kgscsubnavigation li.garden_nav_posts { background: #57b59b; }
 
