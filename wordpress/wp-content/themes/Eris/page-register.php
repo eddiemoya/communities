@@ -27,7 +27,9 @@ if(! is_ajax()):
     <section class="span8">
 <?php endif; ?>
 
-        <?php get_template_part('parts/register'); ?>
+        <?php //get_template_part('parts/register'); 
+        	get_partial('parts/register', array('error' => $error, 'origin' => $origin));
+        ?>
 
 <?php if(! is_ajax()): ?>
     </section>
