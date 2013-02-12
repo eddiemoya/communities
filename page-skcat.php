@@ -1,137 +1,105 @@
 <?php
 
-
-$site = 'sears';//(stripos(get_bloginfo('name'), 'sears') !== false) ? 'sears' : 'kmart';
-
-$store = ucfirst($site);
-
-$taxonomy = 'skcategory';
-
-
-$verticals = array('sears' => array('Appliances',
-									'Automotive',
-									'Baby',
-									'Beauty',		
-									'Bed & Bath',
-									'Books & Magazines',
-									'Cameras & Camcorders',
-									'Food & Grocery',
-									'For the Home',
-									'Furniture & Mattresses',
-									'Clothing',
-									'Shoes',
-									'Jewelry',
-									'Computers',
-									'TVs & Electronics',
-									'Fitness & Sports',
-									'Gift Registry',
-									'Gifts',
-									'Health & Wellness',
-									'Home Services',
-									'Office Products',
-									'Pet Supplies',
-									'Seasonal',
-									'Shoes',
-									'Sports Fan Shop',
-									'Toys & Games',
-									'Trends',
-									'Lawn & Garden',
-									'TVs & Electronics',
-									'Music, Movies, & Gaming',
-									'Workwear & Uniforms',
-									'Outdoor Living',
-									'Tools',
-									'Toys'
-									),
-					'kmart' => array('Appliances',
-									'Automotive',
-									'Baby',
-									'Beauty',			
-									'Bed & Bath',
-									'Books & Magazines',
-									'Cameras & Camcorders',
-									'Food & Grocery',
-									'For the Home',
-									'Furniture & Mattresses',
-									'Clothing',
-									'Shoes',
-									'Jewelry',
-									'Computers',
-									'TVs & Electronics',
-									'Fitness & Sports',
-									'Gift Registry',
-									'Gifts',
-									'Health & Wellness',
-									'Home Services',
-									'Office Products',
-									'Pet Supplies',
-									'Seasonal',
-									'Shoes',
-									'Sports Fan Shop',
-									'Toys & Games',
-									'Trends',
-									'Lawn & Garden',
-									'TVs & Electronics',
-									'Music, Movies, & Gaming',
-									'Workwear & Uniforms',
-									'Outdoor Living',
-									'Tools',
-									'Toys'
-									));
-										
-										
+if(isset($_POST['import_taxonomy']) && $_POST['tax_set'] != '') {
+	
+	$tax_set = $_POST['tax_set'];
+	
+	$msg = "<h3>Completed Import of Taxonomy Set " . ($tax_set + 1) ."</h3>";
+	
+	$site = (stripos(get_bloginfo('name'), 'sears') !== false) ? 'sears' : 'kmart';
+	
+	$store = ucfirst($site);
+	
+	$taxonomy = 'skcategory';
+	
+	
+	$verticals = array(array('Appliances',
+								'Automotive',
+								'Baby',
+								'Beauty',		
+								'Bed & Bath',
+								'Books & Magazines',
+								'Cameras & Camcorders',
+								'Food & Grocery',
+								'For the Home'),
+						array('Furniture & Mattresses',
+								'Clothing',
+								'Shoes',
+								'Jewelry',
+								'Computers',
+								'TVs & Electronics',
+								'Fitness & Sports',
+								'Gift Registry',
+								'Health & Wellness',
+								'Home Services',
+								'Office Products'),
+						array('Pet Supplies',
+								'Seasonal',
+								'Shoes',
+								'Sports Fan Shop',
+								'Toys & Games',
+								'Trends',
+								'Lawn & Garden',
+								'Music, Movies, & Gaming',
+								'Workwear & Uniforms',
+								'Outdoor Living',
+								'Tools'));
+											
+											
+	if(is_user_logged_in() && current_user_can('manage_options')) {
+		
+		//Run Job
+		run();
+		echo $msg;
+	 }
  
-
-echo '<pre>';
-//var_dump(api_vertical_request('TVs & Electronics'));
-//var_dump(api_category_request('Appliances', 'Refrigerators'));
-var_dump(run());
-
+}
 
 function run() {
 	
-	global $verticals, $taxonomy, $site, $store;
+	global $verticals, $taxonomy, $site, $store, $tax_set;
 	
 	$completed = array();
 	
-	foreach($verticals[$site] as $vertical) {
+	foreach($verticals[$tax_set] as $vertical) {
 		
 		if($cats = api_vertical_request($vertical)) {
 			
-			//$completed[$vertical] = array();
-			
 			//insert vertical as term
 			$vert_term = wp_insert_term($vertical, $taxonomy);
-			$new_vertical_term_id = $vert_term['term_id'];
 			
-			foreach($cats->ShopByCategory as $cat) {
+			if(! is_wp_error($vert_term)){
 				
-				if($cat->Category != 'Accessories'){
-				//Insert category as term. with vertical parent
-				$cat_term = wp_insert_term($cat->Category, $taxonomy, array('parent' => $new_vertical_term_id));
-				$new_cat_term_id = $cat_term['term_id'];
+			
+					$new_vertical_term_id = $vert_term['term_id'];
 				
-				if($subcats = api_category_request($vertical, $cat->Category)) {
+				foreach($cats->ShopByCategory as $cat) {
 					
-					//$completed[$vertical][$cat->Category] = array();
+					if($cat->Category != 'Accessories'){
+						
+					//Insert category as term. with vertical parent
+					$cat_term = wp_insert_term($cat->Category, $taxonomy, array('parent' => $new_vertical_term_id));
+					$new_cat_term_id = $cat_term['term_id'];
 					
-					foreach($subcats->ShopByCategory as $subcat) {
+					/*if($subcats = api_category_request($vertical, $cat->Category)) {
 						
-						//$completed[$vertical][$cat->Category][] = $subcat->Category;
-						
-						wp_insert_term($subcat->SubCategory, $taxonomy, array('parent' => $new_cat_term_id));
-						unset($subcat);
+						foreach($subcats->ShopByCategory as $subcat) {
+							
+							wp_insert_term($subcat->SubCategory, $taxonomy, array('parent' => $new_cat_term_id,
+																					'slug' => sanitize_title($subcat->SubCategory) . '-subcat'));
+							unset($subcat);
+						}
+					}*/
+					
+					unset($cat);
 					}
+					
 				}
-				
-				unset($cat);
-				}
-				
-			}
+		}
 		}
 	}
 	
-	return 'Job Completed';
+	
 }
 
 function api_vertical_request($vertical) {
@@ -247,3 +215,17 @@ function extract_cats($xml_object) {
 	return false;
 }
 
+?>
+
+<?php if(is_user_logged_in() && current_user_can('manage_options')): ?>
+<form method="post">
+	<select name="tax_set">
+		<option value="">Select One...</option>
+		<option value="0">1</option>
+		<option value="1">2</option>
+		<option value="2">3</option>
+	</select>
+	<br>
+	<input type="submit" name="import_taxonomy" value="Import Taxonomy" />
+</form>
+<?php endif;?>
