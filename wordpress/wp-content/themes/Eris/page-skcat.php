@@ -8,10 +8,10 @@ $store = ucfirst($site);
 $taxonomy = 'skcategory';
 
 
-$verticals = array('sears' => array('Appliances',/*
+$verticals = array('sears' => array('Appliances',
 									'Automotive',
 									'Baby',
-									'Beauty',			
+									'Beauty',		
 									'Bed & Bath',
 									'Books & Magazines',
 									'Cameras & Camcorders',
@@ -41,7 +41,7 @@ $verticals = array('sears' => array('Appliances',/*
 									'Workwear & Uniforms',
 									'Outdoor Living',
 									'Tools',
-									'Toys'*/
+									'Toys'
 									),
 					'kmart' => array('Appliances',
 									'Automotive',
