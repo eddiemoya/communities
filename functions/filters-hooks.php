@@ -435,6 +435,12 @@ function filter_before_widget($html, $dropzone, $widget){
 
     $meta = (object)$widget->get('meta');
 
+    /** Community Menu Widget **/
+    if($meta->widgetpress_widget_classname = 'Communities_Menu_Widget'){
+        $nav_menu = get_term_by('id', $meta->nav_menu, 'nav_menu');
+        $html = str_replace('communities_menu_widget', "communities_menu_widget menu-{$nav_menu->slug}", $html);
+    }
+
     /** Featured Post Widget **/
     if($meta->widgetpress_widget_classname = 'Featured_Post_Widget'){
         $query = get_post($meta->post__in_1);
