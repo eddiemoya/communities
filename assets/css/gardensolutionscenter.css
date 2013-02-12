@@ -995,6 +995,12 @@ body, td, p { color: #3b2314; }
 
 .kmart .wp-polls li span:first-child { color: #980017; }
 .kmart .wp-polls h1.content-headline { color: #006633; }
-.kmart .wp-polls .bar { background: #f28734; }
+.kmart .wp-polls .bar { background: #a2cd3e; }
 
 .wp-polls .content-header p { color: #3b2314; font-style: normal; font-weight: bold; }
+
+.wp-polls .results li span:first-child { color: #006633; font-size: 150%; }
+
+.wp-polls .info, .wp-polls .total { border: none; }
+
+.wp-polls .info > div:first-child, .wp-polls .total > div:first-child { margin-left: 0px; }
