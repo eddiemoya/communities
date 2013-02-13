@@ -446,7 +446,7 @@ function filter_before_widget($html, $dropzone, $widget){
         $query = get_post($meta->post__in_1);
        // echo "<pre>";print_r($query);echo "</pre>";
 
-        $html = str_replace('featured-post', "featured-post post-type-{$query->post_type}", $html);
+        $html = str_replace('featured-post', "featured-post featured-post-type-{$query->post_type}", $html);
 
         // DEPRECATED
         if($query->post_type == 'question'){
