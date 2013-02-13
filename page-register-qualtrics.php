@@ -16,6 +16,7 @@ $error = (isset($_GET['err'])) ? urldecode($_GET['err']) : false;
 //CSAT Post
 $email = (isset($_POST['loginId'])) ? urldecode($_POST['loginId']) : null;
 $zipcode = (isset($_POST['zipcode'])) ? urldecode($_POST['zipcode']) : null;
+$opts = new SSO_Options;
 /**
 * @package WordPress
 * @subpackage White Label
@@ -178,7 +179,7 @@ $message = array(
 			        <h6 class="content-headline">Join now!</h6>
 
 			
-			        <form class="form_register" id="register-form" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>" shc:gizmo="transFormer">
+			        <form class="form_register" id="register-form" method="post" action="<?php echo $opts->endpoint . 'shcRegistration'; ?>" shc:gizmo="transFormer">
 			            <ul class="form-fields">
 			                <li>
 			                    <dl class="clearfix">
@@ -271,7 +272,8 @@ $message = array(
 			                    </dl>
 			                </li>
 			            </ul>
-			
+						<input type="hidden" name="service" value="<?php echo $opts->url_append_qs("origin={$origin}&ssoregister", urldecode($origin));?>" />
+						<input type="hidden" name="sourceSiteid" value="<?php echo $opts->sso_site_id;?>" />
 			        </form>
 			
 			        <ul>
