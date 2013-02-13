@@ -906,7 +906,7 @@ body, td, p { color: #3b2314; }
 
 .trigger.discussion { height: auto; line-height: 2.5em; margin-top: 0px; }
 
-.post-actions { margin: 0px -0.76em; }
+.post-actions { margin: 0px -0.5em; }
 
 .kmart .addthis .sharebutton { color: #006633; }
 
