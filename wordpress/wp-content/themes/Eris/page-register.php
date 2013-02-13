@@ -16,6 +16,7 @@ $error = (isset($_GET['err'])) ? urldecode($_GET['err']) : false;
 //CSAT Post
 $email = (isset($_POST['loginId'])) ? urldecode($_POST['loginId']) : null;
 $zipcode = (isset($_POST['zipcode'])) ? urldecode($_POST['zipcode']) : null;
+$opts = new SSO_Options;
 /**
 * @package WordPress
 * @subpackage White Label
@@ -27,12 +28,8 @@ if(! is_ajax()):
     <section class="span8">
 <?php endif; ?>
 
-		<?php $opts = new SSO_Options;
-				echo '<pre>';
-				var_dump($opts);
-				exit;?>
-        <?php //get_template_part('parts/register'); 
-        	get_partial('parts/register', array('error' => $error, 'origin' => $origin));
+        <?php 
+        	get_partial('parts/register', array('error' => $error, 'origin' => $origin, 'opts' => $opts));
         ?>
 
 <?php if(! is_ajax()): ?>
