@@ -139,6 +139,9 @@ body, td, p {
 }
 
 .post-your-question {
+  h6 {
+    color:#a8d04a;
+  }
   .content-body {
     border-top-width:1px;
     padding-top:10px;
@@ -240,7 +243,7 @@ body, td, p {
   
 }
 .post-actions {
-  margin:0px -0.76em;
+  margin:0px -0.5em;
 }
 .kmart .addthis .sharebutton {
   color:garden(link);
@@ -267,6 +270,7 @@ body, td, p {
 .post .content-body p:last-child {
   margin-bottom:0px;
 }
+
 // Sprites
 #header.kmart form #button_search, #header.kmart form #input_search,
 .kmart_button
