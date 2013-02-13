@@ -58,3 +58,6 @@
 [submodule "wp-content/themes/eris"]
 	path = wp-content/themes/eris
 	url = git@github.com:eddiemoya/eris-filtered.git
+[submodule "wp-content/plugins/wp-node"]
+	path = wp-content/plugins/wp-node
+	url = https://github.com/eddiemoya/WP-Node
