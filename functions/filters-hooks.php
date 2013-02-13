@@ -846,3 +846,8 @@ function add_attachment_slide_link_url_save( $post, $attachment ) {
 
 add_filter( 'attachment_fields_to_save', 'add_attachment_slide_link_url_save', 10, 2 );
 
+function enable_more_buttons($buttons) {
+	$buttons[] = 'hr';
+	return $buttons;
+}
+add_filter("mce_buttons", "enable_more_buttons");
