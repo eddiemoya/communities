@@ -182,7 +182,7 @@ $nav_icons: sprite-map("gardensolutionscenter/nav_icons/*.png");
 // switch the active and off states for the home button on the sub nav widget
 .category-gardensolutionscenter {
   @include kgsc-home-nav-selector( $nav-home-color );
-  &.post-type-archive {
+  &[class*="post-type-"] {
     @include kgsc-home-nav-selector( #666 );
   }
 }

@@ -78,12 +78,22 @@ body, td, p {
   }
 }
 
-.featured-question {
-  .content-header {
-    @extend %question_icon;
-    background-color:transparent;
-    background-position:10px 10px;
-    padding-left:3.77em;
+@each $type in $post_types {
+  .featured-post-type-#{$type} {
+    .content-header {
+      @extend %#{$type}_icon;
+      background-color:transparent;
+      background-position:10px 10px;
+      padding-left:3.77em;
+    }
+  }
+}
+
+.menu-kgscsubnavigation.content-container {
+  background:none;
+  .content-body {
+    border:none;
+    padding:0px;
   }
 }
 
@@ -224,7 +234,38 @@ body, td, p {
   }
 }
 .trigger.discussion {
+  height:auto;
+  line-height:2.5em;
   margin-top:0px;
+  
+}
+.post-actions {
+  margin:0px -0.76em;
+}
+.kmart .addthis .sharebutton {
+  color:garden(link);
+}
+
+.menu-garden-solutions-center-top-garden-categories, .menu-garden-solutions-center-knowledge-in-bloom, .menu-garden-solutions-center-first-time-here {
+  .content-body {
+    font-weight:bold;
+  }
+}
+.post .content-body .content-author {
+  border-top:solid 1px #cccccc;
+  padding-top:0.76em;
+}
+.post .content-body h6 {
+  border:solid #b7b7b7;
+  border-width:1px 0px;
+  font-size:font-size(20);
+  font-weight:bold;
+  line-height:2em;
+  margin-bottom:0.76em;
+  @extend .clearfix;
+}
+.post .content-body p:last-child {
+  margin-bottom:0px;
 }
 // Sprites
 #header.kmart form #button_search, #header.kmart form #input_search,
@@ -286,7 +327,7 @@ body, td, p {
   
   // Add icons to page titles
   @each $type in $post_types {
-    &.archive_#{$type}s {
+    &.archive_#{$type}s, &.single-#{$type} {
       .page-title {
         @extend %#{$type}_icon;
         background-color: garden( background );
