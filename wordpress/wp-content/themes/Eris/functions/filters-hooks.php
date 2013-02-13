@@ -451,9 +451,9 @@ function filter_before_widget($html, $dropzone, $widget){
         // DEPRECATED
         if($query->post_type == 'question'){
             if($meta->limit > 1){
-                $html = str_replace('featured-post', 'featured-category-question', $html);
+                $html = str_replace('featured-post-type-post', 'featured-category-question', $html);
             } else { 
-                $html = str_replace('featured-post', 'featured-post featured-question', $html);
+                $html = str_replace('featured-post-type-post', 'featured-post-type-question', $html);
             }
         }
     }
