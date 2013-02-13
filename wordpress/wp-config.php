@@ -1,5 +1,4 @@
 <?php
-	error_reporting(0);
 
 /**
  * The base configurations of the WordPress.
