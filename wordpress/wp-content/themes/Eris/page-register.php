@@ -27,6 +27,10 @@ if(! is_ajax()):
     <section class="span8">
 <?php endif; ?>
 
+		<?php $opts = new SSO_Options;
+				echo '<pre>';
+				var_dump($opts);
+				exit;?>
         <?php //get_template_part('parts/register'); 
         	get_partial('parts/register', array('error' => $error, 'origin' => $origin));
         ?>
