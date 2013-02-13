@@ -23,6 +23,20 @@
 ?>
 <section class="span12">
 	<section class="span8">
+
+    <?php if ($slug = get_first_available_slug_from_list_of_terms_dont_use_this_horrible_function("single-{$post->post_type}-top-left", get_the_category())) { ?>
+    
+    
+        <section class="dropzone-inner-wrapper border-left">
+
+            <?php display_dropzone($slug); ?>
+            
+            <div class="clearfix"></div>
+        </section>
+        <div class="clearfix"></div>
+    
+    <?php } ?>
+
 		<article class="content-container question span12">
 			
 			<header class="content-header">
@@ -59,7 +73,13 @@
 
 	<section class="span4">
         <section class="dropzone-inner-wrapper border-left">
-            <?php display_dropzone('single-question-right-rail'); ?>
+
+            <?php
+                if ($slug = get_first_available_slug_from_list_of_terms_dont_use_this_horrible_function('single-question-right-rail', get_the_category())) {
+                    display_dropzone($slug); 
+                }
+            ?>
+
             <div class="clearfix"></div>
         </section>
 	</section>
