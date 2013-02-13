@@ -44,6 +44,15 @@ class WP_Weather_Admin {
 	 *
 	 */
 	function plugin_init() {
+		if ($_GET['page'] == 'wp_weather') {
+			wp_enqueue_script('media-upload');
+			wp_enqueue_script('thickbox');
+			wp_enqueue_style('thickbox');
+			wp_register_script('wp-weather-script', WP_PLUGIN_URL.'/wp-weather/assets/wp-weather.js', array('jquery','media-upload','thickbox'));
+			wp_enqueue_script('wp-weather-script');
+			wp_register_style( 'wp-weather-style', WP_PLUGIN_URL.'/wp-weather/assets/wp-weather-sprite-template.css');
+			wp_enqueue_style( 'wp-weather-style' );
+		};
 		register_setting( 'wp_weather_options', 'wp_weather_options', array(__CLASS__, "validate_fields"));
 		add_settings_section('weather_underground_api', 'Weather Underground API', array(__CLASS__, "wunderground_api_text"), 'wp_weather');
 		add_settings_field('weather_underground_api_field', 'API Key', array(__CLASS__, "wunderground_api_textbox"), 'wp_weather', 'weather_underground_api');
@@ -51,6 +60,8 @@ class WP_Weather_Admin {
 		add_settings_field('ipinfodb_api_field', 'API Key', array(__CLASS__, "ipinfodb_api_textbox"), 'wp_weather', 'ipinfodb_api');
 		add_settings_section('image_select', 'Imageset', array(__CLASS__, "image_select_text"), 'wp_weather');
 		add_settings_field('image_select_field', 'Select Imageset', array(__CLASS__, "image_select_checkboxes"), 'wp_weather', 'image_select');
+		add_settings_section('image_select_custom', '', array(__CLASS__, "image_select_text_custom"), 'wp_weather');
+		add_settings_field('image_select_custom_field', 'Upload Custom Sprite', array(__CLASS__, "image_select_checkboxes_custom"), 'wp_weather', 'image_select');
 	}
 	
 	/**
@@ -61,10 +72,14 @@ class WP_Weather_Admin {
 	 */
 	function validate_fields() {
 		$options = get_option('wp_weather_options');
+		
+		//if ($options[])
+		
 		return array(
 			"wunderground_api" => $_POST['weather_underground_api_field'],
 			"ipinfodb_api" => $_POST['ipinfodb_api_field'],
-			"imageset" => $_POST['imageset']
+			"imageset" => $_POST['imageset'],
+			"imageset_sprite" => $_POST['upload_image']
 		);
 	}
 	
@@ -135,7 +150,7 @@ class WP_Weather_Admin {
 		if ($options['imageset'] == "") {
 			$options['imageset'] = "k";
 		}
-		$conditions = array("chanceflurries","chancerain","chancesleet","chancesnow","chancetstorms","chancetstorms","clear","cloudy","flurries","fog","hazy","mostlycloudy","mostlysunny","partlycloudy","partlysunny","sleet","rain","snow","sunny","tstorms");
+		$conditions = array("chanceflurries","chancerain","chancesleet","chancesnow","chancetstorms","clear","cloudy","flurries","fog","hazy","mostlycloudy","mostlysunny","partlycloudy","partlysunny","sleet","rain","snow","sunny","tstorms");
 		$image_sets = range("a", "k");
 		echo '
 		<style>
@@ -158,6 +173,15 @@ class WP_Weather_Admin {
 			.imageset .images img {
 				margin: 5px;
 			}
+			.imageset #upload_image_button {
+				margin: 0 5px 10px 0;
+			}
+			.imageset .weather_sprite_icon {
+				width: 42px;
+				height: 42px;
+				float: left;
+				margin: 7px 4px 7px 4px;
+			}
 		</style>
 		';
 		foreach ($image_sets as $image_set) {
@@ -171,6 +195,37 @@ class WP_Weather_Admin {
 				}
 			echo '</div></section>';
 		}
+	}
+	function image_select_text_custom () {
+		return true;
+	}
+	function image_select_checkboxes_custom () {
+		$options = get_option('wp_weather_options');
+		$conditions = array("chanceflurries","chancerain","chancesleet","chancesnow","chancetstorms","clear","cloudy","flurries","fog","hazy","mostlycloudy","mostlysunny","partlycloudy","partlysunny","sleet","rain","snow","sunny","tstorms");
+		echo '
+			<section class="imageset">
+			<input type="radio" name="imageset" value="customSprite"';
+			if ($options['imageset'] == "customSprite") {
+				echo "checked='checked'";
+			}
+		echo '><div class="images">
+			<div class="imageUploader">
+		';
+		foreach ($conditions as $condition) {
+			echo '<div class="weather_'.$condition.' weather_sprite_icon" style="background-image:url(';
+			echo ($options['imageset_sprite'] != "") ? $options['imageset_sprite'] : WP_PLUGIN_URL."/wp-weather/assets/wp-weather-sprite.png";
+			echo ');"></div>';
+		}
+		echo '
+			</div>
+			<label for="upload_image" style="clear: both; float: left;">
+				<input id="upload_image" type="hidden" name="upload_image" value="" />
+				<input id="upload_image_button" type="button" value="Upload New Sprite" />
+				<small>Click "Insert into Post" to set, use <a href="'.WP_PLUGIN_URL.'/wp-weather/assets/wp-weather-sprite.png" target="_blank">default sprite</a> as a template</small>
+			</label>
+			</div>
+			</section>
+		';
 	}
 	
 	/**
