@@ -73,7 +73,17 @@ class WP_Weather_Admin {
 	function validate_fields() {
 		$options = get_option('wp_weather_options');
 		
-		//if ($options[])
+		if ($options['imageset_sprite'] != $_POST['upload_image']) {
+			$conditions = array("chanceflurries","chancerain","chancesleet","chancesnow","chancetstorms","clear","cloudy","flurries","fog","hazy","mostlycloudy","mostlysunny","partlycloudy","partlysunny","sleet","rain","snow","sunny","tstorms");
+			foreach ($conditions as $condition) {
+				if ($out != "") {$out .= ", ";}
+				$out .= ".weather_$condition";
+			}
+			$out .= " {background-image: url({$_POST['upload_image']});}\n";
+			$css = file_get_contents(plugin_dir_path(__FILE__).'assets/wp-weather-sprite-template.css');
+			$out .= $css;
+			file_put_contents(plugin_dir_path(__FILE__).'assets/wp-weather.css', $out);
+		}
 		
 		return array(
 			"wunderground_api" => $_POST['weather_underground_api_field'],
