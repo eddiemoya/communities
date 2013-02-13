@@ -871,6 +871,7 @@ body, td, p { color: #3b2314; }
 
 .results-list.content-container { background: none; margin-top: 0px; }
 .results-list.content-container .content-container { background-color: #faf9f2; }
+.results-list.content-container .content-container:first-child { margin-top: 0px; }
 .results-list.content-container .content-container .content-body { background-color: #ffffff; border-top-width: 1px; padding-top: 0.769em; }
 
 .post-your-question h6 { color: #a8d04a; }
