@@ -130,6 +130,9 @@ body, td, p {
   margin-top:0px;
   .content-container {
     background-color:garden( background );
+    &:first-child {
+      margin-top:0px;
+    }
     .content-body {
       background-color:#ffffff;
       border-top-width:1px;
