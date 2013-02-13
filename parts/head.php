@@ -11,7 +11,6 @@
 	<div class="<?php echo (theme_option("brand") == "sears")? "span4":"span3"; ?>">
 		<a href="<?php echo get_site_url(''); ?>" id="logo" class="invisible"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/<?php echo theme_option("brand"); ?>/logo.png" /></a>
 	</div>
-	
 	<div class="<?php echo (theme_option("brand") == "sears")? "span5":"span6"; ?>">
 		<form method="get" action="<?php echo home_url( '/' )?>" id="search">
 			<div>
