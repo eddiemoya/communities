@@ -79,7 +79,7 @@ body, td, p {
 }
 
 @each $type in $post_types {
-  .featured-#{$type} {
+  .post-type-#{$type} {
     .content-header {
       @extend %#{$type}_icon;
       background-color:transparent;
@@ -89,7 +89,13 @@ body, td, p {
   }
 }
 
-
+.menu-kgscsubnavigation.content-container {
+  background:none;
+  .content-body {
+    border:none;
+    padding:0px;
+  }
+}
 
 #content > section.span12 > section[class*="span"] > [class*="span"]:first-child, #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child {
   margin-top:0px;
@@ -230,6 +236,19 @@ body, td, p {
 .trigger.discussion {
   margin-top:0px;
 }
+.post-actions {
+  margin:0px -0.76em;
+}
+.kmart .sharebutton {
+  color:garden(link);
+}
+
+.menu-garden-solutions-center-top-garden-categories, .menu-garden-solutions-center-knowledge-in-bloom {
+  .content-body {
+    font-weight:bold;
+  }
+}
+
 // Sprites
 #header.kmart form #button_search, #header.kmart form #input_search,
 .kmart_button
