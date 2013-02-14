@@ -257,7 +257,7 @@ body, td, p {
     font-weight:bold;
   }
 }
-.post .content-body .content-author {
+.single .post .content-body .content-author {
   border-top:solid 1px #cccccc;
   padding-top:0.76em;
 }
@@ -276,6 +276,10 @@ body, td, p {
 .page-title + .content-container {
   margin-top:0px;
 }
+.dropzone-inner-wrapper.span12 + .content-container {
+  margin-top:0px;
+}
+
 // Sprites
 #header.kmart form #button_search, #header.kmart form #input_search,
 .kmart_button
