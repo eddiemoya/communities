@@ -273,7 +273,9 @@ body, td, p {
 .post .content-body p:last-child {
   margin-bottom:0px;
 }
-
+.page-title + .content-container {
+  margin-top:0px;
+}
 // Sprites
 #header.kmart form #button_search, #header.kmart form #input_search,
 .kmart_button
