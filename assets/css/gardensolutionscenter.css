@@ -920,6 +920,8 @@ body, td, p { color: #3b2314; }
 
 .post .content-body p:last-child { margin-bottom: 0px; }
 
+.page-title + .content-container { margin-top: 0px; }
+
 #header.kmart form #button_search, #header.kmart form #input_search, .kmart_button { background-image: url('../img/kmart/sprite_global.png?v=1348844464'); }
 
 .kmart a { color: #006633; text-decoration: none; }
