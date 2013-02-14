@@ -914,13 +914,15 @@ body, td, p { color: #3b2314; }
 
 .menu-garden-solutions-center-top-garden-categories .content-body, .menu-garden-solutions-center-knowledge-in-bloom .content-body, .menu-garden-solutions-center-first-time-here .content-body { font-weight: bold; }
 
-.post .content-body .content-author { border-top: solid 1px #cccccc; padding-top: 0.76em; }
+.single .post .content-body .content-author { border-top: solid 1px #cccccc; padding-top: 0.76em; }
 
 .post .content-body h6 { border: solid #b7b7b7; border-width: 1px 0px; font-size: 153.846%; font-weight: bold; line-height: 2em; margin-bottom: 0.76em; }
 
 .post .content-body p:last-child { margin-bottom: 0px; }
 
 .page-title + .content-container { margin-top: 0px; }
+
+.dropzone-inner-wrapper.span12 + .content-container { margin-top: 0px; }
 
 #header.kmart form #button_search, #header.kmart form #input_search, .kmart_button { background-image: url('../img/kmart/sprite_global.png?v=1348844464'); }
 
