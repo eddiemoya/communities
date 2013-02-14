@@ -8,7 +8,7 @@ if(is_user_logged_in()) {
 }
 
 
-$origin = (isset($_GET['origin'])) ? urldecode($_GET['origin']) : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_site_url());
+$origin = (isset($_GET['origin'])) ? urldecode($_GET['origin']) : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_site_url() . '/');
 $error = (isset($_GET['err'])) ? urldecode($_GET['err']) : false;
 $opts = new SSO_Options;
 
