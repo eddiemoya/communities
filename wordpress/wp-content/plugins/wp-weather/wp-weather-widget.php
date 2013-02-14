@@ -77,7 +77,7 @@ class WP_Weather_Widget extends WP_Widget {
 	 * 
 	 * Do not call directly, this is called internally to render the widget.
 	 * 
-	 * @author [Widget Author Name]
+	 * @author Jason Corradino
 	 * 
 	 * @param array $args	   [Required] Automatically passed by WordPress - Settings defined when registering the sidebar of a theme
 	 * @param array $instance   [Required] Automatically passed by WordPress - Current saved data for the widget options.
@@ -117,7 +117,7 @@ class WP_Weather_Widget extends WP_Widget {
 	 * 
 	 * Do not call directly, this is called internally to render the widget
 	 * 
-	 * @author [Widget Author Name]
+	 * @author Jason Corradino
 	 * 
 	 * @uses esc_attr() http://codex.wordpress.org/Function_Reference/esc_attr
 	 * 
@@ -162,7 +162,7 @@ class WP_Weather_Widget extends WP_Widget {
 	 * The use of the helper functions form_field() and form_fields() is not
 	 * neccessary, and may sometimes be inhibitive or restrictive.
 	 * 
-	 * @author Eddie Moya
+	 * @author Jason Corradino
 	 * 
 	 * @uses wp_parse_args() http://codex.wordpress.org/Function_Reference/wp_parse_args
 	 * @uses self::form_field()

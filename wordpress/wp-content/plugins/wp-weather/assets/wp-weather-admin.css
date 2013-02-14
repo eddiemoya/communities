@@ -1,0 +1,35 @@
+.imageset {
+	float: left;
+	clear: both;
+	margin-bottom: 20px;
+	border: 1px solid #cccccc;
+	background-color: #ececec;
+	padding: 10px 10px 2px 10px;
+}
+.imageset input {
+	float: left;
+	margin: 50px 12px 0 6px;
+}
+.imageset .images {
+	width: 525px;
+	float: left;
+}
+.imageset .images img {
+	margin: 5px;
+}
+.imageset #upload_image_button {
+	margin: 0 5px 10px 0;
+}
+.imageset .weather_sprite_icon {
+	width: 42px;
+	height: 42px;
+	float: left;
+	margin: 7px 4px 7px 4px;
+}
+.wp_weather_upload_image {
+	clear: both;
+	float: left;
+}
+#icon-edit.icon32-wp-weather {
+	background: transparent url(./icon.gif) no-repeat;
+}

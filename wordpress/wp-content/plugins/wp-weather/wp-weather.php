@@ -27,7 +27,7 @@ include_once("wp-weather-widget.php");
 
 class WP_Weather_Admin {
 	/**
-	 * Initializes Facebook Importer admin functionality
+	 * Initializes WP Weather Admin Setup
 	 *
 	 * @author Jason Corradino
 	 *
@@ -38,7 +38,7 @@ class WP_Weather_Admin {
 	}
 	
 	/**
-	 * Initializes the plugin settings pages and fields on admin_init
+	 * Initializes the plugin settings pages and sets up fields on admin_init
 	 *
 	 * @author Jason Corradino
 	 *
@@ -50,8 +50,10 @@ class WP_Weather_Admin {
 			wp_enqueue_style('thickbox');
 			wp_register_script('wp-weather-script', WP_PLUGIN_URL.'/wp-weather/assets/wp-weather.js', array('jquery','media-upload','thickbox'));
 			wp_enqueue_script('wp-weather-script');
-			wp_register_style( 'wp-weather-style', WP_PLUGIN_URL.'/wp-weather/assets/wp-weather-sprite-template.css');
-			wp_enqueue_style( 'wp-weather-style' );
+			wp_register_style( 'wp-weather-sprite-template', WP_PLUGIN_URL.'/wp-weather/assets/wp-weather-sprite-template.css');
+			wp_enqueue_style( 'wp-weather-sprite-template' );
+			wp_register_style( 'wp-weather-admin-style', WP_PLUGIN_URL.'/wp-weather/assets/wp-weather-admin.css');
+			wp_enqueue_style( 'wp-weather-admin-style' );
 		};
 		register_setting( 'wp_weather_options', 'wp_weather_options', array(__CLASS__, "validate_fields"));
 		add_settings_section('weather_underground_api', 'Weather Underground API', array(__CLASS__, "wunderground_api_text"), 'wp_weather');
@@ -69,6 +71,7 @@ class WP_Weather_Admin {
 	 *
 	 * @author Jason Corradino
 	 *
+	 * @return array	Option data to save
 	 */
 	function validate_fields() {
 		$options = get_option('wp_weather_options');
@@ -83,21 +86,26 @@ class WP_Weather_Admin {
 			$css = file_get_contents(plugin_dir_path(__FILE__).'assets/wp-weather-sprite-template.css');
 			$out .= $css;
 			file_put_contents(plugin_dir_path(__FILE__).'assets/wp-weather.css', $out);
+			$version = $options['css_version']+1;
+		} else {
+			$version = $options['css_version'];
 		}
 		
 		return array(
 			"wunderground_api" => $_POST['weather_underground_api_field'],
 			"ipinfodb_api" => $_POST['ipinfodb_api_field'],
 			"imageset" => $_POST['imageset'],
-			"imageset_sprite" => $_POST['upload_image']
+			"imageset_sprite" => $_POST['upload_image'],
+			"css_version" => $version
 		);
 	}
 	
 	/**
-	 * Sets text to display on options page above profile selection
+	 * Description for WUnderground API key field
 	 *
 	 * @author Jason Corradino
 	 *
+	 * @return bool
 	 */
 	function wunderground_api_text() {
 		echo '<p>Your Weather Underground API key, can be found <a href="http://www.wunderground.com/weather/api/">here</a>.</p>';
@@ -105,7 +113,7 @@ class WP_Weather_Admin {
 	}
 
 	/**
-	 * Sets text to display on options page next to profile selection
+	 * Text box for WUnderground API key field
 	 *
 	 * @author Jason Corradino
 	 *
@@ -117,10 +125,11 @@ class WP_Weather_Admin {
 	
 	
 	/**
-	 * Sets text to display on options page above profile selection
+	 * Description for IP Info DB API key field
 	 *
 	 * @author Jason Corradino
 	 *
+	 * @return bool
 	 */
 	function ipinfodb_api_text() {
 		echo '<p>Your IPinfoDB API key, can be found <a href="http://ipinfodb.com/ip_location_api.php">here</a>.</p>';
@@ -128,7 +137,7 @@ class WP_Weather_Admin {
 	}
 
 	/**
-	 * Sets text to display on options page next to profile selection
+	 * Text box for IP Info DB API key field
 	 *
 	 * @author Jason Corradino
 	 *
@@ -139,10 +148,11 @@ class WP_Weather_Admin {
 	}
 	
 	/**
-	 * Sets text to display on options page above profile selection
+	 * Description for imageset selection
 	 *
 	 * @author Jason Corradino
 	 *
+	 * @return bool
 	 */
 	function image_select_text() {
 		echo '<p>These are the imagesets available, select the one you would like to use, or submit your own.</p>';
@@ -150,7 +160,7 @@ class WP_Weather_Admin {
 	}
 
 	/**
-	 * Sets text to display on options page next to profile selection
+	 * Generates selections for imageset selection
 	 *
 	 * @author Jason Corradino
 	 *
@@ -162,38 +172,6 @@ class WP_Weather_Admin {
 		}
 		$conditions = array("chanceflurries","chancerain","chancesleet","chancesnow","chancetstorms","clear","cloudy","flurries","fog","hazy","mostlycloudy","mostlysunny","partlycloudy","partlysunny","sleet","rain","snow","sunny","tstorms");
 		$image_sets = range("a", "k");
-		echo '
-		<style>
-			.imageset {
-				float: left;
-				clear: both;
-				margin-bottom: 20px;
-				border: 1px solid #cccccc;
-				background-color: #ececec;
-				padding: 10px 10px 2px 10px;
-			}
-			.imageset input {
-				float: left;
-				margin: 50px 12px 0 6px;
-			}
-			.imageset .images {
-				width: 525px;
-				float: left;
-			}
-			.imageset .images img {
-				margin: 5px;
-			}
-			.imageset #upload_image_button {
-				margin: 0 5px 10px 0;
-			}
-			.imageset .weather_sprite_icon {
-				width: 42px;
-				height: 42px;
-				float: left;
-				margin: 7px 4px 7px 4px;
-			}
-		</style>
-		';
 		foreach ($image_sets as $image_set) {
 			echo "<section class='imageset'><input type='radio' name='imageset' value='$image_set' ";
 			if ($options['imageset'] == $image_set) {
@@ -206,9 +184,24 @@ class WP_Weather_Admin {
 			echo '</div></section>';
 		}
 	}
+	
+	/**
+	 * Mostly useless placeholder function, sits in place instead of displaying a description for custom sprite imageset select box
+	 *
+	 * @author Jason Corradino
+	 *
+	 * @return bool
+	 */
 	function image_select_text_custom () {
 		return true;
 	}
+	
+	/**
+	 * Setup for custom sprite selector box, includes sprite setup and sprite uploader functionality
+	 *
+	 * @author Jason Corradino
+	 *
+	 */
 	function image_select_checkboxes_custom () {
 		$options = get_option('wp_weather_options');
 		$conditions = array("chanceflurries","chancerain","chancesleet","chancesnow","chancetstorms","clear","cloudy","flurries","fog","hazy","mostlycloudy","mostlysunny","partlycloudy","partlysunny","sleet","rain","snow","sunny","tstorms");
@@ -228,7 +221,7 @@ class WP_Weather_Admin {
 		}
 		echo '
 			</div>
-			<label for="upload_image" style="clear: both; float: left;">
+			<label for="upload_image" class="wp_weather_upload_image">
 				<input id="upload_image" type="hidden" name="upload_image" value="" />
 				<input id="upload_image_button" type="button" value="Upload New Sprite" />
 				<small>Click "Insert into Post" to set, use <a href="'.WP_PLUGIN_URL.'/wp-weather/assets/wp-weather-sprite.png" target="_blank">default sprite</a> as a template</small>
@@ -239,7 +232,7 @@ class WP_Weather_Admin {
 	}
 	
 	/**
-	 * Creates the "Wall Content" menu item and removes "add new" photo
+	 * Sets up the "setup page" in the WP Admin backend
 	 *
 	 * @author Jason Corradino
 	 *
@@ -249,7 +242,7 @@ class WP_Weather_Admin {
 	}
 	
 	/**
-	 * Sets up options page
+	 * Sets HTML within settings page
 	 *
 	 * @author Jason Corradino
 	 *
@@ -257,15 +250,15 @@ class WP_Weather_Admin {
 	function plugin_options() {
 		?>
 			<div class="wrap">
-				<div id="icon-edit" class="icon32 icon32-posts-facebook_images">
+				<div id="icon-edit" class="icon32 icon32-wp-weather">
 					<br>
 				</div>
 				<h2>WP Weather Settings</h2>
-				<form action="options.php" method="post" id="facebookGalleryForm">
-					<p><input name="Submit" type="submit" class="facebookGallerySubmit" value="<?php esc_attr_e('Save Changes'); ?>" /></p>
+				<form action="options.php" method="post" id="wp_weather_options">
+					<p><input name="Submit" type="submit" value="<?php esc_attr_e('Save Changes'); ?>" /></p>
 					<?php settings_fields('wp_weather_options'); ?>
 					<?php do_settings_sections('wp_weather'); ?>
-					<p><input name="Submit" type="submit" class="facebookGallerySubmit" value="<?php esc_attr_e('Save Changes'); ?>" /></p>
+					<p><input name="Submit" type="submit" value="<?php esc_attr_e('Save Changes'); ?>" /></p>
 				</form>
 			</div>
 		<?php
@@ -273,6 +266,16 @@ class WP_Weather_Admin {
 }
 
 class WP_Weather {
+	
+	/**
+	 * Fetches current conditions
+	 *
+	 * @param string|int [OPTIONAL] $zip	Zip code to use in lieu of user-selected/discovered location
+	 *
+	 * @author Jason Corradino
+	 *
+	 * @return object	Weather information
+	 */
 	function get_current_conditions($zip="") {
 		$user = get_current_user_id();
 		$city  = get_user_meta( $user, 'user_city', true );
@@ -316,12 +319,18 @@ class WP_Weather {
 		}
 	}
 	
+	/**
+	 * Fetches user's current location based on REMOTE_ADDR
+	 *
+	 * @author Jason Corradino
+	 *
+	 * @return object	User's current location (longitude/latitude/city/etc)
+	 */
 	function location_api() {
 		$options = get_option('wp_weather_options');
-		//$uri = 'http://api.ipinfodb.com/v3/ip-city/?key='.$options["ipinfodb_api"].'&format=xml&ip='.$_SERVER['REMOTE_ADDR'];
+		$uri = 'http://api.ipinfodb.com/v3/ip-city/?key='.$options["ipinfodb_api"].'&format=xml&ip='.$_SERVER['REMOTE_ADDR'];
 		//$uri = 'http://api.ipinfodb.com/v3/ip-city/?key='.$options["ipinfodb_api"].'&format=xml&ip=141.101.116.82'; // London
-		//$uri = 'http://api.ipinfodb.com/v3/ip-city/?key='.$options["ipinfodb_api"].'&format=xml&ip=98.226.88.41'; // Midlothian
-		$uri = 'http://api.ipinfodb.com/v3/ip-city/?key='.$options["ipinfodb_api"].'&format=xml&ip=12.34.4.33'; // Chicago
+		//$uri = 'http://api.ipinfodb.com/v3/ip-city/?key='.$options["ipinfodb_api"].'&format=xml&ip=12.34.4.33'; // Chicago
 		$data = $this->get_data($uri);
 		if(substr_count($data,'ode>ERROR') ){
 			return false;
@@ -331,6 +340,17 @@ class WP_Weather {
 		return $location;
 	}
 	
+	/**
+	 * Fetches user's Weather
+	 *
+	 * @param string [REQUIRED] $query	Location string sent to Weather Underground
+	 *
+	 * @author Jason Corradino
+	 *
+	 * TODO - Allow other API lookups (such as multi-day forecast, radar, etc)
+	 *
+	 * @return object	Weather inforation
+	 */
 	function wunderground_api($query) {
 		$options = get_option('wp_weather_options');
 		$uri = "http://api.wunderground.com/api/{$options['wunderground_api']}/conditions/q/$query.json";
@@ -342,6 +362,17 @@ class WP_Weather {
 		}
 	}
 	
+	/**
+	 * Makes the API call to the remote server
+	 *
+	 * @param string [REQUIRED] $URI			Request destination
+	 *
+	 * @param string|int [Optional] $timeout	Amount of time to wait for an API response
+	 *
+	 * @author Jason Corradino
+	 *
+	 * @return array	API response
+	 */
 	function get_data($uri, $timeout=2) {
 		if($timeout==0 or !$timeout){$timeout=2;}
 		if(ini_get('allow_url_fopen')) {
@@ -360,7 +391,25 @@ class WP_Weather {
 	}
 }
 
+
+/**
+ * Includes generated CSS if user is using a custom sprite
+ *
+ * @author Jason Corradino
+ *
+ */
+function WP_Weather_includes() {
+	$options = get_option('wp_weather_options');
+	if ($options['imageset'] == "customSprite") {
+		wp_register_style( 'wp-weather-style', WP_PLUGIN_URL.'/wp-weather/assets/wp-weather.css', null, $options['css_version']);
+		wp_enqueue_style( 'wp-weather-style' );
+	}
+}
+
+
 if (is_admin()) {
 	WP_Weather_Admin::init();
+} else {
+	add_action('init', 'WP_Weather_includes');
 }
 ?>
