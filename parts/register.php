@@ -6,7 +6,7 @@
             <div><?php echo $error;?></div>
         <?php endif;?>
 
-        <form class="form_register" id="register-form" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>" shc:gizmo="transFormer">
+        <form class="form_register" id="register-form" method="post" action="<?php echo $opts->endpoint . 'shcRegistration'; ?>" shc:gizmo="transFormer">
             <ul class="form-fields">
                 <li>
                     <dl class="clearfix">
@@ -99,7 +99,9 @@
                     </dl>
                 </li>
             </ul>
-
+			<input type="hidden" name="service" value="<?php echo $opts->url_append_qs("origin={$origin}&ssoregister", urldecode($origin));?>" />
+			<input type="hidden" name="sourceSiteid" value="<?php echo $opts->sso_site_id;?>" />
+			
         </form>
 
         <ul>
