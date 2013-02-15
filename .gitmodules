@@ -55,3 +55,6 @@
 [submodule "wordpress/wp-content/plugins/wp-polls"]
 	path = wordpress/wp-content/plugins/wp-polls
 	url = git@github.com:dinocarl/wp-polls.git
+[submodule "wordpress/wp-content/plugins/wp-weather"]
+	path = wordpress/wp-content/plugins/wp-weather
+	url = git@github.com:jcorradino/wp-weather.git
