@@ -279,7 +279,12 @@ body, td, p {
 .dropzone-inner-wrapper.span12 + .content-container {
   margin-top:0px;
 }
-
+.hero-slider {
+  .content-body {
+    border:none;
+    padding:0.769em 0;
+  }
+}
 // Sprites
 #header.kmart form #button_search, #header.kmart form #input_search,
 .kmart_button
