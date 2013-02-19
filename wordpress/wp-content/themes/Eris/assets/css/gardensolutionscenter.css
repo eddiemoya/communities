@@ -924,6 +924,8 @@ body, td, p { color: #3b2314; }
 
 .dropzone-inner-wrapper.span12 + .content-container { margin-top: 0px; }
 
+.hero-slider .content-body { border: none; padding: 0.769em 0; }
+
 #header.kmart form #button_search, #header.kmart form #input_search, .kmart_button { background-image: url('../img/kmart/sprite_global.png?v=1348844464'); }
 
 .kmart a { color: #006633; text-decoration: none; }
