@@ -11,7 +11,7 @@ if(is_user_logged_in()) {
 $origin = (isset($_GET['origin'])) ? $_GET['origin'] : ((isset($_SERVER['HTTP_REFERER']) && (! isset($_POST['loginId']) && ! isset($_POST['zipcode']))) ? urlencode($_SERVER['HTTP_REFERER']) : get_site_url() . '/');
 
 //If error is set
-$error = (isset($_GET['err'])) ? urldecode($_GET['err']) : false;
+$error = (isset($_GET['err'])) ? wp_kses(strip_tags(urldecode($_GET['err']))) : false;
 
 //CSAT Post
 $email = (isset($_POST['loginId'])) ? urldecode($_POST['loginId']) : null;

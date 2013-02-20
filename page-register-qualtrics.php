@@ -11,7 +11,7 @@ if(is_user_logged_in()) {
 $origin = (isset($_GET['origin'])) ? $_GET['origin'] : ((isset($_SERVER['HTTP_REFERER']) && (! isset($_POST['loginId']) && ! isset($_POST['zipcode']))) ? urlencode($_SERVER['HTTP_REFERER']) : get_site_url() . '/');
 
 //If error is set
-$error = (isset($_GET['err'])) ? urldecode($_GET['err']) : false;
+$error = (isset($_GET['err'])) ? wp_kses(strip_tags(urldecode($_GET['err']))) : false;
 
 //CSAT Post
 $email = (isset($_POST['loginId'])) ? urldecode($_POST['loginId']) : null;
@@ -177,7 +177,10 @@ $message = array(
 			<article class="content-container register span12">
 			    <section class="content-body clearfix">
 			        <h6 class="content-headline">Join now!</h6>
-
+					
+					  <?php if($error):?>
+            			<div><?php echo $error;?></div>
+       				  <?php endif;?>
 			
 			        <form class="form_register" id="register-form" method="post" action="<?php echo $opts->endpoint . 'shcRegistration'; ?>" shc:gizmo="transFormer">
 			            <ul class="form-fields">
