@@ -453,7 +453,7 @@ function filter_before_widget($html, $dropzone, $widget){
             if($meta->limit > 1){
                 $html = str_replace('featured-post-type-post', 'featured-category-question', $html);
             } else { 
-                $html = str_replace('featured-post-type-post', 'featured-post-type-question', $html);
+                $html = str_replace('featured-post-type-question', 'featured-post-type-question featured-question', $html);
             }
         }
     }
