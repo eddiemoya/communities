@@ -3,8 +3,6 @@
     $answer_count = (function_exists('get_custom_comment_count')) ? get_custom_comment_count('answer') : '';
     $answer_count_string = ($answer_count > 500) ? "500+ answers" : $answer_count . " " . _n( ' answer', ' answers', $answer_count );
 ?>
-<section class='content-container featured-question'>
-
     <?php if (is_widget('show_category') || is_widget('show_date')) : ?>
         <div class="content-details clearfix">
 
@@ -47,8 +45,3 @@
     <section class="post-actions">
         <?php get_partial( 'parts/share', array( "version" => is_widget('share_style'), "url" => get_post_permalink( $post->ID ) ) ); ?>
     </section>
-    
-</section>
-
-
-

@@ -1,8 +1,7 @@
 // Functions
-
 // Used to calculate the width of a column in a given context
 @function grid-width( $number-columns, $margin-width ) {
-  @return ( $number-columns * ($margin-width * 3) ) + ( ($number-columns - 1) * $margin-width );
+  @return ( $number-columns * ($margin-width * $col-margin-ratio) ) + ( ($number-columns - 1) * $margin-width );
 }
 
 // the lookups for sears and kmart colors.
@@ -10,6 +9,9 @@
   @return lookup( $lookups, $types, $colors );
 }
 @function kmart( $lookups, $types: $color-types, $colors: $kmart-colors ) {
+  @return lookup( $lookups, $types, $colors );
+}
+@function garden( $lookups, $types: $color-types, $colors: $garden-colors ) {
   @return lookup( $lookups, $types, $colors );
 }
 
@@ -32,6 +34,8 @@
 }
 
 // Mixins
+// margin-adjust puts the left margin back on spans that might otherwise be
+// zeroed out by the layout classes that do so at the beginning of a new row.
 @mixin margin-adjust( $class: "", $margin: $margin-width-pct ) {
   #{$class}.span3 + .span3 + .span3 + .span3 + .span3 + [class*="span"],
   #{$class}.span6 + .span3 + .span3 + .span6 + [class*="span"],
@@ -40,6 +44,7 @@
   }
 }
 
+// Position a sprite; create a hover state, too.
 @mixin sprite-position( $selector, $x-pos: left, $y-pos: top, $rollover-x: 0, $rollover-y: 0 ) {
   #{$selector} {
     background-position: $x-pos $y-pos;
@@ -47,6 +52,18 @@
       &:hover {
         background-position: $rollover-x $rollover-y;
       } 
+    }
+  }
+}
+
+// Specialized mixin for creating the correct background color for the home subnav widget on Kmart Garden Solutions Center
+@mixin kgsc-home-nav-selector( $color ) {
+  #menu-kgscsubnavigation {
+    li.garden_nav_home {
+      background: $color;
+      &:hover {
+        background: $nav-home-color;
+      }
     }
   }
 }

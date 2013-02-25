@@ -13,6 +13,19 @@
 
 <section class="span12">
 	<section class="span8">
+
+	<?php if ($slug = get_first_available_slug_from_list_of_terms_dont_use_this_horrible_function("single-{$post->post_type}-top-left", get_the_category())) { ?>
+	
+	
+		<section class="dropzone-inner-wrapper span12">
+
+			<?php display_dropzone($slug); ?>
+			
+			<div class="clearfix"></div>
+		</section>
+
+	<?php } ?>
+
 		<article class="content-container post span12">
 			<section class="content-body clearfix">
 				
@@ -57,7 +70,11 @@
 
 	<section class="span4">
 		<section class="dropzone-inner-wrapper border-left">
-			<?php display_dropzone("single-{$post->post_type}-right-rail"); ?>
+			<?php
+				if ($slug = get_first_available_slug_from_list_of_terms_dont_use_this_horrible_function("single-{$post->post_type}-right-rail", get_the_category())) {
+					display_dropzone($slug); 
+				}
+			?>
 			<div class="clearfix"></div>
 		</section>
 		<div class="clearfix"></div>

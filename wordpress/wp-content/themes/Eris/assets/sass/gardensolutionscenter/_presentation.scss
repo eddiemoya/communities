@@ -1,0 +1,396 @@
+// Tweaks to Presentation for Garden Solutions Center
+
+html {
+  background:transparent image-url("#{$garden-img}background_main-grass.jpg") repeat 0px 0px;
+  height:auto;
+  color: garden( bodycopy );
+}
+body, td, p {
+  color: garden( bodycopy );
+}
+
+#container {
+  background-color: garden( background );
+  padding:0px 10px;
+}
+
+.content-container {
+  .content-header {
+    h3, h4 {
+      color: garden( bodycopy );
+    }
+    h4 {
+      font-size: font-size( 12 );
+      font-weight:normal;
+    }
+  } 
+}  
+
+.kmart.gardensolutionscenter .sharebutton {
+  color:garden( link )
+}
+
+#header.kmart form {
+    background: none repeat scroll 0 0 garden( bg-contrast );
+}
+
+#header.kmart, #footer {
+  a, a:visited, a:hover {
+    color:kmart( link )
+  }
+}
+
+#header {
+  background-color: garden( background );
+}
+
+.content-container {
+  background-color:garden( bg-contrast );
+  margin-top:1.54em;
+  .content-body {
+    border:solid garden( decorative );;
+    border-width:0px 1px 1px;
+    padding:0 0.769em 0.769em;
+  } 
+  .content-header {
+    border:solid garden( decorative );;
+    border-width:1px 1px 0px; 
+  }
+  .content-headline {
+    a, a:visited, a:hover {
+      color:#a8d04a;
+    }
+  }
+}
+
+.content-container.image-widget {
+  background:none;
+  .content-body {
+    border:none;
+    padding:0px;
+  }
+}
+
+@each $type in $post_types {
+  %#{$type}_icon {
+    background-image: image-url("#{$garden-img}icon_#{$type}_29x29.png");
+    background-repeat: no-repeat;
+  }
+}
+
+@each $type in $post_types {
+  .featured-post-type-#{$type} {
+    .content-header {
+      @extend %#{$type}_icon;
+      background-color:transparent;
+      background-position:10px 10px;
+      padding-left:3.77em;
+    }
+  }
+}
+
+.menu-kgscsubnavigation.content-container {
+  background:none;
+  .content-body {
+    border:none;
+    padding:0px;
+  }
+}
+
+#content > section.span12 > section[class*="span"] > [class*="span"]:first-child, #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child {
+  margin-top:0px;
+}
+
+#content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > [class*="span"]:first-child .content-header:first-child {
+  border:solid garden( decorative );
+  border-width:1px 0px 0px; 
+}
+
+#content > section.span12 {
+  border-top:none;
+}
+.span4 .dropzone-inner-wrapper.border-left {
+  .content-container {
+    background:none;
+    .content-header {
+      border:solid garden( decorative );
+      border-width:1px 0px 0px;
+      padding: 0.769em;
+    }
+    .content-body {
+      border:solid #DDDCDC;
+      border-width:1px 0px 0px;
+      padding: 0.769em;
+    }
+  } 
+}
+
+.results-list.content-container {
+  background:none;
+  margin-top:0px;
+  .content-container {
+    background-color:garden( background );
+    &:first-child {
+      margin-top:0px;
+    }
+    .content-body {
+      background-color:#ffffff;
+      border-top-width:1px;
+      padding-top:0.769em;
+    }  
+  }
+}
+
+.post-your-question {
+  h6 {
+    color:#a8d04a;
+  }
+  .content-body {
+    border-top-width:1px;
+    padding-top:10px;
+  }
+}
+
+.archive_questions {
+  .results-list {
+    background-color:#ffffff;
+    @include border-radius(0px);
+    margin-top:20px;
+    .content-header {
+      border:none;
+    }
+    .content-body {
+      .content-container {
+        margin-top:0px;
+      }
+      .content-body {
+        border-width:1px 0px 0px;
+      }
+    }
+  }
+} 
+
+.archive_questions .results-list > .content-body > .content-container:first-child .content-body {
+  border-top:solid 1px #DEDEDE;
+}
+.content-container.post-your-question form .state_confirm-post .confirmation.background_light-gray {
+  background-color:#ffffff;
+}
+
+.pagination {
+  background-color:#FAF9F2;
+  border:solid 1px #FAF9F2;
+  border-top:1px solid #CCCCCC;
+  margin:0px -1px -1px;
+}
+.content-container.comments {
+  background:none;
+  .content-header {
+    background:none;
+    border:none;
+    padding-left:0px;
+    padding-right:0px;
+  }
+  .content-body {
+    border:none;
+    padding-left:0px;
+    padding-right:0px;
+  }
+}
+.content-container.sign-in {
+  .content-body {
+    border:0px;
+    padding:0px;
+  }
+}
+#allComments {
+  border:none;
+  .comment {
+    background:none;
+    border:solid #CCCCCC;
+    border-width:0px 0px 1px;
+    padding:0.76em 0px;
+    @include border-radius(0px);
+    .content-container {
+      background:none;
+      margin-top:0px;
+    }
+  }
+  .children {
+    border:none;
+    .comment {
+      border-width:1px 0px 0px;
+      padding-top:0.76em;
+    }
+  }
+}
+
+.comments .content-header h4 {
+  font-weight:bold;
+  line-height:2.35em;
+}
+.kmart .question .content-body, .kmart .post .content-body {
+  h1 {
+    color:#A8D04A;
+  }
+}
+.post {
+  .content-body {
+    border-top-width:1px;
+  }
+}
+.trigger.discussion {
+  height:auto;
+  line-height:2.5em;
+  margin-top:0px;
+  
+}
+.post-actions {
+  margin:0px -0.5em;
+}
+.kmart .addthis .sharebutton {
+  color:garden(link);
+}
+
+.menu-garden-solutions-center-top-garden-categories, .menu-garden-solutions-center-knowledge-in-bloom, .menu-garden-solutions-center-first-time-here {
+  .content-body {
+    font-weight:bold;
+  }
+}
+.single .post .content-body .content-author {
+  border-top:solid 1px #cccccc;
+  padding-top:0.76em;
+}
+.post .content-body h6 {
+  border:solid #b7b7b7;
+  border-width:1px 0px;
+  font-size:font-size(20);
+  font-weight:bold;
+  line-height:2em;
+  margin-bottom:0.76em;
+  @extend .clearfix;
+}
+.post .content-body p:last-child {
+  margin-bottom:0px;
+}
+.page-title + .content-container {
+  margin-top:0px;
+}
+.dropzone-inner-wrapper.span12 + .content-container {
+  margin-top:0px;
+}
+.hero-slider {
+  .content-body {
+    border:none;
+    padding:0.769em 0;
+  }
+}
+// Sprites
+#header.kmart form #button_search, #header.kmart form #input_search,
+.kmart_button
+{
+  background-image:image-url("#{$kmart-img}sprite_global.png");
+}
+
+.kmart {
+  // Site-Wide Tag Styles
+  a {
+    color: garden( link );
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+    &:visited {
+      color: garden( link );
+    }
+  }
+  // Convenience Classes
+  .link-emulator {
+    color: garden( link );
+  }
+  // Singles Page
+  .post, .question {
+    h1 {
+      color: garden( link );
+    }
+  }
+  // Profile Page
+  .answers-toggle, .upload-photo label {
+    color: garden( link );
+    @extend .bold;
+  }
+  // Threaded Discussion
+  .comment-actions button {
+    background: transparent image-url("#{$sears-img}/sprite_global.png") repeat-x 0 -200px;
+  }
+  // Breadcrumb
+  .breadcrumb li:before {
+    color:garden( link );
+  }
+  // Search Results
+  .no-results .term {
+    color: garden( link );
+  }
+  .page-title {
+    background-color: garden( background );
+    color: garden( bodycopy );
+    .content-body {
+      border: 0;
+      padding-left: 2em;
+    }
+    h2 {
+      font-weight: normal;
+    }
+  }
+  
+  // Add icons to page titles
+  @each $type in $post_types {
+    &.archive_#{$type}s, &.single-#{$type} {
+      .page-title {
+        @extend %#{$type}_icon;
+        background-color: garden( background );
+        background-position: 0px 6px;
+      }
+    }
+  }
+  
+  // Errors
+  .site-error .message {
+    background: garden( site-error );
+  }
+  // Avatar
+  .member_avatar .badge {
+    background-position:0px -243px;
+  }
+}
+
+// Form Elements
+.kmart_button {
+  border-left:solid #ff9e6c;
+  border-right:solid #cc6f35;
+  border-width:0px 1px;
+  color: $lightest-color;
+  cursor:pointer;
+  font-weight:bold;
+  height:32px;
+  margin-right:1em;
+  padding:0em 1.5em;
+  position:relative;
+  text-shadow:1px 1px sears( sec-dec );
+  @include border-radius( 5px );
+  background-position:0px -96px;
+}
+
+.kmart_button.azure {
+  background-image: image-url('#{$sears-img}/sprite_global.png');
+  border-color:#60768b;
+  color:#366392;
+  text-shadow:none;
+  background-position:0px -140px;
+  margin-right: 0px;
+}
+
+// Threaded Discussion
+.kmart .comment-actions button {
+  background: transparent image-url("#{$sears-img}/sprite_global.png") repeat-x 0 -200px;
+}

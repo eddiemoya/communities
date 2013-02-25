@@ -24,9 +24,7 @@
           get_template_part('parts/footer_navigation');
           get_template_part('parts/footer_anterior');
         }
-         
-        //Used to destroy session used only to capture referer information
-        session_destroy();       
+            
         ?>
 
         <?php wp_footer(); ?>
@@ -52,5 +50,9 @@
               }
         </script>
     ';?>
-  </body>
+		<noscript>
+			<a href="http://www.Adobe.com" title="Web Analytics"><imgsrc="//om.sears.com/b/ss/<?php echo (theme_option("brand") == 'kmart')? "searskmartcom":"searscom"; ?>/1/H.20.3--NS/0" height="1" width="1" border="0" alt="" /></a>
+		</noscript><!--/DO NOT REMOVE/-->
+		<!-- End SiteCatalyst code version: H.20.3. -->
+  </body> 
 </html>

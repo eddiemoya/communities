@@ -1,31 +1,72 @@
 // Tweaks to Presentation for Kmart
-
-// SITE-WIDE TAG STYLES
-.kmart a {
-  color: kmart( link );
-  text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
-  &:visited {
-    color: kmart( link );
-  }
+html, body {
+  background: kmart( background );
+  color: kmart( bodycopy );
 }
 
-// CONVENIENCE CLASSES
-.kmart .link-emulator {
-  color: kmart( link );
-}
-
-// SPRITES
+// Sprites
 #header.kmart form #button_search, #header.kmart form #input_search,
 .kmart_button
 {
   background-image:image-url("#{$kmart-img}sprite_global.png");
 }
 
-// GLOBAL ELEMENTS
-// FORM ELEMENTS
+.kmart {
+  // Site-Wide Tag Styles
+  a {
+    color: kmart( link );
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+    &:visited {
+      color: kmart( link );
+    }
+  }
+  // Convenience Classes
+  .link-emulator {
+    color: kmart( link );
+  }
+  // Featured
+  .content-body {
+    p {
+      color: kmart( featured-copy );
+    }
+  }
+  // Singles Page
+  .post, .question {
+    h1 {
+      color: kmart( link );
+    }
+  }
+  // Profile Page
+  .answers-toggle, .upload-photo label {
+    color: kmart( link );
+    @extend .bold;
+  }
+  // Threaded Discussion
+  .comment-actions button {
+    background: transparent image-url("#{$sears-img}/sprite_global.png") repeat-x 0 -200px;
+  }
+  // Breadcrumb
+  .breadcrumb li:before {
+    color:kmart( link );
+  }
+  // Search Results
+  .no-results .term {
+    color: kmart( link );
+  }
+  // Errors
+  .site-error .message {
+    background: kmart( site-error );
+  }
+  // Avatar
+  .member_avatar .badge {
+    background-position:0px -243px;
+  }
+}
+
+// Form Elements
 .kmart_button {
   border-left:solid #ff9e6c;
   border-right:solid #cc6f35;
@@ -51,45 +92,7 @@
   margin-right: 0px;
 }
 
-// SINGLES PAGE
-.kmart{
-  .post, .question {
-    h1 {
-      color:#980017;
-    }
-  } 
-}
-
-// PROFILE
-.kmart {
-  .answers-toggle, .upload-photo label {
-    color: kmart( link );
-    @extend .bold;
-  }
-}
-
 // Threaded Discussion
 .kmart .comment-actions button {
   background: transparent image-url("#{$sears-img}/sprite_global.png") repeat-x 0 -200px;
-}
-
-
-// Breadcrumb
-.kmart .breadcrumb li:before {
-  color:kmart( link );
-}
-
-// Search Results
-.kmart .no-results .term {
-  color: kmart( link );
-}
-
-// Errors
-.kmart .site-error .message {
-  background: kmart( site-error );
-}
-
-// Avatar
-.kmart .member_avatar .badge {
-  background-position:0px -243px;
 }

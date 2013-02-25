@@ -1,0 +1,210 @@
+// Tweaks to Navigation for Garden Solutions Center
+
+// Kmart Header Background
+%kmart_nav_bg {
+  background-image: image-url('#{$kmart-img}sprite_navigation.png');
+}
+
+.kmart {
+  #header_nav.dropmenu {
+    background-color: $nav-color;
+    @extend %kmart_nav_bg;
+    background-repeat: repeat-x;
+    border-left: 1px solid sears( decorative );
+    @include border-radius( 5px );
+    > li {
+      border-right: 1px solid sears( decorative );
+      width: percentage( 1/7 );
+      padding: 1px 0;
+      font-size: font-size( 12 );
+      > span, a {
+        color: #333333;
+        border-right: 1px solid $lightest-color;
+        padding-top: .66em;
+        padding-bottom: .66em;
+        span {
+          @extend %kmart_nav_bg;
+          background-repeat: no-repeat;
+          padding-right: 9px;
+        }
+        @include sprite-position( "span", right, $nav-sprite-offset );
+      }
+      &.right_button {
+        float: right;
+        background-color: kmart( button );
+        @extend %kmart_nav_bg;
+        @include border-radius( 0px 4px 4px 0px );
+        border-left: 1px solid sears( decorative );
+        border-right: 0;
+        a {
+          border-right: 0;
+          color: $lightest-color;
+        }
+      }
+      @include sprite-position( "&.right_button", left, ( $nav-sprite-period * ( -2 ) ) - 1 );
+    }
+    ul {
+      background: $lightest-color image-url('sprite-menu.png');
+      background-repeat: repeat-x;
+      padding: 4px 0;
+      > li {
+        font-size: font-size( 11, 12 );
+        > span, a {
+          &:hover {
+            color: $lightest-color;
+            text-decoration: none;
+            background: red;
+          }
+        }
+      }
+    }
+    // Modifications to hovering menu for header
+    ul {
+      @include box-shadow( lighten( $darkest-color, 66 ) 2px 2px 8px );
+      @include border-radius( 5px );
+      border: 1px solid sears( decorative );
+      li {
+        width: 100%;
+        // font-size: font-size( 12, 12 );
+        border-right: 0;
+        a {
+          color: #73726F;
+          border-right: 0;
+        }
+      }
+    }
+    @include sprite-position( "ul", left, bottom );
+  }
+  
+  #footer_nav.dropmenu {
+    background: kmart( footer );
+    ul {
+      background: kmart( footer );
+    }
+    > li {
+      $divisor: ( $grid-width - ( $footer-count-kmart - 1 ) ) / $footer-count-kmart;
+      width: percentage( $divisor / $grid-width );
+      border-left: 1px solid $lightest-color;
+      // font-size: font-size( 13 );
+      font-family: 'Trebuchet MS', $basefont;
+      // Give the footer item a different background
+      &:hover {
+        background: kmart( footer-hover );
+        > span, a {
+          color: kmart( footer );
+        }
+        ul li a {
+          color: kmart( link );
+        }
+      }
+      &:first-child {
+        border-left: 0;
+      }
+      > span, a {
+        span {
+          @extend %kmart_nav_bg;
+        }
+      }
+      // Modifications to hovering menu for footer
+      ul {
+        border: 1px solid kmart( footer-hover );
+        @include border-radius( 5px 5px 0 0 );
+        border-bottom: 0;
+        li {
+          width: 100%;
+          border-left: 0;
+          font-size: font-size( 12 );
+          line-height: 1;
+          font-family: $basefont;
+          &:hover {
+            background: none;
+          }
+          a {
+            color: kmart( link );
+          }
+        }
+      }
+    }
+  }
+}
+@include sprite-position( ".kmart #header_nav.dropmenu", left, ( $nav-sprite-period * ( -1 ) ) );
+
+// Garden Solutions Sub Navigation
+$nav-colors: (#57b59b, #99b03e, #4e6483);
+$nav-home-color: #063;
+
+$nav_icons-spacing: 20px;
+@import "gardensolutionscenter/nav_icons/*.png";
+$nav_icons: sprite-map("gardensolutionscenter/nav_icons/*.png");
+#menu-kgscsubnavigation {
+  @include legacy-pie-clearfix;
+  li {
+    float: left;
+    width: percentage( 1/4.02 );
+    text-align: center;
+    border-left: 1px solid #818181;
+    background-color: #666; // fallback state if browser can't parse the code below;
+    // @include background-image(linear-gradient(#4a4a4a,#666));
+    @include box-shadow(#222 0px 28px 26px -26px inset);
+    a {
+      color: white;
+      font-weight: bold;
+      display: inline-block;
+      //padding-left: 1em;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    &:first-child {
+      border-left: 0;
+    }
+    @each $type in $post_types {
+      &.garden_nav_#{$type}s {
+        a {
+          @include nav_icons-sprite($type);
+          padding-left: 5px + image-width(sprite-file($nav_icons, $type));
+        }
+        &:hover {
+          $index: index($post_types, $type);
+          background: nth($nav-colors, $index);
+        }
+      }
+    }
+    &.garden_nav_home {
+      a {
+        @include nav_icons-sprite(home);
+        padding-left: 5px + image-width(sprite-file($nav_icons, "home"));
+      }
+    }
+  }
+}
+
+// switch the active and off states for the home button on the sub nav widget
+.category-gardensolutionscenter {
+  @include kgsc-home-nav-selector( $nav-home-color );
+  &[class*="post-type-"] {
+    @include kgsc-home-nav-selector( #666 );
+  }
+}
+
+// change background to active color on pages based on post-type
+@each $type in $post_types {
+  .archive_#{$type}s, .single-#{$type} {
+    #menu-kgscsubnavigation li {
+      &.garden_nav_#{$type}s {
+        $index: index($post_types, $type);
+        background: nth($nav-colors, $index);
+      }
+    }
+  }
+}
+
+// target the menu
+// #content > section.span12 > section[class*="span"] > .dropzone-inner-wrapper > .communities_menu_widget:first-child {
+#content > section.span12 > section.span8 > .dropzone-inner-wrapper > .communities_menu_widget:first-child {
+  background: none;
+  .content-header:first-child, .content-body {
+    padding: 0;
+    border: 0;
+  }
+}

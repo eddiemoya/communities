@@ -46,6 +46,8 @@ if(have_posts() || !is_widget()) : ?>
 						'selected' => $category,
 						'hierarchical' => true,
 						'hide_if_empty' => true,
+						'orderby'	=> 'name',
+						'order'	=> 'ASC',
 						//'class' => 'input_select',
 						'class' => 'filter-results'.$class,
 						'name' => 'filter-category',
@@ -59,12 +61,15 @@ if(have_posts() || !is_widget()) : ?>
 							'child_of' => $category,
 							'hierarchical' => true,
 							'hide_if_empty' => true,
+							'orderby'	=> 'name',
+							'order'	=> 'ASC',
 							'class' => '',
 							'name' => 'filter-sub-category',
 							'id' => 'sub-category'
 						));
 					} ?>
-
+			<?php else: ?>
+				<input type="hidden" value="<?php echo get_queried_object()->term_id; ?>" name="filter-category" />
 			<?php endif; //if is_widget('show_filters') ?>
 
 			<?php if(is_widget('show_sort') || !is_widget()) : ?>
