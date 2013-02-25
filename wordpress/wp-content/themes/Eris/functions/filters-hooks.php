@@ -536,11 +536,12 @@ function force_list_class_inline( $data ) {
 add_filter( 'the_content', 'force_list_class_inline' );
 add_filter( 'the_excerpt', 'force_list_class_inline' );
 
-function the_excerpt_strip_formcodes( $data ) {
-    $data = preg_replace( '|\[(.+?)\](.+?\[/\\1\])?|s', '', $data );
-    return $data;
-}
-add_filter( 'the_excerpt', 'the_excerpt_strip_formcodes' );
+// Possible band-aid fix for caption-codes showing up on the site - Jason
+// function the_excerpt_strip_formcodes( $data ) {
+//     $data = preg_replace( '|\[(.+?)\](.+?\[/\\1\])?|s', '', $data );
+//     return $data;
+// }
+// add_filter( 'the_excerpt', 'the_excerpt_strip_formcodes' );
 
 
 /**
