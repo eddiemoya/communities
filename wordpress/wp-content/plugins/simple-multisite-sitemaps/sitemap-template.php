@@ -107,9 +107,11 @@ if($_GET["refresh"] == true) :
 <?php
 	$sitemap = ob_get_clean();
 	ob_end_clean();
-	file_put_contents(plugin_dir_path(__FILE__).$blog_id."sitemap.xml", $sitemap);
+	$uploads = wp_upload_dir();
+	file_put_contents("{$uploads['basedir']}/{$blog_id}sitemap.xml", $sitemap);
 else:
 	header( 'HTTP/1.0 200 OK' );
 	header( 'Content-Type: text/xml; charset=' . get_option( 'blog_charset' ), true );
-	echo file_get_contents(plugin_dir_path(__FILE__).$blog_id."sitemap.xml");
+	$uploads = wp_upload_dir();
+	echo file_get_contents("{$uploads['basedir']}/{$blog_id}sitemap.xml");
 endif;
