@@ -8,14 +8,15 @@ if(is_user_logged_in()) {
 }
 
 //If origin param is set use it, otherwise if HTTP_REFERER is set, use it; otherwise use current page
-$origin = (isset($_GET['origin'])) ? $_GET['origin'] : ((isset($_SERVER['HTTP_REFERER']) && (! isset($_POST['loginId']) && ! isset($_POST['zipcode']))) ? urlencode($_SERVER['HTTP_REFERER']) : get_site_url());
+$origin = (isset($_GET['origin'])) ? $_GET['origin'] : ((isset($_SERVER['HTTP_REFERER']) && (! isset($_POST['loginId']) && ! isset($_POST['zipcode']))) ? urlencode($_SERVER['HTTP_REFERER']) : get_site_url() . '/');
 
 //If error is set
-$error = (isset($_GET['err'])) ? urldecode($_GET['err']) : false;
+$error = (isset($_GET['err'])) ? wp_kses(strip_tags(urldecode($_GET['err']))) : false;
 
 //CSAT Post
 $email = (isset($_POST['loginId'])) ? urldecode($_POST['loginId']) : null;
 $zipcode = (isset($_POST['zipcode'])) ? urldecode($_POST['zipcode']) : null;
+$opts = new SSO_Options;
 /**
 * @package WordPress
 * @subpackage White Label
@@ -176,9 +177,12 @@ $message = array(
 			<article class="content-container register span12">
 			    <section class="content-body clearfix">
 			        <h6 class="content-headline">Join now!</h6>
-
+					
+					  <?php if($error):?>
+            			<div><?php echo $error;?></div>
+       				  <?php endif;?>
 			
-			        <form class="form_register" id="register-form" method="post" action="<?php echo '?ssoregister&origin=' . $origin; ?>" shc:gizmo="transFormer">
+			        <form class="form_register" id="register-form" method="post" action="<?php echo $opts->endpoint . 'shcRegistration'; ?>" shc:gizmo="transFormer">
 			            <ul class="form-fields">
 			                <li>
 			                    <dl class="clearfix">
@@ -271,7 +275,8 @@ $message = array(
 			                    </dl>
 			                </li>
 			            </ul>
-			
+						<input type="hidden" name="service" value="<?php echo $opts->url_append_qs("origin={$origin}&ssoregister", urldecode($origin));?>" />
+						<input type="hidden" name="sourceSiteid" value="<?php echo $opts->sso_site_id;?>" />
 			        </form>
 			
 			        <ul>

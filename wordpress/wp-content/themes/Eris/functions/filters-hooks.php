@@ -453,7 +453,7 @@ function filter_before_widget($html, $dropzone, $widget){
             if($meta->limit > 1){
                 $html = str_replace('featured-post-type-post', 'featured-category-question', $html);
             } else { 
-                $html = str_replace('featured-post-type-post', 'featured-post-type-question', $html);
+                $html = str_replace('featured-post-type-question', 'featured-post-type-question featured-question', $html);
             }
         }
     }
@@ -531,7 +531,7 @@ add_filter( 'wp_insert_post_data' , 'force_list_class' , '99', 2 );
 function force_list_class_inline( $data ) {
     $data = str_replace( '<ol>', '<ol class="bullets">', $data);
     $data = str_replace( '<ul>', '<ul class="bullets">', $data);
-    echo $data;
+    return $data;
 }
 add_filter( 'the_content', 'force_list_class_inline' );
 add_filter( 'the_excerpt', 'force_list_class_inline' );
