@@ -247,6 +247,7 @@ form {}
     @extend .bold;
   }
   .content-date {
+    float:right;
     line-height: em-adjust( 1.5em );
     .time-stamp {
       display:inline-block;
@@ -569,8 +570,13 @@ textarea.discussion {
       content: "\201D";
     }
   }
-  .recent-activity_category-time > * {
-    display: block;
+  .recent-activity_category-time {
+    > * {
+      display: block;
+    }
+    .content-date {
+      float: none;
+    }
   }
 }
 

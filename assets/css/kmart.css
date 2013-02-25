@@ -281,7 +281,7 @@ ul.bullets { list-style-type: disc; }
 .content-container .content-body { border-top: solid 1px #dddcdc; padding: 0.769em 0; }
 .content-container .content-body .hr { background: transparent url('../img/background_hr.gif?v=1350417689') repeat-x 0px 0px; height: 1px; padding: 18px 0px; width: 100%; }
 .content-container .content-category { float: left; }
-.content-container .content-date { line-height: 1.846em; }
+.content-container .content-date { float: right; line-height: 1.846em; }
 .content-container .content-date .time-stamp { display: inline-block; margin-left: 1.5em; }
 .content-container .content-details { margin-bottom: 0.769em; }
 .content-container .content-headline { font-size: 153.846%; line-height: 1.1em; margin: 0 0 0.625em; }
@@ -373,6 +373,7 @@ textarea.discussion { border: 1px solid #d6d6d6; height: 10em; width: 99%; -webk
 .recent_activity .recent-activity_excerpt:before { content: "\201C"; }
 .recent_activity .recent-activity_excerpt:after { content: "\201D"; }
 .recent_activity .recent-activity_category-time > * { display: block; }
+.recent_activity .recent-activity_category-time .content-date { float: none; }
 
 .recent-activity li { margin-top: 1em; border-top: 1px solid #cccccc; padding-top: .75em; padding-bottom: .75em; line-height: 1.7; }
 .recent-activity li:first-child { margin-top: 0; border-top: 0; }
