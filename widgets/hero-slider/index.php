@@ -17,23 +17,31 @@
 
 	$args = array("post__in" => $posts_in, "post_type" => array("guide", "page", "post", "question", "attachment"), "post_status" => array("publish", "inherit"));
 	$sliderContent = new WP_Query($args);
+	
+	foreach ($sliderContent->posts as $post) {
+		$posts[$post->ID] = $post;
+	}
 ?>
 <section class="hero-slider-container">
 	<div class="rotating-banner pre-load" shc:name="hero-slider" shc:options="{animate:true, navigation:true, arrowNavigationOnly:true, autoSlideBanners:true}" shc:gizmo="responslide">
 		<?php 
 			$counter = 1;
-			foreach ($sliderContent->posts as $post):
-				if ($post->post_type == "attachment") {
-					$image = $post->guid;
-					$link = get_post_meta( $post->ID, 'slide-link-url', true );
+			foreach ($posts_in as $postID) :
+				if ($posts[$postID] == "") :
+					continue;
+				endif;
+			//foreach ($sliderContent->posts as $post):
+				if ($posts[$postID]->post_type == "attachment") {
+					$image = $posts[$postID]->guid;
+					$link = get_post_meta( $posts[$postID]->ID, 'slide-link-url', true );
 				} else {
-					$image = MultiPostThumbnails::get_post_thumbnail_url($post->post_type, 'hero-slider-image', $post->ID);
-					$link = get_post_permalink($post->ID);
+					$image = MultiPostThumbnails::get_post_thumbnail_url($posts[$postID]->post_type, 'hero-slider-image', $posts[$postID]->ID);
+					$link = get_post_permalink($posts[$postID]->ID);
 				}
 		?>
 				<div class="banner slide_<?php echo $counter; ?>" shc:shard="banner" shc:url="<?php echo $link; ?>">
-					<h1 class="content-headline"><?php echo $post->post_title; ?></h1>
-					<img src="<?php echo $image; ?>" alt="<?php $post->post_title; ?>" />
+					<h1 class="content-headline"><?php echo $posts[$postID]->post_title; ?></h1>
+					<img src="<?php echo $image; ?>" alt="<?php $posts[$postID]->post_title; ?>" />
 				</div>
 		<?php
 				$counter++;
