@@ -2,14 +2,12 @@
 
 function formdata_cookie_check() {
 	
-	if(isset($_COOKIE['form-data']) && empty($_POST)) {
+	if(isset($_COOKIE['form-data'])) {
 		
 		if(is_user_logged_in()) {
 			
-			$formdata = json_decode(urldecode(stripslashes(str_replace("'", "\"", $_COOKIE['form-data']))), true);
-			
-			/*var_dump($formdata);
-			exit;*/
+			//$formdata = json_decode(urldecode(stripslashes(str_replace("'", "\'", $_COOKIE['form-data']))), true);
+			$formdata = json_decode(urldecode(stripslashes($_COOKIE['form-data'])), true);
 			
 			//Post a question form
 			if(array_key_exists('new_question_step_1', $formdata)) {
