@@ -57,7 +57,7 @@ get_currentuserinfo();
 							<li class="clearfix">
 								<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Post</button>
 								<button type="submit" name="cancel" class="<?php echo theme_option("brand"); ?>_button azure">Cancel</button>
-								<input type="hidden" name="post-question" value="<?php echo $_POST['post-question']; ?>" />
+								<input type="hidden" name="post-question" value="<?php echo stripslashes($_POST['post-question']); ?>" />
 								<input type="hidden" name="hide_empty" class="hide_empty" value="false" />
 							</li>
 						</ul>
