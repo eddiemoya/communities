@@ -858,3 +858,5 @@ function enable_more_buttons($buttons) {
 	return $buttons;
 }
 add_filter("mce_buttons", "enable_more_buttons");
+
+add_filter('the_excerpt', "strip_shortcodes");
