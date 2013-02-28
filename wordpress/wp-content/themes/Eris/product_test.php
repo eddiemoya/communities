@@ -12,9 +12,9 @@ ini_set('display_errors', true);
 <?php 
 
 //Product Detail Api Request
- $response = Products_Api_Request::factory(array('api' => 'detail',
+ /*$response = Products_Api_Request::factory(array('api' => 'detail',
 											 'term' => '002VA50405301P'))
-							->response();
+							->response();*/
 
 //Product Search keyword request
 /*$response = Products_Api_Request::factory(array('api'	=> 'search',
@@ -23,7 +23,19 @@ ini_set('display_errors', true);
 												'page'	=> 1,
 												'per_page'	=> 50))
 								->response();*/
-echo '<pre>';
+/*echo '<pre>';
 var_dump($response);
-echo '</pre>';
+echo '</pre>';*/
+
+Products_Model::factory()
+				->post_args(array('post_status'		=> 'publish',
+									'post_title'	=> 'Test Product 1',
+									'post_content'	=> 'Some product bullshit',
+									'post_excerpt'
+									))
+				->meta()
+				->save();
+								
+							
+
 ?>
