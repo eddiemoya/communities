@@ -89,5 +89,5 @@ DEPENDENCIES
   capistrano-deepmodules
   capistrano-ext (= 1.2.1)
   compass
-  sass
+  sass (= 3.2.5)
   uihelper-rails!
