@@ -22,20 +22,25 @@ ini_set('display_errors', true);
 												'term'	=>	'pants',
 												'page'	=> 1,
 												'per_page'	=> 50))
-								->response();*/
+			 					->response();*/
 /*echo '<pre>';
 var_dump($response);
 echo '</pre>';*/
 
-Products_Model::factory()
+$test = Products_Model::factory()
 				->post_args(array('post_status'		=> 'publish',
 									'post_title'	=> 'Test Product 1',
 									'post_content'	=> 'Some product bullshit',
-									'post_excerpt'
+									'post_excerpt'	=> 'product excerpt'
 									))
-				->meta()
+				->meta(array('productnumber' 	=> '00QAFUCK5t1k',
+								'price'			=> 1000.00
+								))
 				->save();
+/*echo '<pre>';			
+var_dump($test);
+exit;*/
 								
-							
+echo ($test) ? 'Product insert success' : 'Product import failed';
 
 ?>
