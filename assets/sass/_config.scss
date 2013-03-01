@@ -3,6 +3,7 @@ $img:                 "assets/img/";
 $sears-img:           "sears/";
 $kmart-img:           "kmart/";
 $garden-img:          "gardensolutionscenter/";
+$outdoor-img:         "outdoorstyle/";
 // For cache-busting
 $version:             "?v=3";
 
@@ -15,10 +16,18 @@ $lightest-color:      white;
 $darkest-color:       black;
 $nav-color:           #e4e0df;
 // List of special, site-branded colors
+<<<<<<< HEAD
 $color-types:         ( link,     secondary-link, bodycopy, featured-copy,  background, bg-contrast,  decorative, button,   footer,   footer-hover, footer_fly, footer-subnav-hover,  content-focus,  badge,    secondary-decorative, comment-decor,  bar,      site-error, rating );
 $sears-colors:        ( #067bb5,  #666666,        #555555,  #333333,        #ffffff,    #ffffff,      #cccccc,    #1a519b,  #dedbde,  #eeeeee,      #eeeeee,    #55a3c8,              #f2f2f2,        #1885bb,  #999999,              #d6d6d6,        #6dcff6,  #304f88,    #077bb5 );
 $kmart-colors:        ( #980017,  #666666,        #555555,  #333333,        #ffffff,    #ffffff,      #cccccc,    #e02334,  #f3f0ec,  #7c0505,      #eeeeee,    #55a3c8,              #f2f2f2,        #1885bb,  #999999,              #d6d6d6,        #f28734,  #8f2225,    #db150d );
 $garden-colors:       ( #006633,  #666666,        #3b2314,  #3b2314,        #faf9f2,    #ffffff,      #dedede,    #e02334,  #f3f0ec,  #7c0505,      #eeeeee,    #55a3c8,              #f2f2f2,        #1885bb,  #999999,              #d6d6d6,        #f28734,  #8f2225,    #db150d );
+=======
+$color-types:         ( link,     secondary-link, bodycopy, featured-copy,  background, bg-contrast,  decorative, button,   footer,   footer-hover, footer_fly, footer-subnav-hover,  content-focus,  badge,    secondary-decorative, comment-decor,  bar,      site-error );
+$sears-colors:        ( #067bb5,  #666666,        #555555,  #333333,        #ffffff,    #ffffff,      #cccccc,    #1a519b,  #dedbde,  #eeeeee,      #eeeeee,    #55a3c8,              #f2f2f2,        #1885bb,  #999999,              #d6d6d6,        #6dcff6,  #304f88 );
+$kmart-colors:        ( #980017,  #666666,        #555555,  #333333,        #ffffff,    #ffffff,      #cccccc,    #e02334,  #f3f0ec,  #7c0505,      #eeeeee,    #55a3c8,              #f2f2f2,        #1885bb,  #999999,              #d6d6d6,        #f28734,  #8f2225 );
+$garden-colors:       ( #006633,  #666666,        #3b2314,  #3b2314,        #faf9f2,    #ffffff,      #dedede,    #e02334,  #f3f0ec,  #7c0505,      #eeeeee,    #55a3c8,              #f2f2f2,        #1885bb,  #999999,              #d6d6d6,        #f28734,  #8f2225 );
+$outdoor-colors:      ( #067bb5,  #666666,        #555555,  #333333,        #ffffff,    #ffffff,      #cccccc,    #1a519b,  #dedbde,  #eeeeee,      #eeeeee,    #55a3c8,              #f2f2f2,        #1885bb,  #999999,              #d6d6d6,        #6dcff6,  #304f88 );
+>>>>>>> Adding base pieces for outdoor style.
 
 // Scaffolding
 $grid-width:          940;
