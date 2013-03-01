@@ -12,9 +12,9 @@ ini_set('display_errors', true);
 <?php 
 
 //Product Detail Api Request
- /*$response = Products_Api_Request::factory(array('api' => 'detail',
-											 'term' => '002VA50405301P'))
-							->response();*/
+ $response = Products_Api_Request::factory(array('api' => 'detail',
+											 'term' => '007VA50600001P'))
+							->response();
 
 //Product Search keyword request
 /*$response = Products_Api_Request::factory(array('api'	=> 'search',
@@ -23,11 +23,11 @@ ini_set('display_errors', true);
 												'page'	=> 1,
 												'per_page'	=> 50))
 			 					->response();*/
-/*echo '<pre>';
+echo '<pre>';
 var_dump($response);
-echo '</pre>';*/
+echo '</pre>';
 
-$test = Products_Model::factory()
+/*$test = Products_Model::factory()
 				->post_args(array('post_status'		=> 'publish',
 									'post_title'	=> 'Test Product 1',
 									'post_content'	=> 'Some product bullshit',
@@ -36,11 +36,11 @@ $test = Products_Model::factory()
 				->meta(array('productnumber' 	=> '00QAFUCK5t1k',
 								'price'			=> 1000.00
 								))
-				->save();
+				->save();*/
 /*echo '<pre>';			
 var_dump($test);
 exit;*/
 								
-echo ($test) ? 'Product insert success' : 'Product import failed';
+//echo ($test) ? 'Product insert success' : 'Product import failed';
 
 ?>
