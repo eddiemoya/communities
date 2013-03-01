@@ -4,7 +4,7 @@
   @return ( $number-columns * ($margin-width * $col-margin-ratio) ) + ( ($number-columns - 1) * $margin-width );
 }
 
-// the lookups for sears and kmart colors.
+// the lookup shortcuts for colors based on brand.
 @function sears( $lookups, $types: $color-types, $colors: $sears-colors ) {
   @return lookup( $lookups, $types, $colors );
 }
@@ -12,6 +12,9 @@
   @return lookup( $lookups, $types, $colors );
 }
 @function garden( $lookups, $types: $color-types, $colors: $garden-colors ) {
+  @return lookup( $lookups, $types, $colors );
+}
+@function outdoor( $lookups, $types: $color-types, $colors: $outdoor-colors ) {
   @return lookup( $lookups, $types, $colors );
 }
 
