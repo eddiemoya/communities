@@ -1,0 +1,45 @@
+/* 
+Theme Name: Eris
+Theme URI: http://www.sears.com/community/
+Description: The Fractal 960 grid developed for Sears and Kmart Community sites
+Author: Carl Albrecht-Buehler and Captain Timothy "Heartbreaker Widowmaker" Steele
+Version: 2.0
+ */
+
+// Utilities
+@import 'compass/css3';
+@import 'compass/utilities';
+@import 'compass/layout';
+@import 'compass/typography';
+@import 'uihelper';
+@import 'config';
+@import 'functions';
+@import 'reset';
+
+// Global Components for Communities
+@import 'global/ribbon';
+@import 'global/header';
+@import 'global/footer';
+@import 'global/layout';
+@import 'global/presentation';
+@import 'global/navigation';
+@import 'global/moodle';
+@import 'global/single';
+@import 'global/addthis';
+@import 'global/open-id';
+@import 'global/toolip_children';
+@import 'global/polls';
+@import 'global/hero_slider';
+
+// Sears-Specific Adjustments
+@import 'sears/ribbon';
+@import 'sears/header';
+@import 'sears/footer';
+@import 'outdoorstyle/presentation';
+@import 'outdoorstyle/navigation';
+@import 'sears/moodle';
+@import 'outdoorstyle/single';
+@import 'outdoorstyle/addthis';
+@import 'outdoorstyle/open-id';
+@import 'outdoorstyle/toolip_children';
+@import 'outdoorstyle/polls';

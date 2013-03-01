@@ -1,0 +1,94 @@
+// Tweaks to Presentation for Outdoor Style
+
+html, body {
+  background: outdoor( background );
+  color: outdoor( bodycopy );
+}
+
+// Sprites
+#header.sears form #button_search, #header.sears form #input_search,
+.sears_button
+{
+  background-image:image-url("#{$sears-img}sprite_global.png");
+}
+.sears {
+  a {
+    // Site-Wide Tag Styles
+    color: outdoor( link );
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+    &:visited {
+      color: outdoor( link );
+    }
+  }
+  // Convenience Classes
+  .link-emulator {
+    color: outdoor( link );
+  }
+  // Featured
+  .content-body {
+    p {
+      color: outdoor( featured-copy );
+    }
+  }
+  // Singles Page
+  .post, .question {
+    h1 {
+      color: outdoor( link );
+    }
+  }
+  // Profile
+  .answers-toggle, .upload-photo label {
+    color: outdoor( link );
+    @extend .bold;
+  }
+  // Threaded Discussion
+  .comment-actions button {
+    background: transparent image-url("#{$sears-img}/sprite_global.png") repeat-x 0 -192px;
+  }
+  // Breadcrumb
+  .breadcrumb li:before {
+    color:outdoor( link );
+  }
+  // Search Results
+  .no-results .term {
+    color: outdoor( link );
+  }
+  // Errors
+  .site-error .message {
+    background: outdoor( site-error );
+  }
+  // Avatar
+  .member_avatar .badge {
+    background-position:0px -235px;
+  }
+}
+
+// Global Elements
+// Form Elements
+.sears_button {
+  border-left:solid #ff9e6c;
+  border-right:solid #cc6f35;
+  border-width:0px 1px;
+  color: $lightest-color;
+  cursor:pointer;
+  font-weight:bold;
+  height:32px;
+  margin-right:1em;
+  padding:0em 1.5em;
+  position:relative;
+  text-shadow:1px 1px sears( sec-dec );
+  @include border-radius( 5px );
+  background-position:0px -88px;
+}
+
+.sears_button.azure {
+  background-image: image-url('#{$sears-img}/sprite_global.png');
+  border-color:#60768b;
+  color:#366392;
+  text-shadow:none;
+  background-position:0px -140px;
+  margin-right: 0px;
+}
