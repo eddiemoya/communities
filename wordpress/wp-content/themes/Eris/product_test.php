@@ -12,9 +12,9 @@ ini_set('display_errors', true);
 <?php 
 
 //Product Detail Api Request
- $response = Products_Api_Request::factory(array('api' => 'detail',
+ /*$response = Products_Api_Request::factory(array('api' => 'detail',
 											 'term' => '007VA50600001P'))
-							->response();
+							->response();*/
 
 //Product Search keyword request
 /*$response = Products_Api_Request::factory(array('api'	=> 'search',
@@ -23,6 +23,13 @@ ini_set('display_errors', true);
 												'page'	=> 1,
 												'per_page'	=> 50))
 			 					->response();*/
+
+$response = Products_Api_Request::factory(array('api'	=> 'search',
+												'type'	=>	'vertical',
+												'term'	=>	'Appliances',
+												'page'	=> 1,
+												'per_page'	=> 50))
+			 					->response();
 echo '<pre>';
 var_dump($response);
 echo '</pre>';
