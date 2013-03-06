@@ -55,3 +55,6 @@
 [submodule "wordpress/wp-content/plugins/wp-polls"]
 	path = wordpress/wp-content/plugins/wp-polls
 	url = git@github.com:dinocarl/wp-polls.git
+[submodule "wordpress/wp-content/plugins/ratings-review"]
+	path = wordpress/wp-content/plugins/ratings-review
+	url = git@github.com:dan-crimmins/ratings-reviews.git
