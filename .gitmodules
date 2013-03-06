@@ -55,3 +55,6 @@
 [submodule "wordpress/wp-content/plugins/wp-polls"]
 	path = wordpress/wp-content/plugins/wp-polls
 	url = git@github.com:dinocarl/wp-polls.git
+[submodule "wordpress/wp-content/plugins/taxonomy-widget"]
+	path = wordpress/wp-content/plugins/taxonomy-widget
+	url = git@github.com:mattday16/taxonomy_widget.git
