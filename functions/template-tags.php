@@ -167,7 +167,7 @@ function process_front_end_question() {
 		$valid = true;
     	$errors = array();
     	
-    	//Make sure they posted a question
+    	//Make sure they posted a question<input type="hidden" name="cancel-question" value="" />
     	if(strlen(trim($_POST['your-question'])) == 0) {
     		
     		$valid = false;
