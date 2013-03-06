@@ -570,6 +570,14 @@ textarea.discussion {
       content: "\201D";
     }
   }
+  .recent-activity_category-time {
+    > * {
+      display: block;
+    }
+    .content-date {
+      float: none;
+    }
+  }
 }
 
 
@@ -1621,4 +1629,8 @@ button.follow {
   .summary_list-item {
     margin-bottom:1.75em;
   }
+}
+
+.communities_menu_widget h4 {
+  font-size:12px !important;
 }

@@ -95,7 +95,8 @@ function enqueue_scripts() {
 
         
         /* Styles */
-		wp_register_style( 'main-styles', lookup_stylesheet(), array(), $style_version );
+        $lookup_stylesheet = str_replace('kmart.com', 'sears.com', lookup_stylesheet());
+		wp_register_style( 'main-styles', $lookup_stylesheet, array(), '2.0' );
         wp_enqueue_style( 'main-styles' );
         
         //Enqueue profile ajax only for author template

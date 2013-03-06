@@ -362,6 +362,12 @@ body, td, p {
   .member_avatar .badge {
     background-position:0px -243px;
   }
+  // RECENT ACTIVITY
+  .recent_activity {
+    .recent-activity_category-time a {
+      text-decoration: underline;
+    }
+  }
 }
 
 // Form Elements
