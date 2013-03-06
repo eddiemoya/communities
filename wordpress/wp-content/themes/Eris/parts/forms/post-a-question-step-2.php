@@ -59,7 +59,6 @@ get_currentuserinfo();
 								<button type="submit" name="cancel" class="<?php echo theme_option("brand"); ?>_button azure" id="cancel">Cancel</button>
 								<input type="hidden" name="hide_empty" class="hide_empty" value="false" />
 								<input type="hidden" name="post-question" value="<?php echo stripslashes($_POST['post-question']); ?>" />
-								<input type="hidden" name="cancel-question" value="" />
 							</li>
 						</ul>
 					</div>
@@ -68,6 +67,7 @@ get_currentuserinfo();
 							event.preventDefault();
 							var form = $(this).parents("#new_question");
 							form.off("submit");
+							form.append("<input type='hidden' name='cancel-question' value='' />");
 							(form.get(0)).submit();
 						});
 					</script>
