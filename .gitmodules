@@ -58,3 +58,6 @@
 [submodule "wordpress/wp-content/plugins/ratings-review"]
 	path = wordpress/wp-content/plugins/ratings-review
 	url = git@github.com:dan-crimmins/ratings-reviews.git
+[submodule "wordpress/wp-content/plugins/products"]
+	path = wordpress/wp-content/plugins/products
+	url = git@github.com:eddiemoya/Products.git
