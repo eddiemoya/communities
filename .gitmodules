@@ -55,3 +55,6 @@
 [submodule "wordpress/wp-content/plugins/wp-polls"]
 	path = wordpress/wp-content/plugins/wp-polls
 	url = git@github.com:dinocarl/wp-polls.git
+[submodule "wordpress/wp-content/plugins/sk-product-taxonomy"]
+	path = wordpress/wp-content/plugins/sk-product-taxonomy
+	url = git@github.com:dan-crimmins/sk-product-taxonomy.git
