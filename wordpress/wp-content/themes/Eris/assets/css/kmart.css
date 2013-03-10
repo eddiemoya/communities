@@ -3,7 +3,7 @@ Theme Name: Eris
 Theme URI: http://www.kmart.com/community/
 Description: The Fractal 960 grid developed for Sears and Kmart Community sites
 Author: Carl Albrecht-Buehler and Captain Timothy "Heartbreaker Widowmaker" Steele
-Version: 2.1 */
+Version: 2.0 */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
 
 html, body { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
@@ -101,11 +101,11 @@ ul.footer_anterior .twtr { background-position: -160px top; }
 ul.footer_anterior .yt { background-position: -200px top; }
 ul.footer_anterior .smb { background-position: -240px top; }
 
-.clearfix:before, .content-container .content-body .hr, .summary-list .summary_comments, .clearfix:after, .content-container .content-body .hr, .summary-list .summary_comments { content: ""; display: table; }
+.clearfix:before, .content-container .content-body .hr, .communities_menu_widget .image-list-style li:before, .summary-list .summary_comments, .weather-widget .forecast_details .forecast_degrees:before, .clearfix:after, .content-container .content-body .hr, .communities_menu_widget .image-list-style li:after, .summary-list .summary_comments, .weather-widget .forecast_details .forecast_degrees:after { content: ""; display: table; }
 
-.clearfix:after, .content-container .content-body .hr, .summary-list .summary_comments { clear: both; }
+.clearfix:after, .content-container .content-body .hr, .communities_menu_widget .image-list-style li:after, .summary-list .summary_comments, .weather-widget .forecast_details .forecast_degrees:after { clear: both; }
 
-.clearfix, .content-container .content-body .hr, .summary-list .summary_comments { clear: both; *zoom: 1; }
+.clearfix, .content-container .content-body .hr, .communities_menu_widget .image-list-style li, .summary-list .summary_comments, .weather-widget .forecast_details .forecast_degrees { clear: both; *zoom: 1; }
 
 .body { width: 940px; margin: 0px auto; }
 
@@ -422,6 +422,10 @@ fieldset#use_your_account_from legend { text-align: center; padding: 1em; }
 .login_options .openid { background-position: -525px top; }
 
 .communities_menu_widget .subnav-items li { padding: 6px 0; }
+.communities_menu_widget .image-list-style a span { display: inline-block; margin-right: 0.77em; width: 4.6em; }
+.communities_menu_widget .image-grid-style li { float: left; padding: 0 0.375em 0.375em; text-align: center; width: 50%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.communities_menu_widget .image-grid-style li a { display: block; }
+.communities_menu_widget .image-grid-style li a span { display: block; }
 .communities_menu_widget .subcat-selector-container { font-size: 92.307%; margin-top: 15px; color: #666666; }
 .communities_menu_widget .subcat-selector-container select { margin-left: 10px; color: black; }
 
@@ -650,6 +654,17 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .summary-list .summary_list-item { margin-bottom: 1.75em; }
 
 .communities_menu_widget h4 { font-size: 12px !important; }
+
+.weather-widget h5 { font-size: 115.384%; text-align: center; text-transform: uppercase; }
+.weather-widget .high { font-weight: bold; }
+.weather-widget .high, .weather-widget .low { display: block; font-size: 123.076%; text-align: center; }
+.weather-widget .forecast_details h5 { text-align: left; }
+.weather-widget .forecast_details .high, .weather-widget .forecast_details .low { float: left; text-align: left; }
+.weather-widget .forecast_details .high { font-size: 269.23%; line-height: 1em; }
+.weather-widget .forecast_details .low { font-size: 169.23%; margin-top: 0.25em; }
+.weather-widget .forecast_details .forecast_description { display: block; font-size: 107.692%; }
+.weather-widget .forecast_details .forecast_location, .weather-widget .forecast_details .forecast_change-location { display: block; font-size: 84.615%; font-weight: bold; }
+.weather-widget .forecast_sponsor { margin-top: 0.75em; text-align: right; }
 
 .dropmenu > li { float: left; position: relative; }
 .dropmenu > li > span, .dropmenu > li a { display: block; font-weight: bold; text-align: center; cursor: pointer; }
