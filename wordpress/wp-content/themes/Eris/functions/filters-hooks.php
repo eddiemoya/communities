@@ -870,26 +870,26 @@ function post_formats(){
 add_filter('after_setup_theme', 'post_formats');
 
 // Input field, for a url, which is stored, and store in post_meta
-function oembed_meta_box()
+function featured_video_box()
 {
-	add_meta_box("oembed_meta", "Oembed Media", "print_oembed_meta_box", "post");
-	add_meta_box("oembed_meta", "Oembed Media", "print_oembed_meta_box", "guide");
+	add_meta_box("featured_video", "Oembed Media", "print_featured_video_box", "post");
+	add_meta_box("featured_video", "Oembed Media", "print_featured_video_box", "guide");
 }
 
-function print_oembed_meta_box()
+function print_featured_video_box()
 {
 	// Use nonce for verification
-	wp_nonce_field(plugin_basename( __FILE__ ), 'oembed_meta_box_nonce');
+	wp_nonce_field(plugin_basename( __FILE__ ), 'featured_video_box_nonce');
 	
 	$pid = get_the_ID();
-	$stg = get_post_meta($pid, "oembed_meta_url", TRUE);
+	$stg = get_post_meta($pid, "featured_video_url", TRUE);
 	
 	$out = (!empty($stg)) ? wp_oembed_get($stg) : "";
 	$fmt = get_post_format($pid);
 		
 	echo "<div>";
-	echo '<div><label for="oembed_meta_url">' . __("URL") . '</label> ';
-	echo '<input type="text" id="oembed_meta_url" name="oembed_meta_url" value="' . $stg . '" size="35" /></div>';
+	echo '<div><label for="featured_video_url">' . __("URL") . '</label> ';
+	echo '<input type="text" id="featured_video_url" name="featured_video_url" value="' . $stg . '" size="35" /></div>';
 	
 	if(!empty($out))
 	{
@@ -901,7 +901,7 @@ function print_oembed_meta_box()
 	echo "</div>";
 }
 
-function save_oembed_meta_box($post)
+function save_featured_video_box($post)
 { 
 	// First we need to check if the current user is authorised to do this action. 
 	if('page' == $_POST['post_type'] )
@@ -919,14 +919,14 @@ function save_oembed_meta_box($post)
 		}
 	}
 	
-	if(!isset($_POST['oembed_meta_box_nonce']) || !wp_verify_nonce($_POST['oembed_meta_box_nonce'], plugin_basename( __FILE__ )))
+	if(!isset($_POST['featured_video_box_nonce']) || !wp_verify_nonce($_POST['featured_video_box_nonce'], plugin_basename( __FILE__ )))
 	{
 		return;
 	}
 	
-	update_post_meta($post, "oembed_meta_url", esc_url($_POST['oembed_meta_url']));
+	update_post_meta($post, "featured_video_url", esc_url($_POST['featured_video_url']));
 	return $post;
 }
 
-add_action('save_post', "save_oembed_meta_box");
-add_action('add_meta_boxes', "oembed_meta_box");
+add_action('save_post', "save_featured_video_box");
+add_action('add_meta_boxes', "featured_video_box");
