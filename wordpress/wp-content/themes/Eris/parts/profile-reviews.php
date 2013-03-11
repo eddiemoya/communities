@@ -10,12 +10,17 @@
         <img src="<?php echo $activity["image_path"] ?>" />
       </div>
       <div class="span10">
-        <h4><a href="#"><?php echo $activity["product"] ?></a></h4>
+        <h4><a href="#<?php echo $activity["product_path"] ?>"><?php echo $activity["product"] ?></a></h4>
         <div class="rating">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/img/stars.png" alt="<?php echo $activity["rating"] ?>/5 stars" width="94" height="15" />
+          <div class="rating-stars">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/stars1.png" alt="<?php echo $activity["rating"] ?>/5 stars" />
+          </div>
           <div class="rating-bar" style="width: <?php echo ($activity["rating"] / 5) * 100 ?>%;">&nbsp;</div>
         </div>
-        <div class="review-text"><?php echo $activity["title"] ?></div>
+        <div class="review-text">
+          <a href="#<?php echo $activity["review_path"] ?>"><?php echo $activity["title"] ?></a>
+          <?php echo $editlink ?>
+        </div>
       </div>
     </li>
 <?php
