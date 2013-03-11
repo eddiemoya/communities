@@ -879,6 +879,22 @@ $tab-padding: "1em 0 .6em 0";
     top:24em;
     margin-left:13%;
   }
+  // compass - get width & height of the star background
+  .rating {
+    float: left;
+    width: 94px;
+    background: silver;
+    img {
+      display: block;
+      position: absolute;
+    }
+  }
+  .rating-bar {
+    height: 15px;
+  }
+  .review-text {
+    clear: left;
+  }
 }
 
 // CONTENT LIST WIDGET

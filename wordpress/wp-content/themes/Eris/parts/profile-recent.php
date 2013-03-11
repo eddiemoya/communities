@@ -1,21 +1,25 @@
 
-<?php if(! is_ajax()):?>
- <ol class="content-body result clearfix" id="profile-results">
- <?php endif;?>
-<?php
+<?php if(! is_ajax()): ?>
+<ol class="content-body result clearfix" id="profile-results">
+<?php endif;
+
 /*echo '<pre>';
 var_dump($activities);
 exit;*/
 
-$activities_text = array('question' 	=> 'Asked this: ',
-							'answer'	=> 'Answered this: ',
-							''			=> 'Commented this: ',
-							'comment'	=> 'Commented this: ',
-							'post'		=> 'Posted this: ',
-							'guide'		=> 'Posted this: ');
+$activities_text = array(
+  'question' => 'Asked this: ',
+  'answer'   => 'Answered this: ',
+  ''         => 'Commented this: ',
+  'comment'  => 'Commented this: ',
+  'post'     => 'Posted this: ',
+  'guide'    => 'Posted this: '
+);
 							
-$action_text = array('follow' => 'Followed this: ',
-						'upvote' => 'Liked this: ');
+$action_text = array(
+  'follow' => 'Followed this: ',
+  'upvote' => 'Liked this: '
+);
 
 foreach($activities as $activity):
 
@@ -58,6 +62,4 @@ foreach($activities as $activity):
 
 <?php if($user_activities->next_page):?>
     <a href="<?php echo $url_no_qs . '?post-type=' . $type . '&page=' . $user_activities->next_page; ?>" id="page-more">More &gt;</a>
-<?php endif;?>
-      
-      
+<?php endif;
