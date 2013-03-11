@@ -860,3 +860,11 @@ function enable_more_buttons($buttons) {
 add_filter("mce_buttons", "enable_more_buttons");
 
 add_filter('the_excerpt', "strip_shortcodes");
+
+
+function post_formats(){
+    add_theme_support('post-formats', array('video'));
+    add_post_type_support( 'post', 'post-formats' );
+    add_post_type_support( 'guide', 'post-formats' );
+}
+add_filter('after_setup_theme', 'post_formats');
