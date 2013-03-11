@@ -164,6 +164,7 @@ if(isset($_GET['post-type'])) {
 		      "rating" => "3"
 		    )
 		  );
+		  $editlink = $profile_type == 'myprofile' ? '<a href="#" class="edit-review right">Edit</a>' : '';
 		  include('parts/profile-reviews.php');
 		}   
 ?>

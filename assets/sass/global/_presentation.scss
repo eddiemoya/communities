@@ -755,6 +755,8 @@ fieldset#use_your_account_from {
 
 // PROFILE
 $tab-padding: "1em 0 .6em 0";
+$rating-img: dimensions("stars1.png");
+
 .profile {
   .content-container .content-body {
     border-top: 0;
@@ -879,18 +881,30 @@ $tab-padding: "1em 0 .6em 0";
     top:24em;
     margin-left:13%;
   }
-  // compass - get width & height of the star background
+  .reviews {
+    h4 a {
+      @extend .bold;
+    }
+    .edit-link {
+      display: block;
+      font-style: italic;
+    }
+  }
   .rating {
     float: left;
-    width: 94px;
+    width: floor( ( nth( $rating-img, 1 ) ) / 3 );
     background: silver;
+  }
+  .rating-stars {
+    display: block;
+    position: absolute;
+    width: floor( ( nth( $rating-img, 1 ) ) / 3 );
     img {
       display: block;
-      position: absolute;
     }
   }
   .rating-bar {
-    height: 15px;
+    height: floor( ( nth( $rating-img, 2 ) ) / 3 );
   }
   .review-text {
     clear: left;
