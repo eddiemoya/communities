@@ -43,6 +43,9 @@ html, body {
     color: sears( link );
     @extend .bold;
   }
+  .rating-bar {
+    background: sears( rating );
+  }
   // Threaded Discussion
   .comment-actions button {
     background: transparent image-url("#{$sears-img}/sprite_global.png") repeat-x 0 -192px;

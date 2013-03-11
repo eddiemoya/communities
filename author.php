@@ -38,9 +38,6 @@ if(is_user_logged_in() && ($profile_user->ID == $current_user->ID)){
 	
 }
 
-
-
-
 if($profile_type != 'myprofile') {
 	
 	//Remove recent tab
@@ -48,49 +45,41 @@ if($profile_type != 'myprofile') {
 	
 }
 
-/*var_dump($user_activities->nav);
-exit;*/
+# var_dump($user_activities->nav);
+
 
 $available_tabs = empty( $user_activities->nav ) ? array() : $user_activities->nav;
 
 
 if(isset($_GET['post-type'])) {
 	
-	$type = empty($_GET['post-type']) ? null : $_GET['post-type'];
-	$current_tab = ($_GET['post-type'] == 'aboutme') ? 'About Me' : 'Community Activity';
-	$current_nav = $_GET['post-type'];
-	$container_class = ($_GET['post-type'] == 'aboutme') ? '' : ' recent-activity';
+  $type            = empty($_GET['post-type']) ? null : $_GET['post-type'];
+  $current_tab     = $_GET['post-type'] == 'aboutme' ? 'About Me' : 'Community Activity';
+  $current_nav     = $_GET['post-type'];
+  $container_class = $_GET['post-type'] == 'aboutme' ? '' : ' recent-activity';
 	
 } else {
 	
-	$default = (isset($available_tabs[0])) ? $available_tabs[0] : $available_tabs[1]; 
+	$default         = (isset($available_tabs[0])) ? $available_tabs[0] : $available_tabs[1]; 
 	
-	$type = $default;
-	$current_tab = 'Community Activity';
-	$current_nav = $default;
-	$container_class = ' recent-activity';	
-	
+	$type            = $default;
+	$current_tab     = 'Community Activity';
+	$current_nav     = $default;
+	$container_class = ' recent-activity';
+
 }
 
-
-
 ?>
-<section class="span<?php echo ($profile_type == 'myprofile' ? "12" : "8" ); ?> profile">
+<section class="span12 profile">
 
     <?php include('parts/profile_nav.php'); ?>
 
-<?php 
-
-
-?>
     <section class="content-container<?php echo $container_class; ?>">
 
-       
-	 	   
-        <?php
-      	//Comments
+<?php
+    # Based on the type of activity, use the correct function to display the activity and call the appropriate partial
+    # Comments
 		if($type == 'answer' || $type == 'comment' || $type == '') {
-			
 			
 			$activities = $user_activities->page($page)
 											->get_user_comments_by_type($type)
@@ -99,34 +88,29 @@ if(isset($_GET['post-type'])) {
 			include('parts/profile-comments.php');
 		}
 		
-		//Posts
+		# Posts
 		if($type == 'post' || $type == 'guides' || $type == 'question') {
-			
-			
+		  # Questions are a special type of post here - they may include expert responses.
 			if($type == 'question') {
-				
 				$activities = $user_activities->page($page)
 												->get_user_posts_by_type($type)
 												->get_expert_answers()
-												->posts;
-												
+												->posts;		
 					/*echo '<pre>';
 					var_dump($activities);
 					exit;*/					
 			
 			} else {
-				
+				# The other post types are standardized.
 				$activities = $user_activities->page($page)
 												->get_user_posts_by_type($type)
 												->posts;
-											
 			}
-											
 											
 			include('parts/profile-posts.php');
 		}
 		
-		//Actions
+		# Actions
 		if($type == 'follow' || $type == 'upvote') {
 			
 			$activities = $user_activities->page($page)
@@ -146,7 +130,7 @@ if(isset($_GET['post-type'])) {
 		}
 		
 		if($type == 'aboutme') {
-			
+	
 			if(class_exists('SSO_Profile')) {
 				
 				$sso_profile = new SSO_Profile();
@@ -161,9 +145,28 @@ if(isset($_GET['post-type'])) {
 			
 			include('parts/profile-aboutme.php');
 		}
-	
-       
-        ?>
+		
+		if($type == 'review') {
+		  $activities = array(
+		    "1" => array(
+		      "product" => "Kenmore Refrigerator",
+		      "title" => "I love it!",
+		      "rating" => "4"
+		    ),
+		    "2" => array(
+		      "product" => "Craftsman Workbench",
+		      "title" => "I hate it!",
+		      "rating" => "1"
+		    ),
+		    "3" => array(
+		      "product" => "Land's End Range Rover",
+		      "title" => "WTF????",
+		      "rating" => "3"
+		    )
+		  );
+		  include('parts/profile-reviews.php');
+		}   
+?>
        
 	 </ol>
      <script type="text/javascript">
@@ -183,7 +186,7 @@ if(isset($_GET['post-type'])) {
 	 
 	 </section>
 	 	
-	 </section>
+</section>
 <?php 
 	get_template_part('parts/footer');
 ?>

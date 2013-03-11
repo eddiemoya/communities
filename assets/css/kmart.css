@@ -453,6 +453,10 @@ fieldset#use_your_account_from legend { text-align: center; padding: 1em; }
 .profile .upload-photo input[type="file"] { width: 100%; text-align: right; }
 .profile .no-activity { margin: 2em; }
 .profile .badge-descriptor { position: absolute; top: 24em; margin-left: 13%; }
+.profile .rating { float: left; width: 94px; background: silver; }
+.profile .rating img { display: block; position: absolute; }
+.profile .rating-bar { height: 15px; }
+.profile .review-text { clear: left; }
 
 .content-body.content-list .content-item { margin-bottom: 10px; float: left; clear: both; }
 .content-body.content-list .content-item .post-title { line-height: 1.476em; }
@@ -834,6 +838,7 @@ html, body { background: white; color: #555555; }
 .kmart .content-body p { color: #333333; }
 .kmart .post h1, .kmart .question h1 { color: #980017; }
 .kmart .answers-toggle, .kmart .upload-photo label { color: #980017; }
+.kmart .rating-bar { background: #db150d; }
 .kmart .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1348775259') repeat-x 0 -200px; }
 .kmart .breadcrumb li:before { color: #980017; }
 .kmart .no-results .term { color: #980017; }
