@@ -1,10 +1,11 @@
 more = function(event) {
 	event.preventDefault();
 	
-	action = {'action' 	: 'profile_paginate',
-				'type' 	: jQuery('#type').val(),
-				'page' 	: jQuery('#next-page').val(),
-				'uid' 	: jQuery('#uid').val()
+	action = {'action' 		: 'profile_paginate',
+				'type' 		: jQuery('#type').val(),
+				'page' 		: jQuery('#next-page').val(),
+				'uid' 		: jQuery('#uid').val(),
+				'existing' 	: jQuery('#existing').val()
 			};
 	
 	jQuery.ajax({

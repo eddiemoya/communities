@@ -65,6 +65,14 @@ class User_Profile {
 	public $experts;
 	
 	/**
+	 * Comma separated string of post/comment ids that are 
+	 * already displayed on profile page.
+	 * 
+	 * @var string
+	 */
+	public $existing = '';
+	
+	/**
 	 * Category term id(s)
 	 * @var unknown_type
 	 */
@@ -195,7 +203,9 @@ class User_Profile {
    		//Sets num_pages and offset
    		$this->paginate();
 
-   		$this->posts = get_posts($args);
+   		//$this->posts = get_posts($args);
+   		
+   		$this->posts = $this->remove_existing(get_posts($args), 'ID');
 
    		$this->next_page = (count($this->posts) < $this->posts_per_page) ? null : ($this->page + 1);
    		$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
@@ -320,11 +330,8 @@ class User_Profile {
 				ORDER BY date DESC" . $this->limit;
 		
 		
-		$this->activities = $wpdb->get_results($q);
-		
-		
+		$this->activities = $this->remove_existing($wpdb->get_results($q), 'ID');
 		$this->set_activities_attributes();
-		
 		
 		$this->next_page = (count($this->activities) < $this->posts_per_page) ? null : ($this->page + 1);
 		$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
@@ -428,9 +435,8 @@ class User_Profile {
 				ORDER BY date DESC LIMIT 0," . $this->posts_per_page;
 		
 			
-				$this->activities = $wpdb->get_results($q);
-				
-				
+				//$this->activities = $wpdb->get_results($q);
+				$this->activities = $this->remove_existing($wpdb->get_results($q), 'ID');
 				$this->set_activities_attributes();
 				
 				return $this;
@@ -495,11 +501,9 @@ class User_Profile {
 		
 		
 		
-		$this->activities = $wpdb->get_results($q);
-		
+		//$this->activities = $wpdb->get_results($q);
+		$this->activities = $this->remove_existing($wpdb->get_results($q), 'ID');
 		$this->set_activities_attributes();
-		
-		
 		
 		$this->next_page = (count($this->activities) < $this->posts_per_page) ? null : ($this->page + 1);
 		$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
@@ -629,9 +633,8 @@ class User_Profile {
 			
 			//$args['offset'] = $this->offset;
 					
-			$this->comments = $wpdb->get_results($q);//get_comments($args);
-			
-			
+			//$this->comments = $wpdb->get_results($q);
+			$this->comments = $this->activities = $this->remove_existing($wpdb->get_results($q), 'comment_ID');
 			
 			$this->next_page = (count($this->comments) < $this->posts_per_page) ? null : ($this->page + 1);
 			$this->prev_page = ($this->page != 1) ?  ($this->page - 1) : null;
@@ -984,6 +987,85 @@ class User_Profile {
 				$this->set_activities_attributes();
 				
 				return $this;
+	}
+	
+	public function existing($ids = null) {
+		
+		if($ids !== null) {
+			
+			$this->existing = $ids;
+		}
+		
+		return $this;	
+	}
+	
+	/**
+	 * Appends id's to existing property
+	 * 
+	 * @param array $ids
+	 */
+	private function add_existing(array $ids) {
+		
+		$this->existing .= (($this->existing) ? ',' : '') . implode(',', $ids);
+		
+	}
+	
+	/**
+	 * Extracts ids from array of comments/posts objects
+	 * 
+	 * @param array $data - the property that contains array of comment/post objects.
+	 * @param string $property - the name of the property that holds the id.
+	 * 
+	 * @return array - an array of ids
+	 */
+	
+	private function extract_ids($data, $property) {
+		
+		$ids = array();
+		
+		foreach($data as $key=>$object) {
+			
+			$ids[] = $object->{$property};
+		}
+		
+		return $ids;
+	}
+	
+	/**
+	 * 
+	 * Given an array of objects of comments/posts and the property that contains the id,
+	 * this will remove the objects form array that are already in existing.
+	 * 
+	 * @param array $data - array of comments/posts
+	 * @param string $property - the property that contains the post/comment id in object.
+	 */
+	
+	private function remove_existing($data, $property) {
+		
+		$ids = $this->extract_ids($data, $property);
+		$dupes = array();
+		
+		if($this->existing) {
+			
+			$existing = explode(',', $this->existing);
+			
+			foreach($ids as $key=>$id) {
+				
+				if(in_array($id, $existing)) {
+					
+					$dupes[] = $ids[$key];
+					
+					unset($data[$key]);
+					unset($ids[$key]);
+				}	
+			}
+			
+		}
+		
+		
+		$this->add_existing($ids); 
+		return $data;
+			
 	}
 	
 }

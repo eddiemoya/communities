@@ -10,6 +10,7 @@
             $answer_count_string = ($answer_count > 500) ? "500+ answers" : $answer_count . " " . _n( ' answer', ' answers', $answer_count );
             $answer_link = '<a href="' . get_permalink( $activity->ID ) .'#allComments" class="comment-tally">' . $answer_count_string .'</a>';
         }
+        
 ?>
     <li class="clearfix">
         <h3>
@@ -56,6 +57,7 @@
 <?php endif;?>
  
 <input type="hidden" id="next-page" value="<?php echo $user_activities->next_page; ?>" />
+<input type="hidden" id="existing" value="<?php echo $user_activities->existing; ?>" />
 
 <noscript>
 <?php if( $user_activities->prev_page ): ?>

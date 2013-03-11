@@ -121,6 +121,7 @@ function profile_paginate() {
     $uid = $_POST['uid'];
     $type = $_POST['type'];
     $page = $_POST['page'];
+    $existing = $_POST['existing'];
     
     
     require_once get_template_directory() . '/classes/communities_profile.php';
@@ -134,6 +135,7 @@ function profile_paginate() {
         if($type == 'answer' || $type == 'comment') {
             
             $activities = $user_activities->page($page)
+            								->existing($existing)
                                             ->get_user_comments_by_type($type)
                                             ->comments;
                   
@@ -148,6 +150,7 @@ function profile_paginate() {
 	        if($type == 'question') {
 					
 					$activities = $user_activities->page($page)
+													->existing($existing)
 													->get_user_posts_by_type($type)
 													->get_expert_answers()
 													->posts;
@@ -156,6 +159,7 @@ function profile_paginate() {
 				} else {
 					
 					$activities = $user_activities->page($page)
+													->existing($existing)
 													->get_user_posts_by_type($type)
 													->posts;
 												
@@ -168,6 +172,7 @@ function profile_paginate() {
         if($type == 'follow' || $type == 'upvote') {
             
             $activities = $user_activities->page($page)
+            								->existing($existing)
                                             ->get_actions($type)
                                             ->activities;
             
@@ -177,6 +182,7 @@ function profile_paginate() {
         if($type == 'recent') {
             
             $activities = $user_activities->page($page)
+            								->existing($existing)
                                             ->get_recent_activities()
                                             ->activities;
                                             

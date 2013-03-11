@@ -3,9 +3,6 @@
  <ol class="content-body result clearfix" id="profile-results">
  <?php endif;?>
 <?php
-/*echo '<pre>';
-var_dump($activities);
-exit;*/
 
 $activities_text = array('question' 	=> 'Asked this: ',
 							'answer'	=> 'Answered this: ',
@@ -43,6 +40,8 @@ foreach($activities as $activity):
 <?php endif;?>
  
 <input type="hidden" id="next-page" value="<?php echo $user_activities->next_page; ?>" />
+<input type="hidden" id="existing" value="<?php echo $user_activities->existing; ?>" />
+
 
 <?php if(! is_ajax()):?>
     <input type="hidden" id="type" value="<?php echo $type;?>" />

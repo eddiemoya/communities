@@ -8,8 +8,7 @@
    	get_currentuserinfo();
    	
     foreach($activities as $activity):
-
-		
+    
     	$id = $activity->comment_ID;
     	$elem_id = 'comm-'. $id;
 
@@ -41,6 +40,7 @@
 <?php endif;?>
 
 <input type="hidden" id="next-page" value="<?php echo $user_activities->next_page; ?>" />
+<input type="hidden" id="existing" value="<?php echo $user_activities->existing; ?>" />
 
 <?php if(! is_ajax()):?>
     <input type="hidden" id="type" value="<?php echo $type;?>" />
