@@ -872,8 +872,8 @@ add_filter('after_setup_theme', 'post_formats');
 // Input field, for a url, which is stored, and store in post_meta
 function featured_video_box()
 {
-	add_meta_box("featured_video", "Oembed Media", "print_featured_video_box", "post");
-	add_meta_box("featured_video", "Oembed Media", "print_featured_video_box", "guide");
+	add_meta_box("featured_video", "Featured Video", "print_featured_video_box", "post");
+	add_meta_box("featured_video", "Featured Video", "print_featured_video_box", "guide");
 }
 
 function print_featured_video_box()
