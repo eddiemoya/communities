@@ -446,6 +446,11 @@ function filter_before_widget($html, $dropzone, $widget){
         $query = get_post($meta->post__in_1);
        // echo "<pre>";print_r($query);echo "</pre>";
 
+        
+        if(get_post_format($query->ID)){
+            $html = str_replace('featured-post', "featured-post format-" . get_post_format($query->ID), $html);
+        }
+
         $html = str_replace('featured-post', "featured-post featured-post-type-{$query->post_type}", $html);
 
         // DEPRECATED
