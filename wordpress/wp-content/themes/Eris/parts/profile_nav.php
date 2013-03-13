@@ -1,7 +1,5 @@
 <?php
 
-    $available_tabs[] = 'review';
-
     $concat = (strpos($author_url, '?') !== false) ? '&post-type=' : '?post-type=';
     
     if ( user_can( $profile_user->ID, "show_badge" ) ) {

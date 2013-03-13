@@ -47,7 +47,7 @@ if($profile_type != 'myprofile') {
 
 # var_dump($user_activities->nav);
 
-
+//$available_tabs[] = 'review';
 $available_tabs = empty( $user_activities->nav ) ? array() : $user_activities->nav;
 
 
@@ -147,7 +147,12 @@ if(isset($_GET['post-type'])) {
 		}
 		
 		if($type == 'review') {
-		  $activities = array(
+			
+			if(is_plugin_active('products/plugin.php')) {
+				
+				$activities = $user_activities->reviews;
+			}
+		  /*$activities = array(
 		    "1" => array(
 		      "product" => "Kenmore Refrigerator",
 		      "title" => "I love it!",
@@ -163,8 +168,9 @@ if(isset($_GET['post-type'])) {
 		      "title" => "WTF????",
 		      "rating" => "3"
 		    )
-		  );
-		  $editlink = $profile_type == 'myprofile' ? '<a href="#" class="edit-review right">Edit</a>' : '';
+		  );*/
+			
+		  
 		  include('parts/profile-reviews.php');
 		}   
 ?>

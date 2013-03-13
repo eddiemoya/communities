@@ -57,6 +57,13 @@ class User_Profile {
 	public $activities = null;
 	
 	/**
+	 * 
+	 * Contains array of user's reviews (objects)
+	 * @var array
+	 */
+	public $reviews;
+	
+	/**
 	 * experts - array of expert user_id's
 	 * 
 	 * @var array
@@ -728,7 +735,6 @@ class User_Profile {
 	}
 	
 	private function set_nav() {
-		
 	 	
 		//Posts
 		foreach($this->post_types as $type) {
@@ -774,11 +780,19 @@ class User_Profile {
 			}
 		}
 		
+		//Reviews
+		if($this->has_review_count()) {
+			
+			$this->nav[] = 'review';
+		}
+		
 			if(count($this->nav)) {
 				
 				array_unshift($this->nav, 'recent');
 			}
+
 			
+		
 			/*echo '<pre>';
 			var_dump($this->nav);
 			exit;*/
@@ -892,6 +906,33 @@ class User_Profile {
 					return false;
 				}	
 		
+	}
+	
+	private function has_review_count() {
+		
+		if(is_plugin_active('products/plugin.php')) {
+			
+			if($guid = get_user_sso_guid($this->user_id)) {
+				
+				if($reviews = RR_User_Reviews::factory($guid)->results) {
+					
+					$this->reviews = $reviews;
+					return true;
+					
+				} else {
+					
+					return false;
+				}
+				
+			} else {
+				
+				return false;
+			}
+			
+		} else {
+			
+			return false;
+		}
 	}
 	
 	public function category($term_id = false) {
