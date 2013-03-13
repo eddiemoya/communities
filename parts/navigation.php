@@ -12,7 +12,8 @@
     $labels = array (
         'question' => "Q&A's",
         'post'     => 'Blog Posts',
-        'guide'    => 'Guides'
+        'guide'    => 'Guides',
+        'review'   => 'Reviews'
     );
     
     function cmp($a, $b) {

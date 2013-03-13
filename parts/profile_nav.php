@@ -1,5 +1,7 @@
 <?php
 
+    $available_tabs[] = 'review';
+
     $concat = (strpos($author_url, '?') !== false) ? '&post-type=' : '?post-type=';
     
     if ( user_can( $profile_user->ID, "show_badge" ) ) {
@@ -38,6 +40,11 @@
         "answer" => array(
             "name" => "Answers",
             "url" => $author_url . $concat . 'answer'
+        ),
+
+        "review" => array(
+            "name" => "Reviews",
+            "url" => $author_url . $concat . 'review'
         ),
        
         "follow" => array(
