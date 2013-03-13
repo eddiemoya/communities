@@ -183,6 +183,16 @@ function profile_paginate() {
             include(get_template_directory() . '/parts/profile-recent.php');
         }
         
+        if($type == 'review') {
+        	
+       		 if(is_plugin_active('products/plugin.php')) {
+				
+				$activities = $user_activities->reviews;
+			 }
+			 
+			 include(get_template_directory() . '/parts/profile-reviews.php');
+        }
+        
     $output = ob_get_clean();
     
     echo $output;

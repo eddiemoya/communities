@@ -4,22 +4,24 @@
 
 <?php
     foreach($activities as $activity):
+    
+    $editlink = ($profile_type == 'myprofile') ? "<a href=\"{$activity->edit_link}\" class=\"edit-review right\">Edit</a>" : '';
 ?>
     <li class="clearfix">
       <div class="span2">
-        <img src="<?php echo $activity["image_path"] ?>" />
+        <img src="<?php echo $activity->product_data->image;?>" />
       </div>
       <div class="span10">
-        <h4><a href="#<?php echo $activity["product_path"] ?>"><?php echo $activity["product"] ?></a></h4>
+        <h4><a href="<?php echo 'http://www.' . $activity->origin_site  . '/' . $activity->product_data->product_uri; ?>"><?php echo $activity->product_data->description;?></a></h4>
         <div class="rating">
           <div class="rating-stars">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/stars1.png" alt="<?php echo $activity["rating"] ?>/5 stars" />
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/stars1.png" alt="<?php echo $activity->attribute_rating[0]->value; ?>/5 stars" />
           </div>
-          <div class="rating-bar" style="width: <?php echo ($activity["rating"] / 5) * 100 ?>%;">&nbsp;</div>
+          <div class="rating-bar" style="width: <?php echo ((int)$activity->attribute_rating[0]->value / 5) * 100 ?>%;">&nbsp;</div>
         </div>
         <div class="review-text">
-          <a href="#<?php echo $activity["review_path"] ?>"><?php echo $activity["title"] ?></a>
-          <?php echo $editlink ?>
+          <a href="<?php echo 'http://www.' . $activity->origin_site  . '/' . $activity->product_data->product_uri; ?>"><?php echo $activity->summary;?></a>
+          <?php echo $editlink;?>
         </div>
       </div>
     </li>

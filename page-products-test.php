@@ -3,7 +3,7 @@
 
 echo '<h2>Ratings & Reviews Test Page</h2><br><br>';
 
-$rr = RR_User_Reviews::factory(10007132);
+$rr = RR_User_Reviews::factory(35497172);
 
 $results = $rr->results;
 
