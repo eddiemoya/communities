@@ -33,6 +33,10 @@
   }
 }
 
+@function dimensions( $file ) {
+  @return ( image-width($file), image-height($file) );
+}
+
 // Mixins
 // margin-adjust puts the left margin back on spans that might otherwise be
 // zeroed out by the layout classes that do so at the beginning of a new row.
