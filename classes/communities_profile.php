@@ -339,6 +339,8 @@ class User_Profile {
 		return $this;
 	}
 	
+	
+	
 	public function get_all_activities() {
 		
 		global $wpdb;
@@ -650,6 +652,21 @@ class User_Profile {
 			
 	}
 	
+	public function get_reviews() {
+		
+		$guid = get_user_sso_guid($this->user_id);
+		
+		$reviews = RR_User_Reviews::factory($guid)
+	 								->page($this->page)
+	 								->get();
+		 								
+		$this->next_page = $reviews->next_page;
+		$this->prev_page = $reviews->prev_page;					
+ 		$this->reviews = $reviews->results;						
+		 								
+ 		return $this;
+	}
+	
 	/**
 	 * Gets and sets comments property on each post object in posts property.
 	 * 
@@ -914,7 +931,7 @@ class User_Profile {
 			
 			if($guid = get_user_sso_guid($this->user_id)) {
 				
-				if($reviews = RR_User_Reviews::factory($guid)->results) {
+				if($reviews = RR_User_Reviews::factory($guid)->get()->results) {
 					
 					$this->reviews = $reviews;
 					return true;

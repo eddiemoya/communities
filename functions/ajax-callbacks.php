@@ -187,7 +187,9 @@ function profile_paginate() {
         	
        		 if(is_plugin_active('products/plugin.php')) {
 				
-				$activities = $user_activities->reviews;
+				$activities = $user_activities->page($page)
+												->get_reviews()
+												->reviews;
 			 }
 			 
 			 include(get_template_directory() . '/parts/profile-reviews.php');
