@@ -504,7 +504,7 @@ return array(
 	'widget.latest.items' => 3,
 	'widget.pagespeed.enabled' => true,
 	'widget.pagespeed.key' => '',
-	'notes.wp_content_perms' => true,
+	'notes.wp_content_perms' => false,
 	'notes.php_is_old' => true,
 	'notes.theme_changed' => false,
 	'notes.wp_upgraded' => false,

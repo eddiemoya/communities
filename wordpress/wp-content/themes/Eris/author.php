@@ -150,26 +150,10 @@ if(isset($_GET['post-type'])) {
 			
 			if(is_plugin_active('products/plugin.php')) {
 				
-				$activities = $user_activities->reviews;
+				$activities = $user_activities->page($page)
+												->get_reviews()
+												->reviews;
 			}
-		  /*$activities = array(
-		    "1" => array(
-		      "product" => "Kenmore Refrigerator",
-		      "title" => "I love it!",
-		      "rating" => "4"
-		    ),
-		    "2" => array(
-		      "product" => "Craftsman Workbench",
-		      "title" => "I hate it!",
-		      "rating" => "1"
-		    ),
-		    "3" => array(
-		      "product" => "Land's End Range Rover",
-		      "title" => "WTF????",
-		      "rating" => "3"
-		    )
-		  );*/
-			
 		  
 		  include('parts/profile-reviews.php');
 		}   
