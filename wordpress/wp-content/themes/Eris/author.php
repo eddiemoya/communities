@@ -152,10 +152,13 @@ if(isset($_GET['post-type'])) {
 				
 				$activities = $user_activities->page($page)
 												->get_reviews()
+
 												->reviews;
+												
+				include('parts/profile-reviews.php');
 			}
 		  
-		  include('parts/profile-reviews.php');
+		  
 		}   
 ?>
        
