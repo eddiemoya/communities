@@ -446,6 +446,11 @@ function filter_before_widget($html, $dropzone, $widget){
         $query = get_post($meta->post__in_1);
        // echo "<pre>";print_r($query);echo "</pre>";
 
+        
+        if(get_post_format($query->ID)){
+            $html = str_replace('featured-post', "featured-post format-" . get_post_format($query->ID), $html);
+        }
+
         $html = str_replace('featured-post', "featured-post featured-post-type-{$query->post_type}", $html);
 
         // DEPRECATED
@@ -868,3 +873,65 @@ function post_formats(){
     add_post_type_support( 'guide', 'post-formats' );
 }
 add_filter('after_setup_theme', 'post_formats');
+
+// Input field, for a url, which is stored, and store in post_meta
+function featured_video_box()
+{
+	add_meta_box("featured_video", "Featured Video", "print_featured_video_box", "post");
+	add_meta_box("featured_video", "Featured Video", "print_featured_video_box", "guide");
+}
+
+function print_featured_video_box()
+{
+	// Use nonce for verification
+	wp_nonce_field(plugin_basename( __FILE__ ), 'featured_video_box_nonce');
+	
+	$pid = get_the_ID();
+	$stg = get_post_meta($pid, "featured_video_url", TRUE);
+	
+	$out = (!empty($stg)) ? wp_oembed_get($stg) : "";
+	$fmt = get_post_format($pid);
+		
+	echo "<div>";
+	echo '<div><label for="featured_video_url">' . __("URL") . '</label> ';
+	echo '<input type="text" id="featured_video_url" name="featured_video_url" value="' . $stg . '" size="35" /></div>';
+	
+	if(!empty($out))
+	{
+		echo "<div style='color: red; margin-top: 10px;'>";
+		echo ($fmt == "video") ? $out : "Your post format is not set to video.  Please do this to enable video format";
+		echo "</div>";
+	}
+	
+	echo "</div>";
+}
+
+function save_featured_video_box($post)
+{ 
+	// First we need to check if the current user is authorised to do this action. 
+	if('page' == $_POST['post_type'] )
+	{
+		if(!current_user_can('edit_page', $post_id))
+		{
+			return;
+		} 
+	}
+	else
+	{
+		if(!current_user_can('edit_post', $post_id))
+		{
+			return;
+		}
+	}
+	
+	if(!isset($_POST['featured_video_box_nonce']) || !wp_verify_nonce($_POST['featured_video_box_nonce'], plugin_basename( __FILE__ )))
+	{
+		return;
+	}
+	
+	update_post_meta($post, "featured_video_url", esc_url($_POST['featured_video_url']));
+	return $post;
+}
+
+add_action('save_post', "save_featured_video_box");
+add_action('add_meta_boxes', "featured_video_box");
