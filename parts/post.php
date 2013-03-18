@@ -9,6 +9,8 @@
     //     </ul>
     // </nav>
     // <!-- END BREADCRUMB WIDGET -->';
+
+    $has_featured_video = (($featured_video = get_post_meta(get_the_ID(), 'featured_video_url', true)) && ('video' == get_post_format(get_the_ID())));
 ?>
 
 <section class="span12">
@@ -29,6 +31,13 @@
 		<article class="content-container post span12">
 			<section class="content-body clearfix">
 				
+				<?php if($has_featured_video) { ?>
+				<div class="content-video">
+					<!-- YOU HAVE TO INCLUDE PARAMETER 'wmode=opaque' OR VIDEO OVERLAPS SITE -->
+					<?php echo wp_oembed_get($featured_video, array('width'=>560, 'height'=>315)); ?>
+				</div>
+				<?php } ?>
+
 				<div class="content-details clearfix">
 					<span class="content-category"><a href="<?php echo get_category_link($categories[0]->term_id); ?>" title="<?php ec?>"><?php echo $categories[0]->name; ?></a></span>
 					<?php get_partial( 'parts/space_date_time', array( "timestamp" => get_the_time( "U" ), "remove_hms" => true ) ); ?>
