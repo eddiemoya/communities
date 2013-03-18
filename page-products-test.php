@@ -6,14 +6,15 @@ echo '<h2>Ratings & Reviews Test Page</h2><br><br>';
 /*$rr = RR_User_Reviews::factory(15766771)
 						->get();*/
 
-/*$rr = $reviews = RR_Recent_Reviews::factory()
+$rr = $reviews = RR_Recent_Reviews::factory()
        								->limit(3)
-       								->get();*/
+       								->get();
+       								
 
-$rr = RR_Api_Request::factory(array('api' 	=> 'recent',
+/*$rr = RR_Api_Request::factory(array('api' 	=> 'recent',
 												  'type'	=> 'store',
 												  'term'	=> 'sears.com'))
-									->response();
+									->response();*/
        								
 
 //$results = $rr->results;
