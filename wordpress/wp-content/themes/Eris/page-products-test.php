@@ -3,11 +3,20 @@
 
 echo '<h2>Ratings & Reviews Test Page</h2><br><br>';
 
-$rr = RR_User_Reviews::factory(15766771)
-						->get();
-						
+/*$rr = RR_User_Reviews::factory(15766771)
+						->get();*/
 
-$results = $rr->results;
+/*$rr = $reviews = RR_Recent_Reviews::factory()
+       								->limit(3)
+       								->get();*/
+
+$rr = RR_Api_Request::factory(array('api' 	=> 'recent',
+												  'type'	=> 'store',
+												  'term'	=> 'sears.com'))
+									->response();
+       								
+
+//$results = $rr->results;
 
 
 echo '<pre>';
