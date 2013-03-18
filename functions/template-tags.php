@@ -162,12 +162,12 @@ function process_front_end_question() {
     }
 
     //If step 2, add the post and move to step 3
-    if( (isset($_POST['_wpnonce']) && wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in()) && ! isset($_POST['cancel'])) {
+    if( (isset($_POST['_wpnonce']) && wp_verify_nonce( $_POST['_wpnonce'], 'front-end-post_question-step-2' ) && is_user_logged_in()) && ! isset($_POST['cancel-question'])) {
 		
 		$valid = true;
     	$errors = array();
     	
-    	//Make sure they posted a question
+    	//Make sure they posted a question<input type="hidden" name="cancel-question" value="" />
     	if(strlen(trim($_POST['your-question'])) == 0) {
     		
     		$valid = false;

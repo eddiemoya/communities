@@ -56,13 +56,23 @@ get_currentuserinfo();
 							
 							<li class="clearfix">
 								<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Post</button>
-								<button type="submit" name="cancel" class="<?php echo theme_option("brand"); ?>_button azure">Cancel</button>
-								<input type="hidden" name="post-question" value="<?php echo stripslashes($_POST['post-question']); ?>" />
+								<button type="submit" name="cancel" class="<?php echo theme_option("brand"); ?>_button azure" id="cancel">Cancel</button>
 								<input type="hidden" name="hide_empty" class="hide_empty" value="false" />
+								<input type="hidden" name="post-question" value="<?php echo stripslashes($_POST['post-question']); ?>" />
 							</li>
 						</ul>
 					</div>
+					<script type="text/javascript">
+						$("#cancel").on("click", function(event) {
+							event.preventDefault();
+							var form = $(this).parents("#new_question");
+							form.off("submit");
+							form.append("<input type='hidden' name='cancel-question' value='' />");
+							(form.get(0)).submit();
+						});
+					</script>
 				</form>
+				
                 <div id="snInfo" class="info hide">
                     <p class="top">Love it because you can't change it. This is how you will be known on the site.</p>
                     <p class="bold">Screen Name Guidelines</p>
