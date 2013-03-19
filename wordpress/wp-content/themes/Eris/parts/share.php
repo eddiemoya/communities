@@ -7,7 +7,7 @@
     global $post;
     $gotten_title = $post->post_title;
     $encoded_image = isset( $image ) ? urlencode( $image ) : '';
-    $twitter_title = strlen( $gotten_title ) > 118 ? substr( $gotten_title, 0, 118 ) . '&#8230;' : $gotten_title;
+    $twitter_title = strlen( $gotten_title ) > 115 ? substr( $gotten_title, 0, 115 ) . '&#8230;' : $gotten_title;
     
     if ( ( isset( $version ) && $version == 'long' ) || ( is_object( is_widget() && function_exists( 'is_widget' ) ) && is_widget()->share_style == 'long' ) ) :
 
