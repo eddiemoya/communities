@@ -6,6 +6,7 @@
     $comments = get_comments_number();
     $comments_string = ($comments > 500) ? "500+ comments" : $comments . " " . _n( 'comment', 'comments', $comments );
     $inner_span = (has_post_thumbnail()) ? "span6" : "span12";
+	$has_featured_video = (($featured_video = get_post_meta(get_the_ID(), 'featured_video_url', true)) && ('video' == get_post_format(get_the_ID())));
 ?>
 
 <article class="content-container <?php echo $post_type ?>">
@@ -22,7 +23,14 @@
 
         <div class="<?php echo $inner_span; ?>">
 
-            <div class="content-details clearfix">
+            <?php if($has_featured_video) { ?>
+				<div class="content-video">
+					<!-- YOU HAVE TO INCLUDE PARAMETER 'wmode=opaque' OR VIDEO OVERLAPS SITE -->
+					<?php echo wp_oembed_get($featured_video, array('width'=>560, 'height'=>315)); ?>
+				</div>
+			<?php } ?>
+			
+			<div class="content-details clearfix">
                 <?php $c = get_the_category(); ?>
                     <span class="content-category">
                         <a href="<?php echo get_category_link($c[0]); ?>" title="<?php echo $c[0]->name; ?>">
