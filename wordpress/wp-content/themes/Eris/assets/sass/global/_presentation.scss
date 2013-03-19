@@ -580,7 +580,6 @@ textarea.discussion {
   }
 }
 
-
 .recent-activity {
   li {
     margin-top: 1em;
@@ -632,6 +631,58 @@ textarea.discussion {
   }
 }
 
+// RECENT REVIEWS
+.recent-reviews {
+  .recent-activity-list > li {
+    margin-bottom:1.25em;
+  }
+  .recent-activity_avatar {
+    float:left;
+    margin-right:1em;
+    width:2em;
+  }
+  .recent-activity_data {
+    float:left;
+    width:85%;
+  }
+  .category {
+    font-size:font-size(12);
+    font-weight:bold;
+  }
+  .recent-activity_activity {
+    font-size:font-size(12);
+    margin-bottom:.5em;
+    a {
+      font-weight:bold;
+    }
+  }
+  .recent-activity_title, .recent-activity_excerpt {
+    font-size:font-size(12);
+    margin-bottom:.5em;
+    @extend .break-word;
+  }
+  .recent-activity_excerpt {
+    padding: .3em 1em;
+    color: $darkest-color;
+    background: sears( content-focus );
+    &:before {
+      // left quote
+      content: "\201C";
+    }
+    &:after {
+      // right quote
+      content: "\201D";
+    }
+  }
+  .recent-activity_category-time {
+    > * {
+      display: block;
+    }
+    .content-date {
+      float: none;
+    }
+  }
+}
 
 // POST A QUESTION
 .content-container.post-your-question {
