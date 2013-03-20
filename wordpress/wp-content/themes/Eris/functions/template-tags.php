@@ -1104,13 +1104,13 @@ function get_oembed_object($url, $w = NULL, $h = NULL)
     return $video;
 }
 
-function get_oembed_thumbnail($url, $w = NULL, $h = NULL)
+function get_oembed_thumbnail($url, $pt = "https", $w = NULL, $h = NULL)
 {
     $video = get_oembed_object($url, $w, $h);
 
     $title = $video->title;
     $html = $video->html;
-    $thumb = $video->thumbnail_url;
+    $thumb = str_replace("http://", "$pt://", $video->thumbnail_url);
 
     return "<img alt='$title' src='$thumb' />";
 }
