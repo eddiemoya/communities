@@ -1074,3 +1074,43 @@ function lookup_stylesheet() {
 		}
 	}
 }
+
+/**
+ * Modified wp_drop_down_categories for communities - added shcJSL form validation.
+ * 
+ * @param array $args
+ * @return string -- the select element
+ * @author Dan Crimmins
+ */
+function get_oembed_object($url, $w = NULL, $h = NULL)
+{
+    require_once(ABSPATH . 'wp-includes/class-oembed.php');
+    $param = array();
+
+    if(!is_null($w))
+    {
+        $param['width'] = $w;
+    }
+
+    if(!is_null($h))
+    {
+        $param['height'] = $h;
+    }
+    
+    $oembed= new WP_oEmbed;
+    $provider = $oembed->discover($url);
+
+    $video = $oembed->fetch($provider, $url, $param);
+    return $video;
+}
+
+function get_oembed_thumbnail($url, $w = NULL, $h = NULL)
+{
+    $video = get_oembed_object($url, $w, $h);
+
+    $title = $video->title;
+    $html = $video->html;
+    $thumb = $video->thumbnail_url;
+
+    return "<img alt='$title' src='$thumb' />";
+}
