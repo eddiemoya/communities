@@ -868,3 +868,8 @@ function post_formats(){
     add_post_type_support( 'guide', 'post-formats' );
 }
 add_filter('after_setup_theme', 'post_formats');
+
+function setup_weather_plugin_path(){
+    return "widgets/weather-widget";
+}
+add_filter('weather_widget_template_path', 'setup_weather_plugin_path');
