@@ -24,6 +24,7 @@ add_editor_style('assets/css/editor-style.css');
 //Classes
 get_template_part('classes/theme-options');
 get_template_part('classes/section-front');
+get_template_part('classes/better-walker-nav-menu');
 
 //Function
 get_template_part('functions/general');
