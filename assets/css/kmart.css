@@ -226,7 +226,7 @@ ol.bullets { list-style-type: decimal; }
 
 ul.bullets { list-style-type: disc; }
 
-.bold, .member .info h4, .member .info address, .post hgroup, .post h3, .content-container .content-header, .content-container .content-category, .content-container .content-headline, .profile .answers-toggle, .profile .personal_info dt, #allComments .comment .responseTo, .member_avatar .badge, .member_details .member_screen-name, .member_details .member_location, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header, .kmart .answers-toggle, .kmart .upload-photo label { font-weight: 700; }
+.bold, .member .info h4, .member .info address, .post hgroup, .post h3, .content-container .content-header, .content-container .content-category, .content-container .content-headline, .profile .answers-toggle, .profile .personal_info dt, .profile .reviews h4 a, #allComments .comment .responseTo, .member_avatar .badge, .member_details .member_screen-name, .member_details .member_location, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header, .kmart .answers-toggle, .kmart .upload-photo label { font-weight: 700; }
 
 .italic, .post h2 { font-style: italic; }
 
@@ -236,7 +236,7 @@ ul.bullets { list-style-type: disc; }
 
 .downcase { text-transform: lowercase; }
 
-.break-word, .member .info, .content-container .content-headline, .recent_activity .recent-activity_title, .recent_activity .recent-activity_excerpt, .recent-activity h3 a, .recent-activity .excerpt, .recent-reviews .recent-activity_title, .recent-reviews .recent-activity_excerpt, .content-body.content-list .content-item .post-title, #allComments .comment article, #allComments .span10, .member_details .member_screen-name, .member_details .member_location, .wp-polls .results li span { word-wrap: break-word; }
+.break-word, .member .info, .content-container .content-headline, .recent_activity .recent-activity_title, .recent_activity .recent-activity_excerpt, .recent-activity h3 a, .recent-activity .excerpt, .content-body.content-list .content-item .post-title, #allComments .comment article, #allComments .span10, .member_details .member_screen-name, .member_details .member_location, .wp-polls .results li span { word-wrap: break-word; }
 
 .background_light-gray { background-color: #f3f3f3; }
 
@@ -387,18 +387,17 @@ textarea.discussion { border: 1px solid #d6d6d6; height: 10em; width: 99%; -webk
 
 .span3 .recent-activity .excerpt, .span4 .recent-activity .excerpt, .span6 .recent-activity .excerpt { overflow: hidden; text-overflow: ellipsis; }
 
-.recent-reviews .recent-activity-list > li { margin-bottom: 1.25em; }
-.recent-reviews .recent-activity_avatar { float: left; margin-right: 1em; width: 2em; }
-.recent-reviews .recent-activity_data { float: left; width: 85%; }
-.recent-reviews .category { font-size: 92.307%; font-weight: bold; }
-.recent-reviews .recent-activity_activity { font-size: 92.307%; margin-bottom: .5em; }
-.recent-reviews .recent-activity_activity a { font-weight: bold; }
-.recent-reviews .recent-activity_title, .recent-reviews .recent-activity_excerpt { font-size: 92.307%; margin-bottom: .5em; }
-.recent-reviews .recent-activity_excerpt { padding: .3em 1em; color: black; background: #f2f2f2; }
-.recent-reviews .recent-activity_excerpt:before { content: "\201C"; }
-.recent-reviews .recent-activity_excerpt:after { content: "\201D"; }
-.recent-reviews .recent-activity_category-time > * { display: block; }
-.recent-reviews .recent-activity_category-time .content-date { float: none; }
+.recent_reviews .recent-review_title { font-size: 92.307%; font-weight: bold; }
+.recent_reviews .recent-review_review { font-size: 92.307%; line-height: 1.9em; margin-bottom: .5em; }
+.recent_reviews .recent-review_review:before { content: "\201C"; }
+.recent_reviews .recent-review_review:after { content: "\201D"; }
+.recent_reviews .recent-review_reviewer { font-size: 84.615%; font-weight: bold; line-height: 2em; }
+.recent_reviews .recent-review_name { float: left; font-size: 84.615%; font-weight: bold; width: 70%; }
+.recent_reviews .rating { float: right; width: 28%; }
+.recent_reviews .rating .rating-stars { width: 100%; }
+.recent_reviews .rating .rating-bar { height: auto; line-height: 1em; }
+.recent_reviews .recent-reviews-list > li { border-top: solid 1px #d5d5d5; padding: 1.75em 0px; }
+.recent_reviews .recent-reviews-list > li:first-child { border-top: none; padding-top: .5em; }
 
 .content-container.post-your-question form { margin-top: 0.923em; }
 .content-container.post-your-question form .state_post-your-question .input_text { width: 83%; }
@@ -466,6 +465,13 @@ fieldset#use_your_account_from legend { text-align: center; padding: 1em; }
 .profile .upload-photo input[type="file"] { width: 100%; text-align: right; }
 .profile .no-activity { margin: 2em; }
 .profile .badge-descriptor { position: absolute; top: 24em; margin-left: 13%; }
+.profile .reviews .edit-link { display: block; font-style: italic; }
+.profile .review-text { clear: left; }
+
+.rating { float: left; position: relative; width: 94px; background: silver; }
+.rating .rating-stars { display: block; position: absolute; width: 94px; }
+.rating .rating-stars img { display: block; }
+.rating .rating-bar { height: 15px; }
 
 .content-body.content-list .content-item { margin-bottom: 10px; float: left; clear: both; }
 .content-body.content-list .content-item .post-title { line-height: 1.476em; }
@@ -780,7 +786,7 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .open-id_twitter a { background-position: 0px -101px; height: 16px; width: 16px; }
 
 .tooltip .middle .info .top { margin-bottom: 15px; }
-.tooltip .middle .info .bold, .tooltip .middle .member .info h4, .member .tooltip .middle .info h4, .tooltip .middle .member .info address, .member .tooltip .middle .info address, .tooltip .middle .info .post hgroup, .post .tooltip .middle .info hgroup, .tooltip .middle .info .post h3, .post .tooltip .middle .info h3, .tooltip .middle .info .content-container .content-header, .content-container .tooltip .middle .info .content-header, .tooltip .middle .info .content-container .content-category, .content-container .tooltip .middle .info .content-category, .tooltip .middle .info .content-container .content-headline, .content-container .tooltip .middle .info .content-headline, .tooltip .middle .info .profile .answers-toggle, .profile .tooltip .middle .info .answers-toggle, .tooltip .middle .info .profile .personal_info dt, .profile .personal_info .tooltip .middle .info dt, .tooltip .middle .info #allComments .comment .responseTo, #allComments .comment .tooltip .middle .info .responseTo, .tooltip .middle .info .member_avatar .badge, .member_avatar .tooltip .middle .info .badge, .tooltip .middle .info .member_details .member_screen-name, .member_details .tooltip .middle .info .member_screen-name, .tooltip .middle .info .member_details .member_location, .member_details .tooltip .middle .info .member_location, .tooltip .middle .info .sears .post-n-comments h2, .sears .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .kmart .post-n-comments h2, .kmart .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .section-header, .tooltip .middle .info .kmart .answers-toggle, .kmart .tooltip .middle .info .answers-toggle, .tooltip .middle .info .kmart .upload-photo label, .kmart .upload-photo .tooltip .middle .info label { margin-bottom: 10px; }
+.tooltip .middle .info .bold, .tooltip .middle .member .info h4, .member .tooltip .middle .info h4, .tooltip .middle .member .info address, .member .tooltip .middle .info address, .tooltip .middle .info .post hgroup, .post .tooltip .middle .info hgroup, .tooltip .middle .info .post h3, .post .tooltip .middle .info h3, .tooltip .middle .info .content-container .content-header, .content-container .tooltip .middle .info .content-header, .tooltip .middle .info .content-container .content-category, .content-container .tooltip .middle .info .content-category, .tooltip .middle .info .content-container .content-headline, .content-container .tooltip .middle .info .content-headline, .tooltip .middle .info .profile .answers-toggle, .profile .tooltip .middle .info .answers-toggle, .tooltip .middle .info .profile .personal_info dt, .profile .personal_info .tooltip .middle .info dt, .tooltip .middle .info .profile .reviews h4 a, .profile .reviews h4 .tooltip .middle .info a, .tooltip .middle .info #allComments .comment .responseTo, #allComments .comment .tooltip .middle .info .responseTo, .tooltip .middle .info .member_avatar .badge, .member_avatar .tooltip .middle .info .badge, .tooltip .middle .info .member_details .member_screen-name, .member_details .tooltip .middle .info .member_screen-name, .tooltip .middle .info .member_details .member_location, .member_details .tooltip .middle .info .member_location, .tooltip .middle .info .sears .post-n-comments h2, .sears .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .kmart .post-n-comments h2, .kmart .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .section-header, .tooltip .middle .info .kmart .answers-toggle, .kmart .tooltip .middle .info .answers-toggle, .tooltip .middle .info .kmart .upload-photo label, .kmart .upload-photo .tooltip .middle .info label { margin-bottom: 10px; }
 .tooltip .middle .info ul { list-style-type: circle; margin-bottom: 15px; padding-left: 15px; }
 
 .badge-exegesis .lonebadge { clear: left; margin-top: 1em; }
@@ -847,6 +853,7 @@ html, body { background: white; color: #555555; }
 .kmart .content-body p { color: #333333; }
 .kmart .post h1, .kmart .question h1 { color: #980017; }
 .kmart .answers-toggle, .kmart .upload-photo label { color: #980017; }
+.kmart .rating-bar { background: #db150d; }
 .kmart .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1363102271') repeat-x 0 -200px; }
 .kmart .breadcrumb li:before { color: #980017; }
 .kmart .no-results .term { color: #980017; }

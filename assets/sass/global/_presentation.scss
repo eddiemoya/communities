@@ -632,39 +632,15 @@ textarea.discussion {
 }
 
 // RECENT REVIEWS
-.recent-reviews {
-  .recent-activity-list > li {
-    margin-bottom:1.25em;
-  }
-  .recent-activity_avatar {
-    float:left;
-    margin-right:1em;
-    width:2em;
-  }
-  .recent-activity_data {
-    float:left;
-    width:85%;
-  }
-  .category {
+.recent_reviews {
+  .recent-review_title {
     font-size:font-size(12);
     font-weight:bold;
   }
-  .recent-activity_activity {
+  .recent-review_review {
     font-size:font-size(12);
+    line-height:1.9em;
     margin-bottom:.5em;
-    a {
-      font-weight:bold;
-    }
-  }
-  .recent-activity_title, .recent-activity_excerpt {
-    font-size:font-size(12);
-    margin-bottom:.5em;
-    @extend .break-word;
-  }
-  .recent-activity_excerpt {
-    padding: .3em 1em;
-    color: $darkest-color;
-    background: sears( content-focus );
     &:before {
       // left quote
       content: "\201C";
@@ -674,12 +650,34 @@ textarea.discussion {
       content: "\201D";
     }
   }
-  .recent-activity_category-time {
-    > * {
-      display: block;
+  .recent-review_reviewer {
+    font-size:font-size(11);
+    font-weight:bold;
+    line-height:2em;
+  }
+  .recent-review_name {
+    float:left;
+    font-size:font-size(11);
+    font-weight:bold;
+    width:70%;
+  }
+  .rating {
+    float:right;
+    width:28%;
+    .rating-stars {
+      width:100%;
     }
-    .content-date {
-      float: none;
+    .rating-bar {
+      height:auto;
+      line-height:1em;
+    }
+  }
+  .recent-reviews-list > li {
+    border-top:solid 1px #d5d5d5;
+    padding:1.75em 0px;
+    &:first-child {
+      border-top:none;
+      padding-top:.5em;
     }
   }
 }
@@ -806,6 +804,8 @@ fieldset#use_your_account_from {
 
 // PROFILE
 $tab-padding: "1em 0 .6em 0";
+$rating-img: dimensions("stars1.png");
+
 .profile {
   .content-container .content-body {
     border-top: 0;
@@ -929,6 +929,37 @@ $tab-padding: "1em 0 .6em 0";
     position:absolute;
     top:24em;
     margin-left:13%;
+  }
+  .reviews {
+    h4 a {
+      @extend .bold;
+    }
+    .edit-link {
+      display: block;
+      font-style: italic;
+    }
+  }
+  .review-text {
+    clear: left;
+  }
+}
+
+// RATING WIDGET
+.rating {
+  float: left;
+  position:relative;
+  width: floor( ( nth( $rating-img, 1 ) ) / 3 );
+  background: silver;
+  .rating-stars {
+    display: block;
+    position: absolute;
+    width: floor( ( nth( $rating-img, 1 ) ) / 3 );
+    img {
+      display: block;
+    }
+  }
+  .rating-bar {
+    height: floor( ( nth( $rating-img, 2 ) ) / 3 );
   }
 }
 

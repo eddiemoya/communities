@@ -43,17 +43,21 @@ get_template_part('parts/header');
 								<li class="recent-review_reviewer">Steve Jones, Los Angeles, CA</li>
 								<li class="recent-review_review">
 									<!-- 
-										We will have to add the quotes and horizontal ellipse.
+										We will have to add the horizontal ellipse.
 										Text limited to 80 characters.
 										'more' links to all reviews page.
 									-->
-									&quot;Completely plagiarize tactical niches after unique growth strategies. Intrinsicly&hellip;&quot; <a href="#">more</a>
+									Completely plagiarize tactical niches after unique growth strategies. Intrinsicly&hellip; <a href="#">more</a>
 								</li>
 								<li class="recent-review_name-rating">
 									<span class="recent-review_name">Kenmore French Door</span>
-									<span class="recent-review_rating">
-										
-									</span>
+									<div class="rating">
+							          <div class="rating-stars">
+							            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/stars1.png" alt="<?php echo $activity->attribute_rating[0]->value; ?>/5 stars" />
+							          </div>
+							          <div class="rating-bar" style="width: 90%;">&nbsp;</div>
+							          <!-- <div class="rating-bar" style="width: <?php echo ((int)$activity->attribute_rating[0]->value / 5) * 100 ?>%;">&nbsp;</div> -->
+							        </div>
 								</li>								
 							</ul>
 						</li>
@@ -70,17 +74,21 @@ get_template_part('parts/header');
 								<li class="recent-review_reviewer">Glen Matlock, Naples, FL</li>
 								<li class="recent-review_review">
 									<!-- 
-										We will have to add the quotes and horizontal ellipse.
+										We will have to add the horizontal ellipse.
 										Text limited to 80 characters.
 										'more' links to all reviews page.
 									-->
-									&quot;Completely plagiarize tactical niches after unique growth strategies. Intrinsicly&hellip;&quot; <a href="#">more</a>
+									Completely plagiarize tactical niches after unique growth strategies. Intrinsicly&hellip; <a href="#">more</a>
 								</li>
 								<li class="recent-review_name-rating">
 									<span class="recent-review_name">Amana Microwave</span>
-									<span class="recent-review_rating">
-										
-									</span>
+									<div class="rating">
+							          <div class="rating-stars">
+							            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/stars1.png" alt="<?php echo $activity->attribute_rating[0]->value; ?>/5 stars" />
+							          </div>
+							          <div class="rating-bar" style="width: 90%;">&nbsp;</div>
+							          <!-- <div class="rating-bar" style="width: <?php echo ((int)$activity->attribute_rating[0]->value / 5) * 100 ?>%;">&nbsp;</div> -->
+							        </div>
 								</li>								
 							</ul>
 						</li>
@@ -97,17 +105,21 @@ get_template_part('parts/header');
 								<li class="recent-review_reviewer">Paul Cook, New York, NY</li>
 								<li class="recent-review_review">
 									<!-- 
-										We will have to add the quotes and horizontal ellipse.
+										We will have to add the horizontal ellipse.
 										Text limited to 80 characters.
 										'more' links to all reviews page.
 									-->
-									&quot;Completely plagiarize tactical niches after unique growth strategies. Intrinsicly&hellip;&quot; <a href="#">more</a>
+									Completely plagiarize tactical niches after unique growth strategies. Intrinsicly&hellip; <a href="#">more</a>
 								</li>
 								<li class="recent-review_name-rating">
 									<span class="recent-review_name">Kenmore French Door</span>
-									<span class="recent-review_rating">
-										
-									</span>
+									<div class="rating">
+							          <div class="rating-stars">
+							            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/stars1.png" alt="<?php echo $activity->attribute_rating[0]->value; ?>/5 stars" />
+							          </div>
+							          <div class="rating-bar" style="width: 90%;">&nbsp;</div>
+							          <!-- <div class="rating-bar" style="width: <?php echo ((int)$activity->attribute_rating[0]->value / 5) * 100 ?>%;">&nbsp;</div> -->
+							        </div>
 								</li>								
 							</ul>
 						</li>
