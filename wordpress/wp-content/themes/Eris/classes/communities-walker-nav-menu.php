@@ -1,36 +1,4 @@
 <?php
-/**
- * @package nav-menu-custom-fields
- * @version 0.1.0
- */
-/*
-Plugin Name: Nav Menu Custom Fields
-*/
-
-/*
- * Saves new field to postmeta for navigation
- */
-add_action('wp_update_nav_menu_item', 'communities_nav_update',10, 3);
-function communities_nav_update($menu_id, $menu_item_db_id, $args ) {
-    if ( is_array($_REQUEST['menu-item-image']) ) {
-        $image_value = $_REQUEST['menu-item-image'][$menu_item_db_id];
-        update_post_meta( $menu_item_db_id, '_menu_item_image', $image_value );
-    }
-}
-
-/*
- * Adds value of new field to $item object that will be passed to     Walker_Nav_Menu_Edit_Custom
- */
-add_filter( 'wp_setup_nav_menu_item','communities_nav_item' );
-function communities_nav_item($menu_item) {
-    $menu_item->image = get_post_meta( $menu_item->ID, '_menu_item_image', true );
-    return $menu_item;
-}
-
-add_filter( 'wp_edit_nav_menu_walker', 'communities_nav_edit_walker',10,2 );
-function communities_nav_edit_walker($walker,$menu_id) {
-    return 'Communities_Walker_Nav_Menu_Edit';
-}
 
 /**
  * Copied from Walker_Nav_Menu_Edit class in core
