@@ -837,85 +837,58 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .hero-slider a.next-slide { background: url('../img/hero-slide-right.png?v=1361811626') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; right: 1px; z-index: 30; }
 
 @media only screen and (max-width: 730px) { .rotating-banner .rotating-banner-navigation a { height: .75em; width: 0.75em; } }
-.weather-sprite, .weather-blizzard, .weather-blowing-snow, .weather-chance-storm-n, .weather-chance-storm, .weather-cloudy, .weather-drizzle, .weather-fair-drizzle, .weather-fair, .weather-flurries, .weather-fog, .weather-freezing-rain, .weather-hazy, .weather-m-c-night-rain, .weather-m-c-night-snow, .weather-m-c-rain, .weather-m-c-snow, .weather-m-cloudy-night, .weather-m-cloudy, .weather-moon, .weather-na, .weather-p-c-night-rain, .weather-p-c-night-snow, .weather-p-c-night, .weather-p-c-rain, .weather-p-c-snow, .weather-partly-cloudy, .weather-rainy-snow, .weather-rainy, .weather-showers, .weather-sleet, .weather-smoke, .weather-snow-shower, .weather-snow, .weather-sunny, .weather-t-storm-rain, .weather-thunder-storm, .weather-w-s-warning, .weather-w-s-watch, .weather-wind { background: url('../img/weather-s4a29f15368.png') no-repeat; }
+.weather-sprite, .weather-chanceflurries, .weather-chancerain, .weather-chancesleet, .weather-chancesnow, .weather-chancetstorms, .weather-clear, .weather-cloudy, .weather-flurries, .weather-fog, .weather-hazy, .weather-mostlycloudy, .weather-mostlysunny, .weather-partlycloudy, .weather-partlysunny, .weather-rain, .weather-sleet, .weather-snow, .weather-sunny, .weather-tstorms { background: url('../img/weather-sff9c80684d.png') no-repeat; }
 
-.weather-blizzard { background-position: 0 -210px; height: 42px; width: 42px; }
+.weather-chanceflurries { background-position: 0 -672px; height: 42px; width: 42px; }
 
-.weather-blowing-snow { background-position: 0 -714px; height: 42px; width: 42px; }
+.weather-chancerain { background-position: 0 -462px; height: 42px; width: 42px; }
 
-.weather-chance-storm-n { background-position: 0 -378px; height: 42px; width: 42px; }
+.weather-chancesleet { background-position: 0 -126px; height: 42px; width: 42px; }
 
-.weather-chance-storm { background-position: 0 -420px; height: 42px; width: 42px; }
+.weather-chancesnow { background-position: 0 -420px; height: 42px; width: 42px; }
 
-.weather-cloudy { background-position: 0 -756px; height: 42px; width: 42px; }
+.weather-chancetstorms { background-position: 0 -210px; height: 42px; width: 42px; }
 
-.weather-drizzle { background-position: 0 -1176px; height: 42px; width: 42px; }
+.weather-clear { background-position: 0 -42px; height: 42px; width: 42px; }
 
-.weather-fair-drizzle { background-position: 0 -1260px; height: 42px; width: 42px; }
+.weather-cloudy { background-position: 0 -504px; height: 42px; width: 42px; }
 
-.weather-fair { background-position: 0 -1512px; height: 42px; width: 42px; }
+.weather-flurries { background-position: 0 -714px; height: 42px; width: 42px; }
 
-.weather-flurries { background-position: 0 -1428px; height: 42px; width: 42px; }
+.weather-fog { background-position: 0 -756px; height: 42px; width: 42px; }
 
-.weather-fog { background-position: 0 -1470px; height: 42px; width: 42px; }
+.weather-hazy { background-position: 0 -546px; height: 42px; width: 42px; }
 
-.weather-freezing-rain { background-position: 0 -336px; height: 42px; width: 42px; }
+.weather-mostlycloudy { background-position: 0 -252px; height: 42px; width: 42px; }
 
-.weather-hazy { background-position: 0 -882px; height: 42px; width: 42px; }
+.weather-mostlysunny { background-position: 0 0; height: 42px; width: 42px; }
 
-.weather-m-c-night-rain { background-position: 0 -630px; height: 42px; width: 42px; }
+.weather-partlycloudy { background-position: 0 -294px; height: 42px; width: 42px; }
 
-.weather-m-c-night-snow { background-position: 0 -504px; height: 42px; width: 42px; }
+.weather-partlysunny { background-position: 0 -336px; height: 42px; width: 42px; }
 
-.weather-m-c-rain { background-position: 0 -672px; height: 42px; width: 42px; }
+.weather-rain { background-position: 0 -588px; height: 42px; width: 42px; }
 
-.weather-m-c-snow { background-position: 0 -588px; height: 42px; width: 42px; }
+.weather-sleet { background-position: 0 -168px; height: 42px; width: 42px; }
 
-.weather-m-cloudy-night { background-position: 0 -1344px; height: 42px; width: 42px; }
+.weather-snow { background-position: 0 -630px; height: 42px; width: 42px; }
 
-.weather-m-cloudy { background-position: 0 -42px; height: 42px; width: 42px; }
+.weather-sunny { background-position: 0 -84px; height: 42px; width: 42px; }
 
-.weather-moon { background-position: 0 -1554px; height: 42px; width: 42px; }
+.weather-tstorms { background-position: 0 -378px; height: 42px; width: 42px; }
 
-.weather-na { background-position: 0 -1596px; height: 42px; width: 42px; }
-
-.weather-p-c-night-rain { background-position: 0 -168px; height: 42px; width: 42px; }
-
-.weather-p-c-night-snow { background-position: 0 -126px; height: 42px; width: 42px; }
-
-.weather-p-c-night { background-position: 0 -924px; height: 42px; width: 42px; }
-
-.weather-p-c-rain { background-position: 0 -84px; height: 42px; width: 42px; }
-
-.weather-p-c-snow { background-position: 0 0; height: 42px; width: 42px; }
-
-.weather-partly-cloudy { background-position: 0 -462px; height: 42px; width: 42px; }
-
-.weather-rainy-snow { background-position: 0 -1050px; height: 42px; width: 42px; }
-
-.weather-rainy { background-position: 0 -1218px; height: 42px; width: 42px; }
-
-.weather-showers { background-position: 0 -1092px; height: 42px; width: 42px; }
-
-.weather-sleet { background-position: 0 -1134px; height: 42px; width: 42px; }
-
-.weather-smoke { background-position: 0 -966px; height: 42px; width: 42px; }
-
-.weather-snow-shower { background-position: 0 -1386px; height: 42px; width: 42px; }
-
-.weather-snow { background-position: 0 -1302px; height: 42px; width: 42px; }
-
-.weather-sunny { background-position: 0 -252px; height: 42px; width: 42px; }
-
-.weather-t-storm-rain { background-position: 0 -294px; height: 42px; width: 42px; }
-
-.weather-thunder-storm { background-position: 0 -546px; height: 42px; width: 42px; }
-
-.weather-w-s-warning { background-position: 0 -840px; height: 42px; width: 42px; }
-
-.weather-w-s-watch { background-position: 0 -798px; height: 42px; width: 42px; }
-
-.weather-wind { background-position: 0 -1008px; height: 42px; width: 42px; }
+.weather-widget .day-title { text-transform: uppercase; font-size: 110%; }
+.weather-widget .weather-today { float: left; clear: both; width: 100%; }
+.weather-widget .weather-today .large-icon { float: left; width: 50%; }
+.weather-widget .weather-today .conditions-today { float: right; width: 50%; }
+.weather-widget .weather-today .today-high-low { margin-bottom: 0px; }
+.weather-widget .weather-today .today-high-low .today-high { font-weight: bold; font-size: 300%; }
+.weather-widget .weather-today .today-high-low .today-low { font-size: 160%; }
+.weather-widget .weather-today .conditions-string { margin-bottom: 0px; line-height: 90%; }
+.weather-widget .weather-today .location { font-weight: bold; }
+.weather-widget .daily-forecast { width: 25%; float: left; text-align: center; }
+.weather-widget .daily-forecast .conditions-icon { margin: 0 20%; }
+.weather-widget .daily-forecast p { margin-bottom: 0px; }
 
 #header.kmart form { border: solid 5px #e02334; }
 #header.kmart form #input_search { background: transparent no-repeat 0px 0px; border: none; height: 1.538em; padding: 0.307em 0 0.307em 2.092em; margin-right: 9%; width: 84%; }
