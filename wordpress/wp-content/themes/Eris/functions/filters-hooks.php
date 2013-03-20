@@ -946,3 +946,8 @@ function save_featured_video_box($post)
 
 add_action('save_post', "save_featured_video_box");
 add_action('add_meta_boxes', "featured_video_box");
+
+function setup_weather_plugin_path(){
+    return "widgets/weather-widget";
+}
+add_filter('weather_widget_template_path', 'setup_weather_plugin_path');
