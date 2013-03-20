@@ -168,6 +168,10 @@ add_filter( 'widget_update_callback', 'widget_update', 10, 2 );
 
 
 
+
+/*
+ * Depricated?
+ */
 function widget_form_extend( $instance, $widget ) {
 
     if(get_class($widget) == 'WP_Widget_Links'){
@@ -437,8 +441,15 @@ function filter_before_widget($html, $dropzone, $widget){
 
     /** Community Menu Widget **/
     if($meta->widgetpress_widget_classname = 'Communities_Menu_Widget'){
+
         $nav_menu = get_term_by('id', $meta->nav_menu, 'nav_menu');
-        $html = str_replace('communities_menu_widget', "communities_menu_widget menu-{$nav_menu->slug}", $html);
+
+        $extra_classes = implode(' ', array(
+            "menu-{$nav_menu->slug}",
+            "layout_{$meta->menu_layout}"
+        ));
+
+        $html = str_replace('communities_menu_widget', "communities_menu_widget {$extra_classes}", $html);
     }
 
     /** Featured Post Widget **/
