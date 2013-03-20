@@ -131,57 +131,6 @@ get_template_part('parts/header');
 			</article>
 
 			<!-- END RECENT REVIEWS WIDGET -->
-			
-			<!-- RECENT ACTIVITIES WIDGET -->
-			
-			<article class="span12 content-container recent_activity">
-
-				<hgroup class="content-header">
-			  		<h3>Recent Activities</h3>
-			  	</hgroup>
-
-				<section class="content-body clearfix">
-					<ul class="recent-activity-list">
-
-						<li class="clearfix">
-							<div class="recent-activity_avatar">
-								<img alt="" class="photo" src="https://www.sears.com/community/wp-content/uploads/userphoto/137.jpg?1348781895">						</div>
-							<div class="recent-activity_data">
-								<ul>
-									<li class="recent-activity_activity"><a href="https://www.sears.com/community/author/SHC-BillW/">SHC-BillW</a> Answered this: </li>
-									<li class="recent-activity_category-time">
-										<time datetime="2013-03-18" pubdate="" class="content-date">Mar 18 3:26pm</time>
-										<a class="category" href="https://www.sears.com/community/category/appliances/">Appliances</a>
-									</li>
-									<li class="recent-activity_title"><a href="https://www.sears.com/community/questions/i-have-a-sears-washing-machine-is-draining-but-not-spinning-the-manual-says-check-the-fuse-this-is-of-the-house-or-is-there-a-fuse-on-the-washer-itself/">I have a Sears washing machine is draining, but not spinning.  The manual says c...</a></li>
-									<li class="recent-activity_excerpt">Hi ocicat,  The answer to the question you poised is not easy to answer. If the ...</li>								
-								</ul>
-							</div>
-						</li>
-
-						<li class="clearfix">
-							<div class="recent-activity_avatar">
-								<img alt="" class="photo" src="https://www.sears.com/community/wp-content/themes/Eris/assets/img/avatar.jpg?">						</div>
-							<div class="recent-activity_data">
-								<ul>
-									<li class="recent-activity_activity"><a href="https://www.sears.com/community/author/Roadlizard7/">Roadlizard7</a> Answered this: </li>
-									<li class="recent-activity_category-time">
-										<time datetime="2013-03-18" pubdate="" class="content-date">Mar 18 2:32pm</time>
-										<a class="category" href="https://www.sears.com/community/category/appliances/">Appliances</a>
-									</li>
-									<li class="recent-activity_title"><a href="https://www.sears.com/community/questions/are-gas-dryers-more-efficient-than-electric-dryers/">Are gas dryers more efficient than electric dryers?</a></li>
-									<li class="recent-activity_excerpt">Given the current glut of natural gas, and the fact that burning natural gas is ...</li>								
-								</ul>
-							</div>
-						</li>
-
-					</ul>
-		
-				</section>			
-
-			</article>
-
-			<!-- END RECENT ACTIVITIES WIDGET -->
 
 		</section>
 		
