@@ -44,6 +44,9 @@ html, body {
     color: kmart( link );
     @extend .bold;
   }
+  .rating-bar {
+    background: kmart( rating );
+  }
   // Threaded Discussion
   .comment-actions button {
     background: transparent image-url("#{$sears-img}/sprite_global.png") repeat-x 0 -200px;
