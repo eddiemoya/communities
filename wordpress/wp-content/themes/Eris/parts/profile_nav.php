@@ -39,6 +39,11 @@
             "name" => "Answers",
             "url" => $author_url . $concat . 'answer'
         ),
+
+        "review" => array(
+            "name" => "Reviews",
+            "url" => $author_url . $concat . 'review'
+        ),
        
         "follow" => array(
             "name" => "Follows",
