@@ -5,7 +5,7 @@
 			<h3><?php echo $instance["widget_title"]; ?></h3>
 		</hgroup>
 	<?php endif; ?>
-    <section class="content-body weather-widget-content clearfix <?php echo $instance["datafeature"]; ?>">
+    <section class="weather-widget-content clearfix <?php echo $instance["datafeature"]; ?>">
 		<div class="weather-today">
 			<div class="large-icon"><img src="<?php bloginfo('template_directory'); ?>/assets/img/large_weather_icons/<?php
 				echo $conditions->forecast->simpleforecast->forecastday[0]->icon;
