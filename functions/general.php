@@ -41,3 +41,10 @@ function strip_tags_attributes($sSource, $aAllowedTags = array(), $aDisabledAttr
         return preg_replace('/<(.*?)>/ie', "'<' . preg_replace(array('/javascript:[^\"\']*/i', '/(" . implode('|', $aDisabledAttributes) . ")[ \\t\\n]*=[ \\t\\n]*[\"\'][^\"\']*[\"\']/i', '/\s+/'), array('', '', ' '), stripslashes('\\1')) . '>'", strip_tags($sSource, implode('', $aAllowedTags)));
 }
     
+function update_zipcode_cookie($zip) {
+	setcookie("weather_location", $zip, time()+86400);
+}
+
+if ($_POST["update_zipcode"] != "") {
+	update_zipcode_cookie($_POST["update_zipcode"]);
+}
