@@ -48,7 +48,7 @@
 			</div>
 		<?php endfor; ?>
 	</div>
-	<div class="wunderground-img"><a href="http://www.wunderground.com" target="_blank"><img src="http://icons.wxug.com/logos/PNG/wundergroundLogo_4c_horz.png"></a></div>
+	<div class="wunderground-img"><a href="http://www.wunderground.com" target="_blank"><img src="<?php echo plugins_url().'/wp-weather/assets/wundergroundlogo.png'; ?>"></a></div>
 </section>
 
 
