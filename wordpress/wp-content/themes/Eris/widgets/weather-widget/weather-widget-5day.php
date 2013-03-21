@@ -10,7 +10,7 @@
 			<div class="large-icon"><img src="<?php bloginfo('template_directory'); ?>/assets/img/large_weather_icons/<?php
 				echo $conditions->forecast->simpleforecast->forecastday[0]->icon;
 			?>.png"></div>
-			<div class="condtions-today">
+			<div class="conditions-today">
 				<p class="day-title"><?php
 					echo $conditions->forecast->simpleforecast->forecastday[0]->date->weekday_short." ".
 						$conditions->forecast->simpleforecast->forecastday[0]->date->month."/".
@@ -27,8 +27,9 @@
 					echo $conditions->forecast->simpleforecast->forecastday[0]->conditions;
 				?></p>
 				<p class="location"><?php
-					echo $weather->location;
-				?>
+					echo $weather->city_state;
+				?></p>
+				<p class="change-location"><a href="<?php echo get_site_url(); ?>/location/" title="Change Location" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-location'}}}">Change Location</a></p>
 			</div>
     	</div>
 		<div class="extended-forecast">
@@ -49,8 +50,8 @@
 				</div>
 			<?php endfor; ?>
 		</div>
+		<div class="wunderground-img"><a href="http://www.wunderground.com" target="_blank"><img src="http://icons.wxug.com/logos/PNG/wundergroundLogo_4c_horz.png"></a></div>
     </section>
-    
 <?php get_template_part('parts/footer', 'widget') ;?>
 
 
