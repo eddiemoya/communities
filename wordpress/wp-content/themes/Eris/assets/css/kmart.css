@@ -877,18 +877,21 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 
 .weather-tstorms { background-position: 0 -378px; height: 42px; width: 42px; }
 
+.weather-widget { width: 100%; }
 .weather-widget .day-title { text-transform: uppercase; font-size: 110%; }
-.weather-widget .weather-today { float: left; clear: both; width: 100%; }
+.weather-widget .weather-today { clear: both; width: 100%; }
 .weather-widget .weather-today .large-icon { float: left; width: 50%; }
 .weather-widget .weather-today .conditions-today { float: right; width: 50%; }
-.weather-widget .weather-today .today-high-low { margin-bottom: 0px; }
-.weather-widget .weather-today .today-high-low .today-high { font-weight: bold; font-size: 300%; }
-.weather-widget .weather-today .today-high-low .today-low { font-size: 160%; }
-.weather-widget .weather-today .conditions-string { margin-bottom: 0px; line-height: 90%; }
-.weather-widget .weather-today .location { font-weight: bold; }
-.weather-widget .daily-forecast { width: 25%; float: left; text-align: center; }
-.weather-widget .daily-forecast .conditions-icon { margin: 0 20%; }
-.weather-widget .daily-forecast p { margin-bottom: 0px; }
+.weather-widget .weather-today .conditions-today .today-high-low { margin-bottom: 0px; }
+.weather-widget .weather-today .conditions-today .today-high-low .today-high { font-weight: bold; font-size: 300%; }
+.weather-widget .weather-today .conditions-today .today-high-low .today-low { font-size: 160%; }
+.weather-widget .weather-today .conditions-today .conditions-string { margin-bottom: 4px; line-height: 90%; }
+.weather-widget .weather-today .conditions-today .location { font-weight: bold; line-height: 90%; }
+.weather-widget .extended-forecast { clear: both; }
+.weather-widget .extended-forecast .daily-forecast { width: 25%; float: left; text-align: center; }
+.weather-widget .extended-forecast .daily-forecast .conditions-icon { margin: 0 20%; }
+.weather-widget .extended-forecast .daily-forecast p { margin-bottom: 0px; }
+.weather-widget .wunderground-img { clear: both; float: right; width: 50%; margin: 5px 20px 0 0; }
 
 #header.kmart form { border: solid 5px #e02334; }
 #header.kmart form #input_search { background: transparent no-repeat 0px 0px; border: none; height: 1.538em; padding: 0.307em 0 0.307em 2.092em; margin-right: 9%; width: 84%; }
