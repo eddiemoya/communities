@@ -1,0 +1,60 @@
+@import "weather/*.png";
+@include all-weather-sprites(true);
+
+.weather-widget {
+	width: 100%;
+	.day-title {
+		text-transform: uppercase;
+		font-size: 110%;
+	}
+	.weather-today {
+		clear: both;
+		width: 100%;
+		.large-icon {
+			float: left;
+			width: 50%;
+		}
+		.conditions-today {
+			float: right;
+			width: 50%;
+			.today-high-low {
+				margin-bottom: 0px;
+				.today-high {
+					font-weight: bold;
+					font-size: 300%;
+				}
+				.today-low {
+					font-size: 160%;
+				}
+			}
+			.conditions-string {
+				margin-bottom: 4px;
+				line-height: 90%;
+			}
+			.location {
+				font-weight: bold;
+				line-height: 90%;
+			}
+		}
+	}
+	.extended-forecast {
+		clear: both;
+		.daily-forecast {
+			width: 25%;
+			float: left;
+			text-align: center;
+			.conditions-icon {
+				margin: 0 20%;
+			}
+			p {
+				margin-bottom: 0px;
+			}
+		}
+	}
+	.wunderground-img {
+		clear: both;
+		float: right;
+		width: 50%;
+		margin: 5px 20px 0 0;
+	}
+}
