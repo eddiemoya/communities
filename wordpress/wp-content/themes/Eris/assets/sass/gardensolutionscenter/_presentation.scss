@@ -373,6 +373,17 @@ body, td, p {
   }
 }
 
+.communities_menu_widget {
+  .image-list-style {
+    li {
+      border-top:solid 1px #e9e8e3;
+    }
+    li:first-child {
+      border-top:none;
+    }
+  }
+}
+
 // Form Elements
 .kmart_button {
   border-left:solid #ff9e6c;
