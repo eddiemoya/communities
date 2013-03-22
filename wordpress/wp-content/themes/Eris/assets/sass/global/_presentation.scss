@@ -793,6 +793,31 @@ fieldset#use_your_account_from {
       padding: 6px 0;
     }
   }
+  .image-list-style {
+    li {
+      @extend .clearfix;
+    }
+    a span {
+      display:inline-block;
+      margin-right:0.77em;
+      width:4.6em;
+    }
+  }
+  .image-grid-style {
+    li {
+      float:left;
+      padding:0 0.375em 0.375em;
+      text-align:center;
+      width:50%;
+      @include box-sizing( border-box );
+      a {
+        display:block;
+        span {
+          display:block;
+        }   
+      }
+    }
+  }
   .subcat-selector-container {
     // font-size: .75em;
     font-size: font-size( 12 );
@@ -1718,4 +1743,54 @@ button.follow {
 
 .communities_menu_widget h4 {
   font-size:12px !important;
+}
+
+// Weather widget //
+.weather-widget {
+  h5 {
+    font-size:font-size(15);
+    text-align:center;
+    text-transform:uppercase;
+  }
+  .high {
+    font-weight:bold;
+  }
+  .high, .low {
+    display:block;
+    font-size:font-size(16);
+    text-align:center;
+  }
+  .forecast_details {
+    h5 {
+      text-align:left;
+    }
+    .high, .low {
+      float:left;
+      text-align:left;
+    }
+    .high {
+      font-size:font-size(35);
+      line-height:1em;
+    }
+    .low {
+      font-size:font-size(22);
+      margin-top:0.25em;
+    }
+    .forecast_degrees {
+      @extend .clearfix;
+    }
+    .forecast_description {
+      display:block;
+      font-size:font-size(14);
+    }
+    .forecast_location, .forecast_change-location {
+      display:block;
+      font-size:font-size(11);
+      font-weight:bold;
+    }
+  }
+  .forecast_sponsor {
+    margin-top:0.75em;
+    text-align:right;
+  }
 }
