@@ -387,6 +387,7 @@ textarea.discussion { border: 1px solid #d6d6d6; height: 10em; width: 99%; -webk
 
 .span3 .recent-activity .excerpt, .span4 .recent-activity .excerpt, .span6 .recent-activity .excerpt { overflow: hidden; text-overflow: ellipsis; }
 
+.recent_reviews hgroup { background: transparent url('../img/widgets/recent-reviews/background_header-icon-people.png?v=1363884089') no-repeat right bottom; }
 .recent_reviews .recent-review_title { font-size: 92.307%; font-weight: bold; }
 .recent_reviews .recent-review_review { font-size: 92.307%; line-height: 1.9em; margin-bottom: .5em; }
 .recent_reviews .recent-review_review:before { content: "\201C"; }
@@ -395,7 +396,7 @@ textarea.discussion { border: 1px solid #d6d6d6; height: 10em; width: 99%; -webk
 .recent_reviews .recent-review_name { float: left; font-size: 84.615%; font-weight: bold; width: 70%; }
 .recent_reviews .rating { float: right; width: 28%; }
 .recent_reviews .rating .rating-stars { width: 100%; }
-.recent_reviews .rating .rating-bar { height: auto; line-height: 1em; }
+.recent_reviews .rating .rating-bar { height: auto; line-height: .91em; }
 .recent_reviews .recent-reviews-list > li { border-top: solid 1px #d5d5d5; padding: 1.75em 0px; }
 .recent_reviews .recent-reviews-list > li:first-child { border-top: none; padding-top: .5em; }
 

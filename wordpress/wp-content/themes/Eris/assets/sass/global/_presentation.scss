@@ -633,6 +633,9 @@ textarea.discussion {
 
 // RECENT REVIEWS
 .recent_reviews {
+  hgroup {
+    background:transparent image-url('widgets/recent-reviews/background_header-icon-people.png') no-repeat right bottom;
+  }
   .recent-review_title {
     font-size:font-size(12);
     font-weight:bold;
@@ -669,7 +672,7 @@ textarea.discussion {
     }
     .rating-bar {
       height:auto;
-      line-height:1em;
+      line-height:.91em;
     }
   }
   .recent-reviews-list > li {
