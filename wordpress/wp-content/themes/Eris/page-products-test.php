@@ -3,13 +3,13 @@
 
 echo '<h2>Ratings & Reviews Test Page</h2><br><br>';
 
-/*$rr = RR_User_Reviews::factory(35497172)
-						->get();*/
+$rr = RR_User_Reviews::factory(35497172)
+						->get();
 
-$rr = $reviews = RR_Recent_Reviews::factory()
+/*$rr = $reviews = RR_Recent_Reviews::factory()
        								->limit(3)
        								->get()
-       								->results;
+       								->results;*/
        								
 
 /*$rr = RR_Api_Request::factory(array('api' 	=> 'recent',
