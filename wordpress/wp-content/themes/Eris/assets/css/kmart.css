@@ -910,7 +910,7 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 
 .unknown-location { position: relative; }
 .unknown-location .weather-today, .unknown-location .extended-forecast { opacity: 0.3; filter: alpha(opacity=30); }
-.unknown-location .select-location { position: absolute; width: 80%; left: 5%; padding: 5%; background-color: #ffffff; top: 90px; z-index: 1; }
+.unknown-location .select-location { position: absolute; width: 80%; left: 4%; padding: 5%; background-color: #ffffff; top: 90px; z-index: 1; }
 .unknown-location .select-location p { margin-bottom: 4px; line-height: 95%; }
 
 .kmart .unknown-location .select-location { border: 3px solid #e02334; }

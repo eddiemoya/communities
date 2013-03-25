@@ -14,7 +14,7 @@
 		<div class="conditions-today">
 			<p class="day-title"><?php echo date("D n/j")?></p>
 			<p class="today-high-low">
-				<span class="today-high">85&deg;</span><span class="today-low">76&deg;</span>
+				<span class="today-high">85&deg;</span><span class="today-low">/ 76&deg;</span>
 			</p>
 			<p class="conditions-string">Clear</p>
 			<p class="location">Chicago, IL</p>
@@ -47,7 +47,6 @@
 			<p class="low">80&deg;</p>
 		</div>
 	</div>
-	<div class="wunderground-img"><a href="http://www.wunderground.com" target="_blank"><img src="<?php echo plugins_url().'/wp-weather/assets/wundergroundlogo.png'; ?>"></a></div>
 </section>
 
 
