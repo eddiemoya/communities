@@ -58,3 +58,30 @@
 		margin: 5px 20px 0 0;
 	}
 }
+
+.unknown-location {
+	position: relative;
+	.weather-today, .extended-forecast {
+		opacity: 0.3;
+		filter:alpha(opacity=30);
+	}
+	.select-location {
+		position: absolute;
+		width: 80%;
+		left: 5%;
+		padding: 5%;
+		background-color: #ffffff;
+		top: 90px;
+		z-index: 1;
+		p {
+			margin-bottom: 4px;
+			line-height: 95%;
+		}
+	}
+}
+.kmart .unknown-location .select-location {
+	border: 3px solid #e02334;
+}
+.sears .unknown-location .select-location {
+	border: 3px solid #3a81cf;
+}
