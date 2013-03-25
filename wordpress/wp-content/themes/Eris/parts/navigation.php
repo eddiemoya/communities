@@ -13,7 +13,7 @@
         'question' => "Q&A's",
         'post'     => 'Blog Posts',
         'guide'    => 'Guides',
-        'review'   => 'Reviews'
+        //'review'   => 'Reviews'
     );
     
     function cmp($a, $b) {
