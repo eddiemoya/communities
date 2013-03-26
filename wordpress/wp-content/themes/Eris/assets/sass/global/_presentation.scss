@@ -264,6 +264,24 @@ form {}
     @extend .break-word;
     @extend .bold;
   }
+  .content-video {
+    height:0px;
+    overflow:hidden;
+    padding:30px 0px 56.25%;
+    position:relative;
+    z-index:10001;
+    iframe, object, embed {
+      height:100%;
+      left:0px;
+      position:absolute;
+      top:0px;
+      width:100%;
+      z-index:10000;
+    }
+  }
+  .content-video + .content-details {
+    margin-top:1.5em;
+  }
   .share-full {
     margin-top: 10px;
   }
