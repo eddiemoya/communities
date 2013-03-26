@@ -357,6 +357,10 @@ body, td, p {
     }
   }
   
+  .featured-post-type-post.format-video .content-header {
+    background-image: image-url("#{$garden-img}icon_video_29x29.png");
+  }
+  
   // Errors
   .site-error .message {
     background: garden( site-error );
