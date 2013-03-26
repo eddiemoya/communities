@@ -17,8 +17,10 @@ $inner_span = ($has_featured_image || $has_featured_video) ? "span6" : "span12";
         <?php the_post_thumbnail('large'); ?>
     </div>
 <?php elseif ($has_featured_video): ?>
-    <div class="featured-image featured-video <?php echo $inner_span; ?>">
-        <?php echo wp_oembed_get($featured_video, array('width'=>300)); ?>
+    <div class="<?php echo $inner_span; ?>">
+        <div class="content-video">
+            <?php echo wp_oembed_get($featured_video); ?>
+        </div>
     </div>
 <?php endif; ?>
 

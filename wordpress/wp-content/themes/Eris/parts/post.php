@@ -34,7 +34,7 @@
 				<?php if($has_featured_video) { ?>
 				<div class="content-video">
 					<!-- YOU HAVE TO INCLUDE PARAMETER 'wmode=opaque' OR VIDEO OVERLAPS SITE -->
-					<?php echo wp_oembed_get($featured_video, array('width'=>560, 'height'=>315)); ?>
+					<?php echo wp_oembed_get($featured_video); ?>
 				</div>
 				<?php } ?>
 
