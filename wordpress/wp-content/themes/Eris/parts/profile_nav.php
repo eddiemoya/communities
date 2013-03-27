@@ -10,6 +10,7 @@
     $profile_user->answer_count  = get_comments( array( 'user_id' => $profile_user->ID, 'status' => 'approved', 'count' => true, 'type' => 'answer' ) );
     $profile_user->comment_count = get_comments( array( 'user_id' => $profile_user->ID, 'status' => 'approved', 'count' => true, 'type' => 'comment' ) );
     $profile_user->post_count    = return_post_count( $profile_user->ID );
+    $profile_user->review_count = $user_activities->num_reviews;
 
     $a_tabs = array(
         "Community Activity" => $author_url . $concat . 'recent',
@@ -104,7 +105,8 @@
 			$experts_settings['stats'] = array(
 				"answers"		=> $profile_user->answer_count . ' ' . _n( 'answer', 'answers', $profile_user->answer_count ),
 				"posts"			=> $profile_user->post_count . ' ' . _n( 'post', 'posts', $profile_user->post_count ),
-				"comments"	=> $profile_user->comment_count . ' ' . _n( 'comment', 'comments', $profile_user->comment_count )
+				"comments"	=> $profile_user->comment_count . ' ' . _n( 'comment', 'comments', $profile_user->comment_count ),
+				"reviews"	=> $profile_user->review_count . ' ' . _n('review', 'reviews', $profile_user->review_count)
 			);
 			
     	get_partial( 'parts/crest', $experts_settings ); 
