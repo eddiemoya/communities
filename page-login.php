@@ -1,5 +1,7 @@
 <?php
 
+include SHCSSO_CONFIG_DIR . 'errors.php';
+
 //if user is logged in, redirect to home page
 if(is_user_logged_in()) {
 	
@@ -9,7 +11,7 @@ if(is_user_logged_in()) {
 
 
 $origin = (isset($_GET['origin'])) ? urldecode($_GET['origin']) : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_site_url() . '/');
-$error = (isset($_GET['err'])) ? wp_kses(strip_tags(urldecode($_GET['err']))) : false;
+$error = (isset($_GET['err'])) ? wp_kses(strip_tags($sso_errors[urldecode($_GET['err'])])) : false;
 $opts = new SSO_Options;
 
 /**
