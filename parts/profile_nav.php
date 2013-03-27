@@ -98,9 +98,10 @@
 				$experts_settings['last_posted'] = $profile_user->most_recent_post_date;
 			}
 						
-			$profile_user->answer_count 	= (empty($profile_user->answer_count))? 0:$profile_user->answer_count;
-			$profile_user->post_count 		= (empty($profile_user->post_count))? 0:$profile_user->post_count;
-			$profile_user->comment_count 	= (empty($profile_user->comment_count ))? 0:$profile_user->comment_count ;
+			$profile_user->answer_count 	= (empty($profile_user->answer_count)) ? 0 : $profile_user->answer_count;
+			$profile_user->post_count 		= (empty($profile_user->post_count))? 0 : $profile_user->post_count;
+			$profile_user->comment_count 	= (empty($profile_user->comment_count )) ? 0 : $profile_user->comment_count ;
+			$profile_user->review_count 	= (empty($profile_user->review_count )) ? 0 : $profile_user->review_count ;
 			
 			$experts_settings['stats'] = array(
 				"answers"		=> $profile_user->answer_count . ' ' . _n( 'answer', 'answers', $profile_user->answer_count ),
