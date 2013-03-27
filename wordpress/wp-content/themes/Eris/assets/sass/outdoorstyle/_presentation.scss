@@ -1,8 +1,37 @@
 // Tweaks to Presentation for Outdoor Style
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic|Open+Sans:300italic,400italic,700italic,400,700,300);
+
+$regular: 'Open Sans', Helvetica, Arial, Verdana, sans-serif;
+$condensed: 'Open Sans Condensed', Helvetica, Arial, Verdana, sans-serif;
 
 html, body {
-  background: outdoor( background );
+  background:transparent image-url("#{$outdoor-img}background_main-wood.jpg") repeat 0px 0px;
   color: outdoor( bodycopy );
+  font-family:$regular;
+  height:auto;
+}
+
+.menu-sears-ribbon-container, .menu-kmart-ribbon-container {
+  position:relative;
+  z-index:100;
+}
+
+#container, #persistent-header {
+  background:transparent image-url("#{$outdoor-img}background_container-noise.jpg") repeat 0px 0px;
+}
+
+#container {
+  @include box-shadow(rgba(0,0,0,.75) 0 10px 21px 14px);
+  padding:0px 10px;
+}
+
+.content-container {
+  .content-header {
+    h3 {
+      font-family:$condensed;
+      font-weight:700;
+    }
+  }
 }
 
 // Sprites
