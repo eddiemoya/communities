@@ -121,6 +121,12 @@ class User_Profile {
 	public $nav = array();
 	
 	/**
+	 * Number of user reviews
+	 * @var unknown_type
+	 */
+	public $num_reviews;
+	
+	/**
 	 * Constructor
 	 * @param int $user_id
 	 */
@@ -934,10 +940,12 @@ class User_Profile {
 				if($reviews = RR_User_Reviews::factory($guid)->get()->results) {
 					
 					$this->reviews = $reviews;
+					$this->num_reviews = count($reviews);
 					return true;
 					
 				} else {
 					
+					$this->num_reviews = 0;
 					return false;
 				}
 				

@@ -68,6 +68,7 @@
                     <li class="member_answers"><?php echo $display_stats['answers']; ?></li>
                     <li class="member_posts"><?php echo $display_stats['posts']; ?></li>
                     <li class="member_comments"><?php echo $display_stats['comments']; ?></li>
+                    <li class="member_comments"><?php echo $display_stats['reviews']; ?></li>
                 <?php endif; ?>
             </ul>
         </li>
