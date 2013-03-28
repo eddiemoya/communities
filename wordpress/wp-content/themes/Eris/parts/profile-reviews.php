@@ -20,7 +20,7 @@
           <div class="rating-bar" style="width: <?php echo ((int)$activity->attribute_rating[0]->value / 5) * 100 ?>%;">&nbsp;</div>
         </div>
         <div class="review-text">
-          <a href="<?php echo 'http://www.' . $activity->origin_site  . '/' . $activity->product_data->product_uri; ?>"><?php echo $activity->summary;?></a>
+          <a href="<?php echo $activity->all_reviews_link;?>"><?php echo $activity->summary;?></a>
           <?php echo $editlink;?>
         </div>
       </div>
