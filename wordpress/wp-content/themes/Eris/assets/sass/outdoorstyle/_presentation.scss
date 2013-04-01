@@ -4,7 +4,7 @@
 $regular: 'Open Sans', Helvetica, Arial, Verdana, sans-serif;
 $condensed: 'Open Sans Condensed', Helvetica, Arial, Verdana, sans-serif;
 
-html, body {
+html {
   background:transparent image-url("#{$outdoor-img}background_main-wood.jpg") repeat 0px 0px;
   color: outdoor( bodycopy );
   font-family:$regular;
@@ -30,6 +30,51 @@ html, body {
     h3 {
       font-family:$condensed;
       font-weight:700;
+    }
+  }
+}
+
+#content > section.span12 {
+  border-top:none;
+}
+
+.dropzones.span12 > .dropzone > .dropzone-inner-wrapper > .content-container.image-widget .content-body {
+  border-top:none;
+  text-align:center;
+}
+
+.menu-odssubnavigation {
+  .content-body {
+    border-top:none;
+  }
+}
+
+#menu-odssubnavigation {
+  li {
+    a, a:visited, a:hover {
+      color:#067bb5;
+    }
+    font-family:$regular;
+    font-size:font-size(24);
+    font-weight:300;
+    float:left;
+    text-align:center;
+    width:18%;
+  }
+  li:first-child {
+    text-align:left;
+  }
+  .ods_nav_guides {
+    text-align:right;
+  }
+  .ods_nav_questions {
+    width:28%;
+  }
+  .category-outdoorstyle & .ods_nav_home {
+    font-weight:400;
+    a, a:visited, a:hover {
+      border-bottom:solid 1px #e78e60;
+      color:#666666;
     }
   }
 }
