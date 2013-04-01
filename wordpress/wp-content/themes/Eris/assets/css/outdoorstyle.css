@@ -872,9 +872,11 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 
 #content > section.span12 { border-top: none; }
 
-.dropzones.span12 > .dropzone > .dropzone-inner-wrapper > .content-container.image-widget .content-body { border-top: none; text-align: center; }
+.dropzones.span12 > .dropzone > .dropzone-inner-wrapper > .content-container.image-widget .content-body { border: none; text-align: center; }
 
-.menu-odssubnavigation .content-body { border-top: none; }
+.menu-odssubnavigation.content-container .content-body { border: none; }
+
+.hero-slider.content-container .content-body { border: none; }
 
 #menu-odssubnavigation li { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 184.615%; font-weight: 300; float: left; text-align: center; width: 18%; }
 #menu-odssubnavigation li a, #menu-odssubnavigation li a:visited, #menu-odssubnavigation li a:hover { color: #067bb5; }
@@ -883,6 +885,25 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 #menu-odssubnavigation .ods_nav_questions { width: 28%; }
 .category-outdoorstyle #menu-odssubnavigation .ods_nav_home { font-weight: 400; }
 .category-outdoorstyle #menu-odssubnavigation .ods_nav_home a, .category-outdoorstyle #menu-odssubnavigation .ods_nav_home a:visited, .category-outdoorstyle #menu-odssubnavigation .ods_nav_home a:hover { border-bottom: solid 1px #e78e60; color: #666666; }
+
+.content-container.featured-post { margin-top: 1.54em; }
+.content-container.featured-post .content-header { background-color: #4d4d4f; border: none; font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-weight: 700; left: 1px; padding: 0.5em 0.769em; position: absolute; top: 1px; }
+.content-container.featured-post .content-header h3 { color: #ffffff; font-size: 123.076%; text-transform: uppercase; }
+.content-container.featured-post .content-body { background: #ffffff; border: solid 1px #e3e1e1; padding: 0px; }
+
+.content-body .content-headline { border-bottom: solid 2px #4d4d4f; font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-size: 207.692%; padding-bottom: 0.37em; }
+.content-body .content-headline a, .content-body .content-headline a:visited, .content-body .content-headline a:hover { color: #4d4d4f; }
+.content-body .featured-content { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; padding: 0.769em; }
+
+.span12 > .content-body .featured-image + .featured-content { padding-left: 0px; }
+
+.post-actions { margin: 0 -0.5em; }
+
+.format-video.content-container .content-header { display: none; }
+
+.featured-question.content-container .content-body { padding: 3.7em 0.769em 0.769em; }
+.featured-question.content-container .content-body h1 a:before { content: "\201C"; }
+.featured-question.content-container .content-body h1 a:after { content: "\201D"; }
 
 #header.sears form #button_search, #header.sears form #input_search, .sears_button { background-image: url('../img/sears/sprite_global.png?v=1363102271'); }
 
