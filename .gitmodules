@@ -64,3 +64,6 @@
 [submodule "wordpress/wp-content/plugins/wp-weather"]
 	path = wordpress/wp-content/plugins/wp-weather
 	url = git@github.com:jcorradino/wp-weather.git
+[submodule "wordpress/wp-content/plugins/product-widget"]
+	path = wordpress/wp-content/plugins/product-widget
+	url = git@github.com:eddiemoya/product-widget.git
