@@ -38,8 +38,12 @@
 					$image = MultiPostThumbnails::get_post_thumbnail_url($posts[$postID]->post_type, 'hero-slider-image', $posts[$postID]->ID);
 					$link = get_post_permalink($posts[$postID]->ID);
 				}
+				
+				if ($link) {
+					$link_class=" banner_link";
+				}
 		?>
-				<div class="banner slide_<?php echo $counter; ?>" shc:shard="banner" shc:url="<?php echo $link; ?>">
+				<div class="banner slide_<?php echo $counter.$link_class; ?>" shc:shard="banner" shc:url="<?php echo $link; ?>">
 					<h1 class="content-headline"><?php echo $posts[$postID]->post_title; ?></h1>
 					<img src="<?php echo $image; ?>" alt="<?php $posts[$postID]->post_title; ?>" />
 				</div>
