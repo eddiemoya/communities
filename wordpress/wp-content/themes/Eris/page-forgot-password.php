@@ -43,16 +43,15 @@ get_template_part('parts/header'); ?>
 	<section class="span8">
 <?php endif;?>	
 
-		<?php //echo $response['message'];?>
+		<?php if(isset($response)) echo $response['message'] ;?>
 		<article class="content-container forgot-password span12">
 			<section class="content-body clearfix">
-				
 				<h6 class="content-headline"><?php echo (isset($_GET['auth_token'])) ? 'Enter New Password' : 'Forgot Password'?></h6>
 				<p>
         	<?php echo (isset($_GET['auth_token'])) ? 'Enter a new password for your account below.' : 'Please verify the email address this account and press continue.';?>
         </p>
 				
-				<form class="form_login" method="post">
+				<form class="form_login" method="post" action="<?php echo site_url('/forgot-password/');?>">
 
           <ul class="form-fields">
               <?php if(! isset($_GET['auth_token'])):?>
