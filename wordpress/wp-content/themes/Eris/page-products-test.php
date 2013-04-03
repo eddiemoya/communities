@@ -28,11 +28,11 @@ echo '<h2>Ratings & Reviews Test Page</h2><br><br>';
 
 //$rr = convert_meta(get_post_custom(13640));
 
-//$rr = Products_Model::factory(array('00303348000P', '06703104000P', '08898528099P', '026W002842300001P', '026W004146922001P'));
+$rr = Products_Model::factory(array('00303348000P', '06703104000P', '08898528099P', '026W002842300001P', '026W004146922001P', 'boobies'));
 
 /*$id = 13640;
 var_dump(get_post($id));*/
-$rr = Products_Model::factory()->get_by_id(array(13619,13620))->products;
+//$rr = Products_Model::factory()->get_by_id(array(13619,13620))->products;
 
 /*$rr = get_posts(array('post_type'	=> 'product',
 						'meta_query'	=> array(array('key'	=> 'partnumber',
