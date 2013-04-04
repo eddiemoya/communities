@@ -39,7 +39,7 @@
 					$link = get_post_permalink($posts[$postID]->ID);
 				}
 				
-				if ($link) {
+				if ($link != "") {
 					$link_class=" banner_link";
 				}
 		?>
@@ -48,6 +48,7 @@
 					<img src="<?php echo $image; ?>" alt="<?php $posts[$postID]->post_title; ?>" />
 				</div>
 		<?php
+				$link_class="";
 				$counter++;
 			endforeach;
 		?>
