@@ -34,6 +34,10 @@ html {
   }
 }
 
+.sears a, .sears a:visited, .sears a:hover {
+  color:#067bb5;
+}
+
 #content > section.span12 {
   border-top:none;
 }
@@ -158,6 +162,79 @@ html {
     }
   }
 
+}
+
+
+// Shit in right rail
+.span4 .dropzone-inner-wrapper.border-left {
+  .content-container {
+    .content-header {
+      border-top:none;
+      h3 {
+        font-family:$regular;
+        font-size:font-size(20);
+        font-weight:300;
+      }
+      h4 {
+        font-family:$regular;
+        font-size:font-size(12);
+        font-weight:400;
+      }
+    }
+    .content-body {
+      
+    }
+  }
+}
+
+.dropzones.span12 > .dropzone > .dropzone-inner-wrapper.border-left > .content-container.image-widget .content-body {
+  border-top:solid 1px #dedede;
+}
+.wp-polls {
+  .wp-polls-form {
+    .content-header {
+      padding:0px;
+      h1, p {
+        padding:0.769em;
+      }
+      h1 {
+        font-family:$regular;
+        font-size:font-size(20);
+        font-weight:400;
+        padding:0.5em 0.5em 0;
+      }
+      h1.content-headline {
+        color:#2b2b2b;
+      }
+      p {
+        font-style:normal;
+        font-weight:700;
+        padding:0px 0.83em 0em;
+      }
+      h3 {
+        border-bottom:solid 1px #dedede; 
+        padding:0.5em; 
+        word-spacing:0px;
+        span {
+          font-weight:300;
+        }
+      }
+    }
+    .content-body {
+      border-top:none;
+    }
+  }
+}
+
+#menu-outdoor-style-design-your-outdoor-space {
+  li {
+    background:transparent image-url("#{$outdoor-img}background_design-your-outdoor-space.gif") repeat-x 0px 0px;
+    a {
+      font-family:$regular;
+      font-size:font-size(20);
+      font-weight:300;
+    }
+  }
 }
 
 // Sprites
