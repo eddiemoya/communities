@@ -50,7 +50,7 @@ get_template_part('parts/header'); ?>
               <dl class="clearfix">
                   <dt class="span3"><label for="logonPassword">Password:</label></dt>
                   <dd class="span8"><input type="password" name="logonPassword" class="input_text input_password" id="password" shc:gizmo:form="{required:true}" /></dd>
-                  <dd class="span1"><a href="<?php echo get_site_url(); ?>/login/" title="Forgot your password?" class="forgot" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-forgot-password'}}}">Forgot?</a></dd>
+                  <dd class="span1"><a href="<?php echo get_site_url(); ?>/forgot-password/" title="Forgot your password?" class="forgot" ">Forgot?</a></dd>
               </dl>
           </li>
           
