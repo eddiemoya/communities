@@ -51,7 +51,7 @@ get_template_part('parts/header'); ?>
         	<?php echo (isset($_GET['auth_token'])) ? 'Enter a new password for your account below.' : 'Please verify the email address this account and press continue.';?>
         </p>
 				
-				<form class="form_login" method="post" action="<?php echo site_url('/forgot-password/');?>">
+				<form class="form_login" method="post" action="<?php echo site_url('/forgot-password/') . ((isset($_GET['auth_token'])) ? '?auth_token=' . $_GET['auth_token'] : null); ?>" shc:gizmo="transFormer" />
 
           <ul class="form-fields">
               <?php if(! isset($_GET['auth_token'])):?>
@@ -64,8 +64,34 @@ get_template_part('parts/header'); ?>
               <?php else:?>
               <li>
                   <dl class="clearfix">
-                      <dt class="span3"><label for="login_email">New Password:</label></dt>
-                      <dd class="span9"><input type="text" name="new_password" class="input_text" id="new_password" /></dd>
+                      <dt class="span3"><label for="new_password">New Password:</label></dt>
+                      <dd class="span9"><input type="password" 
+                      							name="new_password"
+                      							autocomplete="off" 
+                      							class="input_text input_password" 
+                      							id="new_password"
+                      							shc:gizmo:form="{required:true, pattern: /^\w*(?=\w{8,})(?=\w*\d)(?=\w*[a-zA-Z])(?!\w*_)\w*$/, message: 'Please enter a valid password.'}"
+                            					shc:gizmo="tooltip"
+					                            shc:gizmo:options="
+					                            {
+					                                tooltip: {
+					                                    displayData: {
+					                                        element: 'passInfo'
+					                                    },
+					                                    events: {
+					                                        click: {
+					                                            active: false
+					                                        },
+					                                        blur: {
+					                                            active: true
+					                                        },
+					                                        focus: {
+					                                            active: true
+					                                        }
+					                                    },
+					                                    arrowPosition: 'left'
+					                                }
+					                            }" /></dd>
                   </dl>
               </li>
               
@@ -81,6 +107,17 @@ get_template_part('parts/header'); ?>
                   </dl>
               </li>
           </ul>
+	          <div id="passInfo" class="info hide">
+	            <p class="bold">Your password must have:</p>
+	            <ul>
+	                <li>6 or more characters total</li>
+	                <li>At least one letter</li>
+	                <li>At least one number</li>
+	                <li>No space</li>
+	                <li>No special characters such as ! or ?</li>
+	            </ul>
+	            <p>All passwords are cAsE sEnSiTiVe.</p>
+	        </div>
 				</form>
 				
 			</section>
