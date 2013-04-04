@@ -860,15 +860,17 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 #header.sears form #input_search { background: transparent no-repeat 0px 0px; border: none; height: 1.538em; padding: 0.153em 0 0.153em 1.846em; margin-right: 11%; width: 82%; }
 #header.sears form #button_search { background: #ca4019 repeat-x 0px -44px; border: 0; color: white; height: 1.9em; padding-bottom: .25em; position: absolute; right: 0px; top: 0px; width: 3.33em; }
 
-html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg?v=1364402468') repeat 0px 0px; color: #4d4d4f; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; height: auto; }
+html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg?v=1364928436') repeat 0px 0px; color: #4d4d4f; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; height: auto; }
 
 .menu-sears-ribbon-container, .menu-kmart-ribbon-container { position: relative; z-index: 100; }
 
-#container, #persistent-header { background: transparent url('../img/outdoorstyle/background_container-noise.jpg?v=1364408973') repeat 0px 0px; }
+#container, #persistent-header { background: transparent url('../img/outdoorstyle/background_container-noise.jpg?v=1364928436') repeat 0px 0px; }
 
 #container { -webkit-box-shadow: rgba(0, 0, 0, 0.75) 0 10px 21px 14px; -moz-box-shadow: rgba(0, 0, 0, 0.75) 0 10px 21px 14px; box-shadow: rgba(0, 0, 0, 0.75) 0 10px 21px 14px; padding: 0px 10px; }
 
 .content-container .content-header h3 { font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-weight: 700; }
+
+.sears a, .sears a:visited, .sears a:hover { color: #067bb5; }
 
 #content > section.span12 { border-top: none; }
 
@@ -904,6 +906,24 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .featured-question.content-container .content-body { padding: 3.7em 0.769em 0.769em; }
 .featured-question.content-container .content-body h1 a:before { content: "\201C"; }
 .featured-question.content-container .content-body h1 a:after { content: "\201D"; }
+
+.span4 .dropzone-inner-wrapper.border-left .content-container .content-header { border-top: none; }
+.span4 .dropzone-inner-wrapper.border-left .content-container .content-header h3 { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 153.846%; font-weight: 300; }
+.span4 .dropzone-inner-wrapper.border-left .content-container .content-header h4 { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 92.307%; font-weight: 400; }
+
+.dropzones.span12 > .dropzone > .dropzone-inner-wrapper.border-left > .content-container.image-widget .content-body { border-top: solid 1px #dedede; }
+
+.wp-polls .wp-polls-form .content-header { padding: 0px; }
+.wp-polls .wp-polls-form .content-header h1, .wp-polls .wp-polls-form .content-header p { padding: 0.769em; }
+.wp-polls .wp-polls-form .content-header h1 { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 153.846%; font-weight: 400; padding: 0.5em 0.5em 0; }
+.wp-polls .wp-polls-form .content-header h1.content-headline { color: #2b2b2b; }
+.wp-polls .wp-polls-form .content-header p { font-style: normal; font-weight: 700; padding: 0px 0.83em 0em; }
+.wp-polls .wp-polls-form .content-header h3 { border-bottom: solid 1px #dedede; padding: 0.5em; word-spacing: 0px; }
+.wp-polls .wp-polls-form .content-header h3 span { font-weight: 300; }
+.wp-polls .wp-polls-form .content-body { border-top: none; }
+
+#menu-outdoor-style-design-your-outdoor-space li { background: transparent url('../img/outdoorstyle/background_design-your-outdoor-space.gif?v=1364929472') repeat-x 0px 0px; }
+#menu-outdoor-style-design-your-outdoor-space li a { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 153.846%; font-weight: 300; }
 
 #header.sears form #button_search, #header.sears form #input_search, .sears_button { background-image: url('../img/sears/sprite_global.png?v=1363102271'); }
 
