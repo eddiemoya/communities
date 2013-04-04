@@ -43,9 +43,10 @@ get_template_part('parts/header'); ?>
 	<section class="span8">
 <?php endif;?>	
 
-		<?php if(isset($response)) echo $response['message'] ;?>
 		<article class="content-container forgot-password span12">
 			<section class="content-body clearfix">
+			
+	<?php if(empty($_POST)):?>
 				<h6 class="content-headline"><?php echo (isset($_GET['auth_token'])) ? 'Enter New Password' : 'Forgot Password'?></h6>
 				<p>
         	<?php echo (isset($_GET['auth_token'])) ? 'Enter a new password for your account below.' : 'Please verify the email address this account and press continue.';?>
@@ -119,7 +120,25 @@ get_template_part('parts/header'); ?>
 	            <p>All passwords are cAsE sEnSiTiVe.</p>
 	        </div>
 				</form>
+		<?php else:?>
+			<h6 class="content-headline">
+				<?php if(isset($_GET['auth_token'])):
 				
+						echo ($response['code'] == '200') ? 'Congratulations!' : 'Oops! There was a problem.';
+				?>
+					
+				
+				<?php else:
+						
+						echo ($response['code'] == '200') ? 'You\'re almost done!' : 'Oops! There was a problem.';
+				?>
+				
+				<?php endif;?>
+			</h6>		
+				
+			<p><?php if(isset($response)) echo $response['message'] ;?> </p>
+		
+		<?php endif;?>
 			</section>
 	
 		</article>
