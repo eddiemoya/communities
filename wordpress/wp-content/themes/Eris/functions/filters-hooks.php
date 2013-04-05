@@ -855,6 +855,16 @@ function add_attachment_slide_link_url( $form_fields, $post ) {
 		'helps' => 'When used on a Hero Slider item, this will direct user to linked webpage (either internal or external)',
 	);
 	
+	$show_title = get_post_meta($post->ID, 'slide-hide-title', true);
+	
+	$form_fields['slide-hide-title'] = array(
+		'label' => 'Hide Slide Title Bar',
+		'input' => 'html',
+		'html'	=> '<label for="attachments-'.$post->ID.'-show-title"><input type="checkbox" name="attachments['.$post->ID.'][slide-hide-title]" value="1"'.($show_title ? ' checked="checked"' : '').' /> Yes</label>',
+		'value' => $show_title,
+		'helps' => 'Check to hide title bar',
+	);
+	
 	return $form_fields;
 }
 
@@ -864,10 +874,24 @@ function add_attachment_slide_link_url_save( $post, $attachment ) {
 	if( isset( $attachment['slide-link-url'] ) )
 		update_post_meta( $post['ID'], 'slide-link-url', $attachment['slide-link-url'] );
 	
+	if( isset( $attachment['slide-hide-title'] ) )
+		update_post_meta( $post['ID'], 'slide-hide-title', $attachment['slide-hide-title'] );
 	return $post;
 }
 
 add_filter( 'attachment_fields_to_save', 'add_attachment_slide_link_url_save', 10, 2 );
+
+function add_post_slide_title_hide_save( $post ) {
+	$hide_title = ($_POST['slide-hide-title']==1) ? 1 : 0;
+	$current_meta = get_post_meta($post, 'slide-hide-title');
+	$hide_title_current = ($current_meta==1) ? 1 : 0;
+	update_post_meta( $post, 'slide-hide-title', $hide_title );
+	echo $hide_title; echo "-"; echo $hide_title_current; exit();
+	//if( $hide_title )
+	return $post;
+}
+
+add_filter( 'save_post', 'add_post_slide_title_hide_save', 10, 2 );
 
 function enable_more_buttons($buttons) {
 	$buttons[] = 'hr';

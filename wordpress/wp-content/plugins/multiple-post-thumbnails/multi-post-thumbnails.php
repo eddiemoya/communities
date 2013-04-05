@@ -130,7 +130,7 @@ if (!class_exists('MultiPostThumbnails')) {
 			}
 
 			$ajax_nonce = wp_create_nonce("set_post_thumbnail-{$this->post_type}-{$this->id}-{$calling_post_id}");
-			$link = sprintf('<a id="%4$s-%1$s-thumbnail-%2$s" class="%1$s-thumbnail" href="#" onclick="MultiPostThumbnailsSetAsThumbnail(\'%2$s\', \'%1$s\', \'%4$s\', \'%5$s\');return false;">Set as %3$s</a>', $this->id, $post->ID, $this->label, $this->post_type, $ajax_nonce);
+			$link = sprintf('<a id="%4$s-%1$s-thumbnail-%2$s" class="%1$s-thumbnail" href="#" onclick="MultiPostThumbnailsSetAsThumbnail(\'%2$s\', \'%1$s\', \'%4$s\', \'%5$s\');return false;">Set as %3$s</a>', $this->id, $post->ID, $this->label, $this->post_type, $ajax_nonce, $this->title_show);
 			$form_fields["{$this->post_type}-{$this->id}-thumbnail"] = array(
 				'label' => $this->label,
 				'input' => 'html',
@@ -305,6 +305,8 @@ if (!class_exists('MultiPostThumbnails')) {
 					$content = sprintf($set_thumbnail_link, $thumbnail_html);
 					$content .= sprintf('<p class="hide-if-no-js"><a href="#" id="remove-%1$s-%2$s-thumbnail" onclick="MultiPostThumbnailsRemoveThumbnail(\'%2$s\', \'%1$s\', \'%4$s\');return false;">%3$s</a></p>', $this->post_type, $this->id, esc_html__( "Remove {$this->label}" ), $ajax_nonce);
 				}
+				$show_title = get_post_meta($post_ID, 'slide-hide-title');
+				$content .= '<label for="'.$post_ID.'-show-title">Hide Post Title <input type="checkbox" name="slide-hide-title" value="1"'.($show_title ? ' checked="checked"' : '').' /></label>';
 				$content_width = $old_content_width;
 			}
 
