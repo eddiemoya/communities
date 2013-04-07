@@ -286,6 +286,15 @@ form {}
     margin-top: 10px;
   }
 }
+.post-type-archive {
+  .content-container {
+    .content-video {
+      height:auto;
+      padding:0px;
+    }
+  }
+}
+
 .content-body {
   p {
     line-height:1.7em;
