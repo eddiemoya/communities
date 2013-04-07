@@ -291,6 +291,8 @@ ul.bullets { list-style-type: disc; }
 .content-container .content-video + .content-details { margin-top: 1.5em; }
 .content-container .share-full { margin-top: 10px; }
 
+.post-type-archive .content-container .content-video { height: auto; padding: 0px; }
+
 .content-body p { line-height: 1.7em; margin-bottom: 1em; }
 
 .span4 .content-container .content-body .content-comments li, .span3 .content-container .content-body .content-comments li { border-left: 0; float: none; }
@@ -850,7 +852,7 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .hero-slider .rotating-banner .rotating-banner-navigation { bottom: 1em; left: 50%; margin-left: -5%; position: absolute; top: auto; z-index: 25; }
 .hero-slider .rotating-banner .rotating-banner-navigation .active { background: #ff0033; }
 .hero-slider .rotating-banner .rotating-banner-navigation a { background-color: #ffffff; display: block; float: left; height: 1em; margin-right: .5em; width: 1em; z-index: 30; }
-.hero-slider .rotating-banner .banner { cursor: pointer; }
+.hero-slider .rotating-banner .banner.banner_link { cursor: pointer; }
 .hero-slider .rotating-banner .in-transit { z-index: 24; }
 .hero-slider a.prev-slide { background: url('../img/hero-slide-left.png?v=1363118799') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; left: 0px; z-index: 30; }
 .hero-slider a.next-slide { background: url('../img/hero-slide-right.png?v=1363118799') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; right: 1px; z-index: 30; }
@@ -860,11 +862,13 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 #header.sears form #input_search { background: transparent no-repeat 0px 0px; border: none; height: 1.538em; padding: 0.153em 0 0.153em 1.846em; margin-right: 11%; width: 82%; }
 #header.sears form #button_search { background: #ca4019 repeat-x 0px -44px; border: 0; color: white; height: 1.9em; padding-bottom: .25em; position: absolute; right: 0px; top: 0px; width: 3.33em; }
 
-html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg?v=1364928436') repeat 0px 0px; color: #4d4d4f; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; height: auto; }
+html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg?v=1365523760') repeat 0px 0px; color: #4d4d4f; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; height: auto; }
+
+#content { color: #4d4d4f; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; }
 
 .menu-sears-ribbon-container, .menu-kmart-ribbon-container { position: relative; z-index: 100; }
 
-#container, #persistent-header { background: transparent url('../img/outdoorstyle/background_container-noise.jpg?v=1364928436') repeat 0px 0px; }
+#container, #persistent-header { background: transparent url('../img/outdoorstyle/background_container-noise.jpg?v=1365523760') repeat 0px 0px; }
 
 #container { -webkit-box-shadow: rgba(0, 0, 0, 0.75) 0 10px 21px 14px; -moz-box-shadow: rgba(0, 0, 0, 0.75) 0 10px 21px 14px; box-shadow: rgba(0, 0, 0, 0.75) 0 10px 21px 14px; padding: 0px 10px; }
 
@@ -874,7 +878,7 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 
 #content > section.span12 { border-top: none; }
 
-.dropzones.span12 > .dropzone > .dropzone-inner-wrapper > .content-container.image-widget .content-body { border: none; text-align: center; }
+.single .span12 > .span8 .dropzone-inner-wrapper > .image-widget .content-body, .dropzones.span12 > .dropzone > .dropzone-inner-wrapper > .content-container.image-widget .content-body { border: none; text-align: center; }
 
 .menu-odssubnavigation.content-container .content-body { border: none; }
 
@@ -888,16 +892,20 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .category-outdoorstyle #menu-odssubnavigation .ods_nav_home { font-weight: 400; }
 .category-outdoorstyle #menu-odssubnavigation .ods_nav_home a, .category-outdoorstyle #menu-odssubnavigation .ods_nav_home a:visited, .category-outdoorstyle #menu-odssubnavigation .ods_nav_home a:hover { border-bottom: solid 1px #e78e60; color: #666666; }
 
-.content-container.featured-post { margin-top: 1.54em; }
-.content-container.featured-post .content-header { background-color: #4d4d4f; border: none; font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-weight: 700; left: 1px; padding: 0.5em 0.769em; position: absolute; top: 1px; }
-.content-container.featured-post .content-header h3 { color: #ffffff; font-size: 123.076%; text-transform: uppercase; }
-.content-container.featured-post .content-body { background: #ffffff; border: solid 1px #e3e1e1; padding: 0px; }
+.category-outdoorstyle[class*="post-type-"] #menu-odssubnavigation li.ods_nav_home a, .category-outdoorstyle[class*="post-type-"] #menu-odssubnavigation li.ods_nav_home a:visited, .category-outdoorstyle[class*="post-type-"] #menu-odssubnavigation li.ods_nav_home a:hover { border-bottom: none; color: #067bb5; font-weight: 300; }
+
+.archive_posts #menu-odssubnavigation li.ods_nav_blog a, .archive_posts #menu-odssubnavigation li.ods_nav_blog a:visited, .archive_posts #menu-odssubnavigation li.ods_nav_blog a:hover, .single-post #menu-odssubnavigation li.ods_nav_blog a, .single-post #menu-odssubnavigation li.ods_nav_blog a:visited, .single-post #menu-odssubnavigation li.ods_nav_blog a:hover { border-bottom: solid 1px #e78e60; color: #666666; font-weight: 400; }
+
+.results-list .content-container, .content-container.featured-post { margin-top: 1.54em; }
+.results-list .content-container .content-header, .content-container.featured-post .content-header { background-color: #4d4d4f; border: none; font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-weight: 700; left: 1px; padding: 0.5em 0.769em; position: absolute; top: 1px; }
+.results-list .content-container .content-header h3, .content-container.featured-post .content-header h3 { color: #ffffff; font-size: 123.076%; text-transform: uppercase; }
+.results-list .content-container .content-body, .content-container.featured-post .content-body { background: #ffffff; border: solid 1px #e3e1e1; padding: 0px; }
 
 .content-body .content-headline { border-bottom: solid 2px #4d4d4f; font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-size: 207.692%; padding-bottom: 0.37em; }
 .content-body .content-headline a, .content-body .content-headline a:visited, .content-body .content-headline a:hover { color: #4d4d4f; }
-.content-body .featured-content { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; padding: 0.769em; }
+.results-list .content-body .featured-image + .span6, .results-list .content-body .content-video + .span6, .content-body .featured-content, .results-list .content-body .featured-image + .span12, .results-list .content-body .content-video + .span12 { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; padding: 0.769em; }
 
-.span12 > .content-body .featured-image + .featured-content { padding-left: 0px; }
+.span12 > .content-body .featured-image + .featured-content, .span12 > .content-body .featured-image + .span6, .span12 > .content-body .content-video + .span6 { padding-left: 0px; }
 
 .post-actions { margin: 0 -0.5em; }
 
@@ -907,23 +915,76 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .featured-question.content-container .content-body h1 a:before { content: "\201C"; }
 .featured-question.content-container .content-body h1 a:after { content: "\201D"; }
 
+.addthis.dropmenu .sharebutton { font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; }
+
 .span4 .dropzone-inner-wrapper.border-left .content-container .content-header { border-top: none; }
 .span4 .dropzone-inner-wrapper.border-left .content-container .content-header h3 { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 153.846%; font-weight: 300; }
 .span4 .dropzone-inner-wrapper.border-left .content-container .content-header h4 { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 92.307%; font-weight: 400; }
 
 .dropzones.span12 > .dropzone > .dropzone-inner-wrapper.border-left > .content-container.image-widget .content-body { border-top: solid 1px #dedede; }
 
-.wp-polls .wp-polls-form .content-header { padding: 0px; }
-.wp-polls .wp-polls-form .content-header h1, .wp-polls .wp-polls-form .content-header p { padding: 0.769em; }
-.wp-polls .wp-polls-form .content-header h1 { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 153.846%; font-weight: 400; padding: 0.5em 0.5em 0; }
-.wp-polls .wp-polls-form .content-header h1.content-headline { color: #2b2b2b; }
-.wp-polls .wp-polls-form .content-header p { font-style: normal; font-weight: 700; padding: 0px 0.83em 0em; }
-.wp-polls .wp-polls-form .content-header h3 { border-bottom: solid 1px #dedede; padding: 0.5em; word-spacing: 0px; }
-.wp-polls .wp-polls-form .content-header h3 span { font-weight: 300; }
-.wp-polls .wp-polls-form .content-body { border-top: none; }
+.widget_polls-widget .wp-polls .wp-polls-form .content-header p { font-style: normal; font-weight: 700; padding: 0px 0.83em 0em; }
+.widget_polls-widget .wp-polls .content-header { padding: 0px; }
+.widget_polls-widget .wp-polls .content-header h1, .widget_polls-widget .wp-polls .content-header p { padding: 0.769em; }
+.widget_polls-widget .wp-polls .content-header h1 { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 153.846%; font-weight: 400; padding: 0.5em 0.5em 0; }
+.widget_polls-widget .wp-polls .content-header h1.content-headline { color: #2b2b2b; }
+.widget_polls-widget .wp-polls .content-header p { padding: 0.83em 0.83em 0; }
+.widget_polls-widget .wp-polls .content-header p + h1 { padding-bottom: 0; margin-bottom: 0; }
+.widget_polls-widget .wp-polls .content-header h3 { border-bottom: solid 1px #dedede; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-weight: 300; padding: 0.5em; word-spacing: 0px; }
+.widget_polls-widget .wp-polls .content-header h3 span { font-weight: 300; }
+.widget_polls-widget .wp-polls .content-body { border-top: none; }
 
-#menu-outdoor-style-design-your-outdoor-space li { background: transparent url('../img/outdoorstyle/background_design-your-outdoor-space.gif?v=1364929472') repeat-x 0px 0px; }
+.communities_menu_widget .subnav-items li { padding: 3px 0px; }
+
+.sears .content-container .wp-polls .info, .sears .content-container .wp-polls .total { border: none; }
+.sears .content-container .wp-polls .info > div:first-child, .sears .content-container .wp-polls .total > div:first-child { margin-left: 0; }
+.sears .content-container .wp-polls .bar { background-color: #067bb5; }
+.sears .content-container .wp-polls li span:first-child { color: #666666; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 138.461%; font-weight: 400; }
+
+.page-title .content-body { border-top: none; background-color: #ededee; }
+.page-title .content-body h1 { font-size: 153.846%; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-weight: 400; }
+.page-title .content-body h2 { font-size: 92.307%; font-weight: 400; }
+
+#menu-outdoor-style-design-your-outdoor-space li { background: transparent url('../img/outdoorstyle/background_design-your-outdoor-space.gif?v=1365523760') repeat-x 0px 0px; }
 #menu-outdoor-style-design-your-outdoor-space li a { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 153.846%; font-weight: 300; }
+
+.post-your-question { margin-top: 1em; }
+.post-your-question .content-body { background-color: #ffffff; border: solid 1px #e3e1e1; padding: 0.769em; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.post-your-question .content-body h6.content-headline { border-bottom: none; color: #4d4d4f; font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-size: 153.846%; font-weight: 700; text-transform: capitalize; }
+
+.archive_questions .results-list { border: solid 1px #e3e1e1; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; border-radius: 0; }
+.archive_questions .results-list form label { font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-size: 123.076%; font-weight: 700; }
+.archive_questions .results-list .content-header { background-color: #ffffff; border-bottom: none; }
+.archive_questions .results-list .content-body { background-color: #ffffff; }
+.archive_questions .results-list .question { border-top: solid 2px #4d4d4f; margin-top: 0; padding: 0.769em 0; }
+.archive_questions .results-list .question .content-body { border: none; }
+.archive_questions .results-list .question .content-body .content-category { font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-size: 107.692%; }
+.archive_questions .results-list .question .content-body .content-headline { border-bottom: none; font-size: 138.461%; padding: 0; }
+.archive_questions .results-list .question .content-body .content-headline a, .archive_questions .results-list .question .content-body .content-headline a:visited, .archive_questions .results-list .question .content-body .content-headline a:hover { color: #067bb5; }
+.archive_questions .results-list .pagination { font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-size: 107.692%; }
+
+.member_details .member_screen-name, .member_details .member_location { font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-size: 107.692%; }
+
+.member_details .member_location { color: #4d4d4f; font-size: 92.307%; }
+
+.image-widget { text-align: center; }
+
+.single .question, .single .post { margin-top: 1em; }
+.single .question .content-header, .single .post .content-header { display: none; }
+.single .question .content-body, .single .post .content-body { background-color: #ffffff; border: solid 1px #e3e1e1; padding: 0.769em; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.single .post h6 { border: solid #b7b7b7; border-width: 1px 0px; font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-size: 153.846%; font-weight: 700; line-height: 2em; margin-bottom: 0.5em; }
+.single .post .content-author { border-top: solid 1px #b7b7b7; padding-top: 0.5em; }
+.single .trigger.discussion { font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-weight: 700; margin-top: 0.75em; }
+
+.comments .content-header { border: none; }
+.comments .content-header h3 { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 184.615%; font-weight: 400; }
+.comments .content-header h4 { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 107.692%; line-height: 2.75em; }
+
+#allComments { background: transparent; border: none; }
+#allComments .comment { background: none; padding-left: 0px; padding-right: 0px; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; border-radius: 0; }
+#allComments .children { border-width: 1px 0px 0px; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; border-radius: 0; }
+#allComments .children .comment { border-bottom: none; }
+#allComments .trigger.discussion { font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-weight: 700; }
 
 #header.sears form #button_search, #header.sears form #input_search, .sears_button { background-image: url('../img/sears/sprite_global.png?v=1363102271'); }
 
