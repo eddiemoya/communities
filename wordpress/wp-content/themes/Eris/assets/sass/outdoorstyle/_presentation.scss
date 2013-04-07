@@ -11,6 +11,11 @@ html {
   height:auto;
 }
 
+#content {
+  color:#4d4d4f;
+  font-family:$regular;
+}
+
 .menu-sears-ribbon-container, .menu-kmart-ribbon-container {
   position:relative;
   z-index:100;
@@ -42,6 +47,7 @@ html {
   border-top:none;
 }
 
+.single .span12 > .span8 .dropzone-inner-wrapper > .image-widget .content-body,
 .dropzones.span12 > .dropzone > .dropzone-inner-wrapper > .content-container.image-widget .content-body {
   border:none;
   text-align:center;
@@ -89,11 +95,23 @@ html {
   }
 }
 
-.content-container {
-  
+.category-outdoorstyle[class*="post-type-"] #menu-odssubnavigation li.ods_nav_home {
+  a, a:visited, a:hover {
+    border-bottom:none;
+    color:#067bb5;
+    font-weight:300;
+  }
 }
 
-.content-container.featured-post {
+.archive_posts #menu-odssubnavigation li.ods_nav_blog, .single-post #menu-odssubnavigation li.ods_nav_blog {
+  a, a:visited, a:hover {
+    border-bottom:solid 1px #e78e60;
+    color:#666666;
+    font-weight:400;
+  }
+}
+
+.results-list .content-container, .content-container.featured-post {
   margin-top:1.54em;
   .content-header {
     background-color:#4d4d4f;
@@ -127,14 +145,15 @@ html {
       color:#4d4d4f;
     }
   }
-  .featured-content {
+  .results-list & .featured-image + .span6, .results-list & .content-video + .span6, .featured-content,
+  .results-list & .featured-image + .span12, .results-list & .content-video + .span12 {
     @include box-sizing(border-box);
     padding:0.769em;
   }
 }
 
 .span12 > .content-body {
-  .featured-image + .featured-content {
+  .featured-image + .featured-content, .featured-image + .span6, .content-video + .span6 {
     padding-left:0px;
   }
 }
@@ -161,9 +180,11 @@ html {
       }
     }
   }
-
 }
 
+.addthis.dropmenu .sharebutton {
+  font-family:$condensed;
+}
 
 // Shit in right rail
 .span4 .dropzone-inner-wrapper.border-left {
@@ -190,8 +211,17 @@ html {
 .dropzones.span12 > .dropzone > .dropzone-inner-wrapper.border-left > .content-container.image-widget .content-body {
   border-top:solid 1px #dedede;
 }
-.wp-polls {
-  .wp-polls-form {
+.widget_polls-widget {
+  .wp-polls {
+    .wp-polls-form {
+      .content-header {
+        p {
+          font-style:normal;
+          font-weight:700;
+          padding:0px 0.83em 0em;
+        }
+      }
+    }
     .content-header {
       padding:0px;
       h1, p {
@@ -207,12 +237,16 @@ html {
         color:#2b2b2b;
       }
       p {
-        font-style:normal;
-        font-weight:700;
-        padding:0px 0.83em 0em;
+        padding:0.83em 0.83em 0;
+      }
+      p + h1 {
+        padding-bottom:0;
+        margin-bottom:0;
       }
       h3 {
         border-bottom:solid 1px #dedede; 
+        font-family:$regular;
+        font-weight:300;
         padding:0.5em; 
         word-spacing:0px;
         span {
@@ -222,6 +256,45 @@ html {
     }
     .content-body {
       border-top:none;
+    }
+  }
+}
+
+.communities_menu_widget .subnav-items li {
+  padding:3px 0px;
+}
+
+.sears .content-container .wp-polls {
+  .info, .total {
+    border:none;
+    & > div:first-child {
+      margin-left:0;
+    }
+  }
+
+  .bar {
+    background-color:#067bb5;
+  }
+  li span:first-child {
+    color: #666666;
+    font-family:$regular;
+    font-size:font-size(18);
+    font-weight:400;
+  }
+}
+
+.page-title {
+  .content-body {
+    border-top:none;
+    background-color:#ededee;
+    h1 {
+      font-size:font-size(20);
+      font-family:$regular;
+      font-weight:400;
+    }
+    h2 {
+      font-size:font-size(12);
+      font-weight:400;
     }
   }
 }
@@ -237,6 +310,156 @@ html {
   }
 }
 
+.post-your-question {
+  margin-top:1em;
+  .content-body {
+    background-color:#ffffff;
+    border:solid 1px #e3e1e1;
+    padding:0.769em;
+    @include box-sizing(border-box);
+    h6.content-headline {
+      border-bottom:none;
+      color:#4d4d4f;
+      font-family:$condensed;
+      font-size:font-size(20);
+      font-weight:700;
+      text-transform:capitalize;
+    }
+  }
+}
+
+// QA Things
+.archive_questions {
+  .results-list {
+    //background-color:#ffffff;
+    border:solid 1px #e3e1e1;
+    @include border-radius(0);
+    form {
+      label {
+        font-family:$condensed;
+        font-size:font-size(16);
+        font-weight:700;
+      }
+    }
+    .content-header {
+      background-color:#ffffff;
+      border-bottom:none;
+    }
+    .content-body {
+      background-color:#ffffff;
+    }
+    .question {
+      border-top:solid 2px #4d4d4f;
+      margin-top:0;
+      padding:0.769em 0;
+      .content-body {
+        border:none;
+        .content-category {
+          font-family:$condensed;
+          font-size:font-size(14);
+        }
+        .content-headline {
+          border-bottom:none;
+          font-size:font-size(18);
+          padding:0;
+          a, a:visited, a:hover {
+            color:#067bb5;
+          }
+        }
+      }
+    }
+    .pagination {
+      font-family:$condensed;
+      font-size:font-size(14);
+    }
+  }
+}
+
+.member_details .member_screen-name, .member_details .member_location {
+  font-family:$condensed;
+  font-size:font-size(14);
+}
+.member_details .member_location {
+  color:#4d4d4f;
+  font-size:font-size(12);
+}
+    
+.image-widget {
+  text-align:center;
+}
+
+.single {
+  .question, .post {
+    margin-top:1em;
+    .content-header {
+      display:none;
+    }
+    .content-body {
+      background-color:#ffffff;
+      border:solid 1px #e3e1e1;
+      padding:0.769em;
+      @include box-sizing(border-box);
+    }
+  }
+  .post {
+    h6 {
+      border:solid #b7b7b7;
+      border-width:1px 0px;
+      font-family:$condensed;
+      font-size:font-size(20);
+      font-weight:700;
+      line-height:2em;
+      margin-bottom:0.5em;
+    }
+    .content-author {
+      border-top:solid 1px #b7b7b7;
+      padding-top:0.5em;
+    }
+  }
+  .trigger.discussion {
+    font-family:$condensed;
+    font-weight:700;
+    margin-top:0.75em;
+  }
+}
+
+.comments {
+  .content-header {
+    border:none;
+    h3 {
+      font-family:$regular;
+      font-size:font-size(24);
+      font-weight:400;
+    }
+    h4 {
+      font-family:$regular;
+      font-size:font-size(14);
+      line-height:2.75em;
+    }
+  }
+}
+
+#allComments {
+  background:transparent;
+  border:none;
+  .comment {
+    background:none;
+    padding-left:0px;
+    padding-right:0px;
+    @include border-radius(0);
+  }
+  .children {
+    border-width:1px 0px 0px;
+    @include border-radius(0);
+    .comment {
+      border-bottom:none;
+    }
+  }
+  .trigger.discussion {
+    font-family:$condensed;
+    font-weight:700;
+  }
+}
 // Sprites
 #header.sears form #button_search, #header.sears form #input_search,
 .sears_button
