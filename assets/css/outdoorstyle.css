@@ -886,6 +886,7 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 
 #menu-odssubnavigation li { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 184.615%; font-weight: 300; float: left; text-align: center; width: 18%; }
 #menu-odssubnavigation li a, #menu-odssubnavigation li a:visited, #menu-odssubnavigation li a:hover { color: #067bb5; }
+#menu-odssubnavigation li a:hover { text-decoration: none; }
 #menu-odssubnavigation li:first-child { text-align: left; }
 #menu-odssubnavigation .ods_nav_guides { text-align: right; }
 #menu-odssubnavigation .ods_nav_questions { width: 28%; }
@@ -933,6 +934,8 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .widget_polls-widget .wp-polls .content-header h3 { border-bottom: solid 1px #dedede; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-weight: 300; padding: 0.5em; word-spacing: 0px; }
 .widget_polls-widget .wp-polls .content-header h3 span { font-weight: 300; }
 .widget_polls-widget .wp-polls .content-body { border-top: none; }
+.widget_polls-widget .results li span + span + span { padding-top: 2em; text-align: center; }
+.widget_polls-widget .results li:nth-child(odd) { background-color: #ebedee; }
 
 .communities_menu_widget .subnav-items li { padding: 3px 0px; }
 
@@ -990,6 +993,13 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .dropzone.span8 .hero-slider .rotating-banner { height: auto; left: 0; top: 0; width: auto; }
 .dropzone.span8 .hero-slider .rotating-banner h1 { display: none; }
 .dropzone.span8 .hero-slider .next-slide, .dropzone.span8 .hero-slider .prev-slide { display: none; }
+
+.communities_menu_widget .image-list-style a span { margin: 0 0.77em; width: auto; }
+
+.archive_posts .results-list .content-container .content-category, .archive_guides .results-list .content-container .content-category { display: none; }
+.archive_posts .results-list .content-container .content-date, .archive_guides .results-list .content-container .content-date { float: left; }
+.archive_posts .results-list .content-author, .archive_guides .results-list .content-author { display: none; }
+.archive_posts .results-list .content-headline, .archive_guides .results-list .content-headline { margin-bottom: 0.5em; }
 
 #header.sears form #button_search, #header.sears form #input_search, .sears_button { background-image: url('../img/sears/sprite_global.png?v=1365210687'); }
 
