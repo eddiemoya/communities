@@ -967,7 +967,7 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 
 .member_details .member_location { color: #4d4d4f; font-size: 92.307%; }
 
-.image-widget { text-align: center; }
+.image-widget .content-body { text-align: center; }
 
 .single .question, .single .post { margin-top: 1em; }
 .single .question .content-header, .single .post .content-header { display: none; }
