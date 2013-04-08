@@ -70,6 +70,9 @@ html {
     a, a:visited, a:hover {
       color:#067bb5;
     }
+    a:hover {
+      text-decoration:none;
+    }
     font-family:$regular;
     font-size:font-size(24);
     font-weight:300;
@@ -260,6 +263,17 @@ html {
     }
     .content-body {
       border-top:none;
+    }
+  }
+  .results {
+    li {
+      span + span + span {
+        padding-top:2em;
+        text-align:center;
+      }
+    }
+    li:nth-child(odd) {
+      background-color:#ebedee;
     }
   }
 }
@@ -480,6 +494,28 @@ html {
   }
   .next-slide, .prev-slide {
     display:none;
+  }
+}
+
+.communities_menu_widget .image-list-style a span {
+  margin:0 0.77em;
+  width:auto;
+}
+
+.archive_posts .results-list, .archive_guides .results-list {
+  .content-container {
+    .content-category {
+      display:none;
+    }
+    .content-date {
+      float:left;
+    }
+  }
+  .content-author {
+    display:none;
+  }
+  .content-headline {
+    margin-bottom:0.5em;
   }
 }
 
