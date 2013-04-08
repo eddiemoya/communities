@@ -856,6 +856,8 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .hero-slider a.prev-slide { background: url('../img/hero-slide-left.png?v=1365210686') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; left: 0px; z-index: 30; }
 .hero-slider a.next-slide { background: url('../img/hero-slide-right.png?v=1365210686') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; right: 1px; z-index: 30; }
 
+.pre-load > *:first-child { display: block; left: auto; position: relative; top: auto; }
+
 @media only screen and (max-width: 730px) { .rotating-banner .rotating-banner-navigation a { height: .75em; width: 0.75em; } }
 .weather-sprite, .weather-chanceflurries, .weather-chancerain, .weather-chancesleet, .weather-chancesnow, .weather-chancetstorms, .weather-clear, .weather-cloudy, .weather-flurries, .weather-fog, .weather-hazy, .weather-mostlycloudy, .weather-mostlysunny, .weather-partlycloudy, .weather-partlysunny, .weather-rain, .weather-sleet, .weather-snow, .weather-sunny, .weather-tstorms { background: url('../img/weather-sff9c80684d.png') no-repeat; }
 
