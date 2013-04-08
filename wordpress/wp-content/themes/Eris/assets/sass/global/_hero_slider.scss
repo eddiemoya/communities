@@ -93,6 +93,13 @@
 	}
 }
 
+.pre-load > *:first-child {
+	display:block;
+	left:auto;
+	position:relative;
+	top:auto;
+}
+
 @media only screen and (min-width: 731px) and (max-width: 864px) {
 
 }
