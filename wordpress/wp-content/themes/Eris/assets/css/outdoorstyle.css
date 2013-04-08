@@ -997,7 +997,6 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .communities_menu_widget .image-list-style a span { margin: 0 0.77em; width: auto; }
 
 .archive_posts .results-list .content-container .content-category, .archive_guides .results-list .content-container .content-category { display: none; }
-.archive_posts .results-list .content-container .content-date, .archive_guides .results-list .content-container .content-date { float: left; }
 .archive_posts .results-list .content-author, .archive_guides .results-list .content-author { display: none; }
 .archive_posts .results-list .content-headline, .archive_guides .results-list .content-headline { margin-bottom: 0.5em; }
 
