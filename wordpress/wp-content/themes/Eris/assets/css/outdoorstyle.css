@@ -894,7 +894,7 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 
 .category-outdoorstyle[class*="post-type-"] #menu-odssubnavigation li.ods_nav_home a, .category-outdoorstyle[class*="post-type-"] #menu-odssubnavigation li.ods_nav_home a:visited, .category-outdoorstyle[class*="post-type-"] #menu-odssubnavigation li.ods_nav_home a:hover { border-bottom: none; color: #067bb5; font-weight: 300; }
 
-.archive_posts #menu-odssubnavigation li.ods_nav_blog a, .archive_posts #menu-odssubnavigation li.ods_nav_blog a:visited, .archive_posts #menu-odssubnavigation li.ods_nav_blog a:hover, .single-post #menu-odssubnavigation li.ods_nav_blog a, .single-post #menu-odssubnavigation li.ods_nav_blog a:visited, .single-post #menu-odssubnavigation li.ods_nav_blog a:hover { border-bottom: solid 1px #e78e60; color: #666666; font-weight: 400; }
+.archive_posts #menu-odssubnavigation li.ods_nav_blog a, .archive_posts #menu-odssubnavigation li.ods_nav_blog a:visited, .archive_posts #menu-odssubnavigation li.ods_nav_blog a:hover, .single-post #menu-odssubnavigation li.ods_nav_blog a, .single-post #menu-odssubnavigation li.ods_nav_blog a:visited, .single-post #menu-odssubnavigation li.ods_nav_blog a:hover, .archive_questions #menu-odssubnavigation li.ods_nav_questions a, .archive_questions #menu-odssubnavigation li.ods_nav_questions a:visited, .archive_questions #menu-odssubnavigation li.ods_nav_questions a:hover, .single-question #menu-odssubnavigation li.ods_nav_questions a, .single-question #menu-odssubnavigation li.ods_nav_questions a:visited, .single-question #menu-odssubnavigation li.ods_nav_questions a:hover, .archive_guides #menu-odssubnavigation li.ods_nav_guides a, .archive_guides #menu-odssubnavigation li.ods_nav_guides a:visited, .archive_guides #menu-odssubnavigation li.ods_nav_guides a:hover, .single-guide #menu-odssubnavigation li.ods_nav_guides a, .single-guide #menu-odssubnavigation li.ods_nav_guides a:visited, .single-guide #menu-odssubnavigation li.ods_nav_guides a:hover { border-bottom: solid 1px #e78e60; color: #666666; font-weight: 400; }
 
 .results-list .content-container, .content-container.featured-post { margin-top: 1.54em; }
 .results-list .content-container .content-header, .content-container.featured-post .content-header { background-color: #4d4d4f; border: none; font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-weight: 700; left: 1px; padding: 0.5em 0.769em; position: absolute; top: 1px; }
@@ -985,6 +985,11 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 #allComments .children { border-width: 1px 0px 0px; -webkit-border-radius: 0; -moz-border-radius: 0; -ms-border-radius: 0; -o-border-radius: 0; border-radius: 0; }
 #allComments .children .comment { border-bottom: none; }
 #allComments .trigger.discussion { font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-weight: 700; }
+
+.dropzone.span8 .hero-slider { background: none; height: auto; width: auto; }
+.dropzone.span8 .hero-slider .rotating-banner { height: auto; left: 0; top: 0; width: auto; }
+.dropzone.span8 .hero-slider .rotating-banner h1 { display: none; }
+.dropzone.span8 .hero-slider .next-slide, .dropzone.span8 .hero-slider .prev-slide { display: none; }
 
 #header.sears form #button_search, #header.sears form #input_search, .sears_button { background-image: url('../img/sears/sprite_global.png?v=1363102271'); }
 

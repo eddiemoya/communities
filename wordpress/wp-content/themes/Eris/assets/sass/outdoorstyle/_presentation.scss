@@ -103,13 +103,17 @@ html {
   }
 }
 
-.archive_posts #menu-odssubnavigation li.ods_nav_blog, .single-post #menu-odssubnavigation li.ods_nav_blog {
+.archive_posts #menu-odssubnavigation li.ods_nav_blog, .single-post #menu-odssubnavigation li.ods_nav_blog,
+.archive_questions #menu-odssubnavigation li.ods_nav_questions, .single-question #menu-odssubnavigation li.ods_nav_questions,
+.archive_guides #menu-odssubnavigation li.ods_nav_guides, .single-guide #menu-odssubnavigation li.ods_nav_guides {
   a, a:visited, a:hover {
     border-bottom:solid 1px #e78e60;
     color:#666666;
     font-weight:400;
   }
 }
+
+
 
 .results-list .content-container, .content-container.featured-post {
   margin-top:1.54em;
@@ -460,6 +464,25 @@ html {
     font-weight:700;
   }
 }
+
+.dropzone.span8 .hero-slider {
+  background:none;
+  height:auto;
+  width:auto;
+  .rotating-banner {
+    height:auto;
+    left:0;
+    top:0;
+    width:auto;
+    h1 {
+      display:none;
+    }
+  }
+  .next-slide, .prev-slide {
+    display:none;
+  }
+}
+
 // Sprites
 #header.sears form #button_search, #header.sears form #input_search,
 .sears_button
