@@ -23,7 +23,7 @@ class Section_Front{
 
 		add_action( 'init', 					array(__CLASS__, 'register_sections_type') );
 		add_action( 'save_post', 				array(__CLASS__, 'save_section') );
-		//add_action( 'wp_loaded',				array(__CLASS__, 'flush_custom_rules' ) );
+		add_action( 'wp_loaded',				array(__CLASS__, 'flush_custom_rules' ) );
 		add_filter( 'rewrite_rules_array',		array(__CLASS__, 'section_rewrite_rules') );
 		add_filter('query_vars', 				array(__CLASS__, 'add_var'));
 		//add_action('pre_get_posts', 		array(__CLASS__, 'custom_primary_query'));
@@ -35,6 +35,7 @@ class Section_Front{
 		$qvars[] = 'old_post_type';
 		$qvars[] = 'old_category';
 		$qvars[] = 'old_paged';
+		$qvars[] = 'old_format';
 
 
 		return $qvars;
@@ -171,9 +172,14 @@ class Section_Front{
 				$post->meta['rewrite_tax_question'] = get_post_meta($post->ID, 'widgetpress_post_type_question', true);
 				$post->meta['rewrite_tax_post'] = get_post_meta($post->ID, 'widgetpress_post_type_post', true);
 
+
+				$post->meta['rewrite_format_archive'] = get_post_meta($post->ID, 'widgetpress_format_archive', true);
+				$post->meta['rewrite_category_format'] = get_post_meta($post->ID, 'widgetpress_category_format', true);
+
 				$post->meta['rewrite_guide'] = get_post_meta($post->ID, 'widgetpress_guide_archive', true);
 				$post->meta['rewrite_question'] = get_post_meta($post->ID, 'widgetpress_question_archive', true);
 				$post->meta['rewrite_post'] = get_post_meta($post->ID, 'widgetpress_post_archive', true);
+
 
 				$post_types = array();
 
@@ -192,8 +198,21 @@ class Section_Front{
 					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_post_type=$matches[1]&old_paged=$matches[2]';
 				}
 
+				//Taxonomy/Format Intersection
+				if( !empty($post->meta['rewrite_category_format']) ){
+					$formats[] = (!empty($post->meta['rewrite_category_format'])) 		? 'video' 		:  '';
+
+
+					$endpoint_pattern = implode('|', array_filter($formats));
+					$new_rules["{$term->taxonomy}/{$term->slug}/({$endpoint_pattern})/?$"] 
+					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_format=$matches[1]';
+
+					$new_rules["{$term->taxonomy}/{$term->slug}/({$endpoint_pattern})/page/?([0-9]{1,})/?$"] 
+					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_format=$matches[1]&old_paged=$matches[2]';
+				}
+
 				//Post Type Archive
-				if( !empty($post->meta['rewrite_guide']) || !empty($post->meta['rewrite_question']) || !empty($post->meta['rewrite_post']) ){
+				if( !empty($post->meta['rewrite_guide']) || !empty($post->meta['rewrite_question']) || !empty($post->meta['rewrite_post'])){
 					$post_types[] = (!empty($post->meta['rewrite_guide'])) 		? 'guide' 		:  '';
 					$post_types[] = (!empty($post->meta['rewrite_question'])) 	? 'question' 	:  '';
 					$post_types[] = (!empty($post->meta['rewrite_post'])) 		? 'post' 		:  '';
@@ -206,16 +225,37 @@ class Section_Front{
 					= 'index.php?post_type=section&p='.$post->ID.'&old_post_type=$matches[1]&category_name='.$term->slug.'&old_paged=$matches[2]';
 				}
 
-				//Taxonomy Archive
-				if(!empty($post->meta['rewrite_tax_archive'])){
-					$new_rules["{$term->taxonomy}/({$term->slug})/?$"] 
-					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug;
+				//Format Archive
+				if( !empty($post->meta['rewrite_format_archive'])){
+					$formats[] = (!empty($post->meta['rewrite_format_archive'])) 	? 'video' 	:  '';
 
-					$new_rules["{$term->taxonomy}/({$term->slug})/page/?([0-9]{1,})/?$"] 
-					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_paged=$matches[1]';
+					$endpoint_pattern = implode('|', array_filter($formats));
+					$new_rules["({$endpoint_pattern})s?/?$"] 
+					= 'index.php?post_type=section&p='.$post->ID.'&old_format=$matches[1]&category_name='.$term->slug;
+
+					$new_rules["({$endpoint_pattern})s?/page/?([0-9]{1,})/?$"] 
+					= 'index.php?post_type=section&p='.$post->ID.'&old_format=$matches[1]&category_name='.$term->slug.'&old_paged=$matches[2]';
+
 				}
+
+
+				// //Category/Format filters
+				// if( !empty($post->meta['rewrite_tax_format']) ){
+				// 	$taxonomies[] = (!empty($post->meta['rewrite_tax_format'])) 		? 'video' 	:  '';
+
+				// 	$endpoint_pattern = implode('|', array_filter($post_types));
+
+				// 	$new_rules["{$term->taxonomy}/({$term->slug})/?$"] 
+				// 	= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug;
+
+				// 	$new_rules["{$term->taxonomy}/({$term->slug})/page/?([0-9]{1,})/?$"] 
+				// 	= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_paged=$matches[1]';
+				// }
+
 				$tposts[] = $post;
 			}	
+
+
 		}
 		
 		//echo "<pre>";print_r(array($new_rules, $tposts,$terms));echo "</pre>";
