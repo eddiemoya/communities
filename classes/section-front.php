@@ -23,7 +23,7 @@ class Section_Front{
 
 		add_action( 'init', 					array(__CLASS__, 'register_sections_type') );
 		add_action( 'save_post', 				array(__CLASS__, 'save_section') );
-		add_action( 'wp_loaded',				array(__CLASS__, 'flush_custom_rules' ) );
+		//add_action( 'wp_loaded',				array(__CLASS__, 'flush_custom_rules' ) );
 		add_filter( 'rewrite_rules_array',		array(__CLASS__, 'section_rewrite_rules') );
 		add_filter('query_vars', 				array(__CLASS__, 'add_var'));
 		//add_action('pre_get_posts', 		array(__CLASS__, 'custom_primary_query'));
@@ -224,6 +224,15 @@ class Section_Front{
 					$new_rules["({$endpoint_pattern})s?/page/?([0-9]{1,})/?$"] 
 					= 'index.php?post_type=section&p='.$post->ID.'&old_post_type=$matches[1]&category_name='.$term->slug.'&old_paged=$matches[2]';
 				}
+
+				 //Taxonomy Archive
+                if(!empty($post->meta['rewrite_tax_archive'])){
+                        $new_rules["{$term->taxonomy}/({$term->slug})/?$"] 
+                        = 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug;
+
+                        $new_rules["{$term->taxonomy}/({$term->slug})/page/?([0-9]{1,})/?$"] 
+                        = 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_paged=$matches[1]';
+                }
 
 				//Format Archive
 				if( !empty($post->meta['rewrite_format_archive'])){
