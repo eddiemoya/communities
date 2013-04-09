@@ -932,7 +932,7 @@ html, body { background: white; color: #555555; }
 .kmart .content-body p { color: #333333; }
 .kmart .post h1, .kmart .question h1 { color: #980017; }
 .kmart .answers-toggle, .kmart .upload-photo label { color: #980017; }
-.kmart .rating-bar { background: 1; }
+.kmart .rating-bar { background: #db150d; }
 .kmart .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1365210687') repeat-x 0 -200px; }
 .kmart .breadcrumb li:before { color: #980017; }
 .kmart .no-results .term { color: #980017; }
