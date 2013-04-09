@@ -1036,7 +1036,7 @@ body, td, p { color: #3b2314; }
 .kmart .link-emulator { color: #006633; }
 .kmart .post h1, .kmart .question h1 { color: #006633; }
 .kmart .answers-toggle, .kmart .upload-photo label { color: #006633; }
-.kmart .rating-bar { background: 1; }
+.kmart .rating-bar { background: #db150d; }
 .kmart .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1350576250') repeat-x 0 -200px; }
 .kmart .breadcrumb li:before { color: #006633; }
 .kmart .no-results .term { color: #006633; }
