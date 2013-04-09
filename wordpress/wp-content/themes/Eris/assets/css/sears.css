@@ -930,7 +930,7 @@ html, body { background: white; color: #555555; }
 .sears .content-body p { color: #333333; }
 .sears .post h1, .sears .question h1 { color: #067bb5; }
 .sears .answers-toggle, .sears .upload-photo label { color: #067bb5; }
-.sears .rating-bar { background: 1; }
+.sears .rating-bar { background: #077bb5; }
 .sears .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1365210687') repeat-x 0 -192px; }
 .sears .breadcrumb li:before { color: #067bb5; }
 .sears .no-results .term { color: #067bb5; }
