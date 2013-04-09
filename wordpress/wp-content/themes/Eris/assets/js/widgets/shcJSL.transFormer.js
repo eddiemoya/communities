@@ -201,8 +201,10 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 	
 	this.verify = function() {
 		var valid;
-		
+				
 		valid = checkReqd();
+		if (valid && blunders.length > 0) valid = false;
+		
 		return valid;
 	}
 }
@@ -245,7 +247,6 @@ shcJSL.methods.transFormer = function(target, options) {
 			do {
 				success = submitEval[this.id][i]();
 				i++;
-
 			} while (success != false && i < submitEval[this.id].length)
 		}
 		
