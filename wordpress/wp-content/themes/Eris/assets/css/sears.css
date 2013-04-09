@@ -917,6 +917,15 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 
 .kmart .update-zipcode .content-body p.error-message { color: #ffffff; }
 
+.unknown-location { position: relative; }
+.unknown-location .weather-today, .unknown-location .extended-forecast { opacity: 0.3; filter: alpha(opacity=30); }
+.unknown-location .select-location { position: absolute; width: 80%; left: 4%; padding: 5%; background-color: #ffffff; top: 90px; z-index: 1; }
+.unknown-location .select-location p { margin-bottom: 4px; line-height: 95%; }
+
+.kmart .unknown-location .select-location { border: 3px solid #e02334; }
+
+.sears .unknown-location .select-location { border: 3px solid #3a81cf; }
+
 #header.sears form { border: solid 3px #3a81cf; }
 #header.sears form #input_search { background: transparent no-repeat 0px 0px; border: none; height: 1.538em; padding: 0.153em 0 0.153em 1.846em; margin-right: 11%; width: 82%; }
 #header.sears form #button_search { background: #ca4019 repeat-x 0px -44px; border: 0; color: white; height: 1.9em; padding-bottom: .25em; position: absolute; right: 0px; top: 0px; width: 3.33em; }
