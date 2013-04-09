@@ -749,17 +749,18 @@ textarea.discussion {
 // LOGIN/REGISTER/FORGOT PASSWORD
 #moodle_container .sign-in, body > .sign-in,
 #moodle_container .register, body > .register,
-#moodle_container .forgot-password, body > .forgot-password {
+#moodle_container .forgot-password, body > .forgot-password,
+#moodle_container .update-zipcode, body > .update-zipcode {
   padding:20px;
 }
 
-.sign-in, .register, .forgot-password {
+.sign-in, .register, .forgot-password, .update-zipcode {
   .content-body {
     border:none;
   }
 }
 
-.form_login, .form_register {
+.form_login, .form_register, .form_update_zipcode {
   .input_text {
     width:100%;
   }
