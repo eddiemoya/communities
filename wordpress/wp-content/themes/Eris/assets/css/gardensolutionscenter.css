@@ -413,15 +413,15 @@ textarea.discussion { border: 1px solid #d6d6d6; height: 10em; width: 99%; -webk
 .content-container.post-your-question form .state_confirm-post .confirmation { padding: 0.769em; }
 .content-container.post-your-question form .state_confirm-post .content-headline { color: #666666; font-size: 1.538em; margin-bottom: 0.369em; }
 
-#moodle_container .sign-in, body > .sign-in, #moodle_container .register, body > .register, #moodle_container .forgot-password, body > .forgot-password { padding: 20px; }
+#moodle_container .sign-in, body > .sign-in, #moodle_container .register, body > .register, #moodle_container .forgot-password, body > .forgot-password, #moodle_container .update-zipcode, body > .update-zipcode { padding: 20px; }
 
-.sign-in .content-body, .register .content-body, .forgot-password .content-body { border: none; }
+.sign-in .content-body, .register .content-body, .forgot-password .content-body, .update-zipcode .content-body { border: none; }
 
-.form_login .input_text, .form_register .input_text { width: 100%; }
-.form_login label, .form_login a, .form_register label, .form_register a { line-height: 32px; }
-.form_login label, .form_register label { text-align: right; }
-.form_login .forgot, .form_register .forgot { font-size: 84.615%; }
-.form_login .form-fields > li p, .form_register .form-fields > li p { margin-bottom: 0; }
+.form_login .input_text, .form_register .input_text, .form_update_zipcode .input_text { width: 100%; }
+.form_login label, .form_login a, .form_register label, .form_register a, .form_update_zipcode label, .form_update_zipcode a { line-height: 32px; }
+.form_login label, .form_register label, .form_update_zipcode label { text-align: right; }
+.form_login .forgot, .form_register .forgot, .form_update_zipcode .forgot { font-size: 84.615%; }
+.form_login .form-fields > li p, .form_register .form-fields > li p, .form_update_zipcode .form-fields > li p { margin-bottom: 0; }
 
 fieldset#use_your_account_from { border-top: 1px solid #cccccc; }
 fieldset#use_your_account_from legend { text-align: center; padding: 1em; }
@@ -914,6 +914,8 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .weather-widget .extended-forecast .daily-forecast .conditions-icon { margin: 0 20%; }
 .weather-widget .extended-forecast .daily-forecast p { margin-bottom: 0px; }
 .weather-widget .wunderground-img { clear: both; float: right; width: 50%; margin: 5px 20px 0 0; }
+
+.kmart .update-zipcode .content-body p.error-message { color: #ffffff; }
 
 #header.kmart form { border: solid 5px #e02334; }
 #header.kmart form #input_search { background: transparent no-repeat 0px 0px; border: none; height: 1.538em; padding: 0.307em 0 0.307em 2.092em; margin-right: 9%; width: 84%; }
