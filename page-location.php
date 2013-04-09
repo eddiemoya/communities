@@ -11,19 +11,19 @@ if(! is_ajax()):
 get_template_part('parts/header'); ?>
 	<section class="span8">
 <?php endif;?>		
-<article class="content-container sign-in span12">
+<article class="content-container update-zipcode span12">
 	
 	<section class="content-body clearfix">
 
 		<h6 class="content-headline">Change Location</h6>
 		
-		<form class="form_login" method="post" action="<?php echo $origin;?>" shc:gizmo="transFormer">
+		<form class="form_update_zipcode" method="post" action="<?php echo $origin;?>" shc:gizmo="transFormer" id="changeZipCodeForm">
       <ul class="form-fields">
           
           <li>
               <dl class="clearfix">
                   <dt class="span3"><label for="update_zipcode">Zipcode:</label></dt>
-                  <dd class="span9"><input type="text" name="update_zipcode" class="input_text" id="zipcode" shc:gizmo:form="{required:true}" /></dd>
+                  <dd class="span9"><input type="text" name="update_zipcode" class="input_text" id="zipcode" shc:gizmo:form="{required:true, trim:true, pattern: /(^\d{5})(-\d{4})?$/, message: 'Please enter a valid ZIP code'}" /></dd>
               </dl>
           </li>
           
