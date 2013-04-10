@@ -393,7 +393,11 @@ textarea.discussion { border: 1px solid #d6d6d6; height: 10em; width: 99%; -webk
 
 .span3 .recent-activity .excerpt, .span4 .recent-activity .excerpt, .span6 .recent-activity .excerpt { overflow: hidden; text-overflow: ellipsis; }
 
+<<<<<<< HEAD
 .recent_reviews hgroup { background: transparent url('../img/widgets/recent-reviews/background_header-icon-people.png?v=1364911976') no-repeat right bottom; }
+=======
+.recent_reviews hgroup { background: transparent url('../img/widgets/recent-reviews/background_header-icon-people.png?v=1365526218') no-repeat right bottom; }
+>>>>>>> 3c58920... fix headline color
 .recent_reviews .recent-review_title { font-size: 92.307%; font-weight: bold; }
 .recent_reviews .recent-review_review { font-size: 92.307%; line-height: 1.9em; margin-bottom: .5em; }
 .recent_reviews .recent-review_review:before { content: "\201C"; }
@@ -864,13 +868,21 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 #header.sears form #input_search { background: transparent no-repeat 0px 0px; border: none; height: 1.538em; padding: 0.153em 0 0.153em 1.846em; margin-right: 11%; width: 82%; }
 #header.sears form #button_search { background: #ca4019 repeat-x 0px -44px; border: 0; color: white; height: 1.9em; padding-bottom: .25em; position: absolute; right: 0px; top: 0px; width: 3.33em; }
 
+<<<<<<< HEAD
 html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg?v=1365541388') repeat 0px 0px; color: #4d4d4f; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; height: auto; }
+=======
+html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg?v=1365610704') repeat 0px 0px; color: #4d4d4f; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; height: auto; }
+>>>>>>> 3c58920... fix headline color
 
 #content { color: #4d4d4f; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; }
 
 .menu-sears-ribbon-container, .menu-kmart-ribbon-container { position: relative; z-index: 100; }
 
+<<<<<<< HEAD
 #container, #persistent-header { background: transparent url('../img/outdoorstyle/background_container-noise.jpg?v=1365541388') repeat 0px 0px; }
+=======
+#container, #persistent-header { background: transparent url('../img/outdoorstyle/background_container-noise.jpg?v=1365610704') repeat 0px 0px; }
+>>>>>>> 3c58920... fix headline color
 
 #container { -webkit-box-shadow: rgba(0, 0, 0, 0.75) 0 10px 21px 14px; -moz-box-shadow: rgba(0, 0, 0, 0.75) 0 10px 21px 14px; box-shadow: rgba(0, 0, 0, 0.75) 0 10px 21px 14px; padding: 0px 10px; }
 
@@ -950,7 +962,11 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .page-title .content-body h1 { font-size: 153.846%; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-weight: 400; }
 .page-title .content-body h2 { font-size: 92.307%; font-weight: 400; }
 
+<<<<<<< HEAD
 #menu-outdoor-style-design-your-outdoor-space li { background: transparent url('../img/outdoorstyle/background_design-your-outdoor-space.gif?v=1365541388') repeat-x 0px 0px; }
+=======
+#menu-outdoor-style-design-your-outdoor-space li { background: transparent url('../img/outdoorstyle/background_design-your-outdoor-space.gif?v=1365610704') repeat-x 0px 0px; }
+>>>>>>> 3c58920... fix headline color
 #menu-outdoor-style-design-your-outdoor-space li a { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 153.846%; font-weight: 300; }
 
 .post-your-question { margin-top: 1em; }
@@ -977,6 +993,7 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .single .question, .single .post { margin-top: 1em; }
 .single .question .content-header, .single .post .content-header { display: none; }
 .single .question .content-body, .single .post .content-body { background-color: #ffffff; border: solid 1px #e3e1e1; padding: 0.769em; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.single .post h1.content-headline { color: #4d4d4f; }
 .single .post h6 { border: solid #b7b7b7; border-width: 1px 0px; font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-size: 153.846%; font-weight: 700; line-height: 2em; margin-bottom: 0.5em; }
 .single .post .content-author { border-top: solid 1px #b7b7b7; padding-top: 0.5em; }
 .single .trigger.discussion { font-family: "Open Sans Condensed", Helvetica, Arial, Verdana, sans-serif; font-weight: 700; margin-top: 0.75em; }
