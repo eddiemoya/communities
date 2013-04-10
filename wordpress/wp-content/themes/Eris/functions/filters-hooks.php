@@ -423,7 +423,7 @@ add_filter('preprocess_comment', 'clean_comment');
 
 
 function limit_search($query) {
-    if ($query->is_search)
+    if ($query->is_search && !is_admin())
         $query->set('post_type',array('post','question','guide'));
 
     return $query;
