@@ -393,7 +393,11 @@ textarea.discussion { border: 1px solid #d6d6d6; height: 10em; width: 99%; -webk
 
 .span3 .recent-activity .excerpt, .span4 .recent-activity .excerpt, .span6 .recent-activity .excerpt { overflow: hidden; text-overflow: ellipsis; }
 
+<<<<<<< HEAD
 .recent_reviews hgroup { background: transparent url('../img/widgets/recent-reviews/background_header-icon-people.png?v=1366397000') no-repeat right bottom; }
+=======
+.recent_reviews hgroup { background: transparent url('../img/widgets/recent-reviews/background_header-icon-people.png?v=1366323076') no-repeat right bottom; }
+>>>>>>> 228a98a... Finished Taxonomy Department Select widget. Started result list widget
 .recent_reviews .recent-review_title { font-size: 92.307%; font-weight: bold; }
 .recent_reviews .recent-review_review { font-size: 92.307%; line-height: 1.9em; margin-bottom: .5em; }
 .recent_reviews .recent-review_review:before { content: "\201C"; }
@@ -843,7 +847,11 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 
 .wp-polls-loading { display: none; text-align: center; height: 16px; line-height: 16px; }
 
+<<<<<<< HEAD
 .dropzone.span8 .hero-slider { background: url('../img/hero-slider-bg.png?v=1366397000') center center; width: 620px; height: 360px; position: relative; }
+=======
+.dropzone.span8 .hero-slider { background: url('../img/hero-slider-bg.png?v=1366323075') center center; width: 620px; height: 360px; position: relative; }
+>>>>>>> 228a98a... Finished Taxonomy Department Select widget. Started result list widget
 
 .hero-slider .rotating-banner { overflow: hidden; position: relative; width: 579px; height: 315px; z-index: 25; left: 20px; top: 10px; }
 .hero-slider .rotating-banner .content-headline { position: absolute; top: 260px; width: 100%; background: #000000; background: rgba(0, 0, 0, 0.5); color: #ffffff; font-weight: normal; padding: 5px 10px 5px 15px; }
@@ -854,8 +862,13 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .hero-slider .rotating-banner .rotating-banner-navigation a { background-color: #ffffff; display: block; float: left; height: 1em; margin-right: .5em; width: 1em; z-index: 30; }
 .hero-slider .rotating-banner .banner.banner_link { cursor: pointer; }
 .hero-slider .rotating-banner .in-transit { z-index: 24; }
+<<<<<<< HEAD
 .hero-slider a.prev-slide { background: url('../img/hero-slide-left.png?v=1366397000') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; left: 0px; z-index: 30; }
 .hero-slider a.next-slide { background: url('../img/hero-slide-right.png?v=1366397000') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; right: 1px; z-index: 30; }
+=======
+.hero-slider a.prev-slide { background: url('../img/hero-slide-left.png?v=1366323075') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; left: 0px; z-index: 30; }
+.hero-slider a.next-slide { background: url('../img/hero-slide-right.png?v=1366323075') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; right: 1px; z-index: 30; }
+>>>>>>> 228a98a... Finished Taxonomy Department Select widget. Started result list widget
 
 .pre-load > *:first-child { display: block; left: auto; position: relative; top: auto; }
 
@@ -976,13 +989,21 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 #header.sears form #input_search { background: transparent no-repeat 0px 0px; border: none; height: 1.538em; padding: 0.153em 0 0.153em 1.846em; margin-right: 11%; width: 82%; }
 #header.sears form #button_search { background: #ca4019 repeat-x 0px -44px; border: 0; color: white; height: 1.9em; padding-bottom: .25em; position: absolute; right: 0px; top: 0px; width: 3.33em; }
 
+<<<<<<< HEAD
 html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg?v=1366397000') repeat 0px 0px; color: #4d4d4f; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; height: auto; }
+=======
+html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg?v=1366323076') repeat 0px 0px; color: #4d4d4f; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; height: auto; }
+>>>>>>> 228a98a... Finished Taxonomy Department Select widget. Started result list widget
 
 #content { color: #4d4d4f; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; }
 
 .menu-sears-ribbon-container, .menu-kmart-ribbon-container { position: relative; z-index: 100; }
 
+<<<<<<< HEAD
 #container, #persistent-header { background: transparent url('../img/outdoorstyle/background_container-noise.jpg?v=1366397000') repeat 0px 0px; }
+=======
+#container, #persistent-header { background: transparent url('../img/outdoorstyle/background_container-noise.jpg?v=1366323076') repeat 0px 0px; }
+>>>>>>> 228a98a... Finished Taxonomy Department Select widget. Started result list widget
 
 #container { -webkit-box-shadow: rgba(0, 0, 0, 0.75) 0 10px 21px 14px; -moz-box-shadow: rgba(0, 0, 0, 0.75) 0 10px 21px 14px; box-shadow: rgba(0, 0, 0, 0.75) 0 10px 21px 14px; padding: 0px 10px; }
 
@@ -1063,7 +1084,11 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .page-title .content-body h1 { font-size: 153.846%; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-weight: 400; }
 .page-title .content-body h2 { font-size: 92.307%; font-weight: 400; }
 
+<<<<<<< HEAD
 #menu-outdoor-style-design-your-outdoor-space li { background: transparent url('../img/outdoorstyle/background_design-your-outdoor-space.gif?v=1366397000') repeat-x 0px 0px; }
+=======
+#menu-outdoor-style-design-your-outdoor-space li { background: transparent url('../img/outdoorstyle/background_design-your-outdoor-space.gif?v=1366323076') repeat-x 0px 0px; }
+>>>>>>> 228a98a... Finished Taxonomy Department Select widget. Started result list widget
 #menu-outdoor-style-design-your-outdoor-space li a { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 153.846%; font-weight: 300; }
 
 .post-your-question { margin-top: 1em; }
@@ -1192,3 +1217,10 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .sears .wp-polls li span:first-child { color: #067bb5; }
 .sears .wp-polls h1.content-headline { color: #067bb5; }
 .sears .wp-polls .bar { background: #6dcff6; }
+
+.taxonomy-select-widget { background: transparent url('../img/widgets/taxonomy/background_taxonomy-department-select-widget.jpg?v=1366390699') repeat-x left bottom; }
+.taxonomy-select-widget [class*="span"].alpha { clear: left !important; float: left; margin-left: 0 !important; }
+.taxonomy-select-widget .alpha + .span3, .taxonomy-select-widget .alpha + .span3 + .span3, .taxonomy-select-widget .alpha + .span3 + .span3 + .span3 { float: left; clear: none !important; }
+.taxonomy-select-widget h5 { font-size: 107.692%; font-weight: bold; margin: 1em 0px 0.5em; }
+.taxonomy-select-widget li { margin-top: .769em; text-align: center; }
+.taxonomy-select-widget .taxonomy-drop-down-menu { padding: 1em 0px; text-align: center; }
