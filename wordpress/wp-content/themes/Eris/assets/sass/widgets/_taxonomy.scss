@@ -1,0 +1,27 @@
+.taxonomy-select-widget {
+  background:transparent image-url('widgets/taxonomy/background_taxonomy-department-select-widget.jpg') repeat-x left bottom;
+  [class*="span"].alpha {
+    clear:left !important;
+    float:left;
+    margin-left:0 !important;
+  }
+  .alpha + .span3, .alpha + .span3 + .span3, .alpha + .span3 + .span3 + .span3 {
+    float:left;
+    clear:none !important;
+  }
+  h5 {
+    font-size:font-size(14);
+    font-weight:bold;
+    margin:1em 0px 0.5em;
+  }
+  li {
+    margin-top:.769em;
+    text-align:center;
+  }
+  .taxonomy-drop-down-menu {
+    padding:1em 0px;
+    text-align:center;
+  }
+}
+
+
