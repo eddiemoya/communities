@@ -392,7 +392,7 @@ textarea.discussion { border: 1px solid #d6d6d6; height: 10em; width: 99%; -webk
 
 .span3 .recent-activity .excerpt, .span4 .recent-activity .excerpt, .span6 .recent-activity .excerpt { overflow: hidden; text-overflow: ellipsis; }
 
-.recent_reviews hgroup { background: transparent url('../img/widgets/recent-reviews/background_header-icon-people.png?v=1365475134') no-repeat right bottom; }
+.recent_reviews hgroup { background: transparent url('../img/widgets/recent-reviews/background_header-icon-people.png?v=1366323076') no-repeat right bottom; }
 .recent_reviews .recent-review_title { font-size: 92.307%; font-weight: bold; }
 .recent_reviews .recent-review_review { font-size: 92.307%; line-height: 1.9em; margin-bottom: .5em; }
 .recent_reviews .recent-review_review:before { content: "\201C"; }
@@ -842,7 +842,7 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 
 .wp-polls-loading { display: none; text-align: center; height: 16px; line-height: 16px; }
 
-.dropzone.span8 .hero-slider { background: url('../img/hero-slider-bg.png?v=1365210686') center center; width: 620px; height: 360px; position: relative; }
+.dropzone.span8 .hero-slider { background: url('../img/hero-slider-bg.png?v=1366323075') center center; width: 620px; height: 360px; position: relative; }
 
 .hero-slider .rotating-banner { overflow: hidden; position: relative; width: 579px; height: 315px; z-index: 25; left: 20px; top: 10px; }
 .hero-slider .rotating-banner .content-headline { position: absolute; top: 260px; width: 100%; background: #000000; background: rgba(0, 0, 0, 0.5); color: #ffffff; font-weight: normal; padding: 5px 10px 5px 15px; }
@@ -853,8 +853,8 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .hero-slider .rotating-banner .rotating-banner-navigation a { background-color: #ffffff; display: block; float: left; height: 1em; margin-right: .5em; width: 1em; z-index: 30; }
 .hero-slider .rotating-banner .banner.banner_link { cursor: pointer; }
 .hero-slider .rotating-banner .in-transit { z-index: 24; }
-.hero-slider a.prev-slide { background: url('../img/hero-slide-left.png?v=1365210686') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; left: 0px; z-index: 30; }
-.hero-slider a.next-slide { background: url('../img/hero-slide-right.png?v=1365210686') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; right: 1px; z-index: 30; }
+.hero-slider a.prev-slide { background: url('../img/hero-slide-left.png?v=1366323075') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; left: 0px; z-index: 30; }
+.hero-slider a.next-slide { background: url('../img/hero-slide-right.png?v=1366323075') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; right: 1px; z-index: 30; }
 
 .pre-load > *:first-child { display: block; left: auto; position: relative; top: auto; }
 
@@ -977,7 +977,7 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 
 .kmart .footer_anterior p { font-size: 76.923%; margin-top: .5em; text-align: center; }
 
-html { background: transparent url('../img/gardensolutionscenter/background_main-grass.jpg?v=1365210686') repeat 0px 0px; height: auto; color: #3b2314; }
+html { background: transparent url('../img/gardensolutionscenter/background_main-grass.jpg?v=1366323075') repeat 0px 0px; height: auto; color: #3b2314; }
 
 body, td, p { color: #3b2314; }
 
@@ -1002,11 +1002,11 @@ body, td, p { color: #3b2314; }
 .content-container.image-widget { background: none; }
 .content-container.image-widget .content-body { border: none; padding: 0px; }
 
-.featured-post-type-post .content-header, .kmart.archive_posts .page-title, .kmart.single-post .page-title { background-image: url('../img/gardensolutionscenter/icon_post_29x29.png?v=1365210686'); background-repeat: no-repeat; }
+.featured-post-type-post .content-header, .kmart.archive_posts .page-title, .kmart.single-post .page-title { background-image: url('../img/gardensolutionscenter/icon_post_29x29.png?v=1366323075'); background-repeat: no-repeat; }
 
-.featured-post-type-guide .content-header, .kmart.archive_guides .page-title, .kmart.single-guide .page-title { background-image: url('../img/gardensolutionscenter/icon_guide_29x29.png?v=1365210686'); background-repeat: no-repeat; }
+.featured-post-type-guide .content-header, .kmart.archive_guides .page-title, .kmart.single-guide .page-title { background-image: url('../img/gardensolutionscenter/icon_guide_29x29.png?v=1366323075'); background-repeat: no-repeat; }
 
-.featured-post-type-question .content-header, .kmart.archive_questions .page-title, .kmart.single-question .page-title { background-image: url('../img/gardensolutionscenter/icon_question_29x29.png?v=1365210686'); background-repeat: no-repeat; }
+.featured-post-type-question .content-header, .kmart.archive_questions .page-title, .kmart.single-question .page-title { background-image: url('../img/gardensolutionscenter/icon_question_29x29.png?v=1366323075'); background-repeat: no-repeat; }
 
 .featured-post-type-post .content-header { background-color: transparent; background-position: 10px 10px; padding-left: 3.77em; }
 
@@ -1102,7 +1102,7 @@ body, td, p { color: #3b2314; }
 .kmart.archive_posts .page-title, .kmart.single-post .page-title { background-color: #faf9f2; background-position: 0px 6px; }
 .kmart.archive_guides .page-title, .kmart.single-guide .page-title { background-color: #faf9f2; background-position: 0px 6px; }
 .kmart.archive_questions .page-title, .kmart.single-question .page-title { background-color: #faf9f2; background-position: 0px 6px; }
-.kmart .featured-post-type-post.format-video .content-header, .kmart .featured-post-type-guide.format-video .content-header { background-image: url('../img/gardensolutionscenter/icon_video_29x29.png?v=1366141402'); }
+.kmart .featured-post-type-post.format-video .content-header, .kmart .featured-post-type-guide.format-video .content-header { background-image: url('../img/gardensolutionscenter/icon_video_29x29.png?v=1366323075'); }
 .kmart .site-error .message { background: #8f2225; }
 .kmart .member_avatar .badge { background-position: 0px -243px; }
 .kmart .recent_activity .recent-activity_category-time a { text-decoration: underline; }
@@ -1197,3 +1197,10 @@ body, td, p { color: #3b2314; }
 .wp-polls .info > div:first-child, .wp-polls .total > div:first-child { margin-left: 0px; }
 
 .kmart .hero-slider .rotating-banner .content-headline { display: none; }
+
+.taxonomy-select-widget { background: transparent url('../img/widgets/taxonomy/background_taxonomy-department-select-widget.jpg?v=1366390699') repeat-x left bottom; }
+.taxonomy-select-widget [class*="span"].alpha { clear: left !important; float: left; margin-left: 0 !important; }
+.taxonomy-select-widget .alpha + .span3, .taxonomy-select-widget .alpha + .span3 + .span3, .taxonomy-select-widget .alpha + .span3 + .span3 + .span3 { float: left; clear: none !important; }
+.taxonomy-select-widget h5 { font-size: 107.692%; font-weight: bold; margin: 1em 0px 0.5em; }
+.taxonomy-select-widget li { margin-top: .769em; text-align: center; }
+.taxonomy-select-widget .taxonomy-drop-down-menu { padding: 1em 0px; text-align: center; }
