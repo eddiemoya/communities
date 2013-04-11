@@ -465,6 +465,19 @@ shcJSL.gizmos.persistr = function(element) {
 	persist();
 }
 
+shcJSL.gizmos['drop-menu'] = function(element) {
+	var options;	// Option elements of menu;
+	options = element.getElementsByTagName("option");
+	
+	for (var i=0;i<options.length;i++) {
+		if (options[i].value == "default") element.selectedIndex = i;
+	}
+	
+	$(element).on("change", function(event) {
+		window.location.assign(window.location.protocol + "//" + window.location.host + "/" + this.value);
+	})
+}
+
 /*
 	[3.0] ONLOAD EVENTS
 	-------------------
