@@ -1054,9 +1054,14 @@ html, body { background: white; color: #555555; }
 .sears .wp-polls h1.content-headline { color: #067bb5; }
 .sears .wp-polls .bar { background: #6dcff6; }
 
-.taxonomy-select-widget { background: transparent url('../img/widgets/taxonomy/background_taxonomy-department-select-widget.jpg?v=1366390699') repeat-x left bottom; }
+.taxonomy-select-widget { padding-bottom: 0.769em; }
 .taxonomy-select-widget [class*="span"].alpha { clear: left !important; float: left; margin-left: 0 !important; }
 .taxonomy-select-widget .alpha + .span3, .taxonomy-select-widget .alpha + .span3 + .span3, .taxonomy-select-widget .alpha + .span3 + .span3 + .span3 { float: left; clear: none !important; }
 .taxonomy-select-widget h5 { font-size: 107.692%; font-weight: bold; margin: 1em 0px 0.5em; }
 .taxonomy-select-widget li { margin-top: .769em; text-align: center; }
 .taxonomy-select-widget .taxonomy-drop-down-menu { padding: 1em 0px; text-align: center; }
+.taxonomy-select-widget .content-body { background: transparent url('../img/widgets/taxonomy/background_taxonomy-department-select-widget.jpg?v=1366390699') repeat-x left bottom; }
+
+.result-list .department .content-headline { font-size: 107.692%; }
+.result-list .department:first-child .content-body { border-top: none; }
+.result-list .featured-image, .result-list .featured-content { padding-top: 2em; padding-bottom: 2em; }
