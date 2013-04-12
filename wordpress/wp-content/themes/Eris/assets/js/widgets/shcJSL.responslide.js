@@ -405,3 +405,167 @@ if(shcJSL && shcJSL.gizmos) {
 		});
 	}
 }
+
+
+
+
+
+
+
+
+CAROUSEL = $carousel = function(element, options){
+	var element = element ;
+	var items = {};
+	var options = options;
+	var mobius;
+	var self = this;
+
+
+
+	items = {
+		all 	: $(".product", element),
+		active 	: { 
+			last 	: $($('.active', this.all ).slice(-1)[0]).index(),
+			first 	: $($('.active', this.all )[0]).index()
+		},
+		ondeck	: {
+			 left 	: $($('.inactive-left', this.all ).slice(-1)[0]).index(),
+			 right 	: $($('.inactive-right', this.all )[0]).index()
+
+		},
+		shiftleft: function(){
+			this.ondeck.left--;
+			this.ondeck.right--;
+			this.active.first--;
+			this.active.last--;
+		},
+		shiftright: function(){
+			this.ondeck.left++;
+			this.ondeck.right++;
+			this.active.first++;
+			this.active.last++;
+		}
+	}
+
+
+	this.next = function(){
+		self.mobius();
+		$(items.all[items.ondeck.right]).removeClass('inactive-right').addClass('active');
+		$(items.all[items.active.first]).removeClass('active').addClass('inactive-left');
+		items.shiftright();
+
+	};
+
+	this.prev = function(){
+
+		self.mobius();
+		$(items.all[items.ondeck.left]).removeClass('inactive-left').addClass('active');
+		$(items.all[items.active.last]).removeClass('active').addClass('inactive-right');
+		items.shiftleft();
+
+
+	};
+
+	this.mobius = function(){
+			var last = $(items.all).length-1;
+
+			if(items.active.first == 1){
+				var last = $(items.all).length-1;
+				var lastItem = items.all[last];
+				$(items.all[0]).before($(lastItem).removeClass('inactive-right').addClass('inactive-left'));
+				items.shiftright();
+			}
+			if(items.active.last == $(items.all).length-2){
+				var firstItem = items.all[0];
+				$(items.all[last]).after($(firstItem).removeClass('inactive-left').addClass('inactive-right'));
+				items.shiftleft();
+			}
+
+			items.all = $(".product", element);
+			console.log(items.all)
+						
+
+	
+
+	
+
+		
+	}
+
+	/*
+	 * stopAutoSlide
+	 * -------------
+	 * Stop the timer for auto rotating the banner. This is public so external
+	 * scripts can stop the timer if necessary. 
+	 */
+	this.stopAutoSlide = function(timer) {
+		if (timer) clearTimeout(timer);
+	}
+
+	/*
+	 * startAutoSlide
+	 * --------------
+	 * Start the timer for auto rotating the banner. This is public so external
+	 * scripts can start the timer if necessary.
+	 * 
+	 * If the 'autoSlidingBanners' configuration was not set to true when the
+	 * object was instantiated and an external script wants to start the banner 
+	 * auto rotating, the script first has to set the object.conf.autoSlidingBanners 
+	 * to true, and then invoke startAutoSlide.
+	 * 
+	 * If the script does not set object.conf.autoSlidingBanners to true before 
+	 * starting the auto rotation, the sliding banners will stop auto rotating
+	 * after the first rotation.
+	 */
+	this.startAutoSlide = function(interval) {
+		var interval = interval;
+
+		timer = setTimeout(function(){
+			self.next();
+			self.startAutoSlide(interval);
+		},interval);
+		return timer;
+	}
+
+
+}
+
+shcJSL.methods.carousel = function(element, options){
+
+	var element = element;
+	var options = this;
+	var carousel = new $carousel(element, options);
+
+
+	if(typeof options.autoSlideInterval != 'undefined'){
+		timer = carousel.startAutoSlide(options.autoSlideInterval);
+	}
+
+
+	$(".right-arrow").bind('click', function(){
+		carousel.stopAutoSlide(timer);
+		carousel.next();
+	});
+
+	$(".left-arrow").bind('click', function(){
+		carousel.stopAutoSlide(timer);
+		carousel.prev();
+	})
+
+
+
+
+};
+
+if(shcJSL && shcJSL.gizmos) {
+	shcJSL.gizmos.carousel = function(element) {
+
+		var options;
+
+		options = ($(element).attr("shc:gizmo:options") != undefined) ? eval('(' + $(element).attr("shc:gizmo:options") + ')') : {};
+		shcJSL.get(element).carousel(options);
+		
+
+	}
+}
+
