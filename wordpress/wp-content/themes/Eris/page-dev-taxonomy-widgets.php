@@ -130,64 +130,61 @@ get_template_part('parts/header');
 				<section class="content-body clearfix">
 					
 					<!-- Use class department -->
+					<!-- DEPARTMENT -->
 					<article class="content-container department">
 
     					<section class="content-body clearfix">
 
-            				<div class="featured-image span6">
-            					<img title="Refredigerators" alt="Refridgerator" src="<?php echo get_template_directory_uri(); ?>/assets/img/widgets/taxonomy/demo/icon_automotive-tires.jpg">        
+            				<div class="featured-image span3">
+            					<img title="Refredigerators" alt="Refridgerator" src="<?php echo get_template_directory_uri(); ?>/assets/img/widgets/taxonomy/demo/result_fridge.jpg">        
             				</div>
             				
-        					<div class="span6">
-			
-			<div class="content-details clearfix">
-                                    <span class="content-category">
-                        <a title="Lawn &amp; Garden" href="https://www.sears.com/community/category/lawn-garden/">
-                            Lawn &amp; Garden                        </a>
-                    </span>
-                <time datetime="2013-04-10" pubdate="" class="content-date">
-                    April 10, 2013                </time>
+        					<div class="span9 featured-content">
 
-            </div> <!-- content-details -->
+					            <h1 class="content-headline">
+					                <a href="#" title="Refrigerator Reviews">Refrigerators</a>
+					            </h1>
 
-            <h1 class="content-headline">
-                <a href="https://www.sears.com/community/lawn-garden/top-10-gifts-for-garden-enthusiasts/">
-                    Top 10 Gifts for Garden Enthusiasts                </a>
-            </h1> <!-- content-headline -->
+								<!--
+									You will have to add the <sarcasm>always helpful, and very informative</sarcasm> 'see more' link on the back end.
+								-->
+								<p class="content-excerpt">Lorem ipsum dolor sit amet, sit senserit similique cotidieque ex, libris postea corpora nam. Sea vidit pro. et, sit senserit.</p>
+								<p class="content-excerpt">Lorem ipsum dolor sit amet, sit senserit similique cotidieque ex, libris postea corpora nam. Sea vidit pro. et, sit senserit&hellip; <a href="#" class="moretag">See More</a></p>
 
-            <ul>
-                <li class="content-author">By: <a href="https://www.sears.com/community/?author=1373643">Lindsey Paholski</a></li>
-      <!--           <li class="content-comments">No Comments</li> -->
-            </ul>
+        					</div>
 
-            <p class="content-excerpt">by Lindsey Paholski</p>
-<p class="content-excerpt">If you’re an avid gardener, you can’t wait to get your hands dirty. You’re probably already planning your garden and tasting the fresh vegetables you’ll harvest in a few months. Why not celebrate nature, dirt and the outdoors during Garden Week, and buy yourself &mdash; and all your garden enthusiast friends &mdash; the perfect garden gifts.</p>
-<p class="content-excerpt">New plants</p>
-<p class="content-excerpt">Every gardener has room for new plants. Botanists introduce new colors and varieties of plants every year, and you’re… <a href="https://www.sears.com/community/lawn-garden/top-10-gifts-for-garden-enthusiasts/" class="moretag">See More</a></p>
+    					</section>
+					
+					</article>
+					<!-- /DEPARTMENT -->
+					
+					<!-- DEPARTMENT -->
+					<article class="content-container department">
 
-            <p class="content-tags">
-                            </p>
+    					<section class="content-body clearfix">
 
-            <ul>
-                <li class="content-comments">0 comments</li> 
-                                <li class="content-share"><ul class="addthis dropmenu">
-    <li>
-        <span class="sharebutton">Share</span>
-        <ul class="sharemenulinks">
-            <li><a addthis:title="Top 10 Gifts for Garden Enthusiasts" addthis:url="https://www.sears.com/community/lawn-garden/top-10-gifts-for-garden-enthusiasts/" class="addthis_button_facebook at300b" title="Facebook" href="#"><span class="at16nc at300bs at15nc at15t_facebook at16t_facebook"><span class="at_a11y">Share on facebook</span></span>Facebook</a></li>
-            <li><a addthis:title="Top 10 Gifts for Garden Enthusiasts" addthis:url="https://www.sears.com/community/lawn-garden/top-10-gifts-for-garden-enthusiasts/" class="addthis_button_twitter at300b" title="Tweet" href="#"><span class="at16nc at300bs at15nc at15t_twitter at16t_twitter"><span class="at_a11y">Share on twitter</span></span>Twitter</a></li>
-            <li><a title="Post this to your ShopYourWay account" style="cursor:pointer;" onclick="javascript:window.open(this.href,'ShopYourWay','width=650,height=350'); return false;" href="https://shopyourway.com/sharer/share?title=Top+10+Gifts+for+Garden+Enthusiasts&amp;link=https%3A%2F%2Fwww.sears.com%2Fcommunity%2Flawn-garden%2Ftop-10-gifts-for-garden-enthusiasts%2F&amp;sourceSiteUrl=&amp;sourceSiteAlias=&amp;content=&amp;imageUrl="><img alt="ShopYourWay Post" src="https://static.shopyourway.com/static/share-buttons/small-light.png">ShopYourWay</a></li>
-            <li><a addthis:url="https://www.sears.com/community/lawn-garden/top-10-gifts-for-garden-enthusiasts/" class="addthis_button_email at300b" title="Email" href="#"><span class="at16nc at300bs at15nc at15t_email at16t_email"><span class="at_a11y">Share on email</span></span>Email</a></li>
-        </ul>
-    </li>
-</ul>
-</li>
-                            </ul>
+            				<div class="featured-image span3">
+            					<img title="Refredigerators" alt="Refridgerator" src="<?php echo get_template_directory_uri(); ?>/assets/img/widgets/taxonomy/demo/result_fridge.jpg">        
+            				</div>
+            				
+        					<div class="span9 featured-content">
 
-        </div> <!-- featured- -->
+					            <h1 class="content-headline">
+					                <a href="#" title="Refrigerator Reviews">Refrigerators</a>
+					            </h1>
 
-    </section> <!-- featured-post -->
-</article>
+								<!--
+									You will have to add the <sarcasm>always helpful, and very informative</sarcasm> 'see more' link on the back end.
+								-->
+								<p class="content-excerpt">Lorem ipsum dolor sit amet, sit senserit similique cotidieque ex, libris postea corpora nam. Sea vidit pro. et, sit senserit.</p>
+								<p class="content-excerpt">Lorem ipsum dolor sit amet, sit senserit similique cotidieque ex, libris postea corpora nam. Sea vidit pro. et, sit senserit&hellip; <a href="#" class="moretag">See More</a></p>
+
+        					</div>
+
+    					</section> 
+					
+					</article>
+					<!-- /DEPARTMENT -->
 										
 				</section>
 				
