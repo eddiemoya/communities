@@ -20,6 +20,7 @@
 
 //$results = $rr->results;
 
+echo WP_PLUGIN_URL;
 
 /*echo '<pre>';
 var_dump($rr);
