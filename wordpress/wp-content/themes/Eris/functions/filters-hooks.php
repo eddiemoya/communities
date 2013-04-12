@@ -881,14 +881,22 @@ function add_attachment_slide_link_url_save( $post, $attachment ) {
 
 add_filter( 'attachment_fields_to_save', 'add_attachment_slide_link_url_save', 10, 2 );
 
-function add_post_slide_title_hide_save( $post ) {
-	$hide_title = ($_POST['slide-hide-title']==1) ? 1 : 0;
-	$current_meta = get_post_meta($post, 'slide-hide-title');
-	$hide_title_current = ($current_meta==1) ? 1 : 0;
-	update_post_meta( $post, 'slide-hide-title', $hide_title );
-	echo $hide_title; echo "-"; echo $hide_title_current; exit();
-	//if( $hide_title )
-	return $post;
+function add_post_slide_title_hide_save($return) {
+	global $post;
+	$current_meta = get_post_meta($post->ID, 'slide-hide-title', true);
+	
+	if ($current_meta == 1 && $_POST['slide-hide-title'] == "" || 
+			$_POST['slide-hide-title'] == 1 && $current_meta == 0 || 
+			$_POST['slide-hide-title'] == "" && $current_meta == ""
+		) {
+			if ($_POST['slide-hide-title'] == 1) {
+				update_post_meta($post->ID, 'slide-hide-title', $_POST['slide-hide-title']);
+			} else {
+				delete_post_meta($post->ID, 'slide-hide-title', 1);
+			}
+	}
+	
+	return $return;
 }
 
 add_filter( 'save_post', 'add_post_slide_title_hide_save', 10, 2 );
