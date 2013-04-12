@@ -1,5 +1,5 @@
 .taxonomy-select-widget {
-  background:transparent image-url('widgets/taxonomy/background_taxonomy-department-select-widget.jpg') repeat-x left bottom;
+  padding-bottom:0.769em;
   [class*="span"].alpha {
     clear:left !important;
     float:left;
@@ -22,6 +22,24 @@
     padding:1em 0px;
     text-align:center;
   }
+  .content-body {
+    background:transparent image-url('widgets/taxonomy/background_taxonomy-department-select-widget.jpg') repeat-x left bottom;
+  }
 }
 
-
+.result-list {
+  .department {
+    .content-headline{
+      font-size:font-size(14);
+    }
+  }
+  .department:first-child {
+    .content-body {
+      border-top:none;
+    }
+  }
+  .featured-image, .featured-content {
+    padding-top:2em;
+    padding-bottom:2em;
+  }
+}
