@@ -63,6 +63,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 	var methods;				// (Function) Bind the validation methods to the fields
 	var required = [];	// (Array) Array of required fields
 	var transformer; 		// The form object
+	var validify;		// (Function) Validate data on blur/keydown
 	this.verify;				// (Function) Verify that the form is valid for submission
 	
 	var self = this;
@@ -112,7 +113,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				}
 			}
 			
-			$(target).bind('blur', function(event) {
+			function validify() {
 				var i; // counter
 				for (i=0; i < fn.length; i++) {
 					if (this.value != '') {
@@ -126,8 +127,21 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				if (i >= fn.length || this.value == '') {
 					$tf.blunder(this).destroy();
 					blunders.remove(this);
+				}
+			}
+			
+			// $(target).bind("keydown", function(event){
+			// 				var code;	// key code
+			// 				code = event.keyCode || event.which;
+			// 				event.preventDefault();
+			// 			});
+			
+			$(target).bind('blur keydown', function(event) {
+				if ((event.type == "keydown" && event.keyCode == 13) || event.type == "blur") {
+					validify.call(this);
 				}					
 			});
+			
 		}
 	}
 	
