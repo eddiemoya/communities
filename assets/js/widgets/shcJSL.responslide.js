@@ -418,8 +418,10 @@ CAROUSEL = $carousel = function(element, options){
 	var items = {};
 	var options = options;
 	var mobius;
+	var shiftleft;
+	var shiftright;
+	var lock = false;
 	var self = this;
-
 
 
 	items = {
@@ -432,102 +434,119 @@ CAROUSEL = $carousel = function(element, options){
 			 left 	: $($('.inactive-left', this.all ).slice(-1)[0]).index(),
 			 right 	: $($('.inactive-right', this.all )[0]).index()
 
-		},
-		shiftleft: function(){
-			this.ondeck.left--;
-			this.ondeck.right--;
-			this.active.first--;
-			this.active.last--;
-		},
-		shiftright: function(){
-			this.ondeck.left++;
-			this.ondeck.right++;
-			this.active.first++;
-			this.active.last++;
 		}
-	}
+	};
+
+
+	shiftleft = function(){
+			items.ondeck.left--;
+			items.ondeck.right--;
+			items.active.first--;
+			items.active.last--;
+	};
+
+	shiftright = function(){
+			items.ondeck.left++;
+			items.ondeck.right++;
+			items.active.first++;
+			items.active.last++;
+	};
+
+
 
 
 	this.next = function(){
-		self.mobius();
-		$(items.all[items.ondeck.right]).removeClass('inactive-right').addClass('active');
-		$(items.all[items.active.first]).removeClass('active').addClass('inactive-left');
-		items.shiftright();
 
+		self.mobius();
+
+		if(!self.lock){
+			self.lock = true;
+
+			$(items.all[items.ondeck.right]).removeClass('inactive-right').addClass('active');
+
+			$(items.all[items.active.first]).animate({marginLeft:'-100%'},"slow", function (){
+				$(this).removeClass('active').addClass('inactive-left').css('marginLeft','');
+				shiftright();
+				self.lock = false;
+			});
+
+			//$(items.all[items.active.first]).removeClass('active').addClass('inactive-left').css('marginLeft','');
+			//shiftright();
+		}
 	};
 
 	this.prev = function(){
 
 		self.mobius();
-		$(items.all[items.ondeck.left]).removeClass('inactive-left').addClass('active');
-		$(items.all[items.active.last]).removeClass('active').addClass('inactive-right');
-		items.shiftleft();
+
+		if(!self.lock){
+			self.lock = true;
+			
+			$(this).removeClass('active').addClass('inactive-right').css('marginRight','');
+
+			$(items.all[items.ondeck.left]).animate({marginLeft:'0'},"slow", function (){
+
+				$(this).removeClass('inactive-left').addClass('active').css('marginLeft', '');
+
+				self.lock = false;			
+				shiftleft();
+			});
 
 
+			//$(items.all[items.active.last]).animate({marginRight:'-100%'},"slow", function (){
+				//$(this).removeClass('active').addClass('inactive-right').css('marginRight','');
+			//});
+
+			// $(items.all[items.active.first]).removeClass('active').addClass('inactive-right');
+			// $(items.all[items.ondeck.left]).animate({marginRight:'-100%'},"slow", function (){
+			// 	$(this).removeClass('inactive-left').addClass('active').css('marginRight', '');
+			// 	
+			// });
+
+
+				
+			
+
+			
+
+	
+		}
 	};
 
 	this.mobius = function(){
 			var last = $(items.all).length-1;
+			var lastItem = items.all[last];
+			var firstItem = items.all[0];
 
 			if(items.active.first == 1){
-				var last = $(items.all).length-1;
-				var lastItem = items.all[last];
+
 				$(items.all[0]).before($(lastItem).removeClass('inactive-right').addClass('inactive-left'));
-				items.shiftright();
+				shiftright();
 			}
 			if(items.active.last == $(items.all).length-2){
-				var firstItem = items.all[0];
+
 				$(items.all[last]).after($(firstItem).removeClass('inactive-left').addClass('inactive-right'));
-				items.shiftleft();
+				shiftleft();
 			}
 
 			items.all = $(".product", element);
 			console.log(items.all)
 						
-
 	
-
-	
-
-		
 	}
 
-	/*
-	 * stopAutoSlide
-	 * -------------
-	 * Stop the timer for auto rotating the banner. This is public so external
-	 * scripts can stop the timer if necessary. 
-	 */
-	this.stopAutoSlide = function(timer) {
-		if (timer) clearTimeout(timer);
+	this.stopAutoSlide = function() {
+		if (self.timer) clearTimeout(self.timer);
 	}
 
-	/*
-	 * startAutoSlide
-	 * --------------
-	 * Start the timer for auto rotating the banner. This is public so external
-	 * scripts can start the timer if necessary.
-	 * 
-	 * If the 'autoSlidingBanners' configuration was not set to true when the
-	 * object was instantiated and an external script wants to start the banner 
-	 * auto rotating, the script first has to set the object.conf.autoSlidingBanners 
-	 * to true, and then invoke startAutoSlide.
-	 * 
-	 * If the script does not set object.conf.autoSlidingBanners to true before 
-	 * starting the auto rotation, the sliding banners will stop auto rotating
-	 * after the first rotation.
-	 */
 	this.startAutoSlide = function(interval) {
 		var interval = interval;
 
-		timer = setTimeout(function(){
+		self.timer = setTimeout(function(){
 			self.next();
 			self.startAutoSlide(interval);
 		},interval);
-		return timer;
 	}
-
-
 }
 
 shcJSL.methods.carousel = function(element, options){
@@ -536,24 +555,19 @@ shcJSL.methods.carousel = function(element, options){
 	var options = this;
 	var carousel = new $carousel(element, options);
 
-
 	if(typeof options.autoSlideInterval != 'undefined'){
-		timer = carousel.startAutoSlide(options.autoSlideInterval);
+		carousel.startAutoSlide(options.autoSlideInterval);
 	}
 
-
-	$(".right-arrow").bind('click', function(){
-		carousel.stopAutoSlide(timer);
+	$(".right-arrow", element).bind('click', function(){
+		carousel.stopAutoSlide();
 		carousel.next();
 	});
 
-	$(".left-arrow").bind('click', function(){
-		carousel.stopAutoSlide(timer);
+	$(".left-arrow", element).bind('click', function(){
+		carousel.stopAutoSlide();
 		carousel.prev();
 	})
-
-
-
 
 };
 
