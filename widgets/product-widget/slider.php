@@ -2,6 +2,7 @@
 	$count = 1;
 	$span = ($pw_template == "products-vertical") ? "span12" : "span12";
 	$layout = ($pw_template == "products-vertical") ? "vertical" : "horizontal";
+	$total = count($data->products);
 ?>
 
 <?php if ($instance["pw_title"] != "") { ?>
@@ -9,7 +10,7 @@
 		<h3><?php echo $instance["pw_title"]; ?></h3>
 	</hgroup>
 <?php } ?>
-<section class="content-body product-slider-widget-content clearfix viewport_size_3 <?php echo($span); ?>" shc:gizmo="carousel" shc:gizmo:options="{viewportsize:3,itemcount:4,autoSlideInterval:2000}">
+<section class="content-body product-slider-widget-content clearfix viewport_size_<?php echo($pw_fields_to_show); ?> <?php echo($span); ?>" shc:gizmo="carousel" shc:gizmo:options="{viewportsize:<?php echo($pw_fields_to_show); ?>,itemcount:<?php echo($total); ?>,autoSlideInterval:2000}">
 	<div class="left-arrow"></div>
 	<div class="product-slider-container layout_<?php echo($layout); ?>">
 		<?php foreach($data->products as $d) { ?>
