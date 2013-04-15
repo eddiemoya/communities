@@ -511,7 +511,7 @@ CAROUSEL = $carousel = function(element, options){
 			}
 
 			items.all = $(".product", element);
-			console.log(items.all)
+	
 						
 	
 	}
