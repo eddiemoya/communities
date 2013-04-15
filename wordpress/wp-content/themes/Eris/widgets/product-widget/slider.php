@@ -13,7 +13,7 @@
 	<div class="left-arrow"></div>
 	<div class="product-slider-container layout_<?php echo($layout); ?>">
 		<?php foreach($data->products as $d) { ?>
-		<div class="product <?php if($count <= 3) { ?>inactive_left<?php } else if($count <= 6) { ?>active<?php } else { ?>inactive_right <?php } ?>">
+		<div class="product <?php if($count <= 3) { ?>inactive-left<?php } else if($count <= 6) { ?>active<?php } else { ?>inactive-right <?php } ?>">
 			<a href="<?php echo($d->guid); ?>"><img src="<?php echo((!empty($d->meta->imageurls)) ? $d->meta->imageurls[0] : ""); ?>&wid=115&op_sharpen=1" /></a>
 			<p class="product-title"><a href="<?php echo($d->guid); ?>"><?php echo($d->post_title); ?></a></p>
 			<?php for($i=1; $i<=5; $i++) { ?>
