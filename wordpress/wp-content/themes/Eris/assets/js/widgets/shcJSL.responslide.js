@@ -482,7 +482,7 @@ CAROUSEL = $carousel = function(element, options){
 		if(!self.lock){
 			self.lock = true;
 			
-			$(this).removeClass('active').addClass('inactive-right').css('marginRight','');
+			$(items.all[items.active.right]).removeClass('active').addClass('inactive-right').css('marginRight','');
 
 			$(items.all[items.ondeck.left]).animate({marginLeft:'0'},"slow", function (){
 
