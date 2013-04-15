@@ -18,11 +18,7 @@
 		width: 35px;
 		z-index: 1;
 	}
-
-}
-.product-slider-widget-content {
 	.layout_horizontal {
-		height: 204px;
 		overflow: hidden;
 	}
 }
@@ -31,14 +27,11 @@
 	.product-slider-widget-content.viewport_size_#{$i} {		
 		.product {
 			width: (100/$i) * 1%;
-		
-
 			float: left;
 			text-align: center;
 			p {
 				line-height: 110%;
 			}
-
 			.product-stars {
 				background: url(../img/star-green.png) 0 0 transparent;
 				width: 20px;

@@ -929,8 +929,7 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .product-slider-widget-content { position: relative; }
 .product-slider-widget-content .right-arrow { position: absolute; top: 55px; right: -20px; background: url(../img/hero-slide-right.png) -3px -16px transparent; height: 63px; width: 35px; z-index: 1; }
 .product-slider-widget-content .left-arrow { position: absolute; top: 55px; left: -22px; background: url(../img/hero-slide-left.png) -3px -16px transparent; height: 63px; width: 35px; z-index: 1; }
-
-.product-slider-widget-content .layout_horizontal { height: 204px; overflow: hidden; }
+.product-slider-widget-content .layout_horizontal { overflow: hidden; }
 
 .product-slider-widget-content.viewport_size_1 .product { width: 100%; float: left; text-align: center; }
 .product-slider-widget-content.viewport_size_1 .product p { line-height: 110%; }
