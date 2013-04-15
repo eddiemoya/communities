@@ -412,7 +412,9 @@ if(shcJSL && shcJSL.gizmos) {
 
 
 
-
+/**
+ *
+ **/
 CAROUSEL = $carousel = function(element, options){
 	var element = element ;
 	var items = {};
@@ -457,59 +459,38 @@ CAROUSEL = $carousel = function(element, options){
 
 	this.next = function(){
 
-		self.mobius();
+		
 
 		if(!self.lock){
 			self.lock = true;
 
-			$(items.all[items.ondeck.right]).removeClass('inactive-right').addClass('active');
-
 			$(items.all[items.active.first]).animate({marginLeft:'-100%'},"slow", function (){
-				$(this).removeClass('active').addClass('inactive-left').css('marginLeft','');
+
+				self.mobius();	
+				$(this).removeClass('active').addClass('inactive-left').attr('style', '');
+				$(items.all[items.ondeck.right]).removeClass('inactive-right').addClass('active');
+
 				shiftright();
 				self.lock = false;
-			});
 
-			//$(items.all[items.active.first]).removeClass('active').addClass('inactive-left').css('marginLeft','');
-			//shiftright();
+			});
 		}
 	};
 
 	this.prev = function(){
 
-		self.mobius();
-
 		if(!self.lock){
 			self.lock = true;
 			
-			$(items.all[items.active.right]).removeClass('active').addClass('inactive-right').css('marginRight','');
-
 			$(items.all[items.ondeck.left]).animate({marginLeft:'0'},"slow", function (){
 
-				$(this).removeClass('inactive-left').addClass('active').css('marginLeft', '');
+				self.mobius();
+				$(this).removeClass('inactive-left').addClass('active').attr('style', '');
+				$(items.all[items.active.right]).removeClass('active').addClass('inactive-right');
 
 				self.lock = false;			
 				shiftleft();
 			});
-
-
-			//$(items.all[items.active.last]).animate({marginRight:'-100%'},"slow", function (){
-				//$(this).removeClass('active').addClass('inactive-right').css('marginRight','');
-			//});
-
-			// $(items.all[items.active.first]).removeClass('active').addClass('inactive-right');
-			// $(items.all[items.ondeck.left]).animate({marginRight:'-100%'},"slow", function (){
-			// 	$(this).removeClass('inactive-left').addClass('active').css('marginRight', '');
-			// 	
-			// });
-
-
-				
-			
-
-			
-
-	
 		}
 	};
 
