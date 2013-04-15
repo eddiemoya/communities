@@ -2,8 +2,9 @@
 	$count = 1;
 	$span = ($pw_template == "products-vertical") ? "span12" : "span12";
 	$layout = ($pw_template == "products-vertical") ? "vertical" : "horizontal";
-
+	$animation = $instance['pw_animation_duration'];
 	$total = count($data->products);
+
 	$prodRows = $data->products;
 	$flNumber = 1;
 
@@ -12,6 +13,7 @@
 		$ar = array_pop($prodRows);
 		array_unshift($prodRows, $ar);
 	}
+	
 ?>
 
 <?php if ($instance["pw_title"] != "") { ?>
@@ -19,7 +21,10 @@
 		<h3><?php echo $instance["pw_title"]; ?></h3>
 	</hgroup>
 <?php } ?>
-<section class="content-body product-slider-widget-content clearfix viewport_size_<?php echo($pw_fields_to_show); ?> <?php echo($span); ?>" shc:gizmo="carousel" shc:gizmo:options="{viewportsize:<?php echo($pw_fields_to_show); ?>,itemcount:<?php echo($total); ?>,autoSlideInterval:2000}">
+
+<section class="content-body product-slider-widget-content clearfix viewport_size_<?php echo($pw_fields_to_show); ?> <?php echo($span); ?>" shc:gizmo="carousel" 
+	shc:gizmo:options="{viewportsize:<?php echo($pw_fields_to_show); ?>,itemcount:<?php echo($total); ?>,autoSlideInterval:<?php echo $animation; ?>}">
+
 	<div class="left-arrow"></div>
 	<div class="product-slider-container layout_<?php echo($layout); ?>">
 		<?php foreach($prodRows as $d) { ?>
