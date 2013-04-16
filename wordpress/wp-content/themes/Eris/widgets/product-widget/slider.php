@@ -8,7 +8,7 @@ $animation = (!empty($animation)) ?  ",autoSlideInterval:$animation": "" ;
 $total = count($data->products);
 
 $prodRows = $data->products;
-$flNumber = 2;
+$flNumber = 1;
 
 
 
@@ -17,8 +17,6 @@ for($i=0; $i<$flNumber; $i++)
 	$ar = array_pop($prodRows);
 	array_unshift($prodRows, $ar);
 }
-
-
 
 
  if ($instance["pw_title"] != "") { ?>
@@ -46,24 +44,27 @@ for($i=0; $i<$flNumber; $i++)
 			} else { 
 				$class = "inactive-right";
 			}
-			//print_pre($d);
+	
+			get_partial('widgets/product-widget/product', array(
+				'class' => $class,
+				'd' => $d,
+			));
+		
+			$count++;
+
+
+		} 
+			foreach((array)$unloaded_prods as $up){
+				?>
+				<div class="product inactive-right" data-pid="<?php echo $up; ?>" data-loaded="false"></div>
+				<?
+			}
+
 		?>
 
-		<div class="product <?php echo $class; ?>" data-pid="<?php echo $d->meta->partnumber; ?>">
-			<a href="<?php echo($d->guid); ?>"><img src="<?php echo((!empty($d->meta->imageurls)) ? $d->meta->imageurls[0] : ""); ?>?&wid=115&op_sharpen=1" /></a>
-			<p class="product-title"><a href="<?php echo($d->guid); ?>"><?php echo($d->post_title); ?></a></p>
-			<?php for($i=1; $i<=5; $i++) { ?>
-				<span class="product-stars star-<?php echo(($i > $d->meta->rating) ? "de" : ""); ?>selected"></span>
-			<?php } ?>
-			<p class="product-price">
-				<?php if(!empty($d->meta->saleprice)) { ?>
-					$<?php echo($d->meta->saleprice); ?> <span class="old-price">$<?php echo($d->meta->regularprice); ?></span>
-				<?php } else { ?>
-					$<?php echo($d->meta->regularprice); ?>
-				<?php } ?>
-			</p>
-		</div>
-		<?php $count++;} ?>
+
+
+
 
 	</div>
 	</div>
