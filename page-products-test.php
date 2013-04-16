@@ -3,8 +3,8 @@
 
 echo '<h2>Ratings & Reviews Test Page</h2><br><br>';
 
-$rr = RR_User_Reviews::factory(35497172)
-						->get();
+/*$rr = RR_User_Reviews::factory(35497172)
+						->get();*/
 
 /*$rr = $reviews = RR_Recent_Reviews::factory()
        								->limit(3)
@@ -21,9 +21,9 @@ $rr = RR_User_Reviews::factory(35497172)
 //$results = $rr->results;
 
 
-echo '<pre>';
+/*echo '<pre>';
 var_dump($rr);
-echo '</pre>';
+echo '</pre>';*/
 
 //part string in elem 5
 /*$pieces = explode('/', 'http://www.kmart.com/shc/s/p_10151_10104_021W004989196001P');
@@ -40,3 +40,6 @@ echo $review_str;*/
 echo '<pre>';
 var_dump($product);
 exit;*/
+
+Products_Updater::factory()->update();
+
