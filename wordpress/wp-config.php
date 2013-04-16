@@ -15,16 +15,22 @@
  * @package WordPress
  */
 
-
-
 /** The name of the database for WordPress */
+<<<<<<< HEAD
 define('DB_NAME', 'comm_local');
+=======
+define('DB_NAME', 'communities');
+>>>>>>> bfe824a... Fixes for product carousel
 
 /** MySQL database username */
 define('DB_USER', 'wp_user');
 
 /** MySQL database password */
+<<<<<<< HEAD
 define('DB_PASSWORD', 'philos10');
+=======
+define('DB_PASSWORD', '');
+>>>>>>> bfe824a... Fixes for product carousel
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -34,8 +40,6 @@ define('DB_CHARSET', 'utf8');
 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
-
-
 
 /**#@+
  * Authentication Unique Keys and Salts.
