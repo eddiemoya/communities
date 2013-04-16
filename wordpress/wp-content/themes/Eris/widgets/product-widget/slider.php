@@ -46,10 +46,11 @@ for($i=0; $i<$flNumber; $i++)
 			} else { 
 				$class = "inactive-right";
 			}
+			//print_pre($d);
 		?>
 
-		<div class="product <?php echo $class; ?> ">
-			<a href="<?php echo($d->guid); ?>"><img src="<?php echo((!empty($d->meta->imageurls)) ? $d->meta->imageurls[0] : ""); ?>&wid=115&op_sharpen=1" /></a>
+		<div class="product <?php echo $class; ?>" data-pid="<?php echo $d->meta->partnumber; ?>">
+			<a href="<?php echo($d->guid); ?>"><img src="<?php echo((!empty($d->meta->imageurls)) ? $d->meta->imageurls[0] : ""); ?>?&wid=115&op_sharpen=1" /></a>
 			<p class="product-title"><a href="<?php echo($d->guid); ?>"><?php echo($d->post_title); ?></a></p>
 			<?php for($i=1; $i<=5; $i++) { ?>
 				<span class="product-stars star-<?php echo(($i > $d->meta->rating) ? "de" : ""); ?>selected"></span>
