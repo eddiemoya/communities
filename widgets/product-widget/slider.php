@@ -37,9 +37,10 @@ for($i=0; $i<$flNumber; $i++)
 		<?php foreach($prodRows as $d) { ?>
 
 		<?php
+
 			if($count <= $flNumber) { 
 				$class = "inactive-left";
-			} else if($count <= $flNumber + $pw_fields_to_show+2) { 
+			} elseif($count <= $flNumber + $pw_fields_to_show+2) { 
 				$class = "active" ;
 			} else { 
 				$class = "inactive-right";
@@ -53,14 +54,7 @@ for($i=0; $i<$flNumber; $i++)
 			$count++;
 
 
-		} 
-			foreach((array)$unloaded_prods as $up){
-				?>
-				<div class="product inactive-right" data-pid="<?php echo $up; ?>" data-loaded="false"></div>
-				<?
-			}
-
-		?>
+		}?>
 
 
 
