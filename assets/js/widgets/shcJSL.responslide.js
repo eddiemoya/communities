@@ -453,7 +453,7 @@ CAROUSEL = $carousel = function(element, options){
 			items.active.last++;
 	};
 
-
+	//Right
 	this.next = function(){
 
 		if(!self.lock){
@@ -464,15 +464,16 @@ CAROUSEL = $carousel = function(element, options){
 				$(this).removeClass('active').addClass('inactive-left').attr('style', '');
 				$(items.all[items.ondeck.right]).removeClass('inactive-right').addClass('active');
 				
-
-				self.mobius();	
 				shiftright();
+				self.mobius();	
 				self.lock = false;
+				$(items.all[items.ondeck.right]).trigger('ajax-get');
 
 			});
 		}
 	};
 
+	//Left
 	this.prev = function(){
 
 		if(!self.lock){
@@ -480,12 +481,14 @@ CAROUSEL = $carousel = function(element, options){
 			
 			$(items.all[items.active.last]).removeClass('active').addClass('inactive-right');
 			$(items.all[items.ondeck.left]).animate({marginLeft:'0'},"slow", function (){
-		
+				
 				$(this).removeClass('inactive-left').addClass('active').attr('style', '');
 
+				
 				self.mobius();
 				shiftleft();
 				self.lock = false;
+				$(items.all[items.ondeck.left]).trigger('ajax-get');
 			});
 		}
 	};
@@ -494,18 +497,27 @@ CAROUSEL = $carousel = function(element, options){
 			var last = $(items.all).length-1;
 			var lastItem = items.all[last];
 			var firstItem = items.all[0];
+			var done;
 
-			if(items.active.first == 1){
+			//Prev /Left
+			if(items.ondeck.left <= 0){
 
 				$(items.all[0]).before($(lastItem).removeClass('inactive-right').addClass('inactive-left'));
 				shiftright();
-			}
+				done = true;
+			
+			} 
 
-			if(items.ondeck.right == $(items.all).length-1){
+			//Next /Right
+			if(items.ondeck.right == $(items.all).length && !done){
 
 				$(items.all[last]).after($(firstItem).removeClass('inactive-left').addClass('inactive-right'));
 				shiftleft();
 			}
+			
+
+			
+
 
 			items.all = $(".product", element);						
 	
@@ -554,8 +566,6 @@ if(shcJSL && shcJSL.gizmos) {
 
 		options = ($(element).attr("shc:gizmo:options") != undefined) ? eval('(' + $(element).attr("shc:gizmo:options") + ')') : {};
 		shcJSL.get(element).carousel(options);
-		
-
 	}
 }
 
