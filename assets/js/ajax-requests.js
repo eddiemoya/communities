@@ -110,6 +110,42 @@ jQuery(document).ready(function($) {
 		});
  	});
 
+	$('.product').on('ajax-get', function(e){
+		var loaded = $(this).attr('data-loaded');
+		var data;
+		var self = this;
+
+		if(typeof loaded != 'undefined' && loaded == "false" ) {
+
+			//alert($(this).attr('data-pid'));
+
+			var css_class;
+			css_class = ( $(this).hasClass('active') ) ? 'active'  :'';
+			css_class = ( $(this).hasClass('inactive-left') ) ? 'inactive-left'  :'';
+			css_class = ( $(this).hasClass('inactive-right') ) ? 'inactive-right'  :'';
+
+
+			data = {
+				action		: 'get_post_by_id',
+				post_type 	: 'product',
+				css_class	: css_class,
+				id 			: $(this).attr('data-pid')
+			};
+
+			jQuery.ajax({
+				url  : ajaxdata.ajaxurl,
+				type: 'POST',
+				data : data,
+				success:function(results){
+					$(self).html($(results).html());
+					$(self).attr('data-loaded', 'true');
+				
+				}
+			});
+
+		}
+	})
+
 
 
 
