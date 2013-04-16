@@ -1,6 +1,7 @@
 <?php 
 	//$product_url = $d->guid;
-	$product_url = "http://www.sears.com/{$d->post_name}/p-{$d->meta->partnumber}";
+	//$product_url = "http://www.sears.com/{$d->post_name}/p-{$d->meta->partnumber}";
+	$product_url = (((stripos(get_bloginfo('name'), 'sears')) !== false) ? 'http://www.sears.com/' : 'http://www.kmart.com/') . $d->meta->product_uri;
 ?>
 
 <div class="product <?php echo $class; ?>" data-pid="<?php echo $d->ID; ?>">
