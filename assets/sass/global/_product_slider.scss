@@ -24,9 +24,15 @@
 }
 
 @for $i from 1 through 4 {
-	.product-slider-widget-content.viewport_size_#{$i} {		
+	.product-slider-widget-content.viewport_size_#{$i} {
+
+		.product-slider-viewport{
+			width: ((100/$i)*($i + 2)) * 1%;
+			margin-left: (100/$i) * -1%;
+		}
+				
 		.product {
-			width: (100/$i) * 1%;
+			width: (100/($i + 2)) * 1%;
 			float: left;
 			text-align: center;
 			p {
