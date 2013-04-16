@@ -12,13 +12,6 @@ $flNumber = 1;
 
 
 
-for($i=0; $i<$flNumber; $i++)
-{
-	$ar = array_pop($prodRows);
-	array_unshift($prodRows, $ar);
-}
-
-
  if ($instance["pw_title"] != "") { ?>
 	<hgroup class="content-header">
 		<h3><?php echo $instance["pw_title"]; ?></h3>
@@ -54,10 +47,10 @@ for($i=0; $i<$flNumber; $i++)
 
 
 		} 
-			foreach((array)$unloaded_prods as $up){
+			foreach($unload as $k => $v){
 				?>
-				<div class="product inactive-right" data-pid="<?php echo $up; ?>" data-loaded="false"></div>
-				<?
+				<div class="product inactive-right" data-pid="<?php echo $v; ?>" data-loaded="false"></div>
+				<?php
 			}
 
 		?>
