@@ -1,4 +1,4 @@
-/*
+/**
 * Responslide: Liquid, Responsive, Sliding Banner
 * @author Tim Steele
 *
@@ -7,11 +7,19 @@
 *
 * Releases:
 *
-* @version [1.0: 2/21/12]
+* @version [1.0: 02/21/12]
+* @author Tim Steele
 * - Initial script release
-* @version [2.0: 4/19/12]
+* 
+* @version [2.0: 04/19/12]
+* @author Tim Steele
 * - Added mobile touchscreen functionality
 * - Allowed more customization
+* 
+* @version [2.1: 04/16/13]
+* @author Tim Steele
+* - Added hashbang linking
+* - adjusted to match shcJSL.v1.0
 */
 
 /* [SAMPLE HTML]
