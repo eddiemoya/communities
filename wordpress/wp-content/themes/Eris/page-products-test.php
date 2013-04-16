@@ -32,7 +32,9 @@ echo '<h2>Ratings & Reviews Test Page</h2><br><br>';
 
 /*$id = 13640;
 var_dump(get_post($id));*/
-$rr = Products_Model::factory()->get_by_id(array(13619,13620))->products;
+//$rr = Products_Model::factory()->get_by_id(array(13619,13620))->products;
+
+
 
 /*$rr = get_posts(array('post_type'	=> 'product',
 						'meta_query'	=> array(array('key'	=> 'partnumber',
@@ -40,11 +42,11 @@ $rr = Products_Model::factory()->get_by_id(array(13619,13620))->products;
 						'post_status'	=> 'publish'
 								));*/
 
-echo '<pre>';
+/*echo '<pre>';
 var_dump($rr);
-echo '</pre>';
+echo '</pre>';*/
 
-echo 'Not Found: ' . var_dump($rr->not_found);
+//echo 'Not Found: ' . var_dump($rr->not_found);
 
 /*try {
 		Products_Updater::factory()
@@ -63,14 +65,14 @@ $review_str = str_replace('p_', 'allmodreviews_', $pieces[5]);
 echo $review_str;*/
 
 
-/*$product = Products_Api_Request::factory(array('api' => 'detail',
-												'term' 	=> 'ghfhgfh'))
+$product = Products_Api_Request::factory(array('api' 	=> 'detail',
+												'term' 	=> '09539092000P'))
 								->response();
 								
 								
 echo '<pre>';
 var_dump($product);
-exit;*/
+exit;
 
 /*function convert_meta($meta) {
 	
