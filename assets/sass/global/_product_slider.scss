@@ -39,12 +39,12 @@
 				line-height: 110%;
 			}
 			.product-stars {
-				background: url(../img/star-green.png) 0 0 transparent;
+				background: url(../img/star-green.png) 20px 0 transparent;
 				width: 20px;
 				height: 16px;
 				display: inline-block;
-				&.star-deselected {
-					background: url(../img/star-green.png) 20px 0 transparent;
+				&.star-selected {
+					background: url(../img/star-green.png) 0 0 transparent;
 				}
 			}
 			img {
