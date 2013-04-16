@@ -455,26 +455,24 @@ CAROUSEL = $carousel = function(element, options){
 	};
 
 
-
-
 	this.next = function(){
-
-		
 
 		if(!self.lock){
 			self.lock = true;
 
 			$(items.all[items.active.first]).animate({marginLeft:'-100%'},"slow", function (){
 
-				self.mobius();	
 				$(this).removeClass('active').addClass('inactive-left').attr('style', '');
 				$(items.all[items.ondeck.right]).removeClass('inactive-right').addClass('active');
+				
 
+				self.mobius();	
 				shiftright();
 				self.lock = false;
 
 			});
 		}
+		console.log(items.ondeck.left, items.active.first);
 	};
 
 	this.prev = function(){
@@ -482,16 +480,18 @@ CAROUSEL = $carousel = function(element, options){
 		if(!self.lock){
 			self.lock = true;
 			
+			$(items.all[items.active.last]).removeClass('active').addClass('inactive-right');
 			$(items.all[items.ondeck.left]).animate({marginLeft:'0'},"slow", function (){
+		
+				$(this).removeClass('inactive-left').addClass('active').attr('style', '');
 
 				self.mobius();
-				$(this).removeClass('inactive-left').addClass('active').attr('style', '');
-				$(items.all[items.active.right]).removeClass('active').addClass('inactive-right');
-
-				self.lock = false;			
 				shiftleft();
+				self.lock = false;
 			});
 		}
+
+		console.log(items.ondeck.left, items.active.first);
 	};
 
 	this.mobius = function(){
@@ -504,15 +504,14 @@ CAROUSEL = $carousel = function(element, options){
 				$(items.all[0]).before($(lastItem).removeClass('inactive-right').addClass('inactive-left'));
 				shiftright();
 			}
-			if(items.active.last == $(items.all).length-2){
+
+			if(items.ondeck.right == $(items.all).length-1){
 
 				$(items.all[last]).after($(firstItem).removeClass('inactive-left').addClass('inactive-right'));
 				shiftleft();
 			}
 
-			items.all = $(".product", element);
-	
-						
+			items.all = $(".product", element);						
 	
 	}
 
