@@ -429,16 +429,15 @@ CAROUSEL = $carousel = function(element, options){
 	items = {
 		all 	: $(".product", element),
 		active 	: { 
-			last 	: $($('.active', this.all ).slice(-1)[0]).index(),
-			first 	: $($('.active', this.all )[0]).index()
+			last 	: $($('.active', element ).slice(-1)[0]).index(),
+			first 	: $($('.active', element )[0]).index()
 		},
 		ondeck	: {
-			 left 	: $($('.inactive-left', this.all ).slice(-1)[0]).index(),
-			 right 	: $($('.inactive-right', this.all )[0]).index()
+			 left 	: $($('.inactive-left', element ).slice(-1)[0]).index(),
+			 right 	: $($('.inactive-right', element )[0]).index()
 
 		}
 	};
-
 
 	shiftleft = function(){
 			items.ondeck.left--;
@@ -472,7 +471,6 @@ CAROUSEL = $carousel = function(element, options){
 
 			});
 		}
-		console.log(items.ondeck.left, items.active.first);
 	};
 
 	this.prev = function(){
@@ -490,8 +488,6 @@ CAROUSEL = $carousel = function(element, options){
 				self.lock = false;
 			});
 		}
-
-		console.log(items.ondeck.left, items.active.first);
 	};
 
 	this.mobius = function(){
