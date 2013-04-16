@@ -89,6 +89,34 @@ function get_posts_ajax(){
 add_action('wp_ajax_nopriv_get_posts_ajax', 'get_posts_ajax');
 add_action('wp_ajax_get_posts_ajax', 'get_posts_ajax');
 
+
+
+/**
+ * @author Eddie Moya
+ * 
+ */
+function get_post_by_id(){
+    if( isset($_POST['id']) ){
+
+    	if( isset($_POST['post_type']) && $_POST['post_type'] == 'product'){
+     		$product = new Products_Model();
+     		$product = $product->get_by_id($_POST['id'])->products[0];
+     		
+     		get_partial('widgets/product-widget/product', array(
+				'class' => $_POST['css_class'],
+				'd' => $product,
+			));
+    	}
+  	}
+    exit();
+}
+
+add_action('wp_ajax_nopriv_get_post_by_id', 'get_post_by_id');
+add_action('wp_ajax_get_post_by_id', 'get_post_by_id');
+
+
+
+
 /**
  * @author Eddie Moya
  * 
