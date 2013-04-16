@@ -37,16 +37,6 @@
 				else :
 					$image = MultiPostThumbnails::get_post_thumbnail_url($posts[$postID]->post_type, 'hero-slider-image', $posts[$postID]->ID);
 					$link = get_post_permalink($posts[$postID]->ID);
-<<<<<<< HEAD
-				}
-				
-				if ($link != "") {
-					$link_class=" banner_link";
-				}
-		?>
-				<div class="banner slide_<?php echo $counter.$link_class; ?>" shc:shard="banner" shc:url="<?php echo $link; ?>">
-					<h1 class="content-headline"><?php echo $posts[$postID]->post_title; ?></h1>
-=======
 				endif;
 				
 				if ($link != "") :
@@ -57,7 +47,6 @@
 					<?php if (get_post_meta( $posts[$postID]->ID, 'slide-hide-title', true) != true) : ?>
 						<h1 class="content-headline"><?php echo $posts[$postID]->post_title; ?></h1>
 					<?php endif; ?>
->>>>>>> c9fb7a0... show/hide title stripe checkbox
 					<img src="<?php echo $image; ?>" alt="<?php $posts[$postID]->post_title; ?>" />
 				</div>
 		<?php
