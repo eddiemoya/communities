@@ -16,21 +16,13 @@
  */
 
 /** The name of the database for WordPress */
-<<<<<<< HEAD
-define('DB_NAME', 'comm_local');
-=======
 define('DB_NAME', 'communities');
->>>>>>> bfe824a... Fixes for product carousel
 
 /** MySQL database username */
-define('DB_USER', 'wp_user');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-<<<<<<< HEAD
-define('DB_PASSWORD', 'philos10');
-=======
 define('DB_PASSWORD', '');
->>>>>>> bfe824a... Fixes for product carousel
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
