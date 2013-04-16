@@ -9,8 +9,8 @@ if(function_exists('display_dropzones')){
     display_dropzones();
 }
 
-get_template_part('widgets/product-slider/slider');
-get_template_part('widgets/product-slider/slider');
+// get_template_part('widgets/product-slider/slider');
+// get_template_part('widgets/product-slider/slider');
 
 get_template_part('parts/footer');
 
