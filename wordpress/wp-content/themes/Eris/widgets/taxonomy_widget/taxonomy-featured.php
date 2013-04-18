@@ -5,12 +5,12 @@
 <div class="span9 featured-content">
 
     <h1 class="content-headline">
-        <a href="<?php echo($data['post']->guid); ?>" title="<?php echo($data['post']->post_title); ?>"><?php echo($data['post']->post_title); ?></a>
+        <a href="<?php echo($data['link']); ?>" title="<?php echo($data['info']->name); ?>"><?php echo($data['info']->name); ?></a>
     </h1>
 
 	<!--
 		You will have to add the <sarcasm>always helpful, and very informative</sarcasm> 'see more' link on the back end.
 	-->
 
-	<?php echo($data['post']->post_content); ?>
+	<?php echo($data['info']->description); ?>
 </div>
