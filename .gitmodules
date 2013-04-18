@@ -67,3 +67,6 @@
 [submodule "wordpress/wp-content/plugins/product-widget"]
 	path = wordpress/wp-content/plugins/product-widget
 	url = git@github.com:eddiemoya/product-widget.git
+[submodule "wordpress/wp-content/plugins/taxonomy_widget"]
+	path = wordpress/wp-content/plugins/taxonomy_widget
+	url = git@github.com:mattday16/taxonomy_widget.git
