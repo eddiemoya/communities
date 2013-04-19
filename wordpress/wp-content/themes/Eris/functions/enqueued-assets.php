@@ -12,7 +12,8 @@ add_action('wp_enqueue_scripts', 'enqueue_scripts');
 function enqueue_scripts() {
         
     if (!is_admin()) { // do not enqueue on admin pages
-        
+        $stylesheet_suffix = theme_option("bust_stylesheets_suffix");
+        $javascript_suffix = theme_option("bust_javascript_suffix");
         //Set up array to be passed to the shcproducts js file.
         $data = array(
             'ajaxurl'            => site_url('/wp-admin/admin-ajax.php'),
@@ -49,23 +50,23 @@ function enqueue_scripts() {
         wp_deregister_script('jquery'); 
         wp_register_script('jquery',    get_template_directory_uri() . '/assets/js/vendor/jquery-1.7.2.min.js', array(), '1.7.2');
         wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.5.3.min.js', array(), '2.5.3');
-        wp_register_script('shcJSL',    get_template_directory_uri() . '/assets/js/shc-jsl.js', array(), '1.0');
-        wp_register_script('moodle', get_template_directory_uri() . '/assets/js/widgets/shcJSL.moodle.js', array(), '1.0');
-        wp_register_script('ajaxrequests', get_template_directory_uri() . '/assets/js/ajax-requests.js', array('jquery'), '1.2');
-        wp_register_script('openID', get_template_directory_uri() . '/assets/js/widgets/shcJSL.openID.js', array(), '1.0');
-        wp_register_script('tooltip', get_template_directory_uri() . '/assets/js/widgets/shcJSL.tooltip.js', array(), '1.0');
-        wp_register_script('actions', get_template_directory_uri() . '/assets/js/widgets/shcJSL.actions.js', array(), '1.0');
-        wp_register_script('transFormer', get_template_directory_uri() . '/assets/js/widgets/shcJSL.transFormer.js', array(), '1.0');
-        wp_register_script('flagger', get_template_directory_uri() . '/assets/js/widgets/shcJSL.flagger.js', array(), '1.0');
-		wp_register_script('responslide', get_template_directory_uri() . '/assets/js/widgets/shcJSL.responslide.js', array(), '1.01');
-        wp_register_script('wp-polls', get_template_directory_uri() . '/assets/js/widgets/polls.js', array(), '1.0');
-        wp_register_script('carousel', get_template_directory_uri() . '/assets/js/widgets/shcJSL.carousel.js', array(), '1.0');
-	    wp_register_script('omniture_scode', get_template_directory_uri() . '/assets/js/vendor/omniture.'.theme_option("brand").'.js', array(), '1.0', true);
-        wp_register_script('omniture_start', get_template_directory_uri() . '/assets/js/vendor/omniture.start.js', array('omniture_scode'), '1.0', true);
+        wp_register_script('shcJSL',    get_template_directory_uri() . '/assets/js/shc-jsl.js', array(), $javascript_suffix);
+        wp_register_script('moodle', get_template_directory_uri() . '/assets/js/widgets/shcJSL.moodle.js', array(), $javascript_suffix);
+        wp_register_script('ajaxrequests', get_template_directory_uri() . '/assets/js/ajax-requests.js', array('jquery'), $javascript_suffix);
+        wp_register_script('openID', get_template_directory_uri() . '/assets/js/widgets/shcJSL.openID.js', array(), $javascript_suffix);
+        wp_register_script('tooltip', get_template_directory_uri() . '/assets/js/widgets/shcJSL.tooltip.js', array(), $javascript_suffix);
+        wp_register_script('actions', get_template_directory_uri() . '/assets/js/widgets/shcJSL.actions.js', array(), $javascript_suffix);
+        wp_register_script('transFormer', get_template_directory_uri() . '/assets/js/widgets/shcJSL.transFormer.js', array(), $javascript_suffix);
+        wp_register_script('flagger', get_template_directory_uri() . '/assets/js/widgets/shcJSL.flagger.js', array(), $javascript_suffix);
+		wp_register_script('responslide', get_template_directory_uri() . '/assets/js/widgets/shcJSL.responslide.js', array(), $javascript_suffix);
+        wp_register_script('wp-polls', get_template_directory_uri() . '/assets/js/widgets/polls.js', array(), $javascript_suffix);
+        wp_register_script('carousel', get_template_directory_uri() . '/assets/js/widgets/shcJSL.carousel.js', array(), $javascript_suffix);
+	    wp_register_script('omniture_scode', get_template_directory_uri() . '/assets/js/vendor/omniture.'.theme_option("brand").'.js', array(), $javascript_suffix, true);
+        wp_register_script('omniture_start', get_template_directory_uri() . '/assets/js/vendor/omniture.start.js', array('omniture_scode'), $javascript_suffix, true);
 
 
-        wp_register_script('omniture', get_template_directory_uri() . '/assets/js/vendor/omniture.' . theme_option("brand") . '.js', array(), '1.0');
-        wp_register_script('addthis', 'http://s7.addthis.com/js/250/addthis_widget.js', array(), '1.1');
+        wp_register_script('omniture', get_template_directory_uri() . '/assets/js/vendor/omniture.' . theme_option("brand") . '.js', array(), $javascript_suffix);
+        wp_register_script('addthis', 'http://s7.addthis.com/js/250/addthis_widget.js', array(), $javascript_suffix);
 
         // NOT FOR PRODUCTION
         //wp_register_script('debug', get_template_directory_uri() . '/assets/js/vendor/debug.js', array(), '1.0');
@@ -99,17 +100,17 @@ function enqueue_scripts() {
         /* Styles */
         //$lookup_stylesheet = str_replace('kmart.com', 'sears.com', lookup_stylesheet());
         $lookup_stylesheet = lookup_stylesheet();
-		wp_register_style( 'main-styles', $lookup_stylesheet, array(), '2.0' );
+		wp_register_style( 'main-styles', $lookup_stylesheet, array(), $stylesheet_suffix );
         wp_enqueue_style( 'main-styles' );
         
         //Enqueue profile ajax only for author template
         if(is_author()) {
 
-            wp_register_script('profile-ajax', get_template_directory_uri() . '/assets/js/profile-ajax.js', array('jquery'), '1.0');
+            wp_register_script('profile-ajax', get_template_directory_uri() . '/assets/js/profile-ajax.js', array('jquery'), $javascript_suffix);
             wp_enqueue_script('profile-ajax');
 
             if(is_user_logged_in()) {
-                wp_register_script('user-delete-comment', get_template_directory_uri() . '/assets/js/user-delete-comment.js', array('jquery'), '1.0');
+                wp_register_script('user-delete-comment', get_template_directory_uri() . '/assets/js/user-delete-comment.js', array('jquery'), $javascript_suffix);
                 wp_enqueue_script('user-delete-comment');
             }
         }     
