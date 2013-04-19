@@ -1,3 +1,4 @@
+<section class="content-body clearfix">
 <div class="featured-image span3">
 	<img title="<?php echo($data['info']->name); ?>" alt="<?php echo($data['info']->name); ?>" src="<?php echo((!empty($data['imgs'])) ? $data['imgs'][0]->guid : "http://path/to/noimg.png"); ?>">        
 </div>
@@ -14,3 +15,4 @@
 
 	<?php echo($data['info']->description); ?>
 </div>
+</section>

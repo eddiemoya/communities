@@ -1,10 +1,16 @@
+<header class="content-header">
+	<h3>Departments</h3>
+</header>
+
+<section class="content-body clearfix">
+<?php $ctr = 0; ?>
 <ul class="span12">
 <?php foreach($disp as $k => $d) { ?>
-	<li class="span3 alpha">
+	<li class="span3<?php if(($ctr % 4) == 0) { ?> alpha<?php } ?>">
 		<a href="<?php echo($d['link']); ?>" title="<?php echo($k); ?>"><img src="<?php echo($d['img']); ?>" alt="<?php echo($k); ?>" /></a>
 		<h5><a href="<?php echo($d['link']); ?>" title="<?php echo($k); ?>"><?php echo($k); ?></a></h5>
 	</li>
-<?php } ?>
+<?php $ctr++; } ?>
 </ul>
 	
 <?php if(!empty($drop) && $dpdn) { ?>
@@ -16,17 +22,18 @@
 			<?php } ?>
 		</select>
 	</div>
-
+<?php $ctr = 0; ?>
 	<?php if(!empty($nsts)) { ?>
 	<noscript>
 		<ul class="span12">
 			<?php foreach($nsts as $k => $d) { ?>
-			<li class="span3 alpha">
+			<li class="span3<?php if(($ctr % 4) == 0) { ?> alpha<?php } ?>">
 				<a href="<?php echo($d['link']); ?>" title="<?php echo($k); ?>"><img src="<?php echo($d['img']); ?>" alt="<?php echo($k); ?>" /></a>
 				<h5><a href="<?php echo($d['link']); ?>" title="<?php echo($k); ?>"><?php echo($k); ?></a></h5>
 			</li>
-			<?php } ?>
+			<?php $ctr++;} ?>
 		</ul>
 	</noscript>
 	<?php } ?>
-<?php } ?> 
+<?php } ?>
+</section>
