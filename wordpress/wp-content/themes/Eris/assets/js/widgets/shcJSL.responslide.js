@@ -19,103 +19,74 @@
 * @version [2.1: 04/16/13]
 * @author Tim Steele
 * - Added hashbang linking
-* - adjusted to match shcJSL.v1.0
+* - Adjusted to match shcJSL.v1.0
+* - Removed global configuration
+* - Adjusted configurations
+* - Commented out hashbang
+* 
+* @todo Find way to use multiple hasbang sliders on one page
 */
 
-/* [SAMPLE HTML]
- * Sample Options
+/**
+ * @example
  * "kc:options" => "{startingBanner:0, animate:true, autoSlideBanners:true, slideSelector: '*[kc\\\\:shard*=\"banner\"]', autoSlidingBannerInterval:7000}"
  * 
  */
 
-/*
- * [CONFIGURATIONS]
- * Settings for Responslide based on your website.
- * 
- * rs.g 
- * ----
- * (Object)
- * This is the global object for the site scipts.
- * 
- * rs.p
- * ----
- * (String)
- * Prefix used on the name spaces for attributes.
- */
-var rs = {};
-rs.g = shcJSL;
-rs.p = 'shc';
-
-//var responslide;
-
-/*
+/**
  * Arguments
-  
-   element: (HTMLObject), Required
-     Element that is the Responslide
-     
-   options: (Object), Optional
-     Options for Responslide
-  
+ * @param element (HTMLObject) Responslide element [Required] 
+ * @param options (Object) Options for Responslide
+ * Arguments
  */
 
-responslide = function(element, options) {
-	/*
-	 * [PRIVATE VARIABLES]
+Responslide = function(element, options) {
+	/**
+	 * @var active (Integer)	Current active slide index.
+	 * @var components (Object)	Object with keys for components and values that are 
+	 * 		sub-arrays of groups of components that make up the sliding banner. When 
+	 * 		changing active slides, logic will apply a class 'active' to all components'
+	 * 		sub-arrays' corresponding indexed element.
+	 * 		
+	 * 		As of v2.1 the only components are: 
+	 * 		* slides:	The rotating slides.
+	 * 		* squares:	The navigation elements.
 	 * 
-	 * active (Integer/Number)
-	 * ----------------
-	 * This is the current active slide number.
+	 * 		This allows future iterations to add additional custom elements without the
+	 * 		need to re-write the code.
 	 * 
-	 * components (Array)
-	 * ------------------
-	 * This stores all the elements that make up the sliding banner in sub-arrays. 
-	 * As of v. 1.0 default is: 'slides', 'squares'.
-	 * 
-	 * Left open the ability to allow users to add additional/custom elements
-	 * when creating the banner. Current logic regarding setting an 'active' class 
-	 * will automatically set 'active' as a class on the element in this array that
-	 * corresponds to the active integer variable.
-	 * 
-	 * self (Object)
-	 * ----
-	 * This is the object.
-	 * 
-	 * timer (Integer/Number)
-	 * -----
-	 * The timer/timeout that handles sliding the banners.
-	 * 
-	 * widget
-	 * ------
-	 * The widget references the sliding banner element (argument 'banner').
-	 * 
+	 * @var self (Object)	A reference to the current scope's root object (Responslide).
+	 * @var timer (Object)	The Timeout object used to auto-slide banners.
+	 * @var widget (HTMLObject)	The sliding banner element, i.e. the element originally
+	 * 		passed as the 'element' parameter.
 	 */
-	
-	var active;											// Integer of active slide
-	var components =  new Object();	// Object of elements that make up Responslide
-	var self = this; 								// This object				
-	var timer;											// Timer for auto-rotating
-	var widget;											// Responslide element
-	var inTransition = false;								// Boolean value on whether Responslide is in transition
-	/*
-	 * [PUBLIC METHODS]
+	var active,						// Current active index;
+		components =  new Object(),	// Object with component arrays;
+		self = this,				// Scope root Responslide object;				
+		timer,						// Auto-rotate Timeout element;
+		widget,						// Sliding banner HTMLElement
+		inTransition = false;		// Is scope Responslide currently transitioning
+		
+	/**
+	 * @method activeSlide
+	 * @access public
+	 * @return int
 	 * 
-	 * activeSlide
-	 * -----------
-	 * When invoked activeSlide will return the integer/number associated with
-	 * the current active banner.
+	 * Returns current active index of Responslide.
 	 */
 	this.activeSlide = function() {
 		return active;
 	}
 	 
-	/* 
-	 * back
-	 * ----
-	 * When invoked back moves the sliding banner back one. If back is invoked
-	 * and the sliding banner is currently displaying the first banner, then back
-	 * will show the last banner in the array.
+	/** 
+	 * @method back
+	 * @access public
 	 * 
+	 * Moves sliding banner index--; if index is < 0, then the index is the number
+	 * of slides.
+	 * 
+	 * @example Moves slider left one slide, if the current slide is the first slide
+	 * in the series - then it moves to the last slide in the series.
 	 */
 	this.back = function() {
 		var s; // Integer of active slide
@@ -125,17 +96,20 @@ responslide = function(element, options) {
 				
 		}
 		else {
-			self.show(s - 1, self.conf.useHashBang)
+			// Hashbang 'back';
+			// self.show(s - 1, self.conf.useHashBang)
+			self.show(s - 1, false)
 		}
 	}
 	
-	/*
-	 * next
-	 * ----
-	 * When invoked next moves the sliding banner forward one banner. If next is
-	 * invoked and the sliding banner is currently displaying the last banner, then
-	 * next will show the first banner in the array
+	/**
+	 * @method next
+	 * @access public
 	 * 
+	 * Moves sliding banner index++; if index is > number of slides, then the index is 0.
+	 * 
+	 * @example Moves slider to right, if current slide is last slide in the series, then
+	 * it moves to the first slide in the series.
 	 */
 	this.next = function() {
 		var s; // Integer of active slide
@@ -144,21 +118,28 @@ responslide = function(element, options) {
 			self.show(0);
 		}
 		else {
-			self.show(s + 1, self.conf.useHashBang)
+			// Hashbang 'next';
+			// self.show(s + 1, self.conf.useHashBang)
+			self.show(s + 1, false)
 		}
 	}
 	
-	/*
-	 * show
-	 * ----
-	 * Arguments:
-	 * n: the number (integer) of the banner that should be displayed.
+	/**
+	 * @method show
+	 * @access public
 	 * 
-	 * When invoked, show displays the corresponding banner to the number that was
-	 * passed in the arguments. It then assigns an 'active' class to every corresponding
-	 * element in the components array.
+	 * @param n (Integer) Index of banner that should be displayed.
+	 * @param hash (Boolean) Should a hashbang be added to the window.location.
 	 * 
-	 * If n is null when show is invoked, show will return false.
+	 * Shows the corresponding components to the index passed through 'n', and 
+	 * assigns the class 'active' to the corresponding component elements at 
+	 * index n.
+	 * 
+	 * If hash is true, then it will set the hashbang for the current index.
+	 * NOTE: Hashbang is disabled in v.2.1 until discovery can be made on using
+	 * multiple hashbangs on one page.
+	 * 
+	 * If n is null, then show will return false.
 	 */
 	this.show = function(n, hash) {
 		/*
@@ -182,14 +163,15 @@ responslide = function(element, options) {
 					if (typeof active != 'undefined') $(components[c][active]).removeClass('active').removeAttr("style");
 				}
 				active = n; // Set the new slide as the current active slide
-				if (self.conf.autoSlideBanners == true) self.startAutoSlide();	// Restart the timer
-				if (hash) {
-					window.location.hash = "#!" + n + "/";
-				}
+				if (self.conf.autoslide == true) self.startAutoSlide();	// Restart the timer
+				// Hashbang functionality disabled
+				// if (hash) {
+					// window.location.hash = "#!" + n + "/";
+				// }
+				// Triggers a window event that has the state and index of the current slide;
 				$(window).trigger("responslide", {state: "end", slide: n});
 				inTransition = false; // Transition is complete
 			}
-		
 			
 			/*
 			 * If active is not set (a new instance of liquid sliding banner), then
@@ -202,14 +184,12 @@ responslide = function(element, options) {
 			 * 
 			 * invoke the taggleActive function to change the current banner.
 			 */
-			//console.log(self.conf.animate)
 			if (active == undefined || n != active) {
 				// Let Responslide know that a transition is in progress
 				inTransition = true;
 				
 				// Make sure this is not a new instance, and that the user wants a sliding animation
 				if (typeof active != 'undefined' && self.conf.animate == true) {
-					//console.log("ANIMATE");
 					/*
 					 * We need to set the height and width of the new slide to be the same
 					 * as the current slide's height and width. This is removed after the
@@ -231,69 +211,75 @@ responslide = function(element, options) {
 		
 	}
 	
-	/*
-	 * stopAutoSlide
-	 * -------------
-	 * Stop the timer for auto rotating the banner. This is public so external
-	 * scripts can stop the timer if necessary. 
+	/**
+	 * @method stopAutoSlide
+	 * @access public
+	 * 
+	 * Stop the timer for auto rotating the banner.
 	 */
 	this.stopAutoSlide = function() {
 		if (timer) clearTimeout(timer);
 	}
 	
-	/*
-	 * startAutoSlide
-	 * --------------
-	 * Start the timer for auto rotating the banner. This is public so external
-	 * scripts can start the timer if necessary.
+	/**
+	 * @method startAutoSlide
+	 * @access public
 	 * 
-	 * If the 'autoSlidingBanners' configuration was not set to true when the
-	 * object was instantiated and an external script wants to start the banner 
-	 * auto rotating, the script first has to set the object.conf.autoSlidingBanners 
-	 * to true, and then invoke startAutoSlide.
-	 * 
-	 * If the script does not set object.conf.autoSlidingBanners to true before 
-	 * starting the auto rotation, the sliding banners will stop auto rotating
-	 * after the first rotation.
+	 * Start the timer for auto rotating the banner.
 	 */
 	this.startAutoSlide = function() {
-		timer = setTimeout(function(){self.next()},self.conf.autoSlidingBannerInterval);
+		if (!self.conf.autoslide) self.conf.autoslide = true;
+		timer = setTimeout(function(){self.next()},self.conf.interval);
 	}
 	
 	/*
-	 * [CONSTRUCTOR]
+	 * CONSTRUCTOR
 	 */
-	//console.log(element);
-	//console.log(options);
+	(function() {
+		
+	})();
 	widget = element;	// Set widget to the sliding banner element arguement
 	
 	if (typeof options == "string") options = eval("(" + options + ")")
 
-	/*
+	/**
+	 * @param animate (String) [Default = false] If false, then no animation between transitions. 
+	 * 		Otherwise current options include: 'slide','fade'
+	 * @param navigation (String) [Default = 'full'] If false than no navigation will be displayed.
+	 * 		Otherwise current options include:
+	 * 		* 'full':	left/right arrows, and squares for each slide
+	 * 		* 'arrows':	left/right arrows only.
+	 * 		* 'legend':	squares for each slide, no arrows.
+	 * 
 	 * Configurations are set here. The defaults are displayed and are extended 
 	 * with options from the options argument.
 	 */
 	self.conf = $.extend({},{
-		animate: false,															// Animate the sliding of the banners
-		arrowNavigationOnly:false,
-		autoSlideBanners: false,										// Auto rotate the banners
-		autoSlidingBannerInterval: 5000,						// If banners auto-rotate, the interval between rotations
-		navigation:true,
-		startingBanner: 0,													// The starting banner
-		slideSelector: '*[' + rs.p + '\\:shard*="banner"]'		// Selector of slides					
-	}, options)
+		animate: false,		// Animate the sliding of the banners;
+		autoslide: false,	// Auto rotate the banners;
+		// hashbang: false,	// Whether the slider should use the hashbang
+		interval: 5000,		// Interval between autorotating banners;
+		navigation:'full',	// Navigation to use;
+		onset: 0,			// Starting index
+	}, options);
+	self.perm = {
+		selector: '*[shc\\:responslide*="banner"]'	// Attribute looking for banners
+	};
 	
 	/*
 	 * Find all the sliding panels in the rotating banner element and
 	 * store them into sub-array 'slides' in the components array. 
 	 */
-	$(widget).find(self.conf.slideSelector).each(
+	$(widget).find(self.perm.selector).each(
 		function() {
 			if (typeof components.slides == ('undefined' || undefined)) components.slides = new Array();
 			components.slides[components.slides.length] = this;
 		}
 	);
 	
+	/**
+	 * @todo Rewrite this to use new navigation
+	 */
 	if (self.conf.navigation) {
 		// Create the navigation container element
 		if (!self.conf.arrowNavigationOnly) {
@@ -361,21 +347,21 @@ responslide = function(element, options) {
 	// Check to see if the hashbang is used
 	if (self.conf.useHashBang) {
 		window.location.hash.replace(/#!(\d+)/, function(match, key, value, offset, string) {
-			self.conf.startingBanner = key;
+			self.conf.onset = key;
 		});
 	}
 
 	// Invoke show on the starting banner
-	self.show(self.conf.startingBanner);
+	self.show(self.conf.onset);
 	
 	// Trigger a pre-loading event
-	$(window).trigger("responslide", {state: "preload", slide: self.conf.startingBanner});
+	$(window).trigger("responslide", {state: "preload", slide: self.conf.onset});
 	
 	// Remove the pre-load class from the rotating banner
 	$(widget).removeClass('pre-load');
 	
 	// If auto-rotate is set, start the timer
-	if (self.conf.autoSlideBanners == true) {
+	if (self.conf.autoslide == true) {
 		self.startAutoSlide();
 	}
 	
