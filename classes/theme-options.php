@@ -159,6 +159,7 @@ class Theme_Options {
 			});
 			
 			$(".wrap h3, .wrap table").show();
+			$(".ui-tabs-panel:first").show();
 			
 			// This will make the "warning" checkbox class really stand out when checked.
 			// I use it here for the Reset checkbox.
@@ -273,7 +274,10 @@ class Theme_Options {
 					echo '<br /><span class="description">' . $desc . '</span>';
 				
 				break;
-			
+			case 'cache':
+				echo '<input class="checkbox' . $field_class . '" type="checkbox" id="' . $id . '" name="theme_options[' . $id . ']" value="1" ' . checked( $options[$id], 1, false ) . ' /> <label for="' . $id . '">' . $desc . '</label>';
+				echo '<input type="hidden" name="theme_options[' . $id . '_suffix]" value="' . esc_attr( $options[$id."_suffix"] ) . '" />';
+				break;
 			case 'text':
 			default:
 		 		echo '<input class="regular-text' . $field_class . '" type="text" id="' . $id . '" name="theme_options[' . $id . ']" placeholder="' . $std . '" value="' . esc_attr( $options[$id] ) . '" />';
@@ -313,6 +317,25 @@ class Theme_Options {
 				'kmart' => 'Kmart'
 			)
 		);
+		
+		$this->settings['cachebuster'] = array(
+            'section' => 'general',
+            'title'   => '', // Not used for headings.
+            'desc'    => 'Cache Buster',
+            'type'    => 'heading'
+        );
+		$this->settings['bust_stylesheets'] = array(
+			'section' => 'general',
+			'title'   => __( 'Bust Stylesheet Cache' ),
+			'desc'    => __( 'Checking will force-refresh stylesheets on user browsers' ),
+			'type'    => 'cache',
+		);
+		$this->settings['bust_javascript'] = array(
+			'section' => 'general',
+			'title'   => __( 'Bust Javascript Cache' ),
+			'desc'    => __( 'Checking will force-refresh javascript on user browsers' ),
+			'type'    => 'cache',
+		);
         
  
 		
@@ -320,31 +343,31 @@ class Theme_Options {
      
 		/* Appearance
 		===========================================*/
-/*	
-//		$this->settings['header_logo'] = array(
-//			'section' => 'appearance',
-//			'title'   => __( 'Header Logo' ),
-//			'desc'    => __( 'Enter the URL to your logo for the theme header.' ),
-//			'type'    => 'text',
-//			'std'     => ''
-//		);
-//		
-//		$this->settings['favicon'] = array(
-//			'section' => 'appearance',
-//			'title'   => __( 'Favicon' ),
-//			'desc'    => __( 'Enter the URL to your custom favicon. It should be 16x16 pixels in size.' ),
-//			'type'    => 'text',
-//			'std'     => ''
-//		);
-//		
-//		$this->settings['custom_css'] = array(
-//			'title'   => __( 'Custom Styles' ),
-//			'desc'    => __( 'Enter any custom CSS here to apply it to your theme.' ),
-//			'std'     => '',
-//			'type'    => 'textarea',
-//			'section' => 'appearance',
-//			'class'   => 'code'
-//		);*/
+	
+		$this->settings['header_logo'] = array(
+			'section' => 'appearance',
+			'title'   => __( 'Header Logo' ),
+			'desc'    => __( 'Enter the URL to your logo for the theme header.' ),
+			'type'    => 'text',
+			'std'     => ''
+		);
+		
+		$this->settings['favicon'] = array(
+			'section' => 'appearance',
+			'title'   => __( 'Favicon' ),
+			'desc'    => __( 'Enter the URL to your custom favicon. It should be 16x16 pixels in size.' ),
+			'type'    => 'text',
+			'std'     => ''
+		);
+		
+		$this->settings['custom_css'] = array(
+			'title'   => __( 'Custom Styles' ),
+			'desc'    => __( 'Enter any custom CSS here to apply it to your theme.' ),
+			'std'     => '',
+			'type'    => 'textarea',
+			'section' => 'appearance',
+			'class'   => 'code'
+		);
 				
 		/* Reset
 		===========================================*/
@@ -435,11 +458,20 @@ class Theme_Options {
 		if ( ! isset( $input['reset_theme'] ) ) {
 			$options = get_option( 'theme_options' );
 			
-			foreach ( $this->checkboxes as $id ) {
-				if ( isset( $options[$id] ) && ! isset( $input[$id] ) )
-					unset( $options[$id] );
+			if (isset($input["bust_stylesheets"])) {
+				unset($input["bust_stylesheets"]);
+				$input["bust_stylesheets_suffix"] = randString(3);
+			}
+			if (isset($input["bust_javascript"])) {
+				unset($input["bust_javascript"]);
+				$input["bust_javascript_suffix"] = randString(3);
 			}
 			
+			foreach ( $this->checkboxes as $id ) {
+				if ( isset( $options[$id] ) && ! isset( $input[$id] ) ) {
+					unset( $options[$id] );
+				}
+			}
 			return $input;
 		}
 		return false;
@@ -460,5 +492,15 @@ function theme_option( $option ) {
 
 function get_sister() {
 	return (theme_option("brand") == "sears")? "kmart":"sears";
+}
+
+function randString($length, $charset='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789')
+{
+    $str = '';
+    $count = strlen($charset);
+    while ($length--) {
+        $str .= $charset[mt_rand(0, $count-1)];
+    }
+    return $str;
 }
 ?>
