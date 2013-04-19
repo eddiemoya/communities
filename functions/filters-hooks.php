@@ -483,6 +483,12 @@ function filter_before_widget($html, $dropzone, $widget){
     }
     //echo "<pre>";print_r();echo "</pre>";
 
+    /** Taxonomy Widget **/
+    if(!empty($meta->tw_list_style))
+    {
+        $html = str_replace("taxonomy-widget", "taxonomy-widget_" . $meta->tw_list_style, $html);
+    }
+
     return $html;
 }
 
