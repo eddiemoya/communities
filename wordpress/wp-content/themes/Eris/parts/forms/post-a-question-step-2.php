@@ -51,6 +51,20 @@ get_currentuserinfo();
 										'name' => 'category',
 										'id' => 'category'
 									));
+									wp_dropdown_categories(array(
+						                'depth'=> 1,
+						                'child_of' => get_queried_object()->term_id,
+						                'hierarchical' => true,
+						                'hide_if_empty' => true,
+						                'hide_empty' => false,
+						            	'orderby'	=> 'name',
+										'order'	=> 'ASC',
+						                'class' => 'input_select',
+						                'name' => 'sub-category',
+						                'id' => 'sub-category',
+						                'echo' => true,
+						                'show_option_none' => "Select"
+						            ));
                                 ?>
 							</li>
 							
