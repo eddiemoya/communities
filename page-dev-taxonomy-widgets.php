@@ -14,7 +14,7 @@ get_template_part('parts/header');
 			
 			
 			<!-- START TAXONOMY SELECT WIDGET -->
-			<article class="widget content-container taxonomy-select-widget span12">
+			<article class="widget content-container taxonomy-widget_grid span12">
 				
 				<header class="content-header">
 					<h3>Departments</h3>
@@ -125,7 +125,7 @@ get_template_part('parts/header');
 			</article>
 			
 			<!-- START TAXONOMY RESULTS LIST WIDGET -->
-			<article class="widget content-container result-list span12">
+			<article class="widget content-container taxonomy-widget_list span12">
 				
 				<section class="content-body clearfix">
 					
@@ -191,6 +191,67 @@ get_template_part('parts/header');
 			</article>
 			<!-- END TAXONOMY RESULTS LIST WIDGET -->
 			
+			<!-- FEATURE TAXONOMY SPAN 12 -->
+			<article class="widget content-container span12 taxonomy-widget">
+        
+            	<header class="content-header">
+                	<h3>Featured Blog Post</h3>
+				</header>
+				<section class="content-body clearfix">
+
+					<div class="featured-image span6">
+						<img title="Rebuilding Together and Sears Heroes at Home Renovates Home For Veteran" alt="Rebuilding Together and Sears Heroes at Home Renovates Home For Veteran" class="attachment-large wp-post-image" src="https://www.sears.com/community/wp-content/uploads/2013/04/Patrick-Horan-sitting-with-wife-Patty-1024x681.jpg">
+					</div>
+
+					<div class="featured-content span6">
+
+           				 <div class="content-details clearfix">
+                            <span class="content-category"><a title="Heroes at Home" href="https://www.sears.com/community/category/heroes-at-home/">Heroes at Home</a></span>
+                            <time datetime="2013-04-04" pubdate="" class="content-date">April 4, 2013</time>
+            			</div>
+    					<h1 class="content-headline"><a href="https://www.sears.com/community/heroes-at-home/captain-patrick-horan-inspires-through-recovery-from-injury/">Captain Patrick Horan Inspires through Recovery from Injury</a></h1>
+    
+    					<ul>
+        					<li class="content-author">By: <a href="https://www.sears.com/community/author/SHC-MichaelM/">SHC-MichaelM</a></li>
+							<li class="content-comments">1 comment</li>
+            			</ul>
+
+                		<p class="content-excerpt">Captain Patrick Horan was born and raised in Springfield, Virginia. He attended Radford University, where he met his wife Patty. Pat graduated in the spring of 1997 and enlisted in the Infantry later that… <a href="https://www.sears.com/community/heroes-at-home/captain-patrick-horan-inspires-through-recovery-from-injury/" class="moretag">See More</a></p>
+					</div>
+    			</section>
+			</article>
+			<!-- END FEATURE TAXONOMY SPAN12 -->
+			
+			<!-- FEATURE TAXONOMY SPAN6 -->
+			<article class="widget content-container span6 taxonomy-widget">
+        
+            	<header class="content-header">
+                	<h3>Featured Blog Post</h3>
+				</header>
+				<section class="content-body clearfix">
+
+					<div class="featured-image span6">
+						<img title="Rebuilding Together and Sears Heroes at Home Renovates Home For Veteran" alt="Rebuilding Together and Sears Heroes at Home Renovates Home For Veteran" class="attachment-large wp-post-image" src="https://www.sears.com/community/wp-content/uploads/2013/04/Patrick-Horan-sitting-with-wife-Patty-1024x681.jpg">
+					</div>
+
+					<div class="featured-content span6">
+
+           				 <div class="content-details clearfix">
+                            <span class="content-category"><a title="Heroes at Home" href="https://www.sears.com/community/category/heroes-at-home/">Heroes at Home</a></span>
+                            <time datetime="2013-04-04" pubdate="" class="content-date">April 4, 2013</time>
+            			</div>
+    					<h1 class="content-headline"><a href="https://www.sears.com/community/heroes-at-home/captain-patrick-horan-inspires-through-recovery-from-injury/">Captain Patrick Horan Inspires through Recovery from Injury</a></h1>
+    
+    					<ul>
+        					<li class="content-author">By: <a href="https://www.sears.com/community/author/SHC-MichaelM/">SHC-MichaelM</a></li>
+							<li class="content-comments">1 comment</li>
+            			</ul>
+
+                		<p class="content-excerpt">Captain Patrick Horan was born and raised in Springfield, Virginia. He attended Radford University, where he met his wife Patty. Pat graduated in the spring of 1997 and enlisted in the Infantry later that… <a href="https://www.sears.com/community/heroes-at-home/captain-patrick-horan-inspires-through-recovery-from-injury/" class="moretag">See More</a></p>
+					</div>
+    			</section>
+			</article>
+			<!-- END FEATURE TAXONOMY SPAN6 -->
 			
 		</section>
 	

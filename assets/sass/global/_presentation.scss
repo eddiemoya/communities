@@ -531,7 +531,7 @@ textarea.discussion {
 }
 
 // FEATURED BLOG POST
-.content-container.featured-post, .content-container.featured-guide {
+.content-container.featured-post, .content-container.featured-guide, .content-container.taxonomy-widget {
   .content-excerpt, .content-byline, .content-tags {
     // font-size:.75em
     font-size: font-size( 12 );
@@ -544,7 +544,13 @@ textarea.discussion {
 
 .content-container.span3.featured-post, 
 .content-container.span4.featured-post, 
-.content-container.span6.featured-post {
+.content-container.span6.featured-post,
+.content-container.span3.featured-guide, 
+.content-container.span4.featured-guide, 
+.content-container.span6.featured-guide,
+.content-container.span3.taxonomy-widget, 
+.content-container.span4.taxonomy-widget, 
+.content-container.span6.taxonomy-widget {
   .featured-image.span6, .featured-content.span6 {
     margin-left:0;
     width:100%;
