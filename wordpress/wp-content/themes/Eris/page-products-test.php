@@ -20,7 +20,9 @@
 
 //$results = $rr->results;
 
-echo WP_PLUGIN_URL;
+//echo WP_PLUGIN_URL;
+
+echo substr(__FILE__, 0, (stripos(__FILE__, 'wordpress/') + 10)) . 'somedir/';
 
 /*echo '<pre>';
 var_dump($rr);
