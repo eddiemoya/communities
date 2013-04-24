@@ -265,7 +265,10 @@ shcJSL.methods.transFormer = function(target, options) {
 		}
 		
 		if (success === false) event.preventDefault();
-		else return true;
+		else {
+			$(form).trigger('valid');
+			//return true;
+		}
 	})
 	
 }

@@ -216,7 +216,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 			// Bind the resize event to re-center the modal window
 			$(window).bind("resize", centerModal);
 			// Event for triggering Gizmos on new content.
-			$(gears.modal).bind('moodle-update', shcJSL.gizmos.activate);
+			$(window).bind('moodle-update', shcJSL.gizmos.activate);
 			// Trigger the moodle create event
 			$(window).trigger('moodle-create');
 			// Send to update to build out modal
@@ -350,7 +350,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 					$(document).bind('keyup', {data:settings}, escapeModal)
 					
 					// Trigger the moodle-update event
-					$(gears.modal).trigger('moodle-update', gears.modal);
+					$(window).trigger('moodle-update', gears.modal);
 					
 					// Make the modal content visible
 					$(content).toggleClass("moodle_transit").animate({
@@ -409,7 +409,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 		// Remove the 'escape key to close' event
 		$(document).unbind('keyup',escapeModal);
 		// Remove the moodle update triggers gizmos event
-		$(gears.modal).unbind('moodle-update', shcJSL.gizmos.activate);
+		$(window).unbind('moodle-update', shcJSL.gizmos.activate);
 		// Trigger the moodle-close event
 		$(window).trigger("moodle-close");
 		// Turn off loading

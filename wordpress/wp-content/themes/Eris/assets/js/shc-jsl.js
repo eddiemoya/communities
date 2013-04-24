@@ -465,6 +465,22 @@ shcJSL.gizmos.persistr = function(element) {
 	persist();
 }
 
+$(window).on('moodle-update', function(event) {
+	var form = document.getElementById("login");
+	
+	if (form) {
+		$(form).on("submit", function(event) {
+			var submit = event;
+						
+			$(form).on('valid',function(event){
+				submit.preventDefault();
+				console.log('run code');
+			});
+			
+		});
+	}
+})
+
 /*
 	[3.0] ONLOAD EVENTS
 	-------------------

@@ -36,7 +36,7 @@ get_template_part('parts/header'); ?>
 			
 		<?php endif;?>
 		
-		<form class="form_login" method="post" action="<?php echo $opts->endpoint . 'shcLogin';?>" shc:gizmo="transFormer">
+		<form class="form_login" method="post" action="<?php echo $opts->endpoint . 'shcLogin';?>" shc:gizmo="transFormer" id="login">
       <ul class="form-fields">
           
           <li>
