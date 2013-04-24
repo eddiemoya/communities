@@ -26,10 +26,10 @@ get_template_part('parts/header');
 				<section class="content-body clearfix">
 					<!-- HERO SLIDER -->
 					
-					<div class='rotating-banner pre-load' shc:gizmo='responslide' shc:gizmo:options='{startingBanner:0, animate:true, autoSlideBanners:true, navigation:false, legend:false, useHashBang:false}'>
+					<div id="butt" class='rotating-banner pre-load' shc:gizmo='responslide' shc:gizmo:options="{onset:0, animate:'slide', autoslide:true, navigation:'full'}">
 						
 						<!-- IMAGE ONLY -->
-				        <div shc:responslide='banner' id="slide_1">
+				        <div shc:responslide='banner' id="slide_1" shc:responslide:url="http://www.google.com">
 				            <section class='banner'>
 				            	
 				                <aside class="banner-content">
@@ -59,7 +59,7 @@ get_template_part('parts/header');
 				        <!-- END IMAGE ONLY -->
 				        
 				        <!-- SIDEBAR -->
-				        <div shc:responslide='banner' id="slide_1">
+				        <div shc:responslide='banner' id="slide_1" shc:responslide:url="http://www.google.com">
 				            <section class='banner'>
 				            	
 				                <aside class="banner-content">
@@ -89,7 +89,7 @@ get_template_part('parts/header');
 				        <!-- END SIDEBAR -->
 				        
 				        <!-- HOVER -->
-				        <div shc:responslide='banner' id="slide_1">
+				        <div shc:responslide='banner' id="slide_1" shc:responslide:url="http://www.google.com">
 				            <section class='banner'>
 				            	
 				                <aside class="banner-content">

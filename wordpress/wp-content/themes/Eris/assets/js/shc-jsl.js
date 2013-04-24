@@ -277,7 +277,7 @@ shcJSL.first = function(element) {
 shcJSL.addChildren = function(p, c) {
 	if (p && c) {
 		for (var i=0; i < c.length; i++) {
-			p.appendChild(c[i]);
+			if (c[i]) p.appendChild(c[i]);
 		}
 		return p;
 	}
