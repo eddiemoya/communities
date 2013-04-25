@@ -54,7 +54,8 @@ TRANSfORMER.blunder = function(element) {
 	)
 	
 	return goofs;
-}
+};
+
 TRANSfORMER.transFormer = $TransFormer = function(form) {
 	var blunders = [];	// (Array) Array of any outstanding blunders;
 	var checkReqd;			// (Function) Checks the required fields
@@ -266,7 +267,8 @@ shcJSL.methods.transFormer = function(target, options) {
 		
 		if (success === false) event.preventDefault();
 		else {
-			$(form).trigger('valid');
+			$(form).trigger('valid', [event]);
+			
 			//return true;
 		}
 	})

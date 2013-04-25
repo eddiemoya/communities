@@ -233,6 +233,24 @@ shcJSL.cookies = function(cookie) {
 	-------------------
 	
 */
+/**
+ * @param e (HTMLObject) element
+ * @param v (String) event to check against
+ * @param f (Function) Function to check against
+ */
+shcJSL.active = function(e, v, f) {
+	var events = [];	// Array of the events on the element
+		
+	if (e && $._data(e,"events")[v] && f) {
+		events = $._data(e,"events")[v];
+				
+		for (var i=0;i<events.length;i++) {
+			if (events[i].handler == f) return true;
+		}
+	}
+	return false;
+ }
+
 
 shcJSL.createNewElement = function(e, c, a) {
 	var newElement; // New element that will be created;
@@ -469,15 +487,11 @@ $(window).on('moodle-update', function(event) {
 	var form = document.getElementById("login");
 	
 	if (form) {
-		$(form).on("submit", function(event) {
-			var submit = event;
-						
-			$(form).on('valid',function(event){
-				submit.preventDefault();
-				console.log('run code');
-			});
-			
-		});
+		
+		$(form).on("valid", function(event, submit) {
+			submit.preventDefault();
+			console.log("run code");
+		})
 	}
 })
 

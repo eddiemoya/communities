@@ -33,13 +33,14 @@ MOODLE.modal = $Moodle = function(element, options) {
 	 * @var toggleLoading (Function) Toggles the modal loading screen
 	 * @var toggleOverlay (Function) Toggles overlay on or off
 	 */
-	var centerModal;
-	var getPosition;
-	var escapeModal;
-	var gears = {};
-	var self 	= this;
-	var toggleLoading;
-	var toggleOverlay;
+	var centerModal,
+		getPosition,
+		escapeModal,
+		gears = {},
+		self 	= this,
+		settings,
+		toggleLoading,
+		toggleOverlay;
 	
 	/**
 	 * gears
@@ -254,7 +255,7 @@ MOODLE.modal = $Moodle = function(element, options) {
 		 */
 		var argumentOptions; // Options if they were passed with moodle() call
 		var elementOptions;	// Options that may exist in shc:gizmo:options attribute 
-		var settings;	// Default settings
+		//var settings;	// Default settings
 		
 		/*
 		 * If the options argument exists, first check if the options is the
@@ -390,9 +391,6 @@ MOODLE.modal = $Moodle = function(element, options) {
 	 */
 	
 	this.destroy = function(event) {
-		// The modal settings/data
-		settings = event.data.data;
-		
 		// If the modal window had a local on page element
 		// return that element to the page
 		if (String(settings.method).toLowerCase() == 'local') {
@@ -418,6 +416,11 @@ MOODLE.modal = $Moodle = function(element, options) {
 		toggleOverlay();
 	}
 	
+	this.load = function() {
+		toggleLoading();
+		centerModal();
+	}
+	
 	/**
 	 * init
 	 * 
@@ -432,7 +435,6 @@ MOODLE.modal = $Moodle = function(element, options) {
 		$(gears.modal).append(gears.container);
 		$(gears.modal).trigger('moodle-init');
 	}
-	
 	// When the object is first created, call init once
 	init();
 	return self;
