@@ -3,6 +3,10 @@
 
 //echo '<h2>Ratings & Reviews Test Page</h2><br><br>';
 
+
+echo '<pre>';
+var_dump(SSO_Profile_Request::factory()->get(41336335));
+exit;
 /*$rr = RR_User_Reviews::factory(35497172)
 						->get();*/
 
@@ -22,7 +26,7 @@
 
 //echo WP_PLUGIN_URL;
 
-echo substr(__FILE__, 0, (stripos(__FILE__, 'wordpress/') + 10)) . 'somedir/';
+//echo substr(__FILE__, 0, (stripos(__FILE__, 'wordpress/') + 10)) . 'somedir/';
 
 /*echo '<pre>';
 var_dump($rr);

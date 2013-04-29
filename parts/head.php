@@ -30,7 +30,7 @@
 				                <a href="<?php echo get_profile_url( $current_user->ID ); ?>" title="View your profile" class="bold"><?php get_screenname( $current_user->ID ); ?>
 				            </a>
 				        </li>
-				        <li><?php (function_exists('sso_logout_link')) ? sso_logout_link('Logout') : null;?> </li>
+				        <li><a href="#" id="logout" title="Logout" class="bold">Logout</a> </li>
 				        
     					<!-- <li><a href="<?php //echo wp_logout_url( get_permalink() ); ?>" title="Logout" class="bold">Logout</a></li> -->
 				    <?php else: ?>
