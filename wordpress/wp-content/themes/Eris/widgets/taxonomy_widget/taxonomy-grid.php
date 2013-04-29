@@ -16,7 +16,7 @@
 <?php if(!empty($drop) && $dpdn) { ?>
 	<div class="span12 taxonomy-drop-down-menu">
 		<select class="input_select" name="department" shc:gizmo="drop-menu">
-			<option value="">--Click for <?php echo($ftxt); ?></option>
+			<option value="default">--Click for <?php echo($ftxt); ?></option>
 			<?php foreach($drop as $k => $d) { ?>
 				<option value="<?php echo($d['link']); ?>"><?php echo($k); ?></option>
 			<?php } ?>
