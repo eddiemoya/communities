@@ -8,7 +8,7 @@
 			<div class="span9 featured-content">
 
 			    <h1 class="content-headline">
-			        <a href="<?php echo($d['link']); ?>" title="<?php echo($k); ?>"><?php echo($k); ?></a>
+			        <a href="<?php echo($d['link']); ?>" title="<?php echo($k); ?>"><?php echo($k); ?> Reviews</a>
 			    </h1>
 
 				<!--
