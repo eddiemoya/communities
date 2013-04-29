@@ -42,7 +42,7 @@
  */
 
 Responslide = {
-	model		: {},
+	model		: new shcJSL.hash,
 	view		: function(element, options) {
 		/**
 		 * @var active (Integer)	Current active slide index.
@@ -242,6 +242,8 @@ Responslide = {
 		 * Start the timer for auto rotating the banner.
 		 */
 		this.startAutoSlide = function() {
+			console.log(self.conf.autoslide)
+			console.log(widget);
 			if (self.conf != undefined && !self.conf.autoslide) self.conf.autoslide = true;
 			if (self.conf != undefined && self.conf.interval) timer = setTimeout(function(){self.next()},self.conf.interval);
 		}
@@ -278,7 +280,7 @@ Responslide = {
 			// hashbang: false,	// Whether the slider should use the hashbang
 			hover: true,		// Stop transitions when mouse hovers
 			interval: 5000,		// Interval between autorotating banners;
-			navigation:'full',	// Navigation to use;
+			navigation:false,	// Navigation to use;
 			onset: 0,			// Starting index
 		}, settings, options);
 		self.perm = {
@@ -357,9 +359,10 @@ Responslide = {
 		
 		// Pause banner on mouse over
 		$(widget).on("mouseover mouseout",function(event){
-			if (event.type == 'mouseover') self.stopAutoSlide();
-			else if (event.type == 'mouseout') self.startAutoSlide();
-			else self.startAutoSlide();
+			if (self.conf.autoslide) {
+				if (event.type == 'mouseover') self.stopAutoSlide();
+				else if (event.type == 'mouseout') self.startAutoSlide();
+			}
 		})
 		
 		// Invoke show on the starting banner
@@ -405,16 +408,11 @@ Responslide = {
 	},
 	controller	: function(target) {
 		var method;	// (String) Method to use on the selected Responslide
-		
-		console.log(this);
-		
+				
 		if (this.constructor == String) method = this.toString();
 		//else if (this.constructor == Object) method = null;
 	
-		console.log(method);
-	
-		if (!Responslide.model[target]) Responslide.model[target] = new Responslide.view(target, this);
-	
+		if (!Responslide.model.get(target)) Responslide.model.put(target, (new Responslide.view(target, this)) );
 	}
 };
 

@@ -8,8 +8,11 @@ $outdoor-img:         "outdoorstyle/";
 $version:             "?v=3";
 
 // Fonts
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700|Open+Sans+Condensed:300,300italic,700);
 $basefont:            Helvetica, Arial, Verdana, sans-serif;
 $default-font-size:   13;
+$os-reg: 'Open Sans', Helvetica, Arial, Verdana, sans-serif;
+$os-con: 'Open Sans Condensed', Helvetica, Arial, Verdana, sans-serif;
 
 // Colors
 $lightest-color:      white;

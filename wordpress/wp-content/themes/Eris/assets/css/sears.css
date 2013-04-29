@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700|Open+Sans+Condensed:300,300italic,700);
 /* 
 Theme Name: Eris
 Theme URI: http://www.sears.com/community/
@@ -842,23 +843,40 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 
 .wp-polls-loading { display: none; text-align: center; height: 16px; line-height: 16px; }
 
-.dropzone.span8 .hero-slider { background: url('../img/hero-slider-bg.png?v=1366822132') center center; width: 620px; height: 360px; position: relative; }
-
-.hero-slider .rotating-banner { overflow: hidden; position: relative; width: 579px; height: 315px; z-index: 25; left: 20px; top: 10px; }
-.hero-slider .rotating-banner .content-headline { position: absolute; top: 260px; width: 100%; background: #000000; background: rgba(0, 0, 0, 0.5); color: #ffffff; font-weight: normal; padding: 5px 10px 5px 15px; }
-.hero-slider .rotating-banner > * { left: 100%; position: absolute; width: 100%; top: 0; }
-.hero-slider .rotating-banner > .active { display: block; left: auto; position: relative; top: auto; zoom: 1; }
-.hero-slider .rotating-banner .rotating-banner-navigation { bottom: 1em; left: 50%; margin-left: -5%; position: absolute; top: auto; width: auto; z-index: 25; }
-.hero-slider .rotating-banner .rotating-banner-navigation .active { background: #ff0033; }
-.hero-slider .rotating-banner .rotating-banner-navigation a { background-color: #ffffff; display: block; float: left; height: 1em; margin-right: .5em; width: 1em; z-index: 30; }
-.hero-slider .rotating-banner .banner.banner_link { cursor: pointer; }
-.hero-slider .rotating-banner .in-transit { z-index: 24; }
-.hero-slider a.prev-slide { background: url('../img/hero-slide-left.png?v=1366822132') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; left: 0px; z-index: 30; }
-.hero-slider a.next-slide { background: url('../img/hero-slide-right.png?v=1366822132') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; right: 1px; z-index: 30; }
+.rotating-banner { overflow: hidden; position: relative; z-index: 25; }
+.rotating-banner > * { left: 100%; position: absolute; width: 100%; top: 0; }
+.rotating-banner > .active { display: block; left: auto; position: relative; top: auto; zoom: 1; }
+.rotating-banner [shc\:responslide\:url] { cursor: pointer; }
+.rotating-banner .rotating-banner-navigation { bottom: 1em; left: 50%; margin-left: -5%; position: absolute; top: auto; width: auto; z-index: 25; }
+.rotating-banner .rotating-banner-navigation .active { background: #ff0033; }
+.rotating-banner .rotating-banner-navigation a { background-color: #ffffff; cursor: pointer; display: block; float: left; height: 1em; margin-right: .5em; width: 1em; z-index: 30; }
+.rotating-banner .in-transit { z-index: 24; }
 
 .pre-load > *:first-child { display: block; left: auto; position: relative; top: auto; }
 
 @media only screen and (max-width: 730px) { .rotating-banner .rotating-banner-navigation a { height: .75em; width: 0.75em; } }
+/** Banner Styles Video */
+.banner.video { overflow: hidden; padding: 30px 0px 56.25%; position: relative; z-index: 10001; }
+.banner.video iframe, .banner.video object, .banner.video embed { height: 100%; left: 0; position: absolute; top: 0px; width: 100%; z-index: 10000; }
+.banner.video aside { display: none; }
+
+.banner.image aside { display: none; }
+
+.banner.bottom-bar h1, .banner.bottom-bar h2 { color: #ffffff; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; }
+.banner.bottom-bar h1 { font-size: 184.615%; font-weight: 600; line-height: 1em; }
+.banner.bottom-bar h2 { font-size: 107.692%; line-height: 1em; padding-top: 0.5em; }
+.banner.bottom-bar aside { background-image: url('../img/background_overlay_no-rgba.png?v=1363102271'); bottom: 0px; left: 0px; padding: 1em 1.5em; position: absolute; right: 0px; width: 100%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.rgba .banner.bottom-bar aside { background-image: none; background: rgba(0, 0, 0, 0.5); }
+
+.banner.side-bar h1, .banner.side-bar h2 { color: #ffffff; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-weight: 600; line-height: 1em; }
+.banner.side-bar h1 { font-size: 184.615%; }
+.banner.side-bar h2 { font-size: 138.461%; padding: 0.5em 0; }
+.banner.side-bar hgroup { border-bottom: solid 1px white; }
+.banner.side-bar aside { background-image: url('../img/background_overlay_no-rgba.png?v=1363102271'); bottom: 0px; left: 0px; padding: 12.5% 1.5em 1em; position: absolute; top: 0px; width: 50%; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.rgba .banner.side-bar aside { background-image: none; background: rgba(0, 0, 0, 0.5); }
+.banner.side-bar .banner-excerpt { color: #ffffff; font-size: 107.692%; line-height: 1.5em; margin-bottom: 1.5em; padding-top: 1.5em; }
+.banner.side-bar .banner-button { background: #ff7441 url('../img/widgets/hero-slider/background_button_call-to-action.gif?v=1367253085') repeat-x top left; border: none; color: #ffffff; float: right; font-size: 92.307%; -webkit-border-radius: 3px; -moz-border-radius: 3px; -ms-border-radius: 3px; -o-border-radius: 3px; border-radius: 3px; }
+
 .weather-sprite, .weather-chanceflurries, .weather-chancerain, .weather-chancesleet, .weather-chancesnow, .weather-chancetstorms, .weather-clear, .weather-cloudy, .weather-flurries, .weather-fog, .weather-hazy, .weather-mostlycloudy, .weather-mostlysunny, .weather-partlycloudy, .weather-partlysunny, .weather-rain, .weather-sleet, .weather-snow, .weather-sunny, .weather-tstorms { background: url('../img/weather-sff9c80684d.png') no-repeat; }
 
 .weather-chanceflurries { background-position: 0 -672px; height: 42px; width: 42px; }

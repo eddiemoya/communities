@@ -103,7 +103,6 @@ if (!Array.prototype.map) {
  * IE8 - which does not support String.trim() natively.
  * 
  */
-
 if (!String.prototype.trim) {
 	String.prototype.trim = function() {
   	return this.replace(/^\s+|\s+$/g,'');
@@ -112,8 +111,38 @@ if (!String.prototype.trim) {
 
 shcJSL.methods = {}
 
+shcJSL.hash = function() {
+	var table = [],
+		entry;
+		
+	entry = function(key, value) {
+		return {'key': key, 'value': value};
+	}
+	
+	this.get = function() {
+		return (function(key) {
+			if (table.length > 0) {
+				for (var i=0;i<table.length;i++) {
+					if (table[i]['key'] == key) return table[i]['value'];
+				}
+				return false;
+			} else return false;
+		}).apply(this, arguments);
+	}
+	
+	this.put = function() {
+		return (function(key, value) {
+			var e = this.get(key);
+			(!e)? table.push(entry(key, value)):$.extend(e,value);
+			return this;
+		}).apply(this, arguments);
+	}
+	
+	return this;
+}
+
 shcJSL.get = function(element) {
-	var collection; // (Array) array of objects with shcJSL.methods.
+	var collection; 	// (Array) array of objects with shcJSL.methods.
 	var getID;			// (Method) method to get element by ID.
 	var getTags;		// (Method) method to get elements by tag name.
 	
@@ -233,6 +262,23 @@ shcJSL.cookies = function(cookie) {
 	-------------------
 	
 */
+/**
+ * @param e (HTMLObject) element
+ * @param v (String) event to check against
+ * @param f (Function) Function to check against
+ */
+shcJSL.active = function(e, v, f) {
+	var events = [];	// Array of the events on the element
+		
+	if (e && $._data(e,"events")[v] && f) {
+		events = $._data(e,"events")[v];
+				
+		for (var i=0;i<events.length;i++) {
+			if (events[i].handler == f) return true;
+		}
+	}
+	return false;
+ }
 
 shcJSL.createNewElement = function(e, c, a) {
 	var newElement; // New element that will be created;
@@ -464,6 +510,18 @@ shcJSL.gizmos.persistr = function(element) {
 	$(window).bind('scroll', persist);
 	persist();
 }
+
+$(window).on('moodle-update', function(event) {
+	var form = document.getElementById("login");
+	
+	if (form) {
+		
+		$(form).on("valid", function(event, submit) {
+			submit.preventDefault();
+			console.log("run code");
+		})
+	}
+})
 
 /*
 	[3.0] ONLOAD EVENTS

@@ -1,95 +1,52 @@
-.dropzone.span8 .hero-slider {
-	background: image-url("hero-slider-bg.png") center center;
-	width: 620px;
-	height: 360px;
-	position: relative;
-}
-.hero-slider {
-	.rotating-banner {
-		overflow:hidden;
+.rotating-banner {
+	overflow:hidden;
+	position:relative;
+	z-index:25;	
+	& > * {
+		left:100%;
+		position:absolute;
+		width:100%;
+		top:0
+	}
+	
+	& > .active {
+		display:block;
+		left:auto;
 		position:relative;
-		width: 579px;
-		height: 315px;
+		top:auto;
+		zoom:1
+	}
+	
+	[shc\:responslide\:url] {
+    cursor:pointer;
+	}
+	
+	.rotating-banner-navigation {
+		bottom:1em;
+		left:50%;
+		margin-left:-5%;
+		position:absolute;
+		top:auto;
+		width:auto;
 		z-index:25;
-		left:20px;
-		top:10px;
-		
-		.content-headline {
-			position: absolute;
-			top: 260px;
-			width: 100%;
-			background: #000000;
-			background: rgba(0,0,0,.5);
-			color: #ffffff;
-			font-weight: normal;
-			padding: 5px 10px 5px 15px;
+		.active {
+			background:#ff0033
 		}
 		
-		& > * {
-			left:100%;
-			position:absolute;
-			width:100%;
-			top:0
-		}
-		
-		& > .active {
+		a {
+			background-color:#ffffff;
+			cursor:pointer;
 			display:block;
-			left:auto;
-			position:relative;
-			top:auto;
-			zoom:1
-		}
-		
-		.rotating-banner-navigation {
-			bottom:1em;
-			left:50%;
-			margin-left:-5%;
-			position:absolute;
-			top:auto;
-			width:auto;
-			z-index:25;
-			.active {
-				background:#ff0033
-			}
-			
-			a {
-				background-color:#ffffff;
-				display:block;
-				float:left;
-				height:1em;
-				margin-right:.5em;
-				width:1em;
-				z-index:30
-			}
-		}
-		
-		.banner.banner_link {
-			cursor: pointer;
-		}
-		
-		.in-transit {
-			z-index:24
+			float:left;
+			height:1em;
+			margin-right:.5em;
+			width:1em;
+			z-index:30
 		}
 	}
-	
-	a.prev-slide {
-		background: image-url("hero-slide-left.png") center center transparent;
-		width: 40px;
-		height: 100px;
-		position: absolute;
-		top: 115px;
-		left: 0px;
-		z-index:30;
-	}
-	
-	a.next-slide {
-		background: image-url("hero-slide-right.png") center center transparent;
-		width: 40px;
-		height: 100px;
-		position: absolute;
-		top: 115px;
-		right: 1px;
-		z-index:30;
+
+	.in-transit {
+		z-index:24
 	}
 }
 
@@ -108,4 +65,111 @@
 		height:.75em;
 		width:.75em
 	}
+}
+
+/**
+ * Banner Styles
+ * Video
+ */
+.banner.video {
+  overflow:hidden;
+  padding:30px 0px 56.25%;
+  position:relative;
+  z-index:10001;
+  iframe, object, embed {
+    height:100%;
+    left:0;
+    position:absolute;
+    top:0px;
+    width:100%;
+    z-index:10000;
+  }
+  aside {
+    display:none;
+  }
+}
+
+.banner.image {
+  aside {
+    display:none;
+  }
+}
+
+.banner.bottom-bar {
+  h1, h2 {
+    color:#ffffff;
+    font-family:$os-reg;
+  }
+  h1 {
+    font-size:font-size(24);
+    font-weight:600;
+    line-height:1em;
+  }
+  h2 {
+    font-size:font-size(14);
+    line-height:1em;
+    padding-top:0.5em;
+  }
+  aside {
+    background-image:image-url("background_overlay_no-rgba.png");
+    bottom:0px;
+    left:0px;
+    padding:1em 1.5em;
+    position:absolute;
+    right:0px;
+    width:100%;
+    @include box-sizing( border-box );
+    .rgba & {
+      background-image:none;
+      background:rgba(0,0,0,.50);
+    }
+  }
+}
+
+.banner.side-bar {
+  h1, h2 {
+    color:#ffffff;
+    font-family:$os-reg;
+    font-weight:600;
+    line-height:1em;
+  }
+  h1 {
+    font-size:font-size(24);
+  }
+  h2 {
+    font-size:font-size(18);
+    padding:0.5em 0;
+  }
+  hgroup {
+    border-bottom:solid 1px #ffffff;
+  }
+  aside {
+    background-image:image-url("background_overlay_no-rgba.png");
+    bottom:0px;
+    left:0px;
+    padding:12.5% 1.5em 1em;
+    position:absolute;
+    top:0px;
+    width:50%;
+    @include box-sizing( border-box );
+    .rgba & {
+      background-image:none;
+      background:rgba(0,0,0,.50);
+    }
+  }
+  .banner-excerpt {
+    color:#ffffff;
+    font-size:font-size(14);
+    line-height:1.5em;
+    margin-bottom:1.5em;
+    padding-top:1.5em;
+  }
+  .banner-button {
+    background:#ff7441 image-url("widgets/hero-slider/background_button_call-to-action.gif") repeat-x top left;
+    border:none;
+    color:#ffffff;
+    float:right;
+    font-size:font-size(12);
+    @include border-radius(3px);
+  }
 }
