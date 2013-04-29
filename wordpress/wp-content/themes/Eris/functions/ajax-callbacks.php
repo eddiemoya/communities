@@ -245,10 +245,9 @@ function validate_screen_name() {
 	
 	$screen_name = $_POST['screen_name'];
 	
-	if(class_exists('SSO_Profile')) {
+	if(class_exists('SSO_Profile_Request')) {
 		
-		$profile = new SSO_Profile;
-		$response = $profile->validate_screen_name($screen_name);
+		$response = SSO_Profile_Request::factory()->validate_screen_name($screen_name);
 		
 		echo ($response['code'] == '200') ? 'true' : 'false';
 		
