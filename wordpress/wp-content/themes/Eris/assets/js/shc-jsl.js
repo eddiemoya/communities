@@ -474,7 +474,7 @@ shcJSL.gizmos['drop-menu'] = function(element) {
 	}
 	
 	$(element).on("change", function(event) {
-		window.location.assign(window.location.protocol + "//" + window.location.host + "/" + this.value);
+		window.location.assign(this.value);
 	})
 }
 
