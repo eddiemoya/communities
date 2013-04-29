@@ -36,6 +36,7 @@ class Section_Front{
 		$qvars[] = 'old_category';
 		$qvars[] = 'old_paged';
 		$qvars[] = 'old_format';
+		$qvars[] = 'old_skcategory';
 
 
 		return $qvars;
@@ -136,7 +137,7 @@ class Section_Front{
 	        'hierarchical' 		=> false,
 	        'menu_position'	 	=> 3,
 	        'supports' 			=> array('title', 'page-attributes'),
-	        'taxonomies' 		=> array('category'),
+	        'taxonomies' 		=> array('category', 'skcategory'),
 	    );
 	    register_post_type('section', $args);
 	}
@@ -265,6 +266,36 @@ class Section_Front{
 			}	
 
 
+		}
+
+		$terms = self::get_terms_by_post_type('skcategory', 'section');
+
+		foreach($terms as &$term){
+			$posts = get_posts(array(
+				'posts_per_page' => -1,
+				'post_type' => array('section'),
+				'tax_query' => array(
+					array(
+						'taxonomy' => 'skcategory',
+						'terms' => $term->term_id,
+						'field' => 'id',
+			))));	
+
+			foreach($posts as $post){
+
+				$post->term = $term;
+
+				$post->meta['widgetpress_skcategory_archive'] = get_post_meta($post->ID, 'widgetpress_skcategory_archive', true);
+
+				//Taxonomy Archive
+                if(!empty($post->meta['widgetpress_skcategory_archive'])){
+                        $new_rules["{$term->taxonomy}/({$term->slug})/?$"] 
+                        = 'index.php?post_type=section&p='.$post->ID.'&skcategory='.$term->slug.'&old_skcategory='.$term->slug;
+
+                        $new_rules["{$term->taxonomy}/({$term->slug})/page/?([0-9]{1,})/?$"] 
+                        = 'index.php?post_type=section&p='.$post->ID.'&cskcategory='.$term->slug.'&old_skcategory='.$term->slug.'&old_paged=$matches[1]';
+                }
+            }
 		}
 		
 		//echo "<pre>";print_r(array($new_rules, $tposts,$terms));echo "</pre>";
