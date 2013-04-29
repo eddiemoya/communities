@@ -25,7 +25,7 @@ for($i=0; $i<$flNumber; $i++)
 	</hgroup>
 <?php } ?>
 
-<section class="content-body product-slider-widget-content clearfix viewport_size_<?php echo($pw_fields_to_show); ?> <?php echo($span); ?>" shc:gizmo="carousel" 
+<section class="content-body product-slider-widget-content clearfix viewport_size_<?php echo($pw_fields_to_show); ?> <?php // echo($span); ?>" shc:gizmo="carousel" 
 	shc:gizmo:options="{viewportsize:<?php echo($pw_fields_to_show); ?>,itemcount:<?php echo($total); ?><?php echo $animation; ?>}">
 
 	<div class="left-arrow"></div>
