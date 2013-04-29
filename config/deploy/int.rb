@@ -13,18 +13,18 @@ role :web, "#{domain}"  # Your HTTP server, Apache/etc
 role :app, "#{domain}"  # This may be the same as your `Web` server
 role :db, domain, :primary => true
 
-set (:branch) { "development" }
+
+set :branch do
+  current_branch = `git branch`.match(/\* (\S+)\s/m)[1]
+
+  branch = Capistrano::CLI.ui.ask "Which branch would you like to deploy to UXINT? (current branch: [#{current_branch}]) "
+  branch = current_branch if branch.empty?
+  branch
+end
+
 set (:deploy_to) { "/opt/stateapps/communities" }
 set (:app_loc) { "/appl/communities/www/wp-content" }
 set :deploy_via, :remote_cache
-
-set :branch do
-  default_tag = `git tag`.split("\n").last
-
-  tag = Capistrano::CLI.ui.ask "Tag to deploy (make sure to push the tag first): [#{default_tag}] "
-  tag = default_tag if tag.empty?
-  tag
-end
 
 set :move_wp_content do
   run "rm -rf #{app_loc}/plugins/* && rm -rf #{app_loc}/themes/*"
