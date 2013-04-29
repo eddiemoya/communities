@@ -12,22 +12,22 @@
 if(! empty($_POST)) {
 	
 	//Only proceed if SSO plugin is active
-	if(class_exists('SSO_Profile')) {
+	if(class_exists('SSO_Profile_Request')) {
 	
-		$profile = new SSO_Profile;
+		//$profile = new SSO_Profile;
 	
 		//Forgot password request
 		if(isset($_POST['login_email'])) {
 			
-			$response = $profile->reset_password($_POST['login_email']);
+			$response = SSO_Profile_Request::factory()->reset_password($_POST['login_email']);//$profile->reset_password($_POST['login_email']);
 			
 		}
 		
 		//Enter new password 
 		if(isset($_POST['new_password']) && isset($_POST['auth_token'])) {
 			
-			$response = $profile->authorize_reset($_POST['new_password'], $_POST['auth_token']);
-			
+			$response = SSO_Profile_Request::factory()->authorize_reset($_POST['new_password'], $_POST['auth_token']); 
+			//$profile->authorize_reset($_POST['new_password'], $_POST['auth_token']);
 		}
 	
 	}

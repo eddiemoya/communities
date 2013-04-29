@@ -18,7 +18,7 @@
  */
 
 /* 
-	The master object for this library.
+  The master object for this library.
   Sears Holding Corp (shc) (J)ava(S)cript (L)ibrary [shcJSL].
   The object can be referenced as '$S' for short.
 */
@@ -233,6 +233,24 @@ shcJSL.cookies = function(cookie) {
 	-------------------
 	
 */
+/**
+ * @param e (HTMLObject) element
+ * @param v (String) event to check against
+ * @param f (Function) Function to check against
+ */
+shcJSL.active = function(e, v, f) {
+	var events = [];	// Array of the events on the element
+		
+	if (e && $._data(e,"events")[v] && f) {
+		events = $._data(e,"events")[v];
+				
+		for (var i=0;i<events.length;i++) {
+			if (events[i].handler == f) return true;
+		}
+	}
+	return false;
+ }
+
 
 shcJSL.createNewElement = function(e, c, a) {
 	var newElement; // New element that will be created;
@@ -465,6 +483,7 @@ shcJSL.gizmos.persistr = function(element) {
 	persist();
 }
 
+
 shcJSL.gizmos['drop-menu'] = function(element) {
 	var options;	// Option elements of menu;
 	options = element.getElementsByTagName("option");
@@ -477,6 +496,62 @@ shcJSL.gizmos['drop-menu'] = function(element) {
 		window.location.assign(this.value);
 	})
 }
+
+$(window).on('moodle-update', function(event) {
+	
+	var form = document.getElementById("login") || document.getElementById('registration');
+	
+	if (form) {
+		
+		$(form).on("valid", function(event, submit) {
+			submit.preventDefault();
+			
+			// Start valid login code
+			//var url_parts = window.location.href.split('/');
+    		//var base = url_parts[0] + '//' + url_parts[2] + '/community/'; //Production
+    		var base = window.location.protocol + '//' + window.location.host + '/'; //Local Dev
+    		var plugin_path = 'wp-content/plugins/shc-sso-profile/public/';
+    		var form_type = (document.getElementById('login')) ? 'login' : 'register';
+			
+    		switch(form_type) {
+            
+	            case 'login':
+	            	
+	            	//get form field values
+	            	var loginId = jQuery('#login_email').val();
+	            	var pwd = jQuery('#password').val();
+	            	
+	            	//Set url for iframe target, and append iframe to end of body
+	            	url = base + plugin_path + 'login.php?sso_action=_login&loginId=' + loginId + '&logonPassword=' + pwd;
+	            	console.log(url);
+	            	jQuery('<iframe src="' + url +'" frameborder="0" scrolling="no" id="sso-auth" style="display:hidden;"></iframe>').appendTo(document.body);
+	            	
+	            	//Switch modal to loading state
+	            	shcJSL.get(window).moodle("load");
+	            	
+	            	break;
+	            	
+	            case 'register':
+	            	
+	            	var loginId = jQuery('#loginId').val();
+	            	var pwd = jQuery('#logonPassword').val();
+	            	var zipcode = jQuery('#zipcode').val();
+	            	
+	            	//Set url for iframe target, and append iframe to end of body
+	            	url = base + plugin_path + 'login.php?sso_action=_register&loginId=' + loginId + '&logonPassword=' + pwd + '&zipcode=' + zipcode;
+	            	jQuery('<iframe src="' + url +'" frameborder="0" scrolling="no" id="sso-auth" style="display:hidden;"></iframe>').appendTo(document.body);
+	            	
+	            	//Switch modal to loading state
+	            	shcJSL.get(window).moodle("load");
+	            	
+	            	break;
+	        }
+    		
+    		// Stop valid login code
+		})
+	}
+})
+
 
 /*
 	[3.0] ONLOAD EVENTS

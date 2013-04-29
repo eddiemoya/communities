@@ -223,11 +223,12 @@ function process_front_end_question() {
 	    					//$sso_guid = get_user_sso_guid($current_user->ID);
 	    					$sso_user = SSO_User::factory()->get_by_id($current_user->ID);
 	    					
-	    					$profile = new SSO_Profile;
+	    					//$profile = new SSO_Profile;
 	    					
-	    					$response = $profile->update($sso_user->guid, array('email' => $current_user->user_email ,
+	    					//$response = $profile->update($sso_user->guid, array('email' => $current_user->user_email ,
+	    																 		//'screen_name' => $_POST['screen-name']));
+	    					$response = SSO_Profile_Request::factory()->update($sso_user->guid, array('email' => $current_user->user_email ,
 	    																 		'screen_name' => $_POST['screen-name']));
-	    					
 	    						//Check for error
 	    						if(isset($response['code'])) {
 	    							
@@ -783,11 +784,12 @@ function set_screen_name($screen_name) {
 	//$sso_guid = get_user_sso_guid($current_user->ID);
 	//$sso_guid = SSO_User::factory()->get_by_id($current_user->ID)->guid;
 		    					
-	$profile = new SSO_Profile;
+	//$profile = new SSO_Profile;
 	    					
-	$response = $profile->update($sso_user->guid, array('email' => $current_user->user_email,
-    											  'screen_name' => $screen_name));
-		
+	//$response = $profile->update($sso_user->guid, array('email' => $current_user->user_email,
+    											  //'screen_name' => $screen_name));
+	$response = SSO_Profile_Request::factory()->update($sso_user->guid, array('email' => $current_user->user_email,
+    											  								'screen_name' => $screen_name));
 	//Check for error
 	if(isset($response['code'])) {
 			
