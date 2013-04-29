@@ -67,3 +67,6 @@
 [submodule "wordpress/wp-content/plugins/product-widget"]
 	path = wordpress/wp-content/plugins/product-widget
 	url = git@github.com:eddiemoya/product-widget.git
+[submodule "wordpress/wp-content/plugins/wp-node"]
+	path = wordpress/wp-content/plugins/wp-node
+	url = https://github.com/eddiemoya/WP-Node
