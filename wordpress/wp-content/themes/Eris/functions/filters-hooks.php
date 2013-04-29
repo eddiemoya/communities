@@ -989,3 +989,5 @@ function setup_weather_plugin_path(){
     return "widgets/weather-widget";
 }
 add_filter('weather_widget_template_path', 'setup_weather_plugin_path');
+
+$my_custom_media_metabox = new Media_Categories('skcategory');
