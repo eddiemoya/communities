@@ -21,8 +21,7 @@ shcJSL.methods.openID = function(target, options) {
 
 	configs = {
 		tokenURL: (window['OID'] != undefined && window['OID'].token_url != undefined)? window['OID'].token_url:'',
-		ssoURL: 'https://sears-qa.rpxnow.com' //QA
-		//ssoURL: 'https://signin.shld.net' //Prod
+		ssoURL: (window['SSO_ENV'] != undefined) ? (window['SSO_ENV'] == 'production') ? 'https://signin.shld.net' : 'https://sears-qa.rpxnow.com' :  'https://signin.shld.net'
 	}
 	
 	services = {

@@ -4,7 +4,7 @@
 
             <div id="sso-error"></div>
      
-        <form class="form_register" id="registration" method="post" action="<?php //echo $opts->endpoint . 'shcRegistration'; ?>" shc:gizmo="transFormer">
+        <form class="form_register" id="registration" method="post" action="" shc:gizmo="transFormer">
             <ul class="form-fields">
                 <li>
                     <dl class="clearfix">
