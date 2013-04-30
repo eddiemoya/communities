@@ -31,7 +31,7 @@ get_template_part('parts/header'); ?>
 		<h6 class="content-headline">Sign in</h6>
 		
 			<div id="sso-error"></div>
-	<form class="form_login" method="post" action="<?php //echo $opts->endpoint . 'shcLogin';?>" shc:gizmo="transFormer" id="login">
+	<form class="form_login" method="post" action="" shc:gizmo="transFormer" id="login">
       <ul class="form-fields">
           
           <li>
@@ -61,6 +61,7 @@ get_template_part('parts/header'); ?>
       </ul>
       		<input type="hidden" name="service" value="<?php //echo $opts->url_append_qs("origin={$origin}&ssologin", urldecode($origin));?>" />
 			<input type="hidden" name="sourceSiteid" value="<?php //echo $opts->sso_site_id;?>" />
+		
 		</form>
 		
 

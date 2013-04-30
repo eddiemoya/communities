@@ -484,6 +484,7 @@ shcJSL.gizmos.persistr = function(element) {
 }
 
 
+
 shcJSL.gizmos['drop-menu'] = function(element) {
 	var options;	// Option elements of menu;
 	options = element.getElementsByTagName("option");
@@ -497,56 +498,47 @@ shcJSL.gizmos['drop-menu'] = function(element) {
 	})
 }
 
+/**
+ * SSO JS 
+ * 
+ * 
+ */
+
+//Global SSO vars -- cross environment
+window.sso_base = (window.location.href.indexOf('kmart.com/community') != -1 || window.location.href.indexOf('sears.com/community') != -1) ?
+					'https://' + window.location.host + '/community/' : (window.location.href.indexOf('uxint-') != -1 || window.location.href.indexOf('uxdev-') != -1) ? 
+					window.location.protocol + '//' + window.location.host + '/community/' :
+					window.location.protocol + '//' + window.location.host + '/';
+
+window.sso_plugin_path = 'wp-content/plugins/shc-sso-profile/public/';
+
+
 $(window).on('moodle-update', function(event) {
 	
 	var form = document.getElementById("login") || document.getElementById('registration');
 	
-	if (form) {
+	function sso_iframe() {
+		
+		jQuery('<iframe frameborder="0" scrolling="no" id="sso-auth" name="sso-auth" style="display:hidden;"></iframe>').appendTo(document.body);
+	}
+	
+	if(form) {
 		
 		$(form).on("valid", function(event, submit) {
+			
 			submit.preventDefault();
 			
 			// Start valid login code
-			//var url_parts = window.location.href.split('/');
-    		//var base = url_parts[0] + '//' + url_parts[2] + '/community/'; //Production
-    		var base = window.location.protocol + '//' + window.location.host + '/'; //Local Dev
-    		var plugin_path = 'wp-content/plugins/shc-sso-profile/public/';
-    		var form_type = (document.getElementById('login')) ? 'login' : 'register';
+    		var sso_action = 'login.php?sso_action=' + ((document.getElementById('login')) ? '_login' : '_register');
 			
-    		switch(form_type) {
-            
-	            case 'login':
-	            	
-	            	//get form field values
-	            	var loginId = jQuery('#login_email').val();
-	            	var pwd = jQuery('#password').val();
-	            	
-	            	//Set url for iframe target, and append iframe to end of body
-	            	url = base + plugin_path + 'login.php?sso_action=_login&loginId=' + loginId + '&logonPassword=' + pwd;
-	            	console.log(url);
-	            	jQuery('<iframe src="' + url +'" frameborder="0" scrolling="no" id="sso-auth" style="display:hidden;"></iframe>').appendTo(document.body);
-	            	
-	            	//Switch modal to loading state
-	            	shcJSL.get(window).moodle("load");
-	            	
-	            	break;
-	            	
-	            case 'register':
-	            	
-	            	var loginId = jQuery('#loginId').val();
-	            	var pwd = jQuery('#logonPassword').val();
-	            	var zipcode = jQuery('#zipcode').val();
-	            	
-	            	//Set url for iframe target, and append iframe to end of body
-	            	url = base + plugin_path + 'login.php?sso_action=_register&loginId=' + loginId + '&logonPassword=' + pwd + '&zipcode=' + zipcode;
-	            	jQuery('<iframe src="' + url +'" frameborder="0" scrolling="no" id="sso-auth" style="display:hidden;"></iframe>').appendTo(document.body);
-	            	
-	            	//Switch modal to loading state
-	            	shcJSL.get(window).moodle("load");
-	            	
-	            	break;
-	        }
-    		
+        	sso_iframe();
+        	url = window.sso_base + window.sso_plugin_path + sso_action;
+        	
+        	form.action = url;
+        	form.target = 'sso-auth';
+        	form.method = 'POST';
+        	form.submit();
+	            
     		// Stop valid login code
 		})
 	}
