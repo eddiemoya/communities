@@ -990,4 +990,6 @@ function setup_weather_plugin_path(){
 }
 add_filter('weather_widget_template_path', 'setup_weather_plugin_path');
 
-$my_custom_media_metabox = new Media_Categories('skcategory');
+if(class_exists("Media_Categories")){
+    $my_custom_media_metabox = new Media_Categories('skcategory');
+}
