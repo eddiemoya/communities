@@ -1,9 +1,10 @@
 <?php 
 	$product_url = (((stripos(get_bloginfo('name'), 'sears')) !== false) ? 'http://www.sears.com/' : 'http://www.kmart.com/') . $d->meta->product_uri;
+	$image_url = ((!empty($d->meta->imageurls)) ? str_replace("http", "https", $d->meta->imageurls[0]) : "")
 ?>
 
 <div class="product <?php echo $class; ?>" data-pid="<?php echo $d->ID; ?>">
-	<a href="<?php echo $product_url; ?>"><img src="<?php echo((!empty($d->meta->imageurls)) ? $d->meta->imageurls[0] : ""); ?>?&wid=115&op_sharpen=1" /></a>
+	<a href="<?php echo $product_url; ?>"><img src="<?php echo $image_url; ?>?&wid=115&op_sharpen=1" /></a>
 	<p class="product-title">
 		<a href="<?php echo $product_url; ?>">
 			<?php echo($d->post_title); ?>
