@@ -8,8 +8,8 @@
 <section class="content-body clearfix">
 
 	<div class="featured-image span6">
-		<?php if(!empty($data['imgs'])) { ?>
-			<img title="<?php echo($data['info']->name); ?>" alt="<?php echo($data['info']->name); ?>" class="attachment-large wp-post-image" src="<?php echo($data['imgs'][0]->guid); ?>">
+		<?php if(!empty($imgs)) { ?>
+			<img title="<?php echo($data['info']->name); ?>" alt="<?php echo($data['info']->name); ?>" class="attachment-large wp-post-image" src="<?php echo($imgs); ?>">
 		<?php } ?>
 	</div>
 
