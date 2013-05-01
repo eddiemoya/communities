@@ -2,7 +2,9 @@
 	<article class="content-container department">	
 		<section class="content-body clearfix">
 			<div class="featured-image span3">
-				<img title="<?php echo($k); ?>" alt="<?php echo($k); ?>" src="<?php echo($d['img']); ?>">        
+				<?php if(!empty($d['img'])) { ?>
+					<img title="<?php echo($k); ?>" alt="<?php echo($k); ?>" src="<?php echo($d['img']); ?>">   
+				<?php } ?>    
 			</div>
 
 			<div class="span9 featured-content">

@@ -4,7 +4,9 @@
 <section class="content-body clearfix">
 
 	<div class="featured-image span6">
-		<img title="<?php echo($data['info']->name); ?>" alt="<?php echo($data['info']->name); ?>" class="attachment-large wp-post-image" src="<?php echo((!empty($data['imgs'])) ? $data['imgs'][0]->guid : "http://path/to/noimg.png"); ?>">
+		<?php if(!empty($data['imgs'])) { ?>
+			<img title="<?php echo($data['info']->name); ?>" alt="<?php echo($data['info']->name); ?>" class="attachment-large wp-post-image" src="<?php echo($data['imgs'][0]->guid); ?>">
+		<?php } ?>
 	</div>
 
 	<div class="featured-content span6">

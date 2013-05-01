@@ -7,7 +7,11 @@
 <ul class="span12">
 <?php foreach($disp as $k => $d) { ?>
 	<li class="span3<?php if(($ctr % 4) == 0) { ?> alpha<?php } ?>">
-		<a href="<?php echo($d['link']); ?>" title="<?php echo($k); ?>"><img src="<?php echo($d['img']); ?>" alt="<?php echo($k); ?>" /></a>
+		<a href="<?php echo($d['link']); ?>" title="<?php echo($k); ?>">
+			<?php if(!empty($d['img'])) { ?>
+				<img src="<?php echo($d['img']); ?>" alt="<?php echo($k); ?>" />
+			<?php } ?>
+		</a>
 		<h5><a href="<?php echo($d['link']); ?>" title="<?php echo($k); ?>"><?php echo($k); ?></a></h5>
 	</li>
 <?php $ctr++; } ?>
