@@ -481,10 +481,13 @@ function filter_before_widget($html, $dropzone, $widget){
             $html = str_replace('results-list', 'results-list_users', $html);
            }
     }
-    //echo "<pre>";print_r();echo "</pre>";
 
     /** Taxonomy Widget **/
-    if(!empty($meta->tw_list_style))
+    if(!empty($meta->tw_featured) && ($meta->tw_featured == 1))
+    {
+        $html = str_replace("taxonomy-widget", "taxonomy-widget_featured", $html);
+    }
+    else if(!empty($meta->tw_list_style))
     {
         $html = str_replace("taxonomy-widget", "taxonomy-widget_" . $meta->tw_list_style, $html);
     }

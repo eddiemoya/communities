@@ -1,6 +1,9 @@
+<?php if(!empty($titl) || !empty($subt)) { ?>
 <header class="content-header">
-	<h3>Departments</h3>
+	<?php if(!empty($titl)) { ?><h3><?php echo($titl); ?></h3><?php } ?>
+	<?php if(!empty($subt)) { ?><h4><?php echo($subt); ?></h4><?php } ?>
 </header>
+<?php } ?>
 
 <section class="content-body clearfix">
 <?php $ctr = 0; ?>

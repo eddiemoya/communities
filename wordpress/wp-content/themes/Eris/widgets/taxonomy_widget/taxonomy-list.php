@@ -1,3 +1,10 @@
+<?php if(!empty($titl) || !empty($subt)) { ?>
+<header class="content-header">
+	<?php if(!empty($titl)) { ?><h3><?php echo($titl); ?></h3><?php } ?>
+	<?php if(!empty($subt)) { ?><h4><?php echo($subt); ?></h4><?php } ?>
+</header>
+<?php } ?>
+
 <?php foreach($disp as $k => $d) { ?>
 	<article class="content-container department">	
 		<section class="content-body clearfix">
