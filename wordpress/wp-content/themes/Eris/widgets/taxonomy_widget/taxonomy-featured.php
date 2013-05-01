@@ -1,5 +1,5 @@
 <header class="content-header">
-	<h3>Featured Category</h3>
+	<h3>Featured Department</h3>
 </header>
 <section class="content-body clearfix">
 
