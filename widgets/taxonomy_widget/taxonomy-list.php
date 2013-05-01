@@ -5,6 +5,7 @@
 </header>
 <?php } ?>
 
+<section class="content-body clearfix">
 <?php foreach($disp as $k => $d) { ?>
 	<article class="content-container department">	
 		<section class="content-body clearfix">
@@ -20,12 +21,9 @@
 			        <a href="<?php echo($d['link']); ?>" title="<?php echo($k); ?>"><?php echo($k); ?> Reviews</a>
 			    </h1>
 
-				<!--
-					You will have to add the <sarcasm>always helpful, and very informative</sarcasm> 'see more' link on the back end.
-				-->
-
 				<?php echo($d['desc']); ?>
 			</div>
 		</section>				
 	</article>
 <?php } ?>
+</section>
