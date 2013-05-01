@@ -27,16 +27,25 @@ class Section_Front{
 		add_filter( 'rewrite_rules_array',		array(__CLASS__, 'section_rewrite_rules') );
 		add_filter('query_vars', 				array(__CLASS__, 'add_var'));
 		//add_action('pre_get_posts', 		array(__CLASS__, 'custom_primary_query'));
+		add_action('template_redirect', 		array(__CLASS__, 'dont_redirect_canonical'), 0);
+
 	}
 
+	public function dont_redirect_canonical($arg){
+		if(get_query_var('widgetpress_redirect') == true){
+			remove_filter('template_redirect', 'redirect_canonical');
+		}
+	}
 
 	public function add_var($qvars) {
 		//$qvars[] = 'meta_key';
+		$qvars[] = 'widgetpress_redirect';
 		$qvars[] = 'old_post_type';
 		$qvars[] = 'old_category';
 		$qvars[] = 'old_paged';
 		$qvars[] = 'old_format';
 		$qvars[] = 'old_skcategory';
+
 
 
 		return $qvars;
@@ -194,10 +203,10 @@ class Section_Front{
 
 					$endpoint_pattern = implode('|', array_filter($post_types));
 					$new_rules["{$term->taxonomy}/{$parent_pattern}{$term->slug}/({$endpoint_pattern})/?$"] 
-					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_post_type=$matches[1]';
+					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_post_type=$matches[1]&widgetpress_redirect=true';
 
 					$new_rules["{$term->taxonomy}/{$parent_pattern}{$term->slug}/({$endpoint_pattern})/page/?([0-9]{1,})/?$"] 
-					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_post_type=$matches[1]&old_paged=$matches[2]';
+					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_post_type=$matches[1]&old_paged=$matches[2]&widgetpress_redirect=true';
 				}
 
 				//Taxonomy/Format Intersection
@@ -207,10 +216,10 @@ class Section_Front{
 
 					$endpoint_pattern = implode('|', array_filter($formats));
 					$new_rules["{$term->taxonomy}/{$parent_pattern}{$term->slug}/({$endpoint_pattern})/?$"] 
-					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_format=$matches[1]';
+					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_format=$matches[1]&widgetpress_redirect=true';
 
 					$new_rules["{$term->taxonomy}/{$parent_pattern}{$term->slug}/({$endpoint_pattern})/page/?([0-9]{1,})/?$"] 
-					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_format=$matches[1]&old_paged=$matches[2]';
+					= 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_format=$matches[1]&old_paged=$matches[2]&widgetpress_redirect=true';
 				}
 
 				//Post Type Archive
@@ -221,16 +230,16 @@ class Section_Front{
 
 					$endpoint_pattern = implode('|', array_filter($post_types));
 					$new_rules["({$endpoint_pattern})s?/?$"] 
-					= 'index.php?post_type=section&p='.$post->ID.'&old_post_type=$matches[1]&category_name='.$term->slug;
+					= 'index.php?post_type=section&p='.$post->ID.'&old_post_type=$matches[1]&category_name='.$term->slug.'&widgetpress_redirect=true';
 
 					$new_rules["({$endpoint_pattern})s?/page/?([0-9]{1,})/?$"] 
-					= 'index.php?post_type=section&p='.$post->ID.'&old_post_type=$matches[1]&category_name='.$term->slug.'&old_paged=$matches[2]';
+					= 'index.php?post_type=section&p='.$post->ID.'&old_post_type=$matches[1]&category_name='.$term->slug.'&old_paged=$matches[2]&widgetpress_redirect=true';
 				}
 
 				 //Taxonomy Archive
                 if(!empty($post->meta['rewrite_tax_archive'])){
                         $new_rules["{$term->taxonomy}/{$parent_pattern}({$term->slug})/?$"] 
-                        = 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug;
+                        = 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&widgetpress_redirect=true';
 
                         $new_rules["{$term->taxonomy}/{$parent_pattern}({$term->slug})/page/?([0-9]{1,})/?$"] 
                         = 'index.php?post_type=section&p='.$post->ID.'&category_name='.$term->slug.'&old_category='.$term->slug.'&old_paged=$matches[1]';
@@ -242,10 +251,10 @@ class Section_Front{
 
 					$endpoint_pattern = implode('|', array_filter($formats));
 					$new_rules["({$endpoint_pattern})s?/?$"] 
-					= 'index.php?post_type=section&p='.$post->ID.'&old_format=$matches[1]&category_name='.$term->slug;
+					= 'index.php?post_type=section&p='.$post->ID.'&old_format=$matches[1]&category_name='.$term->slug.'&widgetpress_redirect=true';
 
 					$new_rules["({$endpoint_pattern})s?/page/?([0-9]{1,})/?$"] 
-					= 'index.php?post_type=section&p='.$post->ID.'&old_format=$matches[1]&category_name='.$term->slug.'&old_paged=$matches[2]';
+					= 'index.php?post_type=section&p='.$post->ID.'&old_format=$matches[1]&category_name='.$term->slug.'&old_paged=$matches[2]&widgetpress_redirect=true';
 
 				}
 
@@ -292,10 +301,10 @@ class Section_Front{
 				//Taxonomy Archive
                 if(!empty($post->meta['widgetpress_skcategory_archive'])){
                         $new_rules["{$term->taxonomy}/{$parent_pattern}({$term->slug})/?$"] 
-                        = 'index.php?post_type=section&p='.$post->ID.'&skcategory='.$term->slug.'&old_skcategory='.$term->slug;
+                        = 'index.php?post_type=section&p='.$post->ID.'&skcategory='.$term->slug.'&old_skcategory='.$term->slug.'&widgetpress_redirect=true';
 
                         $new_rules["{$term->taxonomy}/{$parent_pattern}({$term->slug})/page/?([0-9]{1,})/?$"] 
-                        = 'index.php?post_type=section&p='.$post->ID.'&cskcategory='.$term->slug.'&old_skcategory='.$term->slug.'&old_paged=$matches[1]';
+                        = 'index.php?post_type=section&p='.$post->ID.'&cskcategory='.$term->slug.'&old_skcategory='.$term->slug.'&old_paged=$matches[1]&widgetpress_redirect=true';
                 }
             }
 		}
