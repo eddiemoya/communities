@@ -48,8 +48,8 @@
 
       <div id="container">
 
-				<div id="persistent-header" shc:gizmo="persistr">
-	      <!-- <div id="persistent-header"> -->
+				<!--<div id="persistent-header" shc:gizmo="persistr">-->
+	      <div id="persistent-header">
 	
 	          <?php get_template_part('parts/head'); ?>
 	

@@ -5,7 +5,7 @@
  * @subpackage White Label
  */
 
-get_template_part('parts/header');
+//get_template_part('parts/header');
 
 // loop();
 ?>
@@ -165,6 +165,6 @@ var ajaxdata = {"ajaxurl":"http:\/\/localhost:100\/wp-admin\/admin-ajax.php","te
 	</script>
 	
 <?php
-// get_template_part('parts/footer');
+//get_template_part('parts/footer');
 
 ?>

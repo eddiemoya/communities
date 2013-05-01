@@ -613,7 +613,9 @@ shcJSL.fn = {
 		return sequence;
 	},
 	getObjectType: function(object) {
-		return Object.prototype.toString.call(object);
+		//return Object.prototype.toString.call(object);
+		return Object.prototype.toString.call(object).replace(/^\[object (.*)\]$/, function(match, key, value, offset, string) {return key;})
+		//return (Object.prototype.toString.call(object)).replace(/(object )/,'');
 	},
 	createCustomActionArray: function(array, methods) {
 		for (var action in methods) (
@@ -641,7 +643,9 @@ shcJSL.governor = new function() {
 	
 	this.architect = function(gizmo, element) {
 		if (self.populace[gizmo] === undefined) self.populace[gizmo] = [];
+		console.log(self.populace)
 		self.populace[gizmo].push(element);
+		console.log(self.populace)
 	}
 	
 	this.activate = function() {
@@ -665,7 +669,56 @@ shcJSL.governor = new function() {
 	
 };
 
+var Merge = function(obj1, obj2) {
+	for (var p in obj2) {
+	    try {
+	      // Property in destination object set; update its value.
+	      if ( obj2[p].constructor==Object ) {
+	        obj1[p] = MergeRecursive(obj1[p], obj2[p]);
+	
+	      } else {
+	        obj1[p] = obj2[p];
+	
+	      }
+	
+	    } catch(e) {
+	      // Property in destination object not set; create it and set its value.
+	      obj1[p] = obj2[p];
+	
+	    }
+	  }
 
+  return obj1;
+}
+shcJSL.gizmos.calculate = function(event, parent) {
+	var draft 		= "",												// Temporary object for storing option data
+		Parent 		= parent || $('body').get(0),						// (HTMLObject) parent argument, or if null, the body element
+		Selector 	= new Array("*[shc\\:gizmo]"),	// (Array) Array of selectors
+		date 		= new Date(),
+		uid 		= (new Array( date.getYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(),  date.getSeconds(), date.getMilliseconds() )).join("");
+	
+	Gizmo = Parent.querySelectorAll("*[shc\\:gizmo]");
+	
+	for (var i=0;i<Gizmo.length;i++) (function(){
+		var gizmo 		= this.getAttribute("shc:gizmo"),			// shc:gizmo attribute || null
+			options 	= this.getAttribute("shc:gizmo:options"),	// shc:gizmo:options attrubute || null
+			stamp		=	uid++;
+		
+		// Assign unique ID
+		this.setAttribute("shc:stamp",stamp);
+
+		if (options) {
+			if (draft.length > 0) draft += ",";
+			draft += '"' + stamp.toString() + '":' + options;
+		}
+	}).call(Gizmo[i])
+	
+	// Convert all options into JSON Object
+	draft = JSON.parse("{" + draft + "}");
+	
+	Merge(shcJSL.schematic, draft);
+	
+}
 /*
  * shcJSL.widgets.activate Arguments
  * 	event:
@@ -688,11 +741,11 @@ shcJSL.gizmos.activate = function(event, parent) {
 	$.each(
 		$(Parent).find(Selector.join()),	// Array of elements matching selector inside parent
 		function(index, value) {
-			var gadget 		= this.getAttribute("shc:gadget"),					// shc:gadget attribute || null
-					gizmo 		= this.getAttribute("shc:gizmo"),						// shc:gizmo attribute || null
-					options 	= this.getAttribute("shc:gizmo:options"),		// shc:gizmo:options attrubute || null
-					sprocket 	= this.getAttribute("shc:gadget:sprocket"),	// shc:gadget:sprocket attribute || null
-					stamp	=	uid++;																				// Unique SHCJSL identifier
+			var gadget 		= this.getAttribute("shc:gadget"),			// shc:gadget attribute || null
+				gizmo 		= this.getAttribute("shc:gizmo"),			// shc:gizmo attribute || null
+				options 	= this.getAttribute("shc:gizmo:options"),	// shc:gizmo:options attrubute || null
+				sprocket 	= this.getAttribute("shc:gadget:sprocket"),	// shc:gadget:sprocket attribute || null
+				stamp		=	uid++;																				// Unique SHCJSL identifier
 						
 			// Assign unique ID
 			this.setAttribute("shc:stamp",stamp);
@@ -716,6 +769,7 @@ shcJSL.gizmos.activate = function(event, parent) {
 				
 				(/^\[.*\]$/.test(gizmo))? gizmo.replace(/^\[(.*)\]$/, function(match, key, value, offset, string) {giz = key.split(/, ?/g);}):giz = gizmo;
 				
+				
 				if (shcJSL.fn.getObjectType(giz) === "[object String]") shcJSL.governor.architect(giz, this)
 				else if (shcJSL.fn.getObjectType(giz) === "[object Array]") {
 					for (var i=0; i < giz.length; i++) {
@@ -737,16 +791,81 @@ shcJSL.gizmos.activate = function(event, parent) {
 	 * Put in to new scope, to keep var i 
 	 * fresh.
 	 */
-	(function() {
-		for (var i in draft) {
-			shcJSL.schematic[i] = draft[i];
-		}
-	})();
+// 	
+	// (function() {
+		// for (var i in draft) {
+			// shcJSL.schematic[i] = draft[i];
+		// }
+	// })();
+	
+	Merge(shcJSL.schematic, draft);
 	
 	shcJSL.governor.activate();
 }
 
+M = {};
+M.hash = function() {
+        var table = [],
+                entry;
+                
+        entry = function(key, value) {
+                return {'key': key, 'value': value};
+        }
+        
+        this.get = function() {
+                return (function(key) {
+                	
+                	var n = (table.length)? parseInt(table.length - 1):0;
+                	if (table[n]) {
+                		do {
+	                		if (table[n]['key'] == key) return table[n]['value'];
+	                	} while(n--);
+                	}
+                	return false;
+                        // if (table.length > 0) {
+                                // for (var i=0;i<table.length;i++) {
+                                        // if (table[i]['key'] == key) return table[i]['value'];
+                                // }
+                                // return false;
+                        // } else return false;
+                }).apply(this, arguments);
+        }
+        
+        this.put = function() {
+                return (function(key, value) {
+                        var e = this.get(key);
+                        (!e)? table.push(entry(key, value)):Merge(e,value);
+                        return this;
+                }).apply(this, arguments);
+        }
+        
+        this.spit = function() {
+        	return table;
+        }
+        
+        return this;
+}
+
+M.schema = new M.hash();
+
+M.activate = function(event, parent) {
+	var Gizmos,
+		Parent = parent || document.body,												// (HTMLObject) parent argument, or if null, the body element
+
+	Gizmos = Parent.querySelectorAll("*[shc\\:gizmo]");
+	
+	for (var i=0;i<Gizmos.length;i++) (function(){
+		var gizmo 		= this.getAttribute("shc:gizmo"),
+			options 	= this.getAttribute("shc:gizmo:options");
+		
+		if (options && gizmo) {
+			M.schema.put(this, JSON.parse(options));
+		}
+	}).call(Gizmos[i])
+}
+
 jQuery(document).ready(function() {
-	shcJSL.gizmos.activate();
+	shcJSL.gizmos.calculate();
+	M.activate();
 	window.loaded = true;
 });
