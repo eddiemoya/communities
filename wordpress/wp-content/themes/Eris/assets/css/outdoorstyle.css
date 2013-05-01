@@ -56,11 +56,7 @@ body { font-size: 81.25%; }
 .menu-sears-ribbon-container > ul > li, .menu-kmart-ribbon-container > ul > li { border-left: dotted 1px #666666; display: inline; height: .9375em; padding: 0 0.375em 0 0.625em; }
 .menu-sears-ribbon-container > ul > li a, .menu-kmart-ribbon-container > ul > li a { display: inline-block; height: 15px; line-height: 16px; text-indent: -999999em; }
 .menu-sears-ribbon-container > ul > li:first-child, .menu-kmart-ribbon-container > ul > li:first-child { border-left: none; }
-<<<<<<< HEAD
-.menu-sears-ribbon-container .menu-item a, .menu-kmart-ribbon-container .menu-item a { background: transparent url('../img/sprite_ribbon.png?v=1366397000') no-repeat; }
-=======
-.menu-sears-ribbon-container .menu-item a, .menu-kmart-ribbon-container .menu-item a { background: transparent url('../img/sprite_ribbon.png?v=1363102271') no-repeat; }
->>>>>>> b44c5dd... added template for featured taxonomy
+.menu-sears-ribbon-container .menu-item a, .menu-kmart-ribbon-container .menu-item a { background: transparent url('../img/sprite_ribbon.png?v=1367352636') no-repeat; }
 .menu-sears-ribbon-container .ribbon_shop-your-way a, .menu-kmart-ribbon-container .ribbon_shop-your-way a { background-position: 0px -30px; width: 59px; }
 .menu-sears-ribbon-container .ribbon_sears a, .menu-kmart-ribbon-container .ribbon_sears a { background-position: 0px 0px; width: 41px; }
 .menu-sears-ribbon-container .ribbon_kmart a, .menu-kmart-ribbon-container .ribbon_kmart a { background-position: 0px -15px; width: 44px; }
@@ -97,11 +93,7 @@ ul.footer_anterior li { color: #666666; }
 ul.footer_anterior li a { color: #666666; font-size: 66.666%; }
 ul.footer_anterior li a:visited { color: #666666; }
 ul.footer_anterior li a:hover { color: #55a3c8; text-decoration: none; }
-<<<<<<< HEAD
 ul.footer_anterior .icon { background-image: url('../img/sprite-footer.png?v=1350575533'); background-repeat: no-repeat; }
-=======
-ul.footer_anterior .icon { background-image: url('../img/sprite-footer.png?v=1363102271'); background-repeat: no-repeat; }
->>>>>>> b44c5dd... added template for featured taxonomy
 ul.footer_anterior .icon a { display: block; height: 16px; text-indent: -9999em; }
 ul.footer_anterior .acc.icon a { height: 30px; }
 ul.footer_anterior .acc { background-position: left top; }
@@ -275,11 +267,7 @@ ul.bullets { list-style-type: disc; }
 
 .error input[type="text"], .error input[type="password"] { border: solid 1px red; }
 .error .error-message { background-color: #e41e13; color: white; display: block; float: left; font-weight: bold; margin: 10px 0px 0px; padding: 0.307em 1.23em; position: relative; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; }
-<<<<<<< HEAD
 .error .error-message .error-pointer { background: transparent url('../img/error_pointer-arrow.png?v=1366396999') no-repeat 0px 0px; height: 9px; display: block; left: 15px; position: absolute; top: -9px; width: 19px; }
-=======
-.error .error-message .error-pointer { background: transparent url('../img/error_pointer-arrow.png?v=1363102271') no-repeat 0px 0px; height: 9px; display: block; left: 15px; position: absolute; top: -9px; width: 19px; }
->>>>>>> b44c5dd... added template for featured taxonomy
 
 .form-errors { color: #ff0000; }
 
@@ -292,11 +280,7 @@ ul.bullets { list-style-type: disc; }
 .content-container { position: relative; }
 .content-container .content-author, .content-container .content-comments { color: #333333; font-size: 92.307%; margin-bottom: 0.769em; }
 .content-container .content-body { border-top: solid 1px #dddcdc; padding: 0.769em 0; }
-<<<<<<< HEAD
 .content-container .content-body .hr { background: transparent url('../img/background_hr.gif?v=1366396999') repeat-x 0px 0px; height: 1px; padding: 18px 0px; width: 100%; }
-=======
-.content-container .content-body .hr { background: transparent url('../img/background_hr.gif?v=1363102271') repeat-x 0px 0px; height: 1px; padding: 18px 0px; width: 100%; }
->>>>>>> b44c5dd... added template for featured taxonomy
 .content-container .content-category { float: left; }
 .content-container .content-date { float: right; line-height: 1.846em; }
 .content-container .content-date .time-stamp { display: inline-block; margin-left: 1.5em; }
@@ -409,15 +393,7 @@ textarea.discussion { border: 1px solid #d6d6d6; height: 10em; width: 99%; -webk
 
 .span3 .recent-activity .excerpt, .span4 .recent-activity .excerpt, .span6 .recent-activity .excerpt { overflow: hidden; text-overflow: ellipsis; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-.recent_reviews hgroup { background: transparent url('../img/widgets/recent-reviews/background_header-icon-people.png?v=1366397000') no-repeat right bottom; }
-=======
-.recent_reviews hgroup { background: transparent url('../img/widgets/recent-reviews/background_header-icon-people.png?v=1366323076') no-repeat right bottom; }
->>>>>>> 228a98a... Finished Taxonomy Department Select widget. Started result list widget
-=======
-.recent_reviews hgroup { background: transparent url('../img/widgets/recent-reviews/background_header-icon-people.png?v=1365526218') no-repeat right bottom; }
->>>>>>> b44c5dd... added template for featured taxonomy
+.recent_reviews hgroup { background: transparent url('../img/widgets/recent-reviews/background_header-icon-people.png?v=1367352636') no-repeat right bottom; }
 .recent_reviews .recent-review_title { font-size: 92.307%; font-weight: bold; }
 .recent_reviews .recent-review_review { font-size: 92.307%; line-height: 1.9em; margin-bottom: .5em; }
 .recent_reviews .recent-review_review:before { content: "\201C"; }
@@ -452,11 +428,7 @@ fieldset#use_your_account_from { border-top: 1px solid #cccccc; }
 fieldset#use_your_account_from legend { text-align: center; padding: 1em; }
 
 .login_options { text-align: center; line-height: 2.5; width: 18.461em; margin: 0 auto; }
-<<<<<<< HEAD
 .login_options a { display: inline-block; width: 16px; height: 16px; background: url('../img/sprite-social.png?v=1350575533'); background-repeat: no-repeat; text-indent: -9999em; margin-left: 1.6em; }
-=======
-.login_options a { display: inline-block; width: 16px; height: 16px; background: url('../img/sprite-social.png?v=1363102271'); background-repeat: no-repeat; text-indent: -9999em; margin-left: 1.6em; }
->>>>>>> b44c5dd... added template for featured taxonomy
 .login_options a:first-child, .login_options a:first-child + a, .login_options a:first-child + a + a { margin-left: 0; }
 .login_options .facebook { width: 213px; height: 32px; }
 .login_options .yahoo { width: 28px; }
@@ -478,11 +450,7 @@ fieldset#use_your_account_from legend { text-align: center; padding: 1em; }
 
 .profile .content-container .content-body { border-top: 0; }
 .profile .tabs { border-bottom: 1px solid #cccccc; position: relative; top: 1px; }
-<<<<<<< HEAD
 .profile .tabs li { float: left; min-width: 23.404255319148938%; margin-left: 2.127659574468085%; font-size: 107.692%; border: solid #cccccc; border-width: 1px 1px 0 1px; text-align: center; -webkit-border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -ms-border-radius: 5px 5px 0 0; -o-border-radius: 5px 5px 0 0; border-radius: 5px 5px 0 0; background: #e4e0df url('../img/sears/sprite_navigation.png?v=1350575533'); }
-=======
-.profile .tabs li { float: left; min-width: 23.404255319148938%; margin-left: 2.127659574468085%; font-size: 107.692%; border: solid #cccccc; border-width: 1px 1px 0 1px; text-align: center; -webkit-border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -ms-border-radius: 5px 5px 0 0; -o-border-radius: 5px 5px 0 0; border-radius: 5px 5px 0 0; background: #e4e0df url('../img/sears/sprite_navigation.png?v=1363102271'); }
->>>>>>> b44c5dd... added template for featured taxonomy
 .profile .tabs a { display: block; padding: 1em 0 .6em 0; }
 .profile .tabs li { background-position: left -81px; }
 .profile .tabs .active { position: relative; top: 1px; background: white; padding: 1em 0 .6em 0; }
@@ -529,13 +497,8 @@ fieldset#use_your_account_from legend { text-align: center; padding: 1em; }
 
 .tooltip { display: none; position: absolute; width: 250px; z-index: 1000003; }
 .tooltip .arrow { left: -10px; position: absolute; }
-<<<<<<< HEAD
-.tooltip .arrow .left { background: url('../img/arrow-left.png?v=1366396999'); height: 22px; position: relative; width: 12px; }
-.tooltip .arrow .top { background: url('../img/arrow-top.png?v=1366396999'); height: 12px; position: relative; top: 1px; width: 22px; }
-=======
-.tooltip .arrow .left { background: url('../img/arrow-left.png?v=1363102271'); height: 22px; position: relative; width: 12px; }
-.tooltip .arrow .top { background: url('../img/arrow-top.png?v=1363102271'); height: 12px; position: relative; top: 1px; width: 22px; }
->>>>>>> b44c5dd... added template for featured taxonomy
+.tooltip .arrow .left { background: url('../img/arrow-left.png?v=1367352635'); height: 22px; position: relative; width: 12px; }
+.tooltip .arrow .top { background: url('../img/arrow-top.png?v=1367352635'); height: 12px; position: relative; top: 1px; width: 22px; }
 .tooltip .arrow .topBorder { background-color: transparent; border-color: transparent transparent white transparent; border-style: solid; border-width: 0px 9px 9px 9px; width: 0px; height: 0px; position: relative; left: 1px; top: -9px; }
 .tooltip .middle { -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; background-color: white; border: 1px solid #a0c7ff; color: black; float: left; padding: 7px; }
 .tooltip .middle input { margin-top: 7px; }
@@ -564,11 +527,7 @@ fieldset#use_your_account_from legend { text-align: center; padding: 1em; }
 .expert, #allComments .expert { background: #f2f2f2; }
 
 .actions { float: right; position: relative; z-index: 10; }
-<<<<<<< HEAD
 .actions button { cursor: pointer; color: #4e74a3; border: 1px solid #d6d6d6; font-weight: bold; background: white url('../img/sprite-actions.png?v=1366397000') no-repeat; display: inline-block; float: right; text-indent: -999em; width: 2em; margin-left: 1em; padding: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; -webkit-box-shadow: #666666 1px 2px 4px; -moz-box-shadow: #666666 1px 2px 4px; box-shadow: #666666 1px 2px 4px; }
-=======
-.actions button { cursor: pointer; color: #4e74a3; border: 1px solid #d6d6d6; font-weight: bold; background: white url('../img/sprite-actions.png?v=1363102271') no-repeat; display: inline-block; float: right; text-indent: -999em; width: 2em; margin-left: 1em; padding: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; -webkit-box-shadow: #666666 1px 2px 4px; -moz-box-shadow: #666666 1px 2px 4px; box-shadow: #666666 1px 2px 4px; }
->>>>>>> b44c5dd... added template for featured taxonomy
 .actions .addthis_toolbox { float: left; }
 
 .reply { float: left; }
@@ -619,19 +578,11 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .ad-widget h1 { color: #cfcece; font-size: 76.923%; font-weight: normal; text-align: center; text-transform: uppercase; }
 
 .site-error { margin-top: 2em; }
-<<<<<<< HEAD
 .site-error .span8, .site-error .span10 { background: url('../img/tile_line.gif?v=1366397000'); margin-top: 2em; }
 .site-error .message { color: white; margin: 1em; text-align: center; padding: 9em 0; }
 .site-error .message h1 { font-size: 184.615%; font-family: Impact, Charcoal, sans-serif; letter-spacing: .066em; }
 .site-error .message h2 { font-size: 246.153%; font-family: Georgia, serif; margin-top: 1em; }
 .site-error .message .tape { background: url('../img/tile_line.gif?v=1366397000'); width: 50%; margin: 0.66em auto; line-height: .5; }
-=======
-.site-error .span8, .site-error .span10 { background: url('../img/tile_line.gif?v=1363102271'); margin-top: 2em; }
-.site-error .message { color: white; margin: 1em; text-align: center; padding: 9em 0; }
-.site-error .message h1 { font-size: 184.615%; font-family: Impact, Charcoal, sans-serif; letter-spacing: .066em; }
-.site-error .message h2 { font-size: 246.153%; font-family: Georgia, serif; margin-top: 1em; }
-.site-error .message .tape { background: url('../img/tile_line.gif?v=1363102271'); width: 50%; margin: 0.66em auto; line-height: .5; }
->>>>>>> b44c5dd... added template for featured taxonomy
 
 .error404 { color: #333333; }
 .error404 h1 { font-size: 169.23%; font-weight: bold; margin-bottom: 1.23em; }
@@ -639,19 +590,11 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .error404 ul { margin-top: 0px; }
 
 .site-error { margin-top: 2em; }
-<<<<<<< HEAD
 .site-error .span8, .site-error .span10 { background: url('../img/tile_line.gif?v=1366397000'); margin-top: 2em; }
 .site-error .message { color: white; margin: 1em; text-align: center; padding: 9em 0; }
 .site-error .message h1 { font-size: 184.615%; font-family: Impact, Charcoal, sans-serif; letter-spacing: .066em; }
 .site-error .message h2 { font-size: 246.153%; font-family: Georgia, serif; margin-top: 1em; }
 .site-error .message .tape { background: url('../img/tile_line.gif?v=1366397000'); width: 50%; margin: 0.66em auto; line-height: .5; }
-=======
-.site-error .span8, .site-error .span10 { background: url('../img/tile_line.gif?v=1363102271'); margin-top: 2em; }
-.site-error .message { color: white; margin: 1em; text-align: center; padding: 9em 0; }
-.site-error .message h1 { font-size: 184.615%; font-family: Impact, Charcoal, sans-serif; letter-spacing: .066em; }
-.site-error .message h2 { font-size: 246.153%; font-family: Georgia, serif; margin-top: 1em; }
-.site-error .message .tape { background: url('../img/tile_line.gif?v=1363102271'); width: 50%; margin: 0.66em auto; line-height: .5; }
->>>>>>> b44c5dd... added template for featured taxonomy
 
 .featured-category-question .content-header { border-top: none; padding: 0px; }
 .featured-category-question .content-header h1 { font-size: 146.153%; font-weight: normal; }
@@ -662,11 +605,7 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .member_avatar { overflow: hidden; word-wrap: break-word; }
 .member_avatar a:hover { text-decoration: none; }
 .member_avatar img { width: 100%; }
-<<<<<<< HEAD
 .member_avatar .badge { background: #1885bb url('../img/sears/sprite_global.png?v=1366397000') repeat-x 0px 0px; color: white; display: block; text-align: center; width: 100%; }
-=======
-.member_avatar .badge { background: #1885bb url('../img/sears/sprite_global.png?v=1363102271') repeat-x 0px 0px; color: white; display: block; text-align: center; width: 100%; }
->>>>>>> b44c5dd... added template for featured taxonomy
 
 .member-list .member-wrapper { border-left: solid 1px #d5d5d5; padding: 0.769em; }
 .member-list > li:first-child .member-wrapper { border-left: none; }
@@ -785,22 +724,14 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 
 #moodle_overlay { background: rgba(0, 0, 0, 0.5); }
 
-<<<<<<< HEAD
 .no-rgba #moodle_overlay { background: transparent url('../img/background_overlay_no-rgba.png?v=1350575533') repeat 0px 0px; }
-=======
-.no-rgba #moodle_overlay { background: transparent url('../img/background_overlay_no-rgba.png?v=1363102271') repeat 0px 0px; }
->>>>>>> b44c5dd... added template for featured taxonomy
 
 #moodle_window { background: rgba(143, 199, 252, 0.3); padding: 0.923em; -webkit-border-radius: 20px; -moz-border-radius: 20px; -ms-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
 #moodle_window .loading { height: 100%; min-height: 3.692em; min-width: 3.692em; text-align: center; width: 100%; }
 
 #moodle_container { background: #ffffff; height: 100%; width: 100%; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; border-radius: 10px; }
 
-<<<<<<< HEAD
 #moodle_container .close-button { background: transparent url('../img/modal_close-button.png?v=1350575533') no-repeat 0px 0px; height: 8px; width: 35px; }
-=======
-#moodle_container .close-button { background: transparent url('../img/modal_close-button.png?v=1363102271') no-repeat 0px 0px; height: 8px; width: 35px; }
->>>>>>> b44c5dd... added template for featured taxonomy
 
 .moodle_transit { left: -99999em; opacity: 0; position: absolute; top: -99999em; visibility: hidden; max-width: 940px; }
 
@@ -862,11 +793,7 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 
 .open-id_service { display: inline-block; margin: 8px 7px; }
 
-<<<<<<< HEAD
 .open-id_service a { background: transparent url('../img/sprite_open-id-services.png?v=1366397000') no-repeat 0px 0px; display: block; text-indent: -9999em; }
-=======
-.open-id_service a { background: transparent url('../img/sprite_open-id-services.png?v=1363102271') no-repeat 0px 0px; display: block; text-indent: -9999em; }
->>>>>>> b44c5dd... added template for featured taxonomy
 
 .open-id_facebook a { height: 33px; width: 214px; }
 
@@ -905,11 +832,7 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .wp-polls .options li span { text-align: right; }
 .wp-polls .polls_submit { margin-top: 1.5em; margin-left: 19.6979%; }
 .wp-polls .sears_button { margin-left: -1em; }
-<<<<<<< HEAD
-.wp-polls .polls_error { color: red; padding-left: 1.3em; margin: 0.5em 0; background: url('../img/error-arrow.png?v=1366396999') no-repeat top left; }
-=======
-.wp-polls .polls_error { color: red; padding-left: 1.3em; margin: 0.5em 0; background: url('../img/error-arrow.png?v=1363102271') no-repeat top left; }
->>>>>>> b44c5dd... added template for featured taxonomy
+.wp-polls .polls_error { color: red; padding-left: 1.3em; margin: 0.5em 0; background: url('../img/error-arrow.png?v=1367352635') no-repeat top left; }
 .wp-polls .figures { text-align: right; }
 .wp-polls .bar { line-height: .8; margin: 0.3em 0; }
 .wp-polls .total { line-height: 1; padding-top: 1.3em; }
@@ -920,15 +843,7 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 
 .wp-polls-loading { display: none; text-align: center; height: 16px; line-height: 16px; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-.dropzone.span8 .hero-slider { background: url('../img/hero-slider-bg.png?v=1366397000') center center; width: 620px; height: 360px; position: relative; }
-=======
-.dropzone.span8 .hero-slider { background: url('../img/hero-slider-bg.png?v=1366323075') center center; width: 620px; height: 360px; position: relative; }
->>>>>>> 228a98a... Finished Taxonomy Department Select widget. Started result list widget
-=======
-.dropzone.span8 .hero-slider { background: url('../img/hero-slider-bg.png?v=1363118799') center center; width: 620px; height: 360px; position: relative; }
->>>>>>> b44c5dd... added template for featured taxonomy
+.dropzone.span8 .hero-slider { background: url('../img/hero-slider-bg.png?v=1367352635') center center; width: 620px; height: 360px; position: relative; }
 
 .hero-slider .rotating-banner { overflow: hidden; position: relative; width: 579px; height: 315px; z-index: 25; left: 20px; top: 10px; }
 .hero-slider .rotating-banner .content-headline { position: absolute; top: 260px; width: 100%; background: #000000; background: rgba(0, 0, 0, 0.5); color: #ffffff; font-weight: normal; padding: 5px 10px 5px 15px; }
@@ -939,18 +854,8 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .hero-slider .rotating-banner .rotating-banner-navigation a { background-color: #ffffff; display: block; float: left; height: 1em; margin-right: .5em; width: 1em; z-index: 30; }
 .hero-slider .rotating-banner .banner.banner_link { cursor: pointer; }
 .hero-slider .rotating-banner .in-transit { z-index: 24; }
-<<<<<<< HEAD
-<<<<<<< HEAD
-.hero-slider a.prev-slide { background: url('../img/hero-slide-left.png?v=1366397000') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; left: 0px; z-index: 30; }
-.hero-slider a.next-slide { background: url('../img/hero-slide-right.png?v=1366397000') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; right: 1px; z-index: 30; }
-=======
-.hero-slider a.prev-slide { background: url('../img/hero-slide-left.png?v=1366323075') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; left: 0px; z-index: 30; }
-.hero-slider a.next-slide { background: url('../img/hero-slide-right.png?v=1366323075') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; right: 1px; z-index: 30; }
->>>>>>> 228a98a... Finished Taxonomy Department Select widget. Started result list widget
-=======
-.hero-slider a.prev-slide { background: url('../img/hero-slide-left.png?v=1363118799') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; left: 0px; z-index: 30; }
-.hero-slider a.next-slide { background: url('../img/hero-slide-right.png?v=1363118799') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; right: 1px; z-index: 30; }
->>>>>>> b44c5dd... added template for featured taxonomy
+.hero-slider a.prev-slide { background: url('../img/hero-slide-left.png?v=1367352635') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; left: 0px; z-index: 30; }
+.hero-slider a.next-slide { background: url('../img/hero-slide-right.png?v=1367352635') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; right: 1px; z-index: 30; }
 
 .pre-load > *:first-child { display: block; left: auto; position: relative; top: auto; }
 
@@ -1071,29 +976,13 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 #header.sears form #input_search { background: transparent no-repeat 0px 0px; border: none; height: 1.538em; padding: 0.153em 0 0.153em 1.846em; margin-right: 11%; width: 82%; }
 #header.sears form #button_search { background: #ca4019 repeat-x 0px -44px; border: 0; color: white; height: 1.9em; padding-bottom: .25em; position: absolute; right: 0px; top: 0px; width: 3.33em; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg?v=1366397000') repeat 0px 0px; color: #4d4d4f; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; height: auto; }
-=======
-html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg?v=1366323076') repeat 0px 0px; color: #4d4d4f; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; height: auto; }
->>>>>>> 228a98a... Finished Taxonomy Department Select widget. Started result list widget
-=======
-html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg?v=1365610704') repeat 0px 0px; color: #4d4d4f; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; height: auto; }
->>>>>>> b44c5dd... added template for featured taxonomy
+html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg?v=1367352636') repeat 0px 0px; color: #4d4d4f; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; height: auto; }
 
 #content { color: #4d4d4f; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; }
 
 .menu-sears-ribbon-container, .menu-kmart-ribbon-container { position: relative; z-index: 100; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#container, #persistent-header { background: transparent url('../img/outdoorstyle/background_container-noise.jpg?v=1366397000') repeat 0px 0px; }
-=======
-#container, #persistent-header { background: transparent url('../img/outdoorstyle/background_container-noise.jpg?v=1366323076') repeat 0px 0px; }
->>>>>>> 228a98a... Finished Taxonomy Department Select widget. Started result list widget
-=======
-#container, #persistent-header { background: transparent url('../img/outdoorstyle/background_container-noise.jpg?v=1365610704') repeat 0px 0px; }
->>>>>>> b44c5dd... added template for featured taxonomy
+#container, #persistent-header { background: transparent url('../img/outdoorstyle/background_container-noise.jpg?v=1367352636') repeat 0px 0px; }
 
 #container { -webkit-box-shadow: rgba(0, 0, 0, 0.75) 0 10px 21px 14px; -moz-box-shadow: rgba(0, 0, 0, 0.75) 0 10px 21px 14px; box-shadow: rgba(0, 0, 0, 0.75) 0 10px 21px 14px; padding: 0px 10px; }
 
@@ -1174,15 +1063,7 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .page-title .content-body h1 { font-size: 153.846%; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-weight: 400; }
 .page-title .content-body h2 { font-size: 92.307%; font-weight: 400; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-#menu-outdoor-style-design-your-outdoor-space li { background: transparent url('../img/outdoorstyle/background_design-your-outdoor-space.gif?v=1366397000') repeat-x 0px 0px; }
-=======
-#menu-outdoor-style-design-your-outdoor-space li { background: transparent url('../img/outdoorstyle/background_design-your-outdoor-space.gif?v=1366323076') repeat-x 0px 0px; }
->>>>>>> 228a98a... Finished Taxonomy Department Select widget. Started result list widget
-=======
-#menu-outdoor-style-design-your-outdoor-space li { background: transparent url('../img/outdoorstyle/background_design-your-outdoor-space.gif?v=1365610704') repeat-x 0px 0px; }
->>>>>>> b44c5dd... added template for featured taxonomy
+#menu-outdoor-style-design-your-outdoor-space li { background: transparent url('../img/outdoorstyle/background_design-your-outdoor-space.gif?v=1367352636') repeat-x 0px 0px; }
 #menu-outdoor-style-design-your-outdoor-space li a { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 153.846%; font-weight: 300; }
 
 .post-your-question { margin-top: 1em; }
@@ -1236,11 +1117,7 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .archive_posts .results-list .content-author, .archive_guides .results-list .content-author { display: none; }
 .archive_posts .results-list .content-headline, .archive_guides .results-list .content-headline { margin-bottom: 0.5em; }
 
-<<<<<<< HEAD
 #header.sears form #button_search, #header.sears form #input_search, .sears_button { background-image: url('../img/sears/sprite_global.png?v=1366397000'); }
-=======
-#header.sears form #button_search, #header.sears form #input_search, .sears_button { background-image: url('../img/sears/sprite_global.png?v=1363102271'); }
->>>>>>> b44c5dd... added template for featured taxonomy
 
 .sears a { color: #067bb5; text-decoration: none; }
 .sears a:hover { text-decoration: underline; }
@@ -1249,11 +1126,7 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .sears .content-body p { color: #333333; }
 .sears .post h1, .sears .question h1 { color: #067bb5; }
 .sears .answers-toggle, .sears .upload-photo label { color: #067bb5; }
-<<<<<<< HEAD
 .sears .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1366397000') repeat-x 0 -192px; }
-=======
-.sears .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1363102271') repeat-x 0 -192px; }
->>>>>>> b44c5dd... added template for featured taxonomy
 .sears .breadcrumb li:before { color: #067bb5; }
 .sears .no-results .term { color: #067bb5; }
 .sears .site-error .message { background: #304f88; }
@@ -1261,7 +1134,6 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 
 .sears_button { border-left: solid #ff9e6c; border-right: solid #cc6f35; border-width: 0px 1px; color: white; cursor: pointer; font-weight: bold; height: 32px; margin-right: 1em; padding: 0em 1.5em; position: relative; text-shadow: 1px 1px 1; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; background-position: 0px -88px; }
 
-<<<<<<< HEAD
 .sears_button.azure { background-image: url('../img/sears/sprite_global.png?v=1366397000'); border-color: #60768b; color: #366392; text-shadow: none; background-position: 0px -140px; margin-right: 0px; }
 
 .sears #header_nav.dropmenu, .sears #header_nav.dropmenu > li > span span, .sears #header_nav.dropmenu > li a span, .sears #header_nav.dropmenu > li.right_button, .sears #footer_nav.dropmenu > li, .sears #footer_nav.dropmenu > li:hover, .sears #footer_nav.dropmenu > li > span span, .sears #footer_nav.dropmenu > li a span { background-image: url('../img/sears/sprite_navigation.png?v=1350575533'); }
@@ -1269,15 +1141,6 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .sears #header_nav.dropmenu { background-color: #e4e0df; }
 
 .sears #header_nav.dropmenu ul { background: white url('../img/sprite-menu.png?v=1350575533'); }
-=======
-.sears_button.azure { background-image: url('../img/sears/sprite_global.png?v=1363102271'); border-color: #60768b; color: #366392; text-shadow: none; background-position: 0px -140px; margin-right: 0px; }
-
-.sears #header_nav.dropmenu, .sears #header_nav.dropmenu > li > span span, .sears #header_nav.dropmenu > li a span, .sears #header_nav.dropmenu > li.right_button, .sears #footer_nav.dropmenu > li, .sears #footer_nav.dropmenu > li:hover, .sears #footer_nav.dropmenu > li > span span, .sears #footer_nav.dropmenu > li a span { background-image: url('../img/sears/sprite_navigation.png?v=1363102271'); }
-
-.sears #header_nav.dropmenu { background-color: #e4e0df; }
-
-.sears #header_nav.dropmenu ul { background: white url('../img/sprite-menu.png?v=1363102271'); }
->>>>>>> b44c5dd... added template for featured taxonomy
 
 .sears #header_nav.dropmenu > li > span, .sears #header_nav.dropmenu > li a { color: #067bb5; }
 .sears #header_nav.dropmenu > li.right_button { background-color: #1a519b; }
@@ -1320,15 +1183,9 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .sears #footer_nav.dropmenu li { background-position: left -320px; }
 
 .sears #moodle_window { background: rgba(143, 199, 252, 0.3); }
-<<<<<<< HEAD
 .sears #moodle_window .loading { background: transparent url('../img/sears/background_loading.gif?v=1350575533') no-repeat center center; }
 
 .no-rgba .sears #moodle_window { background: transparent url('../img/sears/background_modal-border_no-rgba.png?v=1350575533') repeat 0px 0px; }
-=======
-.sears #moodle_window .loading { background: transparent url('../img/sears/background_loading.gif?v=1363102271') no-repeat center center; }
-
-.no-rgba .sears #moodle_window { background: transparent url('../img/sears/background_modal-border_no-rgba.png?v=1363102271') repeat 0px 0px; }
->>>>>>> b44c5dd... added template for featured taxonomy
 
 .sears .sharebutton { color: #067bb5; }
 
@@ -1342,7 +1199,7 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .taxonomy-widget_grid h5 { font-size: 107.692%; font-weight: bold; margin: 1em 0px 0.5em; }
 .taxonomy-widget_grid li { margin-top: .769em; text-align: center; }
 .taxonomy-widget_grid .taxonomy-drop-down-menu { padding: 1em 0px; text-align: center; }
-.taxonomy-widget_grid .content-body { background: transparent url('../img/widgets/taxonomy/background_taxonomy-department-select-widget.jpg?v=1366399788') repeat-x left bottom; }
+.taxonomy-widget_grid .content-body { background: transparent url('../img/widgets/taxonomy/background_taxonomy-department-select-widget.jpg?v=1367426947') repeat-x left bottom; }
 
 .taxonomy-widget_list .department .content-headline { font-size: 107.692%; }
 .taxonomy-widget_list .department:first-child .content-body { border-top: none; }
