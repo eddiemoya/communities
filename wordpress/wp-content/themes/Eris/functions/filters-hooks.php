@@ -996,3 +996,32 @@ add_filter('weather_widget_template_path', 'setup_weather_plugin_path');
 if(class_exists("Media_Categories")){
     $my_custom_media_metabox = new Media_Categories('skcategory');
 }
+
+
+
+function import_file(){
+
+    if (isset($_GET['skcategory_file']) && current_user_can('import_node_meta') && class_exists('Meta_Importer_CSV') ){
+
+        $file =  $_GET['skcategory_file'];
+        $importer = new Meta_Importer_CSV('skcategory');
+        $importer->parse($file);
+
+
+        $importer->test_matches();
+        $importer->add_meta();
+        $importer->test_cr_links();
+
+
+        echo "<h2>Errors:". count($importer->errors). "</h2>";
+        echo "<h2>Success:". count($importer->success). "</h2>";
+        
+        echo "<h2>Errors:". count($importer->errors). "</h2>";
+        print_pre($importer->errors);
+
+        echo "<h2>Success:". count($importer->success). "</h2>";
+        print_pre($imporer->success);
+    }
+
+}
+add_action('wp_head', 'import_file');
