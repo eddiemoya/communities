@@ -108,7 +108,7 @@ class SSO_User_Migration {
 		$this->_get_option();
 		$this->_failed();
 		
-		$this->next_page = (($this->_options['last_page'] + 1) <= $this->num_pages) ? ($this->_options['last_page'] + 1) : (get_option(self::$option_name, false) ? 0 : 1);
+		$this->next_page = (($this->_options['last_page'] + 1) <= $this->num_pages) ? (($this->_options['last_page'] == 1) ? 1 : ($this->_options['last_page'] + 1)) : (get_option(self::$option_name, false) ? 0 : 1);
 		
 	}
 	
