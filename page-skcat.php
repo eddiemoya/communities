@@ -178,7 +178,7 @@ function api_category_request($vertical, $category) {
 
       // Get the response body
       $body = curl_exec($ch);
-        
+      
       // Get the response information
       $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
       

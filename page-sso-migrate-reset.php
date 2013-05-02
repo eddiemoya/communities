@@ -1,74 +1,43 @@
 <?php if(is_user_logged_in() && current_user_can('manage_options')): ?>
 <html>
 <head>
-	<title>SSO User Migration</title>
+	<title>SSO User Migration Reset</title>
 </head>
 <body>
+<?php if(empty($_POST)):?>
 
-<h2>SSO User Migration</h2>
-<?php if(empty($_POST)): 
-	
-	$migrate = new SSO_User_Migration;
-	
-?>
+<div id="reset-form"> 
 
-<div id="stats">
-	<p>Number of SSO Users (in system): <?php echo $migrate->user_cnt;?></p>
-	<p>Number of failed user migrations: <?php echo $migrate->num_failed;?></p>
-	<p>Next set number to migrate: <?php echo $migrate->next_page;?></p>
-	<p>Total number of sets: <?php echo $migrate->num_pages;?></p>
-</div>
-
-
-<?php if($migrate->next_page):?>
-
-<div id="migrate">
-	<form id="migrate-form" method="post">
-		<input type="hidden" name="page" id="page" value="<?php echo $migrate->next_page;?>" />
-		<input type="submit" name="submit" value="Migrate Set <?php echo $migrate->next_page;?>" />
+	<p>Do you want to reset the SSO User Migration?</p>
+	<form id="migration-reset" method="post">
+		<input type="submit" name="submit" value="Reset SSO User Migration" />
 	</form>
 </div>
 
-<?php else:?>
+<?php else:
 
-<div id="no-more">
-	<h3>All SSO Users have been imported.</h3>
-</div>
+	//Form handler
+	if(isset($_POST['submit'])) {
+		
+		SSO_User_Migration::factory()->reset();
+	}
+?>
+
+	SSO User Migration Reset complete!
+
 
 <?php endif;?>
-
-
-
-<?php else: //Form handler?>
-
-<h3>Migration Running. Migrating user set: <?php echo $_POST['page'];?> ...</h3>
-
-<?php
-		//Run 
-		$run = SSO_User_Migration::factory()
-								->page($_POST['page'])
-								->run();
-						
-?> 
-
-<div id="sso-mig-results">
-	<p>Test completed. There were <?php echo $run->num_failed;?> failed user migrations.</p>
-	<p><a href="">Migrate next set of users</a></p>
-</div>
-
-<?php endif; ?>
 </body>
-</html>		
+</html>
 
 <?php else:?>
+
 
 <h3>You do not have permission to view this page.</h3>
 
 <?php endif;?>
 
-
 <?php
-
 /**
  * Class:: SSO_User_Migration
  */
@@ -97,7 +66,7 @@ class SSO_User_Migration {
 										'last_offset' => 0);
 	
 	protected $_options;
-
+	
 	protected $_offset;
 	
 	
@@ -108,7 +77,7 @@ class SSO_User_Migration {
 		$this->_get_option();
 		$this->_failed();
 		
-		$this->next_page = (($this->_options['last_page'] + 1) <= $this->num_pages) ? ($this->_options['last_page'] + 1) : (get_option(self::$option_name, false) ? 0 : 1);
+		$this->next_page = (($this->_options['last_page'] != 1) && (($this->_options['last_page'] + 1) <= $this->num_pages)) ? ($this->_options['last_page'] + 1) : ((get_option(self::$option_name, false)) ? 0 : 1);
 		
 	}
 	
@@ -182,6 +151,12 @@ class SSO_User_Migration {
 		}
 		
 		return $this;
+	}
+	
+	public function reset() {
+		
+		delete_option(self::$option_name);
+		delete_option('sso_migrate_failed');
 	}
 	
 	 protected function _failed() {
@@ -286,6 +261,5 @@ class SSO_User_Migration {
         }
        
 	}
-	
 }
 ?>
