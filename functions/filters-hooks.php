@@ -1015,7 +1015,7 @@ function import_file(){
 
         echo "<h2>Errors:". count($importer->errors). "</h2>";
         echo "<h2>Success:". count($importer->success). "</h2>";
-        
+
         echo "<h2>Errors:". count($importer->errors). "</h2>";
         print_pre($importer->errors);
 
@@ -1024,4 +1024,4 @@ function import_file(){
     }
 
 }
-add_action('wp_head', 'import_file');
+add_action('init', 'import_file');
