@@ -1007,20 +1007,24 @@ function import_file(){
         $importer = new Meta_Importer_CSV('skcategory');
         $importer->parse($file);
 
+        if( isset($_GET['ADD_META'])) {
+            $importer->test_matches();
+            $importer->add_meta();
+        }
 
-        $importer->test_matches();
-        $importer->add_meta();
+        if(isset($_GET['TEST_URLS'])){
         $importer->test_cr_links();
 
 
-        echo "<h2>Errors:". count($importer->errors). "</h2>";
-        echo "<h2>Success:". count($importer->success). "</h2>";
+            echo "<h2>Errors:". count($importer->errors). "</h2>";
+            echo "<h2>Success:". count($importer->success). "</h2>";
 
-        echo "<h2>Errors:". count($importer->errors). "</h2>";
-        print_pre($importer->errors);
+            echo "<h2>Errors:". count($importer->errors). "</h2>";
+            print_pre($importer->errors);
 
-        echo "<h2>Success:". count($importer->success). "</h2>";
-        print_pre($imporer->success);
+            echo "<h2>Success:". count($importer->success). "</h2>";
+            print_pre($imporer->success);
+        }
     }
 
 }
