@@ -1028,6 +1028,7 @@ function import_file(){
                 delete_option("skcategory_children");
             }
         }
+    }
 
 }
 add_action('init', 'import_file');
