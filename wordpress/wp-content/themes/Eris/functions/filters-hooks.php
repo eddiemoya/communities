@@ -1001,28 +1001,33 @@ if(class_exists("Media_Categories")){
 
 function import_file(){
 
-    if (isset($_GET['skcategory_file']) && current_user_can('import_node_meta') && class_exists('Meta_Importer_CSV') ){
+    if (current_user_can('import_node_meta')) {
+        if( isset($_GET['skcategory_file']) && class_exists('Meta_Importer_CSV') ){
 
-        $file =  $_GET['skcategory_file'];
-        $importer = new Meta_Importer_CSV('skcategory');
-        $importer->parse($file);
+            $file =  $_GET['skcategory_file'];
+            $importer = new Meta_Importer_CSV('skcategory');
+            $importer->parse($file);
 
-        if( isset($_GET['ADD_META'])) {
-            $importer->test_matches();
-            $importer->add_meta();
+            if( isset($_GET['ADD_META'])) {
+                $importer->test_matches();
+                $importer->add_meta();
+            }
+
+            if(isset($_GET['TEST_URLS'])){
+            $importer->test_cr_links($_GET['TEST_URLS'],25);
+
+
+                echo "<h2>Errors:". count($importer->errors). "</h2>";
+                print_pre($importer->errors);
+
+                echo "<h2>Success:". count($importer->success). "</h2>";
+                //print_pre($importer->success);
+            }
+
+            if(isset($_GET['delete_taxonomy_cache'])){
+                delete_option("skcategory_children");
+            }
         }
-
-        if(isset($_GET['TEST_URLS'])){
-        $importer->test_cr_links($_GET['TEST_URLS'],25);
-
-
-            echo "<h2>Errors:". count($importer->errors). "</h2>";
-            print_pre($importer->errors);
-
-            echo "<h2>Success:". count($importer->success). "</h2>";
-            //print_pre($importer->success);
-        }
-    }
 
 }
 add_action('init', 'import_file');
