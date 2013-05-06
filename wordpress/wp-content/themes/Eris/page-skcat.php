@@ -50,6 +50,7 @@ if(isset($_POST['import_taxonomy']) && $_POST['tax_set'] != '') {
 		
 		//Run Job
 		run();
+		delete_option('skcategory_children');
 		echo $msg;
 	 }
  

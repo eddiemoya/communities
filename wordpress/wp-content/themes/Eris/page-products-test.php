@@ -41,5 +41,15 @@ echo '<pre>';
 var_dump($product);
 exit;*/
 
-Products_Updater::factory()->update();
-
+//Products_Updater::factory()->update();
+echo '<pre>';
+var_dump(get_terms('skcategory',  array(
+									    'orderby'       => 'name', 
+									    'order'         => 'ASC',
+									    'hide_empty'    => false, 
+									    'fields'        => 'all', 
+									    'hierarchical'  => true, 
+									    'pad_counts'    => false, 
+									   
+									)));
+exit;
