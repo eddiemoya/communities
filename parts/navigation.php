@@ -2,18 +2,19 @@
     $alinks = array(
         'post'     => site_url('posts'),
         'question' => get_post_type_archive_link('question'),
-        'guide'    => get_post_type_archive_link('guide')
+        'guide'    => get_post_type_archive_link('guide'),
+        'reviews'  => get_permalink( get_page_by_path( 'reviews' ) )
     );
     $terms = array(
-        "question" => get_terms_by_post_type('category', 'question'),
-        "post"     => get_terms_by_post_type('category', 'post'),
-        "guide"    => get_terms_by_post_type('category', 'guide'),
+        'question' => get_terms_by_post_type('category', 'question'),
+        'post'     => get_terms_by_post_type('category', 'post'),
+        'guide'    => get_terms_by_post_type('category', 'guide'),
     );
     $labels = array (
         'question' => "Q&A's",
         'post'     => 'Blog Posts',
         'guide'    => 'Guides',
-        //'review'   => 'Reviews'
+        'reviews'   => 'Reviews'
     );
     
     function cmp($a, $b) {
@@ -38,6 +39,7 @@
         <?php foreach($labels as $post_type => $label) : ?>
         <li>
             <a href="<?php echo $alinks[$post_type]; ?>"><span><?php echo $label; ?></span></a>
+            <?php if(isset($terms[$post_type])) : ?>
             <ul>
                 <?php usort($terms[$post_type], "cmp"); ?>
                 <?php foreach($terms[$post_type] as $term) : ?>
@@ -51,6 +53,7 @@
                 <?php endforeach; ?>
                 <li> <a href="<?php echo $alinks[$post_type]; ?>">All <?php echo $label; ?></a></li>
             </ul>
+            <?php endif; ?>
         </li>
         <?php endforeach;?>
     </ul>
