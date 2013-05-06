@@ -3,8 +3,7 @@
         'post'     => site_url('posts'),
         'question' => get_post_type_archive_link('question'),
         'guide'    => get_post_type_archive_link('guide'),
-        'reviews'  => get_permalink( get_page_by_path( 'reviews' ) )
-    );
+        'reviews'  => (get_page_by_path( 'review' )) ? get_permalink(get_page_by_path( 'review' )) : null   );
     $terms = array(
         'question' => get_terms_by_post_type('category', 'question'),
         'post'     => get_terms_by_post_type('category', 'post'),
@@ -20,6 +19,12 @@
     function cmp($a, $b) {
         return strcmp(ucfirst($a->name), ucfirst($b->name));
     }
+
+    if(is_null($alinks['reviews'])){
+        unset($labels['reviews']);
+        unset($alinks['reviews']);
+    }
+
 ?>
 
 <nav id="navigation">
