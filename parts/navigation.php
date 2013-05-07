@@ -3,7 +3,7 @@
         'post'     => site_url('posts'),
         'question' => get_post_type_archive_link('question'),
         'guide'    => get_post_type_archive_link('guide'),
-        'reviews'  => (get_page_by_path( 'review' )) ? get_permalink(get_page_by_path( 'review' )) : null   );
+        'reviews'  => (get_page_by_path( 'reviews' )) ? get_permalink(get_page_by_path( 'reviews' )) : null   );
     $terms = array(
         'question' => get_terms_by_post_type('category', 'question'),
         'post'     => get_terms_by_post_type('category', 'post'),
