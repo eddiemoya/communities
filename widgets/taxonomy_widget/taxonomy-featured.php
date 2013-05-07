@@ -17,7 +17,6 @@
 
 		<div class="content-details clearfix">
 			<span class="content-category"><a title="<?php echo($data['info']->name); ?>" href="<?php echo($data['link']); ?>"><?php echo($data['info']->name); ?></a></span>
-			<time datetime="<?php echo(strftime('%Y-%m-%d', time())); ?>" pubdate="" class="content-date"><?php echo(strftime('%B %d, %Y', time())); ?></time>
 		</div>
 		<?php echo($data['info']->description); ?>
 	
