@@ -5,9 +5,9 @@
         'guide'    => get_post_type_archive_link('guide'),
         'reviews'  => (get_page_by_path( 'reviews' )) ? get_permalink(get_page_by_path( 'reviews' )) : null   );
     $terms = array(
-        'question' => get_terms_by_post_type('category', 'question'),
-        'post'     => get_terms_by_post_type('category', 'post'),
-        'guide'    => get_terms_by_post_type('category', 'guide'),
+        'question' => get_terms_by_post_type('category', array('post_type' => 'question')),
+        'post'     => get_terms_by_post_type('category', array('post_type' => 'post')),
+        'guide'    => get_terms_by_post_type('category', array('post_type' => 'guide')),
     );
     $labels = array (
         'question' => "Q&A's",
@@ -16,10 +16,7 @@
         'reviews'   => 'Reviews'
     );
     
-    function cmp($a, $b) {
-        return strcmp(ucfirst($a->name), ucfirst($b->name));
-    }
-
+   
     if(is_null($alinks['reviews'])){
         unset($labels['reviews']);
         unset($alinks['reviews']);
@@ -46,15 +43,12 @@
             <a href="<?php echo $alinks[$post_type]; ?>"><span><?php echo $label; ?></span></a>
             <?php if(isset($terms[$post_type])) : ?>
             <ul>
-                <?php usort($terms[$post_type], "cmp"); ?>
                 <?php foreach($terms[$post_type] as $term) : ?>
-                    <?php if($term->parent == 0) :?>
                     <li>
                         <a href="<?php echo esc_url( get_category_link($term->term_id) ).$post_type; ?>">
                             <?php echo $term->name; ?>
                         </a>
                     </li>
-                    <?php endif; ?>
                 <?php endforeach; ?>
                 <li> <a href="<?php echo $alinks[$post_type]; ?>">All <?php echo $label; ?></a></li>
             </ul>

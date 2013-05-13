@@ -402,7 +402,7 @@ function print_pre($r){
  *
  * @return (array) Terms found to have posts of the provided post type.
  **/
-function get_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
+/*function get_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
 
     //get a list of all post of your type
     $args = array(
@@ -427,6 +427,65 @@ function get_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
     wp_reset_postdata();
 
     return $terms; 
+}*/
+
+function get_terms_by_post_type($taxonomy='category', $args = array()) {
+	
+	global $wpdb;
+	
+	$default_args = array('post_type' 	=> 'post', //Can be single tax string or array of taxonomies
+							'sort'	  	=> 'ASC',
+							'sortby'	=> 'name', //Can be name, term_id, or slug
+							'exclude'	=> null, //array or comma sep list of term ids, or slugs
+							'children'	=> false //return parents and children, defaults to returning only parents
+							);
+							
+	$args = wp_parse_args($args, $default_args);
+							
+	$parent = ($args['children']) ? null : ' AND tt.parent = \'0\' ';
+	$sortby = ($args['sortby'] == 'name' || $args['sortby'] == 'term_id' || $args['sortby'] == 'slug') ? 't.' . $args['sortby'] : 't.name';
+	$sort = ($args['sort'] == 'ASC' || $args['sort'] == 'DESC') ? $args['sort'] : 'ASC';
+	$exclude = '';
+	
+	//Exclude specific terms by either term_id or slug
+	if($args['exclude']) {
+		
+		if(is_array($args['exclude'])) {
+			
+			$exclude = explode(', ', $args['exclude']);
+			
+		} elseif(is_string($args['exclude'])) {
+			
+			$exclude = str_replace(',', ', ', str_replace(' ', '', $args['exclude']));
+		}
+		
+		//slug or id?
+		if(is_numeric(substr($exclude, 0, strpos($exclude, ',')))) {
+			
+			$exclude = " AND t.term_id NOT IN ('". str_replace(', ', '\', \'', $exclude) ."') ";
+			
+		} else {
+			
+			$exclude = " AND t.slug NOT IN ('". str_replace(', ', '\', \'', $exclude) ."') ";
+		}
+	}
+	
+	//Return child terms?
+	$parent = ($args['children']) ? '' : " AND tt.parent = '0' ";
+	
+	//Taxonomy - either a string or array is passed
+	$taxonomy = ($taxonomy) ? ((is_array($taxonomy)) ? str_replace(', ', '\', \'', explode(', ', $taxonomy)) : $taxonomy) : 'category';
+	
+	//Post Type - string or array is passed
+	$post_type = ($args['post_type']) ? ((is_array($args['post_type']) ? str_replace(', ', '\', \'', explode(', ', $args['post_type'])) : $args['post_type'])) : 'post';
+	
+	$q = "SELECT DISTINCT t.* FROM {$wpdb->prefix}terms AS t INNER JOIN {$wpdb->prefix}term_taxonomy AS tt ON t.term_id = tt.term_id 
+			INNER JOIN {$wpdb->prefix}term_relationships as tr ON tt.term_taxonomy_id = tr.term_taxonomy_id
+			INNER JOIN {$wpdb->prefix}posts as p ON tr.object_id = p.ID 
+			WHERE tt.taxonomy IN ('{$taxonomy}') AND p.post_type IN ('{$post_type}'){$parent}{$exclude} ORDER BY {$sortby} {$sort}";
+	
+	return $wpdb->get_results($q);
+	
 }
 
 /**
