@@ -27,8 +27,6 @@
             
         ?>
 
-        <?php wp_footer(); ?>
-
       </footer>
 
     </div> <!-- #container -->
@@ -36,6 +34,8 @@
     global $current_user;
     
     $email_from = is_user_logged_in() ? $current_user->user_email : '';
+
+    wp_footer();
 
     echo '
         <script type="text/javascript">
