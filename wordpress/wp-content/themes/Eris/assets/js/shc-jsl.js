@@ -519,7 +519,7 @@ $(window).on('moodle-update', function(event) {
 	
 	function sso_iframe() {
 		
-		jQuery('<iframe frameborder="0" scrolling="no" id="sso-auth" name="sso-auth" style="display:hidden;"></iframe>').appendTo(document.body);
+		jQuery('<iframe frameborder="0" scrolling="no" id="sso-auth" name="sso-auth" style="display:none;"></iframe>').appendTo(document.body);
 	}
 	
 	if(form) {
