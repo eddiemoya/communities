@@ -4,8 +4,16 @@
 //echo '<h2>Ratings & Reviews Test Page</h2><br><br>';
 
 
-echo '<pre>';
+/*echo '<pre>';
 var_dump(SSO_Profile_Request::factory()->get(41336335));
+exit;*/
+
+$trash = WP_Query(array('post_type'	=> 'any',
+						'post_status' => 'trash'
+							));
+
+echo '<pre>';
+var_dump($trash);
 exit;
 /*$rr = RR_User_Reviews::factory(35497172)
 						->get();*/
