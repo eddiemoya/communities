@@ -8,8 +8,9 @@
 var_dump(SSO_Profile_Request::factory()->get(41336335));
 exit;*/
 
-$trash = WP_Query(array('post_type'	=> 'any',
-						'post_status' => 'trash'
+$trash = new WP_Query(array('post_type'	=> 'any',
+							'post_status' => array('publish', 'draft'),
+							'paged' => (int) -1
 							));
 
 echo '<pre>';
