@@ -91,7 +91,7 @@ class SSO_User_Migration {
 	
 	public $failed = array();
 	
-	protected $_limit = 10;  
+	protected $_limit = 1000;  
 	
 	protected $_options_default = array('last_page' => 0,
 										'last_offset' => 0);
