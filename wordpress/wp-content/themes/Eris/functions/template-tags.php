@@ -895,6 +895,8 @@ function count_comments() {
  */
 function display_comments($comment_count, $n_comments = 10) {
     global $post;
+    global $current_user;
+    if (empty($current_user)) { get_currentuserinfo(); }
 
     $page = (get_query_var("page")) ? get_query_var("page") : 1;
     $post_type = get_post_type( $post->ID );
@@ -910,14 +912,16 @@ function display_comments($comment_count, $n_comments = 10) {
         'offset' => $comment_offset
     ));
     
-    print_r($comments);
-    
     foreach($comments as $comment) {
-        // get_partial('parts/comment', array(
-        //     "current_user" => $current_user, 
-        //     "comment" => $comment, 
-        //     "recursive" => true
-        // ));
+        $container_class = in_array('expert', get_userdata($comment->user_id)->roles) ? ' expert' : '';
+        
+        get_partial('parts/comment', array(
+            "current_user" => $current_user,
+            "comment" => $comment,
+            "comment_type" => $comment_type,
+            "container_class" => $container_class,
+            "date" => strtotime($comment->comment_date)
+        ));
     }
 }
 

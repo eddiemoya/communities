@@ -15,13 +15,6 @@
             <ol id="allComments">
             <?php
                 display_comments($comment_count);
-                // foreach($comments as $comment) :
-                //     get_partial('parts/comment', array(
-                //         "current_user" => $current_user, 
-                //         "comment" => $comment, 
-                //         "recursive" => true
-                //     ));
-                // endforeach;
             ?>
             </ol> <!-- END ALL COMMENTS -->
         </section> <!-- END CONTENT BODY -->
