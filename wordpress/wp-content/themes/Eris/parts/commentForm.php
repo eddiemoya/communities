@@ -1,7 +1,10 @@
 <div class="ugc-comment-answer_form span12">
 <?php
-	global $current_user;
-    get_currentuserinfo();
+    global $current_user;
+
+    if (empty($current_user)) : // only grab current user if necessary
+        get_currentuserinfo();
+    endif;
     
     //Set default values for comment & screen name
     $comment_value = (isset($_GET['comm_err']) && $_GET['cid'] == 0) ? urldecode($_GET['comment']) : null;
@@ -93,7 +96,6 @@
 							</ul>
 						</form>
       <?php endif; ?>
-
     <?php
             do_action( 'comment_form_after' );
         else :
