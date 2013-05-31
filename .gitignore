@@ -9,9 +9,7 @@ etc/nginx/wordpress/develop.conf
 /wordpress/wp-content/themes/.sass-cache/
 *DS_Store*
 
-#Wordpress Specific Ignores (github recommended)
 wordpress/.htaccess
-wordpress/wp-*.php
 xmlrpc.php
 wordpress/wp-config.bu.php
 wordpress/wp-config.php
