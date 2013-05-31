@@ -840,6 +840,63 @@ function lookup_expert_comments_count($post_id, $categories) {
     return $return[0]->count;
 }
 
+/**
+ * Counts the number of comments belonging to the current post
+ *
+ * @author Jason Corradino
+ *
+ * @return (integer) Number of comments
+ */
+function count_comments() {
+    global $post;
+    
+    $post_type = get_post_type($post->ID);
+    $comment_type = ($post_type == 'question') ? 'answer' : 'comment';
+    $comment_count = get_comments(array(
+        'post_id' => $post->ID, 
+        'type' => $comment_type, 
+        'count' => true
+    ));
+    
+    return $comment_count;
+}
+
+/**
+ * Prepares currently-displayed comments for current post and includes the partial that displays them
+ *
+ * @author Jason Corradino
+ * @param $comment_count (integer) [required] The number of comments on the page
+ * @param $n_comments (integer) Number of comments to display per page, defaults to 10
+ *
+ */
+function display_comments($comment_count, $n_comments = 10) {
+    global $post;
+
+    $page = (get_query_var("page")) ? get_query_var("page") : 1;
+    $post_type = get_post_type( $post->ID );
+    $comment_type = ($post_type == 'question') ? 'answer' : 'comment';
+
+    $comment_offset = $n_comments*($page-1);
+    $comment_offset = ($comment_offset < $comment_count) ? $comment_offset : 0; // make sure there is actually comments after the offset
+
+    $comments = get_comments(array(
+        'post_id' => $post->ID, 
+        'type' => $comment_type, 
+        'number' => $n_comments, 
+        'offset' => $comment_offset
+    ));
+    
+    print_r($comments);
+    
+    foreach($comments as $comment) {
+        // get_partial('parts/comment', array(
+        //     "current_user" => $current_user, 
+        //     "comment" => $comment, 
+        //     "recursive" => true
+        // ));
+    }
+}
+
 /*
  * Sanitizes text of any profanity
  * 
