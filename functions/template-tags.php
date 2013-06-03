@@ -1181,7 +1181,6 @@ function get_excerpt_by_id($post_id){
     $the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); //Strips tags and images
     $words = explode(' ', $the_excerpt, $excerpt_length + 1);
 
-
     $words = preg_replace( '/\t+|\n+|\s+/', ' ', $words );
 
 
@@ -1210,13 +1209,13 @@ function meta_description(){
         if(empty($term)){
             $term = wp_get_object_terms($id, 'skcategory');
         }
+
+        $description = $term[0]->description;
     } else {
 
         if(empty($term) && is_single() ){
             $description = (!empty($wp_query->post->post_exceprt)) ? $wp_query->post->post_excerpt : esc_html(str_replace('"', "'", strip_tags(get_excerpt_by_id($wp_query->post->ID))));
 
-        } else {
-            $description = $term[0]->description;
         }
     }
 
