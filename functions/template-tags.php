@@ -1173,3 +1173,55 @@ function get_oembed_thumbnail($url, $pt = "https", $w = NULL, $h = NULL)
 
     return "<img alt='$title' src='$thumb' />";
 }
+
+function get_excerpt_by_id($post_id){
+    $the_post = get_post($post_id); //Gets post ID
+    $the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
+    $excerpt_length = 35; //Sets excerpt length by word count
+    $the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); //Strips tags and images
+    $words = explode(' ', $the_excerpt, $excerpt_length + 1);
+
+    if(count($words) > $excerpt_length) :
+        array_pop($words);
+        array_push($words, '…');
+        $the_excerpt = implode(' ', $words);
+    endif;
+
+    $the_excerpt = '<p>' . $the_excerpt . '</p>';
+
+    return $the_excerpt;
+}
+
+function meta_description(){
+    global $wp_query;
+
+    if ( !$id = $wp_query->get_queried_object_id() )
+        return;
+
+    if('section' == $wp_query->query['post_type']){
+        //is category
+        $term = wp_get_object_terms($id, 'category');
+    
+
+        if(empty($term)){
+            $term = wp_get_object_terms($id, 'skcategory');
+        }
+    } else {
+
+        if(empty($term) && is_single() ){
+            $description = (!empty($wp_query->post->post_exceprt)) ? $wp_query->post->post_excerpt : esc_html(str_replace('"', "'", strip_tags(get_excerpt_by_id($wp_query->post->ID))));
+
+        } else {
+            $description = $term[0]->description;
+        }
+    }
+
+    if(empty($description)) {
+          $description = get_bloginfo('description');
+        //$description = 'single';
+    }
+
+
+
+    echo $description;
+}
