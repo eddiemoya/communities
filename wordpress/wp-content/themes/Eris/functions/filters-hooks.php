@@ -1034,13 +1034,13 @@ function import_file(){
 add_action('init', 'import_file');
 
 
-remove_action('wp_head', 'rel_canonical');
+remove_action('wp_head', 'rel_canonical', 4);
 add_action('wp_head', 'com_canonical');
 function com_canonical() {
     if ( !is_singular() )
         return;
 
-    global $wp_the_query;
+    global $wp_the_query, $wp_query;
      if ( !$id = $wp_the_query->get_queried_object_id() )
         return;
 
@@ -1056,12 +1056,15 @@ function com_canonical() {
             $term = wp_get_object_terms($id, 'skcategory');
             if(!empty($term)){
                 $link = get_term_link($term[0], 'skcategory');
-            }
+            } 
         }
-    } else {
-        if(is_single()){
-            $link = get_permalink( $id );
-        }
+
+    }
+
+             
+    
+    if(is_singular() && empty($link)){
+        $link = get_permalink( $id );
     }
    
     echo "<link rel='canonical' href='$link' />\n";
