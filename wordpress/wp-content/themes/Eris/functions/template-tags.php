@@ -1122,6 +1122,10 @@ function get_excerpt_by_id($post_id){
     $the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); //Strips tags and images
     $words = explode(' ', $the_excerpt, $excerpt_length + 1);
 
+
+    $words = preg_replace( '/\t+|\n+|\s+/', ' ', $words );
+
+
     if(count($words) > $excerpt_length) :
         array_pop($words);
         array_push($words, '…');
