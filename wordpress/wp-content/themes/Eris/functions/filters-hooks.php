@@ -1033,7 +1033,7 @@ function import_file(){
 }
 add_action('init', 'import_file');
 
-remove_action('wp_head', 'rel_canonical', 4);
+remove_action('wp_head', 'rel_canonical');
 add_action('wp_head', 'com_canonical');
 function com_canonical() {
     if ( !is_singular() )
