@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xmlns:shc="http://www.sears.com" <?php language_attributes(); ?> > <!--<![endif]-->
+<html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xmlns:shc="http://www.sears.com" <?php language_attributes(); ?> >
 <head>
     <title><?php echo (is_author()) ? "Communities User Profile &laquo;" : sanitize_text(wp_title('&laquo;', false, 'right'))?> <?php bloginfo('name'); ?></title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -7,7 +7,7 @@
     <meta charset="<?php bloginfo('charset'); ?>" />
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 
-    <meta name="description" content="<?php bloginfo('description'); ?>" />
+    <meta name="description" content="<?php meta_description(); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta property="og:url" content="<?php the_permalink(); ?>" />

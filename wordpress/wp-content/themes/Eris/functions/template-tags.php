@@ -402,7 +402,7 @@ function print_pre($r){
  *
  * @return (array) Terms found to have posts of the provided post type.
  **/
-function get_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
+/*function get_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
 
     //get a list of all post of your type
     $args = array(
@@ -427,6 +427,65 @@ function get_terms_by_post_type($taxonomy = 'category',$post_type = 'post'){
     wp_reset_postdata();
 
     return $terms; 
+}*/
+
+function get_terms_by_post_type($taxonomy='category', $args = array()) {
+	
+	global $wpdb;
+	
+	$default_args = array('post_type' 	=> 'post', //Can be single tax string or array of taxonomies
+							'sort'	  	=> 'ASC',
+							'sortby'	=> 'name', //Can be name, term_id, or slug
+							'exclude'	=> null, //array or comma sep list of term ids, or slugs
+							'children'	=> false //return parents and children, defaults to returning only parents
+							);
+							
+	$args = wp_parse_args($args, $default_args);
+							
+	$parent = ($args['children']) ? null : ' AND tt.parent = \'0\' ';
+	$sortby = ($args['sortby'] == 'name' || $args['sortby'] == 'term_id' || $args['sortby'] == 'slug') ? 't.' . $args['sortby'] : 't.name';
+	$sort = ($args['sort'] == 'ASC' || $args['sort'] == 'DESC') ? $args['sort'] : 'ASC';
+	$exclude = '';
+	
+	//Exclude specific terms by either term_id or slug
+	if($args['exclude']) {
+		
+		if(is_array($args['exclude'])) {
+			
+			$exclude = explode(', ', $args['exclude']);
+			
+		} elseif(is_string($args['exclude'])) {
+			
+			$exclude = str_replace(',', ', ', str_replace(' ', '', $args['exclude']));
+		}
+		
+		//slug or id?
+		if(is_numeric(substr($exclude, 0, strpos($exclude, ',')))) {
+			
+			$exclude = " AND t.term_id NOT IN ('". str_replace(', ', '\', \'', $exclude) ."') ";
+			
+		} else {
+			
+			$exclude = " AND t.slug NOT IN ('". str_replace(', ', '\', \'', $exclude) ."') ";
+		}
+	}
+	
+	//Return child terms?
+	$parent = ($args['children']) ? '' : " AND tt.parent = '0' ";
+	
+	//Taxonomy - either a string or array is passed
+	$taxonomy = ($taxonomy) ? ((is_array($taxonomy)) ? str_replace(', ', '\', \'', explode(', ', $taxonomy)) : $taxonomy) : 'category';
+	
+	//Post Type - string or array is passed
+	$post_type = ($args['post_type']) ? ((is_array($args['post_type']) ? str_replace(', ', '\', \'', explode(', ', $args['post_type'])) : $args['post_type'])) : 'post';
+	
+	$q = "SELECT DISTINCT t.* FROM {$wpdb->prefix}terms AS t INNER JOIN {$wpdb->prefix}term_taxonomy AS tt ON t.term_id = tt.term_id 
+			INNER JOIN {$wpdb->prefix}term_relationships as tr ON tt.term_taxonomy_id = tr.term_taxonomy_id
+			INNER JOIN {$wpdb->prefix}posts as p ON tr.object_id = p.ID 
+			WHERE tt.taxonomy IN ('{$taxonomy}') AND p.post_type IN ('{$post_type}'){$parent}{$exclude} ORDER BY {$sortby} {$sort}";
+	
+	return $wpdb->get_results($q);
+	
 }
 
 /**
@@ -1113,4 +1172,58 @@ function get_oembed_thumbnail($url, $pt = "https", $w = NULL, $h = NULL)
     $thumb = str_replace("http://", "$pt://", $video->thumbnail_url);
 
     return "<img alt='$title' src='$thumb' />";
+}
+
+function get_excerpt_by_id($post_id){
+    $the_post = get_post($post_id); //Gets post ID
+
+    $the_excerpt = (!empty($the_post->post_excerpt)) ? $the_post->post_excerpt : $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
+    $excerpt_length = 35; //Sets excerpt length by word count
+    $the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); //Strips tags and images
+    $the_excerpt = str_replace(array("'", '"'), "", $the_excerpt);
+    $the_excerpt = trim(preg_replace( '/\t+|\n+|\s+|\r+/', ' ', $the_excerpt ));
+
+    $words = explode(' ', $the_excerpt, $excerpt_length + 1);
+
+    if(count($words) > $excerpt_length) :
+        array_pop($words);
+        array_push($words, '…');
+        $the_excerpt = implode(' ', $words);
+    endif;
+
+    return $the_excerpt;
+}
+
+function meta_description(){
+    global $wp_query;
+
+    if ( !$id = $wp_query->get_queried_object_id() )
+        return;
+
+    if('section' == $wp_query->query['post_type']){
+        //is category
+        $term = wp_get_object_terms($id, 'category');
+    
+
+        if(empty($term)){
+            $term = wp_get_object_terms($id, 'skcategory');
+        }
+
+        $description = $term[0]->description;
+    } else {
+
+        if(empty($term) && is_single() ){
+            $description = get_excerpt_by_id($wp_query->post->ID);
+            $description = esc_html($description);
+        }
+    }
+
+    if(empty($description)) {
+          $description = get_bloginfo('description');
+        //$description = 'single';
+    }
+
+    //print_pre($wp_query);
+
+    echo $description;
 }

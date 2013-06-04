@@ -1032,3 +1032,39 @@ function import_file(){
 
 }
 add_action('init', 'import_file');
+
+remove_action('wp_head', 'rel_canonical', 4);
+add_action('wp_head', 'com_canonical');
+function com_canonical() {
+    if ( !is_singular() )
+        return;
+
+    global $wp_the_query, $wp_query;
+     if ( !$id = $wp_the_query->get_queried_object_id() )
+        return;
+
+    if('section' == $wp_the_query->query['post_type']){
+
+        //is category
+        $term = wp_get_object_terms($id, 'category');
+        if(!empty($term)){
+            $link = get_term_link($term[0], 'category');
+        } 
+        else {
+            //is skcategory
+            $term = wp_get_object_terms($id, 'skcategory');
+            if(!empty($term)){
+                $link = get_term_link($term[0], 'skcategory');
+            } 
+        }
+
+    }
+
+             
+    
+    if(is_singular() && empty($link)){
+        $link = get_permalink( $id );
+    }
+   
+    echo "<link rel='canonical' href='$link' />\n";
+}
