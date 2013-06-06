@@ -871,8 +871,6 @@ function count_comments() {
  */
 function display_comments($comment_count, $n_comments = 10) {
     global $post;
-    global $current_user;
-    if (empty($current_user)) { get_currentuserinfo(); }
 
     $page = (get_query_var("page")) ? get_query_var("page") : 1;
     $post_type = get_post_type( $post->ID );
@@ -892,12 +890,39 @@ function display_comments($comment_count, $n_comments = 10) {
         $container_class = in_array('expert', get_userdata($comment->user_id)->roles) ? ' expert' : '';
         
         get_partial('parts/comment', array(
-            "current_user" => $current_user,
             "comment" => $comment,
             "comment_type" => $comment_type,
             "container_class" => $container_class,
             "date" => strtotime($comment->comment_date)
         ));
+    }
+}
+
+/**
+ * Prepares child comments for display
+ *
+ * @author Jason Corradino
+ *
+ * @param $comments (object) [required] Current comment, possibly containing children
+ *
+ */
+function display_child_comments($comment) {
+    if ($comment->children != "") {
+        $page = (get_query_var("page")) ? get_query_var("page") : 1;
+        $post_type = get_post_type( $post->ID );
+        $comment_type = ($post_type == 'question') ? 'answer' : 'comment';
+        $parent_author = return_screenname($comment->user_id);
+        foreach ($comment->children as $child) {
+            $container_class = in_array('expert', get_userdata($child->user_id)->roles) ? ' expert' : '';
+            get_partial('parts/comment', array(
+                "comment" => $child,
+                "comment_type" => $comment_type,
+                "container_class" => $container_class,
+                "date" => strtotime($child->comment_date),
+                "parentId" => $comment->comment_ID,
+                "parent_author" => $parent_author
+            ));
+        }
     }
 }
 
