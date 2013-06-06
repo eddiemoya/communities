@@ -6,10 +6,10 @@
         get_currentuserinfo();
     endif;
     
-    //Set default values for comment & screen name
-    $comment_value = (isset($_GET['comm_err']) && $_GET['cid'] == 0) ? urldecode($_GET['comment']) : null;
-    $screen_name_value = (isset($_GET['comm_err']) && $_GET['cid'] == 0) ? urldecode($_GET['screen-name']) : null;
+    $comm_err = sanitize_text_field($_GET['comm_err']);
+    $cid = sanitize_text_field($_GET['cid']);
     
+    //Set default values for comment & screen name
     $comment_type_text = get_post_type( $post->ID ) == 'question' ? 'an answer' : 'a comment';
     $comment_type = get_post_type( $post->ID ) == 'question' ? 'answer' : 'comment';
 
@@ -20,28 +20,6 @@
 	</div>
 <?php
     } else {
-        $fields =  array();
-
-        $args = array(
-            'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
-            'comment_field'        => '<textarea id="comment-answer_textarea" class="input_textarea discussion" name="comment" shc:gizmo:form="{required:true}">'. $comment_value .'</textarea>',
-            'must_log_in'          => null,
-            'logged_in_as'         => null,
-            'comment_notes_before' => null,
-            'comment_notes_after'  => null,
-            'id_form'              => null,
-            'id_submit'            => 'submit',
-            'title_reply'          => null,
-            'title_reply_to'       => __( 'Leave a Reply to %s' ),
-            'cancel_reply_link'    => null,
-            'label_submit'         => __( 'Post' ),
-        );
-
-        if(!isset($defaults))
-            $defaults = array();
-
-        $args = wp_parse_args( $args, apply_filters( 'comment_form_defaults', $defaults ) );
-
         if ( comments_open() ) :
     ?>
     <div class="trigger discussion">
@@ -50,13 +28,14 @@
 
       <?php
         if ( get_option( 'comment_registration' ) && !is_user_logged_in() ) :
+            $args = prepare_comment_form();
             echo $args['must_log_in'];
             do_action( 'comment_form_must_log_in_after' );
             else : ?>
             
             <?php 
             	# If there is a screen name error, show it
-            	if(isset($_GET['comm_err']) && ($_GET['cid'] == 0)): 
+            	if($comm_err != "" && $cid == 0) : 
             ?>
             <div class="form-errors">
                <?php echo stripslashes(urldecode($_GET['comm_err']));?>
