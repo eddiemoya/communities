@@ -803,8 +803,75 @@ function set_screen_name($screen_name) {
 
 }
 
+/**
+ * Pulls in parent comment templates on posts and questions
+ *
+ * @author Jason Corradino
+ */
+function post_comments_handler() {
+    global $current_user;
+    global $post;
 
+    if (empty($current_user)) : // only grab current user if necessary
+        get_currentuserinfo();
+    endif;
+    
+    $args = prepare_comment_form();
+    $comm_err = sanitize_text_field($_GET['comm_err']);
+    $cid = sanitize_text_field($_GET['cid']);
+    $comment_type_text = get_post_type( $post->ID ) == 'question' ? 'an answer' : 'a comment';
+    $comment_type = get_post_type( $post->ID ) == 'question' ? 'answer' : 'comment';
+    
+    get_partial('parts/commentForm', array(
+        "args"                  => $args,
+        "current_user"          => $current_user,
+        "comm_err"              => $comm_err,
+        "cid"                   => $cid,
+        "comment_type_text"     => $comment_type_text,
+        "comment_type"          => $comment_type,
+        "post"                  => $post
+    ));
+    comments_template('/parts/comments.php');
+}
 
+/**
+ * Prepares comment form arguments
+ *
+ * @author Jason Corradino
+ *
+ * @return $args (array) - arguments to feed into comment filters
+ */
+function prepare_comment_form() {
+    $comm_err = sanitize_text_field($_GET['comm_err']);
+    $cid = sanitize_text_field($_GET['cid']);
+    $comment = sanitize_text_field(urldecode($_GET['comment']));
+    
+    $comment_value = ($comm_err != "" && $cid == 0) ? $comment : null;
+
+    $fields =  array();
+
+    $args = array(
+        'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
+        'comment_field'        => '<textarea id="comment-answer_textarea" class="input_textarea discussion" name="comment" shc:gizmo:form="{required:true}">'. $comment_value .'</textarea>',
+        'must_log_in'          => null,
+        'logged_in_as'         => null,
+        'comment_notes_before' => null,
+        'comment_notes_after'  => null,
+        'id_form'              => null,
+        'id_submit'            => 'submit',
+        'title_reply'          => null,
+        'title_reply_to'       => __( 'Leave a Reply to %s' ),
+        'cancel_reply_link'    => null,
+        'label_submit'         => __( 'Post' )
+    );
+
+    if(!isset($defaults))
+        $defaults = array();
+
+    $args = wp_parse_args( $args, apply_filters( 'comment_form_defaults', $defaults ) );
+
+    return $args;
+}
 
 /**
  * Gets the number of comments in a post by an expert
@@ -848,16 +915,6 @@ function lookup_expert_comments_count($post_id, $categories) {
     $expert_list = implode("|", $experts);
     $query = "SELECT COUNT(DISTINCT c.comment_ID) AS count FROM {$wpdb->comments} AS c ";
     $query .= "JOIN {$wpdb->usermeta} AS m ON m.user_id = c.user_id AND m.meta_key = 'um-taxonomy-category' ";
-    // if (sizeof($categories) == 1) {
-    //     $query .= "AND {$categories[0]} IN (m.meta_value) ";
-    // } else {
-    //     $query .= "AND (";
-    //     foreach($categories as $key => $category) {
-    //         if ($key != 0) {$query .= "OR ";}
-    //         $query .= "$category IN (m.meta_value) ";
-    //     }
-    //     $query .= ") ";
-    // }
     $query .= "JOIN {$wpdb->usermeta} AS m2 ON m2.user_id = c.user_id AND m2.meta_key = '{$wpdb->prefix}capabilities' AND m2.meta_value REGEXP '$expert_list' ";
     $query .= "WHERE c.comment_post_ID = $post_id";
     $return = $wpdb->get_results($wpdb->prepare($query));
@@ -914,10 +971,10 @@ function display_comments($comment_count, $n_comments = 10) {
         $container_class = in_array('expert', get_userdata($comment->user_id)->roles) ? ' expert' : '';
         
         get_partial('parts/comment', array(
-            "comment" => $comment,
-            "comment_type" => $comment_type,
-            "container_class" => $container_class,
-            "date" => strtotime($comment->comment_date)
+            "comment"           => $comment,
+            "comment_type"      => $comment_type,
+            "container_class"   => $container_class,
+            "date"              => strtotime($comment->comment_date)
         ));
     }
 }
@@ -935,58 +992,19 @@ function display_child_comments($comment) {
         $page = (get_query_var("page")) ? get_query_var("page") : 1;
         $post_type = get_post_type( $post->ID );
         $comment_type = ($post_type == 'question') ? 'answer' : 'comment';
-        $parent_author = return_screenname($comment->user_id);
         foreach ($comment->children as $child) {
+            $parent_author = return_screenname(get_comment($child->comment_parent)->user_id);
             $container_class = in_array('expert', get_userdata($child->user_id)->roles) ? ' expert' : '';
             get_partial('parts/comment', array(
-                "comment" => $child,
-                "comment_type" => $comment_type,
-                "container_class" => $container_class,
-                "date" => strtotime($child->comment_date),
-                "parentId" => $comment->comment_ID,
-                "parent_author" => $parent_author
+                "comment"           => $child,
+                "comment_type"      => $comment_type,
+                "container_class"   => $container_class,
+                "date"              => strtotime($child->comment_date),
+                "parentId"          => $comment->comment_ID,
+                "parent_author"     => $parent_author
             ));
         }
     }
-}
-
-/**
- * Prepares comment form arguments
- *
- * @author Jason Corradino
- *
- * @return $args (array) - arguments to feed into comment filters
- */
-function prepare_comment_form() {
-    $comm_err = sanitize_text_field($_GET['comm_err']);
-    $cid = sanitize_text_field($_GET['cid']);
-    $comment = sanitize_text_field(urldecode($_GET['comment']));
-    
-    $comment_value = ($comm_err != "" && $cid == 0) ? $comment : null;
-
-    $fields =  array();
-
-    $args = array(
-        'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
-        'comment_field'        => '<textarea id="comment-answer_textarea" class="input_textarea discussion" name="comment" shc:gizmo:form="{required:true}">'. $comment_value .'</textarea>',
-        'must_log_in'          => null,
-        'logged_in_as'         => null,
-        'comment_notes_before' => null,
-        'comment_notes_after'  => null,
-        'id_form'              => null,
-        'id_submit'            => 'submit',
-        'title_reply'          => null,
-        'title_reply_to'       => __( 'Leave a Reply to %s' ),
-        'cancel_reply_link'    => null,
-        'label_submit'         => __( 'Post' )
-    );
-
-    if(!isset($defaults))
-        $defaults = array();
-
-    $args = wp_parse_args( $args, apply_filters( 'comment_form_defaults', $defaults ) );
-
-    return $args;
 }
 
 function get_clean_attempted_screen_name() {

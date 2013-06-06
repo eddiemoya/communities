@@ -71,10 +71,7 @@
 		    </p>
 			</section>
 		</article>
-	    <?php
-	        comments_template('/parts/commentForm.php');
-	        comments_template('/parts/comments.php');
-	    ?>
+	    <?php post_comments_handler(); ?>
 	</section>
 
 	<section class="span4">

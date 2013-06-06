@@ -63,10 +63,7 @@
 
 		</article> <!-- END CONTENT CONTAINER QUESTION -->
 		
-		<?php
-      comments_template('/parts/commentForm.php');
-      comments_template('/parts/comments.php');
-    ?>
+	<?php post_comments_handler(); ?>
 		
 	</section> <!-- END SPAN 8 -->
 

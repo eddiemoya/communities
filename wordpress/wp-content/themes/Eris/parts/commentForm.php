@@ -1,87 +1,47 @@
 <div class="ugc-comment-answer_form span12">
-<?php
-    global $current_user;
-
-    if (empty($current_user)) : // only grab current user if necessary
-        get_currentuserinfo();
-    endif;
-    
-    $comm_err = sanitize_text_field($_GET['comm_err']);
-    $cid = sanitize_text_field($_GET['cid']);
-    
-    //Set default values for comment & screen name
-    $comment_type_text = get_post_type( $post->ID ) == 'question' ? 'an answer' : 'a comment';
-    $comment_type = get_post_type( $post->ID ) == 'question' ? 'answer' : 'comment';
-
-    if(!is_user_logged_in()) {
-?>
-	<div class="trigger discussion">
-		<a href="#" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">Leave <?php echo $comment_type_text; ?> <span class="smaller">&#9660;</span></a>
-	</div>
-<?php
-    } else {
-        if ( comments_open() ) :
-    ?>
-    <div class="trigger discussion">
-			<a href="#">Leave <?php echo $comment_type_text;?> <span class="smaller">&#9660;</span></a>
-		</div>
-
-      <?php
-        if ( get_option( 'comment_registration' ) && !is_user_logged_in() ) :
-            $args = prepare_comment_form();
-            echo $args['must_log_in'];
-            do_action( 'comment_form_must_log_in_after' );
-            else : ?>
-            
-            <?php 
-            	# If there is a screen name error, show it
-            	if($comm_err != "" && $cid == 0) : 
-            ?>
+    <?php if (!is_user_logged_in() && comments_open()) : ?>
+        <div class="trigger discussion">
+            <a href="#" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">
+                Leave <?php echo $comment_type_text; ?> <span class="smaller">&#9660;</span>
+            </a>
+        </div>
+    <?php elseif (comments_open()) : ?>
+        <div class="trigger discussion">
+            <a href="#">Leave <?php echo $comment_type_text;?> <span class="smaller">&#9660;</span></a>
+        </div>
+        <?php if ($comm_err != "" && $cid == 0) : ?>
             <div class="form-errors">
-               <?php echo stripslashes(urldecode($_GET['comm_err']));?>
-        		</div>
-        		<?php endif; ?>
-        		
-            <form id="answer-form" action="<?php echo site_url( '/wp-comments-post.php' ); ?>" method="post" shc:gizmo="transFormer">
-							<ul class="form-fields">
-								<?php
-	                # If a user doesn't have a screen name, prompt them to enter one
-	                $sso_user = SSO_User::factory()->get_by_id($current_user->ID);
-	                if($sso_user->guid && ! $sso_user->screen_name):
-	                //if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):
-	              ?>
-	              <li class="clearfix">	
-	                <label for="screen-name" class="required">Screen Name</label>
-	                <input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo $screen_name_value;?>" shc:gizmo:form="{required:true, special: 'screen-name', message: 'Screen name invalid. Screen name is already in use or does not follow the screen name guidelines.'}"/>
-	             	</li>
-	              <?php endif;?>
-								<li class="clearfix">
-									<?php
-		                do_action( 'comment_form_top' );
-		
-		                if ( is_user_logged_in() ) :
-		                    echo apply_filters( 'comment_form_logged_in', $args['logged_in_as'], $commenter, $user_identity );
-		                endif;
-		
-		                echo apply_filters( 'comment_form_field_comment', $args['comment_field'] );
-		                echo $args['comment_notes_after'];
-	                ?>
-								</li>
-								<li class="clearfix">
-									<button type="submit" class="<?php echo theme_option("brand"); ?>_button"><?php echo esc_attr( $args['label_submit'] ); ?></button>
-									<button class="<?php echo theme_option("brand"); ?>_button azure">Cancel</button>
-                  <?php comment_id_fields( $post->ID ); ?>
-                  <input type='hidden' name='comment_type' value='<?php echo $comment_type; ?>' />
-                	<?php do_action( 'comment_form', $post->ID ); ?>
-								</li>
-							</ul>
-						</form>
-      <?php endif; ?>
-    <?php
-            do_action( 'comment_form_after' );
-        else :
-            do_action( 'comment_form_comments_closed' );
-        endif;
-    }
-?>
+                <?php echo $comm_err; ?>
+            </div>
+        <?php endif; ?>
+        
+        <form id="answer-form" action="<?php echo site_url( '/wp-comments-post.php' ); ?>" method="post" shc:gizmo="transFormer">
+            <ul class="form-fields">
+                <?php if(get_user_meta($current_user->ID, 'sso_guid') && !has_screen_name($current_user->ID)): ?>
+                    <li class="clearfix">
+                        <label for="screen-name" class="required">Screen Name</label>
+                        <input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo $screen_name_value;?>" shc:gizmo:form="{required:true, special: 'screen-name', message: 'Screen name invalid. Screen name is already in use or does not follow the screen name guidelines.'}"/>
+                    </li>
+                <?php endif; ?>
+                <li class="clearfix">
+                    <?php
+                        do_action( 'comment_form_top' );
+                        echo apply_filters( 'comment_form_logged_in', $args['logged_in_as'], $commenter, $user_identity );
+                        echo apply_filters( 'comment_form_field_comment', $args['comment_field'] );
+                        echo $args['comment_notes_after'];
+                    ?>
+                </li>
+                <li class="clearfix">
+                    <button type="submit" class="<?php echo theme_option("brand"); ?>_button"><?php echo esc_attr( $args['label_submit'] ); ?></button>
+                    <button class="<?php echo theme_option("brand"); ?>_button azure">Cancel</button>
+                    <?php comment_id_fields( $post->ID ); ?>
+                    <input type='hidden' name='comment_type' value='<?php echo $comment_type; ?>' />
+                    <?php do_action( 'comment_form', $post->ID ); ?>
+                </li>
+            </ul>
+        </form>
+        <?php do_action( 'comment_form_after' ); ?>
+    <?php else : ?>
+        <?php do_action( 'comment_form_comments_closed' ); ?>
+    <?php endif; ?>
 </div>
