@@ -22,4 +22,5 @@
     
         <div class="clearfix"></div>
     </div> <!-- END SPAN10 -->
+    <?php print_r($comment); ?>
 </li>

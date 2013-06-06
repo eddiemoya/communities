@@ -901,6 +901,51 @@ function display_comments($comment_count, $n_comments = 10) {
     }
 }
 
+/**
+ * Prepares comment form arguments
+ *
+ * @author Jason Corradino
+ *
+ * @return $args (array) - arguments to feed into comment filters
+ */
+function prepare_comment_form() {
+    $comm_err = sanitize_text_field($_GET['comm_err']);
+    $cid = sanitize_text_field($_GET['cid']);
+    $comment = sanitize_text_field(urldecode($_GET['comment']));
+    
+    $comment_value = ($comm_err != "" && $cid == 0) ? $comment : null;
+
+    $fields =  array();
+
+    $args = array(
+        'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
+        'comment_field'        => '<textarea id="comment-answer_textarea" class="input_textarea discussion" name="comment" shc:gizmo:form="{required:true}">'. $comment_value .'</textarea>',
+        'must_log_in'          => null,
+        'logged_in_as'         => null,
+        'comment_notes_before' => null,
+        'comment_notes_after'  => null,
+        'id_form'              => null,
+        'id_submit'            => 'submit',
+        'title_reply'          => null,
+        'title_reply_to'       => __( 'Leave a Reply to %s' ),
+        'cancel_reply_link'    => null,
+        'label_submit'         => __( 'Post' )
+    );
+
+    if(!isset($defaults))
+        $defaults = array();
+
+    $args = wp_parse_args( $args, apply_filters( 'comment_form_defaults', $defaults ) );
+
+    return $args;
+}
+
+function get_clean_attempted_screen_name() {
+    
+    
+    $screen_name_value = (isset($_GET['comm_err']) && $_GET['cid'] == 0) ? urldecode($_GET['screen-name']) : null;
+}
+
 /*
  * Sanitizes text of any profanity
  * 
