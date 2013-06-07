@@ -1,0 +1,1 @@
+<button type="button" id="flag-comment-<?php echo $comment_id; ?>" name="button_flag" class="flag" value="flag" title="Flag this <?php echo $type; ?>">flag</button>

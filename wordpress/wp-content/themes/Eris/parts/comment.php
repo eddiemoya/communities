@@ -20,6 +20,9 @@
                     <p class="responseTo">In response to <?php echo $parent_author; ?></p>
                 <?php endif; ?>
                 <?php echo ($comment->comment_approved == 1) ? wpautop($comment->comment_content) : $removed_text; ?>
+                <?php get_partial('parts/vote', array('id' => $comment->comment_ID, 'type' => "comment", 'actions' => $comment->actions)); ?>
+                <?php get_partial('parts/follow', array('id' => $comment->comment_ID, 'type' => "comment")); ?>
+                <?php get_partial('parts/share', array('id' => $comment->comment_ID, 'type' => "comment")); ?>
             </section>
         </article> <!-- END ARTICLE CONTENT CONTAINER -->
     
