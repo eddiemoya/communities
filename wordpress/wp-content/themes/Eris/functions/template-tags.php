@@ -926,7 +926,7 @@ function count_comments() {
  * @param $n_comments (integer) Number of comments to display per page, defaults to 10
  *
  */
-function display_comments($comment_count, $n_comments = 10) {
+function display_comments($comment_count, $n_comments = 5) {
     global $post;
 
     $page = (get_query_var("page")) ? get_query_var("page") : 1;
@@ -955,6 +955,26 @@ function display_comments($comment_count, $n_comments = 10) {
     }
 }
 
+function override_comments_query($args) {
+    global $wpdb;
+    
+    if (!strstr($args["fields"], "COUNT")) {
+        $preg_matches = array("/comment_approved/", "/comment_post_ID/", "/comment_type/", "/comment_date_gmt/", "/comment_parent/");
+        $preg_replacements = array("c1.comment_approved", "c1.comment_post_ID", "c1.comment_type", "c1.comment_date_gmt", "c1.comment_parent");
+        foreach ($args as $key => $arg) {
+            $args[$key] = preg_replace($preg_matches, $preg_replacements, $arg);
+        }
+
+        $args["where"] .= " GROUP BY c1.comment_ID";
+        $args["fields"] = " c1.*, GROUP_CONCAT(c2.comment_ID) as children";
+        $args["join"] = " as c1 LEFT JOIN $wpdb->comments as c2 ON c2.comment_parent = c1.comment_ID";
+    }
+    
+    return $args;
+}
+
+add_filter("comments_clauses", "override_comments_query", 10, 1);
+
 /**
  * Prepares child comments for display
  *
@@ -963,12 +983,24 @@ function display_comments($comment_count, $n_comments = 10) {
  * @param $comments (object) [required] Current comment, possibly containing children
  *
  */
-function display_child_comments($comment) {
+function display_child_comments($comment, $comment_offset = 0) {
+    global $post;
+    
     if ($comment->children != "") {
         $page = (get_query_var("page")) ? get_query_var("page") : 1;
         $post_type = get_post_type( $post->ID );
         $comment_type = ($post_type == 'question') ? 'answer' : 'comment';
-        foreach ($comment->children as $child) {
+        $n_comments = 2;
+        
+        $children_comments = get_comments(array(
+            'post_id' => $post->ID,
+            'parent' => $comment->comment_ID,
+            'type' => $comment_type, 
+            'number' => $n_comments, 
+            'offset' => $comment_offset
+        ));
+        
+        foreach ($children_comments as $child) {
             $parent_author = return_screenname(get_comment($child->comment_parent)->user_id);
             $container_class = in_array('expert', get_userdata($child->user_id)->roles) ? ' expert' : '';
             get_partial('parts/comment', array(
@@ -976,7 +1008,7 @@ function display_child_comments($comment) {
                 "comment_type"      => $comment_type,
                 "container_class"   => $container_class,
                 "date"              => strtotime($child->comment_date),
-                "parentId"          => $comment->comment_ID,
+                "parentId"          => $child->comment_ID,
                 "parent_author"     => $parent_author
             ));
         }
