@@ -177,4 +177,4 @@ function organizeByChildren($comments) {
 
     return $comments;
 }
-add_filter('the_comments', 'organizeByChildren');
+//add_filter('the_comments', 'organizeByChildren');
