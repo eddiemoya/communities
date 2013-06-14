@@ -12,6 +12,8 @@
 		<input type="submit" name="meta_delete" value="Delete All SSO usermeta" />
 	</form>
 <?php else: 
+
+	global $wpdb;
 	$wpdb->query("delete from wp_usermeta where meta_key IN ('sso_guid', 'profile_screen_name', 'user_city', 'user_state', 'user_zipcode')");
 ?>
 
