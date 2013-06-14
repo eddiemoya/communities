@@ -964,7 +964,8 @@ function display_comments($comment_count, $n_comments = 5) {
         'post_id' => $post->ID, 
         'type' => $comment_type, 
         'number' => $n_comments, 
-        'offset' => $comment_offset
+        'offset' => $comment_offset,
+        'parent' => 0
     ));
     
     foreach($comments as $comment) {
@@ -1007,14 +1008,25 @@ add_filter("comments_clauses", "override_comments_query", 10, 1);
  * @param $comments (object) [required] Current comment, possibly containing children
  *
  */
-function display_child_comments($comment, $comment_offset = 0) {
+function display_child_comments($comment, $comment_offset = 0, $n_comments = 2) {
     global $post;
     
-    if ($comment->children != "") {
+    $parent = sanitize_key($_GET['comment_parent']);
+    if ($parent != "") {
+        $comment = get_comment($parent);
+        $n_comments = 0;
+    }
+    
+    if ($comment->children != "" || $parent != "") {
         $page = (get_query_var("page")) ? get_query_var("page") : 1;
         $post_type = get_post_type( $post->ID );
         $comment_type = ($post_type == 'question') ? 'answer' : 'comment';
-        $n_comments = 2;
+        
+        if ($parent != "") {
+            $comment_type = $comment->comment_type;
+        }
+        
+        $i = 1;
         
         $children_comments = get_comments(array(
             'post_id' => $post->ID,
@@ -1024,17 +1036,25 @@ function display_child_comments($comment, $comment_offset = 0) {
             'offset' => $comment_offset
         ));
         
-        foreach ($children_comments as $child) {
+        foreach ($children_comments as $key => $child) {
+            if ($key < $comment_offset)
+                continue;
+            
             $parent_author = return_screenname(get_comment($child->comment_parent)->user_id);
             $container_class = in_array('expert', get_userdata($child->user_id)->roles) ? ' expert' : '';
+         
             get_partial('parts/comment', array(
                 "comment"           => $child,
                 "comment_type"      => $comment_type,
                 "container_class"   => $container_class,
                 "date"              => strtotime($child->comment_date),
                 "parentId"          => $child->comment_ID,
-                "parent_author"     => $parent_author
+                "parent_author"     => $parent_author,
+                "n_comment"         => $i,
+                "load_more"         => ($i == $n_comments && $i < substr_count($comment->children, ",")+1) ? true : false
             ));
+            
+            $i++;
         }
     }
 }

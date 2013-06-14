@@ -1,4 +1,6 @@
 <?php
+    global $post;
+    
     $removed_text = "<p>This {$comment_type} has been removed.</p>";
 ?>
 <li class="comment clearfix<?php echo $container_class; ?>" id="<?php echo $comment_type.'-reply-'.$comment->comment_ID ?>">
@@ -64,4 +66,18 @@
         	<?php } ?>
         </div> <!-- END UGC COMMENT ANSWER FORM --> 
     </div> <!-- END SPAN10 -->
+    <?php
+        if ($comment->children != "" && $comment->comment_parent == 0) :
+            ?><ol class="children"><?php
+                display_child_comments($comment); 
+            ?></ol><?php
+        elseif ($comment->children != "") :
+            ?><a href="#" class="moreComments" options:parent="<?php echo $comment->comment_ID ?>">Show more comments</a><?php
+        endif;
+    ?>
 </li>
+<?php
+    if ($load_more == true) {
+        ?><a href="#" class="moreComments" options:parent="<?php echo $comment->comment_parent; ?>" options:offset="2">Show more comments</a><?php
+    }
+?>
