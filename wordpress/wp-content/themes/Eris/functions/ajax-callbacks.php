@@ -429,3 +429,23 @@ function comm_vote_poll() {
 	} // End if(isset($_REQUEST['action']) && $_REQUEST['action'] == 'polls')
 	exit();
 }
+
+
+/**
+ * Grabs additional comments
+ * @author Jason Corradino
+ */
+function load_more_comments() {
+	global $wpdb;
+	
+	$parent = sanitize_key($_GET['comment_parent']);
+	$offset = sanitize_key($_GET['comment_offset']);
+	
+	if ($parent != "")
+	    display_child_comments(null, $offset);
+	
+	exit;
+}
+
+add_action('wp_ajax_load_more_comments', 'load_more_comments');
+add_action('wp_ajax_nopriv_load_more_comments', 'load_more_comments');
