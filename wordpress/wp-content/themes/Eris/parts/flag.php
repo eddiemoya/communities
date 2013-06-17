@@ -54,39 +54,39 @@ shc:gizmo:options="
 "
 <?php } ?>>flag</button>
 <div id="flagForm-<?php echo $id; ?>" class="hide">
-        <form class="flag-form" id="commentForm-<?php echo $id; ?>" method="post" shc:gizmo="transFormer">
-            <textarea class="flagField" rows="5" name="comment" aria-required="true" shc:gizmo:form="{required: true}"></textarea>
-            <input
-                    class="<?php echo $brand; ?>_button"
-                    type="submit"
-                    value="Flag"
-                    shc:gizmo="actions"
-                    shc:gizmo:options="
-                        {
-                            actions: {
-                                customEvent:
-                                    function(element) {
-                                        element.trigger('addActiveToFlag-<?php echo $id; ?>');
-                                    },
-                                post: {
-                                    blocker: function(target) {
-                                        if(typeof target !== 'undefined' && target.siblings('textarea').val() == '') {
-                                            return false;
-                                        }
+	<!--<form class="flag-form" id="commentForm-<?php echo $id; ?>" method="post" shc:gizmo="transFormer">-->
+		<textarea class="flagField" rows="5" name="comment" aria-required="true" shc:gizmo:form="{required: true}"></textarea>
+		<input
+				class="<?php echo $brand; ?>_button"
+				type="submit"
+				value="Flag"
+				shc:gizmo="actions"
+				shc:gizmo:options="
+					{
+						actions: {
+							customEvent:
+								function(element) {
+									element.trigger('addActiveToFlag-<?php echo $id; ?>');
+								},
+							post: {
+								blocker: function(target) {
+									if(typeof target !== 'undefined' && target.siblings('textarea').val() == '') {
+										return false;
+									}
 
-                                        return true;
-                                    },
-                                    id:<?php echo $id; ?>,
-                                    name:'flag',
-                                    sub_type:'<?php echo $sub_type; ?>',
-                                    type:'<?php echo $type; ?>'
-                                }
-                            }
-                        }"
-                />
-            <input class="<?php echo $brand; ?>_button azure" type="reset" value="Cancel" onclick="jQuery('.tooltip').hide();" />
-            <input name="comment_post_ID" type="hidden" value="<?php echo $post_id; ?>" />
-            <input name="comment_parent" type="hidden" value="<?php echo $id; ?>" />
-            <input name="comment_type" type="hidden" value="flag" />
-        </form>
-    </div>
+									return true;
+								},
+								id:<?php echo $id; ?>,
+								name:'flag',
+								sub_type:'<?php echo $sub_type; ?>',
+								type:'<?php echo $type; ?>'
+							}
+						}
+					}"
+			/>
+		<input class="<?php echo $brand; ?>_button azure" type="reset" value="Cancel" onclick="jQuery('.tooltip').hide();" />
+		<input name="comment_post_ID" type="hidden" value="<?php echo $post_id; ?>" />
+		<input name="comment_parent" type="hidden" value="<?php echo $id; ?>" />
+		<input name="comment_type" type="hidden" value="flag" />
+	<!--</form>-->
+</div>
