@@ -281,5 +281,27 @@ if (shcJSL && shcJSL.gizmos)  {
         jQuery(element).click(function() {
             shcJSL.get(element).actions(element, options);
         });
+        
+        $(".moreComments").on("click", function() {
+            event.preventDefault();
+            if ($(this).attr("options:parent") != undefined) {
+                $(this).html("<img src='http://comm.local/wp-content/themes/Eris/assets/img/sears/background_loading.gif' height='15' width='15' /> Loading...");
+                var parent = $(this).attr("options:parent");
+                var offset = $(this).attr("options:offset");
+                var ajaxUrl = "/wp-admin/admin-ajax.php?action=load_more_comments&comment_parent="+parent+"&comment_offset="+offset;
+                var element = this;
+                
+                $.ajax(ajaxUrl).done(function(data){
+                    if ($(element).hasClass("subcommentLoader")) {
+                        $(element).slideUp("fast");
+                        $(element).parent(".comment").after(data);
+                    } else {
+                        $(element).parent(".comment").slideUp("fast");
+                        $(element).closest("ol.children").append(data);
+                    }
+                });
+            }
+        });
     }
 }
+
