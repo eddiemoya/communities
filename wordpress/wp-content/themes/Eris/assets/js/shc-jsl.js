@@ -505,8 +505,7 @@ shcJSL.gizmos['drop-menu'] = function(element) {
  */
 
 //Global SSO vars -- cross environment
-window.sso_base = (window.location.href.indexOf('kmart.com/community') != -1 || window.location.href.indexOf('sears.com/community') != -1) ?
-					'https://' + window.location.host + '/community/' : (window.location.href.indexOf('uxint-') != -1 || window.location.href.indexOf('uxdev-') != -1) ? 
+window.sso_base = (window.location.href.indexOf('/community/') != -1) ?
 					window.location.protocol + '//' + window.location.host + '/community/' :
 					window.location.protocol + '//' + window.location.host + '/';
 
