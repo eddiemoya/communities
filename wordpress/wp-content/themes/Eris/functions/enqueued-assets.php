@@ -86,7 +86,7 @@ function enqueue_scripts() {
         //wp_enqueue_script('responslide');
         wp_enqueue_script('omniture');
         //wp_enqueue_script('carousel');
-        //wp_enqueue_script('wp-polls');
+        wp_enqueue_script('wp-polls');
         wp_enqueue_script('omniture_scode');
         wp_enqueue_script('omniture_start');
         // wp_enqueue_script('addthis');
