@@ -154,7 +154,7 @@ class SSO_User_Migration {
 			
 			$meta = $this->_get_user_meta($user_id);
 			
-			if(! $this->_insert_sso_user($meta)) {
+			if($this->_insert_sso_user($meta) === false) {
 				
 				$this->failed[] = $user_id;
 				$this->num_failed++;
@@ -277,8 +277,7 @@ class SSO_User_Migration {
         
         try {
         	
-        	$wpdb->query($q);
-        	return true;
+        	return $wpdb->query($q);
         	
         } catch(Exception $e) {
         	
