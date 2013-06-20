@@ -267,11 +267,11 @@ class SSO_User_Migration {
 		
 		if($user_meta->zipcode) {
 			
-			$q = "INSERT INTO {$wpdb->base_prefix}sso_users (user_id, guid, screen_name, city, state, zipcode) VALUES ({$user_meta->ID}, {$user_meta->guid}, '{$user_meta->screen_name}', '{$user_meta->city}', '{$user_meta->state}', '{$user_meta->zipcode}')";
+			$q = "INSERT INTO {$wpdb->base_prefix}sso_users (user_id, guid, screen_name, city, state, zipcode) VALUES ({$user_meta->ID}, {$user_meta->guid}, \"{$user_meta->screen_name}\", \"{$user_meta->city}\", \"{$user_meta->state}\", \"{$user_meta->zipcode}\")";
 			
 		} else {
             
-	    	$q = "INSERT INTO {$wpdb->base_prefix}sso_users (user_id, guid, screen_name, city, state) VALUES ({$user_meta->ID}, {$user_meta->guid}, '{$user_meta->screen_name}', '{$user_meta->city}', '{$user_meta->state}')";
+	    	$q = "INSERT INTO {$wpdb->base_prefix}sso_users (user_id, guid, screen_name, city, state) VALUES ({$user_meta->ID}, {$user_meta->guid}, \"{$user_meta->screen_name}\", \"{$user_meta->city}\", \"{$user_meta->state}\")";
         }
         
         
