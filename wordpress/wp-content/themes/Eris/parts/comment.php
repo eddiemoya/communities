@@ -24,6 +24,8 @@
                 <?php echo ($comment->comment_approved == 1) ? wpautop($comment->comment_content) : $removed_text; ?>
             </section>
         </article> <!-- END ARTICLE CONTENT CONTAINER -->
+        
+        <?php comment_reply_form($comment); ?>
     
         <div class="clearfix"></div>
     </div> <!-- END SPAN10 -->

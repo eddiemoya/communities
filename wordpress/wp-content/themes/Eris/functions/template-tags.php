@@ -956,6 +956,25 @@ function display_comments($comment_count, $n_comments = 5) {
     }
 }
 
+/**
+ * Determines if user is logged in, allows form trigger if so, forces log-in on-click if not
+ *
+ * @author Jason Corradino
+ *
+ */
+function comment_reply_form($comment) {
+    global $user;
+    
+    $status = is_user_logged_in();
+    $comment_type = get_post_type( $comment->comment_post_ID ) == 'question' ? 'answer' : 'comment';
+    
+    get_partial('parts/child_comment_form', array(
+        "status"            => $status,
+        "comment"           => $comment,
+        "comment_type"      => $comment_type
+    ));
+}
+
 function override_comments_query($args) {
     global $wpdb;
     
