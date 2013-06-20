@@ -91,7 +91,7 @@ class SSO_User_Migration {
 	
 	public $failed = array();
 	
-	protected $_limit = 1000;  
+	protected $_limit = 5000;  
 	
 	protected $_options_default = array('last_page' => 0,
 										'last_offset' => 0);
@@ -225,7 +225,7 @@ class SSO_User_Migration {
 		
 		global $wpdb;
 		
-		$q = "SELECT DISTINCT ID FROM {$wpdb->base_prefix}users u INNER JOIN {$wpdb->base_prefix}usermeta um ON u.ID = um.user_id where um.meta_key = 'sso_guid' LIMIT {$this->_offset}, {$this->_limit}";
+		$q = "SELECT DISTINCT ID FROM {$wpdb->base_prefix}users u INNER JOIN {$wpdb->base_prefix}usermeta um ON u.ID = um.user_id where um.meta_key = 'sso_guid' ORDER BY u.ID ASC LIMIT {$this->_offset}, {$this->_limit}";
 		
 		$this->_users = $this->_convert($wpdb->get_results($q), 'ID');
 	}
