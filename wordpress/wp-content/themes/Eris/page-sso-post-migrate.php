@@ -158,7 +158,7 @@ class SSO_Post_User_Migration {
 			
 			$meta = $this->_get_user_meta($user_id);
 			
-			if(! $this->_insert_sso_user($meta)) {
+			if($this->_insert_sso_user($meta) === false) {
 				
 				$this->failed[] = $user_id;
 				$this->num_failed++;
@@ -246,18 +246,17 @@ class SSO_Post_User_Migration {
 		
 		if($user_meta->zipcode) {
 			
-			$q = "INSERT INTO {$wpdb->base_prefix}sso_users (user_id, guid, screen_name, city, state, zipcode) VALUES ({$user_meta->ID}, {$user_meta->guid}, '{$user_meta->screen_name}', '{$user_meta->city}', '{$user_meta->state}', '{$user_meta->zipcode}')";
+			$q = "INSERT INTO {$wpdb->base_prefix}sso_users (user_id, guid, screen_name, city, state, zipcode) VALUES ({$user_meta->ID}, {$user_meta->guid}, \"{$user_meta->screen_name}\", \"{$user_meta->city}\", \"{$user_meta->state}\", \"{$user_meta->zipcode}\")";
 			
 		} else {
             
-	    	$q = "INSERT INTO {$wpdb->base_prefix}sso_users (user_id, guid, screen_name, city, state) VALUES ({$user_meta->ID}, {$user_meta->guid}, '{$user_meta->screen_name}', '{$user_meta->city}', '{$user_meta->state}')";
+	    	$q = "INSERT INTO {$wpdb->base_prefix}sso_users (user_id, guid, screen_name, city, state) VALUES ({$user_meta->ID}, {$user_meta->guid}, \"{$user_meta->screen_name}\", \"{$user_meta->city}\", \"{$user_meta->state}\")";
         }
         
         
         try {
         	
-        	$wpdb->query($q);
-        	return true;
+        	return $wpdb->query($q);
         	
         } catch(Exception $e) {
         	
