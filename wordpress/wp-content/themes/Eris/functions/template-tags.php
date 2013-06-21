@@ -992,7 +992,7 @@ function comment_reply_form($comment) {
     $status = is_user_logged_in();
     $comment_type = get_post_type( $comment->comment_post_ID ) == 'question' ? 'answer' : 'comment';
     
-    get_partial('parts/child_comment_form', array(
+    get_partial('parts/child-comment-form', array(
         "status"            => $status,
         "comment"           => $comment,
         "comment_type"      => $comment_type
