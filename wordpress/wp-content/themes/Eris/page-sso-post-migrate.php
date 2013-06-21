@@ -102,6 +102,7 @@ class SSO_Post_User_Migration {
 		$this->_user_cnt();
 		$this->_migrated_user_cnt();
 		$this->_user_cnt_to_migrate();
+		$this->_failed();
 	}
 	
 	public static function factory() {
@@ -154,7 +155,7 @@ class SSO_Post_User_Migration {
 		$this->_users();
 		$this->num_failed = 0; //Reset num_failed to zero
 		
-		foreach($this->_users as $user_id) {
+		foreach($this->users as $user_id) {
 			
 			$meta = $this->_get_user_meta($user_id);
 			
@@ -206,7 +207,7 @@ class SSO_Post_User_Migration {
 		
 		$q = "SELECT DISTINCT ID FROM {$wpdb->base_prefix}users u INNER JOIN {$wpdb->base_prefix}usermeta um ON u.ID = um.user_id where um.meta_key = 'sso_guid' LIMIT {$this->_offset}, {$this->_limit}";
 		
-		$this->_users = $this->_convert($wpdb->get_results($q), 'ID');
+		$this->users = $this->_convert($wpdb->get_results($q), 'ID');
 	}
 	
 	protected function _convert($results, $property) {
@@ -235,9 +236,19 @@ class SSO_Post_User_Migration {
 		$obj->screen_name = get_user_meta($user_id, 'profile_screen_name', true);
 		$obj->city = get_user_meta($user_id, 'user_city', true);
 		$obj->state = get_user_meta($user_id, 'user_state', true);
-		$obj->zipcode = get_user_meta($user_id, 'user_zipcode', true);
+		$obj->zipcode = $this->_truncate_zipcode(get_user_meta($user_id, 'user_zipcode', true));
 		
 		return $obj;
+	}
+	
+	protected function _truncate_zipcode($zipcode) {
+		
+		if(strlen($zipcode) > 5) {
+		
+			return substr((string)$zipcode, 0, 5);
+		}
+	
+		return $zipcode;
 	}
 	
 	protected function _insert_sso_user($user_meta) {
