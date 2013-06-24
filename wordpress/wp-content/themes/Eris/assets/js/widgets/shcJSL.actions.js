@@ -282,7 +282,7 @@ if (shcJSL && shcJSL.gizmos)  {
             shcJSL.get(element).actions(element, options);
         });
         
-        $(".moreComments").live("click", function() {
+        $("a.moreComments").live("click", function() {
             event.preventDefault();
             if ($(this).attr("options:parent") != undefined) {
                 $(this).html("<img src='/community/wp-content/themes/Eris/assets/img/sears/background_loading.gif' height='15' width='15' /> Loading...");
