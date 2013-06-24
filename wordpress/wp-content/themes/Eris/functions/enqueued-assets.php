@@ -48,7 +48,7 @@ function enqueue_scripts() {
         
        /* Scripts */
         wp_deregister_script('jquery'); 
-        wp_register_script('jquery',    get_template_directory_uri() . '/assets/js/vendor/jquery-1.7.2.min.js', array(), '1.7.2', true);
+        wp_register_script('jquery',    get_template_directory_uri() . '/assets/js/vendor/jquery-1.7.2.min.js', array(), '1.7.2');
         wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.5.3.min.js', array(), '2.5.3');
         wp_register_script('shcJSL',    get_template_directory_uri() . '/assets/js/shc-jsl.js', array(), $javascript_suffix, true);
         wp_register_script('moodle', get_template_directory_uri() . '/assets/js/widgets/shcJSL.moodle.js', array(), $javascript_suffix, true);
