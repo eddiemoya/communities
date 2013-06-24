@@ -97,14 +97,14 @@
                         $(this).addClass('hide');
                     }
                 });
-                $(".ugc-comment-answer_form a").on('click', function(event) {
+                $(".ugc-comment-answer_form a").live('click', function(event) {
                 	event.preventDefault();
                 	$(this).parents(".ugc-comment-answer_form").children("form").slideToggle("slow");
                 });
 
                 // Make the cancel buttons collapse the forms, too.
-                $('.ugc-comment-answer_form .azure').on('click', function(event) {
-                		event.preventDefault();
+                $('.ugc-comment-answer_form .azure').live('click', function(event) {
+                	event.preventDefault();
                     $(this).parents(".ugc-comment-answer_form").children("form").slideToggle("slow");
                 });
             });

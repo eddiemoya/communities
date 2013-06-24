@@ -6,7 +6,7 @@
         <a href="#">Reply</a>
     </div>
     
-    <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" id="commentform-<?php echo $comment->comment_ID ?>" class="reply-to-form clearfix"<?php echo $form_style; ?>>
+    <form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" id="commentform-<?php echo $comment->comment_ID ?>" class="reply-to-form clearfix hide"<?php echo $form_style; ?>>
         <ul class="form-fields">
             
             <li class="clearfix">

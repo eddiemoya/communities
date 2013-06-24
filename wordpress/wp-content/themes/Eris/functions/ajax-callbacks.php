@@ -437,10 +437,16 @@ function load_more_comments() {
 	
 	$parent = sanitize_key($_GET['comment_parent']);
 	$offset = sanitize_key($_GET['comment_offset']);
+	$page = sanitize_key($_GET['page']);
+	$post = sanitize_key($_GET['post']);
+	
 	
 	if ($parent != "")
 	    display_child_comments(null, $offset);
 	
+	if ($page != "")
+	    display_comments_ajax($post, $page);
+	    
 	exit;
 }
 
