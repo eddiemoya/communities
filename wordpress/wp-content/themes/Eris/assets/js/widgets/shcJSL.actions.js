@@ -285,10 +285,10 @@ if (shcJSL && shcJSL.gizmos)  {
         $(".moreComments").live("click", function() {
             event.preventDefault();
             if ($(this).attr("options:parent") != undefined) {
-                $(this).html("<img src='http://comm.local/wp-content/themes/Eris/assets/img/sears/background_loading.gif' height='15' width='15' /> Loading...");
+                $(this).html("<img src='/community/wp-content/themes/Eris/assets/img/sears/background_loading.gif' height='15' width='15' /> Loading...");
                 var parent = $(this).attr("options:parent");
                 var offset = $(this).attr("options:offset");
-                var ajaxUrl = "/wp-admin/admin-ajax.php?action=load_more_comments&comment_parent="+parent+"&comment_offset="+offset;
+                var ajaxUrl = "/community/wp-admin/admin-ajax.php?action=load_more_comments&comment_parent="+parent+"&comment_offset="+offset;
                 var element = this;
                 
                 $.ajax(ajaxUrl).done(function(data){
@@ -303,10 +303,10 @@ if (shcJSL && shcJSL.gizmos)  {
             } else if ($(this).attr("options:page") != undefined) {
                 var page = $(this).attr("options:page");
                 var post = $(this).attr("options:post");
-                var ajaxUrl = "/wp-admin/admin-ajax.php?action=load_more_comments&page="+page+"&post="+post;
+                var ajaxUrl = "/community/wp-admin/admin-ajax.php?action=load_more_comments&page="+page+"&post="+post;
                 var element = this;
                 
-                $(this).html("<img src='http://comm.local/wp-content/themes/Eris/assets/img/sears/background_loading.gif' height='15' width='15' /> Loading...");
+                $(this).html("<img src='/community/wp-content/themes/Eris/assets/img/sears/background_loading.gif' height='15' width='15' /> Loading...");
                 $.ajax(ajaxUrl).done(function(data){
                     $(element).parent(".comment").slideUp("fast");
                     $(element).closest("ol#allComments").append(data);
