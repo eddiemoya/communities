@@ -282,7 +282,7 @@ if (shcJSL && shcJSL.gizmos)  {
             shcJSL.get(element).actions(element, options);
         });
         
-        $(".moreComments").on("click", function() {
+        $(".moreComments").live("click", function() {
             event.preventDefault();
             if ($(this).attr("options:parent") != undefined) {
                 $(this).html("<img src='http://comm.local/wp-content/themes/Eris/assets/img/sears/background_loading.gif' height='15' width='15' /> Loading...");
@@ -299,6 +299,17 @@ if (shcJSL && shcJSL.gizmos)  {
                         $(element).parent(".comment").slideUp("fast");
                         $(element).closest("ol.children").append(data);
                     }
+                });
+            } else if ($(this).attr("options:page") != undefined) {
+                var page = $(this).attr("options:page");
+                var post = $(this).attr("options:post");
+                var ajaxUrl = "/wp-admin/admin-ajax.php?action=load_more_comments&page="+page+"&post="+post;
+                var element = this;
+                
+                $(this).html("<img src='http://comm.local/wp-content/themes/Eris/assets/img/sears/background_loading.gif' height='15' width='15' /> Loading...");
+                $.ajax(ajaxUrl).done(function(data){
+                    $(element).parent(".comment").slideUp("fast");
+                    $(element).closest("ol#allComments").append(data);
                 });
             }
         });

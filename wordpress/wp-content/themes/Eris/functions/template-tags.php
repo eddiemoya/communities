@@ -904,15 +904,18 @@ function lookup_expert_comments_count($post_id, $categories) {
  *
  * @return (integer) Number of comments
  */
-function count_comments() {
+function count_comments($postID = null) {
     global $post;
     
-    $post_type = get_post_type($post->ID);
+    $postID = ($postID == null) ? $post->ID : $postID;
+    
+    $post_type = get_post_type($postID);
     $comment_type = ($post_type == 'question') ? 'answer' : 'comment';
     $comment_count = get_comments(array(
-        'post_id' => $post->ID, 
+        'post_id' => $postID, 
         'type' => $comment_type, 
-        'count' => true
+        'count' => true,
+        'parent' => 0
     ));
     
     return $comment_count;
@@ -928,16 +931,56 @@ function count_comments() {
  */
 function display_comments($comment_count, $n_comments = 5) {
     global $post;
-
-    $page = (get_query_var("page")) ? get_query_var("page") : 1;
+    
+    $page = 1;
+    
     $post_type = get_post_type( $post->ID );
     $comment_type = ($post_type == 'question') ? 'answer' : 'comment';
 
-    $comment_offset = $n_comments*($page-1);
-    $comment_offset = ($comment_offset < $comment_count) ? $comment_offset : 0; // make sure there is actually comments after the offset
-
     $comments = get_comments(array(
         'post_id' => $post->ID, 
+        'type' => $comment_type, 
+        'number' => $n_comments,
+        'offset' => 0,
+        'parent' => 0
+    ));
+    
+    foreach($comments as $comment) {
+        $container_class = in_array('expert', get_userdata($comment->user_id)->roles) ? ' expert' : '';
+        
+        get_partial('parts/comment', array(
+            "comment"           => $comment,
+            "comment_type"      => $comment_type,
+            "container_class"   => $container_class,
+            "date"              => strtotime($comment->comment_date)
+        ));
+    }
+    
+    if ($comment_count > $n_comments) {
+        echo "<li class='comment'><a href='#' class='moreComments nextPage' options:page='2' options:post='$post->ID'>Show more comments</a></li>";
+    }
+}
+
+/**
+ * Similar to the display_comments function, but gathers more information to account for the missing variables due to the ajax call
+ *
+ * @author Jason Corradino
+ * @param $postID (integer) [required] ID of the current post
+ * @param $page (integer) [required] comment page to load
+ * @param $n_comments (integer) Number of comments to display per page, defaults to 10
+ *
+ */
+function display_comments_ajax($postID, $page, $n_comments = 5) {
+    $comment_count = count_comments($postID);
+    
+    $post_type = get_post_type( $postID );
+    $comment_type = ($post_type == 'question') ? 'answer' : 'comment';
+
+    $comment_offset = $n_comments*($page-1);
+    $comment_offset = ($comment_offset < $comment_count) ? $comment_offset : 0; // make sure there are actually comments after the offset
+    
+    $comments = get_comments(array(
+        'post_id' => $postID, 
         'type' => $comment_type, 
         'number' => $n_comments, 
         'offset' => $comment_offset,
@@ -953,6 +996,11 @@ function display_comments($comment_count, $n_comments = 5) {
             "container_class"   => $container_class,
             "date"              => strtotime($comment->comment_date)
         ));
+    }
+    
+    if ($comment_count > ($n_comments*$page)) {
+        $newpage = $page+1;
+        echo "<li class='comment'><a href='#' class='moreComments nextPage' options:page='$newpage'>Show more comments</a></li>";
     }
 }
 
@@ -989,7 +1037,6 @@ function override_comments_query($args) {
         $args["fields"] = " c1.*, GROUP_CONCAT(c2.comment_ID) as children";
         $args["join"] = " as c1 LEFT JOIN $wpdb->comments as c2 ON c2.comment_parent = c1.comment_ID";
     }
-    
     return $args;
 }
 
@@ -1012,9 +1059,11 @@ function display_child_comments($comment, $comment_offset = 0, $n_comments = 2) 
         $n_comments = 0;
     }
     
+    $postID = ($post != "") ? $post->ID : sanitize_key($_GET['post']);
+    
     if ($comment->children != "" || $parent != "") {
         $page = (get_query_var("page")) ? get_query_var("page") : 1;
-        $post_type = get_post_type( $post->ID );
+        $post_type = get_post_type( $postID );
         $comment_type = ($post_type == 'question') ? 'answer' : 'comment';
         
         if ($parent != "") {
@@ -1024,7 +1073,7 @@ function display_child_comments($comment, $comment_offset = 0, $n_comments = 2) 
         $i = 1;
         
         $children_comments = get_comments(array(
-            'post_id' => $post->ID,
+            'post_id' => $postID,
             'parent' => $comment->comment_ID,
             'type' => $comment_type, 
             'number' => $n_comments, 
