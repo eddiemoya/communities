@@ -500,7 +500,10 @@ shcJSL.gizmos['drop-menu'] = function(element) {
 
 /**
  * SSO JS 
+ * @author Dan Crimmins
+ * @description controls init of SSO login/registration.
  * 
+ * Caching issues on KMart
  * 
  */
 
