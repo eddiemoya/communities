@@ -18,7 +18,7 @@
  */
 
 /* 
-	The master object for this library.
+  The master object for this library.
   Sears Holding Corp (shc) (J)ava(S)cript (L)ibrary [shcJSL].
   The object can be referenced as '$S' for short.
 */
@@ -233,6 +233,24 @@ shcJSL.cookies = function(cookie) {
 	-------------------
 	
 */
+/**
+ * @param e (HTMLObject) element
+ * @param v (String) event to check against
+ * @param f (Function) Function to check against
+ */
+shcJSL.active = function(e, v, f) {
+	var events = [];	// Array of the events on the element
+		
+	if (e && $._data(e,"events")[v] && f) {
+		events = $._data(e,"events")[v];
+				
+		for (var i=0;i<events.length;i++) {
+			if (events[i].handler == f) return true;
+		}
+	}
+	return false;
+ }
+
 
 shcJSL.createNewElement = function(e, c, a) {
 	var newElement; // New element that will be created;
@@ -465,6 +483,8 @@ shcJSL.gizmos.persistr = function(element) {
 	persist();
 }
 
+
+
 shcJSL.gizmos['drop-menu'] = function(element) {
 	var options;	// Option elements of menu;
 	options = element.getElementsByTagName("option");
@@ -477,6 +497,52 @@ shcJSL.gizmos['drop-menu'] = function(element) {
 		window.location.assign(this.value);
 	})
 }
+
+/**
+ * SSO JS 
+ * 
+ * 
+ */
+
+//Global SSO vars -- cross environment
+window.sso_base = (window.location.href.indexOf('/community/') != -1) ?
+					window.location.protocol + '//' + window.location.host + '/community/' :
+					window.location.protocol + '//' + window.location.host + '/';
+
+window.sso_plugin_path = 'wp-content/plugins/shc-sso-profile/public/';
+
+
+$(window).on('moodle-update', function(event) {
+	
+	var form = document.getElementById("login") || document.getElementById('registration');
+	
+	function sso_iframe() {
+		
+		jQuery('<iframe frameborder="0" scrolling="no" id="sso-auth" name="sso-auth" style="display:none;"></iframe>').appendTo(document.body);
+	}
+	
+	if(form) {
+		
+		$(form).on("valid", function(event, submit) {
+			
+			submit.preventDefault();
+			
+			// Start valid login code
+    		var sso_action = 'login.php?sso_action=' + ((document.getElementById('login')) ? '_login' : '_register');
+			
+        	sso_iframe();
+        	url = window.sso_base + window.sso_plugin_path + sso_action;
+        	
+        	form.action = url;
+        	form.target = 'sso-auth';
+        	form.method = 'POST';
+        	form.submit();
+	            
+    		// Stop valid login code
+		})
+	}
+})
+
 
 /*
 	[3.0] ONLOAD EVENTS

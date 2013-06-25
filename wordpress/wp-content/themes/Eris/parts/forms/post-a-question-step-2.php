@@ -20,7 +20,11 @@ get_currentuserinfo();
 
 					<div class="state_post-question-details">
 						<ul class="form-fields">
-							<?php if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):?>
+							<?php 
+							$sso_user = SSO_User::factory()->get_by_id($current_user->ID);
+							//if(get_user_meta($current_user->ID, 'sso_guid') && ! has_screen_name($current_user->ID)):
+							if($sso_user->guid && ! $sso_user->screen_name):
+							?>
 							<li class="clearfix">
 								<label for="screen-name" class="required">Screen Name</label>
 								<input type="text" class="input_text" name="screen-name" id="screen-name" value="" shc:gizmo:form="{required:true, special: 'screen-name', pattern: /^[A-Za-z0-9_\-\.]{2,18}$/, message: 'Screen name invalid. Screen name is already in use or does not follow the screen name guidelines.'}" shc:gizmo="tooltip" shc:gizmo:options="{tooltip: {displayData: {element: 'snInfo'},events: {blur: {active: false},click: {active: true},focus: {active: true}}, arrowPosition: 'left'}}"/>

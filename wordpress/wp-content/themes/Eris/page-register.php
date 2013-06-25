@@ -1,6 +1,6 @@
 <?php
 
-include SHCSSO_CONFIG_DIR . 'errors.php';
+//include SHCSSO_CONFIG_DIR . 'errors.php';
 
 //if user is logged in, send them to home page.
 if(is_user_logged_in()) {
@@ -18,7 +18,7 @@ $error = (isset($_GET['err'])) ? wp_kses(strip_tags($sso_errors[urldecode($_GET[
 //CSAT Post
 $email = (isset($_POST['loginId'])) ? urldecode($_POST['loginId']) : null;
 $zipcode = (isset($_POST['zipcode'])) ? urldecode($_POST['zipcode']) : null;
-$opts = new SSO_Options;
+//$opts = new SSO_Options;
 /**
 * @package WordPress
 * @subpackage White Label
@@ -31,7 +31,7 @@ if(! is_ajax()):
 <?php endif; ?>
 
         <?php 
-        	get_partial('parts/register', array('error' => $error, 'origin' => $origin, 'opts' => $opts));
+        	get_partial('parts/register', array('error' => $error, 'origin' => $origin, 'opts' => $opts, 'email' => $email, 'zipcode' => $zipcode));
         ?>
 
 <?php if(! is_ajax()): ?>
