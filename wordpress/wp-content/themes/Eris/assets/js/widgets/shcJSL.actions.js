@@ -283,8 +283,8 @@ if (shcJSL && shcJSL.gizmos)  {
         });
     }
     
-    $("a.moreComments").live("click", function() {
-        event.preventDefault();
+    $("a.moreComments").live("click", function(e) {
+        e.preventDefault();
         if ($(this).attr("options:parent") != undefined) {
             $(this).html("<img src='/community/wp-content/themes/Eris/assets/img/sears/background_loading.gif' height='15' width='15' /> Loading...");
             var parent = $(this).attr("options:parent");
