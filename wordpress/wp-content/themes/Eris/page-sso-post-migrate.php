@@ -1,31 +1,29 @@
 <?php if(is_user_logged_in() && current_user_can('manage_options')): ?>
 <html>
 <head>
-	<title>SSO User Migration</title>
+	<title>SSO Post User Migration Tool</title>
 </head>
 <body>
 
-<h2>SSO User Migration</h2>
+<h2>SSO Post User Migration Tool</h2>
 <?php if(empty($_POST)): 
 	
-	$migrate = new SSO_User_Migration;
+	$migrate = new SSO_Post_User_Migration;
 	
 ?>
 
 <div id="stats">
 	<p>Number of SSO Users (in system): <?php echo $migrate->user_cnt;?></p>
 	<p>Number of failed user migrations: <?php echo $migrate->num_failed;?></p>
-	<p>Next set number to migrate: <?php echo $migrate->next_page;?></p>
-	<p>Total number of sets: <?php echo $migrate->num_pages;?></p>
+	<p>Number of SSO Users NOT migrated yet: <?php echo $migrate->to_migrate_cnt;?></p>
 </div>
 
 
-<?php if($migrate->next_page):?>
+<?php if($migrate->to_migrate_cnt):?>
 
 <div id="migrate">
 	<form id="migrate-form" method="post">
-		<input type="hidden" name="page" id="page" value="<?php echo $migrate->next_page;?>" />
-		<input type="submit" name="submit" value="Migrate Set <?php echo $migrate->next_page;?>" />
+		<input type="submit" name="submit" value="Migrate Remaining <?php echo $migrate->to_migrate_cnt;?> SSO Users" />
 	</form>
 </div>
 
@@ -41,19 +39,15 @@
 
 <?php else: //Form handler?>
 
-<h3>Migration Running. Migrating user set: <?php echo $_POST['page'];?> ...</h3>
+<h3>Migration Running...</h3>
 
 <?php
 		//Run 
-		$run = SSO_User_Migration::factory()
-								->page($_POST['page'])
-								->run();
-						
+		$run = SSO_Post_User_Migration::factory()->run();				
 ?> 
 
 <div id="sso-mig-results">
-	<p>Test completed. There were <?php echo $run->num_failed;?> failed user migrations.</p>
-	<p><a href="">Migrate next set of users</a></p>
+	<p>Job completed. There were <?php echo $run->num_failed;?> failed user migrations.</p>
 </div>
 
 <?php endif; ?>
@@ -70,14 +64,16 @@
 <?php
 
 /**
- * Class:: SSO_User_Migration
+ * Class:: SSO_Post_User_Migration
  */
 
-class SSO_User_Migration {
-	
-	public static $option_name = 'sso_data_migration';
+class SSO_Post_User_Migration {
 	
 	public $user_cnt;
+	
+	public $migrated_cnt;
+	
+	public $to_migrate_cnt;
 	
 	public $users = array(); //array of WP user_ids
 	
@@ -93,28 +89,25 @@ class SSO_User_Migration {
 	
 	protected $_limit = 5000;  
 	
+	protected $_offset;
+	
 	protected $_options_default = array('last_page' => 0,
 										'last_offset' => 0);
 	
 	protected $_options;
-
-	protected $_offset;
 	
 	
 	public function __construct() {
 		
 		$this->_user_cnt();
-		$this->_num_pages();
-		$this->_get_option();
+		$this->_migrated_user_cnt();
+		$this->_user_cnt_to_migrate();
 		$this->_failed();
-		
-		$this->next_page = (($this->_options['last_page'] + 1) <= $this->num_pages) ? (($this->_options['last_page'] == 0) ? 1 : ($this->_options['last_page'] + 1)) : (get_option(self::$option_name, false) ? 0 : 1);
-		
 	}
 	
 	public static function factory() {
 		
-		return new SSO_User_Migration();
+		return new SSO_Post_User_Migration();
 	}
 	
 	protected function _user_cnt() {
@@ -127,12 +120,26 @@ class SSO_User_Migration {
 		$this->user_cnt =  (int) $cnt[0];
 	}
 	
-	public function page($page) {
+	protected function _migrated_user_cnt() {
 		
-		$this->page = $page;
+		global $wpdb;
 		
-		return $this;
+		$q = "SELECT COUNT(*) as num_migrated FROM {$wpdb->base_prefix}sso_users";
+		
+		$cnt = $wpdb->get_var($q);
+		$this->migrated_cnt = ($cnt) ? $cnt : 0; 
 	}
+	
+	protected function _user_cnt_to_migrate() {
+		
+		$this->to_migrate_cnt = ($this->migrated_cnt > 0) ? ($this->user_cnt - $this->migrated_cnt) : 0;
+		
+		if($this->to_migrate_cnt) {
+			
+			$this->_offset = ($this->user_cnt - $this->to_migrate_cnt);
+		}
+	}
+	
 	
 	public function limit($num) {
 		
@@ -145,10 +152,8 @@ class SSO_User_Migration {
 	
 	public function run() {
 		
-		$this->_offset();
 		$this->_users();
 		$this->num_failed = 0; //Reset num_failed to zero
-		
 		
 		foreach($this->users as $user_id) {
 			
@@ -161,22 +166,20 @@ class SSO_User_Migration {
 			}
 		}
 		
-		$this->_set_option(self::$option_name, array('last_page' 		=> $this->page,
-														'last_offset' 	=> $this->_offset));
-		
+				
 		//If we have failed inserts...
 		if(count($this->failed)) {
 			
-			$opts = get_option('sso_migrate_failed', null);
+			$opts = get_option('sso_post_migrate_failed', null);
 			
 			if($opts) {
 				
 				$updated = array_merge($opts, $this->failed);
-				$this->_set_option('sso_migrate_failed', $updated);
+				$this->_set_option('sso_post_migrate_failed', $updated);
 				
 			} else {
 				
-				$this->_set_option('sso_migrate_failed', $this->failed);
+				$this->_set_option('sso_post_migrate_failed', $this->failed);
 				
 			}
 		}
@@ -186,46 +189,23 @@ class SSO_User_Migration {
 	
 	 protected function _failed() {
 		
-		$opts = get_option('sso_migrate_failed', null);
+		$opts = get_option('sso_post_migrate_failed', null);
 		
 		if($opts) $this->num_failed = count($opts);
 	}
 	
-	
-	protected function _num_pages() {
-		
-		$this->num_pages = ceil($this->user_cnt / $this->_limit);
-	}
-	
-	protected function _get_option() {
-		
-		$opts = get_option(self::$option_name, null);
-		
-		$this->_options = ($opts) ? $opts : $this->_options_default;
-	}
 	
 	protected function _set_option($name, $args) {
 		
 		update_option($name, $args);
 	}
 	
-	protected function _offset() {
-		
-		$offset = 0;
-		
-		for($i = 1; $i < $this->page; $i++) {
-			
-			$offset = ($offset + (int) $this->_limit);
-		}
-		
-		$this->_offset = $offset;
-	}
 	
 	protected function _users() {
 		
 		global $wpdb;
 		
-		$q = "SELECT DISTINCT ID FROM {$wpdb->base_prefix}users u INNER JOIN {$wpdb->base_prefix}usermeta um ON u.ID = um.user_id where um.meta_key = 'sso_guid' ORDER BY u.ID ASC LIMIT {$this->_offset}, {$this->_limit}";
+		$q = "SELECT DISTINCT ID FROM {$wpdb->base_prefix}users u INNER JOIN {$wpdb->base_prefix}usermeta um ON u.ID = um.user_id where um.meta_key = 'sso_guid' LIMIT {$this->_offset}, {$this->_limit}";
 		
 		$this->users = $this->_convert($wpdb->get_results($q), 'ID');
 	}
