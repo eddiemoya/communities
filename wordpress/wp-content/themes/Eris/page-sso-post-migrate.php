@@ -16,10 +16,12 @@
 	<p>Number of SSO Users (in system): <?php echo $migrate->user_cnt;?></p>
 	<p>Number of failed user migrations: <?php echo $migrate->num_failed;?></p>
 	<p>Number of SSO Users NOT migrated yet: <?php echo $migrate->to_migrate_cnt;?></p>
+	<p>Last user_id migrated: <?php echo $migrate->max_userid;?></p>
+	<p>Most recent SSO user_id in system: <?php echo $migrate->max_not_migrated_userid;?></p>
 </div>
 
 
-<?php if($migrate->to_migrate_cnt):?>
+<?php if(($migrate->max_userid && $migrate->max_not_migrated_userid) && ($migrate->max_userid != $migrate->max_not_migrated_userid)):?>
 
 <div id="migrate">
 	<form id="migrate-form" method="post">
@@ -87,6 +89,10 @@ class SSO_Post_User_Migration {
 	
 	public $failed = array();
 	
+	public $max_userid;
+	
+	public $max_not_migrated_userid;
+	
 	protected $_limit = 5000;  
 	
 	protected $_offset;
@@ -102,6 +108,8 @@ class SSO_Post_User_Migration {
 		$this->_user_cnt();
 		$this->_migrated_user_cnt();
 		$this->_user_cnt_to_migrate();
+		$this->_max_migrated_userid();
+		$this->_max_not_migrated_userid();
 		$this->_failed();
 	}
 	
@@ -128,6 +136,27 @@ class SSO_Post_User_Migration {
 		
 		$cnt = $wpdb->get_var($q);
 		$this->migrated_cnt = ($cnt) ? $cnt : 0; 
+	}
+	
+	protected function _max_migrated_userid() {
+		
+		global $wpdb;
+		
+		$q = "SELECT MAX(user_id) as max_id FROM {$wpdb->base_prefix}sso_users";
+		
+		$max_id = $wpdb->get_var($q);
+		$this->max_userid = ($max_id) ? $max_id : null;
+		
+	}
+	
+	protected function _max_not_migrated_userid() {
+		
+		global $wpdb;
+		
+		$q = "SELECT MAX(ID) as max_id FROM {$wpdb->base_prefix}users u INNER JOIN {$wpdb->base_prefix}usermeta um ON u.ID = um.user_id where um.meta_key = 'sso_guid'";
+		
+		$max_id = $wpdb->get_var($q);
+		$this->max_not_migrated_userid = ($max_id) ? $max_id : null;
 	}
 	
 	protected function _user_cnt_to_migrate() {
@@ -205,7 +234,7 @@ class SSO_Post_User_Migration {
 		
 		global $wpdb;
 		
-		$q = "SELECT DISTINCT ID FROM {$wpdb->base_prefix}users u INNER JOIN {$wpdb->base_prefix}usermeta um ON u.ID = um.user_id where um.meta_key = 'sso_guid' LIMIT {$this->_offset}, {$this->_limit}";
+		$q = "SELECT DISTINCT ID FROM {$wpdb->base_prefix}users u INNER JOIN {$wpdb->base_prefix}usermeta um ON u.ID = um.user_id where um.meta_key = 'sso_guid' AND u.ID > {$this->max_userid} LIMIT {$this->_offset}, {$this->_limit}";
 		
 		$this->users = $this->_convert($wpdb->get_results($q), 'ID');
 	}
