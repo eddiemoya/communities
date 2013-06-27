@@ -74,12 +74,12 @@
                 display_child_comments($comment); 
             ?></ol><?php
         elseif ($comment->children != "") :
-            ?><a href="#" class="moreComments subcommentLoader" options:parent="<?php echo $comment->comment_ID ?>">Show more comments</a><?php
+            ?><a href="#" class="moreComments" shc:gizmo="mint" shc:options="{commParent: <?php echo $comment->comment_ID ?>}">Show more comments</a><?php
         endif;
     ?>
 </li>
 <?php
     if ($load_more == true) {
-        ?><li class="comment"><a href="#" class="moreComments" options:parent="<?php echo $comment->comment_parent; ?>" options:offset="2">Show more comments</a></li><?php
+        ?><li class="comment"><a href="#" class="moreComments" shc:gizmo="mint" shc:options="{commParent: <?php echo $comment->comment_parent; ?>, offset: 2}">Show more comments</a></li><?php
     }
 ?>
