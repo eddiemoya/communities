@@ -44,12 +44,17 @@ function posts_endpoint($rules){
  */
 function category_post_type_endpoints($rules){
 
-    $newrules = array();
-	$newrules['category/(.+?)/(guide|question|post)s?/?$'] = 'index.php?category_name=$matches[1]&post_type=$matches[2]';
-    $newrules['category/(.+?)/(guide|question|post)s?/page/?([0-9]{1,})/?$'] = 'index.php?category_name=$matches[1]&post_type=$matches[2]&paged=$matches[3]';
-    $newrules['category/(.+?)/videos?/?$'] = 'index.php?category_name=$matches[1]&post_format=video';
+ //    $newrules = array();
+	// $newrules['category/(.+?)/(guide|question|post)s?/?$'] = 'index.php?category_name=$matches[1]&post_type=$matches[2]';
+ //    $newrules['category/(.+?)/(guide|question|post)s?/page/?([0-9]{1,})/?$'] = 'index.php?category_name=$matches[1]&post_type=$matches[2]&paged=$matches[3]';
+ //    $newrules['category/(.+?)/videos?/?$'] = 'index.php?category_name=$matches[1]&post_format=video';
 	//print_pre($newrules + $rules);
-	return $newrules + $rules;
+	//return $newrules + $rules;
+
+	#The new Section Fronts plugin requires that we remove the default rewrite rules for a given taxonomy.
+	#This allows the request to "fall through"  to the post types rewrite rule. The request for taxonomy is
+	#then recreated.
+	return array();
 
 }
 
