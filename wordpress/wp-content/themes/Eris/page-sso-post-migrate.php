@@ -234,7 +234,7 @@ class SSO_Post_User_Migration {
 		
 		global $wpdb;
 		
-		$q = "SELECT DISTINCT ID FROM {$wpdb->base_prefix}users u INNER JOIN {$wpdb->base_prefix}usermeta um ON u.ID = um.user_id where um.meta_key = 'sso_guid' AND u.ID > {$this->max_userid} LIMIT {$this->_offset}, {$this->_limit}";
+		$q = "SELECT DISTINCT ID FROM {$wpdb->base_prefix}users u INNER JOIN {$wpdb->base_prefix}usermeta um ON u.ID = um.user_id where um.meta_key = 'sso_guid' AND u.ID > {$this->max_userid} LIMIT 0, 5000";
 		
 		$this->users = $this->_convert($wpdb->get_results($q), 'ID');
 	}
