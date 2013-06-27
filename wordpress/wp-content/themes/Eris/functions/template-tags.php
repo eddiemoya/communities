@@ -957,7 +957,7 @@ function display_comments($comment_count, $n_comments = 5) {
     }
     
     if ($comment_count > $n_comments) {
-        echo "<li class='comment'><a href='#' class='moreComments nextPage' options:page='2' options:post='$post->ID'>Show more comments</a></li>";
+        echo "<li class='comment'><a href='#' class='moreComments nextPage' shc:gizmo='mint' shc:options='{commPost: $post->ID, commPage: 2}'>Show more comments</a></li>";
     }
 }
 
@@ -1000,7 +1000,7 @@ function display_comments_ajax($postID, $page, $n_comments = 5) {
     
     if ($comment_count > ($n_comments*$page)) {
         $newpage = $page+1;
-        echo "<li class='comment'><a href='#' class='moreComments nextPage' options:page='$newpage'>Show more comments</a></li>";
+        echo "<li class='comment'><a href='#' class='moreComments nextPage' shc:gizmo='mint' shc:options='{commPost: $post->ID, commPage: $newpage}'>Show more comments</a></li>";
     }
 }
 
