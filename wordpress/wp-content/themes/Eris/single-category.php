@@ -6,9 +6,14 @@ get_template_part('parts/header');
 	$term = $term[0];
 	$node = new WP_Node($term->term_id, $term->taxonomy);
 
-	$layout_setting = $node->get_meta_data('section_front_layout');
-
-	print_pre($layout_setting);
+	$filter = get_query_var('sf_filter');
+	if(isset($filter)){
+		$filter = get_query_var('sf_filter');
+	} else {
+		$filter = 'category';
+	}
+	
+	$layout_setting = $node->get_meta_data("sf_category_layout");
 	$layout_id = ($layout_setting > 0 ) ? $layout_setting : $node->post->ID;
 
 	query_posts(
