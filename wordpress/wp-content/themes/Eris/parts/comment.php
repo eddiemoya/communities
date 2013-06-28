@@ -16,19 +16,17 @@
                         <?php echo date( "F j, Y", $date ); ?>
                         <span class="time-stamp"><?php echo date( "g:ia", $date ); ?></span>
                     </time>
-                </div><?php //print_pre($comment); ?>
+                </div>
                 <?php if ($parent_author != "") : ?>
                     <p class="responseTo">In response to <?php echo $parent_author; ?></p>
                 <?php endif; ?>
                 <?php echo ($comment->comment_approved == 1) ? wpautop($comment->comment_content) : $removed_text; ?>
-                <?php if(is_user_logged_in()) { ?>
                 <form class="actions clearfix" id="comment-actions-<?php echo($comment->comment_ID); ?>" method="post">
-					<?php get_partial('parts/flag', array('id' => $comment->comment_ID, 'type' => "comments", 'sub_type' => "comment", 'actions' => $comment->actions, 'brand' => $brand)); ?>
+					<?php get_partial('parts/flag', array('id' => $comment->comment_ID, 'type' => "comments", 'sub_type' => "comment", 'actions' => $comment->actions, 'brand' => $brand, 'logged_in' => is_user_logged_in())); ?>
 					<?php get_partial('parts/vote', array('id' => $comment->comment_ID, 'type' => "comments", 'sub_type' => 'comment', 'actions' => $comment->actions, 'logged_in' => is_user_logged_in())); ?>
 					<?php //get_partial('parts/follow', array('id' => $comment->comment_ID, 'type' => "comments")); ?>
-					<?php //get_partial('parts/share', array('id' => $comment->comment_ID, 'type' => "comments")); ?>
+					<?php get_partial('parts/share', array('id' => $comment->comment_ID, 'type' => "comments")); ?>
                 </form>
-                <?php } ?>
             </section>
         </article> <!-- END ARTICLE CONTENT CONTAINER -->
     

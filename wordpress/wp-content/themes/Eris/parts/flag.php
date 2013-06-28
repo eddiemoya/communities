@@ -1,4 +1,4 @@
-<button type="button" id="flag-comment-<?php echo $id; ?>" name="button_flag" <?php echo (!empty($sub_type)) ? "m.$sub_type-action" : "m:gizmo" ; ?>="flag" class="flag<?php if(!empty($actions['flag'])) { ?> active<?php } ?>" value="flag" title="Flag this <?php echo $type; ?>"
+<button <?php if(!$logged_in) { ?> disabled="TRUE"<?php } ?> type="button" id="flag-comment-<?php echo $id; ?>" name="button_flag" <?php echo (!empty($sub_type)) ? "m.$sub_type-action" : "m:gizmo" ; ?>="flag" class="flag<?php if(!empty($actions['flag'])) { ?> active<?php } ?>" value="flag" title="Flag this <?php echo $type; ?>"
 <?php if(empty($actions['flag'])) { ?>
 shc:gizmo="tooltip"
 shc:gizmo:options="
