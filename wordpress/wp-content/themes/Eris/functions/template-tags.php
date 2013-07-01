@@ -116,12 +116,19 @@ function return_template_part($template){
  */
 function has_screen_name($user_id) {
 	
-	if(get_user_meta($user_id, 'profile_screen_name', true)) {
+	//if(get_user_meta($user_id, 'profile_screen_name', true)) {
+	$user = SSO_User::factory()->get_by_id($user_id);
+	
+	//if this is a non-SSO user, return true to display user_nicename
+	if(! $user->id) {
 		
 		return true;
+		
+	} else {
+		
+		return ($user->screen_name) ? true : false;
 	}
 	
-		return false;
 }
 
 
@@ -213,13 +220,15 @@ function process_front_end_question() {
 	    				//If everything is valid, attempt to set screen name
 	    				if($valid) {
 	    				
-	    					$sso_guid = get_user_sso_guid($current_user->ID);
+	    					//$sso_guid = get_user_sso_guid($current_user->ID);
+	    					$sso_user = SSO_User::factory()->get_by_id($current_user->ID);
 	    					
-	    					$profile = new SSO_Profile;
+	    					//$profile = new SSO_Profile;
 	    					
-	    					$response = $profile->update($sso_guid, array('email' => $current_user->user_email ,
-	    																 'screen_name' => $_POST['screen-name']));
-	    					
+	    					//$response = $profile->update($sso_user->guid, array('email' => $current_user->user_email ,
+	    																 		//'screen_name' => $_POST['screen-name']));
+	    					$response = SSO_Profile_Request::factory()->update($sso_user->guid, array('email' => $current_user->user_email ,
+	    																 		'screen_name' => $_POST['screen-name']));
 	    						//Check for error
 	    						if(isset($response['code'])) {
 	    							
@@ -230,7 +239,10 @@ function process_front_end_question() {
 	    						} else {
 	    							
 	    							//Add user meta for screen name
-	    							update_user_meta($current_user->ID, 'profile_screen_name', $_POST['screen-name']);
+	    							//update_user_meta($current_user->ID, 'profile_screen_name', $_POST['screen-name']);
+	    												
+    								$sso_user->set('screen_name', $_POST['screen-name'])
+    										 ->save();
 	    							
 	    							//Update user's nicename to screen name
 	    							if(! update_user_nicename($current_user->ID, $_POST['screen-name'])) 
@@ -687,8 +699,21 @@ function return_address( $user_id ) {
     $a_address = array();
     $address = '&nbsp;';
     
-    $city  = get_user_meta( $user_id, 'user_city', true );
-    $state = get_user_meta( $user_id, 'user_state', true );
+    $sso_user = SSO_User::factory()->get_by_id($user_id);
+    
+    if($sso_user->guid){
+    	
+    	$city = $sso_user->city;
+    	$state = $sso_user->state;
+    	
+    } else {
+    	
+	    $city  = get_user_meta( $user_id, 'user_city', true );
+	    $state = get_user_meta( $user_id, 'user_state', true );
+    	
+    }
+    
+   
     
     if ( $city != '' )  { $a_address[] = $city; }
     if ( $state != '' ) { $a_address[] = strtoupper($state); }
@@ -754,13 +779,17 @@ function set_screen_name($screen_name) {
 	global $current_user;
 	get_currentuserinfo();
 	
-	$sso_guid = get_user_sso_guid($current_user->ID);
+	$sso_user = SSO_User::factory()->get_by_id($current_user->ID);
+	
+	//$sso_guid = get_user_sso_guid($current_user->ID);
+	//$sso_guid = SSO_User::factory()->get_by_id($current_user->ID)->guid;
 		    					
-	$profile = new SSO_Profile;
+	//$profile = new SSO_Profile;
 	    					
-	$response = $profile->update($sso_guid, array('email' => $current_user->user_email,
-    											  'screen_name' => $screen_name));
-		
+	//$response = $profile->update($sso_user->guid, array('email' => $current_user->user_email,
+    											  //'screen_name' => $screen_name));
+	$response = SSO_Profile_Request::factory()->update($sso_user->guid, array('email' => $current_user->user_email,
+    											  								'screen_name' => $screen_name));
 	//Check for error
 	if(isset($response['code'])) {
 			
@@ -769,7 +798,9 @@ function set_screen_name($screen_name) {
 	} else {
 			
 		//Add user meta for screen name
-		update_user_meta($current_user->ID, 'profile_screen_name', $screen_name);
+		//update_user_meta($current_user->ID, 'profile_screen_name', $screen_name);
+		$sso_user->set('screen_name', $screen_name)
+				 ->save();
 			
 		//Update user's nicename to screen name
 		update_user_nicename($current_user->ID, $screen_name);
@@ -840,7 +871,7 @@ function lookup_expert_comments_count($post_id, $categories) {
     return $return[0]->count;
 }
 
-/*
+/**
  * Sanitizes text of any profanity
  * 
  * @param string $text

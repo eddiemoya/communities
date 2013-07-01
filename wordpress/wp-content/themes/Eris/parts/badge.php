@@ -19,10 +19,23 @@
 ';
     }
     # Create the address
+    
+    $sso_user = SSO_User::factory()->get_by_id($user_id);
+    
     $address = '';
     $city_state = '';
-    $city_state .= get_user_meta( $user_id, 'city', true );
-    $state = get_user_meta( $user_id, 'state', true );
+    
+    if($sso_user->guid) {
+    	
+    	$city_state .= $sso_user->city;
+    	$state = $sso_user->state;
+    	
+    } else {
+    
+	    $city_state .= get_user_meta( $user_id, 'city', true );
+	    $state = get_user_meta( $user_id, 'state', true );
+    }
+    
     if ( $city_state != '' && $state != ''){ $city_state .= ', '; }
     $city_state .= $state;
     if ( $city_state != '' ) { $address = '<address>' . $city_state . '</address>'; }

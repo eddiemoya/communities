@@ -1,6 +1,6 @@
 <?php
 
-include SHCSSO_CONFIG_DIR . 'errors.php';
+//include SHCSSO_CONFIG_DIR . 'errors.php';
 
 //if user is logged in, redirect to home page
 if(is_user_logged_in()) {
@@ -12,7 +12,7 @@ if(is_user_logged_in()) {
 
 $origin = (isset($_GET['origin'])) ? urldecode($_GET['origin']) : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_site_url() . '/');
 $error = (isset($_GET['err'])) ? wp_kses(strip_tags($sso_errors[urldecode($_GET['err'])])) : false;
-$opts = new SSO_Options;
+//$opts = new SSO_Options;
 
 /**
  * @package WordPress
@@ -30,13 +30,8 @@ get_template_part('parts/header'); ?>
 
 		<h6 class="content-headline">Sign in</h6>
 		
-		<?php if($error && ! is_user_logged_in()):?>
-		
-			<div><?php echo $error;?></div>
-			
-		<?php endif;?>
-		
-		<form class="form_login" method="post" action="<?php echo $opts->endpoint . 'shcLogin';?>" shc:gizmo="transFormer">
+			<div id="sso-error"></div>
+	<form class="form_login" method="post" action="" shc:gizmo="transFormer" id="login">
       <ul class="form-fields">
           
           <li>
@@ -64,8 +59,9 @@ get_template_part('parts/header'); ?>
           </li>
           
       </ul>
-      		<input type="hidden" name="service" value="<?php echo $opts->url_append_qs("origin={$origin}&ssologin", urldecode($origin));?>" />
-			<input type="hidden" name="sourceSiteid" value="<?php echo $opts->sso_site_id;?>" />
+      		<input type="hidden" name="service" value="<?php //echo $opts->url_append_qs("origin={$origin}&ssologin", urldecode($origin));?>" />
+			<input type="hidden" name="sourceSiteid" value="<?php //echo $opts->sso_site_id;?>" />
+		
 		</form>
 		
 
