@@ -131,15 +131,18 @@ if(isset($_GET['post-type'])) {
 		
 		if($type == 'aboutme') {
 	
-			if(class_exists('SSO_Profile')) {
+			if(class_exists('SSO_Profile_Request')) {
 				
-				$sso_profile = new SSO_Profile();
+				//$sso_profile = new SSO_Profile();
 				
-				$guid = get_user_sso_guid($profile_user->data->ID);
+				//$guid = get_user_sso_guid($profile_user->data->ID);
+				$sso_user = SSO_User::factory()->get_by_id($profile_user->data->ID);
 
-				if($guid){
+				if($sso_user->guid){
 					
-					$user_profile = $sso_profile->get(get_user_sso_guid($profile_user->data->ID));
+					//$user_profile = $sso_profile->get(get_user_sso_guid($profile_user->data->ID));
+					$user_profile = SSO_Profile_Request::factory()->get($sso_user->guid);
+					//$user_profile = $sso_profile->get($sso_user->guid);
 				}
 			}
 			
