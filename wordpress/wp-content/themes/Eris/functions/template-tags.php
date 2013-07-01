@@ -1126,7 +1126,7 @@ function comm_wp_dropdown_categories( $args = '' ) {
 	return $output;
 }
 
-function lookup_stylesheet() {
+function lookup_stylesheet($stamp = "") {
 	$current = get_queried_object();
 	
 	$css [] = theme_option("brand");
@@ -1158,9 +1158,12 @@ function lookup_stylesheet() {
 			$css = array_merge((array)$css, (array)$css_current);
 		}
 	}
+	
+	$stamp = ($stamp != "") ? "_".$stamp : "";
+	
 	foreach (array_reverse($css) as $file) {
 		if (file_exists(get_stylesheet_directory()."/assets/css/$file.css")) {
-			return get_template_directory_uri()."/assets/css/$file.css";
+			return get_template_directory_uri()."/assets/css/$file$stamp.css";
 		}
 	}
 }
