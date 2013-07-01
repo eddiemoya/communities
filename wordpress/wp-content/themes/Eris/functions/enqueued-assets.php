@@ -56,7 +56,7 @@ function enqueue_scripts() {
         wp_register_script('openID', get_template_directory_uri() . '/assets/js/widgets/shcJSL.openID.js', array(), $javascript_suffix, true);
         wp_register_script('tooltip', get_template_directory_uri() . '/assets/js/widgets/shcJSL.tooltip.js', array(), $javascript_suffix, true);
         wp_register_script('actions', get_template_directory_uri() . '/assets/js/widgets/shcJSL.actions.js', array(), $javascript_suffix, true);
-        wp_register_script('transFormer', get_template_directory_uri() . '/assets/js/widgets/shcJSL.transFormer.js', array(), $javascript_suffix, true);
+        wp_register_script('transFormer', get_template_directory_uri() . '/assets/js/widgets/shcJSL.transFormer-2.js', array(), $javascript_suffix, true);
         wp_register_script('flagger', get_template_directory_uri() . '/assets/js/widgets/shcJSL.flagger.js', array(), $javascript_suffix, true);
 		wp_register_script('responslide', get_template_directory_uri() . '/assets/js/widgets/shcJSL.responslide.js', array(), $javascript_suffix, true);
         wp_register_script('wp-polls', get_template_directory_uri() . '/assets/js/widgets/polls.js', array(), $javascript_suffix, true);
