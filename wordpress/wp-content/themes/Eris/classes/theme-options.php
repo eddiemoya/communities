@@ -460,11 +460,11 @@ class Theme_Options {
 			
 			if (isset($input["bust_stylesheets"])) {
 				unset($input["bust_stylesheets"]);
-				$input["bust_stylesheets_suffix"] = time();
+				$input["stylesheets_timestamp"] = time();
 			}
 			if (isset($input["bust_javascript"])) {
 				unset($input["bust_javascript"]);
-				$input["bust_javascript_suffix"] = time();
+				$input["javascript_timestamp"] = time();
 			}
 			
 			foreach ( $this->checkboxes as $id ) {
