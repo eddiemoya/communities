@@ -1,5 +1,6 @@
-<button <?php if(!$logged_in) { ?> disabled="TRUE"<?php } ?> type="button" id="flag-comment-<?php echo $id; ?>" name="button_flag" <?php echo (!empty($sub_type)) ? "m.$sub_type-action" : "m:gizmo" ; ?>="flag" class="flag<?php if(!empty($actions['flag'])) { ?> active<?php } ?>" value="flag" title="Flag this <?php echo $type; ?>"
+<button type="button" id="flag-comment-<?php echo $id; ?>" name="button_flag" <?php echo (!empty($sub_type)) ? "m.$sub_type-action" : "m:gizmo" ; ?>="flag" class="flag<?php if(!empty($actions['flag'])) { ?> active<?php } ?>" value="flag" title="Flag this <?php echo $type; ?>"
 <?php if(empty($actions['flag'])) { ?>
+<?php if($logged_in) { ?>
 shc:gizmo="tooltip"
 shc:gizmo:options="
 	{
@@ -52,6 +53,9 @@ shc:gizmo:options="
 		}
 	}
 "
+<?php } else { ?> 
+shc:gizmo:options="{moodle:{width:480,target:ajaxdata.ajaxurl,type:'POST',data:{action:'get_template_ajax',template:'page-login'}}}" shc:gizmo="moodle"
+<?php } ?>
 <?php } ?>>flag</button>
 <div id="flagForm-<?php echo $id; ?>" class="hide">
 	<!--<form class="flag-form" id="commentForm-<?php echo $id; ?>" method="post" shc:gizmo="transFormer">-->
