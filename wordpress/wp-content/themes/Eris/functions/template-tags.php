@@ -1250,7 +1250,19 @@ function meta_description(){
     }
 
     if(empty($description)) {
+
+    	$filters = array('post', 'guide', 'question');
+
+    	if(in_array($wp_query->query_vars['post_type'], $filters)){
+
+    		$node = new WP_Node($wp_query->queried_object->term_id, $wp_query->queried_object->taxonomy, 'id');
+       		$description = $node->get_meta_data("description_".$wp_query->query_vars['post_type']);
+
+    	} else {
+
           $description = get_bloginfo('description');
+          
+      	}
         //$description = 'single';
     }
 
