@@ -1068,3 +1068,41 @@ function com_canonical() {
    
     echo "<link rel='canonical' href='$link' />\n";
 }
+
+
+
+
+add_action( 'category_edit_form_fields', 'taxonomy_meta_data_form', 10, 2);
+//add_action( 'skcategory_edit_form_fields', 'taxonomy_meta_data_form');
+add_action( 'edited_term','save_section', 10, 3);
+
+function taxonomy_meta_data_form($tag, $taxonomy = null){
+
+    get_partial('parts/forms/meta-description', meta_description_form_data('post', $tag));
+    get_partial('parts/forms/meta-description', meta_description_form_data('guide', $tag));
+    get_partial('parts/forms/meta-description', meta_description_form_data('question', $tag));
+    get_partial('parts/forms/meta-description', meta_description_form_data('video', $tag));
+}
+
+function meta_description_form_data($endpoint, $tag){
+    $node = new WP_Node($tag->term_id, $tag->taxonomy, 'id');
+    $node->register_term_meta();
+
+    $settings = array();
+    $settings['value'] = $node->get_meta_data("description_{$endpoint}");
+    $settings['name'] = "description_{$endpoint}";
+    $settings['css_id'] = "description_{$endpoint}";
+    $settings['label'] = "Description for " . ucfirst($endpoint) . "s";
+
+    return $settings;
+}
+
+function save_section($term_id, $tt_id = null, $taxonomy = null){
+
+    $node = new WP_Node($term_id, $taxonomy, 'id');
+    $node->update_meta_data('description_video', $_POST['description_video']);
+    $node->update_meta_data('description_guide', $_POST['description_guide']);
+    $node->update_meta_data('description_question', $_POST['description_question']);
+    $node->update_meta_data('description_post', $_POST['description_post']);
+}
+
