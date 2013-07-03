@@ -1126,7 +1126,7 @@ function comm_wp_dropdown_categories( $args = '' ) {
 	return $output;
 }
 
-function lookup_stylesheet() {
+function lookup_stylesheet($stamp = "") {
 	$current = get_queried_object();
 	
 	$css [] = theme_option("brand");
@@ -1158,9 +1158,12 @@ function lookup_stylesheet() {
 			$css = array_merge((array)$css, (array)$css_current);
 		}
 	}
+	
+	$stamp = ($stamp != "") ? "_".$stamp : "";
+	
 	foreach (array_reverse($css) as $file) {
 		if (file_exists(get_stylesheet_directory()."/assets/css/$file.css")) {
-			return get_template_directory_uri()."/assets/css/$file.css";
+			return get_template_directory_uri()."/assets/css/$file$stamp.css";
 		}
 	}
 }
@@ -1228,6 +1231,7 @@ function get_excerpt_by_id($post_id){
 function meta_description(){
     global $wp_query;
 
+//print_pre($wp_query);
     if ( !$id = $wp_query->get_queried_object_id() )
         return;
 
@@ -1250,7 +1254,24 @@ function meta_description(){
     }
 
     if(empty($description)) {
+
+    	$filters = array('post', 'guide', 'question');
+
+    	if(in_array($wp_query->query_vars['post_type'], $filters) || in_array($wp_query->query_vars['post_type'][0], $filters) ){
+
+    		$node = new WP_Node($wp_query->queried_object->term_id, $wp_query->queried_object->taxonomy, 'id');
+    		//print_pre($node);
+    		if($wp_query->query_vars['post_format'] == 'post-format-video'){
+				$description = $node->get_meta_data("description_video");   
+   			 } else {
+        			$description = $node->get_meta_data("description_".$wp_query->query_vars['post_type']);
+        		}
+
+    	} else {
+
           $description = get_bloginfo('description');
+
+      	}
         //$description = 'single';
     }
 
