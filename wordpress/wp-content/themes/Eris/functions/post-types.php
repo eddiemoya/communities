@@ -89,7 +89,7 @@ function register_buying_guides_type() {
         'has_archive' => true,
         'hierarchical' => false,
         'menu_position' => 7,
-        'supports' => array('title', 'editor', 'author', 'comments', 'thumbnail'),
+        'supports' => array('title', 'editor', 'author', 'comments', 'thumbnail', 'excerpt'),
         //'menu_icon' => get_template_directory_uri() . '/assets/img/admin/questions_admin_icon.gif',
         'taxonomies' => array('category', 'post_tag')
     );
