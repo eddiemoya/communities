@@ -116,7 +116,6 @@ function return_template_part($template){
  */
 function has_screen_name($user_id) {
 	
-	//if(get_user_meta($user_id, 'profile_screen_name', true)) {
 	$user = SSO_User::factory()->get_by_id($user_id);
 	
 	//if this is a non-SSO user, return true to display user_nicename
@@ -551,8 +550,10 @@ function get_profile_url( $user_id ) {
 	
 	wp_cache_flush();
 	
+	$guid = SSO_User::factory()->get_by_id($user_id)->guid;
+	
     # create a fallback screen name if one has not yet been set by sso
-    if ( !has_screen_name( $user_id )) {
+    if ( !has_screen_name( $user_id ) && $guid) {
         $link = home_url( '/' ) . '?author=' . $user_id;
     }
     else {
@@ -781,13 +782,6 @@ function set_screen_name($screen_name) {
 	
 	$sso_user = SSO_User::factory()->get_by_id($current_user->ID);
 	
-	//$sso_guid = get_user_sso_guid($current_user->ID);
-	//$sso_guid = SSO_User::factory()->get_by_id($current_user->ID)->guid;
-		    					
-	//$profile = new SSO_Profile;
-	    					
-	//$response = $profile->update($sso_user->guid, array('email' => $current_user->user_email,
-    											  //'screen_name' => $screen_name));
 	$response = SSO_Profile_Request::factory()->update($sso_user->guid, array('email' => $current_user->user_email,
     											  								'screen_name' => $screen_name));
 	//Check for error
@@ -798,7 +792,6 @@ function set_screen_name($screen_name) {
 	} else {
 			
 		//Add user meta for screen name
-		//update_user_meta($current_user->ID, 'profile_screen_name', $screen_name);
 		$sso_user->set('screen_name', $screen_name)
 				 ->save();
 			

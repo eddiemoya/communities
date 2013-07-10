@@ -1,13 +1,9 @@
 <?php
-
-    //$concat = (strpos($author_url, '?') !== false) ? '&post-type=' : '?post-type=';
-
-	$concat = (SSO_User::factory()->get_by_id($profile_user->ID)->screen_name) ? '?post-type=' : '&post-type=';
-    //$concat = has_screen_name( $profile_user->ID ) ? '?post-type=' : '&post-type=';
-
-    //$concat = has_screen_name( $profile_user->ID ) ? '?post-type=' : '&post-type=';
-    
-
+	$SSO_User = SSO_User::factory()->get_by_id($profile_user->ID);
+	
+	$is_sso_user = ($SSO_User->guid) ? true : false;
+	
+	$concat = (($is_sso_user && $SSO_User->screen_name) || (! $is_sso_user)) ? '?post-type=' : '&post-type=';
     
     if ( user_can( $profile_user->ID, "show_badge" ) ) {
         $badge_page = get_page_by_title( 'Types of Badges' );

@@ -45,7 +45,7 @@ if($profile_type != 'myprofile') {
 	
 }
 
-# var_dump($user_activities->nav);
+# var_dump($user_activities->nav);profile
 
 //$available_tabs[] = 'review';
 $available_tabs = empty( $user_activities->nav ) ? array() : $user_activities->nav;
@@ -95,10 +95,7 @@ if(isset($_GET['post-type'])) {
 				$activities = $user_activities->page($page)
 												->get_user_posts_by_type($type)
 												->get_expert_answers()
-												->posts;		
-					/*echo '<pre>';
-					var_dump($activities);
-					exit;*/					
+												->posts;					
 			
 			} else {
 				# The other post types are standardized.
@@ -133,16 +130,12 @@ if(isset($_GET['post-type'])) {
 	
 			if(class_exists('SSO_Profile_Request')) {
 				
-				//$sso_profile = new SSO_Profile();
-				
-				//$guid = get_user_sso_guid($profile_user->data->ID);
 				$sso_user = SSO_User::factory()->get_by_id($profile_user->data->ID);
 
 				if($sso_user->guid){
 					
-					//$user_profile = $sso_profile->get(get_user_sso_guid($profile_user->data->ID));
 					$user_profile = SSO_Profile_Request::factory()->get($sso_user->guid);
-					//$user_profile = $sso_profile->get($sso_user->guid);
+					
 				}
 			}
 			
