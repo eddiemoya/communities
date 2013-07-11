@@ -34,8 +34,8 @@
 				        
     					<!-- <li><a href="<?php //echo wp_logout_url( get_permalink() ); ?>" title="Logout" class="bold">Logout</a></li> -->
 				    <?php else: ?>
-    					<li><a href="<?php echo get_site_url(); ?>/login/" title="Login" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">Login</a></li>
-						<li><a href="<?php echo get_site_url(); ?>/register/" title="Sign Up: Join the Community" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-register'}}}">Join the community</a></li>
+    					<li><a href="<?php echo get_site_url(); ?>/login/" title="Login" id="login-link" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">Login</a></li>
+						<li><a href="<?php echo get_site_url(); ?>/register/" title="Sign Up: Join the Community" id="registration-link" class="bold" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-register'}}}">Join the community</a></li>
 					<?php endif; ?>
 				</ul>
 			</li>
