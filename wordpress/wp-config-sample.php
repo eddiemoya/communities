@@ -16,13 +16,13 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'communities');
+define('DB_NAME', 'database_name_here');
 
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', 'username_here');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'root');
+define('DB_PASSWORD', 'password_here');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -42,14 +42,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'c-$+b/v+$*>JD- h1!he-dEIi (4 o+mt<Ln,*uI::8I|mbDo+sL?if>e6j-oTJp');
-define('SECURE_AUTH_KEY',  'R@)o4}w;w[o<r0n7O5?.KT^;3r-=}N?^ v7ZMvGr&-oN[iS_ ct^rCzU[ke|PVAh');
-define('LOGGED_IN_KEY',    '-l*e AY,1UMs7n+_tku,toW`EsPd?X%fVzP+.tGCX6>9#U%piic>_Jl$ Nn$eiRZ');
-define('NONCE_KEY',        'INp?Is-?R;[:G=5$7BkX&wF+Xm,`#%iw^9qa+BA=&3;S>&@KHSYr|w|~capstr7y');
-define('AUTH_SALT',        '-_hUQ~152FM}%!cFl:~lwUMFX<j?5}oqW*>^@DiAb(ASrn7jYA)! }K<DI]B0H]c');
-define('SECURE_AUTH_SALT', 'o]H[,$o?B-DURuR3gt/i{Bx|!-`TA%i,utwj}>xM;+wBwfmh|D`|H)U&7+uDlI4/');
-define('LOGGED_IN_SALT',   '3EGl#a9j_@Z|@DDxXt|5ZtC75r(vUi|wlKLIjxTE)wx$I;,O 44,^*YJ(QrS(dsu');
-define('NONCE_SALT',       '1sE=()DvxU4G(1HT-bX2|A1X+RscZhuVVx-DAB10YTBOe1/hi|cV~H3ES_am=~>l');
+define('AUTH_KEY',         'put your unique phrase here');
+define('SECURE_AUTH_KEY',  'put your unique phrase here');
+define('LOGGED_IN_KEY',    'put your unique phrase here');
+define('NONCE_KEY',        'put your unique phrase here');
+define('AUTH_SALT',        'put your unique phrase here');
+define('SECURE_AUTH_SALT', 'put your unique phrase here');
+define('LOGGED_IN_SALT',   'put your unique phrase here');
+define('NONCE_SALT',       'put your unique phrase here');
 
 /**#@-*/
 
@@ -79,17 +79,6 @@ define('WPLANG', '');
  * in their development environments.
  */
 define('WP_DEBUG', false);
-
-
-define( 'WP_CONTENT_DIR', '/Volumes/STATIVUS/Projects/Communities/wordpress/wp-content' );
-define( 'WP_PLUGIN_DIR', '/Volumes/STATIVUS/Projects/Communities/wordpress/wp-content/plugins' );
-define( 'PLUGINDIR', '/Volumes/STATIVUS/Projects/Communities/wordpress/wp-content/plugins' );
-
-define( 'WP_SITEURL', 'com.loc');
-define( 'WP_HOME',    'com.loc');
-define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp-content');
-define( 'WP_PLUGIN_URL',  'http://' . $_SERVER['HTTP_HOST'] . '/wp-content/plugins');
-//define( 'UPLOADS',  'wp-content/uploads' );
 
 /* That's all, stop editing! Happy blogging. */
 
