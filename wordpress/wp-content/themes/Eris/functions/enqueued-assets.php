@@ -25,6 +25,13 @@ function enqueue_scripts() {
             #'cart_link'         => cart_checkout_link(false),
          );
         
+        $machina = array(
+            'path' => get_template_directory_uri() . '/assets/js/machina/gizmos/',
+            'require' => array(
+                get_template_directory_uri() . '/assets/js/vendor/bean/bean.min.js'
+            )
+        );
+
         //This condition is just an example, here we only needed to track omniture on category archives.
        // if (is_category()) { $data['omchannel'] = single_cat_title('', false); }
         $channel = (theme_option("brand") == 'kmart')? "myKmart Community":"mySears Community";
@@ -66,7 +73,9 @@ function enqueue_scripts() {
         wp_register_script('carousel', get_template_directory_uri() . '/assets/js/widgets/shcJSL.carousel'.$javascript_suffix.'.js', array(), null, true);
         wp_register_script('mint', get_template_directory_uri() . '/assets/js/widgets/shcJSL.mint'.$javascript_suffix.'.js', array(), null, true);
 
-        
+        wp_register_script('Machina', get_template_directory_uri() . '/assets/js/machina/machina-1.0'.$javascript_suffix.'.js', array(), null, true);
+
+
 	    wp_register_script('omniture_scode', get_template_directory_uri() . '/assets/js/vendor/omniture.'.theme_option("brand").''.$javascript_suffix.'.js', array(), null, true);
         wp_register_script('omniture_start', get_template_directory_uri() . '/assets/js/vendor/omniture.start'.$javascript_suffix.'.js', array('omniture_scode'), null, true);
 
@@ -94,12 +103,14 @@ function enqueue_scripts() {
         wp_enqueue_script('wp-polls');
         wp_enqueue_script('omniture_scode');
         wp_enqueue_script('omniture_start');
+        wp_enqueue_script('Machina');
         // wp_enqueue_script('addthis');
 
         wp_localize_script('jquery', 'ajaxdata', $data);
         wp_localize_script('omniture_start', 's_properties', $s_properties);
 
         wp_localize_script('jquery', 'ajaxdata', $data);
+        wp_localize_script('Machina', 'machina', $machina);
         //wp_localize_script('addthis', 's.pageName', $pageName);    		
 
         
