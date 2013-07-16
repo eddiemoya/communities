@@ -1,7 +1,7 @@
 #adding line to test stuff
 set(:user) { "stateadm" }
  
-set(:domain) { "uxint" }
+set(:domain) { "shcphp" }
 set(:application) { "communities" }
 set(:repository) { "git@github.com:dasfisch/communities.git" }
  
@@ -13,17 +13,17 @@ role :web, "#{domain}"  # Your HTTP server, Apache/etc
 role :app, "#{domain}"  # This may be the same as your `Web` server
 role :db, domain, :primary => true
  
-
+ 
 set :branch do
   current_branch = `git branch`.match(/\* (\S+)\s/m)[1]
-
+ 
   branch = Capistrano::CLI.ui.ask "Which branch would you like to deploy to INT with WP 3.6? (current branch: [#{current_branch}]) "
   branch = current_branch if branch.empty?
   branch
 end
-
-set (:deploy_to) { "/opt/stateapps/communities.3.6" }
-set (:app_loc) { "/appl/communities.3.6/www/wp-content" }
+ 
+set (:deploy_to) { "/home/stateadm/apps/comm36" }
+set (:app_loc) { "/var/www/comm36/community/wp-content" }
 set :deploy_via, :remote_cache
  
 set :move_wp_content do
@@ -31,4 +31,3 @@ set :move_wp_content do
   run "cp -R #{deploy_to}/current/wordpress/wp-content/plugins/* #{app_loc}/plugins"
   run "cp -R #{deploy_to}/current/wordpress/wp-content/themes/* #{app_loc}/themes"
 end
-
