@@ -187,7 +187,6 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 	
 	function checkSN(options, target) {
 		var valid;	// Is screen name valid;
-		
 		if (window['ajaxdata'] && window['ajaxdata']['ajaxurl']) {
 			jQuery.ajax({
 				async: false,
@@ -200,14 +199,14 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				url: window['ajaxdata']['ajaxurl']
 			}).success(function(data, status, xhr) {
 				if (data == "true"){ 
-					blunders.remove(this);
+					blunders.remove(target);
 					valid = true
 				} else {
-					blunders[blunders.length] = this;
+					blunders[blunders.length] = target;
 					valid = false;
 				}
 			}).error(function(xhr, status, message) {
-				blunders.remove(this);
+				blunders.remove(target);
 				valid = true;
 			})
 		}
@@ -219,7 +218,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				
 		valid = checkReqd();
 		if (valid && blunders.length > 0) valid = false;
-		
+
 		return valid;
 	}
 }
@@ -266,11 +265,8 @@ shcJSL.methods.transFormer = function(target, options) {
 		}
 		
 		if (success === false) event.preventDefault();
-		else {
-			$(form).trigger('valid', [event]);
-			
+		else $(form).trigger('valid', [event]);
 			//return true;
-		}
 	})
 	
 }
