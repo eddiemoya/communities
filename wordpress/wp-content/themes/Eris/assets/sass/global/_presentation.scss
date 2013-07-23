@@ -758,6 +758,7 @@ textarea.discussion {
 #moodle_container .forgot-password, body > .forgot-password,
 #moodle_container .update-zipcode, body > .update-zipcode {
   padding:20px;
+  @include box_sizing(border-box);
 }
 
 .sign-in, .register, .forgot-password, .update-zipcode {

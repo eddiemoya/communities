@@ -52,13 +52,10 @@
 // ==============================
 // PRESENTATION
 // ==============================
-
 #moodle_overlay {
-  background:rgba(0,0,0,.5);
-}
-
-.no-rgba #moodle_overlay {
-  background:transparent image-url("background_overlay_no-rgba.png") repeat 0px 0px;
+  background:rgba(0,0,0,.5) image-url("gizmos/moodle/background_loading_white-transparent.gif") no-repeat center center;
+  background-image:image-url("gizmos/moodle/background_overlay_no-rgba.png")\9;
+  background-repeat:repeat\9;
 }
 
 #moodle_window {

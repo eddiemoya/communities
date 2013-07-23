@@ -39,7 +39,7 @@
  				make		= dom.create,
  				self		= this,
  				modal		= make('div','modal-window',{id:'moodle_window'}),
- 				container	= make('section','modal-container',{id:'moodle_container'}),
+ 				container	= make('div','modal-container',{id:'moodle_container'}),
  				overlay		= make('div','overlay',{id:'moodle_overlay'}),
  				// Default Modal properties;
  				defaults = {
@@ -62,10 +62,13 @@
 						top		= ((window.innerHeight || document.documentElement.clientHeight) - moodle.offsetHeight)/2,
 						styles	= "";
 
- 					(left < 0)? styles = styles + "left:" + 0 + "px;":styles = styles + "left:" + left + "px;";
- 					(top < 0)? styles = styles + "top:" + 0 + "px;":styles = styles + "top:" + top + "px;";
-						
- 					moodle.style.cssText += styles;
+						alert(moodle.offsetWidth);
+
+ 					(top < 0)? styles = styles + " top:" + 0 + "px;":styles = styles + " top:" + top + "px;";
+ 					(left < 0)? styles = styles + " left:" + 0 + "px;":styles = styles + " left:" + left + "px;";
+
+ 					moodle.style.cssText = styles;
+ 					alert(moodle.style.cssText)
  					return moodle;
  				},
  				scrubModal = function() {
@@ -121,10 +124,10 @@
 					error = function() {
 						var m = Machina,
 							dom = m.DOM,
-							content = dom.create("article","span12 content-container",{"id":"moodle_error"}),
+							content = dom.create("div","span12 content-container",{"id":"moodle_error"}),
 							section	= dom.append(
 								// parent;
-								dom.create("section","content-body clearfix"),
+								dom.create("div","content-body clearfix"),
 								[
 									(dom.create("h6","content-headline")).appendChild(document.createTextNode("Oops!")),
 									(dom.create("p")).appendChild(document.createTextNode("The modal window has encountered a problem."))
@@ -152,7 +155,7 @@
 									url: target,
 									type: settings.type,
 									success: function(xhr) {
-										var content = Machina.DOM.create("div");
+										var content = Machina.DOM.create("div","clearfix");
 
 										content.innerHTML = xhr.responseText;
 										compose(content, xhr);
@@ -229,7 +232,8 @@
 
 					e.on(document,'keyup',escapeModal,{data:settings});
 
-					modal.style.cssText = modal.style.cssText.replace(/display: ?none;/,"visibility:hidden;");
+					modal.style.visibility = 'hidden';
+					modal.style.display = 'block';
 					centerModal();
 					modal.style.visibility = "visible";
 					e.fire(Moodle, "moodle.update");

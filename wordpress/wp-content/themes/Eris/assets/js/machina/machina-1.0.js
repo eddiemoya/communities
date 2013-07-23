@@ -19,18 +19,28 @@
 				return new Machina.fn.init(selector);
 		};
 
+		// If a configuration object was passed into Machina store it
+		// in Machina.conf;
 		if (conf) Machina.conf = conf;
 
 		Machina.fn = Machina.prototype = {
+			// This is the main selector of Machina. When you pass an element through either
+			// Machina(element) or M(element) this is the function it is calling. It then puts
+			// that element into an array and then applies all the functions in 
+			// Machina.method as methods to the array. 
 			init: function( element ) {
 				// This only supports passing of elements or arrays, not strings;
+				// Arrays are not currently supported, but can be in the future;
 				if (typeof element == "object") {
 					var collection = [],
 						type;
 
+					// What type of element was passed?
 					type = Machina.fn.type(element);
 
+					// Is it a single HTML element?
 					if (type.indexOf("HTML") != -1 || element.nodeName) {
+						// If it is a single HTML element than put it into a new array;
 						collection.push(element);
 					}
 					else if (type == "Array") {
@@ -38,7 +48,7 @@
 						 * @todo Set up passing of Arrays to Machina
 						 */
 					} else return undefined;
-					// Bind methods from shcJSL.methods to the output Array
+					// Bind methods from Machina.methods to the output Array
 					// Use a function call for the body of 'FOR' loop instead of
 					// braces.
 					for (var method in Machina.methods)(function(n,m) {
@@ -49,7 +59,7 @@
 							return collection;
 						}
 					}(method, Machina.methods[method]))
-						
+					// Return the new array that has the Machina.methods	
 					return collection;
 
 				} else return undefined;
@@ -60,6 +70,12 @@
 		// Give the init function the Machina prototype for later instantiation
 		Machina.fn.init.prototype = Machina.fn;
 		
+		/*
+			This is the Machina activate function. This is the function that is called
+			automatically on page load. It can also be called after page load with the 
+			optional parameter of a parent element - this is for instantiating Machina
+			widgets after page load, i.e. on content loaded from an AJAX call.
+		 */
 		Machina.activate = Machina.fn.activate = function(event, parent) {
 			if (window.removeEventListener) window.removeEventListener("load",arguments.callee, false);
 			var Gizmos,
@@ -275,9 +291,10 @@
 				name	= function(name) {return (name.indexOf('.js') == -1)? name + ".js":(m.DOM.create("a",null,{href:name})).pathname.split('/').pop();},
 				queue	= function(file, callback) {
 					file.onload = file.onreadystatechange = function() {
-						if (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete') {
-							callback();
+						if (!file.readyState || file.readyState == 'loaded' || file.readyState == 'complete') {
 							file.onload = file.onreadystatechange = null;
+							callback();
+							
 						}
 					}
 				};				
