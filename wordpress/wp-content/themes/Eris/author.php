@@ -89,7 +89,7 @@ if(isset($_GET['post-type'])) {
 		}
 		
 		# Posts
-		if($type == 'post' || $type == 'guides' || $type == 'question') {
+		if($type == 'post' || $type == 'guide' || $type == 'question') {
 		  # Questions are a special type of post here - they may include expert responses.
 			if($type == 'question') {
 				$activities = $user_activities->page($page)

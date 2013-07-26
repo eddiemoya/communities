@@ -8,14 +8,17 @@
 var_dump(SSO_Profile_Request::factory()->get(41336335));
 exit;*/
 
-$trash = new WP_Query(array('post_type'	=> 'any',
-							'post_status' => array('publish', 'draft'),
-							'paged' => (int) -1
-							));
-
-echo '<pre>';
-var_dump($trash);
-exit;
+     $args =  			array('author'				=> 1,
+						'post_status'		=> 'publish',
+						'post_type'			=> 'guide',
+						'order'				=> 'DESC',
+						'orderby'			=> 'date',
+						'posts_per_page'	=> 20,
+						'paged'				=> 1);
+     
+     echo '<pre>';
+     var_dump(count(get_posts($args)));
+     exit;
 /*$rr = RR_User_Reviews::factory(35497172)
 						->get();*/
 
