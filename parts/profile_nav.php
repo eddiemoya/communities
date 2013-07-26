@@ -61,9 +61,9 @@
             "name" => "Posts",
             "url" => $author_url . $concat . 'post'
         ),
-        "guides" => array(
+        "guide" => array(
             "name" => "Buying Guides",
-            "url" => $author_url . $concat . 'guides'
+            "url" => $author_url . $concat . 'guide'
         )
     );
   

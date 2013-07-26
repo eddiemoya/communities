@@ -777,6 +777,7 @@ class User_Profile {
 			}
 		}
 		
+		
 			//If there's blank and comment, remove blank
 		 	if(in_array('', $this->nav) && in_array('comment', $this->nav)) {
 		 		
