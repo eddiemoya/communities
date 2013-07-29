@@ -29,7 +29,13 @@
 		<div class="span10">
 			
 			<div class="content-details clearfix">
-				<span class="content-category"><a href="<?php echo get_category_link($cat->term_id); ?>" title="<?php echo $cat->cat_name; ?>"><?php echo $cat->cat_name; ?></a></span>
+				<span class="content-category">
+				<?php if(empty($cat->parent)) { ?>
+					<a href="<?php echo get_category_link($cat->term_id); ?>" title="<?php echo $cat->cat_name; ?>"><?php echo $cat->cat_name; ?></a>
+				<?php } else { ?>
+					<?php echo($cat->cat_name); ?>
+				<?php } ?>
+				</span>
 				<?php get_partial( 'parts/space_date_time', array( "timestamp" => get_the_time( 'U' ) ) ); ?>
 			</div>
 			
