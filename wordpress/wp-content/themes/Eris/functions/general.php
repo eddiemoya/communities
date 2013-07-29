@@ -48,3 +48,6 @@ function update_zipcode_cookie($zip) {
 if ($_POST["update_zipcode"] != "") {
 	update_zipcode_cookie($_POST["update_zipcode"]);
 }
+
+//This is to remove generator meta tag
+remove_action('wp_head', 'wp_generator');
