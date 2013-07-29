@@ -10,8 +10,15 @@
  * * Adapted from shcJSL library 2.0 (unreleased) and jQuery structure
  */
 
+/**
+ * @param {Object} [conf] Configuration options that are passed into Machina on initialization
+ */
 (function(conf) {
 	
+	/**
+	 * Machina object
+	 * @return {Object} Returns the Machina object after initializing
+	 */
 	var Machina = (function() {
 		// Define a local copy of Machina
 		var Machina = function(selector) {
@@ -19,18 +26,32 @@
 				return new Machina.fn.init(selector);
 		};
 
-		// If a configuration object was passed into Machina store it
-		// in Machina.conf;
+		/**
+		 * If configurations were passed in the conf argument, store those 
+		 * properties in the Machina.conf property
+		 * @type {Object}
+		 */
 		if (conf) Machina.conf = conf;
 
+		/**
+		 * Core Machina functions. All these functions are called using M.[method]
+		 * @type {Object}
+		 */
 		Machina.fn = Machina.prototype = {
-			// This is the main selector of Machina. When you pass an element through either
-			// Machina(element) or M(element) this is the function it is calling. It then puts
-			// that element into an array and then applies all the functions in 
-			// Machina.method as methods to the array. 
+			/**
+			 * This is the main Machina selector. When you pass an element or array 
+			 * through Machina(element) or M(element) this is what is being called.
+			 *
+			 * Machina then takes the element and puts it in to an array, with the
+			 * Gizmos init methods from Machina.methods as methods that you can call 
+			 * on the element(s).
+			 *
+			 * @todo allow Machina to take an array.
+			 */
 			init: function( element ) {
-				// This only supports passing of elements or arrays, not strings;
-				// Arrays are not currently supported, but can be in the future;
+				/**
+				 * Check to make sure what is being passed is not a string.
+				 */
 				if (typeof element == "object") {
 					var collection = [],
 						type;
@@ -48,9 +69,13 @@
 						 * @todo Set up passing of Arrays to Machina
 						 */
 					} else return undefined;
-					// Bind methods from Machina.methods to the output Array
-					// Use a function call for the body of 'FOR' loop instead of
-					// braces.
+					/**
+					 * Go through the methods listed in Machina.methods and attach each
+					 * as a method to the new array.
+					 * @param  {String} 	n method name
+					 * @param  {Function} 	m method function
+					 * @return {Array}   	New array with methods attached
+					 */
 					for (var method in Machina.methods)(function(n,m) {
 						// Create a new scope
 						// n/m are key/value of the method object (n = method name, m = method)
@@ -76,7 +101,18 @@
 			optional parameter of a parent element - this is for instantiating Machina
 			widgets after page load, i.e. on content loaded from an AJAX call.
 		 */
+		/**
+		 * This is the function that initiates Machina. It is called automatically on
+		 * documentReady or page load. It can be called after page load and the scope
+		 * of activation can be restricted to the scope of activating new widgets only
+		 * as child nodes to the parent element.
+		 * @param  {Object} event  Event object is activated as an event
+		 * @param  {Object} parent HTMLElement to restrict scope of activation
+		 */
 		Machina.activate = Machina.fn.activate = function(event, parent) {
+			/**
+			 * If Machina is activated through window load, remove the window load event.
+			 */
 			if (window.removeEventListener) window.removeEventListener("load",arguments.callee, false);
 			var Gizmos,
 				Dependencies 	= [],
@@ -97,17 +133,22 @@
 
 			if (l > 0) {
 				do {
-					var element = Gizmos[i],
-						gizmo 	= element.getAttribute("m:gizmo"),
-						options	= element.getAttribute("m:gizmo:options"),
-						plugin; 
+					var element = Gizmos[i],								// Gizmo element
+						gizmo 	= element.getAttribute("m:gizmo"), 			// Get the name of the Gizmo || undefined;
+						options	= element.getAttribute("m:gizmo:options"), 	// Get the Gizmo options || undefined
+						plugin; 											// Arry it all Gizmo's for this element
 
+					// Store the element in the master Gizmo schema with element's options || {};
 					Schema.put(element, (options)? JSON.parse("{" + options + "}"):{});
 
+					// Are there multiple Gizmos on this element?
+					// Ex. m:gizmo="moodle, openID"
 					(gizmo.indexOf(",") == -1)? (plugin = []).push(gizmo):plugin = gizmo.split(/, ?/g);
+					// Set up loop for all plugins on this element;
 					var y = plugin.length, z = parseInt(y - 1);
 
 					do {
+						// Add plug in to a list of required Machina plugins to load
 						var g = plugin[z];
 						(Reqs[g])? Reqs[g].push(element):(Reqs[g] = []).push(element);
 					} while(z--);
@@ -115,8 +156,13 @@
 			};
 
 			// To support IE8, can't use Object.keys for loop;
+			// Use a for..loop function to create scope - otherwise the last
+			// plugin is the one that will always get loaded;
 			for (var g in Reqs) (function(gizmo, array) {
+				// Add scripts to list of Dependencies for Machina
 				Dependencies.push({script:g, callback: function() {
+					// Use a try loop so one bad script doesn't fail to load the rest of
+					// Machina's scripts;
 					try {
 						Machina.Gizmos[gizmo](array);
 					} catch(e) {
@@ -125,37 +171,61 @@
 					}
 				}})
 			})(g, Reqs[g])
-
+			// Send the required plugins to be loaded;
 			Machina.require(Dependencies);
 		};
 
 		/* DOES THIS NEED TO BE IN CORE? */
+		/**
+		 * This takes a list of elements, whether it is a nodeList
+		 * or something type of non-true array, and turns it into
+		 * a true array.
+		 * @param  {Array} array Non-true array
+		 * @return {Array}       The true array
+		 */
 		Machina.arrange = Machina.fn.arrange = function(array) {
-			var collection = [];
+			var collection = [];	// To hold the new true array
 			for (var i=0, l=collection.length=array.length; i<l; i++) {
 				collection[i] = array[i];
 			}
 			return collection;
 		};	// END Machina.arrange
 
+		/**
+		 * This will deactivate Gizmos, removing all event handlers.
+		 * Whenever code is removed from the DOM, you should run a deactivate
+		 * to make sure that event handlers aren't causing memory leaks.
+		 * @param  {Object} parent HTMLElement that will be scoped for deactivation
+		 */
 		Machina.deactivate = Machina.fn.deactivate = function(parent) {
-			var Gizmos,
+			var Gizmos,	// List of all elements that are Gizmos
 				i,
-				Parent = parent || document.body;
+				Parent = parent || document.body; // If no parent is passed, Machina will deactivate all elements
 				
 			Gizmos = Machina.arrange(Parent.querySelectorAll("*[m\\:gizmo]"));
 
 			i = Gizmos.length;
 			while (i--) {
-				Machina.event.off(Gizmos[i]);
+				Machina.event.off(Gizmos[i]);	// Remove event handlers
 			}
 		}
 
+		/**
+		 * Machina hash tables allow you to store HTMLElement as the keys in 
+		 * a JavaScript Object. 
+		 * @return {Object} New Machina hash object
+		 */
 		Machina.hash = Machina.fn.hash = function() {
-			var entry,
-				hash = this, 
-				table = [];
+			var entry,		// Creates a new entry
+				hash = this,// reference to the current 'this' 
+				table = [];	// hash table array (hash table is actually an array)
             
+            /**
+             * Creates a new hash table entry.
+             * @param  {Object} key   HTMLElement to serve as hash key
+             * @param  {Any} value 	  Any value
+             * @return {[type]}       New hash entry object
+             */
 	        entry = function(key, value) {
 	                return {'key': key, 'value': value};
 	        }
