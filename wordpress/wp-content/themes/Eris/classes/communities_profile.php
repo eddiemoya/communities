@@ -263,7 +263,7 @@ class User_Profile {
 				p.post_content as content
 				
 				FROM {$wpdb->posts} as p
-				WHERE p.post_type IN ('question', 'guides', 'post')
+				WHERE p.post_type IN ('question', 'guide', 'post')
 				AND p.post_status='publish'
 				AND p.post_author = {$this->user_id}
 				)
@@ -304,7 +304,7 @@ class User_Profile {
 				LEFT JOIN {$wpdb->prefix}user_actions ua
 				ON pa.post_action_id = ua.action_id
 				WHERE pa.object_type = 'posts'
-				AND pa.object_subtype IN ('question', 'guides', 'post')
+				AND pa.object_subtype IN ('question', 'guide', 'post')
 				AND pa.action_type IN ('upvote', 'follow')
 				AND p.post_status='publish'
 				AND ua.user_id = {$this->user_id}
@@ -480,7 +480,7 @@ class User_Profile {
 				LEFT JOIN {$wpdb->prefix}user_actions ua
 				ON pa.post_action_id = ua.action_id
 				WHERE pa.object_type = 'posts'
-				AND pa.object_subtype IN ('question', 'guides', 'post')
+				AND pa.object_subtype IN ('question', 'guide', 'post')
 				AND pa.action_type = '{$type}'
 				AND p.post_status='publish'
 				AND ua.user_id = {$this->user_id}
@@ -888,7 +888,7 @@ class User_Profile {
 				LEFT JOIN {$wpdb->prefix}user_actions ua
 				ON pa.post_action_id = ua.action_id
 				WHERE pa.object_type = 'posts'
-				AND pa.object_subtype IN ('question', 'guides', 'post')
+				AND pa.object_subtype IN ('question', 'guide', 'post')
 				AND pa.action_type = '{$type}'
 				AND p.post_status='publish'
 				AND ua.user_id = {$this->user_id}
@@ -1022,7 +1022,7 @@ class User_Profile {
 				LEFT JOIN {$wpdb->term_relationships} tr ON p.ID = tr.object_id
       			LEFT JOIN {$wpdb->term_taxonomy} tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
 				WHERE tt.term_id IN ({$this->category}) AND tt.taxonomy = 'category' 
-				AND p.post_type IN ('question', 'guides', 'post')
+				AND p.post_type IN ('question', 'guide', 'post')
 				AND p.post_status='publish')
 				
 				UNION ALL
