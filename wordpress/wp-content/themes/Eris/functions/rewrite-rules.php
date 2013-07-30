@@ -21,8 +21,8 @@ add_filter('rewrite_rules_array', 'rewrite_rules');
 
 function rewrite_rules($rules){
 	//$newrules['category/(.+?)/video$'] = 'index.php?post_type=category&name=$matches[1]';
-$newrules['category/(.+?)/(guide|question|post|video)/?$'] = 'index.php?post_type=category&name=$matches[1]&sf_filter=$matches[2]';
-	return $newrules + $rules;
+//$newrules['category/(.+?)/(guide|question|post|video)/?$'] = 'index.php?post_type=category&name=$matches[1]&sf_filter=$matches[2]';
+	return $rules;// + $rules;
 }
 /**
  * Add endpoint for posttype archive for the POST post type.
@@ -59,7 +59,8 @@ function posts_endpoint($rules){
 function category_post_type_endpoints($rules){
 
     $newrules = array();
-	$newrules['category/(.+?)/(guide|question|post|video)/?$'] = 'index.php?post_type=category&name=$matches[1]&sf_filter=$matches[2]';
+	$newrules['category/(.+?)/(guide|question|post|video)s?/?$'] = 'index.php?post_type=category&name=$matches[1]&sf_filter=$matches[2]';
+	$newrules['category/(.+?)/?$'] = 'index.php?post_type=category&name=$matches[1]&sf_filter=category';
 
     // $newrules['category/(.+?)/(guide|question|post)s?/page/?([0-9]{1,})/?$'] = 'index.php?category_name=$matches[1]&post_type=$matches[2]&paged=$matches[3]';
     // $newrules['category/(.+?)/videos?/?$'] = 'index.php?category_name=$matches[1]&post_format=video';
@@ -69,7 +70,7 @@ function category_post_type_endpoints($rules){
 	#The new Section Fronts plugin requires that we remove the default rewrite rules for a given taxonomy.
 	#This allows the request to "fall through"  to the post types rewrite rule. The request for taxonomy is
 	#then recreated.
-	return $newrules + $rules;
+	return $newrules;// + $rules;
 
 }
 
