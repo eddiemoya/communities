@@ -7,14 +7,9 @@ get_template_part('parts/header');
 	$node = new WP_Node($term->term_id, $term->taxonomy);
 
 	$filter = get_query_var('sf_filter');
-	if(!empty($filter)){
-		$filter = get_query_var('sf_filter');
-	} else {
-		$filter = 'category';
-	}
 	
-	$layout_setting = $node->get_meta_data("sf_{$filter}_layout");
-	$layout_id = ($layout_setting > 0 ) ? $layout_setting : $node->post->ID;
+	$layout_id = $node->get_meta_data("sf_{$filter}_template");
+	//$layout_id = ($layout_setting > 0 ) ? $layout_setting : $node->post->ID;
 
 	$tax_query[] = array(
 		'taxonomy' => $node->term->taxonomy,
