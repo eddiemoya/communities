@@ -104,8 +104,8 @@
 		/**
 		 * This is the function that initiates Machina. It is called automatically on
 		 * documentReady or page load. It can be called after page load and the scope
-		 * of activation can be restricted to the scope of activating new widgets only
-		 * as child nodes to the parent element.
+		 * of activation can be restricted to an element and it's child nodes by passing
+		 * an element as the parent argument.
 		 * @param  {Object} event  Event object is activated as an event
 		 * @param  {Object} parent HTMLElement to restrict scope of activation
 		 */
@@ -175,7 +175,6 @@
 			Machina.require(Dependencies);
 		};
 
-		/* DOES THIS NEED TO BE IN CORE? */
 		/**
 		 * This takes a list of elements, whether it is a nodeList
 		 * or something type of non-true array, and turns it into
@@ -194,14 +193,16 @@
 		/**
 		 * This will deactivate Gizmos, removing all event handlers.
 		 * Whenever code is removed from the DOM, you should run a deactivate
-		 * to make sure that event handlers aren't causing memory leaks.
+		 * to make sure that event handlers aren't causing memory leaks. If no
+		 * parent argument is passed, then all Gizmos on the page are
+		 * deactivated.
 		 * @param  {Object} parent HTMLElement that will be scoped for deactivation
 		 */
 		Machina.deactivate = Machina.fn.deactivate = function(parent) {
 			var Gizmos,	// List of all elements that are Gizmos
 				i,
 				Parent = parent || document.body; // If no parent is passed, Machina will deactivate all elements
-				
+			// Get all Gizmos of the parent element;	
 			Gizmos = Machina.arrange(Parent.querySelectorAll("*[m\\:gizmo]"));
 
 			i = Gizmos.length;
@@ -216,7 +217,7 @@
 		 * @return {Object} New Machina hash object
 		 */
 		Machina.hash = Machina.fn.hash = function() {
-			var entry,		// Creates a new entry
+			var entry,		// Creates a new entry 
 				hash = this,// reference to the current 'this' 
 				table = [];	// hash table array (hash table is actually an array)
             
@@ -224,30 +225,51 @@
              * Creates a new hash table entry.
              * @param  {Object} key   HTMLElement to serve as hash key
              * @param  {Any} value 	  Any value
-             * @return {[type]}       New hash entry object
+             * @return {Object}       New hash entry object
              */
 	        entry = function(key, value) {
 	                return {'key': key, 'value': value};
 	        }
 	        
+	        /**
+	         * Use this to get value from the hash table by passing in
+	         * the element key.
+	         * @param  {Object} key Element key
+	         * @return {any}     	Corresponding value
+	         */
 	        this.get = function(key) {
+	        	// Get the hash table length;
             	var n = (table.length)? parseInt(table.length - 1):0;
             	if (table[n]) {
+            		// If hash table exists loop through it and find the key and
+            		// return the value;
             		do {
                 		if (table[n]['key'] === key) return table[n]['value'];
                 	} while(n--);
             	}
+            	// Table doesn't have any values or key not found;
             	return false;
 	        }
 	        
+	        /**
+	         * This puts values into the hash table. If the key already exists
+	         * it updates the value to the new value. If the key doesn't exist
+	         * it creates a new entry.
+	         * @param  {Object} key   Element to serve as the key
+	         * @param  {any} 	value The value
+	         * @return {Object}       Returns the hash table
+	         */
 	        this.put = function(key, value) {
-                var e = hash.get(key),
-                	value = value || {};
+                var e = hash.get(key),		// Existing entry or false;
+                	value = value || {};	// If no value passed, create empty value
 
+                // If entry doesn't exist, create new entry otherwise update
+                // current entry in the hash table;
                 (!e)? table.push(entry(key, value)):Machina.fn.merge(e,value);
                 return hash;
 	        }
 
+	        // This is to dump the values of the hash table
 	        this.debug = function() {
 	        	return table;
 	        }
@@ -255,56 +277,82 @@
 	        return this;
 		};	// END Machina.hash
 
+		/**
+		 * This is the Machina ajax function.
+		 * @param  {[Object} settings Object with the AJAX call settings as the properties
+		 * @return {XHRResponse}      If successful AJAX call, XHRResponse
+		 */
 		Machina.jax = Machina.fn.jax = function(settings) {
+			// Make sure the user provided us with a URL to make our AJAX call;
 			if (settings.url) {
-				var m 		= Machina,
-					method 	= settings.type,
-					xhr;
+				var m 		= Machina,			// Scope Machina
+					method 	= settings.type,	// Get the method
+					xhr;						// Set the XHR variable
 
+				// We aren't supporting lessor versions of IE8 so we can just create
+				// an XMLHttpRequest, otherwise the function quits.
 				if (typeof XMLHttpRequest !== 'undefined') xhr = new XMLHttpRequest();
 				else return false;
 				
+				/**
+				 * Create the function to execute on the response of the AJAX Request
+				 */
 				function ready() {
-					var m = Machina,
-						x = xhr,
-						s = settings
-						u = settings.url;
+					var m = Machina,		// Scope Machina
+						x = xhr,			// Response
+						s = settings		// XMLHttpRequest settings
+						u = s.url;	// Store URL from settings
 
+					// If the response is ready
 					if (x.readyState > 3) {
 						
+						// Something happened and we did not get a successful response
 						if (x.status !== 200) {
 							// Error
+							// If the user defined an error function, execute it;
 							if (s.error && m.type(s.error) == "Function") s.error(x);
 						} else if (x.readyState === 4) {
 							// Success
+							// This response is successful, if user defined a success
+							// function, execute it;
 							if (s.success && m.type(s.success) == "Function") s.success(x);
 						}
 					}
 				}
 
-
+				// Check to see if the user wants to send data along with the request;
 				if (settings.data) {
-					var data = settings.data;
+					var data = settings.data; // Localize data;
 
-					if (data && m.type(data) == "Object") {
+					if (data && m.type(data) == "Object") {	// Make sure we are dealing with an object;
 						var string = "";
+						// Loop through data and build out the query string;
 						for (var i in data) {
 							if (string.length != 0) string += "&";
 							string += encodeURIComponent(i) + "=" + encodeURIComponent(data[i]);
 						}
+						// If there is a query string, replace data with the string;
 						if (string.length > 0) data = string;
 					}
 				}
 
+				// How are we going to post this data?;
 				if (method) {
+					// If the method is GET and we have data, append it to the end of the URL
+					// for the request;
 					if (method == "GET" && data) (settings.url.indexOf("?") == -1)? settings.url += "?" + data:settings.url += "&" + data;
 				} else method = "POST";
 
+				// Set the ready function we prepped earlier;
 				xhr.onreadystatechange = ready;
 
+				// Open up the request;
 				xhr.open(method,settings.url, true);
+				// Let it be known we are making an AJAX request;
 				xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+				// If we are making a POST with data...;
 				if (data && method == "POST") {
+					// Set the data/POST as form;
 					xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 					xhr.send(data)
 				} else {
@@ -315,17 +363,33 @@
 			
 		};
 
-		/* DOES THIS NEED TO BE IN CORE? */
+		/**
+		 * This allows you to merge multiple objects together into one
+		 * object. You can pass as many objects as you want. The objects
+		 * will always be merged into the first object. If you want to create
+		 * a new object containing the properties of all the objects, pass {}
+		 * as the first parameter.
+		 * @return {Object} Merged object
+		 */
 		Machina.merge = Machina.fn.merge = function() {
 			var merge;
 
 			/**
-			 * @todo Remove the try..catch from these functions to mantain scope
+			 * The recursive merge function.
+			 * @param  {Object} master Object to be merged into
+			 * @param  {Object} slave  Object to merge into the master object
+			 * @return {Object}        Newly merged master object
 			 */
 			merge = function(master, slave) {
+				/**
+				 * @todo Remove the try..catch from these functions to avoid creating
+				 * a new scope.
+				 */
 				for (var property in slave) {
 					try {
+						// If this is property is an object, recurse merge;
 						if (slave[property].constructor == Object) master[property] = merge(master[property], slave[property]);
+						// otherwise set the property in master;
 						else master[property] = slave[property];
 					} catch(e) {
 						master[property] = slave[property];
@@ -334,25 +398,40 @@
 				return master;
 			}
 
+			// More than two objects were passed...;
 			if (arguments.length > 1) {
-				var master = 0, 
-					slave  = 1;
+				var master = 0, // Master Index;
+					slave  = 1; // Start of slave index;
 
 				do {
 					try {
+						// Try merging current master/slave;
 						merge(arguments[master],arguments[slave]);
+						// Move on to next argument;
 						slave++;
 					} catch(e) {}
-				} while(arguments[slave])	
+				} while(arguments[slave]) // As long as there is another argument;	
 				return arguments[0];
 
 			} else return arguments[0] || false;
 		};	// END Machina.merge
 
+		/**
+		 * The require function allows you pass required JavaScript files to Machina in
+		 * three different ways:
+		 * 1. A single script with/without an optional callback:
+		 * ex. require('script/javascript.js', callback);
+		 *
+		 * 2. Load multiple scripts with one callback when done:
+		 * ex. require(['script/script1.js','script/script2.js'],callback);
+		 *
+		 * 3. Load multiple scripts each with a callback:
+		 * ex. require([{script:'script/script1.js',callback:function},{script:'script/script2.js',callback:function}]);
+		 */
 		Machina.require = Machina.fn.require = function() {
 			// Set globals locally
-			var doc		= document,
-				m		= Machina,
+			var doc		= document,											// Localize document
+				m		= Machina,											// Localize Machina
 				defer	= [],												// Place deferred scripts though
 				frag	= doc.createDocumentFragment(), 					// Place the scripts at once with a docFragment
 				head	= doc.getElementsByTagName("head")[0], 				// Get the page head
