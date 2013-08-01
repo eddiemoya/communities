@@ -1221,36 +1221,49 @@ function get_excerpt_by_id($post_id){
     return $the_excerpt;
 }
 
+
+//
 function meta_description(){
-    global $wp_query;
+    global $wp_query, $post;
 
     if ( !$id = $wp_query->get_queried_object_id() )
         return;
 
-    if('section' == $wp_query->query['post_type']){
-        //is category
-        $term = wp_get_object_terms($id, 'category');
+        $filter = get_query_var('sf_filter');
     
+        $term = wp_get_object_terms($post->ID, $post->post_type);
 
-        if(empty($term)){
-            $term = wp_get_object_terms($id, 'skcategory');
+        if(!is_wp_error($term)){ 
+            $term = $term[0];
         }
 
-        $description = $term[0]->description;
-    } else {
+    //If not a section front, and is single
+    if(empty($filter) && is_single() ){
+        //get desc from post excerpt
+        $description = get_excerpt_by_id($wp_query->post->ID);
+        $description = esc_html($description);
+    }
 
-        if(empty($term) && is_single() ){
-            $description = get_excerpt_by_id($wp_query->post->ID);
-            $description = esc_html($description);
+    //if it is a section front, OR if the description is empty...
+    if ( (!empty($filter) || empty($description)) && !is_wp_error($term) ){
+
+        //find the node object for the term (or the term the post is in)
+        $node = new WP_Node($term->term_id, $term->taxonomy);
+
+        //if the filter is a taxonomy
+        if($filter == 'category' || $filter == 'skcategory' | $filter == 'post_tag'){
+            //use the term description
+            $description = $term->description;
+        } else {
+            //otherwise if the filter is for a filtered taxonomy, use the specially stored meta value.
+            $description = $node->get_meta_data("{$filter}_description");
         }
     }
 
+    //If all else fails use the default description for the whole site.
     if(empty($description)) {
           $description = get_bloginfo('description');
-        //$description = 'single';
     }
-
-    //print_pre($wp_query);
-
+    
     echo $description;
 }
