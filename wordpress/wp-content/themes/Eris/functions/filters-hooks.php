@@ -1039,10 +1039,12 @@ function com_canonical() {
     if ( !is_singular() )
         return;
 
-    global $wp_the_query, $wp_query;
-     if ( !$id = $wp_the_query->get_queried_object_id() )
+    global  $wp_query, $post;
+     if ( !$id = $wp_query->get_queried_object_id() )
         return;
 
+
+    ///DEPRECATED
     if('section' == $wp_the_query->query['post_type']){
 
         //is category
@@ -1060,11 +1062,26 @@ function com_canonical() {
 
     }
 
-             
     
+    $filter = get_query_var('sf_filter');
+
+    $term = wp_get_object_terms($post->ID, $post->post_type);
+
+    if(!is_wp_error($term)){ 
+        $term = $term[0];
+    }
+
     if(is_singular() && empty($link)){
         $link = get_permalink( $id );
     }
-   
+  
+    if(!is_wp_error($term) && !empty($filter)){
+        $link = get_term_link($term->slug, $term->taxonomy);
+
+        if($filter == 'post' || $filter == 'guide' || $filter == 'question') {
+            $link = $link . $filter;
+        }
+    }
+
     echo "<link rel='canonical' href='$link' />\n";
 }
