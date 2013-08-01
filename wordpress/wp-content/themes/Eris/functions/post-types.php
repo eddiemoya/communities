@@ -44,7 +44,7 @@ function register_questions_type() {
         'has_archive' => true,
         'hierarchical' => false,
         'menu_position' => 6,
-        'supports'      => array('title', 'editor', 'author', 'comments', 'thumbnail'),
+        'supports'      => array('title', 'editor', 'author', 'comments', 'thumbnail', 'excerpt'),
         'menu_icon'     => get_template_directory_uri() . '/assets/img/admin/questions_admin_icon.gif',
         'taxonomies'    => array('category', 'post_tag')
     );
