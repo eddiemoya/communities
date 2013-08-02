@@ -265,6 +265,7 @@ ul.bullets { list-style-type: disc; }
 .error-message { display: none; }
 
 .error input[type="text"], .error input[type="password"] { border: solid 1px red; }
+
 .error .error-message { background-color: #e41e13; color: white; display: block; float: left; font-weight: bold; margin: 10px 0px 0px; padding: 0.307em 1.23em; position: relative; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; }
 .error .error-message .error-pointer { background: transparent url('../img/error_pointer-arrow.png?v=1363102271') no-repeat 0px 0px; height: 9px; display: block; left: 15px; position: absolute; top: -9px; width: 19px; }
 
@@ -400,7 +401,7 @@ textarea.discussion { border: 1px solid #d6d6d6; height: 10em; width: 99%; -webk
 .recent_reviews .recent-review_reviewer { font-size: 84.615%; font-weight: bold; line-height: 2em; }
 .recent_reviews .recent-review_name { float: left; font-size: 84.615%; font-weight: bold; width: 70%; }
 .recent_reviews .rating { float: right; width: 28%; }
-.recent_reviews .rating .rating-stars { width: 100%; }
+.recent_reviews .rating .ratinmaint/shcjsl_transformer_update_20130808.rebaseg-stars { width: 100%; }
 .recent_reviews .rating .rating-bar { height: auto; line-height: .91em; }
 .recent_reviews .recent-reviews-list > li { border-top: solid 1px #d5d5d5; padding: 1.75em 0px; }
 .recent_reviews .recent-reviews-list > li:first-child { border-top: none; padding-top: .5em; }

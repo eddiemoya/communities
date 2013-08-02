@@ -1077,7 +1077,7 @@ function comm_wp_dropdown_categories( $args = '' ) {
 	$id = $id ? esc_attr( $id ) : $name;
 
 	if ( ! $r['hide_if_empty'] || ! empty($categories) )
-		$output = "<select name='$name' id='$id' class='$class clearfix' shc:gizmo:form=\"{required:true}\" $tab_index_attribute>\n";
+		$output = "<select name='$name' id='$id' class='$class clearfix' shc:gizmo:form=\"{required:true, message:'Please choose a category.'}\" $tab_index_attribute>\n";
 	else
 		$output = '';
 
