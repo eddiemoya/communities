@@ -40,6 +40,12 @@ TRANSfORMER.blunder = function(element) {
 				param.parentNode.removeChild($(err).get(0));
 				$(param.parentNode).removeClass("error");
 			}
+		},
+		hideMessage: function(param) {
+			$(param.parentNode).children(".error-message").hide();
+		},
+		showMessage: function(param) {
+			$(param.parentNode).children(".error-message").show();
 		}
 	}
 	
@@ -77,7 +83,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			var options;	// Form options from shc:gizmo:form
 			var fn = [];	// Functions to run for validation
 
-      options = eval('(' + $(target).attr("shc:gizmo:form") + ')');
+			options = eval('(' + $(target).attr("shc:gizmo:form") + ')');
 
 			// Add element to the list of required elements
 			if (options.required && options.required == true) required[required.length] = target;
@@ -114,6 +120,13 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				}
 			}
 			
+			// On focus - error message handling
+			$(target).bind('focus', function(event) {
+				for (i=0; i < blunders.length; i++) {
+					(blunders[i] == this) ? $tf.blunder(blunders[i]).showMessage() : $tf.blunder(blunders[i]).hideMessage();
+				}
+			});
+
 			function validify() {
 				var i; // counter
 				for (i=0; i < fn.length; i++) {
