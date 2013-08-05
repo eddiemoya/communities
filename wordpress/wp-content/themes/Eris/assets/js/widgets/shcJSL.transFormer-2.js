@@ -128,6 +128,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			});
 
 			function validify() {
+
 				var i; // counter
 				for (i=0; i < fn.length; i++) {
 					if (this.value != '') {
@@ -162,12 +163,14 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 	fields = shcJSL.sequence(transformer.elements);
 	fields.map(methods);
 
+	// 
 	function checkReqd() {
 		var flag = true;	// Valid flag;
 		for (var i=0; i < required.length; i++) {
-			if (required[i].nodeName == "FIELDSET") {
+			var currReqElem = required[i];
+			if (currReqElem.nodeName == "FIELDSET") {
 				var group;	// Group of form elements;
-				group = $(required[i]).find('[name="' + required[i].id + '"]');
+				group = $(currReqElem).find('[name="' + currReqElem.id + '"]');
 				if (group.length > 0) {
 					for (var j =0; j < group.length; j++) {
 						if ($(group[j]).is(":checked")) break;
@@ -175,26 +178,45 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 					
 					if (j >= group.length) {
 						if (flag != false) flag = false;
-						$tf.blunder(required[i]).create("This field is required.")
+						$tf.blunder(currReqElem).create(defaultError(currReqElem))
 					}
 				}
 				
 			}	// END IF !INPUT
-			else if (required[i].nodeName == "SELECT") {
-				if (required[i].value === 'default') {
+			else if (currReqElem.nodeName == "SELECT") {
+				if (currReqElem.value === 'default') {
 					if (flag != false) flag = false;
-					$tf.blunder(required[i]).create("Please select an option.");
+					$tf.blunder(currReqElem).create(defaultError(currReqElem));
 				}
 			} // END IF SELECT
 			else {
-				if (required[i].value == '') {
+				if (currReqElem.value == '') {
 					if (flag != false) flag = false;
-					$tf.blunder(required[i]).create("This field is required.")
+					//ORIG - $tf.blunder(currReqElem).create("This field is required.")
+					$tf.blunder(currReqElem).create(defaultError(currReqElem));
 				}	// END IF required value
 			}	// END ELSE != Input
 		}	// END FOR
 		return flag;
 	}
+	
+	/* 
+		function defaultError
+		@author Matt Strick
+		Description - Takes an element that has failed validation and returns the default messaging for that type of input
+		Input - DOM Node
+		Return - String
+	*/
+	var defaultError = function(elem) {
+		switch(elem.nodeName) {		
+			case "FIELDSET":
+				return "This field is required.";
+			case "SELECT":
+				return "Please select an option.";
+			default:
+				return "This field is required.";
+		}
+	};
 	
 	/* SPECIAL CASES */
 	
