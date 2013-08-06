@@ -79,7 +79,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 		if ($(target).attr("shc:gizmo:form") != undefined) {
 			// Scoped private variables
 			var options;	// Form options from shc:gizmo:form
-			var fn = [];	// Functions to run for validation
+			var validationFuncs = [];	// Functions to run for validation
 
 			options = eval('(' + $(target).attr("shc:gizmo:form") + ')');
 
@@ -87,7 +87,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			if (options.required && options.required == true) required[required.length] = target;
 			
 			if (options.trim) {
-				fn[fn.length] = function(options) {
+				validationFuncs[validationFuncs.length] = function(options) {
 					if (target.value != '') target.value = (target.value).trim();
 					return true;
 				}
@@ -95,25 +95,25 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			
 			// Check if the input has to follow a pattern
 			if (options.pattern) {
-				fn[fn.length] = function(options) {
+				validationFuncs[validationFuncs.length] = function(options) {
 					var pattern = new RegExp(options.pattern);
 					if (target.value != '') {
 						if (pattern.test(target.value.toString())) return true;
 						else return false;
 					}	// END if target.value != ''
-				} // END fn function
+				} // END validationFuncs function
 			} // END pattern
 			
 			if (options.special) {
 				switch(options.special) {
 					case "screen-name":
-						fn[fn.length] = checkSN;
+						validationFuncs[validationFuncs.length] = checkSN;
 						break;
 				}
 			}
 			
 			if (options.custom) {
-				fn[fn.length] = function(options) {
+				validationFuncs[validationFuncs.length] = function(options) {
 					return options.custom(target);
 				}
 			}
@@ -128,82 +128,88 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			// Evaluates and input on blur.
 			$(target).bind('blur', function(event) {
 				validateElem(this);
-				/*
-				var i; // counter
-				for (i=0; i < fn.length; i++) {
-					if (this.value != '') {
-						if (!(fn[i](options, target))) {
-							(options.message)? $tf.blunder(this).create(options.message):$tf.blunder(this).create("Error");
-							blunders[blunders.length] = this;
-							break;
-						} // END if error
-					}
-				}	// END for fn.length;
-				if (i >= fn.length || this.value == '') {
-					$tf.blunder(this).destroy();
-					blunders.remove(this);
-				}
-				*/
 			});
 			
+			function checkReqd() {
+				var flag = true;	// Valid flag;
+				for (var i=0; i < required.length; i++) {
+					var currReqElem = required[i];
+					
+					if (!isValid(currReqElem)) {
+						if (flag != false) flag = false;
+						$tf.blunder(currReqElem).create(defaultError(currReqElem));
+					}
+				}	// END FOR
+				return flag;
+			}
+			
+			/*
+				function validateElem
+				description - takes a form element and validates it against supplied options
+			*/
 			var validateElem = function(elem) {
 				var i; // counter
-				for (i=0; i < fn.length; i++) {
+				for (i=0; i < validationFuncs.length; i++) {
 					if (elem.value != '') {
-						if (!(fn[i](options, target))) {
+						if (!(validationFuncs[i](options, target))) {
 							(options.message)? $tf.blunder(elem).create(options.message):$tf.blunder(elem).create(defaultError(elem));
 							blunders[blunders.length] = elem;
 							break;
 						} // END if error
 					}
-				}	// END for fn.length;
-				if (i >= fn.length || elem.value == '') {
+				}	// END for validationFuncs.length;
+				if (i >= validationFuncs.length || elem.value == '') {
 					$tf.blunder(elem).destroy();
 					blunders.remove(elem);
 				}	
-			};
+			};			
+			
+			/* function isValid  
+				description - takes a form element and validates it against default rules.
+				returns - Boolean.
+			*/
+			var isValid = function(elem) {
+				var flag = true;
+				
+				if (elem.nodeName == "FIELDSET") {
+					var group;	// Group of form elements;
+					group = $(elem).find('[name="' + elem.id + '"]');
+					if (group.length > 0) {
+						for (var j =0; j < group.length; j++) {
+							if ($(group[j]).is(":checked")) break;
+						}
+						
+						if (j >= group.length) {
+							if (flag != false) flag = false;							
+						}
+					}						
+				}	// END IF !INPUT
+				else if (elem.nodeName == "SELECT") {
+					if (elem.value === 'default') {
+						if (flag != false) flag = false;
+					}
+				} // END IF SELECT
+				else {
+					if (elem.value == '') {
+						if (flag != false) flag = false;
+					}	// END IF required value
+				}	// END ELSE != Input
+				
+				return flag;
+			}
+			
+			// Validate all the required fields in the form.
+			self.verify = function() {
+				var valid;
+				
+				valid = checkReqd();
+				return valid;
+			}
 		}
 	}
 	
 	fields = shcJSL.sequence(transformer.elements);
 	fields.map(methods);
-
-	// 
-	function checkReqd() {
-		var flag = true;	// Valid flag;
-		for (var i=0; i < required.length; i++) {
-			var currReqElem = required[i];
-			if (currReqElem.nodeName == "FIELDSET") {
-				var group;	// Group of form elements;
-				group = $(currReqElem).find('[name="' + currReqElem.id + '"]');
-				if (group.length > 0) {
-					for (var j =0; j < group.length; j++) {
-						if ($(group[j]).is(":checked")) break;
-					}
-					
-					if (j >= group.length) {
-						if (flag != false) flag = false;
-						$tf.blunder(currReqElem).create(defaultError(currReqElem))
-					}
-				}
-				
-			}	// END IF !INPUT
-			else if (currReqElem.nodeName == "SELECT") {
-				if (currReqElem.value === 'default') {
-					if (flag != false) flag = false;
-					$tf.blunder(currReqElem).create(defaultError(currReqElem));
-				}
-			} // END IF SELECT
-			else {
-				if (currReqElem.value == '') {
-					if (flag != false) flag = false;
-					//ORIG - $tf.blunder(currReqElem).create("This field is required.")
-					$tf.blunder(currReqElem).create(defaultError(currReqElem));
-				}	// END IF required value
-			}	// END ELSE != Input
-		}	// END FOR
-		return flag;
-	}
 	
 	/* 
 		function defaultError
@@ -225,6 +231,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 	
 	/* SPECIAL CASES */
 	
+	// Check screenname
 	function checkSN(options, target) {
 		var valid;	// Is screen name valid;
 		
@@ -251,13 +258,6 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				valid = true;
 			})
 		}
-		return valid;
-	}
-	
-	this.verify = function() {
-		var valid;
-		
-		valid = checkReqd();
 		return valid;
 	}
 }
@@ -293,6 +293,7 @@ shcJSL.methods.transFormer = function(target, options) {
 		submitEval[form.id][submitEval[form.id].length] = checkForLogin;
 	}
 		
+	// On submit of a form	
 	$(target).bind('submit',function(event) {
 		var success; // Whether success passes the check
 		if (submitEval[this.id].length > 0) {
