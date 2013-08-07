@@ -60,11 +60,13 @@ function filter_body_class($classes) {
 
         /* Post Type classes */
 
+
         //If this is a section..
         if('section' == get_post_type()){
 
             $classes[] = 'archive'; // This in particular will be the case for both category and post type archive shown with sections.
 
+            if(get_query_var('sf_filter'))
             //And it theres a hidden post type...
             if(get_query_var('old_post_type')){
 
@@ -73,8 +75,18 @@ function filter_body_class($classes) {
                 $classes[] = 'post-type-archive-' . get_query_var('old_post_type');
                 $classes[] = 'post-type-' . get_query_var('old_post_type');
             }
+
         //If this is not a section
         } else {
+
+            $filter = get_query_var('sf_filter');
+            // Checking if the new sections are being used - and if the post type is for them or for a contet post type
+            if($filter == 'post' || $filter == 'guide' || $filter == 'question' ){
+                $classes[] = 'post-type-archive';
+                $classes[] = 'post-type-archive-' . $filter;
+                $classes[] = 'post-type-' . $filter;
+                $classes[] = 'archive_' . $filter . 's';
+            }
 
             //Then simply add the post type to the single page.
             $classes[] = 'post-type-' . get_post_type();
@@ -1063,7 +1075,7 @@ function com_canonical() {
     }
 
     
-    $filter = get_query_var('sf_filter');
+        
 
     $term = wp_get_object_terms($post->ID, $post->post_type);
 
