@@ -73,3 +73,6 @@
 [submodule "wordpress/wp-content/plugins/wp-node"]
 	path = wordpress/wp-content/plugins/wp-node
 	url = https://github.com/eddiemoya/WP-Node
+[submodule "wordpress/wp-content/plugins/section-fronts"]
+	path = wordpress/wp-content/plugins/section-fronts
+	url = git@github.com:eddiemoya/Section-Fronts.git
