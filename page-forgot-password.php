@@ -14,8 +14,6 @@ if(! empty($_POST)) {
 	//Only proceed if SSO plugin is active
 	if(class_exists('SSO_Profile_Request')) {
 	
-		//$profile = new SSO_Profile;
-	
 		//Forgot password request
 		if(isset($_POST['login_email'])) {
 			
@@ -80,7 +78,7 @@ get_template_part('parts/header'); ?>
 		 
           <ul class="form-fields">
               <?php if(! isset($_GET['auth_token'])):
-              			if(empty($_POST) || (isset($response) && $response['code'] == '404')):
+              			if(empty($_POST) || (isset($response) && $response['code'] != '200')):
               ?>
               <li>
                   <dl class="clearfix">
