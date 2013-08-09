@@ -1,8 +1,6 @@
 <article class="content-container register span12">
     <section class="content-body clearfix">
         <h6 class="content-headline">Register</h6>
-
-            <div id="sso-error"></div>
      
         <form class="form_register" id="registration" method="post" action="" shc:gizmo="transFormer">
             <ul class="form-fields">
@@ -75,6 +73,9 @@
                             </p>
                         </dd>
                     </dl>
+                </li>
+                
+                <li id="sso-error">
                 </li>
 
                 <li class="clearfix">

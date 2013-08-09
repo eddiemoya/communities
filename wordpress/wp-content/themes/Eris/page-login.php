@@ -1,18 +1,11 @@
 <?php
 
-//include SHCSSO_CONFIG_DIR . 'errors.php';
-
 //if user is logged in, redirect to home page
 if(is_user_logged_in()) {
 	
 	wp_redirect(get_site_url());
 	exit;
 }
-
-
-$origin = (isset($_GET['origin'])) ? urldecode($_GET['origin']) : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_site_url() . '/');
-$error = (isset($_GET['err'])) ? wp_kses(strip_tags($sso_errors[urldecode($_GET['err'])])) : false;
-//$opts = new SSO_Options;
 
 /**
  * @package WordPress
@@ -30,7 +23,6 @@ get_template_part('parts/header'); ?>
 
 		<h6 class="content-headline">Sign in</h6>
 		
-			<div id="sso-error"></div>
 	<form class="form_login" method="post" action="" shc:gizmo="transFormer" id="login">
       <ul class="form-fields">
           
@@ -47,6 +39,9 @@ get_template_part('parts/header'); ?>
                   <dd class="span8"><input type="password" name="logonPassword" class="input_text input_password" id="password" shc:gizmo:form="{required:true}" /></dd>
                   <dd class="span1"><a href="<?php echo get_site_url(); ?>/forgot-password/" title="Forgot your password?" class="forgot">Forgot?</a></dd>
               </dl>
+          </li>
+          
+          <li id="sso-error">
           </li>
           
           <li class="clearfix">
