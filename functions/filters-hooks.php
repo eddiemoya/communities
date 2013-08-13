@@ -1074,11 +1074,9 @@ function com_canonical() {
 
     }
 
-    
-        
-
     $term = wp_get_object_terms($post->ID, $post->post_type);
-
+    $filter = get_query_var('sf_filter');
+    
     if(!is_wp_error($term)){ 
         $term = $term[0];
     }
