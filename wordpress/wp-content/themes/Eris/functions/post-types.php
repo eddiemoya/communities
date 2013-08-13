@@ -166,7 +166,7 @@ add_filter('wpdz_dropzones', 'custom_excerpt_length', 9);
 // }
 
 
-add_action( 'init', 'default_post_type', 1 );
+//add_action( 'init', 'default_post_type', 1 );
 function default_post_type() {
 
     register_post_type( 'post', array(
