@@ -8,37 +8,13 @@
 *
 * @version [1.0: 6/27/13]
 * - Initial script release
+*
+* @version [1.2 8/7/13]
+* - Mint rewritten to make entire comment area a clickable area, reducing watchers on the page from several per comment to one per page
 */
 
-/* 
- * mint.g 
- * ----
- * (Object)
- * This is the global object for the site scipts.
- * 
- * mint.p
- * ----
- * (String)
- * Prefix used on the name spaces for attributes.
- */
-var mint = {};
-mint.g = shcJSL;
-mint.p = 'shc';
+shcJSL.methods.mint = function(element) {
 
-//var mint;
-
-/*
- * Arguments
-  
-   element: (HTMLObject), Required
-     Comment link tlement
-     
-   options: (Object), Optional
-     Comment options
-  
- */
-
-mint = function(element, options) {
     /*
      * [PRIVATE VARIABLES]
      * 
@@ -50,114 +26,83 @@ mint = function(element, options) {
     var self = this;                    // This object
     
     self.working = false;               // Watcher to make sure multiple ajax calls are not triggered off the same element
-    self.element = element              // Easier to work with if it is stuffed in the self object
+    self.element = element;             // Easier to work with if it is stuffed in the self object
+    self.ops = "";                      // options of clicked event
     
     /*
      * [PUBLIC METHODS]
-     * 
-     * Prepare Options
-     * -----------
-     * Fetch options attached to clicked element
-     *
      */
-    this.prepareOptions = function() {
-        var options = $(self.element).attr("shc:options");
-        if (typeof options == "string") options = eval("(" + options + ")")
-        self.conf = $.extend({},{
-            commParent: undefined,
-            offset: undefined,
-            commPage: undefined,
-            commPost: undefined,
-        }, options);
+
+    /*
+     * Prepare
+     * -----------
+     * Method that routes all clicks within comment container to their proper action
+     *
+     * Params:
+     *      flavor [object] - clicked element 
+     */
+    this.prepare = function(flavor) {
+        if( $(flavor).attr("shc:options") != undefined) {
+            self.ops = eval('(' + $(flavor).attr("shc:options") + ')');
+            $(flavor).attr("shc:options", "");
+
+            if (self.ops.comment_parent != undefined || self.ops.post != undefined) {
+                $(flavor).html("Loading... <img src='" + ajaxdata.template_dir_uri + "/assets/img/comment-ajax-loader.gif' />");
+                self.ops.action = "load_more_comments";
+                self.make(flavor);
+            }
+        }
     }
-    
-    /* 
-     * Fetch
+
+    /*
+     * Make
      * -----------
-     * Fetch content from server
+     * Fetch data from server and return result
      *
+     * Params:
+     *      flavor [object] - clicked element 
      */
-    this.fetch = function(data) {
+    this.make = function(flavor) {
         $.ajax({
             type: "GET",
             url: ajaxdata.ajaxurl,
-            data: data
+            data: self.ops
         }).done(function(returned) {
-            if (self.conf.commPage != undefined) self.appendPage(returned);
-            if (self.conf.commParent != undefined) self.appendParent(returned);
+            self.unwrap(returned, flavor);
         });
     }
-    
-    /* 
-     * Prepare
+
+    /*
+     * Unwrap
      * -----------
-     * Prepare params to request from the server
+     * Fetch data from server and return result
      *
+     * Params:
+     *      data [string] - data returned from the server
+     *      flavor [object] - clicked element 
      */
-    this.prepare = function() {
-        var data = {};
-        
-        data.action = "load_more_comments";
-        if (self.conf.commParent != undefined) data.comment_parent = self.conf.commParent;
-        if (self.conf.offset != undefined) data.comment_offset = self.conf.offset;
-        if (self.conf.commPage != undefined) data.page = self.conf.commPage;
-        if (self.conf.commPost != undefined) data.post = self.conf.commPost;
-        return data;
+    this.unwrap = function(data, flavor) {
+        if (self.ops.comment_parent != undefined) {
+            $(flavor).slideUp("fast");
+            $(flavor).parent(".comment").after(data);
+        } else if (self.ops.post != undefined) {
+            $(flavor).parent("li.comment").slideUp("fast");
+            $(flavor).closest("ol#allComments").append(data);
+        }
     }
     
-    /* 
-     * Append Page
-     * -----------
-     * Append next page of comments to the end of the comment list
-     *
-     */
-    this.appendPage = function(data) {
-        $(self.element).parent(".comment").slideUp("fast");
-        $(self.element).closest("ol#allComments").append(data);
-        $.each(
-            $(".moreComments"), function(index, value) {
-                mint(this);
-            }
-        );
-        working = false;
-    }
-    
-    /* 
-     * Append Parent
-     * -----------
-     * Append comments to a parent element
-     *
-     */
-    this.appendParent = function(data) {
-        $(self.element).slideUp("fast");
-        $(self.element).parent(".comment").after(data);
-        $.each(
-            $(".moreComments"), function(index, value) {
-                mint(this);
-            }
-        );
-        working = false;
-    }
-    
+
     $(element).live("click", function(event){
         event.preventDefault();
-        self.element = element;
-        self.prepareOptions();
-        $(this).html("<span>Loading...</span>");
-        if (working == false) {
-            working = true;
-            var data = self.prepare();
-            self.fetch(data);
-        }
-    })
+        self.prepare(event.target);
+    });
+
 }
 
-if(shcJSL && shcJSL.gizmos) {
+shcJSL.gizmos.bulletin['shcJSL.mint.js'] = true;
+
+if (shcJSL && shcJSL.gizmos) {
     shcJSL.gizmos.mint = function(element) {
-        $.each(
-            $(".moreComments"), function(index, value) {
-                mint(this);
-            }
-        );
+        shcJSL.get(element).mint();
     }
 }

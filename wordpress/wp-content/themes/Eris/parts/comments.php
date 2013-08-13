@@ -1,5 +1,5 @@
 <?php $comment_count = count_comments(); ?>
-<section class="span12 content-container comments">
+<section class="span12 content-container comments" shc:gizmo="mint">
     <?php if ( $comment_count > 0 ) : ?>
         <?php if ($comment_type == "answer") : ?>
             <header class="content-header clearfix">
