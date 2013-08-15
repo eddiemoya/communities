@@ -21,7 +21,7 @@
 
         $args = array(
             'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
-            'comment_field'        => '<textarea id="comment-answer_textarea" class="input_textarea discussion" name="comment" shc:gizmo:form="{required:true}">'. $comment_value .'</textarea>',
+            'comment_field'        => '<textarea id="comment-answer_textarea" class="input_textarea discussion" name="comment" shc:gizmo:form="{required:true, trim:true, pattern: /^\w{3,}$/, message:\'Please enter at least 3 characters.\'}">'. $comment_value .'</textarea>',
             'must_log_in'          => null,
             'logged_in_as'         => null,
             'comment_notes_before' => null,
@@ -70,7 +70,7 @@
 	              ?>
 	              <li class="clearfix">	
 	                <label for="screen-name" class="required">Screen Name</label>
-	                <input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo $screen_name_value;?>" shc:gizmo:form="{required:true, special: 'screen-name', message: 'Screen name invalid. Screen name is already in use or does not follow the screen name guidelines.'}"/>
+	                <input type="text" class="input_text" name="screen-name" id="screen-name" value="<?php echo $screen_name_value;?>" shc:gizmo:form="{required:true, special: 'screen-name', pattern: /^[A-Za-z0-9_\-\.]{2,18}$/, message: 'Please follow the screen name guidelines.'}"/>
 	             	</li>
 	              <?php endif;?>
 								<li class="clearfix">

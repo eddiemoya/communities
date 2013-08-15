@@ -27,12 +27,12 @@ get_currentuserinfo();
 							?>
 							<li class="clearfix">
 								<label for="screen-name" class="required">Screen Name</label>
-								<input type="text" class="input_text" name="screen-name" id="screen-name" value="" shc:gizmo:form="{required:true, special: 'screen-name', pattern: /^[A-Za-z0-9_\-\.]{2,18}$/, message: 'Screen name invalid. Screen name is already in use or does not follow the screen name guidelines.'}" shc:gizmo="tooltip" shc:gizmo:options="{tooltip: {displayData: {element: 'snInfo'},events: {blur: {active: false},click: {active: true},focus: {active: true}}, arrowPosition: 'left'}}"/>
+								<input type="text" class="input_text" name="screen-name" id="screen-name" value="" shc:gizmo:form="{required:true, special: 'screen-name', pattern: /^[A-Za-z0-9_\-\.]{2,18}$/, message: 'Please follow the screen name guidelines.'}" shc:gizmo="tooltip" shc:gizmo:options="{tooltip: {displayData: {element: 'snInfo'},events: {blur: {active: false},click: {active: true},focus: {active: true}}, arrowPosition: 'left'}}"/>
 							</li>
 							<?php endif;?>
 							<li class="clearfix">
 								<label for="your-question" class="required">Your Question</label>
-								<textarea name="your-question" id="your-question" class="input_textarea" shc:gizmo:form="{required:true}"><?php 
+								<textarea name="your-question" id="your-question" class="input_textarea" shc:gizmo:form="{required:true, trim:true, message: 'Please enter your question.'}"><?php 
 									echo esc_textarea(stripslashes( ($_POST['post-question'] ) ? $_POST['post-question'] : $_POST['your-question'] )); 
 								?></textarea>
 							</li>
