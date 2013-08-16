@@ -83,7 +83,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			var options;	// Form options from shc:gizmo:form
 			var fn = [];	// Functions to run for validation
 
-      options = eval('(' + $(target).attr("shc:gizmo:form") + ')');
+			options = eval('(' + $(target).attr("shc:gizmo:form") + ')');
 
 			// Add element to the list of required elements
 			if (options.required && options.required == true) required[required.length] = target;
@@ -120,47 +120,12 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				}
 			}									
 			
-			function validify() {
-				var i; // counter
-				for (i=0; i < fn.length; i++) {
-					if (this.value != '') {
-						if (!(fn[i](options, target))) {
-							(options.message)? $tf.blunder(this).create(options.message):$tf.blunder(this).create("Error");
-							blunders[blunders.length] = this;
-							break;
-						} // END if error
-					}
-				}	// END for fn.length;
-				if (i >= fn.length || this.value == '') {
-					$tf.blunder(this).destroy();
-					blunders.remove(this);
-				}
-			}		
-			
 			// On focus - error message handling
-			$(target).bind('focus', function(event) {
-				for (i=0; i < blunders.length; i++) {
-					(blunders[i] == this) ? $tf.blunder(blunders[i]).showMessage() : $tf.blunder(blunders[i]).hideMessage();
+			$(target).bind('focus', function(event) {								
+				if (isBlunder(this)) {
+					showError(this);
 				}
 			});
-
-			function validify() {
-
-				var i; // counter
-				for (i=0; i < fn.length; i++) {
-					if (this.value != '') {
-						if (!(fn[i](options, target))) {
-							(options.message)? $tf.blunder(this).create(options.message):$tf.blunder(this).create("Error");
-							blunders[blunders.length] = this;
-							break;
-						} // END if error
-					}
-				}	// END for fn.length;
-				if (i >= fn.length || this.value == '') {
-					$tf.blunder(this).destroy();
-					blunders.remove(this);
-				}
-			}
 			
 			// $(target).bind("keydown", function(event){
 			// 				var code;	// key code
@@ -174,22 +139,31 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				}					
 			});
 			
-			
-			function checkReqd() {
-				var flag = true;	// Valid flag;
-				for (var i=0; i < required.length; i++) {
-					var currReqElem = required[i];
-					
-					if (!isValid(currReqElem)) {
-						if (flag != false) flag = false;
-						$tf.blunder(currReqElem).create(defaultError(currReqElem));
+			function validify() {
+				var i; // counter
+				
+				if (this.value != '') {
+					for (i=0; i < fn.length; i++) {
+						if (!(fn[i](options, target))) {
+							if (!isBlunder(this)) {
+								(options.message)? $tf.blunder(this).create(options.message):$tf.blunder(this).create(defaultError(this));
+								blunders[blunders.length] = this;
+							} else {
+								$tf.blunder(this).showMessage();
+							}
+							break;
+						} // END if error
 					}
-				}	// END FOR
-				return flag;
-			}
+				}	// END for fn.length;
+				if (i >= fn.length || this.value == '') {
+					$tf.blunder(this).destroy();
+					blunders.remove(this);					
+					showFirstError();
+				}
+			}																	
 			
 			/*
-				function validateElem
+				function rd
 				description - takes a form element and validates it against supplied options
 			*/
 			var validateElem = function(elem) {
@@ -209,58 +183,11 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				}	
 			};			
 			
-			/* function isValid  
-				description - takes a form element and validates it against default rules.
-				returns - Boolean.
-			*/
-			var isValid = function(elem) {
-				var flag = true;
-				
-				if (elem.nodeName == "FIELDSET") {
-					var group;	// Group of form elements;
-					group = $(elem).find('[name="' + elem.id + '"]');
-					if (group.length > 0) {
-						for (var j =0; j < group.length; j++) {
-							if ($(group[j]).is(":checked")) break;
-						}
-						
-						if (j >= group.length) {
-							if (flag != false) flag = false;							
-						}
-					}						
-				}	// END IF !INPUT
-				else if (elem.nodeName == "SELECT") {
-					if (elem.value === 'default') {
-						if (flag != false) flag = false;
-					}
-				} // END IF SELECT
-				else {
-					if (elem.value == '') {
-						if (flag != false) flag = false;
-					}	// END IF required value
-				}	// END ELSE != Input
-				
-				return flag;
-			}
-			
 		}
 	}
 	
 	fields = shcJSL.sequence(transformer.elements);
 	fields.map(methods);
-	
-	function checkReqd() {
-		var flag = true;	// Valid flag;
-		for (var i=0; i < required.length; i++) {
-			var currReqElem = required[i];
-			
-			if (!isValid(currReqElem)) {
-				if (flag != false) flag = false;
-				$tf.blunder(currReqElem).create(defaultError(currReqElem));
-			}
-		}	// END FOR
-		return flag;
-	}
 	
 	/* function isValid  
 		description - takes a form element and validates it against default rules.
@@ -295,6 +222,50 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 		
 		return flag;							
 	}	
+	
+	function checkReqd() {
+		var flag = true;	// Valid flag;
+		for (var i=0; i < required.length; i++) {
+			var currReqElem = required[i];
+			
+			if (!isValid(currReqElem)) {
+				if (flag != false) flag = false;
+				
+				if (!isBlunder(currReqElem)) {
+					$tf.blunder(currReqElem).create(defaultError(currReqElem));
+					blunders[blunders.length] = currReqElem;
+				} else { 
+					// Do Nothing. 
+				}
+			}
+		}	// END FOR
+		return flag;
+	}
+	
+	var isBlunder = function(elem) {
+		var flag = false;
+		
+		for (i=0; i < blunders.length; i++) {
+			if (blunders[i] == elem) {
+				if (flag != true) flag = true;												
+				break;
+			}	
+		}
+		
+		return flag;								
+	}
+	
+	var showFirstError = function() {
+		if (blunders.length >= 0) {
+			showError(blunders[0]);
+		}
+	}
+	
+	var showError = function (elem) {
+		for (i=0; i < blunders.length; i++) {
+			(blunders[i] == elem) ? $tf.blunder(blunders[i]).showMessage() : $tf.blunder(blunders[i]).hideMessage();
+		}
+	}
 	
 	/* 
 		function defaultError
@@ -351,7 +322,9 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 		
 		valid = checkReqd();
 		if (valid && blunders.length > 0) valid = false;
-
+		
+		if (!valid) showFirstError();
+		
 		return valid;
 	}
 }
