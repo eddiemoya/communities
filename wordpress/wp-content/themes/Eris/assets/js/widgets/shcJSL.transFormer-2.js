@@ -147,10 +147,11 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 						if (!(fn[i](options, target))) {
 							if (!isBlunder(this)) {
 								(options.message)? $tf.blunder(this).create(options.message):$tf.blunder(this).create(defaultError(this));
-								blunders[blunders.length] = this;
+								blunders[blunders.length] = this;								
 							} else {
-								$tf.blunder(this).showMessage();
+								// Do Nothing
 							}
+							showError(this);
 							break;
 						} // END if error
 					}
@@ -160,28 +161,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 					blunders.remove(this);					
 					showFirstError();
 				}
-			}																	
-			
-			/*
-				function rd
-				description - takes a form element and validates it against supplied options
-			*/
-			var validateElem = function(elem) {
-				var i; // counter
-				for (i=0; i < validationFuncs.length; i++) {
-					if (elem.value != '') {
-						if (!(validationFuncs[i](options, target))) {
-							(options.message)? $tf.blunder(elem).create(options.message):$tf.blunder(elem).create(defaultError(elem));
-							blunders[blunders.length] = elem;
-							break;
-						} // END if error
-					}
-				}	// END for validationFuncs.length;
-				if (i >= validationFuncs.length || elem.value == '') {
-					$tf.blunder(elem).destroy();
-					blunders.remove(elem);
-				}	
-			};			
+			}																				
 			
 		}
 	}
@@ -228,15 +208,76 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 		for (var i=0; i < required.length; i++) {
 			var currReqElem = required[i];
 			
-			if (!isValid(currReqElem)) {
-				if (flag != false) flag = false;
+			// Scoped private variables
+			var options;	// Form options from shc:gizmo:form
+			var fn = [];	// Functions to run for validation
+			
+			/*
+				NOTE: This is just a quick & dirty stop gap to update form messaging before the upgrade to Machina.
+				We should only have to eval the options once.
+			*/
+			if ($(currReqElem).attr("shc:gizmo:form") != undefined) {
+
+				options = eval('(' + $(currReqElem).attr("shc:gizmo:form") + ')');
 				
+				if (options.trim) {
+					fn[fn.length] = function(options) {
+						if (currReqElem.value != '') currReqElem.value = (currReqElem.value).trim();
+						return true;
+					}
+				}
+				
+				// Check if the input has to follow a pattern
+				if (options.pattern) {
+					fn[fn.length] = function(options) {
+						var pattern = new RegExp(options.pattern);
+						if (currReqElem.value != '') {
+							if (pattern.test(currReqElem.value.toString())) return true;
+							else return false;
+						}	// END if currReqElem.value != ''
+					} // END fn function
+				} // END pattern
+				
+				if (options.special) {
+					switch(options.special) {
+						case "screen-name":
+							fn[fn.length] = checkSN;
+							break;
+					}
+				}
+				
+				if (options.custom) {
+					fn[fn.length] = function(options) {
+						return options.custom(currReqElem);
+					}
+				}
+			}	
+			
+			// Run user-defined options validations
+			if (fn.length >= 0) {
+				for (j=0; j < fn.length; j++) {
+					if (!(fn[j](options, currReqElem))) {
+						// FAILED! - set flag to false
+						if (flag != false) flag = false;
+											
+						break;
+					} // END if error
+				}
+			}
+			
+			// Run default validations when input passes user-defined validation
+			if (!isValid(currReqElem) && flag === true) {
+				if (flag != false) flag = false;
+			}
+			
+			// Handle error if necessary
+			if (flag === false) {
 				if (!isBlunder(currReqElem)) {
-					$tf.blunder(currReqElem).create(defaultError(currReqElem));
+					(options.message)? $tf.blunder(currReqElem).create(options.message):$tf.blunder(currReqElem).create(defaultError(currReqElem));
 					blunders[blunders.length] = currReqElem;
 				} else { 
 					// Do Nothing. 
-				}
+				}				
 			}
 		}	// END FOR
 		return flag;
@@ -303,10 +344,12 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			}).success(function(data, status, xhr) {
 				if (data == "true"){ 
 					blunders.remove(target);
-					valid = true
+					valid = true;
+					showFirstError();
 				} else {
 					blunders[blunders.length] = target;
 					valid = false;
+					showError(target);
 				}
 			}).error(function(xhr, status, message) {
 				blunders.remove(target);
