@@ -347,8 +347,10 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 					valid = true;
 					showFirstError();
 				} else {
-					blunders[blunders.length] = target;
-					valid = false;
+					if (!isBlunder(target)) {
+						blunders[blunders.length] = target;
+						valid = false;
+					}
 					showError(target);
 				}
 			}).error(function(xhr, status, message) {
