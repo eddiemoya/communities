@@ -343,18 +343,11 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				url: window['ajaxdata']['ajaxurl']
 			}).success(function(data, status, xhr) {
 				if (data == "true"){ 
-					blunders.remove(target);
 					valid = true;
-					showFirstError();
 				} else {
-					if (!isBlunder(target)) {
-						blunders[blunders.length] = target;
-						valid = false;
-					}
-					showError(target);
+					valid = false;
 				}
 			}).error(function(xhr, status, message) {
-				blunders.remove(target);
 				valid = true;
 			})
 		}
