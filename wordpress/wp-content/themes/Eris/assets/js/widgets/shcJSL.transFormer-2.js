@@ -71,6 +71,11 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 	var required = [];	// (Array) Array of required fields
 	var transformer; 		// The form object
 	var validify;		// (Function) Validate data on blur/keydown
+	var isValid; 		// (Function) Takes a form element and validates it against default rules.
+	var isBlunder;		// (Function) Checks to see if element is currently in the blunders array.
+	var showError;		// (Function) Takes an element and displays that error, while hiding all others.
+	var showFirstError;		// (Function) Finds the first error in the blunders array and displays it, while hiding all others.
+	var defaultError;		// (Function) Takes a form element and returns the defaul error message for that type of element.
 	this.verify;				// (Function) Verify that the form is valid for submission
 	
 	var self = this;
@@ -174,7 +179,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 		description - takes a form element and validates it against default rules.
 		returns - Boolean.
 	*/
-	var isValid = function(elem) {
+	isValid = function(elem) {
 		var flag = true;
 		
 		if (elem.nodeName == "FIELDSET") {
@@ -285,7 +290,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 		return flag;
 	}
 	
-	var isBlunder = function(elem) {
+	isBlunder = function(elem) {
 		var flag = false;
 		
 		for (i=0; i < blunders.length; i++) {
@@ -298,13 +303,13 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 		return flag;								
 	}
 	
-	var showFirstError = function() {
+	showFirstError = function() {
 		if (blunders.length >= 0) {
 			showError(blunders[0]);
 		}
 	}
 	
-	var showError = function (elem) {
+	showError = function (elem) {
 		for (i=0; i < blunders.length; i++) {
 			(blunders[i] == elem) ? $tf.blunder(blunders[i]).showMessage() : $tf.blunder(blunders[i]).hideMessage();
 		}
@@ -317,7 +322,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 		Input - DOM Node
 		Return - String
 	*/
-	var defaultError = function(elem) {
+	defaultError = function(elem) {
 		switch(elem.nodeName) {		
 			case "FIELDSET":
 				return "This field is required.";
