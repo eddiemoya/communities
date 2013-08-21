@@ -266,7 +266,7 @@ function ajaxify_comments() {
     $data = array(
     	'comment_post_ID'  => $_POST['comment_post_ID'],
     	'comment_content'  => $_POST['comment'],
-    	'comment_author'   => $current_user->data->user_login,
+    	'comment_author'   => '',
     	'comment_date'     => date('Y-m-d H:i:s'),
     	'comment_date_gmt' => date('Y-m-d H:i:s'),
     	'comment_approved' => 1,
@@ -275,6 +275,7 @@ function ajaxify_comments() {
 
     if(is_user_logged_in()) {
         $data['user_id'] = $current_user->ID;
+        $data['comment_author'] = $current_user->data->user_login;
     }
 
     $comment_id = wp_insert_comment($data);
