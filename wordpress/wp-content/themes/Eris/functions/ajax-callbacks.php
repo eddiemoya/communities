@@ -262,10 +262,11 @@ add_action('wp_ajax_nopriv_validate_screen_name', 'validate_screen_name');
 function ajaxify_comments() {
     global $current_user;
     get_currentuserinfo();
-
+    
     $data = array(
     	'comment_post_ID'  => $_POST['comment_post_ID'],
     	'comment_content'  => $_POST['comment'],
+    	'comment_author'   => $current_user->data->user_login,
     	'comment_date'     => date('Y-m-d H:i:s'),
     	'comment_date_gmt' => date('Y-m-d H:i:s'),
     	'comment_approved' => 1,
