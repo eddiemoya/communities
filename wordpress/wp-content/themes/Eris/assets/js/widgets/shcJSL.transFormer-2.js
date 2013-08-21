@@ -82,6 +82,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			// Scoped private variables
 			var options;	// Form options from shc:gizmo:form
 			var fn = [];	// Functions to run for validation
+			var isTakenSN = false;
 
 			options = eval('(' + $(target).attr("shc:gizmo:form") + ')');
 
@@ -211,6 +212,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			// Scoped private variables
 			var options;	// Form options from shc:gizmo:form
 			var fn = [];	// Functions to run for validation
+			var isTakenSN = false;
 			
 			/*
 				NOTE: This is just a quick & dirty stop gap to update form messaging before the upgrade to Machina.
@@ -344,8 +346,10 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			}).success(function(data, status, xhr) {
 				if (data == "true"){ 
 					valid = true;
-				} else {
-					valid = false;
+				} else {				
+					// Do shit with data
+					isTakenSN = true;
+					valid = false;					
 				}
 			}).error(function(xhr, status, message) {
 				valid = true;
