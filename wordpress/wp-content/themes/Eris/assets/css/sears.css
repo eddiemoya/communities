@@ -264,7 +264,7 @@ ul.bullets { list-style-type: disc; }
 
 .error-message { display: none; }
 
-.error input[type="text"], .error input[type="password"] { border: solid 1px #ff0000; }
+.error input[type="text"], .error input[type="password"], .error textarea.input_textarea, .error select { border: solid 1px #ff0000; }
 .error .error-message { background-color: #e41e13; color: white !important; display: block; float: left; font-weight: bold; margin: 10px 0px 0px; padding: 0.307em 1.23em; position: relative; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; }
 .error .error-message .error-pointer { background: transparent url('../img/error_pointer-arrow.png?v=1375135181') no-repeat 0px 0px; height: 9px; display: block; left: 15px; position: absolute; top: -9px; width: 19px; }
 
