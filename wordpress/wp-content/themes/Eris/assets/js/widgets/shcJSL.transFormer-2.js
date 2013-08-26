@@ -147,12 +147,22 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			
 			function validify() {
 				var i; // counter
+				var newErrorMsg = false;	// Possible 3rd Error Message from failed screenname check.
 				
 				if (this.value != '') {
 					for (i=0; i < fn.length; i++) {
 						if (!(fn[i](options, target))) {
+							// Separate check for checkSN
+							if (fn[j] == checkSN) {
+								newErrorMsg =  fn[j](options, currReqElem);
+							}
+							
 							if (!isBlunder(this)) {
-								(options.message)? $tf.blunder(this).create(options.message):$tf.blunder(this).create(defaultError(this));
+								if (newErrorMsg) {
+									$tf.blunder(currReqElem).create(newErrorMsg)
+								} else {
+									(options.message)? $tf.blunder(this).create(options.message):$tf.blunder(this).create(defaultError(this));
+								}
 								blunders[blunders.length] = this;								
 							} else {
 								// Do Nothing
@@ -217,7 +227,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			// Scoped private variables
 			var options;	// Form options from shc:gizmo:form
 			var fn = [];	// Functions to run for validation
-			var isTakenSN = false;
+			var newErrorMsg = false;	// Possible 3rd Error Message from failed screenname check.
 			
 			/*
 				NOTE: This is just a quick & dirty stop gap to update form messaging before the upgrade to Machina.
@@ -263,7 +273,11 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			// Run user-defined options validations
 			if (fn.length >= 0) {
 				for (j=0; j < fn.length; j++) {
-					if (!(fn[j](options, currReqElem))) {
+					// Separate check for checkSN
+					if (fn[j] == checkSN) {
+						newErrorMsg =  fn[j](options, currReqElem);
+					}
+					else (!(fn[j](options, currReqElem))) {
 						// FAILED! - set flag to false
 						if (flag != false) flag = false;
 											
@@ -280,7 +294,11 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			// Handle error if necessary
 			if (flag === false) {
 				if (!isBlunder(currReqElem)) {
-					(options.message)? $tf.blunder(currReqElem).create(options.message):$tf.blunder(currReqElem).create(defaultError(currReqElem));
+					if (newErrorMsg) {
+						$tf.blunder(currReqElem).create(newErrorMsg)
+					} else {
+						(options.message)? $tf.blunder(currReqElem).create(options.message):$tf.blunder(currReqElem).create(defaultError(currReqElem));
+					}
 					blunders[blunders.length] = currReqElem;
 				} else { 
 					// Do Nothing. 
@@ -353,8 +371,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 					valid = true;
 				} else {				
 					// Do shit with data
-					isTakenSN = true;
-					valid = false;					
+					valid = data;					
 				}
 			}).error(function(xhr, status, message) {
 				valid = true;
