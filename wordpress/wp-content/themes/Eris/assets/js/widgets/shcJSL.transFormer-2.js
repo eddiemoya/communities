@@ -147,29 +147,37 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			
 			function validify() {
 				var i; // counter
+				var flag = true;
 				var newErrorMsg = false;	// Possible 3rd Error Message from failed screenname check.
 				
 				if (this.value != '') {
 					for (i=0; i < fn.length; i++) {
-						if (!(fn[i](options, target))) {
-							// Separate check for checkSN
-							if (fn[i] == checkSN) {
-								newErrorMsg =  fn[i](options, currReqElem);
-							}
+						// Separate check for checkSN
+						if (fn[i] == checkSN) {
+							newErrorMsg =  fn[i](options, currReqElem);
+							if (flag != false) flag = false;
 							
-							if (!isBlunder(this)) {
-								if (newErrorMsg) {
-									$tf.blunder(currReqElem).create(newErrorMsg)
-								} else {
-									(options.message)? $tf.blunder(this).create(options.message):$tf.blunder(this).create(defaultError(this));
-								}
-								blunders[blunders.length] = this;								
-							} else {
-								// Do Nothing
-							}
-							showError(this);
+							break;
+						}
+						if (!(fn[i](options, target))) {
+							if (flag != false) flag = false;
+							
 							break;
 						} // END if error
+					}
+					if (flag === false) {
+						if (!isBlunder(this)) {
+							// If username is already used
+							if (newErrorMsg) {
+								$tf.blunder(currReqElem).create(newErrorMsg);
+							} else {
+								(options.message)? $tf.blunder(this).create(options.message):$tf.blunder(this).create(defaultError(this));
+							}
+							blunders[blunders.length] = this;								
+						} else {
+							// Do Nothing
+							showError(this);
+						}
 					}
 				}	// END for fn.length;
 				if (i >= fn.length || this.value == '') {
