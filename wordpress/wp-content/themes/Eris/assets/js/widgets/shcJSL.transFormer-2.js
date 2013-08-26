@@ -153,8 +153,8 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 					for (i=0; i < fn.length; i++) {
 						if (!(fn[i](options, target))) {
 							// Separate check for checkSN
-							if (fn[j] == checkSN) {
-								newErrorMsg =  fn[j](options, currReqElem);
+							if (fn[i] == checkSN) {
+								newErrorMsg =  fn[i](options, currReqElem);
 							}
 							
 							if (!isBlunder(this)) {
