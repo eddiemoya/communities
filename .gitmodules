@@ -76,3 +76,6 @@
 [submodule "wordpress/wp-content/plugins/section-fronts"]
 	path = wordpress/wp-content/plugins/section-fronts
 	url = git@github.com:eddiemoya/Section-Fronts.git
+[submodule "wordpress/wp-content/plugins/bbpress"]
+	path = wordpress/wp-content/plugins/bbpress
+	url = git@github.com:dan-crimmins/bbpress.git
