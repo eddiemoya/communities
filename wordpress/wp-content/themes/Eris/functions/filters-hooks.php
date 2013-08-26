@@ -435,11 +435,18 @@ add_filter('preprocess_comment', 'clean_comment');
 
 
 function limit_search($query) {
-    if ($query->is_search && !is_admin())
-        $query->set('post_type',array('post','question','guide'));
-
+	
+	if(! isset($_REQUEST['bbp_search'])) { //Do not run on forum search
+		
+	    if($query->is_search && !is_admin()) {
+	    	
+	    	$query->set('post_type',array('post','question','guide'));
+	    }	
+	    
+	}
     return $query;
 }
+
 add_filter('pre_get_posts','limit_search');
 
 
@@ -1095,3 +1102,6 @@ function com_canonical() {
 
     echo "<link rel='canonical' href='$link' />\n";
 }
+
+//Removes generator tag, request from sec team
+remove_action('wp_head', 'wp_generator');
