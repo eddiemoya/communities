@@ -155,11 +155,16 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 						// Separate check for checkSN
 						if (fn[i] == checkSN) {
 							newErrorMsg =  fn[i](options, this);
-							if (flag != false) flag = false;
+							if (!(newErrorMsg)) {	// Returned false
+								if (flag != false) flag = false;
+							} else if (newErrorMsg !== true) {	// Returned with SN taken messaging
+								if (flag != false) flag = false;
+							} else {	// Returned true
+								// Do Nothing
+							}
 							
 							break;
-						}
-						if (!(fn[i](options, target))) {
+						} else if (!(fn[i](options, target))) {
 							if (flag != false) flag = false;
 							
 							break;
@@ -285,6 +290,14 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 					// Separate check for checkSN
 					if (fn[j] == checkSN) {
 						newErrorMsg = fn[j](options, currReqElem);
+						
+						if (!(newErrorMsg)) {	// Returned false
+							if (flag != false) flag = false;
+						} else if (newErrorMsg !== true) {	// Returned with SN taken messaging
+							if (flag != false) flag = false;
+						} else {	// Returned true
+							// Do Nothing
+						}
 						
 						break;
 					} else if (!(fn[j](options, currReqElem))) {
