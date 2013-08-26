@@ -273,15 +273,18 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			// Run user-defined options validations
 			if (fn.length >= 0) {
 				for (j=0; j < fn.length; j++) {
+					var test = fn[j](options, currReqElem);
 					// Separate check for checkSN
 					if (fn[j] == checkSN) {
-						newErrorMsg =  fn[j](options, currReqElem);
-					}
-					else (!(fn[j](options, currReqElem))) {
+						newErrorMsg = fn[j](options, currReqElem);
+						
+						break;
+					} else if (!(fn[j](options, currReqElem))) {
 						// FAILED! - set flag to false
 						if (flag != false) flag = false;
 											
 						break;
+					
 					} // END if error
 				}
 			}
