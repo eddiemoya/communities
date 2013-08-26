@@ -154,7 +154,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 					for (i=0; i < fn.length; i++) {
 						// Separate check for checkSN
 						if (fn[i] == checkSN) {
-							newErrorMsg =  fn[i](options, currReqElem);
+							newErrorMsg =  fn[i](options, this);
 							if (flag != false) flag = false;
 							
 							break;
@@ -169,7 +169,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 						if (!isBlunder(this)) {
 							// If username is already used
 							if (newErrorMsg) {
-								$tf.blunder(currReqElem).create(newErrorMsg);
+								$tf.blunder(this).create(newErrorMsg);
 							} else {
 								(options.message)? $tf.blunder(this).create(options.message):$tf.blunder(this).create(defaultError(this));
 							}
