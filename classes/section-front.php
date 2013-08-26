@@ -22,7 +22,7 @@ class Section_Front{
 	public function add_actions(){
 
 		add_action( 'init', 					array(__CLASS__, 'register_sections_type') );
-		add_action( 'save_post', 				array(__CLASS__, 'save_section') );
+		//add_action( 'save_post', 				array(__CLASS__, 'save_section') );
 		//add_action( 'wp_loaded',				array(__CLASS__, 'flush_custom_rules' ) );
 		add_filter( 'rewrite_rules_array',		array(__CLASS__, 'section_rewrite_rules') );
 		add_filter('query_vars', 				array(__CLASS__, 'add_var'));
