@@ -251,7 +251,7 @@ ul.bullets { list-style-type: disc; }
 .post article { margin-top: .5em; }
 .post .post-actions { margin-top: .5em; }
 
-.input_text { padding: 0.384em 0.012em; border: solid 1px #cccccc; height: 1.538em; }
+.input_text { padding: 0.384em 0.012em; border: solid 1px #cccccc; height: 1.538em; margin-right: 100%; }
 
 .required:after, .optional:after { color: #999999; font-size: 92.307%; }
 
