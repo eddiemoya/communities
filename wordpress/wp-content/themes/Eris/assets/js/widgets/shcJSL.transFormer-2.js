@@ -157,13 +157,15 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 							newErrorMsg =  fn[i](options, this);
 							if (!(newErrorMsg)) {	// Returned false
 								if (flag != false) flag = false;
+								
+								break;
 							} else if (newErrorMsg !== true) {	// Returned with SN taken messaging
 								if (flag != false) flag = false;
+								
+								break;
 							} else {	// Returned true
 								// Do Nothing
 							}
-							
-							break;
 						} else if (!(fn[i](options, target))) {
 							if (flag != false) flag = false;
 							
@@ -293,13 +295,15 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 						
 						if (!(newErrorMsg)) {	// Returned false
 							if (flag != false) flag = false;
+							
+							break;
 						} else if (newErrorMsg !== true) {	// Returned with SN taken messaging
 							if (flag != false) flag = false;
+							
+							break;
 						} else {	// Returned true
 							// Do Nothing
-						}
-						
-						break;
+						}												
 					} else if (!(fn[j](options, currReqElem))) {
 						// FAILED! - set flag to false
 						if (flag != false) flag = false;
