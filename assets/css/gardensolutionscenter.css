@@ -267,7 +267,7 @@ ul.bullets { list-style-type: disc; }
 .post article { margin-top: .5em; }
 .post .post-actions { margin-top: .5em; }
 
-.input_text { padding: 0.384em 0.012em; border: solid 1px #cccccc; height: 1.538em; margin-right: 100%; }
+.input_text { padding: 0.384em 0.012em; border: solid 1px #cccccc; height: 1.538em; }
 
 .required:after, .optional:after { color: #999999; font-size: 92.307%; }
 
@@ -365,6 +365,8 @@ textarea.discussion { border: 1px solid #d6d6d6; height: 10em; width: 99%; -webk
 .comments .content-header h4 { float: left; font-size: 123.076%; font-weight: normal; line-height: 1.75em; margin-left: 2em; }
 
 .question + .ugc-comment-answer_form .trigger.discussion { height: 1em; margin: 0 0 1em; text-align: right; }
+
+.ugc-comment-answer_form #screen-name { margin-right: 100%; }
 
 .featured-question .content-body { padding: 0.769em; }
 
