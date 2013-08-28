@@ -139,8 +139,7 @@ ul.bullets {
   // IE8 no like this.
   padding:em-adjust( .3125em .01em );
   border:solid 1px sears( decorative );
-  height:em-adjust( 1.25em );
-  margin-right: 100%;
+  height:em-adjust( 1.25em );  
 }
 
 .required:after, .optional:after {
@@ -401,6 +400,12 @@ textarea.discussion {
   height: 1em;
   margin: 0 0 1em;
   text-align: right;
+}
+
+.ugc-comment-answer_form {
+	#screen-name {
+		margin-right: 100%;
+	}
 }
 
 // FEATURED QUESTION
