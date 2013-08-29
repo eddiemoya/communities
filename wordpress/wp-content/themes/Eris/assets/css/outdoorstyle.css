@@ -598,6 +598,8 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .site-error .message h2 { font-size: 246.153%; font-family: Georgia, serif; margin-top: 1em; }
 .site-error .message .tape { background: url('../img/tile_line.gif?v=1375135183'); width: 50%; margin: .66em auto; line-height: .5; }
 
+#sso-error { color: #E41E13; }
+
 .featured-category-question .content-header { border-top: none; padding: 0px; }
 .featured-category-question .content-header h1 { font-size: 146.153%; font-weight: normal; }
 .featured-category-question .content-body { border-top: none; }
