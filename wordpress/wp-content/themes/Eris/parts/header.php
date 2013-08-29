@@ -54,7 +54,14 @@
 	          <?php get_template_part('parts/head'); ?>
 	
 	          <?php get_template_part('parts/navigation'); ?>
-	
+				<div style="width: 250px; position: absolute; padding: 3px; border-radius: 6px 6px 6px 6px; background: none repeat scroll 0% 0% rgb(255, 255, 255); border: 3px solid rgb(221, 221, 221);">
+					Hey girl. Hey.
+					<div id="close" style="position: absolute; right: 3px; top: 0px;">
+						X
+					</div>
+					<div style="position: absolute; width: 1px; height: 0px; border-left: 8px solid transparent; border-right: 8px solid transparent; border-bottom: 8px solid rgb(221, 221, 221); top: -8px;" id="tickOuter"></div>
+					<div style="position: absolute; width: 1px; height: 0px; border-left: 8px solid transparent; border-right: 8px solid transparent; left: 49px; top: -8px; border-bottom: 8px solid rgb(255, 255, 255);" id="tickInner"></div>
+				</div>
 	      </div>
 					
 
