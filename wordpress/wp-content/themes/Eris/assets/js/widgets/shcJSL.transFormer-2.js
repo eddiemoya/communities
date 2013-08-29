@@ -235,11 +235,11 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 	}	
 	
 	function checkReqd() {
-		var flag = true;	// Valid flag;
 		for (var i=0; i < required.length; i++) {
 			var currReqElem = required[i];
 			
 			// Scoped private variables
+			var flag = true;	// Valid flag;
 			var options;	// Form options from shc:gizmo:form
 			var fn = [];	// Functions to run for validation
 			var newErrorMsg = false;	// Possible 3rd Error Message from failed screenname check.
