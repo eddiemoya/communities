@@ -3,7 +3,9 @@
  * @package WordPress
  * @subpackage White Label
  */
+
 get_template_part('parts/header');
+
 loop();
 
 //Wont show up on archive pages.

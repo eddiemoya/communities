@@ -1,4 +1,6 @@
 <?php 
+echo '<h1>hello</h1>';
+exit;
 
 if(!is_ajax()) 
 {
