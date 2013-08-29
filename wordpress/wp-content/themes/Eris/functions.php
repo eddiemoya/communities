@@ -41,3 +41,4 @@ get_template_part('functions/rewrite-rules');
 get_template_part('functions/userphoto');
 get_template_part('functions/cookies_to_formdata');
 get_template_part('functions/custom_taxonomy');
+get_template_part('functions/forums');
