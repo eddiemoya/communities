@@ -136,6 +136,9 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			$(target).bind('blur keydown', function(event) {
 				if ((event.type == "keydown" && event.keyCode == 13) || event.type == "blur") {
 					validify.call(this);
+					if (isBlunder(this)) {
+						showError(this);
+					}
 				}					
 			});
 			
