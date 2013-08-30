@@ -133,12 +133,6 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				}
 			});
 			
-			// $(target).bind("keydown", function(event){
-			// 				var code;	// key code
-			// 				code = event.keyCode || event.which;
-			// 				event.preventDefault();
-			// 			});
-			
 			$(target).bind('blur keydown', function(event) {
 				if ((event.type == "keydown" && event.keyCode == 13) || event.type == "blur") {
 					validify.call(this);
@@ -182,7 +176,12 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 							}
 							blunders[blunders.length] = this;								
 						} else {
-							// Do Nothing
+							// Replace current error message with new one.						
+							if (newErrorMsg && newErrorMsg !== true) {
+								$tf.blunder(this).create(newErrorMsg);
+							} else {
+								(options.message)? $tf.blunder(this).create(options.message):$tf.blunder(this).create(defaultError(this));
+							}
 							showError(this);
 						}
 					}
@@ -236,9 +235,9 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 	
 	function checkReqd() {
 		for (var i=0; i < required.length; i++) {
-			var currReqElem = required[i];
 			
 			// Scoped private variables
+			var currReqElem = required[i];
 			var flag = true;	// Valid flag;
 			var options;	// Form options from shc:gizmo:form
 			var fn = [];	// Functions to run for validation
@@ -287,8 +286,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			
 			// Run user-defined options validations
 			if (fn.length >= 0) {
-				for (j=0; j < fn.length; j++) {
-					var test = fn[j](options, currReqElem);
+				for (j=0; j < fn.length; j++) {				
 					// Separate check for checkSN
 					if (fn[j] == checkSN) {
 						newErrorMsg = fn[j](options, currReqElem);
@@ -323,13 +321,18 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			if (flag === false) {
 				if (!isBlunder(currReqElem)) {
 					if (newErrorMsg) {
-						$tf.blunder(currReqElem).create(newErrorMsg)
+						$tf.blunder(currReqElem).create(newErrorMsg);
 					} else {
 						(options.message)? $tf.blunder(currReqElem).create(options.message):$tf.blunder(currReqElem).create(defaultError(currReqElem));
 					}
 					blunders[blunders.length] = currReqElem;
 				} else { 
-					// Do Nothing. 
+					// Update previous error message with current error message
+					if (newErrorMsg && newErrorMsg !== true) {
+						$tf.blunder(currReqElem).create(newErrorMsg);
+					} else {
+						(options.message)? $tf.blunder(currReqElem).create(options.message):$tf.blunder(currReqElem).create(defaultError(currReqElem));
+					}
 				}				
 			}
 		}	// END FOR
