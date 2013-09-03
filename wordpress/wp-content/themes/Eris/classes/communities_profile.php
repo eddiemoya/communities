@@ -132,14 +132,9 @@ class User_Profile {
 	 */
 	public function __construct($user_id = null) {
 		
-		// if(! $user_id) die('You must supply a user ID to constructor of User_Profile.'); 
 		 $this->user_id = (! $user_id) ? 0 : $user_id;
-		
-		 $this->set_experts($this->get_experts());
 		 
 		 $this->set_nav();
-		 
-		
 	}
 	
 	/**
@@ -540,6 +535,8 @@ class User_Profile {
 		
 		global $wpdb;
 		
+		if(! $this->experts)  $this->set_experts($this->get_experts());
+		
 		$q = "SELECT * FROM {$wpdb->comments} WHERE comment_post_id = {$post_id} AND comment_type = '".$type."' AND user_id IN ({$this->experts})";
 
 		return $wpdb->get_results($q);
@@ -726,7 +723,7 @@ class User_Profile {
 	 * 
 	 * @return array - an array of user objects
 	 */
-	public function get_experts() {
+	private function get_experts() {
 		
 		global $wpdb;
 		
