@@ -72,7 +72,7 @@ get_template_part('parts/header'); ?>
 				<?php endif;?>
 			</h6>		
 				
-			<p><?php if(isset($response)) echo ($response['code'] != '404') ? $response['message'] : 'Please enter a valid email address.';?> </p>
+			<p id="sso-error"><?php if(isset($response)) echo ($response['code'] != '404') ? $response['message'] : 'Please enter a valid email address.';?> </p>
 		 
 		 <?php endif;?>
 		 
