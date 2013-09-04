@@ -11,11 +11,13 @@
 
 <div id="bbpress-forums">
 	
-		<div class="bbp-search-form">
+	<?php bbp_get_template_part('forums', 'head'); ?>
+	
+		<!--  <div class="bbp-search-form"> -->
 
 		<?php //bbp_get_template_part( 'form', 'search' ); ?>
 
-	</div>
+	<!-- </div> -->
 
 	<?php //bbp_breadcrumb(); ?>
 
@@ -23,7 +25,7 @@
 
 	<?php if ( bbp_has_forums() ) : ?>
 
-		<?php bbp_get_template_part( 'loop',     'forums'    ); ?>
+		<?php bbp_get_template_part( 'loop',  'forums' ); ?>
 
 	<?php else : ?>
 
@@ -31,7 +33,7 @@
 
 	<?php endif; ?>
 	
-	<?php bbp_breadcrumb(); ?>
+	<?php //bbp_breadcrumb(); ?>
 	
 	<?php do_action( 'bbp_template_after_forums_index' ); ?>
 
