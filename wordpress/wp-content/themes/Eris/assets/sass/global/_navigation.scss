@@ -46,6 +46,55 @@ $arrow-height: 3px;
 #navigation {
   width:960px;
   margin:0 auto;
+  #forum_tooltip {
+	width: 180px; 
+	position: absolute; 
+	top: 43px;
+	background: none repeat scroll 0% 0% rgb(255, 255, 255); 
+	border: 3px solid rgb(221, 221, 221); 
+	padding: 30px 21px 5px;
+	z-index: 101; 
+	-webkit-border-radius: 6px;
+	border-radius: 6px; 
+	-webkit-box-shadow: 2px 4px 3px 1px #999;
+	box-shadow: 2px 4px 3px 1px #999; 
+	.close {
+		position: absolute; 
+		right: 3px; 
+		top: 0px;
+	}
+	.tick {
+		position: absolute; 
+		left: 67px; 
+		top: -6px; 
+		background: none repeat scroll 0px 0px rgb(255, 255, 255); 
+		height: 11px; 
+		width: 11px; 
+		border-right: 3px solid rgb(221, 221, 221); 
+		border-top: 3px solid rgb(221, 221, 221);
+		-webkit-border-radius: 6px;
+		border-radius: 2px; 
+		transform: rotate(-45deg); 
+		transform-origin: 0px 100% 0px; 
+	}
+	.banner_new {		
+		height: 63px; 
+		width: 63px; 
+		position: absolute; 
+		top: -7px; 
+		left: -7px;
+	}
+	p {
+		margin-bottom: 10px;
+	}
+  }
+}
+.sears .banner_new{
+	background: url('../img/forums/sears_newCornerImg.png') no-repeat scroll 0px 0px transparent; 
+}
+
+.kmart .banner_new{
+	background: url('../img/forums/kmart_newCornerImg.png') no-repeat scroll 0px 0px transparent; 
 }
 
 // Modify dropmenu for the footer
