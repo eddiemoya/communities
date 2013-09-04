@@ -126,7 +126,7 @@
                         <?php
 
                         break;
-                    case 'downvote':
+                    case 'downvote_REMOVED':
                         ?>
                             <label class="metainfo" for="downvote-comment-<?php echo $id; ?>">(<?php echo $downvoteTotal; ?>)</label>
                             <button shc:gizmo="actions" shc:gizmo:options="{actions:{post:{id:<?php echo $id; ?>,name:'downvote',sub_type:'<?php echo $sub_type; ?>',type:'<?php echo $type; ?>'<?php echo $nliDownvote; ?>}}}" type="button" name="downvote" value="down vote" title="Down vote this <?php echo $type; ?>" id="downvote-comment-<?php echo $id; ?>" class="downvote<?php echo $myActionDownvote; ?>">down vote</button>
