@@ -11,8 +11,6 @@
 
 <div id="bbpress-forums">
 	
-	<?php bbp_breadcrumb(); ?>
-
 	<?php do_action( 'bbp_template_before_single_topic' ); ?>
 
 	<?php if ( post_password_required() ) : ?>
@@ -21,9 +19,9 @@
 
 	<?php else : ?>
 
-		<?php bbp_topic_tag_list(); ?>
+		<?php //bbp_topic_tag_list(); ?>
 
-		<?php bbp_single_topic_description(); ?>
+		<?php //bbp_single_topic_description(); ?>
 
 		<?php if ( bbp_show_lead_topic() ) : ?>
 
@@ -32,12 +30,18 @@
 		<?php endif; ?>
 
 		<?php if ( bbp_has_replies() ) : ?>
-
+		
+		<div id="forums-topic-top">
 			<?php bbp_get_template_part( 'pagination', 'replies' ); ?>
-
+		</div>
+		
 			<?php bbp_get_template_part( 'loop',       'replies' ); ?>
 
-			<?php bbp_get_template_part( 'pagination', 'replies' ); ?>
+			<div id="forums-topic-bottom">
+				<?php bbp_breadcrumb();?>
+				<?php bbp_get_template_part( 'pagination', 'replies' ); ?>
+			</div>
+			
 
 		<?php endif; ?>
 
