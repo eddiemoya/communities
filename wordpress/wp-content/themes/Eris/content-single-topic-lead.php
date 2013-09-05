@@ -66,6 +66,7 @@
 						(To reply to any topic or comment, you must <a href="#">Sign in</a>)
 					</div>
 				<?php endif;?>
+				
 
 				<?php do_action( 'bbp_theme_after_topic_content' ); ?>
 
