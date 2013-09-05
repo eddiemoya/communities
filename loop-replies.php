@@ -14,7 +14,7 @@
 <ul id="topic-<?php bbp_topic_id(); ?>-replies" class="forums bbp-replies">
 
 	<li class="bbp-header">
-
+	
 		<div id="replies-top"></div>
 		<div class="bbp-reply-content">
 
