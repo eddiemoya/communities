@@ -36,8 +36,11 @@
 		<?php do_action( 'bbp_theme_after_reply_content' ); ?>
 
 	</div><!-- .bbp-reply-content -->
+	
 	<div class="forums-single-reply-footer">
-		<?php topic_reply_link();?>
+	<?php topic_reply_link();?>
 	</div>
 
 </div><!-- .reply -->
+
+

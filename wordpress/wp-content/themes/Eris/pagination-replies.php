@@ -13,8 +13,6 @@
 
 <div class="bbp-pagination">
 	
-	<?php topic_reply_link();?>
-	
 	<div class="bbp-pagination-links">
 
 		<?php bbp_topic_pagination_links(); ?>

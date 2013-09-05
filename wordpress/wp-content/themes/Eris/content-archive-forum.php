@@ -13,11 +13,11 @@
 	
 	<?php bbp_get_template_part('forums', 'head'); ?>
 	
-		<!--  <div class="bbp-search-form"> -->
+		<div class="bbp-search-form">
 
-		<?php //bbp_get_template_part( 'form', 'search' ); ?>
+		<?php bbp_get_template_part( 'form', 'search' ); ?>
 
-	<!-- </div> -->
+	 	</div>
 
 	<?php //bbp_breadcrumb(); ?>
 
