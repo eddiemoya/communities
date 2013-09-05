@@ -9,6 +9,8 @@
 
 ?>
 
+<?php bbp_get_template_part('forums', 'head');?>
+
 <div id="bbpress-forums">
 	
 	<?php do_action( 'bbp_template_before_single_topic' ); ?>
@@ -32,6 +34,7 @@
 		<?php if ( bbp_has_replies() ) : ?>
 		
 		<div id="forums-topic-top">
+			<?php topic_reply_link();?>
 			<?php bbp_get_template_part( 'pagination', 'replies' ); ?>
 		</div>
 		
