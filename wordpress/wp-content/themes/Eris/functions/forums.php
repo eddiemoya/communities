@@ -153,6 +153,54 @@ function forums_count($forum_id) {
 	
 }
 
+//Header Breadcrumb heading
+function header_breadcrumbs() {
+	
+	$p = get_queried_object();
+	
+	if($p) {
+		
+		//Top-level forum
+		if($p->post_type == 'forum' && ! count($p->ancestors)) {
+			
+			$out = $p->post_title;
+			
+		} elseif (($p->post_type == 'forum' && count($p->ancestors) > 0) ||
+					$p->post_type == 'topic') { //Subforum or topic
+		
+			$forum1 = get_post($p->ancestors[0]);
+			$forum2 = get_post($p->ancestors[1]);
+			
+			if(count($forum1->ancestors) > 0) {
+				
+				$forum = $forum2->post_title; 
+				$subforum = $forum1->post_title;
+			
+			} else {
+				
+				$forum = $forum1->post_title;
+				$subforum = $forum2->post_title;
+			}
+				
+			$out = $forum . ' : ' . $subforum;
+		}	
+				
+		echo $out;
+	}
+}
+
+function has_subforums($id=null) {
+	
+	$id = ($id) ? $id : get_queried_object_id();
+	
+	$subs = get_posts(array('post_type'			=> 'forum',
+							'post_status'		=> 'publish',
+							'post_parent'		=> $id,
+							'posts_per_page'	=> -1));
+	
+	return (count($subs)) ? true : false;
+}
+
 
 
 //Breadcrumbs -- Remove 'Home' from breadcrumbs
@@ -166,6 +214,8 @@ function comm_forums_breadcrumbs($crumbs){
 
 //Show lead topic in topics replies first
 add_filter( 'bbp_show_lead_topic', '__return_true' );
+
+
 
 /**
  * ADMIN SECTION
