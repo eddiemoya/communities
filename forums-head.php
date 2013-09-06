@@ -15,9 +15,7 @@
 		
 	<?php else: ?>
 	
-	<?php if(bbp_is_topic()) echo 'Is a Topic';?>
-	<?php var_dump($_GET);?>
-		<h2>Header for Subforums/Topics</h2>
+		<h2><?php header_breadcrumbs();?></h2>
 		
 	<?php endif;?>
 </div>
