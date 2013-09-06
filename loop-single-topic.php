@@ -55,7 +55,7 @@
 
 		<?php do_action( 'bbp_theme_after_topic_title' ); ?>
 
-		<?php bbp_topic_pagination(); ?>
+		<?php //bbp_topic_pagination(); ?>
 
 		<?php do_action( 'bbp_theme_before_topic_meta' ); ?>
 

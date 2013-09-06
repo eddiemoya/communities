@@ -19,7 +19,7 @@
 
 
 <?php if ( bbp_current_user_can_access_create_topic_form() ) : ?>
-
+	<div id="forum-topic-form"></div>
 	<div id="new-topic-<?php bbp_topic_id(); ?>" class="bbp-topic-form">
 
 		<form id="new-post" name="new-post" method="post" action="<?php the_permalink(); ?>">
@@ -208,7 +208,7 @@
 	<div id="no-topic-<?php bbp_topic_id(); ?>" class="bbp-no-topic">
 		
 			<h2>Creating a new Thread</h2>
-			<p>To create a new thread &gt;&gt; <a href="#">Sign In</a></p>
+			<p>To create a new thread &gt;&gt; <a href="#" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">Sign In</a></p>
 	</div>
 
 <?php endif; ?>
