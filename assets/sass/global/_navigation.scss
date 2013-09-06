@@ -89,6 +89,19 @@ $arrow-height: 3px;
 	}
   }
 }
+.no-boxshadow #forum_tooltip {
+	/* This contains the color of the shadow in the CSS3 syntax */
+	background: #999;
+
+        /* This contains the blur-radius in the CSS3 syntax */
+	zoom: 1;
+	filter: progid:DXImageTransform.Microsoft.DropShadow(OffX=2, OffY=4, Color=#999999),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=1, Direction=90),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=1, Direction=180);
+
+        /* You must remove the border in IE, since it will be replaced in the next rule */
+	border: none;
+}
 .sears .banner_new{
 	background: url('../img/forums/sears_newCornerImg.png') no-repeat scroll 0px 0px transparent; 
 }
