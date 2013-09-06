@@ -63,7 +63,7 @@
 				
 				<?php if(! is_user_logged_in()):?>
 					<div id="reply-not-loggedin-message">
-						(To reply to any topic or comment, you must <a href="#">Sign in</a>)
+						(To reply to any topic or comment, you must <a href="#" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">Sign in</a>)
 					</div>
 				<?php endif;?>
 				

@@ -18,7 +18,7 @@
 <?php endif; ?>
 
 <?php if ( bbp_current_user_can_access_create_reply_form() ) : ?>
-
+	<div id="forum-reply-form"></div>
 	<div id="new-reply-<?php bbp_topic_id(); ?>" class="bbp-reply-form">
 
 		<form id="new-post" name="new-post" method="post" action="<?php the_permalink(); ?>">
@@ -183,7 +183,7 @@
 		<div class="forums-not-logged-in">
 			<?php if(! is_user_logged_in()): ?>
 				<h2>Replying to a Thread</h2>
-				To post a comment or reply &gt;&gt; <a href="#">Sign in</a>
+				To post a comment or reply &gt;&gt; <a href="#" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">Sign in</a>
 			<?php endif;?>
 		</div>
 	</div>

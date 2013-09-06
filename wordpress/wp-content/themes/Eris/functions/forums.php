@@ -91,7 +91,7 @@ function topic_reply_link($target=null) {
 	ob_start();
 	?>
 	<div id="forums-topic-reply-link">
-		<a href="<?php if($target) echo $target;?>">Reply</a>
+		<a href="<?php if($target) echo $target;?>" <?php if(! is_user_logged_in()):?> shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}"<?php endif;?>>Reply</a>
 	</div>
 	<?php
 	echo ob_get_clean(); 
@@ -189,6 +189,7 @@ function header_breadcrumbs() {
 	}
 }
 
+
 function has_subforums($id=null) {
 	
 	$id = ($id) ? $id : get_queried_object_id();
@@ -201,6 +202,17 @@ function has_subforums($id=null) {
 	return (count($subs)) ? true : false;
 }
 
+//Sanitize UGC on replies/threads
+add_action('bbp_new_reply_pre_insert', 'forums_sanitize_content');
+add_action('bbp_new_topic_pre_insert', 'forums_sanitize_content');
+
+function forums_sanitize_content($content) {
+	
+	$content['post_title'] = sanitize_text($content['post_title']);
+	$content['post_content'] = sanitize_text($content['post_content']);
+	
+	return $content;
+}
 
 
 //Breadcrumbs -- Remove 'Home' from breadcrumbs
