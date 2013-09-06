@@ -34,7 +34,7 @@
 		<?php if ( bbp_has_replies() ) : ?>
 		
 		<div id="forums-topic-top">
-			<?php topic_reply_link();?>
+			<?php topic_reply_link('#forum-reply-form');?>
 			<?php bbp_get_template_part( 'pagination', 'replies' ); ?>
 		</div>
 		

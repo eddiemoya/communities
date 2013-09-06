@@ -38,7 +38,7 @@
 	</div><!-- .bbp-reply-content -->
 	
 	<div class="forums-single-reply-footer">
-	<?php topic_reply_link();?>
+	<?php topic_reply_link('#forum-reply-form');?>
 	</div>
 
 </div><!-- .reply -->
