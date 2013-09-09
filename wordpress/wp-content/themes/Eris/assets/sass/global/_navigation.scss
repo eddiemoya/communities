@@ -107,6 +107,10 @@ $arrow-height: 3px;
 	border: none;
 }
 
+.no-csstransforms .tick {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+}
+
 .sears .banner_new{
 	background: url("../img/forums/sears_newCornerImg.png") no-repeat scroll 0px 0px transparent; 
 }
