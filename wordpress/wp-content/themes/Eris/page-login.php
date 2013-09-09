@@ -1,18 +1,11 @@
 <?php
 
-//include SHCSSO_CONFIG_DIR . 'errors.php';
-
 //if user is logged in, redirect to home page
 if(is_user_logged_in()) {
 	
 	wp_redirect(get_site_url());
 	exit;
 }
-
-
-$origin = (isset($_GET['origin'])) ? urldecode($_GET['origin']) : ((isset($_SERVER['HTTP_REFERER'])) ? urlencode($_SERVER['HTTP_REFERER']) : get_site_url() . '/');
-$error = (isset($_GET['err'])) ? wp_kses(strip_tags($sso_errors[urldecode($_GET['err'])])) : false;
-//$opts = new SSO_Options;
 
 /**
  * @package WordPress
@@ -30,23 +23,25 @@ get_template_part('parts/header'); ?>
 
 		<h6 class="content-headline">Sign in</h6>
 		
-			<div id="sso-error"></div>
 	<form class="form_login" method="post" action="" shc:gizmo="transFormer" id="login">
       <ul class="form-fields">
           
           <li>
               <dl class="clearfix">
                   <dt class="span3"><label for="loginId">Email:</label></dt>
-                  <dd class="span9"><input type="text" name="loginId" class="input_text" id="login_email" shc:gizmo:form="{required:true}" /></dd>
+                  <dd class="span9"><input type="text" name="loginId" class="input_text" id="login_email" shc:gizmo:form="{required:true, trim:true, pattern: /^.+@.+?\.[a-zA-Z]{2,}$/, message:'The email address you enter should follow this format: name@domain.com. Please try again.'}" /></dd>
               </dl>
           </li>
           
           <li>
               <dl class="clearfix">
                   <dt class="span3"><label for="logonPassword">Password:</label></dt>
-                  <dd class="span8"><input type="password" name="logonPassword" class="input_text input_password" id="password" shc:gizmo:form="{required:true}" /></dd>
+                  <dd class="span8"><input type="password" name="logonPassword" class="input_text input_password" id="password" shc:gizmo:form="{required:true, pattern: /^\w*(?=\w{8,})(?=\w*\d)(?=\w*[a-zA-Z])(?!\w*_)\w*$/, message: 'Please enter your password.'}" /></dd>
                   <dd class="span1"><a href="<?php echo get_site_url(); ?>/forgot-password/" title="Forgot your password?" class="forgot">Forgot?</a></dd>
               </dl>
+          </li>
+          
+          <li id="sso-error">
           </li>
           
           <li class="clearfix">
