@@ -709,6 +709,8 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 
 .no-boxshadow #forum_tooltip { /* This contains the color of the shadow in the CSS3 syntax */ background: #999; /* This contains the blur-radius in the CSS3 syntax */ zoom: 1; filter: progid:DXImageTransform.Microsoft.DropShadow(OffX=2, OffY=4, Color=#999999), progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=1, Direction=90), progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=1, Direction=180); /* You must remove the border in IE, since it will be replaced in the next rule */ border: none; }
 
+.no-csstransforms .tick { filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0); }
+
 .sears .banner_new { background: url("../img/forums/sears_newCornerImg.png") no-repeat scroll 0px 0px transparent; }
 
 .kmart .banner_new { background: url("../img/forums/kmart_newCornerImg.png") no-repeat scroll 0px 0px transparent; }
@@ -1009,11 +1011,6 @@ html, body { background: white; color: #555555; }
 
 .sears_button.azure { background-image: url('../img/sears/sprite_global.png?v=1375135183'); border-color: #60768b; color: #366392; text-shadow: none; background-position: 0px -140px; margin-right: 0px; }
 
-<<<<<<< HEAD
-body.bbpress { background-image: url("../img/forums/brickwall_tan.png"); }
-
-=======
->>>>>>> 3c26098... CSS updates for the forums welcome modal.
 .sears #header_nav.dropmenu, .sears #header_nav.dropmenu > li > span span, .sears #header_nav.dropmenu > li a span, .sears #header_nav.dropmenu > li.right_button, .sears #footer_nav.dropmenu > li, .sears #footer_nav.dropmenu > li:hover, .sears #footer_nav.dropmenu > li > span span, .sears #footer_nav.dropmenu > li a span { background-image: url('../img/sears/sprite_navigation.png?v=1375135183'); }
 
 .sears #header_nav.dropmenu { background-color: #e4e0df; }
