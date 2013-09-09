@@ -75,10 +75,10 @@
 
 					<?php if ( !current_user_can( 'unfiltered_html' ) ) : ?>
 
-						<p class="form-allowed-tags">
-							<label><?php _e( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:','bbpress' ); ?></label><br />
-							<code><?php bbp_allowed_tags(); ?></code>
-						</p>
+						<!-- <p class="form-allowed-tags">
+							<label><?php //_e( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:','bbpress' ); ?></label><br />
+							<code><?php //bbp_allowed_tags(); ?></code>
+						</p>-->
 
 					<?php endif; ?>
 
