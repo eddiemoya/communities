@@ -21,7 +21,7 @@
 
         $args = array(
             'fields'               => apply_filters( 'comment_form_default_fields', $fields ),
-            'comment_field'        => '<textarea id="comment-answer_textarea" class="input_textarea discussion" name="comment" shc:gizmo:form="{required:true, trim:true, pattern: /^\w{3,}$/, message:\'Please enter at least 3 characters.\'}">'. $comment_value .'</textarea>',
+            'comment_field'        => '<textarea id="comment-answer_textarea" class="input_textarea discussion" name="comment" shc:gizmo:form="{required:true, trim:true, pattern: /^.{3,}$/, message:\'Please enter at least 3 characters.\'}">'. $comment_value .'</textarea>',
             'must_log_in'          => null,
             'logged_in_as'         => null,
             'comment_notes_before' => null,
