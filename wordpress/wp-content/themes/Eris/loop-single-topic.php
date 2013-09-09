@@ -47,7 +47,7 @@
 		
 		<?php do_action( 'bbp_theme_before_topic_started_by' ); ?>
 
-			<span class="bbp-topic-started-by"><a href="<?php echo get_profile_url(bbp_get_topic_author_id(0)); ?>"><?php echo bbp_get_topic_author_avatar( 0 ); ?></a></span>
+			<span class="bbp-topic-started-by"><a href="<?php echo get_profile_url(bbp_get_topic_author_id(0)); ?>"><?php echo profile_photo(bbp_get_topic_author_id(0), array('width' => 60, 'height' => 60)); ?></a></span>
 
 		<?php do_action( 'bbp_theme_after_topic_started_by' ); ?>
 
@@ -67,7 +67,7 @@
 
 		<?php do_action( 'bbp_theme_after_topic_meta' ); ?>
 
-		<?php bbp_topic_row_actions(); ?>
+		<?php //bbp_topic_row_actions(); ?>
 
 	</li>
 
