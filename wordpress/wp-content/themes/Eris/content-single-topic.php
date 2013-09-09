@@ -30,23 +30,22 @@
 			<?php bbp_get_template_part( 'content', 'single-topic-lead' ); ?>
 
 		<?php endif; ?>
-
-		<?php if ( bbp_has_replies() ) : ?>
 		
 		<div id="forums-topic-top">
 			<?php topic_reply_link('#forum-reply-form');?>
 			<?php bbp_get_template_part( 'pagination', 'replies' ); ?>
 		</div>
+
+		<?php if ( bbp_has_replies() ) : ?>
 		
 			<?php bbp_get_template_part( 'loop',       'replies' ); ?>
 
-			<div id="forums-topic-bottom">
+		<?php endif; ?>
+		
+		<div id="forums-topic-bottom">
 				<?php bbp_breadcrumb();?>
 				<?php bbp_get_template_part( 'pagination', 'replies' ); ?>
-			</div>
-			
-
-		<?php endif; ?>
+		</div>
 
 		<?php bbp_get_template_part( 'form', 'reply' ); ?>
 

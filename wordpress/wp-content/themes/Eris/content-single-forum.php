@@ -31,7 +31,29 @@
 			
 		<?php endif; ?>
 
+		
 		<?php if ( !bbp_is_forum_category() && bbp_has_topics() && ! bbp_has_forums() ) : ?>
+		
+		<div id="forums-thread-top">
+			<?php bbp_get_template_part('forums', 'new-thread'); ?>
+			
+			<?php bbp_get_template_part( 'pagination', 'topics'); ?>
+		</div>
+			
+			<?php bbp_get_template_part( 'loop', 'topics' ); ?>
+
+			<?php bbp_get_template_part( 'form', 'topic'); ?>
+			
+		<div id="forums-thread-bottom">
+			
+			<?php bbp_breadcrumb();?>
+			<?php bbp_get_template_part( 'pagination', 'topics'); ?>
+				
+		</div>
+
+		<?php elseif ( !bbp_is_forum_category() && ! bbp_has_forums() ) : ?>
+
+			<?php //bbp_get_template_part( 'feedback',   'no-topics' ); ?>
 			
 			<div id="forums-thread-top">
 				<?php bbp_get_template_part('forums', 'new-thread'); ?>
@@ -39,24 +61,18 @@
 				<?php bbp_get_template_part( 'pagination', 'topics'); ?>
 			</div>
 
-			<?php bbp_get_template_part( 'loop', 'topics' ); ?>
-
+			<?php bbp_get_template_part( 'form',  'topic'); ?>
+			
 			<div id="forums-thread-bottom">
 			
-				<?php bbp_breadcrumb();?>
-				<?php bbp_get_template_part( 'pagination', 'topics'    ); ?>
+			<?php bbp_breadcrumb();?>
+			<?php bbp_get_template_part( 'pagination', 'topics'); ?>
 				
 			</div>
 
-			<?php bbp_get_template_part( 'form',       'topic'     ); ?>
-
-		<?php elseif ( !bbp_is_forum_category() && ! bbp_has_forums() ) : ?>
-
-			<?php //bbp_get_template_part( 'feedback',   'no-topics' ); ?>
-
-			<?php bbp_get_template_part( 'form',       'topic'     ); ?>
-
 		<?php endif; ?>
+		
+		
 
 	<?php endif; ?>
 
