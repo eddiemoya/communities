@@ -46,6 +46,7 @@ $arrow-height: 3px;
 #navigation {
   width:960px;
   margin:0 auto;
+  // Necessary for the tooltip to be global. Will be removed after 90 days.
   #forum_tooltip {
 	width: 180px; 
 	position: absolute; 
@@ -58,6 +59,12 @@ $arrow-height: 3px;
 	border-radius: 6px; 
 	-webkit-box-shadow: 2px 4px 3px 1px #999;
 	box-shadow: 2px 4px 3px 1px #999; 
+	p {
+		margin-bottom: 10px;
+	}
+	input[type='checkbox'] {
+		margin-right: 5px;
+	}
 	.close {
 		position: absolute; 
 		right: 3px; 
@@ -84,9 +91,6 @@ $arrow-height: 3px;
 		top: -7px; 
 		left: -7px;
 	}
-	p {
-		margin-bottom: 10px;
-	}
   }
 }
 .no-boxshadow #forum_tooltip {
@@ -102,13 +106,15 @@ $arrow-height: 3px;
         /* You must remove the border in IE, since it will be replaced in the next rule */
 	border: none;
 }
+
 .sears .banner_new{
-	background: url('../img/forums/sears_newCornerImg.png') no-repeat scroll 0px 0px transparent; 
+	background: url("../img/forums/sears_newCornerImg.png") no-repeat scroll 0px 0px transparent; 
 }
 
 .kmart .banner_new{
-	background: url('../img/forums/kmart_newCornerImg.png') no-repeat scroll 0px 0px transparent; 
+	background: url("../img/forums/kmart_newCornerImg.png") no-repeat scroll 0px 0px transparent; 
 }
+
 
 // Modify dropmenu for the footer
 #footer_nav.dropmenu {
