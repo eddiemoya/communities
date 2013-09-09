@@ -1,6 +1,10 @@
 /* 
 Theme Name: Eris
+<<<<<<< HEAD
 Theme URI: http://www.kmart.com/community/forums/
+=======
+Theme URI: http://www.sears.com/community/
+>>>>>>> adc1dc2... minot tweak for IE. having trouble trying to rotate the modal tick by 45 degrees in IE 8.
 Description: The Fractal 960 grid developed for Sears and Kmart Community sites
 Author: Carl Albrecht-Buehler and Captain Timothy "Heartbreaker Widowmaker" Steele
 Version: 2.0 */
@@ -226,17 +230,29 @@ ol.bullets { list-style-type: decimal; }
 
 ul.bullets { list-style-type: disc; }
 
+<<<<<<< HEAD
 .bold, .member .info h4, .member .info address, .post hgroup, .post h3, .content-container .content-header, .content-container .content-category, .content-container .content-headline, .profile .answers-toggle, .profile .personal_info dt, .profile .reviews h4 a, #allComments .comment .responseTo, .member_avatar .badge, .member_details .member_screen-name, .member_details .member_location, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label { font-weight: 700; }
+=======
+.bold, .member .info h4, .member .info address, .post hgroup, .post h3, .content-container .content-header, .content-container .content-category, .content-container .content-headline, .profile .answers-toggle, .profile .personal_info dt, .profile .reviews h4 a, #allComments .comment .responseTo, .member_avatar .badge, .member_details .member_screen-name, .member_details .member_location, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header, .sears .answers-toggle, .sears .upload-photo label, .kmart .answers-toggle, .kmart .upload-photo label { font-weight: 700; }
+>>>>>>> adc1dc2... minot tweak for IE. having trouble trying to rotate the modal tick by 45 degrees in IE 8.
 
 .italic, .post h2 { font-style: italic; }
 
 .faint, .member .info h5, .member .info p, .post h3, .post h2, .excerpt, .content-container .content-header { color: #666666; }
 
+<<<<<<< HEAD
 .upcase, .actions button:first-letter, #header.kmart form #button_search, #header.sears form #button_search { text-transform: uppercase; }
 
 .downcase { text-transform: lowercase; }
 
 .break-word, .member .info, .content-container .content-headline, .recent_activity .recent-activity_title, .recent_activity .recent-activity_excerpt, .recent-activity h3 a, .recent-activity .excerpt, .content-body.content-list .content-item .post-title, #allComments .comment article, #allComments .span10, .member_details .member_screen-name, .member_details .member_location, .wp-polls .results li span { word-wrap: break-word; }
+=======
+.upcase, .actions button:first-letter, #header.sears form #button_search, #header.kmart form #button_search { text-transform: uppercase; }
+
+.downcase { text-transform: lowercase; }
+
+.break-word, .member .info, .content-container .content-headline, .recent_activity .recent-activity_title, .recent_activity .recent-activity_excerpt, .recent-activity h3 a, .recent-activity .excerpt, .content-body.content-list .content-item .post-title, #allComments .comment article, #allComments .span10, .member_details .member_screen-name, .member_details .member_location { word-wrap: break-word; }
+>>>>>>> adc1dc2... minot tweak for IE. having trouble trying to rotate the modal tick by 45 degrees in IE 8.
 
 .background_light-gray { background-color: #f3f3f3; }
 
@@ -700,6 +716,23 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .dropmenu ul li a:visited { color: #666666; }
 
 #navigation { width: 960px; margin: 0 auto; }
+<<<<<<< HEAD
+=======
+#navigation #forum_tooltip { width: 180px; position: absolute; top: 43px; background: none repeat scroll 0% 0% white; border: 3px solid #dddddd; padding: 30px 21px 5px; z-index: 101; -webkit-border-radius: 6px; border-radius: 6px; -webkit-box-shadow: 2px 4px 3px 1px #999; box-shadow: 2px 4px 3px 1px #999; }
+#navigation #forum_tooltip p { margin-bottom: 10px; }
+#navigation #forum_tooltip input[type='checkbox'] { margin-right: 5px; }
+#navigation #forum_tooltip .close { position: absolute; right: 3px; top: 0px; }
+#navigation #forum_tooltip .tick { position: absolute; left: 67px; top: -6px; background: none repeat scroll 0px 0px white; height: 11px; width: 11px; border-right: 3px solid #dddddd; border-top: 3px solid #dddddd; -webkit-border-radius: 6px; border-radius: 2px; transform: rotate(-45deg); transform-origin: 0px 100% 0px; }
+#navigation #forum_tooltip .banner_new { height: 63px; width: 63px; position: absolute; top: -7px; left: -7px; }
+
+.no-boxshadow #forum_tooltip { /* This contains the color of the shadow in the CSS3 syntax */ background: #999; /* This contains the blur-radius in the CSS3 syntax */ zoom: 1; filter: progid:DXImageTransform.Microsoft.DropShadow(OffX=2, OffY=4, Color=#999999), progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=1, Direction=90), progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=1, Direction=180); /* You must remove the border in IE, since it will be replaced in the next rule */ border: none; }
+
+.no-csstransforms .tick { filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0); }
+
+.sears .banner_new { background: url("../img/forums/sears_newCornerImg.png") no-repeat scroll 0px 0px transparent; }
+
+.kmart .banner_new { background: url("../img/forums/kmart_newCornerImg.png") no-repeat scroll 0px 0px transparent; }
+>>>>>>> adc1dc2... minot tweak for IE. having trouble trying to rotate the modal tick by 45 degrees in IE 8.
 
 #footer_nav.dropmenu > li > span, #footer_nav.dropmenu > li a { padding-top: .66em; padding-bottom: .66em; }
 #footer_nav.dropmenu > li > span span, #footer_nav.dropmenu > li a span { background-repeat: no-repeat; padding-right: 16px; display: inline-block; }
@@ -807,7 +840,11 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .open-id_twitter a { background-position: 0px -101px; height: 16px; width: 16px; }
 
 .tooltip .middle .info .top { margin-bottom: 15px; }
+<<<<<<< HEAD
 .tooltip .middle .info .bold, .tooltip .middle .member .info h4, .member .tooltip .middle .info h4, .tooltip .middle .member .info address, .member .tooltip .middle .info address, .tooltip .middle .info .post hgroup, .post .tooltip .middle .info hgroup, .tooltip .middle .info .post h3, .post .tooltip .middle .info h3, .tooltip .middle .info .content-container .content-header, .content-container .tooltip .middle .info .content-header, .tooltip .middle .info .content-container .content-category, .content-container .tooltip .middle .info .content-category, .tooltip .middle .info .content-container .content-headline, .content-container .tooltip .middle .info .content-headline, .tooltip .middle .info .profile .answers-toggle, .profile .tooltip .middle .info .answers-toggle, .tooltip .middle .info .profile .personal_info dt, .profile .personal_info .tooltip .middle .info dt, .tooltip .middle .info .profile .reviews h4 a, .profile .reviews h4 .tooltip .middle .info a, .tooltip .middle .info #allComments .comment .responseTo, #allComments .comment .tooltip .middle .info .responseTo, .tooltip .middle .info .member_avatar .badge, .member_avatar .tooltip .middle .info .badge, .tooltip .middle .info .member_details .member_screen-name, .member_details .tooltip .middle .info .member_screen-name, .tooltip .middle .info .member_details .member_location, .member_details .tooltip .middle .info .member_location, .tooltip .middle .info .sears .post-n-comments h2, .sears .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .kmart .post-n-comments h2, .kmart .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .section-header, .tooltip .middle .info .kmart .answers-toggle, .kmart .tooltip .middle .info .answers-toggle, .tooltip .middle .info .kmart .upload-photo label, .kmart .upload-photo .tooltip .middle .info label, .tooltip .middle .info .sears .answers-toggle, .sears .tooltip .middle .info .answers-toggle, .tooltip .middle .info .sears .upload-photo label, .sears .upload-photo .tooltip .middle .info label { margin-bottom: 10px; }
+=======
+.tooltip .middle .info .bold, .tooltip .middle .member .info h4, .member .tooltip .middle .info h4, .tooltip .middle .member .info address, .member .tooltip .middle .info address, .tooltip .middle .info .post hgroup, .post .tooltip .middle .info hgroup, .tooltip .middle .info .post h3, .post .tooltip .middle .info h3, .tooltip .middle .info .content-container .content-header, .content-container .tooltip .middle .info .content-header, .tooltip .middle .info .content-container .content-category, .content-container .tooltip .middle .info .content-category, .tooltip .middle .info .content-container .content-headline, .content-container .tooltip .middle .info .content-headline, .tooltip .middle .info .profile .answers-toggle, .profile .tooltip .middle .info .answers-toggle, .tooltip .middle .info .profile .personal_info dt, .profile .personal_info .tooltip .middle .info dt, .tooltip .middle .info .profile .reviews h4 a, .profile .reviews h4 .tooltip .middle .info a, .tooltip .middle .info #allComments .comment .responseTo, #allComments .comment .tooltip .middle .info .responseTo, .tooltip .middle .info .member_avatar .badge, .member_avatar .tooltip .middle .info .badge, .tooltip .middle .info .member_details .member_screen-name, .member_details .tooltip .middle .info .member_screen-name, .tooltip .middle .info .member_details .member_location, .member_details .tooltip .middle .info .member_location, .tooltip .middle .info .sears .post-n-comments h2, .sears .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .kmart .post-n-comments h2, .kmart .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .section-header, .tooltip .middle .info .sears .answers-toggle, .sears .tooltip .middle .info .answers-toggle, .tooltip .middle .info .sears .upload-photo label, .sears .upload-photo .tooltip .middle .info label, .tooltip .middle .info .kmart .answers-toggle, .kmart .tooltip .middle .info .answers-toggle, .tooltip .middle .info .kmart .upload-photo label, .kmart .upload-photo .tooltip .middle .info label { margin-bottom: 10px; }
+>>>>>>> adc1dc2... minot tweak for IE. having trouble trying to rotate the modal tick by 45 degrees in IE 8.
 .tooltip .middle .info ul { list-style-type: circle; margin-bottom: 15px; padding-left: 15px; }
 
 .badge-exegesis .lonebadge { clear: left; margin-top: 1em; }
@@ -816,6 +853,7 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 #badgesInfo .badge-exegesis { margin: 1em; }
 #badgesInfo h2 { margin: 1em 0 0 .722em; font-size: 138.461%; }
 
+<<<<<<< HEAD
 .wp-polls .info > div:first-child, .wp-polls .total > div:first-child { margin-left: .75em; }
 
 .wp-polls .info, .wp-polls .total { border-right: 1px solid #cccccc; border-left: 1px solid #cccccc; }
@@ -914,6 +952,8 @@ html, body { background: white; color: #555555; }
 .kmart .wp-polls h1.content-headline { color: #980017; }
 .kmart .wp-polls .bar { background: #f28734; }
 
+=======
+>>>>>>> adc1dc2... minot tweak for IE. having trouble trying to rotate the modal tick by 45 degrees in IE 8.
 #header.sears form { border: solid 3px #3a81cf; }
 #header.sears form #input_search { background: transparent no-repeat 0px 0px; border: none; height: 1.538em; padding: 0.153em 0 0.153em 1.846em; margin-right: 11%; width: 82%; }
 #header.sears form #button_search { background: #ca4019 repeat-x 0px -44px; border: 0; color: white; height: 1.9em; padding-bottom: .25em; position: absolute; right: 0px; top: 0px; width: 3.33em; }
@@ -940,8 +980,11 @@ html, body { background: white; color: #555555; }
 
 .sears_button.azure { background-image: url('../img/sears/sprite_global.png?v=1375135183'); border-color: #60768b; color: #366392; text-shadow: none; background-position: 0px -140px; margin-right: 0px; }
 
+<<<<<<< HEAD
 body.bbpress { background-image: url("../img/forums/brickwall_tan.png"); }
 
+=======
+>>>>>>> adc1dc2... minot tweak for IE. having trouble trying to rotate the modal tick by 45 degrees in IE 8.
 .sears #header_nav.dropmenu, .sears #header_nav.dropmenu > li > span span, .sears #header_nav.dropmenu > li a span, .sears #header_nav.dropmenu > li.right_button, .sears #footer_nav.dropmenu > li, .sears #footer_nav.dropmenu > li:hover, .sears #footer_nav.dropmenu > li > span span, .sears #footer_nav.dropmenu > li a span { background-image: url('../img/sears/sprite_navigation.png?v=1375135183'); }
 
 .sears #header_nav.dropmenu { background-color: #e4e0df; }
@@ -995,9 +1038,79 @@ body.bbpress { background-image: url("../img/forums/brickwall_tan.png"); }
 
 .sears .sharebutton { color: #067bb5; }
 
+<<<<<<< HEAD
 .sears .wp-polls li span:first-child { color: #067bb5; }
 .sears .wp-polls h1.content-headline { color: #067bb5; }
 .sears .wp-polls .bar { background: #6dcff6; }
+=======
+#header.kmart form { border: solid 5px #e02334; }
+#header.kmart form #input_search { background: transparent no-repeat 0px 0px; border: none; height: 1.538em; padding: 0.307em 0 0.307em 2.092em; margin-right: 9%; width: 84%; }
+#header.kmart form #button_search { background: transparent repeat-x 0px -48px; border: solid #e02334; border-width: 0 0 0 5px; font-size: 92.307%; height: 2.5em; padding-bottom: .20em; position: absolute; right: 0px; top: 0px; width: 3.33em; }
+
+.kmart .footer_anterior p { font-size: 76.923%; margin-top: .5em; text-align: center; }
+
+html, body { background: white; color: #555555; }
+
+#header.kmart form #button_search, #header.kmart form #input_search, .kmart_button { background-image: url('../img/kmart/sprite_global.png?v=1375135182'); }
+
+.kmart a { color: #980017; text-decoration: none; }
+.kmart a:hover { text-decoration: underline; }
+.kmart a:visited { color: #980017; }
+.kmart .link-emulator { color: #980017; }
+.kmart .content-body p { color: #333333; }
+.kmart .post h1, .kmart .question h1 { color: #980017; }
+.kmart .answers-toggle, .kmart .upload-photo label { color: #980017; }
+.kmart .rating-bar { background: #db150d; }
+.kmart .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1375135183') repeat-x 0 -200px; }
+.kmart .breadcrumb li:before { color: #980017; }
+.kmart .no-results .term { color: #980017; }
+.kmart .site-error .message { background: #8f2225; }
+.kmart .member_avatar .badge { background-position: 0px -243px; }
+
+.kmart_button { border-left: solid #ff9e6c; border-right: solid #cc6f35; border-width: 0px 1px; color: white; cursor: pointer; font-weight: bold; height: 32px; margin-right: 1em; padding: 0em 1.5em; position: relative; text-shadow: 1px 1px 1; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; background-position: 0px -96px; }
+
+.kmart_button.azure { background-image: url('../img/sears/sprite_global.png?v=1375135183'); border-color: #60768b; color: #366392; text-shadow: none; background-position: 0px -140px; margin-right: 0px; }
+
+.kmart .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1375135183') repeat-x 0 -200px; }
+
+.kmart #header_nav.dropmenu, .kmart #header_nav.dropmenu > li > span span, .kmart #header_nav.dropmenu > li a span, .kmart #header_nav.dropmenu > li.right_button, .kmart #footer_nav.dropmenu > li > span span, .kmart #footer_nav.dropmenu > li a span { background-image: url('../img/kmart/sprite_navigation.png?v=1375135182'); }
+
+.kmart #header_nav.dropmenu { background-color: #e4e0df; background-repeat: repeat-x; border-left: 1px solid #cccccc; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; }
+.kmart #header_nav.dropmenu > li { border-right: 1px solid #cccccc; width: 14.285714285714285%; padding: 1px 0; font-size: 92.307%; }
+.kmart #header_nav.dropmenu > li > span, .kmart #header_nav.dropmenu > li a { color: #333333; border-right: 1px solid white; padding-top: .66em; padding-bottom: .66em; }
+.kmart #header_nav.dropmenu > li > span span, .kmart #header_nav.dropmenu > li a span { background-repeat: no-repeat; padding-right: 9px; }
+.kmart #header_nav.dropmenu > li > span span, .kmart #header_nav.dropmenu > li a span { background-position: right 5px; }
+.kmart #header_nav.dropmenu > li.right_button { float: right; background-color: #e02334; -webkit-border-radius: 0px 4px 4px 0px; -moz-border-radius: 0px 4px 4px 0px; -ms-border-radius: 0px 4px 4px 0px; -o-border-radius: 0px 4px 4px 0px; border-radius: 0px 4px 4px 0px; border-left: 1px solid #cccccc; border-right: 0; }
+.kmart #header_nav.dropmenu > li.right_button a { border-right: 0; color: white; }
+.kmart #header_nav.dropmenu > li.right_button { background-position: left -161px; }
+.kmart #header_nav.dropmenu ul { background: white url('../img/sprite-menu.png?v=1375135183'); background-repeat: repeat-x; padding: 4px 0; }
+.kmart #header_nav.dropmenu ul > li { font-size: 91.666%; }
+.kmart #header_nav.dropmenu ul > li > span:hover, .kmart #header_nav.dropmenu ul > li a:hover { color: white; text-decoration: none; background: red; }
+.kmart #header_nav.dropmenu ul { -webkit-box-shadow: #a8a8a8 2px 2px 8px; -moz-box-shadow: #a8a8a8 2px 2px 8px; box-shadow: #a8a8a8 2px 2px 8px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; border: 1px solid #cccccc; }
+.kmart #header_nav.dropmenu ul li { width: 100%; border-right: 0; }
+.kmart #header_nav.dropmenu ul li a { color: #73726F; border-right: 0; }
+.kmart #header_nav.dropmenu ul { background-position: left bottom; }
+.kmart #footer_nav.dropmenu { background: #f3f0ec; }
+.kmart #footer_nav.dropmenu ul { background: #f3f0ec; }
+.kmart #footer_nav.dropmenu > li { width: 19.914893617021274%; border-left: 1px solid white; font-family: "Trebuchet MS", Helvetica, Arial, Verdana, sans-serif; }
+.kmart #footer_nav.dropmenu > li:hover { background: #7c0505; }
+.kmart #footer_nav.dropmenu > li:hover > span, .kmart #footer_nav.dropmenu > li:hover a { color: #f3f0ec; }
+.kmart #footer_nav.dropmenu > li:hover ul li a { color: #980017; }
+.kmart #footer_nav.dropmenu > li:first-child { border-left: 0; }
+.kmart #footer_nav.dropmenu > li ul { border: 1px solid #7c0505; -webkit-border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -ms-border-radius: 5px 5px 0 0; -o-border-radius: 5px 5px 0 0; border-radius: 5px 5px 0 0; border-bottom: 0; }
+.kmart #footer_nav.dropmenu > li ul li { width: 100%; border-left: 0; font-size: 92.307%; line-height: 1; font-family: Helvetica, Arial, Verdana, sans-serif; }
+.kmart #footer_nav.dropmenu > li ul li:hover { background: none; }
+.kmart #footer_nav.dropmenu > li ul li a { color: #980017; }
+
+.kmart #header_nav.dropmenu { background-position: left -80px; }
+
+.kmart #moodle_window { background: rgba(253, 190, 81, 0.3); }
+.kmart .loading { background: transparent url('../img/kmart/background_loading.gif?v=1375135182') no-repeat center center; }
+
+.no-rgba .kmart #moodle_window { background: transparent url('../img/kmart/background_modal-border_no-rgba.png?v=1375135182') repeat 0px 0px; }
+
+.kmart .sharebutton { color: #980017; }
+>>>>>>> adc1dc2... minot tweak for IE. having trouble trying to rotate the modal tick by 45 degrees in IE 8.
 
 .taxonomy-widget_grid { padding-bottom: 0.769em; }
 .taxonomy-widget_grid [class*="span"].alpha { clear: left !important; float: left; margin-left: 0 !important; }
