@@ -45,7 +45,7 @@
 
 				<?php do_action( 'bbp_theme_before_topic_author_details' ); ?>
 
-				<a href="<?php echo get_profile_url(get_post(bbp_get_topic_id())->post_author); ?>"><?php  echo profile_photo( bbp_get_topic_author(), array('wdith' => 60, 'height' => 60) ); ?></a>
+				<a href="<?php echo get_profile_url(get_post(bbp_get_topic_id())->post_author); ?>"><?php  echo profile_photo( bbp_get_topic_author_id(), array('wdith' => 60, 'height' => 60) ); ?></a>
 
 				<?php do_action( 'bbp_theme_after_topic_author_details' ); ?>
 
