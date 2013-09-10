@@ -10,16 +10,39 @@
 ?>
 
 <div class="bbp-topic-header">
+	
+</div><!-- .bbp-topic-header -->
 
+<div id="post-<?php bbp_topic_id(); ?>" <?php bbp_topic_class(); ?>>
+
+	<div class="bbp-topic-author">
+
+		<?php do_action( 'bbp_theme_before_topic_author_details' ); ?>
+		
+		<?php echo profile_photo( bbp_get_topic_author_id(), array('width' => 60, 'height' => 60) ); ?>
+
+		<?php if ( bbp_is_user_keymaster() ) : ?>
+
+			<?php do_action( 'bbp_theme_before_topic_author_admin_details' ); ?>
+
+			<div class="bbp-reply-ip"><?php bbp_author_ip( bbp_get_topic_id() ); ?></div>
+
+			<?php do_action( 'bbp_theme_after_topic_author_admin_details' ); ?>
+
+		<?php endif; ?>
+
+		<?php do_action( 'bbp_theme_after_topic_author_details' ); ?>
+
+	</div><!-- .bbp-topic-author -->
+	
 	<div class="bbp-meta">
 
-		<span class="bbp-topic-post-date"><?php bbp_topic_post_date( bbp_get_topic_id() ); ?></span>
+		<span class="bbp-topic-post-date"><?php reply_author_date( bbp_get_topic_id() ); ?></span>
 
-		<a href="<?php bbp_topic_permalink(); ?>" title="<?php bbp_topic_title(); ?>" class="bbp-topic-permalink">#<?php bbp_topic_id(); ?></a>
-
+		
 		<?php do_action( 'bbp_theme_before_topic_admin_links' ); ?>
 
-		<?php bbp_topic_admin_links( bbp_get_topic_id() ); ?>
+		<?php //bbp_topic_admin_links( bbp_get_topic_id() ); ?>
 
 		<?php do_action( 'bbp_theme_after_topic_admin_links' ); ?>
 
@@ -29,7 +52,7 @@
 
 		<?php do_action( 'bbp_theme_before_topic_title' ); ?>
 
-		<h3><?php _e( 'Topic: ', 'bbpress' ); ?>
+		<h3><?php _e( 'Thread: ', 'bbpress' ); ?>
 		<a href="<?php bbp_topic_permalink(); ?>" title="<?php bbp_topic_title(); ?>"><?php bbp_topic_title(); ?></a></h3>
 
 		<div class="bbp-topic-title-meta">
@@ -47,34 +70,9 @@
 			<a href="<?php bbp_forum_permalink( bbp_get_topic_forum_id() ); ?>" title="<?php bbp_forum_title( bbp_get_topic_forum_id() ); ?>"><?php bbp_forum_title( bbp_get_topic_forum_id() ); ?></a>
 
 		</div><!-- .bbp-topic-title-meta -->
-
-		<?php do_action( 'bbp_theme_after_topic_title' ); ?>
+	<?php do_action( 'bbp_theme_after_topic_title' ); ?>
 
 	</div><!-- .bbp-topic-title -->
-
-</div><!-- .bbp-topic-header -->
-
-<div id="post-<?php bbp_topic_id(); ?>" <?php bbp_topic_class(); ?>>
-
-	<div class="bbp-topic-author">
-
-		<?php do_action( 'bbp_theme_before_topic_author_details' ); ?>
-
-		<?php bbp_topic_author_link( array( 'sep' => '<br />', 'show_role' => true ) ); ?>
-
-		<?php if ( bbp_is_user_keymaster() ) : ?>
-
-			<?php do_action( 'bbp_theme_before_topic_author_admin_details' ); ?>
-
-			<div class="bbp-reply-ip"><?php bbp_author_ip( bbp_get_topic_id() ); ?></div>
-
-			<?php do_action( 'bbp_theme_after_topic_author_admin_details' ); ?>
-
-		<?php endif; ?>
-
-		<?php do_action( 'bbp_theme_after_topic_author_details' ); ?>
-
-	</div><!-- .bbp-topic-author -->
 
 	<div class="bbp-topic-content">
 

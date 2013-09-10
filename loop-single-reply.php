@@ -19,7 +19,7 @@
 
 		<?php do_action( 'bbp_theme_before_reply_author_details' ); ?>
 
-		<a href="<?php echo get_profile_url(get_post(bbp_get_reply_id())->post_author); ?>"><?php  echo profile_photo( bbp_get_reply_author(), array('width' => 60, 'height' => 60) ); ?></a>
+		<a href="<?php echo get_profile_url(get_post(bbp_get_reply_id())->post_author); ?>"><?php  echo profile_photo( bbp_get_reply_author_id(), array('width' => 60, 'height' => 60) ); ?></a>
 
 		<?php do_action( 'bbp_theme_after_reply_author_details' ); ?>
 
