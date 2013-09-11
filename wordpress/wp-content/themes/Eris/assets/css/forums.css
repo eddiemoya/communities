@@ -1,6 +1,6 @@
 /* 
 Theme Name: Eris
-Theme URI: http://www.sears.com/community/
+Theme URI: http://www.kmart.com/community/forums/
 Description: The Fractal 960 grid developed for Sears and Kmart Community sites
 Author: Carl Albrecht-Buehler and Captain Timothy "Heartbreaker Widowmaker" Steele
 Version: 2.0 */
@@ -226,13 +226,13 @@ ol.bullets { list-style-type: decimal; }
 
 ul.bullets { list-style-type: disc; }
 
-.bold, .member .info h4, .member .info address, .post hgroup, .post h3, .content-container .content-header, .content-container .content-category, .content-container .content-headline, .profile .answers-toggle, .profile .personal_info dt, .profile .reviews h4 a, #allComments .comment .responseTo, .member_avatar .badge, .member_details .member_screen-name, .member_details .member_location, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header, .sears .answers-toggle, .sears .upload-photo label { font-weight: 700; }
+.bold, .member .info h4, .member .info address, .post hgroup, .post h3, .content-container .content-header, .content-container .content-category, .content-container .content-headline, .profile .answers-toggle, .profile .personal_info dt, .profile .reviews h4 a, #allComments .comment .responseTo, .member_avatar .badge, .member_details .member_screen-name, .member_details .member_location, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label { font-weight: 700; }
 
 .italic, .post h2 { font-style: italic; }
 
 .faint, .member .info h5, .member .info p, .post h3, .post h2, .excerpt, .content-container .content-header { color: #666666; }
 
-.upcase, .actions button:first-letter, #header.sears form #button_search { text-transform: uppercase; }
+.upcase, .actions button:first-letter, #header.kmart form #button_search, #header.sears form #button_search { text-transform: uppercase; }
 
 .downcase { text-transform: lowercase; }
 
@@ -807,7 +807,7 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .open-id_twitter a { background-position: 0px -101px; height: 16px; width: 16px; }
 
 .tooltip .middle .info .top { margin-bottom: 15px; }
-.tooltip .middle .info .bold, .tooltip .middle .member .info h4, .member .tooltip .middle .info h4, .tooltip .middle .member .info address, .member .tooltip .middle .info address, .tooltip .middle .info .post hgroup, .post .tooltip .middle .info hgroup, .tooltip .middle .info .post h3, .post .tooltip .middle .info h3, .tooltip .middle .info .content-container .content-header, .content-container .tooltip .middle .info .content-header, .tooltip .middle .info .content-container .content-category, .content-container .tooltip .middle .info .content-category, .tooltip .middle .info .content-container .content-headline, .content-container .tooltip .middle .info .content-headline, .tooltip .middle .info .profile .answers-toggle, .profile .tooltip .middle .info .answers-toggle, .tooltip .middle .info .profile .personal_info dt, .profile .personal_info .tooltip .middle .info dt, .tooltip .middle .info .profile .reviews h4 a, .profile .reviews h4 .tooltip .middle .info a, .tooltip .middle .info #allComments .comment .responseTo, #allComments .comment .tooltip .middle .info .responseTo, .tooltip .middle .info .member_avatar .badge, .member_avatar .tooltip .middle .info .badge, .tooltip .middle .info .member_details .member_screen-name, .member_details .tooltip .middle .info .member_screen-name, .tooltip .middle .info .member_details .member_location, .member_details .tooltip .middle .info .member_location, .tooltip .middle .info .sears .post-n-comments h2, .sears .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .kmart .post-n-comments h2, .kmart .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .section-header, .tooltip .middle .info .sears .answers-toggle, .sears .tooltip .middle .info .answers-toggle, .tooltip .middle .info .sears .upload-photo label, .sears .upload-photo .tooltip .middle .info label { margin-bottom: 10px; }
+.tooltip .middle .info .bold, .tooltip .middle .member .info h4, .member .tooltip .middle .info h4, .tooltip .middle .member .info address, .member .tooltip .middle .info address, .tooltip .middle .info .post hgroup, .post .tooltip .middle .info hgroup, .tooltip .middle .info .post h3, .post .tooltip .middle .info h3, .tooltip .middle .info .content-container .content-header, .content-container .tooltip .middle .info .content-header, .tooltip .middle .info .content-container .content-category, .content-container .tooltip .middle .info .content-category, .tooltip .middle .info .content-container .content-headline, .content-container .tooltip .middle .info .content-headline, .tooltip .middle .info .profile .answers-toggle, .profile .tooltip .middle .info .answers-toggle, .tooltip .middle .info .profile .personal_info dt, .profile .personal_info .tooltip .middle .info dt, .tooltip .middle .info .profile .reviews h4 a, .profile .reviews h4 .tooltip .middle .info a, .tooltip .middle .info #allComments .comment .responseTo, #allComments .comment .tooltip .middle .info .responseTo, .tooltip .middle .info .member_avatar .badge, .member_avatar .tooltip .middle .info .badge, .tooltip .middle .info .member_details .member_screen-name, .member_details .tooltip .middle .info .member_screen-name, .tooltip .middle .info .member_details .member_location, .member_details .tooltip .middle .info .member_location, .tooltip .middle .info .sears .post-n-comments h2, .sears .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .kmart .post-n-comments h2, .kmart .post-n-comments .tooltip .middle .info h2, .tooltip .middle .info .section-header, .tooltip .middle .info .kmart .answers-toggle, .kmart .tooltip .middle .info .answers-toggle, .tooltip .middle .info .kmart .upload-photo label, .kmart .upload-photo .tooltip .middle .info label, .tooltip .middle .info .sears .answers-toggle, .sears .tooltip .middle .info .answers-toggle, .tooltip .middle .info .sears .upload-photo label, .sears .upload-photo .tooltip .middle .info label { margin-bottom: 10px; }
 .tooltip .middle .info ul { list-style-type: circle; margin-bottom: 15px; padding-left: 15px; }
 
 .badge-exegesis .lonebadge { clear: left; margin-top: 1em; }
@@ -842,134 +842,77 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 
 .wp-polls-loading { display: none; text-align: center; height: 16px; line-height: 16px; }
 
-.dropzone.span8 .hero-slider { background: url('../img/hero-slider-bg.png?v=1375135181') center center; width: 620px; height: 360px; position: relative; }
+#header.kmart form { border: solid 5px #e02334; }
+#header.kmart form #input_search { background: transparent no-repeat 0px 0px; border: none; height: 1.538em; padding: 0.307em 0 0.307em 2.092em; margin-right: 9%; width: 84%; }
+#header.kmart form #button_search { background: transparent repeat-x 0px -48px; border: solid #e02334; border-width: 0 0 0 5px; font-size: 92.307%; height: 2.5em; padding-bottom: .20em; position: absolute; right: 0px; top: 0px; width: 3.33em; }
 
-.hero-slider .rotating-banner { overflow: hidden; position: relative; width: 579px; height: 315px; z-index: 25; left: 20px; top: 10px; }
-.hero-slider .rotating-banner .content-headline { position: absolute; top: 260px; width: 100%; background: #000000; background: rgba(0, 0, 0, 0.5); color: #ffffff; font-weight: normal; padding: 5px 10px 5px 15px; }
-.hero-slider .rotating-banner > * { left: 100%; position: absolute; width: 100%; top: 0; }
-.hero-slider .rotating-banner > .active { display: block; left: auto; position: relative; top: auto; zoom: 1; }
-.hero-slider .rotating-banner .rotating-banner-navigation { bottom: 1em; left: 50%; margin-left: -5%; position: absolute; top: auto; z-index: 25; }
-.hero-slider .rotating-banner .rotating-banner-navigation .active { background: #ff0033; }
-.hero-slider .rotating-banner .rotating-banner-navigation a { background-color: #ffffff; display: block; float: left; height: 1em; margin-right: .5em; width: 1em; z-index: 30; }
-.hero-slider .rotating-banner .banner.banner_link { cursor: pointer; }
-.hero-slider .rotating-banner .in-transit { z-index: 24; }
-.hero-slider a.prev-slide { background: url('../img/hero-slide-left.png?v=1375135181') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; left: 0px; z-index: 30; }
-.hero-slider a.next-slide { background: url('../img/hero-slide-right.png?v=1375135181') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; right: 1px; z-index: 30; }
+.kmart .footer_anterior p { font-size: 76.923%; margin-top: .5em; text-align: center; }
 
-.pre-load > *:first-child { display: block; left: auto; position: relative; top: auto; }
+html, body { background: white; color: #555555; }
 
-@media only screen and (max-width: 730px) { .rotating-banner .rotating-banner-navigation a { height: .75em; width: 0.75em; } }
-.weather-sprite, .weather-chanceflurries, .weather-chancerain, .weather-chancesleet, .weather-chancesnow, .weather-chancetstorms, .weather-clear, .weather-cloudy, .weather-flurries, .weather-fog, .weather-hazy, .weather-mostlycloudy, .weather-mostlysunny, .weather-partlycloudy, .weather-partlysunny, .weather-rain, .weather-sleet, .weather-snow, .weather-sunny, .weather-tstorms { background: url('../img/weather-sff9c80684d.png') no-repeat; }
+#header.kmart form #button_search, #header.kmart form #input_search, .kmart_button { background-image: url('../img/kmart/sprite_global.png?v=1375135182'); }
 
-.weather-chanceflurries { background-position: 0 -672px; height: 42px; width: 42px; }
+.kmart a { color: #980017; text-decoration: none; }
+.kmart a:hover { text-decoration: underline; }
+.kmart a:visited { color: #980017; }
+.kmart .link-emulator { color: #980017; }
+.kmart .content-body p { color: #333333; }
+.kmart .post h1, .kmart .question h1 { color: #980017; }
+.kmart .answers-toggle, .kmart .upload-photo label { color: #980017; }
+.kmart .rating-bar { background: #db150d; }
+.kmart .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1375135183') repeat-x 0 -200px; }
+.kmart .breadcrumb li:before { color: #980017; }
+.kmart .no-results .term { color: #980017; }
+.kmart .site-error .message { background: #8f2225; }
+.kmart .member_avatar .badge { background-position: 0px -243px; }
 
-.weather-chancerain { background-position: 0 -462px; height: 42px; width: 42px; }
+.kmart_button { border-left: solid #ff9e6c; border-right: solid #cc6f35; border-width: 0px 1px; color: white; cursor: pointer; font-weight: bold; height: 32px; margin-right: 1em; padding: 0em 1.5em; position: relative; text-shadow: 1px 1px 1; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; background-position: 0px -96px; }
 
-.weather-chancesleet { background-position: 0 -126px; height: 42px; width: 42px; }
+.kmart_button.azure { background-image: url('../img/sears/sprite_global.png?v=1375135183'); border-color: #60768b; color: #366392; text-shadow: none; background-position: 0px -140px; margin-right: 0px; }
 
-.weather-chancesnow { background-position: 0 -420px; height: 42px; width: 42px; }
+.kmart .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1375135183') repeat-x 0 -200px; }
 
-.weather-chancetstorms { background-position: 0 -210px; height: 42px; width: 42px; }
+.kmart #header_nav.dropmenu, .kmart #header_nav.dropmenu > li > span span, .kmart #header_nav.dropmenu > li a span, .kmart #header_nav.dropmenu > li.right_button, .kmart #footer_nav.dropmenu > li > span span, .kmart #footer_nav.dropmenu > li a span { background-image: url('../img/kmart/sprite_navigation.png?v=1375135182'); }
 
-.weather-clear { background-position: 0 -42px; height: 42px; width: 42px; }
+.kmart #header_nav.dropmenu { background-color: #e4e0df; background-repeat: repeat-x; border-left: 1px solid #cccccc; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; }
+.kmart #header_nav.dropmenu > li { border-right: 1px solid #cccccc; width: 14.285714285714285%; padding: 1px 0; font-size: 92.307%; }
+.kmart #header_nav.dropmenu > li > span, .kmart #header_nav.dropmenu > li a { color: #333333; border-right: 1px solid white; padding-top: .66em; padding-bottom: .66em; }
+.kmart #header_nav.dropmenu > li > span span, .kmart #header_nav.dropmenu > li a span { background-repeat: no-repeat; padding-right: 9px; }
+.kmart #header_nav.dropmenu > li > span span, .kmart #header_nav.dropmenu > li a span { background-position: right 5px; }
+.kmart #header_nav.dropmenu > li.right_button { float: right; background-color: #e02334; -webkit-border-radius: 0px 4px 4px 0px; -moz-border-radius: 0px 4px 4px 0px; -ms-border-radius: 0px 4px 4px 0px; -o-border-radius: 0px 4px 4px 0px; border-radius: 0px 4px 4px 0px; border-left: 1px solid #cccccc; border-right: 0; }
+.kmart #header_nav.dropmenu > li.right_button a { border-right: 0; color: white; }
+.kmart #header_nav.dropmenu > li.right_button { background-position: left -161px; }
+.kmart #header_nav.dropmenu ul { background: white url('../img/sprite-menu.png?v=1375135183'); background-repeat: repeat-x; padding: 4px 0; }
+.kmart #header_nav.dropmenu ul > li { font-size: 91.666%; }
+.kmart #header_nav.dropmenu ul > li > span:hover, .kmart #header_nav.dropmenu ul > li a:hover { color: white; text-decoration: none; background: red; }
+.kmart #header_nav.dropmenu ul { -webkit-box-shadow: #a8a8a8 2px 2px 8px; -moz-box-shadow: #a8a8a8 2px 2px 8px; box-shadow: #a8a8a8 2px 2px 8px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; border: 1px solid #cccccc; }
+.kmart #header_nav.dropmenu ul li { width: 100%; border-right: 0; }
+.kmart #header_nav.dropmenu ul li a { color: #73726F; border-right: 0; }
+.kmart #header_nav.dropmenu ul { background-position: left bottom; }
+.kmart #footer_nav.dropmenu { background: #f3f0ec; }
+.kmart #footer_nav.dropmenu ul { background: #f3f0ec; }
+.kmart #footer_nav.dropmenu > li { width: 19.914893617021274%; border-left: 1px solid white; font-family: "Trebuchet MS", Helvetica, Arial, Verdana, sans-serif; }
+.kmart #footer_nav.dropmenu > li:hover { background: #7c0505; }
+.kmart #footer_nav.dropmenu > li:hover > span, .kmart #footer_nav.dropmenu > li:hover a { color: #f3f0ec; }
+.kmart #footer_nav.dropmenu > li:hover ul li a { color: #980017; }
+.kmart #footer_nav.dropmenu > li:first-child { border-left: 0; }
+.kmart #footer_nav.dropmenu > li ul { border: 1px solid #7c0505; -webkit-border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -ms-border-radius: 5px 5px 0 0; -o-border-radius: 5px 5px 0 0; border-radius: 5px 5px 0 0; border-bottom: 0; }
+.kmart #footer_nav.dropmenu > li ul li { width: 100%; border-left: 0; font-size: 92.307%; line-height: 1; font-family: Helvetica, Arial, Verdana, sans-serif; }
+.kmart #footer_nav.dropmenu > li ul li:hover { background: none; }
+.kmart #footer_nav.dropmenu > li ul li a { color: #980017; }
 
-.weather-cloudy { background-position: 0 -504px; height: 42px; width: 42px; }
+.kmart #header_nav.dropmenu { background-position: left -80px; }
 
-.weather-flurries { background-position: 0 -714px; height: 42px; width: 42px; }
+.kmart #moodle_window { background: rgba(253, 190, 81, 0.3); }
+.kmart .loading { background: transparent url('../img/kmart/background_loading.gif?v=1375135182') no-repeat center center; }
 
-.weather-fog { background-position: 0 -756px; height: 42px; width: 42px; }
+.no-rgba .kmart #moodle_window { background: transparent url('../img/kmart/background_modal-border_no-rgba.png?v=1375135182') repeat 0px 0px; }
 
-.weather-hazy { background-position: 0 -546px; height: 42px; width: 42px; }
+.kmart .sharebutton { color: #980017; }
 
-.weather-mostlycloudy { background-position: 0 -252px; height: 42px; width: 42px; }
-
-.weather-mostlysunny { background-position: 0 0; height: 42px; width: 42px; }
-
-.weather-partlycloudy { background-position: 0 -294px; height: 42px; width: 42px; }
-
-.weather-partlysunny { background-position: 0 -336px; height: 42px; width: 42px; }
-
-.weather-rain { background-position: 0 -588px; height: 42px; width: 42px; }
-
-.weather-sleet { background-position: 0 -168px; height: 42px; width: 42px; }
-
-.weather-snow { background-position: 0 -630px; height: 42px; width: 42px; }
-
-.weather-sunny { background-position: 0 -84px; height: 42px; width: 42px; }
-
-.weather-tstorms { background-position: 0 -378px; height: 42px; width: 42px; }
-
-.weather-widget { width: 100%; }
-.weather-widget .day-title { text-transform: uppercase; font-size: 110%; }
-.weather-widget .weather-today { clear: both; width: 100%; }
-.weather-widget .weather-today .large-icon { float: left; width: 50%; }
-.weather-widget .weather-today .conditions-today { float: right; width: 50%; }
-.weather-widget .weather-today .conditions-today .today-high-low { margin-bottom: 0px; }
-.weather-widget .weather-today .conditions-today .today-high-low .today-high { font-weight: bold; font-size: 300%; }
-.weather-widget .weather-today .conditions-today .today-high-low .today-low { font-size: 160%; }
-.weather-widget .weather-today .conditions-today .conditions-string { margin-bottom: 4px; line-height: 90%; }
-.weather-widget .weather-today .conditions-today .location { font-weight: bold; line-height: 90%; }
-.weather-widget .extended-forecast { clear: both; }
-.weather-widget .extended-forecast .daily-forecast { width: 25%; float: left; text-align: center; }
-.weather-widget .extended-forecast .daily-forecast .conditions-icon { margin: 0 20%; }
-.weather-widget .extended-forecast .daily-forecast p { margin-bottom: 0px; }
-.weather-widget .wunderground-img { clear: both; float: right; width: 50%; margin: 5px 20px 0 0; }
-
-.kmart .update-zipcode .content-body p.error-message { color: #ffffff; }
-
-.unknown-location { position: relative; }
-.unknown-location .weather-today, .unknown-location .extended-forecast { opacity: 0.3; filter: alpha(opacity=30); }
-.unknown-location .select-location { position: absolute; width: 80%; left: 4%; padding: 5%; background-color: #ffffff; top: 90px; z-index: 1; }
-.unknown-location .select-location p { margin-bottom: 4px; line-height: 95%; }
-
-.kmart .unknown-location .select-location { border: 3px solid #e02334; }
-
-.sears .unknown-location .select-location { border: 3px solid #3a81cf; }
-
-.product-slider-widget-content { position: relative; }
-.product-slider-widget-content .right-arrow { position: absolute; top: 55px; right: 0px; background: url(../img/hero-slide-right.png) -3px -16px transparent; height: 63px; width: 35px; z-index: 1; }
-.product-slider-widget-content .left-arrow { position: absolute; top: 55px; left: 0px; background: url(../img/hero-slide-left.png) -3px -16px transparent; height: 63px; width: 35px; z-index: 1; }
-.product-slider-widget-content .layout_horizontal { overflow: hidden; }
-
-.product-slider-widget-content.viewport_size_1 .product-slider-viewport { width: 300%; margin-left: -100%; }
-.product-slider-widget-content.viewport_size_1 .product { width: 33.333333333333336%; float: left; text-align: center; }
-.product-slider-widget-content.viewport_size_1 .product p { line-height: 110%; }
-.product-slider-widget-content.viewport_size_1 .product .product-stars { background: url(../img/star-green.png) 20px 0 transparent; width: 20px; height: 16px; display: inline-block; }
-.product-slider-widget-content.viewport_size_1 .product .product-stars.star-selected { background: url(../img/star-green.png) 0 0 transparent; }
-.product-slider-widget-content.viewport_size_1 .product img { height: 115px; }
-.product-slider-widget-content.viewport_size_1 .product .old-price { text-decoration: line-through; }
-.product-slider-widget-content.viewport_size_1 .product.inactive-left { margin-left: -100%; }
-.product-slider-widget-content.viewport_size_1 .product.inactive-right { margin-right: -100%; }
-
-.product-slider-widget-content.viewport_size_2 .product-slider-viewport { width: 200%; margin-left: -50%; }
-.product-slider-widget-content.viewport_size_2 .product { width: 25%; float: left; text-align: center; }
-.product-slider-widget-content.viewport_size_2 .product p { line-height: 110%; }
-.product-slider-widget-content.viewport_size_2 .product .product-stars { background: url(../img/star-green.png) 20px 0 transparent; width: 20px; height: 16px; display: inline-block; }
-.product-slider-widget-content.viewport_size_2 .product .product-stars.star-selected { background: url(../img/star-green.png) 0 0 transparent; }
-.product-slider-widget-content.viewport_size_2 .product img { height: 115px; }
-.product-slider-widget-content.viewport_size_2 .product .old-price { text-decoration: line-through; }
-.product-slider-widget-content.viewport_size_2 .product.inactive-left { margin-left: -100%; }
-.product-slider-widget-content.viewport_size_2 .product.inactive-right { margin-right: -100%; }
-
-.product-slider-widget-content.viewport_size_3 .product-slider-viewport { width: 166.66666666666669%; margin-left: -33.333333333333336%; }
-.product-slider-widget-content.viewport_size_3 .product { width: 20%; float: left; text-align: center; }
-.product-slider-widget-content.viewport_size_3 .product p { line-height: 110%; }
-.product-slider-widget-content.viewport_size_3 .product .product-stars { background: url(../img/star-green.png) 20px 0 transparent; width: 20px; height: 16px; display: inline-block; }
-.product-slider-widget-content.viewport_size_3 .product .product-stars.star-selected { background: url(../img/star-green.png) 0 0 transparent; }
-.product-slider-widget-content.viewport_size_3 .product img { height: 115px; }
-.product-slider-widget-content.viewport_size_3 .product .old-price { text-decoration: line-through; }
-.product-slider-widget-content.viewport_size_3 .product.inactive-left { margin-left: -100%; }
-.product-slider-widget-content.viewport_size_3 .product.inactive-right { margin-right: -100%; }
-
-.product-slider-widget-content.viewport_size_4 .product-slider-viewport { width: 150%; margin-left: -25%; }
-.product-slider-widget-content.viewport_size_4 .product { width: 16.666666666666668%; float: left; text-align: center; }
-.product-slider-widget-content.viewport_size_4 .product p { line-height: 110%; }
-.product-slider-widget-content.viewport_size_4 .product .product-stars { background: url(../img/star-green.png) 20px 0 transparent; width: 20px; height: 16px; display: inline-block; }
-.product-slider-widget-content.viewport_size_4 .product .product-stars.star-selected { background: url(../img/star-green.png) 0 0 transparent; }
-.product-slider-widget-content.viewport_size_4 .product img { height: 115px; }
-.product-slider-widget-content.viewport_size_4 .product .old-price { text-decoration: line-through; }
-.product-slider-widget-content.viewport_size_4 .product.inactive-left { margin-left: -100%; }
-.product-slider-widget-content.viewport_size_4 .product.inactive-right { margin-right: -100%; }
+.kmart .wp-polls li span:first-child { color: #980017; }
+.kmart .wp-polls h1.content-headline { color: #980017; }
+.kmart .wp-polls .bar { background: #f28734; }
 
 #header.sears form { border: solid 3px #3a81cf; }
 #header.sears form #input_search { background: transparent no-repeat 0px 0px; border: none; height: 1.538em; padding: 0.153em 0 0.153em 1.846em; margin-right: 11%; width: 82%; }

@@ -24,7 +24,7 @@
 	<?php else : ?>
 
 		<?php //bbp_single_forum_description(); ?>
-
+				
 		<?php if ( bbp_has_forums() ) : ?>
 
 			<?php bbp_get_template_part( 'loop', 'forums' ); ?>
@@ -35,7 +35,8 @@
 		<?php if ( !bbp_is_forum_category() && bbp_has_topics() && ! bbp_has_forums() ) : ?>
 		
 		<div id="forums-thread-top">
-			<?php bbp_get_template_part('forums', 'new-thread'); ?>
+		
+			<?php bbp_get_template_part('forums', 'new-thread'); // New thread pagination ?>
 			
 			<?php bbp_get_template_part( 'pagination', 'topics'); ?>
 		</div>
