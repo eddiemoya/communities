@@ -98,7 +98,7 @@
 	        			</li>
 		          <?php endif;?>
 	        		<li class="clearfix">
-	        			<textarea class="input_textarea discussion" name="comment" shc:gizmo:form="{required:true, trim:true, pattern: /^.{3,}$/, message:'Please enter at least 3 characters.'}"><?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? stripslashes( urldecode( $_GET['comment'] ) ) : null; ?></textarea>
+	        			<textarea class="input_textarea discussion" name="comment" shc:gizmo:form="{required:true, trim:true, custom: function(self) { if(self.value.length >= 3) return true; else return false;}, message:'Please enter at least 3 characters.'}"><?php echo (isset($_GET['comm_err']) && $_GET['cid'] == $comment->comment_ID) ? stripslashes( urldecode( $_GET['comment'] ) ) : null; ?></textarea>
 	        		</li>
 	        		<li class="clearfix">
 	        			<button type="submit" class="<?php echo theme_option("brand"); ?>_button">Post</button>
