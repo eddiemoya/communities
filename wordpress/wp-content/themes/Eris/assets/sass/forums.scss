@@ -16,7 +16,6 @@ Version: 2.0
 @import 'functions';
 @import 'reset';
 
-
 // Global Components for Communities
 @import 'global/ribbon';
 @import 'global/header';
@@ -58,7 +57,7 @@ Version: 2.0
 @import 'sears/polls';
 
 // Forums-Specific Adjustments
-
+@import 'forums/navigation';
 
 // Widgets
 @import 'widgets/taxonomy';

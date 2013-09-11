@@ -208,8 +208,11 @@ add_action('bbp_new_topic_pre_insert', 'forums_sanitize_content');
 
 function forums_sanitize_content($content) {
 	
-	$content['post_title'] = sanitize_text($content['post_title']);
-	$content['post_content'] = sanitize_text($content['post_content']);
+	if(function_exists('sanitize_text')) {
+		
+		$content['post_title'] = sanitize_text($content['post_title']);
+		$content['post_content'] = sanitize_text($content['post_content']);
+	}
 	
 	return $content;
 }
