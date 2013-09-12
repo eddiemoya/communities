@@ -1,5 +1,4 @@
-html {
-  background:transparent image-url("#{$forums-img}background_main-grass.jpg") repeat 0px 0px;
-  height:auto;
-  color: garden( bodycopy );
+// Forums Styles
+html > body.bbpress {
+	background:transparent image-url("#{$forums-img}brickwall_tan.png") repeat 0px 0px;
 }
