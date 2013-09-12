@@ -22,6 +22,11 @@
                     <p class="responseTo">In response to <?php echo $parent_author; ?></p>
                 <?php endif; ?>
                 <?php echo ($comment->comment_approved == 1) ? wpautop($comment->comment_content) : $removed_text; ?>
+                <form class="actions clearfix" id="comment-actions-<?php echo($comment->comment_ID); ?>" method="post">
+                    <?php get_partial('parts/flag', array('id' => $comment->comment_ID, 'type' => "comments", 'sub_type' => "comment", 'actions' => $comment->actions, 'brand' => $brand, 'logged_in' => is_user_logged_in())); ?>
+                    <?php get_partial('parts/vote', array('id' => $comment->comment_ID, 'type' => "comments", 'sub_type' => 'comment', 'actions' => $comment->actions, 'logged_in' => is_user_logged_in())); ?>
+                    <?php get_partial('parts/share', array('id' => $comment->comment_ID, 'type' => "comments")); ?>
+                </form>
             </section>
         </article> <!-- END ARTICLE CONTENT CONTAINER -->
         
@@ -36,9 +41,6 @@
 						<a href="#" shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}">Reply</a>
 					</div>
 				<?php } else { ?>
-					<div class="trigger discussion">
-						<a href="#">Reply</a>
-					</div>
 					
         	<form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" id="commentform-<?php echo $comment->comment_ID ?>" class="reply-to-form clearfix"<?php echo $form_style; ?>>
 	        	<ul class="form-fields">
