@@ -230,29 +230,19 @@ ol.bullets { list-style-type: decimal; }
 
 ul.bullets { list-style-type: disc; }
 
-<<<<<<< HEAD
 .bold, .member .info h4, .member .info address, .post hgroup, .post h3, .content-container .content-header, .content-container .content-category, .content-container .content-headline, .profile .answers-toggle, .profile .personal_info dt, .profile .reviews h4 a, #allComments .comment .responseTo, .member_avatar .badge, .member_details .member_screen-name, .member_details .member_location, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header, .kmart .answers-toggle, .kmart .upload-photo label, .sears .answers-toggle, .sears .upload-photo label { font-weight: 700; }
-=======
 .bold, .member .info h4, .member .info address, .post hgroup, .post h3, .content-container .content-header, .content-container .content-category, .content-container .content-headline, .profile .answers-toggle, .profile .personal_info dt, .profile .reviews h4 a, #allComments .comment .responseTo, .member_avatar .badge, .member_details .member_screen-name, .member_details .member_location, .sears .post-n-comments h2, .kmart .post-n-comments h2, .section-header, .sears .answers-toggle, .sears .upload-photo label, .kmart .answers-toggle, .kmart .upload-photo label { font-weight: 700; }
->>>>>>> adc1dc2... minot tweak for IE. having trouble trying to rotate the modal tick by 45 degrees in IE 8.
 
 .italic, .post h2 { font-style: italic; }
 
 .faint, .member .info h5, .member .info p, .post h3, .post h2, .excerpt, .content-container .content-header { color: #666666; }
 
-<<<<<<< HEAD
-.upcase, .actions button:first-letter, #header.kmart form #button_search, #header.sears form #button_search { text-transform: uppercase; }
 
-.downcase { text-transform: lowercase; }
-
-.break-word, .member .info, .content-container .content-headline, .recent_activity .recent-activity_title, .recent_activity .recent-activity_excerpt, .recent-activity h3 a, .recent-activity .excerpt, .content-body.content-list .content-item .post-title, #allComments .comment article, #allComments .span10, .member_details .member_screen-name, .member_details .member_location, .wp-polls .results li span { word-wrap: break-word; }
-=======
 .upcase, .actions button:first-letter, #header.sears form #button_search, #header.kmart form #button_search { text-transform: uppercase; }
 
 .downcase { text-transform: lowercase; }
 
 .break-word, .member .info, .content-container .content-headline, .recent_activity .recent-activity_title, .recent_activity .recent-activity_excerpt, .recent-activity h3 a, .recent-activity .excerpt, .content-body.content-list .content-item .post-title, #allComments .comment article, #allComments .span10, .member_details .member_screen-name, .member_details .member_location { word-wrap: break-word; }
->>>>>>> adc1dc2... minot tweak for IE. having trouble trying to rotate the modal tick by 45 degrees in IE 8.
 
 .background_light-gray { background-color: #f3f3f3; }
 
@@ -716,13 +706,12 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .dropmenu ul li a:visited { color: #666666; }
 
 #navigation { width: 960px; margin: 0 auto; }
-<<<<<<< HEAD
-=======
+
 #navigation #forum_tooltip { width: 180px; position: absolute; top: 43px; background: none repeat scroll 0% 0% white; border: 3px solid #dddddd; padding: 30px 21px 5px; z-index: 101; -webkit-border-radius: 6px; border-radius: 6px; -webkit-box-shadow: 2px 4px 3px 1px #999; box-shadow: 2px 4px 3px 1px #999; }
 #navigation #forum_tooltip p { margin-bottom: 10px; }
 #navigation #forum_tooltip input[type='checkbox'] { margin-right: 5px; }
 #navigation #forum_tooltip .close { position: absolute; right: 3px; top: 0px; }
-#navigation #forum_tooltip .tick { position: absolute; left: 67px; top: -6px; background: none repeat scroll 0px 0px white; height: 11px; width: 11px; border-right: 3px solid #dddddd; border-top: 3px solid #dddddd; -webkit-border-radius: 6px; border-radius: 2px; transform: rotate(-45deg); transform-origin: 0px 100% 0px; }
+#navigation #forum_tooltip .tick { position: absolute; left: 67px; top: -6px; background: none repeat scroll 0px 0px white; height: 11px; width: 11px; border-right: 3px solid #dddddd; border-top: 3px solid #dddddd; border-radius: 2px; -webkit-border-radius: 6px; transform: rotate(-45deg); transform-origin: 0px 100% 0px; -webkit-transform: rotate(-45deg); -webkit-transform-origin: 2px; }
 #navigation #forum_tooltip .banner_new { height: 63px; width: 63px; position: absolute; top: -7px; left: -7px; }
 
 .no-boxshadow #forum_tooltip { /* This contains the color of the shadow in the CSS3 syntax */ background: #999; /* This contains the blur-radius in the CSS3 syntax */ zoom: 1; filter: progid:DXImageTransform.Microsoft.DropShadow(OffX=2, OffY=4, Color=#999999), progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=1, Direction=90), progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=1, Direction=180); /* You must remove the border in IE, since it will be replaced in the next rule */ border: none; }
@@ -732,7 +721,6 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .sears .banner_new { background: url("../img/forums/sears_newCornerImg.png") no-repeat scroll 0px 0px transparent; }
 
 .kmart .banner_new { background: url("../img/forums/kmart_newCornerImg.png") no-repeat scroll 0px 0px transparent; }
->>>>>>> adc1dc2... minot tweak for IE. having trouble trying to rotate the modal tick by 45 degrees in IE 8.
 
 #footer_nav.dropmenu > li > span, #footer_nav.dropmenu > li a { padding-top: .66em; padding-bottom: .66em; }
 #footer_nav.dropmenu > li > span span, #footer_nav.dropmenu > li a span { background-repeat: no-repeat; padding-right: 16px; display: inline-block; }
@@ -981,10 +969,13 @@ html, body { background: white; color: #555555; }
 .sears_button.azure { background-image: url('../img/sears/sprite_global.png?v=1375135183'); border-color: #60768b; color: #366392; text-shadow: none; background-position: 0px -140px; margin-right: 0px; }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 body.bbpress { background-image: url("../img/forums/brickwall_tan.png"); }
 
 =======
 >>>>>>> adc1dc2... minot tweak for IE. having trouble trying to rotate the modal tick by 45 degrees in IE 8.
+=======
+>>>>>>> 461a62f... moved forums styling from forums.scss and sears.scss to the new type-forum.scss
 .sears #header_nav.dropmenu, .sears #header_nav.dropmenu > li > span span, .sears #header_nav.dropmenu > li a span, .sears #header_nav.dropmenu > li.right_button, .sears #footer_nav.dropmenu > li, .sears #footer_nav.dropmenu > li:hover, .sears #footer_nav.dropmenu > li > span span, .sears #footer_nav.dropmenu > li a span { background-image: url('../img/sears/sprite_navigation.png?v=1375135183'); }
 
 .sears #header_nav.dropmenu { background-color: #e4e0df; }
@@ -1111,6 +1102,8 @@ html, body { background: white; color: #555555; }
 
 .kmart .sharebutton { color: #980017; }
 >>>>>>> adc1dc2... minot tweak for IE. having trouble trying to rotate the modal tick by 45 degrees in IE 8.
+
+html > body.bbpress { background: transparent url('../img/forums/brickwall_tan.png?v=1378995708') repeat 0px 0px; }
 
 .taxonomy-widget_grid { padding-bottom: 0.769em; }
 .taxonomy-widget_grid [class*="span"].alpha { clear: left !important; float: left; margin-left: 0 !important; }
