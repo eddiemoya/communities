@@ -2,3 +2,9 @@
 html > body.bbpress {
 	background:transparent image-url("#{$forums-img}brickwall_tan.png") repeat 0px 0px;
 }
+
+.bbpress {
+	#container {
+		background: #fff;
+	}
+}
