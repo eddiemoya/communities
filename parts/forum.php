@@ -1,10 +1,10 @@
 <section class="span12">
-	<div id="comm-forums-main" class="span8">
+	<div id="comm-forums-main" class="span9">
 
 		<?php the_content(); ?>
 
 	</div>
-	<div id="comm-forums-side" class="span4">
+	<div id="comm-forums-side" class="span3">		
 		<?php 
 		if(function_exists('dynamic_sidebar')) {
 		

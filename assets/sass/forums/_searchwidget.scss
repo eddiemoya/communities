@@ -1,0 +1,35 @@
+#comm-forums-side{
+	.widget:first-child{
+		background: #dbf0f9;
+		padding: 5px 5px 5px 15px;
+		.search-tick{
+			border-bottom: 19px solid #DBF0F9;
+			border-top: 19px solid #DBF0F9;
+			border-left: 8px solid #FFFFFF;
+			left: 0;
+			position: absolute;
+		}
+		.search-input-container{
+			border: 2px solid #f6f6f6;
+			padding-left: 5px;
+			margin: 0 auto;
+			width: 210px;
+			background: #fff;
+			input[type=text]{
+				border: none;
+				color: #bfbfbf;
+				width: 150px;
+			}
+			input[type=submit]{
+				border:none;
+				background:orange;
+				color:#fff;
+				height:32px;
+				width: 32px;
+			}
+		}
+		a{
+			display: block;
+		}
+	}
+}
