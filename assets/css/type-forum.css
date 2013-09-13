@@ -1013,6 +1013,8 @@ html, body { background: white; color: #555555; }
 
 html > body.bbpress { background: transparent url('../img/forums/brickwall_tan.png?v=1378995708') repeat 0px 0px; }
 
+.bbpress #container { background: #fff; }
+
 .taxonomy-widget_grid { padding-bottom: 0.769em; }
 .taxonomy-widget_grid [class*="span"].alpha { clear: left !important; float: left; margin-left: 0 !important; }
 .taxonomy-widget_grid .alpha + .span3, .taxonomy-widget_grid .alpha + .span3 + .span3, .taxonomy-widget_grid .alpha + .span3 + .span3 + .span3 { float: left; clear: none !important; }
