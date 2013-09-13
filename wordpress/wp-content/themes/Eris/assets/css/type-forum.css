@@ -1015,6 +1015,13 @@ html > body.bbpress { background: transparent url('../img/forums/brickwall_tan.p
 
 .bbpress #container { background: #fff; }
 
+#comm-forums-side .widget:first-child { background: #dbf0f9; padding: 5px 5px 5px 15px; }
+#comm-forums-side .widget:first-child .search-tick { border-bottom: 19px solid #DBF0F9; border-top: 19px solid #DBF0F9; border-left: 8px solid #FFFFFF; left: 0; position: absolute; }
+#comm-forums-side .widget:first-child .search-input-container { border: 2px solid #f6f6f6; padding-left: 5px; margin: 0 auto; width: 210px; background: #fff; }
+#comm-forums-side .widget:first-child .search-input-container input[type=text] { border: none; color: #bfbfbf; width: 150px; }
+#comm-forums-side .widget:first-child .search-input-container input[type=submit] { border: none; background: orange; color: #fff; height: 32px; width: 32px; }
+#comm-forums-side .widget:first-child a { display: block; }
+
 .taxonomy-widget_grid { padding-bottom: 0.769em; }
 .taxonomy-widget_grid [class*="span"].alpha { clear: left !important; float: left; margin-left: 0 !important; }
 .taxonomy-widget_grid .alpha + .span3, .taxonomy-widget_grid .alpha + .span3 + .span3, .taxonomy-widget_grid .alpha + .span3 + .span3 + .span3 { float: left; clear: none !important; }
