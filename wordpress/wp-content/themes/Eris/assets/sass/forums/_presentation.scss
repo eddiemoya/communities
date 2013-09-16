@@ -1,4 +1,14 @@
+// Tweaks to Presentation for Outdoor Style
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic|Open+Sans:300italic,400italic,700italic,400,700,300);
+
+$regular: 'Open Sans', Helvetica, Arial, Verdana, sans-serif;
+$condensed: 'Open Sans Condensed', Helvetica, Arial, Verdana, sans-serif;
+
 // Forums Styles
+html,body {
+	font-family:$regular;
+}
+
 html > body.bbpress {
 	background:transparent image-url("#{$forums-img}brickwall_tan.png") repeat 0px 0px;
 }
@@ -6,5 +16,19 @@ html > body.bbpress {
 .bbpress {
 	#container {
 		background: #fff;
+		-webkit-box-shadow: 0px 10px 15px 1px #999;
+		box-shadow: 0px 10px 15px 1px #999;
 	}
+}
+
+h2 {
+	font-size: 26px;
+	font-weight: lighter;
+	color: #444;
+}
+
+h3 {
+	font-size: 20px;
+	font-weight: bold; 
+	color: #444; 
 }

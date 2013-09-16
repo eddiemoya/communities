@@ -47,7 +47,7 @@
 
 					<?php do_action( 'bbp_theme_before_topic_form_title' ); ?>
 					
-					<h1>New Thread</h1>
+					<h3>New Thread</h3>
 
 					<p>
 						<label for="bbp_topic_title">Title</label><br />

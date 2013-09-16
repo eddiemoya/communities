@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic|Open+Sans:300italic,400italic,700italic,400,700,300);
 /* 
 Theme Name: Eris
 Theme URI: http://www.kmart.com/community/forums/
@@ -707,7 +708,17 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 #navigation #forum_tooltip .tick { position: absolute; left: 67px; top: -6px; background: none repeat scroll 0px 0px white; height: 11px; width: 11px; border-right: 3px solid #dddddd; border-top: 3px solid #dddddd; border-radius: 2px; -webkit-border-radius: 6px; transform: rotate(-45deg); transform-origin: 0px 100% 0px; -webkit-transform: rotate(-45deg); -webkit-transform-origin: 2px; }
 #navigation #forum_tooltip .banner_new { height: 63px; width: 63px; position: absolute; top: -7px; left: -7px; }
 
-.no-boxshadow #forum_tooltip { /* This contains the color of the shadow in the CSS3 syntax */ background: #999; /* This contains the blur-radius in the CSS3 syntax */ zoom: 1; filter: progid:DXImageTransform.Microsoft.DropShadow(OffX=2, OffY=4, Color=#999999), progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=1, Direction=90), progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=1, Direction=180); /* You must remove the border in IE, since it will be replaced in the next rule */ border: none; }
+.no-boxshadow #forum_tooltip { display: none; 	/*
+	// This contains the color of the shadow in the CSS3 syntax
+	background: #999;
+ // This contains the blur-radius in the CSS3 syntax
+	zoom: 1;
+	filter: progid:DXImageTransform.Microsoft.DropShadow(OffX=2, OffY=4, Color=#999999),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=1, Direction=90),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=1, Direction=180);
+ // You must remove the border in IE, since it will be replaced in the next rule
+	border: none;
+	*/ }
 
 .no-csstransforms .tick { filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0); }
 
@@ -1011,14 +1022,22 @@ html, body { background: white; color: #555555; }
 .sears .wp-polls h1.content-headline { color: #067bb5; }
 .sears .wp-polls .bar { background: #6dcff6; }
 
+.bbpress #comm-forums-main .bbp-forums-list { border: none; margin: 0; padding: 0; }
+
+html, body { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; }
+
 html > body.bbpress { background: transparent url('../img/forums/brickwall_tan.png?v=1378995708') repeat 0px 0px; }
 
-.bbpress #container { background: #fff; }
+.bbpress #container { background: #fff; -webkit-box-shadow: 0px 10px 15px 1px #999; box-shadow: 0px 10px 15px 1px #999; }
+
+h2 { font-size: 26px; font-weight: lighter; color: #444; }
+
+h3 { font-size: 20px; font-weight: bold; color: #444; }
 
 #comm-forums-side .widget:first-child { background: #dbf0f9; padding: 5px 5px 5px 15px; }
 #comm-forums-side .widget:first-child .search-tick { border-bottom: 19px solid #DBF0F9; border-top: 19px solid #DBF0F9; border-left: 8px solid #FFFFFF; left: 0; position: absolute; }
-#comm-forums-side .widget:first-child .search-input-container { border: 2px solid #f6f6f6; padding-left: 5px; margin: 0 auto; width: 210px; background: #fff; }
-#comm-forums-side .widget:first-child .search-input-container input[type=text] { border: none; color: #bfbfbf; width: 150px; }
+#comm-forums-side .widget:first-child .search-input-container { border: 2px solid #f6f6f6; padding-left: 5px; margin: 0 auto; width: 190px; background: #fff; }
+#comm-forums-side .widget:first-child .search-input-container input[type=text] { border: none; color: #bfbfbf; width: 134px; }
 #comm-forums-side .widget:first-child .search-input-container input[type=submit] { border: none; background: orange; color: #fff; height: 32px; width: 32px; }
 #comm-forums-side .widget:first-child a { display: block; }
 
