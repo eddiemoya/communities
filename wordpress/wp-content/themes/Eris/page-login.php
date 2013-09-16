@@ -1,6 +1,11 @@
 <?php
 
-//include SHCSSO_CONFIG_DIR . 'errors.php';
+//For modal, if user tries to login when already logged in another tab
+if(is_user_logged_in() && is_ajax()) {
+
+	echo '<script>location.reload();</script>';
+	exit;
+}
 
 //if user is logged in, redirect to home page
 if(is_user_logged_in()) {
