@@ -69,6 +69,11 @@ function enqueue_scripts() {
 		// Forum Welcome Tooltip code - Should only be valid for 90 days after the deploy to production.
 		wp_register_script('forumTooltip', get_template_directory_uri() . '/assets/js/forums-tooltip'.$javascript_suffix.'.js', array(), null, true);
         
+        wp_register_script('mint', get_template_directory_uri() . '/assets/js/widgets/shcJSL.mint'.$javascript_suffix.'.js', array(), null, true);\
+
+        wp_register_script('markitup-set', get_template_directory_uri() . '/assets/js/vendor/markitup/sets/community-forums/set'.$javascript_suffix.'.js', array('jquery'), null, true);
+        wp_register_script('markitup-init', get_template_directory_uri() . '/assets/js/markitup'.$javascript_suffix.'.js', array('jquery', 'markitup'), null, true);
+
 	    wp_register_script('omniture_scode', get_template_directory_uri() . '/assets/js/vendor/omniture.'.theme_option("brand").''.$javascript_suffix.'.js', array(), null, true);
         wp_register_script('omniture_start', get_template_directory_uri() . '/assets/js/vendor/omniture.start'.$javascript_suffix.'.js', array('omniture_scode'), null, true);
 
@@ -99,6 +104,11 @@ function enqueue_scripts() {
         // wp_enqueue_script('addthis');		
 		wp_enqueue_script('forumTooltip');
 
+        wp_enqueue_script('markitup-set');        
+        wp_enqueue_script('markitup-init');
+
+        // wp_enqueue_script('addthis');
+
         wp_localize_script('jquery', 'ajaxdata', $data);
         wp_localize_script('omniture_start', 's_properties', $s_properties);
 
@@ -110,7 +120,9 @@ function enqueue_scripts() {
         //$lookup_stylesheet = str_replace('kmart.com', 'sears.com', lookup_stylesheet());
         $lookup_stylesheet = lookup_stylesheet($stylesheet_suffix);
 
+        wp_register_style('markitup-set', get_template_directory_uri() . '/assets/js/vendor/markitup/sets/community-forums/style.css');
 		wp_register_style( 'main-styles', $lookup_stylesheet, array());
+
         wp_enqueue_style( 'main-styles' );
         
         //Enqueue profile ajax only for author template
