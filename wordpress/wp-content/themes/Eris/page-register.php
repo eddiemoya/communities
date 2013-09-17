@@ -3,7 +3,7 @@
 //For modal, if user tries to login when already logged in another tab
 if(is_user_logged_in() && is_ajax()) {
 
-	echo '<script>location.reload();</script>';
+	echo '<script>location.reload(false);</script>';
 	exit;
 }
 
