@@ -1,14 +1,6 @@
-// Forum Archive (forums landing page) specific changes
-.forum-archive {
+// Forum (sub-forum listing) specific changes
+.forum {
 	#comm-forums-main {
-		h2 {
-			background: image-url("#{$forums-img}sears_forumsLogo.gif") no-repeat;
-			height: 86px;
-			padding-left: 146px;
-			color: #87cdec;
-			font-weight: bold;
-			font-size: 14px;
-		}
 		.bbp-header {
 			.bbp-forum-info {
 				width: 50%;

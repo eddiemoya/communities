@@ -1,0 +1,37 @@
+// Topic (Sub-forum) specific changes
+#comm-forums-main {
+	.bbp-topics {
+		border: 0;
+	}
+	.bbp-header {
+		.bbp-topic-title {
+			width: 35%;
+			margin-left: 10%;
+		}
+		.bbp-topic-voice-count {
+		}
+		.bbp-topic-reply-count {
+			width: 15%;
+			margin-left: 13%;
+		}
+		.bbp-topic-freshness {
+			width: 27%;
+			text-align: left;
+		}
+	}
+	.bbp-body {			
+		.bbp-topic-title {
+			width: 45%;
+		}
+		.bbp-topic-voice-count {
+			width: 13%;
+		}
+		.bbp-topic-reply-count {
+			width: 15%;
+		}
+		.bbp-topic-freshness {
+			width: 27%;
+			text-align: left;
+		}
+	}
+}
