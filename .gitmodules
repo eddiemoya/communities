@@ -85,3 +85,9 @@
 [submodule "wordpress/wp-content/plugins/bbPress-Reply-with-Quote"]
 	path = wordpress/wp-content/plugins/bbPress-Reply-with-Quote
 	url = git@github.com:eddiemoya/bbPress-Reply-with-Quote.git
+[submodule "wordpress/wp-content/plugins/bbpress-bbcode"]
+	path = wordpress/wp-content/plugins/bbpress-bbcode
+	url = git@github.com:eddiemoya/bbpress-bbcode.git
+[submodule "wordpress/wp-content/plugins/bbpress2-shortcode-whitelist"]
+	path = wordpress/wp-content/plugins/bbpress2-shortcode-whitelist
+	url = git@github.com:eddiemoya/bbpress2-shortcode-whitelist.git
