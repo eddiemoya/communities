@@ -11,13 +11,17 @@ html,body {
 
 html > body.bbpress {
 	background:transparent image-url("#{$forums-img}brickwall_tan.png") repeat 0px 0px;
+	height: auto;
 }
 
 .bbpress {
 	#container {
 		background: #fff;
 		-webkit-box-shadow: 0px 10px 15px 1px #999;
-		box-shadow: 0px 10px 15px 1px #999;
+		box-shadow: 0px 10px 15px 1px #999;		
+		#content > section.span12 {
+			border-top: 1px dotted #ccc;
+		}
 		#comm-forums-main {
 			border-right: 1px dotted #ccc;
 			padding-top: 15px;
@@ -73,16 +77,21 @@ html > body.bbpress {
 				margin-left: 80px;
 				padding-top: 0px;
 			}
-		}
-		.bbp-reply-form {
-			.bbp-form {
-				border: 0;
-				padding: 5px;
+			.bbp-forum-freshness,
+			.bbp-topic-reply-count {
+				font-size: 10px;
 			}
+		}
+		.bbp-form {
+			border: 0;
+			padding: 5px;
 		}
 		.bbp-header,
 		.bbp-footer {
 			background-color: #eee;
+		}
+		.bbp-header {
+			font-size: 14px;
 		}
 		.reply {
 			border-bottom: 1px dotted #ccc;
