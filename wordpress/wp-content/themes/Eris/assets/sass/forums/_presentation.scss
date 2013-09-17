@@ -42,7 +42,6 @@ html > body.bbpress {
 		.bbp-lead-topic{
 			.bbp-topic-title {
 				font-size: 20px;
-				color: #0B79B9;
 				margin-bottom: 10px;
 			}
 			.bbp-body {
@@ -132,10 +131,33 @@ h3 {
 }
 
 #forums-topic-reply-link {
-	float: left;
+	display: inline-block;
 }
 
 #forums-topic-bottom {
 	border-top: 1px dotted #CCCCCC;
     padding-top: 5px;
+}
+
+// Kmart specific changes
+.kmart.bbpress {
+	#bbpress-forums {
+		// First Post in a Topic
+		.bbp-lead-topic{
+			.bbp-topic-title {
+				color: #E82E2C;
+			}
+		}
+	}
+}
+// Sears specific changes
+.sears.bbpress {
+	#bbpress-forums {
+		// First Post in a Topic
+		.bbp-lead-topic{
+			.bbp-topic-title {
+				color: #0B79B9;
+			}
+		}
+	}
 }
