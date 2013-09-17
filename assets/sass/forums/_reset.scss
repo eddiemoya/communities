@@ -7,4 +7,17 @@
 			padding: 0;
 		}
 	}
+	#bbpress-forums {
+		.bbp-lead-topic {
+			border: none;
+		}
+		.bbp-footer {
+			text-align: right;
+		}
+		div.bbp-forum-author, 
+		div.bbp-topic-author, 
+		div.bbp-reply-author {
+			width: 60px;
+		}
+	}
 }

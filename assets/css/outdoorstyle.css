@@ -701,7 +701,7 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .dropmenu ul li a:visited { color: #666666; }
 
 #navigation { width: 960px; margin: 0 auto; }
-#navigation #forum_tooltip { width: 180px; position: absolute; top: 43px; background: none repeat scroll 0% 0% white; border: 3px solid #dddddd; padding: 30px 21px 5px; z-index: 101; -webkit-border-radius: 6px; border-radius: 6px; -webkit-box-shadow: 2px 4px 3px 1px #999; box-shadow: 2px 4px 3px 1px #999; }
+#navigation #forum_tooltip { width: 180px; position: absolute; top: 43px; background: none repeat scroll 0% 0% white; border: 3px solid #dddddd; padding: 30px 21px 5px; z-index: 101; -webkit-border-radius: 6px; border-radius: 6px; -webkit-box-shadow: 2px 2px 8px #A8A8A8; box-shadow: 2px 2px 8px #A8A8A8; }
 #navigation #forum_tooltip p { margin-bottom: 10px; }
 #navigation #forum_tooltip input[type='checkbox'] { margin-right: 5px; }
 #navigation #forum_tooltip .close { position: absolute; right: 3px; top: 0px; }
