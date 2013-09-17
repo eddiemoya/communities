@@ -1,0 +1,37 @@
+.forum-archive {
+	h2 {
+		background: image-url("#{$forums-img}sears_forumsLogo.gif") no-repeat;
+		height: 86px;
+		padding-left: 146px;
+		color: #87cdec;
+		font-weight: bold;
+		font-size: 14px;
+	}
+	.bbp-header {
+		.bbp-forum-info {
+			width: 50%;
+		}
+		.bbp-forum-freshness {
+			width: 35%;
+			margin-left: 15%;
+			text-align: left;
+		}
+	}
+	.bbp-body {
+		.bbp-forum-info {
+			width: 50%;
+			.bbp-forum-title {
+				font-size: 16px;
+			}
+			.bbp-forum-content {
+				margin: 0;
+			}
+		}
+		.bbp-forum-topic-count {
+			width: 15%;
+		}
+		.bbp-forum-freshness {
+			width: 35%;
+		}
+	}
+}
