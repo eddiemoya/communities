@@ -43,14 +43,15 @@
 			
 			<?php bbp_get_template_part( 'loop', 'topics' ); ?>
 
-			<?php bbp_get_template_part( 'form', 'topic'); ?>
-			
-		<div id="forums-thread-bottom">
+		<div id="forums-thread-bottom" class="">
 			
 			<?php bbp_breadcrumb();?>
 			<?php bbp_get_template_part( 'pagination', 'topics'); ?>
 				
 		</div>
+		
+			<?php bbp_get_template_part( 'form', 'topic'); ?>
+			
 
 		<?php elseif ( !bbp_is_forum_category() && ! bbp_has_forums() ) : ?>
 
@@ -64,10 +65,10 @@
 
 			<?php bbp_get_template_part( 'form',  'topic'); ?>
 			
-			<div id="forums-thread-bottom">
+			<div id="forums-thread-bottom" class="TODO">
 			
-			<?php bbp_breadcrumb();?>
-			<?php bbp_get_template_part( 'pagination', 'topics'); ?>
+				<?php bbp_breadcrumb();?>
+				<?php bbp_get_template_part( 'pagination', 'topics'); ?>
 				
 			</div>
 
