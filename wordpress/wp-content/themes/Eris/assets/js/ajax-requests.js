@@ -144,7 +144,31 @@ jQuery(document).ready(function($) {
 			});
 
 		}
-	})
+	});
+
+	$('#forums-topic-reply-link a').on('click', function(){
+
+   		container = $(this).closest('.reply');
+
+   		var data = {
+			action		: 'get_post_by_id',
+			post_type 	: 'reply',
+			id 			: $(container).attr('data-id')
+		};
+
+		jQuery.ajax({
+				url  : ajaxdata.ajaxurl,
+				type: 'POST',
+				data : data,
+				dataType: 'json',
+				success:function(post){
+					console.log(post);
+					$.markItUp({target:"#bbp_reply_content", openWith:'[quote id='+ post.ID +']\n'+ $.trim(post.post_content), closeWith:'\n[/quote]' });
+				
+				}
+			});	
+   			
+   	});
 
 
 
