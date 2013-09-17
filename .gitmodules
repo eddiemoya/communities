@@ -79,3 +79,6 @@
 [submodule "wordpress/wp-content/plugins/bbpress"]
 	path = wordpress/wp-content/plugins/bbpress
 	url = git@github.com:dan-crimmins/bbpress.git
+[submodule "wordpress/wp-content/plugins/forum-search"]
+	path = wordpress/wp-content/plugins/forum-search
+	url = git@github.com:mattday16/forum-search.git
