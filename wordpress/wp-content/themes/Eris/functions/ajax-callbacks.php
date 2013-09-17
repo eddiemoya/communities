@@ -107,6 +107,9 @@ function get_post_by_id(){
 				'd' => $product,
 			));
     	}
+
+    	$post = get_post($_POST['id']);
+    	echo json_encode($post);
   	}
     exit();
 }
