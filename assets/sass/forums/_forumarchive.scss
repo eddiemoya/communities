@@ -38,3 +38,19 @@
 		}
 	}
 }
+
+.sears.forum-archive {
+	#comm-forums-main {
+		h2 {
+			background: image-url("#{$forums-img}sears_forumsLogo.gif") no-repeat;
+		}
+	}
+}
+
+.kmart.forum-archive {
+	#comm-forums-main {
+		h2 {
+			background: image-url("#{$forums-img}kmart_forumsLogo.gif") no-repeat;
+		}
+	}
+}
