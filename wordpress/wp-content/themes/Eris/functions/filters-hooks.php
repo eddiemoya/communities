@@ -1105,3 +1105,36 @@ function com_canonical() {
 
 //Removes generator tag, request from sec team
 remove_action('wp_head', 'wp_generator');
+
+
+add_shortcode( 'quote' , 'shortcode_quote' );
+add_shortcode( 'QUOTE' , 'shortcode_quote' );
+
+function shortcode_quote( $atts = array(), $content = NULL ) {
+
+    if(!empty($atts['id'])){
+        $post = get_post($atts['id']);
+        $user = get_userdata($post->post_author);
+
+        $css_classes = array('bbcode-quote');
+
+        ob_start();
+        ?>
+        <div class="bbcode-quote">
+            <div>
+                Quote <a href="">#<?php echo $post->ID; ?></a> by <a href="">User</a>:
+            </div>
+            <blockquote>
+                <?php echo BBCode::do_shortcode($content); ?>
+                <p></p>
+            </blockquote>
+        </div>
+        <?php
+        $output = ob_get_clean();
+
+        return $output;
+    }
+
+
+}
+
