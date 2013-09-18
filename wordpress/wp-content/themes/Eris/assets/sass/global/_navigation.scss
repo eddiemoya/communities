@@ -60,6 +60,7 @@ $arrow-height: 3px;
 	-webkit-box-shadow: 2px 4px 6px #A8A8A8;
 	box-shadow: 2px 4px 6px #A8A8A8; 
 	font-size: 16px;
+	display:none;	
 	p {
 		margin-bottom: 10px;
 	}
@@ -106,7 +107,6 @@ $arrow-height: 3px;
   }
 }
 .no-boxshadow #forum_tooltip {
-	display: none;
 	
 	/*
 	// This contains the color of the shadow in the CSS3 syntax
@@ -124,7 +124,11 @@ $arrow-height: 3px;
 }
 
 .no-csstransforms .tick {
+	display: none;
+	
+	/*
 	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+	*/
 }
 
 .sears .banner_new{

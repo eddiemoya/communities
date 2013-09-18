@@ -701,7 +701,7 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .dropmenu ul li a:visited { color: #666666; }
 
 #navigation { width: 960px; margin: 0 auto; }
-#navigation #forum_tooltip { width: 250px; position: absolute; top: 43px; background: none repeat scroll 0% 0% white; border: 3px solid #dddddd; padding: 30px 21px 5px; z-index: 101; -webkit-border-radius: 6px; border-radius: 6px; -webkit-box-shadow: 2px 4px 6px #A8A8A8; box-shadow: 2px 4px 6px #A8A8A8; font-size: 16px; }
+#navigation #forum_tooltip { width: 250px; position: absolute; top: 43px; background: none repeat scroll 0% 0% white; border: 3px solid #dddddd; padding: 30px 21px 5px; z-index: 101; -webkit-border-radius: 6px; border-radius: 6px; -webkit-box-shadow: 2px 4px 6px #A8A8A8; box-shadow: 2px 4px 6px #A8A8A8; font-size: 16px; display: none; }
 #navigation #forum_tooltip p { margin-bottom: 10px; }
 #navigation #forum_tooltip input[type='checkbox'] { margin-right: 5px; }
 #navigation #forum_tooltip .close { position: absolute; right: 6px; top: 3px; cursor: pointer; font-size: 10px; font-weight: bold; }
@@ -710,7 +710,7 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 #navigation #forum_tooltip #new_modal_form { font-size: 12px; }
 #navigation #forum_tooltip #new_modal_form #message_hide { vertical-align: sub; }
 
-.no-boxshadow #forum_tooltip { display: none; 	/*
+.no-boxshadow #forum_tooltip { 	/*
 	// This contains the color of the shadow in the CSS3 syntax
 	background: #999;
  // This contains the blur-radius in the CSS3 syntax
@@ -722,7 +722,9 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 	border: none;
 	*/ }
 
-.no-csstransforms .tick { filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0); }
+.no-csstransforms .tick { display: none; /*
+filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+*/ }
 
 .sears .banner_new { background: url("../img/forums/sears_newCornerImg.png") no-repeat scroll 0px 0px transparent; }
 
@@ -902,7 +904,7 @@ html, body { background: white; color: #555555; }
 .kmart #header_nav.dropmenu, .kmart #header_nav.dropmenu > li > span span, .kmart #header_nav.dropmenu > li a span, .kmart #header_nav.dropmenu > li.right_button, .kmart #footer_nav.dropmenu > li > span span, .kmart #footer_nav.dropmenu > li a span { background-image: url('../img/kmart/sprite_navigation.png?v=1375135182'); }
 
 .kmart #header_nav.dropmenu { background-color: #e4e0df; background-repeat: repeat-x; border-left: 1px solid #cccccc; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; }
-.kmart #header_nav.dropmenu > li { border-right: 1px solid #cccccc; width: 14.285714285714285%; padding: 1px 0; font-size: 92.307%; }
+.kmart #header_nav.dropmenu > li { border-right: 1px solid #cccccc; width: 12.5%; padding: 1px 0; font-size: 92.307%; }
 .kmart #header_nav.dropmenu > li > span, .kmart #header_nav.dropmenu > li a { color: #333333; border-right: 1px solid white; padding-top: .66em; padding-bottom: .66em; }
 .kmart #header_nav.dropmenu > li > span span, .kmart #header_nav.dropmenu > li a span { background-repeat: no-repeat; padding-right: 9px; }
 .kmart #header_nav.dropmenu > li > span span, .kmart #header_nav.dropmenu > li a span { background-position: right 5px; }
@@ -980,7 +982,7 @@ html, body { background: white; color: #555555; }
 .sears #header_nav.dropmenu { -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; border-left: 1px solid #cccccc; background-repeat: repeat-x; }
 .sears #header_nav.dropmenu ul { background-repeat: repeat-x; }
 .sears #header_nav.dropmenu ul { background-position: left bottom; }
-.sears #header_nav.dropmenu > li { border-right: 1px solid #cccccc; width: 14.245014245014245%; padding: 1px 0; font-size: 92.307%; }
+.sears #header_nav.dropmenu > li { border-right: 1px solid #cccccc; width: 12.5%; padding: 1px 0; font-size: 92.307%; }
 .sears #header_nav.dropmenu > li > span, .sears #header_nav.dropmenu > li a { border-right: 1px solid white; padding-top: .66em; padding-bottom: .66em; }
 .sears #header_nav.dropmenu > li > span span, .sears #header_nav.dropmenu > li a span { background-repeat: no-repeat; padding-right: 9px; }
 .sears #header_nav.dropmenu > li > span span, .sears #header_nav.dropmenu > li a span { background-position: right 5px; }
@@ -1039,6 +1041,7 @@ html > body.bbpress { background: transparent url('../img/forums/brickwall_tan.p
 .bbpress #container #comm-forums-side { padding-top: 15px; padding-left: 5px; margin-left: 0; }
 .bbpress #forums-head { margin-bottom: 15px; }
 .bbpress #bbpress-forums .bbp-lead-topic .bbp-topic-title { font-size: 20px; margin-bottom: 10px; }
+.bbpress #bbpress-forums .bbp-lead-topic .bbp-body { margin-top: 2px; }
 .bbpress #bbpress-forums .bbp-lead-topic .bbp-body .hentry { padding: 0; }
 .bbpress #bbpress-forums .bbp-lead-topic .bbp-topic-content { margin-left: 80px; }
 .bbpress #bbpress-forums .bbp-replies { border: 0; margin-bottom: 2px; }
@@ -1066,7 +1069,7 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 
 #forums-topic-reply-link { display: inline-block; }
 
-#forums-topic-bottom { border-top: 1px dotted #CCCCCC; padding-top: 5px; }
+#forums-topic-bottom { border-top: 1px dotted #CCC; padding-top: 5px; }
 
 .kmart.bbpress #bbpress-forums .bbp-lead-topic .bbp-topic-title { color: #E82E2C; }
 
@@ -1083,14 +1086,17 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 
 .sears #comm-forums-side .widget:first-child { background: #dbf0f9; }
 
+.forum-archive #comm-forums-main .bbp-forums { border: 0; }
 .forum-archive #comm-forums-main h2 { background: url('../img/forums/sears_forumsLogo.gif?v=1379380167') no-repeat; height: 86px; padding-left: 146px; color: #87cdec; font-weight: bold; font-size: 14px; }
 .forum-archive #comm-forums-main .bbp-header .bbp-forum-info { width: 50%; }
 .forum-archive #comm-forums-main .bbp-header .bbp-forum-freshness { width: 35%; margin-left: 15%; text-align: left; }
+.forum-archive #comm-forums-main .bbp-body { margin-top: 2px; border-top: 1px dotted #ccc; }
 .forum-archive #comm-forums-main .bbp-body .bbp-forum-info { width: 50%; }
 .forum-archive #comm-forums-main .bbp-body .bbp-forum-info .bbp-forum-title { font-size: 16px; }
 .forum-archive #comm-forums-main .bbp-body .bbp-forum-info .bbp-forum-content { margin: 0; }
 .forum-archive #comm-forums-main .bbp-body .bbp-forum-topic-count { width: 15%; }
 .forum-archive #comm-forums-main .bbp-body .bbp-forum-freshness { width: 35%; }
+.forum-archive #comm-forums-main .bbp-body .topic { border-top: 0; border-bottom: 1px dotted #ccc; }
 
 .sears.forum-archive #comm-forums-main h2 { background: url('../img/forums/sears_forumsLogo.gif?v=1379380167') no-repeat; }
 

@@ -38,6 +38,9 @@ html > body.bbpress {
 		margin-bottom: 15px;
 	}		
 	#bbpress-forums {
+		.bbp-forums {
+			
+		}
 		// First Post in a Topic
 		.bbp-lead-topic{
 			.bbp-topic-title {
@@ -45,6 +48,7 @@ html > body.bbpress {
 				margin-bottom: 10px;
 			}
 			.bbp-body {
+				margin-top: 2px;
 				.hentry {
 					padding: 0;
 				}
@@ -135,7 +139,7 @@ h3 {
 }
 
 #forums-topic-bottom {
-	border-top: 1px dotted #CCCCCC;
+	border-top: 1px dotted #CCC;
     padding-top: 5px;
 }
 
