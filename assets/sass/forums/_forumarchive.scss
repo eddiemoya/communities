@@ -1,6 +1,9 @@
 // Forum Archive (forums landing page) specific changes
 .forum-archive {
 	#comm-forums-main {
+		.bbp-forums {
+			border: 0;
+		}
 		h2 {
 			background: image-url("#{$forums-img}sears_forumsLogo.gif") no-repeat;
 			height: 86px;
@@ -20,6 +23,8 @@
 			}
 		}
 		.bbp-body {
+			margin-top: 2px;
+			border-top: 1px dotted #ccc;
 			.bbp-forum-info {
 				width: 50%;
 				.bbp-forum-title {
@@ -34,6 +39,10 @@
 			}
 			.bbp-forum-freshness {
 				width: 35%;
+			}
+			.topic {
+				border-top: 0;
+				border-bottom: 1px dotted #ccc;
 			}
 		}
 	}
