@@ -8,9 +8,6 @@
  */
 
 ?>
-
-<div id="post-<?php bbp_reply_id(); ?>">
-
 	<div <?php bbp_reply_class(); ?>  data-id="<?php bbp_reply_id(); ?>">
 
 		<div class="bbp-reply-author">
@@ -40,5 +37,3 @@
 		</div>
 
 	</div><!-- .reply -->
-
-</div><!-- #post-<?php bbp_reply_id(); ?> -->
