@@ -1121,8 +1121,8 @@ function shortcode_quote( $atts = array(), $content = NULL ) {
         ob_start();
         ?>
         <div class="bbcode-quote">
-            <div class="quote-by-line">
-                <span class="username"><?php get_screenname($post->ID); ?><span> said:
+            <div class="bbcode-by-line">
+                <span class="bbcode-username"><?php get_screenname($post->ID); ?><span> said:
             </div>
             <blockquote>
                 <?php echo BBCode::do_shortcode($content); ?>
