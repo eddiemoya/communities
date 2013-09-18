@@ -146,6 +146,7 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+
 	$('#forums-topic-reply-link a').on('click', function(){
 
    		container = $(this).closest('.reply');
@@ -166,14 +167,8 @@ jQuery(document).ready(function($) {
 					$.markItUp({target:"#bbp_reply_content", openWith:'[quote id='+ post.ID +']\n'+ $.trim(post.post_content), closeWith:'\n[/quote]' });
 				
 				}
-			});	
-   			
-   	});
-
-
-
-
-
+			});				
+   	}); 	
 
  	// $('#new_question_step_1').bind('submit', function(e){
 		// var data = {
