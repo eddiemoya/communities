@@ -82,8 +82,8 @@
 [submodule "wordpress/wp-content/plugins/forum-search"]
 	path = wordpress/wp-content/plugins/forum-search
 	url = git@github.com:mattday16/forum-search.git
-[submodule "wordpress/wp-content/plugins/bbPress-Reply-with-Quote"]
-	path = wordpress/wp-content/plugins/bbPress-Reply-with-Quote
+[submodule "wordpress/wp-content/plugins/markitup"]
+	path = wordpress/wp-content/plugins/markitup
 	url = git@github.com:eddiemoya/bbPress-Reply-with-Quote.git
 [submodule "wordpress/wp-content/plugins/bbpress-bbcode"]
 	path = wordpress/wp-content/plugins/bbpress-bbcode
