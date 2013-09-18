@@ -10,7 +10,11 @@
 	<?php if(!in_array($h['title'], $auth_only) || !$authenticated) { ?>
 		<div class="form-search-urls-row">
 			<?php if(!empty($h['url'])) { ?>
-				<a href="<?php echo($h['url']); ?>"><?php echo($h['title']); ?></a>
+				<?php if(!empty($h['full_tag'])) { ?>
+					<?php echo($h['url']); ?>
+				<?php } else { ?>
+					<a href="<?php echo($h['url']); ?>"><?php echo($h['title']); ?></a>
+				<?php } ?>
 			<?php } else { ?>
 				<?php echo($h['title']); ?>
 			<?php } ?>
