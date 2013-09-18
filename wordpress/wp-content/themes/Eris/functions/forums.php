@@ -1,6 +1,25 @@
 <?php
 
+/**
+ * Forums (bbPress) Functions
+ * 
+ * @author Dan Crimmins [dcrimmi@searshc.com]
+ * @since 09-18-2013
+ */
 
+
+ 
+
+
+
+/**
+ * Retrieves a forums last activity.
+ * 
+ * @param int $forum_id
+ * @return mixed [array | NULL]
+ * 
+ * @uses bbp_get_forum_last_active_id()
+ */
 function forums_get_last_activity($forum_id) {
 	
 	$activity_id = bbp_get_forum_last_active_id($forum_id);
@@ -27,6 +46,12 @@ function forums_get_last_activity($forum_id) {
 	
 }
 
+/**
+ * Template tag - prints the last activity for a given forum.
+ * 
+ * @param int $forum_id
+ * @uses forums_get_last_activity()
+ */
 function forums_last_activity($forum_id) {
 	
 	$latest = forums_get_last_activity($forum_id);
@@ -45,7 +70,14 @@ function forums_last_activity($forum_id) {
 	}
 }
 
-function topics_last_activity($topic_id) {
+/**
+ * 
+ * Template Tag - prints the last activity info for a give topic.
+ * 
+ * @param int $topic_id
+ * @uses bbp_get_topic_last_activity()
+ */
+function topics_last_activity($topic_id) { 
 	
 	$last_id = bbp_get_topic_last_active_id($topic_id);
 	
@@ -68,6 +100,11 @@ function topics_last_activity($topic_id) {
 	
 }
 
+/**
+ *  Template tag - prints the by-line for replies
+ *
+ * @param int $id - the reply post ID
+ */
 function reply_author_date($id) {
 	
 	$reply = get_post($id);
@@ -86,6 +123,10 @@ function reply_author_date($id) {
 	}
 }
 
+/**
+ * Template tag - prints topic reply link
+ * @param string $target - the target url the link uses
+ */
 function topic_reply_link($target=null) {
 	
 	ob_start();
@@ -97,11 +138,23 @@ function topic_reply_link($target=null) {
 	echo ob_get_clean(); 
 }
 
+/**
+ * Template tag used to print forum pagination.
+ * 
+ * @param int $forum_id
+ * @uses bbp_get_forums_pagination()
+ */
 function bbp_forums_pagination($forum_id) {
 	
 	echo bbp_get_forums_pagination(array('forum_id' => $forum_id));
 }
 
+/**
+ * Outputs pagination for forums archive.
+ * 
+ * @param array $args
+ * @return string - forum pagination HTML
+ */
 function bbp_get_forums_pagination( $args = '' ) {
 	
 		// Parse arguments against default values
@@ -111,7 +164,7 @@ function bbp_get_forums_pagination( $args = '' ) {
 			'forum_id' => 0
 		));
 
-		//Get base URL
+		//Get base URL 
 		$base = add_query_arg('paged', '%#%', (strpos($_SERVER['REQUEST_URI'], '?') !== false) ? reset(explode($_SERVER['REQUEST_URI'], '?')) : $_SERVER['REQUEST_URI'] );
 
 		// Get total 
@@ -153,7 +206,12 @@ function forums_count($forum_id) {
 	
 }
 
-//Header Breadcrumb heading
+/**
+ * Outputs breadcumb style header text used on forum pages.
+ * 
+ * @param void
+ * @return string - the header text
+ */
 function header_breadcrumbs() {
 	
 	$p = get_queried_object();
@@ -189,7 +247,12 @@ function header_breadcrumbs() {
 	}
 }
 
-
+/**
+ * Checks whether a forum has subforums
+ * 
+ * @param int $id -- post ID of parent forum
+ * @return bool
+ */
 function has_subforums($id=null) {
 	
 	$id = ($id) ? $id : get_queried_object_id();
@@ -227,17 +290,137 @@ function comm_forums_breadcrumbs($crumbs){
 	return $crumbs;
 }
 
+
+
 //Show lead topic in topics replies first
 add_filter( 'bbp_show_lead_topic', '__return_true' );
 
 
 
+
+//Customized bbp_list_forums() -- need to remove forums pagination
+function comm_bbp_list_forums( $args = '' ) {
+
+	// Define used variables
+	$output = $sub_forums = $topic_count = $reply_count = $counts = '';
+	$i = 0;
+	$count = array();
+
+	// Parse arguments against default values
+	$r = bbp_parse_args( $args, array(
+		'before'            => '<ul class="bbp-forums-list">',
+		'after'             => '</ul>',
+		'link_before'       => '<li class="bbp-forum">',
+		'link_after'        => '</li>',
+		'count_before'      => ' (',
+		'count_after'       => ')',
+		'count_sep'         => ', ',
+		'separator'         => ', ',
+		'forum_id'          => '',
+		'show_topic_count'  => true,
+		'show_reply_count'  => true,
+	), 'list_forums' );
+
+	// Loop through forums and create a list
+	$sub_forums = comm_bbp_forum_get_subforums( $r['forum_id'] );
+	
+	if ( !empty( $sub_forums ) ) {
+
+		// Total count (for separator)
+		$total_subs = count( $sub_forums );
+		foreach ( $sub_forums as $sub_forum ) {
+			$i++; // Separator count
+
+			// Get forum details
+			$count     = array();
+			$show_sep  = $total_subs > $i ? $r['separator'] : '';
+			$permalink = bbp_get_forum_permalink( $sub_forum->ID );
+			$title     = bbp_get_forum_title( $sub_forum->ID );
+
+			// Show topic count
+			if ( !empty( $r['show_topic_count'] ) && !bbp_is_forum_category( $sub_forum->ID ) ) {
+				$count['topic'] = bbp_get_forum_topic_count( $sub_forum->ID );
+			}
+
+			// Show reply count
+			if ( !empty( $r['show_reply_count'] ) && !bbp_is_forum_category( $sub_forum->ID ) ) {
+				$count['reply'] = bbp_get_forum_reply_count( $sub_forum->ID );
+			}
+
+			// Counts to show
+			if ( !empty( $count ) ) {
+				$counts = $r['count_before'] . implode( $r['count_sep'], $count ) . $r['count_after'];
+			}
+
+			// Build this sub forums link
+			$output .= $r['link_before'] . '<a href="' . $permalink . '" class="bbp-forum-link">' . $title . $counts . '</a>' . $show_sep . $r['link_after'];
+		}
+
+		// Output the list
+		echo apply_filters( 'bbp_list_forums', $r['before'] . $output . $r['after'], $r );
+	}
+}
+
+//Customized bbp_forum_get_subforums() -- removing forums pagination
+function comm_bbp_forum_get_subforums( $args = '' ) {
+
+	// Use passed integer as post_parent
+	if ( is_numeric( $args ) )
+		$args = array( 'post_parent' => $args );
+
+	// Setup possible post__not_in array
+	$post_stati[] = bbp_get_public_status_id();
+
+	// Super admin get whitelisted post statuses
+	if ( bbp_is_user_keymaster() ) {
+		$post_stati = array( bbp_get_public_status_id(), bbp_get_private_status_id(), bbp_get_hidden_status_id() );
+
+	// Not a keymaster, so check caps
+	} else {
+
+		// Check if user can read private forums
+		if ( current_user_can( 'read_private_forums' ) ) {
+			$post_stati[] = bbp_get_private_status_id();
+		}
+
+		// Check if user can read hidden forums
+		if ( current_user_can( 'read_hidden_forums' ) ) {
+			$post_stati[] = bbp_get_hidden_status_id();
+		}
+	}
+
+	// Parse arguments against default values
+	$r = bbp_parse_args( $args, array(
+		'post_parent'         => 0,
+		'post_type'           => bbp_get_forum_post_type(),
+		'post_status'         => implode( ',', $post_stati ),
+		'posts_per_page'      => -1,
+		'orderby'             => 'menu_order',
+		'order'               => 'ASC',
+		'ignore_sticky_posts' => true,
+		'no_found_rows'       => true
+	));
+	$r['post_parent'] = bbp_get_forum_id( $r['post_parent'] );
+
+	// Create a new query for the subforums
+	$get_posts = new WP_Query();
+
+	// No forum passed
+	$sub_forums = !empty( $r['post_parent'] ) ? $get_posts->query( $r ) : array();
+
+	return (array) apply_filters( 'bbp_forum_get_subforums', $sub_forums, $r );
+}
+
+
+
 /**
- * ADMIN SECTION
+ * ADMIN SECTION ADDITIONS
  */
 
 
-//Adding forums per page field/setting
+/**
+ * Forums Per page setting, added to Per Page section
+ */
 
 add_filter('bbp_admin_get_settings_fields', 'add_forums_per_page');
 
@@ -255,6 +438,87 @@ function bbp_admin_setting_callback_forums_per_page() {
 	?>
 	<input name="_bbp_forums_per_page" type="number" min="1" step="1" id="_bbp_forums_per_page" value="<?php bbp_form_option( '_bbp_forums_per_page', '15' ); ?>" class="small-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_forums_per_page' ); ?> />
 	<label for="_bbp_forums_per_page"><?php _e( 'per page', 'bbpress' ); ?></label>
+	<?php 
+}
+
+/**
+ * Page Headings Section
+ */
+
+//Add cap for this section, so it appears in forum settings
+add_filter('bbp_map_settings_meta_caps', 'add_cap_bbp_forum_headings');
+
+function add_cap_bbp_forum_headings($caps, $cap, $user_id, $args) {
+	
+	if($cap == 'bbp_forum_headings') {
+		
+		return array( bbpress()->admin->minimum_capability );
+	}
+	
+	return $caps;
+}
+
+//Add Froum Headings section to settings page
+add_filter('bbp_admin_get_settings_sections', 'add_forums_settings_headings_section');
+
+function add_forums_settings_headings_section($sections) {
+	
+	$sections['bbp_forum_headings'] = array('title' => 'Forum Page Headings',
+											'callback' => 'bbp_admin_setting_callback_headings_section',
+											'page'	=> 'bbpress');
+	
+	return $sections;
+}
+
+function bbp_admin_setting_callback_headings_section() {
+	?>
+	<p><?php _e( 'Add headings to forum pages.', 'bbpress' ); ?></p>
+	
+	<?php 
+}
+
+//Add fields
+add_filter('bbp_admin_get_settings_fields', 'bbp_admin_setting_callback_forum_archive_heading');
+
+function bbp_admin_setting_callback_forum_archive_heading($fields) {
+	
+	$fields['bbp_forum_headings']['_bbp_forum_archive_heading'] = array('title' => 'Forums Archive Heading',
+																		'callback'	=> 'bbp_admin_setting_callback_forum_archive_headings',
+																		'sanitize_callback'	=> 'sanitize_text_field',
+																		'args' => array());
+	
+	$fields['bbp_forum_headings']['_bbp_forum_archive_subheading'] = array('title' => 'Forums Archive Sub-heading',
+																		'callback'	=> 'bbp_admin_setting_callback_forum_archive_subheadings',
+																		'sanitize_callback'	=> 'sanitize_text_field',
+																		'args' => array());
+	
+	$fields['bbp_forum_headings']['_bbp_forum_topics_subheading'] = array('title' => 'Forum Topics Sub-heading',
+																		'callback'	=> 'bbp_admin_setting_callback_forum_topics_subheadings',
+																		'sanitize_callback'	=> 'sanitize_text_field',
+																		'args' => array());
+	return $fields;
+}
+
+
+//The fields callbacks
+function bbp_admin_setting_callback_forum_archive_headings() {
+	
+	?>
+	<input name="_bbp_forum_archive_heading"  step="1" id="_bbp_forum_archive_heading" value="<?php bbp_form_option( '_bbp_forum_archive_heading', 'Forums Archive Heading Text' ); ?>" class="regular-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_forum_archive_heading' ); ?> />
+	<?php 
+}
+
+function bbp_admin_setting_callback_forum_archive_subheadings() {
+	
+	?>
+	<input name="_bbp_forum_archive_subheading"  step="1" id="_bbp_forum_archive_subheading" value="<?php bbp_form_option( '_bbp_forum_archive_subheading', 'Forums Archive Sub-heading Text' ); ?>" class="regular-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_forum_archive_subheading' ); ?> />
+	<?php 
+}
+
+function bbp_admin_setting_callback_forum_topics_subheadings() {
+	
+	?>
+	<input name="_bbp_forum_topics_subheading"  step="1" id="_bbp_forum_topics_subheading" value="<?php bbp_form_option( '_bbp_forum_topics_subheading', 'Forum Topics Sub-heading Text' ); ?>" class="regular-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_forum_topics_subheading' ); ?> />
 	<?php 
 }
 

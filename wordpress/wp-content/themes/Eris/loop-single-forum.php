@@ -27,7 +27,7 @@
 
 		<?php do_action( 'bbp_theme_before_forum_sub_forums' ); ?>
 
-		<?php bbp_list_forums(array('show_topic_count' => false, 'show_reply_count' => false, 'separator' => ' | ')); ?>
+		<?php comm_bbp_list_forums(array('show_topic_count' => false, 'show_reply_count' => false, 'separator' => ' | ')); ?>
 
 		<?php do_action( 'bbp_theme_after_forum_sub_forums' ); ?>
 
