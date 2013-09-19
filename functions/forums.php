@@ -75,7 +75,7 @@ function forums_last_activity($forum_id) {
  * Template Tag - prints the last activity info for a give topic.
  * 
  * @param int $topic_id
- * @uses bbp_get_topic_last_activity()
+ * @uses bbp_get_topic_last_active_id()
  */
 function topics_last_activity($topic_id) { 
 	
@@ -204,6 +204,18 @@ function forums_count($forum_id) {
 								'posts_per_page'	=> -1,
 								'post_parent'		=> $forum_id)));
 	
+}
+
+/**
+ * Template Tag - prints the content of a forum
+ * 
+ * @param int $forum_id [optional]
+ */
+function forum_description($forum_id=null) {
+	
+	$p = ($forum_id) ? get_post($forum_id) : get_queried_object();
+	
+	if($p) echo $p->post_content;
 }
 
 /**
@@ -491,11 +503,6 @@ function bbp_admin_setting_callback_forum_archive_heading($fields) {
 																		'callback'	=> 'bbp_admin_setting_callback_forum_archive_subheadings',
 																		'sanitize_callback'	=> 'sanitize_text_field',
 																		'args' => array());
-	
-	$fields['bbp_forum_headings']['_bbp_forum_topics_subheading'] = array('title' => 'Forum Topics Sub-heading',
-																		'callback'	=> 'bbp_admin_setting_callback_forum_topics_subheadings',
-																		'sanitize_callback'	=> 'sanitize_text_field',
-																		'args' => array());
 	return $fields;
 }
 
@@ -512,13 +519,6 @@ function bbp_admin_setting_callback_forum_archive_subheadings() {
 	
 	?>
 	<input name="_bbp_forum_archive_subheading"  step="1" id="_bbp_forum_archive_subheading" value="<?php bbp_form_option( '_bbp_forum_archive_subheading', 'Forums Archive Sub-heading Text' ); ?>" class="regular-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_forum_archive_subheading' ); ?> />
-	<?php 
-}
-
-function bbp_admin_setting_callback_forum_topics_subheadings() {
-	
-	?>
-	<input name="_bbp_forum_topics_subheading"  step="1" id="_bbp_forum_topics_subheading" value="<?php bbp_form_option( '_bbp_forum_topics_subheading', 'Forum Topics Sub-heading Text' ); ?>" class="regular-text"<?php bbp_maybe_admin_setting_disabled( '_bbp_forum_topics_subheading' ); ?> />
 	<?php 
 }
 
