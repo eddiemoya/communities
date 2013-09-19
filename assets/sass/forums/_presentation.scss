@@ -14,6 +14,7 @@ html > body.bbpress {
 	height: auto;
 }
 
+
 .bbpress {
 	#container {
 		background: #fff;
@@ -27,6 +28,11 @@ html > body.bbpress {
 			padding-top: 15px;
 			padding-right: 5px;
 			position: relative;
+			#bbpress-forums {
+				.bbp-topics {
+					border: 0;
+				}
+			}
 		}
 		#comm-forums-side {
 			padding-top:15px;
@@ -39,7 +45,7 @@ html > body.bbpress {
 	}		
 	#bbpress-forums {
 		.bbp-forums {
-			
+			border: 0;
 		}
 		// First Post in a Topic
 		.bbp-lead-topic{
