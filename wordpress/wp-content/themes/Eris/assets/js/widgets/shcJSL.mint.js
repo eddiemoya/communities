@@ -111,13 +111,13 @@ shcJSL.methods.voter = function(element, ops) {
 
     this.vote = function(data) {
         console.log(data);
-        //$.ajax({
-        //    type: "POST",
-        //    url: ajaxdata.ajaxurl+"?action=add_user_action",
-        //    data: data
-        //}).done(function(returned) {
-        //   return returned;
-        //});
+        $.ajax({
+           type: "POST",
+           url: ajaxdata.ajaxurl+"?action=add_user_action",
+           data: data
+        }).done(function(returned) {
+          return returned;
+        });
     }
 
     this.planEvent = function() {

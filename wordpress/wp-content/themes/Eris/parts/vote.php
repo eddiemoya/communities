@@ -1,3 +1,5 @@
+<?php print_pre($actions); ?>
+
 <label class="metainfo" for="downvote-comment-<?php echo $id; ?>">(<?php echo (!empty($actions['downvote'])) ? $actions['downvote']->total : 0; ?>)</label>
 <button 
 	<?php if($logged_in) { ?>

@@ -29,8 +29,12 @@
                 </form>
             </section>
         </article> <!-- END ARTICLE CONTENT CONTAINER -->
-        
-        <?php comment_reply_form($comment); ?>
+
+        <?php 
+            if(is_user_logged_in()) {
+                comment_reply_form($comment);
+            }
+        ?>
     
         <div class="clearfix"></div>
         <div class="ugc-comment-answer_form clearfix">
@@ -42,7 +46,7 @@
 					</div>
 				<?php } else { ?>
 					
-        	<form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" id="commentform-<?php echo $comment->comment_ID ?>" class="reply-to-form clearfix"<?php echo $form_style; ?>>
+        	<form action="<?php echo get_bloginfo('url'); ?>/wp-comments-post.php" shc:gizmo="transFormer" method="post" id="commentform-<?php echo $comment->comment_ID ?>" class="reply-to-form clearfix hide"<?php echo $form_style; ?>>
 	        	<ul class="form-fields">
 	        		<?php 
 	        			$sso_user = SSO_User::factory()->get_by_id($current_user->ID);
