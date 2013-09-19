@@ -21,7 +21,7 @@
 		<?php //For topics (subforums list) page only
 			if(has_subforums()): ?>
 			
-			<p><?php echo get_option('_bbp_forum_topics_subheading', 'Forums Topic Sub-header Text');?></p>
+			<p><?php forum_description(); ?></p>
 		
 		<?php endif;?>
 		
