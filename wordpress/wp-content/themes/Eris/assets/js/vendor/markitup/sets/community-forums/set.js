@@ -15,7 +15,6 @@ mySettings = {
 		{name:'Italic', className:'markItUp_I', key:'I', openWith:'[i]', closeWith:'[/i]' },
 		{name:'Stroke through', className:'markItUp_Strike', key:'S', openWith:'[s]', closeWith:'[/s]' },
 		{separator:'---------------' },
-		{name:'Paragraph', className: 'markItUp_P', openWith:'[p(!( class="[![Class]!]")!)]', closeWith:'[/p]' },
 		{name:'Ul', className:'markItUp_UL', openWith:'[ul]\n', closeWith:'[/ul]\n' },
 		{name:'Ol', className:'markItUp_OL', openWith:'[ol]\n', closeWith:'[/ol]\n' },
 		{name:'Li', className:'markItUp_LI', openWith:'[li]', closeWith:'[/li]' },
