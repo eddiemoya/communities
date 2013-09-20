@@ -32,13 +32,9 @@
 	background-image:url(images/stroke.png);
 }
 
-.markItUp .markItUp_P a {
-	margin-left:2px;
-	background-image:url(images/paragraph.png); 
-}
-
 .markItUp .markItUp_UL a {
 	background-image:url(images/list-bullet.png);
+	margin-left:8px;
 }
 .markItUp .markItUp_OL a {
 	background-image:url(images/list-numeric.png);
@@ -49,7 +45,7 @@
 
 .markItUp .markItUp_Quote a	{
 	background-image:url(images/quotes.png);
-	margin-left:5px;
+	margin-left:8px;
 }
 .markItUp .markItUp_Code a	{
 	background-image:url(images/code.png);
