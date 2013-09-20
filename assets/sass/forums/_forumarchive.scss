@@ -4,13 +4,19 @@
 		.bbp-forums {
 			border: 0;
 		}
-		h2 {
+		#forums-head {
 			background: image-url("#{$forums-img}sears_forumsLogo.gif") no-repeat;
 			height: 86px;
+		}
+		h1 {						
 			padding-left: 146px;
 			color: #87cdec;
 			font-weight: bold;
 			font-size: 14px;
+			padding-bottom: 5px;
+		}
+		p {
+			padding-left: 146px;
 		}
 		.bbp-header {
 			.bbp-forum-info {
