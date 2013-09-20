@@ -1,4 +1,9 @@
 <?php 
+
+apply_filters('bbp_get_reply_content', 'wpautop');
+apply_filters('bbp_get_topic_content', 'wpautop');
+
+
 /*************************************
  * Content, Class, and Query Filters *
  *************************************/
@@ -1133,7 +1138,8 @@ function shortcode_quote( $atts = array(), $content = NULL ) {
 
         return $output;
     }
-
-
 }
+
+
+
 
