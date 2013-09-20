@@ -28,6 +28,9 @@
 .markItUp .markItUp_I a {
 	background-image:url(images/italic.png);
 }
+.markItUp .markItUp_U a {
+	background-image:url(images/underline.png);
+}
 .markItUp .markItUp_Strike a {
 	background-image:url(images/stroke.png);
 }
