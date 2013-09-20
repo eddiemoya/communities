@@ -1031,6 +1031,8 @@ html, body { background: white; color: #555555; }
 .bbpress #bbpress-forums .bbp-footer { text-align: right; }
 .bbpress #bbpress-forums div.bbp-forum-author, .bbpress #bbpress-forums div.bbp-topic-author, .bbpress #bbpress-forums div.bbp-reply-author { width: 60px; }
 
+.bbpress #navigation { width: 950px; }
+
 html, body { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; }
 
 html > body.bbpress { background: transparent url('../img/forums/brickwall_tan.png?v=1379626078') repeat 0px 0px; height: auto; }
@@ -1041,6 +1043,7 @@ html > body.bbpress { background: transparent url('../img/forums/brickwall_tan.p
 .bbpress #container #comm-forums-main #bbpress-forums .bbp-topics { border: 0; }
 .bbpress #container #comm-forums-side { padding-top: 15px; padding-left: 5px; margin-left: 0; }
 .bbpress #forums-head { margin-bottom: 15px; }
+.bbpress #forums-head h1 { font-size: 26px; font-weight: lighter; color: #444; padding-bottom: 5px; }
 .bbpress #bbpress-forums .bbp-forums { border: 0; }
 .bbpress #bbpress-forums .bbp-lead-topic .bbp-topic-title { font-size: 20px; margin-bottom: 10px; }
 .bbpress #bbpress-forums .bbp-lead-topic .bbp-body { margin-top: 2px; }
@@ -1053,13 +1056,11 @@ html > body.bbpress { background: transparent url('../img/forums/brickwall_tan.p
 .bbpress #bbpress-forums .bbp-replies .bbp-forum-freshness, .bbpress #bbpress-forums .bbp-replies .bbp-topic-reply-count { font-size: 10px; }
 .bbpress #bbpress-forums .bbp-form { border: 0; padding: 5px; }
 .bbpress #bbpress-forums .bbp-header, .bbpress #bbpress-forums .bbp-footer { background-color: #eee; }
-.bbpress #bbpress-forums .bbp-header { font-size: 14px; }
+.bbpress #bbpress-forums .bbp-header { font-size: 14px; color: #666; }
 .bbpress #bbpress-forums .reply { border-bottom: 1px dotted #ccc; }
 .bbpress #bbpress-forums .reply:last-child { border-bottom: 0; }
 .bbpress .bbp-pagination { float: none; }
 .bbpress .forums-last-activity { text-align: left; }
-
-h2 { font-size: 26px; font-weight: lighter; color: #444; }
 
 .forums-not-logged-in h2 { font-size: 16px; font-weight: bold; }
 
@@ -1070,6 +1071,8 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 #forums-topic-reply-link { display: inline-block; }
 
 #forums-topic-bottom { border-top: 1px dotted #CCC; padding-top: 5px; }
+
+#reply-not-loggedin-message { font-size: 10px; margin-top: 30px; }
 
 .kmart.bbpress #bbpress-forums .bbp-lead-topic .bbp-topic-title { color: #E82E2C; }
 
@@ -1087,7 +1090,9 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 .sears #comm-forums-side .widget:first-child { background: #dbf0f9; }
 
 .forum-archive #comm-forums-main .bbp-forums { border: 0; }
-.forum-archive #comm-forums-main h2 { background: url('../img/forums/sears_forumsLogo.gif?v=1379626112') no-repeat; height: 86px; padding-left: 146px; color: #87cdec; font-weight: bold; font-size: 14px; }
+.forum-archive #comm-forums-main #forums-head { background: url('../img/forums/sears_forumsLogo.gif?v=1379626112') no-repeat; height: 86px; }
+.forum-archive #comm-forums-main h1 { padding-left: 146px; color: #87cdec; font-weight: bold; font-size: 14px; padding-bottom: 5px; }
+.forum-archive #comm-forums-main p { padding-left: 146px; }
 .forum-archive #comm-forums-main .bbp-header .bbp-forum-info { width: 50%; }
 .forum-archive #comm-forums-main .bbp-header .bbp-forum-freshness { width: 35%; margin-left: 15%; text-align: left; }
 .forum-archive #comm-forums-main .bbp-body { margin-top: 2px; border-top: 1px dotted #ccc; }
