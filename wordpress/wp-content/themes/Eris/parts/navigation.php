@@ -39,7 +39,7 @@
         </li>
 		
 		<li>
-			<a href="#">Forums</a>
+			<a href="<?php if (function_exists("bbp_forums_url")) bbp_forums_url(); ?>">Forums</a>
 			<div id="forum_tooltip">				
 				<div class="close">X</div>
 				<div class="tick"></div>
