@@ -164,7 +164,7 @@ jQuery(document).ready(function($) {
 				dataType: 'json',
 				success:function(post){
 					console.log(post);
-					$.markItUp({target:"#bbp_reply_content", openWith:'[quote id='+ post.ID +']\n'+ $.trim(post.post_content), closeWith:'\n[/quote]' });
+					$.markItUp({target:"#bbp_reply_content", openWith:'[quote id='+ post.ID +']\n'+ $.trim(post.post_content) + '\n[/quote]\n\n' });
 				
 				}
 			});				
