@@ -1,6 +1,6 @@
 // Side bar styles
 #comm-forums-side{
-	.widget:first-child{
+	.widget #bbp-search-form{
 		background: #dbf0f9;
 		padding: 5px 5px 5px 15px;
 		.search-tick{
@@ -9,43 +9,60 @@
 			border-left: 8px solid #FFFFFF;
 			left: 0;
 			position: absolute;
-		}
+		}	
 		.search-input-container{
 			border: 2px solid #f6f6f6;
 			padding-left: 5px;
 			margin: 0 auto;
+			margin-bottom: 15px;
 			width: 190px;
 			background: #fff;
-			input[type=text]{
+			#bbp_search{
 				border: none;
 				color: #bfbfbf;
 				width: 134px;
 			}
-			input[type=submit]{
+			#bbp_search_submit{
 				border:none;
 				background:orange;
 				color:#fff;
 				height:32px;
 				width: 32px;
+				cursor: pointer;
 			}
+		}
+		label {
+			font-size: 26px;
 		}
 		a{
 			display: block;
+			margin-bottom: 11px;
+			font-size: 12px;
 		}
+	}
+	.content-header,
+	.content-body	{
+		border-top: 0;
 	}
 }
 .kmart {
 	#comm-forums-side{
-		.widget:first-child{
+		.widget #bbp-search-form{
 			background: #f3e6e6;
+			label {
+				color: #e82e2c;
+			}
 		}
 	}
 }
 
 .sears {
 	#comm-forums-side{
-		.widget:first-child{
+		.widget #bbp-search-form{
 			background: #dbf0f9;
+			label {
+				color: #87cdec;
+			}
 		}
 	}
 }
