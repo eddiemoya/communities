@@ -42,6 +42,12 @@ html > body.bbpress {
 	}
 	#forums-head{
 		margin-bottom: 15px;
+		h1 {
+			font-size: 26px;
+			font-weight: lighter;
+			color: #444;
+			padding-bottom: 5px;
+		}
 	}		
 	#bbpress-forums {
 		.bbp-forums {
@@ -96,6 +102,7 @@ html > body.bbpress {
 		}
 		.bbp-header {
 			font-size: 14px;
+			color: #666;
 		}
 		.reply {
 			border-bottom: 1px dotted #ccc;
@@ -112,11 +119,6 @@ html > body.bbpress {
 	}
 }
 
-h2 {
-	font-size: 26px;
-	font-weight: lighter;
-	color: #444;
-}
 .forums-not-logged-in {
 	h2 {
 		font-size: 16px;
@@ -142,6 +144,10 @@ h3 {
 #forums-topic-bottom {
 	border-top: 1px dotted #CCC;
     padding-top: 5px;
+}
+#reply-not-loggedin-message {
+	font-size: 10px;
+	margin-top: 30px;
 }
 
 // Kmart specific changes
