@@ -1,6 +1,6 @@
 <div class="content-container widget dropzone-widget" style="">
- <div class="search-tick" style=""></div>
 <form role="search" method="get" id="bbp-search-form" action="<?php bbp_search_url(); ?>">
+	<div class="search-tick" style=""></div>
 	<div>
 	<label for="bbp_search" class="screen-reader-text"><?php _e($instance['fsw_title'], "bbpress"); ?></label>
 	<p><?php echo  $instance['fsw_subtext']; ?></p>
