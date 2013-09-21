@@ -9,7 +9,7 @@ html,body {
 	font-family:$regular;
 }
 
-html > body.bbpress {
+html, html > body.bbpress {
 	background:transparent image-url("#{$forums-img}brickwall_tan.png") repeat 0px 0px;
 	height: auto;
 }
