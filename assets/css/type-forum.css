@@ -1035,7 +1035,7 @@ html, body { background: white; color: #555555; }
 
 html, body { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; }
 
-html, html > body.bbpress { background: transparent url('../img/forums/brickwall_tan.png?v=1379626078') repeat 0px 0px; height: auto; }
+html, html > body.bbpress { background: transparent url('../img/forums/brickwall_tan.png?v=1379953146') repeat 0px 0px; height: auto; }
 
 .bbpress #container { background: #fff; -webkit-box-shadow: 0px 10px 15px 1px #999; box-shadow: 0px 10px 15px 1px #999; }
 .bbpress #container #content > section.span12 { border-top: 1px dotted #ccc; }
@@ -1080,7 +1080,7 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 .sears.bbpress #bbpress-forums .bbp-lead-topic .bbp-topic-title { color: #0B79B9; }
 
 #comm-forums-side .widget #bbp-search-form { background: #dbf0f9; padding: 5px 5px 5px 15px; }
-#comm-forums-side .widget #bbp-search-form .search-tick { border-bottom: 19px solid #DBF0F9; border-top: 19px solid #DBF0F9; border-left: 8px solid #FFFFFF; left: 0; position: absolute; }
+#comm-forums-side .widget #bbp-search-form .search-tick { border-bottom: 19px solid #DBF0F9; border-top: 19px solid #DBF0F9; border-left: 8px solid #FFFFFF; left: 5px; position: absolute; }
 #comm-forums-side .widget #bbp-search-form .search-input-container { border: 2px solid #f6f6f6; padding-left: 5px; margin: 0 auto; margin-bottom: 15px; width: 190px; background: #fff; }
 #comm-forums-side .widget #bbp-search-form .search-input-container #bbp_search { border: none; color: #bfbfbf; width: 134px; }
 #comm-forums-side .widget #bbp-search-form .search-input-container #bbp_search_submit { border: none; background: orange; color: #fff; height: 32px; width: 32px; cursor: pointer; }
@@ -1096,7 +1096,7 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 .sears #comm-forums-side .widget #bbp-search-form label { color: #87cdec; }
 
 .forum-archive #comm-forums-main .bbp-forums { border: 0; }
-.forum-archive #comm-forums-main #forums-head { background: url('../img/forums/sears_forumsLogo.gif?v=1379626112') no-repeat; height: 86px; }
+.forum-archive #comm-forums-main #forums-head { background: url('../img/forums/sears_forumsLogo.gif?v=1379953162') no-repeat; height: 86px; }
 .forum-archive #comm-forums-main h1 { padding-left: 146px; color: #87cdec; font-weight: bold; font-size: 14px; padding-bottom: 5px; }
 .forum-archive #comm-forums-main p { padding-left: 146px; }
 .forum-archive #comm-forums-main .bbp-header .bbp-forum-info { width: 50%; }
@@ -1111,9 +1111,9 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 .forum-archive #comm-forums-main .bbp-body .odd { background-color: #fff; }
 .forum-archive #comm-forums-main .bbp-body .even { background-color: #f6f6f6; }
 
-.sears.forum-archive #comm-forums-main h2 { background: url('../img/forums/sears_forumsLogo.gif?v=1379626112') no-repeat; }
+.sears.forum-archive #comm-forums-main h2 { background: url('../img/forums/sears_forumsLogo.gif?v=1379953162') no-repeat; }
 
-.kmart.forum-archive #comm-forums-main h2 { background: url('../img/forums/kmart_forumsLogo.gif?v=1379626112') no-repeat; }
+.kmart.forum-archive #comm-forums-main h2 { background: url('../img/forums/kmart_forumsLogo.gif?v=1379953164') no-repeat; }
 
 .forum #comm-forums-main .bbp-header .bbp-forum-info { width: 50%; }
 .forum #comm-forums-main .bbp-header .bbp-forum-freshness { width: 35%; margin-left: 15%; text-align: left; }
