@@ -1035,7 +1035,7 @@ html, body { background: white; color: #555555; }
 
 html, body { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; }
 
-html > body.bbpress { background: transparent url('../img/forums/brickwall_tan.png?v=1379626078') repeat 0px 0px; height: auto; }
+html, html > body.bbpress { background: transparent url('../img/forums/brickwall_tan.png?v=1379626078') repeat 0px 0px; height: auto; }
 
 .bbpress #container { background: #fff; -webkit-box-shadow: 0px 10px 15px 1px #999; box-shadow: 0px 10px 15px 1px #999; }
 .bbpress #container #content > section.span12 { border-top: 1px dotted #ccc; }
@@ -1086,6 +1086,7 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 #comm-forums-side .widget #bbp-search-form .search-input-container #bbp_search_submit { border: none; background: orange; color: #fff; height: 32px; width: 32px; cursor: pointer; }
 #comm-forums-side .widget #bbp-search-form label { font-size: 26px; }
 #comm-forums-side .widget #bbp-search-form a { display: block; margin-bottom: 11px; font-size: 12px; }
+#comm-forums-side .widget #bbp-search-form p { line-height: 22px; margin-bottom: 10px; }
 #comm-forums-side .content-header, #comm-forums-side .content-body { border-top: 0; }
 
 .kmart #comm-forums-side .widget #bbp-search-form { background: #f3e6e6; }
