@@ -1,6 +1,12 @@
 // Forum (sub-forum listing) specific changes
 .forum {
 	#comm-forums-main {
+		#forums-thread-top {
+			position: relative;
+			.add-new-thread {
+				float: left;
+			}
+		}
 		.bbp-header {
 			.bbp-forum-info {
 				width: 50%;
