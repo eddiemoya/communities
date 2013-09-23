@@ -1099,17 +1099,16 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 .forum-archive #comm-forums-main #forums-head { background: url('../img/forums/sears_forumsLogo.gif?v=1379953162') no-repeat; height: 86px; }
 .forum-archive #comm-forums-main h1 { padding-left: 146px; color: #87cdec; font-weight: bold; font-size: 14px; padding-bottom: 5px; }
 .forum-archive #comm-forums-main p { padding-left: 146px; }
-.forum-archive #comm-forums-main .bbp-header .bbp-forum-info { width: 50%; }
-.forum-archive #comm-forums-main .bbp-header .bbp-forum-freshness { width: 35%; margin-left: 15%; text-align: left; }
+.forum-archive #comm-forums-main .bbp-header .bbp-forum-freshness { margin-left: 15%; text-align: left; }
 .forum-archive #comm-forums-main .bbp-body { margin-top: 2px; border-top: 1px dotted #ccc; }
-.forum-archive #comm-forums-main .bbp-body .bbp-forum-info { width: 50%; }
 .forum-archive #comm-forums-main .bbp-body .bbp-forum-info .bbp-forum-title { font-size: 16px; }
 .forum-archive #comm-forums-main .bbp-body .bbp-forum-info .bbp-forum-content { margin: 0; }
-.forum-archive #comm-forums-main .bbp-body .bbp-forum-topic-count { width: 15%; }
-.forum-archive #comm-forums-main .bbp-body .bbp-forum-freshness { width: 35%; }
 .forum-archive #comm-forums-main .bbp-body .forum { border-top: 0; border-bottom: 1px dotted #ccc; }
 .forum-archive #comm-forums-main .bbp-body .odd { background-color: #fff; }
 .forum-archive #comm-forums-main .bbp-body .even { background-color: #f6f6f6; }
+.forum-archive #comm-forums-main .bbp-forum-info { width: 50%; }
+.forum-archive #comm-forums-main .bbp-forum-freshness { width: 35%; }
+.forum-archive #comm-forums-main .bbp-forum-topic-count { width: 9%; margin-right: 6%; text-align: right; }
 
 .sears.forum-archive #comm-forums-main h2 { background: url('../img/forums/sears_forumsLogo.gif?v=1379953162') no-repeat; }
 
@@ -1117,29 +1116,27 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 
 .forum #comm-forums-main #forums-thread-top { position: relative; }
 .forum #comm-forums-main #forums-thread-top .add-new-thread { float: left; }
-.forum #comm-forums-main .bbp-header .bbp-forum-info { width: 50%; }
-.forum #comm-forums-main .bbp-header .bbp-forum-freshness { width: 35%; margin-left: 15%; text-align: left; }
+.forum #comm-forums-main .bbp-header .bbp-forum-freshness { margin-left: 15%; text-align: left; }
 .forum #comm-forums-main .bbp-body { margin-top: 2px; border-top: 1px dotted #ccc; }
-.forum #comm-forums-main .bbp-body .bbp-forum-info { width: 50%; }
 .forum #comm-forums-main .bbp-body .bbp-forum-info .bbp-forum-title { font-size: 16px; }
 .forum #comm-forums-main .bbp-body .bbp-forum-info .bbp-forum-content { margin: 0; }
-.forum #comm-forums-main .bbp-body .bbp-forum-topic-count { width: 15%; }
-.forum #comm-forums-main .bbp-body .bbp-forum-freshness { width: 35%; }
 .forum #comm-forums-main .bbp-body .forum { border-top: 0; border-bottom: 1px dotted #ccc; }
-.forum #comm-forums-main .bbp-body .odd { background-color: #fff; }
-.forum #comm-forums-main .bbp-body .even { background-color: #f6f6f6; }
+.forum #comm-forums-main .bbp-body .odd { background-color: #fff; border-top: 0; }
+.forum #comm-forums-main .bbp-body .even { background-color: #f6f6f6; border-top: 0; }
+.forum #comm-forums-main .bbp-forum-info { width: 45%; }
+.forum #comm-forums-main .bbp-forum-freshness { width: 40%; }
+.forum #comm-forums-main .bbp-forum-topic-count { width: 9%; margin-right: 6%; text-align: right; }
 
 #comm-forums-main .bbp-topics { border: 0; }
-#comm-forums-main .bbp-header .bbp-topic-title { width: 35%; margin-left: 10%; }
-#comm-forums-main .bbp-header .bbp-topic-reply-count { width: 15%; margin-left: 13%; }
-#comm-forums-main .bbp-header .bbp-topic-freshness { width: 27%; text-align: left; }
-#comm-forums-main .bbp-body .bbp-topic-title { width: 45%; }
-#comm-forums-main .bbp-body .bbp-topic-voice-count { width: 13%; }
-#comm-forums-main .bbp-body .bbp-topic-reply-count { width: 15%; }
-#comm-forums-main .bbp-body .bbp-topic-freshness { width: 27%; text-align: left; }
+#comm-forums-main .bbp-header .bbp-topic-title { margin-left: 9%; width: 38%; }
+#comm-forums-main .bbp-header .bbp-topic-reply-count { margin-left: 16%; }
 #comm-forums-main .bbp-body .topic { border-top: 0; border-bottom: 1px dotted #ccc; }
 #comm-forums-main .bbp-replies .odd { background-color: #fff; }
 #comm-forums-main .bbp-replies .even { background-color: #f6f6f6; }
+#comm-forums-main .bbp-topic-title { width: 47%; }
+#comm-forums-main .bbp-topic-voice-count { width: 16%; text-align: left; }
+#comm-forums-main .bbp-topic-reply-count { width: 17%; text-align: left; }
+#comm-forums-main .bbp-topic-freshness { width: 20%; text-align: left; }
 
 .taxonomy-widget_grid { padding-bottom: 0.769em; }
 .taxonomy-widget_grid [class*="span"].alpha { clear: left !important; float: left; margin-left: 0 !important; }

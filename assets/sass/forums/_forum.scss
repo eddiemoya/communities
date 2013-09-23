@@ -8,11 +8,7 @@
 			}
 		}
 		.bbp-header {
-			.bbp-forum-info {
-				width: 50%;
-			}
 			.bbp-forum-freshness {
-				width: 35%;
 				margin-left: 15%;
 				text-align: left;
 			}
@@ -21,7 +17,6 @@
 			margin-top: 2px;
 			border-top: 1px dotted #ccc;
 			.bbp-forum-info {
-				width: 50%;
 				.bbp-forum-title {
 					font-size: 16px;
 				}
@@ -29,22 +24,31 @@
 					margin: 0;
 				}
 			}
-			.bbp-forum-topic-count {
-				width: 15%;
-			}
-			.bbp-forum-freshness {
-				width: 35%;
-			}
 			.forum {
 				border-top: 0;
 				border-bottom: 1px dotted #ccc;
 			}
 			.odd {
 				background-color: #fff;
+				border-top: 0;
 			}
 			.even {
 				background-color: #f6f6f6;
+				border-top: 0;
 			}
+		}
+		
+		// General forum widths
+		.bbp-forum-info {
+			width: 45%;
+		}
+		.bbp-forum-freshness {
+			width: 40%;
+		}
+		.bbp-forum-topic-count {
+			width: 9%;
+			margin-right: 6%;
+			text-align: right;
 		}
 	}
 }
