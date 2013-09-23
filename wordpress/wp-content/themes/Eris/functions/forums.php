@@ -460,7 +460,7 @@ function bbp_admin_setting_callback_forums_per_page() {
 //Add cap for this section, so it appears in forum settings
 add_filter('bbp_map_settings_meta_caps', 'add_cap_bbp_forum_headings');
 
-function add_cap_bbp_forum_headings($caps, $cap, $user_id, $args) {
+function add_cap_bbp_forum_headings($caps, $cap = NULL, $user_id = NULL, $args = NULL) {
 	
 	if($cap == 'bbp_forum_headings') {
 		
