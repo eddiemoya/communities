@@ -114,7 +114,11 @@ html, html > body.bbpress {
 		}
 	}
 	.bbp-pagination {
-		float: none;
+		display: inline-block;
+		float: right;
+		position: relative;
+		width: auto;
+		margin-bottom: 10px;
 	}
 	.forums-last-activity {
 		text-align: left;

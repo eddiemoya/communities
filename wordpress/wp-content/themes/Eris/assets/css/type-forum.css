@@ -1060,7 +1060,7 @@ html, html > body.bbpress { background: transparent url('../img/forums/brickwall
 .bbpress #bbpress-forums .bbp-header { font-size: 14px; color: #666; }
 .bbpress #bbpress-forums .reply { border-bottom: 1px dotted #ccc; }
 .bbpress #bbpress-forums .reply:last-child { border-bottom: 0; }
-.bbpress .bbp-pagination { float: none; }
+.bbpress .bbp-pagination { display: inline-block; float: right; position: relative; width: auto; margin-bottom: 10px; }
 .bbpress .forums-last-activity { text-align: left; }
 
 .forums-not-logged-in h2 { font-size: 16px; font-weight: bold; }
@@ -1115,6 +1115,8 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 
 .kmart.forum-archive #comm-forums-main h2 { background: url('../img/forums/kmart_forumsLogo.gif?v=1379953164') no-repeat; }
 
+.forum #comm-forums-main #forums-thread-top { position: relative; }
+.forum #comm-forums-main #forums-thread-top .add-new-thread { float: left; }
 .forum #comm-forums-main .bbp-header .bbp-forum-info { width: 50%; }
 .forum #comm-forums-main .bbp-header .bbp-forum-freshness { width: 35%; margin-left: 15%; text-align: left; }
 .forum #comm-forums-main .bbp-body { margin-top: 2px; border-top: 1px dotted #ccc; }
