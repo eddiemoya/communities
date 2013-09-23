@@ -324,6 +324,7 @@ class Theme_Options {
             'desc'    => 'Cache Buster',
             'type'    => 'heading'
         );
+        
 		$this->settings['bust_stylesheets'] = array(
 			'section' => 'general',
 			'title'   => __( 'Bust Stylesheet Cache' ),
@@ -336,6 +337,22 @@ class Theme_Options {
 			'desc'    => __( 'Checking will force-refresh javascript on user browsers' ),
 			'type'    => 'cache',
 		);
+		
+	    $this->settings['expertcache'] = array(
+        	'section'	=> 'general',
+        	'title'		=> '',
+        	'desc'		=> 'Experts Cache',
+        	'type'		=> 'heading'
+        );
+        
+        $this->settings['refresh_expert_cache'] = array(
+			'section' => 'general',
+			'title'   => __( 'Refresh Experts Cache' ),
+			'desc'    => __( 'Checking will refresh the cache of Expert users.' ),
+			'type'    => 'cache',
+		);
+        
+        
         
  
 		
@@ -467,6 +484,16 @@ class Theme_Options {
 				$input["javascript_timestamp"] = time();
 			}
 			
+			if (isset($input["refresh_expert_cache"])) {
+				unset($input["refresh_expert_cache"]);
+				
+				$experts = get_expert_users();
+				
+				update_option('expert_users', $experts);
+			}
+			
+			
+			
 			foreach ( $this->checkboxes as $id ) {
 				if ( isset( $options[$id] ) && ! isset( $input[$id] ) ) {
 					unset( $options[$id] );
@@ -503,4 +530,5 @@ function randString($length, $charset='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmno
     }
     return $str;
 }
+
 ?>
