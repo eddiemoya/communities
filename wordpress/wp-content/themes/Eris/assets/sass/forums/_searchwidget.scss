@@ -3,9 +3,7 @@
 	.widget #bbp-search-form{
 		background: #dbf0f9;
 		padding: 5px 5px 5px 15px;
-		.search-tick{
-			border-bottom: 19px solid #DBF0F9;
-			border-top: 19px solid #DBF0F9;
+		.search-tick{			
 			border-left: 8px solid #FFFFFF;
 			left: 5px;
 			position: absolute;
@@ -56,6 +54,10 @@
 			label {
 				color: #e82e2c;
 			}
+			.search-tick{
+				border-bottom: 19px solid #F3E6E6;
+				border-top: 19px solid #F3E6E6;
+			}
 		}
 	}
 }
@@ -66,6 +68,10 @@
 			background: #dbf0f9;
 			label {
 				color: #87cdec;
+			}
+			.search-tick{
+				border-bottom: 19px solid #DBF0F9;
+				border-top: 19px solid #DBF0F9;
 			}
 		}
 	}
