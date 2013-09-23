@@ -7,7 +7,7 @@
  */
 class User_Profile {
 	
-	const EXPERT_ROLE = 'expert';
+	
 	/**
 	 * User's wordpress user_id
 	 * @var int
@@ -725,15 +725,15 @@ class User_Profile {
 	 */
 	private function get_experts() {
 		
-		global $wpdb;
+		$experts = get_option('expert_users');
 		
-		$cap_key = $wpdb->prefix . 'capabilities';
-		
-		$q = "SELECT user_id FROM {$wpdb->usermeta} WHERE $wpdb->usermeta.meta_key = '{$cap_key}' AND $wpdb->usermeta.meta_value LIKE '%" . self::EXPERT_ROLE . "%'";
-		$experts = $wpdb->get_results($q);
+		if(! $experts) { //If the option doesn't exist, get experts and set it
+			
+			$experts = get_expert_users();
+			update_option('expert_users', $experts);
+		}
 		
 		return $experts;
-		
 	}
 	
 	/**
