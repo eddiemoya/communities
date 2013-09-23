@@ -57,6 +57,9 @@ html, html > body.bbpress {
 		}
 		// First Post in a Topic
 		.bbp-lead-topic{
+			.topic {
+				border-bottom: 0;
+			}
 			.bbp-topic-title {
 				font-size: 20px;
 				margin-bottom: 10px;
