@@ -9,7 +9,7 @@
 
 ?>
 
-<?php do_action( 'bbp_template_before_pagination_loop' ); ?>
+<?php //do_action( 'bbp_template_before_pagination_loop' ); ?>
 
 <div class="bbp-pagination">
 	
@@ -20,4 +20,4 @@
 	</div>
 </div>
 
-<?php do_action( 'bbp_template_after_pagination_loop' ); ?>
+<?php //do_action( 'bbp_template_after_pagination_loop' ); ?>
