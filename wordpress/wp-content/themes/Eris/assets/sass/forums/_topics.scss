@@ -5,34 +5,14 @@
 	}
 	.bbp-header {
 		.bbp-topic-title {
-			width: 35%;
-			margin-left: 10%;
-		}
-		.bbp-topic-voice-count {
+			margin-left: 9%;
+			width: 38%;
 		}
 		.bbp-topic-reply-count {
-			width: 15%;
-			margin-left: 13%;
-		}
-		.bbp-topic-freshness {
-			width: 27%;
-			text-align: left;
+			margin-left: 16%; // Should be the width of .bbp-topic-voice-count
 		}
 	}
 	.bbp-body {			
-		.bbp-topic-title {
-			width: 45%;
-		}
-		.bbp-topic-voice-count {
-			width: 13%;
-		}
-		.bbp-topic-reply-count {
-			width: 15%;
-		}
-		.bbp-topic-freshness {
-			width: 27%;
-			text-align: left;
-		}
 		.topic {
 			border-top: 0;
 			border-bottom: 1px dotted #ccc;
@@ -45,5 +25,22 @@
 		.even {
 			background-color: #f6f6f6;
 		}	
+	}
+	
+	// General forum widths
+	.bbp-topic-title {
+		width: 47%;
+	}
+	.bbp-topic-voice-count {
+		width: 16%;
+		text-align: left;
+	}
+	.bbp-topic-reply-count {
+		width: 17%;
+		text-align: left;
+	}
+	.bbp-topic-freshness {
+		width: 20%;
+		text-align: left;
 	}
 }
