@@ -1121,9 +1121,8 @@ function comm_wp_dropdown_categories( $args = '' ) {
 
 function lookup_stylesheet($stamp = "") {
 	global $post;
+	global $wp_query;
 
-	$current = get_queried_object();
-	
 	$css [] = theme_option("brand");
 	
 	if ($current->term_taxonomy_id && $checked_categories[$current->term_taxonomy_id] != "true") {
@@ -1156,7 +1155,7 @@ function lookup_stylesheet($stamp = "") {
 
 	$css[] = "type-".$post->post_type;
 
-	if ($post->post_type == "forum" || $post->post_type == "topic" || $post->post_type == "reply") {
+	if ($post->post_type == "forum" || $post->post_type == "topic" || $post->post_type == "reply" || $wp_query->bbp_is_search == true) {
 		$css[] = "type-forum";
 	}
 
