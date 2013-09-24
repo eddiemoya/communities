@@ -20,7 +20,7 @@ mySettings = {
 		// {name:'Ol', className:'markItUp_OL', openWith:'[ol]\n  [li]' , closeWith:'[/li]\n[/ol]\n' },
 		// {name:'Li', className:'markItUp_LI', openWith:'[li]', closeWith:'[/li]' },
 		// {separator:'---------------' },
-		// {name:'Quotes', className: 'markItUp_Quote', openWith:'[quote]', closeWith:'[/quote] '},
+		{name:'Quotes', className: 'markItUp_Quote', openWith:'[quote]', closeWith:'[/quote] '},
 		{name:'Code', className: 'markItUp_Code', openWith:'[code]', closeWith:'[/code] '}, 
 		
 		{name:'Clean', className:'clean', replaceWith:function(markitup) { return markitup.selection.replace(/\[(.*?)\]/g, "") } },
