@@ -53,8 +53,7 @@
 	
 	          <?php get_template_part('parts/head'); ?>
 	
-	          <?php get_template_part('parts/navigation'); ?>
-	
+	          <?php get_template_part('parts/navigation'); ?>				
 	      </div>
 					
 

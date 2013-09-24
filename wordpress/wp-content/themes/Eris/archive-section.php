@@ -9,6 +9,7 @@
 // echo $post->post_type . ": " . $post->ID;
 // echo "<pre>";print_r($wp_query);echo "</pre>";
 // echo '<!-- SECTION TEMPLATE -->';
+
 get_template_part('parts/header');
 
 if(function_exists('display_dropzones')){

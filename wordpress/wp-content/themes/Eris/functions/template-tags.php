@@ -1120,8 +1120,9 @@ function comm_wp_dropdown_categories( $args = '' ) {
 }
 
 function lookup_stylesheet($stamp = "") {
-	$current = get_queried_object();
-	
+	global $post;
+	global $wp_query;
+
 	$css [] = theme_option("brand");
 	
 	if ($current->term_taxonomy_id && $checked_categories[$current->term_taxonomy_id] != "true") {
@@ -1151,9 +1152,19 @@ function lookup_stylesheet($stamp = "") {
 			$css = array_merge((array)$css, (array)$css_current);
 		}
 	}
+
+	$css[] = "type-".$post->post_type;
+
+	if ($post->post_type == "forum" || $post->post_type == "topic" || $post->post_type == "reply" || $wp_query->bbp_is_search == true) {
+		$css[] = "type-forum";
+	}
+
+	if ($post->post_name != "") {
+		$css[] = "post-slug-".$post->post_name;
+	}
 	
 	$stamp = ($stamp != "") ? "_".$stamp : "";
-	
+
 	foreach (array_reverse($css) as $file) {
 		if (file_exists(get_stylesheet_directory()."/assets/css/$file.css")) {
 			return get_template_directory_uri()."/assets/css/$file$stamp.css";

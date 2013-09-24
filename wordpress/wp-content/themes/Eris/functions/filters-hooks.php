@@ -1,4 +1,7 @@
 <?php 
+add_filter('bbp_get_topic_content', array(BBcode, 'do_shortcode'));
+
+
 /*************************************
  * Content, Class, and Query Filters *
  *************************************/
@@ -435,11 +438,18 @@ add_filter('preprocess_comment', 'clean_comment');
 
 
 function limit_search($query) {
-    if ($query->is_search && !is_admin())
-        $query->set('post_type',array('post','question','guide'));
-
+	
+	if(! isset($_REQUEST['bbp_search'])) { //Do not run on forum search
+		
+	    if($query->is_search && !is_admin()) {
+	    	
+	    	$query->set('post_type',array('post','question','guide'));
+	    }	
+	    
+	}
     return $query;
 }
+
 add_filter('pre_get_posts','limit_search');
 
 
@@ -1095,3 +1105,49 @@ function com_canonical() {
 
     echo "<link rel='canonical' href='$link' />\n";
 }
+
+//Removes generator tag, request from sec team
+remove_action('wp_head', 'wp_generator');
+
+
+add_shortcode( 'quote' , 'shortcode_quote' );
+add_shortcode( 'QUOTE' , 'shortcode_quote' );
+
+function shortcode_quote( $atts = array(), $content = NULL ) {
+
+
+        extract(shortcode_atts(array(
+            'id' => '',
+        ), $atts));
+
+        ob_start();
+        ?>
+        <div class="bbcode-quote">
+
+            <?php if (!empty($id)) : 
+                $post = get_post($id);
+                $user = get_userdata($post->post_author);
+            ?>
+
+                <div class="bbcode-by-line">
+                    <span class="bbcode-username"><?php get_screenname($post->post_author); ?><span> said:
+                </div>
+
+            <?php endif; ?>
+
+            <blockquote>
+                <?php echo BBCode::do_shortcode($content); ?>
+            </blockquote>
+        </div>
+        <?php
+
+        return ob_get_clean();
+
+
+
+}
+
+
+
+
+

@@ -76,3 +76,18 @@
 [submodule "wordpress/wp-content/plugins/section-fronts"]
 	path = wordpress/wp-content/plugins/section-fronts
 	url = git@github.com:eddiemoya/Section-Fronts.git
+[submodule "wordpress/wp-content/plugins/bbpress"]
+	path = wordpress/wp-content/plugins/bbpress
+	url = git@github.com:dan-crimmins/bbpress.git
+[submodule "wordpress/wp-content/plugins/forum-search"]
+	path = wordpress/wp-content/plugins/forum-search
+	url = git@github.com:mattday16/forum-search.git
+[submodule "wordpress/wp-content/plugins/wp_markitup"]
+	path = wordpress/wp-content/plugins/wp_markitup
+	url = git@github.com:eddiemoya/bbPress-Reply-with-Quote.git
+[submodule "wordpress/wp-content/plugins/bbpress-bbcode"]
+	path = wordpress/wp-content/plugins/bbpress-bbcode
+	url = git@github.com:eddiemoya/bbpress-bbcode.git
+[submodule "wordpress/wp-content/plugins/bbpress2-shortcode-whitelist"]
+	path = wordpress/wp-content/plugins/bbpress2-shortcode-whitelist
+	url = git@github.com:eddiemoya/bbpress2-shortcode-whitelist.git

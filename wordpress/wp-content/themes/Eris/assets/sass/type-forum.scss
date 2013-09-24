@@ -1,0 +1,70 @@
+/* 
+Theme Name: Eris
+Theme URI: http://www.kmart.com/community/forums/
+Description: The Fractal 960 grid developed for Sears and Kmart Community sites
+Author: Matt Strick (Based on styling by Carl Albrecht-Buehler and Captain Timothy "Heartbreaker Widowmaker" Steele)
+Version: 1.0
+ */
+
+// Utilities
+@import 'compass/css3';
+@import 'compass/utilities';
+@import 'compass/layout';
+@import 'compass/typography';
+@import 'uihelper';
+@import 'config';
+@import 'functions';
+@import 'reset';
+
+// Global Components for Communities
+@import 'global/ribbon';
+@import 'global/header';
+@import 'global/footer';
+@import 'global/layout';
+@import 'global/presentation';
+@import 'global/navigation';
+@import 'global/moodle';
+@import 'global/single';
+@import 'global/addthis';
+@import 'global/open-id';
+@import 'global/toolip_children';
+@import 'global/polls';
+
+// Kmart-Specific Adjustments
+@import 'kmart/ribbon';
+@import 'kmart/header';
+@import 'kmart/footer';
+@import 'kmart/presentation';
+@import 'kmart/navigation';
+@import 'kmart/moodle';
+@import 'kmart/single';
+@import 'kmart/addthis';
+@import 'kmart/open-id';
+@import 'kmart/toolip_children';
+@import 'kmart/polls';
+
+// Sears-Specific Adjustments
+@import 'sears/ribbon';
+@import 'sears/header';
+@import 'sears/footer';
+@import 'sears/presentation';
+@import 'sears/navigation';
+@import 'sears/moodle';
+@import 'sears/single';
+@import 'sears/addthis';
+@import 'sears/open-id';
+@import 'sears/toolip_children';
+@import 'sears/polls';
+
+// Forums-Specific Adjustments
+@import 'forums/reset';
+@import 'forums/navigation';
+@import 'forums/presentation';
+@import 'forums/searchwidget';
+@import 'forums/forumarchive';
+@import 'forums/forum';
+@import 'forums/topics';
+@import 'forums/searchresults';
+
+// Widgets
+@import 'widgets/taxonomy';

@@ -29,14 +29,30 @@
 
         <li class="right_button">
             <a href="<?php echo get_category_link( get_category_by_path( 'customer-care' ) ); ?>">Customer Care</a>
-        </li>
-
-        <li>
+        </li>		
+        
+		<li>
             <a href="<?php echo site_url(); ?>"><span>Categories</span></a>
             <ul>
                 <?php wp_list_categories(array('parent' => 0, 'hide_empty' => true, 'depth' => 1, 'title_li'=>'', 'order'=>'ASC')); ?>
             </ul>
         </li>
+		
+		<li>
+			<a href="<?php if (function_exists("bbp_forums_url")) bbp_forums_url(); ?>">Forums</a>
+			<div id="forum_tooltip">				
+				<div class="close">X</div>
+				<div class="tick"></div>
+				<div class="banner_new"></div>
+				
+				<p>Welcome to <b>Forums</b>, the newest feature in the <?php echo ucfirst(theme_option("brand")); ?> Community.</p>
+				<form id="new_modal_form">
+					<p>
+						<input type="checkbox" id="message_hide" name="message_hide"/><label for="message_hide">Don't show this message again.</label>
+					</p>
+				</form>
+			</div>
+		</li>
 
         <?php foreach($labels as $post_type => $label) : ?>
         <li>

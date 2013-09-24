@@ -1,0 +1,56 @@
+// Topic (Sub-forum) specific changes
+#comm-forums-main {
+	.bbp-topics {
+		border: 0;
+	}
+	.bbp-header {
+		.bbp-topic-title {
+			margin-left: 9%;
+			width: 38%;
+		}
+		.bbp-topic-reply-count {
+			margin-left: 16%; // Should be the width of .bbp-topic-voice-count
+		}
+	}
+	.bbp-body {			
+		.topic {
+			border-top: 0;
+			border-bottom: 1px dotted #ccc;
+		}
+		.bbcode-quote {
+			.bbcode-by-line {
+				font-style: italic;
+			}
+			background-color: #f6f6f6;
+		}
+	}
+	.bbp-replies {
+		.odd {
+			background-color: #fff;
+		}
+		.even {
+			background-color: #f6f6f6;
+			.bbcode-quote {
+				background-color: #fff;
+			}
+		}	
+	}
+	
+	// General forum widths
+	.bbp-topic-title {
+		width: 47%;
+	}
+	.bbp-topic-voice-count {
+		width: 16%;
+		text-align: left;
+	}
+	.bbp-topic-reply-count {
+		width: 15%;
+		text-align: left;
+		padding-right: 3%;
+	}
+	.bbp-topic-freshness {
+		width: 19%;
+		text-align: left;
+	}
+}

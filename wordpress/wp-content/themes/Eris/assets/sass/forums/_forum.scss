@@ -1,0 +1,62 @@
+// Forum (sub-forum listing) specific changes
+.forum {
+	#comm-forums-main {
+		#forums-thread-top {
+			position: relative;
+			.add-new-thread {
+				float: left;
+			}
+		}
+		.bbp-header {
+			.bbp-forum-freshness {
+				margin-left: 15%;
+				text-align: left;
+			}
+		}
+		.bbp-body {
+			margin-top: 2px;
+			border-top: 1px dotted #ccc;
+			.bbp-forum-info {
+				.bbp-forum-title {
+					font-size: 16px;
+				}
+				.bbp-forum-content {
+					margin: 0;
+				}
+			}
+			.forum {
+				border-top: 0;
+				border-bottom: 1px dotted #ccc;
+			}
+			.odd {
+				background-color: #fff;
+				border-top: 0;
+			}
+			.even {
+				background-color: #f6f6f6;
+				border-top: 0;
+			}
+			.bbp-topic-started-by {
+				float: left;
+				display: block;
+				margin-right: 5px;
+			}
+		}
+		
+		// General forum widths
+		.bbp-forum-info {
+			width: 45%;
+		}
+		.bbp-forum-freshness {
+			width: 40%;
+		}
+		.bbp-forum-topic-count {
+			width: 9%;
+			margin-right: 6%;
+			text-align: right;
+		}
+		.bbp-breadcrumb-sep {
+			font-size: 14px;
+		}
+	}
+}
