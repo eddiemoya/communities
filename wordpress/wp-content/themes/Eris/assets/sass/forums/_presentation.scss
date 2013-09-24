@@ -68,6 +68,7 @@ html, html > body.bbpress {
 				margin-top: 2px;
 				.hentry {
 					padding: 0;
+					margin-left: 8px;
 				}
 			}
 			.bbp-topic-content {
@@ -153,6 +154,9 @@ h3 {
 #forums-topic-bottom {
 	border-top: 1px dotted #CCC;
     padding-top: 5px;
+    .bbp-breadcrumb-sep {
+    	font-size: 14px;
+    }
 }
 #reply-not-loggedin-message {
 	font-size: 10px;
