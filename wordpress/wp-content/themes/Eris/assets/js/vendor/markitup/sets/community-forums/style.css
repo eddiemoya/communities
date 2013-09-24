@@ -46,12 +46,13 @@
 	background-image:url(images/list-item.png);
 }*/
 
-.markItUp .markItUp_Quote a	{
+/*.markItUp .markItUp_Quote a	{
 	background-image:url(images/quotes.png);
 	margin-left:8px;
-}
+}*/
 .markItUp .markItUp_Code a	{
 	background-image:url(images/code.png);
+	margin-left:8px
 }
 
 .markItUp .clean a {
