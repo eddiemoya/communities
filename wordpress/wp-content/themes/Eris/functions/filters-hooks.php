@@ -1,7 +1,7 @@
 <?php 
-
-apply_filters('bbp_get_reply_content', 'wpautop');
-apply_filters('bbp_get_topic_content', 'wpautop');
+add_filter('bbp_get_reply_content', 'wpautop');
+add_filter('bbp_get_topic_content', 'wpautop');
+add_filter('bbp_get_topic_content', array(BBcode, 'do_shortcode'));
 
 
 /*************************************
