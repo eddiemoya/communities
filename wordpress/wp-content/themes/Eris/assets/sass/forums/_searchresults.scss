@@ -4,10 +4,27 @@
 			border: 0;		
 			.bbp-header {
 			}
-			.bbp-body {
+			.bbp-body {			
+				border-top: 1px dotted #ccc;
+				margin-top: 2px;
 				h3 {
 					font-size: 16px;
 				}
+				.forum,
+				.reply,
+				.topic {
+					h3 {
+						font-size: 14px;
+						font-weight: normal;
+						margin: 5px;
+					}
+				}
+				.bbp-forum-content,
+				.bbp-reply-content,
+				.bbp-topic-content {
+					margin-left: 100px;
+					padding: 8px 12px 8px 0;
+				}				
 				.bbp-topic-header {
 					background: none;
 					border-top: 0;
@@ -18,6 +35,9 @@
 				.bbp-reply-author {
 					margin-right: 5px;
 				}		
+				.bbp-reply-post-date {
+					font-style: italic;
+				}
 				.forums-post-author-date {
 					margin-bottom: 5px;
 				}
@@ -27,7 +47,14 @@
 			.bbp-footer		{
 				.bbp-search-content {
 					margin: 0;
+					font-size: 14px;
 				}
+			}
+			.even {
+				//background-color: #F6F6F6;
+			}
+			.odd {
+				//background-color: #fff;
 			}
 		}
 	}
