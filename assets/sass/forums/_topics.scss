@@ -17,13 +17,13 @@
 			border-top: 0;
 			border-bottom: 1px dotted #ccc;
 		}
+		.bbcode-quote {
+			background-color: #f6f6f6;
+		}
 	}
 	.bbp-replies {
 		.odd {
 			background-color: #fff;
-			.bbcode-quote {
-				background-color: #f6f6f6;
-			}
 		}
 		.even {
 			background-color: #f6f6f6;

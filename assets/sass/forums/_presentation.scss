@@ -55,6 +55,17 @@ html, html > body.bbpress {
 		.bbp-forums {
 			border: 0;
 		}
+
+		// Content styling common to forums, replies and topics
+		.bbp-body{
+			p {
+				margin-bottom:16px;
+			}
+			.bbcode-quote {
+				margin: 16px;
+				padding: 9px 16px 1px;
+			}
+		}
 		// First Post in a Topic
 		.bbp-lead-topic{
 			.topic {
@@ -92,13 +103,6 @@ html, html > body.bbpress {
 			.bbp-reply-content {
 				margin-left: 80px;
 				padding-top: 0px;
-				p {
-					margin-bottom:16px;
-				}
-				.bbcode-quote {
-					margin: 16px;
-					padding: 9px 16px 1px;
-				}
 			}
 			.bbp-forum-freshness,
 			.bbp-topic-reply-count {
