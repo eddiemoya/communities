@@ -1145,11 +1145,15 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 #comm-forums-main .bbp-topic-freshness { width: 20%; text-align: left; }
 
 .forum-search #comm-forums-main #bbp-search-results { border: 0; }
+.forum-search #comm-forums-main #bbp-search-results .bbp-body { border-top: 1px dotted #ccc; margin-top: 2px; }
 .forum-search #comm-forums-main #bbp-search-results .bbp-body h3 { font-size: 16px; }
+.forum-search #comm-forums-main #bbp-search-results .bbp-body .forum h3, .forum-search #comm-forums-main #bbp-search-results .bbp-body .reply h3, .forum-search #comm-forums-main #bbp-search-results .bbp-body .topic h3 { font-size: 14px; font-weight: normal; margin: 5px; }
+.forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-forum-content, .forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-reply-content, .forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-topic-content { margin-left: 100px; padding: 8px 12px 8px 0; }
 .forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-topic-header { background: none; border-top: 0; height: 0; padding: 0; }
 .forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-topic-author, .forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-reply-author { margin-right: 5px; }
+.forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-reply-post-date { font-style: italic; }
 .forum-search #comm-forums-main #bbp-search-results .bbp-body .forums-post-author-date { margin-bottom: 5px; }
-.forum-search #comm-forums-main #bbp-search-results .bbp-header .bbp-search-content, .forum-search #comm-forums-main #bbp-search-results .bbp-footer .bbp-search-content { margin: 0; }
+.forum-search #comm-forums-main #bbp-search-results .bbp-header .bbp-search-content, .forum-search #comm-forums-main #bbp-search-results .bbp-footer .bbp-search-content { margin: 0; font-size: 14px; }
 
 .taxonomy-widget_grid { padding-bottom: 0.769em; }
 .taxonomy-widget_grid [class*="span"].alpha { clear: left !important; float: left; margin-left: 0 !important; }
