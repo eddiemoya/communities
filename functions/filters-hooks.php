@@ -1117,28 +1117,38 @@ add_shortcode( 'QUOTE' , 'shortcode_quote' );
 
 function shortcode_quote( $atts = array(), $content = NULL ) {
 
-    if(!empty($atts['id'])){
-        $post = get_post($atts['id']);
-        $user = get_userdata($post->post_author);
 
-        $css_classes = array('bbcode-quote');
+        extract(shortcode_atts(array(
+            'id' => '',
+        ), $atts));
 
         ob_start();
         ?>
         <div class="bbcode-quote">
-            <div class="bbcode-by-line">
-                <span class="bbcode-username"><?php get_screenname($post->post_author); ?><span> said:
-            </div>
+
+            <?php if (!empty($id)) : 
+                $post = get_post($id);
+                $user = get_userdata($post->post_author);
+            ?>
+
+                <div class="bbcode-by-line">
+                    <span class="bbcode-username"><?php get_screenname($post->post_author); ?><span> said:
+                </div>
+
+            <?php endif; ?>
+
             <blockquote>
                 <?php echo BBCode::do_shortcode($content); ?>
             </blockquote>
         </div>
         <?php
-        $output = ob_get_clean();
 
-        return $output;
-    }
+        return ob_get_clean();
+
+
+
 }
+
 
 
 
