@@ -1123,6 +1123,8 @@ function lookup_stylesheet($stamp = "") {
 	global $post;
 	global $wp_query;
 
+	$current = get_queried_object();
+
 	$css [] = theme_option("brand");
 	
 	if ($current->term_taxonomy_id && $checked_categories[$current->term_taxonomy_id] != "true") {
