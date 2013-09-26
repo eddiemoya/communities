@@ -28,6 +28,7 @@ set :deploy_via, :remote_cache
 
 set :move_wp_content do
   run "rm -rf #{app_loc}/plugins/* && rm -rf #{app_loc}/themes/*"
+  run "cd #{deploy_to}/current; compass compile -I /opt/stateapps/.bundler/ruby/1.8/uihg-61515f9360e2/app/assets/stylesheets/ --output-style compressed --force"
   run "cp -R #{deploy_to}/current/wordpress/wp-content/plugins/* #{app_loc}/plugins"
   run "cp -R #{deploy_to}/current/wordpress/wp-content/themes/* #{app_loc}/themes"
 end
