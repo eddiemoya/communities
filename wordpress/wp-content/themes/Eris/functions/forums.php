@@ -302,6 +302,30 @@ function comm_forums_breadcrumbs($crumbs){
 	return $crumbs;
 }
 
+//Change Topic labels display to 'Thread'
+add_filter('bbp_register_topic_post_type', 'forums_topics_labels');
+
+function forums_topics_labels($args) {
+	
+	$args['labels'] = array('name'			 	=> 'Threads',
+							'menu_name'			=> 'Threads',
+							'singular_name'		=> 'Thread',
+							'all_items'			=> 'All Threads',
+							'add_new'			=> 'New Thread',
+							'add_new_item'		=> 'Create New Thread',
+							'edit'				=> 'Edit',
+							'edit_item'			=> 'Edit Thread',
+							'new_item'			=> 'New Thread',
+							'view'				=> 'View Thread',
+							'view_item'			=> 'View Thread',
+							'search_items'		=> 'Search Threads',
+							'not_found'			=> 'No threads found',
+							'not found_in_trash'=> 'No threads found in Trash',
+							'parent_item_colon' => 'Forum:');
+
+	return $args;
+}
+
 
 
 //Show lead topic in topics replies first
