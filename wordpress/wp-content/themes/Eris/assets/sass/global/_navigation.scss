@@ -131,12 +131,22 @@ $arrow-height: 3px;
 	*/
 }
 
-.sears .banner_new{
-	background: url("../img/forums/sears_newCornerImg.png") no-repeat scroll 0px 0px transparent; 
+.sears {
+	#forum_tooltip {
+		color: #003399;
+		.banner_new{
+			background: url("../img/forums/sears_newCornerImg.png") no-repeat scroll 0px 0px transparent; 
+		}
+	}
 }
 
-.kmart .banner_new{
-	background: url("../img/forums/kmart_newCornerImg.png") no-repeat scroll 0px 0px transparent; 
+.kmart {
+	#forum_tooltip {
+		color: #a41419;
+		.banner_new{
+			background: url("../img/forums/kmart_newCornerImg.png") no-repeat scroll 0px 0px transparent; 
+		}
+	}
 }
 
 
