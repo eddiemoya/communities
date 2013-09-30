@@ -16,7 +16,8 @@ html, html > body.bbpress {
 
 
 .bbpress {
-	#container {
+	#container {  
+		padding:0px 10px;
 		background: #fff;
 		-webkit-box-shadow: 0px 10px 15px 1px #999;
 		box-shadow: 0px 10px 15px 1px #999;		
