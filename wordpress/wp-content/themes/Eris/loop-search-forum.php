@@ -32,6 +32,7 @@
 <div id="post-<?php bbp_forum_id(); ?>" <?php bbp_forum_class(); ?>>
 
 	<div class="bbp-forum-content">
+	<?php echo $count;?>
 
 		<?php do_action( 'bbp_theme_before_forum_content' ); ?>
 
