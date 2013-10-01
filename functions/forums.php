@@ -302,31 +302,6 @@ function comm_forums_breadcrumbs($crumbs){
 	return $crumbs;
 }
 
-//Change Topic labels display to 'Thread'
-add_filter('bbp_register_topic_post_type', 'forums_topics_labels');
-
-function forums_topics_labels($args) {
-	
-	$args['labels'] = array('name'			 	=> 'Threads',
-							'menu_name'			=> 'Threads',
-							'singular_name'		=> 'Thread',
-							'all_items'			=> 'All Threads',
-							'add_new'			=> 'New Thread',
-							'add_new_item'		=> 'Create New Thread',
-							'edit'				=> 'Edit',
-							'edit_item'			=> 'Edit Thread',
-							'new_item'			=> 'New Thread',
-							'view'				=> 'View Thread',
-							'view_item'			=> 'View Thread',
-							'search_items'		=> 'Search Threads',
-							'not_found'			=> 'No threads found',
-							'not found_in_trash'=> 'No threads found in Trash',
-							'parent_item_colon' => 'Forum:');
-
-	return $args;
-}
-
-
 
 //Show lead topic in topics replies first
 add_filter( 'bbp_show_lead_topic', '__return_true' );
@@ -452,6 +427,69 @@ function comm_bbp_forum_get_subforums( $args = '' ) {
 /**
  * ADMIN SECTION ADDITIONS
  */
+
+//Change Topic labels display to 'Thread'
+add_filter('bbp_register_topic_post_type', 'forums_topics_labels');
+
+function forums_topics_labels($args) {
+	
+	$args['labels'] = array('name'			 	=> 'Threads',
+							'menu_name'			=> 'Threads',
+							'singular_name'		=> 'Thread',
+							'all_items'			=> 'All Threads',
+							'add_new'			=> 'New Thread',
+							'add_new_item'		=> 'Create New Thread',
+							'edit'				=> 'Edit',
+							'edit_item'			=> 'Edit Thread',
+							'new_item'			=> 'New Thread',
+							'view'				=> 'View Thread',
+							'view_item'			=> 'View Thread',
+							'search_items'		=> 'Search Threads',
+							'not_found'			=> 'No threads found',
+							'not found_in_trash'=> 'No threads found in Trash',
+							'parent_item_colon' => 'Forum:');
+
+	return $args;
+}
+
+
+//Change field names for topics (Threads) admin headings
+add_filter('bbp_admin_topics_column_headers', 'forums_topics_headings');
+
+function forums_topics_headings($cols) {
+	
+	$cols['title'] = __('Threads');
+	
+	return $cols;
+}
+
+//Change second column on Forums admin page from Topics to Threads
+add_filter('bbp_admin_forums_column_headers', 'forums_forum_headings');
+
+function forums_forum_headings($cols) {
+	
+	unset($cols['bbp_forum_freshness']); //Remove freshness col, going to replace...
+	
+	$cols['bbp_forum_fresh_mod'] = __( 'Freshness', 'bbpress' ); //Custom Freshness column
+	
+	$cols['bbp_forum_topic_count'] = __( 'Threads',    'bbpress' );
+	
+	return $cols;
+}
+
+//Change output used in forum Freshness column
+add_action('bbp_admin_forums_column_data', 'forums_forum_freshness_output', 10, 2);
+
+function forums_forum_freshness_output($column=null, $forum_id=null) {
+	
+	$last_active = bbp_get_forum_last_active_time( $forum_id, false );
+	
+	if ( !empty( $last_active ) )
+		echo $last_active;
+	else
+		_e( 'No Threads', 'bbpress' );
+	
+}
 
 
 /**
