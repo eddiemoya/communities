@@ -56,8 +56,8 @@
 
         <?php foreach($labels as $post_type => $label) : ?>
         <li>
-            <a href="<?php echo $alinks[$post_type]; ?>"><span><?php echo $label; ?></span></a>
             <?php if(isset($terms[$post_type])) : ?>
+            <a href="<?php echo $alinks[$post_type]; ?>"><span><?php echo $label; ?></span></a>
             <ul>
                 <?php foreach($terms[$post_type] as $term) : ?>
                     <li>
@@ -68,7 +68,9 @@
                 <?php endforeach; ?>
                 <li> <a href="<?php echo $alinks[$post_type]; ?>">All <?php echo $label; ?></a></li>
             </ul>
-            <?php endif; ?>
+            <?php else: ?>
+			<a href="<?php echo $alinks[$post_type]; ?>"><?php echo $label; ?></a>
+			<?php endif; ?>
         </li>
         <?php endforeach;?>
     </ul>
