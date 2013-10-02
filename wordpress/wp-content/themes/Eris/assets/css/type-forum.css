@@ -1030,7 +1030,7 @@ html, body { background: white; color: #555555; }
 
 .bbpress #comm-forums-main .bbp-forums-list { border: none; margin: 0; padding: 0; }
 .bbpress #bbpress-forums .bbp-lead-topic { border: none; }
-.bbpress #bbpress-forums .bbp-footer { text-align: right; }
+.bbpress #bbpress-forums .bbp-footer { text-align: right; font-weight: normal; }
 .bbpress #bbpress-forums div.bbp-forum-author, .bbpress #bbpress-forums div.bbp-topic-author, .bbpress #bbpress-forums div.bbp-reply-author { width: 60px; }
 
 /* Forum specific overwrites go here. */
