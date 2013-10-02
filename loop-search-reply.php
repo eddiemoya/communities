@@ -10,7 +10,7 @@
 ?>
 
 
-<div id="post-<?php bbp_reply_id(); ?>" <?php bbp_reply_class(); ?>>
+<div id="post-<?php bbp_reply_id(); ?>" <?php bbp_search_results_class(); ?>>
 
 	<div class="bbp-reply-author">
 
