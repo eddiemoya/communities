@@ -5,12 +5,12 @@
 			border: 0;
 		}
 		h1 {						
-			padding: 17px 0 5px 146px;
+			padding: 17px 0 5px 165px;
 			font-weight: bold;
 			font-size: 14px;
 		}
 		p {
-			padding-left: 146px;
+			padding-left: 165px;
 		}
 		.bbp-header {
 			.bbp-forum-info {
@@ -61,7 +61,7 @@
 .sears.forum-archive {
 	#comm-forums-main {
 		#forums-head  {
-			background: image-url("#{$forums-img}sears_forumsLogo.gif") no-repeat;
+			background: image-url("#{$forums-img}sears_forumsLogo.gif") no-repeat 5px 0;
 			height: 86px;
 		}
 		h1 {
@@ -73,7 +73,7 @@
 .kmart.forum-archive {
 	#comm-forums-main {
 		#forums-head  {
-			background: image-url("#{$forums-img}kmart_forumsLogo.gif") no-repeat;
+			background: image-url("#{$forums-img}kmart_forumsLogo.gif") no-repeat 5px 0;
 			height: 86px;
 		}
 		h1 {
