@@ -1,5 +1,5 @@
 // Tweaks to Presentation for Outdoor Style
-@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic|Open+Sans:300italic,400italic,700italic,400,700,300);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic|Open+Sans:300italic,400italic,700italic,600,400,300,700);
 
 $regular: 'Open Sans', Helvetica, Arial, Verdana, sans-serif;
 $condensed: 'Open Sans Condensed', Helvetica, Arial, Verdana, sans-serif;
@@ -122,6 +122,7 @@ html, html > body.bbpress {
 		.bbp-header {
 			font-size: 14px;
 			color: #666;
+			font-weight: 600; /* Semi-bold */
 		}
 		.reply {
 			border-bottom: 1px dotted #ccc;
