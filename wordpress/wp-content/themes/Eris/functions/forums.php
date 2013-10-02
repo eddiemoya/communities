@@ -422,6 +422,86 @@ function comm_bbp_forum_get_subforums( $args = '' ) {
 	return (array) apply_filters( 'bbp_forum_get_subforums', $sub_forums, $r );
 }
 
+/**
+ * SEARCH RESULTS CSS CLASS FUNCTIONS
+ */
+
+// Remove odd/even class from forum, topic, reply
+
+add_filter('bbp_get_forum_class', 'forums_search_remove_odd_even_class', 10, 2);
+add_filter('bbp_get_topic_class', 'forums_search_remove_odd_even_class', 10, 2);
+add_filter('bbp_get_reply_class', 'forums_search_remove_odd_even_class', 10, 2);
+
+function forums_search_remove_odd_even_class($classes, $id) {
+	
+	if(bbp_is_search()) { //Only for search results
+		
+		$odd = array_search('odd', $classes);
+		$even = array_search('even', $classes);
+		
+		$i = ($odd !== false) ? $odd : $even;
+		
+		unset($classes[$i]);
+		
+		return $classes;
+	}
+	
+	return $classes;
+}
+
+
+$bbp_search_item_index = 0; //Global search results list item index
+
+
+//Get the odd/even class for search results
+function bbp_get_search_results_class($id = 0, $classes = array()) {
+	
+	global $bbp_search_item_index;
+	
+	$type = ((bbpress()->current_forum_id) ? 'forum' :
+				((bbpress()->current_topic_id) ? 'topic' :
+				((bbpress()->current_reply_id) ? 'reply' : false)));
+	
+	switch($type) {
+		
+		case 'forum':
+			
+			$class = bbp_get_forum_class( $id, $classes );
+			
+			break;
+			
+		case 'topic':
+			
+			$class = bbp_get_topic_class($id, $classes);
+			
+			break;
+			
+		case 'reply':
+			
+			$class = bbp_get_reply_class($id, $classes);
+			
+			break;
+			
+		default:
+			
+			$class = '';
+			
+			break;
+	}
+	
+	//Increment the counter, and assign the odd or even class; add to class string
+	$class_odd_even = ((int) ++$bbp_search_item_index % 2) ? 'odd' : 'even';
+	$class = substr_replace($class, ' ' . $class_odd_even . '"', (strlen($class) - 1));
+	
+	return $class;	
+}
+
+//prints odd/even class for search results
+function bbp_search_results_class($id=0, $classes=array()) {
+	
+	echo bbp_get_search_results_class($id, $classes);
+}
+
 
 
 /**

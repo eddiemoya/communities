@@ -13,10 +13,10 @@
 	
 </div><!-- .bbp-topic-header -->
 
-<div id="post-<?php bbp_topic_id(); ?>" <?php bbp_topic_class(); ?>>
+<div id="post-<?php bbp_topic_id(); ?>" <?php bbp_search_results_class(); ?>>
 
 	<div class="bbp-topic-author">
-
+	
 		<?php do_action( 'bbp_theme_before_topic_author_details' ); ?>
 		
 		<?php echo profile_photo( bbp_get_topic_author_id(), array('width' => 60, 'height' => 60) ); ?>
