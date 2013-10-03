@@ -40,7 +40,7 @@
 	</li><!-- .bbp-body -->
 
 	<li class="bbp-footer">
-		<a href="#replies-top">Back to Top &#9650;</a>
+		<a href="#replies-top">Back to Top &#11014;</a>
 	</li><!-- .bbp-footer -->
 
 </ul><!-- #topic-<?php bbp_topic_id(); ?>-replies -->
