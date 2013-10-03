@@ -1038,20 +1038,7 @@ html, body { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; }
 
 html, html > body.bbpress { background: transparent url('../img/forums/brickwall_tan.png?v=1380741723') repeat 0px 0px; height: auto; }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-.bbpress #container { background: #fff; -webkit-box-shadow: 0px 10px 15px 1px #999; box-shadow: 0px 10px 15px 1px #999; }
-<<<<<<< HEAD
->>>>>>> 25f4725... added semi-bold to font weights being pulled in from fonts.googleapis. titlebar uses the semi-bold font weight.
-=======
->>>>>>> cf50766... updated arrow in the .bbp-footer section, and made the font a touch smaller.
->>>>>>> committing modified type-forum.css since it will get overwritten by sass later.
-=======
 .bbpress #container { padding: 0px 10px; background: #fff; -webkit-box-shadow: 0px 10px 15px 1px #999; box-shadow: 0px 10px 15px 1px #999; }
->>>>>>> recompiled type-forum.css from SASS.
-=======
-.bbpress #container { padding: 0px 10px; background: #fff; -webkit-box-shadow: 0px 10px 15px 1px #999; box-shadow: 0px 10px 15px 1px #999; }
->>>>>>> updated CSS
 .bbpress #container #content > section.span12 { border-top: 1px dotted #ccc; }
 .bbpress #container #comm-forums-main { border-right: 1px dotted #ccc; padding-top: 15px; padding-right: 5px; position: relative; }
 .bbpress #container #comm-forums-main #bbpress-forums .bbp-topics { border: 0; }
@@ -1074,26 +1061,8 @@ html, html > body.bbpress { background: transparent url('../img/forums/brickwall
 .bbpress #bbpress-forums .bbp-replies .bbp-forum-freshness, .bbpress #bbpress-forums .bbp-replies .bbp-topic-reply-count { font-size: 10px; }
 .bbpress #bbpress-forums .bbp-form { border: 0; padding: 5px; }
 .bbpress #bbpress-forums .bbp-header, .bbpress #bbpress-forums .bbp-footer { background-color: #eee; }
-<<<<<<< HEAD
-<<<<<<< HEAD
-.bbpress #bbpress-forums .bbp-header { font-size: 14px; color: #666; }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 .bbpress #bbpress-forums .bbp-header { font-size: 14px; color: #666; font-weight: 600; /* Semi-bold */ }
->>>>>>> 25f4725... added semi-bold to font weights being pulled in from fonts.googleapis. titlebar uses the semi-bold font weight.
-=======
-<<<<<<< HEAD
-=======
 .bbpress #bbpress-forums .bbp-footer { font-size: 10px; }
->>>>>>> cf50766... updated arrow in the .bbp-footer section, and made the font a touch smaller.
->>>>>>> committing modified type-forum.css since it will get overwritten by sass later.
-=======
-.bbpress #bbpress-forums .bbp-footer { font-size: 10px; }
->>>>>>> recompiled type-forum.css from SASS.
-=======
-.bbpress #bbpress-forums .bbp-header { font-size: 14px; color: #666; font-weight: 600; /* Semi-bold */ }
->>>>>>> updated CSS
 .bbpress #bbpress-forums .reply { border-bottom: 1px dotted #ccc; }
 .bbpress #bbpress-forums .reply:last-child { border-bottom: 0; }
 .bbpress .bbp-pagination { display: inline-block; float: right; position: relative; width: auto; margin-bottom: 10px; }
@@ -1152,17 +1121,6 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 .sears.forum-archive #comm-forums-main h1 { color: #87CDEC; }
 
 .kmart.forum-archive #comm-forums-main #forums-head { background: url('../img/forums/kmart_forumsLogo.gif?v=1380741723') no-repeat; height: 86px; }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 25f4725... added semi-bold to font weights being pulled in from fonts.googleapis. titlebar uses the semi-bold font weight.
-=======
->>>>>>> cf50766... updated arrow in the .bbp-footer section, and made the font a touch smaller.
->>>>>>> committing modified type-forum.css since it will get overwritten by sass later.
-=======
->>>>>>> recompiled type-forum.css from SASS.
-=======
->>>>>>> updated CSS
 .kmart.forum-archive #comm-forums-main h1 { color: #E82E2C; }
 
 .forum #comm-forums-main #forums-thread-top { position: relative; }
