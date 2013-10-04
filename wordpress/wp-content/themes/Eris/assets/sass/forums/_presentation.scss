@@ -66,6 +66,12 @@ html, html > body.bbpress {
 				margin: 16px;
 				padding: 9px 16px 1px;
 			}
+			.odd {
+				background-color: #fff;
+			}
+			.even {
+				background-color: #f6f6f6;
+			}
 		}
 		// First Post in a Topic
 		.bbp-lead-topic{
