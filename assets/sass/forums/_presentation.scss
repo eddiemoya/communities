@@ -63,14 +63,21 @@ html, html > body.bbpress {
 				margin-bottom:16px;
 			}
 			.bbcode-quote {
-				margin: 16px;
+				margin: 10px 17px;
 				padding: 9px 16px 1px;
 			}
 			.odd {
 				background-color: #fff;
+				.bbcode-quote {
+					background-color: #f6f6f6;
+				}
 			}
 			.even {
 				background-color: #f6f6f6;
+				.bbcode-quote {
+					background-color: #fff;
+				}
+				
 			}
 		}
 		// First Post in a Topic
@@ -100,7 +107,7 @@ html, html > body.bbpress {
 			margin-bottom: 2px;
 			.hentry {
 				position: relative;
-				padding-bottom: 30px;
+				padding-bottom: 5px;
 			}
 
 			.forums-single-reply-footer {
