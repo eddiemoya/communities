@@ -225,7 +225,7 @@ function default_post_type() {
         'capability_type' => 'post',
         'map_meta_cap' => true,
         'hierarchical' => false,
-        'rewrite' => array( 'slug' => 'post' ),
+        'rewrite' => array( 'slug' => 'tips-ideas' ),
         'query_var' => false,
         'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'post-formats' ),
     ) );
