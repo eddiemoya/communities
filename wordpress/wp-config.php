@@ -16,13 +16,13 @@
  */
 
 /** The name of the database for WordPress */
-define('DB_NAME', 'comm_local');
+define('DB_NAME', 'comm_int');
 
 /** MySQL database username */
-define('DB_USER', 'wp_user');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'philos10');
+define('DB_PASSWORD', 'searsdev');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
