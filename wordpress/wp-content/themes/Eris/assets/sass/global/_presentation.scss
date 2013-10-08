@@ -172,7 +172,7 @@ ul.bullets {
 }
 
 .error {
-  input[type="text"], input[type="password"] {
+  input[type="text"], input[type="password"], textarea.input_textarea, select {
     border:solid 1px #ff0000;
   }
   .error-message {
