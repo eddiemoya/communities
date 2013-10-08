@@ -35,4 +35,5 @@ wordpress/license.txt
 .projects
 .project
 .buildpath
+.wp-tests-version
 
