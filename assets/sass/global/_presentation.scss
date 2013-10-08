@@ -177,7 +177,7 @@ ul.bullets {
   }
   .error-message {
     background-color:#e41e13;
-    color:$lightest-color;
+    color:$lightest-color !important;
     display:block;
     float:left;
     font-weight:bold;

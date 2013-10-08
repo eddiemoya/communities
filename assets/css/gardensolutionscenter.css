@@ -55,7 +55,15 @@ body { font-size: 81.25%; }
 .menu-sears-ribbon-container > ul > li, .menu-kmart-ribbon-container > ul > li { border-left: dotted 1px #666666; display: inline; height: .9375em; padding: 0 .375em 0 .625em; }
 .menu-sears-ribbon-container > ul > li a, .menu-kmart-ribbon-container > ul > li a { display: inline-block; height: 15px; line-height: 16px; text-indent: -999999em; }
 .menu-sears-ribbon-container > ul > li:first-child, .menu-kmart-ribbon-container > ul > li:first-child { border-left: none; }
+<<<<<<< HEAD
 .menu-sears-ribbon-container .menu-item a, .menu-kmart-ribbon-container .menu-item a { background: transparent url('../img/sprite_ribbon.png?v=1375135183') no-repeat; }
+=======
+<<<<<<< HEAD
+.menu-sears-ribbon-container .menu-item a, .menu-kmart-ribbon-container .menu-item a { background: transparent url('../img/sprite_ribbon.png?v=1380040400') no-repeat; }
+=======
+.menu-sears-ribbon-container .menu-item a, .menu-kmart-ribbon-container .menu-item a { background: transparent url('../img/sprite_ribbon.png?v=1375135183') no-repeat; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 .menu-sears-ribbon-container .ribbon_shop-your-way a, .menu-kmart-ribbon-container .ribbon_shop-your-way a { background-position: 0px -30px; width: 59px; }
 .menu-sears-ribbon-container .ribbon_sears a, .menu-kmart-ribbon-container .ribbon_sears a { background-position: 0px 0px; width: 41px; }
 .menu-sears-ribbon-container .ribbon_kmart a, .menu-kmart-ribbon-container .ribbon_kmart a { background-position: 0px -15px; width: 44px; }
@@ -92,7 +100,15 @@ ul.footer_anterior li { color: #666666; }
 ul.footer_anterior li a { color: #666666; font-size: 66.666%; }
 ul.footer_anterior li a:visited { color: #666666; }
 ul.footer_anterior li a:hover { color: #55a3c8; text-decoration: none; }
+<<<<<<< HEAD
 ul.footer_anterior .icon { background-image: url('../img/sprite-footer.png?v=1375135183'); background-repeat: no-repeat; }
+=======
+<<<<<<< HEAD
+ul.footer_anterior .icon { background-image: url('../img/sprite-footer.png?v=1380040400'); background-repeat: no-repeat; }
+=======
+ul.footer_anterior .icon { background-image: url('../img/sprite-footer.png?v=1375135183'); background-repeat: no-repeat; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 ul.footer_anterior .icon a { display: block; height: 16px; text-indent: -9999em; }
 ul.footer_anterior .acc.icon a { height: 30px; }
 ul.footer_anterior .acc { background-position: left top; }
@@ -264,9 +280,21 @@ ul.bullets { list-style-type: disc; }
 
 .error-message { display: none; }
 
+<<<<<<< HEAD
 .error input[type="text"], .error input[type="password"] { border: solid 1px #ff0000; }
 .error .error-message { background-color: #e41e13; color: white; display: block; float: left; font-weight: bold; margin: 10px 0px 0px; padding: 0.307em 1.23em; position: relative; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; }
 .error .error-message .error-pointer { background: transparent url('../img/error_pointer-arrow.png?v=1375135181') no-repeat 0px 0px; height: 9px; display: block; left: 15px; position: absolute; top: -9px; width: 19px; }
+=======
+<<<<<<< HEAD
+.error input[type="text"], .error input[type="password"] { border: solid 1px red; }
+.error .error-message { background-color: #e41e13; color: white; display: block; float: left; font-weight: bold; margin: 10px 0px 0px; padding: 0.307em 1.23em; position: relative; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; }
+.error .error-message .error-pointer { background: transparent url('../img/error_pointer-arrow.png?v=1380040400') no-repeat 0px 0px; height: 9px; display: block; left: 15px; position: absolute; top: -9px; width: 19px; }
+=======
+.error input[type="text"], .error input[type="password"] { border: solid 1px #ff0000; }
+.error .error-message { background-color: #e41e13; color: white !important; display: block; float: left; font-weight: bold; margin: 10px 0px 0px; padding: 0.307em 1.23em; position: relative; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; }
+.error .error-message .error-pointer { background: transparent url('../img/error_pointer-arrow.png?v=1375135181') no-repeat 0px 0px; height: 9px; display: block; left: 15px; position: absolute; top: -9px; width: 19px; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 
 .form-errors { color: #ff0000; }
 
@@ -279,7 +307,15 @@ ul.bullets { list-style-type: disc; }
 .content-container { position: relative; }
 .content-container .content-author, .content-container .content-comments { color: #333333; font-size: 92.307%; margin-bottom: 0.769em; }
 .content-container .content-body { border-top: solid 1px #dddcdc; padding: 0.769em 0; }
+<<<<<<< HEAD
 .content-container .content-body .hr { background: transparent url('../img/background_hr.gif?v=1375135181') repeat-x 0px 0px; height: 1px; padding: 18px 0px; width: 100%; }
+=======
+<<<<<<< HEAD
+.content-container .content-body .hr { background: transparent url('../img/background_hr.gif?v=1380040400') repeat-x 0px 0px; height: 1px; padding: 18px 0px; width: 100%; }
+=======
+.content-container .content-body .hr { background: transparent url('../img/background_hr.gif?v=1375135181') repeat-x 0px 0px; height: 1px; padding: 18px 0px; width: 100%; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 .content-container .content-category { float: left; }
 .content-container .content-date { float: right; line-height: 1.846em; }
 .content-container .content-date .time-stamp { display: inline-block; margin-left: 1.5em; }
@@ -392,7 +428,15 @@ textarea.discussion { border: 1px solid #d6d6d6; height: 10em; width: 99%; -webk
 
 .span3 .recent-activity .excerpt, .span4 .recent-activity .excerpt, .span6 .recent-activity .excerpt { overflow: hidden; text-overflow: ellipsis; }
 
+<<<<<<< HEAD
 .recent_reviews hgroup { background: transparent url('../img/widgets/recent-reviews/background_header-icon-people.png?v=1375135183') no-repeat right bottom; }
+=======
+<<<<<<< HEAD
+.recent_reviews hgroup { background: transparent url('../img/widgets/recent-reviews/background_header-icon-people.png?v=1380040400') no-repeat right bottom; }
+=======
+.recent_reviews hgroup { background: transparent url('../img/widgets/recent-reviews/background_header-icon-people.png?v=1375135183') no-repeat right bottom; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 .recent_reviews .recent-review_title { font-size: 92.307%; font-weight: bold; }
 .recent_reviews .recent-review_review { font-size: 92.307%; line-height: 1.9em; margin-bottom: .5em; }
 .recent_reviews .recent-review_review:before { content: "\201C"; }
@@ -427,7 +471,15 @@ fieldset#use_your_account_from { border-top: 1px solid #cccccc; }
 fieldset#use_your_account_from legend { text-align: center; padding: 1em; }
 
 .login_options { text-align: center; line-height: 2.5; width: 18.461em; margin: 0 auto; }
+<<<<<<< HEAD
 .login_options a { display: inline-block; width: 16px; height: 16px; background: url('../img/sprite-social.png?v=1375135183'); background-repeat: no-repeat; text-indent: -9999em; margin-left: 1.6em; }
+=======
+<<<<<<< HEAD
+.login_options a { display: inline-block; width: 16px; height: 16px; background: url('../img/sprite-social.png?v=1380040400'); background-repeat: no-repeat; text-indent: -9999em; margin-left: 1.6em; }
+=======
+.login_options a { display: inline-block; width: 16px; height: 16px; background: url('../img/sprite-social.png?v=1375135183'); background-repeat: no-repeat; text-indent: -9999em; margin-left: 1.6em; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 .login_options a:first-child, .login_options a:first-child + a, .login_options a:first-child + a + a { margin-left: 0; }
 .login_options .facebook { width: 213px; height: 32px; }
 .login_options .yahoo { width: 28px; }
@@ -449,7 +501,15 @@ fieldset#use_your_account_from legend { text-align: center; padding: 1em; }
 
 .profile .content-container .content-body { border-top: 0; }
 .profile .tabs { border-bottom: 1px solid #cccccc; position: relative; top: 1px; }
+<<<<<<< HEAD
 .profile .tabs li { float: left; min-width: 23.404255319148938%; margin-left: 2.127659574468085%; font-size: 107.692%; border: solid #cccccc; border-width: 1px 1px 0 1px; text-align: center; -webkit-border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -ms-border-radius: 5px 5px 0 0; -o-border-radius: 5px 5px 0 0; border-radius: 5px 5px 0 0; background: #e4e0df url('../img/sears/sprite_navigation.png?v=1375135183'); }
+=======
+<<<<<<< HEAD
+.profile .tabs li { float: left; min-width: 23.404255319148938%; margin-left: 2.127659574468085%; font-size: 107.692%; border: solid #cccccc; border-width: 1px 1px 0 1px; text-align: center; -webkit-border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -ms-border-radius: 5px 5px 0 0; -o-border-radius: 5px 5px 0 0; border-radius: 5px 5px 0 0; background: #e4e0df url('../img/sears/sprite_navigation.png?v=1380040400'); }
+=======
+.profile .tabs li { float: left; min-width: 23.404255319148938%; margin-left: 2.127659574468085%; font-size: 107.692%; border: solid #cccccc; border-width: 1px 1px 0 1px; text-align: center; -webkit-border-radius: 5px 5px 0 0; -moz-border-radius: 5px 5px 0 0; -ms-border-radius: 5px 5px 0 0; -o-border-radius: 5px 5px 0 0; border-radius: 5px 5px 0 0; background: #e4e0df url('../img/sears/sprite_navigation.png?v=1375135183'); }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 .profile .tabs a { display: block; padding: 1em 0 .6em 0; }
 .profile .tabs li { background-position: left -81px; }
 .profile .tabs .active { position: relative; top: 1px; background: white; padding: 1em 0 .6em 0; }
@@ -496,10 +556,23 @@ fieldset#use_your_account_from legend { text-align: center; padding: 1em; }
 
 .tooltip { display: none; position: absolute; width: 250px; z-index: 1000003; }
 .tooltip .arrow { left: -10px; position: absolute; }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+.tooltip .arrow .left { background: url('../img/arrow-left.png?v=1380040400'); height: 22px; position: relative; width: 12px; }
+.tooltip .arrow .top { background: url('../img/arrow-top.png?v=1380040400'); height: 12px; position: relative; top: 1px; width: 22px; }
+.tooltip .arrow .topBorder { background-color: transparent; border-color: transparent transparent white transparent; border-style: solid; border-width: 0px 9px 9px 9px; width: 0px; height: 0px; position: relative; left: 1px; top: -9px; }
+.tooltip .middle { -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; background-color: white; border: 1px solid #a0c7ff; color: black; float: left; padding: 7px; }
+=======
+>>>>>>> 1a2b276... Error messaging text is now white.
 .tooltip .arrow .left { background: url('../img/arrow-left.png?v=1375135181'); height: 22px; position: relative; width: 12px; }
 .tooltip .arrow .top { background: url('../img/arrow-top.png?v=1375135181'); height: 12px; position: relative; top: 1px; width: 22px; }
 .tooltip .arrow .topBorder { background-color: transparent; border-color: transparent transparent #fff transparent; border-style: solid; border-width: 0px 9px 9px 9px; width: 0px; height: 0px; position: relative; left: 1px; top: -9px; }
 .tooltip .middle { -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; background-color: white; border: 1px solid #A0C7FF; color: black; float: left; padding: 7px; }
+<<<<<<< HEAD
+=======
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 .tooltip .middle input { margin-top: 7px; }
 .tooltip .middle .azure { float: right; }
 .tooltip .middle textarea { width: 99%; padding: 0; }
@@ -526,7 +599,15 @@ fieldset#use_your_account_from legend { text-align: center; padding: 1em; }
 .expert, #allComments .expert { background: #f2f2f2; }
 
 .actions { float: right; position: relative; z-index: 10; }
+<<<<<<< HEAD
 .actions button { cursor: pointer; color: #4e74a3; border: 1px solid #d6d6d6; font-weight: bold; background: white url('../img/sprite-actions.png?v=1375135183') no-repeat; display: inline-block; float: right; text-indent: -999em; width: 2em; margin-left: 1em; padding: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; -webkit-box-shadow: #666666 1px 2px 4px; -moz-box-shadow: #666666 1px 2px 4px; box-shadow: #666666 1px 2px 4px; }
+=======
+<<<<<<< HEAD
+.actions button { cursor: pointer; color: #4e74a3; border: 1px solid #d6d6d6; font-weight: bold; background: white url('../img/sprite-actions.png?v=1380040400') no-repeat; display: inline-block; float: right; text-indent: -999em; width: 2em; margin-left: 1em; padding: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; -webkit-box-shadow: #666666 1px 2px 4px; -moz-box-shadow: #666666 1px 2px 4px; box-shadow: #666666 1px 2px 4px; }
+=======
+.actions button { cursor: pointer; color: #4e74a3; border: 1px solid #d6d6d6; font-weight: bold; background: white url('../img/sprite-actions.png?v=1375135183') no-repeat; display: inline-block; float: right; text-indent: -999em; width: 2em; margin-left: 1em; padding: 2px; -webkit-border-radius: 2px; -moz-border-radius: 2px; -ms-border-radius: 2px; -o-border-radius: 2px; border-radius: 2px; -webkit-box-shadow: #666666 1px 2px 4px; -moz-box-shadow: #666666 1px 2px 4px; box-shadow: #666666 1px 2px 4px; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 .actions .addthis_toolbox { float: left; }
 
 .reply { float: left; }
@@ -577,11 +658,27 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .ad-widget h1 { color: #cfcece; font-size: 76.923%; font-weight: normal; text-align: center; text-transform: uppercase; }
 
 .site-error { margin-top: 2em; }
+<<<<<<< HEAD
 .site-error .span8, .site-error .span10 { background: url('../img/tile_line.gif?v=1375135183'); margin-top: 2em; }
 .site-error .message { color: white; margin: 1em; text-align: center; padding: 9em 0; }
 .site-error .message h1 { font-size: 184.615%; font-family: Impact, Charcoal, sans-serif; letter-spacing: .066em; }
 .site-error .message h2 { font-size: 246.153%; font-family: Georgia, serif; margin-top: 1em; }
 .site-error .message .tape { background: url('../img/tile_line.gif?v=1375135183'); width: 50%; margin: .66em auto; line-height: .5; }
+=======
+<<<<<<< HEAD
+.site-error .span8, .site-error .span10 { background: url('../img/tile_line.gif?v=1380040400'); margin-top: 2em; }
+.site-error .message { color: white; margin: 1em; text-align: center; padding: 9em 0; }
+.site-error .message h1 { font-size: 184.615%; font-family: Impact, Charcoal, sans-serif; letter-spacing: .066em; }
+.site-error .message h2 { font-size: 246.153%; font-family: Georgia, serif; margin-top: 1em; }
+.site-error .message .tape { background: url('../img/tile_line.gif?v=1380040400'); width: 50%; margin: 0.66em auto; line-height: .5; }
+=======
+.site-error .span8, .site-error .span10 { background: url('../img/tile_line.gif?v=1375135183'); margin-top: 2em; }
+.site-error .message { color: white; margin: 1em; text-align: center; padding: 9em 0; }
+.site-error .message h1 { font-size: 184.615%; font-family: Impact, Charcoal, sans-serif; letter-spacing: .066em; }
+.site-error .message h2 { font-size: 246.153%; font-family: Georgia, serif; margin-top: 1em; }
+.site-error .message .tape { background: url('../img/tile_line.gif?v=1375135183'); width: 50%; margin: .66em auto; line-height: .5; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 
 .error404 { color: #333333; }
 .error404 h1 { font-size: 169.23%; font-weight: bold; margin-bottom: 1.23em; }
@@ -589,11 +686,27 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .error404 ul { margin-top: 0px; }
 
 .site-error { margin-top: 2em; }
+<<<<<<< HEAD
 .site-error .span8, .site-error .span10 { background: url('../img/tile_line.gif?v=1375135183'); margin-top: 2em; }
 .site-error .message { color: white; margin: 1em; text-align: center; padding: 9em 0; }
 .site-error .message h1 { font-size: 184.615%; font-family: Impact, Charcoal, sans-serif; letter-spacing: .066em; }
 .site-error .message h2 { font-size: 246.153%; font-family: Georgia, serif; margin-top: 1em; }
 .site-error .message .tape { background: url('../img/tile_line.gif?v=1375135183'); width: 50%; margin: .66em auto; line-height: .5; }
+=======
+<<<<<<< HEAD
+.site-error .span8, .site-error .span10 { background: url('../img/tile_line.gif?v=1380040400'); margin-top: 2em; }
+.site-error .message { color: white; margin: 1em; text-align: center; padding: 9em 0; }
+.site-error .message h1 { font-size: 184.615%; font-family: Impact, Charcoal, sans-serif; letter-spacing: .066em; }
+.site-error .message h2 { font-size: 246.153%; font-family: Georgia, serif; margin-top: 1em; }
+.site-error .message .tape { background: url('../img/tile_line.gif?v=1380040400'); width: 50%; margin: 0.66em auto; line-height: .5; }
+=======
+.site-error .span8, .site-error .span10 { background: url('../img/tile_line.gif?v=1375135183'); margin-top: 2em; }
+.site-error .message { color: white; margin: 1em; text-align: center; padding: 9em 0; }
+.site-error .message h1 { font-size: 184.615%; font-family: Impact, Charcoal, sans-serif; letter-spacing: .066em; }
+.site-error .message h2 { font-size: 246.153%; font-family: Georgia, serif; margin-top: 1em; }
+.site-error .message .tape { background: url('../img/tile_line.gif?v=1375135183'); width: 50%; margin: .66em auto; line-height: .5; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 
 .featured-category-question .content-header { border-top: none; padding: 0px; }
 .featured-category-question .content-header h1 { font-size: 146.153%; font-weight: normal; }
@@ -604,7 +717,15 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .member_avatar { overflow: hidden; word-wrap: break-word; }
 .member_avatar a:hover { text-decoration: none; }
 .member_avatar img { width: 100%; }
+<<<<<<< HEAD
 .member_avatar .badge { background: #1885bb url('../img/sears/sprite_global.png?v=1375135183') repeat-x 0px 0px; color: white; display: block; text-align: center; width: 100%; }
+=======
+<<<<<<< HEAD
+.member_avatar .badge { background: #1885bb url('../img/sears/sprite_global.png?v=1380040400') repeat-x 0px 0px; color: white; display: block; text-align: center; width: 100%; }
+=======
+.member_avatar .badge { background: #1885bb url('../img/sears/sprite_global.png?v=1375135183') repeat-x 0px 0px; color: white; display: block; text-align: center; width: 100%; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 
 .member-list .member-wrapper { border-left: solid 1px #d5d5d5; padding: 0.769em; }
 .member-list > li:first-child .member-wrapper { border-left: none; }
@@ -753,14 +874,30 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
 
 #moodle_overlay { background: rgba(0, 0, 0, 0.5); }
 
+<<<<<<< HEAD
 .no-rgba #moodle_overlay { background: transparent url('../img/background_overlay_no-rgba.png?v=1375135181') repeat 0px 0px; }
+=======
+<<<<<<< HEAD
+.no-rgba #moodle_overlay { background: transparent url('../img/background_overlay_no-rgba.png?v=1380040400') repeat 0px 0px; }
+=======
+.no-rgba #moodle_overlay { background: transparent url('../img/background_overlay_no-rgba.png?v=1375135181') repeat 0px 0px; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 
 #moodle_window { background: rgba(143, 199, 252, 0.3); padding: 0.923em; -webkit-border-radius: 20px; -moz-border-radius: 20px; -ms-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; }
 #moodle_window .loading { height: 100%; min-height: 3.692em; min-width: 3.692em; text-align: center; width: 100%; }
 
 #moodle_container { background: #ffffff; height: 100%; width: 100%; -webkit-border-radius: 10px; -moz-border-radius: 10px; -ms-border-radius: 10px; -o-border-radius: 10px; border-radius: 10px; }
 
+<<<<<<< HEAD
 #moodle_container .close-button { background: transparent url('../img/modal_close-button.png?v=1375135182') no-repeat 0px 0px; height: 8px; width: 35px; }
+=======
+<<<<<<< HEAD
+#moodle_container .close-button { background: transparent url('../img/modal_close-button.png?v=1380040400') no-repeat 0px 0px; height: 8px; width: 35px; }
+=======
+#moodle_container .close-button { background: transparent url('../img/modal_close-button.png?v=1375135182') no-repeat 0px 0px; height: 8px; width: 35px; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 
 .moodle_transit { left: -99999em; opacity: 0; position: absolute; top: -99999em; visibility: hidden; max-width: 940px; }
 
@@ -822,7 +959,15 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
 
 .open-id_service { display: inline-block; margin: 8px 7px; }
 
+<<<<<<< HEAD
 .open-id_service a { background: transparent url('../img/sprite_open-id-services.png?v=1375135183') no-repeat 0px 0px; display: block; text-indent: -9999em; }
+=======
+<<<<<<< HEAD
+.open-id_service a { background: transparent url('../img/sprite_open-id-services.png?v=1380040400') no-repeat 0px 0px; display: block; text-indent: -9999em; }
+=======
+.open-id_service a { background: transparent url('../img/sprite_open-id-services.png?v=1375135183') no-repeat 0px 0px; display: block; text-indent: -9999em; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 
 .open-id_facebook a { height: 33px; width: 214px; }
 
@@ -861,7 +1006,15 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
 .wp-polls .options li span { text-align: right; }
 .wp-polls .polls_submit { margin-top: 1.5em; margin-left: 19.6979%; }
 .wp-polls .sears_button { margin-left: -1em; }
+<<<<<<< HEAD
 .wp-polls .polls_error { color: red; padding-left: 1.3em; margin: .5em 0; background: url('../img/error-arrow.png?v=1375135181') no-repeat top left; }
+=======
+<<<<<<< HEAD
+.wp-polls .polls_error { color: red; padding-left: 1.3em; margin: 0.5em 0; background: url('../img/error-arrow.png?v=1380040400') no-repeat top left; }
+=======
+.wp-polls .polls_error { color: red; padding-left: 1.3em; margin: .5em 0; background: url('../img/error-arrow.png?v=1375135181') no-repeat top left; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 .wp-polls .figures { text-align: right; }
 .wp-polls .bar { line-height: .8; margin: .3em 0; }
 .wp-polls .total { line-height: 1; padding-top: 1.3em; }
@@ -872,7 +1025,15 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
 
 .wp-polls-loading { display: none; text-align: center; height: 16px; line-height: 16px; }
 
+<<<<<<< HEAD
 .dropzone.span8 .hero-slider { background: url('../img/hero-slider-bg.png?v=1375135181') center center; width: 620px; height: 360px; position: relative; }
+=======
+<<<<<<< HEAD
+.dropzone.span8 .hero-slider { background: url('../img/hero-slider-bg.png?v=1380040400') center center; width: 620px; height: 360px; position: relative; }
+=======
+.dropzone.span8 .hero-slider { background: url('../img/hero-slider-bg.png?v=1375135181') center center; width: 620px; height: 360px; position: relative; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 
 .hero-slider .rotating-banner { overflow: hidden; position: relative; width: 579px; height: 315px; z-index: 25; left: 20px; top: 10px; }
 .hero-slider .rotating-banner .content-headline { position: absolute; top: 260px; width: 100%; background: #000000; background: rgba(0, 0, 0, 0.5); color: #ffffff; font-weight: normal; padding: 5px 10px 5px 15px; }
@@ -883,8 +1044,18 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
 .hero-slider .rotating-banner .rotating-banner-navigation a { background-color: #ffffff; display: block; float: left; height: 1em; margin-right: .5em; width: 1em; z-index: 30; }
 .hero-slider .rotating-banner .banner.banner_link { cursor: pointer; }
 .hero-slider .rotating-banner .in-transit { z-index: 24; }
+<<<<<<< HEAD
 .hero-slider a.prev-slide { background: url('../img/hero-slide-left.png?v=1375135181') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; left: 0px; z-index: 30; }
 .hero-slider a.next-slide { background: url('../img/hero-slide-right.png?v=1375135181') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; right: 1px; z-index: 30; }
+=======
+<<<<<<< HEAD
+.hero-slider a.prev-slide { background: url('../img/hero-slide-left.png?v=1380040400') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; left: 0px; z-index: 30; }
+.hero-slider a.next-slide { background: url('../img/hero-slide-right.png?v=1380040400') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; right: 1px; z-index: 30; }
+=======
+.hero-slider a.prev-slide { background: url('../img/hero-slide-left.png?v=1375135181') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; left: 0px; z-index: 30; }
+.hero-slider a.next-slide { background: url('../img/hero-slide-right.png?v=1375135181') center center transparent; width: 40px; height: 100px; position: absolute; top: 115px; right: 1px; z-index: 30; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 
 .pre-load > *:first-child { display: block; left: auto; position: relative; top: auto; }
 
@@ -1007,7 +1178,15 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
 
 .kmart .footer_anterior p { font-size: 76.923%; margin-top: .5em; text-align: center; }
 
+<<<<<<< HEAD
 html { background: transparent url('../img/gardensolutionscenter/background_main-grass.jpg?v=1375135181') repeat 0px 0px; height: auto; color: #3b2314; }
+=======
+<<<<<<< HEAD
+html { background: transparent url('../img/gardensolutionscenter/background_main-grass.jpg?v=1380040400') repeat 0px 0px; height: auto; color: #3b2314; }
+=======
+html { background: transparent url('../img/gardensolutionscenter/background_main-grass.jpg?v=1375135181') repeat 0px 0px; height: auto; color: #3b2314; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 
 body, td, p { color: #3b2314; }
 
@@ -1032,11 +1211,27 @@ body, td, p { color: #3b2314; }
 .content-container.image-widget { background: none; }
 .content-container.image-widget .content-body { border: none; padding: 0px; }
 
+<<<<<<< HEAD
+.featured-post-type-post .content-header, .kmart.archive_posts .page-title, .kmart.single-post .page-title { background-image: url('../img/gardensolutionscenter/icon_post_29x29.png?v=1375135181'); background-repeat: no-repeat; }
+=======
+<<<<<<< HEAD
+.featured-post-type-post .content-header, .kmart.archive_posts .page-title, .kmart.single-post .page-title { background-image: url('../img/gardensolutionscenter/icon_post_29x29.png?v=1380040400'); background-repeat: no-repeat; }
+>>>>>>> 1a2b276... Error messaging text is now white.
+
+.featured-post-type-guide .content-header, .kmart.archive_guides .page-title, .kmart.single-guide .page-title { background-image: url('../img/gardensolutionscenter/icon_guide_29x29.png?v=1375135181'); background-repeat: no-repeat; }
+
+<<<<<<< HEAD
+.featured-post-type-question .content-header, .kmart.archive_questions .page-title, .kmart.single-question .page-title { background-image: url('../img/gardensolutionscenter/icon_question_29x29.png?v=1375135181'); background-repeat: no-repeat; }
+=======
+.featured-post-type-question .content-header, .kmart.archive_questions .page-title, .kmart.single-question .page-title { background-image: url('../img/gardensolutionscenter/icon_question_29x29.png?v=1380040400'); background-repeat: no-repeat; }
+=======
 .featured-post-type-post .content-header, .kmart.archive_posts .page-title, .kmart.single-post .page-title { background-image: url('../img/gardensolutionscenter/icon_post_29x29.png?v=1375135181'); background-repeat: no-repeat; }
 
 .featured-post-type-guide .content-header, .kmart.archive_guides .page-title, .kmart.single-guide .page-title { background-image: url('../img/gardensolutionscenter/icon_guide_29x29.png?v=1375135181'); background-repeat: no-repeat; }
 
 .featured-post-type-question .content-header, .kmart.archive_questions .page-title, .kmart.single-question .page-title { background-image: url('../img/gardensolutionscenter/icon_question_29x29.png?v=1375135181'); background-repeat: no-repeat; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 
 .featured-post-type-post .content-header { background-color: transparent; background-position: 10px 10px; padding-left: 3.77em; }
 
@@ -1114,7 +1309,15 @@ body, td, p { color: #3b2314; }
 
 .hero-slider .content-body { border: none; padding: 0.769em 0; }
 
+<<<<<<< HEAD
 #header.kmart form #button_search, #header.kmart form #input_search, .kmart_button { background-image: url('../img/kmart/sprite_global.png?v=1375135182'); }
+=======
+<<<<<<< HEAD
+#header.kmart form #button_search, #header.kmart form #input_search, .kmart_button { background-image: url('../img/kmart/sprite_global.png?v=1380040400'); }
+=======
+#header.kmart form #button_search, #header.kmart form #input_search, .kmart_button { background-image: url('../img/kmart/sprite_global.png?v=1375135182'); }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 
 .kmart a { color: #006633; text-decoration: none; }
 .kmart a:hover { text-decoration: underline; }
@@ -1123,7 +1326,15 @@ body, td, p { color: #3b2314; }
 .kmart .post h1, .kmart .question h1 { color: #006633; }
 .kmart .answers-toggle, .kmart .upload-photo label { color: #006633; }
 .kmart .rating-bar { background: #db150d; }
+<<<<<<< HEAD
 .kmart .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1375135183') repeat-x 0 -200px; }
+=======
+<<<<<<< HEAD
+.kmart .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1380040400') repeat-x 0 -200px; }
+=======
+.kmart .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1375135183') repeat-x 0 -200px; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 .kmart .breadcrumb li:before { color: #006633; }
 .kmart .no-results .term { color: #006633; }
 .kmart .page-title { background-color: #faf9f2; color: #3b2314; }
@@ -1132,7 +1343,15 @@ body, td, p { color: #3b2314; }
 .kmart.archive_posts .page-title, .kmart.single-post .page-title { background-color: #faf9f2; background-position: 0px 6px; }
 .kmart.archive_guides .page-title, .kmart.single-guide .page-title { background-color: #faf9f2; background-position: 0px 6px; }
 .kmart.archive_questions .page-title, .kmart.single-question .page-title { background-color: #faf9f2; background-position: 0px 6px; }
+<<<<<<< HEAD
 .kmart .featured-post-type-post.format-video .content-header, .kmart .featured-post-type-guide.format-video .content-header { background-image: url('../img/gardensolutionscenter/icon_video_29x29.png?v=1375135181'); }
+=======
+<<<<<<< HEAD
+.kmart .featured-post-type-post.format-video .content-header, .kmart .featured-post-type-guide.format-video .content-header { background-image: url('../img/gardensolutionscenter/icon_video_29x29.png?v=1380040400'); }
+=======
+.kmart .featured-post-type-post.format-video .content-header, .kmart .featured-post-type-guide.format-video .content-header { background-image: url('../img/gardensolutionscenter/icon_video_29x29.png?v=1375135181'); }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 .kmart .site-error .message { background: #8f2225; }
 .kmart .member_avatar .badge { background-position: 0px -243px; }
 .kmart .recent_activity .recent-activity_category-time a { text-decoration: underline; }
@@ -1142,11 +1361,27 @@ body, td, p { color: #3b2314; }
 
 .kmart_button { border-left: solid #ff9e6c; border-right: solid #cc6f35; border-width: 0px 1px; color: white; cursor: pointer; font-weight: bold; height: 32px; margin-right: 1em; padding: 0em 1.5em; position: relative; text-shadow: 1px 1px 1; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; background-position: 0px -96px; }
 
+<<<<<<< HEAD
+.kmart_button.azure { background-image: url('../img/sears/sprite_global.png?v=1375135183'); border-color: #60768b; color: #366392; text-shadow: none; background-position: 0px -140px; margin-right: 0px; }
+=======
+<<<<<<< HEAD
+.kmart_button.azure { background-image: url('../img/sears/sprite_global.png?v=1380040400'); border-color: #60768b; color: #366392; text-shadow: none; background-position: 0px -140px; margin-right: 0px; }
+>>>>>>> 1a2b276... Error messaging text is now white.
+
+.kmart .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1375135183') repeat-x 0 -200px; }
+
+<<<<<<< HEAD
+.kmart #header_nav.dropmenu, .kmart #header_nav.dropmenu > li > span span, .kmart #header_nav.dropmenu > li a span, .kmart #header_nav.dropmenu > li.right_button, .kmart #footer_nav.dropmenu > li > span span, .kmart #footer_nav.dropmenu > li a span { background-image: url('../img/kmart/sprite_navigation.png?v=1375135182'); }
+=======
+.kmart #header_nav.dropmenu, .kmart #header_nav.dropmenu > li > span span, .kmart #header_nav.dropmenu > li a span, .kmart #header_nav.dropmenu > li.right_button, .kmart #footer_nav.dropmenu > li > span span, .kmart #footer_nav.dropmenu > li a span { background-image: url('../img/kmart/sprite_navigation.png?v=1380040400'); }
+=======
 .kmart_button.azure { background-image: url('../img/sears/sprite_global.png?v=1375135183'); border-color: #60768b; color: #366392; text-shadow: none; background-position: 0px -140px; margin-right: 0px; }
 
 .kmart .comment-actions button { background: transparent url('../img/sears/sprite_global.png?v=1375135183') repeat-x 0 -200px; }
 
 .kmart #header_nav.dropmenu, .kmart #header_nav.dropmenu > li > span span, .kmart #header_nav.dropmenu > li a span, .kmart #header_nav.dropmenu > li.right_button, .kmart #footer_nav.dropmenu > li > span span, .kmart #footer_nav.dropmenu > li a span { background-image: url('../img/kmart/sprite_navigation.png?v=1375135182'); }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 
 .kmart #header_nav.dropmenu { background-color: #e4e0df; background-repeat: repeat-x; border-left: 1px solid #cccccc; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; }
 .kmart #header_nav.dropmenu > li { border-right: 1px solid #cccccc; width: 12.5%; padding: 1px 0; font-size: 92.307%; }
@@ -1156,7 +1391,15 @@ body, td, p { color: #3b2314; }
 .kmart #header_nav.dropmenu > li.right_button { float: right; background-color: #e02334; -webkit-border-radius: 0px 4px 4px 0px; -moz-border-radius: 0px 4px 4px 0px; -ms-border-radius: 0px 4px 4px 0px; -o-border-radius: 0px 4px 4px 0px; border-radius: 0px 4px 4px 0px; border-left: 1px solid #cccccc; border-right: 0; }
 .kmart #header_nav.dropmenu > li.right_button a { border-right: 0; color: white; }
 .kmart #header_nav.dropmenu > li.right_button { background-position: left -161px; }
+<<<<<<< HEAD
 .kmart #header_nav.dropmenu ul { background: white url('../img/sprite-menu.png?v=1375135183'); background-repeat: repeat-x; padding: 4px 0; }
+=======
+<<<<<<< HEAD
+.kmart #header_nav.dropmenu ul { background: white url('../img/sprite-menu.png?v=1380040400'); background-repeat: repeat-x; padding: 4px 0; }
+=======
+.kmart #header_nav.dropmenu ul { background: white url('../img/sprite-menu.png?v=1375135183'); background-repeat: repeat-x; padding: 4px 0; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 .kmart #header_nav.dropmenu ul > li { font-size: 91.666%; }
 .kmart #header_nav.dropmenu ul > li > span:hover, .kmart #header_nav.dropmenu ul > li a:hover { color: white; text-decoration: none; background: red; }
 .kmart #header_nav.dropmenu ul { -webkit-box-shadow: #a8a8a8 2px 2px 8px; -moz-box-shadow: #a8a8a8 2px 2px 8px; box-shadow: #a8a8a8 2px 2px 8px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; border: 1px solid #cccccc; }
@@ -1208,9 +1451,21 @@ body, td, p { color: #3b2314; }
 #content > section.span12 > section.span8 > .dropzone-inner-wrapper > .communities_menu_widget:first-child .content-header:first-child, #content > section.span12 > section.span8 > .dropzone-inner-wrapper > .communities_menu_widget:first-child .content-body { padding: 0; border: 0; }
 
 .kmart #moodle_window { background: rgba(253, 190, 81, 0.3); }
+<<<<<<< HEAD
 .kmart .loading { background: transparent url('../img/kmart/background_loading.gif?v=1375135182') no-repeat center center; }
 
 .no-rgba .kmart #moodle_window { background: transparent url('../img/kmart/background_modal-border_no-rgba.png?v=1375135182') repeat 0px 0px; }
+=======
+<<<<<<< HEAD
+.kmart .loading { background: transparent url('../img/kmart/background_loading.gif?v=1380040400') no-repeat center center; }
+
+.no-rgba .kmart #moodle_window { background: transparent url('../img/kmart/background_modal-border_no-rgba.png?v=1380040400') repeat 0px 0px; }
+=======
+.kmart .loading { background: transparent url('../img/kmart/background_loading.gif?v=1375135182') no-repeat center center; }
+
+.no-rgba .kmart #moodle_window { background: transparent url('../img/kmart/background_modal-border_no-rgba.png?v=1375135182') repeat 0px 0px; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 
 .kmart .sharebutton { color: #980017; }
 
@@ -1234,7 +1489,15 @@ body, td, p { color: #3b2314; }
 .taxonomy-widget_grid h5 { font-size: 107.692%; font-weight: bold; margin: 1em 0px 0.5em; }
 .taxonomy-widget_grid li { margin-top: .769em; text-align: center; }
 .taxonomy-widget_grid .taxonomy-drop-down-menu { padding: 1em 0px; text-align: center; }
+<<<<<<< HEAD
 .taxonomy-widget_grid .content-body { background: transparent url('../img/widgets/taxonomy/background_taxonomy-department-select-widget.jpg?v=1376076947') repeat-x left bottom; }
+=======
+<<<<<<< HEAD
+.taxonomy-widget_grid .content-body { background: transparent url('../img/widgets/taxonomy/background_taxonomy-department-select-widget.jpg?v=1380040765') repeat-x left bottom; }
+=======
+.taxonomy-widget_grid .content-body { background: transparent url('../img/widgets/taxonomy/background_taxonomy-department-select-widget.jpg?v=1376076947') repeat-x left bottom; }
+>>>>>>> 90bb463... Error messaging text is now white.
+>>>>>>> 1a2b276... Error messaging text is now white.
 
 .taxonomy-widget_list .department .content-headline { font-size: 107.692%; }
 .taxonomy-widget_list .department:first-child .content-body { border-top: none; }
