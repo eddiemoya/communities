@@ -1062,6 +1062,7 @@ html, html > body.bbpress { background: transparent url('../img/forums/brickwall
 .bbpress #bbpress-forums .bbp-lead-topic .bbp-body { margin-top: 2px; }
 .bbpress #bbpress-forums .bbp-lead-topic .bbp-body .hentry { padding: 0; margin-left: 8px; }
 .bbpress #bbpress-forums .bbp-lead-topic .bbp-topic-content { margin-left: 80px; padding: 0px; }
+.bbpress #bbpress-forums .bbp-lead-topic .even { background-color: #fff; }
 .bbpress #bbpress-forums .bbp-replies { border: 0; margin-bottom: 2px; }
 .bbpress #bbpress-forums .bbp-replies .hentry { position: relative; padding-bottom: 5px; }
 .bbpress #bbpress-forums .bbp-replies .forums-single-reply-footer { position: absolute; bottom: 5px; right: 28px; }
@@ -1078,7 +1079,7 @@ html, html > body.bbpress { background: transparent url('../img/forums/brickwall
 
 h3 { font-size: 20px; font-weight: bold; color: #444; }
 
-.forums-post-author-date { font-size: 10px; margin-bottom: 20px; }
+.forums-post-author-date { font-size: 10px; margin-bottom: 5px; }
 
 #forums-topic-reply-link { display: inline-block; }
 
@@ -1159,7 +1160,7 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 .forum-search #comm-forums-main #bbp-search-results .bbp-body { border-top: 1px dotted #ccc; margin-top: 2px; }
 .forum-search #comm-forums-main #bbp-search-results .bbp-body h3 { font-size: 16px; }
 .forum-search #comm-forums-main #bbp-search-results .bbp-body .forum h3, .forum-search #comm-forums-main #bbp-search-results .bbp-body .reply h3, .forum-search #comm-forums-main #bbp-search-results .bbp-body .topic h3 { font-size: 12px; font-weight: normal; margin: 5px; }
-.forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-forum-content, .forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-reply-content, .forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-topic-content { margin-left: 100px; padding: 8px 12px 8px 0; }
+.forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-forum-content, .forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-reply-content, .forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-topic-content { margin-left: 80px; padding: 8px 12px 0 0; }
 .forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-topic-header { background: none; border-top: 0; height: 0; padding: 0; }
 .forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-topic-author, .forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-reply-author { margin-right: 5px; }
 .forum-search #comm-forums-main #bbp-search-results .bbp-body .bbp-reply-post-date { font-style: italic; }

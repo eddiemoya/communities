@@ -100,6 +100,9 @@ html, html > body.bbpress {
 				margin-left: 80px;
 				padding: 0px;
 			}
+			.even {
+				background-color: #fff;
+			}
 		}
 		// Topic Replies
 		.bbp-replies {
@@ -167,7 +170,7 @@ h3 {
 
 .forums-post-author-date {
 	font-size: 10px;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 }
 
 #forums-topic-reply-link {
