@@ -265,16 +265,8 @@ ul.bullets { list-style-type: disc; }
 
 .error-message { display: none; }
 
-<<<<<<< HEAD
-.error input[type="text"], .error input[type="password"] { border: solid 1px #ff0000; }
-<<<<<<< HEAD
-.error .error-message { background-color: #e41e13; color: white; display: block; float: left; font-weight: bold; margin: 10px 0px 0px; padding: 0.307em 1.23em; position: relative; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; }
-=======
-=======
 .error input[type="text"], .error input[type="password"], .error textarea.input_textarea, .error select { border: solid 1px #ff0000; }
->>>>>>> 0fb8801... textarea and select boxes should now turn red when errors occur
 .error .error-message { background-color: #e41e13; color: white !important; display: block; float: left; font-weight: bold; margin: 10px 0px 0px; padding: 0.307em 1.23em; position: relative; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; }
->>>>>>> 1a2b276... Error messaging text is now white.
 .error .error-message .error-pointer { background: transparent url('../img/error_pointer-arrow.png?v=1375135181') no-repeat 0px 0px; height: 9px; display: block; left: 15px; position: absolute; top: -9px; width: 19px; }
 
 .form-errors { color: #ff0000; }
@@ -1050,11 +1042,7 @@ html, body { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; }
 
 html, html > body.bbpress { background: transparent url('../img/forums/brickwall_tan.png?v=1380741723') repeat 0px 0px; height: auto; }
 
-<<<<<<< HEAD
 .bbpress #container { padding: 0px 10px; background: #fff; -webkit-box-shadow: 0px 10px 15px 1px #999; box-shadow: 0px 10px 15px 1px #999; }
-=======
-.bbpress #container { background: #fff; -webkit-box-shadow: 0px 10px 15px 1px #999; box-shadow: 0px 10px 15px 1px #999; }
->>>>>>> 1a2b276... Error messaging text is now white.
 .bbpress #container #content > section.span12 { border-top: 1px dotted #ccc; }
 .bbpress #container #comm-forums-main { border-right: 1px dotted #ccc; padding-top: 15px; padding-right: 5px; position: relative; }
 .bbpress #container #comm-forums-main #bbpress-forums .bbp-topics { border: 0; }
@@ -1077,12 +1065,8 @@ html, html > body.bbpress { background: transparent url('../img/forums/brickwall
 .bbpress #bbpress-forums .bbp-replies .bbp-forum-freshness, .bbpress #bbpress-forums .bbp-replies .bbp-topic-reply-count { font-size: 10px; }
 .bbpress #bbpress-forums .bbp-form { border: 0; padding: 5px; }
 .bbpress #bbpress-forums .bbp-header, .bbpress #bbpress-forums .bbp-footer { background-color: #eee; }
-<<<<<<< HEAD
 .bbpress #bbpress-forums .bbp-header { font-size: 14px; color: #666; font-weight: 600; /* Semi-bold */ }
 .bbpress #bbpress-forums .bbp-footer { font-size: 10px; }
-=======
-.bbpress #bbpress-forums .bbp-header { font-size: 14px; color: #666; }
->>>>>>> 1a2b276... Error messaging text is now white.
 .bbpress #bbpress-forums .reply { border-bottom: 1px dotted #ccc; }
 .bbpress #bbpress-forums .reply:last-child { border-bottom: 0; }
 .bbpress .bbp-pagination { display: inline-block; float: right; position: relative; width: auto; margin-bottom: 10px; }
