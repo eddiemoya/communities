@@ -1,4 +1,5 @@
 <section class="span12">
+	<?php if(!bbp_is_search()) : ?>
 	<div id="comm-forums-main" class="span9">
 
 		<?php the_content(); ?>
@@ -7,7 +8,6 @@
 	<div id="comm-forums-side" class="span3">		
 		<?php 
 		if(function_exists('dynamic_sidebar')) {
-		
 			  if(bbp_is_forum_archive()) { //Forums Archive
 			
 					dynamic_sidebar('Forums Archive Sidebar');
@@ -29,4 +29,11 @@
 		?>
 
 	</div>
+	<?php else: ?>
+	<div id="comm-forums-main" class="span12">
+
+		<?php the_content(); ?>
+
+	</div>
+	<?php endif; ?>
 </section>
