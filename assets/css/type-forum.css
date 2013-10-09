@@ -1139,7 +1139,7 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 .forum #comm-forums-main .bbp-body .forum { border-top: 0; border-bottom: 1px dotted #ccc; }
 .forum #comm-forums-main .bbp-body .odd { border-top: 0; }
 .forum #comm-forums-main .bbp-body .even { border-top: 0; }
-.forum #comm-forums-main .bbp-body .bbp-topic-started-by { float: left; display: block; margin-right: 5px; }
+.forum #comm-forums-main .bbp-body .bbp-topic-started-by { float: left; display: block; margin-right: 5px; width: 60px; }
 .forum #comm-forums-main .bbp-forum-info { width: 45%; }
 .forum #comm-forums-main .bbp-forum-freshness { width: 40%; }
 .forum #comm-forums-main .bbp-forum-topic-count { width: 9%; margin-right: 6%; text-align: right; }
