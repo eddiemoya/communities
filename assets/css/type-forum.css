@@ -1153,10 +1153,12 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 #comm-forums-main .bbp-body .topic { border-top: 0; border-bottom: 1px dotted #cccccc; }
 #comm-forums-main .bbp-body .bbcode-quote { background-color: #f6f6f6; }
 #comm-forums-main .bbp-body .bbcode-quote .bbcode-by-line { font-style: italic; }
+#comm-forums-main .bbp-body .bbp-topic-freshness { font-size: 10px; }
+#comm-forums-main .bbp-body .bbp-topic-reply-count { font-size: 10px; }
 #comm-forums-main .bbp-topic-title { width: 47%; }
 #comm-forums-main .bbp-topic-voice-count { width: 16%; text-align: left; }
-#comm-forums-main .bbp-topic-reply-count { width: 15%; text-align: left; padding-right: 3%; font-size: 10px; }
-#comm-forums-main .bbp-topic-freshness { width: 19%; text-align: left; font-size: 10px; }
+#comm-forums-main .bbp-topic-reply-count { width: 15%; text-align: left; padding-right: 3%; }
+#comm-forums-main .bbp-topic-freshness { width: 19%; text-align: left; }
 
 .forum-search #container #comm-forums-main { border-right: 0px; }
 .forum-search #container #comm-forums-main .bbp-pagination { width: 100%; }
