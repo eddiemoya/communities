@@ -1154,6 +1154,7 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 #comm-forums-main .bbp-body .bbcode-quote { background-color: #f6f6f6; }
 #comm-forums-main .bbp-body .bbcode-quote .bbcode-by-line { font-style: italic; }
 #comm-forums-main .bbp-body .bbp-topic-freshness { font-size: 10px; }
+#comm-forums-main .bbp-body .bbp-topic-freshness .bbp-topic-meta { font-size: 10px; }
 #comm-forums-main .bbp-body .bbp-topic-reply-count { font-size: 10px; }
 #comm-forums-main .bbp-topic-title { width: 47%; }
 #comm-forums-main .bbp-topic-voice-count { width: 16%; text-align: left; }
