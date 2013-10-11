@@ -62,8 +62,8 @@ function forums_last_activity($forum_id) {
 		?>
 		 <ul class="forums-last-activity">
 		 	<li><a href="<?php echo $latest['link']?>"><?php echo $latest['title'];?></a></li>
-		 	<li>By <a href="<?php echo $latest['profile_link'];?>"><?php echo $latest['screen_name'];?></a></li>
-		 	<li><?php echo $latest['date'];?></li>
+		 	<li class="forum-activity-small">By <a href="<?php echo $latest['profile_link'];?>"><?php echo $latest['screen_name'];?></a></li>
+		 	<li class="forum-activity-small"><?php echo $latest['date'];?></li>
 		 </ul>
 		<?php 
 		echo ob_get_clean();
