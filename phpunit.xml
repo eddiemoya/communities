@@ -16,18 +16,21 @@
             <directory>./tests/</directory>
         </testsuite>
         <testsuite name="WP Node">
-        	<directory>./wordpress/wp-content/plugins/wp-node/</directory>
+        	<directory>./wordpress/wp-content/plugins/wp-node/tests/WP_Node_Test.php</directory>
         	<file>./wordpress/wp-content/plugins/wp-node/WP_Node.php</file>
-            <file>./wordpress/wp-content/plugins/wp-node/wp_node_controller.php</file>
         </testsuite>
+        <testsuite name="WP Node Factory">
+            <directory>./wordpress/wp-content/plugins/wp-node/tests/WP_Node_Factory_Test.php</directory>
+            <file>./wordpress/wp-content/plugins/wp-node/WP_Node_Factory.php</file>
+        </testsuite>
+
          <testsuite name="Section Fronts">
         	<directory>./wordpress/wp-content/plugins/section-fronts/</directory>
             <file>./wordpress/wp-content/plugins/section-fronts/models/model_template.php</file>
             <file>./wordpress/wp-content/plugins/section-fronts/controllers/controller_templates.php</file>
             <file>./wordpress/wp-content/plugins/section-fronts/config/paths.php</file>
             <file>./wordpress/wp-content/plugins/wp-node/WP_Node.php</file>
-            <file>./wordpress/wp-content/plugins/wp-node/wp_node_controller.php</file>
-
+            <file>./wordpress/wp-content/plugins/wp-node/WP_Node_Factory.php</file>
         </testsuite>
     </testsuites>
 </phpunit> 
