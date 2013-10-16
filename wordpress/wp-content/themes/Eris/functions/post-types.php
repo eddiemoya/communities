@@ -5,7 +5,30 @@
 
 add_action('init', 'register_questions_type');
 add_action('init', 'register_buying_guides_type');
-//add_action('init', 'register_tips_ideas_type');
+add_action('init', 'change_default_post_slug');
+
+/**
+ * Changes the default post type slug from 'post' to 'tips-ideas'.
+ * 
+ * @author Dan Crimmins
+ */
+function change_default_post_slug() {
+	
+	register_post_type( 'post', array(
+        'labels' => array(
+            'name_admin_bar' => _x( 'Post', 'add new on admin bar' ),
+        ),
+        'public'  => true,
+        '_builtin' => false,
+        '_edit_link' => 'post.php?post=%d',
+        'capability_type' => 'post',
+        'map_meta_cap' => true,
+        'hierarchical' => false,
+        'rewrite' => array( 'slug' => 'tips-ideas' ),
+        'query_var' => false,
+        'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'post-formats' ),
+    ) );
+}
 
 /**
  * @author Eddie Moya
@@ -97,51 +120,7 @@ function register_buying_guides_type() {
     register_post_type('guide', $args);
 }
 
-/**
- * @author Jason Corradino
 
-function register_tips_ideas_type() {
-    $labels = array(
-        'name' => _x('Tips & Ideas', 'post type general name'),
-        'singular_name' => _x('Tips & Ideas', 'post type singular name'),
-        'add_new' => _x('Add New', 'Tip'),
-        'add_new_item' => __('Add New Tip'),
-        'edit_item' => __('Edit Tip'),
-        'new_item' => __('New Tip'),
-        'all_items' => __('All Tips'),
-        'view_item' => __('View Tip'),
-        'search_items' => __('Search Tips'),
-        'not_found' => __('No tips or ideas found'),
-        'not_found_in_trash' => __('No tips or ideas found in Trash'),
-        'parent_item_colon' => '',
-        'menu_name' => 'Tips & Ideas'
-    );
-	$rewrite = array(
-        'slug'          => 'tips',
-        'with_front'    => false,
-        'feeds'         => true,
-        'paged'         => true,
-        'ep_mask'       => array()
-    );
-    $args = array(
-        'labels'        => $labels,
-        'public'        => true,
-        'publicly_queryable' => true,
-        'show_ui'       => true,
-        'show_in_menu'  => true,
-        'query_var'     => false,
-		'rewrite'         => $rewrite,
-        'capability_type' => 'post',
-        'has_archive' => true,
-        'hierarchical' => false,
-        'menu_position' => 7,
-        'supports' => array('title', 'editor', 'author', 'comments', 'thumbnail', 'excerpt'),
-        //'menu_icon' => get_template_directory_uri() . '/assets/img/admin/questions_admin_icon.gif',
-        'taxonomies' => array('category', 'post_tag')
-    );
-    register_post_type('tips', $args);
-}
- */
 function strip_oembed_from_excerpt($excerpt){
 	$oembedProviders = array(
 		'#http://(www\.)?youtube.com/watch.*#i',
@@ -211,22 +190,3 @@ add_filter('wpdz_dropzones', 'custom_excerpt_length', 9);
 //     echo "<pre>";print_r($wp_post_types['page']->menu_position);echo "</pre>";
 // }
 
-
-//add_action( 'init', 'default_post_type', 1 );
-function default_post_type() {
-
-    register_post_type( 'post', array(
-        'labels' => array(
-            'name_admin_bar' => _x( 'Post', 'add new on admin bar' ),
-        ),
-        'public'  => true,
-        '_builtin' => false, 
-        '_edit_link' => 'post.php?post=%d', 
-        'capability_type' => 'post',
-        'map_meta_cap' => true,
-        'hierarchical' => false,
-        'rewrite' => array( 'slug' => 'tips-ideas' ),
-        'query_var' => false,
-        'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'post-formats' ),
-    ) );
-}

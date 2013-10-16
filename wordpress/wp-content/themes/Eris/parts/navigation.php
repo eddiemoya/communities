@@ -1,6 +1,6 @@
 <?php
     $alinks = array(
-        'post'     => site_url('posts'),
+        'post'     => site_url('tips-ideas'),
         'question' => get_post_type_archive_link('question'),
         //'guide'    => get_post_type_archive_link('guide'),
         'reviews'  => (get_page_by_path( 'reviews' )) ? get_permalink(get_page_by_path( 'reviews' )) : null  
@@ -61,7 +61,7 @@
             <ul>
                 <?php foreach($terms[$post_type] as $term) : ?>
                     <li>
-                        <a href="<?php echo esc_url( get_category_link($term->term_id) ).$post_type; ?>">
+                        <a href="<?php echo esc_url( get_category_link($term->term_id) ). (($post_type == 'post') ? 'tips-ideas' : $post_type); ?>">
                             <?php echo $term->name; ?>
                         </a>
                     </li>
