@@ -4,11 +4,12 @@ get_template_part('parts/header');
 	
 	$term = wp_get_object_terms($post->ID, $post->post_type);
 	$term = $term[0];
-	$node = new WP_Node($term->term_id, $term->taxonomy);
+	$node = new WP_Node_Factory($term->taxonomy);
+	$node->create_node($term->term_id);
 
 	$filter = get_query_var('sf_filter');
 	
-	$layout_id = $node->get_meta_data("sf_{$filter}_template");
+	$layout_id = $node->get_node_meta("sf_{$filter}_template");
 	//$layout_id = ($layout_setting > 0 ) ? $layout_setting : $node->post->ID;
 
 	$tax_query[] = array(
