@@ -45,7 +45,7 @@ function posts_endpoint($rules){
 
 	$newrules = array();
 	
-	$newrules['posts?/?$'] = 'index.php?post_type=post';
+	$newrules['tips-ideas?/?$'] = 'index.php?post_type=post';
 	
 	//$newrules['video?/?$'] = 'index.php?post_format=video';
 
@@ -59,10 +59,10 @@ function posts_endpoint($rules){
 function category_post_type_endpoints($rules){
 
     $newrules = array();
-	$newrules['category/(.+?)/(guide|question|post|video)s?/?$'] = 'index.php?post_type=category&name=$matches[1]&sf_filter=$matches[2]';
+	$newrules['category/(.+?)/(guide|question|tips-ideas|video)s?/?$'] = 'index.php?post_type=category&name=$matches[1]&sf_filter=$matches[2]';
 	$newrules['category/(.+?)/?$'] = 'index.php?post_type=category&name=$matches[1]&sf_filter=category';
 
-    $newrules['category/(.+?)/(guide|question|post)s?/page/?([0-9]{1,})/?$'] = 'index.php?category_name=$matches[1]&post_type=$matches[2]&paged=$matches[3]';
+    $newrules['category/(.+?)/(guide|question|tips-ideas)s?/page/?([0-9]{1,})/?$'] = 'index.php?category_name=$matches[1]&post_type=$matches[2]&paged=$matches[3]';
     // $newrules['category/(.+?)/videos?/?$'] = 'index.php?category_name=$matches[1]&post_format=video';
 	//print_pre($newrules + $rules);
 	//return $newrules + $rules;
