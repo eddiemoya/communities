@@ -61,7 +61,7 @@
             <ul>
                 <?php foreach($terms[$post_type] as $term) : ?>
                     <li>
-                        <a href="<?php echo esc_url( get_category_link($term->term_id) ). (($post_type == 'post') ? 'tips-ideas' : $post_type); ?>">
+                        <a href="<?php echo esc_url( get_category_link($term->term_id) ). $post_type; ?>">
                             <?php echo $term->name; ?>
                         </a>
                     </li>
