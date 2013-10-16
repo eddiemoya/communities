@@ -1,6 +1,6 @@
 <?php
     $alinks = array(
-        'post'     => site_url('tips-ideas'),
+        'post'     => site_url('posts'),
         'question' => get_post_type_archive_link('question'),
         //'guide'    => get_post_type_archive_link('guide'),
         'reviews'  => (get_page_by_path( 'reviews' )) ? get_permalink(get_page_by_path( 'reviews' )) : null  
