@@ -198,7 +198,7 @@ class Section_Front{
 				if( !empty($post->meta['rewrite_tax_guide']) || !empty($post->meta['rewrite_tax_question']) || !empty($post->meta['rewrite_tax_post']) ){
 					$post_types[] = (!empty($post->meta['rewrite_tax_guide'])) 		? 'guide' 		:  '';
 					$post_types[] = (!empty($post->meta['rewrite_tax_question'])) 	? 'question' 	:  '';
-					$post_types[] = (!empty($post->meta['rewrite_tax_post'])) 		? 'tips-ideas' 		:  '';
+					$post_types[] = (!empty($post->meta['rewrite_tax_post'])) 		? 'post' 		:  '';
 
 
 					$endpoint_pattern = implode('|', array_filter($post_types));
@@ -226,7 +226,7 @@ class Section_Front{
 				if( !empty($post->meta['rewrite_guide']) || !empty($post->meta['rewrite_question']) || !empty($post->meta['rewrite_post'])){
 					$post_types[] = (!empty($post->meta['rewrite_guide'])) 		? 'guide' 		:  '';
 					$post_types[] = (!empty($post->meta['rewrite_question'])) 	? 'question' 	:  '';
-					$post_types[] = (!empty($post->meta['rewrite_post'])) 		? 'tips-ideas' 		:  '';
+					$post_types[] = (!empty($post->meta['rewrite_post'])) 		? 'post' 		:  '';
 
 					$endpoint_pattern = implode('|', array_filter($post_types));
 					$new_rules["({$endpoint_pattern})s?/?$"] 
