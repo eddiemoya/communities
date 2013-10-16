@@ -63,12 +63,6 @@
 				<p>
 		    <?php get_partial( 'parts/share', array( "version" => "long", "url" => get_permalink( $post->ID ) ) ); ?>
 		    </p>
-		    <p class="content-comments">
-		    <?php
-		        //$commentCount = get_custom_comment_count($comment_type, $post->ID);
-		       // echo $commentCount . ' ' . _n( 'comment', 'comments', $commentCount );
-		    ?>
-		    </p>
 			</section>
 		</article>
 	    <?php
