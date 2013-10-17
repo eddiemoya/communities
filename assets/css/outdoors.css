@@ -1032,7 +1032,7 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 
 .hero-slider.content-container .content-body { border: none; }
 
-#menu-odssubnavigation li { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 184.615%; font-weight: 300; float: left; text-align: center; width: 18%; }
+#menu-odssubnavigation li { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 184.615%; font-weight: 300; float: left; text-align: center; width: 13%; }
 #menu-odssubnavigation li a, #menu-odssubnavigation li a:visited, #menu-odssubnavigation li a:hover { color: #067bb5; }
 #menu-odssubnavigation li a:hover { text-decoration: none; }
 #menu-odssubnavigation li:first-child { text-align: left; }
