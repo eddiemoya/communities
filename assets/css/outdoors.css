@@ -1032,13 +1032,14 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 
 .hero-slider.content-container .content-body { border: none; }
 
-#menu-odssubnavigation li { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 184.615%; font-weight: 300; float: left; text-align: center; width: 13%; }
+.category-outdoors .subnav-items { text-align: center; }
+
+#menu-odssubnavigation { display: inline-block; margin: 0 auto; zoom: 1; *display: inline; }
+#menu-odssubnavigation li { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 184.615%; font-weight: 300; float: left; margin-right: 20px; }
 #menu-odssubnavigation li a, #menu-odssubnavigation li a:visited, #menu-odssubnavigation li a:hover { color: #067bb5; }
 #menu-odssubnavigation li a:hover { text-decoration: none; }
 #menu-odssubnavigation li:first-child { text-align: left; }
 #menu-odssubnavigation .ods_nav_guides { text-align: right; }
-#menu-odssubnavigation .ods_nav_questions { width: 28%; }
-#menu-odssubnavigation .ods_nav_blog { width: 25%; }
 .category-outdoorstyle #menu-odssubnavigation .ods_nav_home { font-weight: 400; }
 .category-outdoorstyle #menu-odssubnavigation .ods_nav_home a, .category-outdoorstyle #menu-odssubnavigation .ods_nav_home a:visited, .category-outdoorstyle #menu-odssubnavigation .ods_nav_home a:hover { border-bottom: solid 1px #e78e60; color: #666666; }
 
