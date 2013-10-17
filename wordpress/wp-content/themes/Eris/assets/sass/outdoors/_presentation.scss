@@ -65,7 +65,19 @@ html {
   }
 }
 
+.category-outdoors .subnav-items{
+
+	text-align: center;
+}
+
 #menu-odssubnavigation {
+	
+	display: inline-block;
+	margin: 0 auto;
+	
+	zoom: 1;
+	*display: inline;
+	
   li {
     a, a:visited, a:hover {
       color:#067bb5;
@@ -77,8 +89,8 @@ html {
     font-size:font-size(24);
     font-weight:300;
     float:left;
-    text-align:center;
-    width:13%;
+    margin-right: 20px;
+   // width:13%;
   }
   li:first-child {
     text-align:left;
@@ -87,10 +99,10 @@ html {
     text-align:right;
   }
   .ods_nav_questions {
-    width:28%;
+   // width:28%;
   }
   .ods_nav_blog {
-  	width: 25%;
+  	// width: 25%;
   }
   .category-outdoorstyle & .ods_nav_home {
     font-weight:400;
