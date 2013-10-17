@@ -1038,6 +1038,7 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 #menu-odssubnavigation li:first-child { text-align: left; }
 #menu-odssubnavigation .ods_nav_guides { text-align: right; }
 #menu-odssubnavigation .ods_nav_questions { width: 28%; }
+#menu-odssubnavigation .ods_nav_blog { width: 25%; }
 .category-outdoorstyle #menu-odssubnavigation .ods_nav_home { font-weight: 400; }
 .category-outdoorstyle #menu-odssubnavigation .ods_nav_home a, .category-outdoorstyle #menu-odssubnavigation .ods_nav_home a:visited, .category-outdoorstyle #menu-odssubnavigation .ods_nav_home a:hover { border-bottom: solid 1px #e78e60; color: #666666; }
 
