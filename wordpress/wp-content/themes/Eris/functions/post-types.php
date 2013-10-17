@@ -5,7 +5,7 @@
 
 add_action('init', 'register_questions_type');
 add_action('init', 'register_buying_guides_type');
-add_action('init', 'change_default_post_slug');
+//add_action('init', 'change_default_post_slug');
 
 /**
  * Changes the default post type slug from 'post' to 'tips-ideas'.
