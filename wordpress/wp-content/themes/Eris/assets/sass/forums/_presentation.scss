@@ -112,7 +112,10 @@ html, html > body.bbpress {
 				position: relative;
 				padding-bottom: 5px;
 			}
-
+			.bbp-body {
+				margin-top: 2px;
+				border-top: 1px dotted #CCC;
+			}
 			.forums-single-reply-footer {
 				position: absolute;
 				bottom: 5px;
