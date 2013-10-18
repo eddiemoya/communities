@@ -1065,6 +1065,7 @@ html, html > body.bbpress { background: transparent url('../img/forums/brickwall
 .bbpress #bbpress-forums .bbp-lead-topic .even { background-color: #fff; }
 .bbpress #bbpress-forums .bbp-replies { border: 0; margin-bottom: 2px; }
 .bbpress #bbpress-forums .bbp-replies .hentry { position: relative; padding-bottom: 5px; }
+.bbpress #bbpress-forums .bbp-replies .bbp-body { margin-top: 2px; border-top: 1px dotted #CCC; }
 .bbpress #bbpress-forums .bbp-replies .forums-single-reply-footer { position: absolute; bottom: 5px; right: 28px; }
 .bbpress #bbpress-forums .bbp-replies .bbp-reply-content { margin-left: 80px; padding-top: 0px; }
 .bbpress #bbpress-forums .bbp-replies .bbp-forum-freshness, .bbpress #bbpress-forums .bbp-replies .bbp-topic-reply-count { font-size: 10px; }
