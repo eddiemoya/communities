@@ -36,7 +36,7 @@ get_template_part('parts/header'); ?>
           <li>
               <dl class="clearfix">
                   <dt class="span3"><label for="logonPassword">Password:</label></dt>
-                  <dd class="span8"><input type="password" name="logonPassword" class="input_text input_password" id="password" shc:gizmo:form="{required:true, pattern: /^\w*(?=\w{8,})(?=\w*\d)(?=\w*[a-zA-Z])(?!\w*_)\w*$/, message: 'Please enter your password.'}" /></dd>
+                  <dd class="span8"><input type="password" name="logonPassword" class="input_text input_password" id="password" shc:gizmo:form="{required:true, pattern: /^\w*(?=\w{6,})(?=\w*\d)(?=\w*[a-zA-Z])(?!\w*_)\w*$/, message: 'Please enter your password.'}" /></dd>
                   <dd class="span1"><a href="<?php echo get_site_url(); ?>/forgot-password/" title="Forgot your password?" class="forgot">Forgot?</a></dd>
               </dl>
           </li>

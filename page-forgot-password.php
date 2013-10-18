@@ -106,7 +106,7 @@ get_template_part('parts/header'); ?>
                       							autocomplete="off" 
                       							class="input_text input_password" 
                       							id="new_password"
-                      							shc:gizmo:form="{required:true, pattern: /^\w*(?=\w{8,})(?=\w*\d)(?=\w*[a-zA-Z])(?!\w*_)\w*$/, message: 'Please enter a valid password.'}"
+                      							shc:gizmo:form="{required:true, pattern: /^\w*(?=\w{6,})(?=\w*\d)(?=\w*[a-zA-Z])(?!\w*_)\w*$/, message: 'Please enter a valid password.'}"
                             					shc:gizmo="tooltip"
 					                            shc:gizmo:options="
 					                            {
