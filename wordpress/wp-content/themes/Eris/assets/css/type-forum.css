@@ -1047,7 +1047,11 @@ html, html > body.bbpress { background: transparent url('../img/forums/brickwall
 .bbpress #container #comm-forums-main { border-right: 1px dotted #ccc; padding-top: 15px; padding-right: 5px; position: relative; }
 .bbpress #container #comm-forums-main #bbpress-forums .bbp-topics { border: 0; }
 .bbpress #container #comm-forums-side { margin-left: 0; }
+<<<<<<< HEAD
 .bbpress #container #comm-forums-side .widget { padding: 10px; border-bottom: 1px dotted #ccc; }
+=======
+.bbpress #container #comm-forums-side .widget { padding: 5px; border-bottom: 1px dotted #ccc; }
+>>>>>>> PHP-948 Minor styling update on threadlist page.
 .bbpress #forums-head { margin-bottom: 15px; }
 .bbpress #forums-head h1 { font-size: 26px; font-weight: lighter; color: #444; padding-bottom: 5px; }
 .bbpress #bbpress-forums .bbp-forums { border: 0; }
@@ -1096,7 +1100,11 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 .sears.bbpress #bbpress-forums .bbp-lead-topic .bbp-topic-title { color: #0B79B9; }
 
 #comm-forums-side .widget #bbp-search-form { background: #dbf0f9; padding: 5px 5px 5px 15px; }
+<<<<<<< HEAD
 #comm-forums-side .widget #bbp-search-form .search-tick { border-left: 8px solid #FFFFFF; left: 10px; position: absolute; }
+=======
+#comm-forums-side .widget #bbp-search-form .search-tick { border-left: 8px solid #FFFFFF; left: 5px; position: absolute; }
+>>>>>>> PHP-948 Minor styling update on threadlist page.
 #comm-forums-side .widget #bbp-search-form .search-input-container { margin: 0 auto; margin-bottom: 15px; width: 190px; height: 32px; background: #fff; }
 #comm-forums-side .widget #bbp-search-form .search-input-container #bbp_search { background: transparent no-repeat 5px 7px; background-image: url("../img/forums/searchGlassIcon.png"); border: none; color: #000; width: 67.5%; padding-left: 25px; padding-top: 6px; padding-bottom: 8px; }
 #comm-forums-side .widget #bbp-search-form .search-input-container #bbp_search_submit { border: none; background: orange; color: #fff; height: 32px; width: 32px; cursor: pointer; }
@@ -1142,14 +1150,14 @@ h3 { font-size: 20px; font-weight: bold; color: #444; }
 .forum #comm-forums-main .bbp-body .forum .forum-activity-small { font-size: 10px; }
 .forum #comm-forums-main .bbp-body .odd { border-top: 0; }
 .forum #comm-forums-main .bbp-body .even { border-top: 0; }
-.forum #comm-forums-main .bbp-body .bbp-topic-started-by { float: left; display: block; margin-right: 5px; width: 60px; }
+.forum #comm-forums-main .bbp-body .bbp-topic-started-by { float: left; display: block; margin-right: 20px; width: 60px; }
 .forum #comm-forums-main .bbp-forum-info { width: 45%; }
 .forum #comm-forums-main .bbp-forum-freshness { width: 35%; }
 .forum #comm-forums-main .bbp-forum-topic-count { width: 13%; margin-right: 6%; text-align: right; }
 .forum #comm-forums-main .bbp-breadcrumb-sep { font-size: 14px; }
 
 #comm-forums-main .bbp-topics { border: 0; }
-#comm-forums-main .bbp-header .bbp-topic-title { margin-left: 9%; width: 38%; }
+#comm-forums-main .bbp-header .bbp-topic-title { margin-left: 12%; width: 35%; }
 #comm-forums-main .bbp-header .bbp-topic-reply-count { margin-left: 16%; }
 #comm-forums-main .bbp-body .topic { border-top: 0; border-bottom: 1px dotted #ccc; }
 #comm-forums-main .bbp-body .bbcode-quote { background-color: #f6f6f6; }
