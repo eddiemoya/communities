@@ -1,53 +1,63 @@
+
 .forum-search {
-	#comm-forums-main {
-		#bbp-search-results {
-			border: 0;		
-			.bbp-header {
+	#container {
+		#comm-forums-main {
+			border-right: 0px;
+			.bbp-pagination {
+				width: 100%;
 			}
-			.bbp-body {			
-				border-top: 1px dotted #ccc;
-				margin-top: 2px;
-				h3 {
-					font-size: 16px;
+			#bbp-search-results {
+				border: 0;		
+				.bbp-header {
 				}
-				.forum,
-				.reply,
-				.topic {
+				.bbp-body {			
+					border-top: 1px dotted #ccc;
+					margin-top: 2px;
 					h3 {
-						font-size: 14px;
-						font-weight: normal;
-						margin: 5px;
+						font-size: 16px;
+					}
+					.forum,
+					.reply,
+					.topic {
+						h3 {
+							font-size: 12px;
+							font-weight: normal;
+							margin: 5px;
+						}
+					}
+					.bbp-forum-content,
+					.bbp-reply-content,
+					.bbp-topic-content {
+						margin-left: 75px;
+						padding: 8px 12px 0 0;
+					}				
+					.bbp-topic-header {
+						background: none;
+						border-top: 0;
+						height: 0;
+						padding: 0;
+					}
+					.bbp-topic-author,
+					.bbp-reply-author {
+						margin-right: 15px;
+					}		
+					.bbp-reply-post-date {
+						font-style: italic;
+					}
+					.forums-post-author-date {
+						margin-bottom: 5px;
 					}
 				}
-				.bbp-forum-content,
-				.bbp-reply-content,
-				.bbp-topic-content {
-					margin-left: 100px;
-					padding: 8px 12px 8px 0;
-				}				
-				.bbp-topic-header {
-					background: none;
-					border-top: 0;
-					height: 0;
-					padding: 0;
+				.bbp-footer {
+					font-weight: 600;
 				}
-				.bbp-topic-author,
-				.bbp-reply-author {
-					margin-right: 5px;
-				}		
-				.bbp-reply-post-date {
-					font-style: italic;
-				}
-				.forums-post-author-date {
-					margin-bottom: 5px;
-				}
-			}
 
-			.bbp-header,
-			.bbp-footer		{
-				.bbp-search-content {
-					margin: 0;
-					font-size: 14px;
+				.bbp-header,
+				.bbp-footer		{
+					.bbp-search-content {
+						margin: 0 0 0 8%;
+						font-size: 14px;
+					}
 				}
 			}
 		}

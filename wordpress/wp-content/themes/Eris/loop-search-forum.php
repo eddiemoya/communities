@@ -18,7 +18,7 @@
 	</div><!-- .bbp-meta -->
 
 	<div class="bbp-forum-title">
-
+	
 		<?php do_action( 'bbp_theme_before_forum_title' ); ?>
 
 		<h3><?php _e( 'Forum: ', 'bbpress' ); ?><a href="<?php bbp_forum_permalink(); ?>" title="<?php bbp_forum_title(); ?>"><?php bbp_forum_title(); ?></a></h3>
@@ -29,10 +29,10 @@
 
 </div><!-- .bbp-forum-header -->
 
-<div id="post-<?php bbp_forum_id(); ?>" <?php bbp_forum_class(); ?>>
+<div id="post-<?php bbp_forum_id(); ?>" <?php bbp_search_results_class(); ?>>
 
 	<div class="bbp-forum-content">
-
+	
 		<?php do_action( 'bbp_theme_before_forum_content' ); ?>
 
 			<?php if(bbp_get_forum_content()):?>

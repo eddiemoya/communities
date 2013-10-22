@@ -1,5 +1,5 @@
 // Tweaks to Presentation for Outdoor Style
-@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic|Open+Sans:300italic,400italic,700italic,400,700,300);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700,300italic|Open+Sans:300italic,400italic,700italic,600,400,300,700);
 
 $regular: 'Open Sans', Helvetica, Arial, Verdana, sans-serif;
 $condensed: 'Open Sans Condensed', Helvetica, Arial, Verdana, sans-serif;
@@ -16,7 +16,8 @@ html, html > body.bbpress {
 
 
 .bbpress {
-	#container {
+	#container {  
+		padding:0px 10px;
 		background: #fff;
 		-webkit-box-shadow: 0px 10px 15px 1px #999;
 		box-shadow: 0px 10px 15px 1px #999;		
@@ -37,7 +38,7 @@ html, html > body.bbpress {
 		#comm-forums-side {
 			margin-left: 0;
 			.widget {
-				padding: 5px;
+				padding: 10px;
 				border-bottom: 1px dotted #ccc;
 			}
 		}
@@ -62,8 +63,21 @@ html, html > body.bbpress {
 				margin-bottom:16px;
 			}
 			.bbcode-quote {
-				margin: 16px;
+				margin: 10px 5px 10px 0;
 				padding: 9px 16px 1px;
+			}
+			.odd {
+				background-color: #fff;
+				.bbcode-quote {
+					background-color: #f6f6f6;
+				}
+			}
+			.even {
+				background-color: #f6f6f6;
+				.bbcode-quote {
+					background-color: #fff;
+				}
+				
 			}
 		}
 		// First Post in a Topic
@@ -86,6 +100,9 @@ html, html > body.bbpress {
 				margin-left: 80px;
 				padding: 0px;
 			}
+			.even {
+				background-color: #fff;
+			}
 		}
 		// Topic Replies
 		.bbp-replies {
@@ -93,9 +110,12 @@ html, html > body.bbpress {
 			margin-bottom: 2px;
 			.hentry {
 				position: relative;
-				padding-bottom: 30px;
+				padding-bottom: 5px;
 			}
-
+			.bbp-body {
+				margin-top: 2px;
+				border-top: 1px dotted #CCC;
+			}
 			.forums-single-reply-footer {
 				position: absolute;
 				bottom: 5px;
@@ -121,6 +141,10 @@ html, html > body.bbpress {
 		.bbp-header {
 			font-size: 14px;
 			color: #666;
+			font-weight: 600; /* Semi-bold */
+		}
+		.bbp-footer {
+			font-size: 10px;
 		}
 		.reply {
 			border-bottom: 1px dotted #ccc;
@@ -149,7 +173,7 @@ h3 {
 
 .forums-post-author-date {
 	font-size: 10px;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 }
 
 #forums-topic-reply-link {
@@ -174,7 +198,7 @@ h3 {
 		font-size: 13px;
 		font-weight: bold;
 		clear: left;
-		margin: 20px 0 10px;
+		margin: 20px 0 2px;
 	}
 }
 

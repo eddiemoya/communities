@@ -62,8 +62,8 @@ function forums_last_activity($forum_id) {
 		?>
 		 <ul class="forums-last-activity">
 		 	<li><a href="<?php echo $latest['link']?>"><?php echo $latest['title'];?></a></li>
-		 	<li>By <a href="<?php echo $latest['profile_link'];?>"><?php echo $latest['screen_name'];?></a></li>
-		 	<li><?php echo $latest['date'];?></li>
+		 	<li class="forum-activity-small">By <a href="<?php echo $latest['profile_link'];?>"><?php echo $latest['screen_name'];?></a></li>
+		 	<li class="forum-activity-small"><?php echo $latest['date'];?></li>
 		 </ul>
 		<?php 
 		echo ob_get_clean();
@@ -303,7 +303,6 @@ function comm_forums_breadcrumbs($crumbs){
 }
 
 
-
 //Show lead topic in topics replies first
 add_filter( 'bbp_show_lead_topic', '__return_true' );
 
@@ -423,11 +422,154 @@ function comm_bbp_forum_get_subforums( $args = '' ) {
 	return (array) apply_filters( 'bbp_forum_get_subforums', $sub_forums, $r );
 }
 
+/**
+ * SEARCH RESULTS CSS CLASS FUNCTIONS
+ */
+
+// Remove odd/even class from forum, topic, reply
+
+add_filter('bbp_get_forum_class', 'forums_search_remove_odd_even_class', 10, 2);
+add_filter('bbp_get_topic_class', 'forums_search_remove_odd_even_class', 10, 2);
+add_filter('bbp_get_reply_class', 'forums_search_remove_odd_even_class', 10, 2);
+
+function forums_search_remove_odd_even_class($classes, $id) {
+	
+	if(bbp_is_search()) { //Only for search results
+		
+		$odd = array_search('odd', $classes);
+		$even = array_search('even', $classes);
+		
+		$i = ($odd !== false) ? $odd : $even;
+		
+		unset($classes[$i]);
+		
+		return $classes;
+	}
+	
+	return $classes;
+}
+
+
+$bbp_search_item_index = 0; //Global search results list item index
+
+
+//Get the odd/even class for search results
+function bbp_get_search_results_class($id = 0, $classes = array()) {
+	
+	global $bbp_search_item_index;
+	
+	$type = ((bbpress()->current_forum_id) ? 'forum' :
+				((bbpress()->current_topic_id) ? 'topic' :
+				((bbpress()->current_reply_id) ? 'reply' : false)));
+	
+	switch($type) {
+		
+		case 'forum':
+			
+			$class = bbp_get_forum_class( $id, $classes );
+			
+			break;
+			
+		case 'topic':
+			
+			$class = bbp_get_topic_class($id, $classes);
+			
+			break;
+			
+		case 'reply':
+			
+			$class = bbp_get_reply_class($id, $classes);
+			
+			break;
+			
+		default:
+			
+			$class = '';
+			
+			break;
+	}
+	
+	//Increment the counter, and assign the odd or even class; add to class string
+	$class_odd_even = ((int) ++$bbp_search_item_index % 2) ? 'odd' : 'even';
+	$class = substr_replace($class, ' ' . $class_odd_even . '"', (strlen($class) - 1));
+	
+	return $class;	
+}
+
+//prints odd/even class for search results
+function bbp_search_results_class($id=0, $classes=array()) {
+	
+	echo bbp_get_search_results_class($id, $classes);
+}
+
 
 
 /**
  * ADMIN SECTION ADDITIONS
  */
+
+//Change Topic labels display to 'Thread'
+add_filter('bbp_register_topic_post_type', 'forums_topics_labels');
+
+function forums_topics_labels($args) {
+	
+	$args['labels'] = array('name'			 	=> 'Threads',
+							'menu_name'			=> 'Threads',
+							'singular_name'		=> 'Thread',
+							'all_items'			=> 'All Threads',
+							'add_new'			=> 'New Thread',
+							'add_new_item'		=> 'Create New Thread',
+							'edit'				=> 'Edit',
+							'edit_item'			=> 'Edit Thread',
+							'new_item'			=> 'New Thread',
+							'view'				=> 'View Thread',
+							'view_item'			=> 'View Thread',
+							'search_items'		=> 'Search Threads',
+							'not_found'			=> 'No threads found',
+							'not found_in_trash'=> 'No threads found in Trash',
+							'parent_item_colon' => 'Forum:');
+
+	return $args;
+}
+
+
+//Change field names for topics (Threads) admin headings
+add_filter('bbp_admin_topics_column_headers', 'forums_topics_headings');
+
+function forums_topics_headings($cols) {
+	
+	$cols['title'] = __('Threads');
+	
+	return $cols;
+}
+
+//Change second column on Forums admin page from Topics to Threads
+add_filter('bbp_admin_forums_column_headers', 'forums_forum_headings');
+
+function forums_forum_headings($cols) {
+	
+	unset($cols['bbp_forum_freshness']); //Remove freshness col, going to replace...
+	
+	$cols['bbp_forum_fresh_mod'] = __( 'Freshness', 'bbpress' ); //Custom Freshness column
+	
+	$cols['bbp_forum_topic_count'] = __( 'Threads',    'bbpress' );
+	
+	return $cols;
+}
+
+//Change output used in forum Freshness column
+add_action('bbp_admin_forums_column_data', 'forums_forum_freshness_output', 10, 2);
+
+function forums_forum_freshness_output($column=null, $forum_id=null) {
+	
+	$last_active = bbp_get_forum_last_active_time( $forum_id, false );
+	
+	if ( !empty( $last_active ) )
+		echo $last_active;
+	else
+		_e( 'No Threads', 'bbpress' );
+	
+}
 
 
 /**

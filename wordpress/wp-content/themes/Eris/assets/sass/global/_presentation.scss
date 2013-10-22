@@ -139,7 +139,7 @@ ul.bullets {
   // IE8 no like this.
   padding:em-adjust( .3125em .01em );
   border:solid 1px sears( decorative );
-  height:em-adjust( 1.25em );
+  height:em-adjust( 1.25em );  
 }
 
 .required:after, .optional:after {
@@ -172,12 +172,12 @@ ul.bullets {
 }
 
 .error {
-  input[type="text"], input[type="password"] {
+  input[type="text"], input[type="password"], textarea.input_textarea, select {
     border:solid 1px #ff0000;
   }
   .error-message {
     background-color:#e41e13;
-    color:$lightest-color;
+    color:$lightest-color !important;
     display:block;
     float:left;
     font-weight:bold;
@@ -364,7 +364,7 @@ textarea.discussion {
 }
 
 .trigger.discussion {
-  height:2em;
+  height:4em;
   margin-top:-3.75em;
   position:relative;
   text-align:right;
@@ -400,6 +400,12 @@ textarea.discussion {
   height: 1em;
   margin: 0 0 1em;
   text-align: right;
+}
+
+.ugc-comment-answer_form {
+	#screen-name {
+		margin-right: 100%;
+	}
 }
 
 // FEATURED QUESTION
@@ -1461,6 +1467,10 @@ button.follow {
       line-height: .5;
     }
   }
+}
+
+#sso-error {
+	color: #E41E13;
 }
 
 // FEATURED CATEGORY QUESTIONS

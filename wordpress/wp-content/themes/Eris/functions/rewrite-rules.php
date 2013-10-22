@@ -46,7 +46,7 @@ function posts_endpoint($rules){
 	$newrules = array();
 	
 	$newrules['posts?/?$'] = 'index.php?post_type=post';
-
+	
 	//$newrules['video?/?$'] = 'index.php?post_format=video';
 
 	//echo "<pre>";print_r($newrules + $rules);echo "</pre>";

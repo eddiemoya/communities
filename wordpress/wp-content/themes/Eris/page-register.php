@@ -1,19 +1,11 @@
 <?php
 
-//include SHCSSO_CONFIG_DIR . 'errors.php';
-
 //if user is logged in, send them to home page.
 if(is_user_logged_in()) {
 
     wp_redirect(get_site_url());
     exit;
 }
-
-//If origin param is set use it, otherwise if HTTP_REFERER is set, use it; otherwise use current page
-$origin = (isset($_GET['origin'])) ? $_GET['origin'] : ((isset($_SERVER['HTTP_REFERER']) && (! isset($_POST['loginId']) && ! isset($_POST['zipcode']))) ? urlencode($_SERVER['HTTP_REFERER']) : get_site_url() . '/');
-
-//If error is set
-$error = (isset($_GET['err'])) ? wp_kses(strip_tags($sso_errors[urldecode($_GET['err'])])) : false;
 
 //CSAT Post
 $email = (isset($_POST['loginId'])) ? urldecode($_POST['loginId']) : null;

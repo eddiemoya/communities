@@ -5,8 +5,8 @@
 	}
 	.bbp-header {
 		.bbp-topic-title {
-			margin-left: 9%;
-			width: 38%;
+			margin-left: 12%;
+			width: 35%;
 		}
 		.bbp-topic-reply-count {
 			margin-left: 16%; // Should be the width of .bbp-topic-voice-count
@@ -23,16 +23,22 @@
 			}
 			background-color: #f6f6f6;
 		}
+		.bbp-topic-freshness {
+			font-size: 10px;
+			.bbp-topic-meta {
+				font-size: 10px;
+			}
+		}
+		.bbp-topic-reply-count {
+			font-size: 10px;
+		} 
 	}
 	.bbp-replies {
 		.odd {
-			background-color: #fff;
+			//background-color: #fff;
 		}
 		.even {
-			background-color: #f6f6f6;
-			.bbcode-quote {
-				background-color: #fff;
-			}
+			//background-color: #f6f6f6;			
 		}	
 	}
 	

@@ -80,9 +80,11 @@ class Advertisement_Widget extends WP_Widget {
        
          echo $before_widget;
         ?>
+				<?php if ($aw_title): ?>
 				<header class="content-header">
 				<h1><?php echo $aw_title;?></h1>
 				</header>
+				<?php endif; ?>
 				<section class="content-body clearfix">
 					<?php echo $aw_content;?>
 				</section>

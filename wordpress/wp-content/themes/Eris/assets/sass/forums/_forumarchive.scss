@@ -16,7 +16,7 @@
 			.bbp-forum-info {
 			}
 			.bbp-forum-freshness {
-				margin-left: 15%;
+				margin-left: 20%;
 				text-align: left;
 			}
 		}
@@ -34,12 +34,15 @@
 			.forum {
 				border-top: 0;
 				border-bottom: 1px dotted #ccc;
+				.forum-activity-small {
+					font-size: 10px;
+				}
 			}
 			.odd {
-				background-color: #fff;
+				//background-color: #fff;
 			}
 			.even {
-				background-color: #f6f6f6;
+				//background-color: #f6f6f6;
 			}
 		}
 		
@@ -48,10 +51,10 @@
 			width: 50%;
 		}
 		.bbp-forum-freshness {
-			width: 35%;
+			width: 30%;
 		}
 		.bbp-forum-topic-count {
-			width: 9%;
+			width: 14%;
 			margin-right: 6%;
 			text-align: right;
 		}

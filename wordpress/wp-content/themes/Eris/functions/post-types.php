@@ -5,6 +5,30 @@
 
 add_action('init', 'register_questions_type');
 add_action('init', 'register_buying_guides_type');
+//add_action('init', 'change_default_post_slug');
+
+/**
+ * Changes the default post type slug from 'post' to 'tips-ideas'.
+ * 
+ * @author Dan Crimmins
+ */
+function change_default_post_slug() {
+	
+	register_post_type( 'post', array(
+        'labels' => array(
+            'name_admin_bar' => _x( 'Post', 'add new on admin bar' ),
+        ),
+        'public'  => true,
+        '_builtin' => false,
+        '_edit_link' => 'post.php?post=%d',
+        'capability_type' => 'post',
+        'map_meta_cap' => true,
+        'hierarchical' => false,
+        'rewrite' => array( 'slug' => 'tips-ideas' ),
+        'query_var' => false,
+        'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'post-formats' ),
+    ) );
+}
 
 /**
  * @author Eddie Moya
@@ -96,6 +120,7 @@ function register_buying_guides_type() {
     register_post_type('guide', $args);
 }
 
+
 function strip_oembed_from_excerpt($excerpt){
 	$oembedProviders = array(
 		'#http://(www\.)?youtube.com/watch.*#i',
@@ -165,22 +190,3 @@ add_filter('wpdz_dropzones', 'custom_excerpt_length', 9);
 //     echo "<pre>";print_r($wp_post_types['page']->menu_position);echo "</pre>";
 // }
 
-
-//add_action( 'init', 'default_post_type', 1 );
-function default_post_type() {
-
-    register_post_type( 'post', array(
-        'labels' => array(
-            'name_admin_bar' => _x( 'Post', 'add new on admin bar' ),
-        ),
-        'public'  => true,
-        '_builtin' => false, 
-        '_edit_link' => 'post.php?post=%d', 
-        'capability_type' => 'post',
-        'map_meta_cap' => true,
-        'hierarchical' => false,
-        'rewrite' => array( 'slug' => 'post' ),
-        'query_var' => false,
-        'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'post-formats' ),
-    ) );
-}

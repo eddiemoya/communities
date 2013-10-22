@@ -251,7 +251,8 @@ function validate_screen_name() {
 	if(class_exists('SSO_Profile_Request')) {
 		
 		$response = SSO_Profile_Request::factory()->validate_screen_name($screen_name);
-		echo ($response['code'] == '200') ? 'true' : 'false';
+		
+		echo ($response['code'] == '200') ? 'true' : $response['message'];
 		
 		exit;
 	}
