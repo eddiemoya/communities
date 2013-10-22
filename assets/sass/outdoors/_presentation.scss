@@ -337,6 +337,9 @@ html {
 }
 
 #menu-outdoor-style-design-your-outdoor-space {
+  .icon > img {
+  	padding-right: 10px;
+  }
   li {
     background:transparent image-url("#{$outdoor-img}background_design-your-outdoor-space.gif") repeat-x 0px 0px;
     a {
