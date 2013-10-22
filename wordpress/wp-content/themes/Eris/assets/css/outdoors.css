@@ -1099,6 +1099,7 @@ html { background: transparent url('../img/outdoorstyle/background_main-wood.jpg
 .page-title .content-body h1 { font-size: 153.846%; font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-weight: 400; }
 .page-title .content-body h2 { font-size: 92.307%; font-weight: 400; }
 
+#menu-outdoor-style-design-your-outdoor-space .icon > img { padding-right: 10px; }
 #menu-outdoor-style-design-your-outdoor-space li { background: transparent url('../img/outdoorstyle/background_design-your-outdoor-space.gif?v=1382470089') repeat-x 0px 0px; }
 #menu-outdoor-style-design-your-outdoor-space li a { font-family: "Open Sans", Helvetica, Arial, Verdana, sans-serif; font-size: 153.846%; font-weight: 300; }
 
