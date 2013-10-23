@@ -58,7 +58,7 @@
 				<?php reply_author_date(bbp_get_topic_id());?>
 				
 				<span class="forums-reply-content">
-					<?php bbp_topic_content(); ?>
+					<?php echo get_post(bbp_get_topic_id())->post_content; ?>
 				</span>
 				
 				<?php if(! is_user_logged_in()):?>
