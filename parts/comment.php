@@ -68,8 +68,6 @@
             require_once ABSPATH . '/wp-admin/includes/plugin.php';   // http://codex.wordpress.org/Function_Reference/is_plugin_active
             if(is_plugin_active('action_jackson/action_jackson.php')) {
                 get_partial( 'parts/forms/post-n-comment-actions', $actions );
-            } else {
-                echo 'not active';
             }
 
         ?>
