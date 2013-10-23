@@ -91,6 +91,3 @@
 [submodule "wordpress/wp-content/plugins/bbpress2-shortcode-whitelist"]
 	path = wordpress/wp-content/plugins/bbpress2-shortcode-whitelist
 	url = git@github.com:eddiemoya/bbpress2-shortcode-whitelist.git
-[submodule "wordpress/wp-content/plugins/post-type-converter"]
-	path = wordpress/wp-content/plugins/post-type-converter
-	url = git@github.com:mattday16/post-type-converter.git
