@@ -33,8 +33,8 @@
 				        <li><a href="#" id="logout" title="Logout" class="bold">Logout</a> </li>
 				        
 				    <?php else: ?>
-    					<li><a href="<?php echo get_site_url(); ?>/login/" title="Login" id="login-link" class="bold" <?php if(! is_page('login') && ! is_page('register')):?>shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-login'}}}"<?php endif;?>>Login</a></li>
-						<li><a href="<?php echo get_site_url(); ?>/register/" title="Sign Up: Join the Community" id="registration-link" class="bold" <?php if(! is_page('login') && ! is_page('register')):?>shc:gizmo="moodle" shc:gizmo:options="{moodle: {width:480, target:ajaxdata.ajaxurl, type:'POST', data:{action: 'get_template_ajax', template: 'page-register'}}}"<?php endif;?>>Join the community</a></li>
+    					<li><a href="<?php echo get_site_url(); ?>/login/" title="Login" id="login-link" class="bold" >Login</a></li>
+						<li><a href="<?php echo get_site_url(); ?>/register/" title="Sign Up: Join the Community" id="registration-link" class="bold">Join the community</a></li>
 					<?php endif; ?>
 				</ul>
 			</li>
