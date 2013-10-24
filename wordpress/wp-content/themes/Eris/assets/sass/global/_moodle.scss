@@ -11,7 +11,7 @@
   bottom:0;
   left:0;
   width:100%;
-  z-index:1000001;
+  z-index:7500;
 } 
 
 .android #moodle_overlay {
@@ -22,7 +22,7 @@
 
 #moodle_window {
   position:absolute;
-  z-index: 1000002;
+  z-index: 8000;
 }
 
 #moodle_container {
