@@ -8,7 +8,7 @@
 	);
     $terms = array(
         'question' => get_terms_by_post_type('category', array('post_type' => 'question')),
-        'post'     => null,//get_terms_by_post_type('category', array('post_type' => 'post')),
+        'post'     => get_terms_by_post_type('category', array('post_type' => 'post')),
         //'guide'    => get_terms_by_post_type('category', array('post_type' => 'guide')),
         //'tips'    => get_terms_by_post_type('category', array('post_type' => 'tips'))
     );
