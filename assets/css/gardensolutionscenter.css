@@ -285,8 +285,13 @@ ul.bullets { list-style-type: disc; }
 .content-container .content-date .time-stamp { display: inline-block; margin-left: 1.5em; }
 .content-container .content-details { margin-bottom: 0.769em; }
 .content-container .content-headline { font-size: 153.846%; line-height: 1.1em; margin: 0 0 .625em; }
+<<<<<<< HEAD
 .content-container .content-video { height: 0px; overflow: hidden; padding: 30px 0px 56.25%; position: relative; z-index: 50; }
 .content-container .content-video iframe, .content-container .content-video object, .content-container .content-video embed { height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; z-index: 50; }
+=======
+.content-container .content-video { height: 0px; overflow: hidden; padding: 30px 0px 56.25%; position: relative; z-index: 10001; }
+.content-container .content-video iframe, .content-container .content-video object, .content-container .content-video embed { height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; z-index: 10000; }
+>>>>>>> PHP-735 Added lawnmower icon to GSC Featured Product section.
 .content-container .content-video + .content-details { margin-top: 1.5em; }
 .content-container .share-full { margin-top: 10px; }
 
@@ -704,7 +709,11 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .dropmenu ul li a:visited { color: #666666; }
 
 #navigation { width: 960px; margin: 0 auto; }
+<<<<<<< HEAD
 #navigation #forum_tooltip { width: 250px; position: absolute; top: 43px; background: none repeat scroll 0% 0% white; border: 3px solid #dddddd; padding: 30px 21px 5px; z-index: 7002; -webkit-border-radius: 6px; border-radius: 6px; -webkit-box-shadow: 2px 4px 6px #A8A8A8; box-shadow: 2px 4px 6px #A8A8A8; font-size: 16px; display: none; }
+=======
+#navigation #forum_tooltip { width: 250px; position: absolute; top: 43px; background: none repeat scroll 0% 0% white; border: 3px solid #dddddd; padding: 30px 21px 5px; z-index: 101; -webkit-border-radius: 6px; border-radius: 6px; -webkit-box-shadow: 2px 4px 6px #A8A8A8; box-shadow: 2px 4px 6px #A8A8A8; font-size: 16px; display: none; }
+>>>>>>> PHP-735 Added lawnmower icon to GSC Featured Product section.
 #navigation #forum_tooltip p { margin-bottom: 10px; }
 #navigation #forum_tooltip input[type='checkbox'] { margin-right: 5px; }
 #navigation #forum_tooltip .close { position: absolute; right: 6px; top: 3px; cursor: pointer; font-size: 10px; font-weight: bold; }
@@ -1047,6 +1056,8 @@ body, td, p { color: #3b2314; }
 .featured-post-type-guide .content-header { background-color: transparent; background-position: 10px 10px; padding-left: 3.77em; }
 
 .featured-post-type-question .content-header { background-color: transparent; background-position: 10px 10px; padding-left: 3.77em; }
+
+.product-widget .content-header { background-image: url('../img/gardensolutionscenter/icon_product_29x29.png?v=1382641150'); background-repeat: no-repeat; background-color: transparent; background-position: 10px 10px; padding-left: 3.77em; }
 
 .menu-kgscsubnavigation.content-container { background: none; }
 .menu-kgscsubnavigation.content-container .content-body { border: none; padding: 0px; }
