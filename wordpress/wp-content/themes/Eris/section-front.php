@@ -2,7 +2,7 @@
 
 get_template_part('parts/header');
 	
-	if(class_exists('WP_Node_Factory')){
+	if(class_exists('WP_Node_Factory') && class_exists('WidgetPress_Controller_Widgets')){
 		$term = wp_get_object_terms($post->ID, $post->post_type);
 		$term = $term[0];
 		$node = new WP_Node_Factory($term->taxonomy);
@@ -49,6 +49,21 @@ get_template_part('parts/header');
 		
 		WidgetPress_Controller_Widgets::display_dropzones($layout_id);
 		wp_reset_query();
+	} 
+	else 
+	{
+		if(current_user_can('activate_plugins'))
+		{
+			if(!class_exists('WP_Node_Factory'))
+			{
+				echo "<h1>Error: This template requires the WP Node plugin to be turned on.</h1>";
+			}
+			
+			if(!class_exists('WidgetPress_Controller_Widgets'))
+			{
+				echo "<h1>Error: This template requires the WP Dropzones plugin to be turned on.</h1>";
+			}
+		}
 	}
 			
 
