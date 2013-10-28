@@ -15,10 +15,7 @@
 	<?php else: 
 	
 		global $wpdb;
-		
-		var_dump($wpdb->usermeta);
-		exit;
-		//$q = $wpdb->query("delete from {$wpdb->usermeta} where meta_key IN ('sso_guid', 'profile_screen_name', 'user_zipcode')");
+		$q = $wpdb->query("delete from {$wpdb->usermeta} where meta_key IN ('sso_guid', 'profile_screen_name', 'user_zipcode')");
 	?>
 	
 	<h3>All SSO related usermeta has been successfully removed from the wp_usermeta table. <?php echo number_format($q);?> rows affected.</h3>
