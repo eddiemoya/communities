@@ -36,7 +36,13 @@ class Page_Title_Header_Widget extends WP_Widget {
      */
     private $classname = 'page-title-header-widget';
     
-    /**
+   
+    
+    protected $_post_type_noun_map = array('post'		=> 'Tips & Ideas',
+    										'question'	=> 'Q&As');
+    
+    
+     /**
      * Be careful to consider PHP versions. If running PHP4 class name as the contructor instead.
      * 
      * @author Eddie Moya
@@ -75,10 +81,42 @@ class Page_Title_Header_Widget extends WP_Widget {
      * @return void 
      */
     public function widget( $args, $instance ){
-        extract($args);
+    	
+        global $wp_query;
+    	extract($args);
         extract($instance);
         
-        //echo $before_title . $bp_title . $after_title;
+       /* echo '<pre>';
+        var_dump($wp_query);
+        exit;*/
+       if(! isset($pth_use_inputted)) {
+       	
+	        //Create the title
+	        if($wp_query->is_archive && $wp_query->is_category && $wp_query->query_vars['post_type']) { //Post-type category Archive
+	        	
+	        	$pth_title = ucfirst($wp_query->query_vars['category_name']) . ' ' . $this->_post_type_noun_map[$wp_query->query_vars['post_type']];
+	        	
+	        } elseif(! $wp_query->query_vars['post_type'] && $wp_query->is_archive && $wp_query->is_category) { //Category Archive
+	        	
+	        	$pth_title = ucfirst($wp_query->query_vars['category_name']);
+	        	
+	        } elseif($wp_query->query_vars['post_type'] && $wp_query->is_home && ! $wp_query->is_archive && ! $wp_query->is_category) { //Post-type Archive
+	        	
+	        	$pth_title = $this->_post_type_noun_map[$wp_query->query_vars['post_type']];
+	        	
+	        }
+	        
+	        //Create subtitle, if we are on a category or post-type category archive page
+	        if($wp_query->query_vars['category_name']) {
+	        	
+	        	$description = get_term_by('name', $wp_query->query_vars['category_name'], 'category')->description;
+	        	
+	        	$pth_subtitle = ($description) ? $description : $pth_subtitle;
+	        	
+	        }	
+
+       }
+        
         
         ?>
         <article class="widget content-container span12 page-title">
@@ -169,7 +207,12 @@ class Page_Title_Header_Widget extends WP_Widget {
             array(
                 'field_id' => 'pth_subtitle',
                 'type' => 'text',
-                'label' => 'Sub-Title')
+                'label' => 'Sub-Title (required if used on a post-type archive)'
+            ),
+            array('field_id' => 'pth_use_inputted',
+            		'type'	 => 'checkbox',
+            		'label'	 => 'Only display inputted title and sub-title'
+            )
         );
 
         /* Builds a series of inputs based on the $fields array created above. */
@@ -185,7 +228,7 @@ class Page_Title_Header_Widget extends WP_Widget {
      * This is a wrapper for the singular form_field() function.
      * 
      * @author Eddie Moya
-     * 
+     * pth_use_inputted
      * @uses self::form_fields()
      * 
      * @param array $fields     [Required] Nested array of field settings
