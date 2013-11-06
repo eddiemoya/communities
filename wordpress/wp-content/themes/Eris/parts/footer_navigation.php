@@ -39,7 +39,6 @@
         ),
         "Legal" => array(
             "California Privacy Policy" => "http://www.sears.com/shc/s/nb_10153_12605_NB_CScaliforniaprivacy",
-            "Children's Privacy Policy" => "http://www.sears.com/shc/s/nb_10153_12605_NB_CSchildprivacy",
             "License Info" => "http://www.sears.com/shc/s/nb_10153_12605_NB_License Information",
             "Payment Methods" => "http://www.sears.com/paymentmethod/nb-100000000041010",
             "Price Match Policy" => "http://www.sears.com/shc/s/nb_10153_12605_NB_CSpricematch?adCell=WF&amp;adCell=WF",
