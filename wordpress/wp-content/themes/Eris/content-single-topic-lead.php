@@ -14,9 +14,7 @@
 <ul id="bbp-topic-<?php bbp_topic_id(); ?>-lead" class="bbp-lead-topic">
 
 	<li class="bbp-topic-title">
-		
-		<?php bbp_topic_title(); ?>
-		
+		<h1><?php bbp_topic_title(); ?></h1>
 	</li><!-- .bbp-header -->
 
 	<li class="bbp-body">
