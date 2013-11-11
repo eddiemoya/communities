@@ -107,10 +107,10 @@ function enqueue_scripts() {
 
         // wp_enqueue_script('addthis');
 
-        wp_localize_script('jquery', 'ajaxdata', $data);
+        wp_localize_script('shcJSL', 'ajaxdata', $data);
         wp_localize_script('omniture_start', 's_properties', $s_properties);
 
-        wp_localize_script('jquery', 'ajaxdata', $data);
+        //wp_localize_script('jquery', 'ajaxdata', $data);
         //wp_localize_script('addthis', 's.pageName', $pageName);    		
 
         

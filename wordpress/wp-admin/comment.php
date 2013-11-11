@@ -7,7 +7,7 @@
  */
 
 /** Load WordPress Bootstrap */
-require_once('./admin.php');
+require_once( dirname( __FILE__ ) . '/admin.php' );
 
 $parent_file = 'edit-comments.php';
 $submenu_file = 'edit-comments.php';
@@ -36,7 +36,7 @@ if ( isset( $_GET['dt'] ) ) {
  */
 function comment_footer_die( $msg ) {
 	echo "<div class='wrap'><p>$msg</p></div>";
-	include('./admin-footer.php');
+	include( ABSPATH . 'wp-admin/admin-footer.php' );
 	die;
 }
 
@@ -60,12 +60,12 @@ case 'editcomment' :
 	);
 
 	wp_enqueue_script('comment');
-	require_once('./admin-header.php');
+	require_once( ABSPATH . 'wp-admin/admin-header.php' );
 
 	$comment_id = absint( $_GET['c'] );
 
 	if ( !$comment = get_comment( $comment_id ) )
-		comment_footer_die( __('Oops, no comment with this ID.') . sprintf(' <a href="%s">'.__('Go back').'</a>!', 'javascript:history.go(-1)') );
+		comment_footer_die( __('Oops, no comment with this ID.') . sprintf(' <a href="%s">' . __('Go back') . '</a>.', 'javascript:history.go(-1)') );
 
 	if ( !current_user_can( 'edit_comment', $comment_id ) )
 		comment_footer_die( __('You are not allowed to edit this comment.') );
@@ -73,12 +73,9 @@ case 'editcomment' :
 	if ( 'trash' == $comment->comment_approved )
 		comment_footer_die( __('This comment is in the Trash. Please move it out of the Trash if you want to edit it.') );
 
-	if ( 'spam' == $comment->comment_approved )
-		comment_footer_die( __('This comment is marked as Spam. Please mark it as Not Spam if you want to edit it.') );
-
 	$comment = get_comment_to_edit( $comment_id );
 
-	include('./edit-form-comment.php');
+	include( ABSPATH . 'wp-admin/edit-form-comment.php' );
 
 	break;
 
@@ -107,7 +104,7 @@ case 'spam'    :
 		die();
  	}
 
-	require_once('./admin-header.php');
+	require_once( ABSPATH . 'wp-admin/admin-header.php' );
 
 	$formaction    = $action . 'comment';
 	$nonce_action  = 'approve' == $action ? 'approve-comment_' : 'delete-comment_';
@@ -222,7 +219,7 @@ case 'unapprovecomment' :
 	$noredir = isset($_REQUEST['noredir']);
 
 	if ( !$comment = get_comment($comment_id) )
-		comment_footer_die( __('Oops, no comment with this ID.') . sprintf(' <a href="%s">'.__('Go back').'</a>!', 'edit-comments.php') );
+		comment_footer_die( __('Oops, no comment with this ID.') . sprintf(' <a href="%s">' . __('Go back') . '</a>.', 'edit-comments.php') );
 	if ( !current_user_can( 'edit_comment', $comment->comment_ID ) )
 		comment_footer_die( __('You are not allowed to edit comments on this post.') );
 
@@ -282,6 +279,15 @@ case 'editedcomment' :
 	edit_comment();
 
 	$location = ( empty( $_POST['referredby'] ) ? "edit-comments.php?p=$comment_post_id" : $_POST['referredby'] ) . '#comment-' . $comment_id;
+
+	/**
+	 * Filter the URI the user is redirected to after editing a comment in the admin.
+	 *
+	 * @since 2.1.0
+	 *
+	 * @param string $location The URI the user will be redirected to.
+	 * @param int $comment_id The ID of the comment being edited.
+	 */
 	$location = apply_filters( 'comment_edit_redirect', $location, $comment_id );
 	wp_redirect( $location );
 
@@ -294,6 +300,4 @@ default:
 
 } // end switch
 
-include('./admin-footer.php');
-
-?>
+include( ABSPATH . 'wp-admin/admin-footer.php' );

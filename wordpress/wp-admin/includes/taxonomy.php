@@ -34,7 +34,8 @@ function category_exists($cat_name, $parent = 0) {
  * @return unknown
  */
 function get_category_to_edit( $id ) {
-	$category = get_category( $id, OBJECT, 'edit' );
+	$category = get_term( $id, 'category', OBJECT, 'edit' );
+	_make_cat_compat( $category );
 	return $category;
 }
 
@@ -86,7 +87,7 @@ function wp_create_categories($categories, $post_id = '') {
  *
  * @param mixed $catarr See defaults below. Set 'cat_ID' to a non-zero value to update an existing category. The 'taxonomy' key was added in 3.0.0.
  * @param bool $wp_error Optional, since 2.5.0. Set this to true if the caller handles WP_Error return values.
- * @return int|object The ID number of the new or updated Category on success.  Zero or a WP_Error on failure, depending on param $wp_error.
+ * @return int|object The ID number of the new or updated Category on success. Zero or a WP_Error on failure, depending on param $wp_error.
  */
 function wp_insert_category($catarr, $wp_error = false) {
 	$cat_defaults = array('cat_ID' => 0, 'taxonomy' => 'category', 'cat_name' => '', 'category_description' => '', 'category_nicename' => '', 'category_parent' => '');
@@ -117,7 +118,7 @@ function wp_insert_category($catarr, $wp_error = false) {
 	if ( $parent < 0 )
 		$parent = 0;
 
-	if ( empty($parent) || !category_exists( $parent ) || ($cat_ID && cat_is_ancestor_of($cat_ID, $parent) ) )
+	if ( empty( $parent ) || ! term_exists( $parent, $taxonomy ) || ( $cat_ID && term_is_ancestor_of( $cat_ID, $parent, $taxonomy ) ) )
 		$parent = 0;
 
 	$args = compact('name', 'slug', 'parent', 'description');
@@ -145,7 +146,7 @@ function wp_insert_category($catarr, $wp_error = false) {
  *
  * @since 2.0.0
  *
- * @param array $catarr The 'cat_ID' value is required.  All other keys are optional.
+ * @param array $catarr The 'cat_ID' value is required. All other keys are optional.
  * @return int|bool The ID number of the new or updated Category on success. Zero or FALSE on failure.
  */
 function wp_update_category($catarr) {
@@ -155,10 +156,11 @@ function wp_update_category($catarr) {
 		return false;
 
 	// First, get all of the original fields
-	$category = get_category($cat_ID, ARRAY_A);
+	$category = get_term( $cat_ID, 'category', ARRAY_A );
+	_make_cat_compat( $category );
 
 	// Escape data pulled from DB.
-	$category = add_magic_quotes($category);
+	$category = wp_slash($category);
 
 	// Merge old and new fields with new fields overwriting old ones.
 	$catarr = array_merge($category, $catarr);

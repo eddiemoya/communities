@@ -7,19 +7,21 @@
  */
 
 /** WordPress Administration Bootstrap */
-require_once( './admin.php' );
+require_once( dirname( __FILE__ ) . '/admin.php' );
 
 $title = __( 'About' );
 
 list( $display_version ) = explode( '-', $wp_version );
 
-include( './admin-header.php' );
+wp_enqueue_script( 'about' );
+
+include( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 <div class="wrap about-wrap">
 
 <h1><?php printf( __( 'Welcome to WordPress %s' ), $display_version ); ?></h1>
 
-<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version! Using WordPress %s will improve your looks, personality, and web publishing experience. Okay, just the last one, but still. :)' ), $display_version ); ?></div>
+<div class="about-text"><?php echo str_replace( '3.7', $display_version, __( 'Thank you for updating to WordPress 3.7! You might not notice a thing, and we&#8217;re okay with that.' ) ); ?></div>
 
 <div class="wp-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
 
@@ -34,156 +36,124 @@ include( './admin-header.php' );
 </h2>
 
 <div class="changelog point-releases">
-	<h3><?php echo _n( 'Maintenance and Security Release', 'Maintenance and Security Releases', 2 ); ?></h3>
-	<p><?php printf( _n( '<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug.',
-         '<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs.', 12 ), '3.3.2', number_format_i18n( 12 ) ); ?>
-		<?php printf( __( 'For more information, see <a href="%s">the release notes</a>.' ), 'http://codex.wordpress.org/Version_3.3.2' ); ?>
- 	</p>
-	<p><?php printf( _n( '<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug.',
-         '<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs.', 15 ), '3.3.1', number_format_i18n( 15 ) ); ?>
-		<?php printf( __( 'For more information, see <a href="%s">the release notes</a>.' ), 'http://codex.wordpress.org/Version_3.3.1' ); ?>
+	<h3><?php echo _n( 'Maintenance Release', 'Maintenance Releases', 1 ); ?></h3>
+	<p><?php printf( _n( '<strong>Version %1$s</strong> addressed %2$s bug.',
+		'<strong>Version %1$s</strong> addressed %2$s bugs.', 11 ), '3.7.1', number_format_i18n( 11 ) ); ?>
+		<?php printf( __( 'For more information, see <a href="%s">the release notes</a>.' ), 'http://codex.wordpress.org/Version_3.7.1' ); ?>
  	</p>
 </div>
 
 <div class="changelog">
-	<h3><?php _e( 'Easier Uploading' ); ?></h3>
+	<h3><?php _e( 'Background Updates' ); ?></h3>
 
-	<div class="feature-section images-stagger-right">
-		<div class="feature-images">
-			<img src="images/screenshots/media-icon.png" width="200" class="angled-right" />
-			<img src="images/screenshots/drag-and-drop.png" width="200" class="angled-left" />
+	<div class="feature-section col three-col about-updates">
+		<div class="col-1">
+			<h4><?php _e( 'Updates While You Sleep' ); ?></h4>
+			<p><?php _e( 'With WordPress 3.7, you don&#8217;t have to lift a finger to apply maintenance and security updates. Most sites are now able to automatically apply these updates in the background, though some configurations may not allow it.' ); ?></p>
 		</div>
-		<div class="left-feature">
-			<h4><?php _e( 'File Type Detection' ); ?></h4>
-			<p><?php _e( 'We&#8217;ve streamlined things! Instead of needing to click on a specific upload icon based on your file type, now there&#8217;s just one. Once your file is uploaded, the appropriate fields will be displayed for entering information based on the file type.' ); ?></p>
+		<div class="col-2">
+			<img alt="" src="<?php echo admin_url( 'images/about-updates-2x.png' ); ?>" />
+		</div>
+		<div class="col-3 last-feature">
+			<h4><?php _e( 'More Reliable Than Ever' ); ?></h4>
+			<p><?php _e( 'The update process has been made even more reliable and secure, with dozens of new checks and safeguards.' ); ?></p>
+			<p><?php _e( 'You&#8217;ll still need to click &#8220;Update Now&#8221; once WordPress 3.8 is released, but we&#8217;ve never had more confidence in that beautiful blue button.' ); ?></p>
+		</div>
+		<?php
+		if ( current_user_can( 'update_core' ) ) {
+			$future_minor_update = (object) array(
+				'current'       => $wp_version . '.1.next.minor',
+				'version'       => $wp_version . '.1.next.minor',
+				'php_version'   => $required_php_version,
+				'mysql_version' => $required_mysql_version,
+			);
+			require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+			$updater = new WP_Automatic_Updater;
+			$can_auto_update = wp_http_supports( array( 'ssl' ) ) && $updater->should_update( 'core', $future_minor_update, ABSPATH );
 
-			<h4><?php _e( 'Drag-and-Drop Media Uploader' ); ?></h4>
-			<p><?php _e( 'Adding photos or other files to posts and pages just got easier. Drag files from your desktop and drop them into the uploader. Add one file at a time, or many at once.' ); ?></p>
+			if ( $can_auto_update ) {
+				echo '<p class="about-auto-update cool">' . __( 'This site <strong>is</strong> able to apply these updates automatically. Cool!' ). '</p>';
 
-			<h4><?php _e( 'More File Formats' ); ?></h4>
-			<p><?php _e( 'We&#8217;ve added the rar and 7z file formats to the list of allowed file types in the uploader.' ); ?></p>
+			// If the updater is disabled entirely, don't show them anything.
+			} elseif ( ! $updater->is_disabled() ) {
+				echo '<p class="about-auto-update">';
+				// If this is is filtered to false, they won't get emails, so don't claim we will.
+				// Assumption: If the user can update core, they can see what the admin email is.
+
+				/** This filter is documented in wp-admin/includes/class-wp-upgrader.php */
+				if ( apply_filters( 'send_core_update_notification_email', true, $future_minor_update ) ) {
+					printf( __( 'This site <strong>is not</strong> able to apply these updates automatically. But we&#8217;ll email %s when there is a new security release.' ), esc_html( get_site_option( 'admin_email' ) ) );
+				} else {
+					_e( 'This site <strong>is not</strong> able to apply these updates automatically.' );
+				}
+				echo '</p>';
+			}
+		}
+		?>
+	</div>
+</div>
+
+<div class="changelog about-passwords">
+	<h3><?php _e( 'Create Stronger Passwords' ); ?></h3>
+
+	<div class="feature-section col two-col">
+		<div>
+			<p><?php _e( 'Your password is your site&#8217;s first line of defense. It&#8217;s best to create passwords that are complex, long, and unique. To that end, our password meter has been updated in WordPress 3.7 to recognize common mistakes that can weaken your password: dates, names, keyboard patterns (123456789), and even pop culture references.' ); ?></p>
+			<p><strong><?php _e( 'Try it out on the right.' ); ?></strong></p>
+		</div>
+		<div class="last-feature about-password-meter">
+			<input type="password" id="pass" size="25" value="" />
+			<p id="pass-strength-result" ><?php _e( 'Strength indicator' ); ?></p>
+			<?php printf( __( 'Getting the urge to <a href="%s">change your password</a>?' ), esc_url( self_admin_url( 'profile.php' ) ) ); ?>
 		</div>
 	</div>
 </div>
 
 <div class="changelog">
-	<h3><?php _e( 'Dashboard Design' ); ?></h3>
-
-	<div class="feature-section text-features">
-		<h4><?php _e( 'Flyout Menus' ); ?></h4>
-		<p><?php _e( 'Speed up navigating the dashboard and reduce repetitive clicking with our new flyout submenus. As you hover over each main menu item in your dashboard navigation, the submenus will magically appear, providing single-click access to any dashboard screen.' ); ?></p>
-
+	<div class="feature-section col two-col">
 		<div>
-		<h4><?php _e( 'Header + Admin Bar = Toolbar' ); ?></h4>
-		<p><?php _e( 'To save space and increase efficiency, we&#8217;ve combined the admin bar and the old Dashboard header into one persistent toolbar. Hovering over the toolbar items will reveal submenus when available for quick access. ' ); ?></p>
-		</div>
-	</div>
-
-	<div class="feature-section screenshot-features">
-		<div class="angled-left">
-			<img src="images/screenshots/admin-flyouts.png" />
-			<h4><?php _e( 'Responsive Design' ); ?></h4>
-			<p><?php _e( 'Certain dashboard screens have been updated to look better at various sizes, including improved iPad/tablet support.' ); ?></p>
-		</div>
-		<div class="angled-right">
-			<img src="images/screenshots/help-screen.png" />
-			<h4><?php _e( 'Help Tabs' ); ?></h4>
-			<p><?php _e( 'The Help tabs located in the upper corner of the dashboard screens below your name have gotten a facelift. Help content is broken into smaller sections for easier access, with links to relevant documentation and the support forums always visible.' ); ?></p>
-		</div>
-	</div>
-</div>
-
-<div class="changelog">
-	<h3><?php _e( 'Feels Like the First Time' ); ?></h3>
-
-	<div class="feature-section images-stagger-right">
-		<div class="feature-images">
-			<img src="images/screenshots/new-feature-pointer.png" class="angled-right" />
-			<img src="images/screenshots/welcome-screen.png" class="angled-left" />
-		</div>
-		<div class="left-feature">
-			<h4><?php _e( 'New Feature Pointers' ); ?></h4>
-			<p><?php _e( 'When we add new features, move navigation, or do anything else with the dashboard that might throw you for a loop when you update your WordPress site, we&#8217;ll let you know about it with new feature pointers explaining the change.' ); ?></p>
-
-			<h4><?php _e( 'Post-update Changelog' ); ?></h4>
-			<p><?php _e( 'This screen! From now on when you update WordPress, you&#8217;ll be brought to this screen &mdash; also accessible any time from the W logo in the corner of the toolbar &mdash; to get an overview of what&#8217;s changed.' ); ?></p>
-
-			<h4><?php _e( 'Dashboard Welcome' ); ?></h4>
-			<p><?php _e( 'The dashboard home screen will have a Welcome area that displays when a new WordPress installation is accessed for the first time, prompting the site owner to complete various setup tasks. Once dismissed, this welcome can be accessed via the dashboard home screen options tab.' ); ?></p>
-		</div>
-	</div>
-
-</div>
-
-<div class="changelog">
-	<h3><?php _e( 'Content Tools' ); ?></h3>
-
-	<div class="feature-section three-col">
-		<div>
-			<h4><?php _e( 'Better Co-Editing' ); ?></h4>
-			<img src="images/screenshots/coediting.png" class="element-screenshot" />
-			<p><?php _e( 'Have you ever gone to edit a post after someone else has finished with it, only to get an alert that tells you the other person is still editing the post? From now on, you&#8217;ll only get that alert if another person is still on the editing screen &mdash; no more time lag.' ); ?></p>
-		</div>
-		<div>
-			<h4><?php _e( 'Tumblr Importer' ); ?></h4>
-			<p><?php _e( 'Want to import content from Tumblr to WordPress? No problem! Go to <span class="no-break">Tools &rarr; Import</span> to get the new Tumblr Importer, which maps your Tumblog posts to the matching WordPress post formats. Tip: Choose a theme designed to display post formats to get the greatest benefit from the importer.' ); ?></p>
+			<h3><?php _e( 'Improved Search Results' ); ?></h3>
+			<p><img alt="" src="<?php echo admin_url( 'images/about-search-2x.png' ); ?>" /><?php _e( 'Search results are now ordered by how well the search query matches a post, instead of ordered only by date. For example, when your search terms match a post title, that result will be pushed to the top.' ); ?></p>
 		</div>
 		<div class="last-feature">
-			<h4><?php _e( 'Widget Improvements' ); ?></h4>
-			<p><?php _e( 'Changing themes often requires widget re-configuration based on the number and position of sidebars. Now if you change back to a previous theme, the widgets will automatically go back to how you had them arranged in that theme. <em>Note: if you&#8217;ve added new widgets since the switch, you&#8217;ll need to rescue them from the Inactive Widgets area.</em>' ); ?></p>
+			<h3><?php _e( 'Better Global Support' ); ?></h3>
+			<p><img alt="" src="<?php echo admin_url( 'images/about-globe-2x.png' ); ?>" /><?php _e( 'Localized versions of WordPress will receive faster and more complete translations. WordPress 3.7 adds support for automatically installing the right language files and keeping them up to date.' ); ?></p>
 		</div>
 	</div>
-
 </div>
 
 <div class="changelog">
 	<h3><?php _e( 'Under the Hood' ); ?></h3>
 
-	<div class="feature-section three-col">
+	<div class="feature-section col three-col">
 		<div>
-			<h4><?php _e( 'Flexible Permalinks' ); ?></h4>
-			<p><?php _e( 'You have more freedom when choosing a post permalink structure. Skip the date information or add a category slug without a performance penalty.' ); ?></p>
+			<h4><?php _e( 'More Background Updates (Experimental)' ); ?></h4>
+			<p><?php _e( 'Want WordPress to always update automatically, even for major feature releases? Want to always keep a certain plugin up to date in the background? WordPress 3.7 comes with fine-grained update controls for developers and systems administrators.' ); ?></p>
 		</div>
 		<div>
-			<h4><?php _e( 'Post Slugs: Less Funky' ); ?></h4>
-			<p><?php _e( 'Funky characters in post titles (e.g. curly quotes from a word processor) will no longer result in garbled post slugs.' ); ?></p>
+			<h4><?php _e( 'Advanced Date Queries' ); ?></h4>
+			<p><?php _e( 'Developers can now query for posts within a date range, or that are older than or newer than a specific point in time. Or get really fancy: all posts written on Friday afternoons? Not&nbsp;a&nbsp;problem.' ); ?></p>
 		</div>
 		<div class="last-feature">
-			<h4><?php _e( 'jQuery and jQuery UI' ); ?></h4>
-			<p><?php printf( __( 'WordPress now includes the entire jQuery UI stack and the latest version of jQuery: %s.' ), '1.7.1' ); ?></p>
+			<h4><?php _e( 'Multisite Improvements' ); ?></h4>
+			<p><?php _e( '<code>wp_get_sites()</code> allows developers to easily get an array of all the sites on your network without resorting to a direct database query &mdash; just one of many improvements to multisite in WordPress 3.7.' ); ?></p>
 		</div>
-	</div>
-
-	<div class="feature-section three-col">
-		<div>
-			<h4 style="direction:ltr">is_main_query()</h4>
-			<p><?php _e( 'This handy method will tell you if a <code>WP_Query</code> object is the main WordPress query or a secondary query.' ); ?></p>
-		</div>
-		<div>
-			<h4><?php _e( 'WP_Screen API' ); ?></h4>
-			<p><?php _e( 'WordPress has a nice new API for working with admin screens. Create rich screens, add help documentation, adapt to screen contexts, and more.' ); ?></p>
-		</div>
-		<div class="last-feature">
-			<h4><?php _e( 'Editor API Overhaul' ); ?></h4>
-			<p><?php _e( 'The new editor API automatically pulls in all the JS and CSS goodness for the editor. It even supports multiple editors on the same page.' ); ?></p>
-		</div>
-	</div>
-
 </div>
 
 <div class="return-to-dashboard">
 	<?php if ( current_user_can( 'update_core' ) && isset( $_GET['updated'] ) ) : ?>
-	<a href="<?php echo esc_url( network_admin_url( 'update-core.php' ) ); ?>"><?php
+	<a href="<?php echo esc_url( self_admin_url( 'update-core.php' ) ); ?>"><?php
 		is_multisite() ? _e( 'Return to Updates' ) : _e( 'Return to Dashboard &rarr; Updates' );
 	?></a> |
 	<?php endif; ?>
-	<a href="<?php echo esc_url( admin_url() ); ?>"><?php _e( 'Go to Dashboard &rarr; Home' ); ?></a>
+	<a href="<?php echo esc_url( self_admin_url() ); ?>"><?php
+		is_blog_admin() ? _e( 'Go to Dashboard &rarr; Home' ) : _e( 'Go to Dashboard' ); ?></a>
 </div>
 
 </div>
 <?php
 
-include( './admin-footer.php' );
+include( ABSPATH . 'wp-admin/admin-footer.php' );
 
 // These are strings we may use to describe maintenance/security releases, where we aim for no new strings.
 return;
@@ -209,5 +179,3 @@ _n_noop( '<strong>Version %1$s</strong> addressed some security issues and fixed
          '<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs.' );
 
 __( 'For more information, see <a href="%s">the release notes</a>.' );
-
-?>

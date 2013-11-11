@@ -1,6 +1,6 @@
 <?php
 
-define(EXPERT_ROLE, 'expert');
+define('EXPERT_ROLE', 'expert');
 
 //User_Profile class
 require_once 'classes/communities_profile.php';

@@ -8,7 +8,7 @@
  */
 
 /** Load WordPress Administration Bootstrap */
-require_once( './admin.php' );
+require_once( dirname( __FILE__ ) . '/admin.php' );
 
 if ( ! is_multisite() )
 	wp_die( __( 'Multisite support is not enabled.' ) );
@@ -25,5 +25,3 @@ do_action( 'network_admin_edit_' . $_GET['action'] );
 
 wp_redirect( network_admin_url() );
 exit();
-
-?>

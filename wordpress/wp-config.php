@@ -16,7 +16,7 @@
  */
 
 /** The name of the database for WordPress */
-define('DB_NAME', 'comm_local');
+define('DB_NAME', 'comm_update');
 
 /** MySQL database username */
 define('DB_USER', 'wp_user');

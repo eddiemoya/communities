@@ -65,8 +65,8 @@
  * @since 1.5.0
  *
  * @param string $plugin_file Path to the plugin file
- * @param bool $markup If the returned data should have HTML markup applied
- * @param bool $translate If the returned data should be translated
+ * @param bool $markup Optional. If the returned data should have HTML markup applied. Defaults to true.
+ * @param bool $translate Optional. If the returned data should be translated. Defaults to true.
  * @return array See above for description.
  */
 function get_plugin_data( $plugin_file, $markup = true, $translate = true ) {
@@ -88,68 +88,88 @@ function get_plugin_data( $plugin_file, $markup = true, $translate = true ) {
 	$plugin_data = get_file_data( $plugin_file, $default_headers, 'plugin' );
 
 	// Site Wide Only is the old header for Network
-	if ( empty( $plugin_data['Network'] ) && ! empty( $plugin_data['_sitewide'] ) ) {
+	if ( ! $plugin_data['Network'] && $plugin_data['_sitewide'] ) {
 		_deprecated_argument( __FUNCTION__, '3.0', sprintf( __( 'The <code>%1$s</code> plugin header is deprecated. Use <code>%2$s</code> instead.' ), 'Site Wide Only: true', 'Network: true' ) );
 		$plugin_data['Network'] = $plugin_data['_sitewide'];
 	}
 	$plugin_data['Network'] = ( 'true' == strtolower( $plugin_data['Network'] ) );
 	unset( $plugin_data['_sitewide'] );
 
-	//For backward compatibility by default Title is the same as Name.
-	$plugin_data['Title'] = $plugin_data['Name'];
-
-	if ( $markup || $translate )
+	if ( $markup || $translate ) {
 		$plugin_data = _get_plugin_data_markup_translate( $plugin_file, $plugin_data, $markup, $translate );
-	else
+	} else {
+		$plugin_data['Title']      = $plugin_data['Name'];
 		$plugin_data['AuthorName'] = $plugin_data['Author'];
+	}
 
 	return $plugin_data;
 }
 
-function _get_plugin_data_markup_translate($plugin_file, $plugin_data, $markup = true, $translate = true) {
+/**
+ * Sanitizes plugin data, optionally adds markup, optionally translates.
+ *
+ * @since 2.7.0
+ * @access private
+ * @see get_plugin_data()
+ */
+function _get_plugin_data_markup_translate( $plugin_file, $plugin_data, $markup = true, $translate = true ) {
 
-	//Translate fields
-	if ( $translate && ! empty($plugin_data['TextDomain']) ) {
-		if ( ! empty( $plugin_data['DomainPath'] ) )
-			load_plugin_textdomain($plugin_data['TextDomain'], false, dirname($plugin_file). $plugin_data['DomainPath']);
-		else
-			load_plugin_textdomain($plugin_data['TextDomain'], false, dirname($plugin_file));
+	// Sanitize the plugin filename to a WP_PLUGIN_DIR relative path
+	$plugin_file = plugin_basename( $plugin_file );
 
-		foreach ( array('Name', 'PluginURI', 'Description', 'Author', 'AuthorURI', 'Version') as $field )
-			$plugin_data[ $field ] = translate($plugin_data[ $field ], $plugin_data['TextDomain']);
+	// Translate fields
+	if ( $translate ) {
+		if ( $textdomain = $plugin_data['TextDomain'] ) {
+			if ( $plugin_data['DomainPath'] )
+				load_plugin_textdomain( $textdomain, false, dirname( $plugin_file ) . $plugin_data['DomainPath'] );
+			else
+				load_plugin_textdomain( $textdomain, false, dirname( $plugin_file ) );
+		} elseif ( in_array( basename( $plugin_file ), array( 'hello.php', 'akismet.php' ) ) ) {
+			$textdomain = 'default';
+		}
+		if ( $textdomain ) {
+			foreach ( array( 'Name', 'PluginURI', 'Description', 'Author', 'AuthorURI', 'Version' ) as $field )
+				$plugin_data[ $field ] = translate( $plugin_data[ $field ], $textdomain );
+		}
 	}
 
-	$plugins_allowedtags = array(
-		'a'       => array( 'href' => array(), 'title' => array() ),
-		'abbr'    => array( 'title' => array() ),
-		'acronym' => array( 'title' => array() ),
-		'code'    => array(),
-		'em'      => array(),
-		'strong'  => array(),
+	// Sanitize fields
+	$allowed_tags = $allowed_tags_in_links = array(
+		'abbr'    => array( 'title' => true ),
+		'acronym' => array( 'title' => true ),
+		'code'    => true,
+		'em'      => true,
+		'strong'  => true,
 	);
+	$allowed_tags['a'] = array( 'href' => true, 'title' => true );
 
-	$plugin_data['AuthorName'] = $plugin_data['Author'] = wp_kses( $plugin_data['Author'], $plugins_allowedtags );
+	// Name is marked up inside <a> tags. Don't allow these.
+	// Author is too, but some plugins have used <a> here (omitting Author URI).
+	$plugin_data['Name']        = wp_kses( $plugin_data['Name'],        $allowed_tags_in_links );
+	$plugin_data['Author']      = wp_kses( $plugin_data['Author'],      $allowed_tags );
 
-	//Apply Markup
+	$plugin_data['Description'] = wp_kses( $plugin_data['Description'], $allowed_tags );
+	$plugin_data['Version']     = wp_kses( $plugin_data['Version'],     $allowed_tags );
+
+	$plugin_data['PluginURI']   = esc_url( $plugin_data['PluginURI'] );
+	$plugin_data['AuthorURI']   = esc_url( $plugin_data['AuthorURI'] );
+
+	$plugin_data['Title']      = $plugin_data['Name'];
+	$plugin_data['AuthorName'] = $plugin_data['Author'];
+
+	// Apply markup
 	if ( $markup ) {
-		if ( ! empty($plugin_data['PluginURI']) && ! empty($plugin_data['Name']) )
+		if ( $plugin_data['PluginURI'] && $plugin_data['Name'] )
 			$plugin_data['Title'] = '<a href="' . $plugin_data['PluginURI'] . '" title="' . esc_attr__( 'Visit plugin homepage' ) . '">' . $plugin_data['Name'] . '</a>';
-		else
-			$plugin_data['Title'] = $plugin_data['Name'];
 
-		if ( ! empty($plugin_data['AuthorURI']) && ! empty($plugin_data['Author']) )
+		if ( $plugin_data['AuthorURI'] && $plugin_data['Author'] )
 			$plugin_data['Author'] = '<a href="' . $plugin_data['AuthorURI'] . '" title="' . esc_attr__( 'Visit author homepage' ) . '">' . $plugin_data['Author'] . '</a>';
 
 		$plugin_data['Description'] = wptexturize( $plugin_data['Description'] );
-		if ( ! empty($plugin_data['Author']) )
-			$plugin_data['Description'] .= ' <cite>' . sprintf( __('By %s'), $plugin_data['Author'] ) . '.</cite>';
-	}
 
-	// Sanitize all displayed data. Author and AuthorName sanitized above.
-	$plugin_data['Title']       = wp_kses( $plugin_data['Title'],       $plugins_allowedtags );
-	$plugin_data['Version']     = wp_kses( $plugin_data['Version'],     $plugins_allowedtags );
-	$plugin_data['Description'] = wp_kses( $plugin_data['Description'], $plugins_allowedtags );
-	$plugin_data['Name']        = wp_kses( $plugin_data['Name'],        $plugins_allowedtags );
+		if ( $plugin_data['Author'] )
+			$plugin_data['Description'] .= ' <cite>' . sprintf( __('By %s.'), $plugin_data['Author'] ) . '</cite>';
+	}
 
 	return $plugin_data;
 }
@@ -504,6 +524,7 @@ function activate_plugin( $plugin, $redirect = '', $network_wide = false, $silen
 	if ( is_multisite() && ( $network_wide || is_network_only_plugin($plugin) ) ) {
 		$network_wide = true;
 		$current = get_site_option( 'active_sitewide_plugins', array() );
+		$_GET['networkwide'] = 1; // Back compat for plugins looking for this value.
 	} else {
 		$current = get_option( 'active_plugins', array() );
 	}
@@ -519,7 +540,28 @@ function activate_plugin( $plugin, $redirect = '', $network_wide = false, $silen
 		include_once(WP_PLUGIN_DIR . '/' . $plugin);
 
 		if ( ! $silent ) {
+			/**
+			 * Fires before a plugin is activated in activate_plugin() when the $silent parameter is false.
+			 *
+			 * @since 2.9.0
+			 *
+			 * @param string $plugin       Plugin path to main plugin file with plugin data.
+			 * @param bool   $network_wide Whether to enable the plugin for all sites in the network
+			 *                             or just the current site. Multisite only. Default is false.
+			 */
 			do_action( 'activate_plugin', $plugin, $network_wide );
+
+			/**
+			 * Fires before a plugin is activated in activate_plugin() when the $silent parameter is false.
+			 *
+			 * The action concatenates the 'activate_' prefix with the $plugin value passed to
+			 * activate_plugin() to create a dynamically-named action.
+			 *
+			 * @since 2.0.0
+			 *
+			 * @param bool $network_wide Whether to enable the plugin for all sites in the network
+			 *                           or just the current site. Multisite only. Default is false.
+			 */
 			do_action( 'activate_' . $plugin, $network_wide );
 		}
 
@@ -533,6 +575,15 @@ function activate_plugin( $plugin, $redirect = '', $network_wide = false, $silen
 		}
 
 		if ( ! $silent ) {
+			/**
+			 * Fires after a plugin has been activated in activate_plugin() when the $silent parameter is false.
+			 *
+			 * @since 2.9.0
+			 *
+			 * @param string $plugin       Plugin path to main plugin file with plugin data.
+			 * @param bool   $network_wide Whether to enable the plugin for all sites in the network
+			 *                             or just the current site. Multisite only. Default is false.
+			 */
 			do_action( 'activated_plugin', $plugin, $network_wide );
 		}
 
@@ -556,8 +607,10 @@ function activate_plugin( $plugin, $redirect = '', $network_wide = false, $silen
  *
  * @param string|array $plugins Single plugin or list of plugins to deactivate.
  * @param bool $silent Prevent calling deactivation hooks. Default is false.
+ * @param mixed $network_wide Whether to deactivate the plugin for all sites in the network.
+ * 	A value of null (the default) will deactivate plugins for both the site and the network.
  */
-function deactivate_plugins( $plugins, $silent = false ) {
+function deactivate_plugins( $plugins, $silent = false, $network_wide = null ) {
 	if ( is_multisite() )
 		$network_current = get_site_option( 'active_sitewide_plugins', array() );
 	$current = get_option( 'active_plugins', array() );
@@ -568,25 +621,64 @@ function deactivate_plugins( $plugins, $silent = false ) {
 		if ( ! is_plugin_active($plugin) )
 			continue;
 
-		$network_wide = is_plugin_active_for_network( $plugin );
+		$network_deactivating = false !== $network_wide && is_plugin_active_for_network( $plugin );
 
 		if ( ! $silent )
-			do_action( 'deactivate_plugin', $plugin, $network_wide );
+			/**
+			 * Fires for each plugin being deactivated in deactivate_plugins(), before deactivation
+			 * and when the $silent parameter is false.
+			 *
+			 * @since 2.9.0
+			 *
+			 * @param string $plugin               Plugin path to main plugin file with plugin data.
+			 * @param bool   $network_deactivating Whether the plugin is deactivated for all sites in the network
+			 *                                     or just the current site. Multisite only. Default is false.
+			 */
+			do_action( 'deactivate_plugin', $plugin, $network_deactivating );
 
-		if ( $network_wide ) {
-			$do_network = true;
-			unset( $network_current[ $plugin ] );
-		} else {
+		if ( false !== $network_wide ) {
+			if ( is_plugin_active_for_network( $plugin ) ) {
+				$do_network = true;
+				unset( $network_current[ $plugin ] );
+			} elseif ( $network_wide ) {
+				continue;
+			}
+		}
+
+		if ( true !== $network_wide ) {
 			$key = array_search( $plugin, $current );
 			if ( false !== $key ) {
 				$do_blog = true;
-				array_splice( $current, $key, 1 );
+				unset( $current[ $key ] );
 			}
 		}
 
 		if ( ! $silent ) {
-			do_action( 'deactivate_' . $plugin, $network_wide );
-			do_action( 'deactivated_plugin', $plugin, $network_wide );
+			/**
+			 * Fires for each plugin being deactivated in deactivate_plugins(), after deactivation
+			 * and when the $silent parameter is false.
+			 *
+			 * The action concatenates the 'deactivate_' prefix with the plugin's basename
+			 * to create a dynamically-named action.
+			 *
+			 * @since 2.0.0
+			 *
+			 * @param bool $network_deactivating Whether the plugin is deactivated for all sites in the network
+			 *                                   or just the current site. Multisite only. Default is false.
+			 */
+			do_action( 'deactivate_' . $plugin, $network_deactivating );
+
+			/**
+			 * Fires for each plugin being deactivated in deactivate_plugins(), after deactivation
+			 * and when the $silent parameter is false.
+			 *
+			 * @since 2.9.0
+			 *
+			 * @param string $plugin               Plugin path to main plugin file with plugin data.
+			 * @param bool   $network_deactivating Whether the plugin is deactivated for all sites in the network
+			 *                                     or just the current site. Multisite only. Default is false.
+			 */
+			do_action( 'deactivated_plugin', $plugin, $network_deactivating );
 		}
 	}
 
@@ -702,7 +794,7 @@ function delete_plugins($plugins, $redirect = '' ) {
 
 		$this_plugin_dir = trailingslashit( dirname($plugins_dir . $plugin_file) );
 		// If plugin is in its own directory, recursively delete the directory.
-		if ( strpos($plugin_file, '/') && $this_plugin_dir != $plugins_dir ) //base check on if plugin includes directory separator AND that its not the root plugin folder
+		if ( strpos($plugin_file, '/') && $this_plugin_dir != $plugins_dir ) //base check on if plugin includes directory separator AND that it's not the root plugin folder
 			$deleted = $wp_filesystem->delete($this_plugin_dir, true);
 		else
 			$deleted = $wp_filesystem->delete($plugins_dir . $plugin_file);
@@ -836,6 +928,15 @@ function uninstall_plugin($plugin) {
 		include WP_PLUGIN_DIR . '/' . $file;
 
 		add_action( 'uninstall_' . $file, $callable );
+
+		/**
+		 * Fires in uninstall_plugin() once the plugin has been uninstalled.
+		 *
+		 * The action concatenates the 'uninstall_' prefix with the basename of the
+		 * plugin passed to {@see uninstall_plugin()} to create a dynamically-named action.
+		 *
+		 * @since 2.7.0
+		 */
 		do_action( 'uninstall_' . $file );
 	}
 }
@@ -858,12 +959,13 @@ function uninstall_plugin($plugin) {
  * @param string $capability The capability required for this menu to be displayed to the user.
  * @param string $menu_slug The slug name to refer to this menu by (should be unique for this menu)
  * @param callback $function The function to be called to output the content for this page.
- * @param string $icon_url The url to the icon to be used for this menu
+ * @param string $icon_url The url to the icon to be used for this menu. Using 'none' would leave div.wp-menu-image empty
+ *                         so an icon can be added as background with CSS.
  * @param int $position The position in the menu order this one should appear
  *
  * @return string The resulting page's hook_suffix
  */
-function add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function = '', $icon_url = '', $position = NULL ) {
+function add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $function = '', $icon_url = '', $position = null ) {
 	global $menu, $admin_page_hooks, $_registered_pages, $_parent_pages;
 
 	$menu_slug = plugin_basename( $menu_slug );
@@ -875,14 +977,17 @@ function add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $func
 	if ( !empty( $function ) && !empty( $hookname ) && current_user_can( $capability ) )
 		add_action( $hookname, $function );
 
-	if ( empty($icon_url) )
-		$icon_url = esc_url( admin_url( 'images/generic.png' ) );
-	elseif ( is_ssl() && 0 === strpos($icon_url, 'http://') )
-		$icon_url = 'https://' . substr($icon_url, 7);
+	if ( empty($icon_url) ) {
+		$icon_url = 'none';
+		$icon_class = 'menu-icon-generic ';
+	} else {
+		$icon_url = set_url_scheme( $icon_url );
+		$icon_class = '';
+	}
 
-	$new_menu = array( $menu_title, $capability, $menu_slug, $page_title, 'menu-top ' . $hookname, $hookname, $icon_url );
+	$new_menu = array( $menu_title, $capability, $menu_slug, $page_title, 'menu-top ' . $icon_class . $hookname, $hookname, $icon_url );
 
-	if ( null === $position  )
+	if ( null === $position )
 		$menu[] = $new_menu;
 	else
 		$menu[$position] = $new_menu;
@@ -985,10 +1090,10 @@ function add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, 
 	}
 
 	// If the parent doesn't already have a submenu, add a link to the parent
-	// as the first item in the submenu.  If the submenu file is the same as the
-	// parent file someone is trying to link back to the parent manually.  In
+	// as the first item in the submenu. If the submenu file is the same as the
+	// parent file someone is trying to link back to the parent manually. In
 	// this case, don't automatically add a link back to avoid duplication.
-	if (!isset( $submenu[$parent_slug] ) && $menu_slug != $parent_slug  ) {
+	if (!isset( $submenu[$parent_slug] ) && $menu_slug != $parent_slug ) {
 		foreach ( (array)$menu as $parent_menu ) {
 			if ( $parent_menu[2] == $parent_slug && current_user_can( $parent_menu[1] ) )
 				$submenu[$parent_slug][] = $parent_menu;
@@ -1002,7 +1107,7 @@ function add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, 
 		add_action( $hookname, $function );
 
 	$_registered_pages[$hookname] = true;
-	// backwards-compatibility for plugins using add_management page.  See wp-admin/admin.php for redirect from edit.php to tools.php
+	// backwards-compatibility for plugins using add_management page. See wp-admin/admin.php for redirect from edit.php to tools.php
 	if ( 'tools.php' == $parent_slug )
 		$_registered_pages[get_plugin_page_hookname( $menu_slug, 'edit.php')] = true;
 
@@ -1245,7 +1350,6 @@ function add_pages_page( $page_title, $menu_title, $capability, $menu_slug, $fun
 function add_comments_page( $page_title, $menu_title, $capability, $menu_slug, $function = '' ) {
 	return add_submenu_page( 'edit-comments.php', $page_title, $menu_title, $capability, $menu_slug, $function );
 }
-
 
 /**
  * Remove a top level admin menu
@@ -1589,7 +1693,7 @@ function user_can_access_admin_page() {
  *
  * @since 2.7.0
  *
- * @param string $option_group A settings group name.  Should correspond to a whitelisted option key name.
+ * @param string $option_group A settings group name. Should correspond to a whitelisted option key name.
  * 	Default whitelisted option key names include "general," "discussion," and "reading," among others.
  * @param string $option_name The name of an option to sanitize and save.
  * @param unknown_type $sanitize_callback A callback function that sanitizes the option's value.
@@ -1599,8 +1703,13 @@ function register_setting( $option_group, $option_name, $sanitize_callback = '' 
 	global $new_whitelist_options;
 
 	if ( 'misc' == $option_group ) {
-		_deprecated_argument( __FUNCTION__, '3.0', __( 'The miscellaneous options group has been removed. Use another settings group.' ) );
+		_deprecated_argument( __FUNCTION__, '3.0', sprintf( __( 'The "%s" options group has been removed. Use another settings group.' ), 'misc' ) );
 		$option_group = 'general';
+	}
+
+	if ( 'privacy' == $option_group ) {
+		_deprecated_argument( __FUNCTION__, '3.5', sprintf( __( 'The "%s" options group has been removed. Use another settings group.' ), 'privacy' ) );
+		$option_group = 'reading';
 	}
 
 	$new_whitelist_options[ $option_group ][] = $option_name;
@@ -1622,8 +1731,13 @@ function unregister_setting( $option_group, $option_name, $sanitize_callback = '
 	global $new_whitelist_options;
 
 	if ( 'misc' == $option_group ) {
-		_deprecated_argument( __FUNCTION__, '3.0', __( 'The miscellaneous options group has been removed. Use another settings group.' ) );
+		_deprecated_argument( __FUNCTION__, '3.0', sprintf( __( 'The "%s" options group has been removed. Use another settings group.' ), 'misc' ) );
 		$option_group = 'general';
+	}
+
+	if ( 'privacy' == $option_group ) {
+		_deprecated_argument( __FUNCTION__, '3.5', sprintf( __( 'The "%s" options group has been removed. Use another settings group.' ), 'privacy' ) );
+		$option_group = 'reading';
 	}
 
 	$pos = array_search( $option_name, (array) $new_whitelist_options );
@@ -1715,7 +1829,7 @@ function remove_option_whitelist( $del_options, $options = '' ) {
  *
  * @since 2.7.0
  *
- * @param string $option_group A settings group name.  This should match the group name used in register_setting().
+ * @param string $option_group A settings group name. This should match the group name used in register_setting().
  */
 function settings_fields($option_group) {
 	echo "<input type='hidden' name='option_page' value='" . esc_attr($option_group) . "' />";
@@ -1723,4 +1837,15 @@ function settings_fields($option_group) {
 	wp_nonce_field("$option_group-options");
 }
 
-?>
+/**
+ * Clears the Plugins cache used by get_plugins() and by default, the Plugin Update cache.
+ *
+ * @since 3.7.0
+ *
+ * @param bool $clear_update_cache Whether to clear the Plugin updates cache
+ */
+function wp_clean_plugins_cache( $clear_update_cache = true ) {
+	if ( $clear_update_cache )
+		delete_site_transient( 'update_plugins' );
+	wp_cache_delete( 'plugins', 'plugins' );
+}
