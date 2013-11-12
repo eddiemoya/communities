@@ -269,14 +269,14 @@ form {}
     overflow:hidden;
     padding:30px 0px 56.25%;
     position:relative;
-    z-index:10001;
+    z-index:50;
     iframe, object, embed {
       height:100%;
       left:0px;
       position:absolute;
       top:0px;
       width:100%;
-      z-index:10000;
+      z-index:50;
     }
   }
   .content-video + .content-details {
@@ -1081,7 +1081,7 @@ $rating-img: dimensions("stars1.png");
   display: none;
   position: absolute;
   width: 250px;
-  z-index: 1000003;
+  z-index: 6000;
 
   .arrow {
     left: -10px;
@@ -1382,7 +1382,7 @@ button.follow {
   .content-body {
     border-top:none;
   }
-  h1 {
+  h2 {
     color:#cfcece;
     font-size:font-size(10);
     font-weight:normal;

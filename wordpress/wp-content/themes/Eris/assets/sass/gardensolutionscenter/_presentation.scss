@@ -89,6 +89,16 @@ body, td, p {
   }
 }
 
+.product-widget {
+	.content-header {
+		background-image: image-url("#{$garden-img}icon_product_29x29.png");
+		background-repeat: no-repeat;
+		background-color:transparent;
+		background-position:10px 10px;
+		padding-left:3.77em;
+	}
+}
+
 .menu-kgscsubnavigation.content-container {
   background:none;
   .content-body {
