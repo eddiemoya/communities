@@ -82,7 +82,7 @@ class Advertisement_Widget extends WP_Widget {
         ?>
 				<?php if ($aw_title): ?>
 				<header class="content-header">
-				<h1><?php echo $aw_title;?></h1>
+					<h2><?php echo $aw_title;?></h2>
 				</header>
 				<?php endif; ?>
 				<section class="content-body clearfix">

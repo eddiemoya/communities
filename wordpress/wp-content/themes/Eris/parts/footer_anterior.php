@@ -19,10 +19,6 @@
             Privacy Policy
         </a>
         |
-        <a href="http://www.sears.com/shc/s/nb_10153_12605_NB_CSchildprivacy" rel="nofollow" title="Children's Privacy Policy">
-            Children's Privacy Policy
-        </a>
-        |
         <a href="http://www.sears.com/shc/s/nb_10153_12605_NB_CScaliforniaprivacy" rel="nofollow" title="California Privacy Policy">
             California Privacy Policy
         </a>

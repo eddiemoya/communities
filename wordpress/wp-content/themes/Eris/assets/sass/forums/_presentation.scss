@@ -45,7 +45,8 @@ html, html > body.bbpress {
 	}
 	#forums-head{
 		margin-bottom: 15px;
-		h1 {
+		h1,
+		#header_breadcrumbs {
 			font-size: 26px;
 			font-weight: lighter;
 			color: #444;
@@ -88,6 +89,9 @@ html, html > body.bbpress {
 			.bbp-topic-title {
 				font-size: 20px;
 				margin-bottom: 10px;
+				h1 {
+					font-size: 1em;
+				}
 			}
 			.bbp-body {
 				margin-top: 2px;
