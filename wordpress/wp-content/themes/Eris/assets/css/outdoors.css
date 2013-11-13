@@ -218,7 +218,11 @@ html, body { height: 100%; text-align: left; font-family: Helvetica, Arial, Verd
 
 .hide { display: none; }
 
+<<<<<<< HEAD
 .bullets { color: #333333; line-height: 1.7em; margin: 0 0 1.476em 0.5em; padding: 0 0 0 2.5em; overflow: hidden; }
+=======
+.bullets { color: #333333; line-height: 1.7em; margin: 0 0 1.476em 0.6em; padding: 0 0 0 2.5em; overflow: hidden; }
+>>>>>>> 5580bd8... PHP-425 adjusted the padding/margin bulleted lists. Should show numbers up to 199 without a problem.
 .bullets li { margin-bottom: .6em; }
 
 .bullets ul { margin-bottom: 0px; }

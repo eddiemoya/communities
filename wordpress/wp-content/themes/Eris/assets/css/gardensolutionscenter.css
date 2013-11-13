@@ -1018,7 +1018,11 @@ body, td, p { color: #3b2314; }
 
 .featured-post-type-question .content-header { background-color: transparent; background-position: 10px 10px; padding-left: 3.77em; }
 
+<<<<<<< HEAD
 .product-widget .content-header { background-image: url('../img/gardensolutionscenter/icon_product_29x29.png?v=1384464933'); background-repeat: no-repeat; background-color: transparent; background-position: 10px 10px; padding-left: 3.77em; }
+=======
+.product-widget .content-header { background-image: url('../img/gardensolutionscenter/icon_product_29x29.png?v=1384372278'); background-repeat: no-repeat; background-color: transparent; background-position: 10px 10px; padding-left: 3.77em; }
+>>>>>>> 5580bd8... PHP-425 adjusted the padding/margin bulleted lists. Should show numbers up to 199 without a problem.
 
 .menu-kgscsubnavigation.content-container { background: none; }
 .menu-kgscsubnavigation.content-container .content-body { border: none; padding: 0px; }
