@@ -126,20 +126,39 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 				}
 			}									
 			
+			
+			/****************
+			*	FORM EVENTS	*
+			****************/
+			// On KeyPress/Enter - error message handling
+			$(target).on('keydown', function(event) {												
+				if(event.keyCode != 13) {	// Any key except ENTER
+					if (isBlunder(this)) {
+						validify.call(this);
+					}
+				} else {	// ENTER is pressed
+					if (this.type !== 'textarea') {
+						// TODO: Submit the form.
+					} else {
+						// Do Nothing. Let the textarea and a line break.
+					}
+				}
+			});
+						
+			
 			// On focus - error message handling
-			$(target).bind('focus', function(event) {								
+			$(target).on('focus', function(event) {								
 				if (isBlunder(this)) {
 					showError(this);
 				}
 			});
 			
-			$(target).bind('blur keydown', function(event) {
-				if ((event.type == "keydown" && event.keyCode == 13 && this.type !== 'textarea') || event.type == "blur") {
-					validify.call(this);
-					if (isBlunder(this)) {
-						showError(this);
-					}
-				}					
+			// On blur - validate -> isError ? showError
+			$(target).on('blur', function(event) {				
+				validify.call(this);
+				if (isBlunder(this)) {
+					showError(this);
+				}
 			});
 			
 			function validify() {
@@ -459,8 +478,9 @@ shcJSL.methods.transFormer = function(target, options) {
 	}
 		
 	// On submit of a form	
-	$(target).bind('submit',function(event) {
+	$(target).on('submit',function(event) {
 		var success; // Whether success passes the check
+		
 		if (submitEval[this.id].length > 0) {
 			var i = 0;
 			do {
