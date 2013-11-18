@@ -131,7 +131,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 			*	FORM EVENTS	*
 			****************/
 			// On KeyPress/Enter - error message handling
-			$(target).on('keydown', function(event) {												
+			$(target).on('keypress', function(event) {												
 				if(event.keyCode != 13) {	// Any key except ENTER
 					if (isBlunder(this)) {
 						validify.call(this);
@@ -144,8 +144,7 @@ TRANSfORMER.transFormer = $TransFormer = function(form) {
 					}
 				}
 			});
-						
-			
+								
 			// On focus - error message handling
 			$(target).on('focus', function(event) {								
 				if (isBlunder(this)) {
