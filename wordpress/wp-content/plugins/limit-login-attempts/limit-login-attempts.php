@@ -33,9 +33,12 @@
  * Constants
  */
 
+
 /* Different ways to get remote address: direct & behind proxy */
 define('LIMIT_LOGIN_DIRECT_ADDR', 'REMOTE_ADDR');
-define('LIMIT_LOGIN_PROXY_ADDR', 'HTTP_X_FORWARDED_FOR');
+
+/* Original code: */
+//define('LIMIT_LOGIN_PROXY_ADDR', 'HTTP_X_FORWARDED_FOR'); 
 
 /* Notify value checked against these in limit_login_sanitize_variables() */
 define('LIMIT_LOGIN_LOCKOUT_NOTIFY_ALLOWED', 'log,email');
@@ -85,6 +88,13 @@ $limit_login_nonempty_credentials = false; /* user and pwd nonempty */
  * Startup
  */
 
+add_action('after_setup_theme', 'limit_login_filtered');
+
+function limit_login_filtered() {
+	
+	define('LIMIT_LOGIN_PROXY_ADDR', limit_login_proxy_var(apply_filters('limit_login_proxy_vars', 'HTTP_X_FORWARDED_FOR')));
+}
+
 add_action('plugins_loaded', 'limit_login_setup', 99999);
 
 
@@ -98,6 +108,10 @@ function limit_login_setup() {
 			       , dirname(plugin_basename(__FILE__)));
 
 	limit_login_setup_options();
+	
+	/*global $limit_login_options;
+	var_dump($limit_login_options);
+	exit;*/
 
 	/* Filters and actions */
 	add_action('wp_login_failed', 'limit_login_failed');
@@ -140,14 +154,38 @@ function limit_login_option($option_name) {
 	}
 }
 
+/**
+ * IMPORTANT: This function has been added, it is NOT
+ * an original part of this plugin.
+ * 
+ * @author Dan Crimmins
+ * @param string $vars (csv of possible server vars to use, first one set
+ * 	gets returned.
+ * @return string - The server var name.
+ */
+function limit_login_proxy_var($vars) {
+	
+	$vars = explode(',', $vars);
+	
+	foreach($vars as $var) {
+		
+		if(isset($_SERVER[$var]))
+			return $var;
+	}
+	
+	//Default
+	return 'HTTP_X_FORWARDED_FOR';
+}
 
 /* Get correct remote address */
 function limit_login_get_address($type_name = '') {
+	
 	$type = $type_name;
 	if (empty($type)) {
 		$type = limit_login_option('client_type');
 	}
-
+		
+		
 	if (isset($_SERVER[$type])) {
 		return $_SERVER[$type];
 	}
@@ -203,6 +241,7 @@ function is_limit_login_ip_whitelisted($ip = null) {
 /* Check if it is ok to login */
 function is_limit_login_ok() {
 	$ip = limit_login_get_address();
+	//var_dump($ip);
 
 	/* Check external whitelist filter */
 	if (is_limit_login_ip_whitelisted($ip)) {
@@ -959,6 +998,9 @@ function limit_login_option_page()	{
 		$limit_login_options['long_duration'] = $_POST['long_duration'] * 3600;
 		$limit_login_options['notify_email_after'] = $_POST['email_after'];
 		$limit_login_options['cookies'] = (isset($_POST['cookies']) && $_POST['cookies'] == '1');
+		
+		/*var_dump($limit_login_options);
+		exit;*/
 
 		$v = array();
 		if (isset($_POST['lockout_notify_log'])) {

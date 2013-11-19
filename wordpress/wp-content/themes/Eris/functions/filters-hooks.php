@@ -1147,6 +1147,16 @@ function shortcode_quote( $atts = array(), $content = NULL ) {
 
 }
 
+//Sets the server var to use in the Limit Login Attempts reverse proxy setting
+add_filter('limit_login_proxy_vars', 'll_use_proxy_vars', 10);
+
+function ll_use_proxy_vars($server_var) {
+	
+	return 'HTTP_TRUE_CLIENT_IP,HTTP_X_FORWARDED_FOR';
+}
+
+
+
 
 
 
