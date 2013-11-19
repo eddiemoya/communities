@@ -40,6 +40,8 @@ define('LIMIT_LOGIN_DIRECT_ADDR', 'REMOTE_ADDR');
 /* Original code: */
 //define('LIMIT_LOGIN_PROXY_ADDR', 'HTTP_X_FORWARDED_FOR'); 
 
+define('LIMIT_LOGIN_PROXY_ADDR', limit_login_proxy_var('HTTP_TRUE_CLIENT_IP,HTTP_X_FORWARDED_FOR'));
+
 /* Notify value checked against these in limit_login_sanitize_variables() */
 define('LIMIT_LOGIN_LOCKOUT_NOTIFY_ALLOWED', 'log,email');
 
@@ -87,13 +89,6 @@ $limit_login_nonempty_credentials = false; /* user and pwd nonempty */
 /*
  * Startup
  */
-
-add_action('after_setup_theme', 'limit_login_filtered');
-
-function limit_login_filtered() {
-	
-	define('LIMIT_LOGIN_PROXY_ADDR', limit_login_proxy_var(apply_filters('limit_login_proxy_vars', 'HTTP_X_FORWARDED_FOR')));
-}
 
 add_action('plugins_loaded', 'limit_login_setup', 99999);
 
