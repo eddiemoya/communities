@@ -364,11 +364,16 @@ textarea.discussion {
 }
 
 .trigger.discussion {
-  height:4em;
-  margin-top:-3.75em;
+  height:1em;
   position:relative;
   text-align:right;
   z-index:9;
+	a {
+		position: absolute;
+		right: 0;
+		top: -4em;
+		width: 200px;
+	}
 }
 
 .question {

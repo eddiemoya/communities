@@ -470,6 +470,10 @@ html {
     font-family:$condensed;
     font-weight:700;
     margin-top:0.75em;
+	a {
+		position: relative;
+		top: auto;
+	}
   }
 }
 
@@ -508,6 +512,10 @@ html {
   .trigger.discussion {
     font-family:$condensed;
     font-weight:700;
+	a {
+		position: relative;
+		top: auto;
+	}
   }
 }
 
