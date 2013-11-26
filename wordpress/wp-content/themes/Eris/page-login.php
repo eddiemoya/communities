@@ -40,7 +40,19 @@ get_template_part('parts/header'); ?>
                   <dd class="span1"><a href="<?php echo get_site_url(); ?>/forgot-password/" title="Forgot your password?" class="forgot">Forgot?</a></dd>
               </dl>
           </li>
-          
+        
+<!--		<li>
+              <dl class="clearfix">
+                  <dt class="span3"><label>Checkboxes:</label></dt>
+                  <dd class="span9">
+					<fieldset id="test1">
+						<input type="checkbox" name="test1" class="" id="one" /> One <br />
+						<input type="checkbox" name="test1" class="" id="two" /> Two <br />
+						<input type="checkbox" name="test1" class="" id="three" /> Three <br />
+					</fieldset>
+				  </dd>
+              </dl>
+          </li>-->
           <li id="sso-error">
           </li>
           
