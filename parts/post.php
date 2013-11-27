@@ -52,7 +52,12 @@
 				<div class="clearfix">&nbsp;</div>
 				
 				<p class="content-author">
-					By: <?php get_screenname_link( $post->post_author ); ?>
+					By: <?php get_screenname_link( $post->post_author ); ?> 
+					
+					<?php $googleplus = get_the_author_meta( 'googleplus', $post->post_author );
+						if (!empty($googleplus)) {?>
+							<a href='<?php echo $googleplus; ?>?rel=author'>Google</a>
+					<?php } ?>
 				</p>
 				
 				<?php if ( get_the_tags() ): ?>
