@@ -101,7 +101,7 @@ function enqueue_scripts() {
         wp_enqueue_script('omniture_scode');
         wp_enqueue_script('omniture_start');
         // wp_enqueue_script('addthis');		
-		wp_enqueue_script('forumTooltip');
+		wp_enqueue_script('forums');
 
         wp_enqueue_script('markitup-set');        
 
