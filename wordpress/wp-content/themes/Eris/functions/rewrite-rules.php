@@ -11,7 +11,6 @@ add_filter('query_vars', 	 'add_vars');
 		//$qvars[] = 'meta_key';
 		$qvars[] = 'sf_filter';
 
-
 		return $qvars;
 	}
 
@@ -19,9 +18,10 @@ add_filter('query_vars', 	 'add_vars');
 
 add_filter('rewrite_rules_array', 'rewrite_rules');
 
-function rewrite_rules($rules){
+function rewrite_rules($rules){	
 	//$newrules['category/(.+?)/video$'] = 'index.php?post_type=category&name=$matches[1]';
 //$newrules['category/(.+?)/(guide|question|post|video)/?$'] = 'index.php?post_type=category&name=$matches[1]&sf_filter=$matches[2]';
+	
 	return $rules;// + $rules;
 }
 /**
@@ -72,5 +72,17 @@ function category_post_type_endpoints($rules){
 	#then recreated.
 	return $newrules;// + $rules;
 
+}
+
+//Re-write stuff for json api plugin. Allows you to append /json to end of url to get it to output JSON.
+add_rewrite_endpoint( 'json', EP_PERMALINK | EP_PAGES );
+
+add_action('pre_get_posts', 'empty_json_var'); 
+ 
+function empty_json_var($query) { 
+ 	
+	 if( isset($query->query_vars['json']))  $query->set('json', '1');
+	
+	 return $query; 
 }
 

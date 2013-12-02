@@ -1143,6 +1143,9 @@ function shortcode_quote( $atts = array(), $content = NULL ) {
 
         return ob_get_clean();
 
-
-
 }
+
+//HTML filter for JSON API plugin
+get_template_part('classes/json_api_allowed_tags');
+add_action('init', array('JSON_Api_Allowed_Tags', 'init'));
+

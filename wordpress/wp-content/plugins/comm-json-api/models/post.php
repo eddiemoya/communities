@@ -167,7 +167,7 @@ class JSON_API_Post {
       //$content = apply_filters('the_content', $content);
       $content = str_replace(']]>', ']]&gt;', $content);
       //Added strip_tags
-      $this->content = strip_tags($content);
+      $this->content = $content;
     } else {
       unset($this->content);
     }
