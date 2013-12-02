@@ -56,7 +56,7 @@
 					
 					<?php $googleplus = get_the_author_meta( 'googleplus', $post->post_author );
 						if (!empty($googleplus)) {?>
-							<a href='<?php echo $googleplus; ?>?rel=author'>Google</a>
+							| <a href='<?php echo $googleplus; ?>?rel=author'>Find me on Google+</a>
 					<?php } ?>
 				</p>
 				
