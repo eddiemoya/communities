@@ -30,6 +30,7 @@ class JSON_API_Response {
     
     $data = apply_filters('json_api_encode', $data);
     
+    
     if (function_exists('json_encode')) {
       // Use the built-in json_encode function if it's available
       return json_encode($data);

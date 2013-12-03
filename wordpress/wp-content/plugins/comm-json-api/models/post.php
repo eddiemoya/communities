@@ -166,8 +166,9 @@ class JSON_API_Post {
       //Remove filter because it was causing issues with content in json response
       //$content = apply_filters('the_content', $content);
       $content = str_replace(']]>', ']]&gt;', $content);
-      //Added strip_tags
+      
       $this->content = $content;
+      
     } else {
       unset($this->content);
     }

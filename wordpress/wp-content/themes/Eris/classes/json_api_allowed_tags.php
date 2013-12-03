@@ -105,7 +105,7 @@ class JSON_Api_Allowed_Tags {
 		//Single post
 		if(isset($content['post'])) {
 			
-			$content['post']->content = wp_kses( html_entity_decode( do_shortcode( $content['post']->content ) ), $this->_tags );
+			$content['post']->content = wp_kses( do_shortcode( wpautop( $content['post']->content ) ), $this->_tags );
 		}
 		
 		//Multiple posts
@@ -113,7 +113,7 @@ class JSON_Api_Allowed_Tags {
 			
 			foreach($content['posts'] as $post) {
 				
-				$post->content = wp_kses( html_entity_decode( do_shortcode( $post->content ) ), $this->_tags );
+				$post->content = wp_kses( do_shortcode( wpautop( $post->content ) ), $this->_tags );
 			}
 			
 		}
