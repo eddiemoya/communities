@@ -24,8 +24,8 @@ html, body {
 .bullets {
   color:#333333;
   line-height:1.7em;
-  margin: 0 0 em-adjust( 1.2em ) 1em; 
-  padding: 0 0 0 1.5em;
+  margin: 0 0 em-adjust( 1.2em ) 0.5em; 
+  padding: 0 0 0 2.5em;
   overflow:hidden; 
   li {
     margin-bottom:.6em;
@@ -364,11 +364,16 @@ textarea.discussion {
 }
 
 .trigger.discussion {
-  height:4em;
-  margin-top:-3.75em;
+  height:1em;
   position:relative;
   text-align:right;
   z-index:9;
+	a {
+		position: absolute;
+		right: 0;
+		top: -4em;
+		width: 200px;
+	}
 }
 
 .question {

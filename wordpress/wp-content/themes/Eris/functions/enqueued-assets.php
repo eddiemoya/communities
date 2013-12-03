@@ -66,8 +66,8 @@ function enqueue_scripts() {
         wp_register_script('carousel', get_template_directory_uri() . '/assets/js/widgets/shcJSL.carousel'.$javascript_suffix.'.js', array(), null, true);
         wp_register_script('mint', get_template_directory_uri() . '/assets/js/widgets/shcJSL.mint'.$javascript_suffix.'.js', array(), null, true);
 		
-		// Forum Welcome Tooltip code - Should only be valid for 90 days after the deploy to production.
-		wp_register_script('forumTooltip', get_template_directory_uri() . '/assets/js/forums-tooltip'.$javascript_suffix.'.js', array(), null, true);
+
+		wp_register_script('forums', get_template_directory_uri() . '/assets/js/forums'.$javascript_suffix.'.js', array(), null, true);
         
         wp_register_script('mint', get_template_directory_uri() . '/assets/js/widgets/shcJSL.mint'.$javascript_suffix.'.js', array(), null, true);\
 
@@ -101,7 +101,7 @@ function enqueue_scripts() {
         wp_enqueue_script('omniture_scode');
         wp_enqueue_script('omniture_start');
         // wp_enqueue_script('addthis');		
-		wp_enqueue_script('forumTooltip');
+		wp_enqueue_script('forums');
 
         wp_enqueue_script('markitup-set');        
 

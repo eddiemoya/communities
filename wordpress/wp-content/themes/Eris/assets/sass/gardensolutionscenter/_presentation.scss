@@ -253,7 +253,10 @@ body, td, p {
   height:auto;
   line-height:2.5em;
   margin-top:0px;
-  
+  a {
+	position: relative;
+	top: auto;
+  }
 }
 .post-actions {
   margin:0px -0.5em;

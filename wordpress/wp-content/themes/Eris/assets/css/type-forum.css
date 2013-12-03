@@ -218,7 +218,7 @@ html, body { height: 100%; text-align: left; font-family: Helvetica, Arial, Verd
 
 .hide { display: none; }
 
-.bullets { color: #333333; line-height: 1.7em; margin: 0 0 1.476em 1em; padding: 0 0 0 1.5em; overflow: hidden; }
+.bullets { color: #333333; line-height: 1.7em; margin: 0 0 1.476em 0.5em; padding: 0 0 0 2.5em; overflow: hidden; }
 .bullets li { margin-bottom: .6em; }
 
 .bullets ul { margin-bottom: 0px; }
@@ -314,7 +314,8 @@ ul.bullets { list-style-type: disc; }
 
 textarea.discussion { border: 1px solid #d6d6d6; height: 10em; width: 99%; -webkit-border-radius: 4px; -moz-border-radius: 4px; -ms-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; }
 
-.trigger.discussion { height: 4em; margin-top: -3.75em; position: relative; text-align: right; z-index: 9; }
+.trigger.discussion { height: 1em; position: relative; text-align: right; z-index: 9; }
+.trigger.discussion a { position: absolute; right: 0; top: -4em; width: 200px; }
 
 .question .span2.badge, .question .span2.crest { margin-left: 0px; }
 .question .content-date { float: left; }
@@ -705,36 +706,6 @@ button.follow { float: left; width: auto; text-indent: 0em; background: none; ma
 .dropmenu ul li a:visited { color: #666666; }
 
 #navigation { width: 960px; margin: 0 auto; }
-#navigation #forum_tooltip { width: 250px; position: absolute; top: 43px; background: none repeat scroll 0% 0% white; border: 3px solid #dddddd; padding: 30px 21px 5px; z-index: 7002; -webkit-border-radius: 6px; border-radius: 6px; -webkit-box-shadow: 2px 4px 6px #A8A8A8; box-shadow: 2px 4px 6px #A8A8A8; font-size: 16px; display: none; }
-#navigation #forum_tooltip p { margin-bottom: 10px; }
-#navigation #forum_tooltip input[type='checkbox'] { margin-right: 5px; }
-#navigation #forum_tooltip .close { position: absolute; right: 6px; top: 3px; cursor: pointer; font-size: 10px; font-weight: bold; }
-#navigation #forum_tooltip .tick { position: absolute; left: 67px; top: -6px; background: none repeat scroll 0px 0px white; height: 11px; width: 11px; border-right: 3px solid #dddddd; border-top: 3px solid #dddddd; border-radius: 2px; -webkit-border-radius: 2px; transform: rotate(315deg); -webkit-transform: rotate(315deg); -moz-transform: rotate(315deg); -o-transform: rotate(315deg); -ms-transform: rotate(315deg); transform-origin: 0px 100% 0px; -webkit-transform-origin: 2px; }
-#navigation #forum_tooltip .banner_new { height: 63px; width: 63px; position: absolute; top: -7px; left: -7px; }
-#navigation #forum_tooltip #new_modal_form { font-size: 12px; }
-#navigation #forum_tooltip #new_modal_form #message_hide { vertical-align: top; }
-
-.no-boxshadow #forum_tooltip { 	/*
-	// This contains the color of the shadow in the CSS3 syntax
-	background: #999;
- // This contains the blur-radius in the CSS3 syntax
-	zoom: 1;
-	filter: progid:DXImageTransform.Microsoft.DropShadow(OffX=2, OffY=4, Color=#999999),
-			progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=1, Direction=90),
-			progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=1, Direction=180);
- // You must remove the border in IE, since it will be replaced in the next rule
-	border: none;
-	*/ }
-
-.no-csstransforms .tick { display: none; /*
-filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
-*/ }
-
-.sears #forum_tooltip { color: #003399; }
-.sears #forum_tooltip .banner_new { background: url("../img/forums/sears_newCornerImg.png") no-repeat scroll 0px 0px transparent; }
-
-.kmart #forum_tooltip { color: #a41419; }
-.kmart #forum_tooltip .banner_new { background: url("../img/forums/kmart_newCornerImg.png") no-repeat scroll 0px 0px transparent; }
 
 #footer_nav.dropmenu > li > span, #footer_nav.dropmenu > li a { padding-top: .66em; padding-bottom: .66em; }
 #footer_nav.dropmenu > li > span span, #footer_nav.dropmenu > li a span { background-repeat: no-repeat; padding-right: 16px; display: inline-block; }
