@@ -104,8 +104,8 @@ class JSON_Api_Allowed_Tags {
 		
 		//Single post
 		if(isset($content['post'])) {
-			
-			$content['post']->content = wp_kses( do_shortcode( wpautop( $content['post']->content ) ), $this->_tags );
+		
+			$content['post']->content = wp_kses( do_shortcode( wpautop( $content['post']->content ) ), $this->_tags );	
 		}
 		
 		//Multiple posts
@@ -148,7 +148,7 @@ class JSON_Api_Allowed_Tags {
 	 */
 	protected function _get_tags() {
 		
-		if($tags = $_GET[$this->_query_var]) {
+		$tags = $_GET[$this->_query_var];
 	
 			switch($this->_query_var) {
 				
@@ -167,20 +167,16 @@ class JSON_Api_Allowed_Tags {
 					
 				case 'remove_html':
 					
+					$has_tags = (strlen(trim($tags)) > 0) ? true : false;
+					
 					$tags = explode(',', preg_replace('/\s/', '', urldecode($tags)));
 					$this->_remove_disallowed_attrs($this->_allowedposttags);
 					$this->_tags = $this->_allowedposttags;
-					$this->_remove_excluded_html($tags, $this->_tags);
+					
+					if($has_tags) $this->_remove_excluded_html($tags, $this->_tags);
 			
 					break;
 			}
-			
-			return true;
-		
-		} else {
-			
-			return false;
-		}
 		
 	}
 	
