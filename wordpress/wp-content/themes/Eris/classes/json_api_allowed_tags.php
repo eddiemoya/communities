@@ -22,7 +22,7 @@ class JSON_Api_Allowed_Tags {
 	 * @var array
 	 * @access protected
 	 */
-	protected $_groups = array('pdp' => 'p,b,i,ul,li,ol,h1,h2,h3,a');
+	protected $_groups = array('pdp' => 'p,b,i,ul,li,ol,h1,h2,h3,a,strong,em');
 	
 	/**
 	 * HTML element attributes that you do not want to be used.
@@ -105,7 +105,8 @@ class JSON_Api_Allowed_Tags {
 		//Single post
 		if(isset($content['post'])) {
 		
-			$content['post']->content = wp_kses( do_shortcode( wpautop( $content['post']->content ) ), $this->_tags );	
+			$content['post']->content = $this->_filter_html( $content['post']->content );
+			$content['post']->excerpt = $this->_filter_html( $content['post']->excerpt );	
 		}
 		
 		//Multiple posts
@@ -113,7 +114,8 @@ class JSON_Api_Allowed_Tags {
 			
 			foreach($content['posts'] as $post) {
 				
-				$post->content = wp_kses( do_shortcode( wpautop( $post->content ) ), $this->_tags );
+				$post->content = $this->_filter_html( $post->content );
+				$post->excerpt = $this->_filter_html( $post->excerpt );
 			}
 			
 		}
@@ -138,6 +140,11 @@ class JSON_Api_Allowed_Tags {
 		}
 		
 		return false;
+	}
+	
+	protected function _filter_html($content) {
+		
+		return wp_kses( do_shortcode( wpautop( $content ) ), $this->_tags );
 	}
 	
 	/**
