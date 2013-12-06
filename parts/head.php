@@ -8,12 +8,12 @@
 ?>
 <header id="header" class="<?php echo theme_option("brand"); ?> clearfix">
 	
-	<div itemscope itemtype="http://schema.org/Organization" class="<?php echo (theme_option("brand") == "sears")? "span4":"span3"; ?>">
+	<div itemscope itemtype="http://schema.org/Organization" class="span3">
 		<a itemprop="url" href="<?php echo get_site_url(''); ?>" id="logo" class="invisible">
-			<img itemprop="logo" src="<?php echo get_template_directory_uri(); ?>/assets/img/<?php echo theme_option("brand"); ?>/logo.png" />
+			<img itemprop="logo" src="<?php echo get_template_directory_uri(); ?>/assets/img/<?php echo theme_option("brand"); ?>/logo.jpg" />
 		</a>
 	</div>
-	<div class="<?php echo (theme_option("brand") == "sears")? "span5":"span6"; ?>">
+	<div class="span6">
 		<form method="get" action="<?php echo home_url( '/' )?>" id="search">
 			<div>
 				<input type="text" class="input_text icon_search" name="s" id="input_search" />
