@@ -503,6 +503,42 @@ function bbp_search_results_class($id=0, $classes=array()) {
 }
 
 
+//Truncate breadcrumb items to 20 chars
+add_filter('bbp_breadcrumbs', 'forums_truncate_breadcrumbs');
+
+function forums_truncate_breadcrumbs($crumbs) {
+	
+	array_walk($crumbs, 'forums_breadcrumbs_cb');
+	return $crumbs;
+}
+
+//Callback function used by forums_truncate_breadcrumbs()
+function forums_breadcrumbs_cb(&$item) {
+	
+	if(function_exists('truncated_text')) {
+			
+		$end_tag_pos = strpos($item, '>');
+		
+		if($end_tag_pos !== false) {
+			
+			//Get begining tag
+			$begin_tag_close = (int) $end_tag_pos + 1;
+			$start_tag = substr($item, 0, $begin_tag_close); //beginning tag
+			
+			//Get Text
+			$text_w_end = substr($item, $begin_tag_close);
+			$text_end = strpos($text_w_end, '</');
+			$text = substr($text_w_end, 0, $text_end); //text
+			
+			//Get closing tag - could be an anchor or span
+			$end_tag = (strpos($item, '<a') !== false) ? substr($item, -4) 
+														: substr($item, -7); //closing tag
+			
+			$item = $start_tag . truncated_text($text, 20) . $end_tag;
+		
+		}
+	}
+}
 
 /**
  * ADMIN SECTION ADDITIONS
