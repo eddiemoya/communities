@@ -29,7 +29,7 @@ jQuery(document).ready(function($) {
 				success:function(results){
 					select.after($(results));
 				}
-			});
+			});$('.results-list select.filter-results-posts, .results-list select.sort-results-posts').on('change',
 		}
  	});
 
@@ -72,7 +72,9 @@ jQuery(document).ready(function($) {
  	/**
  	 * @author Eddie Moya
  	 */
- 	$('.results-list select.filter-results-posts, .results-list select.sort-results-posts').on('change', function(e){
+ 	
+ 	$('.results-list select.filter-results-posts, .results-list select.sort-results-posts').on('change', get_sorted_posts);
+ 	/*$('.results-list select.filter-results-posts, .results-list select.sort-results-posts').on('change', function(e){
  		e.preventDefault();
 
  		var container = $(this).closest('.results-list');
@@ -108,7 +110,8 @@ jQuery(document).ready(function($) {
 				$('.content-body', container).append($(results));
 			}
 		});
- 	});
+ 	});*/
+ 	
 
 	$('.product').on('ajax-get', function(e){
 		var loaded = $(this).attr('data-loaded');
@@ -211,5 +214,45 @@ jQuery(document).ready(function($) {
 		// });
  	// });
  });
+ 	
+ 	
+get_sorted_posts = function(e){
+	e.preventDefault();
+
+	var container = $(this).closest('.results-list');
+	
+	var data = {
+		action		: 'get_posts_ajax',
+		post_type 	: $('.post_type', container).val(),
+		template 	: $('.post_type', container).val(),
+		category	: $('.filter-results-posts option', container).filter(':selected').val(),
+		order		: $('.sort-results-posts option', container).filter(':selected').val(),
+		path		: 'widgets/results-list'
+	};
+	
+	if(data.category == "" || data.category == undefined) {
+		data.category = $('.content-header input[name=filter-category]').val();
+	}
+	
+	if(data.order == 'comment_count'){
+		data.orderby = data.order;
+		delete data.order;
+	}
+
+
+	data.category = ( $('#sub-category', container).length > 0 ) ? $('#sub-category .filter-results option', this).filter(':selected').val() : data.category; //console.log(data);
+
+	jQuery.ajax({
+		url  : ajaxdata.ajaxurl,
+		type: 'POST',
+		data : data,
+		success:function(results){
+			//console.log(results)
+			$('.content-body', container).empty();
+			$('.content-body', container).append($(results));
+			$('.results-list select.filter-results-posts, .results-list select.sort-results-posts').on('change', get_sorted_posts);
+		}
+	});
+}
 
 
