@@ -242,8 +242,23 @@ function widget_update( $instance, $new_instance ) {
 }
 
 
+/**
+ * Add/Remove fields from the Contact Info section in users' profiles.
+ * 
+ * @author Matt Strick
+ */
+function custom_contact_methods($contactmethods) {
+	// Fields to be removed
+	//unset($contactmethods['aim']);
+	//unset($contactmethods['jabber']);
 
+	// Fields to be added
+	$contactmethods['googleplus'] = 'Google+';
 
+	return $contactmethods;
+}
+
+add_filter('user_contactmethods', 'custom_contact_methods');
 
 
 /**

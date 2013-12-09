@@ -24,8 +24,8 @@ html, body {
 .bullets {
   color:#333333;
   line-height:1.7em;
-  margin: 0 0 em-adjust( 1.2em ) 1em; 
-  padding: 0 0 0 1.5em;
+  margin: 0 0 em-adjust( 1.2em ) 0.5em; 
+  padding: 0 0 0 2.5em;
   overflow:hidden; 
   li {
     margin-bottom:.6em;
@@ -364,11 +364,9 @@ textarea.discussion {
 }
 
 .trigger.discussion {
-  height:4em;
-  margin-top:-3.75em;
-  position:relative;
-  text-align:right;
-  z-index:9;
+  position: relative;
+  text-align: right;
+  z-index: 9;
 }
 
 .question {
@@ -1224,10 +1222,10 @@ $rating-img: dimensions("stars1.png");
     @extend .break-word;
   }
   .trigger.discussion {
-    height:1em;
-    margin:-1.5em 0 2em;
-    text-align:left;
-  }
+    height: 1em;
+    margin: -1.5em 0 2em;
+    text-align: left;
+	}
 }
 .expert, #allComments .expert {
   background: lighten( sears( decorative ), 15 );

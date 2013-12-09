@@ -95,6 +95,13 @@ html {
   li:first-child {
     text-align:left;
   }
+  
+  li.current-menu-item a {
+  	border-bottom: 1px solid #E78E60;
+	color: #666666;
+	font-weight: 400;
+  }
+  
   .ods_nav_guides {
     text-align:right;
   }
@@ -460,9 +467,9 @@ html {
     }
   }
   .trigger.discussion {
-    font-family:$condensed;
-    font-weight:700;
-    margin-top:0.75em;
+		font-family: $condensed;
+		font-weight: 700;
+		margin-top: 0.75em;
   }
 }
 
@@ -499,8 +506,8 @@ html {
     }
   }
   .trigger.discussion {
-    font-family:$condensed;
-    font-weight:700;
+		font-family: $condensed;
+		font-weight: 700;
   }
 }
 
