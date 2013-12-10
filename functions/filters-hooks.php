@@ -920,8 +920,11 @@ function add_attachment_slide_link_url_save( $post, $attachment ) {
 	if( isset( $attachment['slide-link-url'] ) )
 		update_post_meta( $post['ID'], 'slide-link-url', $attachment['slide-link-url'] );
 	
-	if( isset( $attachment['slide-hide-title'] ) )
+	if( isset( $attachment['slide-hide-title'] ) ) {
 		update_post_meta( $post['ID'], 'slide-hide-title', $attachment['slide-hide-title'] );
+	} else {
+		delete_post_meta($post['ID'], 'slide-hide-title');
+	}
 	return $post;
 }
 
@@ -931,9 +934,9 @@ function add_post_slide_title_hide_save($return) {
 	global $post;
 	$current_meta = get_post_meta($post->ID, 'slide-hide-title', true);
 	
-	if ($current_meta == 1 && $_POST['slide-hide-title'] == "" || 
-			$_POST['slide-hide-title'] == 1 && $current_meta == 0 || 
-			$_POST['slide-hide-title'] == "" && $current_meta == ""
+	if ($current_meta == 1 && ($_POST['slide-hide-title'] == "" || 
+			$_POST['slide-hide-title'] == 1) && ($current_meta == 0 || 
+			$_POST['slide-hide-title'] == "") && $current_meta == ""
 		) {
 			if ($_POST['slide-hide-title'] == 1) {
 				update_post_meta($post->ID, 'slide-hide-title', $_POST['slide-hide-title']);
@@ -945,7 +948,7 @@ function add_post_slide_title_hide_save($return) {
 	return $return;
 }
 
-add_filter( 'save_post', 'add_post_slide_title_hide_save', 10, 2 );
+//add_filter( 'save_post', 'add_post_slide_title_hide_save', 10, 2 );
 
 function enable_more_buttons($buttons) {
 	$buttons[] = 'hr';
