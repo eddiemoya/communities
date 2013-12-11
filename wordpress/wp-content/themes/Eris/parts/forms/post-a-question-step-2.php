@@ -49,6 +49,7 @@ get_currentuserinfo();
 										'depth'=> 1,
 										'selected' => (! get_queried_object()->term_id) ? 'default' : get_queried_object()->term_id,
 										'show_option_none' => 'Select',
+										'exclude' => get_category_by_slug('general')->term_id,
 										'hierarchical' => true,
 										'hide_if_empty' => false,
 										'class' => 'input_select',
