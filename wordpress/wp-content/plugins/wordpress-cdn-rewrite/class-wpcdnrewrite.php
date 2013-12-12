@@ -87,8 +87,9 @@ class WP_CDN_Rewrite {
 	 * @return    void
 	 */
 	public function startup() {
+		
 		if ( ! is_admin() ) {
-			$ret = ob_start( 'wpcdn_rewrite_content' );
+			$ret = ob_start( 'wpcdn_rewrite_content' ); 
 		}
 	}
 	
@@ -186,14 +187,14 @@ class WP_CDN_Rewrite {
     	// Grab the version number we're working with
 		$version = get_option( self::VERSION_KEY );
 		
-		if ( strcmp( $version, '1.0' ) == 0 ) {
+		if (( strcmp( $version, '1.0' ) >= 0 ) && strlen($content)) {
 			// Pull the rules and whitelist arrays from the database
 			$rules = get_option( self::RULES_KEY );
 			$whitelist = get_option( self::WHITELIST_KEY );
 			
 			// Get a DOM object for this content that we can manipulate
 			$dom = new DOMDocument();
-			$dom->loadHTML( $content );
+			@$dom->loadHTML( $content );
 			$dom->formatOutput = true;
 			
 			// Rewrite URLs
