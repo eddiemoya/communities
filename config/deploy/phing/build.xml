@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Communities" default="deploy">
+	
+	<property name="repo" value="git@github.com:dasfisch/communities.git" />
+	<property name="host" value="" override="true"/>
+	<property name="username" value="stateadm" />
+	<property name="branch" value="master" override="true" />
+	
+	<property name="and" value="&amp;&amp;" />
+	<property name="git.clone" value="git clone ${repo}" />
+	
+	<property name="dir.localRepo" value="~/phing-deploy/communities/" />
+	
+	
+	<!-- SSH to server -->
+	<target name="connect" depends="checkRepoDir">
+		
+		<property name="hosts" value="dev,int,qa" />
+		
+		<input propertyName="env"  message="Which environment would you like to deploy to?" validargs="${hosts}" />
+		
+		
+		<!-- DEV -->
+		<if>
+			<equals arg1="${env}" arg2="dev" />
+		<then>
+			<property name="host" value="uxdev" override="true" />
+		</then>
+		
+		</if>
+		
+		<!-- INT -->
+		<if>
+			<equals arg1="${env}" arg2="int" />
+		<then>
+			<property name="host" value="uxint" override="true" />
+		</then>
+		
+		</if>
+		
+		<!-- QA -->
+		<if>
+			<equals arg1="${env}" arg2="qa" />
+		<then>
+			<property name="host" value="comapp401p.qa.ch4.s.com" override="true" />
+		</then>
+		
+		</if>
+		
+		<input propertyName="password"  message="Enter password for ${username}@${host}:" />
+		<echo msg="Connecting to ${host} ..." />
+	
+		
+  			<exec command="ssh ${username}@${host} 'ls -la'" outputProperty="somestuff" /> 
+  			<echo msg="${somestuff}" />
+		
+		
+		
+		<!-- <ssh username="${username}" password="${password}" host="${host}" command="pwd ${and} ls -la ${and} cd /etc ${and} ls -la" display="true" /> -->
+		
+	</target>
+	
+	<target name="deploy" depends="connect">
+	
+		
+	
+	</target>
+	
+	<target name="checkRepoDir">
+		<if>
+			<available file="${dir.localRepo}" type="dir" />
+			<then>
+				
+			</then>
+		</if>
+	
+	</target>
+	
+	<target name="branch">
+	
+	</target>
+
+
+
+</project>
+	
+	
+	
