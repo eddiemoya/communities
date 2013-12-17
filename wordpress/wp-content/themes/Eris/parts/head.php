@@ -10,7 +10,7 @@
 	
 	<div itemscope itemtype="http://schema.org/Organization" class="span3">
 		<a itemprop="url" href="<?php echo get_site_url(''); ?>" id="logo" class="invisible">
-			<img itemprop="logo" src="<?php echo get_template_directory_uri(); ?>/assets/img/<?php echo theme_option("brand"); ?>/logo.jpg" />
+			<img itemprop="logo" src="<?php echo get_template_directory_uri(); ?>/assets/img/<?php echo theme_option("brand"); ?>/logo.png" />
 		</a>
 	</div>
 	<div class="span6">

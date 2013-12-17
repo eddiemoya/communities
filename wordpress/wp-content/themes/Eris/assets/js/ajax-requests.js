@@ -72,6 +72,8 @@ jQuery(document).ready(function($) {
  	/**
  	 * @author Eddie Moya
  	 */
+ 	
+ 	
  	$('.results-list select.filter-results-posts, .results-list select.sort-results-posts').on('change', function(e){
  		e.preventDefault();
 
@@ -106,9 +108,11 @@ jQuery(document).ready(function($) {
 				//console.log(results)
 				$('.content-body', container).empty();
 				$('.content-body', container).append($(results));
+				shcJSL.gizmos.activate();
 			}
 		});
  	});
+ 	
 
 	$('.product').on('ajax-get', function(e){
 		var loaded = $(this).attr('data-loaded');
@@ -211,5 +215,4 @@ jQuery(document).ready(function($) {
 		// });
  	// });
  });
-
-
+ 	
