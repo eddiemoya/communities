@@ -9,12 +9,15 @@
 	
 	<property name="and" value="&amp;&amp;" />
 	<property name="git.clone" value="git clone ${repo}" />
+	<property name="git.status" value="git status" />
+	
 	
 	<property name="dir.localRepo" value="~/phing-deploy/communities/" />
+	<property name="dir.remoteDir" value="" />
 	
 	
 	<!-- SSH to server -->
-	<target name="connect" depends="checkRepoDir">
+	<target name="input">
 		
 		<property name="hosts" value="dev,int,qa" />
 		
@@ -48,37 +51,62 @@
 		
 		</if>
 		
-		<input propertyName="password"  message="Enter password for ${username}@${host}:" />
-		<echo msg="Connecting to ${host} ..." />
-	
-		
-  			<exec command="ssh ${username}@${host} 'ls -la'" outputProperty="somestuff" /> 
-  			<echo msg="${somestuff}" />
-		
-		
-		
-		<!-- <ssh username="${username}" password="${password}" host="${host}" command="pwd ${and} ls -la ${and} cd /etc ${and} ls -la" display="true" /> -->
+		<phingcall target="branch"></phingcall>
+	<!-- <exec command="ssh ${username}@${host} 'pwd ${and} ls -la'" outputProperty="ssh_output"/>
+		<echo msg="${ssh_output}" /> -->
 		
 	</target>
 	
-	<target name="deploy" depends="connect">
+	<target name="deploy" depends="input"> 
 	
 		
 	
 	</target>
 	
-	<target name="checkRepoDir">
+	<target name="repoDir">
+	
+		<available file="${dir.localRepo}" type="dir" property="dir_exists" />
+		
 		<if>
-			<available file="${dir.localRepo}" type="dir" />
+			<not> 
+				<isset property="dir.exists" /> 
+			</not>
 			<then>
-				
+				<!-- Create dir -->
+				<mkdir dir="${dir.localRepo}" />
 			</then>
+			
 		</if>
+		
+		<!-- Change to dir -->
+		<exec command="cd ${dir.localRepo}" />
 	
 	</target>
 	
 	<target name="branch">
-	
+		
+		<trycatch property="localRepoCheckoutTest">
+		
+			<try>
+				
+				<!-- Checkout branch--> 
+				<exec command="cd /etc ${and} ${git.status}" outputProperty="git_status_check" />
+				
+				<!-- <echo msg="${git_status_check}" /> -->
+			</try>
+			
+			<catch>
+				<echo msg="Git status failed." />
+			</catch>
+			
+			<finally>
+			
+			</finally>
+		
+		
+		</trycatch>
+		<echo msg="${localRepoCheckoutTest}" />
+		
 	</target>
 
 
