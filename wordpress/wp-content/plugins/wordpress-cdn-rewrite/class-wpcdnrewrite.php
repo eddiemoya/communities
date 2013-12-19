@@ -253,13 +253,13 @@ class WP_CDN_Rewrite {
 				if ( $tag->hasAttribute( $attribute ) ) {
 					$url = $tag->getAttribute( $attribute );
 					
-					if ( $this->starts_with( $url, '/' ) ) {
+					/*if ( $this->starts_with( $url, '/' ) ) {
 						$base = network_site_url();
 						if ( ! $this->starts_with( $base, '/' ) ) {
 							$base = $base . '/';
 						}
 						$url = $base . $url;
-					}
+					}*/
 					$parsed = parse_url( $url );
 					
 					if ( FALSE !== $parsed ) {
