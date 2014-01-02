@@ -15,7 +15,7 @@
 <div class="addthis_toolbox addthis_default_style">
     <a class="addthis_button_facebook_like" addthis:url="<?php the_permalink(); ?>" addthis:title="<?php echo $gotten_title; ?>"></a>
     <a class="addthis_button_tweet" addthis:url="<?php the_permalink(); ?>" addthis:title="<?php echo $twitter_title; ?>"></a>
-    <a href="https://shopyourway.com/sharer/share?title=<?php echo urlencode( $gotten_title ); ?>&amp;link=<?php echo urlencode( get_permalink() ); ?>&amp;sourceSiteUrl=&amp;sourceSiteAlias=&amp;content=&amp;imageUrl=<?php echo $encoded_image; ?>" onclick="openSYWWindow(this.href,'ShopYourWay','width=650,height=350'); return false;" title="Post this to your ShopYourWay account"><img src="<?php echo get_template_directory_uri() ?>/assets/img/shopyourway_large.png" alt="ShopYourWay Post" /></a>
+    <a class="addthis_button_syw" href="https://shopyourway.com/sharer/share?title=<?php echo urlencode( $gotten_title ); ?>&amp;link=<?php echo urlencode( get_permalink() ); ?>&amp;sourceSiteUrl=&amp;sourceSiteAlias=&amp;content=&amp;imageUrl=<?php echo $encoded_image; ?>" onclick="openSYWWindow(this.href,'ShopYourWay','width=650,height=350'); return false;" title="Post this to your ShopYourWay account"><img src="<?php echo get_template_directory_uri() ?>/assets/img/shopyourway_large.png" alt="ShopYourWay Post" /></a>
     <a class="addthis_button_email" addthis:url="<?php the_permalink(); ?>"><img src="<?php echo get_template_directory_uri() ?>/assets/img/email.png" alt="Email icon" /></a>
 </div>
 <?php else: ?>
@@ -25,9 +25,49 @@
         <ul class="sharemenulinks">
             <li><a class="addthis_button_facebook" addthis:url="<?php the_permalink(); ?>" addthis:title="<?php echo $gotten_title; ?>">Facebook</a></li>
             <li><a class="addthis_button_twitter" addthis:url="<?php the_permalink(); ?>" addthis:title="<?php echo $twitter_title; ?>">Twitter</a></li>
-            <li><a href="https://shopyourway.com/sharer/share?title=<?php echo urlencode( $gotten_title ); ?>&amp;link=<?php echo urlencode( get_permalink() ); ?>&amp;sourceSiteUrl=&amp;sourceSiteAlias=&amp;content=&amp;imageUrl=<?php echo $encoded_image; ?>" onclick="javascript:window.open(this.href,'ShopYourWay','width=650,height=350'); return false;" style="cursor:pointer;" title="Post this to your ShopYourWay account"><img src="https://static.shopyourway.com/static/share-buttons/small-light.png" alt="ShopYourWay Post" />ShopYourWay</a></li>
+            <li><a class="addthis_button_syw" href="https://shopyourway.com/sharer/share?title=<?php echo urlencode( $gotten_title ); ?>&amp;link=<?php echo urlencode( get_permalink() ); ?>&amp;sourceSiteUrl=&amp;sourceSiteAlias=&amp;content=&amp;imageUrl=<?php echo $encoded_image; ?>" onclick="javascript:window.open(this.href,'ShopYourWay','width=650,height=350'); return false;" style="cursor:pointer;" title="Post this to your ShopYourWay account"><img src="https://static.shopyourway.com/static/share-buttons/small-light.png" alt="ShopYourWay Post" />ShopYourWay</a></li>
             <li><a class="addthis_button_email" addthis:url="<?php the_permalink(); ?>">Email</a></li>
         </ul>
     </li>
 </ul>
 <?php endif; ?>
+
+<script>
+(function ($) {
+	omniture.socialTracking();
+	
+	var omniture = function () {
+		var _isInitialized = false;
+		var _socialTrackingVars = function (obj, service) {
+			s.linkTrackVars="prop12,prop28";
+			s.prop12= service+":"+s.prop28;
+			s.tl(obj,"o",s.prop12,null,"navigate");
+		};
+		
+		var _socialTrackingHandlers = function () {
+			_isInitialized = true;
+			
+			$('.addthis_toolbox .addthis_button_facebook_like, .sharemenulinks .addthis_button_facebook').on('click', function() {
+				_socialTrackingVars(this,"Facebook");
+			});
+			$('.addthis_toolbox .addthis_button_tweet, .sharemenulinks .addthis_button_twitter').on('click', function() {
+				_socialTrackingVars(this,"Twitter");
+			});
+			$('.addthis_toolbox .addthis_button_syw, .sharemenulinks .addthis_button_syw').on('click', function() {
+				_socialTrackingVars(this,"Shop Your Way");
+			});
+			$('.addthis_toolbox .addthis_button_email, .sharemenulinks .addthis_button_email').on('click', function() {
+				_socialTrackingVars(this,"Email");
+			});
+		};
+		
+		return {
+			socialTracking : function () {
+				if  (typeof self.need_init==='undefined') {
+					_socialTrackingHandlers();
+				}
+			};
+		};
+	}();
+})(window.jQuery)
+</script>
