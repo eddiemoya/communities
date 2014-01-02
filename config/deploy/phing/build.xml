@@ -1,28 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="Communities" default="deploy">
+<project name="Communities" default="input">
 	
 	<property name="repo" value="git@github.com:dasfisch/communities.git" />
 	<property name="host" value="" override="true"/>
+	<property name="password" value="" override="true" />
 	<property name="username" value="stateadm" />
 	<property name="branch" value="master" override="true" />
 	
+
+	<property name="hosts" value="dev,int,qa" />
+	
 	<property name="and" value="&amp;&amp;" />
-	<property name="git.clone" value="git clone ${repo}" />
-	<property name="git.status" value="git status" />
+	
+	<property name="git.submoduleInit" value="git submodule init" />
+	<property name="git.submoduleUpdate" value="git submodule update" />	
+	
+	<property name="dir.deployRoot" value="/tmp/phing-deploy" />
+	<property name="dir.localRepo" value="${dir.deployRoot}/communities/" />
+	<property name="dir.localAssets" value="${dir.localRepo}/wordpress/wp-content/themes/Eris/assets" />
+	<property name="dir.js" value="${dir.localAssets}/js/" />
+	<property name="dir.css" value="${dir.localAssets}/css/" />
+	<property name="dir.git" value=".git" />
+	
+	<property name="dir.remoteBuildRoot" value="~/communities/phing" />
+	<property name="dir.remoteBuildDir" value="${dir.remoteBuildRoot}/build" />
+	<property name="dir.remoteWebRoot" value="/appl/communities/www/" />
+	
+	<property name="file.excluded" value="sync.exclude" />
+	<property name="file.properties" value="properties" />
 	
 	
-	<property name="dir.localRepo" value="~/phing-deploy/communities/" />
-	<property name="dir.remoteDir" value="" />
-	
-	
-	<!-- SSH to server -->
+	<!-- Default: collect user input and run targets -->
 	<target name="input">
-		
-		<property name="hosts" value="dev,int,qa" />
 		
 		<input propertyName="env"  message="Which environment would you like to deploy to?" validargs="${hosts}" />
 		
+		<input propertyName="branch"  message="Which branch would you like to deploy?" />
+		
+		<!-- Which server are we deploying to? -->
 		
 		<!-- DEV -->
 		<if>
@@ -51,17 +67,29 @@
 		
 		</if>
 		
-		<phingcall target="branch"></phingcall>
-	<!-- <exec command="ssh ${username}@${host} 'pwd ${and} ls -la'" outputProperty="ssh_output"/>
-		<echo msg="${ssh_output}" /> -->
+		<input propertyName="password" message="Enter password for ${username}@${host}:" />
+		
+		
+		<!-- Does the local repo dir we deploy from exist? if not, create it -->
+		<phingcall target="repoDir" />
+		
+		<!-- Is the local repo dir a git repo? if not, clone repo -->
+		<phingcall target="gitCheck" />
+		
+		<!-- Checkout branch and submodule update -->
+		<phingcall target="checkoutBranch" />
+		
+		<phingcall target="minimizeAssets" />
+		
+		<phingcall target="remoteCheckBuildDir">
+			<property name="host" value="${host}" />
+		</phingcall>
+		
+		<phingcall target="syncToRemote" />
+		
 		
 	</target>
 	
-	<target name="deploy" depends="input"> 
-	
-		
-	
-	</target>
 	
 	<target name="repoDir">
 	
@@ -69,7 +97,7 @@
 		
 		<if>
 			<not> 
-				<isset property="dir.exists" /> 
+				<isset property="dir_exists" /> 
 			</not>
 			<then>
 				<!-- Create dir -->
@@ -77,41 +105,85 @@
 			</then>
 			
 		</if>
+
+	</target>
+	
+	<target name="gitCheck">
 		
-		<!-- Change to dir -->
-		<exec command="cd ${dir.localRepo}" />
+		<available file="${dir.localRepo}/${dir.git}" type="dir" property="git_dir_exists" />
+		
+		<!-- If the repo dir is not a repo, clone the repo into it -->
+		<if>
+			<not>
+				<isset property="git_dir_exists" />
+			</not>
+			<then>
+				<echo msg="Initializing repo..." />
+				
+				<!-- Clone repo -->
+				<gitclone repository="${repo}"
+							targetPath="${dir.localRepo}" />
+				
+				<echo msg="Initializing and updating submodules..." />
+				<exec command="cd ${dir.localRepo} ${and} ${git.submoduleInit} ${and} ${git.submoduleUpdate}" />
+				
+			</then>
+		
+		</if>
+	</target>	
+	
+	<target name="checkoutBranch">
+	
+		<echo msg="Checking out ${branch} and updating submodules..." />
+		
+		<!-- Checkout branch -->
+		<gitcheckout repository="${dir.localRepo}"
+					branchname="${branch}"
+					force="true" />
+			
+		<!-- Submodule Init and Update -->			
+		<exec command="cd ${dir.localRepo} ${and} ${git.submoduleInit} ${and} ${git.submoduleUpdate}" />
+		
+	</target>
+	
+	<target name="minimizeAssets">
+	
+		<reflexive>
+		    <fileset dir="${dir.js}">
+		        <include pattern="*.js" />
+		    </fileset>
+		    <filterchain>
+		        <striplinebreaks />
+		        <stripwhitespace />
+		    </filterchain>
+		</reflexive>
+		
+		<reflexive>
+		    <fileset dir="${dir.css}">
+		        <include pattern="*.css" />
+		    </fileset>
+		    <filterchain>
+		        <striplinebreaks />
+		        <stripwhitespace />
+		    </filterchain>
+		</reflexive>
 	
 	</target>
 	
-	<target name="branch">
+	<target name="remoteCheckBuildDir">
 		
-		<trycatch property="localRepoCheckoutTest">
-		
-			<try>
-				
-				<!-- Checkout branch--> 
-				<exec command="cd /etc ${and} ${git.status}" outputProperty="git_status_check" />
-				
-				<!-- <echo msg="${git_status_check}" /> -->
-			</try>
-			
-			<catch>
-				<echo msg="Git status failed." />
-			</catch>
-			
-			<finally>
-			
-			</finally>
-		
-		
-		</trycatch>
-		<echo msg="${localRepoCheckoutTest}" />
+		<ssh username="${username}" password="${password}" host="${host}" command="mkdir -p ${dir.remoteBuildDir}" failonerror="true" />
 		
 	</target>
-
-
-
+	
+	<target name="syncToRemote">
+	
+		<sync sourcedir="${dir.localRepo}"
+			    destinationdir="${username}@${host}:${dir.remoteBuildDir}"
+			    excludefile="${file.excluded}"
+			    verbose="true" /> 
+	
+	
+	</target>
+	
 </project>
-	
-	
-	
