@@ -139,7 +139,6 @@ function enqueue_scripts() {
 
 add_action('wp_head','pluginname_ajaxurl');
 // add_action('wp_head','pluginname_addthis_config');
-// add_action('wp_head','omniture_sVars');
 
 function pluginname_ajaxurl() {
 
@@ -165,18 +164,4 @@ function pluginname_addthis_config() {
               }
         </script>
     ';
-}
-function omniture_sVars() {
-    echo "
-        <script type='text/javascript'>
-            s.pageName = '". get_omniture() . "';
-            s.prop1 = '". get_omniture() . "';
-            s.prop2 = '". get_omniture() . "';
-            s.prop3 = '". get_omniture() . "';
-            s.prop13 = '". get_omniture() . "';
-            s.prop18 = '". get_omniture() . "';
-            s.prop27 = '". get_omniture() . "';
-            s.prop28 = '". get_omniture() . "';
-        </script>
-    ";
 }
