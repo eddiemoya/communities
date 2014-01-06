@@ -35,39 +35,5 @@
 <script>
 (function ($) {
 	omniture.socialTracking();
-	
-	var omniture = function () {
-		var _isInitialized = false;
-		var _socialTrackingVars = function (obj, service) {
-			s.linkTrackVars="prop12,prop28";
-			s.prop12= service+":"+s.prop28;
-			s.tl(obj,"o",s.prop12,null,"navigate");
-		};
-		
-		var _socialTrackingHandlers = function () {
-			_isInitialized = true;
-			
-			$('.addthis_toolbox .addthis_button_facebook_like, .sharemenulinks .addthis_button_facebook').on('click', function() {
-				_socialTrackingVars(this,"Facebook");
-			});
-			$('.addthis_toolbox .addthis_button_tweet, .sharemenulinks .addthis_button_twitter').on('click', function() {
-				_socialTrackingVars(this,"Twitter");
-			});
-			$('.addthis_toolbox .addthis_button_syw, .sharemenulinks .addthis_button_syw').on('click', function() {
-				_socialTrackingVars(this,"Shop Your Way");
-			});
-			$('.addthis_toolbox .addthis_button_email, .sharemenulinks .addthis_button_email').on('click', function() {
-				_socialTrackingVars(this,"Email");
-			});
-		};
-		
-		return {
-			socialTracking : function () {
-				if  (typeof self.need_init==='undefined') {
-					_socialTrackingHandlers();
-				}
-			};
-		};
-	}();
 })(window.jQuery)
 </script>
