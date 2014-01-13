@@ -201,7 +201,7 @@ ul.footer_anterior .smb { background-position: -240px top; }
 
 #container { margin: 0 auto; position: relative; width: 960px; }
 
-#persistent-header { background-color: #fff; z-index: 7000; }
+#persistent-header { background-color: green; z-index: 7000; }
 
 #persistent-header.persist { position: fixed; top: 0px; }
 
