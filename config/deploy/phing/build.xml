@@ -83,9 +83,15 @@
 		
 		<phingcall target="remoteCheckBuildDir">
 			<property name="host" value="${host}" />
-		</phingcall>
+		</phingcall> 
 		
-		<phingcall target="syncToRemote" />
+		<phingcall target="syncToRemote">
+			<property name="dir.localRepo" value="${dir.localRepo}" />
+			<property name="username" value="${username}" />
+			<property name="host" value="${host}" />
+			<property name="dir.remoteBuildDir" value="${dir.remoteBuildDir}" />
+			<property name="file.excluded" value="${file.excluded}" />
+		</phingcall>
 		
 		
 	</target>
@@ -178,11 +184,17 @@
 	
 	<target name="syncToRemote">
 	
-		<sync sourcedir="${dir.localRepo}"
+		<filesync sourcedir="${dir.localRepo}"
 			    destinationdir="${username}@${host}:${dir.remoteBuildDir}"
 			    excludefile="${file.excluded}"
-			    verbose="true" /> 
+			    verbose="true" />
+			    
 	
+	</target>
+	
+	<target name="copyToWebRoot">
+	
+		<ssh username="${username}" password="${password}" host="${host}" command="rsync " failonerror="true" />
 	
 	</target>
 	
