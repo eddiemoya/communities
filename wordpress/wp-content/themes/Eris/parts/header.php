@@ -12,6 +12,14 @@
     
     <meta property="og:url" content="<?php the_permalink(); ?>" />
 
+    <?php if (theme_option('brand') == 'sears') { ?>
+        <!-- MySears Site Verification Code - Pinterest -->
+        <meta name="p:domain_verify" content="b544e53b7b4ced94e349098aa640bc18"/>
+    <?php } else { ?>
+        <!-- MySears Site Verification Code - Pinterest -->
+        <meta name="p:domain_verify" content="45edb180977c053fd9f7923419cf583f"/>
+    <?php } ?>
+
     <!--<link rel="shortcut icon" href="<?php //echo get_template_directory_uri(); ?>/images/favicon.ico" /> -->
 
     <?php wp_head(); ?>
