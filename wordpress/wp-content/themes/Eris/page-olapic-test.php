@@ -7,12 +7,13 @@
  * @package WordPress
  * @subpackage White Label
  */
-
+if(! is_ajax()):
 
 get_template_part('parts/header'); ?>
+	
 	<section class="span8">
-
-		<article class="content-container forgot-password span12">
+<?php endif;?>	
+		<article class="content-container span12">
 			<section class="content-body clearfix">	
 				<h5 class="content-headline">
 	              Olapic Widget
@@ -23,7 +24,7 @@ get_template_part('parts/header'); ?>
 	
 		</article>
 		
-
+<?php if(! is_ajax()):?>
 	</section>
 
 
@@ -31,4 +32,7 @@ get_template_part('parts/header'); ?>
 	</section>
 	
 <?php
-get_template_part('parts/footer'); ?>
+get_template_part('parts/footer');
+
+endif;
+?>
