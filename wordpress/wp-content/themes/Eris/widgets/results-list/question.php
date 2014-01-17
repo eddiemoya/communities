@@ -21,7 +21,7 @@
     $answer_count = (function_exists('get_custom_comment_count')) ? get_custom_comment_count('answer') : '';
     $answer_count_string = ($answer_count > 500) ? "500+ answers" : $answer_count . " " . _n( ' answer', ' answers', $answer_count );
 ?>
-<article class="content-container question">
+<article class="content-container <?php echo $post->post_type; ?>">
 	<section class="content-body clearfix">
 		
 		<?php get_partial( 'parts/crest', $crest_options ); ?>
