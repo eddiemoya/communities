@@ -5,15 +5,29 @@ for(var key in s_properties) {
 }
 
 var omniture = (function () {
+	// Initialization Vars
 	var _isSocialInitialized = false,
+		_isContentTrackingInitialized = false,
+		
+	// Omniture Functions
 		_socialTrackingVars = function (obj, service) {
 			s.linkTrackVars = "prop12,prop28";
 			s.prop12 = service + ":" + s.prop28;
 			s.tl(obj, "o", s.prop12, null, "navigate");
 		},
+
+		_contentTrackingVars = function (obj, article) {
+			s.linkTrackVars = "prop12,prop28";
+			s.prop12 = article + "+s.prop28";
+			s.tl(obj, "o", s.prop12, null, "navigate");
+		},
 	
+	// Event Handler Functions
 		_socialTrackingHandlers = function () {
 			_isSocialInitialized = true;
+
+			// Check if social media is currently on the page
+			if ($('.addthis_toolbox, .sharemenulinks').size() === 0) { console.warn("Social Tracking - Nothing found to track."); }
 			
 			$('.addthis_toolbox .addthis_button_facebook_like, .sharemenulinks .addthis_button_facebook').on('click', function() {
 				//console.log("Facebook Share");
@@ -31,14 +45,40 @@ var omniture = (function () {
 				//console.log("Email Share");
 				_socialTrackingVars(this, "Email");
 			});
+		},
+
+		_contentTrackingHandlers = function () {
+			_isContentTrackingInitialized = true;
+
+			/* TODO: finish handlers
+			TODO: make sure to add the 'see more' links as well.
+			// Event handlers for articles
+			$('section.dropzone-inner-wrapper .featured-post-type-post').on('click', function() {
+				_contentTrackingHandlers(this, this.innerHTML);
+			});
+			$('body.archive_posts .post').on('click', function() {
+				_contentTrackingHandlers(this, this.innerHTML);
+			});
+			$('body.search-results .post h1.content-headline a').on('click', function() {
+				_contentTrackingHandlers(this, this.innerHTML);
+			});
+			*/
 		};
+
+
 	
 	return {
 		socialTracking : function () {
 			if  (_isSocialInitialized === false) {
 				_socialTrackingHandlers();
 			}
+		},
+		contentTracking : function () {
+			if (_isContentTrackingInitialized === false) {
+				_contentTrackingHandlers();
+			}
 		}
+
 	};
 }());
 
