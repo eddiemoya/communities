@@ -50,19 +50,40 @@ var omniture = (function () {
 		_contentTrackingHandlers = function () {
 			_isContentTrackingInitialized = true;
 
+			
 			/* TODO: finish handlers
 			TODO: make sure to add the 'see more' links as well.
-			// Event handlers for articles
-			$('section.dropzone-inner-wrapper .featured-post-type-post').on('click', function() {
-				_contentTrackingHandlers(this, this.innerHTML);
-			});
-			$('body.archive_posts .post').on('click', function() {
-				_contentTrackingHandlers(this, this.innerHTML);
-			});
-			$('body.search-results .post h1.content-headline a').on('click', function() {
-				_contentTrackingHandlers(this, this.innerHTML);
-			});
 			*/
+			// Selector Declarations
+			// Article links that contain the title
+			var articleTitleLinks = [];
+				articleTitleLinks.push('section.dropzone-inner-wrapper .featured-post-type-post h1.content-headline a'); // Category Page posts
+				articleTitleLinks.push('body.search-results .post h1.content-headline a'); // Search Results posts
+				articleTitleLinks.push('body.archive_posts .post h1.content-headline a'); // Post Page posts
+
+			// Article links that do not contain the title
+			var articleSeeMoreLinks = [];
+				articleSeeMoreLinks.push('section.dropzone-inner-wrapper .featured-post-type-post .moretag') // Category Page see more link
+				articleSeeMoreLinks.push('body.search-results .post .moretag'); // Search Results see more link
+				articleSeeMoreLinks.push('body.archive_posts .post .moretag'); // Post Page see more link
+
+			// Event handlers for articles
+			$(articleTitleLinks.toString()).on('click', function() {
+				_contentTrackingHandlers(this, this.innerHTML);
+			});
+
+			$(articleSeeMoreLinks.toString()).on('click',function() {
+				var articleTitle = $(this).parent().parent().find('h1 a')[0];
+
+				if (articleTitle === undefined) { 
+					console.warn("No title found for article link."); 
+					_contentTrackingHandlers(this, "No title found for article link.");
+				} else {
+					//console.log(articleTitle.innerHTML + "share!");
+					_contentTrackingHandlers(this, articleTitle.innerHTML);
+				}
+			});
+
 		};
 
 
