@@ -50,10 +50,6 @@ var omniture = (function () {
 		_contentTrackingHandlers = function () {
 			_isContentTrackingInitialized = true;
 
-			
-			/* TODO: finish handlers
-			TODO: make sure to add the 'see more' links as well.
-			*/
 			// Selector Declarations
 			// Article links that contain the title
 			var articleTitleLinks = [];
@@ -69,7 +65,7 @@ var omniture = (function () {
 
 			// Event handlers for articles
 			$(articleTitleLinks.toString()).on('click', function() {
-				_contentTrackingHandlers(this, this.innerHTML);
+				_contentTrackingHandlers(this, $.trim(this.innerHTML));
 			});
 
 			$(articleSeeMoreLinks.toString()).on('click',function() {
@@ -80,13 +76,11 @@ var omniture = (function () {
 					_contentTrackingHandlers(this, "No title found for article link.");
 				} else {
 					//console.log(articleTitle.innerHTML + "share!");
-					_contentTrackingHandlers(this, articleTitle.innerHTML);
+					_contentTrackingHandlers(this, $.trim(articleTitle.innerHTML));
 				}
 			});
 
 		};
-
-
 	
 	return {
 		socialTracking : function () {
