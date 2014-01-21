@@ -10,6 +10,8 @@ get_template_part('parts/header');
 //Current User data
 $profile_user = get_userdata(get_query_var('author'));
 
+$profile_user->something = 'hello';
+
 //User Profile object
 $user_activities = new User_Profile($profile_user->ID);
 

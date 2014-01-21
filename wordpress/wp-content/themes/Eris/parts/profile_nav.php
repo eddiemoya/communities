@@ -9,12 +9,14 @@
         $badge_page = get_page_by_title( 'Types of Badges' );
     }
     
+    
     // Get the stats
-    $profile_user->answer_count  = get_comments( array( 'user_id' => $profile_user->ID, 'status' => 'approved', 'count' => true, 'type' => 'answer' ) );
-    $profile_user->comment_count = get_comments( array( 'user_id' => $profile_user->ID, 'status' => 'approved', 'count' => true, 'type' => 'comment' ) );
+    $profile_user->answer_count  = get_comments( array( 'user_id' => $profile_user->ID, 'status' => 'approve', 'count' => true, 'type' => 'answer' ) );
+    $profile_user->comment_count = get_comments( array( 'user_id' => $profile_user->ID, 'status' => 'approve', 'count' => true, 'type' => 'comment' ) );
     $profile_user->post_count    = return_post_count( $profile_user->ID );
     $profile_user->review_count = $user_activities->num_reviews;
 
+    
     $a_tabs = array(
         "Community Activity" => $author_url . $concat . 'recent',
         "About Me" => $author_url . $concat . 'aboutme'

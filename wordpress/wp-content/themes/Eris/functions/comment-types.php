@@ -61,7 +61,7 @@ if (class_exists('CCT_Controller_Comment_Types')) {
             'parent_domain' => 'post',
             'parent_type' => 'question',
             'capability' => 'moderate_answers',
-            'menu_position' => 9,
+            'menu_position' => 13,
             'template' => get_template_directory_uri() . '/parts/flags.php'
         );
 
