@@ -1,6 +1,7 @@
-/* SiteCatalyst code version: H.25.1.
+/* SiteCatalyst code version: H.26.1
 Copyright 1996-2012 Adobe, Inc. All Rights Reserved
-More info available at http://www.omniture.com */
+More info available at http://www.omniture.com 
+Last Updated 12/17/2013 by Michele Hajala - Adobe */
 
 var s_account="searskmartcom"
 var s=s_gi(s_account)
