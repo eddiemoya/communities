@@ -75,7 +75,7 @@ ACTIONS.actions = $actions = function(element, options) {
             ajaxurl + '?action=add_user_action',
             post,
             function(data) {
-                data = eval(data);
+                data = JSON.parse(data);
 
                 if(_this.options.resetAction === true) {
                     _this._decideForDownUpSwitch(data);
@@ -258,9 +258,10 @@ shcJSL.gizmos.bulletin['shcJSL.actions.js'] = true;
  * @param options = this instance
  */
 shcJSL.methods.actions = function(_element, options) {
-    var _elementOptions = ($(_element).attr("shc:gizmo:options") != undefined)? (((eval('(' + $(_element).attr("shc:gizmo:options") + ')')).actions) ? (eval('(' + $(_element).attr("shc:gizmo:options") + ')')).actions:{}):{};
+    var _elemObj = $(_element);
+    var _elementOptions = (_elemObj.attr("shc:gizmo:options") != undefined)? (((eval('(' + _elemObj.attr("shc:gizmo:options") + ')')).actions) ? (eval('(' + _elemObj.attr("shc:gizmo:options") + ')')).actions:{}):{};
 
-    var action = ($actions instanceof ACTIONS.actions) ? $actions : new $actions(jQuery(_element), _elementOptions);
+    var action = ($actions instanceof ACTIONS.actions) ? $actions : new $actions(_elemObj, _elementOptions);
 
     action.click();
 };
@@ -276,9 +277,10 @@ shcJSL.methods.actions = function(_element, options) {
 	 */
 if (shcJSL && shcJSL.gizmos)  {
 	shcJSL.gizmos.actions = function(element) {
-		options = ($(element).attr("shc:gizmo:options") != undefined)? (((eval('(' + $(element).attr("shc:gizmo:options") + ')')).actions)?(eval('(' + $(element).attr("shc:gizmo:options") + ')')).actions:{}):{};
+		var elemObj = $(element);
+        options = (elemObj.attr("shc:gizmo:options") != undefined)? (((eval('(' + elemObj.attr("shc:gizmo:options") + ')')).actions)?(eval('(' + elemObj.attr("shc:gizmo:options") + ')')).actions:{}):{};
 
-        jQuery(element).click(function() {
+        elemObj.on('click', function() {
             shcJSL.get(element).actions(element, options);
         });
     }
