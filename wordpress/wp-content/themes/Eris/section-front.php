@@ -1,31 +1,36 @@
 <?php
-echo "SECTION-FTONY";
+/**
+ * Template Name: Secont Front Template
+ * @package WordPress
+ * @subpackage White Label
+ */
 
  get_template_part('parts/header');
 
 	if(class_exists('WP_Node_Factory') && class_exists('WidgetPress_Controller_Widgets')){
 		$term = wp_get_object_terms($post->ID, $post->post_type);
-		$term = $term[0];
-		$node_factory = new WP_Node_Factory($term->taxonomy);
-		$node_factory->create_node($term->term_id);
-		$node = $node_factory->get_node();
-
- 
-		$filter = get_query_var('sf_filter');
-		if(empty($filter)) {
-			$filter = $term->taxonomy;
-		}
+		$filter = get_query_var('sf_filter'); 
 		
-		$layout_id = $node_factory->get_node_meta("sf_{$filter}_template");
-		//$layout_id = ($layout_setting > 0 ) ? $layout_setting : $node->post->ID;
+		if(!is_wp_error($term)){
+			$term = $term[0];
+			$node_factory = new WP_Node_Factory($term->taxonomy);
+			$node_factory->create_node($term->term_id);
+			$node = $node_factory->get_node();
 
-		$tax_query[] = array(
-			'taxonomy' => $node->term->taxonomy,
-			'terms' => $node->term->term_id,
-			'field' => 'id'
-		);
+	 			
+			if(empty($filter)) {
+				$filter = $term->taxonomy;
+			}
+			
+			$layout_id = $node_factory->get_node_meta("sf_{$filter}_template");
+			//$layout_id = ($layout_setting > 0 ) ? $layout_setting : $node->post->ID;
 
-		print_pre($tax_query);
+			$tax_query[] = array(
+				'taxonomy' => $node->term->taxonomy,
+				'terms' => $node->term->term_id,
+				'field' => 'id'
+			);
+		}
 
 		$post_type = '';
 		switch($filter){
@@ -53,8 +58,7 @@ echo "SECTION-FTONY";
 			'tax_query' => $tax_query
 		);
 
-		query_posts($query);
-		
+		query_posts($query);	
 		WidgetPress_Controller_Widgets::display_dropzones($layout_id);
 		wp_reset_query();
 	} 
