@@ -1,16 +1,22 @@
 <?php
+echo "SECTION-FTONY";
 
-get_template_part('parts/header');
-	
+ get_template_part('parts/header');
+
 	if(class_exists('WP_Node_Factory') && class_exists('WidgetPress_Controller_Widgets')){
 		$term = wp_get_object_terms($post->ID, $post->post_type);
 		$term = $term[0];
-		$node = new WP_Node_Factory($term->taxonomy);
-		$node->create_node($term->term_id);
+		$node_factory = new WP_Node_Factory($term->taxonomy);
+		$node_factory->create_node($term->term_id);
+		$node = $node_factory->get_node();
 
+ 
 		$filter = get_query_var('sf_filter');
+		if(empty($filter)) {
+			$filter = $term->taxonomy;
+		}
 		
-		$layout_id = $node->get_node_meta("sf_{$filter}_template");
+		$layout_id = $node_factory->get_node_meta("sf_{$filter}_template");
 		//$layout_id = ($layout_setting > 0 ) ? $layout_setting : $node->post->ID;
 
 		$tax_query[] = array(
@@ -18,6 +24,8 @@ get_template_part('parts/header');
 			'terms' => $node->term->term_id,
 			'field' => 'id'
 		);
+
+		print_pre($tax_query);
 
 		$post_type = '';
 		switch($filter){
@@ -67,5 +75,4 @@ get_template_part('parts/header');
 	}
 			
 
-
-get_template_part('parts/footer');
+ get_template_part('parts/footer');
