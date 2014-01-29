@@ -18,8 +18,7 @@ get_template_part('parts/header'); ?>
 				<h5 class="content-headline">
 	              Olapic Widget
 	            </h5>
-	            <div id="olapic_specific_widget"></div>
-	            <script type="text/javascript" src="https://widgets.photorank.me/render?element_id=olapic_specific_widget&customer_id=216237&widget_config=75676835" async="async"></script>
+	            <div id="olapic_specific_widget"></div><script type="text/javascript" src="https://widgets.photorank.me/render?element_id=olapic_specific_widget&customer_id=216237&gallery=1529627061&widget_config=75676835" async="async"></script>
 			</section>
 	
 		</article>
