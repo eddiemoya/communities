@@ -1,6 +1,6 @@
 <?php
 /*
- * Template Name: Forgot Password
+ * Template Name: Olapic Test
  */
 
 /**
