@@ -4,7 +4,7 @@
  */
 
 add_action('init', 'register_questions_type');
-add_action('init', 'register_buying_guides_type');
+// add_action('init', 'register_buying_guides_type');
 //add_action('init', 'change_default_post_slug');
 
 /**
@@ -53,7 +53,7 @@ function register_questions_type() {
         'slug'          => 'questions',
         'with_front'    => false,
         'feeds'         => true,
-        'paged'         => true,
+        'pages'         => true,
         'ep_mask'       => array()
     );
     $args = array(
@@ -63,7 +63,7 @@ function register_questions_type() {
         'show_ui'       => true,
         'show_in_menu'  => true,
         'query_var'     => false,
-        'rewrite'         => $rewrite,
+        'rewrite'         => false,
         'capability_type' => 'post',
         'has_archive' => true,
         'hierarchical' => false,
