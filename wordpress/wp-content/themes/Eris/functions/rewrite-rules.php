@@ -10,6 +10,7 @@ add_filter('query_vars', 	 'add_vars');
 	function add_vars($qvars) {
 		//$qvars[] = 'meta_key';
 		$qvars[] = 'sf_filter';
+		$qvars[] = 'sf_paged';
 
 
 		return $qvars;
@@ -75,21 +76,49 @@ function category_post_type_endpoints($rules){
 
 
 function wptuts_add_rewrite_rules() {  
-    add_rewrite_rule(  
-        '^(category|post|question)/([^/]+)/?$', // String followed by a slash, followed by a date in the form '2012-04-21', followed by another slash  
-        'index.php?post_type=$matches[1]&name=$matches[2]&sf_filter=$matches[1]',  
-        'top'  
-    );  
-     add_rewrite_rule(  
-        '^(category|post|question)/([^/]+)/(guide|question|post|video)s?/?$', // String followed by a slash, followed by a date in the form '2012-04-21', followed by another slash  
+
+	// Post Type / Taxonomy Filter 
+	add_rewrite_rule(  
+        '^(category)/([^/]+)/(guide|question|post|video)s?/?$', // String followed by a slash, followed by a date in the form '2012-04-21', followed by another slash  
         'index.php?post_type=$matches[1]&name=$matches[2]&sf_filter=$matches[3]',  
         'top'  
     );
-     add_rewrite_rule(  
+
+    // Taxonomy Filter
+    add_rewrite_rule(  
+        '^(category|post|question)/([^/]+)/?$', 
+        'index.php?post_type=$matches[1]&name=$matches[2]&sf_filter=$matches[1]',  
+        'top'  
+    ); 
+
+    // Post Type Filter
+    add_rewrite_rule(  
         '((question|post)s)/?$', // String followed by a slash, followed by a date in the form '2012-04-21', followed by another slash  
         'index.php?pagename=$matches[1]&sf_filter=$matches[2]',  
         'top'  
-    );   
+    );
+
+	// Post Type / Taxonomy Filter Pagination
+	add_rewrite_rule(  
+        '^(category)/([^/]+)/(guide|question|post|video)s?/page/?([0-9]{1,})?/?$', // String followed by a slash, followed by a date in the form '2012-04-21', followed by another slash  
+        'index.php?post_type=$matches[1]&name=$matches[2]&paged=$matches[4]&sf_filter=$matches[3]',  
+        'top'  
+    );
+
+    // Taxonomy Filter - Paginated
+    add_rewrite_rule(  
+        '^(category|post|question)/([^/]+)/page/?([0-9]{1,})?/?$', 
+        'index.php?post_type=$matches[1]&name=$matches[2]&paged=$matches[3]&sf_filter=$matches[1]',  
+        'top'  
+    ); 
+
+          // Post Type Filter Paginated
+     add_rewrite_rule(  
+        '((question|post)s)/page/?([0-9]{1,})?/?$', // String followed by a slash, followed by a date in the form '2012-04-21', followed by another slash  
+        'index.php?pagename=$matches[1]&paged=$matches[3]&sf_filter=$matches[2]',  
+        'top'  
+    );
+
 }  
 add_action( 'init', 'wptuts_add_rewrite_rules' );  
 
