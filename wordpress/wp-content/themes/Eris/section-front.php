@@ -8,9 +8,10 @@
  get_template_part('parts/header');
 
 	if(class_exists('WP_Node_Factory') && class_exists('WidgetPress_Controller_Widgets')){
+
 		$term = wp_get_object_terms($post->ID, $post->post_type);
 		$filter = get_query_var('sf_filter'); 
-		
+		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 		if(!is_wp_error($term)){
 			$term = $term[0];
 			$node_factory = new WP_Node_Factory($term->taxonomy);
@@ -52,13 +53,15 @@
 				$post_type = array('post', 'guide', 'question');
 			break;
 		}
+		
 
 		$query = array(
+			'paged'		=> $paged,
 			'post_type' => $post_type,
 			'tax_query' => $tax_query
 		);
 
-		query_posts($query);	
+		query_posts($query);
 		WidgetPress_Controller_Widgets::display_dropzones($layout_id);
 		wp_reset_query();
 	} 
