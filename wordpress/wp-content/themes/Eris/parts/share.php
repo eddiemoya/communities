@@ -33,7 +33,7 @@
 <?php endif; ?>
 
 <script>
-(function ($) {
-	omniture.socialTracking();
-})(window.jQuery)
+$(document).ready(
+    omniture.socialTracking();
+);
 </script>
