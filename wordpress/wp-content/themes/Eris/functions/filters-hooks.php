@@ -906,7 +906,7 @@ function add_attachment_slide_link_url( $form_fields, $post ) {
 	$form_fields['slide-hide-title'] = array(
 		'label' => 'Hide Slide Title Bar',
 		'input' => 'html',
-		'html'	=> '<label for="attachments-'.$post->ID.'-show-title"><input type="checkbox" name="attachments['.$post->ID.'][slide-hide-title]" value="1"'.($show_title ? ' checked="checked"' : '').' /> Yes</label>',
+		'html'	=> '<label for="attachments-'.$post->ID.'-show-title"><input type="ch	eckbox" name="attachments['.$post->ID.'][slide-hide-title]" value="1"'.($show_title ? ' checked="checked"' : '').' /> Yes</label>',
 		'value' => $show_title,
 		'helps' => 'Check to hide title bar',
 	);
@@ -1164,3 +1164,5 @@ function shortcode_quote( $atts = array(), $content = NULL ) {
 
 
 }
+
+

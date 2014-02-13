@@ -91,3 +91,6 @@
 [submodule "wordpress/wp-content/plugins/bbpress2-shortcode-whitelist"]
 	path = wordpress/wp-content/plugins/bbpress2-shortcode-whitelist
 	url = git@github.com:eddiemoya/bbpress2-shortcode-whitelist.git
+[submodule "wordpress/wp-content/plugins/activity-reports"]
+	path = wordpress/wp-content/plugins/activity-reports
+	url = git@github.com:dan-crimmins/activity-reports.git
