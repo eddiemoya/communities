@@ -94,3 +94,6 @@
 [submodule "wordpress/wp-content/plugins/activity-reports"]
 	path = wordpress/wp-content/plugins/activity-reports
 	url = git@github.com:dan-crimmins/activity-reports.git
+[submodule "wordpress/wp-content/plugins/author-roles"]
+	path = wordpress/wp-content/plugins/author-roles
+	url = git@github.com:dan-crimmins/author-roles.git
