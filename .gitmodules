@@ -51,7 +51,7 @@
 	url = git@github.com:eddiemoya/dans-ldap.git
 [submodule "wordpress/wp-content/plugins/front-end-users"]
 	path = wordpress/wp-content/plugins/front-end-users
-	url = https://github.com/WPoets/front-end-users.git
+	url = git@github.com:WPoets/front-end-users.git
 [submodule "wordpress/wp-content/plugins/wp-polls"]
 	path = wordpress/wp-content/plugins/wp-polls
 	url = git@github.com:dinocarl/wp-polls.git
@@ -72,7 +72,7 @@
 	url = git@github.com:mattday16/taxonomy_widget.git
 [submodule "wordpress/wp-content/plugins/wp-node"]
 	path = wordpress/wp-content/plugins/wp-node
-	url = https://github.com/eddiemoya/WP-Node
+	url = git@github.com:eddiemoya/WP-Node.git
 [submodule "wordpress/wp-content/plugins/section-fronts"]
 	path = wordpress/wp-content/plugins/section-fronts
 	url = git@github.com:eddiemoya/Section-Fronts.git
