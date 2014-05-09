@@ -1,0 +1,29 @@
+#nycsvColumns{margin-right: 20px}
+#nycsvColumn1, #nycsvColumn2{width: 410px; display: inline-block; vertical-align: top}
+#nycsvColumn2{margin-left: 20px}
+.widefat td a.button:hover{
+    border: 1px solid #FCCA25;
+    background: #ddd; /* Older browsers */
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #FFF7EF), to( #ffe27a)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(#FFF7EF, #ffe27a); /* Chrome 10+, Saf5.1+ */
+    background-image:    -moz-linear-gradient(#FFF7EF, #ffe27a); /* FF3.6 */
+    background-image:     -ms-linear-gradient(#FFF7EF, #ffe27a); /* IE10 */
+    background-image:      -o-linear-gradient(#FFF7EF, #ffe27a); /* Opera 11.10+ */
+    background-image:         linear-gradient(#FFF7EF, #ffe27a);
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow:none;
+    -o-box-shadow: none;
+    -ms-box-shadow: none;	
+}
+#nycsvColumns blockquote {
+	font: italic 400 18px/26px Georgia, "Bitstream Charter", serif;
+	margin: 1em 0;
+	border: 1px solid #ccc;
+	background:#f5f5f5;
+	color:#666;
+	padding: 10px 18px;
+	border-radius:4px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px
+}
